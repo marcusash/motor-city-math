@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algebra II - Exponents Mastery Exam</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        input, textarea {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #8B1E3F;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background: #f5f5f5;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 0;
+            padding: 40px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #8B1E3F;
+        }
+
+        h1 {
+            color: #8B1E3F;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 400;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.2em;
+        }
+
+        .question-card {
+            background: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-left: 4px solid #8B1E3F;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 0;
+            transition: box-shadow 0.2s;
+        }
+
+        .question-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .question-number {
+            color: #8B1E3F;
+            font-weight: 600;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .question-text {
+            color: #333;
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .input-group {
+            margin: 15px 0;
+        }
+
+        .input-group label {
+            display: block;
+            color: #555;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .input-group input {
+            width: 100%;
+            max-width: 300px;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #8B1E3F;
+        }
+
+        .input-group textarea {
+            width: 100%;
+            padding: 14px;
+            padding-bottom: 20px;
+            padding-right: 20px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+            min-height: 80px;
+            font-family: inherit;
+            transition: border-color 0.3s;
+            resize: vertical;
+            box-sizing: border-box;
+        }
+
+        .input-group textarea:focus {
+            outline: none;
+            border-color: #8B1E3F;
+        }
+
+        .print-btn {
+            background: white;
+            color: #8B1E3F;
+            border: 2px solid #8B1E3F;
+            padding: 12px 30px;
+            font-size: 1em;
+            border-radius: 3px;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .print-btn:hover {
+            background: #8B1E3F;
+            color: white;
+        }
+
+        .answer-key-btn {
+            background: #8B1E3F;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1em;
+            border-radius: 3px;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .answer-key-btn:hover {
+            background: #6B1530;
+        }
+
+        .answer-key-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .answer-key-content {
+            background: white;
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 40px;
+            border-radius: 0;
+            position: relative;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2em;
+            cursor: pointer;
+            color: #666;
+            background: none;
+            border: none;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+        }
+
+        .close-modal:hover {
+            color: #000;
+        }
+
+        .answer-key-title {
+            color: #8B1E3F;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 400;
+            letter-spacing: -0.5px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #8B1E3F;
+        }
+
+        .answer-item {
+            background: #ffffff;
+            padding: 30px;
+            margin-bottom: 25px;
+            border: 1px solid #e0e0e0;
+            border-left: 4px solid #8B1E3F;
+            border-radius: 0;
+            transition: box-shadow 0.2s;
+        }
+
+        .answer-item:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .answer-item strong {
+            color: #8B1E3F;
+            font-weight: 600;
+        }
+
+        .work-area {
+            background: #fafafa;
+            border: 1px solid #d0d0d0;
+            border-radius: 0;
+            padding: 20px;
+            margin: 20px 0;
+            min-height: 120px;
+        }
+
+        .work-area textarea {
+            width: 100%;
+            min-height: 100px;
+            border: 2px solid #ddd;
+            background: white;
+            resize: vertical;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 0.95em;
+            padding: 14px;
+            padding-bottom: 20px;
+            padding-right: 20px;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+
+        .work-label {
+            font-weight: 600;
+            color: #8B1E3F;
+            margin-bottom: 10px;
+            display: block;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            letter-spacing: 0.5px;
+        }
+
+        .final-answer-box {
+            background: #fafafa;
+            border: 2px solid #8B1E3F;
+            border-radius: 0;
+            padding: 20px;
+            margin-top: 15px;
+        }
+
+        .final-answer-label {
+            font-weight: 600;
+            color: #8B1E3F;
+            margin-bottom: 12px;
+            display: block;
+            font-size: 1em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .math-notation {
+            font-family: 'Courier New', monospace;
+            background: #f5e6ea;
+            padding: 3px 7px;
+            border-radius: 2px;
+            font-weight: 600;
+            color: #8B1E3F;
+        }
+
+        .sub-question {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        @media print {
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color: #000 !important;
+                background: white !important;
+                border-color: #000 !important;
+            }
+
+            body {
+                background: white !important;
+                padding: 0;
+            }
+
+            .container {
+                box-shadow: none;
+                padding: 20px;
+                max-width: 100%;
+                background: white !important;
+            }
+
+            .question-card {
+                background: white !important;
+                border: 2px solid #000 !important;
+                border-left: 5px solid #000 !important;
+                page-break-inside: avoid;
+                margin-bottom: 20px;
+            }
+
+            .question-number {
+                color: #000 !important;
+                border-bottom: 1px solid #000;
+                padding-bottom: 5px;
+            }
+
+            input, textarea {
+                border: 1px solid #000 !important;
+                background: white !important;
+                color: #000 !important;
+                padding: 14px !important;
+                box-sizing: border-box !important;
+            }
+            
+            textarea {
+                padding-bottom: 20px !important;
+                padding-right: 20px !important;
+            }
+
+            .print-btn, .answer-key-btn {
+                display: none !important;
+            }
+
+            .work-area {
+                border: 1px solid #000 !important;
+                background: white !important;
+                min-height: 80px;
+            }
+
+            .final-answer-box {
+                border: 2px solid #000 !important;
+                background: white !important;
+            }
+
+            .final-answer-label {
+                color: #000 !important;
+            }
+
+            header {
+                border-bottom: 2px solid #000;
+                background: white !important;
+            }
+
+            h1 {
+                color: #000 !important;
+            }
+
+            .subtitle {
+                color: #000 !important;
+            }
+
+            .question-text {
+                color: #000 !important;
+            }
+
+            .math-notation {
+                background: #e5e5e5 !important;
+                border: 1px solid #000;
+                color: #000 !important;
+            }
+
+            label, .work-label {
+                color: #000 !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Algebra II – Exponents Mastery Exam</h1>
+            <div class="subtitle">Comprehensive Assessment</div>
+        </header>
+
+        <form id="testForm">
+            <!-- Part A - Question 1 -->
+            <div class="question-card">
+                <div class="question-number">Part A – Question 1</div>
+                <div class="question-text">
+                    <strong>Product, Quotient, and Power Rules</strong>
+                    <br><br>
+                    Simplify each expression. Write your answer with positive exponents only.
+                </div>
+                <div class="work-area">
+                    <span class="work-label">Show Your Work:</span>
+                    <textarea id="work1" placeholder="Show your work for all parts..."></textarea>
+                </div>
+                <div class="final-answer-box">
+                    <label class="final-answer-label">Final Answers:</label>
+                    <div class="sub-question">
+                        <div class="question-text">
+                            a) <span class="math-notation">x<sup>4</sup> · x<sup>7</sup></span>
+                        </div>
+                        <div class="input-group">
+                            <label>Answer:</label>
+                            <input type="text" id="q1a">
+                        </div>
+                    </div>
+                    <div class="sub-question">
+                        <div class="question-text">
+                            b) <span class="math-notation">(2a<sup>3</sup>b<sup>2</sup>)(-3a<sup>4</sup>b)</span>
+                        </div>
+                        <div class="input-group">
+                            <label>Answer:</label>
+                            <input type="text" id="q1b">
+                        </div>
+                    </div>
+                    <div class="sub-question">
+                        <div class="question-text">
+                            c) <span class="math-notation">y<sup>8</sup> / y<sup>3</sup></span>
+                        </div>
+                        <div class="input-group">
+                            <label>Answer:</label>
+                            <input type="text" id="q1c">
+                        </div>
+                    </div>
+                    <div class="sub-question">
+                        <div class="question-text">
+                            d) <span class="math-notation">(3m<sup>2</sup>n<sup>-1</sup>)<sup>3</sup></span>
+                        </div>
+                        <div class="input-group">
+                            <label>Answer:</label>
+                            <input type="text" id="q1d">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Part B - Question 2 -->
+            <div class="question-card">
+                <div class="question-number">Part B – Question 2</div>
+                <div class="question-text">
+                    <strong>Negative Exponents and Rational Expressions</strong>
+                    <br><br>
+                    Rewrite each expression using positive exponents only. Simplify if possible.
+                </div>
+                <div class="work-area">
+                    <span class="work-label">Show Your Work:</span>
+                    <textarea id="work2" placeholder="Show your work for all parts..."></textarea>
+                </div>
+                <div class="final-answer-box">
+                    <label class="final-answer-label">Final Answers:</label>
+                    <div class="sub-question">
+                        <div class="question-text">
+                            a) <span class="math-notation">x<sup>-5</sup></span>
+                        </div>
+                        <div class="input-group">
+                            <label>Answer:</label>
+                            <input type="text" id="q2a">
+                        </div>
+                    </div>
+                    <div class="sub-question">
+                        <div class="question-text">
+                            b) <span class="math-notation">(4a<sup>-3</sup>b<sup>2</sup>) / (2a)</span>
+                        </div>
+                        <div class="input-group">
+                            <label>Answer:</label>
+                            <input type="text" id="q2b">
+                        </div>
+                    </div>
+                    <div class="sub-question">
+                        <div class="question-text">
+                            c) <span class="math-notation">(p / q)<sup>-4</sup></span>
+                        </div>
+                        <div class="input-group">
+                            <label>Answer:</label>
+                            <input type="text" id="q2c">
+                        </div>
+                    </div>
+                    <div class="sub-question">
+                        <div class="question-text">
+                            d) <span class="math-notation">(6x<sup>-2</sup>y<sup>3</sup>) / (9x<sup>4</sup>)</span>
+                        </div>
+                        <div class="input-group">
+                            <label>Answer:</label>
+                            <input type="text" id="q2d">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Part C - Question 3 -->
+            <div class="question-card">
+                <div class="question-number">Part C – Question 3</div>
+                <div class="question-text">
+                    <strong>Power of a Product / Power of a Quotient</strong>
+                    <br><br>
+                    Simplify each expression completely.
+                </div>
+                <div class="work-area">
+                    <span class="work-label">Show Your Work:</span>
+                    <textarea id="work3" placeholder="Show your work for all parts..."></textarea>
+                </div>
+                <div class="final-answer-box">
+                    <label class="final-answer-label">Final Answers:</label>
+                    <div class="sub-question">
+                        <div class="question-text">
+                            a) <span class="math-notation">(2x<sup>2</sup>y<sup>3</sup>)<sup>2</sup></span>
+                        </div>
+                        <div class="input-group">
+                            <label>Answer:</label>
+                            <input type="text" id="q3a">
+                        </div>
+                    </div>
+                    <div class="sub-question">
+                        <div class="question-text">
+                            b) <span class="math-notation">(3a<sup>2</sup> / 5b<sup>3</sup>)<sup>3</sup></span>
+                        </div>
+                        <div class="input-group">
+                            <label>Answer:</label>
+                            <input type="text" id="q3b">
+                        </div>
+                    </div>
+                    <div class="sub-question">
+                        <div class="question-text">
+                            c) <span class="math-notation">(x<sup>-1</sup> - 2x<sup>2</sup>)<sup>2</sup></span>
+                        </div>
+                        <div class="input-group">
+                            <label>Answer:</label>
+                            <input type="text" id="q3c">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Part D - Question 4 -->
+            <div class="question-card">
+                <div class="question-number">Part D – Question 4</div>
+                <div class="question-text">
+                    <strong>Distribute and Combine Like Terms Using Exponent Rules</strong>
+                    <br><br>
+                    Expand and simplify.
+                </div>
+                <div class="work-area">
+                    <span class="work-label">Show Your Work:</span>
+                    <textarea id="work4" placeholder="Show your work for all parts..."></textarea>
+                </div>
+                <div class="final-answer-box">
+                    <label class="final-answer-label">Final Answers:</label>
+                    <div class="sub-question">
+                        <div class="question-text">
+                            a) <span class="math-notation">3x<sup>2</sup>(4x<sup>5</sup> - x<sup>3</sup> + 6)</span>
+                        </div>
+                        <div class="input-group">
+                            <label>Answer:</label>
+                            <input type="text" id="q4a">
+                        </div>
+                    </div>
+                    <div class="sub-question">
+                        <div class="question-text">
+                            b) <span class="math-notation">2z(5z<sup>3</sup> + z - 8)</span>
+                        </div>
+                        <div class="input-group">
+                            <label>Answer:</label>
+                            <input type="text" id="q4b">
+                        </div>
+                    </div>
+                    <div class="sub-question">
+                        <div class="question-text">
+                            c) <span class="math-notation">(3x<sup>2</sup>y<sup>-1</sup>)(2xy<sup>3</sup> - 4x<sup>-2</sup>y)</span>
+                        </div>
+                        <div class="input-group">
+                            <label>Answer:</label>
+                            <input type="text" id="q4c">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Part E - Question 5 -->
+            <div class="question-card">
+                <div class="question-number">Part E – Question 5</div>
+                <div class="question-text">
+                    <strong>Understanding Exponent Structure & Common Mistakes</strong>
+                    <br><br>
+                    True or False? If false, rewrite correctly and explain.
+                </div>
+                <div class="work-area">
+                    <span class="work-label">Show Your Work:</span>
+                    <textarea id="work5" placeholder="Show your explanations for each part..."></textarea>
+                </div>
+                <div class="final-answer-box">
+                    <label class="final-answer-label">Final Answers:</label>
+                    <div class="sub-question">
+                        <div class="question-text">
+                            a) <span class="math-notation">(x + y)<sup>2</sup> = x<sup>2</sup> + y<sup>2</sup></span>
+                        </div>
+                        <div class="input-group">
+                            <label>True or False:</label>
+                            <input type="text" id="q5a" placeholder="True or False">
+                        </div>
+                        <div class="input-group">
+                            <label>If False, correct answer and explanation:</label>
+                            <textarea id="q5a_exp" style="min-height: 60px;"></textarea>
+                        </div>
+                    </div>
+                    <div class="sub-question">
+                        <div class="question-text">
+                            b) <span class="math-notation">(x - 3)<sup>2</sup> = x<sup>2</sup> - 9</span>
+                        </div>
+                        <div class="input-group">
+                            <label>True or False:</label>
+                            <input type="text" id="q5b" placeholder="True or False">
+                        </div>
+                        <div class="input-group">
+                            <label>If False, correct answer and explanation:</label>
+                            <textarea id="q5b_exp" style="min-height: 60px;"></textarea>
+                        </div>
+                    </div>
+                    <div class="sub-question">
+                        <div class="question-text">
+                            c) <span class="math-notation">(xy)<sup>-3</sup> = x<sup>-3</sup>y<sup>-3</sup></span>
+                        </div>
+                        <div class="input-group">
+                            <label>True or False:</label>
+                            <input type="text" id="q5c" placeholder="True or False">
+                        </div>
+                        <div class="input-group">
+                            <label>If False, correct answer and explanation:</label>
+                            <textarea id="q5c_exp" style="min-height: 60px;"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Part F - Question 6 -->
+            <div class="question-card">
+                <div class="question-number">Part F – Question 6</div>
+                <div class="question-text">
+                    <strong>Mixed Review / Challenge Problems</strong>
+                    <br><br>
+                    Simplify completely:
+                </div>
+                <div class="work-area">
+                    <span class="work-label">Show Your Work:</span>
+                    <textarea id="work6" placeholder="Show your work for all parts..."></textarea>
+                </div>
+                <div class="final-answer-box">
+                    <label class="final-answer-label">Final Answers:</label>
+                    <div class="sub-question">
+                        <div class="question-text">
+                            a) <span class="math-notation">(8x<sup>5</sup>y<sup>-2</sup>) / (4x<sup>-3</sup>y<sup>4</sup>)</span>
+                        </div>
+                        <div class="input-group">
+                            <label>Answer:</label>
+                            <input type="text" id="q6a">
+                        </div>
+                    </div>
+                    <div class="sub-question">
+                        <div class="question-text">
+                            b) <span class="math-notation">(-3x<sup>2</sup> / 2y<sup>3</sup>)<sup>-2</sup></span>
+                        </div>
+                        <div class="input-group">
+                            <label>Answer:</label>
+                            <input type="text" id="q6b">
+                        </div>
+                    </div>
+                    <div class="sub-question">
+                        <div class="question-text">
+                            c) <span class="math-notation">[(2a<sup>-1</sup>b<sup>2</sup>)<sup>3</sup>] / (4a<sup>2</sup>b<sup>-1</sup>)</span>
+                        </div>
+                        <div class="input-group">
+                            <label>Answer:</label>
+                            <input type="text" id="q6c">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button type="button" class="print-btn" onclick="window.print()">Print Version (Black & White)</button>
+            <button type="button" class="answer-key-btn" onclick="showAnswerKey()">View Answer Key</button>
+            <button type="button" class="answer-key-btn" onclick="saveResults()" style="background: #2563eb;">Save Results</button>
+            <button type="button" class="answer-key-btn" onclick="loadResults()" style="background: #7c3aed;">Load Saved Results</button>
+        </form>
+    </div>
+
+    <!-- Answer Key Modal -->
+    <div id="answerKeyModal" class="answer-key-modal">
+        <div class="answer-key-content">
+            <button class="close-modal" onclick="closeAnswerKey()">×</button>
+            <h2 class="answer-key-title">Answer Key</h2>
+            <div id="answerKeyBody"></div>
+        </div>
+    </div>
+
+    <script>
+        function showAnswerKey() {
+            const password = prompt("Enter password to view answer key:");
+            if (password !== '121274') {
+                alert('Incorrect password. Access denied.');
+                return;
+            }
+            
+            const answerKeyHTML = `
+                <div class="answer-item"><strong>Question 1:</strong> Product, Quotient, and Power Rules
+                    <br><br>a) x<sup>11</sup> (Work: x<sup>4</sup> · x<sup>7</sup> = x<sup>4+7</sup> = x<sup>11</sup>)
+                    <br><br>b) -6a<sup>7</sup>b<sup>3</sup> (Work: (2)(-3) = -6, a<sup>3</sup> · a<sup>4</sup> = a<sup>7</sup>, b<sup>2</sup> · b = b<sup>3</sup>)
+                    <br><br>c) y<sup>5</sup> (Work: y<sup>8</sup> / y<sup>3</sup> = y<sup>8-3</sup> = y<sup>5</sup>)
+                    <br><br>d) 27m<sup>6</sup>/n<sup>3</sup> (Work: (3)<sup>3</sup> = 27, (m<sup>2</sup>)<sup>3</sup> = m<sup>6</sup>, (n<sup>-1</sup>)<sup>3</sup> = n<sup>-3</sup> = 1/n<sup>3</sup>)
+                </div>
+                <div class="answer-item"><strong>Question 2:</strong> Negative Exponents and Rational Expressions
+                    <br><br>a) 1/x<sup>5</sup> (Work: x<sup>-5</sup> = 1/x<sup>5</sup>)
+                    <br><br>b) 2b<sup>2</sup>/a<sup>4</sup> (Work: 4a<sup>-3</sup>b<sup>2</sup> / 2a = 2a<sup>-3-1</sup>b<sup>2</sup> = 2a<sup>-4</sup>b<sup>2</sup> = 2b<sup>2</sup>/a<sup>4</sup>)
+                    <br><br>c) q<sup>4</sup>/p<sup>4</sup> (Work: (p/q)<sup>-4</sup> = p<sup>-4</sup>/q<sup>-4</sup> = q<sup>4</sup>/p<sup>4</sup>)
+                    <br><br>d) 2y<sup>3</sup>/(3x<sup>6</sup>) (Work: 6x<sup>-2</sup>y<sup>3</sup> / 9x<sup>4</sup> = (6/9)x<sup>-2-4</sup>y<sup>3</sup> = (2/3)x<sup>-6</sup>y<sup>3</sup> = 2y<sup>3</sup>/(3x<sup>6</sup>))
+                </div>
+                <div class="answer-item"><strong>Question 3:</strong> Power of a Product / Power of a Quotient
+                    <br><br>a) 4x<sup>4</sup>y<sup>6</sup> (Work: (2)<sup>2</sup> = 4, (x<sup>2</sup>)<sup>2</sup> = x<sup>4</sup>, (y<sup>3</sup>)<sup>2</sup> = y<sup>6</sup>)
+                    <br><br>b) 27a<sup>6</sup>/(125b<sup>9</sup>) (Work: (3)<sup>3</sup> = 27, (5)<sup>3</sup> = 125, (a<sup>2</sup>)<sup>3</sup> = a<sup>6</sup>, (b<sup>3</sup>)<sup>3</sup> = b<sup>9</sup>)
+                    <br><br>c) x<sup>-2</sup> - 4x + 4x<sup>4</sup> or 1/x<sup>2</sup> - 4x + 4x<sup>4</sup> (Work: (x<sup>-1</sup> - 2x<sup>2</sup>)<sup>2</sup> = (x<sup>-1</sup>)<sup>2</sup> - 2(x<sup>-1</sup>)(2x<sup>2</sup>) + (2x<sup>2</sup>)<sup>2</sup> = x<sup>-2</sup> - 4x + 4x<sup>4</sup>)
+                </div>
+                <div class="answer-item"><strong>Question 4:</strong> Distribute and Combine Like Terms
+                    <br><br>a) 12x<sup>7</sup> - 3x<sup>5</sup> + 18x<sup>2</sup> (Work: 3x<sup>2</sup> · 4x<sup>5</sup> = 12x<sup>7</sup>, 3x<sup>2</sup> · (-x<sup>3</sup>) = -3x<sup>5</sup>, 3x<sup>2</sup> · 6 = 18x<sup>2</sup>)
+                    <br><br>b) 10z<sup>4</sup> + 2z<sup>2</sup> - 16z (Work: 2z · 5z<sup>3</sup> = 10z<sup>4</sup>, 2z · z = 2z<sup>2</sup>, 2z · (-8) = -16z)
+                    <br><br>c) 6x<sup>3</sup>y<sup>2</sup> - 12 or 6x<sup>3</sup>y<sup>2</sup> - 12x<sup>0</sup>y<sup>0</sup> (Work: 3x<sup>2</sup>y<sup>-1</sup> · 2xy<sup>3</sup> = 6x<sup>3</sup>y<sup>2</sup>, 3x<sup>2</sup>y<sup>-1</sup> · (-4x<sup>-2</sup>y) = -12x<sup>0</sup>y<sup>0</sup> = -12)
+                </div>
+                <div class="answer-item"><strong>Question 5:</strong> Understanding Exponent Structure & Common Mistakes
+                    <br><br>a) <strong>FALSE</strong>. Correct: (x + y)<sup>2</sup> = x<sup>2</sup> + 2xy + y<sup>2</sup>. Explanation: You cannot distribute an exponent over addition. You must use FOIL or the binomial square formula.
+                    <br><br>b) <strong>FALSE</strong>. Correct: (x - 3)<sup>2</sup> = x<sup>2</sup> - 6x + 9. Explanation: (x - 3)<sup>2</sup> = (x - 3)(x - 3) = x<sup>2</sup> - 3x - 3x + 9 = x<sup>2</sup> - 6x + 9. You need the middle term (-6x).
+                    <br><br>c) <strong>TRUE</strong>. Explanation: When raising a product to a power, you raise each factor to that power: (xy)<sup>-3</sup> = x<sup>-3</sup>y<sup>-3</sup>.
+                </div>
+                <div class="answer-item"><strong>Question 6:</strong> Mixed Review / Challenge Problems
+                    <br><br>a) 2x<sup>8</sup>/y<sup>6</sup> (Work: 8/4 = 2, x<sup>5</sup>/x<sup>-3</sup> = x<sup>5-(-3)</sup> = x<sup>8</sup>, y<sup>-2</sup>/y<sup>4</sup> = y<sup>-2-4</sup> = y<sup>-6</sup> = 1/y<sup>6</sup>)
+                    <br><br>b) 4y<sup>6</sup>/(9x<sup>4</sup>) (Work: [(-3x<sup>2</sup>)<sup>-2</sup>] / [(2y<sup>3</sup>)<sup>-2</sup>] = [1/(9x<sup>4</sup>)] / [1/(4y<sup>6</sup>)] = 4y<sup>6</sup>/(9x<sup>4</sup>))
+                    <br><br>c) 2b<sup>7</sup>/a<sup>5</sup> (Work: (2a<sup>-1</sup>b<sup>2</sup>)<sup>3</sup> = 8a<sup>-3</sup>b<sup>6</sup>, then 8a<sup>-3</sup>b<sup>6</sup> / 4a<sup>2</sup>b<sup>-1</sup> = 2a<sup>-3-2</sup>b<sup>6-(-1)</sup> = 2a<sup>-5</sup>b<sup>7</sup> = 2b<sup>7</sup>/a<sup>5</sup>)
+                </div>
+            `;
+            document.getElementById('answerKeyBody').innerHTML = answerKeyHTML;
+            document.getElementById('answerKeyModal').style.display = 'block';
+        }
+
+        function closeAnswerKey() {
+            document.getElementById('answerKeyModal').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target === document.getElementById('answerKeyModal')) {
+                closeAnswerKey();
+            }
+        }
+
+        function saveResults() {
+            const formData = {};
+            const inputs = document.querySelectorAll('input, textarea');
+            inputs.forEach(input => {
+                if (input.id) {
+                    formData[input.id] = input.value || input.textContent || '';
+                }
+            });
+            
+            const saveData = {
+                timestamp: new Date().toISOString(),
+                formData: formData
+            };
+            
+            localStorage.setItem('exponentsExamResults', JSON.stringify(saveData));
+            alert('Results saved successfully! You can reload them anytime.');
+        }
+
+        function loadResults() {
+            const saved = localStorage.getItem('exponentsExamResults');
+            if (!saved) {
+                alert('No saved results found.');
+                return;
+            }
+            
+            const saveData = JSON.parse(saved);
+            const savedDate = new Date(saveData.timestamp).toLocaleString();
+            
+            if (confirm(`Load results from ${savedDate}?`)) {
+                Object.keys(saveData.formData).forEach(id => {
+                    const element = document.getElementById(id);
+                    if (element) {
+                        if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                            element.value = saveData.formData[id];
+                        } else {
+                            element.textContent = saveData.formData[id];
+                        }
+                    }
+                });
+                alert('Results loaded successfully!');
+            }
+        }
+    </script>
+</body>
+</html>

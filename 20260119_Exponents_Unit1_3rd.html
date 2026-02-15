@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algebra 2 - Exponents Unit 1 Test (3rd Attempt)</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        input, textarea {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #8B1E3F;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background: #f5f5f5;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 0;
+            padding: 40px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #8B1E3F;
+        }
+
+        h1 {
+            color: #8B1E3F;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 400;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.2em;
+        }
+
+        header .date {
+            color: #666;
+            font-size: 1em;
+            margin-top: 10px;
+        }
+
+        .learning-targets {
+            padding: 20px;
+            background: #fdf5f7;
+            border: 2px solid #8B1E3F;
+            margin-bottom: 30px;
+        }
+
+        .learning-targets h3 {
+            color: #8B1E3F;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .learning-targets ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .learning-targets li {
+            padding: 5px 0;
+            color: #444;
+            font-size: 0.95em;
+        }
+
+        .learning-targets li::before {
+            content: "✓ ";
+            color: #8B1E3F;
+            font-weight: bold;
+        }
+
+        .instructions {
+            padding: 15px 20px;
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            margin-bottom: 30px;
+        }
+
+        .instructions h3 {
+            color: #856404;
+            margin-bottom: 10px;
+        }
+
+        .instructions ul {
+            margin-left: 20px;
+            color: #856404;
+        }
+
+        .test-content {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .question-card {
+            background: #fafafa;
+            border: 1px solid #e0e0e0;
+            border-left: 5px solid #8B1E3F;
+            padding: 25px;
+        }
+
+        .question-number {
+            color: #8B1E3F;
+            font-weight: 600;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .question-text {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .sub-questions {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .sub-question {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .sub-question label {
+            min-width: 200px;
+            font-size: 1.1em;
+        }
+
+        .sub-question input {
+            flex: 1;
+            max-width: 300px;
+            padding: 10px 15px;
+            font-size: 1em;
+        }
+
+        .work-area {
+            background: white;
+            border: 1px dashed #ccc;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .work-label {
+            display: block;
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+        .work-area textarea {
+            width: 100%;
+            min-height: 100px;
+            padding: 10px;
+            font-family: inherit;
+            resize: vertical;
+        }
+
+        .input-group {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .input-group label {
+            font-weight: 500;
+            color: #333;
+        }
+
+        .input-group input {
+            flex: 1;
+            max-width: 400px;
+            padding: 12px 15px;
+            font-size: 1.1em;
+        }
+
+        .steps-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        .steps-table th, .steps-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .steps-table th {
+            background: #8B1E3F;
+            color: white;
+            font-weight: 500;
+        }
+
+        .steps-table tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+        .steps-table input {
+            width: 100%;
+            padding: 8px;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .print-btn, .answer-key-btn {
+            padding: 15px 30px;
+            font-size: 1.1em;
+            cursor: pointer;
+            border: none;
+            border-radius: 0;
+            color: white;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .print-btn {
+            background: linear-gradient(135deg, #8B1E3F 0%, #a52a4a 100%);
+        }
+
+        .answer-key-btn {
+            background: linear-gradient(135deg, #2d5a27 0%, #3d7a35 100%);
+        }
+
+        .print-btn:hover, .answer-key-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Answer Key Modal */
+        .answer-key-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .answer-key-content {
+            background: white;
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 40px;
+            border-radius: 0;
+            position: relative;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2em;
+            cursor: pointer;
+            color: #666;
+            background: none;
+            border: none;
+            padding: 0;
+        }
+
+        .close-modal:hover {
+            color: #8B1E3F;
+        }
+
+        .answer-key-title {
+            color: #8B1E3F;
+            font-size: 2em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #8B1E3F;
+        }
+
+        .answer-item {
+            padding: 15px;
+            margin-bottom: 10px;
+            background: #fafafa;
+            border-left: 4px solid #8B1E3F;
+            font-size: 1.1em;
+            line-height: 1.8;
+            transition: box-shadow 0.2s;
+        }
+
+        .answer-item:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .answer-item strong {
+            color: #8B1E3F;
+            font-weight: 600;
+        }
+
+        /* Print Styles */
+        @media print {
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color: #000 !important;
+                background: white !important;
+                border-color: #000 !important;
+            }
+
+            body {
+                background: white !important;
+                padding: 0;
+                font-size: 11pt;
+            }
+
+            .container {
+                box-shadow: none;
+                padding: 10px;
+                max-width: 100%;
+                background: white !important;
+            }
+
+            header {
+                border-bottom: 2px solid #000;
+                background: white !important;
+                margin-bottom: 15px !important;
+                padding-bottom: 10px !important;
+            }
+
+            h1 {
+                color: #000 !important;
+                font-size: 1.5em !important;
+                margin-bottom: 5px !important;
+            }
+
+            .subtitle {
+                color: #000 !important;
+                font-size: 1em !important;
+            }
+
+            header .date {
+                font-size: 0.9em !important;
+                margin-top: 5px !important;
+            }
+
+            .learning-targets {
+                padding: 8px 12px !important;
+                margin-bottom: 15px !important;
+            }
+
+            .learning-targets h3 {
+                font-size: 1em !important;
+                margin-bottom: 5px !important;
+            }
+
+            .learning-targets li {
+                font-size: 0.85em !important;
+                padding: 2px 0 !important;
+            }
+
+            .instructions {
+                padding: 8px 12px !important;
+                margin-bottom: 15px !important;
+            }
+
+            .instructions h3 {
+                font-size: 1em !important;
+                margin-bottom: 5px !important;
+            }
+
+            .instructions ul {
+                font-size: 0.9em !important;
+            }
+
+            .test-content {
+                gap: 12px !important;
+            }
+
+            .question-card {
+                background: white !important;
+                border: 1px solid #000 !important;
+                border-left: 3px solid #000 !important;
+                padding: 10px 12px !important;
+                margin-bottom: 0 !important;
+                page-break-inside: avoid;
+            }
+
+            .question-number {
+                color: #000 !important;
+                border-bottom: 1px solid #ccc;
+                padding-bottom: 3px !important;
+                margin-bottom: 8px !important;
+                font-size: 0.95em !important;
+            }
+
+            .question-text {
+                color: #000 !important;
+                font-size: 1em !important;
+                line-height: 1.5 !important;
+                margin-bottom: 10px !important;
+            }
+
+            .sub-questions {
+                gap: 6px !important;
+                margin-bottom: 10px !important;
+            }
+
+            .sub-question {
+                gap: 10px !important;
+            }
+
+            .sub-question label {
+                font-size: 1em !important;
+                min-width: 160px !important;
+            }
+
+            .sub-question input {
+                padding: 6px 8px !important;
+                font-size: 0.9em !important;
+                height: 28px !important;
+            }
+
+            input, textarea {
+                border: 1px solid #000 !important;
+                background: white !important;
+                color: #000 !important;
+                padding: 6px 8px !important;
+                box-sizing: border-box !important;
+            }
+
+            .input-group {
+                gap: 10px !important;
+            }
+
+            .input-group label {
+                font-size: 0.95em !important;
+            }
+
+            .input-group input {
+                padding: 6px 10px !important;
+                font-size: 0.95em !important;
+                height: 30px !important;
+            }
+
+            .print-btn, .answer-key-btn, .button-container {
+                display: none !important;
+            }
+
+            .work-area {
+                border: 1px solid #000 !important;
+                background: white !important;
+                padding: 8px !important;
+                margin-bottom: 8px !important;
+            }
+
+            .work-label {
+                font-size: 0.85em !important;
+                margin-bottom: 5px !important;
+            }
+
+            .work-area textarea {
+                min-height: 50px !important;
+                height: 50px !important;
+                padding: 6px !important;
+                font-size: 0.9em !important;
+            }
+
+            .steps-table {
+                border: 1px solid #000;
+                font-size: 0.9em !important;
+            }
+
+            .steps-table td, .steps-table th {
+                border: 1px solid #000 !important;
+                background: white !important;
+                color: #000 !important;
+                padding: 6px 8px !important;
+            }
+
+            .steps-table th {
+                background: #e5e5e5 !important;
+                color: #000 !important;
+            }
+
+            .steps-table input {
+                padding: 4px 6px !important;
+                font-size: 0.85em !important;
+            }
+
+            label, .work-label {
+                color: #000 !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Algebra 2</h1>
+            <div class="subtitle">Assessment 3 - Exponents Unit 1 (3rd Attempt)</div>
+            <div class="date">January 19, 2026</div>
+        </header>
+        
+        <div class="learning-targets">
+            <h3>W1 - Working with Exponents</h3>
+            <ul>
+                <li>W1.a) I can simplify expressions using the rules of exponents (Priority Target)</li>
+                <li>W1.b) I can translate between roots and rational exponents</li>
+                <li>W1.c) I can apply the distributive, commutative, and associative properties to manipulate expressions</li>
+                <li>W1.d) I can simplify and evaluate square roots and cube roots without a calculator</li>
+                <li>W1.e) I can perform operations with numbers expressed in scientific notation</li>
+                <li>W1.f) I can simplify roots of negatives using imaginary numbers</li>
+            </ul>
+        </div>
+        
+        <div class="instructions">
+            <h3>Instructions</h3>
+            <ul>
+                <li>No notes. Four-function calculator only.</li>
+                <li>Show your work to demonstrate understanding</li>
+            </ul>
+        </div>
+        
+        <form class="test-content">
+            <!-- Question 1 -->
+            <div class="question-card">
+                <div class="question-number">Question 1</div>
+                <div class="question-text">
+                    If \(x = -2\) and \(y = 3\), what is the value of \(-2x^3y^2\)?
+                </div>
+                <div class="work-area">
+                    <span class="work-label">Show Your Work:</span>
+                    <textarea id="work1" placeholder="Show your calculations..."></textarea>
+                </div>
+                <div class="input-group">
+                    <label>Answer:</label>
+                    <input type="text" id="q1_answer">
+                </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="question-card">
+                <div class="question-number">Question 2</div>
+                <div class="question-text">
+                    Rewrite the rational exponent as a radical:
+                    <br><br>
+                    \(7x^{3/5} = \)
+                </div>
+                <div class="input-group">
+                    <label>Answer:</label>
+                    <input type="text" id="q2_answer">
+                </div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="question-card">
+                <div class="question-number">Question 3</div>
+                <div class="question-text">
+                    Rewrite the expression using rational exponents:
+                    <br><br>
+                    \(6\sqrt[4]{3x} = \)
+                </div>
+                <div class="input-group">
+                    <label>Answer:</label>
+                    <input type="text" id="q3_answer">
+                </div>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="question-card">
+                <div class="question-number">Question 4</div>
+                <div class="question-text">
+                    Evaluate the following:
+                </div>
+                <div class="sub-questions">
+                    <div class="sub-question">
+                        <label>a) \(125^{1/3} = \)</label>
+                        <input type="text" id="q4a">
+                    </div>
+                    <div class="sub-question">
+                        <label>b) \(36^{1/2} = \)</label>
+                        <input type="text" id="q4b">
+                    </div>
+                    <div class="sub-question">
+                        <label>c) \(32^{2/5} = \)</label>
+                        <input type="text" id="q4c">
+                    </div>
+                    <div class="sub-question">
+                        <label>d) \(\sqrt{2.25 \times 10^6} = \)</label>
+                        <input type="text" id="q4d">
+                    </div>
+                    <div class="sub-question">
+                        <label>e) \(\left(\frac{3}{7}\right)^{-2} = \)</label>
+                        <input type="text" id="q4e">
+                    </div>
+                    <div class="sub-question">
+                        <label>f) \(25^{0.5} = \)</label>
+                        <input type="text" id="q4f">
+                    </div>
+                </div>
+                <div class="work-area">
+                    <span class="work-label">Show Your Work:</span>
+                    <textarea id="work4" placeholder="Show your calculations for each part..."></textarea>
+                </div>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="question-card">
+                <div class="question-number">Question 5</div>
+                <div class="question-text">
+                    Simplify:
+                </div>
+                <div class="sub-questions">
+                    <div class="sub-question">
+                        <label>a) \(\sqrt{180} = \)</label>
+                        <input type="text" id="q5a">
+                    </div>
+                    <div class="sub-question">
+                        <label>b) \(\sqrt[3]{-216} = \)</label>
+                        <input type="text" id="q5b">
+                    </div>
+                    <div class="sub-question">
+                        <label>c) \(\sqrt{-81} = \)</label>
+                        <input type="text" id="q5c">
+                    </div>
+                    <div class="sub-question">
+                        <label>d) \(\sqrt{72x^{10}} = \)</label>
+                        <input type="text" id="q5d">
+                    </div>
+                </div>
+                <div class="work-area">
+                    <span class="work-label">Show Your Work:</span>
+                    <textarea id="work5" placeholder="Show your calculations for each part..."></textarea>
+                </div>
+            </div>
+
+            <!-- Question 6 -->
+            <div class="question-card">
+                <div class="question-number">Question 6</div>
+                <div class="question-text">
+                    Simplify each expression. Rewrite any negative exponents.
+                    <br><br>
+                    \((7x^3)(4x^6)\)
+                </div>
+                <div class="work-area">
+                    <span class="work-label">Show Your Work:</span>
+                    <textarea id="work6" placeholder="Show your calculations..."></textarea>
+                </div>
+                <div class="input-group">
+                    <label>Answer:</label>
+                    <input type="text" id="q6_answer">
+                </div>
+            </div>
+
+            <!-- Question 7 -->
+            <div class="question-card">
+                <div class="question-number">Question 7</div>
+                <div class="question-text">
+                    Simplify:
+                    <br><br>
+                    \(x^5(3x^2)^3\)
+                </div>
+                <div class="work-area">
+                    <span class="work-label">Show Your Work:</span>
+                    <textarea id="work7" placeholder="Show your calculations..."></textarea>
+                </div>
+                <div class="input-group">
+                    <label>Answer:</label>
+                    <input type="text" id="q7_answer">
+                </div>
+            </div>
+
+            <!-- Question 8 -->
+            <div class="question-card">
+                <div class="question-number">Question 8</div>
+                <div class="question-text">
+                    Simplify:
+                    <br><br>
+                    \(\frac{72x^4}{8x^{11}}\)
+                </div>
+                <div class="work-area">
+                    <span class="work-label">Show Your Work:</span>
+                    <textarea id="work8" placeholder="Show your calculations..."></textarea>
+                </div>
+                <div class="input-group">
+                    <label>Answer:</label>
+                    <input type="text" id="q8_answer">
+                </div>
+            </div>
+
+            <!-- Question 9 -->
+            <div class="question-card">
+                <div class="question-number">Question 9</div>
+                <div class="question-text">
+                    Simplify:
+                    <br><br>
+                    \(\frac{9x^2 + x^5}{x^4} \cdot (2x^3 + x^4)\)
+                </div>
+                <div class="work-area">
+                    <span class="work-label">Show Your Work:</span>
+                    <textarea id="work9" placeholder="Show your calculations..."></textarea>
+                </div>
+                <div class="input-group">
+                    <label>Answer:</label>
+                    <input type="text" id="q9_answer">
+                </div>
+            </div>
+
+            <!-- Question 10 -->
+            <div class="question-card">
+                <div class="question-number">Question 10</div>
+                <div class="question-text">
+                    Simplify:
+                    <br><br>
+                    \(\frac{15y^3}{x^5} \cdot \frac{x^8}{5x^2y^6}\)
+                </div>
+                <div class="work-area">
+                    <span class="work-label">Show Your Work:</span>
+                    <textarea id="work10" placeholder="Show your calculations..."></textarea>
+                </div>
+                <div class="input-group">
+                    <label>Answer:</label>
+                    <input type="text" id="q10_answer">
+                </div>
+            </div>
+
+            <!-- Question 11 -->
+            <div class="question-card">
+                <div class="question-number">Question 11</div>
+                <div class="question-text">
+                    Simplify:
+                    <br><br>
+                    \(4x^3(x^2 + 5)^2\)
+                </div>
+                <div class="work-area">
+                    <span class="work-label">Show Your Work:</span>
+                    <textarea id="work11" placeholder="Show your calculations..."></textarea>
+                </div>
+                <div class="input-group">
+                    <label>Answer:</label>
+                    <input type="text" id="q11_answer">
+                </div>
+            </div>
+
+            <!-- Question 12 -->
+            <div class="question-card">
+                <div class="question-number">Question 12</div>
+                <div class="question-text">
+                    Solve for \(x\):
+                    <br><br>
+                    \(4^{x+2} = 8^x\)
+                </div>
+                <div class="work-area">
+                    <span class="work-label">Show Your Work:</span>
+                    <textarea id="work12" placeholder="Show your reasoning..."></textarea>
+                </div>
+                <div class="input-group">
+                    <label>\(x = \)</label>
+                    <input type="text" id="q12_answer">
+                </div>
+            </div>
+
+            <!-- Question 13 -->
+            <div class="question-card">
+                <div class="question-number">Question 13</div>
+                <div class="question-text">
+                    The formula for the area of a triangle is \(A = \frac{1}{2}bh\). If the area of a triangle is \(54a^5b^3\) and the base is \(12a^2b\), what is the height?
+                </div>
+                <div class="work-area">
+                    <span class="work-label">Show Your Work:</span>
+                    <textarea id="work13" placeholder="Show your calculations..."></textarea>
+                </div>
+                <div class="input-group">
+                    <label>Height = </label>
+                    <input type="text" id="q13_answer">
+                </div>
+            </div>
+
+            <!-- Question 14 -->
+            <div class="question-card">
+                <div class="question-number">Question 14</div>
+                <div class="question-text">
+                    Explain the error:
+                    <br><br>
+                    \(\frac{x^8}{x^3} = x^{\frac{8}{3}}\)
+                </div>
+                <div class="work-area">
+                    <span class="work-label">Explain what is wrong and write the correct answer:</span>
+                    <textarea id="work14" placeholder="Explain the error and provide the correct solution..."></textarea>
+                </div>
+            </div>
+
+            <!-- Question 15 -->
+            <div class="question-card">
+                <div class="question-number">Question 15</div>
+                <div class="question-text">
+                    Explain the error:
+                    <br><br>
+                    \(\frac{x^{2/3}}{x^{1/2}} = x^{1/3}\)
+                </div>
+                <div class="work-area">
+                    <span class="work-label">Explain what is wrong and write the correct answer:</span>
+                    <textarea id="work15" placeholder="Explain the error and provide the correct solution..."></textarea>
+                </div>
+            </div>
+
+            <!-- Question 16 -->
+            <div class="question-card">
+                <div class="question-number">Question 16</div>
+                <div class="question-text">
+                    Explain the steps used to simplify this expression: \(9 \cdot 27^{x+1}\)
+                    <br><br>
+                    These steps may contain errors, so point out anything that is wrong. For correct steps, write out the rule of exponents or the property of algebra that was used.
+                </div>
+                <table class="steps-table">
+                    <tr>
+                        <th>Step</th>
+                        <th>Expression</th>
+                        <th>Your Explanation</th>
+                    </tr>
+                    <tr>
+                        <td>Step 1</td>
+                        <td>\(9 \cdot 27^{x+1}\)</td>
+                        <td>Original problem (no explanation needed)</td>
+                    </tr>
+                    <tr>
+                        <td>Step 2</td>
+                        <td>\(3^2 \cdot 27^{x+1}\)</td>
+                        <td><input type="text" id="q16_step2"></td>
+                    </tr>
+                    <tr>
+                        <td>Step 3</td>
+                        <td>\(3^2 \cdot (3^3)^{x+1}\)</td>
+                        <td><input type="text" id="q16_step3"></td>
+                    </tr>
+                    <tr>
+                        <td>Step 4</td>
+                        <td>\(3^2 \cdot 3^{3x+3}\)</td>
+                        <td><input type="text" id="q16_step4"></td>
+                    </tr>
+                    <tr>
+                        <td>Step 5</td>
+                        <td>\(3^{3x+5}\)</td>
+                        <td><input type="text" id="q16_step5"></td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- Question 17 -->
+            <div class="question-card">
+                <div class="question-number">Question 17</div>
+                <div class="question-text">
+                    Write the number in scientific notation:
+                    <br><br>
+                    \(47,600,000,000\)
+                </div>
+                <div class="input-group">
+                    <label>Answer:</label>
+                    <input type="text" id="q17_answer">
+                </div>
+            </div>
+
+            <!-- Question 18 -->
+            <div class="question-card">
+                <div class="question-number">Question 18</div>
+                <div class="question-text">
+                    Convert the number from scientific notation to write as a normal decimal:
+                    <br><br>
+                    \(8.15 \times 10^{-6}\)
+                </div>
+                <div class="input-group">
+                    <label>Answer:</label>
+                    <input type="text" id="q18_answer">
+                </div>
+            </div>
+
+            <!-- Question 19 -->
+            <div class="question-card">
+                <div class="question-number">Question 19</div>
+                <div class="question-text">
+                    In Physics, the kinetic energy \(E\) (in Joules) of a moving object is given by the equation:
+                    <br><br>
+                    \[E = \frac{1}{2}mv^2\]
+                    <br>
+                    where \(m\) is mass (in kg) and \(v\) is velocity (in m/s).
+                    <br><br>
+                    A spacecraft with mass \(m = 2.4 \times 10^{4}\) kg is traveling at a velocity of \(v = 3.0 \times 10^{3}\) m/s. What is its kinetic energy?
+                </div>
+                <div class="work-area">
+                    <span class="work-label">Show Your Work:</span>
+                    <textarea id="work19" placeholder="Show your calculations using scientific notation..."></textarea>
+                </div>
+                <div class="input-group">
+                    <label>Energy = </label>
+                    <input type="text" id="q19_answer" placeholder="Answer in scientific notation">
+                </div>
+            </div>
+
+            <div class="button-container">
+                <button type="button" class="print-btn" onclick="window.print()">Print Test</button>
+                <button type="button" class="answer-key-btn" onclick="showAnswerKey()">View Answer Key</button>
+                <button type="button" class="answer-key-btn" onclick="saveResults()" style="background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);">Save Results</button>
+                <button type="button" class="answer-key-btn" onclick="loadResults()" style="background: linear-gradient(135deg, #7c3aed 0%, #8b5cf6 100%);">Load Saved Results</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Answer Key Modal -->
+    <div id="answerKeyModal" class="answer-key-modal">
+        <div class="answer-key-content">
+            <button class="close-modal" onclick="closeAnswerKey()">×</button>
+            <h2 class="answer-key-title">Answer Key</h2>
+            <div id="answerKeyBody"></div>
+        </div>
+    </div>
+
+    <script>
+        function showAnswerKey() {
+            const password = prompt("Enter password to view answer key:");
+            if (password !== '121274') {
+                alert('Incorrect password. Access denied.');
+                return;
+            }
+            
+            const answerKeyHTML = String.raw`
+                <div class="answer-item"><strong>Q1:</strong> \(-2x^3y^2 = -2(-2)^3(3)^2 = -2(-8)(9) = 144\)</div>
+                
+                <div class="answer-item"><strong>Q2:</strong> \(7x^{3/5} = 7\sqrt[5]{x^3}\)</div>
+                
+                <div class="answer-item"><strong>Q3:</strong> \(6\sqrt[4]{3x} = 6(3x)^{1/4}\)</div>
+                
+                <div class="answer-item"><strong>Q4:</strong><br>
+                a) \(125^{1/3} = 5\)<br>
+                b) \(36^{1/2} = 6\)<br>
+                c) \(32^{2/5} = (32^{1/5})^2 = 2^2 = 4\)<br>
+                d) \(\sqrt{2.25 \times 10^6} = \sqrt{2.25} \times \sqrt{10^6} = 1.5 \times 1000 = 1500\)<br>
+                e) \(\left(\frac{3}{7}\right)^{-2} = \left(\frac{7}{3}\right)^2 = \frac{49}{9}\)<br>
+                f) \(25^{0.5} = 25^{1/2} = 5\)</div>
+                
+                <div class="answer-item"><strong>Q5:</strong><br>
+                a) \(\sqrt{180} = \sqrt{36 \cdot 5} = 6\sqrt{5}\)<br>
+                b) \(\sqrt[3]{-216} = -6\)<br>
+                c) \(\sqrt{-81} = 9i\)<br>
+                d) \(\sqrt{72x^{10}} = \sqrt{36 \cdot 2 \cdot x^{10}} = 6x^5\sqrt{2}\)</div>
+                
+                <div class="answer-item"><strong>Q6:</strong> \((7x^3)(4x^6) = 28x^9\)</div>
+                
+                <div class="answer-item"><strong>Q7:</strong> \(x^5(3x^2)^3 = x^5 \cdot 27x^6 = 27x^{11}\)</div>
+                
+                <div class="answer-item"><strong>Q8:</strong> \(\frac{72x^4}{8x^{11}} = \frac{9}{x^7} = 9x^{-7}\)</div>
+                
+                <div class="answer-item"><strong>Q9:</strong> \(\frac{9x^2 + x^5}{x^4} \cdot (2x^3 + x^4)\)<br>
+                \(= (9x^{-2} + x)(2x^3 + x^4)\)<br>
+                \(= 9x^{-2} \cdot 2x^3 + 9x^{-2} \cdot x^4 + x \cdot 2x^3 + x \cdot x^4\)<br>
+                \(= 18x + 9x^2 + 2x^4 + x^5\)</div>
+                
+                <div class="answer-item"><strong>Q10:</strong> \(\frac{15y^3}{x^5} \cdot \frac{x^8}{5x^2y^6} = \frac{15x^8y^3}{5x^7y^6} = \frac{3x}{y^3}\)</div>
+                
+                <div class="answer-item"><strong>Q11:</strong> \(4x^3(x^2 + 5)^2 = 4x^3(x^4 + 10x^2 + 25) = 4x^7 + 40x^5 + 100x^3\)</div>
+                
+                <div class="answer-item"><strong>Q12:</strong> Solve \(4^{x+2} = 8^x\)<br>
+                Convert to base 2: \((2^2)^{x+2} = (2^3)^x\)<br>
+                \(2^{2x+4} = 2^{3x}\)<br>
+                Set exponents equal: \(2x + 4 = 3x\)<br>
+                \(4 = x\)<br>
+                \(x = 4\)</div>
+                
+                <div class="answer-item"><strong>Q13:</strong> \(54a^5b^3 = \frac{1}{2}(12a^2b)(h)\)<br>
+                \(54a^5b^3 = 6a^2b \cdot h\)<br>
+                \(h = \frac{54a^5b^3}{6a^2b} = 9a^3b^2\)</div>
+                
+                <div class="answer-item"><strong>Q14:</strong> Error: The student divided the exponents instead of subtracting them.<br>
+                Correct: \(\frac{x^8}{x^3} = x^{8-3} = x^5\)</div>
+                
+                <div class="answer-item"><strong>Q15:</strong> Error: The student subtracted numerators only instead of finding common denominators.<br>
+                Correct: \(\frac{x^{2/3}}{x^{1/2}} = x^{2/3 - 1/2} = x^{4/6 - 3/6} = x^{1/6}\)</div>
+                
+                <div class="answer-item"><strong>Q16:</strong><br>
+                Step 2: Rewriting 9 as \(3^2\) (identity property)<br>
+                Step 3: Rewriting 27 as \(3^3\) (since \(27 = 3^3\))<br>
+                Step 4: Power of a power rule: \((a^m)^n = a^{mn}\), so \((3^3)^{x+1} = 3^{3(x+1)} = 3^{3x+3}\)<br>
+                Step 5: Product of powers rule: \(a^m \cdot a^n = a^{m+n}\), so \(3^2 \cdot 3^{3x+3} = 3^{2+3x+3} = 3^{3x+5}\) ✓</div>
+                
+                <div class="answer-item"><strong>Q17:</strong> \(47,600,000,000 = 4.76 \times 10^{10}\)</div>
+                
+                <div class="answer-item"><strong>Q18:</strong> \(8.15 \times 10^{-6} = 0.00000815\)</div>
+                
+                <div class="answer-item"><strong>Q19:</strong><br>
+                \(E = \frac{1}{2}mv^2 = \frac{1}{2}(2.4 \times 10^{4})(3.0 \times 10^{3})^2\)<br>
+                \(E = \frac{1}{2}(2.4 \times 10^{4})(9.0 \times 10^{6})\)<br>
+                \(E = \frac{1}{2}(21.6 \times 10^{10})\)<br>
+                \(E = 10.8 \times 10^{10} = 1.08 \times 10^{11}\) Joules</div>
+            `;
+            document.getElementById('answerKeyBody').innerHTML = answerKeyHTML;
+            document.getElementById('answerKeyModal').style.display = 'block';
+            
+            // Re-render MathJax for the answer key content
+            if (window.MathJax) {
+                MathJax.typesetPromise([document.getElementById('answerKeyBody')]).then(() => {
+                    console.log('MathJax rendering complete');
+                }).catch((err) => console.log('MathJax rendering error:', err));
+            }
+        }
+
+        function closeAnswerKey() {
+            document.getElementById('answerKeyModal').style.display = 'none';
+        }
+
+        function saveResults() {
+            const data = {};
+            const inputs = document.querySelectorAll('input, textarea');
+            inputs.forEach(input => {
+                if (input.id) {
+                    data[input.id] = input.value;
+                }
+            });
+            localStorage.setItem('exponents_test_3rd_results', JSON.stringify(data));
+            alert('Results saved successfully!');
+        }
+
+        function loadResults() {
+            const data = JSON.parse(localStorage.getItem('exponents_test_3rd_results'));
+            if (data) {
+                Object.keys(data).forEach(key => {
+                    const element = document.getElementById(key);
+                    if (element) {
+                        element.value = data[key];
+                    }
+                });
+                alert('Results loaded successfully!');
+            } else {
+                alert('No saved results found.');
+            }
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('answerKeyModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

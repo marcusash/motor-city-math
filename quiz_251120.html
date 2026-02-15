@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algebra 2 - Linear & Exponential Functions Quiz</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        input, textarea {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #8B1E3F;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background: #f5f5f5;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 0;
+            padding: 40px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #8B1E3F;
+        }
+
+        h1 {
+            color: #8B1E3F;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 400;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.2em;
+        }
+
+        .question-card {
+            background: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-left: 4px solid #8B1E3F;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 0;
+            transition: box-shadow 0.2s;
+        }
+
+        .question-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .question-number {
+            color: #8B1E3F;
+            font-weight: 600;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .question-text {
+            color: #333;
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .chart-container {
+            max-width: 700px;
+            height: 450px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            border: 2px solid #e0e0e0;
+        }
+
+        .input-group {
+            margin: 15px 0;
+        }
+
+        .input-group label {
+            display: block;
+            color: #555;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .input-group input {
+            width: 100%;
+            max-width: 300px;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #8B1E3F;
+        }
+
+        .input-group textarea {
+            width: 100%;
+            padding: 14px;
+            padding-bottom: 20px;
+            padding-right: 20px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+            min-height: 80px;
+            font-family: inherit;
+            transition: border-color 0.3s;
+            resize: vertical;
+            box-sizing: border-box;
+        }
+
+        .input-group textarea:focus {
+            outline: none;
+            border-color: #8B1E3F;
+        }
+
+        .submit-btn {
+            background: #8B1E3F;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1em;
+            border-radius: 3px;
+            cursor: pointer;
+            display: block;
+            margin: 40px auto 20px;
+            transition: background 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .submit-btn:hover {
+            background: #6B1530;
+        }
+
+        .print-btn {
+            background: white;
+            color: #8B1E3F;
+            border: 2px solid #8B1E3F;
+            padding: 12px 30px;
+            font-size: 1em;
+            border-radius: 3px;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .print-btn:hover {
+            background: #8B1E3F;
+            color: white;
+        }
+
+        .answer-key-btn {
+            background: #8B1E3F;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1em;
+            border-radius: 3px;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .answer-key-btn:hover {
+            background: #6B1530;
+        }
+
+        .answer-key-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .answer-key-content {
+            background: white;
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 40px;
+            border-radius: 0;
+            position: relative;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2em;
+            cursor: pointer;
+            color: #666;
+            background: none;
+            border: none;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+        }
+
+        .close-modal:hover {
+            color: #000;
+        }
+
+        .answer-key-title {
+            color: #8B1E3F;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 400;
+            letter-spacing: -0.5px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #8B1E3F;
+        }
+
+        .answer-item {
+            background: #ffffff;
+            padding: 30px;
+            margin-bottom: 25px;
+            border: 1px solid #e0e0e0;
+            border-left: 4px solid #8B1E3F;
+            border-radius: 0;
+            transition: box-shadow 0.2s;
+        }
+
+        .answer-item:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .answer-item strong {
+            color: #8B1E3F;
+            font-weight: 600;
+        }
+
+        .work-area {
+            background: #fafafa;
+            border: 1px solid #d0d0d0;
+            border-radius: 0;
+            padding: 20px;
+            margin: 20px 0;
+            min-height: 120px;
+        }
+
+        .work-area textarea {
+            width: 100%;
+            min-height: 100px;
+            border: 2px solid #ddd;
+            background: white;
+            resize: vertical;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 0.95em;
+            padding: 14px;
+            padding-bottom: 20px;
+            padding-right: 20px;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+
+        .custom-resize-handle {
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            width: 16px;
+            height: 16px;
+            cursor: ns-resize;
+            color: #999;
+            font-size: 20px;
+            line-height: 12px;
+            user-select: none;
+            transform: rotate(90deg);
+        }
+
+        .work-label {
+            font-weight: 600;
+            color: #8B1E3F;
+            margin-bottom: 10px;
+            display: block;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            letter-spacing: 0.5px;
+        }
+
+        .final-answer-box {
+            background: #fafafa;
+            border: 2px solid #8B1E3F;
+            border-radius: 0;
+            padding: 20px;
+            margin-top: 15px;
+        }
+
+        .final-answer-label {
+            font-weight: 600;
+            color: #8B1E3F;
+            margin-bottom: 12px;
+            display: block;
+            font-size: 1em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        canvas {
+            border: 1px solid #ddd;
+            cursor: crosshair;
+        }
+
+        @media print {
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color: #000 !important;
+                background: white !important;
+                border-color: #000 !important;
+            }
+
+            body {
+                background: white !important;
+                padding: 0;
+            }
+
+            .container {
+                box-shadow: none;
+                padding: 20px;
+                max-width: 100%;
+                background: white !important;
+            }
+
+            .question-card {
+                background: white !important;
+                border: 2px solid #000 !important;
+                border-left: 5px solid #000 !important;
+                page-break-inside: avoid;
+                margin-bottom: 20px;
+            }
+
+            .question-number {
+                color: #000 !important;
+                border-bottom: 1px solid #000;
+                padding-bottom: 5px;
+            }
+
+            .chart-container {
+                border: 1px solid #000 !important;
+                background: white !important;
+                page-break-inside: avoid !important;
+                height: auto !important;
+                max-height: none !important;
+                overflow: visible !important;
+            }
+
+            canvas {
+                -webkit-filter: grayscale(100%) !important;
+                filter: grayscale(100%) !important;
+                max-width: 100% !important;
+                height: auto !important;
+                max-height: none !important;
+            }
+
+            input, textarea {
+                border: 1px solid #000 !important;
+                background: white !important;
+                color: #000 !important;
+                padding: 14px !important;
+                box-sizing: border-box !important;
+            }
+            
+            textarea {
+                padding-bottom: 20px !important;
+                padding-right: 20px !important;
+            }
+
+            .submit-btn, .print-btn, .result, .answer-feedback, .answer-key-btn {
+                display: none !important;
+            }
+
+            .work-area {
+                border: 1px solid #000 !important;
+                background: white !important;
+                min-height: 80px;
+            }
+
+            .final-answer-box {
+                border: 2px solid #000 !important;
+                background: white !important;
+            }
+
+            .final-answer-label {
+                color: #000 !important;
+            }
+
+            header {
+                border-bottom: 2px solid #000;
+                background: white !important;
+            }
+
+            h1 {
+                color: #000 !important;
+            }
+
+            .subtitle {
+                color: #000 !important;
+            }
+
+            .question-text {
+                color: #000 !important;
+            }
+
+            table {
+                border: 1px solid #000;
+            }
+
+            table td, table th {
+                border: 1px solid #000 !important;
+                background: white !important;
+                color: #000 !important;
+            }
+
+            table th {
+                background: #e5e5e5 !important;
+                color: #000 !important;
+            }
+
+            .math-notation {
+                background: #e5e5e5 !important;
+                border: 1px solid #000;
+                color: #000 !important;
+            }
+
+            label, .work-label {
+                color: #000 !important;
+            }
+        }
+
+        .result {
+            text-align: center;
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 1.3em;
+            font-weight: bold;
+            display: none;
+        }
+
+        .result.show {
+            display: block;
+        }
+
+        .correct {
+            color: #22c55e;
+            background: #f0fdf4;
+            border: 2px solid #22c55e;
+        }
+
+        .incorrect {
+            color: #ef4444;
+            background: #fef2f2;
+            border: 2px solid #ef4444;
+        }
+
+        .answer-feedback {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            display: none;
+            white-space: pre-line;
+        }
+
+        .answer-feedback.show {
+            display: block;
+        }
+
+        .math-notation {
+            font-family: 'Courier New', monospace;
+            background: #f5e6ea;
+            padding: 3px 7px;
+            border-radius: 2px;
+            font-weight: 600;
+            color: #8B1E3F;
+        }
+
+        table {
+            width: 100%;
+            max-width: 400px;
+            margin: 15px auto;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: 2px solid #8B1E3F;
+            padding: 10px;
+            text-align: center;
+        }
+
+        table th {
+            background: #8B1E3F;
+            color: white;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Algebra 2 Practice Quiz</h1>
+            <div class="subtitle">Linear & Exponential Function Word Problems (30-35 minutes)</div>
+            <div style="margin-top: 20px; padding: 15px; background: #fdf5f7; border-radius: 10px; border: 2px solid #8B1E3F;">
+                <strong>Focus Areas:</strong>
+                <ul style="margin: 10px 0 0 0; padding: 0; list-style: none; column-count: 2; column-gap: 30px; text-align: center;">
+                    <li style="margin-bottom: 5px;">• Writing linear functions from word problems</li>
+                    <li style="margin-bottom: 5px;">• Graphing linear functions</li>
+                    <li style="margin-bottom: 5px;">• Understanding exponential decay</li>
+                    <li style="margin-bottom: 5px;">• Finding inverse functions from graphs</li>
+                </ul>
+            </div>
+        </header>
+
+        <form id="testForm">
+            <!-- Question 1: Streaming Subscription Problem (Linear Function) -->
+            <div class="question-card">
+                <div class="question-number">Question 1</div>
+                <div class="question-text">
+                    Sarah subscribes to a cloud storage service. She starts the year with 150 GB of available storage. Each month, her photos and videos automatically upload and use 8.5 GB of her storage space.
+                    <br><br>
+                    <strong>a)</strong> Write a function <span class="math-notation">S(m)</span> for the storage space <span class="math-notation">S</span> remaining (in GB) after <span class="math-notation">m</span> months.
+                    <br><br>
+                    <strong>b)</strong> Draw a graph of the remaining storage as a function of months.
+                    <br><br>
+                    <strong>c)</strong> Find <span class="math-notation">S(7)</span> and explain what it means in the context of the problem.
+                    <br><br>
+                    <strong>d)</strong> Find the intercepts and explain what they mean in the context of the problem.
+                    <br><br>
+                    <strong>e)</strong> What is an appropriate domain for your function? Explain why you chose it.
+                    <br><br>
+                    <strong>f)</strong> What does the slope mean in the context of the problem?
+                </div>
+                <div class="work-area">
+                    <span class="work-label">Show Your Work:</span>
+                    <textarea placeholder="Show your calculations and reasoning..."></textarea>
+                </div>
+                <div class="chart-container">
+                    <canvas id="chart1" width="700" height="400"></canvas>
+                </div>
+                <div class="final-answer-box">
+                    <label class="final-answer-label">Final Answers:</label>
+                    <div class="input-group">
+                        <label>a) Function S(m) =</label>
+                        <input type="text" id="q1a">
+                    </div>
+                    <div class="input-group">
+                        <label>c) S(7) =</label>
+                        <input type="text" id="q1c">
+                    </div>
+                    <div class="input-group">
+                        <label>c) Meaning of S(7):</label>
+                        <textarea id="q1c_explain" style="min-height: 60px;"></textarea>
+                    </div>
+                    <div class="input-group">
+                        <label>d) y-intercept and meaning:</label>
+                        <textarea id="q1d_y" style="min-height: 60px;"></textarea>
+                    </div>
+                    <div class="input-group">
+                        <label>d) x-intercept and meaning:</label>
+                        <textarea id="q1d_x" style="min-height: 60px;"></textarea>
+                    </div>
+                    <div class="input-group">
+                        <label>e) Domain:</label>
+                        <textarea id="q1e" style="min-height: 60px;"></textarea>
+                    </div>
+                    <div class="input-group">
+                        <label>f) Slope meaning:</label>
+                        <textarea id="q1f" style="min-height: 60px;"></textarea>
+                    </div>
+                </div>
+                <div class="answer-feedback" id="feedback1"></div>
+            </div>
+
+            <!-- Question 2: Car Value Problem (Exponential Decay) -->
+            <div class="question-card">
+                <div class="question-number">Question 2</div>
+                <div class="question-text">
+                    The value of a car, in thousands of dollars, is a function of the number of years since it was purchased, <span class="math-notation">t</span>. From year 0 to year 10, the value could be modeled by an exponential function <span class="math-notation">V</span>. Here is the graph of the function.
+                </div>
+                <div class="chart-container">
+                    <canvas id="chart2"></canvas>
+                </div>
+                <div class="question-text">
+                    <strong>a)</strong> Use the graph to estimate <span class="math-notation">V(3)</span> and explain what it means in the context of the problem.
+                    <br><br>
+                    <strong>b)</strong> Find <span class="math-notation">V<sup>-1</sup>(12)</span> and explain what it represents in this situation.
+                    <br><br>
+                    <strong>c)</strong> Keeping in mind that the function is exponential, by what factor did the car's value change each year? If you get stuck, consider creating a table and investigating what the values are being multiplied by each year. Each time the year increases by 1, what number does the value get multiplied by?
+                    <br><br>
+                    <strong>d)</strong> Use your answer to part (c) to write an equation for <span class="math-notation">V(t)</span>.
+                </div>
+                <div class="work-area">
+                    <span class="work-label">Show Your Work:</span>
+                    <textarea placeholder="Show your calculations and reasoning..."></textarea>
+                </div>
+                <div class="final-answer-box">
+                    <label class="final-answer-label">Final Answers:</label>
+                    <div class="input-group">
+                        <label>a) V(3) ≈</label>
+                        <input type="text" id="q2a">
+                    </div>
+                    <div class="input-group">
+                        <label>a) Meaning:</label>
+                        <textarea id="q2a_explain" style="min-height: 60px;"></textarea>
+                    </div>
+                    <div class="input-group">
+                        <label>b) V<sup>-1</sup>(12) ≈</label>
+                        <input type="text" id="q2b">
+                    </div>
+                    <div class="input-group">
+                        <label>b) Meaning:</label>
+                        <textarea id="q2b_explain" style="min-height: 60px;"></textarea>
+                    </div>
+                    <div class="input-group">
+                        <label>c) Multiplication factor:</label>
+                        <input type="text" id="q2c">
+                    </div>
+                    <div class="input-group">
+                        <label>d) Equation V(t) =</label>
+                        <input type="text" id="q2d">
+                    </div>
+                </div>
+                <div class="answer-feedback" id="feedback2"></div>
+            </div>
+
+            <!-- Question 3: Water Tank Problem (Linear Function) -->
+            <div class="question-card">
+                <div class="question-number">Question 3</div>
+                <div class="question-text">
+                    A water tank contains 120 gallons of water. Water is being drained from the tank at a constant rate of 3.5 gallons per minute.
+                    <br><br>
+                    <strong>a)</strong> Write a function <span class="math-notation">W(t)</span> for the amount of water in gallons, <span class="math-notation">W</span>, remaining in the tank after <span class="math-notation">t</span> minutes.
+                    <br><br>
+                    <strong>b)</strong> What is the slope of this function? What does it represent?
+                    <br><br>
+                    <strong>c)</strong> Graph the function on the grid below.
+                    <br><br>
+                    <strong>d)</strong> After how many minutes will the tank be completely empty?
+                </div>
+                <div class="work-area">
+                    <span class="work-label">Show Your Work:</span>
+                    <textarea placeholder="Show your calculations and reasoning..."></textarea>
+                </div>
+                <div class="chart-container">
+                    <canvas id="chart3" width="700" height="400"></canvas>
+                </div>
+                <div class="final-answer-box">
+                    <label class="final-answer-label">Final Answers:</label>
+                    <div class="input-group">
+                        <label>a) Function W(t) =</label>
+                        <input type="text" id="q3a">
+                    </div>
+                    <div class="input-group">
+                        <label>b) Slope:</label>
+                        <input type="text" id="q3b">
+                    </div>
+                    <div class="input-group">
+                        <label>b) Meaning of slope:</label>
+                        <textarea id="q3b_explain" style="min-height: 60px;"></textarea>
+                    </div>
+                    <div class="input-group">
+                        <label>d) Minutes to empty:</label>
+                        <input type="text" id="q3d">
+                    </div>
+                </div>
+                <div class="answer-feedback" id="feedback3"></div>
+            </div>
+
+            <!-- Question 4: Investment Growth Problem (Exponential) -->
+            <div class="question-card">
+                <div class="question-number">Question 4</div>
+                <div class="question-text">
+                    Marcus invests $2,500 in a savings account that earns 4.2% interest compounded annually.
+                    <br><br>
+                    <strong>a)</strong> Write an exponential function <span class="math-notation">A(t)</span> that models the account balance <span class="math-notation">t</span> years after the initial investment.
+                    <br><br>
+                    <strong>b)</strong> What will the account balance be after 12 years? Round to the nearest cent.
+                    <br><br>
+                    <strong>c)</strong> In what year will the account balance first exceed $4,000? Show your work.
+                    <br><br>
+                    <strong>d)</strong> Is this exponential growth or decay? Explain how you know.
+                </div>
+                <div class="work-area">
+                    <span class="work-label">Show Your Work:</span>
+                    <textarea placeholder="Show your calculations and reasoning..."></textarea>
+                </div>
+                <div class="final-answer-box">
+                    <label class="final-answer-label">Final Answers:</label>
+                    <div class="input-group">
+                        <label>a) Function A(t) =</label>
+                        <input type="text" id="q4a">
+                    </div>
+                    <div class="input-group">
+                        <label>b) Balance after 12 years:</label>
+                        <input type="text" id="q4b">
+                    </div>
+                    <div class="input-group">
+                        <label>c) Year balance exceeds $4,000:</label>
+                        <input type="text" id="q4c">
+                    </div>
+                    <div class="input-group">
+                        <label>d) Growth or decay and explanation:</label>
+                        <textarea id="q4d" style="min-height: 60px;"></textarea>
+                    </div>
+                </div>
+                <div class="answer-feedback" id="feedback4"></div>
+            </div>
+
+            <!-- Question 5: Phone Battery Problem (Exponential - Derive from Graph) -->
+            <div class="question-card">
+                <div class="question-number">Question 5</div>
+                <div class="question-text">
+                    A smartphone battery drains over time while watching videos. The graph below shows the battery percentage remaining over the first 6 hours.
+                    <br><br>
+                    <strong>a)</strong> What is the initial battery percentage (at t = 0)? What is the battery percentage after 1 hour?
+                    <br><br>
+                    <strong>b)</strong> By what factor does the battery percentage change each hour? (Divide the percentage at hour 1 by the percentage at hour 0, then verify with other consecutive hours)
+                    <br><br>
+                    <strong>c)</strong> Is this exponential growth or decay? Explain.
+                    <br><br>
+                    <strong>d)</strong> Write an exponential function <span class="math-notation">B(t)</span> that models the battery percentage after <span class="math-notation">t</span> hours. Use your answers from parts (a) and (b).
+                    <br><br>
+                    <strong>e)</strong> Use your equation to find the battery percentage after 10 hours. Round to the nearest whole number.
+                </div>
+                <div class="work-area">
+                    <span class="work-label">Show Your Work:</span>
+                    <textarea placeholder="Show your calculations and reasoning..."></textarea>
+                </div>
+                <div class="chart-container">
+                    <canvas id="chart5"></canvas>
+                </div>
+                <div class="final-answer-box">
+                    <label class="final-answer-label">Final Answers:</label>
+                    <div class="input-group">
+                        <label>a) Initial battery (t=0):</label>
+                        <input type="text" id="q5a1">
+                    </div>
+                    <div class="input-group">
+                        <label>a) Battery at t=1:</label>
+                        <input type="text" id="q5a2">
+                    </div>
+                    <div class="input-group">
+                        <label>b) Factor of change each hour:</label>
+                        <input type="text" id="q5b">
+                    </div>
+                    <div class="input-group">
+                        <label>c) Growth or decay:</label>
+                        <textarea id="q5c" style="min-height: 60px;"></textarea>
+                    </div>
+                    <div class="input-group">
+                        <label>d) Function B(t) =</label>
+                        <input type="text" id="q5d">
+                    </div>
+                    <div class="input-group">
+                        <label>e) Battery after 10 hours:</label>
+                        <input type="text" id="q5e">
+                    </div>
+                </div>
+                <div class="answer-feedback" id="feedback5"></div>
+            </div>
+
+            <button type="button" class="print-btn" onclick="window.print()">Print Version (Black & White)</button>
+            <button type="button" class="answer-key-btn" onclick="showAnswerKey()">View Answer Key</button>
+            <button type="button" class="answer-key-btn" onclick="saveResults()" style="background: #2563eb;">Save Results</button>
+            <button type="button" class="answer-key-btn" onclick="loadResults()" style="background: #7c3aed;">Load Saved Results</button>
+        </form>
+
+        <div class="result" id="finalResult"></div>
+    </div>
+
+    <!-- Answer Key Modal -->
+    <div id="answerKeyModal" class="answer-key-modal">
+        <div class="answer-key-content">
+            <button class="close-modal" onclick="closeAnswerKey()">×</button>
+            <h2 class="answer-key-title">Answer Key</h2>
+            <div id="answerKeyBody"></div>
+        </div>
+    </div>
+
+    <script>
+        // Custom resize handle positioning
+        document.addEventListener('DOMContentLoaded', function() {
+            const textareas = document.querySelectorAll('textarea');
+            textareas.forEach(function(textarea) {
+                // Disable default resize
+                textarea.style.resize = 'none';
+                
+                // Create custom resize handle
+                const resizeHandle = document.createElement('div');
+                resizeHandle.className = 'custom-resize-handle';
+                resizeHandle.innerHTML = '⋰';
+                
+                // Wrap textarea in container
+                const wrapper = document.createElement('div');
+                wrapper.style.position = 'relative';
+                wrapper.style.display = 'inline-block';
+                wrapper.style.width = '100%';
+                textarea.parentNode.insertBefore(wrapper, textarea);
+                wrapper.appendChild(textarea);
+                wrapper.appendChild(resizeHandle);
+                
+                // Add resize functionality
+                let startY, startHeight;
+                resizeHandle.addEventListener('mousedown', function(e) {
+                    startY = e.clientY;
+                    startHeight = parseInt(window.getComputedStyle(textarea).height, 10);
+                    document.addEventListener('mousemove', doResize);
+                    document.addEventListener('mouseup', stopResize);
+                    e.preventDefault();
+                });
+                
+                function doResize(e) {
+                    textarea.style.height = (startHeight + e.clientY - startY) + 'px';
+                }
+                
+                function stopResize() {
+                    document.removeEventListener('mousemove', doResize);
+                    document.removeEventListener('mouseup', stopResize);
+                }
+            });
+        });
+
+        // Chart 1 - Interactive plotting grid for bridge toll problem
+        (function() {
+            const canvas = document.getElementById('chart1');
+            const ctx = canvas.getContext('2d');
+            const width = canvas.width;
+            const height = canvas.height;
+            const points = [];
+            const marginLeft = 60;
+            const marginRight = 20;
+            const marginTop = 20;
+            const marginBottom = 50;
+            const plotWidth = width - marginLeft - marginRight;
+            const plotHeight = height - marginTop - marginBottom;
+            
+            // Define axis ranges
+            const xMin = 0, xMax = 20; // months
+            const yMin = 0, yMax = 160; // GB
+            
+            function drawGrid() {
+                ctx.clearRect(0, 0, width, height);
+                ctx.strokeStyle = '#ddd';
+                ctx.lineWidth = 1;
+                
+                // Draw vertical grid lines
+                for (let i = 0; i <= 20; i++) {
+                    const x = marginLeft + (i / 20) * plotWidth;
+                    ctx.beginPath();
+                    ctx.moveTo(x, marginTop);
+                    ctx.lineTo(x, height - marginBottom);
+                    ctx.stroke();
+                }
+                
+                // Draw horizontal grid lines
+                for (let i = 0; i <= 10; i++) {
+                    const y = marginTop + (i / 10) * plotHeight;
+                    ctx.beginPath();
+                    ctx.moveTo(marginLeft, y);
+                    ctx.lineTo(width - marginRight, y);
+                    ctx.stroke();
+                }
+                
+                // Draw axes
+                ctx.strokeStyle = '#000';
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                ctx.moveTo(marginLeft, marginTop);
+                ctx.lineTo(marginLeft, height - marginBottom);
+                ctx.lineTo(width - marginRight, height - marginBottom);
+                ctx.stroke();
+                
+                // Label axes
+                ctx.fillStyle = '#000';
+                ctx.font = '14px Arial';
+                ctx.textAlign = 'center';
+                
+                // X-axis labels
+                for (let i = 0; i <= 20; i += 2) {
+                    const x = marginLeft + (i / 20) * plotWidth;
+                    ctx.fillText(i, x, height - marginBottom + 20);
+                }
+                ctx.fillText('Months (m)', width / 2, height - 10);
+                
+                // Y-axis labels
+                ctx.textAlign = 'right';
+                for (let i = 0; i <= 160; i += 20) {
+                    const y = height - marginBottom - (i / 160) * plotHeight;
+                    ctx.fillText(i, marginLeft - 10, y + 5);
+                }
+                ctx.save();
+                ctx.translate(15, height / 2);
+                ctx.rotate(-Math.PI / 2);
+                ctx.textAlign = 'center';
+                ctx.fillText('Storage (GB)', 0, 0);
+                ctx.restore();
+            }
+            
+            function drawPoints() {
+                ctx.fillStyle = '#8B1E3F';
+                points.forEach(p => {
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, 5, 0, 2 * Math.PI);
+                    ctx.fill();
+                });
+            }
+            
+            function drawLines() {
+                if (points.length < 2) return;
+                ctx.strokeStyle = '#8B1E3F';
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                ctx.moveTo(points[0].x, points[0].y);
+                for (let i = 1; i < points.length; i++) {
+                    ctx.lineTo(points[i].x, points[i].y);
+                }
+                ctx.stroke();
+            }
+            
+            function redraw() {
+                drawGrid();
+                drawLines();
+                drawPoints();
+            }
+            
+            canvas.addEventListener('click', function(e) {
+                const rect = canvas.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                points.push({x, y});
+                redraw();
+            });
+            
+            canvas.addEventListener('contextmenu', function(e) {
+                e.preventDefault();
+                points.pop();
+                redraw();
+            });
+            
+            drawGrid();
+        })();
+
+        // Chart 2 - Car value exponential decay (0.8 factor each year)
+        const carValues = [];
+        for (let t = 0; t <= 10; t++) {
+            carValues.push(30 * Math.pow(0.8, t));
+        }
+        new Chart(document.getElementById('chart2'), {
+            type: 'line',
+            data: {
+                labels: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                datasets: [{
+                    label: 'Car Value (thousands $)',
+                    data: carValues,
+                    borderColor: '#8B1E3F',
+                    backgroundColor: '#8B1E3F',
+                    tension: 0.4,
+                    pointRadius: 3,
+                    pointHoverRadius: 5,
+                    pointStyle: 'circle',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top',
+                        labels: {
+                            usePointStyle: true,
+                            pointStyle: 'line',
+                            boxWidth: 100,
+                            boxHeight: 4,
+                            padding: 10,
+                            font: {
+                                size: 12
+                            },
+                            generateLabels: function(chart) {
+                                const datasets = chart.data.datasets;
+                                return datasets.map((dataset, i) => ({
+                                    text: dataset.label,
+                                    fillStyle: dataset.borderColor,
+                                    strokeStyle: dataset.borderColor,
+                                    lineWidth: 4,
+                                    hidden: !chart.isDatasetVisible(i),
+                                    datasetIndex: i,
+                                    pointStyle: 'line'
+                                }));
+                            }
+                        }
+                    },
+                    title: {
+                        display: true,
+                        text: 'Car Value Over Time',
+                        font: { size: 16 }
+                    }
+                },
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Years since purchase'
+                        },
+                        min: 0,
+                        max: 10
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Value (thousands $)'
+                        },
+                        min: 0,
+                        max: 35
+                    }
+                }
+            }
+        });
+
+        // Chart 3 - Interactive plotting grid for candle problem
+        (function() {
+            const canvas = document.getElementById('chart3');
+            const ctx = canvas.getContext('2d');
+            const width = canvas.width;
+            const height = canvas.height;
+            const points = [];
+            const marginLeft = 60;
+            const marginRight = 20;
+            const marginTop = 20;
+            const marginBottom = 50;
+            const plotWidth = width - marginLeft - marginRight;
+            const plotHeight = height - marginTop - marginBottom;
+            
+            // Define axis ranges
+            const xMin = 0, xMax = 40; // minutes
+            const yMin = 0, yMax = 140; // gallons
+            
+            function drawGrid() {
+                ctx.clearRect(0, 0, width, height);
+                ctx.strokeStyle = '#ddd';
+                ctx.lineWidth = 1;
+                
+                // Draw vertical grid lines
+                for (let i = 0; i <= 20; i++) {
+                    const x = marginLeft + (i / 20) * plotWidth;
+                    ctx.beginPath();
+                    ctx.moveTo(x, marginTop);
+                    ctx.lineTo(x, height - marginBottom);
+                    ctx.stroke();
+                }
+                
+                // Draw horizontal grid lines
+                for (let i = 0; i <= 10; i++) {
+                    const y = marginTop + (i / 10) * plotHeight;
+                    ctx.beginPath();
+                    ctx.moveTo(marginLeft, y);
+                    ctx.lineTo(width - marginRight, y);
+                    ctx.stroke();
+                }
+                
+                // Draw axes
+                ctx.strokeStyle = '#000';
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                ctx.moveTo(marginLeft, marginTop);
+                ctx.lineTo(marginLeft, height - marginBottom);
+                ctx.lineTo(width - marginRight, height - marginBottom);
+                ctx.stroke();
+                
+                // Label axes
+                ctx.fillStyle = '#000';
+                ctx.font = '14px Arial';
+                ctx.textAlign = 'center';
+                
+                // X-axis labels
+                for (let i = 0; i <= 40; i += 5) {
+                    const x = marginLeft + (i / 40) * plotWidth;
+                    ctx.fillText(i, x, height - marginBottom + 20);
+                }
+                ctx.fillText('Time (minutes)', width / 2, height - 10);
+                
+                // Y-axis labels
+                ctx.textAlign = 'right';
+                for (let i = 0; i <= 140; i += 20) {
+                    const y = height - marginBottom - (i / 140) * plotHeight;
+                    ctx.fillText(i, marginLeft - 10, y + 5);
+                }
+                ctx.save();
+                ctx.translate(15, height / 2);
+                ctx.rotate(-Math.PI / 2);
+                ctx.textAlign = 'center';
+                ctx.fillText('Water (gallons)', 0, 0);
+                ctx.restore();
+            }
+            
+            function drawPoints() {
+                ctx.fillStyle = '#8B1E3F';
+                points.forEach(p => {
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, 5, 0, 2 * Math.PI);
+                    ctx.fill();
+                });
+            }
+            
+            function drawLines() {
+                if (points.length < 2) return;
+                ctx.strokeStyle = '#8B1E3F';
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                ctx.moveTo(points[0].x, points[0].y);
+                for (let i = 1; i < points.length; i++) {
+                    ctx.lineTo(points[i].x, points[i].y);
+                }
+                ctx.stroke();
+            }
+            
+            function redraw() {
+                drawGrid();
+                drawLines();
+                drawPoints();
+            }
+            
+            canvas.addEventListener('click', function(e) {
+                const rect = canvas.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                points.push({x, y});
+                redraw();
+            });
+            
+            canvas.addEventListener('contextmenu', function(e) {
+                e.preventDefault();
+                points.pop();
+                redraw();
+            });
+            
+            drawGrid();
+        })();
+
+        // Chart 5 - Phone battery (exponential decay with factor 0.9)
+        const batteryData = [];
+        for (let t = 0; t <= 6; t += 1) {
+            batteryData.push({x: t, y: 100 * Math.pow(0.9, t)});
+        }
+        
+        new Chart(document.getElementById('chart5'), {
+            type: 'line',
+            data: {
+                datasets: [{
+                    label: 'Battery Percentage (%)',
+                    data: batteryData,
+                    borderColor: '#8B1E3F',
+                    backgroundColor: '#8B1E3F',
+                    tension: 0.4,
+                    pointRadius: 3,
+                    pointHoverRadius: 5,
+                    pointStyle: 'circle',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top',
+                        labels: {
+                            usePointStyle: true,
+                            pointStyle: 'line',
+                            boxWidth: 100,
+                            boxHeight: 4,
+                            padding: 10,
+                            font: {
+                                size: 12
+                            },
+                            generateLabels: function(chart) {
+                                const datasets = chart.data.datasets;
+                                return datasets.map((dataset, i) => ({
+                                    text: dataset.label,
+                                    fillStyle: dataset.borderColor,
+                                    strokeStyle: dataset.borderColor,
+                                    lineWidth: 4,
+                                    hidden: !chart.isDatasetVisible(i),
+                                    datasetIndex: i,
+                                    pointStyle: 'line'
+                                }));
+                            }
+                        }
+                    },
+                    title: {
+                        display: true,
+                        text: 'Phone Battery Drain While Watching Videos',
+                        font: { size: 16 }
+                    }
+                },
+                scales: {
+                    x: {
+                        type: 'linear',
+                        title: {
+                            display: true,
+                            text: 'Time (hours)'
+                        },
+                        min: 0,
+                        max: 6,
+                        ticks: {
+                            stepSize: 1
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Battery Percentage (%)'
+                        },
+                        min: 0,
+                        max: 100,
+                        ticks: {
+                            stepSize: 10
+                        }
+                    }
+                }
+            }
+        });
+        
+        function showAnswerKey() {
+            const password = prompt('Enter password to view answer key:');
+            if (password !== '151515') {
+                alert('Incorrect password. Access denied.');
+                return;
+            }
+            
+            const answerKeyHTML = `
+                <div class="answer-item"><strong>Question 1:</strong> Cloud Storage Problem
+                    <br><br>
+                    <strong>a) Function: S(m) = 150 - 8.5m</strong>
+                    <br><br>
+                    <em>Explanation:</em> Starting with 150 GB, and using 8.5 GB per month, the function is S(m) = 150 - 8.5m
+                    <br><br>
+                    <strong>c) S(7) = 150 - 8.5(7) = 150 - 59.5 = 90.5 GB</strong>
+                    <br><br>
+                    <em>Meaning:</em> After 7 months, Sarah will have 90.5 GB of storage remaining.
+                    <br><br>
+                    <strong>d) Intercepts:</strong>
+                    <br><strong>y-intercept:</strong> (0, 150) - At the beginning (month 0), Sarah has 150 GB available.
+                    <br><strong>x-intercept:</strong> Set S(m) = 0: 150 - 8.5m = 0 → 8.5m = 150 → m = 150/8.5 ≈ 17.65 months
+                    <br>This means after about 17-18 months, her storage will be full and she'll need to upgrade or delete files.
+                    <br><br>
+                    <strong>e) Domain: 0 ≤ m ≤ 17.65 (or 0 ≤ m ≤ 12 for one year)</strong>
+                    <br><em>Explanation:</em> The domain starts at 0 (beginning of the year). It could end at 17.65 months (when storage is full) or at 12 months (one year), depending on the context.
+                    <br><br>
+                    <strong>f) Slope: -8.5</strong>
+                    <br><em>Meaning:</em> The available storage decreases by 8.5 GB per month. This represents the monthly storage usage rate.
+                </div>
+                
+                <div class="answer-item"><strong>Question 2:</strong> Car Value
+                    <br><br>
+                    <strong>a) V(3) ≈ 15.36 thousand dollars (or $15,360)</strong>
+                    <br><em>Meaning:</em> After 3 years, the car is worth approximately $15,360.
+                    <br><br>
+                    <strong>b) V<sup>-1</sup>(12) ≈ 4.5 years (or between 4 and 5 years)</strong>
+                    <br><em>Meaning:</em> When the car's value drops to $12,000, it will be approximately 4.5 years after purchase.
+                    <br><br>
+                    <strong>c) Multiplication factor = 0.8 (or 4/5)</strong>
+                    <br><br>
+                    <em>Work:</em> Looking at the values:
+                    <br>Year 0: $30,000
+                    <br>Year 1: $24,000 → 24/30 = 0.8
+                    <br>Year 2: $19,200 → 19.2/24 = 0.8
+                    <br>Each year, the value is multiplied by 0.8 (decreases by 20%)
+                    <br><br>
+                    <strong>d) V(t) = 30(0.8)<sup>t</sup></strong> or <strong>V(t) = 30(4/5)<sup>t</sup></strong>
+                    <br><br>
+                    <em>Note:</em> Value is in thousands of dollars.
+                </div>
+                
+                <div class="answer-item"><strong>Question 3:</strong> Water Tank
+                    <br><br>
+                    <strong>a) W(t) = 120 - 3.5t</strong>
+                    <br><br>
+                    <em>Explanation:</em> The tank starts with 120 gallons and decreases by 3.5 gallons per minute.
+                    <br><br>
+                    <strong>b) Slope = -3.5</strong>
+                    <br><em>Meaning:</em> The water amount decreases by 3.5 gallons per minute. The negative sign indicates the water is draining.
+                    <br><br>
+                    <strong>d) ≈ 34.3 minutes (or 34 minutes and 18 seconds)</strong>
+                    <br><br>
+                    <em>Work:</em> Set W(t) = 0: 120 - 3.5t = 0 → 3.5t = 120 → t = 120/3.5 ≈ 34.29 minutes
+                </div>
+                
+                <div class="answer-item"><strong>Question 4:</strong> Investment Growth
+                    <br><br>
+                    <strong>a) A(t) = 2500(1.042)<sup>t</sup></strong>
+                    <br><br>
+                    <em>Explanation:</em> Initial investment is $2500, interest rate is 4.2% = 0.042, so the factor is 1 + 0.042 = 1.042
+                    <br><br>
+                    <strong>b) A(12) = 2500(1.042)<sup>12</sup> ≈ 2500(1.6348) ≈ $4,087.00</strong>
+                    <br><br>
+                    <strong>c) Approximately 12 years</strong>
+                    <br><br>
+                    <em>Work:</em> Solve 2500(1.042)<sup>t</sup> = 4000
+                    <br>(1.042)<sup>t</sup> = 1.6
+                    <br>t·log(1.042) = log(1.6)
+                    <br>t = log(1.6)/log(1.042) ≈ 0.2041/0.0179 ≈ 11.4 years
+                    <br>So after about 12 years (rounding up)
+                    <br><br>
+                    <strong>d) Exponential GROWTH</strong>
+                    <br><em>Explanation:</em> The base (1.042) is greater than 1, which means the balance is increasing. Also, the interest rate is positive (+4.2%), which means it's growing.
+                </div>
+                
+                <div class="answer-item"><strong>Question 5:</strong> Phone Battery
+                    <br><br>
+                    <strong>a) Initial battery at t=0: 100%</strong>
+                    <br><strong>Battery at t=1: 90%</strong>
+                    <br><br>
+                    <em>Reading from graph:</em> At t=0, B=100%. At t=1, B=90%.
+                    <br><br>
+                    <strong>b) Factor of change: 0.9 (or 9/10)</strong>
+                    <br><br>
+                    <em>Work:</em> 90 ÷ 100 = 0.9
+                    <br>Verify: At t=1: 90%, at t=2: 81% → 81/90 = 0.9 ✓
+                    <br>At t=2: 81%, at t=3: 72.9% → 72.9/81 = 0.9 ✓
+                    <br>The pattern continues: 100, 90, 81, 72.9, 65.61, 59.05, 53.14...
+                    <br><br>
+                    <strong>c) Exponential DECAY</strong>
+                    <br><em>Explanation:</em> The battery percentage is decreasing over time, and the factor (0.9) is less than 1, which indicates decay. Each hour, the battery is multiplied by 0.9 (or reduced to 90% of the previous amount, losing 10% per hour).
+                    <br><br>
+                    <strong>d) B(t) = 100(0.9)<sup>t</sup></strong> or <strong>B(t) = 100(9/10)<sup>t</sup></strong>
+                    <br><br>
+                    <em>Explanation:</em> Initial value is 100%, and each hour it's multiplied by 0.9
+                    <br><br>
+                    <strong>e) B(10) = 100(0.9)<sup>10</sup> ≈ 100(0.3487) ≈ 34.87% ≈ 35%</strong>
+                    <br><br>
+                    <em>Work:</em> (0.9)<sup>10</sup> ≈ 0.3487
+                    <br>100 × 0.3487 ≈ 34.87%
+                </div>
+            `;
+            document.getElementById('answerKeyBody').innerHTML = answerKeyHTML;
+            document.getElementById('answerKeyModal').style.display = 'block';
+        }
+
+        function closeAnswerKey() {
+            document.getElementById('answerKeyModal').style.display = 'none';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('answerKeyModal');
+            if (event.target === modal) {
+                closeAnswerKey();
+            }
+        }
+
+        function saveResults() {
+            const formData = {};
+            const inputs = document.querySelectorAll('input, textarea');
+            inputs.forEach(input => {
+                if (input.id) {
+                    formData[input.id] = input.value || input.textContent || '';
+                }
+            });
+            
+            const saveData = {
+                timestamp: new Date().toISOString(),
+                formData: formData
+            };
+            
+            localStorage.setItem('algebra2Quiz251120', JSON.stringify(saveData));
+            alert('Results saved successfully! You can reload them anytime.');
+        }
+
+        function loadResults() {
+            const saved = localStorage.getItem('algebra2Quiz251120');
+            if (!saved) {
+                alert('No saved results found.');
+                return;
+            }
+            
+            const saveData = JSON.parse(saved);
+            const savedDate = new Date(saveData.timestamp).toLocaleString();
+            
+            if (confirm(`Load results from ${savedDate}?`)) {
+                Object.keys(saveData.formData).forEach(id => {
+                    const element = document.getElementById(id);
+                    if (element) {
+                        if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                            element.value = saveData.formData[id];
+                        } else {
+                            element.textContent = saveData.formData[id];
+                        }
+                    }
+                });
+                alert('Results loaded successfully!');
+            }
+        }
+    </script>
+</body>
+</html>
