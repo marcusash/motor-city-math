@@ -1,0 +1,289 @@
+{
+  "exam": "nonlinear_exam_mvp",
+  "verified_by": "Agent R",
+  "verification_date": "2026-02-17",
+  "math_status": "ALL 15 ANSWERS VERIFIED ✅",
+  "graph_status": "Q12/Q13 key points produce clean integer values at snap points ✅",
+  "questions": [
+    {
+      "id": "q1",
+      "question": "f(x) = 2(x - 3)³ + 1",
+      "section": "A",
+      "standard": "W2",
+      "type": "identify",
+      "answers": {
+        "parent": "cubic",
+        "transformations": "Vertical stretch by 2, right 3, up 1"
+      },
+      "hint": "What's the basic shape before the shifts and stretches? Look at the exponent.",
+      "answer_display": "Parent: y = x³ (cubic). Transformations: vertical stretch by 2, right 3, up 1.",
+      "solution_steps": [
+        "Step 1: The exponent is 3, so the parent function is y = x³ (cubic).",
+        "Step 2: The 2 in front means vertical stretch by factor of 2.",
+        "Step 3: The (x − 3) means shift right 3 units.",
+        "Step 4: The + 1 at the end means shift up 1 unit."
+      ]
+    },
+    {
+      "id": "q2",
+      "question": "f(x) = -|x + 4| + 3",
+      "section": "A",
+      "standard": "W2",
+      "type": "identify",
+      "answers": {
+        "parent": "absolute",
+        "x_intercepts": [-7, -1],
+        "transformations": "Reflect over x-axis, left 4, up 3",
+        "domain": "all real numbers",
+        "range": "y ≤ 3"
+      },
+      "hint": "The |  | tells you the parent. For x-intercepts, set f(x) = 0 and solve the absolute value equation.",
+      "answer_display": "Parent: y = |x|. x-intercepts: x = −1 and x = −7. Reflect x-axis, left 4, up 3. Domain: all reals. Range: y ≤ 3.",
+      "solution_steps": [
+        "Step 1: Parent is y = |x| (absolute value — the | | symbol).",
+        "Step 2: Negative sign reflects over x-axis. (x + 4) shifts left 4. +3 shifts up 3.",
+        "Step 3: x-intercepts: set 0 = −|x + 4| + 3 → |x + 4| = 3.",
+        "Step 4: x + 4 = 3 → x = −1. Or x + 4 = −3 → x = −7.",
+        "Step 5: Domain: all real numbers. Range: y ≤ 3 (opens down, vertex at (−4, 3))."
+      ]
+    },
+    {
+      "id": "q3",
+      "question": "f(x) = 3(x - 1)² - 12",
+      "section": "A",
+      "standard": "W2",
+      "type": "identify",
+      "answers": {
+        "parent": "quadratic",
+        "x_intercepts": [-1, 3],
+        "transformations": "Vertical stretch by 3, right 1, down 12",
+        "domain": "all real numbers",
+        "range": "y ≥ -12"
+      },
+      "hint": "The exponent is 2 — that's a parabola. For intercepts, set f(x) = 0 and isolate the squared term.",
+      "answer_display": "Parent: y = x². x-intercepts: x = 3 and x = −1. Stretch by 3, right 1, down 12. Domain: all reals. Range: y ≥ −12.",
+      "solution_steps": [
+        "Step 1: Exponent 2 → parent is y = x² (quadratic).",
+        "Step 2: The 3 means vertical stretch by 3. (x − 1) shifts right 1. −12 shifts down 12.",
+        "Step 3: x-intercepts: 0 = 3(x − 1)² − 12 → 3(x − 1)² = 12 → (x − 1)² = 4.",
+        "Step 4: x − 1 = ±2 → x = 3 or x = −1.",
+        "Step 5: Domain: all reals. Range: y ≥ −12 (opens up, vertex at (1, −12))."
+      ]
+    },
+    {
+      "id": "q4",
+      "question": "2^(3x - 1) = 32",
+      "section": "B",
+      "standard": "W3",
+      "type": "exponential",
+      "answers": { "x": 2 },
+      "hint": "Rewrite 32 as a power of 2. Then set the exponents equal.",
+      "answer_display": "x = 2",
+      "solution_steps": [
+        "Step 1: Rewrite 32 as 2⁵ (since 2⁵ = 32).",
+        "Step 2: 2^(3x − 1) = 2⁵ → set exponents equal: 3x − 1 = 5.",
+        "Step 3: 3x = 6 → x = 2.",
+        "Step 4: Check: 2^(3·2 − 1) = 2⁵ = 32 ✓"
+      ]
+    },
+    {
+      "id": "q5",
+      "question": "3(2x + 1)² - 5 = 7",
+      "section": "B",
+      "standard": "W3",
+      "type": "quadratic",
+      "answers": { "x1": 0.5, "x2": -1.5 },
+      "hint": "Isolate the squared term first. Then take the square root of both sides — don't forget ±.",
+      "answer_display": "x = 0.5 and x = −1.5",
+      "solution_steps": [
+        "Step 1: Add 5: 3(2x + 1)² = 12.",
+        "Step 2: Divide by 3: (2x + 1)² = 4.",
+        "Step 3: Square root: 2x + 1 = ±2.",
+        "Step 4: If 2x + 1 = 2 → 2x = 1 → x = 0.5.",
+        "Step 5: If 2x + 1 = −2 → 2x = −3 → x = −1.5."
+      ]
+    },
+    {
+      "id": "q6",
+      "question": "√(3x² + 1) - 4 = 0",
+      "section": "B",
+      "standard": "W3",
+      "type": "radical",
+      "answers": { "x1": 2.236, "x2": -2.236 },
+      "hint": "Isolate the square root, then square both sides. You'll get x² = something.",
+      "answer_display": "x = ±√5 ≈ ±2.236",
+      "solution_steps": [
+        "Step 1: Isolate: √(3x² + 1) = 4.",
+        "Step 2: Square both sides: 3x² + 1 = 16.",
+        "Step 3: 3x² = 15 → x² = 5.",
+        "Step 4: x = ±√5 ≈ ±2.236.",
+        "Step 5: Check: √(3·5 + 1) = √16 = 4 ✓"
+      ]
+    },
+    {
+      "id": "q7",
+      "question": "5^(2 - x) + 3 = 4",
+      "section": "B",
+      "standard": "W3",
+      "type": "exponential",
+      "answers": { "x": 2 },
+      "hint": "Subtract 3 first. What exponent makes 5 to that power equal 1?",
+      "answer_display": "x = 2",
+      "solution_steps": [
+        "Step 1: Subtract 3: 5^(2 − x) = 1.",
+        "Step 2: Any base to the 0 power = 1, so 2 − x = 0.",
+        "Step 3: x = 2.",
+        "Step 4: Check: 5^(2−2) + 3 = 5⁰ + 3 = 1 + 3 = 4 ✓"
+      ]
+    },
+    {
+      "id": "q8",
+      "question": "(4x + 3)/(x - 2) = 7",
+      "section": "B",
+      "standard": "W3",
+      "type": "rational",
+      "answers": { "x": 5.667 },
+      "hint": "Multiply both sides by (x − 2) to clear the fraction. Then solve the linear equation.",
+      "answer_display": "x = 17/3 ≈ 5.667",
+      "solution_steps": [
+        "Step 1: Multiply both sides by (x − 2): 4x + 3 = 7(x − 2).",
+        "Step 2: Distribute: 4x + 3 = 7x − 14.",
+        "Step 3: Move terms: 3 + 14 = 7x − 4x → 17 = 3x.",
+        "Step 4: x = 17/3 ≈ 5.667.",
+        "Step 5: Check: (4·17/3 + 3)/(17/3 − 2) = (77/3)/(11/3) = 7 ✓"
+      ]
+    },
+    {
+      "id": "q9",
+      "question": "√(4x - 3) = √(x + 6)",
+      "section": "B",
+      "standard": "W3",
+      "type": "radical",
+      "answers": { "x": 3 },
+      "hint": "Both sides are square roots — square them both to remove the radicals.",
+      "answer_display": "x = 3",
+      "solution_steps": [
+        "Step 1: Square both sides: 4x − 3 = x + 6.",
+        "Step 2: 3x = 9 → x = 3.",
+        "Step 3: Check domain: 4(3) − 3 = 9 ≥ 0 ✓ and 3 + 6 = 9 ≥ 0 ✓",
+        "Step 4: Check: √9 = 3 and √9 = 3 ✓. No extraneous solution."
+      ]
+    },
+    {
+      "id": "q10",
+      "question": "4 · 3^(x² - 2) = 108",
+      "section": "B",
+      "standard": "W3",
+      "type": "exponential",
+      "answers": { "x1": 2.236, "x2": -2.236 },
+      "hint": "Divide by 4 first, then rewrite 27 as a power of 3. Set exponents equal.",
+      "answer_display": "x = ±√5 ≈ ±2.236",
+      "solution_steps": [
+        "Step 1: Divide by 4: 3^(x² − 2) = 27.",
+        "Step 2: Rewrite: 3^(x² − 2) = 3³.",
+        "Step 3: Set exponents equal: x² − 2 = 3 → x² = 5.",
+        "Step 4: x = ±√5 ≈ ±2.236.",
+        "Step 5: Check: 4·3^(5−2) = 4·27 = 108 ✓"
+      ]
+    },
+    {
+      "id": "q11",
+      "question": "2x^(3/2) + 4 = 58",
+      "section": "B",
+      "standard": "W3",
+      "type": "fractional-exp",
+      "answers": { "x": 9 },
+      "hint": "Isolate x^(3/2) first. Then raise both sides to the 2/3 power to undo the 3/2.",
+      "answer_display": "x = 9",
+      "solution_steps": [
+        "Step 1: Subtract 4: 2x^(3/2) = 54.",
+        "Step 2: Divide by 2: x^(3/2) = 27.",
+        "Step 3: Raise to 2/3 power: x = 27^(2/3).",
+        "Step 4: 27^(1/3) = 3, then 3² = 9. So x = 9.",
+        "Step 5: Check: 2·9^(3/2) + 4 = 2·27 + 4 = 58 ✓"
+      ]
+    },
+    {
+      "id": "q12",
+      "question": "Graph f(x) = -(x + 2)² + 5",
+      "section": "C",
+      "standard": "W2",
+      "type": "graph-quad",
+      "answers": {
+        "vertex_x": -2,
+        "vertex_y": 5,
+        "key_points": [[-4, 1], [-3, 4], [-2, 5], [-1, 4], [0, 1]],
+        "domain": "all real numbers",
+        "range": "y ≤ 5"
+      },
+      "hint": "The vertex is at (−2, 5). Plot it first, then pick 2 x-values on each side.",
+      "answer_display": "Vertex: (−2, 5). Domain: all reals. Range: y ≤ 5. Opens downward.",
+      "solution_steps": [
+        "Step 1: This is y = −(x + 2)² + 5. Vertex form: a(x − h)² + k → vertex (h, k) = (−2, 5).",
+        "Step 2: The negative sign means it opens downward.",
+        "Step 3: Plot vertex (−2, 5). Then pick x = −1: f(−1) = −1 + 5 = 4 → (−1, 4).",
+        "Step 4: By symmetry, (−3, 4). Also f(0) = −4 + 5 = 1 → (0, 1) and (−4, 1).",
+        "Step 5: Domain: all real numbers. Range: y ≤ 5 (opens down from vertex)."
+      ]
+    },
+    {
+      "id": "q13",
+      "question": "Graph f(x) = 3/(x - 1) - 2",
+      "section": "C",
+      "standard": "W2",
+      "type": "graph-rational",
+      "answers": {
+        "vertical_asymptote": 1,
+        "horizontal_asymptote": -2,
+        "key_points": [[-2, -3], [0, -5], [2, 1], [4, -1]],
+        "domain": "x ≠ 1",
+        "range": "y ≠ -2"
+      },
+      "hint": "This is y = 1/x shifted. The vertical asymptote is where the denominator = 0.",
+      "answer_display": "VA: x = 1. HA: y = −2. Domain: x ≠ 1. Range: y ≠ −2.",
+      "solution_steps": [
+        "Step 1: Parent is y = 1/x (rational). This is 3/(x − 1) − 2: shifted right 1, down 2, stretched by 3.",
+        "Step 2: Vertical asymptote: x − 1 = 0 → x = 1.",
+        "Step 3: Horizontal asymptote: as x → ∞, 3/(x−1) → 0, so y → −2.",
+        "Step 4: Key points: f(−2) = 3/(−3) − 2 = −3. f(0) = 3/(−1) − 2 = −5. f(2) = 3/1 − 2 = 1. f(4) = 3/3 − 2 = −1.",
+        "Step 5: Domain: all real numbers except x = 1. Range: all real numbers except y = −2."
+      ]
+    },
+    {
+      "id": "q14",
+      "question": "A = πr². Solve for r.",
+      "section": "D",
+      "standard": "W3",
+      "type": "formula",
+      "answers": { "correct_choice": "B", "answer": "r = √(A/π)" },
+      "hint": "Divide both sides by π first, then undo the square.",
+      "answer_display": "r = √(A/π) — Choice B",
+      "solution_steps": [
+        "Step 1: Start with A = πr².",
+        "Step 2: Divide both sides by π: A/π = r².",
+        "Step 3: Take square root: r = √(A/π).",
+        "Step 4: We use positive root since r is a radius (length)."
+      ]
+    },
+    {
+      "id": "q15",
+      "question": "Bacteria: 200 start, triples every 4 hours. (a) Write model. (b) When does P = 48,600?",
+      "section": "D",
+      "standard": "W3",
+      "type": "word-problem",
+      "answers": {
+        "model": "P(t) = 200 · 3^(t/4)",
+        "t": 20
+      },
+      "hint": "Triples means ×3 each period. The period is 4 hours, so the exponent is t/4.",
+      "answer_display": "(a) P(t) = 200 · 3^(t/4). (b) t = 20 hours.",
+      "solution_steps": [
+        "Step 1: Initial value = 200, growth factor = 3 (triples), period = 4 hours.",
+        "Step 2: Model: P(t) = 200 · 3^(t/4).",
+        "Step 3: Set P = 48,600: 48600 = 200 · 3^(t/4).",
+        "Step 4: Divide: 243 = 3^(t/4).",
+        "Step 5: 3⁵ = 243, so t/4 = 5 → t = 20 hours."
+      ]
+    }
+  ]
+}
