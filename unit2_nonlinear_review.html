@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algebra 2: Nonlinear Functions Review</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        input, textarea {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #8B1E3F;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background: #f5f5f5;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 0;
+            padding: 40px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #8B1E3F;
+        }
+
+        h1 {
+            color: #8B1E3F;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 400;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.2em;
+        }
+
+        .question-card {
+            background: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-left: 4px solid #8B1E3F;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 0;
+            transition: box-shadow 0.2s;
+        }
+
+        .question-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .question-number {
+            color: #8B1E3F;
+            font-weight: 600;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .question-text {
+            color: #333;
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .input-group {
+            margin: 15px 0;
+        }
+
+        .input-group label {
+            display: block;
+            color: #555;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .input-group input {
+            width: 100%;
+            max-width: 500px;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #8B1E3F;
+        }
+
+        .input-group textarea {
+            width: 100%;
+            padding: 14px;
+            padding-bottom: 20px;
+            padding-right: 20px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+            min-height: 80px;
+            font-family: inherit;
+            transition: border-color 0.3s;
+            resize: vertical;
+            box-sizing: border-box;
+        }
+
+        .input-group textarea:focus {
+            outline: none;
+            border-color: #8B1E3F;
+        }
+
+        .work-area {
+            background: #fafafa;
+            border: 1px solid #d0d0d0;
+            border-radius: 0;
+            padding: 20px;
+            margin: 20px 0;
+            min-height: 120px;
+        }
+
+        .work-area textarea {
+            width: 100%;
+            min-height: 100px;
+            border: 2px solid #ddd;
+            background: white;
+            resize: vertical;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 0.95em;
+            padding: 14px;
+            padding-bottom: 20px;
+            padding-right: 20px;
+            border-radius: 8px;
+        }
+
+        .work-label {
+            display: block;
+            color: #666;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .section-divider {
+            text-align: center;
+            margin: 40px 0 30px;
+            padding: 15px;
+            background: #fdf5f7;
+            border: 2px solid #8B1E3F;
+            color: #8B1E3F;
+            font-weight: 600;
+            font-size: 1.2em;
+            letter-spacing: 0.5px;
+        }
+
+        .graph-note {
+            background: #fdf5f7;
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 2px solid #8B1E3F;
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #8B1E3F;
+            font-weight: 600;
+        }
+
+        .print-btn {
+            background: white;
+            color: #8B1E3F;
+            border: 2px solid #8B1E3F;
+            padding: 12px 30px;
+            font-size: 1em;
+            border-radius: 3px;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .print-btn:hover {
+            background: #8B1E3F;
+            color: white;
+        }
+
+        .answer-key-btn {
+            background: #8B1E3F;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1em;
+            border-radius: 3px;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .answer-key-btn:hover {
+            background: #6B1530;
+        }
+
+        .answer-key-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .answer-key-content {
+            background: white;
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 40px;
+            border-radius: 0;
+            position: relative;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2em;
+            cursor: pointer;
+            color: #666;
+            background: none;
+            border: none;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+        }
+
+        .close-modal:hover {
+            color: #000;
+        }
+
+        .answer-key-title {
+            color: #8B1E3F;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 400;
+            letter-spacing: -0.5px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #8B1E3F;
+        }
+
+        .answer-item {
+            background: #ffffff;
+            padding: 30px;
+            margin-bottom: 25px;
+            border: 1px solid #e0e0e0;
+            border-left: 4px solid #8B1E3F;
+            border-radius: 0;
+            transition: box-shadow 0.2s;
+        }
+
+        .answer-item:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .answer-item strong {
+            color: #8B1E3F;
+            font-weight: 600;
+        }
+
+        .verify-note {
+            color: #d97706;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+
+        @media print {
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color: #000 !important;
+                background: white !important;
+                border-color: #000 !important;
+            }
+
+            body {
+                background: white !important;
+                padding: 0;
+            }
+
+            .container {
+                box-shadow: none;
+                padding: 20px;
+                max-width: 100%;
+                background: white !important;
+            }
+
+            .question-card {
+                background: white !important;
+                border: 2px solid #000 !important;
+                border-left: 5px solid #000 !important;
+                page-break-inside: avoid;
+                margin-bottom: 20px;
+            }
+
+            .question-number {
+                color: #000 !important;
+                border-bottom: 1px solid #000;
+                padding-bottom: 5px;
+            }
+
+            input, textarea {
+                border: 1px solid #000 !important;
+                background: white !important;
+                color: #000 !important;
+                padding: 14px !important;
+                box-sizing: border-box !important;
+            }
+
+            textarea {
+                padding-bottom: 20px !important;
+                padding-right: 20px !important;
+            }
+
+            .print-btn, .answer-key-btn {
+                display: none !important;
+            }
+
+            .work-area {
+                border: 1px solid #000 !important;
+                background: white !important;
+                min-height: 80px;
+            }
+
+            header {
+                border-bottom: 2px solid #000;
+                background: white !important;
+            }
+
+            h1 {
+                color: #000 !important;
+            }
+
+            .subtitle {
+                color: #000 !important;
+            }
+
+            .question-text {
+                color: #000 !important;
+            }
+
+            .section-divider {
+                border: 2px solid #000 !important;
+                background: white !important;
+                color: #000 !important;
+            }
+
+            .graph-note {
+                border: 1px solid #000 !important;
+                background: white !important;
+                color: #000 !important;
+            }
+
+            label, .work-label {
+                color: #000 !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Algebra 2: Nonlinear Functions Review</h1>
+            <div class="subtitle">Unit 2 · Standards W2 &amp; W3 · 26 Questions</div>
+        </header>
+
+        <form id="testForm">
+
+            <!-- ======== SECTION: Transformation Identification (Q1-Q4) ======== -->
+            <div class="section-divider">Section A — Identify Parent Functions &amp; Transformations (Q1–Q6)</div>
+
+            <!-- Question 1 -->
+            <div class="question-card">
+                <div class="question-number">Question 1</div>
+                <div class="question-text">
+                    Identify the parent function and describe the transformations. Then sketch a graph (on paper). Label at least two points.
+                    <br><br>
+                    \(f(x) = -(x+2)^3\)
+                </div>
+                <div class="input-group">
+                    <label>Parent Function:</label>
+                    <input type="text" id="q1_parent" placeholder="e.g. y = x³">
+                </div>
+                <div class="input-group">
+                    <label>Transformations:</label>
+                    <textarea id="q1_transformations" placeholder="Describe each transformation..."></textarea>
+                </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="question-card">
+                <div class="question-number">Question 2</div>
+                <div class="question-text">
+                    Identify the parent function and describe the transformations. Then sketch a graph (on paper). Label at least two points.
+                    <br><br>
+                    \(f(x) = 3\sqrt{x} - 1\)
+                </div>
+                <div class="input-group">
+                    <label>Parent Function:</label>
+                    <input type="text" id="q2_parent" placeholder="e.g. y = √x">
+                </div>
+                <div class="input-group">
+                    <label>Transformations:</label>
+                    <textarea id="q2_transformations" placeholder="Describe each transformation..."></textarea>
+                </div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="question-card">
+                <div class="question-number">Question 3</div>
+                <div class="question-text">
+                    Identify the parent function and describe the transformations. Then sketch a graph (on paper). Label at least two points.
+                    <br><br>
+                    \(f(x) = \frac{1}{x-4} - 1\)
+                </div>
+                <div class="input-group">
+                    <label>Parent Function:</label>
+                    <input type="text" id="q3_parent" placeholder="e.g. y = 1/x">
+                </div>
+                <div class="input-group">
+                    <label>Transformations:</label>
+                    <textarea id="q3_transformations" placeholder="Describe each transformation..."></textarea>
+                </div>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="question-card">
+                <div class="question-number">Question 4</div>
+                <div class="question-text">
+                    Identify the parent function and describe the transformations. Then sketch a graph (on paper). Label at least two points.
+                    <br><br>
+                    \(f(x) = \sqrt{-x}\)
+                </div>
+                <div class="input-group">
+                    <label>Parent Function:</label>
+                    <input type="text" id="q4_parent" placeholder="e.g. y = √x">
+                </div>
+                <div class="input-group">
+                    <label>Transformations:</label>
+                    <textarea id="q4_transformations" placeholder="Describe each transformation..."></textarea>
+                </div>
+            </div>
+
+            <!-- Question 5 (detailed) -->
+            <div class="question-card">
+                <div class="question-number">Question 5</div>
+                <div class="question-text">
+                    Identify the parent function and describe the transformations. Draw an accurate graph (on paper). Write the domain and range. Set up a table of values and label at least three points. Find the x-intercepts.
+                    <br><br>
+                    \(f(x) = \frac{1}{2}|x - 1| - 2\)
+                </div>
+                <div class="input-group">
+                    <label>Parent Function:</label>
+                    <input type="text" id="q5_parent" placeholder="e.g. y = |x|">
+                </div>
+                <div class="input-group">
+                    <label>Transformations:</label>
+                    <textarea id="q5_transformations" placeholder="Describe each transformation..."></textarea>
+                </div>
+                <div class="input-group">
+                    <label>Domain:</label>
+                    <input type="text" id="q5_domain" placeholder="e.g. (-∞, ∞)">
+                </div>
+                <div class="input-group">
+                    <label>Range:</label>
+                    <input type="text" id="q5_range" placeholder="e.g. [-2, ∞)">
+                </div>
+                <div class="input-group">
+                    <label>x-Intercepts:</label>
+                    <input type="text" id="q5_xintercepts" placeholder="Find where f(x) = 0">
+                </div>
+                <div class="work-area">
+                    <span class="work-label">Show Your Work (table of values, intercept calculations):</span>
+                    <textarea id="work5" placeholder="Show your calculations..."></textarea>
+                </div>
+            </div>
+
+            <!-- Question 6 (detailed) -->
+            <div class="question-card">
+                <div class="question-number">Question 6</div>
+                <div class="question-text">
+                    Identify the parent function and describe the transformations. Draw an accurate graph (on paper). Write the domain and range. Set up a table of values and label at least three points. Find the x-intercepts.
+                    <br><br>
+                    \(f(x) = -2(x+2)^2 + 5\)
+                </div>
+                <div class="input-group">
+                    <label>Parent Function:</label>
+                    <input type="text" id="q6_parent" placeholder="e.g. y = x²">
+                </div>
+                <div class="input-group">
+                    <label>Transformations:</label>
+                    <textarea id="q6_transformations" placeholder="Describe each transformation..."></textarea>
+                </div>
+                <div class="input-group">
+                    <label>Domain:</label>
+                    <input type="text" id="q6_domain" placeholder="e.g. (-∞, ∞)">
+                </div>
+                <div class="input-group">
+                    <label>Range:</label>
+                    <input type="text" id="q6_range" placeholder="e.g. (-∞, 5]">
+                </div>
+                <div class="input-group">
+                    <label>x-Intercepts:</label>
+                    <input type="text" id="q6_xintercepts" placeholder="Find where f(x) = 0">
+                </div>
+                <div class="work-area">
+                    <span class="work-label">Show Your Work (table of values, intercept calculations):</span>
+                    <textarea id="work6" placeholder="Show your calculations..."></textarea>
+                </div>
+            </div>
+
+            <!-- ======== SECTION: Equation Solving (Q7-Q12) ======== -->
+            <div class="section-divider">Section B — Solve Equations (Q7–Q12)</div>
+
+            <!-- Question 7 -->
+            <div class="question-card">
+                <div class="question-number">Question 7</div>
+                <div class="question-text">
+                    Solve each equation:
+                    <br><br>
+                    \(3^{2x+5} = 81\)
+                </div>
+                <div class="input-group">
+                    <label>Answer:</label>
+                    <input type="text" id="q7_answer" placeholder="x = ...">
+                </div>
+                <div class="work-area">
+                    <span class="work-label">Show Your Work:</span>
+                    <textarea id="work7" placeholder="Show each step..."></textarea>
+                </div>
+            </div>
+
+            <!-- Question 8 -->
+            <div class="question-card">
+                <div class="question-number">Question 8</div>
+                <div class="question-text">
+                    Solve each equation:
+                    <br><br>
+                    \(2(3x-1)^2 + 1 = 9\)
+                </div>
+                <div class="input-group">
+                    <label>Answer:</label>
+                    <input type="text" id="q8_answer" placeholder="x = ...">
+                </div>
+                <div class="work-area">
+                    <span class="work-label">Show Your Work:</span>
+                    <textarea id="work8" placeholder="Show each step..."></textarea>
+                </div>
+            </div>
+
+            <!-- Question 9 -->
+            <div class="question-card">
+                <div class="question-number">Question 9</div>
+                <div class="question-text">
+                    Solve each equation:
+                    <br><br>
+                    \(\sqrt[5]{3x+2} = 4\)
+                </div>
+                <div class="input-group">
+                    <label>Answer:</label>
+                    <input type="text" id="q9_answer" placeholder="x = ...">
+                </div>
+                <div class="work-area">
+                    <span class="work-label">Show Your Work:</span>
+                    <textarea id="work9" placeholder="Show each step..."></textarea>
+                </div>
+            </div>
+
+            <!-- Question 10 -->
+            <div class="question-card">
+                <div class="question-number">Question 10</div>
+                <div class="question-text">
+                    Solve each equation:
+                    <br><br>
+                    \(\sqrt{5 + 4x^2} - 2 = 3\)
+                </div>
+                <div class="input-group">
+                    <label>Answer:</label>
+                    <input type="text" id="q10_answer" placeholder="x = ...">
+                </div>
+                <div class="work-area">
+                    <span class="work-label">Show Your Work:</span>
+                    <textarea id="work10" placeholder="Show each step..."></textarea>
+                </div>
+            </div>
+
+            <!-- Question 11 -->
+            <div class="question-card">
+                <div class="question-number">Question 11</div>
+                <div class="question-text">
+                    Solve each equation:
+                    <br><br>
+                    \(5 - 3(x+1)^3 = 7\)
+                </div>
+                <div class="input-group">
+                    <label>Answer:</label>
+                    <input type="text" id="q11_answer" placeholder="x = ...">
+                </div>
+                <div class="work-area">
+                    <span class="work-label">Show Your Work:</span>
+                    <textarea id="work11" placeholder="Show each step..."></textarea>
+                </div>
+            </div>
+
+            <!-- Question 12 -->
+            <div class="question-card">
+                <div class="question-number">Question 12</div>
+                <div class="question-text">
+                    Solve each equation:
+                    <br><br>
+                    \(5 \cdot 2^{x^2-3} = 80\)
+                </div>
+                <div class="input-group">
+                    <label>Answer:</label>
+                    <input type="text" id="q12_answer" placeholder="x = ...">
+                </div>
+                <div class="work-area">
+                    <span class="work-label">Show Your Work:</span>
+                    <textarea id="work12" placeholder="Show each step..."></textarea>
+                </div>
+            </div>
+
+            <!-- ======== SECTION: Graph to Equation (Q13-Q16) ======== -->
+            <div class="section-divider">Section C — Write Equations from Graphs (Q13–Q16)</div>
+
+            <!-- Question 13 -->
+            <div class="question-card">
+                <div class="question-number">Question 13</div>
+                <div class="question-text">
+                    Given each graph, write the parent function, the transformations that formed the graph, and then use that information to write the equation of the function shown.
+                </div>
+                <div class="graph-note">📋 Refer to the original worksheet for the graph image.</div>
+                <div class="input-group">
+                    <label>Parent Function:</label>
+                    <input type="text" id="q13_parent" placeholder="e.g. y = x²">
+                </div>
+                <div class="input-group">
+                    <label>Transformations:</label>
+                    <textarea id="q13_transformations" placeholder="Describe the transformations you see..."></textarea>
+                </div>
+                <div class="input-group">
+                    <label>Equation:</label>
+                    <input type="text" id="q13_equation" placeholder="f(x) = ...">
+                </div>
+            </div>
+
+            <!-- Question 14 -->
+            <div class="question-card">
+                <div class="question-number">Question 14</div>
+                <div class="question-text">
+                    Given each graph, write the parent function, the transformations that formed the graph, and then use that information to write the equation of the function shown.
+                </div>
+                <div class="graph-note">📋 Refer to the original worksheet for the graph image.</div>
+                <div class="input-group">
+                    <label>Parent Function:</label>
+                    <input type="text" id="q14_parent" placeholder="e.g. y = |x|">
+                </div>
+                <div class="input-group">
+                    <label>Transformations:</label>
+                    <textarea id="q14_transformations" placeholder="Describe the transformations you see..."></textarea>
+                </div>
+                <div class="input-group">
+                    <label>Equation:</label>
+                    <input type="text" id="q14_equation" placeholder="f(x) = ...">
+                </div>
+            </div>
+
+            <!-- Question 15 -->
+            <div class="question-card">
+                <div class="question-number">Question 15</div>
+                <div class="question-text">
+                    Given each graph, write the parent function, the transformations that formed the graph, and then use that information to write the equation of the function shown.
+                </div>
+                <div class="graph-note">📋 Refer to the original worksheet for the graph image.</div>
+                <div class="input-group">
+                    <label>Parent Function:</label>
+                    <input type="text" id="q15_parent" placeholder="e.g. y = √x">
+                </div>
+                <div class="input-group">
+                    <label>Transformations:</label>
+                    <textarea id="q15_transformations" placeholder="Describe the transformations you see..."></textarea>
+                </div>
+                <div class="input-group">
+                    <label>Equation:</label>
+                    <input type="text" id="q15_equation" placeholder="f(x) = ...">
+                </div>
+            </div>
+
+            <!-- Question 16 -->
+            <div class="question-card">
+                <div class="question-number">Question 16</div>
+                <div class="question-text">
+                    Given each graph, write the parent function, the transformations that formed the graph, and then use that information to write the equation of the function shown.
+                </div>
+                <div class="graph-note">📋 Refer to the original worksheet for the graph image.</div>
+                <div class="input-group">
+                    <label>Parent Function:</label>
+                    <input type="text" id="q16_parent" placeholder="e.g. y = 1/x">
+                </div>
+                <div class="input-group">
+                    <label>Transformations:</label>
+                    <textarea id="q16_transformations" placeholder="Describe the transformations you see..."></textarea>
+                </div>
+                <div class="input-group">
+                    <label>Equation:</label>
+                    <input type="text" id="q16_equation" placeholder="f(x) = ...">
+                </div>
+            </div>
+
+            <!-- ======== SECTION: Equation Solving (Q17-Q22) ======== -->
+            <div class="section-divider">Section D — Solve Equations (Q17–Q22)</div>
+
+            <!-- Question 17 -->
+            <div class="question-card">
+                <div class="question-number">Question 17</div>
+                <div class="question-text">
+                    Solve each equation:
+                    <br><br>
+                    \(3^{5-x} - 1 = 0\)
+                </div>
+                <div class="input-group">
+                    <label>Answer:</label>
+                    <input type="text" id="q17_answer" placeholder="x = ...">
+                </div>
+                <div class="work-area">
+                    <span class="work-label">Show Your Work:</span>
+                    <textarea id="work17" placeholder="Show each step..."></textarea>
+                </div>
+            </div>
+
+            <!-- Question 18 -->
+            <div class="question-card">
+                <div class="question-number">Question 18</div>
+                <div class="question-text">
+                    Solve each equation:
+                    <br><br>
+                    \(2 - 3\sqrt{x} = 4\)
+                </div>
+                <div class="input-group">
+                    <label>Answer:</label>
+                    <input type="text" id="q18_answer" placeholder="x = ...">
+                </div>
+                <div class="work-area">
+                    <span class="work-label">Show Your Work:</span>
+                    <textarea id="work18" placeholder="Show each step..."></textarea>
+                </div>
+            </div>
+
+            <!-- Question 19 -->
+            <div class="question-card">
+                <div class="question-number">Question 19</div>
+                <div class="question-text">
+                    Solve each equation:
+                    <br><br>
+                    \(\frac{6x-1}{2x-3} = 5\)
+                </div>
+                <div class="input-group">
+                    <label>Answer:</label>
+                    <input type="text" id="q19_answer" placeholder="x = ...">
+                </div>
+                <div class="work-area">
+                    <span class="work-label">Show Your Work:</span>
+                    <textarea id="work19" placeholder="Show each step..."></textarea>
+                </div>
+            </div>
+
+            <!-- Question 20 -->
+            <div class="question-card">
+                <div class="question-number">Question 20</div>
+                <div class="question-text">
+                    Solve each equation:
+                    <br><br>
+                    \(\frac{3}{\sqrt{2x-1}} = -4\)
+                </div>
+                <div class="input-group">
+                    <label>Answer:</label>
+                    <input type="text" id="q20_answer" placeholder="x = ...">
+                </div>
+                <div class="work-area">
+                    <span class="work-label">Show Your Work:</span>
+                    <textarea id="work20" placeholder="Show each step..."></textarea>
+                </div>
+            </div>
+
+            <!-- Question 21 -->
+            <div class="question-card">
+                <div class="question-number">Question 21</div>
+                <div class="question-text">
+                    Solve each equation:
+                    <br><br>
+                    \(\sqrt{2x+1} = \sqrt{3-x}\)
+                </div>
+                <div class="input-group">
+                    <label>Answer:</label>
+                    <input type="text" id="q21_answer" placeholder="x = ...">
+                </div>
+                <div class="work-area">
+                    <span class="work-label">Show Your Work:</span>
+                    <textarea id="work21" placeholder="Show each step..."></textarea>
+                </div>
+            </div>
+
+            <!-- Question 22 -->
+            <div class="question-card">
+                <div class="question-number">Question 22</div>
+                <div class="question-text">
+                    Solve each equation:
+                    <br><br>
+                    \(3x^{2/3} - 1 = 107\)
+                </div>
+                <div class="input-group">
+                    <label>Answer:</label>
+                    <input type="text" id="q22_answer" placeholder="x = ...">
+                </div>
+                <div class="work-area">
+                    <span class="work-label">Show Your Work:</span>
+                    <textarea id="work22" placeholder="Show each step..."></textarea>
+                </div>
+            </div>
+
+            <!-- ======== SECTION: Capstone / Word Problems (Q23-Q26) ======== -->
+            <div class="section-divider">Section E — Capstone &amp; Word Problems (Q23–Q26)</div>
+
+            <!-- Question 23 -->
+            <div class="question-card">
+                <div class="question-number">Question 23 — Formula Rearrangement</div>
+                <div class="question-text">
+                    The gravitational force \(F\) between two bodies of mass \(m_1\) and \(m_2\) is given by Newton's Law of Universal Gravitation:
+                    <br><br>
+                    \(F = G \cdot \frac{m_1 m_2}{r^2}\)
+                    <br><br>
+                    Where \(G\) is a universal constant. Rearrange the equation to find \(r\) in terms of the other quantities.
+                </div>
+                <div class="input-group">
+                    <label>Answer (r = …):</label>
+                    <input type="text" id="q23_answer" placeholder="r = ...">
+                </div>
+                <div class="work-area">
+                    <span class="work-label">Show Your Work:</span>
+                    <textarea id="work23" placeholder="Show each algebraic step..."></textarea>
+                </div>
+            </div>
+
+            <!-- Question 24 -->
+            <div class="question-card">
+                <div class="question-number">Question 24 — Formula Rearrangement</div>
+                <div class="question-text">
+                    When a block of mass \(m\) is connected to a spring, it can be set into simple harmonic motion. The period is given by:
+                    <br><br>
+                    \(T = 2\pi\sqrt{\frac{m}{k}}\)
+                    <br><br>
+                    Rearrange to isolate mass \(m\).
+                </div>
+                <div class="input-group">
+                    <label>Answer (m = …):</label>
+                    <input type="text" id="q24_answer" placeholder="m = ...">
+                </div>
+                <div class="work-area">
+                    <span class="work-label">Show Your Work:</span>
+                    <textarea id="work24" placeholder="Show each algebraic step..."></textarea>
+                </div>
+            </div>
+
+            <!-- Question 25 -->
+            <div class="question-card">
+                <div class="question-number">Question 25 — Word Problem (Exponential)</div>
+                <div class="question-text">
+                    Gray wolves were reintroduced to Yellowstone in 1995–1996 with about 40 wolves. The population doubled every 10 years.
+                </div>
+                <div class="input-group">
+                    <label>a) Write a model for the number of wolves after \(t\) years:</label>
+                    <input type="text" id="q25a_answer" placeholder="P(t) = ...">
+                </div>
+                <div class="input-group">
+                    <label>b) How long would it take for the wolf population to reach 1280?</label>
+                    <input type="text" id="q25b_answer" placeholder="t = ... years">
+                </div>
+                <div class="work-area">
+                    <span class="work-label">Show Your Work:</span>
+                    <textarea id="work25" placeholder="Show your model setup and solving steps..."></textarea>
+                </div>
+            </div>
+
+            <!-- Question 26 -->
+            <div class="question-card">
+                <div class="question-number">Question 26 — Comprehensive Analysis</div>
+                <div class="question-text">
+                    Consider the function defined by:
+                    <br><br>
+                    \(f(x) = \frac{2}{(x-3)^2} + 1\)
+                </div>
+                <div class="input-group">
+                    <label>a) What is the parent function?</label>
+                    <input type="text" id="q26a_answer" placeholder="y = ...">
+                </div>
+                <div class="input-group">
+                    <label>b) What are the transformations from the parent function?</label>
+                    <textarea id="q26b_answer" placeholder="Describe each transformation..."></textarea>
+                </div>
+                <div class="input-group">
+                    <label>c) Write the equations of the vertical and horizontal asymptotes:</label>
+                    <input type="text" id="q26c_answer" placeholder="Vertical: x = ..., Horizontal: y = ...">
+                </div>
+                <div class="input-group">
+                    <label>d) Find the x-intercept(s):</label>
+                    <input type="text" id="q26d_answer" placeholder="x = ... or No real solution">
+                </div>
+                <div class="input-group">
+                    <label>e) Construct a table of values for at least three values:</label>
+                    <textarea id="q26e_answer" placeholder="x | f(x)&#10;---|---&#10;  |  "></textarea>
+                </div>
+                <div class="work-area">
+                    <span class="work-label">Show Your Work:</span>
+                    <textarea id="work26" placeholder="Show calculations for intercepts and table values..."></textarea>
+                </div>
+            </div>
+
+            <button type="button" class="print-btn" onclick="window.print()">Print Version (Black &amp; White)</button>
+            <button type="button" class="answer-key-btn" onclick="showAnswerKey()">View Answer Key</button>
+            <button type="button" class="answer-key-btn" onclick="saveResults()" style="background: #2563eb;">Save Results</button>
+            <button type="button" class="answer-key-btn" onclick="loadResults()" style="background: #7c3aed;">Load Saved Results</button>
+        </form>
+    </div>
+
+    <!-- Answer Key Modal -->
+    <div id="answerKeyModal" class="answer-key-modal">
+        <div class="answer-key-content">
+            <button class="close-modal" onclick="closeAnswerKey()">×</button>
+            <h2 class="answer-key-title">Answer Key</h2>
+            <div id="answerKeyBody"></div>
+        </div>
+    </div>
+
+    <script>
+        function showAnswerKey() {
+            const password = prompt("Enter password to view answer key:");
+            if (password !== '121274') {
+                alert('Incorrect password. Access denied.');
+                return;
+            }
+
+            const answerKeyHTML = `
+                <div class="answer-item"><strong>Q1 — \\(f(x) = -(x+2)^3\\)</strong><br>
+                Parent: \\(y = x^3\\) (cubic)<br>
+                Transformations: Reflection over x-axis, horizontal shift left 2</div>
+
+                <div class="answer-item"><strong>Q2 — \\(f(x) = 3\\sqrt{x} - 1\\)</strong><br>
+                Parent: \\(y = \\sqrt{x}\\) (square root)<br>
+                Transformations: Vertical stretch by 3, vertical shift down 1</div>
+
+                <div class="answer-item"><strong>Q3 — \\(f(x) = \\frac{1}{x-4} - 1\\)</strong><br>
+                Parent: \\(y = \\frac{1}{x}\\) (reciprocal)<br>
+                Transformations: Horizontal shift right 4, vertical shift down 1</div>
+
+                <div class="answer-item"><strong>Q4 — \\(f(x) = \\sqrt{-x}\\)</strong><br>
+                Parent: \\(y = \\sqrt{x}\\) (square root)<br>
+                Transformations: Reflection over y-axis</div>
+
+                <div class="answer-item"><strong>Q5 — \\(f(x) = \\frac{1}{2}|x - 1| - 2\\)</strong><br>
+                Parent: \\(y = |x|\\) (absolute value)<br>
+                Transformations: Vertical compression by ½, horizontal shift right 1, vertical shift down 2<br>
+                Domain: All real numbers \\((-\\infty, \\infty)\\)<br>
+                Range: \\(y \\geq -2\\), i.e. \\([-2, \\infty)\\)<br>
+                x-Intercepts: Set \\(\\frac{1}{2}|x-1| - 2 = 0 \\Rightarrow |x-1| = 4 \\Rightarrow x = 5\\) or \\(x = -3\\)</div>
+
+                <div class="answer-item"><strong>Q6 — \\(f(x) = -2(x+2)^2 + 5\\)</strong><br>
+                Parent: \\(y = x^2\\) (quadratic)<br>
+                Transformations: Reflection over x-axis, vertical stretch by 2, horizontal shift left 2, vertical shift up 5<br>
+                Domain: All real numbers \\((-\\infty, \\infty)\\)<br>
+                Range: \\(y \\leq 5\\), i.e. \\((-\\infty, 5]\\)<br>
+                x-Intercepts: Set \\(-2(x+2)^2 + 5 = 0 \\Rightarrow (x+2)^2 = \\frac{5}{2} \\Rightarrow x = -2 \\pm \\sqrt{\\frac{5}{2}}\\)</div>
+
+                <div class="answer-item"><strong>Q7 — \\(3^{2x+5} = 81\\)</strong><br>
+                \\(81 = 3^4\\), so \\(2x+5 = 4\\), thus \\(x = -\\frac{1}{2}\\)</div>
+
+                <div class="answer-item"><strong>Q8 — \\(2(3x-1)^2 + 1 = 9\\)</strong><br>
+                \\((3x-1)^2 = 4\\), \\(3x-1 = \\pm 2\\)<br>
+                \\(x = 1\\) or \\(x = -\\frac{1}{3}\\)</div>
+
+                <div class="answer-item"><strong>Q9 — \\(\\sqrt[5]{3x+2} = 4\\)</strong><br>
+                \\(3x+2 = 4^5 = 1024\\), \\(x = \\frac{1022}{3} \\approx 340.67\\)<br>
+                <span class="verify-note">(⚠️ verify with worksheet)</span></div>
+
+                <div class="answer-item"><strong>Q10 — \\(\\sqrt{5 + 4x^2} - 2 = 3\\)</strong><br>
+                \\(\\sqrt{5+4x^2} = 5\\), \\(5+4x^2 = 25\\), \\(x^2 = 5\\), \\(x = \\pm\\sqrt{5}\\)<br>
+                <span class="verify-note">(⚠️ verify with worksheet)</span></div>
+
+                <div class="answer-item"><strong>Q11 — \\(5 - 3(x+1)^3 = 7\\)</strong><br>
+                \\(-3(x+1)^3 = 2\\), \\((x+1)^3 = -\\frac{2}{3}\\)<br>
+                \\(x = -1 + \\sqrt[3]{-\\frac{2}{3}}\\)</div>
+
+                <div class="answer-item"><strong>Q12 — \\(5 \\cdot 2^{x^2-3} = 80\\)</strong><br>
+                \\(2^{x^2-3} = 16 = 2^4\\), \\(x^2 - 3 = 4\\), \\(x^2 = 7\\)<br>
+                \\(x = \\pm\\sqrt{7}\\)</div>
+
+                <div class="answer-item"><strong>Q13–Q16 — Graph-to-Equation</strong><br>
+                Answers require the original worksheet graphs. Identify parent function, describe transformations, and write the equation.</div>
+
+                <div class="answer-item"><strong>Q17 — \\(3^{5-x} - 1 = 0\\)</strong><br>
+                \\(3^{5-x} = 1 = 3^0\\), \\(5-x = 0\\), \\(x = 5\\)</div>
+
+                <div class="answer-item"><strong>Q18 — \\(2 - 3\\sqrt{x} = 4\\)</strong><br>
+                \\(-3\\sqrt{x} = 2\\), \\(\\sqrt{x} = -\\frac{2}{3}\\) — <strong>No real solution</strong> (\\(\\sqrt{x} \\geq 0\\))</div>
+
+                <div class="answer-item"><strong>Q19 — \\(\\frac{6x-1}{2x-3} = 5\\)</strong><br>
+                \\(6x-1 = 5(2x-3)\\), \\(6x-1 = 10x-15\\), \\(14 = 4x\\)<br>
+                \\(x = \\frac{7}{2}\\)</div>
+
+                <div class="answer-item"><strong>Q20 — \\(\\frac{3}{\\sqrt{2x-1}} = -4\\)</strong><br>
+                <strong>No real solution</strong> — left side is always positive, right side is negative.<br>
+                <span class="verify-note">(⚠️ verify with worksheet)</span></div>
+
+                <div class="answer-item"><strong>Q21 — \\(\\sqrt{2x+1} = \\sqrt{3-x}\\)</strong><br>
+                \\(2x+1 = 3-x\\), \\(3x = 2\\), \\(x = \\frac{2}{3}\\)<br>
+                Check: \\(\\sqrt{\\frac{7}{3}} = \\sqrt{\\frac{7}{3}}\\) ✓</div>
+
+                <div class="answer-item"><strong>Q22 — \\(3x^{2/3} - 1 = 107\\)</strong><br>
+                \\(3x^{2/3} = 108\\), \\(x^{2/3} = 36\\), \\(x = 36^{3/2} = 216\\)</div>
+
+                <div class="answer-item"><strong>Q23 — Newton's Law Rearrangement</strong><br>
+                \\(r^2 = \\frac{G \\cdot m_1 m_2}{F}\\), so \\(r = \\sqrt{\\frac{G m_1 m_2}{F}}\\)</div>
+
+                <div class="answer-item"><strong>Q24 — Spring Period Rearrangement</strong><br>
+                \\(\\frac{T}{2\\pi} = \\sqrt{\\frac{m}{k}}\\), \\(\\left(\\frac{T}{2\\pi}\\right)^2 = \\frac{m}{k}\\)<br>
+                \\(m = \\frac{kT^2}{4\\pi^2}\\)</div>
+
+                <div class="answer-item"><strong>Q25 — Yellowstone Wolves</strong><br>
+                a) \\(P(t) = 40 \\cdot 2^{t/10}\\)<br>
+                b) \\(40 \\cdot 2^{t/10} = 1280\\), \\(2^{t/10} = 32 = 2^5\\), \\(t = 50\\) years</div>
+
+                <div class="answer-item"><strong>Q26 — \\(f(x) = \\frac{2}{(x-3)^2} + 1\\)</strong><br>
+                a) Parent: \\(y = \\frac{1}{x^2}\\)<br>
+                b) Horizontal shift right 3, vertical stretch by 2, vertical shift up 1<br>
+                c) Vertical asymptote: \\(x = 3\\), Horizontal asymptote: \\(y = 1\\)<br>
+                d) \\(\\frac{2}{(x-3)^2} + 1 = 0 \\Rightarrow \\frac{2}{(x-3)^2} = -1\\) — <strong>No real solution</strong> (left side always positive)</div>
+            `;
+            document.getElementById('answerKeyBody').innerHTML = answerKeyHTML;
+            document.getElementById('answerKeyModal').style.display = 'block';
+            if (window.MathJax) {
+                MathJax.typesetPromise([document.getElementById('answerKeyBody')]);
+            }
+        }
+
+        function closeAnswerKey() {
+            document.getElementById('answerKeyModal').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target === document.getElementById('answerKeyModal')) {
+                closeAnswerKey();
+            }
+        }
+
+        function saveResults() {
+            const formData = {};
+            const inputs = document.querySelectorAll('input, textarea');
+            inputs.forEach(input => {
+                if (input.id) {
+                    formData[input.id] = input.value || '';
+                }
+            });
+
+            const saveData = {
+                timestamp: new Date().toISOString(),
+                formData: formData
+            };
+
+            localStorage.setItem('unit2-nonlinear-review', JSON.stringify(saveData));
+            alert('Results saved successfully! You can reload them anytime.');
+        }
+
+        function loadResults() {
+            const saved = localStorage.getItem('unit2-nonlinear-review');
+            if (!saved) {
+                alert('No saved results found.');
+                return;
+            }
+
+            const saveData = JSON.parse(saved);
+            const savedDate = new Date(saveData.timestamp).toLocaleString();
+
+            if (confirm(`Load results from ${savedDate}?`)) {
+                Object.keys(saveData.formData).forEach(id => {
+                    const element = document.getElementById(id);
+                    if (element) {
+                        element.value = saveData.formData[id];
+                    }
+                });
+                alert('Results loaded successfully!');
+            }
+        }
+    </script>
+</body>
+</html>

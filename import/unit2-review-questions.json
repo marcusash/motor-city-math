@@ -1,0 +1,647 @@
+{
+  "metadata": {
+    "source": "Copy of (Winter 11) Unit 2 Review.pdf",
+    "unit": "Unit 2: Nonlinear Functions",
+    "school": "SAAS",
+    "course": "Algebra 2",
+    "imported": "2026-02-17",
+    "question_count": 26,
+    "standards": [
+      {
+        "id": "W2.a",
+        "text": "I can sketch graphs of parent functions"
+      },
+      {
+        "id": "W2.b",
+        "text": "I can identify the parent function and transformations from a graph or equation"
+      },
+      {
+        "id": "W2.c",
+        "text": "I can graph a function using parent shapes and transformations"
+      },
+      {
+        "id": "W2.d",
+        "text": "I can write an equation for a function given a graph"
+      },
+      {
+        "id": "W2.e",
+        "text": "I can describe characteristics of functions such as domain, range, symmetry, extrema, asymptotes, end behavior, and intervals of increasing or decreasing"
+      },
+      {
+        "id": "W3.a",
+        "text": "I can explain the reasoning for each step of solving an equation"
+      },
+      {
+        "id": "W3.b",
+        "text": "I can solve nonlinear equations using inverse operations, including quadratic, power, and radical functions"
+      },
+      {
+        "id": "W3.c",
+        "text": "I can solve rational equations"
+      },
+      {
+        "id": "W3.d",
+        "text": "I can solve exponential equations using the one-to-one property"
+      },
+      {
+        "id": "W3.e",
+        "text": "I can identify extraneous solutions"
+      }
+    ]
+  },
+  "questions": [
+    {
+      "id": "w2r-q1",
+      "unit": "nonlinear-functions",
+      "standard": "W2.b, W2.c",
+      "difficulty": "medium",
+      "type": "transformation-identification",
+      "question_html": "Identify the parent function and describe the transformations. Then sketch a graph. Label at least two points.<br><br>f(x) = −(x + 2)^3",
+      "latex": "f(x) = -(x+2)^3",
+      "hint": null,
+      "answer": null,
+      "solution_steps": [],
+      "tags": [
+        "w2.b",
+        "w2.c",
+        "graphing"
+      ],
+      "source": "SAAS Winter Unit 2 Review worksheet",
+      "imported_by": "agent-i",
+      "answer_verified": false,
+      "needs_verification": false
+    },
+    {
+      "id": "w2r-q2",
+      "unit": "nonlinear-functions",
+      "standard": "W2.b, W2.c",
+      "difficulty": "medium",
+      "type": "transformation-identification",
+      "question_html": "Identify the parent function and describe the transformations. Then sketch a graph. Label at least two points.<br><br>f(x) = 3√x − 1",
+      "latex": "f(x) = 3\\sqrt{x} - 1",
+      "hint": null,
+      "answer": null,
+      "solution_steps": [],
+      "tags": [
+        "w2.b",
+        "w2.c",
+        "graphing"
+      ],
+      "source": "SAAS Winter Unit 2 Review worksheet",
+      "imported_by": "agent-i",
+      "answer_verified": false,
+      "needs_verification": false
+    },
+    {
+      "id": "w2r-q3",
+      "unit": "nonlinear-functions",
+      "standard": "W2.b, W2.c",
+      "difficulty": "medium",
+      "type": "transformation-identification",
+      "question_html": "Identify the parent function and describe the transformations. Then sketch a graph. Label at least two points.<br><br>f(x) = 1/(x−4) − 1",
+      "latex": "f(x) = \\frac{1}{x-4} - 1",
+      "hint": null,
+      "answer": null,
+      "solution_steps": [],
+      "tags": [
+        "w2.b",
+        "w2.c",
+        "graphing"
+      ],
+      "source": "SAAS Winter Unit 2 Review worksheet",
+      "imported_by": "agent-i",
+      "answer_verified": false,
+      "needs_verification": false
+    },
+    {
+      "id": "w2r-q4",
+      "unit": "nonlinear-functions",
+      "standard": "W2.b, W2.c",
+      "difficulty": "medium",
+      "type": "transformation-identification",
+      "question_html": "Identify the parent function and describe the transformations. Then sketch a graph. Label at least two points.<br><br>f(x) = √(−x)",
+      "latex": "f(x) = \\sqrt{-x}",
+      "hint": null,
+      "answer": null,
+      "solution_steps": [],
+      "tags": [
+        "w2.b",
+        "w2.c",
+        "graphing"
+      ],
+      "source": "SAAS Winter Unit 2 Review worksheet",
+      "imported_by": "agent-i",
+      "answer_verified": false,
+      "needs_verification": false
+    },
+    {
+      "id": "w2r-q5",
+      "unit": "nonlinear-functions",
+      "standard": "W2.b, W2.c, W2.e",
+      "difficulty": "hard",
+      "type": "detailed-transformation",
+      "question_html": "Identify the parent function and describe the transformations. Draw an accurate graph. Write the domain and range. Set up a table of values and label at least three points. Find the x-intercepts.<br><br>f(x) = (1/2)|x − 1| − 2",
+      "latex": "f(x) = \\frac{1}{2}|x - 1| - 2",
+      "hint": null,
+      "answer": null,
+      "solution_steps": [],
+      "tags": [
+        "w2.b",
+        "w2.c",
+        "w2.e",
+        "domain-range",
+        "x-intercepts",
+        "graphing"
+      ],
+      "source": "SAAS Winter Unit 2 Review worksheet",
+      "imported_by": "agent-i",
+      "answer_verified": false,
+      "needs_verification": false
+    },
+    {
+      "id": "w2r-q6",
+      "unit": "nonlinear-functions",
+      "standard": "W2.b, W2.c, W2.e",
+      "difficulty": "hard",
+      "type": "detailed-transformation",
+      "question_html": "Identify the parent function and describe the transformations. Draw an accurate graph. Write the domain and range. Set up a table of values and label at least three points. Find the x-intercepts.<br><br>f(x) = −2(x + 2)² + 5",
+      "latex": "f(x) = -2(x+2)^2 + 5",
+      "hint": null,
+      "answer": null,
+      "solution_steps": [],
+      "tags": [
+        "w2.b",
+        "w2.c",
+        "w2.e",
+        "domain-range",
+        "x-intercepts",
+        "graphing"
+      ],
+      "source": "SAAS Winter Unit 2 Review worksheet",
+      "imported_by": "agent-i",
+      "answer_verified": false,
+      "needs_verification": false
+    },
+    {
+      "id": "w2r-q7",
+      "unit": "nonlinear-functions",
+      "standard": "W3.d",
+      "difficulty": "medium",
+      "type": "equation-solving",
+      "question_html": "Solve each equation:<br><br>3^(2x+5) = 81",
+      "latex": "3^{2x+5} = 81",
+      "hint": null,
+      "answer": "-1/2",
+      "solution_steps": [
+        "81 = 3^4, so 2x+5 = 4, x = −1/2"
+      ],
+      "tags": [
+        "w3.d"
+      ],
+      "source": "SAAS Winter Unit 2 Review worksheet",
+      "imported_by": "agent-i",
+      "answer_verified": false,
+      "needs_verification": false
+    },
+    {
+      "id": "w2r-q8",
+      "unit": "nonlinear-functions",
+      "standard": "W3.b",
+      "difficulty": "medium",
+      "type": "equation-solving",
+      "question_html": "Solve each equation:<br><br>2(3x − 1)² + 1 = 9",
+      "latex": "2(3x-1)^2 + 1 = 9",
+      "hint": null,
+      "answer": "x = 1 or x = −1/3",
+      "solution_steps": [
+        "(3x−1)² = 4, 3x−1 = ±2, x = 1 or x = −1/3"
+      ],
+      "tags": [
+        "w3.b"
+      ],
+      "source": "SAAS Winter Unit 2 Review worksheet",
+      "imported_by": "agent-i",
+      "answer_verified": false,
+      "needs_verification": false
+    },
+    {
+      "id": "w2r-q9",
+      "unit": "nonlinear-functions",
+      "standard": "W3.b",
+      "difficulty": "medium",
+      "type": "equation-solving",
+      "question_html": "Solve each equation:<br><br>5^(3x+2) = 4",
+      "latex": "\\sqrt[5]{3x+2} = 4",
+      "hint": null,
+      "answer": "1022/3",
+      "solution_steps": [
+        "3x+2 = 4^5 = 1024, x = 1022/3 ≈ 340.67"
+      ],
+      "tags": [
+        "w3.b"
+      ],
+      "source": "SAAS Winter Unit 2 Review worksheet",
+      "imported_by": "agent-i",
+      "answer_verified": false,
+      "needs_verification": true
+    },
+    {
+      "id": "w2r-q10",
+      "unit": "nonlinear-functions",
+      "standard": "W3.b",
+      "difficulty": "medium",
+      "type": "equation-solving",
+      "question_html": "Solve each equation:<br><br>5 + 4x² − 2 = 3",
+      "latex": "\\sqrt{5 + 4x^2} - 2 = 3",
+      "hint": null,
+      "answer": "x = ±√5",
+      "solution_steps": [
+        "√(5+4x²) = 5, 5+4x² = 25, x² = 5, x = ±√5"
+      ],
+      "tags": [
+        "w3.b"
+      ],
+      "source": "SAAS Winter Unit 2 Review worksheet",
+      "imported_by": "agent-i",
+      "answer_verified": false,
+      "needs_verification": true
+    },
+    {
+      "id": "w2r-q11",
+      "unit": "nonlinear-functions",
+      "standard": "W3.b",
+      "difficulty": "medium",
+      "type": "equation-solving",
+      "question_html": "Solve each equation:<br><br>5 − 3(x + 1)³ = 7",
+      "latex": "5 - 3(x+1)^3 = 7",
+      "hint": null,
+      "answer": "x = −1 + ∛(−2/3)",
+      "solution_steps": [
+        "−3(x+1)³ = 2, (x+1)³ = −2/3, x+1 = ∛(−2/3), x = −1 + ∛(−2/3)"
+      ],
+      "tags": [
+        "w3.b"
+      ],
+      "source": "SAAS Winter Unit 2 Review worksheet",
+      "imported_by": "agent-i",
+      "answer_verified": false,
+      "needs_verification": false
+    },
+    {
+      "id": "w2r-q12",
+      "unit": "nonlinear-functions",
+      "standard": "W3.d",
+      "difficulty": "hard",
+      "type": "equation-solving",
+      "question_html": "Solve each equation:<br><br>5 · 2^(x²−3) = 80",
+      "latex": "5 \\cdot 2^{x^2-3} = 80",
+      "hint": null,
+      "answer": "x = ±√7",
+      "solution_steps": [
+        "2^(x²−3) = 16 = 2^4, x²−3 = 4, x² = 7, x = ±√7"
+      ],
+      "tags": [
+        "w3.d"
+      ],
+      "source": "SAAS Winter Unit 2 Review worksheet",
+      "imported_by": "agent-i",
+      "answer_verified": false,
+      "needs_verification": false
+    },
+    {
+      "id": "w2r-q13",
+      "unit": "nonlinear-functions",
+      "standard": "W2.d",
+      "difficulty": "hard",
+      "type": "graph-to-equation",
+      "question_html": "Given each graph, write the parent function, the transformations that formed the graph, and then use that information to write the equation of the function shown.",
+      "latex": null,
+      "hint": null,
+      "answer": null,
+      "solution_steps": [],
+      "tags": [
+        "w2.d",
+        "graphing",
+        "requires-source-image"
+      ],
+      "source": "SAAS Winter Unit 2 Review worksheet",
+      "imported_by": "agent-i",
+      "answer_verified": false,
+      "needs_verification": false
+    },
+    {
+      "id": "w2r-q14",
+      "unit": "nonlinear-functions",
+      "standard": "W2.d",
+      "difficulty": "hard",
+      "type": "graph-to-equation",
+      "question_html": "Given each graph, write the parent function, the transformations that formed the graph, and then use that information to write the equation of the function shown.",
+      "latex": null,
+      "hint": null,
+      "answer": null,
+      "solution_steps": [],
+      "tags": [
+        "w2.d",
+        "graphing",
+        "requires-source-image"
+      ],
+      "source": "SAAS Winter Unit 2 Review worksheet",
+      "imported_by": "agent-i",
+      "answer_verified": false,
+      "needs_verification": false
+    },
+    {
+      "id": "w2r-q15",
+      "unit": "nonlinear-functions",
+      "standard": "W2.d",
+      "difficulty": "hard",
+      "type": "graph-to-equation",
+      "question_html": "Given each graph, write the parent function, the transformations that formed the graph, and then use that information to write the equation of the function shown.",
+      "latex": null,
+      "hint": null,
+      "answer": null,
+      "solution_steps": [],
+      "tags": [
+        "w2.d",
+        "graphing",
+        "requires-source-image"
+      ],
+      "source": "SAAS Winter Unit 2 Review worksheet",
+      "imported_by": "agent-i",
+      "answer_verified": false,
+      "needs_verification": false
+    },
+    {
+      "id": "w2r-q16",
+      "unit": "nonlinear-functions",
+      "standard": "W2.d",
+      "difficulty": "hard",
+      "type": "graph-to-equation",
+      "question_html": "Given each graph, write the parent function, the transformations that formed the graph, and then use that information to write the equation of the function shown.",
+      "latex": null,
+      "hint": null,
+      "answer": null,
+      "solution_steps": [],
+      "tags": [
+        "w2.d",
+        "graphing",
+        "requires-source-image"
+      ],
+      "source": "SAAS Winter Unit 2 Review worksheet",
+      "imported_by": "agent-i",
+      "answer_verified": false,
+      "needs_verification": false
+    },
+    {
+      "id": "w2r-q17",
+      "unit": "nonlinear-functions",
+      "standard": "W3.d",
+      "difficulty": "medium",
+      "type": "equation-solving",
+      "question_html": "Solve each equation:<br><br>3^(5−x) − 1 = 0",
+      "latex": "3^{5-x} - 1 = 0",
+      "hint": null,
+      "answer": "x = 5",
+      "solution_steps": [
+        "3^(5−x) = 1 = 3^0, 5−x = 0, x = 5"
+      ],
+      "tags": [
+        "w3.d"
+      ],
+      "source": "SAAS Winter Unit 2 Review worksheet",
+      "imported_by": "agent-i",
+      "answer_verified": false,
+      "needs_verification": false
+    },
+    {
+      "id": "w2r-q18",
+      "unit": "nonlinear-functions",
+      "standard": "W3.b",
+      "difficulty": "medium",
+      "type": "equation-solving",
+      "question_html": "Solve each equation:<br><br>2 − 3√x = 4",
+      "latex": "2 - 3\\sqrt{x} = 4",
+      "hint": null,
+      "answer": "No real solution",
+      "solution_steps": [
+        "−3√x = 2, √x = −2/3 — no real solution (√x ≥ 0)"
+      ],
+      "tags": [
+        "w3.b"
+      ],
+      "source": "SAAS Winter Unit 2 Review worksheet",
+      "imported_by": "agent-i",
+      "answer_verified": false,
+      "needs_verification": false
+    },
+    {
+      "id": "w2r-q19",
+      "unit": "nonlinear-functions",
+      "standard": "W3.c",
+      "difficulty": "medium",
+      "type": "equation-solving",
+      "question_html": "Solve each equation:<br><br>(6x−1)/(2x−3) = 5",
+      "latex": "\\frac{6x-1}{2x-3} = 5",
+      "hint": null,
+      "answer": "x = 7/2",
+      "solution_steps": [
+        "6x−1 = 5(2x−3), 6x−1 = 10x−15, 14 = 4x, x = 7/2"
+      ],
+      "tags": [
+        "w3.c"
+      ],
+      "source": "SAAS Winter Unit 2 Review worksheet",
+      "imported_by": "agent-i",
+      "answer_verified": false,
+      "needs_verification": false
+    },
+    {
+      "id": "w2r-q20",
+      "unit": "nonlinear-functions",
+      "standard": "W3.c",
+      "difficulty": "hard",
+      "type": "equation-solving",
+      "question_html": "Solve each equation:<br><br>3/(x−1)² = −4",
+      "latex": "\\frac{3}{\\sqrt{2x-1}} = -4",
+      "hint": null,
+      "answer": "No real solution",
+      "solution_steps": [
+        "No real solution — left side is always positive (cube root output divided), right side is negative"
+      ],
+      "tags": [
+        "w3.c"
+      ],
+      "source": "SAAS Winter Unit 2 Review worksheet",
+      "imported_by": "agent-i",
+      "answer_verified": false,
+      "needs_verification": true
+    },
+    {
+      "id": "w2r-q21",
+      "unit": "nonlinear-functions",
+      "standard": "W3.b, W3.e",
+      "difficulty": "medium",
+      "type": "equation-solving",
+      "question_html": "Solve each equation:<br><br>√(2x + 1) = √(3 − x)",
+      "latex": "\\sqrt{2x+1} = \\sqrt{3-x}",
+      "hint": null,
+      "answer": "x = 2/3",
+      "solution_steps": [
+        "2x+1 = 3−x (squaring both sides), 3x = 2, x = 2/3. Check: √(7/3) = √(7/3) ✓"
+      ],
+      "tags": [
+        "w3.b",
+        "w3.e"
+      ],
+      "source": "SAAS Winter Unit 2 Review worksheet",
+      "imported_by": "agent-i",
+      "answer_verified": false,
+      "needs_verification": false
+    },
+    {
+      "id": "w2r-q22",
+      "unit": "nonlinear-functions",
+      "standard": "W3.b",
+      "difficulty": "hard",
+      "type": "equation-solving",
+      "question_html": "Solve each equation:<br><br>3x^(2/3) − 1 = 107",
+      "latex": "3x^{2/3} - 1 = 107",
+      "hint": null,
+      "answer": "x = 216",
+      "solution_steps": [
+        "3x^(2/3) = 108, x^(2/3) = 36, x = 36^(3/2) = 216"
+      ],
+      "tags": [
+        "w3.b"
+      ],
+      "source": "SAAS Winter Unit 2 Review worksheet",
+      "imported_by": "agent-i",
+      "answer_verified": false,
+      "needs_verification": false
+    },
+    {
+      "id": "w2r-q23",
+      "unit": "nonlinear-functions",
+      "standard": "W3.a, W3.b",
+      "difficulty": "hard",
+      "type": "formula-rearrangement",
+      "question_html": "The gravitational force F between two bodies of mass m₁ and m₂ is given by Newton's Law of Universal Gravitation: F = G · (m₁m₂)/r². Where G is a universal constant. Rearrange the equation to find r in terms of the other quantities.",
+      "latex": "F = G \\cdot \\frac{m_1 m_2}{r^2}",
+      "hint": null,
+      "answer": "r = √(Gm₁m₂/F)",
+      "solution_steps": [
+        "r² = G·m₁m₂/F, so r = √(G·m₁m₂/F)"
+      ],
+      "tags": [
+        "w3.a",
+        "w3.b"
+      ],
+      "source": "SAAS Winter Unit 2 Review worksheet",
+      "imported_by": "agent-i",
+      "answer_verified": false,
+      "needs_verification": false
+    },
+    {
+      "id": "w2r-q24",
+      "unit": "nonlinear-functions",
+      "standard": "W3.a, W3.b",
+      "difficulty": "hard",
+      "type": "formula-rearrangement",
+      "question_html": "When a block of mass m is connected to a spring, it can be set into simple harmonic motion. The period is given by T = 2π√(m/k). Rearrange to isolate mass m.",
+      "latex": "T = 2\\pi\\sqrt{\\frac{m}{k}}",
+      "hint": null,
+      "answer": "m = kT²/(4π²)",
+      "solution_steps": [
+        "T/(2π) = √(m/k), (T/(2π))² = m/k, m = k·(T/(2π))² = kT²/(4π²)"
+      ],
+      "tags": [
+        "w3.a",
+        "w3.b"
+      ],
+      "source": "SAAS Winter Unit 2 Review worksheet",
+      "imported_by": "agent-i",
+      "answer_verified": false,
+      "needs_verification": false
+    },
+    {
+      "id": "w2r-q25",
+      "unit": "nonlinear-functions",
+      "standard": "W3.d",
+      "difficulty": "hard",
+      "type": "word-problem",
+      "question_html": "Gray wolves were reintroduced to Yellowstone in 1995-1996 with about 40 wolves. The population doubled every 10 years.",
+      "latex": null,
+      "hint": null,
+      "answer": null,
+      "solution_steps": [],
+      "tags": [
+        "w3.d"
+      ],
+      "source": "SAAS Winter Unit 2 Review worksheet",
+      "imported_by": "agent-i",
+      "answer_verified": false,
+      "needs_verification": false,
+      "sub_parts": [
+        {
+          "part": "a",
+          "text": "Write a model for the number of wolves after t years.",
+          "answer": "P(t) = 40 · 2^(t/10)"
+        },
+        {
+          "part": "b",
+          "text": "How long would it take for the wolf population to reach 1280?",
+          "answer": "t = 50 years"
+        }
+      ]
+    },
+    {
+      "id": "w2r-q26",
+      "unit": "nonlinear-functions",
+      "standard": "W2.b, W2.c, W2.e",
+      "difficulty": "hard",
+      "type": "comprehensive-analysis",
+      "question_html": "Consider the function defined by f(x) = 2/(x−3)² + 1",
+      "latex": "f(x) = \\frac{2}{(x-3)^2} + 1",
+      "hint": null,
+      "answer": null,
+      "solution_steps": [],
+      "tags": [
+        "w2.b",
+        "w2.c",
+        "w2.e",
+        "graphing"
+      ],
+      "source": "SAAS Winter Unit 2 Review worksheet",
+      "imported_by": "agent-i",
+      "answer_verified": false,
+      "needs_verification": false,
+      "sub_parts": [
+        {
+          "part": "a",
+          "text": "What is the parent function? Sketch a rough graph.",
+          "answer": "y = 1/x²"
+        },
+        {
+          "part": "b",
+          "text": "What are the transformations from the parent function?",
+          "answer": "Horizontal shift right 3, vertical stretch by 2, vertical shift up 1"
+        },
+        {
+          "part": "c",
+          "text": "Write the equations of the vertical and horizontal asymptotes.",
+          "answer": "Vertical: x = 3, Horizontal: y = 1"
+        },
+        {
+          "part": "d",
+          "text": "Find the x-intercept(s).",
+          "answer": "2/(x−3)² + 1 = 0 → 2/(x−3)² = −1 → No real solution (left side always positive)"
+        },
+        {
+          "part": "e",
+          "text": "Construct a table of values for at least three values. Draw an accurate graph with asymptotes.",
+          "answer": null
+        }
+      ]
+    }
+  ]
+}
