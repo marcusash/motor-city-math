@@ -319,3 +319,228 @@ function gradeTest(config) {
 
     return { score: score, total: total, pct: pct, streak: maxStreak, standardScores: stdScores };
 }
+
+/* === Countdown Timer === */
+
+/**
+ * Initialize a countdown timer. Reads data-time-minutes from .test-header.
+ * ADHD-aware: shows remaining time, motivational toasts, auto-submits at 0.
+ * @param {Object} [opts]
+ * @param {number} [opts.minutes] - Override time in minutes
+ * @param {Function} [opts.onTimeUp] - Callback when timer reaches 0
+ */
+function initTimer(opts) {
+    opts = opts || {};
+    var header = document.querySelector('[data-time-minutes]');
+    var minutes = opts.minutes || (header ? parseInt(header.getAttribute('data-time-minutes')) : 0);
+    if (!minutes) return null;
+
+    var totalSeconds = minutes * 60;
+    var remaining = totalSeconds;
+    var timerEl = document.getElementById('timer');
+    var valueEl = document.getElementById('timer-value');
+    if (!timerEl || !valueEl) {
+        // Auto-create timer in header subtitle area
+        var subtitle = document.querySelector('.subtitle');
+        if (subtitle) {
+            var timer = document.createElement('div');
+            timer.id = 'timer';
+            timer.className = 'timer';
+            timer.setAttribute('role', 'timer');
+            timer.setAttribute('aria-live', 'off');
+            timer.setAttribute('aria-label', 'Time remaining');
+            timer.innerHTML = '<span class="timer-icon">⏱</span> <span class="timer-value" id="timer-value"></span>';
+            subtitle.style.display = 'flex';
+            subtitle.style.justifyContent = 'space-between';
+            subtitle.style.alignItems = 'center';
+            subtitle.appendChild(timer);
+            timerEl = timer;
+            valueEl = document.getElementById('timer-value');
+        } else return null;
+    }
+
+    var toastsFired = {};
+
+    function formatTime(s) {
+        var m = Math.floor(s / 60);
+        var sec = s % 60;
+        return m + ':' + (sec < 10 ? '0' : '') + sec;
+    }
+
+    function showToast(msg) {
+        var toast = document.createElement('div');
+        toast.className = 'timer-toast';
+        toast.setAttribute('role', 'alert');
+        toast.setAttribute('aria-live', 'assertive');
+        toast.textContent = '⏱ ' + msg;
+        document.body.appendChild(toast);
+        setTimeout(function() { if (toast.parentNode) toast.parentNode.removeChild(toast); }, 3000);
+    }
+
+    function tick() {
+        if (remaining <= 0) {
+            valueEl.textContent = 'TIME';
+            timerEl.className = 'timer times-up urgent';
+            showToast("Time. Let's see where you are.");
+            if (opts.onTimeUp) opts.onTimeUp();
+            return;
+        }
+
+        remaining--;
+        valueEl.textContent = formatTime(remaining);
+
+        // State classes
+        var mins = remaining / 60;
+        if (mins <= 1) {
+            timerEl.className = 'timer urgent';
+            if (remaining % 15 === 0) timerEl.classList.add('pulse');
+            else timerEl.classList.remove('pulse');
+        } else if (mins <= 5) {
+            timerEl.className = 'timer urgent';
+            if (remaining % 60 === 0) timerEl.classList.add('pulse');
+            else timerEl.classList.remove('pulse');
+        } else if (mins <= 10) {
+            timerEl.className = 'timer warning';
+        } else {
+            timerEl.className = 'timer';
+        }
+
+        // Toasts
+        if (remaining === 600 && !toastsFired[600]) { toastsFired[600] = true; showToast('10 min. Stay locked in.'); }
+        if (remaining === 300 && !toastsFired[300]) { toastsFired[300] = true; showToast('5 min. Finish strong.'); }
+        if (remaining === 60 && !toastsFired[60]) { toastsFired[60] = true; showToast('60 seconds. Wrap it up.'); }
+
+        setTimeout(tick, 1000);
+    }
+
+    valueEl.textContent = formatTime(remaining);
+    setTimeout(tick, 1000);
+    return { getRemaining: function() { return remaining; } };
+}
+
+/* === Arena Mode (Dark Theme) === */
+
+(function() {
+    // Restore preference on load
+    var stored = localStorage.getItem('mcm-arena-mode');
+    if (stored === 'on') {
+        document.body.classList.add('arena-mode');
+    } else if (stored === null) {
+        // Auto-enable if OS prefers dark
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.body.classList.add('arena-mode');
+        }
+    }
+
+    // Insert toggle button if header exists
+    document.addEventListener('DOMContentLoaded', function() {
+        var header = document.querySelector('header');
+        if (!header) return;
+        header.style.position = 'relative';
+        var btn = document.createElement('button');
+        btn.className = 'arena-toggle';
+        btn.id = 'arenaToggle';
+        btn.setAttribute('aria-label', 'Toggle Arena Mode');
+        btn.title = 'Arena Mode';
+        btn.textContent = '🏟️';
+        btn.onclick = function() {
+            document.body.classList.toggle('arena-mode');
+            var isArena = document.body.classList.contains('arena-mode');
+            localStorage.setItem('mcm-arena-mode', isArena ? 'on' : 'off');
+        };
+        header.appendChild(btn);
+    });
+})();
+
+/* === Countdown Timer (.timer-spec.md) === */
+
+/**
+ * Optional countdown timer. Opt-in: add data-time-minutes="45" to any
+ * element with class "test-header" (or the <header>).
+ * Timer shows remaining time (ADHD-friendly). Auto-submits at 0:00.
+ */
+(function() {
+    document.addEventListener('DOMContentLoaded', function() {
+        var header = document.querySelector('[data-time-minutes]');
+        if (!header) return;
+        var minutes = parseInt(header.getAttribute('data-time-minutes'));
+        if (!minutes || minutes <= 0) return;
+
+        var remaining = minutes * 60;
+        var toastFired = {};
+
+        // Create timer element
+        var timerEl = document.createElement('div');
+        timerEl.className = 'timer';
+        timerEl.id = 'timer';
+        timerEl.setAttribute('role', 'timer');
+        timerEl.setAttribute('aria-live', 'off');
+        timerEl.setAttribute('aria-label', 'Time remaining');
+        timerEl.innerHTML = '<span class="timer-icon">⏱</span><span class="timer-value" id="timer-value">' + formatTime(remaining) + '</span>';
+
+        // Insert into header subtitle line or after header
+        var subtitle = header.querySelector('.subtitle');
+        if (subtitle) {
+            subtitle.style.display = 'flex';
+            subtitle.style.justifyContent = 'space-between';
+            subtitle.style.alignItems = 'center';
+            subtitle.appendChild(timerEl);
+        } else {
+            header.appendChild(timerEl);
+        }
+
+        var intervalId = setInterval(tick, 1000);
+
+        function tick() {
+            remaining--;
+            if (remaining <= 0) {
+                remaining = 0;
+                clearInterval(intervalId);
+                timerEl.className = 'timer times-up';
+                document.getElementById('timer-value').textContent = 'TIME';
+                showToast('Time. Let\'s see where you are.');
+                // Auto-submit
+                var submitBtn = document.querySelector('.submit-btn');
+                if (submitBtn) submitBtn.click();
+                return;
+            }
+
+            document.getElementById('timer-value').textContent = formatTime(remaining);
+
+            // State classes
+            if (remaining <= 300) timerEl.className = 'timer urgent';
+            else if (remaining <= 600) timerEl.className = 'timer warning';
+            else timerEl.className = 'timer';
+
+            // Pulse: every 60s when urgent, every 15s in final minute
+            if (remaining < 60 && remaining % 15 === 0) {
+                timerEl.classList.add('pulse');
+                setTimeout(function() { timerEl.classList.remove('pulse'); }, 300);
+            } else if (remaining < 300 && remaining % 60 === 0) {
+                timerEl.classList.add('pulse');
+                setTimeout(function() { timerEl.classList.remove('pulse'); }, 300);
+            }
+
+            // Toast notifications (fire once each)
+            if (remaining === 600 && !toastFired[600]) { toastFired[600] = true; showToast('10 min. Stay locked in.'); }
+            if (remaining === 300 && !toastFired[300]) { toastFired[300] = true; showToast('5 min. Finish strong.'); }
+            if (remaining === 60 && !toastFired[60]) { toastFired[60] = true; showToast('60 seconds. Wrap it up.'); }
+        }
+
+        function formatTime(s) {
+            var m = Math.floor(s / 60);
+            var sec = s % 60;
+            return m + ':' + (sec < 10 ? '0' : '') + sec;
+        }
+
+        function showToast(msg) {
+            var toast = document.createElement('div');
+            toast.className = 'timer-toast';
+            toast.setAttribute('role', 'alert');
+            toast.setAttribute('aria-live', 'assertive');
+            toast.textContent = '⏱ ' + msg;
+            document.body.appendChild(toast);
+            setTimeout(function() { if (toast.parentNode) toast.parentNode.removeChild(toast); }, 3200);
+        }
+    });
+})();
