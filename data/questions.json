@@ -5956,7 +5956,7 @@
       "skill": "equation-solving",
       "source_file": "Winter Tri Standards Worksheets/Copy of (Winter 11) Unit 2 Review.pdf",
       "source_question": 9,
-      "question_text": "Solve each equation: 5^(3x+2) = 4",
+      "question_text": "Solve each equation: ⁵√(3x+2) = 4",
       "sub_parts": [],
       "tags": [
         "w3.b"
@@ -5977,7 +5977,7 @@
       "skill": "equation-solving",
       "source_file": "Winter Tri Standards Worksheets/Copy of (Winter 11) Unit 2 Review.pdf",
       "source_question": 10,
-      "question_text": "Solve each equation: 5 + 4x² − 2 = 3",
+      "question_text": "Solve each equation: √(5 + 4x²) − 2 = 3",
       "sub_parts": [],
       "tags": [
         "w3.b"
@@ -6194,17 +6194,17 @@
       "skill": "equation-solving",
       "source_file": "Winter Tri Standards Worksheets/Copy of (Winter 11) Unit 2 Review.pdf",
       "source_question": 20,
-      "question_text": "Solve each equation: 3/(x−1)² = −4",
+      "question_text": "Solve each equation: ³√(2/(x−1)) = −4",
       "sub_parts": [],
       "tags": [
         "w3.c"
       ],
-      "answer": "No real solution",
-      "hint": "Think about whether the left side can ever be negative.",
+      "answer": "x = 31/32",
+      "hint": "Cube both sides first to eliminate the cube root.",
       "solution_steps": [
-        "Note √(2x−1) is always ≥ 0 for valid x",
-        "So 3/√(2x−1) is always positive",
-        "A positive expression cannot equal −4: no real solution"
+        "Cube both sides: 2/(x−1) = (−4)³ = −64",
+        "Solve for x−1: x−1 = 2/(−64) = −1/32",
+        "x = 1 − 1/32 = 31/32"
       ]
     },
     {

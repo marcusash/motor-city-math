@@ -230,7 +230,7 @@
       "standard": "W3.b",
       "difficulty": "medium",
       "type": "equation-solving",
-      "question_html": "Solve each equation:<br><br>5^(3x+2) = 4",
+      "question_html": "Solve each equation:<br><br>⁵√(3x+2) = 4",
       "latex": "\\sqrt[5]{3x+2} = 4",
       "hint": null,
       "answer": "1022/3",
@@ -242,8 +242,8 @@
       ],
       "source": "SAAS Winter Unit 2 Review worksheet",
       "imported_by": "agent-i",
-      "answer_verified": false,
-      "needs_verification": true
+      "answer_verified": true,
+      "needs_verification": false
     },
     {
       "id": "w2r-q10",
@@ -251,7 +251,7 @@
       "standard": "W3.b",
       "difficulty": "medium",
       "type": "equation-solving",
-      "question_html": "Solve each equation:<br><br>5 + 4x² − 2 = 3",
+      "question_html": "Solve each equation:<br><br>√(5 + 4x²) − 2 = 3",
       "latex": "\\sqrt{5 + 4x^2} - 2 = 3",
       "hint": null,
       "answer": "x = ±√5",
@@ -263,8 +263,8 @@
       ],
       "source": "SAAS Winter Unit 2 Review worksheet",
       "imported_by": "agent-i",
-      "answer_verified": false,
-      "needs_verification": true
+      "answer_verified": true,
+      "needs_verification": false
     },
     {
       "id": "w2r-q11",
@@ -461,20 +461,20 @@
       "standard": "W3.c",
       "difficulty": "hard",
       "type": "equation-solving",
-      "question_html": "Solve each equation:<br><br>3/(x−1)² = −4",
-      "latex": "\\frac{3}{\\sqrt{2x-1}} = -4",
+      "question_html": "Solve each equation:<br><br>³√(2/(x−1)) = −4",
+      "latex": "\\sqrt[3]{\\frac{2}{x-1}} = -4",
       "hint": null,
-      "answer": "No real solution",
+      "answer": "x = 31/32",
       "solution_steps": [
-        "No real solution — left side is always positive (cube root output divided), right side is negative"
+        "Cube both sides: 2/(x−1) = (−4)³ = −64. Then x−1 = 2/(−64) = −1/32. So x = 1 − 1/32 = 31/32."
       ],
       "tags": [
         "w3.c"
       ],
       "source": "SAAS Winter Unit 2 Review worksheet",
       "imported_by": "agent-i",
-      "answer_verified": false,
-      "needs_verification": true
+      "answer_verified": true,
+      "needs_verification": false
     },
     {
       "id": "w2r-q21",

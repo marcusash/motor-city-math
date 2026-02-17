@@ -354,13 +354,13 @@ function parseWorksheet(pages) {
     },
     {
       number: 20,
-      expression: '3/(x−1)² = −4', // Extracted text suggests this; verify
-      latex: '\\frac{3}{\\sqrt{2x-1}} = -4',
+      expression: '³√(2/(x−1)) = −4',
+      latex: '\\sqrt[3]{\\frac{2}{x-1}} = -4',
       standards: ['W3.c'],
       difficulty: 'hard',
-      answer: 'No real solution — left side is always positive (cube root output divided), right side is negative',
-      answerValue: 'No real solution',
-      needsVerification: true
+      answer: 'Cube both sides: 2/(x−1) = (−4)³ = −64. x−1 = −1/32, x = 31/32',
+      answerValue: 'x = 31/32',
+      needsVerification: false
     },
     {
       number: 21,

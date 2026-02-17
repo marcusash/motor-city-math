@@ -319,15 +319,15 @@
       ],
       "difficulty": "medium",
       "questionText": "Solve each equation:",
-      "expression": "5^(3x+2) = 4",
+      "expression": "⁵√(3x+2) = 4",
       "latex": "\\sqrt[5]{3x+2} = 4",
       "requiresGraph": false,
       "answer": {
         "solution": "3x+2 = 4^5 = 1024, x = 1022/3 ≈ 340.67",
         "value": "1022/3"
       },
-      "answerVerified": false,
-      "needsVerification": true
+      "answerVerified": true,
+      "needsVerification": false
     },
     {
       "id": "W2R-Q10",
@@ -338,15 +338,15 @@
       ],
       "difficulty": "medium",
       "questionText": "Solve each equation:",
-      "expression": "5 + 4x² − 2 = 3",
+      "expression": "√(5 + 4x²) − 2 = 3",
       "latex": "\\sqrt{5 + 4x^2} - 2 = 3",
       "requiresGraph": false,
       "answer": {
         "solution": "√(5+4x²) = 5, 5+4x² = 25, x² = 5, x = ±√5",
         "value": "x = ±√5"
       },
-      "answerVerified": false,
-      "needsVerification": true
+      "answerVerified": true,
+      "needsVerification": false
     },
     {
       "id": "W2R-Q11",
@@ -536,15 +536,15 @@
       ],
       "difficulty": "hard",
       "questionText": "Solve each equation:",
-      "expression": "3/(x−1)² = −4",
-      "latex": "\\frac{3}{\\sqrt{2x-1}} = -4",
+      "expression": "³√(2/(x−1)) = −4",
+      "latex": "\\sqrt[3]{\\frac{2}{x-1}} = -4",
       "requiresGraph": false,
       "answer": {
-        "solution": "No real solution — left side is always positive (cube root output divided), right side is negative",
-        "value": "No real solution"
+        "solution": "Cube both sides: 2/(x−1) = (−4)³ = −64. Then x−1 = 2/(−64) = −1/32. So x = 1 − 1/32 = 31/32.",
+        "value": "x = 31/32"
       },
-      "answerVerified": false,
-      "needsVerification": true
+      "answerVerified": true,
+      "needsVerification": false
     },
     {
       "id": "W2R-Q21",
