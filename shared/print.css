@@ -1,0 +1,209 @@
+/* Motor City Math — Print Styles
+ * Every test must produce clean printable output.
+ * Hidden: buttons, modals, score cards, feedback.
+ * Visible: questions, work areas, answer blanks.
+ */
+
+@media print {
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color: #000 !important;
+        background: white !important;
+        border-color: #000 !important;
+    }
+
+    body {
+        background: white !important;
+        padding: 0;
+    }
+
+    .container {
+        box-shadow: none;
+        padding: 20px;
+        max-width: 100%;
+        background: white !important;
+    }
+
+    /* Print header — visible only on paper */
+    .print-header {
+        display: block !important;
+        text-align: center;
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+        border-bottom: 2px solid #000;
+    }
+
+    .print-header .name-date {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+    }
+
+    .print-header .name-date span {
+        border-bottom: 1px solid #000;
+        min-width: 200px;
+        display: inline-block;
+    }
+
+    /* Question cards */
+    .question-card {
+        background: white !important;
+        border: 2px solid #000 !important;
+        border-left: 5px solid #000 !important;
+        page-break-inside: avoid;
+        break-inside: avoid;
+        margin-bottom: 20px;
+    }
+
+    .question-number {
+        color: #000 !important;
+        border-bottom: 1px solid #000;
+        padding-bottom: 5px;
+    }
+
+    .question-text {
+        color: #000 !important;
+    }
+
+    /* Charts */
+    .chart-container {
+        border: 1px solid #000 !important;
+        background: white !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+        height: auto !important;
+        max-height: none !important;
+        overflow: visible !important;
+    }
+
+    canvas {
+        -webkit-filter: grayscale(100%) !important;
+        filter: grayscale(100%) !important;
+        max-width: 100% !important;
+        height: auto !important;
+        max-height: none !important;
+    }
+
+    /* Inputs */
+    input, textarea {
+        border: 1px solid #000 !important;
+        background: white !important;
+        color: #000 !important;
+        padding: 14px !important;
+        box-sizing: border-box !important;
+    }
+
+    textarea {
+        padding-bottom: 20px !important;
+        padding-right: 20px !important;
+    }
+
+    /* Hide interactive elements */
+    .submit-btn,
+    .btn-primary,
+    .print-btn,
+    .btn-secondary,
+    .answer-key-btn,
+    .btn-ghost,
+    .result,
+    .answer-feedback,
+    .answer-key-modal,
+    .score-card,
+    .calc-toggle-btn,
+    .calculator-modal {
+        display: none !important;
+    }
+
+    /* Work areas */
+    .work-area {
+        border: 1px solid #000 !important;
+        background: white !important;
+        min-height: 80px;
+    }
+
+    .final-answer-box {
+        border: 2px solid #000 !important;
+        background: white !important;
+    }
+
+    .final-answer-label {
+        color: #000 !important;
+    }
+
+    /* Header */
+    header {
+        border-bottom: 2px solid #000;
+        background: white !important;
+    }
+
+    h1 {
+        color: #000 !important;
+    }
+
+    .subtitle {
+        color: #000 !important;
+    }
+
+    /* Tables */
+    table {
+        border: 1px solid #000;
+    }
+
+    table td, table th {
+        border: 1px solid #000 !important;
+        background: white !important;
+        color: #000 !important;
+    }
+
+    table th {
+        background: #e5e5e5 !important;
+        color: #000 !important;
+    }
+
+    .steps-table th {
+        background: #e5e5e5 !important;
+        color: #000 !important;
+    }
+
+    /* Math notation */
+    .math-notation {
+        background: #e5e5e5 !important;
+        border: 1px solid #000;
+        color: #000 !important;
+    }
+
+    /* Labels */
+    label, .work-label {
+        color: #000 !important;
+    }
+
+    /* Learning targets */
+    .learning-targets {
+        background: white !important;
+        border: 2px solid #000 !important;
+    }
+
+    .learning-targets h3 {
+        color: #000 !important;
+    }
+
+    .learning-targets li::before {
+        color: #000 !important;
+    }
+
+    /* Instructions */
+    .instructions {
+        background: white !important;
+        border: 1px solid #000 !important;
+    }
+
+    .instructions h3 {
+        color: #000 !important;
+    }
+}
+
+/* Print header hidden on screen */
+.print-header {
+    display: none;
+}
