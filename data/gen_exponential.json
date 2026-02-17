@@ -1,0 +1,1683 @@
+[
+  {
+    "id": "gen-exp-001",
+    "unit": "exponential-functions",
+    "standard": "5.a",
+    "difficulty": "easy",
+    "type": "short",
+    "skill": "model",
+    "source_file": "generated",
+    "question_text": "A social media account starts with 200 followers and triples every month. Write the exponential model P(t) = a*b^t where t is the number of months.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Write the exponential model P(t).",
+        "answer": "P(t) = 200 * 3^t",
+        "answer_type": "equation"
+      }
+    ],
+    "hint": "Start with 200 and find what multiplies each month.",
+    "solution_steps": [
+      "Step 1: Identify initial value a = 200 (followers at t = 0).",
+      "Step 2: Identify base b = 3 (triples means multiply by 3).",
+      "Step 3: Write model P(t) = 200 * 3^t."
+    ],
+    "tags": [
+      "exponential",
+      "growth",
+      "social-media",
+      "model"
+    ]
+  },
+  {
+    "id": "gen-exp-002",
+    "unit": "exponential-functions",
+    "standard": "5.a",
+    "difficulty": "easy",
+    "type": "short",
+    "skill": "identify",
+    "source_file": "generated",
+    "question_text": "Which table represents exponential growth? Explain how you know.\\nTable A: x = 0, 1, 2, 3 and y = 4, 12, 36, 108\\nTable B: x = 0, 1, 2, 3 and y = 4, 10, 16, 22",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Identify which table is exponential.",
+        "answer": "Table A",
+        "answer_type": "text"
+      },
+      {
+        "label": "b",
+        "text": "Explain how you know.",
+        "answer": "Table A has a constant ratio of 3 between consecutive y-values (12/4 = 3, 36/12 = 3, 108/36 = 3). Table B has a constant difference of 6, making it linear.",
+        "answer_type": "text"
+      }
+    ],
+    "hint": "Constant ratio means exponential, constant difference means linear.",
+    "solution_steps": [
+      "Step 1: Table A ratios: 12/4 = 3, 36/12 = 3, 108/36 = 3. Constant ratio = exponential.",
+      "Step 2: Table B differences: 10-4 = 6, 16-10 = 6, 22-16 = 6. Constant difference = linear.",
+      "Step 3: Table A is exponential growth with base 3."
+    ],
+    "tags": [
+      "exponential",
+      "linear",
+      "identify",
+      "table"
+    ]
+  },
+  {
+    "id": "gen-exp-003",
+    "unit": "exponential-functions",
+    "standard": "5.a",
+    "difficulty": "easy",
+    "type": "short",
+    "skill": "evaluate",
+    "source_file": "generated",
+    "question_text": "Evaluate f(t) = 400 * (1.5)^t at t = 2 and t = 4.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Find f(2).",
+        "answer": "900",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "b",
+        "text": "Find f(4).",
+        "answer": "2025",
+        "answer_type": "numeric"
+      }
+    ],
+    "hint": "Plug in t and multiply step by step.",
+    "solution_steps": [
+      "Step 1: f(2) = 400 * (1.5)^2 = 400 * 2.25 = 900.",
+      "Step 2: f(4) = 400 * (1.5)^4. First, (1.5)^4 = 1.5 * 1.5 * 1.5 * 1.5 = 5.0625.",
+      "Step 3: f(4) = 400 * 5.0625 = 2025."
+    ],
+    "tags": [
+      "exponential",
+      "evaluate",
+      "growth"
+    ]
+  },
+  {
+    "id": "gen-exp-004",
+    "unit": "exponential-functions",
+    "standard": "5.a",
+    "difficulty": "easy",
+    "type": "short",
+    "skill": "identify",
+    "source_file": "generated",
+    "question_text": "For the function P(t) = 650 * (0.72)^t, identify the initial value, the base, and whether this represents growth or decay.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "What is the initial value?",
+        "answer": "650",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "b",
+        "text": "What is the base?",
+        "answer": "0.72",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "c",
+        "text": "Is this growth or decay?",
+        "answer": "Decay, because the base 0.72 is between 0 and 1.",
+        "answer_type": "text"
+      }
+    ],
+    "hint": "If the base is less than 1, the function is decaying.",
+    "solution_steps": [
+      "Step 1: Initial value a = 650 (the coefficient in front of the base).",
+      "Step 2: Base b = 0.72.",
+      "Step 3: Since 0 < 0.72 < 1, this is exponential decay."
+    ],
+    "tags": [
+      "exponential",
+      "decay",
+      "identify"
+    ]
+  },
+  {
+    "id": "gen-exp-005",
+    "unit": "exponential-functions",
+    "standard": "5.a",
+    "difficulty": "medium",
+    "type": "multi-part",
+    "skill": "model",
+    "source_file": "generated",
+    "question_text": "Pistons season ticket prices start at  and increase by 8% each year. Write an exponential model T(t) = a * b^t for the ticket price after t years.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Write the exponential model T(t).",
+        "answer": "T(t) = 45 * (1.08)^t",
+        "answer_type": "equation"
+      },
+      {
+        "label": "b",
+        "text": "Find the ticket price after 3 years. Round to the nearest cent.",
+        "answer": "56.69",
+        "answer_type": "numeric"
+      }
+    ],
+    "hint": "Rate plus 1 gives you the base, Kai.",
+    "solution_steps": [
+      "Step 1: Initial value a = 45 (starting price).",
+      "Step 2: Growth rate r = 0.08, so base b = 1 + 0.08 = 1.08.",
+      "Step 3: Model is T(t) = 45 * (1.08)^t.",
+      "Step 4: T(3) = 45 * (1.08)^3. Compute (1.08)^3: 1.08 * 1.08 = 1.1664, then 1.1664 * 1.08 = 1.259712.",
+      "Step 5: T(3) = 45 * 1.259712 = 56.687... ≈ .69."
+    ],
+    "tags": [
+      "exponential",
+      "growth",
+      "tickets",
+      "pistons",
+      "model"
+    ]
+  },
+  {
+    "id": "gen-exp-006",
+    "unit": "exponential-functions",
+    "standard": "5.a",
+    "difficulty": "medium",
+    "type": "multi-part",
+    "skill": "model",
+    "source_file": "generated",
+    "question_text": "A phone battery starts at 100% and loses half its charge every 5 hours. Write an exponential model B(n) where n is the number of 5-hour periods.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Write the model B(n).",
+        "answer": "B(n) = 100 * (0.5)^n",
+        "answer_type": "equation"
+      },
+      {
+        "label": "b",
+        "text": "What percent of battery remains after 20 hours?",
+        "answer": "6.25",
+        "answer_type": "numeric"
+      }
+    ],
+    "hint": "Half means multiply by 0.5 each period.",
+    "solution_steps": [
+      "Step 1: Initial value a = 100 (percent).",
+      "Step 2: Loses half each period, so b = 0.5.",
+      "Step 3: Model is B(n) = 100 * (0.5)^n.",
+      "Step 4: 20 hours = 4 periods of 5 hours, so n = 4.",
+      "Step 5: B(4) = 100 * (0.5)^4 = 100 * 0.0625 = 6.25%."
+    ],
+    "tags": [
+      "exponential",
+      "decay",
+      "battery",
+      "model",
+      "half-life"
+    ]
+  },
+  {
+    "id": "gen-exp-007",
+    "unit": "exponential-functions",
+    "standard": "5.a",
+    "difficulty": "medium",
+    "type": "multi-part",
+    "skill": "model",
+    "source_file": "generated",
+    "question_text": "A scientist records the mass of a substance over time:\\nDay 0: 500 g, Day 1: 400 g, Day 2: 320 g, Day 3: 256 g.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Show this data is exponential by finding the common ratio.",
+        "answer": "Common ratio = 0.8 (400/500 = 0.8, 320/400 = 0.8, 256/320 = 0.8)",
+        "answer_type": "text"
+      },
+      {
+        "label": "b",
+        "text": "Write the model M(t) = a * b^t.",
+        "answer": "M(t) = 500 * (0.8)^t",
+        "answer_type": "equation"
+      },
+      {
+        "label": "c",
+        "text": "Predict the mass on Day 5.",
+        "answer": "163.84",
+        "answer_type": "numeric"
+      }
+    ],
+    "hint": "Divide consecutive terms to find the common ratio.",
+    "solution_steps": [
+      "Step 1: Ratios: 400/500 = 0.8, 320/400 = 0.8, 256/320 = 0.8. Constant ratio = exponential.",
+      "Step 2: a = 500, b = 0.8. Model: M(t) = 500 * (0.8)^t.",
+      "Step 3: M(5) = 500 * (0.8)^5. Compute: 0.8^4 = 0.4096, 0.8^5 = 0.32768.",
+      "Step 4: M(5) = 500 * 0.32768 = 163.84 g."
+    ],
+    "tags": [
+      "exponential",
+      "decay",
+      "radioactive",
+      "model",
+      "table"
+    ]
+  },
+  {
+    "id": "gen-exp-008",
+    "unit": "exponential-functions",
+    "standard": "5.a",
+    "difficulty": "medium",
+    "type": "short",
+    "skill": "interpret",
+    "source_file": "generated",
+    "question_text": "Jaylen says the function V(t) = 5000 * (1.12)^t is linear because the value increases over time. Is Jaylen correct? Explain your reasoning and identify the growth rate.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Is Jaylen correct? Explain.",
+        "answer": "No. The function is exponential because the variable t is in the exponent. Linear functions have the form y = mx + b where the variable is multiplied by a constant, not used as an exponent.",
+        "answer_type": "text"
+      },
+      {
+        "label": "b",
+        "text": "What is the growth rate?",
+        "answer": "12%",
+        "answer_type": "text"
+      }
+    ],
+    "hint": "Linear has constant slope; exponential has a constant multiplier.",
+    "solution_steps": [
+      "Step 1: Jaylen is incorrect. V(t) = 5000 * (1.12)^t has t in the exponent, making it exponential.",
+      "Step 2: A linear function would look like V(t) = 5000 + 600t (constant additive change).",
+      "Step 3: Growth rate = b - 1 = 1.12 - 1 = 0.12 = 12%."
+    ],
+    "tags": [
+      "exponential",
+      "growth",
+      "interpret",
+      "misconception"
+    ]
+  },
+  {
+    "id": "gen-exp-009",
+    "unit": "exponential-functions",
+    "standard": "5.a",
+    "difficulty": "medium",
+    "type": "multi-part",
+    "skill": "model",
+    "source_file": "generated",
+    "question_text": "A population of fish starts at 1,200 and grows by a factor of 1.4 every year.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Write an exponential model P(t) = a * b^t.",
+        "answer": "P(t) = 1200 * (1.4)^t",
+        "answer_type": "equation"
+      },
+      {
+        "label": "b",
+        "text": "What is the growth rate as a percentage?",
+        "answer": "40%",
+        "answer_type": "text"
+      },
+      {
+        "label": "c",
+        "text": "Find the population after 3 years. Round to the nearest whole number.",
+        "answer": "3293",
+        "answer_type": "numeric"
+      }
+    ],
+    "hint": "Growth factor is your base. Rate is base minus 1.",
+    "solution_steps": [
+      "Step 1: a = 1200, b = 1.4. Model: P(t) = 1200 * (1.4)^t.",
+      "Step 2: Growth rate = b - 1 = 1.4 - 1 = 0.4 = 40%.",
+      "Step 3: P(3) = 1200 * (1.4)^3. Compute: 1.4^2 = 1.96, 1.4^3 = 1.96 * 1.4 = 2.744.",
+      "Step 4: P(3) = 1200 * 2.744 = 3292.8 ≈ 3293 fish."
+    ],
+    "tags": [
+      "exponential",
+      "growth",
+      "population",
+      "fish",
+      "model"
+    ]
+  },
+  {
+    "id": "gen-exp-010",
+    "unit": "exponential-functions",
+    "standard": "5.a",
+    "difficulty": "medium",
+    "type": "multi-part",
+    "skill": "identify",
+    "source_file": "generated",
+    "question_text": "Marcus tracks the number of views on a viral video:\\nDay 0: 50, Day 1: 150, Day 2: 450, Day 3: 1,350.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Is this growth linear or exponential? Justify with calculations.",
+        "answer": "Exponential. The ratio between consecutive terms is constant: 150/50 = 3, 450/150 = 3, 1350/450 = 3.",
+        "answer_type": "text"
+      },
+      {
+        "label": "b",
+        "text": "Write the model V(t) = a * b^t.",
+        "answer": "V(t) = 50 * 3^t",
+        "answer_type": "equation"
+      },
+      {
+        "label": "c",
+        "text": "Predict views on Day 6.",
+        "answer": "36450",
+        "answer_type": "numeric"
+      }
+    ],
+    "hint": "Is the change additive or multiplicative? That tells the type.",
+    "solution_steps": [
+      "Step 1: Check ratios: 150/50 = 3, 450/150 = 3, 1350/450 = 3. Constant ratio → exponential.",
+      "Step 2: a = 50, b = 3. Model: V(t) = 50 * 3^t.",
+      "Step 3: V(6) = 50 * 3^6. Compute: 3^6 = 729.",
+      "Step 4: V(6) = 50 * 729 = 36,450 views."
+    ],
+    "tags": [
+      "exponential",
+      "growth",
+      "social-media",
+      "viral",
+      "model"
+    ]
+  },
+  {
+    "id": "gen-exp-011",
+    "unit": "exponential-functions",
+    "standard": "5.a",
+    "difficulty": "hard",
+    "type": "multi-part",
+    "skill": "model",
+    "source_file": "generated",
+    "question_text": "Two savings plans are offered:\\nPlan A: Deposit ,000 and earn  per year (linear growth).\\nPlan B: Deposit  and earn 9% interest per year (exponential growth).",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Write a model for each plan.",
+        "answer": "A(t) = 1000 + 80t; B(t) = 800 * (1.09)^t",
+        "answer_type": "equation"
+      },
+      {
+        "label": "b",
+        "text": "Find the value of each plan after 5 years.",
+        "answer": "A(5) = ,400; B(5) = ,230.90",
+        "answer_type": "text"
+      },
+      {
+        "label": "c",
+        "text": "After how many complete years will Plan B first exceed Plan A?",
+        "answer": "9 years",
+        "answer_type": "text"
+      }
+    ],
+    "hint": "Write each formula, then compare year by year.",
+    "solution_steps": [
+      "Step 1: A(t) = 1000 + 80t (linear). B(t) = 800 * (1.09)^t (exponential).",
+      "Step 2: A(5) = 1000 + 80(5) = 1000 + 400 = ,400.",
+      "Step 3: B(5) = 800 * (1.09)^5. Compute: 1.09^5 = 1.53862. B(5) = 800 * 1.53862 = ,230.90.",
+      "Step 4: Compare year by year: At t=8, A=1640, B=800*1.09^8=800*1.99256=1594.05. A > B.",
+      "Step 5: At t=9, A=1720, B=800*1.09^9=800*2.17189=1737.51. B > A. Plan B first exceeds Plan A after 9 years."
+    ],
+    "tags": [
+      "exponential",
+      "growth",
+      "linear",
+      "compare",
+      "savings"
+    ]
+  },
+  {
+    "id": "gen-exp-012",
+    "unit": "exponential-functions",
+    "standard": "5.a",
+    "difficulty": "hard",
+    "type": "multi-part",
+    "skill": "solve",
+    "source_file": "generated",
+    "question_text": "An exponential function passes through the points (0, 240) and (3, 30). Find the exponential model f(t) = a * b^t.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Find the value of a.",
+        "answer": "240",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "b",
+        "text": "Find the value of b.",
+        "answer": "0.5",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "c",
+        "text": "Write the complete model.",
+        "answer": "f(t) = 240 * (0.5)^t",
+        "answer_type": "equation"
+      }
+    ],
+    "hint": "Use (0, 240) to find a, then solve for b.",
+    "solution_steps": [
+      "Step 1: f(0) = a * b^0 = a * 1 = a = 240.",
+      "Step 2: f(3) = 240 * b^3 = 30.",
+      "Step 3: b^3 = 30 / 240 = 0.125.",
+      "Step 4: b = cube root of 0.125 = 0.5.",
+      "Step 5: Model: f(t) = 240 * (0.5)^t. Verify: f(3) = 240 * 0.125 = 30. ✓"
+    ],
+    "tags": [
+      "exponential",
+      "decay",
+      "model",
+      "two-points",
+      "solve"
+    ]
+  },
+  {
+    "id": "gen-exp-013",
+    "unit": "exponential-functions",
+    "standard": "5.a",
+    "difficulty": "hard",
+    "type": "multi-part",
+    "skill": "interpret",
+    "source_file": "generated",
+    "question_text": "A student writes the model for a town losing 6% of its population each year from 25,000 people as P(t) = 25000 * (1.06)^t. Identify the error and write the correct model.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "What error did the student make?",
+        "answer": "The student used b = 1.06 (growth) instead of b = 0.94 (decay). For a 6% decrease, b = 1 - 0.06 = 0.94.",
+        "answer_type": "text"
+      },
+      {
+        "label": "b",
+        "text": "Write the correct model.",
+        "answer": "P(t) = 25000 * (0.94)^t",
+        "answer_type": "equation"
+      },
+      {
+        "label": "c",
+        "text": "Find the population after 4 years using the correct model. Round to the nearest whole number.",
+        "answer": "19519",
+        "answer_type": "numeric"
+      }
+    ],
+    "hint": "Decay means b is less than 1. Check the base.",
+    "solution_steps": [
+      "Step 1: The student used 1.06 which models 6% GROWTH, not decay.",
+      "Step 2: For decay of 6%, b = 1 - 0.06 = 0.94.",
+      "Step 3: Correct model: P(t) = 25000 * (0.94)^t.",
+      "Step 4: P(4) = 25000 * (0.94)^4. Compute: 0.94^2 = 0.8836, 0.94^4 = 0.8836^2 = 0.78074896.",
+      "Step 5: P(4) = 25000 * 0.78075 = 19518.7 ≈ 19,519 people."
+    ],
+    "tags": [
+      "exponential",
+      "decay",
+      "error-analysis",
+      "population",
+      "model"
+    ]
+  },
+  {
+    "id": "gen-exp-014",
+    "unit": "exponential-functions",
+    "standard": "5.a",
+    "difficulty": "hard",
+    "type": "multi-part",
+    "skill": "identify",
+    "source_file": "generated",
+    "question_text": "A table shows data for two functions:\\nt: 0, 1, 2, 3, 4\\nf(t): 100, 130, 160, 190, 220\\ng(t): 100, 120, 144, 172.8, 207.36",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Classify each function as linear or exponential. Show your work.",
+        "answer": "f(t) is linear (constant difference of 30). g(t) is exponential (constant ratio of 1.2).",
+        "answer_type": "text"
+      },
+      {
+        "label": "b",
+        "text": "Write the equation for each function.",
+        "answer": "f(t) = 100 + 30t; g(t) = 100 * (1.2)^t",
+        "answer_type": "equation"
+      },
+      {
+        "label": "c",
+        "text": "Which function has a greater value at t = 10? Show your work.",
+        "answer": "g(10) = 619.17 > f(10) = 400. g(t) has a greater value.",
+        "answer_type": "text"
+      }
+    ],
+    "hint": "Find differences AND ratios, then compare at t = 10.",
+    "solution_steps": [
+      "Step 1: f(t) differences: 130-100=30, 160-130=30, 190-160=30, 220-190=30. Constant → linear.",
+      "Step 2: g(t) ratios: 120/100=1.2, 144/120=1.2, 172.8/144=1.2, 207.36/172.8=1.2. Constant → exponential.",
+      "Step 3: f(t) = 100 + 30t. g(t) = 100 * (1.2)^t.",
+      "Step 4: f(10) = 100 + 30(10) = 400.",
+      "Step 5: g(10) = 100 * (1.2)^10. Compute: 1.2^10 = 6.19174. g(10) = 619.17.",
+      "Step 6: 619.17 > 400, so g(t) has the greater value at t = 10."
+    ],
+    "tags": [
+      "exponential",
+      "growth",
+      "linear",
+      "compare",
+      "table"
+    ]
+  },
+  {
+    "id": "gen-exp-015",
+    "unit": "exponential-functions",
+    "standard": "5.b",
+    "difficulty": "easy",
+    "type": "short",
+    "skill": "model",
+    "source_file": "generated",
+    "question_text": "An investment of ,000 grows at 6% per year. Identify the initial value and the growth rate, then write the model V(t) = a * b^t.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "What is the initial value a?",
+        "answer": "1000",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "b",
+        "text": "What is the growth rate?",
+        "answer": "6%",
+        "answer_type": "text"
+      },
+      {
+        "label": "c",
+        "text": "Write the model V(t).",
+        "answer": "V(t) = 1000 * (1.06)^t",
+        "answer_type": "equation"
+      }
+    ],
+    "hint": "Growth rate becomes 1 + r for your base.",
+    "solution_steps": [
+      "Step 1: Initial value a = 1000.",
+      "Step 2: Growth rate r = 6% = 0.06.",
+      "Step 3: Base b = 1 + r = 1 + 0.06 = 1.06.",
+      "Step 4: Model: V(t) = 1000 * (1.06)^t."
+    ],
+    "tags": [
+      "exponential",
+      "growth",
+      "investment",
+      "model"
+    ]
+  },
+  {
+    "id": "gen-exp-016",
+    "unit": "exponential-functions",
+    "standard": "5.b",
+    "difficulty": "easy",
+    "type": "short",
+    "skill": "evaluate",
+    "source_file": "generated",
+    "question_text": "A city has a population of 5,000 that grows 4% per year. Find the population after 1 year and after 2 years.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Write the model P(t).",
+        "answer": "P(t) = 5000 * (1.04)^t",
+        "answer_type": "equation"
+      },
+      {
+        "label": "b",
+        "text": "Find P(1).",
+        "answer": "5200",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "c",
+        "text": "Find P(2).",
+        "answer": "5408",
+        "answer_type": "numeric"
+      }
+    ],
+    "hint": "Multiply the starting population by 1.04 each year.",
+    "solution_steps": [
+      "Step 1: a = 5000, r = 0.04, b = 1.04. Model: P(t) = 5000 * (1.04)^t.",
+      "Step 2: P(1) = 5000 * 1.04 = 5200.",
+      "Step 3: P(2) = 5000 * (1.04)^2 = 5000 * 1.0816 = 5408."
+    ],
+    "tags": [
+      "exponential",
+      "growth",
+      "population",
+      "evaluate"
+    ]
+  },
+  {
+    "id": "gen-exp-017",
+    "unit": "exponential-functions",
+    "standard": "5.b",
+    "difficulty": "easy",
+    "type": "short",
+    "skill": "model",
+    "source_file": "generated",
+    "question_text": "A bacteria colony starts with 300 bacteria and grows 20% per hour. Write the exponential growth model B(t) = a * b^t.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "What is the base b?",
+        "answer": "1.20",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "b",
+        "text": "Write the model B(t).",
+        "answer": "B(t) = 300 * (1.20)^t",
+        "answer_type": "equation"
+      }
+    ],
+    "hint": "Growing 20% means your base b equals 1.20.",
+    "solution_steps": [
+      "Step 1: Initial value a = 300.",
+      "Step 2: Growth rate r = 20% = 0.20. Base b = 1 + 0.20 = 1.20.",
+      "Step 3: Model: B(t) = 300 * (1.20)^t."
+    ],
+    "tags": [
+      "exponential",
+      "growth",
+      "bacteria",
+      "model"
+    ]
+  },
+  {
+    "id": "gen-exp-018",
+    "unit": "exponential-functions",
+    "standard": "5.b",
+    "difficulty": "easy",
+    "type": "short",
+    "skill": "evaluate",
+    "source_file": "generated",
+    "question_text": "Given V(t) = 4000 * (1.5)^t, find the initial value, the growth rate, and evaluate V(3).",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "What is the initial value?",
+        "answer": "4000",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "b",
+        "text": "What is the growth rate as a percentage?",
+        "answer": "50%",
+        "answer_type": "text"
+      },
+      {
+        "label": "c",
+        "text": "Evaluate V(3).",
+        "answer": "13500",
+        "answer_type": "numeric"
+      }
+    ],
+    "hint": "Initial value is the coefficient; rate is b minus 1.",
+    "solution_steps": [
+      "Step 1: Initial value a = 4000.",
+      "Step 2: Growth rate = b - 1 = 1.5 - 1 = 0.5 = 50%.",
+      "Step 3: V(3) = 4000 * (1.5)^3. Compute: 1.5^2 = 2.25, 1.5^3 = 2.25 * 1.5 = 3.375.",
+      "Step 4: V(3) = 4000 * 3.375 = 13,500."
+    ],
+    "tags": [
+      "exponential",
+      "growth",
+      "evaluate"
+    ]
+  },
+  {
+    "id": "gen-exp-019",
+    "unit": "exponential-functions",
+    "standard": "5.b",
+    "difficulty": "medium",
+    "type": "multi-part",
+    "skill": "model",
+    "source_file": "generated",
+    "question_text": "A social media influencer has 150 followers and gains 25% more each week.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Write the exponential growth model F(t) = a * b^t.",
+        "answer": "F(t) = 150 * (1.25)^t",
+        "answer_type": "equation"
+      },
+      {
+        "label": "b",
+        "text": "Find the number of followers after 4 weeks. Round to the nearest whole number.",
+        "answer": "366",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "c",
+        "text": "What is the growth rate?",
+        "answer": "25%",
+        "answer_type": "text"
+      }
+    ],
+    "hint": "Multiply the initial followers by the base raised to t.",
+    "solution_steps": [
+      "Step 1: a = 150, r = 0.25, b = 1.25. Model: F(t) = 150 * (1.25)^t.",
+      "Step 2: F(4) = 150 * (1.25)^4. Compute: 1.25^2 = 1.5625, 1.25^4 = 1.5625^2 = 2.44140625.",
+      "Step 3: F(4) = 150 * 2.44140625 = 366.21 ≈ 366 followers.",
+      "Step 4: Growth rate = 25%."
+    ],
+    "tags": [
+      "exponential",
+      "growth",
+      "social-media",
+      "followers",
+      "model"
+    ]
+  },
+  {
+    "id": "gen-exp-020",
+    "unit": "exponential-functions",
+    "standard": "5.b",
+    "difficulty": "medium",
+    "type": "multi-part",
+    "skill": "model",
+    "source_file": "generated",
+    "question_text": "A city population of 80,000 grows at 2.5% per year.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Write the exponential model P(t) = a * b^t.",
+        "answer": "P(t) = 80000 * (1.025)^t",
+        "answer_type": "equation"
+      },
+      {
+        "label": "b",
+        "text": "Find the population after 10 years. Round to the nearest whole number.",
+        "answer": "102407",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "c",
+        "text": "How many people were added in the first 10 years?",
+        "answer": "22407",
+        "answer_type": "numeric"
+      }
+    ],
+    "hint": "Plug in t = 10 and compute the power step by step.",
+    "solution_steps": [
+      "Step 1: a = 80000, r = 0.025, b = 1.025. Model: P(t) = 80000 * (1.025)^t.",
+      "Step 2: P(10) = 80000 * (1.025)^10. Compute: (1.025)^10 = 1.28008.",
+      "Step 3: P(10) = 80000 * 1.28008 = 102,406.76 ≈ 102,407 people.",
+      "Step 4: People added = 102,407 - 80,000 = 22,407."
+    ],
+    "tags": [
+      "exponential",
+      "growth",
+      "population",
+      "model"
+    ]
+  },
+  {
+    "id": "gen-exp-021",
+    "unit": "exponential-functions",
+    "standard": "5.b",
+    "difficulty": "medium",
+    "type": "multi-part",
+    "skill": "evaluate",
+    "source_file": "generated",
+    "question_text": "Marcus puts ,500 into a savings account earning 5.5% interest per year.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Write the exponential model A(t) = a * b^t.",
+        "answer": "A(t) = 3500 * (1.055)^t",
+        "answer_type": "equation"
+      },
+      {
+        "label": "b",
+        "text": "How much is in the account after 6 years? Round to the nearest cent.",
+        "answer": "4825.95",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "c",
+        "text": "How much interest was earned?",
+        "answer": "1325.95",
+        "answer_type": "numeric"
+      }
+    ],
+    "hint": "Interest means your money grows. Base is 1 plus the rate.",
+    "solution_steps": [
+      "Step 1: a = 3500, r = 0.055, b = 1.055. Model: A(t) = 3500 * (1.055)^t.",
+      "Step 2: A(6) = 3500 * (1.055)^6. Compute step by step: 1.055^2 = 1.113025, 1.055^3 = 1.174241, 1.055^6 = (1.055^3)^2 = 1.174241^2 = 1.378842.",
+      "Step 3: A(6) = 3500 * 1.378842 = ,825.95.",
+      "Step 4: Interest earned = 4825.95 - 3500 = ,325.95."
+    ],
+    "tags": [
+      "exponential",
+      "growth",
+      "savings",
+      "investment",
+      "interest"
+    ]
+  },
+  {
+    "id": "gen-exp-022",
+    "unit": "exponential-functions",
+    "standard": "5.b",
+    "difficulty": "medium",
+    "type": "multi-part",
+    "skill": "model",
+    "source_file": "generated",
+    "question_text": "A home valued at ,000 appreciates at 3% per year.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Write the exponential model V(t).",
+        "answer": "V(t) = 350000 * (1.03)^t",
+        "answer_type": "equation"
+      },
+      {
+        "label": "b",
+        "text": "Find the value after 8 years. Round to the nearest dollar.",
+        "answer": "443370",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "c",
+        "text": "How much did the home increase in value?",
+        "answer": "93370",
+        "answer_type": "numeric"
+      }
+    ],
+    "hint": "Appreciating means value goes up. Base is above 1.",
+    "solution_steps": [
+      "Step 1: a = 350000, r = 0.03, b = 1.03. Model: V(t) = 350000 * (1.03)^t.",
+      "Step 2: V(8) = 350000 * (1.03)^8. Compute: 1.03^2 = 1.0609, 1.03^4 = 1.0609^2 = 1.12551, 1.03^8 = 1.12551^2 = 1.26677.",
+      "Step 3: V(8) = 350000 * 1.26677 = ,369.50 ≈ ,370.",
+      "Step 4: Increase = 443,370 - 350,000 = ,370."
+    ],
+    "tags": [
+      "exponential",
+      "growth",
+      "real-estate",
+      "appreciation",
+      "model"
+    ]
+  },
+  {
+    "id": "gen-exp-023",
+    "unit": "exponential-functions",
+    "standard": "5.b",
+    "difficulty": "medium",
+    "type": "multi-part",
+    "skill": "model",
+    "source_file": "generated",
+    "question_text": "College tuition is currently ,000 and increases 4.5% each year.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Write the model T(t) = a * b^t.",
+        "answer": "T(t) = 22000 * (1.045)^t",
+        "answer_type": "equation"
+      },
+      {
+        "label": "b",
+        "text": "What will tuition be in 6 years? Round to the nearest dollar.",
+        "answer": "28650",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "c",
+        "text": "What is the growth rate?",
+        "answer": "4.5%",
+        "answer_type": "text"
+      }
+    ],
+    "hint": "Rate goes after the 1, then raise to the power.",
+    "solution_steps": [
+      "Step 1: a = 22000, r = 0.045, b = 1.045. Model: T(t) = 22000 * (1.045)^t.",
+      "Step 2: T(6) = 22000 * (1.045)^6. Compute: 1.045^2 = 1.092025, 1.045^3 = 1.141166, 1.045^6 = 1.141166^2 = 1.302260.",
+      "Step 3: T(6) = 22000 * 1.302260 = ,649.72 ≈ ,650."
+    ],
+    "tags": [
+      "exponential",
+      "growth",
+      "tuition",
+      "college",
+      "model"
+    ]
+  },
+  {
+    "id": "gen-exp-024",
+    "unit": "exponential-functions",
+    "standard": "5.b",
+    "difficulty": "medium",
+    "type": "multi-part",
+    "skill": "evaluate",
+    "source_file": "generated",
+    "question_text": "A bacteria culture starts with 1,200 bacteria and doubles every 4 hours.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Write an exponential model B(n) where n is the number of 4-hour periods.",
+        "answer": "B(n) = 1200 * 2^n",
+        "answer_type": "equation"
+      },
+      {
+        "label": "b",
+        "text": "How many bacteria after 12 hours?",
+        "answer": "9600",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "c",
+        "text": "How many bacteria after 24 hours?",
+        "answer": "76800",
+        "answer_type": "numeric"
+      }
+    ],
+    "hint": "Doubling means base is 2. Count the periods.",
+    "solution_steps": [
+      "Step 1: a = 1200, b = 2 (doubling). Model: B(n) = 1200 * 2^n.",
+      "Step 2: 12 hours = 3 periods. B(3) = 1200 * 2^3 = 1200 * 8 = 9,600.",
+      "Step 3: 24 hours = 6 periods. B(6) = 1200 * 2^6 = 1200 * 64 = 76,800."
+    ],
+    "tags": [
+      "exponential",
+      "growth",
+      "bacteria",
+      "doubling"
+    ]
+  },
+  {
+    "id": "gen-exp-025",
+    "unit": "exponential-functions",
+    "standard": "5.b",
+    "difficulty": "hard",
+    "type": "multi-part",
+    "skill": "solve",
+    "source_file": "generated",
+    "question_text": "Two bacteria cultures grow in a lab:\\nCulture A starts with 500 bacteria and grows 30% per hour.\\nCulture B starts with 2,000 bacteria and grows 10% per hour.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Write a model for each culture.",
+        "answer": "A(t) = 500 * (1.30)^t; B(t) = 2000 * (1.10)^t",
+        "answer_type": "equation"
+      },
+      {
+        "label": "b",
+        "text": "Find the count of each after 6 hours. Round to nearest whole number.",
+        "answer": "A(6) = 2413; B(6) = 3543",
+        "answer_type": "text"
+      },
+      {
+        "label": "c",
+        "text": "After how many complete hours does Culture A first exceed Culture B?",
+        "answer": "9 hours",
+        "answer_type": "text"
+      }
+    ],
+    "hint": "Write both, then compare values at each hour.",
+    "solution_steps": [
+      "Step 1: A(t) = 500 * (1.30)^t. B(t) = 2000 * (1.10)^t.",
+      "Step 2: A(6) = 500 * 1.30^6 = 500 * 4.8268 = 2413. B(6) = 2000 * 1.10^6 = 2000 * 1.7716 = 3543.",
+      "Step 3: Compare hourly: t=7: A=3137, B=3897. t=8: A=4079, B=4287. t=9: A=5302, B=4716.",
+      "Step 4: At t=8, B > A (4287 > 4079). At t=9, A > B (5302 > 4716).",
+      "Step 5: Culture A first exceeds Culture B after 9 complete hours."
+    ],
+    "tags": [
+      "exponential",
+      "growth",
+      "bacteria",
+      "compare"
+    ]
+  },
+  {
+    "id": "gen-exp-026",
+    "unit": "exponential-functions",
+    "standard": "5.b",
+    "difficulty": "hard",
+    "type": "multi-part",
+    "skill": "model",
+    "source_file": "generated",
+    "question_text": "A rare trading card is worth  today. Its value has been increasing at a constant percentage rate each year. After 1 year: . After 2 years: .20.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Find the growth rate.",
+        "answer": "20%",
+        "answer_type": "text"
+      },
+      {
+        "label": "b",
+        "text": "Write the exponential model V(t).",
+        "answer": "V(t) = 80 * (1.2)^t",
+        "answer_type": "equation"
+      },
+      {
+        "label": "c",
+        "text": "Predict the value after 5 years. Round to the nearest cent.",
+        "answer": "199.07",
+        "answer_type": "numeric"
+      }
+    ],
+    "hint": "Divide consecutive values to find the constant ratio.",
+    "solution_steps": [
+      "Step 1: Find ratio: 96 / 80 = 1.2. Verify: 115.20 / 96 = 1.2. Constant ratio confirmed.",
+      "Step 2: Growth rate = 1.2 - 1 = 0.2 = 20%.",
+      "Step 3: Model: V(t) = 80 * (1.2)^t.",
+      "Step 4: V(5) = 80 * (1.2)^5. Compute: 1.2^2 = 1.44, 1.2^4 = 1.44^2 = 2.0736, 1.2^5 = 2.0736 * 1.2 = 2.48832.",
+      "Step 5: V(5) = 80 * 2.48832 = .07."
+    ],
+    "tags": [
+      "exponential",
+      "growth",
+      "trading-card",
+      "model"
+    ]
+  },
+  {
+    "id": "gen-exp-027",
+    "unit": "exponential-functions",
+    "standard": "5.b",
+    "difficulty": "hard",
+    "type": "multi-part",
+    "skill": "solve",
+    "source_file": "generated",
+    "question_text": "An investment of ,000 grows at 8% per year.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Write the exponential model V(t).",
+        "answer": "V(t) = 6000 * (1.08)^t",
+        "answer_type": "equation"
+      },
+      {
+        "label": "b",
+        "text": "Find the value after 10 years. Round to the nearest cent.",
+        "answer": "12953.55",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "c",
+        "text": "How many complete years until the investment doubles (exceeds \\,000)?",
+        "answer": "10 years",
+        "answer_type": "text"
+      }
+    ],
+    "hint": "When does the multiplier first give you double?",
+    "solution_steps": [
+      "Step 1: a = 6000, r = 0.08, b = 1.08. Model: V(t) = 6000 * (1.08)^t.",
+      "Step 2: V(10) = 6000 * (1.08)^10. Compute: 1.08^5 = 1.46933, 1.08^10 = 1.46933^2 = 2.15892.",
+      "Step 3: V(10) = 6000 * 2.15892 = ,953.55.",
+      "Step 4: Doubling: need (1.08)^t >= 2. Check: 1.08^9 = 1.99900 (just under 2), 1.08^10 = 2.15892 (over 2).",
+      "Step 5: V(9) = 6000 * 1.99900 = ,994.03 < ,000. V(10) = ,953.55 > ,000.",
+      "Step 6: The investment first doubles after 10 complete years."
+    ],
+    "tags": [
+      "exponential",
+      "growth",
+      "investment",
+      "doubling"
+    ]
+  },
+  {
+    "id": "gen-exp-028",
+    "unit": "exponential-functions",
+    "standard": "5.c",
+    "difficulty": "easy",
+    "type": "short",
+    "skill": "model",
+    "source_file": "generated",
+    "question_text": "A car is bought for ,000 and depreciates 18% per year. Identify the initial value, the decay rate, and write the model V(t) = a * b^t.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "What is the initial value?",
+        "answer": "32000",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "b",
+        "text": "What is the decay rate?",
+        "answer": "18%",
+        "answer_type": "text"
+      },
+      {
+        "label": "c",
+        "text": "Write the model V(t).",
+        "answer": "V(t) = 32000 * (0.82)^t",
+        "answer_type": "equation"
+      }
+    ],
+    "hint": "Depreciating means losing value. Subtract rate from 1.",
+    "solution_steps": [
+      "Step 1: Initial value a = 32000.",
+      "Step 2: Decay rate = 18% = 0.18.",
+      "Step 3: Base b = 1 - 0.18 = 0.82.",
+      "Step 4: Model: V(t) = 32000 * (0.82)^t."
+    ],
+    "tags": [
+      "exponential",
+      "decay",
+      "car",
+      "depreciation",
+      "model"
+    ]
+  },
+  {
+    "id": "gen-exp-029",
+    "unit": "exponential-functions",
+    "standard": "5.c",
+    "difficulty": "easy",
+    "type": "short",
+    "skill": "model",
+    "source_file": "generated",
+    "question_text": "A phone battery starts at 100% and drains 10% of its charge each hour. Write the exponential decay model B(t) = a * b^t.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "What is the base b?",
+        "answer": "0.90",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "b",
+        "text": "Write the model B(t).",
+        "answer": "B(t) = 100 * (0.90)^t",
+        "answer_type": "equation"
+      }
+    ],
+    "hint": "Draining 10% means 90% remains each hour.",
+    "solution_steps": [
+      "Step 1: Initial value a = 100%.",
+      "Step 2: Drains 10% per hour, so 90% remains. Base b = 1 - 0.10 = 0.90.",
+      "Step 3: Model: B(t) = 100 * (0.90)^t."
+    ],
+    "tags": [
+      "exponential",
+      "decay",
+      "battery",
+      "phone",
+      "model"
+    ]
+  },
+  {
+    "id": "gen-exp-030",
+    "unit": "exponential-functions",
+    "standard": "5.c",
+    "difficulty": "easy",
+    "type": "short",
+    "skill": "identify",
+    "source_file": "generated",
+    "question_text": "For the model V(t) = 15000 * (0.82)^t, identify the initial value, the base, and the decay rate as a percentage.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "What is the initial value?",
+        "answer": "15000",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "b",
+        "text": "What is the base?",
+        "answer": "0.82",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "c",
+        "text": "What is the decay rate?",
+        "answer": "18%",
+        "answer_type": "text"
+      }
+    ],
+    "hint": "Decay rate equals 1 minus the base, as a percent.",
+    "solution_steps": [
+      "Step 1: Initial value a = 15,000.",
+      "Step 2: Base b = 0.82.",
+      "Step 3: Decay rate = 1 - b = 1 - 0.82 = 0.18 = 18%."
+    ],
+    "tags": [
+      "exponential",
+      "decay",
+      "identify"
+    ]
+  },
+  {
+    "id": "gen-exp-031",
+    "unit": "exponential-functions",
+    "standard": "5.c",
+    "difficulty": "easy",
+    "type": "short",
+    "skill": "evaluate",
+    "source_file": "generated",
+    "question_text": "A bouncy ball is dropped from 80 inches. Each bounce reaches 75% of the previous height. Find the height after the 1st and 2nd bounces.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Write the model H(n) = a * b^n where n is the number of bounces.",
+        "answer": "H(n) = 80 * (0.75)^n",
+        "answer_type": "equation"
+      },
+      {
+        "label": "b",
+        "text": "Find the height after the 1st bounce.",
+        "answer": "60",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "c",
+        "text": "Find the height after the 2nd bounce.",
+        "answer": "45",
+        "answer_type": "numeric"
+      }
+    ],
+    "hint": "Each bounce keeps 75% of the height. Multiply it out.",
+    "solution_steps": [
+      "Step 1: a = 80, b = 0.75. Model: H(n) = 80 * (0.75)^n.",
+      "Step 2: H(1) = 80 * 0.75 = 60 inches.",
+      "Step 3: H(2) = 80 * (0.75)^2 = 80 * 0.5625 = 45 inches."
+    ],
+    "tags": [
+      "exponential",
+      "decay",
+      "bounce",
+      "ball",
+      "evaluate"
+    ]
+  },
+  {
+    "id": "gen-exp-032",
+    "unit": "exponential-functions",
+    "standard": "5.c",
+    "difficulty": "medium",
+    "type": "multi-part",
+    "skill": "model",
+    "source_file": "generated",
+    "question_text": "A patient takes 400 mg of medication. The body eliminates 30% of the drug each hour.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Write the model M(t) = a * b^t.",
+        "answer": "M(t) = 400 * (0.70)^t",
+        "answer_type": "equation"
+      },
+      {
+        "label": "b",
+        "text": "How much medication remains after 3 hours?",
+        "answer": "137.2",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "c",
+        "text": "What is the decay rate?",
+        "answer": "30%",
+        "answer_type": "text"
+      }
+    ],
+    "hint": "Eliminated means gone. Remaining is 1 minus the rate.",
+    "solution_steps": [
+      "Step 1: a = 400, decay rate = 30%, so b = 1 - 0.30 = 0.70.",
+      "Step 2: Model: M(t) = 400 * (0.70)^t.",
+      "Step 3: M(3) = 400 * (0.70)^3. Compute: 0.70^2 = 0.49, 0.70^3 = 0.49 * 0.70 = 0.343.",
+      "Step 4: M(3) = 400 * 0.343 = 137.2 mg."
+    ],
+    "tags": [
+      "exponential",
+      "decay",
+      "medication",
+      "model"
+    ]
+  },
+  {
+    "id": "gen-exp-033",
+    "unit": "exponential-functions",
+    "standard": "5.c",
+    "difficulty": "medium",
+    "type": "multi-part",
+    "skill": "model",
+    "source_file": "generated",
+    "question_text": "A car valued at ,000 depreciates 20% per year.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Write the model V(t) = a * b^t.",
+        "answer": "V(t) = 24000 * (0.80)^t",
+        "answer_type": "equation"
+      },
+      {
+        "label": "b",
+        "text": "Find the value after 5 years.",
+        "answer": "7864.32",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "c",
+        "text": "How much value was lost?",
+        "answer": "16135.68",
+        "answer_type": "numeric"
+      }
+    ],
+    "hint": "Depreciating 20% means keeping 80% each year.",
+    "solution_steps": [
+      "Step 1: a = 24000, decay rate = 20%, b = 1 - 0.20 = 0.80.",
+      "Step 2: Model: V(t) = 24000 * (0.80)^t.",
+      "Step 3: V(5) = 24000 * (0.80)^5. Compute: 0.80^2 = 0.64, 0.80^4 = 0.64^2 = 0.4096, 0.80^5 = 0.4096 * 0.80 = 0.32768.",
+      "Step 4: V(5) = 24000 * 0.32768 = ,864.32.",
+      "Step 5: Value lost = 24000 - 7864.32 = ,135.68."
+    ],
+    "tags": [
+      "exponential",
+      "decay",
+      "car",
+      "depreciation",
+      "model"
+    ]
+  },
+  {
+    "id": "gen-exp-034",
+    "unit": "exponential-functions",
+    "standard": "5.c",
+    "difficulty": "medium",
+    "type": "multi-part",
+    "skill": "model",
+    "source_file": "generated",
+    "question_text": "A radioactive substance has a mass of 800 grams and a half-life of 6 years.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Write the model M(n) where n is the number of half-life periods.",
+        "answer": "M(n) = 800 * (0.5)^n",
+        "answer_type": "equation"
+      },
+      {
+        "label": "b",
+        "text": "How much remains after 18 years?",
+        "answer": "100",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "c",
+        "text": "How much was lost?",
+        "answer": "700",
+        "answer_type": "numeric"
+      }
+    ],
+    "hint": "Count how many half-life periods fit in 18 years.",
+    "solution_steps": [
+      "Step 1: a = 800, b = 0.5 (halves each period). Model: M(n) = 800 * (0.5)^n.",
+      "Step 2: 18 years / 6 years per period = 3 periods, so n = 3.",
+      "Step 3: M(3) = 800 * (0.5)^3 = 800 * 0.125 = 100 grams.",
+      "Step 4: Mass lost = 800 - 100 = 700 grams."
+    ],
+    "tags": [
+      "exponential",
+      "decay",
+      "radioactive",
+      "half-life"
+    ]
+  },
+  {
+    "id": "gen-exp-035",
+    "unit": "exponential-functions",
+    "standard": "5.c",
+    "difficulty": "medium",
+    "type": "multi-part",
+    "skill": "evaluate",
+    "source_file": "generated",
+    "question_text": "A truck worth ,000 depreciates 12% per year.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Write the model V(t) = a * b^t.",
+        "answer": "V(t) = 45000 * (0.88)^t",
+        "answer_type": "equation"
+      },
+      {
+        "label": "b",
+        "text": "Find the value after 7 years. Round to the nearest dollar.",
+        "answer": "18390",
+        "answer_type": "numeric"
+      }
+    ],
+    "hint": "Subtract the rate from 1 to get the decay base.",
+    "solution_steps": [
+      "Step 1: a = 45000, decay rate = 12%, b = 1 - 0.12 = 0.88.",
+      "Step 2: Model: V(t) = 45000 * (0.88)^t.",
+      "Step 3: V(7) = 45000 * (0.88)^7. Compute step by step: 0.88^2 = 0.7744, 0.88^3 = 0.681472, 0.88^4 = 0.599695, 0.88^7 = 0.88^4 * 0.88^3 = 0.599695 * 0.681472 = 0.408676.",
+      "Step 4: V(7) = 45000 * 0.408676 = ,390.40 ≈ ,390."
+    ],
+    "tags": [
+      "exponential",
+      "decay",
+      "truck",
+      "depreciation"
+    ]
+  },
+  {
+    "id": "gen-exp-036",
+    "unit": "exponential-functions",
+    "standard": "5.c",
+    "difficulty": "medium",
+    "type": "multi-part",
+    "skill": "model",
+    "source_file": "generated",
+    "question_text": "A tablet bought for  loses 8% of its value each month.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Write the exponential model V(t).",
+        "answer": "V(t) = 600 * (0.92)^t",
+        "answer_type": "equation"
+      },
+      {
+        "label": "b",
+        "text": "Find the value after 6 months. Round to the nearest cent.",
+        "answer": "363.81",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "c",
+        "text": "What percentage of its original value remains? Round to one decimal place.",
+        "answer": "60.6%",
+        "answer_type": "text"
+      }
+    ],
+    "hint": "Losing 8% means keeping 92%. Raise to the 6th.",
+    "solution_steps": [
+      "Step 1: a = 600, decay rate = 8%, b = 1 - 0.08 = 0.92.",
+      "Step 2: Model: V(t) = 600 * (0.92)^t.",
+      "Step 3: V(6) = 600 * (0.92)^6. Compute: 0.92^2 = 0.8464, 0.92^3 = 0.778688, 0.92^6 = 0.778688^2 = 0.606355.",
+      "Step 4: V(6) = 600 * 0.606355 = .81.",
+      "Step 5: Percentage remaining = 363.81 / 600 * 100 = 60.6%."
+    ],
+    "tags": [
+      "exponential",
+      "decay",
+      "tablet",
+      "depreciation"
+    ]
+  },
+  {
+    "id": "gen-exp-037",
+    "unit": "exponential-functions",
+    "standard": "5.c",
+    "difficulty": "medium",
+    "type": "multi-part",
+    "skill": "model",
+    "source_file": "generated",
+    "question_text": "A small town has a population of 50,000 that decreases by 2.5% each year.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Write the model P(t) = a * b^t.",
+        "answer": "P(t) = 50000 * (0.975)^t",
+        "answer_type": "equation"
+      },
+      {
+        "label": "b",
+        "text": "Find the population after 4 years. Round to the nearest whole number.",
+        "answer": "45184",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "c",
+        "text": "How many people left the town in 4 years?",
+        "answer": "4816",
+        "answer_type": "numeric"
+      }
+    ],
+    "hint": "Subtract the percentage from 1 for the decay base.",
+    "solution_steps": [
+      "Step 1: a = 50000, decay rate = 2.5%, b = 1 - 0.025 = 0.975.",
+      "Step 2: Model: P(t) = 50000 * (0.975)^t.",
+      "Step 3: P(4) = 50000 * (0.975)^4. Compute: 0.975^2 = 0.950625, 0.975^4 = 0.950625^2 = 0.903688.",
+      "Step 4: P(4) = 50000 * 0.903688 = 45,184.4 ≈ 45,184 people.",
+      "Step 5: People who left = 50000 - 45184 = 4,816."
+    ],
+    "tags": [
+      "exponential",
+      "decay",
+      "population",
+      "model"
+    ]
+  },
+  {
+    "id": "gen-exp-038",
+    "unit": "exponential-functions",
+    "standard": "5.c",
+    "difficulty": "hard",
+    "type": "multi-part",
+    "skill": "solve",
+    "source_file": "generated",
+    "question_text": "Two cars are purchased on the same day:\\nCar A: ,000, depreciates 15% per year.\\nCar B: ,000, depreciates 8% per year.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Write models for both cars.",
+        "answer": "A(t) = 36000 * (0.85)^t; B(t) = 28000 * (0.92)^t",
+        "answer_type": "equation"
+      },
+      {
+        "label": "b",
+        "text": "Find the value of each after 5 years. Round to the nearest dollar.",
+        "answer": "A(5) = \\,973; B(5) = \\,454",
+        "answer_type": "text"
+      },
+      {
+        "label": "c",
+        "text": "After how many complete years will Car A first be worth less than Car B?",
+        "answer": "4 years",
+        "answer_type": "text"
+      }
+    ],
+    "hint": "Write both models, then compare year by year.",
+    "solution_steps": [
+      "Step 1: A(t) = 36000 * (0.85)^t. B(t) = 28000 * (0.92)^t.",
+      "Step 2: A(5) = 36000 * 0.85^5 = 36000 * 0.44371 = \\,973. B(5) = 28000 * 0.92^5 = 28000 * 0.65908 = \\,454.",
+      "Step 3: Compare: t=3: A=36000*0.6141=22,108; B=28000*0.7787=21,803. A > B.",
+      "Step 4: t=4: A=36000*0.5220=18,792; B=28000*0.7164=20,059. A < B.",
+      "Step 5: Car A is first worth less than Car B after 4 complete years."
+    ],
+    "tags": [
+      "exponential",
+      "decay",
+      "car",
+      "depreciation",
+      "compare"
+    ]
+  },
+  {
+    "id": "gen-exp-039",
+    "unit": "exponential-functions",
+    "standard": "5.c",
+    "difficulty": "hard",
+    "type": "multi-part",
+    "skill": "solve",
+    "source_file": "generated",
+    "question_text": "Light intensity decreases by 5% for each meter it travels through water. A flashlight shines at 800 lumens at the surface.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Write an exponential model I(d) for intensity at depth d meters.",
+        "answer": "I(d) = 800 * (0.95)^d",
+        "answer_type": "equation"
+      },
+      {
+        "label": "b",
+        "text": "Find the intensity at 10 meters depth. Round to the nearest lumen.",
+        "answer": "479",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "c",
+        "text": "At what whole-number depth does the intensity first drop below 400 lumens?",
+        "answer": "14 meters",
+        "answer_type": "text"
+      }
+    ],
+    "hint": "Each meter keeps 95%. Raise to the depth.",
+    "solution_steps": [
+      "Step 1: a = 800, decay rate = 5%, b = 1 - 0.05 = 0.95.",
+      "Step 2: Model: I(d) = 800 * (0.95)^d.",
+      "Step 3: I(10) = 800 * (0.95)^10. Compute: 0.95^5 = 0.77378, 0.95^10 = 0.77378^2 = 0.59874.",
+      "Step 4: I(10) = 800 * 0.59874 = 478.99 ≈ 479 lumens.",
+      "Step 5: For I(d) < 400: need (0.95)^d < 0.5. Check: 0.95^13 = 0.51334, I(13) = 410.67 > 400. 0.95^14 = 0.48767, I(14) = 390.14 < 400.",
+      "Step 6: Intensity first drops below 400 lumens at 14 meters depth."
+    ],
+    "tags": [
+      "exponential",
+      "decay",
+      "light",
+      "water",
+      "depth"
+    ]
+  },
+  {
+    "id": "gen-exp-040",
+    "unit": "exponential-functions",
+    "standard": "5.c",
+    "difficulty": "hard",
+    "type": "multi-part",
+    "skill": "solve",
+    "source_file": "generated",
+    "question_text": "A bouncy ball is dropped from a height of 10 feet. Each bounce reaches 65% of the previous height.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Write the model H(n) for height after n bounces.",
+        "answer": "H(n) = 10 * (0.65)^n",
+        "answer_type": "equation"
+      },
+      {
+        "label": "b",
+        "text": "Find the height after the 4th bounce. Round to two decimal places.",
+        "answer": "1.79",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "c",
+        "text": "After how many bounces does the ball first reach less than 1 foot?",
+        "answer": "6 bounces",
+        "answer_type": "text"
+      }
+    ],
+    "hint": "65% stays each bounce. Keep multiplying until under 1.",
+    "solution_steps": [
+      "Step 1: a = 10, b = 0.65. Model: H(n) = 10 * (0.65)^n.",
+      "Step 2: H(4) = 10 * (0.65)^4. Compute: 0.65^2 = 0.4225, 0.65^4 = 0.4225^2 = 0.17851.",
+      "Step 3: H(4) = 10 * 0.17851 = 1.79 feet.",
+      "Step 4: Check: H(5) = 10 * 0.65^5 = 10 * 0.11603 = 1.16 feet > 1. H(6) = 10 * 0.65^6 = 10 * 0.07542 = 0.75 feet < 1.",
+      "Step 5: The ball first reaches less than 1 foot after 6 bounces."
+    ],
+    "tags": [
+      "exponential",
+      "decay",
+      "bounce",
+      "ball"
+    ]
+  }
+]
