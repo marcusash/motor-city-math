@@ -6,10 +6,10 @@
     <title>Motor City Math — Unit Test</title>
     <link rel="stylesheet" href="shared/styles.css">
     <link rel="stylesheet" href="shared/print.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-    <script>if(typeof Chart==='undefined'){document.write('<script src="shared/chart.min.js"><\/script>')}</script>
+    <link rel="stylesheet" href="shared/katex/katex.min.css">
+    <script src="shared/katex/katex.min.js"></script>
+    <script src="shared/chart.min.js"></script>
+    <script>if(typeof Chart==='undefined'){document.write('<script src="https://cdn.jsdelivr.net/npm/chart.js"><\/script>')}</script>
     <script src="shared/chart-theme.js"></script>
     <style>
         .tag { display: inline-block; font-size: 0.75rem; padding: 2px 8px; border-radius: 12px;
@@ -37,7 +37,8 @@
     </style>
 </head>
 <body>
-    <div class="container">
+    <a href="#main" class="sr-only">Skip to content</a>
+    <div class="container" role="main" id="main">
         <div class="print-header" id="printHeader">
             <strong id="printTitle">Motor City Math — Unit Test</strong><br>
             Name: _____________________ Date: ___________
