@@ -78,11 +78,10 @@
     }
 
     canvas {
-        -webkit-filter: grayscale(100%) !important;
-        filter: grayscale(100%) !important;
         max-width: 100% !important;
         height: auto !important;
         max-height: none !important;
+        /* No grayscale — color distinguishes data series (see .print-spec.md) */
     }
 
     /* Inputs */

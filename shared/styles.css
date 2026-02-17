@@ -397,7 +397,7 @@ input:focus, textarea:focus {
     text-align: center;
     margin-top: 20px;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 8px;
     font-size: 1.3em;
     font-weight: bold;
     display: none;
@@ -600,7 +600,7 @@ table th {
     margin: 20px auto;
     padding: 20px;
     background: white;
-    border-radius: 10px;
+    border-radius: 8px;
 }
 
 /* === Score Card === */
@@ -635,6 +635,29 @@ table th {
     margin-top: 8px;
 }
 
+/* === Accessibility === */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+:focus-visible {
+    outline: 3px solid #1D42BA;
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+:focus:not(:focus-visible) {
+    outline: none;
+}
+
 /* === Responsive === */
 @media (max-width: 768px) {
     .container {
@@ -659,6 +682,18 @@ table th {
 
     .sub-questions {
         grid-template-columns: 1fr;
+    }
+
+    /* Touch targets: 44px minimum (WCAG 2.5.8) */
+    .submit-btn, .btn-primary,
+    .print-btn, .btn-secondary,
+    .answer-key-btn, .btn-ghost {
+        min-height: 44px;
+    }
+
+    /* iOS zoom prevention: font-size ≥16px on inputs */
+    input, textarea, select {
+        font-size: 16px;
     }
 }
 
