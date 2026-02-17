@@ -281,6 +281,7 @@
             </div>
 
             <button type="button" class="print-btn" onclick="printTest()">Print Version (Black & White)</button>
+            <button type="button" class="submit-btn" onclick="gradeQuiz120()">Submit Test</button>
             <button type="button" class="answer-key-btn" onclick="showQuiz251120AnswerKey()">View Answer Key</button>
             <button type="button" class="answer-key-btn" onclick="saveResults('quiz_251120_results')" style="background: #1D42BA;">Save Results</button>
             <button type="button" class="answer-key-btn" onclick="loadResults('quiz_251120_results')" style="background: #002D62;">Load Saved Results</button>
@@ -815,6 +816,25 @@
                 </div>
             `;
             showAnswerKey(answerKeyHTML);
+        }
+        function gradeQuiz120() {
+            gradeTest({
+                questions: [
+                    [[['q1a', 's(m)=150-8.5m'], ['q1c', 90.5, 1]], 'feedback1'],
+                    [[['q2a', 15.36, 0.5], ['q2b', 4.5, 0.5], ['q2c', 0.8, 0.05], ['q2d', 'v(t)=30(0.8)^t']], 'feedback2'],
+                    [[['q3a', 'w(t)=120-3.5t'], ['q3b', -3.5, 0.1], ['q3d', 34.29, 0.5]], 'feedback3'],
+                    [[['q4a', 'a(t)=2500(1.042)^t'], ['q4b', 4087, 50], ['q4c', 12, 1]], 'feedback4'],
+                    [[['q5a1', 100, 1], ['q5a2', 90, 1], ['q5b', 0.9, 0.05], ['q5d', 'b(t)=100(0.9)^t'], ['q5e', 35, 3]], 'feedback5']
+                ],
+                feedbacks: [
+                    ['✓ S(m)=150-8.5m', '✗ Start 150, lose 8.5/mo', '✓ 90.5 GB', '✗ 150-8.5(7)=90.5'],
+                    ['✓ ≈$15,360', '✗ 30(0.8)³≈15.36', '✓ ≈4.5 years', '✗ Solve 12=30(0.8)^t', '✓ 0.8', '✗ Decreases 20%/yr', '✓ V(t)=30(0.8)^t', '✗ Initial·(rate)^t'],
+                    ['✓ W(t)=120-3.5t', '✗ Start 120, lose 3.5/min', '✓ -3.5', '✗ Rate of decrease', '✓ ≈34.3 min', '✗ 120/3.5≈34.29'],
+                    ['✓ A(t)=2500(1.042)^t', '✗ 2500·(1+0.042)^t', '✓ ≈$4,087', '✗ 2500(1.042)^12', '✓ ≈12 years', '✗ Solve 5000=2500(1.042)^t'],
+                    ['✓ 100%', '✗ Initial is 100%', '✓ 90%', '✗ 100·0.9=90', '✓ 0.9', '✗ 90/100=0.9', '✓ B(t)=100(0.9)^t', '✗ 100·(0.9)^t', '✓ ≈35%', '✗ 100(0.9)^10≈35']
+                ],
+                storageKey: 'quiz_251120'
+            });
         }
     </script>
 </body>

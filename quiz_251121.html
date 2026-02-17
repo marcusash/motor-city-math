@@ -350,6 +350,7 @@
             </div>
 
             <button type="button" class="print-btn" onclick="printTest()">Print Version (Black & White)</button>
+            <button type="button" class="submit-btn" onclick="gradeQuiz121()">Submit Test</button>
             <button type="button" class="answer-key-btn" onclick="showQuiz251121AnswerKey()">View Answer Key</button>
             <button type="button" class="answer-key-btn" onclick="saveResults('quiz_251121_results')" style="background: #1D42BA;">Save Results</button>
             <button type="button" class="answer-key-btn" onclick="loadResults('quiz_251121_results')" style="background: #002D62;">Load Saved Results</button>
@@ -988,6 +989,29 @@
                 </div>
             `;
             showAnswerKey(answerKeyHTML);
+        }
+        function gradeQuiz121() {
+            gradeTest({
+                questions: [
+                    [[['q1a', 'c(w)=75-6.25w'], ['q1c', 43.75, 1]], 'feedback1'],
+                    [[['q2a', 675, 50], ['q2b', 2.7, 0.5], ['q2c', 0.75, 0.05], ['q2d', 'l(t)=1200(0.75)^t']], 'feedback2'],
+                    [[['q3a', 'p(h)=8000-125h'], ['q3b', -125, 1], ['q3d', 64, 2]], 'feedback3'],
+                    [[['q4a', 'p(t)=12000(1.035)^t'], ['q4b', 15802, 200], ['q4c', 12, 1]], 'feedback4'],
+                    [[['q5a1', 200, 1], ['q5a2', 180.5, 2], ['q5b', 0.85, 0.05], ['q5d', 't(t)=70+130(0.85)^t'], ['q5e', 96, 5]], 'feedback5'],
+                    [[['q6a', 17, 0.5], ['q6b', '(5x+7)/(2x-3)']], 'feedback6'],
+                    [[['q7a', 5, 0.5], ['q7b', 'y-75=5(x-4)'], ['q7c', 'y=5x+55'], ['q7d', 110, 1]], 'feedback7']
+                ],
+                feedbacks: [
+                    ['✓ C(w)=75-6.25w', '✗ Start 75, lose 6.25/wk', '✓ $43.75', '✗ 75-6.25(5)=43.75'],
+                    ['✓ ≈$675', '✗ 1200(0.75)²≈675', '✓ ≈2.7 yrs', '✗ Solve 500=1200(0.75)^t', '✓ 0.75', '✗ Decreases 25%/yr', '✓ L(t)=1200(0.75)^t', '✗ Initial·(rate)^t'],
+                    ['✓ P(h)=8000-125h', '✗ Start 8000, lose 125/hr', '✓ -125', '✗ Slope = rate of decrease', '✓ 64 hours', '✗ 8000/125=64'],
+                    ['✓ P(t)=12000(1.035)^t', '✗ 12000·(1+.035)^t', '✓ ≈$15,802', '✗ 12000(1.035)^8', '✓ ≈12 years', '✗ Solve 24000=12000(1.035)^t'],
+                    ['✓ 200°F', '✗ Initial temp', '✓ 180.5°F', '✗ 70+130(0.85)¹', '✓ 0.85', '✗ Cooling factor', '✓ T(t)=70+130(0.85)^t', '✗ Room temp + excess·rate^t', '✓ ≈96°F', '✗ 70+130(0.85)^5'],
+                    ['✓ g⁻¹(2)=17', '✗ Solve g(x)=2', '✓ g⁻¹(x)=(5x+7)/(2x-3)', '✗ Swap and solve for x'],
+                    ['✓ Slope=5', '✗ (95-75)/(8-4)=5', '✓ y-75=5(x-4)', '✗ Point-slope form', '✓ y=5x+55', '✗ Expand: 5x-20+75', '✓ 110', '✗ 5(11)+55=110']
+                ],
+                storageKey: 'quiz_251121'
+            });
         }
     </script>
 </body>

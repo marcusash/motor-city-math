@@ -171,6 +171,7 @@
             </div>
 
             <button type="button" class="print-btn" onclick="printTest()">Print Version (Black & White)</button>
+            <button type="button" class="submit-btn" onclick="gradeQuiz117()">Submit Test</button>
             <button type="button" class="answer-key-btn" onclick="showQuizAnswerKey()">View Answer Key</button>
             <button type="button" class="answer-key-btn" onclick="saveResults('quiz_251117_results')" style="background: #1D42BA;">Save Results</button>
             <button type="button" class="answer-key-btn" onclick="loadResults('quiz_251117_results')" style="background: #002D62;">Load Saved Results</button>
@@ -287,6 +288,23 @@
                 </div>
             `;
             showAnswerKey(answerKeyHTML);
+        }
+        function gradeQuiz117() {
+            gradeTest({
+                questions: [
+                    [[['q1a', '(7x-11)/6'], ['q1c', 8.67, 0.1]], 'feedback1'],
+                    [[['q2a', 5], ['q2b', 2], ['q2d', 'g(x)=5x+2'], ['q2e', '(x-2)/5']], 'feedback2'],
+                    [[['q3a', '(6g-45)/8'], ['q3b', 7.875, 0.1]], 'feedback3'],
+                    [[['q4a', '(3x+5)/(7-2x)']], 'feedback4']
+                ],
+                feedbacks: [
+                    ['✓ f⁻¹(x) = (7x-11)/6', '✗ Swap x,y then solve: (7x-11)/6', '✓ 8.67', '✗ f⁻¹(9) = (63-11)/6 ≈ 8.67'],
+                    ['✓ g⁻¹(27) = 5', '✗ Find x where g(x)=27', '✓ g⁻¹(12) = 2', '✗ Find x where g(x)=12', '✓ g(x) = 5x+2', '✗ Slope=5, b=2', '✓ g⁻¹(x) = (x-2)/5', '✗ Swap and solve: (x-2)/5'],
+                    ['✓ C⁻¹(g) = (6g-45)/8', '✗ Solve C=(8g+45)/6 for g', '✓ 7.875 GB', '✗ (6·18-45)/8 = 7.875'],
+                    ['✓ f⁻¹(x) = (3x+5)/(7-2x)', '✗ Cross-multiply and isolate x']
+                ],
+                storageKey: 'quiz_251117'
+            });
         }
     </script>
 </body>
