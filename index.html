@@ -391,7 +391,9 @@
             var emoji = pct < 70 ? '🏀' : pct < 90 ? '📈' : '✅';
             var action = pct < 70 ? 'Start here.' : pct < 90 ? 'Almost there.' : 'Review only.';
             var name = s.name || id;
-            html += '<li class="study-item"><span class="emoji">' + emoji + '</span> <strong>' + id + '</strong> (' + name + ') — ' + pct + '%. ' + action + '</li>';
+            var practiceLink = 'test.html?standard=' + encodeURIComponent(id) + '&count=10';
+            html += '<li class="study-item"><span class="emoji">' + emoji + '</span> <strong>' + id + '</strong> (' + name + ') — ' + pct + '%. ' + action +
+                ' <a href="' + practiceLink + '" style="color:#1D42BA;font-weight:600;font-size:0.85em;">Practice →</a></li>';
             count++;
         });
         list.innerHTML = html || '<li class="study-item"><span class="emoji">✅</span> All standards looking strong!</li>';

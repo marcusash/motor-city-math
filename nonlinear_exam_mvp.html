@@ -1,0 +1,1419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algebra 2: Nonlinear Functions Exam</title>
+    <link rel="stylesheet" href="shared/katex/katex.min.css">
+    <script defer src="shared/katex/katex.min.js"></script>
+    <script defer src="shared/katex/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]});"></script>
+    <link rel="stylesheet" href="shared/styles.css">
+    <link rel="stylesheet" href="shared/print.css">
+    <style>
+        .notation-bar {
+            font-size: 0.85rem;
+            background: #002D62;
+            color: white;
+            padding: 6px 16px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            text-align: center;
+            letter-spacing: 0.3px;
+        }
+        .section-divider {
+            text-align: center;
+            margin: 40px 0 30px;
+            padding: 15px;
+            background: #f0f4ff;
+            border: 2px solid #C8102E;
+            color: #C8102E;
+            font-weight: 600;
+            font-size: 1.2em;
+            letter-spacing: 0.5px;
+        }
+        .math-select {
+            display: block;
+            width: 100%;
+            max-width: 350px;
+            padding: 10px 12px;
+            font-size: 1rem;
+            border: 2px solid #BEC0C2;
+            border-radius: 4px;
+            background: white;
+            margin: 8px 0;
+        }
+        .math-select:focus {
+            border-color: #1D42BA;
+            box-shadow: 0 0 0 3px rgba(29,66,186,0.15);
+            outline: none;
+        }
+        .input-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 8px 0;
+            flex-wrap: wrap;
+        }
+        .input-group label {
+            font-weight: 600;
+            color: #002D62;
+            min-width: 30px;
+        }
+        .input-group input[type="number"],
+        .input-group input[type="text"] {
+            width: 120px;
+            padding: 8px 10px;
+            border: 2px solid #BEC0C2;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        .input-group input:focus {
+            border-color: #1D42BA;
+            box-shadow: 0 0 0 3px rgba(29,66,186,0.15);
+            outline: none;
+        }
+        .work-area {
+            width: 100%;
+            min-height: 80px;
+            padding: 10px;
+            border: 2px solid #BEC0C2;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            resize: vertical;
+            margin: 8px 0;
+        }
+        .work-area:focus {
+            border-color: #1D42BA;
+            box-shadow: 0 0 0 3px rgba(29,66,186,0.15);
+            outline: none;
+        }
+        .radio-group {
+            margin: 12px 0;
+        }
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 14px;
+            margin: 6px 0;
+            border: 2px solid #BEC0C2;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: border-color 0.15s;
+        }
+        .radio-option:hover {
+            border-color: #1D42BA;
+        }
+        .radio-option input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            accent-color: #1D42BA;
+        }
+
+        /* Canvas graphing */
+        .graph-container {
+            position: relative;
+            margin: 16px 0;
+        }
+        .graph-container canvas {
+            border: 2px solid #002D62;
+            border-radius: 4px;
+            cursor: crosshair;
+            display: block;
+            max-width: 100%;
+        }
+        .graph-tooltip {
+            position: fixed;
+            background: #002D62;
+            color: white;
+            font: 600 14px/1 monospace;
+            padding: 4px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            z-index: 20;
+            display: none;
+            white-space: nowrap;
+        }
+        .point-counter {
+            font-weight: 600;
+            color: #002D62;
+            margin: 8px 0;
+            font-size: 0.95rem;
+        }
+        .graph-btn {
+            display: inline-block;
+            padding: 8px 16px;
+            margin: 4px 4px 4px 0;
+            border: 2px solid #1D42BA;
+            background: white;
+            color: #1D42BA;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        .graph-btn:hover { background: #f0f4ff; }
+        .graph-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+        .graph-btn.active {
+            background: #1D42BA;
+            color: white;
+        }
+        .graph-btn.check-graph {
+            background: #1D42BA;
+            color: white;
+            border-color: #1D42BA;
+        }
+        .graph-btn.check-graph:disabled {
+            background: #BEC0C2;
+            border-color: #BEC0C2;
+        }
+        .graph-result {
+            font-weight: 600;
+            margin: 8px 0;
+            padding: 8px 12px;
+            border-radius: 4px;
+            display: none;
+        }
+        .graph-result.show { display: block; }
+        .graph-result.correct { background: #F0FFF4; color: #1B7D3A; border: 1px solid #1B7D3A; }
+        .graph-result.incorrect { background: #FFF5F5; color: #C8102E; border: 1px solid #C8102E; }
+
+        /* Hint system (3-layer) */
+        .hint-btn {
+            display: none;
+            padding: 6px 14px;
+            margin: 6px 4px 6px 0;
+            border: 2px solid #E8A317;
+            background: #FFFFF0;
+            color: #665500;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+        .hint-btn:hover { background: #FFFDE0; }
+        .hint-layer {
+            display: none;
+            padding: 12px 16px;
+            margin: 8px 0;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        .hint-layer.layer1 { background: #FFFFF0; border: 2px solid #E8A317; }
+        .hint-layer.layer2 { background: #F0FFF4; border: 2px solid #1B7D3A; }
+        .hint-layer.layer3 { background: white; border: 2px solid #BEC0C2; }
+        .hint-layer.show { display: block; }
+        .hint-layer button {
+            padding: 5px 12px;
+            margin: 6px 4px 0 0;
+            border: 2px solid currentColor;
+            background: white;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+        .hint-layer.layer1 button { color: #665500; border-color: #E8A317; }
+        .hint-layer.layer2 button { color: #1B7D3A; border-color: #1B7D3A; }
+
+        /* SAAS grade badge */
+        .grade-badge {
+            display: inline-block;
+            font-size: 2.5rem;
+            font-weight: 800;
+            padding: 8px 20px;
+            border-radius: 8px;
+            margin: 8px 0;
+            line-height: 1;
+        }
+
+        @media print {
+            .notation-bar { display: none; }
+            .section-divider {
+                border: 2px solid #000 !important;
+                background: white !important;
+                color: #000 !important;
+            }
+            .graph-btn, .hint-btn, .hint-layer { display: none !important; }
+            canvas { max-width: 500px !important; }
+        }
+        @media (max-width: 768px) {
+            canvas { width: 100% !important; min-width: 300px; }
+            .input-group { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main" class="sr-only">Skip to content</a>
+    <div class="notation-bar">
+        <strong>Typing math?</strong> <code>^</code> for exponents (x^2) · <code>sqrt()</code> for √ · <code>pi</code> for π · Decimals OK (2.236 instead of √5)
+    </div>
+
+    <div class="container">
+        <div class="print-header">
+            <strong>Algebra 2: Nonlinear Functions Exam</strong><br>
+            Name: _____________________ Date: ___________
+        </div>
+        <header data-time-minutes="35">
+            <h1>Algebra 2: Nonlinear Functions Exam</h1>
+            <div class="subtitle">Unit 2 · Standards W2 &amp; W3 · 15 Questions · ~60 min</div>
+        </header>
+
+        <form id="testForm" onsubmit="return false;">
+
+            <!-- ======== SECTION A: Identify & Transform (Q1-Q3) ======== -->
+            <div class="section-divider">Section A — Identify &amp; Transform (Q1–Q3)</div>
+
+            <!-- Q1 -->
+            <div class="question-card">
+                <div class="question-number">Question 1</div>
+                <p>Identify the parent function and describe all transformations.</p>
+                <p>\( f(x) = 2(x - 3)^3 + 1 \)</p>
+                <label for="q1_parent"><strong>Parent function:</strong></label>
+                <select id="q1_parent" class="math-select">
+                    <option value="">— Choose parent function —</option>
+                    <option value="quadratic">y = x² (quadratic)</option>
+                    <option value="cubic">y = x³ (cubic)</option>
+                    <option value="absolute">y = |x| (absolute value)</option>
+                    <option value="sqrt">y = √x (square root)</option>
+                    <option value="exponential">y = bˣ (exponential)</option>
+                    <option value="rational">y = 1/x (rational)</option>
+                </select>
+                <label for="q1_transform"><strong>Transformations:</strong></label>
+                <textarea id="q1_transform" class="work-area" placeholder="Describe each transformation (e.g., vertical stretch by 2, right 3, up 1)..."></textarea>
+            </div>
+            <div class="answer-feedback" id="feedback1"></div>
+            <div class="hint-btn" id="hintBtn1" onclick="showHintLayer(1,1)">💡 GET HINT</div>
+            <div class="hint-layer layer1" id="hint1_1">
+                <p>What's the basic shape before the shifts and stretches? Look at the exponent.</p>
+                <button onclick="showHintLayer(1,2)">SHOW ANSWER</button>
+            </div>
+            <div class="hint-layer layer2" id="hint1_2">
+                <p>Parent: y = x³ (cubic). Transformations: vertical stretch by 2, right 3, up 1.</p>
+                <button onclick="showHintLayer(1,3)">SHOW SOLUTION</button>
+            </div>
+            <div class="hint-layer layer3" id="hint1_3">
+                <p>Step 1: The exponent is 3, so the parent function is y = x³ (cubic).</p>
+                <p>Step 2: The 2 in front means vertical stretch by factor of 2.</p>
+                <p>Step 3: The (x − 3) means shift right 3 units.</p>
+                <p>Step 4: The + 1 at the end means shift up 1 unit.</p>
+            </div>
+
+            <!-- Q2 -->
+            <div class="question-card">
+                <div class="question-number">Question 2</div>
+                <p>Identify parent, describe transformations, state domain &amp; range, and find x-intercepts.</p>
+                <p>\( f(x) = -|x + 4| + 3 \)</p>
+                <label for="q2_parent"><strong>Parent function:</strong></label>
+                <select id="q2_parent" class="math-select">
+                    <option value="">— Choose parent function —</option>
+                    <option value="quadratic">y = x² (quadratic)</option>
+                    <option value="cubic">y = x³ (cubic)</option>
+                    <option value="absolute">y = |x| (absolute value)</option>
+                    <option value="sqrt">y = √x (square root)</option>
+                    <option value="exponential">y = bˣ (exponential)</option>
+                    <option value="rational">y = 1/x (rational)</option>
+                </select>
+                <div class="input-group">
+                    <label>x₁ =</label>
+                    <input type="number" id="q2_x1" step="any" placeholder="e.g. -1">
+                    <label>x₂ =</label>
+                    <input type="number" id="q2_x2" step="any" placeholder="e.g. -7">
+                </div>
+                <label for="q2_transform"><strong>Transformations, Domain &amp; Range:</strong></label>
+                <textarea id="q2_transform" class="work-area" placeholder="Transformations: ... Domain: ... Range: ..."></textarea>
+            </div>
+            <div class="answer-feedback" id="feedback2"></div>
+            <div class="hint-btn" id="hintBtn2" onclick="showHintLayer(2,1)">💡 GET HINT</div>
+            <div class="hint-layer layer1" id="hint2_1">
+                <p>The | | tells you the parent. For x-intercepts, set f(x) = 0 and solve the absolute value equation.</p>
+                <button onclick="showHintLayer(2,2)">SHOW ANSWER</button>
+            </div>
+            <div class="hint-layer layer2" id="hint2_2">
+                <p>Parent: y = |x|. x-intercepts: x = −1 and x = −7. Reflect x-axis, left 4, up 3. Domain: all reals. Range: y ≤ 3.</p>
+                <button onclick="showHintLayer(2,3)">SHOW SOLUTION</button>
+            </div>
+            <div class="hint-layer layer3" id="hint2_3">
+                <p>Step 1: Parent is y = |x| (absolute value — the | | symbol).</p>
+                <p>Step 2: Negative sign reflects over x-axis. (x + 4) shifts left 4. +3 shifts up 3.</p>
+                <p>Step 3: x-intercepts: set 0 = −|x + 4| + 3 → |x + 4| = 3.</p>
+                <p>Step 4: x + 4 = 3 → x = −1. Or x + 4 = −3 → x = −7.</p>
+                <p>Step 5: Domain: all real numbers. Range: y ≤ 3 (opens down, vertex at (−4, 3)).</p>
+            </div>
+
+            <!-- Q3 -->
+            <div class="question-card">
+                <div class="question-number">Question 3</div>
+                <p>Identify parent, describe transformations, state domain &amp; range, and find x-intercepts.</p>
+                <p>\( f(x) = 3(x - 1)^2 - 12 \)</p>
+                <label for="q3_parent"><strong>Parent function:</strong></label>
+                <select id="q3_parent" class="math-select">
+                    <option value="">— Choose parent function —</option>
+                    <option value="quadratic">y = x² (quadratic)</option>
+                    <option value="cubic">y = x³ (cubic)</option>
+                    <option value="absolute">y = |x| (absolute value)</option>
+                    <option value="sqrt">y = √x (square root)</option>
+                    <option value="exponential">y = bˣ (exponential)</option>
+                    <option value="rational">y = 1/x (rational)</option>
+                </select>
+                <div class="input-group">
+                    <label>x₁ =</label>
+                    <input type="number" id="q3_x1" step="any" placeholder="e.g. 3">
+                    <label>x₂ =</label>
+                    <input type="number" id="q3_x2" step="any" placeholder="e.g. -1">
+                </div>
+                <label for="q3_transform"><strong>Transformations, Domain &amp; Range:</strong></label>
+                <textarea id="q3_transform" class="work-area" placeholder="Transformations: ... Domain: ... Range: ..."></textarea>
+            </div>
+            <div class="answer-feedback" id="feedback3"></div>
+            <div class="hint-btn" id="hintBtn3" onclick="showHintLayer(3,1)">💡 GET HINT</div>
+            <div class="hint-layer layer1" id="hint3_1">
+                <p>The exponent is 2 — that's a parabola. For intercepts, set f(x) = 0 and isolate the squared term.</p>
+                <button onclick="showHintLayer(3,2)">SHOW ANSWER</button>
+            </div>
+            <div class="hint-layer layer2" id="hint3_2">
+                <p>Parent: y = x². x-intercepts: x = 3 and x = −1. Stretch by 3, right 1, down 12. Domain: all reals. Range: y ≥ −12.</p>
+                <button onclick="showHintLayer(3,3)">SHOW SOLUTION</button>
+            </div>
+            <div class="hint-layer layer3" id="hint3_3">
+                <p>Step 1: Exponent 2 → parent is y = x² (quadratic).</p>
+                <p>Step 2: The 3 means vertical stretch by 3. (x − 1) shifts right 1. −12 shifts down 12.</p>
+                <p>Step 3: x-intercepts: 0 = 3(x − 1)² − 12 → 3(x − 1)² = 12 → (x − 1)² = 4.</p>
+                <p>Step 4: x − 1 = ±2 → x = 3 or x = −1.</p>
+                <p>Step 5: Domain: all reals. Range: y ≥ −12 (opens up, vertex at (1, −12)).</p>
+            </div>
+
+            <!-- ======== SECTION B: Solve Equations (Q4-Q11) ======== -->
+            <div class="section-divider">Section B — Solve Nonlinear Equations (Q4–Q11)</div>
+
+            <!-- Q4 -->
+            <div class="question-card">
+                <div class="question-number">Question 4</div>
+                <p>Solve: \( 2^{3x - 1} = 32 \)</p>
+                <textarea class="work-area" placeholder="Show your work..."></textarea>
+                <div class="input-group">
+                    <label>x =</label>
+                    <input type="number" id="q4_x" step="any" placeholder="e.g. 2">
+                </div>
+            </div>
+            <div class="answer-feedback" id="feedback4"></div>
+            <div class="hint-btn" id="hintBtn4" onclick="showHintLayer(4,1)">💡 GET HINT</div>
+            <div class="hint-layer layer1" id="hint4_1">
+                <p>Rewrite 32 as a power of 2. Then set the exponents equal.</p>
+                <button onclick="showHintLayer(4,2)">SHOW ANSWER</button>
+            </div>
+            <div class="hint-layer layer2" id="hint4_2">
+                <p>x = 2</p>
+                <button onclick="showHintLayer(4,3)">SHOW SOLUTION</button>
+            </div>
+            <div class="hint-layer layer3" id="hint4_3">
+                <p>Step 1: Rewrite 32 as 2⁵ (since 2⁵ = 32).</p>
+                <p>Step 2: 2^(3x − 1) = 2⁵ → set exponents equal: 3x − 1 = 5.</p>
+                <p>Step 3: 3x = 6 → x = 2.</p>
+                <p>Step 4: Check: 2^(3·2 − 1) = 2⁵ = 32 ✓</p>
+            </div>
+
+            <!-- Q5 -->
+            <div class="question-card">
+                <div class="question-number">Question 5</div>
+                <p>Solve: \( 3(2x + 1)^2 - 5 = 7 \)</p>
+                <textarea class="work-area" placeholder="Show your work..."></textarea>
+                <div class="input-group">
+                    <label>x₁ =</label>
+                    <input type="number" id="q5_x1" step="any" placeholder="e.g. 0.5">
+                    <label>x₂ =</label>
+                    <input type="number" id="q5_x2" step="any" placeholder="e.g. -1.5">
+                </div>
+            </div>
+            <div class="answer-feedback" id="feedback5"></div>
+            <div class="hint-btn" id="hintBtn5" onclick="showHintLayer(5,1)">💡 GET HINT</div>
+            <div class="hint-layer layer1" id="hint5_1">
+                <p>Isolate the squared term first. Then take the square root of both sides — don't forget ±.</p>
+                <button onclick="showHintLayer(5,2)">SHOW ANSWER</button>
+            </div>
+            <div class="hint-layer layer2" id="hint5_2">
+                <p>x = 0.5 and x = −1.5</p>
+                <button onclick="showHintLayer(5,3)">SHOW SOLUTION</button>
+            </div>
+            <div class="hint-layer layer3" id="hint5_3">
+                <p>Step 1: Add 5: 3(2x + 1)² = 12.</p>
+                <p>Step 2: Divide by 3: (2x + 1)² = 4.</p>
+                <p>Step 3: Square root: 2x + 1 = ±2.</p>
+                <p>Step 4: If 2x + 1 = 2 → 2x = 1 → x = 0.5.</p>
+                <p>Step 5: If 2x + 1 = −2 → 2x = −3 → x = −1.5.</p>
+            </div>
+
+            <!-- Q6 -->
+            <div class="question-card">
+                <div class="question-number">Question 6</div>
+                <p>Solve: \( \sqrt{3x^2 + 1} - 4 = 0 \)</p>
+                <textarea class="work-area" placeholder="Show your work..."></textarea>
+                <div class="input-group">
+                    <label>x₁ =</label>
+                    <input type="number" id="q6_x1" step="any" placeholder="decimal, e.g. 2.236">
+                    <label>x₂ =</label>
+                    <input type="number" id="q6_x2" step="any" placeholder="decimal, e.g. -2.236">
+                </div>
+            </div>
+            <div class="answer-feedback" id="feedback6"></div>
+            <div class="hint-btn" id="hintBtn6" onclick="showHintLayer(6,1)">💡 GET HINT</div>
+            <div class="hint-layer layer1" id="hint6_1">
+                <p>Isolate the square root, then square both sides. You'll get x² = something.</p>
+                <button onclick="showHintLayer(6,2)">SHOW ANSWER</button>
+            </div>
+            <div class="hint-layer layer2" id="hint6_2">
+                <p>x = ±√5 ≈ ±2.236</p>
+                <button onclick="showHintLayer(6,3)">SHOW SOLUTION</button>
+            </div>
+            <div class="hint-layer layer3" id="hint6_3">
+                <p>Step 1: Isolate: √(3x² + 1) = 4.</p>
+                <p>Step 2: Square both sides: 3x² + 1 = 16.</p>
+                <p>Step 3: 3x² = 15 → x² = 5.</p>
+                <p>Step 4: x = ±√5 ≈ ±2.236.</p>
+                <p>Step 5: Check: √(3·5 + 1) = √16 = 4 ✓</p>
+            </div>
+
+            <!-- Q7 -->
+            <div class="question-card">
+                <div class="question-number">Question 7</div>
+                <p>Solve: \( 5^{2 - x} + 3 = 4 \)</p>
+                <textarea class="work-area" placeholder="Show your work..."></textarea>
+                <div class="input-group">
+                    <label>x =</label>
+                    <input type="number" id="q7_x" step="any" placeholder="e.g. 2">
+                </div>
+            </div>
+            <div class="answer-feedback" id="feedback7"></div>
+            <div class="hint-btn" id="hintBtn7" onclick="showHintLayer(7,1)">💡 GET HINT</div>
+            <div class="hint-layer layer1" id="hint7_1">
+                <p>Subtract 3 first. What exponent makes 5 to that power equal 1?</p>
+                <button onclick="showHintLayer(7,2)">SHOW ANSWER</button>
+            </div>
+            <div class="hint-layer layer2" id="hint7_2">
+                <p>x = 2</p>
+                <button onclick="showHintLayer(7,3)">SHOW SOLUTION</button>
+            </div>
+            <div class="hint-layer layer3" id="hint7_3">
+                <p>Step 1: Subtract 3: 5^(2 − x) = 1.</p>
+                <p>Step 2: Any base to the 0 power = 1, so 2 − x = 0.</p>
+                <p>Step 3: x = 2.</p>
+                <p>Step 4: Check: 5^(2−2) + 3 = 5⁰ + 3 = 1 + 3 = 4 ✓</p>
+            </div>
+
+            <!-- Q8 -->
+            <div class="question-card">
+                <div class="question-number">Question 8</div>
+                <p>Solve: \( \dfrac{4x + 3}{x - 2} = 7 \)</p>
+                <textarea class="work-area" placeholder="Show your work..."></textarea>
+                <div class="input-group">
+                    <label>x =</label>
+                    <input type="number" id="q8_x" step="any" placeholder="decimal or fraction, e.g. 5.667">
+                </div>
+            </div>
+            <div class="answer-feedback" id="feedback8"></div>
+            <div class="hint-btn" id="hintBtn8" onclick="showHintLayer(8,1)">💡 GET HINT</div>
+            <div class="hint-layer layer1" id="hint8_1">
+                <p>Multiply both sides by (x − 2) to clear the fraction. Then solve the linear equation.</p>
+                <button onclick="showHintLayer(8,2)">SHOW ANSWER</button>
+            </div>
+            <div class="hint-layer layer2" id="hint8_2">
+                <p>x = 17/3 ≈ 5.667</p>
+                <button onclick="showHintLayer(8,3)">SHOW SOLUTION</button>
+            </div>
+            <div class="hint-layer layer3" id="hint8_3">
+                <p>Step 1: Multiply both sides by (x − 2): 4x + 3 = 7(x − 2).</p>
+                <p>Step 2: Distribute: 4x + 3 = 7x − 14.</p>
+                <p>Step 3: Move terms: 3 + 14 = 7x − 4x → 17 = 3x.</p>
+                <p>Step 4: x = 17/3 ≈ 5.667.</p>
+                <p>Step 5: Check: (4·17/3 + 3)/(17/3 − 2) = (77/3)/(11/3) = 7 ✓</p>
+            </div>
+
+            <!-- Q9 -->
+            <div class="question-card">
+                <div class="question-number">Question 9</div>
+                <p>Solve: \( \sqrt{4x - 3} = \sqrt{x + 6} \)</p>
+                <textarea class="work-area" placeholder="Show your work..."></textarea>
+                <div class="input-group">
+                    <label>x =</label>
+                    <input type="number" id="q9_x" step="any" placeholder="e.g. 3">
+                </div>
+            </div>
+            <div class="answer-feedback" id="feedback9"></div>
+            <div class="hint-btn" id="hintBtn9" onclick="showHintLayer(9,1)">💡 GET HINT</div>
+            <div class="hint-layer layer1" id="hint9_1">
+                <p>Both sides are square roots — square them both to remove the radicals.</p>
+                <button onclick="showHintLayer(9,2)">SHOW ANSWER</button>
+            </div>
+            <div class="hint-layer layer2" id="hint9_2">
+                <p>x = 3</p>
+                <button onclick="showHintLayer(9,3)">SHOW SOLUTION</button>
+            </div>
+            <div class="hint-layer layer3" id="hint9_3">
+                <p>Step 1: Square both sides: 4x − 3 = x + 6.</p>
+                <p>Step 2: 3x = 9 → x = 3.</p>
+                <p>Step 3: Check domain: 4(3) − 3 = 9 ≥ 0 ✓ and 3 + 6 = 9 ≥ 0 ✓</p>
+                <p>Step 4: Check: √9 = 3 and √9 = 3 ✓. No extraneous solution.</p>
+            </div>
+
+            <!-- Q10 -->
+            <div class="question-card">
+                <div class="question-number">Question 10</div>
+                <p>Solve: \( 4 \cdot 3^{x^2 - 2} = 108 \)</p>
+                <textarea class="work-area" placeholder="Show your work..."></textarea>
+                <div class="input-group">
+                    <label>x₁ =</label>
+                    <input type="number" id="q10_x1" step="any" placeholder="decimal, e.g. 2.236">
+                    <label>x₂ =</label>
+                    <input type="number" id="q10_x2" step="any" placeholder="decimal, e.g. -2.236">
+                </div>
+            </div>
+            <div class="answer-feedback" id="feedback10"></div>
+            <div class="hint-btn" id="hintBtn10" onclick="showHintLayer(10,1)">💡 GET HINT</div>
+            <div class="hint-layer layer1" id="hint10_1">
+                <p>Divide by 4 first, then rewrite 27 as a power of 3. Set exponents equal.</p>
+                <button onclick="showHintLayer(10,2)">SHOW ANSWER</button>
+            </div>
+            <div class="hint-layer layer2" id="hint10_2">
+                <p>x = ±√5 ≈ ±2.236</p>
+                <button onclick="showHintLayer(10,3)">SHOW SOLUTION</button>
+            </div>
+            <div class="hint-layer layer3" id="hint10_3">
+                <p>Step 1: Divide by 4: 3^(x² − 2) = 27.</p>
+                <p>Step 2: Rewrite: 3^(x² − 2) = 3³.</p>
+                <p>Step 3: Set exponents equal: x² − 2 = 3 → x² = 5.</p>
+                <p>Step 4: x = ±√5 ≈ ±2.236.</p>
+                <p>Step 5: Check: 4·3^(5−2) = 4·27 = 108 ✓</p>
+            </div>
+
+            <!-- Q11 -->
+            <div class="question-card">
+                <div class="question-number">Question 11</div>
+                <p>Solve: \( 2x^{3/2} + 4 = 58 \)</p>
+                <textarea class="work-area" placeholder="Show your work..."></textarea>
+                <div class="input-group">
+                    <label>x =</label>
+                    <input type="number" id="q11_x" step="any" placeholder="e.g. 9">
+                </div>
+            </div>
+            <div class="answer-feedback" id="feedback11"></div>
+            <div class="hint-btn" id="hintBtn11" onclick="showHintLayer(11,1)">💡 GET HINT</div>
+            <div class="hint-layer layer1" id="hint11_1">
+                <p>Isolate x^(3/2) first. Then raise both sides to the 2/3 power to undo the 3/2.</p>
+                <button onclick="showHintLayer(11,2)">SHOW ANSWER</button>
+            </div>
+            <div class="hint-layer layer2" id="hint11_2">
+                <p>x = 9</p>
+                <button onclick="showHintLayer(11,3)">SHOW SOLUTION</button>
+            </div>
+            <div class="hint-layer layer3" id="hint11_3">
+                <p>Step 1: Subtract 4: 2x^(3/2) = 54.</p>
+                <p>Step 2: Divide by 2: x^(3/2) = 27.</p>
+                <p>Step 3: Raise to 2/3 power: x = 27^(2/3).</p>
+                <p>Step 4: 27^(1/3) = 3, then 3² = 9. So x = 9.</p>
+                <p>Step 5: Check: 2·9^(3/2) + 4 = 2·27 + 4 = 58 ✓</p>
+            </div>
+
+            <!-- ======== SECTION C: Graph & Analyze (Q12-Q13) ======== -->
+            <div class="section-divider">Section C — Graph &amp; Analyze (Q12–Q13)</div>
+
+            <!-- Q12 -->
+            <div class="question-card">
+                <div class="question-number">Question 12</div>
+                <p>Graph \( f(x) = -(x + 2)^2 + 5 \). State the vertex, domain, and range.</p>
+                <div class="graph-container">
+                    <canvas id="graphQ12" width="700" height="700"></canvas>
+                    <div class="graph-tooltip" id="tooltipQ12"></div>
+                </div>
+                <div class="point-counter" id="counterQ12">Points: 0/5 minimum</div>
+                <button type="button" class="graph-btn check-graph" id="checkQ12" disabled onclick="checkGraph('graphQ12')">CHECK GRAPH</button>
+                <button type="button" class="graph-btn" onclick="clearGraph('graphQ12')">CLEAR</button>
+                <div class="graph-result" id="resultQ12"></div>
+                <div class="input-group" style="margin-top:12px">
+                    <label>Vertex x =</label>
+                    <input type="number" id="q12_vx" step="any" placeholder="-2">
+                    <label>y =</label>
+                    <input type="number" id="q12_vy" step="any" placeholder="5">
+                </div>
+                <label for="q12_dr"><strong>Domain &amp; Range:</strong></label>
+                <textarea id="q12_dr" class="work-area" placeholder="Domain: ... Range: ..."></textarea>
+            </div>
+            <div class="answer-feedback" id="feedback12"></div>
+            <div class="hint-btn" id="hintBtn12" onclick="showHintLayer(12,1)">💡 GET HINT</div>
+            <div class="hint-layer layer1" id="hint12_1">
+                <p>The vertex is at (−2, 5). Plot it first, then pick 2 x-values on each side.</p>
+                <button onclick="showHintLayer(12,2)">SHOW ANSWER</button>
+            </div>
+            <div class="hint-layer layer2" id="hint12_2">
+                <p>Vertex: (−2, 5). Domain: all reals. Range: y ≤ 5. Opens downward.</p>
+                <button onclick="showHintLayer(12,3)">SHOW SOLUTION</button>
+            </div>
+            <div class="hint-layer layer3" id="hint12_3">
+                <p>Step 1: Vertex form: a(x − h)² + k → vertex (h, k) = (−2, 5).</p>
+                <p>Step 2: The negative sign means it opens downward.</p>
+                <p>Step 3: Plot vertex (−2, 5). Then f(−1) = −1 + 5 = 4 → (−1, 4).</p>
+                <p>Step 4: By symmetry, (−3, 4). Also f(0) = −4 + 5 = 1 → (0, 1) and (−4, 1).</p>
+                <p>Step 5: Domain: all real numbers. Range: y ≤ 5.</p>
+            </div>
+
+            <!-- Q13 -->
+            <div class="question-card">
+                <div class="question-number">Question 13</div>
+                <p>Graph \( f(x) = \dfrac{3}{x - 1} - 2 \) and draw asymptotes. State domain and range.</p>
+                <div class="graph-container">
+                    <canvas id="graphQ13" width="700" height="700"></canvas>
+                    <div class="graph-tooltip" id="tooltipQ13"></div>
+                </div>
+                <div class="point-counter" id="counterQ13">Points: 0/5 minimum · Asymptotes: 0/2</div>
+                <button type="button" class="graph-btn" id="vaBtn13" onclick="setAsymptoteMode('graphQ13','vertical')">ADD VERTICAL ASYMPTOTE</button>
+                <button type="button" class="graph-btn" id="haBtn13" onclick="setAsymptoteMode('graphQ13','horizontal')">ADD HORIZONTAL ASYMPTOTE</button>
+                <button type="button" class="graph-btn check-graph" id="checkQ13" disabled onclick="checkGraph('graphQ13')">CHECK GRAPH</button>
+                <button type="button" class="graph-btn" onclick="clearGraph('graphQ13')">CLEAR</button>
+                <div class="graph-result" id="resultQ13"></div>
+                <div class="input-group" style="margin-top:12px">
+                    <label>Vertical asymptote: x =</label>
+                    <input type="number" id="q13_va" step="any" placeholder="1">
+                    <label>Horizontal asymptote: y =</label>
+                    <input type="number" id="q13_ha" step="any" placeholder="-2">
+                </div>
+                <label for="q13_dr"><strong>Domain &amp; Range:</strong></label>
+                <textarea id="q13_dr" class="work-area" placeholder="Domain: ... Range: ..."></textarea>
+            </div>
+            <div class="answer-feedback" id="feedback13"></div>
+            <div class="hint-btn" id="hintBtn13" onclick="showHintLayer(13,1)">💡 GET HINT</div>
+            <div class="hint-layer layer1" id="hint13_1">
+                <p>This is y = 1/x shifted. The vertical asymptote is where the denominator = 0.</p>
+                <button onclick="showHintLayer(13,2)">SHOW ANSWER</button>
+            </div>
+            <div class="hint-layer layer2" id="hint13_2">
+                <p>VA: x = 1. HA: y = −2. Domain: x ≠ 1. Range: y ≠ −2.</p>
+                <button onclick="showHintLayer(13,3)">SHOW SOLUTION</button>
+            </div>
+            <div class="hint-layer layer3" id="hint13_3">
+                <p>Step 1: Parent is y = 1/x. This is 3/(x − 1) − 2: shifted right 1, down 2, stretched by 3.</p>
+                <p>Step 2: Vertical asymptote: x − 1 = 0 → x = 1.</p>
+                <p>Step 3: Horizontal asymptote: as x → ∞, 3/(x−1) → 0, so y → −2.</p>
+                <p>Step 4: Key points: f(−2) = −3, f(0) = −5, f(2) = 1, f(4) = −1.</p>
+                <p>Step 5: Domain: x ≠ 1. Range: y ≠ −2.</p>
+            </div>
+
+            <!-- ======== SECTION D: Apply (Q14-Q15) ======== -->
+            <div class="section-divider">Section D — Apply (Q14–Q15)</div>
+
+            <!-- Q14 -->
+            <div class="question-card">
+                <div class="question-number">Question 14</div>
+                <p>The formula for the area of a circle is \( A = \pi r^2 \). Solve for \( r \) in terms of \( A \).</p>
+                <textarea class="work-area" placeholder="Show your algebraic steps..."></textarea>
+                <div class="radio-group">
+                    <label class="radio-option">
+                        <input type="radio" name="q14" value="A">
+                        <span>\( r = \dfrac{A}{2\pi} \)</span>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="q14" value="B">
+                        <span>\( r = \sqrt{\dfrac{A}{\pi}} \)</span>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="q14" value="C">
+                        <span>\( r = \dfrac{A^2}{\pi} \)</span>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="q14" value="D">
+                        <span>\( r = \sqrt{A\pi} \)</span>
+                    </label>
+                </div>
+            </div>
+            <div class="answer-feedback" id="feedback14"></div>
+            <div class="hint-btn" id="hintBtn14" onclick="showHintLayer(14,1)">💡 GET HINT</div>
+            <div class="hint-layer layer1" id="hint14_1">
+                <p>Divide both sides by π first, then undo the square.</p>
+                <button onclick="showHintLayer(14,2)">SHOW ANSWER</button>
+            </div>
+            <div class="hint-layer layer2" id="hint14_2">
+                <p>r = √(A/π) — Choice B</p>
+                <button onclick="showHintLayer(14,3)">SHOW SOLUTION</button>
+            </div>
+            <div class="hint-layer layer3" id="hint14_3">
+                <p>Step 1: Start with A = πr².</p>
+                <p>Step 2: Divide both sides by π: A/π = r².</p>
+                <p>Step 3: Take square root: r = √(A/π).</p>
+                <p>Step 4: We use positive root since r is a radius (length).</p>
+            </div>
+
+            <!-- Q15 -->
+            <div class="question-card">
+                <div class="question-number">Question 15</div>
+                <p>A bacteria colony starts with 200 bacteria and triples every 4 hours.</p>
+                <p><strong>(a)</strong> Write an exponential model for the population \( P \) after \( t \) hours.</p>
+                <textarea class="work-area" placeholder="P(t) = ..."></textarea>
+                <p><strong>(b)</strong> How many hours until the population reaches 48,600?</p>
+                <textarea class="work-area" placeholder="Show your work..."></textarea>
+                <div class="input-group">
+                    <label>t =</label>
+                    <input type="number" id="q15_t" step="any" placeholder="hours">
+                    <span>hours</span>
+                </div>
+            </div>
+            <div class="answer-feedback" id="feedback15"></div>
+            <div class="hint-btn" id="hintBtn15" onclick="showHintLayer(15,1)">💡 GET HINT</div>
+            <div class="hint-layer layer1" id="hint15_1">
+                <p>Triples means ×3 each period. The period is 4 hours, so the exponent is t/4.</p>
+                <button onclick="showHintLayer(15,2)">SHOW ANSWER</button>
+            </div>
+            <div class="hint-layer layer2" id="hint15_2">
+                <p>(a) P(t) = 200 · 3^(t/4). (b) t = 20 hours.</p>
+                <button onclick="showHintLayer(15,3)">SHOW SOLUTION</button>
+            </div>
+            <div class="hint-layer layer3" id="hint15_3">
+                <p>Step 1: Initial value = 200, growth factor = 3, period = 4 hours.</p>
+                <p>Step 2: Model: P(t) = 200 · 3^(t/4).</p>
+                <p>Step 3: Set P = 48,600: 48600 = 200 · 3^(t/4).</p>
+                <p>Step 4: Divide: 243 = 3^(t/4).</p>
+                <p>Step 5: 3⁵ = 243, so t/4 = 5 → t = 20 hours.</p>
+            </div>
+
+        </form>
+
+        <!-- Buttons -->
+        <div class="button-container" style="margin-top:30px; display:flex; flex-wrap:wrap; gap:10px;">
+            <button class="submit-btn" onclick="gradeExamMVP()">CHECK ANSWERS</button>
+            <button class="print-btn" onclick="window.print()">Print</button>
+            <button class="answer-key-btn" onclick="showAnswerKey()">Answer Key 🔑</button>
+        </div>
+
+        <div class="result" id="finalResult"></div>
+        <div id="saasGrade" style="text-align:center; margin:16px 0;"></div>
+
+    </div>
+
+    <!-- Answer Key Modal -->
+    <div class="answer-key-modal" id="answerKeyModal">
+        <div class="answer-key-content">
+            <button class="close-modal" onclick="closeAnswerKey()">×</button>
+            <h2 class="answer-key-title">Answer Key</h2>
+            <div id="answerKeyBody"></div>
+        </div>
+    </div>
+
+    <script src="shared/scripts.js"></script>
+    <script>
+    /* ========== GRAPH ENGINE ========== */
+    var graphData = {};
+
+    function initGraph(canvasId) {
+        var canvas = document.getElementById(canvasId);
+        if (!canvas) return;
+        var ctx = canvas.getContext('2d');
+        var w = canvas.width, h = canvas.height;
+        var ml = 40, mr = 20, mt = 20, mb = 35;
+        var pw = w - ml - mr, ph = h - mt - mb;
+
+        graphData[canvasId] = {
+            canvas: canvas, ctx: ctx,
+            points: [], asymptotes: { vertical: [], horizontal: [] },
+            asymptoteMode: null, answerOverlay: false,
+            w: w, h: h, ml: ml, mr: mr, mt: mt, mb: mb, pw: pw, ph: ph
+        };
+
+        canvas.addEventListener('mousemove', function(e) {
+            var rect = canvas.getBoundingClientRect();
+            var scaleX = w / rect.width;
+            var scaleY = h / rect.height;
+            var cx = (e.clientX - rect.left) * scaleX;
+            var cy = (e.clientY - rect.top) * scaleY;
+            var gx = ((cx - ml) / pw) * 32 - 16;
+            var gy = -(((cy - mt) / ph) * 32 - 16);
+            var sx = Math.round(gx * 4) / 4;
+            var sy = Math.round(gy * 4) / 4;
+            var tip = document.getElementById('tooltip' + canvasId.replace('graph',''));
+            if (tip) {
+                tip.style.display = 'block';
+                tip.textContent = '(' + sx + ', ' + sy + ')';
+                var tx = e.clientX + 12;
+                var ty = e.clientY - 28;
+                if (tx + 100 > window.innerWidth) tx = e.clientX - 100;
+                tip.style.left = tx + 'px';
+                tip.style.top = ty + 'px';
+            }
+        });
+
+        canvas.addEventListener('mouseleave', function() {
+            var tip = document.getElementById('tooltip' + canvasId.replace('graph',''));
+            if (tip) tip.style.display = 'none';
+        });
+
+        canvas.addEventListener('click', function(e) {
+            var d = graphData[canvasId];
+            var rect = canvas.getBoundingClientRect();
+            var scaleX = w / rect.width;
+            var scaleY = h / rect.height;
+            var cx = (e.clientX - rect.left) * scaleX;
+            var cy = (e.clientY - rect.top) * scaleY;
+            var gx = ((cx - ml) / pw) * 32 - 16;
+            var gy = -(((cy - mt) / ph) * 32 - 16);
+            var sx = Math.round(gx * 4) / 4;
+            var sy = Math.round(gy * 4) / 4;
+
+            if (d.asymptoteMode === 'vertical') {
+                d.asymptotes.vertical = [sx];
+                d.asymptoteMode = null;
+                var btn = document.getElementById('vaBtn13');
+                if (btn) btn.classList.remove('active');
+                updateCounter(canvasId);
+                redrawGraph(canvasId);
+                return;
+            }
+            if (d.asymptoteMode === 'horizontal') {
+                d.asymptotes.horizontal = [sy];
+                d.asymptoteMode = null;
+                var btn2 = document.getElementById('haBtn13');
+                if (btn2) btn2.classList.remove('active');
+                updateCounter(canvasId);
+                redrawGraph(canvasId);
+                return;
+            }
+
+            // Remove if clicking near existing point
+            var removed = false;
+            for (var i = d.points.length - 1; i >= 0; i--) {
+                var p = d.points[i];
+                if (Math.abs(p.gx - sx) < 0.5 && Math.abs(p.gy - sy) < 0.5) {
+                    d.points.splice(i, 1);
+                    removed = true;
+                    break;
+                }
+            }
+            if (!removed) {
+                var screenX = ml + ((sx + 16) / 32) * pw;
+                var screenY = mt + ((-sy + 16) / 32) * ph;
+                d.points.push({ x: screenX, y: screenY, gx: sx, gy: sy, status: null });
+            }
+            updateCounter(canvasId);
+            redrawGraph(canvasId);
+        });
+
+        drawGrid(canvasId);
+    }
+
+    function drawGrid(canvasId) {
+        var d = graphData[canvasId];
+        var ctx = d.ctx;
+        ctx.clearRect(0, 0, d.w, d.h);
+
+        // Grid lines
+        ctx.strokeStyle = '#ddd'; ctx.lineWidth = 1;
+        for (var i = 0; i <= 32; i++) {
+            var x = d.ml + (i * d.pw) / 32;
+            ctx.beginPath(); ctx.moveTo(x, d.mt); ctx.lineTo(x, d.mt + d.ph); ctx.stroke();
+        }
+        for (var j = 0; j <= 32; j++) {
+            var y = d.mt + (j * d.ph) / 32;
+            ctx.beginPath(); ctx.moveTo(d.ml, y); ctx.lineTo(d.ml + d.pw, y); ctx.stroke();
+        }
+
+        // Axes
+        ctx.strokeStyle = '#000'; ctx.lineWidth = 2;
+        var xAxisY = d.mt + d.ph / 2;
+        var yAxisX = d.ml + d.pw / 2;
+        ctx.beginPath(); ctx.moveTo(d.ml, xAxisY); ctx.lineTo(d.ml + d.pw, xAxisY); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(yAxisX, d.mt); ctx.lineTo(yAxisX, d.mt + d.ph); ctx.stroke();
+
+        // Labels
+        ctx.fillStyle = '#000'; ctx.font = '12px Arial'; ctx.textAlign = 'center';
+        for (var n = -16; n <= 16; n += 4) {
+            if (n === 0) continue;
+            var lx = d.ml + d.pw / 2 + (n * d.pw / 32);
+            ctx.fillText(n, lx, xAxisY + 18);
+        }
+        ctx.textAlign = 'right';
+        for (var m = -16; m <= 16; m += 4) {
+            if (m === 0) continue;
+            var ly = d.mt + d.ph / 2 - (m * d.ph / 32);
+            ctx.fillText(m, yAxisX - 6, ly + 4);
+        }
+        ctx.textAlign = 'left';
+        ctx.font = '14px Arial';
+        ctx.fillText('0', yAxisX + 4, xAxisY + 16);
+    }
+
+    function redrawGraph(canvasId) {
+        var d = graphData[canvasId];
+        if (!d) return;
+        drawGrid(canvasId);
+        var ctx = d.ctx;
+
+        // Draw asymptotes (dashed blue)
+        ctx.save();
+        ctx.setLineDash([8, 6]);
+        ctx.strokeStyle = '#1D42BA'; ctx.lineWidth = 2;
+        d.asymptotes.vertical.forEach(function(gx) {
+            var sx = d.ml + ((gx + 16) / 32) * d.pw;
+            ctx.beginPath(); ctx.moveTo(sx, d.mt); ctx.lineTo(sx, d.mt + d.ph); ctx.stroke();
+        });
+        d.asymptotes.horizontal.forEach(function(gy) {
+            var sy = d.mt + ((-gy + 16) / 32) * d.ph;
+            ctx.beginPath(); ctx.moveTo(d.ml, sy); ctx.lineTo(d.ml + d.pw, sy); ctx.stroke();
+        });
+        ctx.restore();
+
+        // Draw answer overlay curve if active
+        if (d.answerOverlay) {
+            var func = canvasId === 'graphQ12'
+                ? function(x) { return -(x + 2) * (x + 2) + 5; }
+                : function(x) { return Math.abs(x - 1) < 0.05 ? null : 3 / (x - 1) - 2; };
+            ctx.save();
+            ctx.strokeStyle = '#1D42BA'; ctx.lineWidth = 3;
+            ctx.beginPath();
+            var started = false;
+            for (var gx = -16; gx <= 16; gx += 0.05) {
+                var fy = func(gx);
+                if (fy === null || fy < -16 || fy > 16) { started = false; continue; }
+                var px = d.ml + ((gx + 16) / 32) * d.pw;
+                var py = d.mt + ((-fy + 16) / 32) * d.ph;
+                if (!started) { ctx.moveTo(px, py); started = true; }
+                else ctx.lineTo(px, py);
+            }
+            ctx.stroke();
+            ctx.restore();
+        }
+
+        // Draw points
+        d.points.forEach(function(p) {
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, 6, 0, 2 * Math.PI);
+            if (p.status === 'correct') { ctx.fillStyle = '#1B7D3A'; }
+            else if (p.status === 'incorrect') { ctx.fillStyle = '#C8102E'; }
+            else { ctx.fillStyle = '#1D42BA'; }
+            ctx.fill();
+            ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.5;
+            ctx.stroke();
+        });
+    }
+
+    function updateCounter(canvasId) {
+        var d = graphData[canvasId];
+        var n = d.points.length;
+        var isQ13 = canvasId === 'graphQ13';
+        var counter = document.getElementById('counter' + canvasId.replace('graph',''));
+        var checkBtn = document.getElementById('check' + canvasId.replace('graph',''));
+
+        if (isQ13) {
+            var va = d.asymptotes.vertical.length;
+            var ha = d.asymptotes.horizontal.length;
+            counter.textContent = 'Points: ' + n + '/5 minimum · Asymptotes: ' + (va + ha) + '/2';
+            checkBtn.disabled = !(n >= 5 && va >= 1 && ha >= 1);
+        } else {
+            counter.textContent = 'Points: ' + n + '/5 minimum';
+            checkBtn.disabled = n < 5;
+        }
+    }
+
+    function setAsymptoteMode(canvasId, type) {
+        var d = graphData[canvasId];
+        d.asymptoteMode = type;
+        var vaBtn = document.getElementById('vaBtn13');
+        var haBtn = document.getElementById('haBtn13');
+        if (vaBtn) vaBtn.classList.toggle('active', type === 'vertical');
+        if (haBtn) haBtn.classList.toggle('active', type === 'horizontal');
+    }
+
+    function clearGraph(canvasId) {
+        var d = graphData[canvasId];
+        d.points = [];
+        d.asymptotes = { vertical: [], horizontal: [] };
+        d.asymptoteMode = null;
+        d.answerOverlay = false;
+        var resultEl = document.getElementById('result' + canvasId.replace('graph',''));
+        if (resultEl) { resultEl.className = 'graph-result'; resultEl.textContent = ''; }
+        updateCounter(canvasId);
+        redrawGraph(canvasId);
+    }
+
+    function checkGraph(canvasId) {
+        var d = graphData[canvasId];
+        var tolerance = 0.25;
+        var func, isQ13 = canvasId === 'graphQ13';
+
+        if (isQ13) {
+            func = function(x) { return Math.abs(x - 1) < 0.1 ? null : 3 / (x - 1) - 2; };
+        } else {
+            func = function(x) { return -(x + 2) * (x + 2) + 5; };
+        }
+
+        var correct = 0;
+        d.points.forEach(function(p) {
+            var expected = func(p.gx);
+            if (expected !== null && Math.abs(p.gy - expected) <= tolerance) {
+                p.status = 'correct';
+                correct++;
+            } else {
+                p.status = 'incorrect';
+            }
+        });
+
+        // Check asymptotes for Q13
+        var asymCorrect = 0, asymTotal = 0;
+        if (isQ13) {
+            asymTotal = 2;
+            if (d.asymptotes.vertical.length > 0 && Math.abs(d.asymptotes.vertical[0] - 1) <= tolerance) asymCorrect++;
+            if (d.asymptotes.horizontal.length > 0 && Math.abs(d.asymptotes.horizontal[0] - (-2)) <= tolerance) asymCorrect++;
+        }
+
+        var resultEl = document.getElementById('result' + canvasId.replace('graph',''));
+        var allCorrect = correct === d.points.length && (!isQ13 || asymCorrect === asymTotal);
+
+        if (allCorrect) {
+            resultEl.className = 'graph-result show correct';
+            resultEl.textContent = '🔥 Clean graph. ' + correct + '/' + d.points.length + ' points correct.' + (isQ13 ? ' Asymptotes: ' + asymCorrect + '/2.' : '');
+        } else {
+            resultEl.className = 'graph-result show incorrect';
+            resultEl.textContent = correct + '/' + d.points.length + ' points correct.' + (isQ13 ? ' Asymptotes: ' + asymCorrect + '/2.' : '') + ' Red points are off.';
+            d.answerOverlay = true;
+            // Show hint button
+            var qNum = canvasId === 'graphQ12' ? 12 : 13;
+            var hintBtn = document.getElementById('hintBtn' + qNum);
+            if (hintBtn) hintBtn.style.display = 'inline-block';
+        }
+
+        redrawGraph(canvasId);
+    }
+
+    /* ========== HINT SYSTEM ========== */
+    function showHintLayer(q, layer) {
+        // Hide all layers for this question first
+        for (var i = 1; i <= 3; i++) {
+            var el = document.getElementById('hint' + q + '_' + i);
+            if (el) el.classList.remove('show');
+        }
+        // Show requested layer
+        var target = document.getElementById('hint' + q + '_' + layer);
+        if (target) target.classList.add('show');
+    }
+
+    /* ========== GRADING ========== */
+
+    // ± answer checker: accepts either value in either box
+    function checkPlusMinus(id1, id2, ans1, ans2, tol) {
+        var v1 = parseFloat(document.getElementById(id1).value);
+        var v2 = parseFloat(document.getElementById(id2).value);
+        if (isNaN(v1) || isNaN(v2)) return false;
+        // Check both orderings
+        var order1 = (Math.abs(v1 - ans1) <= tol && Math.abs(v2 - ans2) <= tol);
+        var order2 = (Math.abs(v1 - ans2) <= tol && Math.abs(v2 - ans1) <= tol);
+        return order1 || order2;
+    }
+
+    // Question metadata for score storage
+    var questionMeta = [
+        { id: 'q1',  section: 'A', type: 'identify',       standard: 'W2' },
+        { id: 'q2',  section: 'A', type: 'identify',       standard: 'W2' },
+        { id: 'q3',  section: 'A', type: 'identify',       standard: 'W2' },
+        { id: 'q4',  section: 'B', type: 'exponential',    standard: 'W3' },
+        { id: 'q5',  section: 'B', type: 'quadratic',      standard: 'W3' },
+        { id: 'q6',  section: 'B', type: 'radical',        standard: 'W3' },
+        { id: 'q7',  section: 'B', type: 'exponential',    standard: 'W3' },
+        { id: 'q8',  section: 'B', type: 'rational',       standard: 'W3' },
+        { id: 'q9',  section: 'B', type: 'radical',        standard: 'W3' },
+        { id: 'q10', section: 'B', type: 'exponential',    standard: 'W3' },
+        { id: 'q11', section: 'B', type: 'fractional-exp', standard: 'W3' },
+        { id: 'q12', section: 'C', type: 'graph-quad',     standard: 'W2' },
+        { id: 'q13', section: 'C', type: 'graph-rational', standard: 'W2' },
+        { id: 'q14', section: 'D', type: 'formula',        standard: 'W3' },
+        { id: 'q15', section: 'D', type: 'word-problem',   standard: 'W3' }
+    ];
+
+    function gradeExamMVP() {
+        var results = [];
+        var score = 0;
+
+        // Q1: parent only
+        var q1ok = document.getElementById('q1_parent').value === 'cubic';
+        results.push(q1ok);
+        if (q1ok) score++;
+        showFeedback(1, q1ok, q1ok ? '🔥 Locked in. Cubic is right.' : 'Not quite. Check the exponent.');
+
+        // Q2: parent + intercepts (3 parts → 1 question score: all must be correct)
+        var q2p = document.getElementById('q2_parent').value === 'absolute';
+        var q2i = checkPlusMinus('q2_x1', 'q2_x2', -1, -7, 0.1);
+        var q2ok = q2p && q2i;
+        results.push(q2ok);
+        if (q2ok) score++;
+        showFeedback(2, q2ok, q2ok ? '🔥 Parent and intercepts correct.' : (q2p ? 'Parent right, check intercepts.' : 'Check the parent function.'));
+
+        // Q3: parent + intercepts
+        var q3p = document.getElementById('q3_parent').value === 'quadratic';
+        var q3i = checkPlusMinus('q3_x1', 'q3_x2', 3, -1, 0.1);
+        var q3ok = q3p && q3i;
+        results.push(q3ok);
+        if (q3ok) score++;
+        showFeedback(3, q3ok, q3ok ? '🔥 Quadratic nailed.' : (q3p ? 'Parent right, check intercepts.' : 'Look at the exponent for the parent.'));
+
+        // Q4: x = 2
+        var q4ok = checkSingle('q4_x', 2, 0.01);
+        results.push(q4ok);
+        if (q4ok) score++;
+        showFeedback(4, q4ok, q4ok ? '🔥 Exponent match. Clean.' : 'Rewrite 32 as a power of 2.');
+
+        // Q5: ± 0.5 and -1.5
+        var q5ok = checkPlusMinus('q5_x1', 'q5_x2', 0.5, -1.5, 0.1);
+        results.push(q5ok);
+        if (q5ok) score++;
+        showFeedback(5, q5ok, q5ok ? '🔥 Both solutions found.' : 'Isolate the squared term, then ±.');
+
+        // Q6: ± 2.236
+        var q6ok = checkPlusMinus('q6_x1', 'q6_x2', 2.236, -2.236, 0.01);
+        results.push(q6ok);
+        if (q6ok) score++;
+        showFeedback(6, q6ok, q6ok ? '🔥 ±√5 is right.' : 'Square both sides after isolating √.');
+
+        // Q7: x = 2
+        var q7ok = checkSingle('q7_x', 2, 0.01);
+        results.push(q7ok);
+        if (q7ok) score++;
+        showFeedback(7, q7ok, q7ok ? '🔥 Anything to the 0 is 1.' : '5^0 = 1. What makes the exponent 0?');
+
+        // Q8: x = 5.667
+        var q8ok = checkSingle('q8_x', 5.667, 0.01);
+        results.push(q8ok);
+        if (q8ok) score++;
+        showFeedback(8, q8ok, q8ok ? '🔥 17/3. Clean algebra.' : 'Multiply both sides by (x − 2).');
+
+        // Q9: x = 3
+        var q9ok = checkSingle('q9_x', 3, 0.01);
+        results.push(q9ok);
+        if (q9ok) score++;
+        showFeedback(9, q9ok, q9ok ? '🔥 Square both sides. Done.' : 'Square both sides to remove √.');
+
+        // Q10: ± 2.236
+        var q10ok = checkPlusMinus('q10_x1', 'q10_x2', 2.236, -2.236, 0.01);
+        results.push(q10ok);
+        if (q10ok) score++;
+        showFeedback(10, q10ok, q10ok ? '🔥 ±√5 again. Pattern.' : 'Divide by 4, rewrite 27 as 3³.');
+
+        // Q11: x = 9
+        var q11ok = checkSingle('q11_x', 9, 0.01);
+        results.push(q11ok);
+        if (q11ok) score++;
+        showFeedback(11, q11ok, q11ok ? '🔥 27^(2/3) = 9. Solid.' : 'Isolate x^(3/2), then raise to 2/3.');
+
+        // Q12: vertex
+        var q12vx = checkSingle('q12_vx', -2, 0.1);
+        var q12vy = checkSingle('q12_vy', 5, 0.1);
+        var q12ok = q12vx && q12vy;
+        results.push(q12ok);
+        if (q12ok) score++;
+        showFeedback(12, q12ok, q12ok ? '🔥 Vertex locked.' : 'Vertex form: (h, k) from -(x+2)²+5.');
+
+        // Q13: asymptotes
+        var q13va = checkSingle('q13_va', 1, 0.1);
+        var q13ha = checkSingle('q13_ha', -2, 0.1);
+        var q13ok = q13va && q13ha;
+        results.push(q13ok);
+        if (q13ok) score++;
+        showFeedback(13, q13ok, q13ok ? '🔥 Both asymptotes correct.' : 'VA: denominator = 0. HA: y approaches?');
+
+        // Q14: multiple choice
+        var q14sel = document.querySelector('input[name="q14"]:checked');
+        var q14ok = q14sel && q14sel.value === 'B';
+        results.push(q14ok);
+        if (q14ok) score++;
+        showFeedback(14, q14ok, q14ok ? '🔥 √(A/π). Clean.' : 'Divide by π, then take square root.');
+
+        // Q15: t = 20
+        var q15ok = checkSingle('q15_t', 20, 0.5);
+        results.push(q15ok);
+        if (q15ok) score++;
+        showFeedback(15, q15ok, q15ok ? '🔥 20 hours. Exponential growth.' : '243 = 3⁵. What is t/4?');
+
+        // Calculate totals
+        var total = 15;
+        var pct = Math.round((score / total) * 100);
+        var grade = pct >= 92 ? 4 : pct >= 82 ? 3 : pct >= 70 ? 2 : 1;
+        var gradeColors = { 4: '#1D42BA', 3: '#6C6E70', 2: '#E8A317', 1: '#C8102E' };
+
+        // Voice guide result message
+        var msg;
+        if (pct >= 90) msg = '🔥 ' + score + '/' + total + '. Locked in.';
+        else if (pct >= 80) msg = score + '/' + total + '. Close. One more pass.';
+        else if (pct >= 70) msg = score + '/' + total + '. Getting there. Keep pushing.';
+        else msg = score + '/' + total + '. Needs work. Run it again.';
+
+        var resultEl = document.getElementById('finalResult');
+        resultEl.className = 'result show ' + (pct >= 70 ? 'correct' : 'incorrect');
+        resultEl.innerHTML = '<div>Done. ' + total + '/' + total + ' answered.</div><div>' + msg + ' (' + pct + '%)</div>';
+
+        // SAAS grade badge
+        var gradeEl = document.getElementById('saasGrade');
+        gradeEl.innerHTML = '<div class="grade-badge" style="background:' + gradeColors[grade] + ';color:white;">Grade: ' + grade + '</div>' +
+            '<div style="color:' + gradeColors[grade] + ';font-weight:700;font-size:1.1rem;">SAAS Score: ' + pct + '%</div>';
+
+        // Per-standard scoring breakdown
+        var stdMap = [
+            {id:'W2.b', name:'Identify transformations'},
+            {id:'W2.b', name:'Identify transformations'},
+            {id:'W2.b', name:'Identify transformations'},
+            {id:'W3.d', name:'Exponential one-to-one'},
+            {id:'W3.b', name:'Solve nonlinear equations'},
+            {id:'W3.b', name:'Solve nonlinear equations'},
+            {id:'W3.d', name:'Exponential one-to-one'},
+            {id:'W3.c', name:'Solve rational equations'},
+            {id:'W3.b', name:'Solve nonlinear equations'},
+            {id:'W3.d', name:'Exponential one-to-one'},
+            {id:'W3.b', name:'Solve nonlinear equations'},
+            {id:'W2.c', name:'Graph using transformations'},
+            {id:'W2.e', name:'Function characteristics'},
+            {id:'W3.a', name:'Explain solving steps'},
+            {id:'5.a',  name:'Exponential models'}
+        ];
+        var stdScores = {};
+        for (var si = 0; si < results.length; si++) {
+            var st = stdMap[si];
+            if (!stdScores[st.id]) stdScores[st.id] = {name:st.name, correct:0, total:0};
+            stdScores[st.id].total++;
+            if (results[si]) stdScores[st.id].correct++;
+        }
+        var stdKeys = Object.keys(stdScores);
+        stdKeys.sort(function(a,b) {
+            var pa = stdScores[a].total ? stdScores[a].correct/stdScores[a].total : 0;
+            var pb = stdScores[b].total ? stdScores[b].correct/stdScores[b].total : 0;
+            return pa - pb;
+        });
+        var cardsHtml = '<div class="standards-grid"><h3 class="standards-heading">Standards Breakdown</h3>';
+        stdKeys.forEach(function(id) {
+            var s = stdScores[id];
+            var sp = s.total ? Math.round((s.correct/s.total)*100) : 0;
+            var color = sp >= 90 ? '#1B7D3A' : sp >= 70 ? '#1D42BA' : sp >= 50 ? '#E8A317' : '#C8102E';
+            var copy = sp >= 90 ? 'Locked in ✅' : sp >= 70 ? 'Solid.' : sp >= 50 ? 'Getting there.' : '⚠️ Needs work.';
+            cardsHtml += '<div class="standard-card" style="border-left-color:'+color+'">' +
+                '<div class="standard-header"><span class="standard-id">'+id+'</span>' +
+                '<span class="standard-name">'+s.name+'</span>' +
+                '<span class="standard-fraction">'+s.correct+'/'+s.total+'</span></div>' +
+                '<div class="standard-bar"><div class="standard-fill" style="width:'+sp+'%;background:'+color+'"></div></div>' +
+                '<div class="standard-copy">'+copy+'</div></div>';
+        });
+        cardsHtml += '</div>';
+        // Remove old grid if re-grading
+        var oldGrid = document.querySelector('.standards-grid');
+        if (oldGrid) oldGrid.remove();
+        gradeEl.insertAdjacentHTML('afterend', cardsHtml);
+
+        // Show hint buttons for wrong answers
+        for (var i = 0; i < results.length; i++) {
+            if (!results[i]) {
+                var hb = document.getElementById('hintBtn' + (i + 1));
+                if (hb) hb.style.display = 'inline-block';
+            }
+        }
+
+        // Store attempt
+        storeAttempt(score, total, pct, grade, results);
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function checkSingle(id, answer, tolerance) {
+        var el = document.getElementById(id);
+        if (!el) return false;
+        var val = parseFloat(String(el.value).replace(/[$,]/g, ''));
+        return !isNaN(val) && Math.abs(val - answer) <= tolerance;
+    }
+
+    function showFeedback(qNum, correct, message) {
+        var fb = document.getElementById('feedback' + qNum);
+        if (!fb) return;
+        fb.className = 'answer-feedback show ' + (correct ? 'correct' : 'incorrect');
+        fb.textContent = message;
+    }
+
+    /* ========== SCORE STORAGE (extended) ========== */
+    function storeAttempt(score, total, pct, grade, results) {
+        var storageKey = 'mcm-nonlinear-exam-mvp';
+        var scores = {};
+        try { scores = JSON.parse(localStorage.getItem('mcm_scores') || '{}'); } catch(e) { scores = {}; }
+
+        if (!scores[storageKey]) {
+            scores[storageKey] = { attempts: [], best: null };
+        }
+
+        var sections = { A: {score:0,total:3}, B: {score:0,total:8}, C: {score:0,total:2}, D: {score:0,total:2} };
+        var questions = {};
+        for (var i = 0; i < results.length; i++) {
+            var m = questionMeta[i];
+            questions[m.id] = { correct: results[i], type: m.type, standard: m.standard };
+            if (results[i]) sections[m.section].score++;
+        }
+
+        var attempt = {
+            score: score, total: total, pct: pct, grade: grade,
+            sections: sections, questions: questions,
+            timestamp: new Date().toISOString()
+        };
+
+        scores[storageKey].attempts.push(attempt);
+
+        // FIFO at 20
+        if (scores[storageKey].attempts.length > 20) {
+            scores[storageKey].attempts.shift();
+        }
+
+        // Update best
+        if (!scores[storageKey].best || pct > scores[storageKey].best.pct) {
+            scores[storageKey].best = { score: score, pct: pct, grade: grade };
+        }
+
+        localStorage.setItem('mcm_scores', JSON.stringify(scores));
+    }
+
+    /* ========== ANSWER KEY ========== */
+    function showAnswerKey() {
+        var pw = prompt('Enter password to view Answer Key:');
+        if (pw !== '121274') {
+            if (pw !== null) alert('Incorrect password.');
+            return;
+        }
+        var body = document.getElementById('answerKeyBody');
+        body.innerHTML =
+            '<h3>Section A</h3>' +
+            '<p><strong>Q1:</strong> Parent: cubic (y = x³). Transformations: vertical stretch by 2, right 3, up 1.</p>' +
+            '<p><strong>Q2:</strong> Parent: absolute value. x-intercepts: x = −1 and x = −7. Reflect x-axis, left 4, up 3. Domain: all reals. Range: y ≤ 3.</p>' +
+            '<p><strong>Q3:</strong> Parent: quadratic. x-intercepts: x = 3 and x = −1. Stretch by 3, right 1, down 12. Domain: all reals. Range: y ≥ −12.</p>' +
+            '<h3>Section B</h3>' +
+            '<p><strong>Q4:</strong> x = 2</p>' +
+            '<p><strong>Q5:</strong> x = 0.5 and x = −1.5</p>' +
+            '<p><strong>Q6:</strong> x = ±√5 ≈ ±2.236</p>' +
+            '<p><strong>Q7:</strong> x = 2</p>' +
+            '<p><strong>Q8:</strong> x = 17/3 ≈ 5.667</p>' +
+            '<p><strong>Q9:</strong> x = 3</p>' +
+            '<p><strong>Q10:</strong> x = ±√5 ≈ ±2.236</p>' +
+            '<p><strong>Q11:</strong> x = 9</p>' +
+            '<h3>Section C</h3>' +
+            '<p><strong>Q12:</strong> Vertex: (−2, 5). Domain: all reals. Range: y ≤ 5. Key points: (−4,1), (−3,4), (−2,5), (−1,4), (0,1).</p>' +
+            '<p><strong>Q13:</strong> VA: x = 1. HA: y = −2. Domain: x ≠ 1. Range: y ≠ −2. Key points: (−2,−3), (0,−5), (2,1), (4,−1).</p>' +
+            '<h3>Section D</h3>' +
+            '<p><strong>Q14:</strong> B — r = √(A/π)</p>' +
+            '<p><strong>Q15:</strong> (a) P(t) = 200 · 3^(t/4). (b) t = 20 hours.</p>';
+        document.getElementById('answerKeyModal').style.display = 'flex';
+    }
+
+    function closeAnswerKey() {
+        document.getElementById('answerKeyModal').style.display = 'none';
+    }
+
+    /* ========== INIT ========== */
+    window.addEventListener('DOMContentLoaded', function() {
+        initGraph('graphQ12');
+        initGraph('graphQ13');
+    });
+    </script>
+
+    <nav class="test-nav" role="navigation" aria-label="Page navigation" style="text-align:center; padding:20px 0; font-size:0.95em;">
+        <a href="index.html" style="color:var(--accent-blue); font-weight:600; margin-right:16px;">← Dashboard</a>
+        <a href="parent.html" style="color:var(--accent-navy); font-weight:600;">📊 Parent View</a>
+    </nav></body>
+</html>
