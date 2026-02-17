@@ -2,3 +2,26 @@
 .DS_Store
 Thumbs.db
 desktop.ini
+ehthumbs.db
+
+# Editor files
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Node (if build tools added later)
+node_modules/
+npm-debug.log*
+package-lock.json
+
+# Archives (distribute separately)
+*.zip
+
+# Temporary files
+*.tmp
+*.bak
+*.orig
