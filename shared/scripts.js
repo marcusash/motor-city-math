@@ -186,3 +186,83 @@ function checkAnswer(userAnswer, correctAnswer, tolerance) {
 
     return u === c;
 }
+
+/* === Auto-Grading Engine === */
+
+/**
+ * Grade a test: check each answer, show per-question feedback, display final score.
+ *
+ * @param {Object} config
+ * @param {Array} config.questions - Array of [parts, feedbackId]
+ *   parts = [[elementId, correctAnswer, tolerance?], ...]
+ * @param {Array} config.feedbacks - 2D array: feedbacks[i] = [correct1, incorrect1, correct2, incorrect2, ...]
+ * @param {string} [config.resultId='finalResult'] - Element ID for score display
+ * @param {string} [config.storageKey] - localStorage key to persist score for dashboard
+ * @returns {Object} { score, total, pct }
+ */
+function gradeTest(config) {
+    var questions = config.questions;
+    var feedbacks = config.feedbacks;
+    var resultId = config.resultId || 'finalResult';
+    var score = 0, total = 0;
+
+    questions.forEach(function(q, i) {
+        var txt = '', correct = 0;
+        var parts = q[0];
+        var feedbackId = q[1];
+
+        parts.forEach(function(p, j) {
+            total++;
+            var element = document.getElementById(p[0]);
+            if (!element) return;
+            var val = element.value || element.textContent || '';
+            var isCorrect = checkAnswer(val, p[1], p[2] || 0.5);
+            if (isCorrect) {
+                score++;
+                correct++;
+                txt += feedbacks[i][j * 2] + '\n';
+            } else {
+                txt += feedbacks[i][j * 2 + 1] + '\n';
+            }
+        });
+
+        var fb = document.getElementById(feedbackId);
+        if (fb) {
+            fb.className = 'answer-feedback show ' + (correct === parts.length ? 'correct' : 'incorrect');
+            fb.textContent = txt;
+        }
+    });
+
+    var pct = Math.round((score / total) * 100);
+    var result = document.getElementById(resultId);
+    if (result) {
+        // Voice guide: celebrate results, not effort. Max 12 words.
+        var msg;
+        if (pct >= 90) msg = '🔥 ' + score + '/' + total + '. Locked in.';
+        else if (pct >= 80) msg = score + '/' + total + '. Close. One more pass.';
+        else if (pct >= 70) msg = score + '/' + total + '. Getting there. Keep pushing.';
+        else msg = score + '/' + total + '. Needs work. Run it again.';
+
+        result.className = 'result show ' + (pct >= 70 ? 'correct' : 'incorrect');
+        result.innerHTML = '<div>Done. ' + total + '/' + total + ' answered.</div>' +
+            '<div>' + msg + ' (' + pct + '%)</div>';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Save score for dashboard
+    if (config.storageKey) {
+        var scores = {};
+        try {
+            scores = JSON.parse(localStorage.getItem('mcm_scores') || '{}');
+        } catch (e) { scores = {}; }
+        scores[config.storageKey] = {
+            score: score,
+            total: total,
+            pct: pct,
+            timestamp: new Date().toISOString()
+        };
+        localStorage.setItem('mcm_scores', JSON.stringify(scores));
+    }
+
+    return { score: score, total: total, pct: pct };
+}

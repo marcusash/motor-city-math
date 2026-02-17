@@ -685,7 +685,7 @@
 
             <button type="button" class="print-btn" onclick="printTest()">🖨️ Print Version (Black & White)</button>
             <button type="button" class="answer-key-btn" onclick="showCalcAnswerKey()">📋 View Answer Key</button>
-            <button type="button" class="submit-btn" onclick="gradeTest()">Submit Test</button>
+            <button type="button" class="submit-btn" onclick="gradeCalcTest()">Submit Test</button>
         </form>
 
         <div class="result" id="finalResult"></div>
@@ -797,9 +797,9 @@
             return c.includes('initial') || c.includes('burn') || c.includes('constant') || c.includes('per') || c.includes('base') || c.includes('multiply') || c.includes('decay') ? u.includes(c.substring(0, 4)) : u === c;
         }
 
-        function gradeTest() {
-            let score = 0, total = 0;
-            const feedbacks = [
+        // Grading uses shared gradeTest() from scripts.js
+        function gradeCalcTest() {
+            var calcFeedbacks = [
                 ['✓ y = 25x + 10', '✗ Slope=(110-60)/(4-2)=25, b=10'],
                 ['✓ $33', '✗ Read graph at x=3', '✓ 5 devices', '✗ Find where y=45'],
                 ['✓ 0', '✗ Min month: 0', '✓ 6', '✗ Max month: 6', '✓ $5000', '✗ Min: $5000', '✓ $20000', '✗ Max: $20000'],
@@ -818,46 +818,28 @@
                 ['✓ V(t)=28000(0.85)^t', '✗ 28000(1-0.15)^t', '✓ $14636.56', '✗ 28000(0.85)^4≈14636.56', '✓ Decay', '✗ Less than 1, decreasing']
             ];
 
-            [
-                [[['q1', answers.q1]], 'feedback1'],
-                [[['q2a', answers.q2a], ['q2b', answers.q2b]], 'feedback2'],
-                [[['q3a', answers.q3a], ['q3b', answers.q3b], ['q3c', answers.q3c], ['q3d', answers.q3d]], 'feedback3'],
-                [[['q4a', answers.q4a], ['q4b', answers.q4b], ['q4c', answers.q4c]], 'feedback4'],
-                [[['q5a', answers.q5a], ['q5b', answers.q5b], ['q5c', answers.q5c], ['q5d', answers.q5d]], 'feedback5'],
-                [[['q6a', answers.q6a], ['q6b', answers.q6b], ['q6c', answers.q6c], ['q6d', answers.q6d]], 'feedback6'],
-                [[['q7a', answers.q7a], ['q7b', answers.q7b]], 'feedback7'],
-                [[['q8a', answers.q8a], ['q8b', answers.q8b, 1], ['q8c', answers.q8c]], 'feedback8'],
-                [[['q9a', answers.q9a], ['q9b', answers.q9b]], 'feedback9'],
-                [[['q10a', answers.q10a], ['q10b', answers.q10b]], 'feedback10'],
-                [[['q11a', answers.q11a], ['q11b', answers.q11b], ['q11c', answers.q11c]], 'feedback11'],
-                [[['q12a', answers.q12a], ['q12b', answers.q12b], ['q12c', answers.q12c]], 'feedback12'],
-                [[['q13a', answers.q13a], ['q13b', answers.q13b], ['q13c', answers.q13c]], 'feedback13'],
-                [[['q14a', answers.q14a], ['q14b', answers.q14b], ['q14c', answers.q14c], ['q14d', answers.q14d]], 'feedback14'],
-                [[['q15a', answers.q15a], ['q15b', answers.q15b], ['q15c', answers.q15c]], 'feedback15'],
-                [[['q16a', answers.q16a], ['q16b', answers.q16b, 2], ['q16c', answers.q16c]], 'feedback16']
-            ].forEach((q, i) => {
-                let txt = '', correct = 0;
-                q[0].forEach((p, j) => {
-                    total++;
-                    const element = document.getElementById(p[0]);
-                    // Get value from either input or contenteditable div
-                    const val = element.value || element.textContent || '';
-                    const isCorrect = check(val, p[1], p[2] || 0.5);
-                    if (isCorrect) { score++; correct++; txt += feedbacks[i][j*2] + '\n'; }
-                    else txt += feedbacks[i][j*2+1] + '\n';
-                });
-                const fb = document.getElementById(q[1]);
-                fb.className = 'answer-feedback show ' + (correct === q[0].length ? 'correct' : 'incorrect');
-                fb.textContent = txt;
+            gradeTest({
+                questions: [
+                    [[['q1', answers.q1]], 'feedback1'],
+                    [[['q2a', answers.q2a], ['q2b', answers.q2b]], 'feedback2'],
+                    [[['q3a', answers.q3a], ['q3b', answers.q3b], ['q3c', answers.q3c], ['q3d', answers.q3d]], 'feedback3'],
+                    [[['q4a', answers.q4a], ['q4b', answers.q4b], ['q4c', answers.q4c]], 'feedback4'],
+                    [[['q5a', answers.q5a], ['q5b', answers.q5b], ['q5c', answers.q5c], ['q5d', answers.q5d]], 'feedback5'],
+                    [[['q6a', answers.q6a], ['q6b', answers.q6b], ['q6c', answers.q6c], ['q6d', answers.q6d]], 'feedback6'],
+                    [[['q7a', answers.q7a], ['q7b', answers.q7b]], 'feedback7'],
+                    [[['q8a', answers.q8a], ['q8b', answers.q8b, 1], ['q8c', answers.q8c]], 'feedback8'],
+                    [[['q9a', answers.q9a], ['q9b', answers.q9b]], 'feedback9'],
+                    [[['q10a', answers.q10a], ['q10b', answers.q10b]], 'feedback10'],
+                    [[['q11a', answers.q11a], ['q11b', answers.q11b], ['q11c', answers.q11c]], 'feedback11'],
+                    [[['q12a', answers.q12a], ['q12b', answers.q12b], ['q12c', answers.q12c]], 'feedback12'],
+                    [[['q13a', answers.q13a], ['q13b', answers.q13b], ['q13c', answers.q13c]], 'feedback13'],
+                    [[['q14a', answers.q14a], ['q14b', answers.q14b], ['q14c', answers.q14c], ['q14d', answers.q14d]], 'feedback14'],
+                    [[['q15a', answers.q15a], ['q15b', answers.q15b], ['q15c', answers.q15c]], 'feedback15'],
+                    [[['q16a', answers.q16a], ['q16b', answers.q16b, 2], ['q16c', answers.q16c]], 'feedback16']
+                ],
+                feedbacks: calcFeedbacks,
+                storageKey: 'index_calc'
             });
-
-            const pct = Math.round((score / total) * 100);
-            const result = document.getElementById('finalResult');
-            result.className = 'result show ' + (pct >= 70 ? 'correct' : 'incorrect');
-            result.innerHTML = `<div>Test Complete!</div><div>Score: ${score}/${total} (${pct}%)</div><div style="margin-top:10px;font-size:0.9em;">${
-                pct >= 90 ? '🌟 Excellent!' : pct >= 80 ? '👍 Great job!' : pct >= 70 ? '✓ Good!' : '📚 Keep practicing!'
-            }</div>`;
-            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function showCalcAnswerKey() {
