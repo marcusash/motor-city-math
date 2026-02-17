@@ -484,10 +484,12 @@
             <div class="answer-feedback" id="feedback7"></div>
 
             <button type="button" class="print-btn"onclick="printTest()">Print Version (Black & White)</button>
+            <button type="button" class="submit-btn" onclick="gradeNonlinearTest()">Submit Test</button>
             <button type="button" class="answer-key-btn" onclick="showNonlinearAnswerKey()">View Answer Key</button>
             <button type="button" class="answer-key-btn" onclick="saveResults('nonlinear_test_results')" style="background: #1D42BA;">Save Results</button>
             <button type="button" class="answer-key-btn" onclick="loadResults('nonlinear_test_results')" style="background: #002D62;">Load Saved Results</button>
         </form>
+        <div class="result" id="finalResult"></div>
     </div>
 
     <!-- Answer Key Modal -->
@@ -1334,6 +1336,26 @@
                 if (typeof MathJax !== 'undefined') {
                     MathJax.typeset();
                 }
+            });
+        }
+
+        function gradeNonlinearTest() {
+            gradeTest({
+                questions: [
+                    [[['q1_vertex', '(3, -4)']], 'feedback1'],
+                    [[['q2_start', '(-3, -2)']], 'feedback2'],
+                    [[['q4_inflection', '(1, 2)']], 'feedback4'],
+                    [[['q6_type', 'Square root function']], 'feedback6'],
+                    [[['q7_type', 'Exponential function']], 'feedback7']
+                ],
+                feedbacks: [
+                    ['✓ Vertex (3, -4) — nailed it!', '✗ Read h, k from vertex form directly'],
+                    ['✓ Starting point (-3, -2) — correct!', '✗ Set radicand to zero: x+3=0 → x=-3'],
+                    ['✓ Inflection point (1, 2) — sharp!', '✗ Shift center: (x−1)³+2 gives (1, 2)'],
+                    ['✓ Square root — nice eye!', '✗ Curve starts at a point, rises gradually'],
+                    ['✓ Exponential — you got it!', '✗ Curve approaches asymptote, never touches it']
+                ],
+                storageKey: 'nonlinear_test'
             });
         }
     </script>

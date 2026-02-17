@@ -59,6 +59,7 @@
                     <label>Final Answer:</label>
                     <input type="text" id="q1">
                 </div>
+                <div class="answer-feedback" id="feedback1"></div>
             </div>
 
             <!-- Q2: Baseball height problem -->
@@ -77,6 +78,7 @@
                     <label>Height (in meters):</label>
                     <input type="text" id="q2">
                 </div>
+                <div class="answer-feedback" id="feedback2"></div>
             </div>
 
             <!-- Q3: Productivity formula -->
@@ -108,6 +110,7 @@
                     <label>b) Number of successful projects:</label>
                     <input type="text" id="q3b">
                 </div>
+                <div class="answer-feedback" id="feedback3"></div>
             </div>
 
             <!-- Q4: Kayak rental problem -->
@@ -144,6 +147,7 @@
                     <label>c) Normal hours cost:</label>
                     <input type="text" id="q4c">
                 </div>
+                <div class="answer-feedback" id="feedback4"></div>
             </div>
 
             <!-- Q5: Standard 2.a - Multi-step linear equations -->
@@ -162,6 +166,7 @@
                     <label>x =</label>
                     <input type="text" id="q5">
                 </div>
+                <div class="answer-feedback" id="feedback5"></div>
             </div>
 
             <!-- Q6: Standard 2.b - Literal equations -->
@@ -180,6 +185,7 @@
                     <label>k =</label>
                     <input type="text" id="q6">
                 </div>
+                <div class="answer-feedback" id="feedback6"></div>
             </div>
 
             <!-- Q7: Standards 2.c & 2.d - Linear inequalities and graphing -->
@@ -202,6 +208,7 @@
                     <label>Graph description (Is the circle filled or open? Which direction is the arrow?):</label>
                     <textarea id="q7graph" style="min-height: 60px;"></textarea>
                 </div>
+                <div class="answer-feedback" id="feedback7"></div>
             </div>
 
             <!-- Q8: Standard 3.a - Function composition -->
@@ -220,6 +227,7 @@
                     <label>f(g(-3)) =</label>
                     <input type="text" id="q8">
                 </div>
+                <div class="answer-feedback" id="feedback8"></div>
             </div>
 
             <!-- Q9: Standard 3.b - Sequence analysis -->
@@ -292,6 +300,7 @@
                         <textarea id="q9f_exp" style="min-height: 50px;"></textarea>
                     </div>
                 </div>
+                <div class="answer-feedback" id="feedback9"></div>
             </div>
 
             <!-- Q10: Standard 3.c - Graphing functions -->
@@ -359,6 +368,7 @@
                     <span class="work-label">Show Your Work:</span>
                     <textarea placeholder="Show your calculations for the table values..."></textarea>
                 </div>
+                <div class="answer-feedback" id="feedback10"></div>
             </div>
 
             <!-- Q11: Standard 3.e - Real-life applications -->
@@ -387,6 +397,7 @@
                     <label>c) Time to empty (minutes):</label>
                     <input type="text" id="q12c">
                 </div>
+                <div class="answer-feedback" id="feedback11"></div>
             </div>
 
             <!-- Q12: Standard 3.f - Drawing conclusions from graphs -->
@@ -414,6 +425,7 @@
                     <span class="work-label">Show Your Work:</span>
                     <textarea id="work13" placeholder="Show how you analyzed the graph..."></textarea>
                 </div>
+                <div class="answer-feedback" id="feedback12"></div>
             </div>
 
             <!-- Q13: Standard 3.g - Inverse functions -->
@@ -439,6 +451,7 @@
                         <input type="text" id="q14b" style="width: 200px;">
                     </div>
                 </div>
+                <div class="answer-feedback" id="feedback13"></div>
             </div>
 
             <!-- Q14: Standard 3.a - Function composition -->
@@ -510,6 +523,7 @@
                         <input type="text" id="q15e" style="width: 100px;">
                     </div>
                 </div>
+                <div class="answer-feedback" id="feedback14"></div>
             </div>
 
             <!-- Q15: Standard 4.d - Scatterplots and best fit lines -->
@@ -600,6 +614,7 @@
                     <label>b) Plants after 6 weeks:</label>
                     <input type="text" id="q16b">
                 </div>
+                <div class="answer-feedback" id="feedback16"></div>
             </div>
 
             <!-- Q17: Standard 5.b & 5.c - Exponential growth/decay -->
@@ -630,6 +645,7 @@
                     <label>c) Equation and answer:</label>
                     <textarea id="q17c" style="min-height: 80px;"></textarea>
                 </div>
+                <div class="answer-feedback" id="feedback17"></div>
             </div>
 
             <!-- Q18: Collinear points -->
@@ -650,13 +666,16 @@
                     <label>Answer:</label>
                     <textarea id="q18" style="min-height: 80px;"></textarea>
                 </div>
+                <div class="answer-feedback" id="feedback18"></div>
             </div>
 
             <button type="button" class="print-btn" onclick="printTest()">Print Test</button>
+            <button type="button" class="submit-btn" onclick="gradeFinalExam()">Submit Test</button>
             <button type="button" class="answer-key-btn" onclick="showFinalExamAnswerKey()">View Answer Key</button>
             <button type="button" class="answer-key-btn" onclick="saveResults('finalExam251123_results')" style="background: #1D42BA;">Save Results</button>
             <button type="button" class="answer-key-btn" onclick="loadResults('finalExam251123_results')" style="background: #002D62;">Load Saved Results</button>
         </form>
+        <div class="result" id="finalResult"></div>
     </div>
 
     <!-- Answer Key Modal -->
@@ -1034,6 +1053,115 @@
                 </div>
             `;
             showAnswerKey(answerKeyHTML);
+        }
+
+        function gradeFinalExam() {
+            // Grade Q15 separately (input IDs duplicate Q14)
+            var q15Card = document.getElementById('feedback15').parentElement;
+            var q15Inputs = q15Card.querySelectorAll('.final-answer-box input[type="text"]');
+            var q15Score = 0;
+            var q15Parts = [
+                { answer: 5, tol: 0.5, ok: '\u2713 Slope=5', no: '\u2717 Rise/run: (95\u221275)/(8\u22124)=5' },
+                { answer: 'y-75=5(x-4)', ok: '\u2713 y\u221275=5(x\u22124)', no: '\u2717 Point-slope with (4,75) and m=5' },
+                { answer: 'y=5x+55', ok: '\u2713 y=5x+55', no: '\u2717 Distribute: y=5x\u221220+75=5x+55' },
+                { answer: 110, tol: 1, ok: '\u2713 Score=110', no: '\u2717 5(11)+55=110' }
+            ];
+            var q15Txt = '';
+            q15Inputs.forEach(function(el, i) {
+                if (i >= q15Parts.length) return;
+                var p = q15Parts[i];
+                var val = el.value || '';
+                var ok = typeof p.answer === 'number'
+                    ? Math.abs(parseFloat(val) - p.answer) <= (p.tol || 0.5)
+                    : norm(val) === norm(p.answer);
+                if (ok) { q15Score++; q15Txt += p.ok + '\n'; }
+                else { q15Txt += p.no + '\n'; }
+            });
+            var fb15 = document.getElementById('feedback15');
+            fb15.className = 'answer-feedback show ' + (q15Score === q15Parts.length ? 'correct' : 'incorrect');
+            fb15.textContent = q15Txt;
+
+            // Grade Q1-Q14, Q16-Q18 via shared gradeTest
+            var r = gradeTest({
+                resultId: '_skip',
+                questions: [
+                    // Q1: evaluate expression = 210
+                    [[['q1', 210, 1]], 'feedback1'],
+                    // Q2: baseball height = 5.4
+                    [[['q2', 5.4, 0.1]], 'feedback2'],
+                    // Q3: literal equation
+                    [[['q3a', 's=(Pr+b)/k'], ['q3b', 57.71, 1]], 'feedback3'],
+                    // Q4: kayak cost model
+                    [[['q4a', 'c(h)=0.9095(14.50+3.90h)'], ['q4b', 10.2, 0.5], ['q4c', 58.08, 1]], 'feedback4'],
+                    // Q5: solve for x = -9
+                    [[['q5', -9, 0.5]], 'feedback5'],
+                    // Q6: literal equation for k
+                    [[['q6', '(3a^2b+b-7)/(4-6a)']], 'feedback6'],
+                    // Q7: inequality x < 6/5
+                    [[['q7', 'x<6/5']], 'feedback7'],
+                    // Q8: f(g(-3)) = -53
+                    [[['q8', -53, 0.5]], 'feedback8'],
+                    // Q9: sequence types (skip explanations)
+                    [[['q9a', 'linear'], ['q9b', 'exponential'], ['q9c', 'neither'], ['q9d', 'linear'], ['q9e', 'neither'], ['q9f', 'exponential']], 'feedback9'],
+                    // Q10: table values for f(x) = -x^2+4x+5
+                    [[['q9_table1', -7, 0.5], ['q9_table2', 0, 0.5], ['q9_table3', 5, 0.5], ['q9_table4', 8, 0.5], ['q9_table5', 9, 0.5], ['q9_table6', 8, 0.5], ['q9_table7', 5, 0.5]], 'feedback10'],
+                    // Q11: water tank (input ids q12a-c)
+                    [[['q12a', 'w=500-15t'], ['q12b', 320, 5], ['q12c', 33.33, 1]], 'feedback11'],
+                    // Q12: car value graph (input ids q13a-c)
+                    [[['q13a', 20000, 500], ['q13b', 5000, 500], ['q13c', 0, 500]], 'feedback12'],
+                    // Q13: inverse function (input ids q14a-b)
+                    [[['q14a', 17, 0.5], ['q14b', '(5x+7)/(2x-3)']], 'feedback13'],
+                    // Q14: function composition (input ids q15a-e)
+                    [[['q15a', 10, 0.5], ['q15b', -18, 0.5], ['q15c', -1, 0.5], ['q15d', 2, 0.5], ['q15e', 2, 0.5]], 'feedback14'],
+                    // Q16: exponential model
+                    [[['q16a', '12(1.5)^t'], ['q16b', 136.7, 2]], 'feedback16'],
+                    // Q17: exponential decay
+                    [[['q17a', '620000(0.962)^t'], ['q17b', 389839, 5000], ['q17c', 19, 1]], 'feedback17'],
+                    // Q18: collinear points
+                    [[['q18', 'y=1.5x-2']], 'feedback18']
+                ],
+                feedbacks: [
+                    ['\u2713 Correct! 210', '\u2717 Substitute p=\u22124, q=3 carefully'],
+                    ['\u2713 Correct! 5.4 meters', '\u2717 h=1+12(2)\u22124.9(4)=5.4'],
+                    ['\u2713 s=(Pr+b)/k', '\u2717 Multiply by r, add b, divide by k', '\u2713 \u224857.71 projects', '\u2717 s=(92\xb72+18)/3.5\u224857.71'],
+                    ['\u2713 C(h)=0.9095(14.50+3.90h)', '\u2717 Apply 7% tax then 15% discount', '\u2713 \u224810.2 hours', '\u2717 Solve 0.9095(14.50+3.90h)=49.39', '\u2713 \u2248$58.08', '\u2717 Normal: 1.07(14.50+3.90\xb710.2)'],
+                    ['\u2713 x=\u22129', '\u2717 Distribute, combine like terms: 2x=\u221218'],
+                    ['\u2713 k=(3a\xb2b+b\u22127)/(4\u22126a)', '\u2717 Collect k terms, factor out k'],
+                    ['\u2713 x<6/5', '\u2717 Clear fractions, combine x terms'],
+                    ['\u2713 f(g(\u22123))=\u221253', '\u2717 g(\u22123)=20, then f(20)=\u221253'],
+                    ['\u2713 A: Linear', '\u2717 Common difference=\u22128, linear', '\u2713 B: Exponential', '\u2717 Common ratio=3, exponential', '\u2713 C: Neither', '\u2717 Differences vary: 3,5,7,9', '\u2713 D: Linear', '\u2717 Common difference=7, linear', '\u2713 E: Neither', '\u2717 Perfect squares; differences vary', '\u2713 F: Exponential', '\u2717 Common ratio=2/3, exponential'],
+                    ['\u2713 f(\u22122)=\u22127', '\u2717 \u2212(\u22122)\xb2+4(\u22122)+5=\u22127', '\u2713 f(\u22121)=0', '\u2717 \u22121\u22124+5=0', '\u2713 f(0)=5', '\u2717 0+0+5=5', '\u2713 f(1)=8', '\u2717 \u22121+4+5=8', '\u2713 f(2)=9', '\u2717 \u22124+8+5=9 (vertex)', '\u2713 f(3)=8', '\u2717 \u22129+12+5=8', '\u2713 f(4)=5', '\u2717 \u221216+16+5=5'],
+                    ['\u2713 W=500\u221215t', '\u2717 Start 500, lose 15 per minute', '\u2713 320 gallons', '\u2717 500\u221215(12)=320', '\u2713 33.33 minutes', '\u2717 500/15\u224833.33'],
+                    ['\u2713 $20,000', '\u2717 Read initial value from graph', '\u2713 $5,000/year', '\u2717 Calculate slope from graph points', '\u2713 $0', '\u2717 Value reaches 0 at year 4'],
+                    ['\u2713 g\u207b\xb9(2)=17', '\u2717 Solve (3x+7)/(2x\u22125)=2', '\u2713 g\u207b\xb9(x)=(5x+7)/(2x\u22123)', '\u2717 Swap x,y and solve for y'],
+                    ['\u2713 f(4)\u2212h(2)=10', '\u2717 f(4)=11, h(2)=1, so 11\u22121=10', '\u2713 g(\u22123)\xb7h(\u22121)=\u221218', '\u2717 Read g(\u22123) from graph, h(\u22121)=6', '\u2713 f(h(3))=\u22121', '\u2717 h(3)=\u22122, f(\u22122)=\u22121', '\u2713 g(f(2))=2', '\u2717 f(2)=7, read g(7) from graph', '\u2713 g(h\u207b\xb9(3))=2', '\u2717 h(0)=3, so h\u207b\xb9(3)=0, g(0)=2'],
+                    ['\u2713 P(t)=12(1.5)^t', '\u2717 a=12 from week 0, ratio=18/12=1.5', '\u2713 \u2248136.7 plants', '\u2717 12(1.5)\u2076\u2248136.7'],
+                    ['\u2713 V(t)=620000(0.962)^t', '\u2717 Decay rate: 1\u22120.038=0.962', '\u2713 \u2248$389,839', '\u2717 620000(0.962)\xb9\xb2\u2248389,839', '\u2713 19 years', '\u2717 t=ln(300000/620000)/ln(0.962)\u224819'],
+                    ['\u2713 y=1.5x\u22122, collinear', '\u2717 Slopes equal: 6/4=1.5, so y=1.5x\u22122']
+                ],
+                storageKey: 'final_exam'
+            });
+
+            // Combine Q15 score with gradeTest results
+            var score = r.score + q15Score;
+            var total = r.total + q15Parts.length;
+            var pct = Math.round((score / total) * 100);
+            var msg;
+            if (pct >= 90) msg = '\ud83d\udd25 ' + score + '/' + total + '. Locked in.';
+            else if (pct >= 80) msg = score + '/' + total + '. Close. One more pass.';
+            else if (pct >= 70) msg = score + '/' + total + '. Getting there. Keep pushing.';
+            else msg = score + '/' + total + '. Needs work. Run it again.';
+            var el = document.getElementById('finalResult');
+            if (el) {
+                el.className = 'result show ' + (pct >= 70 ? 'correct' : 'incorrect');
+                el.innerHTML = '<div>Done. ' + total + '/' + total + ' answered.</div><div>' + msg + ' (' + pct + '%)</div>';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+            // Update saved score to include Q15
+            var scores = {};
+            try { scores = JSON.parse(localStorage.getItem('mcm_scores') || '{}'); } catch(e) { scores = {}; }
+            scores['final_exam'] = { score: score, total: total, pct: pct, timestamp: new Date().toISOString() };
+            localStorage.setItem('mcm_scores', JSON.stringify(scores));
         }
     </script>
 </body>

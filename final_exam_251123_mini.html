@@ -173,6 +173,7 @@
                     <label>Final Answer:</label>
                     <input type="text" id="q1">
                 </div>
+                <div class="answer-feedback" id="feedback1"></div>
             </div>
 
             <!-- Q2: Baseball height problem -->
@@ -191,6 +192,7 @@
                     <label>Height (in meters):</label>
                     <input type="text" id="q2">
                 </div>
+                <div class="answer-feedback" id="feedback2"></div>
             </div>
 
             <!-- Q3: Productivity formula -->
@@ -222,6 +224,7 @@
                     <label>b) Number of successful projects:</label>
                     <input type="text" id="q3b">
                 </div>
+                <div class="answer-feedback" id="feedback3"></div>
             </div>
 
             <!-- Q4: Kayak rental problem -->
@@ -258,9 +261,10 @@
                     <label>c) Normal hours cost:</label>
                     <input type="text" id="q4c">
                 </div>
+                <div class="answer-feedback" id="feedback4"></div>
             </div>
 
-            <!-- Q5: Standard 2.a - Multi-step linear equations -->
+            <!-- Q5: Standard 2.a- Multi-step linear equations -->
             <div class="question-card">
                 <div class="question-number">Question 5 - Standard 2.a</div>
                 <div class="question-text">
@@ -276,9 +280,10 @@
                     <label>x =</label>
                     <input type="text" id="q5">
                 </div>
+                <div class="answer-feedback" id="feedback5"></div>
             </div>
 
-            <!-- Q6: Standard 2.b - Literal equations -->
+            <!-- Q6: Standard 2.b- Literal equations -->
             <div class="question-card">
                 <div class="question-number">Question 6 - Standard 2.b</div>
                 <div class="question-text">
@@ -294,9 +299,10 @@
                     <label>k =</label>
                     <input type="text" id="q6">
                 </div>
+                <div class="answer-feedback" id="feedback6"></div>
             </div>
 
-            <!-- Q7: Standards 2.c & 2.d - Linear inequalities and graphing -->
+            <!-- Q7: Standards 2.c& 2.d - Linear inequalities and graphing -->
             <div class="question-card">
                 <div class="question-number">Question 7 - Standards 2.c & 2.d</div>
                 <div class="question-text">
@@ -316,9 +322,10 @@
                     <label>Graph description (Is the circle filled or open? Which direction is the arrow?):</label>
                     <textarea id="q7graph" style="min-height: 60px;"></textarea>
                 </div>
+                <div class="answer-feedback" id="feedback7"></div>
             </div>
 
-            <!-- Q8: Standard 3.a - Function composition -->
+            <!-- Q8: Standard 3.a- Function composition -->
             <div class="question-card">
                 <div class="question-number">Question 8 - Standard 3.a</div>
                 <div class="question-text">
@@ -334,13 +341,16 @@
                     <label>f(g(-3)) =</label>
                     <input type="text" id="q8">
                 </div>
+                <div class="answer-feedback" id="feedback8"></div>
             </div>
 
+            <button type="button" class="submit-btn" onclick="gradeMiniExam()">Submit Test</button>
             <button type="button" class="print-btn" onclick="printTest()">Print Test</button>
             <button type="button" class="answer-key-btn" onclick="showMiniExamAnswerKey()">View Answer Key</button>
             <button type="button" class="answer-key-btn" onclick="saveResults('finalExamMini_results')" style="background: #1D42BA;">Save Results</button>
             <button type="button" class="answer-key-btn" onclick="loadResults('finalExamMini_results')" style="background: #002D62;">Load Saved Results</button>
         </form>
+        <div class="result" id="finalResult"></div>
     </div>
 
     <!-- Answer Key Modal -->
@@ -371,6 +381,31 @@
                 <div class="answer-item"><strong>Q8:</strong> -53 (Work: g(-3) = (-3)² - 4(-3) - 1 = 9 + 12 - 1 = 20, then f(20) = -3(20) + 7 = -60 + 7 = -53)</div>
             `;
             showAnswerKey(answerKeyHTML);
+        }
+        function gradeMiniExam() {
+            gradeTest({
+                questions: [
+                    [[['q1', 210, 0.5]], 'feedback1'],
+                    [[['q2', 5.4, 0.1]], 'feedback2'],
+                    [[['q3a', 's=(Pr+b)/k'], ['q3b', 58, 1]], 'feedback3'],
+                    [[['q4a', 'C(h)=0.9095(14.50+3.90h)'], ['q4b', 10.2, 0.5], ['q4c', 58.11, 0.5]], 'feedback4'],
+                    [[['q5', -9, 0.5]], 'feedback5'],
+                    [[['q6', 'k=(3a^2b+b-7)/(4-6a)']], 'feedback6'],
+                    [[['q7', 'x<6/5']], 'feedback7'],
+                    [[['q8', -53, 0.5]], 'feedback8']
+                ],
+                feedbacks: [
+                    ['✓ Nailed it! Substitution game strong.', '✗ Substitute p=-4, q=3—watch those negatives.'],
+                    ['✓ Perfect! Plug-and-solve on lock.', '✗ Plug t=2 into each term, then combine.'],
+                    ['✓ Formula for s is spot on.', '✗ Multiply by r, add b, divide by k.', '✓ Got the project count right.', '✗ s=(92·2+18)/3.5—check your arithmetic.'],
+                    ['✓ Cost equation locked in.', '✗ Apply tax then discount: 0.85·1.07·(14.50+3.90h).', '✓ Hours nailed.', '✗ Solve 49.39=0.9095(14.50+3.90h) for h.', '✓ Normal cost correct.', '✗ Same hours, no discount: 1.07(14.50+3.90h).'],
+                    ['✓ Solved it. Distribution was clean.', '✗ Distribute, combine like terms, isolate x.'],
+                    ['✓ Literal equation mastered.', '✗ Expand, collect k terms, factor k out.'],
+                    ['✓ Inequality solved correctly.', '✗ Clear fractions, flip sign when dividing negative.'],
+                    ['✓ Composition nailed. Inside-out approach works.', '✗ Find g(-3) first, then plug into f.']
+                ],
+                storageKey: 'final_exam_mini'
+            });
         }
     </script>
 </body>

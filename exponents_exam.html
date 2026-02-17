@@ -73,6 +73,7 @@
                         </div>
                     </div>
                 </div>
+                <div class="answer-feedback" id="feedback1"></div>
             </div>
 
             <!-- Part B - Question 2 -->
@@ -126,6 +127,7 @@
                         </div>
                     </div>
                 </div>
+                <div class="answer-feedback" id="feedback2"></div>
             </div>
 
             <!-- Part C - Question 3 -->
@@ -170,6 +172,7 @@
                         </div>
                     </div>
                 </div>
+                <div class="answer-feedback" id="feedback3"></div>
             </div>
 
             <!-- Part D - Question 4 -->
@@ -214,6 +217,7 @@
                         </div>
                     </div>
                 </div>
+                <div class="answer-feedback" id="feedback4"></div>
             </div>
 
             <!-- Part E - Question 5 -->
@@ -270,6 +274,7 @@
                         </div>
                     </div>
                 </div>
+                <div class="answer-feedback" id="feedback5"></div>
             </div>
 
             <!-- Part F - Question 6 -->
@@ -314,13 +319,16 @@
                         </div>
                     </div>
                 </div>
+                <div class="answer-feedback" id="feedback6"></div>
             </div>
 
+            <button type="button" class="submit-btn" onclick="gradeExponentsExam()">Submit Test</button>
             <button type="button" class="print-btn" onclick="printTest()">Print Version (Black & White)</button>
             <button type="button" class="answer-key-btn" onclick="showExamAnswerKey()">View Answer Key</button>
             <button type="button" class="answer-key-btn" onclick="saveResults('exponentsExamResults')" style="background: #1D42BA;">Save Results</button>
             <button type="button" class="answer-key-btn" onclick="loadResults('exponentsExamResults')" style="background: #002D62;">Load Saved Results</button>
         </form>
+        <div class="result" id="finalResult"></div>
     </div>
 
     <!-- Answer Key Modal -->
@@ -369,6 +377,54 @@
                     <br><br>c) 2b<sup>7</sup>/a<sup>5</sup> (Work: (2a<sup>-1</sup>b<sup>2</sup>)<sup>3</sup> = 8a<sup>-3</sup>b<sup>6</sup>, then 8a<sup>-3</sup>b<sup>6</sup> / 4a<sup>2</sup>b<sup>-1</sup> = 2a<sup>-3-2</sup>b<sup>6-(-1)</sup> = 2a<sup>-5</sup>b<sup>7</sup> = 2b<sup>7</sup>/a<sup>5</sup>)\
                 </div>';
             showAnswerKey(answerKeyHTML);
+        }
+
+        function gradeExponentsExam() {
+            gradeTest({
+                questions: [
+                    [[['q1a', 'x^11'], ['q1b', '-6a^7b^3'], ['q1c', 'y^5'], ['q1d', '27m^6/n^3']], 'feedback1'],
+                    [[['q2a', '1/x^5'], ['q2b', '2b^2/a^4'], ['q2c', 'q^4/p^4'], ['q2d', '2y^3/(3x^6)']], 'feedback2'],
+                    [[['q3a', '4x^4y^6'], ['q3b', '27a^6/(125b^9)'], ['q3c', 'x^-2-4x+4x^4']], 'feedback3'],
+                    [[['q4a', '12x^7-3x^5+18x^2'], ['q4b', '10z^4+2z^2-16z'], ['q4c', '6x^3y^2-12']], 'feedback4'],
+                    [[['q5a', 'false'], ['q5b', 'false'], ['q5c', 'true']], 'feedback5'],
+                    [[['q6a', '2x^8/y^6'], ['q6b', '4y^6/(9x^4)'], ['q6c', '2b^7/a^5']], 'feedback6']
+                ],
+                feedbacks: [
+                    [
+                        '✓ x^11 — product rule nailed', '✗ Add exponents: x^(4+7) = x^11',
+                        '✓ -6a^7b^3 — multiply coefficients, add exponents', '✗ Multiply coeffs, add exponents: -6a^7b^3',
+                        '✓ y^5 — quotient rule solid', '✗ Subtract exponents: y^(8-3) = y^5',
+                        '✓ 27m^6/n^3 — power rule clean', '✗ Cube each factor: 27m^6/n^3'
+                    ],
+                    [
+                        '✓ 1/x^5 — negative exponent flipped', '✗ Flip to denominator: x^-5 = 1/x^5',
+                        '✓ 2b^2/a^4 — simplified perfectly', '✗ Divide coeffs, subtract exponents: 2b^2/a^4',
+                        '✓ q^4/p^4 — flip and raise', '✗ Negative exponent flips the fraction: q^4/p^4',
+                        '✓ 2y^3/(3x^6) — great simplification', '✗ Simplify 6/9, subtract x exponents: 2y^3/(3x^6)'
+                    ],
+                    [
+                        '✓ 4x^4y^6 — power of a product', '✗ Square each factor: 4x^4y^6',
+                        '✓ 27a^6/(125b^9) — quotient power rule', '✗ Cube top and bottom: 27a^6/(125b^9)',
+                        '✓ x^-2 - 4x + 4x^4 — binomial squared', '✗ Use (A-B)^2 formula: x^-2 - 4x + 4x^4'
+                    ],
+                    [
+                        '✓ 12x^7 - 3x^5 + 18x^2 — distributed', '✗ Distribute 3x^2 to each term inside',
+                        '✓ 10z^4 + 2z^2 - 16z — clean work', '✗ Multiply 2z by each term: 10z^4+2z^2-16z',
+                        '✓ 6x^3y^2 - 12 — nice simplification', '✗ Distribute carefully: 6x^3y^2 - 12'
+                    ],
+                    [
+                        '✓ False — can\'t distribute exponent over addition', '✗ False: (x+y)^2 ≠ x^2+y^2, use FOIL',
+                        '✓ False — missing the middle term', '✗ False: (x-3)^2 = x^2-6x+9, need middle term',
+                        '✓ True — power of a product works here', '✗ True: (xy)^-3 = x^-3·y^-3'
+                    ],
+                    [
+                        '✓ 2x^8/y^6 — exponent rules combined', '✗ Subtract exponents: 2x^8/y^6',
+                        '✓ 4y^6/(9x^4) — negative exponent flipped', '✗ Flip with neg exponent: 4y^6/(9x^4)',
+                        '✓ 2b^7/a^5 — challenge problem crushed', '✗ Cube first, then divide: 2b^7/a^5'
+                    ]
+                ],
+                storageKey: 'exponents_exam'
+            });
         }
     </script>
 </body>
