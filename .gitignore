@@ -25,3 +25,6 @@ package-lock.json
 *.tmp
 *.bak
 *.orig
+
+# OCR rendered images (large binary, regenerable)
+import/ocr-output/*.png
