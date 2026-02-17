@@ -177,8 +177,10 @@
             border-color: var(--accent-blue);
         }
         .graph-btn.check-graph:disabled {
-            background: var(--border-default);
+            background: var(--bg-input);
             border-color: var(--border-default);
+            color: var(--text-secondary);
+            opacity: 0.6;
         }
         .graph-result {
             font-weight: 600;
@@ -294,7 +296,7 @@
                     <option value="rational">y = 1/x (rational)</option>
                 </select>
                 <label for="q1_transform"><strong>Transformations:</strong></label>
-                <textarea id="q1_transform" class="work-area" placeholder="Describe each transformation (e.g., vertical stretch by 2, right 3, up 1)..."></textarea>
+                <textarea id="q1_transform" class="work-area" placeholder="List transformations..."></textarea>
             </div>
             <div class="answer-feedback" id="feedback1"></div>
             <div class="hint-btn" id="hintBtn1" onclick="showHintLayer(1,1)">💡 GET HINT</div>
@@ -330,12 +332,12 @@
                 </select>
                 <div class="input-group">
                     <label>x₁ =</label>
-                    <input type="number" id="q2_x1" step="any" placeholder="e.g. -1">
+                    <input type="number" id="q2_x1" step="any" placeholder="-1">
                     <label>x₂ =</label>
-                    <input type="number" id="q2_x2" step="any" placeholder="e.g. -7">
+                    <input type="number" id="q2_x2" step="any" placeholder="-7">
                 </div>
                 <label for="q2_transform"><strong>Transformations, Domain &amp; Range:</strong></label>
-                <textarea id="q2_transform" class="work-area" placeholder="Transformations: ... Domain: ... Range: ..."></textarea>
+                <textarea id="q2_transform" class="work-area" placeholder="Transformations, domain, range..."></textarea>
             </div>
             <div class="answer-feedback" id="feedback2"></div>
             <div class="hint-btn" id="hintBtn2" onclick="showHintLayer(2,1)">💡 GET HINT</div>
@@ -372,12 +374,12 @@
                 </select>
                 <div class="input-group">
                     <label>x₁ =</label>
-                    <input type="number" id="q3_x1" step="any" placeholder="e.g. 3">
+                    <input type="number" id="q3_x1" step="any" placeholder="3">
                     <label>x₂ =</label>
-                    <input type="number" id="q3_x2" step="any" placeholder="e.g. -1">
+                    <input type="number" id="q3_x2" step="any" placeholder="-1">
                 </div>
                 <label for="q3_transform"><strong>Transformations, Domain &amp; Range:</strong></label>
-                <textarea id="q3_transform" class="work-area" placeholder="Transformations: ... Domain: ... Range: ..."></textarea>
+                <textarea id="q3_transform" class="work-area" placeholder="Transformations, domain, range..."></textarea>
             </div>
             <div class="answer-feedback" id="feedback3"></div>
             <div class="hint-btn" id="hintBtn3" onclick="showHintLayer(3,1)">💡 GET HINT</div>
@@ -407,7 +409,7 @@
                 <textarea class="work-area" placeholder="Show your work..."></textarea>
                 <div class="input-group">
                     <label>x =</label>
-                    <input type="number" id="q4_x" step="any" placeholder="e.g. 2">
+                    <input type="number" id="q4_x" step="any" placeholder="2">
                 </div>
             </div>
             <div class="answer-feedback" id="feedback4"></div>
@@ -434,9 +436,9 @@
                 <textarea class="work-area" placeholder="Show your work..."></textarea>
                 <div class="input-group">
                     <label>x₁ =</label>
-                    <input type="number" id="q5_x1" step="any" placeholder="e.g. 0.5">
+                    <input type="number" id="q5_x1" step="any" placeholder="0.5">
                     <label>x₂ =</label>
-                    <input type="number" id="q5_x2" step="any" placeholder="e.g. -1.5">
+                    <input type="number" id="q5_x2" step="any" placeholder="-1.5">
                 </div>
             </div>
             <div class="answer-feedback" id="feedback5"></div>
@@ -464,9 +466,9 @@
                 <textarea class="work-area" placeholder="Show your work..."></textarea>
                 <div class="input-group">
                     <label>x₁ =</label>
-                    <input type="number" id="q6_x1" step="any" placeholder="decimal, e.g. 2.236">
+                    <input type="number" id="q6_x1" step="any" placeholder="decimal">
                     <label>x₂ =</label>
-                    <input type="number" id="q6_x2" step="any" placeholder="decimal, e.g. -2.236">
+                    <input type="number" id="q6_x2" step="any" placeholder="decimal">
                 </div>
             </div>
             <div class="answer-feedback" id="feedback6"></div>
@@ -494,7 +496,7 @@
                 <textarea class="work-area" placeholder="Show your work..."></textarea>
                 <div class="input-group">
                     <label>x =</label>
-                    <input type="number" id="q7_x" step="any" placeholder="e.g. 2">
+                    <input type="number" id="q7_x" step="any" placeholder="2">
                 </div>
             </div>
             <div class="answer-feedback" id="feedback7"></div>
@@ -521,7 +523,7 @@
                 <textarea class="work-area" placeholder="Show your work..."></textarea>
                 <div class="input-group">
                     <label>x =</label>
-                    <input type="number" id="q8_x" step="any" placeholder="decimal or fraction, e.g. 5.667">
+                    <input type="number" id="q8_x" step="any" placeholder="decimal">
                 </div>
             </div>
             <div class="answer-feedback" id="feedback8"></div>
@@ -549,7 +551,7 @@
                 <textarea class="work-area" placeholder="Show your work..."></textarea>
                 <div class="input-group">
                     <label>x =</label>
-                    <input type="number" id="q9_x" step="any" placeholder="e.g. 3">
+                    <input type="number" id="q9_x" step="any" placeholder="3">
                 </div>
             </div>
             <div class="answer-feedback" id="feedback9"></div>
@@ -576,9 +578,9 @@
                 <textarea class="work-area" placeholder="Show your work..."></textarea>
                 <div class="input-group">
                     <label>x₁ =</label>
-                    <input type="number" id="q10_x1" step="any" placeholder="decimal, e.g. 2.236">
+                    <input type="number" id="q10_x1" step="any" placeholder="decimal">
                     <label>x₂ =</label>
-                    <input type="number" id="q10_x2" step="any" placeholder="decimal, e.g. -2.236">
+                    <input type="number" id="q10_x2" step="any" placeholder="decimal">
                 </div>
             </div>
             <div class="answer-feedback" id="feedback10"></div>
@@ -606,7 +608,7 @@
                 <textarea class="work-area" placeholder="Show your work..."></textarea>
                 <div class="input-group">
                     <label>x =</label>
-                    <input type="number" id="q11_x" step="any" placeholder="e.g. 9">
+                    <input type="number" id="q11_x" step="any" placeholder="9">
                 </div>
             </div>
             <div class="answer-feedback" id="feedback11"></div>
@@ -638,7 +640,7 @@
                     <canvas id="graphQ12" width="700" height="700"></canvas>
                     <div class="graph-tooltip" id="tooltipQ12"></div>
                 </div>
-                <div class="point-counter" id="counterQ12">Points: 0/5 minimum</div>
+                <div class="point-counter" id="counterQ12">Select a minimum of 5 points on the graph</div>
                 <button type="button" class="graph-btn check-graph" id="checkQ12" disabled onclick="checkGraph('graphQ12')">CHECK GRAPH</button>
                 <button type="button" class="graph-btn" onclick="clearGraph('graphQ12')">CLEAR</button>
                 <div class="graph-result" id="resultQ12"></div>
@@ -677,7 +679,7 @@
                     <canvas id="graphQ13" width="700" height="700"></canvas>
                     <div class="graph-tooltip" id="tooltipQ13"></div>
                 </div>
-                <div class="point-counter" id="counterQ13">Points: 0/5 minimum · Asymptotes: 0/2</div>
+                <div class="point-counter" id="counterQ13">Select a minimum of 5 points on the graph · Asymptotes: 0/2</div>
                 <button type="button" class="graph-btn" id="vaBtn13" onclick="setAsymptoteMode('graphQ13','vertical')">ADD VERTICAL ASYMPTOTE</button>
                 <button type="button" class="graph-btn" id="haBtn13" onclick="setAsymptoteMode('graphQ13','horizontal')">ADD HORIZONTAL ASYMPTOTE</button>
                 <button type="button" class="graph-btn check-graph" id="checkQ13" disabled onclick="checkGraph('graphQ13')">CHECK GRAPH</button>
@@ -909,13 +911,27 @@
         drawGrid(canvasId);
     }
 
+    function getCanvasColors() {
+        var cs = getComputedStyle(document.documentElement);
+        return {
+            grid: cs.getPropertyValue('--border-subtle').trim() || '#ddd',
+            axis: cs.getPropertyValue('--text-primary').trim() || '#000',
+            label: cs.getPropertyValue('--text-primary').trim() || '#000',
+            blue: cs.getPropertyValue('--accent-blue').trim() || '#1D42BA',
+            correct: cs.getPropertyValue('--color-correct').trim() || '#1B7D3A',
+            incorrect: cs.getPropertyValue('--color-incorrect').trim() || '#C8102E',
+            pointStroke: cs.getPropertyValue('--bg-card').trim() || '#fff'
+        };
+    }
+
     function drawGrid(canvasId) {
         var d = graphData[canvasId];
         var ctx = d.ctx;
+        var c = getCanvasColors();
         ctx.clearRect(0, 0, d.w, d.h);
 
         // Grid lines
-        ctx.strokeStyle = '#ddd'; ctx.lineWidth = 1;
+        ctx.strokeStyle = c.grid; ctx.lineWidth = 1;
         for (var i = 0; i <= 32; i++) {
             var x = d.ml + (i * d.pw) / 32;
             ctx.beginPath(); ctx.moveTo(x, d.mt); ctx.lineTo(x, d.mt + d.ph); ctx.stroke();
@@ -926,14 +942,14 @@
         }
 
         // Axes
-        ctx.strokeStyle = '#000'; ctx.lineWidth = 2;
+        ctx.strokeStyle = c.axis; ctx.lineWidth = 2;
         var xAxisY = d.mt + d.ph / 2;
         var yAxisX = d.ml + d.pw / 2;
         ctx.beginPath(); ctx.moveTo(d.ml, xAxisY); ctx.lineTo(d.ml + d.pw, xAxisY); ctx.stroke();
         ctx.beginPath(); ctx.moveTo(yAxisX, d.mt); ctx.lineTo(yAxisX, d.mt + d.ph); ctx.stroke();
 
         // Labels
-        ctx.fillStyle = '#000'; ctx.font = '12px Arial'; ctx.textAlign = 'center';
+        ctx.fillStyle = c.label; ctx.font = '12px Arial'; ctx.textAlign = 'center';
         for (var n = -16; n <= 16; n += 4) {
             if (n === 0) continue;
             var lx = d.ml + d.pw / 2 + (n * d.pw / 32);
@@ -955,11 +971,12 @@
         if (!d) return;
         drawGrid(canvasId);
         var ctx = d.ctx;
+        var c = getCanvasColors();
 
         // Draw asymptotes (dashed blue)
         ctx.save();
         ctx.setLineDash([8, 6]);
-        ctx.strokeStyle = '#1D42BA'; ctx.lineWidth = 2;
+        ctx.strokeStyle = c.blue; ctx.lineWidth = 2;
         d.asymptotes.vertical.forEach(function(gx) {
             var sx = d.ml + ((gx + 16) / 32) * d.pw;
             ctx.beginPath(); ctx.moveTo(sx, d.mt); ctx.lineTo(sx, d.mt + d.ph); ctx.stroke();
@@ -976,7 +993,7 @@
                 ? function(x) { return -(x + 2) * (x + 2) + 5; }
                 : function(x) { return Math.abs(x - 1) < 0.05 ? null : 3 / (x - 1) - 2; };
             ctx.save();
-            ctx.strokeStyle = '#1D42BA'; ctx.lineWidth = 3;
+            ctx.strokeStyle = c.blue; ctx.lineWidth = 3;
             ctx.beginPath();
             var started = false;
             for (var gx = -16; gx <= 16; gx += 0.05) {
@@ -995,11 +1012,11 @@
         d.points.forEach(function(p) {
             ctx.beginPath();
             ctx.arc(p.x, p.y, 6, 0, 2 * Math.PI);
-            if (p.status === 'correct') { ctx.fillStyle = '#1B7D3A'; }
-            else if (p.status === 'incorrect') { ctx.fillStyle = '#C8102E'; }
-            else { ctx.fillStyle = '#1D42BA'; }
+            if (p.status === 'correct') { ctx.fillStyle = c.correct; }
+            else if (p.status === 'incorrect') { ctx.fillStyle = c.incorrect; }
+            else { ctx.fillStyle = c.blue; }
             ctx.fill();
-            ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.5;
+            ctx.strokeStyle = c.pointStroke; ctx.lineWidth = 1.5;
             ctx.stroke();
         });
     }
@@ -1014,10 +1031,10 @@
         if (isQ13) {
             var va = d.asymptotes.vertical.length;
             var ha = d.asymptotes.horizontal.length;
-            counter.textContent = 'Points: ' + n + '/5 minimum · Asymptotes: ' + (va + ha) + '/2';
+            counter.textContent = n + ' of 5 points selected · Asymptotes: ' + (va + ha) + '/2';
             checkBtn.disabled = !(n >= 5 && va >= 1 && ha >= 1);
         } else {
-            counter.textContent = 'Points: ' + n + '/5 minimum';
+            counter.textContent = n > 0 ? n + ' of 5 points selected' : 'Select a minimum of 5 points on the graph';
             checkBtn.disabled = n < 5;
         }
     }
@@ -1417,6 +1434,12 @@
     window.addEventListener('DOMContentLoaded', function() {
         initGraph('graphQ12');
         initGraph('graphQ13');
+
+        // Redraw canvases when Arena Mode toggles
+        new MutationObserver(function() {
+            redrawGraph('graphQ12');
+            redrawGraph('graphQ13');
+        }).observe(document.body, { attributes: true, attributeFilter: ['class'] });
     });
     </script>
 

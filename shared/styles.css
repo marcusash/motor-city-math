@@ -28,6 +28,7 @@
     --color-warning: #E8A317;
     --color-warning-bg: #FFFFF0;
     --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.06);
+    --bg-highlight: #f0f4ff;
     --chart-grid: #E8E8E8;
     --chart-label: #333333;
 }
@@ -56,6 +57,7 @@ body.arena-mode {
     --color-warning: #F5C842;
     --color-warning-bg: #2D2408;
     --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --bg-highlight: #1A2240;
     --chart-grid: #2A3352;
     --chart-label: #E0E4EB;
 }
@@ -283,12 +285,19 @@ header .date {
     background: var(--color-incorrect-bg);
 }
 
-input, textarea {
+input, textarea, select {
     border: 2px solid var(--border-default);
     border-radius: 4px;
+    background: var(--bg-input);
+    color: var(--text-primary);
 }
 
-input:focus, textarea:focus {
+input::placeholder, textarea::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.7;
+}
+
+input:focus, textarea:focus, select:focus {
     outline: none;
     border-color: var(--accent-blue);
     box-shadow: 0 0 0 3px rgba(29, 66, 186, 0.15);

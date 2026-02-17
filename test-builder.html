@@ -11,39 +11,41 @@
     <link rel="stylesheet" href="shared/styles.css">
     <link rel="stylesheet" href="shared/print.css">
     <style>
-        body { background: #f9fafb; }
+        body { background: var(--bg-page); }
         .builder { max-width: 900px; margin: 0 auto; padding: 20px; }
         .builder-header { text-align: center; margin-bottom: 20px; }
-        .builder-header h1 { color: #002D62; margin: 0; }
-        .builder-header .subtitle { color: #6C6E70; }
+        .builder-header h1 { color: var(--accent-navy); margin: 0; }
+        .builder-header .subtitle { color: var(--text-secondary); }
         .pistons-stripe {
             height: 4px;
-            background: linear-gradient(90deg, #C8102E 30%, #1D42BA 50%, #C8102E 70%);
+            background: linear-gradient(90deg, var(--accent-red) 30%, var(--accent-blue) 50%, var(--accent-red) 70%);
             border-radius: 2px;
             margin: 12px 0 20px;
         }
 
         /* Config panel */
         .config-panel {
-            background: white;
-            border: 2px solid #1D42BA;
+            background: var(--bg-card);
+            border: 2px solid var(--accent-blue);
             border-radius: 8px;
             padding: 20px;
             margin-bottom: 24px;
         }
-        .config-panel h2 { color: #002D62; font-size: 1.1em; margin: 0 0 16px; }
+        .config-panel h2 { color: var(--accent-navy); font-size: 1.1em; margin: 0 0 16px; }
         .config-row { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 16px; }
         .config-field { flex: 1; min-width: 200px; }
-        .config-field label { display: block; font-weight: 600; color: #002D62; font-size: 0.85em; text-transform: uppercase; margin-bottom: 4px; }
+        .config-field label { display: block; font-weight: 600; color: var(--accent-navy); font-size: 0.85em; text-transform: uppercase; margin-bottom: 4px; }
         .config-field input, .config-field select {
             width: 100%;
             padding: 8px 12px;
-            border: 2px solid #BEC0C2;
+            border: 2px solid var(--border-default);
             border-radius: 4px;
             font-size: 0.95rem;
+            background: var(--bg-input);
+            color: var(--text-primary);
         }
         .config-field input:focus, .config-field select:focus {
-            border-color: #1D42BA;
+            border-color: var(--accent-blue);
             outline: none;
         }
 
@@ -51,23 +53,24 @@
         .std-picker { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
         .std-chip {
             padding: 6px 12px;
-            border: 2px solid #BEC0C2;
+            border: 2px solid var(--border-default);
             border-radius: 16px;
             font-size: 0.85em;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.15s;
             user-select: none;
+            color: var(--text-primary);
         }
-        .std-chip:hover { border-color: #1D42BA; }
-        .std-chip.selected { background: #1D42BA; color: white; border-color: #1D42BA; }
-        .std-chip .count { font-weight: 400; color: #6C6E70; margin-left: 4px; }
+        .std-chip:hover { border-color: var(--accent-blue); }
+        .std-chip.selected { background: var(--accent-blue); color: var(--text-inverse); border-color: var(--accent-blue); }
+        .std-chip .count { font-weight: 400; color: var(--text-secondary); margin-left: 4px; }
         .std-chip.selected .count { color: rgba(255,255,255,0.7); }
 
         .build-btn {
             padding: 12px 32px;
-            background: #C8102E;
-            color: white;
+            background: var(--accent-red);
+            color: var(--text-inverse);
             border: none;
             border-radius: 4px;
             font-weight: 700;
@@ -75,22 +78,22 @@
             cursor: pointer;
             margin-top: 8px;
         }
-        .build-btn:hover { background: #A00D24; }
-        .config-info { font-size: 0.85em; color: #6C6E70; margin-top: 8px; }
+        .build-btn:hover { background: var(--accent-red-hover); }
+        .config-info { font-size: 0.85em; color: var(--text-secondary); margin-top: 8px; }
 
         /* Generated test */
         .gen-test { display: none; }
         .gen-test.show { display: block; }
         .gen-header {
-            background: white;
-            border: 2px solid #002D62;
+            background: var(--bg-card);
+            border: 2px solid var(--accent-navy);
             border-radius: 8px;
             padding: 20px;
             margin-bottom: 20px;
             text-align: center;
         }
-        .gen-header h2 { color: #002D62; margin: 0; }
-        .gen-header .gen-meta { color: #6C6E70; font-size: 0.9em; margin-top: 6px; }
+        .gen-header h2 { color: var(--accent-navy); margin: 0; }
+        .gen-header .gen-meta { color: var(--text-secondary); font-size: 0.9em; margin-top: 6px; }
         .gen-header .name-date {
             display: flex;
             justify-content: center;
@@ -98,38 +101,38 @@
             margin-top: 12px;
             font-size: 0.95em;
         }
-        .gen-header .name-date span { border-bottom: 1px solid #002D62; min-width: 150px; display: inline-block; padding-bottom: 2px; }
+        .gen-header .name-date span { border-bottom: 1px solid var(--accent-navy); min-width: 150px; display: inline-block; padding-bottom: 2px; }
 
         .gen-question {
-            background: white;
-            border: 1px solid #BEC0C2;
-            border-left: 4px solid #1D42BA;
+            background: var(--bg-card);
+            border: 1px solid var(--border-default);
+            border-left: 4px solid var(--accent-blue);
             border-radius: 4px;
             padding: 16px 20px;
             margin-bottom: 12px;
             page-break-inside: avoid;
         }
-        .gen-question .gq-num { font-weight: 700; color: #1D42BA; font-size: 0.85em; text-transform: uppercase; }
-        .gen-question .gq-std { float: right; font-size: 0.7em; color: #6C6E70; background: #f0f4ff; padding: 2px 8px; border-radius: 10px; }
+        .gen-question .gq-num { font-weight: 700; color: var(--accent-blue); font-size: 0.85em; text-transform: uppercase; }
+        .gen-question .gq-std { float: right; font-size: 0.7em; color: var(--text-secondary); background: var(--bg-highlight); padding: 2px 8px; border-radius: 10px; }
         .gen-question .gq-text { margin: 8px 0; line-height: 1.6; }
-        .gen-question .gq-part { margin: 6px 0 6px 16px; padding-left: 12px; border-left: 2px solid #eee; }
-        .gen-question .gq-answer-line { border-bottom: 1px solid #BEC0C2; min-width: 120px; display: inline-block; margin-left: 8px; }
+        .gen-question .gq-part { margin: 6px 0 6px 16px; padding-left: 12px; border-left: 2px solid var(--border-subtle); }
+        .gen-question .gq-answer-line { border-bottom: 1px solid var(--border-default); min-width: 120px; display: inline-block; margin-left: 8px; }
         .gen-question .gq-work-box {
-            border: 1px solid #BEC0C2;
+            border: 1px solid var(--border-default);
             border-radius: 4px;
             min-height: 60px;
             margin: 8px 0;
             padding: 8px;
-            color: #BEC0C2;
+            color: var(--border-default);
             font-size: 0.85em;
         }
 
         /* Answer key (separate page) */
         .answer-key { display: none; page-break-before: always; }
         .answer-key.show { display: block; }
-        .answer-key h2 { color: #C8102E; text-align: center; }
+        .answer-key h2 { color: var(--accent-red); text-align: center; }
         .ak-item { margin: 4px 0; font-size: 0.9em; }
-        .ak-item strong { color: #002D62; }
+        .ak-item strong { color: var(--accent-navy); }
 
         @media print {
             .config-panel, .build-btn, .action-bar { display: none !important; }
@@ -183,7 +186,7 @@
                 </div>
             </div>
 
-            <label style="font-weight:600; color:#002D62; font-size:0.85em; text-transform:uppercase; margin-bottom:4px; display:block;">Standards (click to select)</label>
+            <label style="font-weight:600; color:var(--accent-navy); font-size:0.85em; text-transform:uppercase; margin-bottom:4px; display:block;">Standards (click to select)</label>
             <div class="std-picker" id="stdPicker"></div>
 
             <div class="config-row" style="margin-top:12px;">
@@ -205,9 +208,9 @@
 
         <div class="action-bar" id="actionBar" style="display:none; margin-bottom:20px; display:flex; gap:10px; flex-wrap:wrap;">
             <button class="print-btn" onclick="window.print()">🖨️ Print Test</button>
-            <button class="build-btn" style="background:#1D42BA;" onclick="buildTest()">🔄 Regenerate</button>
+            <button class="build-btn" style="background:var(--accent-blue);" onclick="buildTest()">🔄 Regenerate</button>
             <button class="build-btn" style="background:var(--color-correct);" id="interactiveBtn" onclick="openInteractive()">🎮 Open Interactive</button>
-            <a href="index.html" style="color:#1D42BA; font-weight:600; align-self:center;">← Dashboard</a>
+            <a href="index.html" style="color:var(--accent-blue); font-weight:600; align-self:center;">← Dashboard</a>
         </div>
 
         <div class="gen-test" id="genTest"></div>

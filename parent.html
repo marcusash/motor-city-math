@@ -19,7 +19,7 @@
         .dash-header .subtitle { color: var(--text-secondary); font-size: 0.9em; margin-top: 4px; }
         .pistons-stripe {
             height: 3px;
-            background: linear-gradient(90deg, #C8102E 30%, #1D42BA 50%, #C8102E 70%);
+            background: linear-gradient(90deg, var(--accent-red) 30%, var(--accent-blue) 50%, var(--accent-red) 70%);
             border-radius: 2px;
             margin: 12px 0 20px;
         }
@@ -57,14 +57,14 @@
         .latest-detail { font-size: 0.95em; color: var(--text-secondary); margin-top: 4px; }
         .latest-voice { font-size: 0.95em; margin-top: 8px; color: var(--text-primary); }
         .card.passing-card {
-            background: linear-gradient(135deg, #002D62 0%, #1D42BA 100%);
-            color: #FFFFFF;
+            background: linear-gradient(135deg, var(--accent-navy) 0%, var(--accent-blue) 100%);
+            color: var(--text-inverse);
             border: none;
         }
         .card.passing-card .latest-test-name,
         .card.passing-card .latest-detail { color: rgba(255,255,255,0.8); }
         .card.passing-card .latest-score,
-        .card.passing-card .latest-voice { color: #FFFFFF; }
+        .card.passing-card .latest-voice { color: var(--text-inverse); }
 
         /* Summary stats */
         .stat-row { display: flex; justify-content: space-between; padding: 6px 0; font-size: 0.95em; }
@@ -91,14 +91,14 @@
         .std-fraction { font-size: 0.8em; color: var(--text-secondary); margin-top: 4px; }
 
         /* Color tiers */
-        .tier-green .std-pct { color: #1B7D3A; }
-        .tier-green .std-fill { background: #1B7D3A; }
-        .tier-blue .std-pct { color: #1D42BA; }
-        .tier-blue .std-fill { background: #1D42BA; }
-        .tier-amber .std-pct { color: #E8A317; }
-        .tier-amber .std-fill { background: #E8A317; }
-        .tier-red .std-pct { color: #C8102E; }
-        .tier-red .std-fill { background: #C8102E; }
+        .tier-green .std-pct { color: var(--color-correct); }
+        .tier-green .std-fill { background: var(--color-correct); }
+        .tier-blue .std-pct { color: var(--accent-blue); }
+        .tier-blue .std-fill { background: var(--accent-blue); }
+        .tier-amber .std-pct { color: var(--color-warning); }
+        .tier-amber .std-fill { background: var(--color-warning); }
+        .tier-red .std-pct { color: var(--accent-red); }
+        .tier-red .std-fill { background: var(--accent-red); }
 
         /* Empty state */
         .empty-state {

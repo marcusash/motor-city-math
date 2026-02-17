@@ -10,11 +10,11 @@
     <script>if(typeof Chart==="undefined"){var s=document.createElement("script");s.src="https://cdn.jsdelivr.net/npm/chart.js";document.head.appendChild(s);}</script>
     <script src="shared/chart-theme.js"></script>
     <style>
-        body { background: #f9fafb; }
+        body { background: var(--bg-page); }
         .dashboard { max-width: 900px; margin: 0 auto; padding: 20px; }
         .dash-header { text-align: center; margin-bottom: 24px; }
-        .dash-header h1 { color: #002D62; font-size: 2.5em; font-weight: 700; margin: 0; }
-        .dash-header .subtitle { color: #6C6E70; font-weight: 400; font-size: 1.1em; margin-top: 4px; }
+        .dash-header h1 { color: var(--accent-navy); font-size: 2.5em; font-weight: 700; margin: 0; }
+        .dash-header .subtitle { color: var(--text-secondary); font-weight: 400; font-size: 1.1em; margin-top: 4px; }
         .pistons-stripe {
             height: 4px;
             background: linear-gradient(90deg, var(--accent-red) 30%, var(--accent-blue) 50%, var(--accent-red) 70%);
@@ -137,6 +137,10 @@
         .sparkline { display: block; margin-top: 6px; }
 
         .footer { text-align: center; color: var(--border-default); font-size: 0.85em; padding: 20px 0 10px; }
+        .nav-btn {
+            display: inline-block; padding: 12px 32px; color: var(--text-inverse);
+            font-weight: 700; font-size: 1.05rem; border-radius: 6px; text-decoration: none;
+        }
 
         @media (max-width: 768px) {
             .standards-grid { grid-template-columns: 1fr; }
@@ -175,10 +179,10 @@
         <ul class="study-list" id="studyList"></ul>
 
         <div style="text-align:center; margin: 20px 0; display:flex; justify-content:center; gap:12px; flex-wrap:wrap;">
-            <a href="practice.html" style="display:inline-block; padding:12px 32px; background:#1D42BA; color:white; font-weight:700; font-size:1.05rem; border-radius:6px; text-decoration:none;">🏀 Practice Mode — 313 Questions</a>
-            <a href="test-builder.html" style="display:inline-block; padding:12px 32px; background:#C8102E; color:white; font-weight:700; font-size:1.05rem; border-radius:6px; text-decoration:none;">🏗️ Test Builder</a>
-            <a href="test.html" style="display:inline-block; padding:12px 32px; background:#1B7D3A; color:white; font-weight:700; font-size:1.05rem; border-radius:6px; text-decoration:none;">📝 Quick Test</a>
-            <a href="parent.html" style="display:inline-block; padding:12px 32px; background:var(--accent-navy); color:white; font-weight:700; font-size:1.05rem; border-radius:6px; text-decoration:none;">📊 Parent View</a>
+            <a href="practice.html" class="nav-btn" style="background:var(--accent-blue);">🏀 Practice Mode — 313 Questions</a>
+            <a href="test-builder.html" class="nav-btn" style="background:var(--accent-red);">🏗️ Test Builder</a>
+            <a href="test.html" class="nav-btn" style="background:var(--color-correct);">📝 Quick Test</a>
+            <a href="parent.html" class="nav-btn" style="background:var(--accent-navy);">📊 Parent View</a>
         </div>
 
         <div class="section-title">Quick Tests</div>
@@ -251,6 +255,13 @@
             return;
         }
 
+        var cs = getComputedStyle(document.documentElement);
+        var tkBlue = cs.getPropertyValue('--accent-blue').trim() || '#1D42BA';
+        var tkGrid = cs.getPropertyValue('--chart-grid').trim() || '#eee';
+        var tkSecondary = cs.getPropertyValue('--text-secondary').trim() || '#6C6E70';
+        var tkCorrect = cs.getPropertyValue('--color-correct').trim() || '#1B7D3A';
+        var tkRed = cs.getPropertyValue('--accent-red').trim() || '#C8102E';
+
         var ctx = document.getElementById('scoreChart').getContext('2d');
         new Chart(ctx, {
             type: 'line',
@@ -259,10 +270,10 @@
                 datasets: [{
                     label: 'Score %',
                     data: data,
-                    borderColor: '#1D42BA',
+                    borderColor: tkBlue,
                     backgroundColor: 'rgba(29, 66, 186, 0.08)',
                     borderWidth: 3,
-                    pointBackgroundColor: '#1D42BA',
+                    pointBackgroundColor: tkBlue,
                     pointRadius: 5,
                     pointHoverRadius: 7,
                     fill: true,
@@ -276,7 +287,7 @@
                     y: {
                         min: 0, max: 100,
                         ticks: { callback: function(v) { return v + '%'; } },
-                        grid: { color: '#eee' }
+                        grid: { color: tkGrid }
                     },
                     x: { grid: { display: false } }
                 },
@@ -291,8 +302,8 @@
                         annotations: {
                             passingLine: {
                                 type: 'line', yMin: 80, yMax: 80,
-                                borderColor: '#6C6E70', borderWidth: 1, borderDash: [6, 4],
-                                label: { content: 'Passing (80%)', display: true, position: 'start', font: { size: 10 }, color: '#6C6E70' }
+                                borderColor: tkSecondary, borderWidth: 1, borderDash: [6, 4],
+                                label: { content: 'Passing (80%)', display: true, position: 'start', font: { size: 10 }, color: tkSecondary }
                             }
                         }
                     }
@@ -397,7 +408,7 @@
             var name = s.name || id;
             var practiceLink = 'test.html?standard=' + encodeURIComponent(id) + '&count=10';
             html += '<li class="study-item"><span class="emoji">' + emoji + '</span> <strong>' + id + '</strong> (' + name + ') — ' + pct + '%. ' + action +
-                ' <a href="' + practiceLink + '" style="color:#1D42BA;font-weight:600;font-size:0.85em;">Practice →</a></li>';
+                ' <a href="' + practiceLink + '" style="color:var(--accent-blue);font-weight:600;font-size:0.85em;">Practice →</a></li>';
             count++;
         });
         list.innerHTML = html || '<li class="study-item"><span class="emoji">✅</span> All standards looking strong!</li>';
@@ -450,7 +461,7 @@
         });
         // Trend color: green if rising, red if falling, blue if flat
         var trend = values[values.length - 1] - values[0];
-        var color = trend > 0 ? '#1B7D3A' : trend < 0 ? '#C8102E' : '#1D42BA';
+        var color = trend > 0 ? tkCorrect : trend < 0 ? tkRed : tkBlue;
         return '<svg class="sparkline" width="' + w + '" height="' + h + '" viewBox="0 0 ' + w + ' ' + h + '">' +
             '<polyline fill="none" stroke="' + color + '" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" points="' + points.join(' ') + '"/>' +
             '<circle cx="' + points[points.length - 1].split(',')[0] + '" cy="' + points[points.length - 1].split(',')[1] + '" r="2" fill="' + color + '"/>' +
