@@ -133,6 +133,7 @@
         .test-link .test-meta { color: #6C6E70; font-weight: 400; font-size: 0.85em; margin-top: 4px; }
         .test-link .test-score { font-weight: 700; color: #1B7D3A; float: right; }
         .test-link .test-score.low { color: #C8102E; }
+        .sparkline { display: block; margin-top: 6px; }
 
         .footer { text-align: center; color: #BEC0C2; font-size: 0.85em; padding: 20px 0 10px; }
 
@@ -174,6 +175,7 @@
         <div style="text-align:center; margin: 20px 0; display:flex; justify-content:center; gap:12px; flex-wrap:wrap;">
             <a href="practice.html" style="display:inline-block; padding:12px 32px; background:#1D42BA; color:white; font-weight:700; font-size:1.05rem; border-radius:6px; text-decoration:none;">🏀 Practice Mode — 313 Questions</a>
             <a href="test-builder.html" style="display:inline-block; padding:12px 32px; background:#C8102E; color:white; font-weight:700; font-size:1.05rem; border-radius:6px; text-decoration:none;">🏗️ Test Builder</a>
+            <a href="parent.html" style="display:inline-block; padding:12px 32px; background:#002D62; color:white; font-weight:700; font-size:1.05rem; border-radius:6px; text-decoration:none;">📊 Parent View</a>
         </div>
 
         <div class="section-title">All Tests</div>
@@ -402,10 +404,16 @@
         tests.forEach(function(t) {
             var s = scores[t.key];
             var scoreHtml = '';
+            var sparkHtml = '';
             if (s) {
                 var pct;
                 if (s.attempts && s.attempts.length > 0) {
                     pct = s.attempts[s.attempts.length - 1].pct;
+                    // Build sparkline from last 5 attempts
+                    var atts = s.attempts.slice(-5);
+                    if (atts.length >= 2) {
+                        sparkHtml = buildSparkline(atts.map(function(a) { return a.pct; }));
+                    }
                 } else {
                     pct = s.pct || (s.score && s.total ? Math.round(s.score / s.total * 100) : null);
                 }
@@ -416,9 +424,29 @@
             html += '<a href="' + t.file + '" class="test-link">' +
                 t.name + scoreHtml +
                 '<div class="test-meta">' + t.questions + ' questions · ' + t.unit + '</div>' +
+                sparkHtml +
                 '</a>';
         });
         grid.innerHTML = html;
+    }
+
+    function buildSparkline(values) {
+        var w = 80, h = 20, pad = 2;
+        var min = Math.min.apply(null, values);
+        var max = Math.max.apply(null, values);
+        var range = max - min || 1;
+        var points = values.map(function(v, i) {
+            var x = pad + (i / (values.length - 1)) * (w - 2 * pad);
+            var y = h - pad - ((v - min) / range) * (h - 2 * pad);
+            return x.toFixed(1) + ',' + y.toFixed(1);
+        });
+        // Trend color: green if rising, red if falling, blue if flat
+        var trend = values[values.length - 1] - values[0];
+        var color = trend > 0 ? '#1B7D3A' : trend < 0 ? '#C8102E' : '#1D42BA';
+        return '<svg class="sparkline" width="' + w + '" height="' + h + '" viewBox="0 0 ' + w + ' ' + h + '">' +
+            '<polyline fill="none" stroke="' + color + '" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" points="' + points.join(' ') + '"/>' +
+            '<circle cx="' + points[points.length - 1].split(',')[0] + '" cy="' + points[points.length - 1].split(',')[1] + '" r="2" fill="' + color + '"/>' +
+            '</svg>';
     }
 
     /* ========== STATS BAR ========== */
