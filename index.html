@@ -1089,15 +1089,34 @@
         });
 
         const answers = {
-            q1: 'y=25x+10', q2a: 33, q2b: 5, q3a: 0, q3b: 6, q3c: 5000, q3d: 20000,
-            q4a: 150, q4b: 'initial', q4c: 15, q5a: 'h=8-0.5t', q5b: -0.5, q5c: 'burn', q5d: 16,
-            q6a: 0, q6b: 6, q6c: 74, q6d: 62, q7a: 't=(c-25)/45', q7b: 8,
-            q8a: 'p(x)=18x-500', q8b: 27.78, q8c: 400, q9a: 120, q9b: 47.50,
-            q10a: 'constant', q10b: 'c(m)=35m+75', q11a: 'c=60h+85', q11b: 295, q11c: 4,
-            q12a: 'per mile', q12b: 'base', q12c: 90, q13a: 20, q13b: 'y-100=20(x-3)', q13c: 'y=20x+40',
-            q14a: 200, q14b: 50, q14c: 500, q14d: 6,
+            // Q1: Function composition (5 parts)
+            q1a: 10, q1b: -18, q1c: -1, q1d: 0, q1e: 4,
+            // Q2: Sequence classification (5 parts)
+            q2a: 'linear', q2b: 'exponential', q2c: 'exponential', q2d: 'neither', q2e: 'linear',
+            // Q3: Table values for f(x) = 3x - x²
+            q3_table1: -10, q3_table2: -4, q3_table3: 0, q3_table4: 2, q3_table5: 2, q3_table6: 0, q3_table7: -4,
+            // Q4: Graph analysis (numeric parts only; intervals g-j are self-graded)
+            q4a: 1, q4b: 3.25, q4c: 3, q4d: -2, q4e: 0, q4f: 1, q4k: 3.5, q4l: -3, q4m: 3,
+            // Q5: Candle problem
+            q5a: 'h=8-0.5t', q5b: -0.5, q5c: 'burn', q5d: 16,
+            // Q6: Temperature analysis
+            q6a: 0, q6b: 6, q6c: 74, q6d: 66,
+            // Q7: Ticket pricing
+            q7a: 't=(c-25)/45', q7b: 8,
+            // Q8: Profit function
+            q8a: 'p(x)=18x-500', q8b: 27.78, q8c: 400,
+            // Q9: Inverse function
+            q9a: -3, q9b: '(x-8)/4',
+            // Q10: Function evaluation
+            q10a: 11,
+            // Q12: Car rental (two points)
+            q12a: 2, q12b: 38, q12c: 68,
+            // Q13: Scatterplot (auto-graded parts; a,d are self-graded textareas)
+            q13b: 8, q13c: 'y=4.5x+53',
+            // Q15: Exponential growth
             q15a: 'multiply', q15b: 'p(t)=500(2)^t', q15c: 4000,
-            q16a: 'v(t)=28000(0.85)^t', q16b: 14636.56, q16c: 'decay'
+            // Q16: Exponential decay
+            q16a: 'v(t)=28000(0.85)^t', q16b: 14616.18, q16c: 'decay'
         };
 
         function norm(a) {
@@ -1105,7 +1124,10 @@
         }
 
         function check(user, correct, tol = 0.5) {
-            if (typeof correct === 'number') return Math.abs(parseFloat(user) - correct) <= tol;
+            if (typeof correct === 'number') {
+                const cleaned = String(user).replace(/[$,]/g, '');
+                return Math.abs(parseFloat(cleaned) - correct) <= tol;
+            }
             const u = norm(user), c = norm(correct);
             return c.includes('initial') || c.includes('burn') || c.includes('constant') || c.includes('per') || c.includes('base') || c.includes('multiply') || c.includes('decay') ? u.includes(c.substring(0, 4)) : u === c;
         }
@@ -1113,40 +1135,103 @@
         function gradeTest() {
             let score = 0, total = 0;
             const feedbacks = [
-                ['✓ y = 25x + 10', '✗ Slope=(110-60)/(4-2)=25, b=10'],
-                ['✓ $33', '✗ Read graph at x=3', '✓ 5 devices', '✗ Find where y=45'],
-                ['✓ 0', '✗ Min month: 0', '✓ 6', '✗ Max month: 6', '✓ $5000', '✗ Min: $5000', '✓ $20000', '✗ Max: $20000'],
-                ['✓ 150', '✗ W(0)=150', '✓ Initial water', '✗ Starting amount', '✓ 15 min', '✗ 450=20t+150→t=15'],
-                ['✓ h=8-0.5t', '✗ h=8-0.5t', '✓ -0.5', '✗ Slope=-0.5', '✓ Burn rate', '✗ Rate of decrease', '✓ 16 hr', '✗ 0=8-0.5t→t=16'],
-                ['✓ 0', '✗ Starts at 0', '✓ 6', '✗ Increases to 6', '✓ 74°F', '✗ Max is 74', '✓ 62°F', '✗ Slope=-2, 70-4(-2)=62'],
-                ['✓ t=(C-25)/45', '✗ Solve for t', '✓ 8 tickets', '✗ (385-25)/45=8'],
-                ['✓ P(x)=18x-500', '✗ 30x-(12x+500)', '✓ 27.78', '✗ 0=18x-500', '✓ $400', '✗ 18(50)-500=400'],
-                ['✓ 120 GB', '✗ 52=0.10g+40', '✓ $47.50', '✗ 0.10(75)+40=47.50'],
-                ['✓ Constant rate', '✗ Same monthly charge', '✓ C(m)=35m+75', '✗ 35m+75'],
-                ['✓ C=60h+85', '✗ 60h+85', '✓ $295', '✗ 60(3.5)+85=295', '✓ 4 hours', '✗ 325=60h+85→h=4'],
-                ['✓ Cost per mile', '✗ $0.25/mile', '✓ Base fee', '✗ Fixed charge', '✓ $90', '✗ 0.25(200)+40=90'],
-                ['✓ 20', '✗ (180-100)/(7-3)=20', '✓ y-100=20(x-3)', '✗ Point-slope', '✓ y=20x+40', '✗ Expand equation'],
-                ['✓ 200', '✗ Initial: 200', '✓ 50', '✗ Rate: 50', '✓ $500', '✗ 50(6)+200=500', '✓ 6 months', '✗ 500=50m+200→m=6'],
-                ['✓ Multiplies/doubles', '✗ Repeated multiplication', '✓ P(t)=500(2)^t', '✗ 500(2)^t', '✓ 4000', '✗ 500(2)^3=4000'],
-                ['✓ V(t)=28000(0.85)^t', '✗ 28000(1-0.15)^t', '✓ $14636.56', '✗ 28000(0.85)^4≈14636.56', '✓ Decay', '✗ Less than 1, decreasing']
+                // Q1: Function composition (5 parts)
+                ['✓ f(4)-h(2) = 10', '✗ f(4)=11, h(2)=1 → 10',
+                 '✓ g(-3)·h(-1) = -18', '✗ g(-3)=-3, h(-1)=6 → -18',
+                 '✓ f(h(3)) = -1', '✗ h(3)=-2, f(-2) = -1',
+                 '✓ g(f(2)) = 0', '✗ f(2)=7, g(7) = 0',
+                 '✓ g(h⁻¹(3)) = 4', '✗ h(0)=3 → h⁻¹(3)=0, g(0)=4'],
+                // Q2: Sequence classification (5 parts)
+                ['✓ Linear', '✗ Constant difference of +7',
+                 '✓ Exponential', '✗ Constant ratio of ×3',
+                 '✓ Exponential', '✗ Common ratio of ×0.5',
+                 '✓ Neither', '✗ Differences aren\'t constant',
+                 '✓ Linear', '✗ Common difference of -8'],
+                // Q3: Table values (7 parts)
+                ['✓ f(-2) = -10', '✗ 3(-2)-(-2)²= -6-4 = -10',
+                 '✓ f(-1) = -4', '✗ 3(-1)-(-1)² = -3-1 = -4',
+                 '✓ f(0) = 0', '✗ 3(0)-(0)² = 0',
+                 '✓ f(1) = 2', '✗ 3(1)-(1)² = 3-1 = 2',
+                 '✓ f(2) = 2', '✗ 3(2)-(2)² = 6-4 = 2',
+                 '✓ f(3) = 0', '✗ 3(3)-(3)² = 9-9 = 0',
+                 '✓ f(4) = -4', '✗ 3(4)-(4)² = 12-16 = -4'],
+                // Q4: Graph analysis (9 numeric parts)
+                ['✓ h(-2) = 1', '✗ Read from graph at x=-2',
+                 '✓ h(½) = 3.25', '✗ Read from graph at x=0.5',
+                 '✓ h(0) = 3', '✗ y-intercept of graph',
+                 '✓ h⁻¹(1) = -2', '✗ Find x where h(x)=1',
+                 '✓ h⁻¹(3) = 0', '✗ Find x where h(x)=3',
+                 '✓ h⁻¹(3.5) = 1', '✗ Find x where h(x)=3.5',
+                 '✓ Max = 3.5', '✗ Highest y-value on graph',
+                 '✓ x-intercept = -3', '✗ Where h(x) = 0',
+                 '✓ y-intercept = 3', '✗ h(0) = 3'],
+                // Q5: Candle problem (4 parts)
+                ['✓ h = 8 - 0.5t', '✗ h = 8 - 0.5t',
+                 '✓ -0.5', '✗ Slope = -0.5 in/hr',
+                 '✓ Burn rate', '✗ Rate candle burns down',
+                 '✓ 16 hours', '✗ 0 = 8 - 0.5t → t = 16'],
+                // Q6: Temperature (4 parts)
+                ['✓ Hour 0', '✗ Increasing starts at hour 0',
+                 '✓ Hour 6', '✗ Temperature peaks at hour 6',
+                 '✓ 74°F', '✗ Maximum temp = 74°F',
+                 '✓ 66°F', '✗ Rate: -2°F/hr → 70-4 = 66'],
+                // Q7: Tickets (2 parts)
+                ['✓ t = (C-25)/45', '✗ Solve C = 45t+25 for t',
+                 '✓ 8 tickets', '✗ (385-25)/45 = 8'],
+                // Q8: Profit (3 parts)
+                ['✓ P(x) = 18x-500', '✗ 30x-(12x+500)',
+                 '✓ ≈ 27.78', '✗ 0=18x-500 → x≈27.78',
+                 '✓ $400', '✗ 18(50)-500 = 400'],
+                // Q9: Inverse function (2 parts)
+                ['✓ f⁻¹(-4) = -3', '✗ -4=4x+8 → x=-3',
+                 '✓ (x-8)/4', '✗ Swap x,y → y=(x-8)/4'],
+                // Q10: Function evaluation (1 part)
+                ['✓ p = 11', '✗ 8(¾)+5 = 6+5 = 11'],
+                // Q12: Car rental (3 parts)
+                ['✓ $2/mile', '✗ (78-62)/(20-12) = 2',
+                 '✓ $38', '✗ 62=2(12)+b → b=38',
+                 '✓ $68', '✗ 2(15)+38 = 68'],
+                // Q13: Scatterplot (2 auto-graded parts)
+                ['✓ ≈ 8 points', '✗ Actual minus predicted at x=6',
+                 '✓ y = 4.5x + 53', '✗ Slope≈4.5, intercept≈53'],
+                // Q15: Exponential growth (3 parts)
+                ['✓ Multiplies/doubles', '✗ Repeated multiplication',
+                 '✓ P(t) = 500(2)^t', '✗ 500·2^t',
+                 '✓ 4000', '✗ 500(2)³ = 4000'],
+                // Q16: Exponential decay (3 parts)
+                ['✓ V(t)=28000(0.85)^t', '✗ 28000(1-0.15)^t',
+                 '✓ $14,616.18', '✗ 28000(0.85)⁴ ≈ 14616.18',
+                 '✓ Decay', '✗ Base < 1, value decreases']
             ];
 
             [
-                [[['q1', answers.q1]], 'feedback1'],
-                [[['q2a', answers.q2a], ['q2b', answers.q2b]], 'feedback2'],
-                [[['q3a', answers.q3a], ['q3b', answers.q3b], ['q3c', answers.q3c], ['q3d', answers.q3d]], 'feedback3'],
-                [[['q4a', answers.q4a], ['q4b', answers.q4b], ['q4c', answers.q4c]], 'feedback4'],
+                // Q1: 5 composition parts
+                [[['q1a', answers.q1a], ['q1b', answers.q1b], ['q1c', answers.q1c], ['q1d', answers.q1d], ['q1e', answers.q1e]], 'feedback1'],
+                // Q2: 5 sequence classifications
+                [[['q2a', answers.q2a], ['q2b', answers.q2b], ['q2c', answers.q2c], ['q2d', answers.q2d], ['q2e', answers.q2e]], 'feedback2'],
+                // Q3: 7 table values
+                [[['q3_table1', answers.q3_table1], ['q3_table2', answers.q3_table2], ['q3_table3', answers.q3_table3], ['q3_table4', answers.q3_table4], ['q3_table5', answers.q3_table5], ['q3_table6', answers.q3_table6], ['q3_table7', answers.q3_table7]], 'feedback3'],
+                // Q4: 9 numeric graph-reading parts
+                [[['q4a', answers.q4a], ['q4b', answers.q4b, 0.3], ['q4c', answers.q4c], ['q4d', answers.q4d], ['q4e', answers.q4e], ['q4f', answers.q4f], ['q4k', answers.q4k, 0.3], ['q4l', answers.q4l], ['q4m', answers.q4m]], 'feedback4'],
+                // Q5: 4 parts
                 [[['q5a', answers.q5a], ['q5b', answers.q5b], ['q5c', answers.q5c], ['q5d', answers.q5d]], 'feedback5'],
+                // Q6: 4 parts
                 [[['q6a', answers.q6a], ['q6b', answers.q6b], ['q6c', answers.q6c], ['q6d', answers.q6d]], 'feedback6'],
+                // Q7: 2 parts
                 [[['q7a', answers.q7a], ['q7b', answers.q7b]], 'feedback7'],
+                // Q8: 3 parts
                 [[['q8a', answers.q8a], ['q8b', answers.q8b, 1], ['q8c', answers.q8c]], 'feedback8'],
+                // Q9: 2 parts
                 [[['q9a', answers.q9a], ['q9b', answers.q9b]], 'feedback9'],
-                [[['q10a', answers.q10a], ['q10b', answers.q10b]], 'feedback10'],
-                [[['q11a', answers.q11a], ['q11b', answers.q11b], ['q11c', answers.q11c]], 'feedback11'],
+                // Q10: 1 part
+                [[['q10a', answers.q10a]], 'feedback10'],
+                // Q12: 3 parts
                 [[['q12a', answers.q12a], ['q12b', answers.q12b], ['q12c', answers.q12c]], 'feedback12'],
-                [[['q13a', answers.q13a], ['q13b', answers.q13b], ['q13c', answers.q13c]], 'feedback13'],
-                [[['q14a', answers.q14a], ['q14b', answers.q14b], ['q14c', answers.q14c], ['q14d', answers.q14d]], 'feedback14'],
+                // Q13: 2 auto-graded parts
+                [[['q13b', answers.q13b], ['q13c', answers.q13c]], 'feedback13'],
+                // Q15: 3 parts
                 [[['q15a', answers.q15a], ['q15b', answers.q15b], ['q15c', answers.q15c]], 'feedback15'],
+                // Q16: 3 parts
                 [[['q16a', answers.q16a], ['q16b', answers.q16b, 2], ['q16c', answers.q16c]], 'feedback16']
             ].forEach((q, i) => {
                 let txt = '', correct = 0;
@@ -1217,7 +1302,7 @@
                 <div class="answer-item"><strong>Q6 (Temperature):</strong><br>
                     a) Increasing from hour <strong>0</strong> to <strong>6</strong><br>
                     b) Maximum temperature: <strong>74°F</strong><br>
-                    c) Predicted temp at hour 10: <strong>62°F</strong> (slope from 6-8 is -2°F/hr, so 70 + 2(-2) = 62)</div>
+                    c) Predicted temp at hour 10: <strong>66°F</strong> (slope from 6-8 is -2°F/hr, so 70 + 2(-2) = 66)</div>
                 
                 <div class="answer-item"><strong>Q7 (Concert Tickets C(t) = 45t + 25):</strong><br>
                     a) Inverse function: <strong>C⁻¹(t) = (t - 25)/45</strong><br>

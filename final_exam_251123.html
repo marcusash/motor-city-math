@@ -999,13 +999,13 @@
 
         function showFinalExamAnswerKey() {
             const answerKeyHTML = `
-                <div class="answer-item"><strong>Q1:</strong> -234 (Work: 3pq - q²(4p - 2q) + p²q with p=-4, q=3: 3(-4)(3) - (3)²(4(-4) - 2(3)) + (-4)²(3) = -36 - 9(-16 - 6) + 16(3) = -36 - 9(-22) + 48 = -36 + 198 + 48 = 210... wait: = -36 - 9(-22) + 48 = -36 + 198 + 48 = 210. Hmm, let me recalculate: 3(-4)(3) = -36, q² = 9, 4p - 2q = -16 - 6 = -22, so 9(-22) = -198, then -36 - (-198) + 48 = -36 + 198 + 48 = 210)</div>
+                <div class="answer-item"><strong>Q1:</strong> 210 (Work: 3pq - q²(4p - 2q) + p²q with p=-4, q=3: 3(-4)(3) - (9)(-16-6) + (16)(3) = -36 - 9(-22) + 48 = -36 + 198 + 48 = 210)</div>
                 <div class="answer-item"><strong>Q2:</strong> 5.4 meters (Work: h = 1 + 12(2) - 4.9(2)² = 1 + 24 - 4.9(4) = 1 + 24 - 19.6 = 5.4)</div>
                 <div class="answer-item"><strong>Q3:</strong> a) s = (Pr + b)/k (Work: P = (ks - b)/r, multiply both sides by r: Pr = ks - b, add b: Pr + b = ks, divide by k: s = (Pr + b)/k), b) s = 58 successful projects (Work: s = (92×2 + 18)/3.5 = (184 + 18)/3.5 = 202/3.5 ≈ 57.71 ≈ 58)</div>
                 <div class="answer-item"><strong>Q4:</strong> a) C(h) = 0.85(14.50 + 3.90h)(1.07) or C(h) = 0.85 × 1.07(14.50 + 3.90h) or C(h) = 0.9095(14.50 + 3.90h) [Note: 15% discount means multiply by 0.85], b) 10.0 hours (Work: 49.39 = 0.9095(14.50 + 3.90h), divide by 0.9095: 54.29 = 14.50 + 3.90h, subtract 14.50: 39.79 = 3.90h, divide by 3.90: h ≈ 10.2), c) $58.11 (Work: Without discount: (14.50 + 3.90×10.2)(1.07) = 54.28 × 1.07 ≈ 58.08)</div>
-                <div class="answer-item"><strong>Q5:</strong> x = -3 (Work: 7x - 4 = 2(3x - 5) - (x + 12), expand: 7x - 4 = 6x - 10 - x - 12, simplify: 7x - 4 = 5x - 22, subtract 5x: 2x - 4 = -22, add 4: 2x = -18, divide by 2: x = -9... Wait, recalculating: 7x - 4 = 6x - 10 - x - 12 = 5x - 22, so 7x - 5x = -22 + 4, 2x = -18, x = -9. Hmm, let me verify: 7(-9) - 4 = -63 - 4 = -67, and 2(3(-9) - 5) - (-9 + 12) = 2(-27 - 5) - 3 = 2(-32) - 3 = -64 - 3 = -67 ✓, so x = -9)</div>
-                <div class="answer-item"><strong>Q6:</strong> k = (7 - b - 3a²b)/(4 - 6a) (Work: 7 + 4k - b = 3a(2k + ab), expand: 7 + 4k - b = 6ak + 3a²b, collect k terms: 4k - 6ak = 3a²b + b - 7, factor: k(4 - 6a) = 3a²b + b - 7, divide: k = (3a²b + b - 7)/(4 - 6a) or k = (b - 7 - 3a²b)/(4 - 6a) with sign adjustment)</div>
-                <div class="answer-item"><strong>Q7:</strong> x < 12/13 (Work: -3/4·x + 5/2 > 1/3(9x - 6), expand: -3/4·x + 5/2 > 3x - 2, multiply by 12: -9x + 30 > 36x - 24, collect terms: 30 + 24 > 36x + 9x, 54 > 45x, x < 54/45 = 6/5... wait recalculating: -9x + 30 > 36x - 24, -9x - 36x > -24 - 30, -45x > -54, x < 54/45 = 6/5 = 1.2); Graph: Open circle at 6/5 (or 1.2), arrow pointing left</div>
+                <div class="answer-item"><strong>Q5:</strong> x = -9 (Work: 7x - 4 = 2(3x - 5) - (x + 12), expand: 7x - 4 = 6x - 10 - x - 12 = 5x - 22, so 2x = -18, x = -9. Verify: 7(-9)-4 = -67, 2(-32)-3 = -67 ✓)</div>
+                <div class="answer-item"><strong>Q6:</strong> k = (3a²b + b - 7)/(4 - 6a) (Work: 7 + 4k - b = 3a(2k + ab), expand: 7 + 4k - b = 6ak + 3a²b, collect k terms: 4k - 6ak = 3a²b + b - 7, factor: k(4 - 6a) = 3a²b + b - 7, divide: k = (3a²b + b - 7)/(4 - 6a))</div>
+                <div class="answer-item"><strong>Q7:</strong> x < 6/5 (or x < 1.2) (Work: -3/4·x + 5/2 > 1/3(9x - 6), expand: -3/4·x + 5/2 > 3x - 2, multiply by 12: -9x + 30 > 36x - 24, -45x > -54, x < 54/45 = 6/5 = 1.2); Graph: Open circle at 6/5, arrow pointing left</div>
                 <div class="answer-item"><strong>Q8:</strong> -53 (Work: g(-3) = (-3)² - 4(-3) - 1 = 9 + 12 - 1 = 20, then f(20) = -3(20) + 7 = -60 + 7 = -53)</div>
                 <div class="answer-item"><strong>Q9:</strong> 
                     <strong>A: Linear</strong> - Common difference of -8 (42-50=-8, 34-42=-8, 26-34=-8, etc.); Linear decrease<br>
@@ -1040,8 +1040,8 @@
                     <br><br>
                     <em>Work:</em> y = 5(11) + 55 = 55 + 55 = 110
                 </div>
-                <div class="answer-item"><strong>Q16:</strong> a) P(t) = 12(1.5)^t (Work: a = 12 from week 0. Find b: 18/12 = 1.5, verify: 27/18 = 1.5, 40.5/27 = 1.5, so b = 1.5), b) 91.125 plants (Work: P(6) = 12(1.5)^6 = 12 × 11.390625 = 136.6875... wait, recalculating: 1.5^6 = 1.5^6 = 11.390625, so 12 × 11.390625 = 136.6875, or approximately 136.7 or 137 plants. Actually let me verify the pattern: 12→18 (×1.5), 18→27 (×1.5), 27→40.5 (×1.5), so continuing: 40.5×1.5=60.75, 60.75×1.5=91.125, 91.125×1.5≈136.69, so P(6) ≈ 136.7 or 137 plants)</div>
-                <div class="answer-item"><strong>Q17:</strong> a) V(t) = 620000(0.962)^t or 620000(1 - 0.038)^t (Work: r = -0.038 for 3.8% decrease, so 1 + r = 1 - 0.038 = 0.962), b) $380,293 (Work: V(12) = 620000(0.962)^12 ≈ 620000 × 0.6134 ≈ 380,308), c) Equation: 620000(0.962)^t = 300000 or (0.962)^t = 300000/620000 = 0.4839. Answer: 19 years (Work: solve using logarithms: t·ln(0.962) = ln(0.4839), t = ln(0.4839)/ln(0.962) ≈ -0.7255/-0.0387 ≈ 18.8 years, round up to 19 years since we need the value to actually drop below $300,000)</div>
+                <div class="answer-item"><strong>Q16:</strong> a) P(t) = 12(1.5)^t (Work: a = 12 from week 0. Ratio: 18/12 = 1.5, 27/18 = 1.5, so b = 1.5), b) ≈136.7 plants (Work: P(6) = 12(1.5)^6 = 12 × 11.390625 ≈ 136.7)</div>
+                <div class="answer-item"><strong>Q17:</strong> a) V(t) = 620000(0.962)^t or 620000(1 - 0.038)^t (Work: 3.8% decrease, multiplier = 0.962), b) ≈$389,487 (Work: V(12) = 620000(0.962)^12 ≈ 389,487), c) 19 years (Work: 620000(0.962)^t = 300000, t = ln(300000/620000)/ln(0.962) ≈ 18.8, round up to 19 years)</div>
                 <div class="answer-item"><strong>Q18:</strong> Yes, the three points are on the same line. Equation: y = 1.5x - 2
                     <br><br>
                     <em>Work:</em> Slope from A to B: m = (7-1)/(6-2) = 6/4 = 1.5
@@ -1116,7 +1116,7 @@
                     // Q16: exponential model
                     [[['q16a', '12(1.5)^t'], ['q16b', 136.7, 2]], 'feedback16'],
                     // Q17: exponential decay
-                    [[['q17a', '620000(0.962)^t'], ['q17b', 389839, 5000], ['q17c', 19, 1]], 'feedback17'],
+                    [[['q17a', '620000(0.962)^t'], ['q17b', 389487, 5000], ['q17c', 19, 1]], 'feedback17'],
                     // Q18: collinear points
                     [[['q18', 'y=1.5x-2']], 'feedback18']
                 ],
@@ -1136,7 +1136,7 @@
                     ['\u2713 g\u207b\xb9(2)=17', '\u2717 Solve (3x+7)/(2x\u22125)=2', '\u2713 g\u207b\xb9(x)=(5x+7)/(2x\u22123)', '\u2717 Swap x,y and solve for y'],
                     ['\u2713 f(4)\u2212h(2)=10', '\u2717 f(4)=11, h(2)=1, so 11\u22121=10', '\u2713 g(\u22123)\xb7h(\u22121)=\u221218', '\u2717 Read g(\u22123) from graph, h(\u22121)=6', '\u2713 f(h(3))=\u22121', '\u2717 h(3)=\u22122, f(\u22122)=\u22121', '\u2713 g(f(2))=2', '\u2717 f(2)=7, read g(7) from graph', '\u2713 g(h\u207b\xb9(3))=2', '\u2717 h(0)=3, so h\u207b\xb9(3)=0, g(0)=2'],
                     ['\u2713 P(t)=12(1.5)^t', '\u2717 a=12 from week 0, ratio=18/12=1.5', '\u2713 \u2248136.7 plants', '\u2717 12(1.5)\u2076\u2248136.7'],
-                    ['\u2713 V(t)=620000(0.962)^t', '\u2717 Decay rate: 1\u22120.038=0.962', '\u2713 \u2248$389,839', '\u2717 620000(0.962)\xb9\xb2\u2248389,839', '\u2713 19 years', '\u2717 t=ln(300000/620000)/ln(0.962)\u224819'],
+                    ['\u2713 V(t)=620000(0.962)^t', '\u2717 Decay rate: 1\u22120.038=0.962', '\u2713 \u2248$389,487', '\u2717 620000(0.962)\xb9\xb2\u2248389,487', '\u2713 19 years', '\u2717 t=ln(300000/620000)/ln(0.962)\u224819'],
                     ['\u2713 y=1.5x\u22122, collinear', '\u2717 Slopes equal: 6/4=1.5, so y=1.5x\u22122']
                 ],
                 storageKey: 'final_exam'
