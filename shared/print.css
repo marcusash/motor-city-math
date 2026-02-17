@@ -113,7 +113,8 @@
     .calculator-modal,
     .streak-counter,
     .streak-badge,
-    .progress-bar-sticky {
+    .progress-bar-sticky,
+    .standards-grid {
         display: none !important;
     }
 

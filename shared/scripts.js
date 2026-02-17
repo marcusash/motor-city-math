@@ -200,19 +200,26 @@ function checkAnswer(userAnswer, correctAnswer, tolerance) {
  * @param {Array} config.feedbacks - 2D array: feedbacks[i] = [correct1, incorrect1, correct2, incorrect2, ...]
  * @param {string} [config.resultId='finalResult'] - Element ID for score display
  * @param {string} [config.storageKey] - localStorage key to persist score for dashboard
- * @returns {Object} { score, total, pct }
+ * @param {Array} [config.standards] - Optional per-question standard tags: [{id:'1.a', name:'Simplify'}, ...]
+ * @returns {Object} { score, total, pct, streak, standardScores }
  */
 function gradeTest(config) {
     var questions = config.questions;
     var feedbacks = config.feedbacks;
     var resultId = config.resultId || 'finalResult';
+    var standards = config.standards || [];
     var score = 0, total = 0;
     var streak = 0, maxStreak = 0;
+    var stdScores = {}; // {id: {name, correct, total}}
 
     questions.forEach(function(q, i) {
         var txt = '', correct = 0;
         var parts = q[0];
         var feedbackId = q[1];
+        var std = standards[i];
+        if (std && std.id && !stdScores[std.id]) {
+            stdScores[std.id] = { name: std.name || std.id, correct: 0, total: 0 };
+        }
 
         parts.forEach(function(p, j) {
             total++;
@@ -220,11 +227,13 @@ function gradeTest(config) {
             if (!element) return;
             var val = element.value || element.textContent || '';
             var isCorrect = checkAnswer(val, p[1], p[2] || 0.5);
+            if (std && std.id) stdScores[std.id].total++;
             if (isCorrect) {
                 score++;
                 correct++;
                 streak++;
                 if (streak > maxStreak) maxStreak = streak;
+                if (std && std.id) stdScores[std.id].correct++;
                 txt += feedbacks[i][j * 2] + '\n';
             } else {
                 streak = 0;
@@ -259,6 +268,33 @@ function gradeTest(config) {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
+    // Render per-standard breakdown if standards were provided
+    var stdKeys = Object.keys(stdScores);
+    if (stdKeys.length > 0) {
+        // Sort lowest score first (focus areas on top)
+        stdKeys.sort(function(a, b) {
+            var pa = stdScores[a].total ? (stdScores[a].correct / stdScores[a].total) : 0;
+            var pb = stdScores[b].total ? (stdScores[b].correct / stdScores[b].total) : 0;
+            return pa - pb;
+        });
+        var cardsHtml = '<div class="standards-grid"><h3 class="standards-heading">Standards Breakdown</h3>';
+        stdKeys.forEach(function(id) {
+            var s = stdScores[id];
+            var sp = s.total ? Math.round((s.correct / s.total) * 100) : 0;
+            var color = sp >= 90 ? '#1B7D3A' : sp >= 70 ? '#1D42BA' : sp >= 50 ? '#E8A317' : '#C8102E';
+            var copy = sp >= 90 ? 'Locked in ✅' : sp >= 70 ? 'Solid.' : sp >= 50 ? 'Getting there.' : '⚠️ Needs work.';
+            cardsHtml += '<div class="standard-card" style="border-left-color:' + color + '">' +
+                '<div class="standard-header"><span class="standard-id">' + id + '</span>' +
+                '<span class="standard-name">' + s.name + '</span>' +
+                '<span class="standard-fraction">' + s.correct + '/' + s.total + '</span></div>' +
+                '<div class="standard-bar"><div class="standard-fill" style="width:' + sp + '%;background:' + color + '"></div></div>' +
+                '<div class="standard-copy">' + copy + '</div></div>';
+        });
+        cardsHtml += '</div>';
+        var resultEl = document.getElementById(resultId);
+        if (resultEl) resultEl.insertAdjacentHTML('afterend', cardsHtml);
+    }
+
     // Save score for dashboard
     if (config.storageKey) {
         var scores = {};
@@ -275,5 +311,5 @@ function gradeTest(config) {
         localStorage.setItem('mcm_scores', JSON.stringify(scores));
     }
 
-    return { score: score, total: total, pct: pct, streak: maxStreak };
+    return { score: score, total: total, pct: pct, streak: maxStreak, standardScores: stdScores };
 }
