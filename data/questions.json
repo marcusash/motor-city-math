@@ -2,7 +2,7 @@
   "version": "1.0.0",
   "generated_by": "Agent R",
   "description": "Motor City Math question bank - all Algebra II questions extracted from HTML test files",
-  "question_count": 168,
+  "question_count": 313,
   "questions": [
     {
       "id": "lin-001",
@@ -6390,6 +6390,5200 @@
         "Part c: Vertical asymptote x = 3, horizontal asymptote y = 1",
         "Part d: 2/(x−3)² = −1 → no solution (left side always positive)",
         "Part e: Build table with x = 1,2,4,5 and plot with asymptotes"
+      ]
+    },
+    {
+      "id": "gen-lm-001",
+      "unit": "linear-models",
+      "standard": "4.a",
+      "difficulty": "easy",
+      "type": "short",
+      "skill": "evaluate",
+      "source_file": "generated",
+      "question_text": "A streaming service charges $12.99/month. f(x)=12.99x. Find f(6).",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Find f(6)",
+          "answer": "77.94",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Plug 6 in for x and multiply.",
+      "solution_steps": [
+        "f(6) = 12.99(6) = 77.94"
+      ],
+      "tags": [
+        "linear",
+        "function-evaluation"
+      ]
+    },
+    {
+      "id": "gen-lm-002",
+      "unit": "linear-models",
+      "standard": "4.a",
+      "difficulty": "easy",
+      "type": "short",
+      "skill": "evaluate",
+      "source_file": "generated",
+      "question_text": "Cade Cunningham averages 24.5 points/game. f(g)=24.5g. Find f(10).",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Find f(10)",
+          "answer": "245",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Substitute g = 10.",
+      "solution_steps": [
+        "f(10) = 24.5(10) = 245"
+      ],
+      "tags": [
+        "linear",
+        "function-evaluation",
+        "sports"
+      ]
+    },
+    {
+      "id": "gen-lm-003",
+      "unit": "linear-models",
+      "standard": "4.a",
+      "difficulty": "medium",
+      "type": "multi-part",
+      "skill": "evaluate",
+      "source_file": "generated",
+      "question_text": "Phone plan: $35/month + $0.10/text. f(t)=35+0.10t.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "f(100)",
+          "answer": "45",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "b",
+          "text": "f(500)",
+          "answer": "85",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "Texts if bill is $60?",
+          "answer": "250",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Plug in, or work backwards for (c).",
+      "solution_steps": [
+        "a) f(100)=35+10=45",
+        "b) f(500)=35+50=85",
+        "c) 60=35+0.10t → t=250"
+      ],
+      "tags": [
+        "linear",
+        "function-evaluation"
+      ]
+    },
+    {
+      "id": "gen-lm-004",
+      "unit": "linear-models",
+      "standard": "4.a",
+      "difficulty": "easy",
+      "type": "short",
+      "skill": "evaluate",
+      "source_file": "generated",
+      "question_text": "f(x)=-3x+20. Find f(-4).",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "f(-4)",
+          "answer": "32",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Careful with the double negative!",
+      "solution_steps": [
+        "f(-4)=-3(-4)+20=12+20=32"
+      ],
+      "tags": [
+        "linear",
+        "function-evaluation"
+      ]
+    },
+    {
+      "id": "gen-lm-005",
+      "unit": "linear-models",
+      "standard": "4.a",
+      "difficulty": "medium",
+      "type": "multi-part",
+      "skill": "evaluate",
+      "source_file": "generated",
+      "question_text": "Pizza delivery: $2.50/mile + $5 fee. f(m)=2.50m+5.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "f(3)",
+          "answer": "12.50",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "b",
+          "text": "f(8)",
+          "answer": "25",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "What does f(0)=5 mean?",
+          "answer": "Base delivery fee is $5",
+          "answer_type": "text"
+        }
+      ],
+      "hint": "Fee is the y-intercept.",
+      "solution_steps": [
+        "a) f(3)=7.50+5=12.50",
+        "b) f(8)=20+5=25",
+        "c) f(0)=5: $5 base fee"
+      ],
+      "tags": [
+        "linear",
+        "interpret"
+      ]
+    },
+    {
+      "id": "gen-lm-006",
+      "unit": "linear-models",
+      "standard": "4.a",
+      "difficulty": "hard",
+      "type": "multi-part",
+      "skill": "evaluate",
+      "source_file": "generated",
+      "question_text": "f(x)=(2/3)x-4.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "f(9)",
+          "answer": "2",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "b",
+          "text": "f(-6)",
+          "answer": "-8",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "x when f(x)=0",
+          "answer": "6",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "For fractions, multiply then subtract.",
+      "solution_steps": [
+        "a) (2/3)(9)-4=6-4=2",
+        "b) (2/3)(-6)-4=-4-4=-8",
+        "c) 0=(2/3)x-4 → x=6"
+      ],
+      "tags": [
+        "linear",
+        "fractions"
+      ]
+    },
+    {
+      "id": "gen-lm-007",
+      "unit": "linear-models",
+      "standard": "4.a",
+      "difficulty": "easy",
+      "type": "short",
+      "skill": "evaluate",
+      "source_file": "generated",
+      "question_text": "Gym: $25/month. f(m)=25m. Cost for a year?",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "f(12)",
+          "answer": "300",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "12 months in a year.",
+      "solution_steps": [
+        "f(12)=25(12)=300"
+      ],
+      "tags": [
+        "linear",
+        "function-evaluation"
+      ]
+    },
+    {
+      "id": "gen-lm-008",
+      "unit": "linear-models",
+      "standard": "4.a",
+      "difficulty": "medium",
+      "type": "short",
+      "skill": "evaluate",
+      "source_file": "generated",
+      "question_text": "Temp drops 2°F/hour from 68°F. f(h)=68-2h. After 9 hours?",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "f(9)",
+          "answer": "50",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Plug in h=9.",
+      "solution_steps": [
+        "f(9)=68-2(9)=68-18=50"
+      ],
+      "tags": [
+        "linear",
+        "temperature"
+      ]
+    },
+    {
+      "id": "gen-lm-009",
+      "unit": "linear-models",
+      "standard": "4.a",
+      "difficulty": "hard",
+      "type": "multi-part",
+      "skill": "evaluate",
+      "source_file": "generated",
+      "question_text": "f(x)=4x-1, g(x)=-2x+11. Where are they equal?",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "f(2)",
+          "answer": "7",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "b",
+          "text": "g(2)",
+          "answer": "7",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "Solve f(x)=g(x)",
+          "answer": "2",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Set the expressions equal.",
+      "solution_steps": [
+        "a) f(2)=4(2)-1=7",
+        "b) g(2)=-2(2)+11=7",
+        "c) 4x-1=-2x+11 → 6x=12 → x=2"
+      ],
+      "tags": [
+        "linear",
+        "systems"
+      ]
+    },
+    {
+      "id": "gen-lm-010",
+      "unit": "linear-models",
+      "standard": "4.b",
+      "difficulty": "easy",
+      "type": "short",
+      "skill": "model",
+      "source_file": "generated",
+      "question_text": "Sneakers cost $85 each. Write revenue R(s).",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "R(s)",
+          "answer": "R(s) = 85s",
+          "answer_type": "equation"
+        }
+      ],
+      "hint": "Revenue = price × quantity.",
+      "solution_steps": [
+        "R(s) = 85s"
+      ],
+      "tags": [
+        "linear",
+        "modeling"
+      ]
+    },
+    {
+      "id": "gen-lm-011",
+      "unit": "linear-models",
+      "standard": "4.b",
+      "difficulty": "medium",
+      "type": "multi-part",
+      "skill": "model",
+      "source_file": "generated",
+      "question_text": "Food truck: $200/day supplies + $3/meal cost, sells at $10/meal.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "C(m)",
+          "answer": "C(m) = 200 + 3m",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "R(m)",
+          "answer": "R(m) = 10m",
+          "answer_type": "equation"
+        },
+        {
+          "label": "c",
+          "text": "P(m)",
+          "answer": "P(m) = 7m - 200",
+          "answer_type": "equation"
+        },
+        {
+          "label": "d",
+          "text": "Break-even meals?",
+          "answer": "29",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Profit = Revenue - Cost.",
+      "solution_steps": [
+        "a) C(m)=200+3m",
+        "b) R(m)=10m",
+        "c) P(m)=10m-(200+3m)=7m-200",
+        "d) 0=7m-200 → m≈28.6 → 29 meals"
+      ],
+      "tags": [
+        "linear",
+        "profit"
+      ]
+    },
+    {
+      "id": "gen-lm-012",
+      "unit": "linear-models",
+      "standard": "4.b",
+      "difficulty": "easy",
+      "type": "short",
+      "skill": "model",
+      "source_file": "generated",
+      "question_text": "Kai earns $15/hour. Write E(h).",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "E(h)",
+          "answer": "E(h) = 15h",
+          "answer_type": "equation"
+        }
+      ],
+      "hint": "Earnings = rate × hours.",
+      "solution_steps": [
+        "E(h) = 15h"
+      ],
+      "tags": [
+        "linear",
+        "modeling"
+      ]
+    },
+    {
+      "id": "gen-lm-013",
+      "unit": "linear-models",
+      "standard": "4.b",
+      "difficulty": "medium",
+      "type": "multi-part",
+      "skill": "model",
+      "source_file": "generated",
+      "question_text": "Car rental: $45/day + $0.25/mile.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "C(m) for one day",
+          "answer": "C(m) = 45 + 0.25m",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "200-mile day?",
+          "answer": "95",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Fixed plus variable cost.",
+      "solution_steps": [
+        "a) C(m)=45+0.25m",
+        "b) C(200)=45+50=95"
+      ],
+      "tags": [
+        "linear",
+        "modeling"
+      ]
+    },
+    {
+      "id": "gen-lm-014",
+      "unit": "linear-models",
+      "standard": "4.b",
+      "difficulty": "hard",
+      "type": "multi-part",
+      "skill": "model",
+      "source_file": "generated",
+      "question_text": "Pool: 12,000 gal draining at 500 gal/hr.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "V(t)",
+          "answer": "V(t) = 12000 - 500t",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "After 8 hours?",
+          "answer": "8000",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "When empty?",
+          "answer": "24",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Starts at 12000, subtract 500 each hour.",
+      "solution_steps": [
+        "a) V(t)=12000-500t",
+        "b) V(8)=12000-4000=8000",
+        "c) 0=12000-500t → t=24"
+      ],
+      "tags": [
+        "linear",
+        "decreasing"
+      ]
+    },
+    {
+      "id": "gen-lm-015",
+      "unit": "linear-models",
+      "standard": "4.b",
+      "difficulty": "medium",
+      "type": "short",
+      "skill": "model",
+      "source_file": "generated",
+      "question_text": "Pistons tickets: $1200 + $150/year increase. Write P(y).",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "P(y)",
+          "answer": "P(y) = 1200 + 150y",
+          "answer_type": "equation"
+        }
+      ],
+      "hint": "Initial + rate × time.",
+      "solution_steps": [
+        "P(y) = 1200 + 150y"
+      ],
+      "tags": [
+        "linear",
+        "sports"
+      ]
+    },
+    {
+      "id": "gen-lm-016",
+      "unit": "linear-models",
+      "standard": "4.b",
+      "difficulty": "hard",
+      "type": "multi-part",
+      "skill": "model",
+      "source_file": "generated",
+      "question_text": "Alex: $500 + $75/week. Jordan: $200 + $100/week.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "A(w)",
+          "answer": "A(w) = 500 + 75w",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "J(w)",
+          "answer": "J(w) = 200 + 100w",
+          "answer_type": "equation"
+        },
+        {
+          "label": "c",
+          "text": "Same amount when?",
+          "answer": "12",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Set equal to find the week.",
+      "solution_steps": [
+        "a) A(w)=500+75w",
+        "b) J(w)=200+100w",
+        "c) 500+75w=200+100w → 300=25w → w=12"
+      ],
+      "tags": [
+        "linear",
+        "systems"
+      ]
+    },
+    {
+      "id": "gen-lm-017",
+      "unit": "linear-models",
+      "standard": "4.b",
+      "difficulty": "easy",
+      "type": "short",
+      "skill": "model",
+      "source_file": "generated",
+      "question_text": "Candle: 10 inches, burns 0.5 in/hr. Write h(t).",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "h(t)",
+          "answer": "h(t) = 10 - 0.5t",
+          "answer_type": "equation"
+        }
+      ],
+      "hint": "Starts at 10, decreases 0.5/hour.",
+      "solution_steps": [
+        "h(t) = 10 - 0.5t"
+      ],
+      "tags": [
+        "linear",
+        "decreasing"
+      ]
+    },
+    {
+      "id": "gen-lm-018",
+      "unit": "linear-models",
+      "standard": "4.b",
+      "difficulty": "medium",
+      "type": "multi-part",
+      "skill": "model",
+      "source_file": "generated",
+      "question_text": "Ride-share: $2.50 base + $1.75/mile.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "C(m)",
+          "answer": "C(m) = 2.50 + 1.75m",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "6-mile ride?",
+          "answer": "13",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Base fare + per-mile rate.",
+      "solution_steps": [
+        "a) C(m)=2.50+1.75m",
+        "b) C(6)=2.50+10.50=13"
+      ],
+      "tags": [
+        "linear",
+        "modeling"
+      ]
+    },
+    {
+      "id": "gen-lm-019",
+      "unit": "linear-models",
+      "standard": "4.c",
+      "difficulty": "easy",
+      "type": "short",
+      "skill": "solve",
+      "source_file": "generated",
+      "question_text": "Line through (2,5) and (4,11). Write in slope-intercept form.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Equation",
+          "answer": "y = 3x - 1",
+          "answer_type": "equation"
+        }
+      ],
+      "hint": "Find slope first: rise over run.",
+      "solution_steps": [
+        "m=(11-5)/(4-2)=3",
+        "y-5=3(x-2) → y=3x-1"
+      ],
+      "tags": [
+        "linear",
+        "slope"
+      ]
+    },
+    {
+      "id": "gen-lm-020",
+      "unit": "linear-models",
+      "standard": "4.c",
+      "difficulty": "easy",
+      "type": "short",
+      "skill": "solve",
+      "source_file": "generated",
+      "question_text": "Line through (0,7) and (3,1).",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Equation",
+          "answer": "y = -2x + 7",
+          "answer_type": "equation"
+        }
+      ],
+      "hint": "One point is the y-intercept.",
+      "solution_steps": [
+        "m=(1-7)/(3-0)=-2",
+        "y = -2x + 7"
+      ],
+      "tags": [
+        "linear",
+        "slope"
+      ]
+    },
+    {
+      "id": "gen-lm-021",
+      "unit": "linear-models",
+      "standard": "4.c",
+      "difficulty": "medium",
+      "type": "multi-part",
+      "skill": "solve",
+      "source_file": "generated",
+      "question_text": "Phone: $800 new, $200 after 4 years (linear).",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Depreciation rate/year",
+          "answer": "-150",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "b",
+          "text": "V(t)",
+          "answer": "V(t) = 800 - 150t",
+          "answer_type": "equation"
+        },
+        {
+          "label": "c",
+          "text": "After 3 years?",
+          "answer": "350",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Points: (0,800) and (4,200).",
+      "solution_steps": [
+        "a) m=(200-800)/4=-150",
+        "b) V(t)=800-150t",
+        "c) V(3)=800-450=350"
+      ],
+      "tags": [
+        "linear",
+        "depreciation"
+      ]
+    },
+    {
+      "id": "gen-lm-022",
+      "unit": "linear-models",
+      "standard": "4.c",
+      "difficulty": "medium",
+      "type": "short",
+      "skill": "solve",
+      "source_file": "generated",
+      "question_text": "Line through (-1,8) and (3,-4).",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Equation",
+          "answer": "y = -3x + 5",
+          "answer_type": "equation"
+        }
+      ],
+      "hint": "Slope = rise/run, then plug in.",
+      "solution_steps": [
+        "m=(-4-8)/(3-(-1))=-12/4=-3",
+        "y-8=-3(x+1) → y=-3x+5"
+      ],
+      "tags": [
+        "linear",
+        "negative-slope"
+      ]
+    },
+    {
+      "id": "gen-lm-023",
+      "unit": "linear-models",
+      "standard": "4.c",
+      "difficulty": "hard",
+      "type": "multi-part",
+      "skill": "interpret",
+      "source_file": "generated",
+      "question_text": "Tutoring: 2hrs=$55, 5hrs=$115.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Hourly rate",
+          "answer": "20",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "b",
+          "text": "Initial fee",
+          "answer": "15",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "C(h)",
+          "answer": "C(h) = 15 + 20h",
+          "answer_type": "equation"
+        },
+        {
+          "label": "d",
+          "text": "8 hours?",
+          "answer": "175",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Points: (2,55) and (5,115).",
+      "solution_steps": [
+        "a) m=(115-55)/3=20",
+        "b) 55=b+20(2) → b=15",
+        "c) C(h)=15+20h",
+        "d) C(8)=175"
+      ],
+      "tags": [
+        "linear",
+        "real-world"
+      ]
+    },
+    {
+      "id": "gen-lm-024",
+      "unit": "linear-models",
+      "standard": "4.c",
+      "difficulty": "medium",
+      "type": "short",
+      "skill": "solve",
+      "source_file": "generated",
+      "question_text": "Line through (6,2) and (6,-5).",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Equation",
+          "answer": "x = 6",
+          "answer_type": "equation"
+        }
+      ],
+      "hint": "Same x-values = vertical line.",
+      "solution_steps": [
+        "Both x=6",
+        "Slope undefined",
+        "x = 6"
+      ],
+      "tags": [
+        "linear",
+        "vertical-line"
+      ]
+    },
+    {
+      "id": "gen-lm-025",
+      "unit": "linear-models",
+      "standard": "4.c",
+      "difficulty": "hard",
+      "type": "multi-part",
+      "skill": "interpret",
+      "source_file": "generated",
+      "question_text": "City: 45,000 in 2020, 52,500 in 2025 (linear).",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Growth rate/year",
+          "answer": "1500",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "b",
+          "text": "P(t)",
+          "answer": "P(t) = 45000 + 1500t",
+          "answer_type": "equation"
+        },
+        {
+          "label": "c",
+          "text": "2030 population?",
+          "answer": "60000",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Points: (0,45000) and (5,52500).",
+      "solution_steps": [
+        "a) m=7500/5=1500",
+        "b) P(t)=45000+1500t",
+        "c) P(10)=60000"
+      ],
+      "tags": [
+        "linear",
+        "population"
+      ]
+    },
+    {
+      "id": "gen-lm-026",
+      "unit": "linear-models",
+      "standard": "4.c",
+      "difficulty": "easy",
+      "type": "short",
+      "skill": "solve",
+      "source_file": "generated",
+      "question_text": "Line through (1,4) and (5,4).",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Equation",
+          "answer": "y = 4",
+          "answer_type": "equation"
+        }
+      ],
+      "hint": "Same y-values = horizontal line.",
+      "solution_steps": [
+        "m=(4-4)/(5-1)=0",
+        "y = 4"
+      ],
+      "tags": [
+        "linear",
+        "horizontal-line"
+      ]
+    },
+    {
+      "id": "gen-lm-027",
+      "unit": "linear-models",
+      "standard": "4.c",
+      "difficulty": "medium",
+      "type": "short",
+      "skill": "solve",
+      "source_file": "generated",
+      "question_text": "Line through (-2,-3) and (4,9).",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Equation",
+          "answer": "y = 2x + 1",
+          "answer_type": "equation"
+        }
+      ],
+      "hint": "Find slope, then use a point.",
+      "solution_steps": [
+        "m=12/6=2",
+        "y-9=2(x-4) → y=2x+1"
+      ],
+      "tags": [
+        "linear",
+        "slope"
+      ]
+    },
+    {
+      "id": "gen-lm-028",
+      "unit": "linear-models",
+      "standard": "4.d",
+      "difficulty": "easy",
+      "type": "short",
+      "skill": "interpret",
+      "source_file": "generated",
+      "question_text": "Best fit: y=8x+40. Predict score for 6 hours studying.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Predicted score",
+          "answer": "88",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Plug x=6 into the equation.",
+      "solution_steps": [
+        "y=8(6)+40=88"
+      ],
+      "tags": [
+        "scatterplot",
+        "prediction"
+      ]
+    },
+    {
+      "id": "gen-lm-029",
+      "unit": "linear-models",
+      "standard": "4.d",
+      "difficulty": "medium",
+      "type": "multi-part",
+      "skill": "interpret",
+      "source_file": "generated",
+      "question_text": "Sneaker resale: y=1.2x+15 (x=retail, y=resale).",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Resale for $150 retail",
+          "answer": "195",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "b",
+          "text": "Slope meaning",
+          "answer": "Each $1 retail increase → $1.20 resale increase",
+          "answer_type": "text"
+        }
+      ],
+      "hint": "Slope = rate of change.",
+      "solution_steps": [
+        "a) y=1.2(150)+15=195",
+        "b) Slope 1.2: $1 retail → $1.20 resale"
+      ],
+      "tags": [
+        "scatterplot",
+        "interpret"
+      ]
+    },
+    {
+      "id": "gen-lm-030",
+      "unit": "linear-models",
+      "standard": "4.d",
+      "difficulty": "easy",
+      "type": "short",
+      "skill": "interpret",
+      "source_file": "generated",
+      "question_text": "Best fit: y=-0.5x+100. Positive or negative correlation?",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Correlation",
+          "answer": "negative",
+          "answer_type": "text"
+        }
+      ],
+      "hint": "Negative slope = negative correlation.",
+      "solution_steps": [
+        "Slope=-0.5 is negative",
+        "Negative correlation"
+      ],
+      "tags": [
+        "scatterplot",
+        "correlation"
+      ]
+    },
+    {
+      "id": "gen-lm-031",
+      "unit": "linear-models",
+      "standard": "4.d",
+      "difficulty": "medium",
+      "type": "multi-part",
+      "skill": "solve",
+      "source_file": "generated",
+      "question_text": "Data: (1,12),(2,19),(3,25),(4,33),(5,40). Line through first and last.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Slope",
+          "answer": "7",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "b",
+          "text": "Equation",
+          "answer": "y = 7x + 5",
+          "answer_type": "equation"
+        },
+        {
+          "label": "c",
+          "text": "Predict x=8",
+          "answer": "61",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Use first and last points.",
+      "solution_steps": [
+        "a) m=28/4=7",
+        "b) y-12=7(x-1) → y=7x+5",
+        "c) y=7(8)+5=61"
+      ],
+      "tags": [
+        "scatterplot",
+        "best-fit"
+      ]
+    },
+    {
+      "id": "gen-lm-032",
+      "unit": "linear-models",
+      "standard": "4.d",
+      "difficulty": "hard",
+      "type": "multi-part",
+      "skill": "interpret",
+      "source_file": "generated",
+      "question_text": "Practice hours vs FT%: y=3.5x+52.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "FT% at 10hrs",
+          "answer": "87",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "b",
+          "text": "Hours for 80%?",
+          "answer": "8",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "Is 20hrs realistic?",
+          "answer": "No — predicts 122% which is impossible",
+          "answer_type": "text"
+        }
+      ],
+      "hint": "Think about model limits.",
+      "solution_steps": [
+        "a) 3.5(10)+52=87",
+        "b) 80=3.5x+52 → x=8",
+        "c) 3.5(20)+52=122% — impossible"
+      ],
+      "tags": [
+        "scatterplot",
+        "limitations"
+      ]
+    },
+    {
+      "id": "gen-lm-033",
+      "unit": "linear-models",
+      "standard": "4.d",
+      "difficulty": "easy",
+      "type": "short",
+      "skill": "interpret",
+      "source_file": "generated",
+      "question_text": "Scatterplot shows no clear pattern. Correlation type?",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Type",
+          "answer": "no correlation",
+          "answer_type": "text"
+        }
+      ],
+      "hint": "No pattern = no correlation.",
+      "solution_steps": [
+        "Points scattered randomly",
+        "No correlation"
+      ],
+      "tags": [
+        "scatterplot",
+        "correlation"
+      ]
+    },
+    {
+      "id": "gen-lm-034",
+      "unit": "linear-models",
+      "standard": "4.d",
+      "difficulty": "medium",
+      "type": "short",
+      "skill": "solve",
+      "source_file": "generated",
+      "question_text": "Best fit through (10,35) and (30,75).",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Equation",
+          "answer": "y = 2x + 15",
+          "answer_type": "equation"
+        }
+      ],
+      "hint": "Slope first, then equation.",
+      "solution_steps": [
+        "m=40/20=2",
+        "y-35=2(x-10) → y=2x+15"
+      ],
+      "tags": [
+        "scatterplot",
+        "best-fit"
+      ]
+    },
+    {
+      "id": "gen-lm-035",
+      "unit": "linear-models",
+      "standard": "4.d",
+      "difficulty": "hard",
+      "type": "multi-part",
+      "skill": "interpret",
+      "source_file": "generated",
+      "question_text": "Residuals: {-2,1,-1,3,-1,0,2,-2}.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "What is a residual?",
+          "answer": "actual minus predicted",
+          "answer_type": "text"
+        },
+        {
+          "label": "b",
+          "text": "Good fit?",
+          "answer": "Yes — small and balanced around zero",
+          "answer_type": "text"
+        }
+      ],
+      "hint": "Residual = actual − predicted.",
+      "solution_steps": [
+        "a) Residual = actual - predicted",
+        "b) Small, balanced around 0 = good fit"
+      ],
+      "tags": [
+        "scatterplot",
+        "residuals"
+      ]
+    },
+    {
+      "id": "gen-lm-036",
+      "unit": "linear-models",
+      "standard": "4.d",
+      "difficulty": "medium",
+      "type": "short",
+      "skill": "interpret",
+      "source_file": "generated",
+      "question_text": "y=5.2x+18 models subscribers (thousands), x=months. Interpret.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Slope meaning",
+          "answer": "Gains 5,200 subscribers/month",
+          "answer_type": "text"
+        },
+        {
+          "label": "b",
+          "text": "y-intercept meaning",
+          "answer": "Started with 18,000 at launch",
+          "answer_type": "text"
+        }
+      ],
+      "hint": "Slope = monthly change.",
+      "solution_steps": [
+        "Slope: +5,200/month",
+        "y-intercept: 18,000 at launch"
+      ],
+      "tags": [
+        "scatterplot",
+        "interpret"
+      ]
+    },
+    {
+      "id": "gen-lm-037",
+      "unit": "linear-models",
+      "standard": "4.e",
+      "difficulty": "easy",
+      "type": "multi-part",
+      "skill": "graph",
+      "source_file": "generated",
+      "question_text": "Graph y=2x-3.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "y when x=0",
+          "answer": "-3",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "b",
+          "text": "y when x=2",
+          "answer": "1",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Pick two x-values, plot, connect.",
+      "solution_steps": [
+        "(0,-3) and (2,1)",
+        "Line going up-right, slope 2"
+      ],
+      "tags": [
+        "linear",
+        "graphing"
+      ]
+    },
+    {
+      "id": "gen-lm-038",
+      "unit": "linear-models",
+      "standard": "4.e",
+      "difficulty": "easy",
+      "type": "multi-part",
+      "skill": "graph",
+      "source_file": "generated",
+      "question_text": "Graph y=-x+4.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "y-intercept",
+          "answer": "4",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "b",
+          "text": "x-intercept",
+          "answer": "4",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "Slope",
+          "answer": "-1",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Find where it crosses each axis.",
+      "solution_steps": [
+        "y-int: (0,4)",
+        "x-int: (4,0)",
+        "Slope -1"
+      ],
+      "tags": [
+        "linear",
+        "graphing"
+      ]
+    },
+    {
+      "id": "gen-lm-039",
+      "unit": "linear-models",
+      "standard": "4.e",
+      "difficulty": "medium",
+      "type": "multi-part",
+      "skill": "interpret",
+      "source_file": "generated",
+      "question_text": "Savings: $300 start + $50/week. S(w)=300+50w.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "S(0)",
+          "answer": "300",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "b",
+          "text": "S(4)",
+          "answer": "500",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "S(8)",
+          "answer": "700",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Calculate 3 points, connect.",
+      "solution_steps": [
+        "S(0)=300",
+        "S(4)=500",
+        "S(8)=700"
+      ],
+      "tags": [
+        "linear",
+        "savings"
+      ]
+    },
+    {
+      "id": "gen-lm-040",
+      "unit": "linear-models",
+      "standard": "4.e",
+      "difficulty": "medium",
+      "type": "multi-part",
+      "skill": "graph",
+      "source_file": "generated",
+      "question_text": "Graph y=(3/4)x-2 using slope and y-intercept.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "y-intercept",
+          "answer": "-2",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "b",
+          "text": "Next point from y-int?",
+          "answer": "(4, 1)",
+          "answer_type": "text"
+        }
+      ],
+      "hint": "Start at y-int. Rise 3, run 4.",
+      "solution_steps": [
+        "Start (0,-2)",
+        "Up 3 right 4 → (4,1)"
+      ],
+      "tags": [
+        "linear",
+        "fractions"
+      ]
+    },
+    {
+      "id": "gen-lm-041",
+      "unit": "linear-models",
+      "standard": "4.e",
+      "difficulty": "hard",
+      "type": "multi-part",
+      "skill": "interpret",
+      "source_file": "generated",
+      "question_text": "Match: (1) y=3 (2) x=-2 (3) y=x (4) y=-x",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "y=3",
+          "answer": "horizontal line",
+          "answer_type": "text"
+        },
+        {
+          "label": "b",
+          "text": "x=-2",
+          "answer": "vertical line",
+          "answer_type": "text"
+        },
+        {
+          "label": "c",
+          "text": "y=x",
+          "answer": "diagonal up, slope 1",
+          "answer_type": "text"
+        },
+        {
+          "label": "d",
+          "text": "y=-x",
+          "answer": "diagonal down, slope -1",
+          "answer_type": "text"
+        }
+      ],
+      "hint": "Constant y=horizontal. Constant x=vertical.",
+      "solution_steps": [
+        "y=3: horizontal",
+        "x=-2: vertical",
+        "y=x: through origin slope 1",
+        "y=-x: through origin slope -1"
+      ],
+      "tags": [
+        "linear",
+        "special-lines"
+      ]
+    },
+    {
+      "id": "gen-lm-042",
+      "unit": "linear-models",
+      "standard": "4.e",
+      "difficulty": "medium",
+      "type": "multi-part",
+      "skill": "graph",
+      "source_file": "generated",
+      "question_text": "Battery: 100% to 0% in 10hrs. B(t)=100-10t.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "B(0)",
+          "answer": "100",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "b",
+          "text": "B(5)",
+          "answer": "50",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "B(10)",
+          "answer": "0",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Three points: start, middle, end.",
+      "solution_steps": [
+        "B(0)=100",
+        "B(5)=50",
+        "B(10)=0"
+      ],
+      "tags": [
+        "linear",
+        "battery"
+      ]
+    },
+    {
+      "id": "gen-lm-043",
+      "unit": "linear-models",
+      "standard": "4.e",
+      "difficulty": "hard",
+      "type": "multi-part",
+      "skill": "interpret",
+      "source_file": "generated",
+      "question_text": "Ana: y=8x. Ben: y=6x+10 (10m head start). When does Ana catch Ben?",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Ana at t=5",
+          "answer": "40",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "b",
+          "text": "Ben at t=5",
+          "answer": "40",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "When equal?",
+          "answer": "5",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Set equations equal.",
+      "solution_steps": [
+        "a) 8(5)=40",
+        "b) 6(5)+10=40",
+        "c) 8x=6x+10 → x=5"
+      ],
+      "tags": [
+        "linear",
+        "systems"
+      ]
+    },
+    {
+      "id": "gen-exp-001",
+      "unit": "exponential-functions",
+      "standard": "5.a",
+      "difficulty": "easy",
+      "type": "short",
+      "skill": "identify",
+      "source_file": "generated",
+      "question_text": "Is y = 3(2)^x exponential growth or decay?",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Growth or decay?",
+          "answer": "growth",
+          "answer_type": "text"
+        }
+      ],
+      "hint": "Base > 1 means growth.",
+      "solution_steps": [
+        "Base b = 2, and 2 > 1",
+        "Exponential growth"
+      ],
+      "tags": [
+        "exponential",
+        "identify"
+      ]
+    },
+    {
+      "id": "gen-exp-002",
+      "unit": "exponential-functions",
+      "standard": "5.a",
+      "difficulty": "easy",
+      "type": "short",
+      "skill": "identify",
+      "source_file": "generated",
+      "question_text": "Is y = 500(0.7)^t growth or decay?",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Growth or decay?",
+          "answer": "decay",
+          "answer_type": "text"
+        }
+      ],
+      "hint": "Is the base between 0 and 1?",
+      "solution_steps": [
+        "Base b = 0.7, and 0 < 0.7 < 1",
+        "Exponential decay"
+      ],
+      "tags": [
+        "exponential",
+        "identify"
+      ]
+    },
+    {
+      "id": "gen-exp-003",
+      "unit": "exponential-functions",
+      "standard": "5.a",
+      "difficulty": "easy",
+      "type": "short",
+      "skill": "evaluate",
+      "source_file": "generated",
+      "question_text": "P(t) = 100(1.05)^t. Find P(0).",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "P(0)",
+          "answer": "100",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Anything to the zero power is 1.",
+      "solution_steps": [
+        "P(0) = 100(1.05)^0 = 100(1) = 100"
+      ],
+      "tags": [
+        "exponential",
+        "evaluate"
+      ]
+    },
+    {
+      "id": "gen-exp-004",
+      "unit": "exponential-functions",
+      "standard": "5.a",
+      "difficulty": "medium",
+      "type": "multi-part",
+      "skill": "model",
+      "source_file": "generated",
+      "question_text": "A Pistons ticket costs $80 and increases 8% per year.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Write P(t)",
+          "answer": "P(t) = 80(1.08)^t",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "Price after 3 years?",
+          "answer": "100.78",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "Growth factor?",
+          "answer": "1.08",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Growth: multiply by (1 + rate) each year.",
+      "solution_steps": [
+        "a) P(t) = 80(1.08)^t",
+        "b) P(3) = 80(1.08)^3 = 80(1.259712) ≈ 100.78",
+        "c) Growth factor = 1.08"
+      ],
+      "tags": [
+        "exponential",
+        "growth",
+        "sports"
+      ]
+    },
+    {
+      "id": "gen-exp-005",
+      "unit": "exponential-functions",
+      "standard": "5.a",
+      "difficulty": "medium",
+      "type": "short",
+      "skill": "model",
+      "source_file": "generated",
+      "question_text": "A bacteria colony starts at 200 and triples every hour. Write B(h).",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "B(h)",
+          "answer": "B(h) = 200(3)^h",
+          "answer_type": "equation"
+        }
+      ],
+      "hint": "Triples = multiply by 3.",
+      "solution_steps": [
+        "Initial = 200, growth factor = 3",
+        "B(h) = 200(3)^h"
+      ],
+      "tags": [
+        "exponential",
+        "bacteria"
+      ]
+    },
+    {
+      "id": "gen-exp-006",
+      "unit": "exponential-functions",
+      "standard": "5.a",
+      "difficulty": "medium",
+      "type": "multi-part",
+      "skill": "evaluate",
+      "source_file": "generated",
+      "question_text": "f(x) = 4^x.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "f(0)",
+          "answer": "1",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "b",
+          "text": "f(2)",
+          "answer": "16",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "f(-1)",
+          "answer": "0.25",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Negative exponent = reciprocal.",
+      "solution_steps": [
+        "a) 4^0 = 1",
+        "b) 4^2 = 16",
+        "c) 4^(-1) = 1/4 = 0.25"
+      ],
+      "tags": [
+        "exponential",
+        "evaluate"
+      ]
+    },
+    {
+      "id": "gen-exp-007",
+      "unit": "exponential-functions",
+      "standard": "5.a",
+      "difficulty": "hard",
+      "type": "multi-part",
+      "skill": "model",
+      "source_file": "generated",
+      "question_text": "Instagram followers: 500 initially, growing 15% per month.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Write F(m)",
+          "answer": "F(m) = 500(1.15)^m",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "Followers after 6 months?",
+          "answer": "1157",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "Months to reach 2000?",
+          "answer": "10",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Growth factor = 1 + 0.15 = 1.15.",
+      "solution_steps": [
+        "a) F(m) = 500(1.15)^m",
+        "b) F(6) = 500(1.15)^6 = 500(2.313) ≈ 1157",
+        "c) 2000 = 500(1.15)^m → 4 = 1.15^m → m ≈ 9.9 → 10 months"
+      ],
+      "tags": [
+        "exponential",
+        "social-media"
+      ]
+    },
+    {
+      "id": "gen-exp-008",
+      "unit": "exponential-functions",
+      "standard": "5.a",
+      "difficulty": "easy",
+      "type": "short",
+      "skill": "identify",
+      "source_file": "generated",
+      "question_text": "y = 1000(1)^x. Is this exponential?",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Answer",
+          "answer": "No — base of 1 gives constant y = 1000",
+          "answer_type": "text"
+        }
+      ],
+      "hint": "What is 1 to any power?",
+      "solution_steps": [
+        "1^x = 1 for all x",
+        "y = 1000 always — this is linear (constant)"
+      ],
+      "tags": [
+        "exponential",
+        "identify"
+      ]
+    },
+    {
+      "id": "gen-exp-009",
+      "unit": "exponential-functions",
+      "standard": "5.a",
+      "difficulty": "medium",
+      "type": "short",
+      "skill": "model",
+      "source_file": "generated",
+      "question_text": "A town of 25,000 grows 3% annually. Write P(t).",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "P(t)",
+          "answer": "P(t) = 25000(1.03)^t",
+          "answer_type": "equation"
+        }
+      ],
+      "hint": "Annual growth of 3% means factor 1.03.",
+      "solution_steps": [
+        "Initial = 25,000",
+        "Growth rate = 3% → factor = 1.03",
+        "P(t) = 25000(1.03)^t"
+      ],
+      "tags": [
+        "exponential",
+        "population"
+      ]
+    },
+    {
+      "id": "gen-exp-010",
+      "unit": "exponential-functions",
+      "standard": "5.a",
+      "difficulty": "hard",
+      "type": "multi-part",
+      "skill": "model",
+      "source_file": "generated",
+      "question_text": "A lab culture doubles every 4 hours, starting with 50 cells.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Cells after 4 hours?",
+          "answer": "100",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "b",
+          "text": "Cells after 12 hours?",
+          "answer": "400",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "Write N(t) where t = 4-hour periods",
+          "answer": "N(t) = 50(2)^t",
+          "answer_type": "equation"
+        }
+      ],
+      "hint": "Doubles = multiply by 2.",
+      "solution_steps": [
+        "a) 50 × 2 = 100",
+        "b) 12hrs = 3 periods: 50 × 2^3 = 400",
+        "c) N(t) = 50(2)^t"
+      ],
+      "tags": [
+        "exponential",
+        "bacteria"
+      ]
+    },
+    {
+      "id": "gen-exp-011",
+      "unit": "exponential-functions",
+      "standard": "5.a",
+      "difficulty": "medium",
+      "type": "short",
+      "skill": "evaluate",
+      "source_file": "generated",
+      "question_text": "V(t) = 2000(1.06)^t. Find V(5).",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "V(5)",
+          "answer": "2676.45",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Calculate 1.06^5, then multiply.",
+      "solution_steps": [
+        "1.06^5 = 1.338226",
+        "V(5) = 2000(1.338226) ≈ 2676.45"
+      ],
+      "tags": [
+        "exponential",
+        "evaluate"
+      ]
+    },
+    {
+      "id": "gen-exp-012",
+      "unit": "exponential-functions",
+      "standard": "5.a",
+      "difficulty": "hard",
+      "type": "multi-part",
+      "skill": "interpret",
+      "source_file": "generated",
+      "question_text": "Two investments: A(t) = 1000(1.05)^t and B(t) = 800(1.08)^t.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "A(10)",
+          "answer": "1628.89",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "b",
+          "text": "B(10)",
+          "answer": "1727.14",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "Which is better after 10 years?",
+          "answer": "B",
+          "answer_type": "text"
+        }
+      ],
+      "hint": "Compare values at t = 10.",
+      "solution_steps": [
+        "a) 1000(1.05)^10 = 1000(1.6289) ≈ 1628.89",
+        "b) 800(1.08)^10 = 800(2.1589) ≈ 1727.14",
+        "c) B is larger despite smaller initial investment"
+      ],
+      "tags": [
+        "exponential",
+        "investment"
+      ]
+    },
+    {
+      "id": "gen-exp-013",
+      "unit": "exponential-functions",
+      "standard": "5.a",
+      "difficulty": "easy",
+      "type": "multi-part",
+      "skill": "identify",
+      "source_file": "generated",
+      "question_text": "Which is exponential? (i) y = 3x + 2 (ii) y = 3(2)^x (iii) y = x^3",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Answer",
+          "answer": "(ii) y = 3(2)^x",
+          "answer_type": "text"
+        },
+        {
+          "label": "b",
+          "text": "Why not (iii)?",
+          "answer": "x^3 is polynomial — variable is base, not exponent",
+          "answer_type": "text"
+        }
+      ],
+      "hint": "Exponential: variable is the exponent.",
+      "solution_steps": [
+        "(i) linear",
+        "(ii) exponential: base 2, variable exponent",
+        "(iii) polynomial: variable base, fixed exponent"
+      ],
+      "tags": [
+        "exponential",
+        "identify"
+      ]
+    },
+    {
+      "id": "gen-exp-014",
+      "unit": "exponential-functions",
+      "standard": "5.a",
+      "difficulty": "hard",
+      "type": "multi-part",
+      "skill": "model",
+      "source_file": "generated",
+      "question_text": "Gaming tournament prize doubles each round. Round 1 prize: $50.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Round 5 prize?",
+          "answer": "800",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "b",
+          "text": "Write P(r)",
+          "answer": "P(r) = 50(2)^(r-1)",
+          "answer_type": "equation"
+        },
+        {
+          "label": "c",
+          "text": "Total prize money rounds 1-5?",
+          "answer": "1550",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Each round doubles: 50, 100, 200...",
+      "solution_steps": [
+        "a) 50, 100, 200, 400, 800",
+        "b) P(r) = 50(2)^(r-1)",
+        "c) 50+100+200+400+800 = 1550"
+      ],
+      "tags": [
+        "exponential",
+        "gaming"
+      ]
+    },
+    {
+      "id": "gen-exp-015",
+      "unit": "exponential-functions",
+      "standard": "5.b",
+      "difficulty": "easy",
+      "type": "short",
+      "skill": "evaluate",
+      "source_file": "generated",
+      "question_text": "Population: P(t) = 5000(1.02)^t. Find P(10).",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "P(10)",
+          "answer": "6095",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Calculate 1.02^10, then multiply.",
+      "solution_steps": [
+        "1.02^10 ≈ 1.21899",
+        "P(10) = 5000(1.21899) ≈ 6095"
+      ],
+      "tags": [
+        "exponential",
+        "growth",
+        "population"
+      ]
+    },
+    {
+      "id": "gen-exp-016",
+      "unit": "exponential-functions",
+      "standard": "5.b",
+      "difficulty": "easy",
+      "type": "short",
+      "skill": "evaluate",
+      "source_file": "generated",
+      "question_text": "Investment: A(t) = 1500(1.04)^t. Value after 5 years?",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "A(5)",
+          "answer": "1824.98",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "1.04 to the 5th power times 1500.",
+      "solution_steps": [
+        "1.04^5 ≈ 1.21665",
+        "A(5) = 1500(1.21665) ≈ 1824.98"
+      ],
+      "tags": [
+        "exponential",
+        "growth",
+        "investment"
+      ]
+    },
+    {
+      "id": "gen-exp-017",
+      "unit": "exponential-functions",
+      "standard": "5.b",
+      "difficulty": "medium",
+      "type": "multi-part",
+      "skill": "model",
+      "source_file": "generated",
+      "question_text": "$2,000 invested at 6% annual interest (compounded annually).",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Write A(t)",
+          "answer": "A(t) = 2000(1.06)^t",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "After 8 years?",
+          "answer": "3187.70",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "Growth rate?",
+          "answer": "6%",
+          "answer_type": "text"
+        }
+      ],
+      "hint": "Compound interest: A = P(1+r)^t.",
+      "solution_steps": [
+        "a) A(t) = 2000(1.06)^t",
+        "b) A(8) = 2000(1.06)^8 = 2000(1.5938) ≈ 3187.70",
+        "c) Growth rate = 6%"
+      ],
+      "tags": [
+        "exponential",
+        "compound-interest"
+      ]
+    },
+    {
+      "id": "gen-exp-018",
+      "unit": "exponential-functions",
+      "standard": "5.b",
+      "difficulty": "medium",
+      "type": "multi-part",
+      "skill": "model",
+      "source_file": "generated",
+      "question_text": "House worth $350,000 appreciates 4% per year.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Write V(t)",
+          "answer": "V(t) = 350000(1.04)^t",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "Value after 6 years?",
+          "answer": "442849",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "4% growth → multiply by 1.04.",
+      "solution_steps": [
+        "a) V(t) = 350000(1.04)^t",
+        "b) V(6) = 350000(1.04)^6 = 350000(1.2653) ≈ 442849"
+      ],
+      "tags": [
+        "exponential",
+        "appreciation"
+      ]
+    },
+    {
+      "id": "gen-exp-019",
+      "unit": "exponential-functions",
+      "standard": "5.b",
+      "difficulty": "hard",
+      "type": "multi-part",
+      "skill": "model",
+      "source_file": "generated",
+      "question_text": "Website traffic doubles every 3 months. Starts at 1000 visits/month.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Visits after 3 months?",
+          "answer": "2000",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "b",
+          "text": "Visits after 12 months?",
+          "answer": "16000",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "Write V(t) where t = quarters",
+          "answer": "V(t) = 1000(2)^t",
+          "answer_type": "equation"
+        }
+      ],
+      "hint": "12 months = 4 quarters = 4 doublings.",
+      "solution_steps": [
+        "a) 1000 × 2 = 2000",
+        "b) 4 quarters: 1000 × 2^4 = 16000",
+        "c) V(t) = 1000(2)^t"
+      ],
+      "tags": [
+        "exponential",
+        "doubling"
+      ]
+    },
+    {
+      "id": "gen-exp-020",
+      "unit": "exponential-functions",
+      "standard": "5.b",
+      "difficulty": "easy",
+      "type": "short",
+      "skill": "evaluate",
+      "source_file": "generated",
+      "question_text": "f(x) = 5(3)^x. Find f(4).",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "f(4)",
+          "answer": "405",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "3^4 = 81, then multiply by 5.",
+      "solution_steps": [
+        "3^4 = 81",
+        "f(4) = 5(81) = 405"
+      ],
+      "tags": [
+        "exponential",
+        "evaluate"
+      ]
+    },
+    {
+      "id": "gen-exp-021",
+      "unit": "exponential-functions",
+      "standard": "5.b",
+      "difficulty": "medium",
+      "type": "multi-part",
+      "skill": "interpret",
+      "source_file": "generated",
+      "question_text": "P(t) = 800(1.12)^t models a YouTube channels subscribers (thousands).",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Initial subscribers?",
+          "answer": "800,000",
+          "answer_type": "text"
+        },
+        {
+          "label": "b",
+          "text": "Growth rate?",
+          "answer": "12%",
+          "answer_type": "text"
+        },
+        {
+          "label": "c",
+          "text": "After 3 years?",
+          "answer": "1124",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Initial value is the coefficient.",
+      "solution_steps": [
+        "a) P(0) = 800 thousand = 800,000",
+        "b) Rate = 0.12 = 12%",
+        "c) P(3) = 800(1.12)^3 = 800(1.4049) ≈ 1124 thousand"
+      ],
+      "tags": [
+        "exponential",
+        "interpret"
+      ]
+    },
+    {
+      "id": "gen-exp-022",
+      "unit": "exponential-functions",
+      "standard": "5.b",
+      "difficulty": "hard",
+      "type": "multi-part",
+      "skill": "solve",
+      "source_file": "generated",
+      "question_text": "$500 at 5% annual growth. When does it reach $1000?",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Write A(t)",
+          "answer": "A(t) = 500(1.05)^t",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "Years to double?",
+          "answer": "15",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Doubling time: solve 2 = 1.05^t.",
+      "solution_steps": [
+        "a) A(t) = 500(1.05)^t",
+        "b) 1000 = 500(1.05)^t → 2 = 1.05^t",
+        "ln(2)/ln(1.05) = 0.693/0.0488 ≈ 14.2 → 15 years"
+      ],
+      "tags": [
+        "exponential",
+        "doubling-time"
+      ]
+    },
+    {
+      "id": "gen-exp-023",
+      "unit": "exponential-functions",
+      "standard": "5.b",
+      "difficulty": "medium",
+      "type": "short",
+      "skill": "model",
+      "source_file": "generated",
+      "question_text": "Virus spreads: 10 people day 1, increases 40% daily. Write I(d).",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "I(d)",
+          "answer": "I(d) = 10(1.4)^d",
+          "answer_type": "equation"
+        }
+      ],
+      "hint": "40% increase → factor 1.40.",
+      "solution_steps": [
+        "Initial = 10, rate = 40%",
+        "I(d) = 10(1.4)^d"
+      ],
+      "tags": [
+        "exponential",
+        "spread"
+      ]
+    },
+    {
+      "id": "gen-exp-024",
+      "unit": "exponential-functions",
+      "standard": "5.b",
+      "difficulty": "hard",
+      "type": "multi-part",
+      "skill": "interpret",
+      "source_file": "generated",
+      "question_text": "College tuition: $40,000 now, increasing 5% annually.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "In 4 years?",
+          "answer": "48620",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "b",
+          "text": "In 18 years (when Kais kid goes)?",
+          "answer": "96263",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "Total 4-year cost starting in 18 years?",
+          "answer": "405997",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "5% growth: multiply by 1.05 each year.",
+      "solution_steps": [
+        "a) 40000(1.05)^4 = 40000(1.2155) ≈ 48620",
+        "b) 40000(1.05)^18 = 40000(2.4066) ≈ 96263",
+        "c) Sum years 18-21: 96263+101076+106130+109528 ≈ 405997"
+      ],
+      "tags": [
+        "exponential",
+        "tuition"
+      ]
+    },
+    {
+      "id": "gen-exp-025",
+      "unit": "exponential-functions",
+      "standard": "5.b",
+      "difficulty": "easy",
+      "type": "short",
+      "skill": "model",
+      "source_file": "generated",
+      "question_text": "Savings: $100, doubles every year. Write S(y).",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "S(y)",
+          "answer": "S(y) = 100(2)^y",
+          "answer_type": "equation"
+        }
+      ],
+      "hint": "Doubles = base of 2.",
+      "solution_steps": [
+        "S(y) = 100(2)^y"
+      ],
+      "tags": [
+        "exponential",
+        "doubling"
+      ]
+    },
+    {
+      "id": "gen-exp-026",
+      "unit": "exponential-functions",
+      "standard": "5.b",
+      "difficulty": "medium",
+      "type": "short",
+      "skill": "evaluate",
+      "source_file": "generated",
+      "question_text": "B(t) = 300(1.5)^t (bacteria count in hundreds). Find B(3).",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "B(3)",
+          "answer": "1012.5",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "1.5^3 = 3.375.",
+      "solution_steps": [
+        "1.5^3 = 3.375",
+        "B(3) = 300(3.375) = 1012.5 hundred = 101,250"
+      ],
+      "tags": [
+        "exponential",
+        "bacteria"
+      ]
+    },
+    {
+      "id": "gen-exp-027",
+      "unit": "exponential-functions",
+      "standard": "5.b",
+      "difficulty": "hard",
+      "type": "multi-part",
+      "skill": "model",
+      "source_file": "generated",
+      "question_text": "Gaming channel: 2000 subscribers, grows 20% per month.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Write S(m)",
+          "answer": "S(m) = 2000(1.2)^m",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "After 6 months?",
+          "answer": "5972",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "Months to reach 10000?",
+          "answer": "9",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "20% growth → factor 1.2.",
+      "solution_steps": [
+        "a) S(m) = 2000(1.2)^m",
+        "b) S(6) = 2000(1.2)^6 = 2000(2.986) ≈ 5972",
+        "c) 10000 = 2000(1.2)^m → 5 = 1.2^m → m ≈ 8.8 → 9"
+      ],
+      "tags": [
+        "exponential",
+        "gaming"
+      ]
+    },
+    {
+      "id": "gen-exp-028",
+      "unit": "exponential-functions",
+      "standard": "5.c",
+      "difficulty": "easy",
+      "type": "short",
+      "skill": "evaluate",
+      "source_file": "generated",
+      "question_text": "V(t) = 20000(0.9)^t. Find V(3).",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "V(3)",
+          "answer": "14580",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "0.9^3 = 0.729.",
+      "solution_steps": [
+        "0.9^3 = 0.729",
+        "V(3) = 20000(0.729) = 14580"
+      ],
+      "tags": [
+        "exponential",
+        "decay"
+      ]
+    },
+    {
+      "id": "gen-exp-029",
+      "unit": "exponential-functions",
+      "standard": "5.c",
+      "difficulty": "easy",
+      "type": "short",
+      "skill": "model",
+      "source_file": "generated",
+      "question_text": "A car worth $30,000 depreciates 12% per year. Write V(t).",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "V(t)",
+          "answer": "V(t) = 30000(0.88)^t",
+          "answer_type": "equation"
+        }
+      ],
+      "hint": "12% decay → keep 88% → factor 0.88.",
+      "solution_steps": [
+        "Decay rate 12% → factor = 1 - 0.12 = 0.88",
+        "V(t) = 30000(0.88)^t"
+      ],
+      "tags": [
+        "exponential",
+        "depreciation"
+      ]
+    },
+    {
+      "id": "gen-exp-030",
+      "unit": "exponential-functions",
+      "standard": "5.c",
+      "difficulty": "medium",
+      "type": "multi-part",
+      "skill": "model",
+      "source_file": "generated",
+      "question_text": "Phone battery: 100%, loses 15% each hour.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Write B(h)",
+          "answer": "B(h) = 100(0.85)^h",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "After 4 hours?",
+          "answer": "52.2",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "Decay factor?",
+          "answer": "0.85",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Loses 15% → keeps 85%.",
+      "solution_steps": [
+        "a) B(h) = 100(0.85)^h",
+        "b) B(4) = 100(0.85)^4 = 100(0.522) ≈ 52.2%",
+        "c) Factor = 0.85"
+      ],
+      "tags": [
+        "exponential",
+        "battery"
+      ]
+    },
+    {
+      "id": "gen-exp-031",
+      "unit": "exponential-functions",
+      "standard": "5.c",
+      "difficulty": "medium",
+      "type": "multi-part",
+      "skill": "model",
+      "source_file": "generated",
+      "question_text": "Medication: 400mg dose, body eliminates 30% per hour.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Write M(h)",
+          "answer": "M(h) = 400(0.7)^h",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "After 3 hours?",
+          "answer": "137.2",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "After 6 hours?",
+          "answer": "47.1",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Eliminates 30% → retains 70%.",
+      "solution_steps": [
+        "a) M(h) = 400(0.7)^h",
+        "b) M(3) = 400(0.343) ≈ 137.2",
+        "c) M(6) = 400(0.1176) ≈ 47.1"
+      ],
+      "tags": [
+        "exponential",
+        "medication"
+      ]
+    },
+    {
+      "id": "gen-exp-032",
+      "unit": "exponential-functions",
+      "standard": "5.c",
+      "difficulty": "hard",
+      "type": "multi-part",
+      "skill": "model",
+      "source_file": "generated",
+      "question_text": "Jordans worth $250 new. Resale drops 20% per year.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Write V(y)",
+          "answer": "V(y) = 250(0.8)^y",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "Value after 3 years?",
+          "answer": "128",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "When worth less than $50?",
+          "answer": "9",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "20% loss → 80% retained → factor 0.8.",
+      "solution_steps": [
+        "a) V(y) = 250(0.8)^y",
+        "b) V(3) = 250(0.512) = 128",
+        "c) 50 = 250(0.8)^y → 0.2 = 0.8^y → y ≈ 7.2... checking: 0.8^8=0.168 → $42. So year 8"
+      ],
+      "tags": [
+        "exponential",
+        "sneakers"
+      ]
+    },
+    {
+      "id": "gen-exp-033",
+      "unit": "exponential-functions",
+      "standard": "5.c",
+      "difficulty": "easy",
+      "type": "short",
+      "skill": "evaluate",
+      "source_file": "generated",
+      "question_text": "f(t) = 1000(0.5)^t. Find f(4).",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "f(4)",
+          "answer": "62.5",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "0.5^4 = 1/16 = 0.0625.",
+      "solution_steps": [
+        "0.5^4 = 0.0625",
+        "f(4) = 1000(0.0625) = 62.5"
+      ],
+      "tags": [
+        "exponential",
+        "half-life"
+      ]
+    },
+    {
+      "id": "gen-exp-034",
+      "unit": "exponential-functions",
+      "standard": "5.c",
+      "difficulty": "medium",
+      "type": "multi-part",
+      "skill": "interpret",
+      "source_file": "generated",
+      "question_text": "V(t) = 45000(0.82)^t models a trucks value.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Initial value?",
+          "answer": "$45,000",
+          "answer_type": "text"
+        },
+        {
+          "label": "b",
+          "text": "Decay rate?",
+          "answer": "18%",
+          "answer_type": "text"
+        },
+        {
+          "label": "c",
+          "text": "Value after 5 years?",
+          "answer": "16720",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Factor 0.82 means 82% retained = 18% lost.",
+      "solution_steps": [
+        "a) V(0) = $45,000",
+        "b) 1 - 0.82 = 0.18 = 18% per year",
+        "c) V(5) = 45000(0.82)^5 = 45000(0.3716) ≈ 16720"
+      ],
+      "tags": [
+        "exponential",
+        "depreciation"
+      ]
+    },
+    {
+      "id": "gen-exp-035",
+      "unit": "exponential-functions",
+      "standard": "5.c",
+      "difficulty": "hard",
+      "type": "multi-part",
+      "skill": "model",
+      "source_file": "generated",
+      "question_text": "Coffee cools from 200°F. Loses 10% of temp above room temp (70°F) per min.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Temp above room initially?",
+          "answer": "130",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "b",
+          "text": "Write T(m) for temp above room",
+          "answer": "T(m) = 130(0.9)^m",
+          "answer_type": "equation"
+        },
+        {
+          "label": "c",
+          "text": "Actual temp at 5 min?",
+          "answer": "146.8",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Room temp is baseline. Decay applies to excess.",
+      "solution_steps": [
+        "a) 200 - 70 = 130°F above room temp",
+        "b) T(m) = 130(0.9)^m (excess temp decays 10%/min)",
+        "c) T(5) = 130(0.9)^5 = 130(0.59049) ≈ 76.8°F above room",
+        "Actual temp = 76.8 + 70 = 146.8°F"
+      ],
+      "tags": [
+        "exponential",
+        "cooling"
+      ]
+    },
+    {
+      "id": "gen-exp-036",
+      "unit": "exponential-functions",
+      "standard": "5.c",
+      "difficulty": "medium",
+      "type": "short",
+      "skill": "model",
+      "source_file": "generated",
+      "question_text": "Radioactive substance: half-life of 6 hours. Start with 800g. Write A(t) where t=6-hr periods.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "A(t)",
+          "answer": "A(t) = 800(0.5)^t",
+          "answer_type": "equation"
+        }
+      ],
+      "hint": "Half-life: factor = 0.5 each period.",
+      "solution_steps": [
+        "Half each period → factor 0.5",
+        "A(t) = 800(0.5)^t"
+      ],
+      "tags": [
+        "exponential",
+        "half-life"
+      ]
+    },
+    {
+      "id": "gen-exp-037",
+      "unit": "exponential-functions",
+      "standard": "5.c",
+      "difficulty": "easy",
+      "type": "short",
+      "skill": "evaluate",
+      "source_file": "generated",
+      "question_text": "A bouncing ball reaches 75% of its previous height. Start: 16 ft. Height after 3 bounces?",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Height",
+          "answer": "6.75",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "16 × 0.75 × 0.75 × 0.75.",
+      "solution_steps": [
+        "16(0.75)^3 = 16(0.421875) = 6.75 ft"
+      ],
+      "tags": [
+        "exponential",
+        "decay"
+      ]
+    },
+    {
+      "id": "gen-exp-038",
+      "unit": "exponential-functions",
+      "standard": "5.c",
+      "difficulty": "hard",
+      "type": "multi-part",
+      "skill": "interpret",
+      "source_file": "generated",
+      "question_text": "Two cars depreciate: A(t)=35000(0.85)^t and B(t)=28000(0.80)^t.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "A(5)",
+          "answer": "15519",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "b",
+          "text": "B(5)",
+          "answer": "9175",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "Which holds value better?",
+          "answer": "Car A",
+          "answer_type": "text"
+        }
+      ],
+      "hint": "Compare values at same time.",
+      "solution_steps": [
+        "a) 35000(0.85)^5 = 35000(0.4437) ≈ 15519",
+        "b) 28000(0.80)^5 = 28000(0.3277) ≈ 9175",
+        "c) Car A retains more value ($15,519 vs $9,175)"
+      ],
+      "tags": [
+        "exponential",
+        "depreciation"
+      ]
+    },
+    {
+      "id": "gen-exp-039",
+      "unit": "exponential-functions",
+      "standard": "5.c",
+      "difficulty": "medium",
+      "type": "multi-part",
+      "skill": "model",
+      "source_file": "generated",
+      "question_text": "Ice cream melts: loses 25% of remaining volume each 10 min. Starts at 2 scoops.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "After 10 min?",
+          "answer": "1.5",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "b",
+          "text": "After 30 min?",
+          "answer": "0.84",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "Write V(t) for t=10-min periods",
+          "answer": "V(t) = 2(0.75)^t",
+          "answer_type": "equation"
+        }
+      ],
+      "hint": "25% loss → 75% remains → factor 0.75.",
+      "solution_steps": [
+        "a) 2(0.75) = 1.5",
+        "b) 2(0.75)^3 = 2(0.4219) ≈ 0.84",
+        "c) V(t) = 2(0.75)^t"
+      ],
+      "tags": [
+        "exponential",
+        "decay"
+      ]
+    },
+    {
+      "id": "gen-exp-040",
+      "unit": "exponential-functions",
+      "standard": "5.c",
+      "difficulty": "hard",
+      "type": "multi-part",
+      "skill": "solve",
+      "source_file": "generated",
+      "question_text": "Gaming headset: $200 new, depreciates 15%/year. When worth less than $50?",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Write V(t)",
+          "answer": "V(t) = 200(0.85)^t",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "V(5)",
+          "answer": "88.74",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "Years until < $50?",
+          "answer": "9",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Factor 0.85. Solve 50 = 200(0.85)^t.",
+      "solution_steps": [
+        "a) V(t) = 200(0.85)^t",
+        "b) V(5) = 200(0.4437) ≈ 88.74",
+        "c) 50=200(0.85)^t → 0.25=0.85^t → t=ln(0.25)/ln(0.85)≈8.5 → 9 years"
+      ],
+      "tags": [
+        "exponential",
+        "depreciation"
+      ]
+    },
+    {
+      "id": "gen-ee-001",
+      "unit": "expressions-equations",
+      "standard": "1.a",
+      "difficulty": "easy",
+      "type": "short",
+      "skill": "evaluate",
+      "source_file": "generated",
+      "question_text": "If a = 5 and b = −2, evaluate the expression: 3a² − 4b",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Evaluate 3a² − 4b when a = 5 and b = −2",
+          "answer": "83",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Substitute carefully—watch that negative times negative.",
+      "solution_steps": [
+        "Step 1: Substitute a = 5 and b = −2 into 3a² − 4b",
+        "Step 2: 3(5)² − 4(−2) = 3(25) − (−8)",
+        "Step 3: 75 + 8 = 83"
+      ],
+      "tags": [
+        "expressions",
+        "evaluate",
+        "substitution",
+        "exponents"
+      ]
+    },
+    {
+      "id": "gen-ee-002",
+      "unit": "expressions-equations",
+      "standard": "1.a",
+      "difficulty": "easy",
+      "type": "short",
+      "skill": "evaluate",
+      "source_file": "generated",
+      "question_text": "If x = −3 and y = 4, evaluate the expression: 2xy + y²",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Evaluate 2xy + y² when x = −3 and y = 4",
+          "answer": "-8",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Plug in both values, then combine the two terms.",
+      "solution_steps": [
+        "Step 1: Substitute x = −3 and y = 4 into 2xy + y²",
+        "Step 2: 2(−3)(4) + (4)² = −24 + 16",
+        "Step 3: −24 + 16 = −8"
+      ],
+      "tags": [
+        "expressions",
+        "evaluate",
+        "substitution",
+        "negative-numbers"
+      ]
+    },
+    {
+      "id": "gen-ee-003",
+      "unit": "expressions-equations",
+      "standard": "1.a",
+      "difficulty": "medium",
+      "type": "short",
+      "skill": "evaluate",
+      "source_file": "generated",
+      "question_text": "If m = −2, n = 5, and p = 3, evaluate: m²n − p(2m + n)",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Evaluate m²n − p(2m + n) when m = −2, n = 5, p = 3",
+          "answer": "17",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Handle the parentheses first, then multiply out.",
+      "solution_steps": [
+        "Step 1: Substitute m = −2, n = 5, p = 3",
+        "Step 2: (−2)²(5) − 3(2(−2) + 5) = 4(5) − 3(−4 + 5)",
+        "Step 3: 20 − 3(1) = 20 − 3 = 17"
+      ],
+      "tags": [
+        "expressions",
+        "evaluate",
+        "substitution",
+        "grouping",
+        "multi-variable"
+      ]
+    },
+    {
+      "id": "gen-ee-004",
+      "unit": "expressions-equations",
+      "standard": "1.a",
+      "difficulty": "medium",
+      "type": "short",
+      "skill": "evaluate",
+      "source_file": "generated",
+      "question_text": "If r = 6 and s = −3, evaluate: (r² − 2s)/(r + s) + rs",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Evaluate (r² − 2s)/(r + s) + rs when r = 6 and s = −3",
+          "answer": "-4",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Simplify the fraction first, then add the product.",
+      "solution_steps": [
+        "Step 1: Substitute r = 6, s = −3",
+        "Step 2: Numerator: (6)² − 2(−3) = 36 + 6 = 42",
+        "Step 3: Denominator: 6 + (−3) = 3",
+        "Step 4: Fraction: 42/3 = 14",
+        "Step 5: Product: rs = 6(−3) = −18",
+        "Step 6: 14 + (−18) = −4"
+      ],
+      "tags": [
+        "expressions",
+        "evaluate",
+        "fractions",
+        "multi-step"
+      ]
+    },
+    {
+      "id": "gen-ee-005",
+      "unit": "expressions-equations",
+      "standard": "1.a",
+      "difficulty": "medium",
+      "type": "short",
+      "skill": "evaluate",
+      "source_file": "generated",
+      "question_text": "In an online game, a player's Power Score is calculated as P = 3d² − 2d + k, where d is the number of daily wins and k is a bonus modifier. If a player has d = 4 daily wins and a bonus modifier of k = −5, what is their Power Score?",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Find the Power Score when d = 4 and k = −5",
+          "answer": "35",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Substitute into the formula—exponent first, then combine.",
+      "solution_steps": [
+        "Step 1: Substitute d = 4 and k = −5 into P = 3d² − 2d + k",
+        "Step 2: P = 3(4)² − 2(4) + (−5) = 3(16) − 8 − 5",
+        "Step 3: P = 48 − 8 − 5 = 35"
+      ],
+      "tags": [
+        "expressions",
+        "evaluate",
+        "gaming",
+        "real-world"
+      ]
+    },
+    {
+      "id": "gen-ee-006",
+      "unit": "expressions-equations",
+      "standard": "1.a",
+      "difficulty": "hard",
+      "type": "multi-part",
+      "skill": "evaluate",
+      "source_file": "generated",
+      "question_text": "If a = −1, b = 3, and c = −2, evaluate each expression.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Evaluate 2(ab)² − c³",
+          "answer": "26",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "b",
+          "text": "Evaluate (a + b + c)³ + b²c",
+          "answer": "-18",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "Evaluate a⁴ − 2b²c + (bc)²",
+          "answer": "73",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Inner operations first—be careful with negative exponents.",
+      "solution_steps": [
+        "Step 1a: ab = (−1)(3) = −3; (ab)² = 9; 2(9) = 18; c³ = (−2)³ = −8; 18 − (−8) = 26",
+        "Step 2b: a + b + c = −1 + 3 + (−2) = 0; 0³ = 0; b²c = 9(−2) = −18; 0 + (−18) = −18",
+        "Step 3c: a⁴ = (−1)⁴ = 1; −2b²c = −2(9)(−2) = 36; (bc)² = ((3)(−2))² = (−6)² = 36; 1 + 36 + 36 = 73"
+      ],
+      "tags": [
+        "expressions",
+        "evaluate",
+        "multi-variable",
+        "exponents",
+        "grouping"
+      ]
+    },
+    {
+      "id": "gen-ee-007",
+      "unit": "expressions-equations",
+      "standard": "1.c",
+      "difficulty": "easy",
+      "type": "short",
+      "skill": "evaluate",
+      "source_file": "generated",
+      "question_text": "Your phone plan costs $25 per month plus $0.10 for each text message over 200 texts. The formula is C = 25 + 0.10(t − 200), where t is the total number of texts sent (t ≥ 200). How much do you pay if you send 350 texts in a month?",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Find C when t = 350",
+          "answer": "$40",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Subtract 200 from total texts first, then multiply.",
+      "solution_steps": [
+        "Step 1: Substitute t = 350 into C = 25 + 0.10(t − 200)",
+        "Step 2: C = 25 + 0.10(350 − 200) = 25 + 0.10(150)",
+        "Step 3: C = 25 + 15 = $40"
+      ],
+      "tags": [
+        "expressions",
+        "evaluate",
+        "phone-plan",
+        "real-world",
+        "formulas"
+      ]
+    },
+    {
+      "id": "gen-ee-008",
+      "unit": "expressions-equations",
+      "standard": "1.c",
+      "difficulty": "medium",
+      "type": "short",
+      "skill": "evaluate",
+      "source_file": "generated",
+      "question_text": "A pizza shop calculates your total using the formula T = (1 + r)(p + 1.50n), where p is the base price, n is the number of toppings, and r is the tax rate. A large pizza costs $12, each topping is $1.50, and the tax rate is 8%. If you order a large pizza with 4 toppings, what is the total?",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Find T when p = 12, n = 4, and r = 0.08",
+          "answer": "$19.44",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Calculate the subtotal inside parentheses, then apply tax.",
+      "solution_steps": [
+        "Step 1: Substitute p = 12, n = 4, r = 0.08",
+        "Step 2: T = (1 + 0.08)(12 + 1.50(4)) = 1.08(12 + 6)",
+        "Step 3: T = 1.08(18) = $19.44"
+      ],
+      "tags": [
+        "expressions",
+        "evaluate",
+        "pizza",
+        "real-world",
+        "formulas",
+        "tax"
+      ]
+    },
+    {
+      "id": "gen-ee-009",
+      "unit": "expressions-equations",
+      "standard": "1.c",
+      "difficulty": "medium",
+      "type": "short",
+      "skill": "interpret",
+      "source_file": "generated",
+      "question_text": "A basketball player's efficiency rating is calculated as E = (pts + reb + ast − to) / gp, where pts = total points, reb = total rebounds, ast = total assists, to = total turnovers, and gp = games played. A player has pts = 312, reb = 85, ast = 64, to = 41, and gp = 20. Find the efficiency rating.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Calculate the efficiency rating E",
+          "answer": "21",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Add the positives, subtract turnovers, then divide by games.",
+      "solution_steps": [
+        "Step 1: Numerator: 312 + 85 + 64 − 41 = 420",
+        "Step 2: Divide by games played: 420 / 20 = 21",
+        "Step 3: E = 21"
+      ],
+      "tags": [
+        "expressions",
+        "evaluate",
+        "sports",
+        "real-world",
+        "formulas"
+      ]
+    },
+    {
+      "id": "gen-ee-010",
+      "unit": "expressions-equations",
+      "standard": "1.c",
+      "difficulty": "hard",
+      "type": "multi-part",
+      "skill": "interpret",
+      "source_file": "generated",
+      "question_text": "A streaming service calculates your monthly bill using C = m(1 + f) + d · s, where m = $15 (monthly base), f = family plan surcharge rate (40% = 0.40), d = number of extra device screens, and s = $3.50 per extra screen.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Find the monthly cost when you add 2 extra screens",
+          "answer": "$28",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "b",
+          "text": "If your monthly bill is $42, how many extra screens do you have?",
+          "answer": "6",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Part (b): isolate d by undoing the base cost first.",
+      "solution_steps": [
+        "Step 1a: C = 15(1 + 0.40) + 2(3.50) = 15(1.40) + 7 = 21 + 7 = $28",
+        "Step 2b: 42 = 15(1.40) + d(3.50) → 42 = 21 + 3.50d",
+        "Step 3b: 42 − 21 = 3.50d → 21 = 3.50d → d = 6 screens"
+      ],
+      "tags": [
+        "expressions",
+        "evaluate",
+        "interpret",
+        "gaming-subscription",
+        "real-world",
+        "formulas"
+      ]
+    },
+    {
+      "id": "gen-ee-011",
+      "unit": "expressions-equations",
+      "standard": "1.c",
+      "difficulty": "medium",
+      "type": "short",
+      "skill": "evaluate",
+      "source_file": "generated",
+      "question_text": "Your part-time job pays using the formula E = bh + 1.5b · h_o, where b = base hourly rate, h = regular hours, and h_o = overtime hours (paid at 1.5× base rate). If your base rate is $12/hour, you worked 20 regular hours and 4 overtime hours, what are your total earnings?",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Find total earnings E when b = 12, h = 20, h_o = 4",
+          "answer": "$312",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Regular pay plus overtime pay—don't forget the 1.5 multiplier.",
+      "solution_steps": [
+        "Step 1: Regular pay: bh = 12(20) = $240",
+        "Step 2: Overtime pay: 1.5(12)(4) = 18(4) = $72",
+        "Step 3: Total: E = 240 + 72 = $312"
+      ],
+      "tags": [
+        "expressions",
+        "evaluate",
+        "part-time-job",
+        "real-world",
+        "formulas"
+      ]
+    },
+    {
+      "id": "gen-ee-012",
+      "unit": "expressions-equations",
+      "standard": "1.d",
+      "difficulty": "easy",
+      "type": "short",
+      "skill": "model",
+      "source_file": "generated",
+      "question_text": "You're shopping online for shoes. Each pair costs $35, and there is a flat $10 shipping fee regardless of how many pairs you buy. Write an equation for the total cost T of buying p pairs of shoes.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Write an equation for T in terms of p",
+          "answer": "T = 35p + 10",
+          "answer_type": "equation"
+        }
+      ],
+      "hint": "Total cost = price per pair × quantity + shipping.",
+      "solution_steps": [
+        "Step 1: Each pair costs $35, so p pairs cost 35p",
+        "Step 2: Add the flat $10 shipping fee",
+        "Step 3: T = 35p + 10"
+      ],
+      "tags": [
+        "expressions",
+        "model",
+        "shoe-shopping",
+        "real-world",
+        "linear"
+      ]
+    },
+    {
+      "id": "gen-ee-013",
+      "unit": "expressions-equations",
+      "standard": "1.d",
+      "difficulty": "medium",
+      "type": "multi-part",
+      "skill": "model",
+      "source_file": "generated",
+      "question_text": "A gaming platform charges a one-time setup fee of $15 plus $9.99 per month. You also earn a $2 loyalty credit each month you stay subscribed.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Write an equation for the net cost C after m months",
+          "answer": "C = 15 + 7.99m",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "What is the net cost after 6 months?",
+          "answer": "$62.94",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Monthly charge minus monthly credit gives the effective rate.",
+      "solution_steps": [
+        "Step 1: Monthly net rate: $9.99 − $2 = $7.99 per month",
+        "Step 2: C = 15 + 7.99m",
+        "Step 3: At m = 6: C = 15 + 7.99(6) = 15 + 47.94 = $62.94"
+      ],
+      "tags": [
+        "expressions",
+        "model",
+        "gaming-subscription",
+        "real-world"
+      ]
+    },
+    {
+      "id": "gen-ee-014",
+      "unit": "expressions-equations",
+      "standard": "1.d",
+      "difficulty": "medium",
+      "type": "multi-part",
+      "skill": "model",
+      "source_file": "generated",
+      "question_text": "At your part-time job at a coffee shop, you earn $11.50 per hour plus an average of $8.25 in tips per shift.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Write a model for total earnings E for a single shift of h hours",
+          "answer": "E = 11.50h + 8.25",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "How many hours must you work in one shift to earn at least $60?",
+          "answer": "4.5 hours",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Set E = 60, then solve for h. Watch the tip add-on.",
+      "solution_steps": [
+        "Step 1: E = 11.50h + 8.25",
+        "Step 2: Set 60 = 11.50h + 8.25",
+        "Step 3: 51.75 = 11.50h → h = 51.75 / 11.50 = 4.5 hours"
+      ],
+      "tags": [
+        "expressions",
+        "model",
+        "part-time-job",
+        "real-world"
+      ]
+    },
+    {
+      "id": "gen-ee-015",
+      "unit": "expressions-equations",
+      "standard": "1.d",
+      "difficulty": "hard",
+      "type": "multi-part",
+      "skill": "model",
+      "source_file": "generated",
+      "question_text": "You and your friends start a pizza delivery side hustle. Your fixed costs (rent, supplies) are $800 per week. Each pizza costs $3.25 to make and sells for $11.75.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Write a weekly profit model P(n) where n is the number of pizzas sold",
+          "answer": "P(n) = 8.50n − 800",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "How many pizzas must you sell to break even?",
+          "answer": "95 pizzas",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "What is the profit if you sell 150 pizzas in a week?",
+          "answer": "$475",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Profit = revenue minus all costs. Break even means P = 0.",
+      "solution_steps": [
+        "Step 1: Revenue per pizza: $11.75; Cost per pizza: $3.25; Profit per pizza: $8.50",
+        "Step 2: P(n) = 8.50n − 800",
+        "Step 3: Break even: 0 = 8.50n − 800 → n = 800/8.50 ≈ 94.1 → 95 pizzas (round up)",
+        "Step 4: P(150) = 8.50(150) − 800 = 1275 − 800 = $475"
+      ],
+      "tags": [
+        "expressions",
+        "model",
+        "pizza",
+        "real-world",
+        "break-even",
+        "profit"
+      ]
+    },
+    {
+      "id": "gen-ee-016",
+      "unit": "expressions-equations",
+      "standard": "1.d",
+      "difficulty": "hard",
+      "type": "multi-part",
+      "skill": "model",
+      "source_file": "generated",
+      "question_text": "You're comparing two phone plans. Plan A charges $30/month plus $0.05 per text. Plan B charges a flat $45/month with unlimited texts.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Write cost equations for each plan where t = number of texts per month",
+          "answer": "A(t) = 30 + 0.05t; B(t) = 45",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "At how many texts per month do both plans cost the same?",
+          "answer": "300 texts",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "If you send 400 texts/month, which plan is cheaper and by how much?",
+          "answer": "Plan B is cheaper by $5",
+          "answer_type": "text"
+        }
+      ],
+      "hint": "Set the two equations equal to find the crossover point.",
+      "solution_steps": [
+        "Step 1: A(t) = 30 + 0.05t; B(t) = 45",
+        "Step 2: Set equal: 30 + 0.05t = 45 → 0.05t = 15 → t = 300 texts",
+        "Step 3: A(400) = 30 + 0.05(400) = 30 + 20 = $50",
+        "Step 4: B(400) = $45. Plan B is cheaper by $50 − $45 = $5"
+      ],
+      "tags": [
+        "expressions",
+        "model",
+        "phone-plan",
+        "real-world",
+        "comparison"
+      ]
+    },
+    {
+      "id": "gen-ee-017",
+      "unit": "expressions-equations",
+      "standard": "2.a",
+      "difficulty": "easy",
+      "type": "short",
+      "skill": "solve",
+      "source_file": "generated",
+      "question_text": "Solve for x: 5x + 7 = 3x − 9",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Solve for x",
+          "answer": "x = -8",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Get all x-terms on one side, constants on the other.",
+      "solution_steps": [
+        "Step 1: Subtract 3x from both sides: 2x + 7 = −9",
+        "Step 2: Subtract 7 from both sides: 2x = −16",
+        "Step 3: Divide by 2: x = −8"
+      ],
+      "tags": [
+        "equations",
+        "solve",
+        "linear",
+        "multi-step"
+      ]
+    },
+    {
+      "id": "gen-ee-018",
+      "unit": "expressions-equations",
+      "standard": "2.a",
+      "difficulty": "easy",
+      "type": "short",
+      "skill": "solve",
+      "source_file": "generated",
+      "question_text": "Solve for x: 3(x + 4) = 27",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Solve for x",
+          "answer": "x = 5",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Distribute the 3 first, then isolate x.",
+      "solution_steps": [
+        "Step 1: Distribute: 3x + 12 = 27",
+        "Step 2: Subtract 12: 3x = 15",
+        "Step 3: Divide by 3: x = 5"
+      ],
+      "tags": [
+        "equations",
+        "solve",
+        "linear",
+        "distribution"
+      ]
+    },
+    {
+      "id": "gen-ee-019",
+      "unit": "expressions-equations",
+      "standard": "2.a",
+      "difficulty": "medium",
+      "type": "short",
+      "skill": "solve",
+      "source_file": "generated",
+      "question_text": "Solve for x: 4(2x − 3) + 5 = 3(x + 2) − 1",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Solve for x",
+          "answer": "x = 12/5 or 2.4",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Distribute on both sides, combine like terms, then isolate.",
+      "solution_steps": [
+        "Step 1: Distribute: 8x − 12 + 5 = 3x + 6 − 1",
+        "Step 2: Combine like terms: 8x − 7 = 3x + 5",
+        "Step 3: Subtract 3x: 5x − 7 = 5",
+        "Step 4: Add 7: 5x = 12",
+        "Step 5: Divide by 5: x = 12/5 = 2.4"
+      ],
+      "tags": [
+        "equations",
+        "solve",
+        "linear",
+        "distribution",
+        "combining-like-terms"
+      ]
+    },
+    {
+      "id": "gen-ee-020",
+      "unit": "expressions-equations",
+      "standard": "2.a",
+      "difficulty": "medium",
+      "type": "short",
+      "skill": "solve",
+      "source_file": "generated",
+      "question_text": "Solve for x: −2(3x + 1) = 4x − 5(x + 3)",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Solve for x",
+          "answer": "x = 13/5 or 2.6",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Distribute the negatives carefully on both sides.",
+      "solution_steps": [
+        "Step 1: Left side: −6x − 2",
+        "Step 2: Right side: 4x − 5x − 15 = −x − 15",
+        "Step 3: −6x − 2 = −x − 15",
+        "Step 4: Add x to both sides: −5x − 2 = −15",
+        "Step 5: Add 2: −5x = −13",
+        "Step 6: Divide by −5: x = 13/5 = 2.6"
+      ],
+      "tags": [
+        "equations",
+        "solve",
+        "linear",
+        "distribution",
+        "negative-coefficients"
+      ]
+    },
+    {
+      "id": "gen-ee-021",
+      "unit": "expressions-equations",
+      "standard": "2.a",
+      "difficulty": "hard",
+      "type": "short",
+      "skill": "solve",
+      "source_file": "generated",
+      "question_text": "Solve for x: (3x + 2)/4 − (x − 1)/6 = 2x − 5",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Solve for x",
+          "answer": "x = 4",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Multiply everything by the LCD to clear the fractions.",
+      "solution_steps": [
+        "Step 1: LCD of 4 and 6 is 12. Multiply every term by 12.",
+        "Step 2: 3(3x + 2) − 2(x − 1) = 12(2x − 5)",
+        "Step 3: 9x + 6 − 2x + 2 = 24x − 60",
+        "Step 4: 7x + 8 = 24x − 60",
+        "Step 5: −17x = −68 → x = 4",
+        "Step 6: Check: (14)/4 − (3)/6 = 3.5 − 0.5 = 3; 2(4) − 5 = 3 ✓"
+      ],
+      "tags": [
+        "equations",
+        "solve",
+        "linear",
+        "fractions",
+        "LCD"
+      ]
+    },
+    {
+      "id": "gen-ee-022",
+      "unit": "expressions-equations",
+      "standard": "2.a",
+      "difficulty": "hard",
+      "type": "multi-part",
+      "skill": "solve",
+      "source_file": "generated",
+      "question_text": "You and two friends split the cost of a gaming console. You paid $40 more than each of your friends, and both friends paid the same amount. The total cost was $580.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Write an equation and solve for the amount each friend paid",
+          "answer": "$180 each",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "b",
+          "text": "How much did you pay?",
+          "answer": "$220",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Let x = each friend's share. You paid x + 40.",
+      "solution_steps": [
+        "Step 1: Let x = amount each friend paid. You paid x + 40.",
+        "Step 2: x + x + (x + 40) = 580",
+        "Step 3: 3x + 40 = 580 → 3x = 540 → x = 180",
+        "Step 4: Each friend paid $180. You paid 180 + 40 = $220.",
+        "Step 5: Check: 180 + 180 + 220 = 580 ✓"
+      ],
+      "tags": [
+        "equations",
+        "solve",
+        "gaming",
+        "real-world",
+        "word-problem"
+      ]
+    },
+    {
+      "id": "gen-ee-023",
+      "unit": "expressions-equations",
+      "standard": "2.b",
+      "difficulty": "easy",
+      "type": "short",
+      "skill": "solve",
+      "source_file": "generated",
+      "question_text": "Solve for y: 3x + y = 12",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Solve for y in terms of x",
+          "answer": "y = 12 − 3x",
+          "answer_type": "equation"
+        }
+      ],
+      "hint": "Subtract 3x from both sides to isolate y.",
+      "solution_steps": [
+        "Step 1: Subtract 3x from both sides",
+        "Step 2: y = 12 − 3x"
+      ],
+      "tags": [
+        "equations",
+        "solve",
+        "literal-equations",
+        "isolate-variable"
+      ]
+    },
+    {
+      "id": "gen-ee-024",
+      "unit": "expressions-equations",
+      "standard": "2.b",
+      "difficulty": "easy",
+      "type": "short",
+      "skill": "solve",
+      "source_file": "generated",
+      "question_text": "The perimeter of a rectangle is P = 2l + 2w. Solve for w.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Solve for w in terms of P and l",
+          "answer": "w = (P − 2l)/2",
+          "answer_type": "equation"
+        }
+      ],
+      "hint": "Subtract the length term first, then divide by 2.",
+      "solution_steps": [
+        "Step 1: Subtract 2l from both sides: P − 2l = 2w",
+        "Step 2: Divide both sides by 2: w = (P − 2l)/2"
+      ],
+      "tags": [
+        "equations",
+        "solve",
+        "literal-equations",
+        "geometry",
+        "perimeter"
+      ]
+    },
+    {
+      "id": "gen-ee-025",
+      "unit": "expressions-equations",
+      "standard": "2.b",
+      "difficulty": "medium",
+      "type": "short",
+      "skill": "solve",
+      "source_file": "generated",
+      "question_text": "The simple interest formula is A = P(1 + rt), where A is the total amount, P is the principal, r is the rate, and t is time. Solve for t.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Solve for t in terms of A, P, and r",
+          "answer": "t = (A − P)/(Pr)",
+          "answer_type": "equation"
+        }
+      ],
+      "hint": "Divide by P first, then subtract 1 and isolate t.",
+      "solution_steps": [
+        "Step 1: Divide both sides by P: A/P = 1 + rt",
+        "Step 2: Subtract 1: A/P − 1 = rt → (A − P)/P = rt",
+        "Step 3: Divide by r: t = (A − P)/(Pr)"
+      ],
+      "tags": [
+        "equations",
+        "solve",
+        "literal-equations",
+        "finance",
+        "interest"
+      ]
+    },
+    {
+      "id": "gen-ee-026",
+      "unit": "expressions-equations",
+      "standard": "2.b",
+      "difficulty": "medium",
+      "type": "short",
+      "skill": "solve",
+      "source_file": "generated",
+      "question_text": "Solve for x: ax + b = cx + d (assume a ≠ c)",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Solve for x in terms of a, b, c, and d",
+          "answer": "x = (d − b)/(a − c)",
+          "answer_type": "equation"
+        }
+      ],
+      "hint": "Group x-terms on one side, then factor out x.",
+      "solution_steps": [
+        "Step 1: Subtract cx from both sides: ax − cx + b = d",
+        "Step 2: Subtract b: ax − cx = d − b",
+        "Step 3: Factor out x: x(a − c) = d − b",
+        "Step 4: Divide by (a − c): x = (d − b)/(a − c)"
+      ],
+      "tags": [
+        "equations",
+        "solve",
+        "literal-equations",
+        "factoring",
+        "multi-variable"
+      ]
+    },
+    {
+      "id": "gen-ee-027",
+      "unit": "expressions-equations",
+      "standard": "2.b",
+      "difficulty": "hard",
+      "type": "multi-part",
+      "skill": "solve",
+      "source_file": "generated",
+      "question_text": "A shoe store calculates the final sale price using D = p(1 − r) − c, where p = original price, r = discount rate, and c = coupon amount.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Solve for p (the original price) in terms of D, r, and c",
+          "answer": "p = (D + c)/(1 − r)",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "If the sale price is $52, the discount rate is 20%, and the coupon is $8, find the original price",
+          "answer": "$75",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Add c first, then divide by the discount factor.",
+      "solution_steps": [
+        "Step 1: D = p(1 − r) − c → D + c = p(1 − r)",
+        "Step 2: p = (D + c)/(1 − r)",
+        "Step 3: p = (52 + 8)/(1 − 0.20) = 60/0.80 = $75"
+      ],
+      "tags": [
+        "equations",
+        "solve",
+        "literal-equations",
+        "shoe-shopping",
+        "real-world"
+      ]
+    },
+    {
+      "id": "gen-ee-028",
+      "unit": "expressions-equations",
+      "standard": "2.b",
+      "difficulty": "hard",
+      "type": "multi-part",
+      "skill": "solve",
+      "source_file": "generated",
+      "question_text": "The surface area of a cylinder is S = 2πr² + 2πrh, where r is the radius and h is the height.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Solve for h in terms of S and r",
+          "answer": "h = (S − 2πr²)/(2πr)",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "If S = 150π and r = 5, find h",
+          "answer": "h = 10",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Subtract the circle-area term, then divide by 2πr.",
+      "solution_steps": [
+        "Step 1: S − 2πr² = 2πrh",
+        "Step 2: h = (S − 2πr²)/(2πr)",
+        "Step 3: h = (150π − 2π(25))/(2π(5)) = (150π − 50π)/(10π)",
+        "Step 4: h = 100π/(10π) = 10"
+      ],
+      "tags": [
+        "equations",
+        "solve",
+        "literal-equations",
+        "geometry",
+        "surface-area",
+        "cylinder"
+      ]
+    },
+    {
+      "id": "gen-ee-029",
+      "unit": "expressions-equations",
+      "standard": "2.c",
+      "difficulty": "easy",
+      "type": "short",
+      "skill": "solve",
+      "source_file": "generated",
+      "question_text": "Solve the inequality: 3x − 7 > 14",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Solve for x",
+          "answer": "x > 7",
+          "answer_type": "text"
+        }
+      ],
+      "hint": "Treat it like an equation—add 7, then divide by 3.",
+      "solution_steps": [
+        "Step 1: Add 7 to both sides: 3x > 21",
+        "Step 2: Divide by 3: x > 7"
+      ],
+      "tags": [
+        "inequalities",
+        "solve",
+        "linear"
+      ]
+    },
+    {
+      "id": "gen-ee-030",
+      "unit": "expressions-equations",
+      "standard": "2.c",
+      "difficulty": "medium",
+      "type": "short",
+      "skill": "solve",
+      "source_file": "generated",
+      "question_text": "Solve the inequality: 2(x + 3) − 5 ≤ 4x + 1",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Solve for x",
+          "answer": "x ≥ 0",
+          "answer_type": "text"
+        }
+      ],
+      "hint": "Distribute, combine like terms, then isolate x.",
+      "solution_steps": [
+        "Step 1: Distribute: 2x + 6 − 5 ≤ 4x + 1",
+        "Step 2: Combine: 2x + 1 ≤ 4x + 1",
+        "Step 3: Subtract 2x: 1 ≤ 2x + 1",
+        "Step 4: Subtract 1: 0 ≤ 2x → x ≥ 0"
+      ],
+      "tags": [
+        "inequalities",
+        "solve",
+        "linear",
+        "distribution"
+      ]
+    },
+    {
+      "id": "gen-ee-031",
+      "unit": "expressions-equations",
+      "standard": "2.c",
+      "difficulty": "medium",
+      "type": "short",
+      "skill": "solve",
+      "source_file": "generated",
+      "question_text": "Solve the inequality: −4x + 10 ≥ 22",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Solve for x",
+          "answer": "x ≤ −3",
+          "answer_type": "text"
+        }
+      ],
+      "hint": "When you divide by a negative, flip the inequality sign!",
+      "solution_steps": [
+        "Step 1: Subtract 10 from both sides: −4x ≥ 12",
+        "Step 2: Divide by −4 and FLIP the inequality sign: x ≤ −3"
+      ],
+      "tags": [
+        "inequalities",
+        "solve",
+        "linear",
+        "flip-sign",
+        "negative-division"
+      ]
+    },
+    {
+      "id": "gen-ee-032",
+      "unit": "expressions-equations",
+      "standard": "2.c",
+      "difficulty": "hard",
+      "type": "multi-part",
+      "skill": "solve",
+      "source_file": "generated",
+      "question_text": "Solve the inequality and describe the graph: −(2x + 6)/3 < x + 4",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Solve the inequality for x",
+          "answer": "x > −18/5 (or x > −3.6)",
+          "answer_type": "text"
+        },
+        {
+          "label": "b",
+          "text": "Describe the graph on a number line",
+          "answer": "Open circle at −3.6, arrow pointing right",
+          "answer_type": "text"
+        }
+      ],
+      "hint": "Multiply by 3 to clear the fraction, then distribute the negative.",
+      "solution_steps": [
+        "Step 1: Multiply both sides by 3: −(2x + 6) < 3(x + 4)",
+        "Step 2: Distribute: −2x − 6 < 3x + 12",
+        "Step 3: Add 2x to both sides: −6 < 5x + 12",
+        "Step 4: Subtract 12: −18 < 5x",
+        "Step 5: Divide by 5: −18/5 < x → x > −3.6",
+        "Step 6: Graph: Open circle at −3.6, arrow pointing right"
+      ],
+      "tags": [
+        "inequalities",
+        "solve",
+        "graph",
+        "fractions",
+        "distribution"
+      ]
+    },
+    {
+      "id": "gen-ee-033",
+      "unit": "expressions-equations",
+      "standard": "2.d",
+      "difficulty": "easy",
+      "type": "short",
+      "skill": "graph",
+      "source_file": "generated",
+      "question_text": "Graph the inequality on a number line: x > 3",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "What type of circle do you use at 3?",
+          "answer": "Open circle",
+          "answer_type": "text"
+        },
+        {
+          "label": "b",
+          "text": "Which direction does the arrow point?",
+          "answer": "Right (toward positive infinity)",
+          "answer_type": "text"
+        }
+      ],
+      "hint": "Strict inequality means open circle. Greater means go right.",
+      "solution_steps": [
+        "Step 1: x > 3 is strict (no equal), so use an open circle at 3",
+        "Step 2: x is greater than 3, so shade/arrow to the right"
+      ],
+      "tags": [
+        "inequalities",
+        "graph",
+        "number-line",
+        "open-circle"
+      ]
+    },
+    {
+      "id": "gen-ee-034",
+      "unit": "expressions-equations",
+      "standard": "2.d",
+      "difficulty": "easy",
+      "type": "short",
+      "skill": "graph",
+      "source_file": "generated",
+      "question_text": "Graph the inequality on a number line: x ≤ −2",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "What type of circle do you use at −2?",
+          "answer": "Closed (filled) circle",
+          "answer_type": "text"
+        },
+        {
+          "label": "b",
+          "text": "Which direction does the arrow point?",
+          "answer": "Left (toward negative infinity)",
+          "answer_type": "text"
+        }
+      ],
+      "hint": "'Less than or equal' means closed circle, shade left.",
+      "solution_steps": [
+        "Step 1: x ≤ −2 includes the equal sign, so use a closed circle at −2",
+        "Step 2: x is less than or equal to −2, so shade/arrow to the left"
+      ],
+      "tags": [
+        "inequalities",
+        "graph",
+        "number-line",
+        "closed-circle"
+      ]
+    },
+    {
+      "id": "gen-ee-035",
+      "unit": "expressions-equations",
+      "standard": "2.d",
+      "difficulty": "medium",
+      "type": "multi-part",
+      "skill": "graph",
+      "source_file": "generated",
+      "question_text": "Solve the inequality and graph the solution on a number line: 5 − 2x ≥ 11",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Solve the inequality for x",
+          "answer": "x ≤ −3",
+          "answer_type": "text"
+        },
+        {
+          "label": "b",
+          "text": "Describe the graph on a number line",
+          "answer": "Closed circle at −3, arrow pointing left",
+          "answer_type": "text"
+        }
+      ],
+      "hint": "Dividing by negative flips the sign—don't forget!",
+      "solution_steps": [
+        "Step 1: Subtract 5 from both sides: −2x ≥ 6",
+        "Step 2: Divide by −2 and FLIP the sign: x ≤ −3",
+        "Step 3: Graph: Closed circle at −3 (includes equal), arrow pointing left"
+      ],
+      "tags": [
+        "inequalities",
+        "solve",
+        "graph",
+        "flip-sign",
+        "number-line"
+      ]
+    },
+    {
+      "id": "gen-ee-036",
+      "unit": "expressions-equations",
+      "standard": "2.d",
+      "difficulty": "medium",
+      "type": "multi-part",
+      "skill": "graph",
+      "source_file": "generated",
+      "question_text": "You're saving up for a pair of shoes that costs $85. You already have $25 saved and earn $12 per hour at your part-time job.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Write an inequality for the number of hours h you need to work to afford the shoes",
+          "answer": "12h + 25 ≥ 85",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "Solve the inequality",
+          "answer": "h ≥ 5",
+          "answer_type": "text"
+        },
+        {
+          "label": "c",
+          "text": "Describe the graph of the solution on a number line",
+          "answer": "Closed circle at 5, arrow pointing right",
+          "answer_type": "text"
+        }
+      ],
+      "hint": "Earnings plus savings must be at least $85.",
+      "solution_steps": [
+        "Step 1: 12h + 25 ≥ 85",
+        "Step 2: Subtract 25: 12h ≥ 60",
+        "Step 3: Divide by 12: h ≥ 5",
+        "Step 4: Graph: Closed circle at 5, arrow pointing right (h can be 5 or more)"
+      ],
+      "tags": [
+        "inequalities",
+        "solve",
+        "graph",
+        "shoe-shopping",
+        "real-world",
+        "number-line"
+      ]
+    },
+    {
+      "id": "gen-nl-001",
+      "unit": "nonlinear-functions",
+      "standard": "6.a",
+      "difficulty": "easy",
+      "type": "short",
+      "skill": "identify",
+      "source_file": "generated",
+      "question_text": "Find the vertex and axis of symmetry of f(x) = 2(x + 1)² − 5.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "What is the vertex?",
+          "answer": "(-1, -5)",
+          "answer_type": "text"
+        },
+        {
+          "label": "b",
+          "text": "What is the axis of symmetry?",
+          "answer": "x = -1",
+          "answer_type": "equation"
+        }
+      ],
+      "hint": "In vertex form, (h, k) is right there—read it!",
+      "solution_steps": [
+        "Step 1: Vertex form is a(x − h)² + k. Here f(x) = 2(x − (−1))² + (−5).",
+        "Step 2: The vertex is (h, k) = (−1, −5).",
+        "Step 3: The axis of symmetry is the vertical line x = h = −1."
+      ],
+      "tags": [
+        "quadratic",
+        "vertex-form",
+        "axis-of-symmetry"
+      ]
+    },
+    {
+      "id": "gen-nl-002",
+      "unit": "nonlinear-functions",
+      "standard": "6.a",
+      "difficulty": "medium",
+      "type": "graph",
+      "skill": "graph",
+      "source_file": "generated",
+      "question_text": "Graph f(x) = x² − 6x + 8 by finding key features.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Find the vertex.",
+          "answer": "(3, -1)",
+          "answer_type": "text"
+        },
+        {
+          "label": "b",
+          "text": "Find the x-intercepts.",
+          "answer": "(2, 0) and (4, 0)",
+          "answer_type": "text"
+        },
+        {
+          "label": "c",
+          "text": "Find the y-intercept.",
+          "answer": "(0, 8)",
+          "answer_type": "text"
+        },
+        {
+          "label": "d",
+          "text": "State the domain and range.",
+          "answer": "Domain: all real numbers; Range: y ≥ −1",
+          "answer_type": "text"
+        }
+      ],
+      "hint": "Factor to find zeros, then use the midpoint for vertex!",
+      "solution_steps": [
+        "Step 1: Factor: x² − 6x + 8 = (x − 2)(x − 4). Zeros at x = 2 and x = 4.",
+        "Step 2: Vertex x-value = (2 + 4)/2 = 3. f(3) = 9 − 18 + 8 = −1. Vertex: (3, −1).",
+        "Step 3: y-intercept: f(0) = 0 − 0 + 8 = 8. Point: (0, 8).",
+        "Step 4: Domain: (−∞, ∞). Range: [−1, ∞) since parabola opens up."
+      ],
+      "tags": [
+        "quadratic",
+        "standard-form",
+        "factoring",
+        "graphing",
+        "intercepts"
+      ]
+    },
+    {
+      "id": "gen-nl-003",
+      "unit": "nonlinear-functions",
+      "standard": "6.a",
+      "difficulty": "medium",
+      "type": "multi-part",
+      "skill": "model",
+      "source_file": "generated",
+      "question_text": "A soccer ball is kicked and its height in feet is modeled by h(t) = −16t² + 48t + 2, where t is time in seconds.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "When does the ball reach its maximum height?",
+          "answer": "1.5 seconds",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "b",
+          "text": "What is the maximum height?",
+          "answer": "38 feet",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "When does the ball hit the ground? Round to the nearest hundredth.",
+          "answer": "≈ 3.04 seconds",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Use the vertex formula for the peak—it's the max!",
+      "solution_steps": [
+        "Step 1: Max height at t = −b/(2a) = −48/(2·(−16)) = 48/32 = 1.5 s.",
+        "Step 2: h(1.5) = −16(2.25) + 48(1.5) + 2 = −36 + 72 + 2 = 38 ft.",
+        "Step 3: Set h(t) = 0: −16t² + 48t + 2 = 0 → 8t² − 24t − 1 = 0.",
+        "Step 4: t = (24 ± √(576 + 32))/16 = (24 ± √608)/16 ≈ (24 ± 24.66)/16.",
+        "Step 5: Positive root: t ≈ 48.66/16 ≈ 3.04 seconds."
+      ],
+      "tags": [
+        "quadratic",
+        "projectile-motion",
+        "vertex",
+        "real-world",
+        "modeling"
+      ]
+    },
+    {
+      "id": "gen-nl-004",
+      "unit": "nonlinear-functions",
+      "standard": "6.a",
+      "difficulty": "hard",
+      "type": "multi-part",
+      "skill": "model",
+      "source_file": "generated",
+      "question_text": "A company's daily profit in dollars is P(x) = −2x² + 120x − 1000, where x is units sold.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "How many units maximize profit?",
+          "answer": "30 units",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "b",
+          "text": "What is the maximum daily profit?",
+          "answer": "$800",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "How many units must be sold to break even? (Find both values.)",
+          "answer": "10 units and 50 units",
+          "answer_type": "text"
+        },
+        {
+          "label": "d",
+          "text": "For what range of units sold is the company profitable?",
+          "answer": "10 < x < 50",
+          "answer_type": "text"
+        }
+      ],
+      "hint": "Vertex gives the max—set P(x) = 0 for break-even.",
+      "solution_steps": [
+        "Step 1: x = −120/(2·(−2)) = 120/4 = 30 units.",
+        "Step 2: P(30) = −2(900) + 120(30) − 1000 = −1800 + 3600 − 1000 = $800.",
+        "Step 3: Set P(x) = 0: −2x² + 120x − 1000 = 0 → x² − 60x + 500 = 0.",
+        "Step 4: Factor: (x − 10)(x − 50) = 0 → x = 10 or x = 50.",
+        "Step 5: Profitable when P(x) > 0, between the zeros: 10 < x < 50."
+      ],
+      "tags": [
+        "quadratic",
+        "profit",
+        "break-even",
+        "real-world",
+        "optimization"
+      ]
+    },
+    {
+      "id": "gen-nl-005",
+      "unit": "nonlinear-functions",
+      "standard": "6.b",
+      "difficulty": "easy",
+      "type": "short",
+      "skill": "identify",
+      "source_file": "generated",
+      "question_text": "For f(x) = √(x − 4) + 1, state the starting point, domain, and range.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "What is the starting point?",
+          "answer": "(4, 1)",
+          "answer_type": "text"
+        },
+        {
+          "label": "b",
+          "text": "State the domain.",
+          "answer": "x ≥ 4, or [4, ∞)",
+          "answer_type": "text"
+        },
+        {
+          "label": "c",
+          "text": "State the range.",
+          "answer": "y ≥ 1, or [1, ∞)",
+          "answer_type": "text"
+        }
+      ],
+      "hint": "What's under the radical must be ≥ 0!",
+      "solution_steps": [
+        "Step 1: The expression under the radical is x − 4 ≥ 0, so x ≥ 4.",
+        "Step 2: Starting point: when x = 4, f(4) = √0 + 1 = 1. Point: (4, 1).",
+        "Step 3: The smallest output is 1 (when x = 4), and √ grows without bound, so range is y ≥ 1."
+      ],
+      "tags": [
+        "square-root",
+        "domain",
+        "range",
+        "starting-point"
+      ]
+    },
+    {
+      "id": "gen-nl-006",
+      "unit": "nonlinear-functions",
+      "standard": "6.b",
+      "difficulty": "medium",
+      "type": "graph",
+      "skill": "graph",
+      "source_file": "generated",
+      "question_text": "Graph f(x) = −√(x + 2) + 3 and analyze the function.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Identify the starting point.",
+          "answer": "(-2, 3)",
+          "answer_type": "text"
+        },
+        {
+          "label": "b",
+          "text": "State the domain.",
+          "answer": "x ≥ −2, or [−2, ∞)",
+          "answer_type": "text"
+        },
+        {
+          "label": "c",
+          "text": "State the range.",
+          "answer": "y ≤ 3, or (−∞, 3]",
+          "answer_type": "text"
+        },
+        {
+          "label": "d",
+          "text": "Describe the transformations from the parent y = √x.",
+          "answer": "Shifted left 2, reflected over x-axis, shifted up 3",
+          "answer_type": "text"
+        }
+      ],
+      "hint": "Reflect, shift—start from the parent shape!",
+      "solution_steps": [
+        "Step 1: Parent is y = √x. Replace x with (x + 2): shifts left 2.",
+        "Step 2: Negative sign reflects the graph over the x-axis.",
+        "Step 3: Adding 3 shifts the graph up 3. Starting point: (−2, 3).",
+        "Step 4: Domain: x + 2 ≥ 0 → x ≥ −2. Range: y ≤ 3 (reflected, so output goes down)."
+      ],
+      "tags": [
+        "square-root",
+        "transformations",
+        "graphing",
+        "reflection"
+      ]
+    },
+    {
+      "id": "gen-nl-007",
+      "unit": "nonlinear-functions",
+      "standard": "6.b",
+      "difficulty": "hard",
+      "type": "multi-part",
+      "skill": "model",
+      "source_file": "generated",
+      "question_text": "The speed of a car in mph after braking on wet pavement can be estimated by S(d) = √(12d), where d is the skid-mark length in feet.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Find the speed if the skid marks are 75 feet long.",
+          "answer": "30 mph",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "b",
+          "text": "How long are the skid marks for a car going 48 mph?",
+          "answer": "192 feet",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "State the domain and range in context.",
+          "answer": "Domain: d ≥ 0 (skid length); Range: S ≥ 0 (speed)",
+          "answer_type": "text"
+        }
+      ],
+      "hint": "Square both sides to undo the radical!",
+      "solution_steps": [
+        "Step 1: S(75) = √(12 · 75) = √900 = 30 mph.",
+        "Step 2: Set 48 = √(12d). Square both sides: 2304 = 12d → d = 192 ft.",
+        "Step 3: Domain: d ≥ 0 (can't have negative skid length). Range: S ≥ 0 (speed is non-negative)."
+      ],
+      "tags": [
+        "square-root",
+        "real-world",
+        "braking-distance",
+        "modeling"
+      ]
+    },
+    {
+      "id": "gen-nl-008",
+      "unit": "nonlinear-functions",
+      "standard": "6.c",
+      "difficulty": "easy",
+      "type": "short",
+      "skill": "identify",
+      "source_file": "generated",
+      "question_text": "For f(x) = 3/(x − 2) + 1, identify the vertical and horizontal asymptotes.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "What is the vertical asymptote?",
+          "answer": "x = 2",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "What is the horizontal asymptote?",
+          "answer": "y = 1",
+          "answer_type": "equation"
+        }
+      ],
+      "hint": "Asymptotes come from shifts of the parent 1/x.",
+      "solution_steps": [
+        "Step 1: Parent function is 1/x with asymptotes x = 0 and y = 0.",
+        "Step 2: Denominator (x − 2) = 0 when x = 2 → vertical asymptote: x = 2.",
+        "Step 3: The +1 shifts the horizontal asymptote up to y = 1."
+      ],
+      "tags": [
+        "rational",
+        "asymptotes",
+        "parent-function"
+      ]
+    },
+    {
+      "id": "gen-nl-009",
+      "unit": "nonlinear-functions",
+      "standard": "6.c",
+      "difficulty": "medium",
+      "type": "graph",
+      "skill": "graph",
+      "source_file": "generated",
+      "question_text": "Graph f(x) = −2/(x + 1) + 4 and analyze the function.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Find the vertical asymptote.",
+          "answer": "x = −1",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "Find the horizontal asymptote.",
+          "answer": "y = 4",
+          "answer_type": "equation"
+        },
+        {
+          "label": "c",
+          "text": "State the domain and range.",
+          "answer": "Domain: all reals except x = −1; Range: all reals except y = 4",
+          "answer_type": "text"
+        },
+        {
+          "label": "d",
+          "text": "Plot at least 4 points on the graph.",
+          "answer": "(0, 2), (1, 3), (−2, 6), (−3, 5)",
+          "answer_type": "text"
+        }
+      ],
+      "hint": "Find the center (asymptotes), then plot points on each side.",
+      "solution_steps": [
+        "Step 1: VA at x + 1 = 0 → x = −1. HA at y = 4.",
+        "Step 2: f(0) = −2/1 + 4 = 2. f(1) = −2/2 + 4 = 3.",
+        "Step 3: f(−2) = −2/(−1) + 4 = 2 + 4 = 6. f(−3) = −2/(−2) + 4 = 1 + 4 = 5.",
+        "Step 4: Domain: (−∞, −1) ∪ (−1, ∞). Range: (−∞, 4) ∪ (4, ∞)."
+      ],
+      "tags": [
+        "rational",
+        "graphing",
+        "asymptotes",
+        "transformations"
+      ]
+    },
+    {
+      "id": "gen-nl-010",
+      "unit": "nonlinear-functions",
+      "standard": "6.c",
+      "difficulty": "hard",
+      "type": "multi-part",
+      "skill": "model",
+      "source_file": "generated",
+      "question_text": "A science class starts with 100 mL of water and adds salt. The concentration (g/mL) is modeled by C(s) = s/(s + 100), where s is grams of salt added.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "What is the concentration after adding 25 g of salt?",
+          "answer": "0.2 g/mL",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "b",
+          "text": "How much salt is needed for a concentration of 0.5 g/mL?",
+          "answer": "100 grams",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "What is the horizontal asymptote and what does it mean in context?",
+          "answer": "y = 1; the concentration approaches but never reaches 1 g/mL",
+          "answer_type": "text"
+        },
+        {
+          "label": "d",
+          "text": "Can the concentration ever equal exactly 1 g/mL? Explain.",
+          "answer": "No. s/(s + 100) = 1 leads to s = s + 100, which is impossible.",
+          "answer_type": "text"
+        }
+      ],
+      "hint": "Set up the equation and solve—watch the asymptote!",
+      "solution_steps": [
+        "Step 1: C(25) = 25/(25 + 100) = 25/125 = 0.2 g/mL.",
+        "Step 2: 0.5 = s/(s + 100) → 0.5(s + 100) = s → 0.5s + 50 = s → 50 = 0.5s → s = 100 g.",
+        "Step 3: As s → ∞, s/(s + 100) → 1. The HA is y = 1.",
+        "Step 4: Setting s/(s + 100) = 1 gives s = s + 100, a contradiction. Concentration never reaches 1."
+      ],
+      "tags": [
+        "rational",
+        "real-world",
+        "concentration",
+        "asymptotes",
+        "modeling"
+      ]
+    },
+    {
+      "id": "gen-nl-011",
+      "unit": "nonlinear-functions",
+      "standard": "6.d",
+      "difficulty": "easy",
+      "type": "short",
+      "skill": "identify",
+      "source_file": "generated",
+      "question_text": "For f(x) = (x + 2)³ − 3, identify the inflection point and state the domain and range.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "What is the inflection point?",
+          "answer": "(-2, -3)",
+          "answer_type": "text"
+        },
+        {
+          "label": "b",
+          "text": "State the domain.",
+          "answer": "All real numbers, (−∞, ∞)",
+          "answer_type": "text"
+        },
+        {
+          "label": "c",
+          "text": "State the range.",
+          "answer": "All real numbers, (−∞, ∞)",
+          "answer_type": "text"
+        }
+      ],
+      "hint": "Cubics pass through the inflection point—read (h, k)!",
+      "solution_steps": [
+        "Step 1: The form a(x − h)³ + k has inflection point (h, k).",
+        "Step 2: f(x) = (x − (−2))³ + (−3), so inflection point is (−2, −3).",
+        "Step 3: Cubic functions have domain and range of all real numbers."
+      ],
+      "tags": [
+        "cubic",
+        "inflection-point",
+        "domain",
+        "range"
+      ]
+    },
+    {
+      "id": "gen-nl-012",
+      "unit": "nonlinear-functions",
+      "standard": "6.d",
+      "difficulty": "medium",
+      "type": "graph",
+      "skill": "graph",
+      "source_file": "generated",
+      "question_text": "Graph f(x) = −(x − 2)³ + 1 and analyze the function.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Find the inflection point.",
+          "answer": "(2, 1)",
+          "answer_type": "text"
+        },
+        {
+          "label": "b",
+          "text": "State the domain and range.",
+          "answer": "Domain: all reals; Range: all reals",
+          "answer_type": "text"
+        },
+        {
+          "label": "c",
+          "text": "Describe the end behavior.",
+          "answer": "As x → ∞, f(x) → −∞; as x → −∞, f(x) → ∞",
+          "answer_type": "text"
+        },
+        {
+          "label": "d",
+          "text": "List the transformations from the parent y = x³.",
+          "answer": "Right 2, reflected over x-axis, up 1",
+          "answer_type": "text"
+        }
+      ],
+      "hint": "Reflect the parent cubic, then shift right and up.",
+      "solution_steps": [
+        "Step 1: Parent y = x³ shifted right 2: (x − 2)³.",
+        "Step 2: Negative reflects over x-axis: −(x − 2)³.",
+        "Step 3: +1 shifts up. Inflection point: (2, 1).",
+        "Step 4: Reflected cubic: as x → ∞, y → −∞; as x → −∞, y → ∞."
+      ],
+      "tags": [
+        "cubic",
+        "transformations",
+        "graphing",
+        "end-behavior",
+        "reflection"
+      ]
+    },
+    {
+      "id": "gen-nl-013",
+      "unit": "nonlinear-functions",
+      "standard": "6.d",
+      "difficulty": "medium",
+      "type": "multi-part",
+      "skill": "model",
+      "source_file": "generated",
+      "question_text": "An engineering team models the deflection (in mm) of a beam as D(x) = 0.5(x − 4)³ + 8, where x is the distance in meters from one end.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "What is the deflection at x = 4 meters?",
+          "answer": "8 mm",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "b",
+          "text": "What is the inflection point and what does it represent?",
+          "answer": "(4, 8); where the curvature of the beam changes direction",
+          "answer_type": "text"
+        },
+        {
+          "label": "c",
+          "text": "Find the deflection at x = 6 meters.",
+          "answer": "12 mm",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Plug in—the inflection point is where curvature flips.",
+      "solution_steps": [
+        "Step 1: D(4) = 0.5(4 − 4)³ + 8 = 0.5(0) + 8 = 8 mm.",
+        "Step 2: Inflection point is (4, 8) from the form a(x − h)³ + k.",
+        "Step 3: D(6) = 0.5(6 − 4)³ + 8 = 0.5(8) + 8 = 4 + 8 = 12 mm."
+      ],
+      "tags": [
+        "cubic",
+        "real-world",
+        "engineering",
+        "inflection-point",
+        "modeling"
+      ]
+    },
+    {
+      "id": "gen-nl-014",
+      "unit": "nonlinear-functions",
+      "standard": "6.e",
+      "difficulty": "easy",
+      "type": "short",
+      "skill": "identify",
+      "source_file": "generated",
+      "question_text": "A function passes through (0, 0), (1, 1), (4, 2), and (9, 3). Its graph starts at the origin and curves upward, getting flatter. What type of function is this?",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Identify the function type.",
+          "answer": "Square root function",
+          "answer_type": "text"
+        },
+        {
+          "label": "b",
+          "text": "Write the parent equation that fits these points.",
+          "answer": "f(x) = √x",
+          "answer_type": "equation"
+        }
+      ],
+      "hint": "Perfect squares go in, integers come out—what's that?",
+      "solution_steps": [
+        "Step 1: Check outputs: √0 = 0, √1 = 1, √4 = 2, √9 = 3. All match.",
+        "Step 2: The function is f(x) = √x (square root parent function)."
+      ],
+      "tags": [
+        "function-identification",
+        "square-root",
+        "pattern-recognition"
+      ]
+    },
+    {
+      "id": "gen-nl-015",
+      "unit": "nonlinear-functions",
+      "standard": "6.e",
+      "difficulty": "medium",
+      "type": "multi-part",
+      "skill": "identify",
+      "source_file": "generated",
+      "question_text": "A graph shows a curve with a vertical asymptote at x = 0 and a horizontal asymptote at y = 0. As x → ∞, y approaches 0 from above. As x → 0⁺, y → ∞.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "What type of function is this?",
+          "answer": "Rational function",
+          "answer_type": "text"
+        },
+        {
+          "label": "b",
+          "text": "Which parent function does it most closely resemble?",
+          "answer": "f(x) = 1/x (right branch, x > 0)",
+          "answer_type": "text"
+        },
+        {
+          "label": "c",
+          "text": "State the domain and range based on the description.",
+          "answer": "Domain: x > 0, (0, ∞); Range: y > 0, (0, ∞)",
+          "answer_type": "text"
+        }
+      ],
+      "hint": "Asymptotes in both directions? Think rational!",
+      "solution_steps": [
+        "Step 1: Vertical and horizontal asymptotes are signatures of rational functions.",
+        "Step 2: VA at x = 0 and HA at y = 0 match y = 1/x.",
+        "Step 3: Only positive values described → domain: x > 0, range: y > 0."
+      ],
+      "tags": [
+        "function-identification",
+        "rational",
+        "asymptotes",
+        "graph-analysis"
+      ]
+    },
+    {
+      "id": "gen-nl-016",
+      "unit": "nonlinear-functions",
+      "standard": "6.e",
+      "difficulty": "medium",
+      "type": "multi-part",
+      "skill": "identify",
+      "source_file": "generated",
+      "question_text": "Match each description to its function type: quadratic, square root, rational, or cubic.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Has a vertex and a line of symmetry.",
+          "answer": "Quadratic",
+          "answer_type": "text"
+        },
+        {
+          "label": "b",
+          "text": "Has both a vertical and a horizontal asymptote.",
+          "answer": "Rational",
+          "answer_type": "text"
+        },
+        {
+          "label": "c",
+          "text": "Has an inflection point with domain and range both all real numbers.",
+          "answer": "Cubic",
+          "answer_type": "text"
+        },
+        {
+          "label": "d",
+          "text": "Has a restricted domain starting at a specific x-value and only increases (or only decreases).",
+          "answer": "Square root",
+          "answer_type": "text"
+        }
+      ],
+      "hint": "Each function family has its own signature features!",
+      "solution_steps": [
+        "Step 1: Vertex + symmetry = parabola = quadratic.",
+        "Step 2: Two asymptotes = rational (like y = 1/x).",
+        "Step 3: Inflection point + all-real domain and range = cubic.",
+        "Step 4: Restricted domain with one-direction curve = square root."
+      ],
+      "tags": [
+        "function-identification",
+        "matching",
+        "key-features",
+        "function-families"
+      ]
+    },
+    {
+      "id": "gen-nl-017",
+      "unit": "nonlinear-functions",
+      "standard": "6.e",
+      "difficulty": "hard",
+      "type": "multi-part",
+      "skill": "identify",
+      "source_file": "generated",
+      "question_text": "You are given a table of values:\n\n| x  | −2 | −1 | 0 | 1 | 2  | 3  |\n|----|----|----|---|---|----|----|  \n| y  | −8 | −1 | 0 | 1 | 8  | 27 |",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Identify the function type.",
+          "answer": "Cubic function",
+          "answer_type": "text"
+        },
+        {
+          "label": "b",
+          "text": "Write a possible equation.",
+          "answer": "f(x) = x³",
+          "answer_type": "equation"
+        },
+        {
+          "label": "c",
+          "text": "Describe the end behavior.",
+          "answer": "As x → ∞, y → ∞; as x → −∞, y → −∞",
+          "answer_type": "text"
+        },
+        {
+          "label": "d",
+          "text": "What is the inflection point?",
+          "answer": "(0, 0)",
+          "answer_type": "text"
+        }
+      ],
+      "hint": "Check the pattern—are outputs cubes of inputs?",
+      "solution_steps": [
+        "Step 1: (−2)³ = −8 ✓, (−1)³ = −1 ✓, 0³ = 0 ✓, 1³ = 1 ✓, 2³ = 8 ✓, 3³ = 27 ✓.",
+        "Step 2: The function is f(x) = x³, a cubic.",
+        "Step 3: End behavior: as x → ±∞, y → ±∞ (same direction as x).",
+        "Step 4: Inflection point of y = x³ is at the origin (0, 0)."
+      ],
+      "tags": [
+        "function-identification",
+        "cubic",
+        "tables",
+        "end-behavior",
+        "inflection-point"
+      ]
+    },
+    {
+      "id": "gen-fn-001",
+      "unit": "functions",
+      "standard": "3.a",
+      "difficulty": "medium",
+      "type": "multi-part",
+      "skill": "evaluate",
+      "source_file": "generated",
+      "question_text": "Given f(x) = x² + 1 and g(x) = 3x − 5, evaluate the following.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Find f(g(2)).",
+          "answer": "2",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "b",
+          "text": "Find g(f(2)).",
+          "answer": "10",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "Write a simplified expression for f(g(x)).",
+          "answer": "9x² − 30x + 26",
+          "answer_type": "equation"
+        },
+        {
+          "label": "d",
+          "text": "Write a simplified expression for g(f(x)).",
+          "answer": "3x² − 2",
+          "answer_type": "equation"
+        }
+      ],
+      "hint": "Work inside-out—evaluate the inner function first!",
+      "solution_steps": [
+        "Step 1: g(2) = 3(2) − 5 = 1. Then f(1) = 1² + 1 = 2.",
+        "Step 2: f(2) = 2² + 1 = 5. Then g(5) = 3(5) − 5 = 10.",
+        "Step 3: f(g(x)) = (3x − 5)² + 1 = 9x² − 30x + 25 + 1 = 9x² − 30x + 26.",
+        "Step 4: g(f(x)) = 3(x² + 1) − 5 = 3x² + 3 − 5 = 3x² − 2."
+      ],
+      "tags": [
+        "function-composition",
+        "algebraic",
+        "simplify"
+      ]
+    },
+    {
+      "id": "gen-fn-002",
+      "unit": "functions",
+      "standard": "3.a",
+      "difficulty": "hard",
+      "type": "multi-part",
+      "skill": "model",
+      "source_file": "generated",
+      "question_text": "A store offers a 20% discount, then charges 8% sales tax. Let D(p) = 0.80p represent the discount and T(p) = 1.08p represent the tax applied to price p.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Find T(D(50)) and explain what it represents.",
+          "answer": "$43.20; discount applied first, then tax",
+          "answer_type": "text"
+        },
+        {
+          "label": "b",
+          "text": "Find D(T(50)) and explain what it represents.",
+          "answer": "$43.20; tax applied first, then discount",
+          "answer_type": "text"
+        },
+        {
+          "label": "c",
+          "text": "Does the order of discount and tax matter? Explain why or why not.",
+          "answer": "No. Both give $43.20 because multiplication is commutative: 0.80 × 1.08 × 50 = 1.08 × 0.80 × 50.",
+          "answer_type": "text"
+        }
+      ],
+      "hint": "Compose both ways—does the order change the total?",
+      "solution_steps": [
+        "Step 1: D(50) = 0.80(50) = 40. T(40) = 1.08(40) = 43.20.",
+        "Step 2: T(50) = 1.08(50) = 54. D(54) = 0.80(54) = 43.20.",
+        "Step 3: Both equal $43.20 because 0.80 × 1.08 = 1.08 × 0.80 (multiplication is commutative)."
+      ],
+      "tags": [
+        "function-composition",
+        "real-world",
+        "discount",
+        "tax",
+        "commutative"
+      ]
+    },
+    {
+      "id": "gen-fn-003",
+      "unit": "functions",
+      "standard": "3.c",
+      "difficulty": "easy",
+      "type": "graph",
+      "skill": "graph",
+      "source_file": "generated",
+      "question_text": "Make a table of values for f(x) = √x using x = 0, 1, 4, 9, and 16. Plot the points and sketch the graph. State the domain and range.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Complete the table and plot the graph.",
+          "answer": "(0, 0), (1, 1), (4, 2), (9, 3), (16, 4)",
+          "answer_type": "text"
+        },
+        {
+          "label": "b",
+          "text": "State the domain.",
+          "answer": "x ≥ 0, or [0, ∞)",
+          "answer_type": "text"
+        },
+        {
+          "label": "c",
+          "text": "State the range.",
+          "answer": "y ≥ 0, or [0, ∞)",
+          "answer_type": "text"
+        }
+      ],
+      "hint": "Pick perfect squares—they make square roots easy!",
+      "solution_steps": [
+        "Step 1: √0 = 0, √1 = 1, √4 = 2, √9 = 3, √16 = 4.",
+        "Step 2: Plot points (0,0), (1,1), (4,2), (9,3), (16,4). Connect with a smooth curve.",
+        "Step 3: Domain: x ≥ 0 (no negative inputs). Range: y ≥ 0 (outputs are non-negative)."
+      ],
+      "tags": [
+        "graphing",
+        "square-root",
+        "tables",
+        "domain",
+        "range"
+      ]
+    },
+    {
+      "id": "gen-fn-004",
+      "unit": "functions",
+      "standard": "3.c",
+      "difficulty": "medium",
+      "type": "graph",
+      "skill": "graph",
+      "source_file": "generated",
+      "question_text": "Graph f(x) = (x − 1)² − 4 by creating a table with at least 5 points. Identify key features.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Identify the vertex.",
+          "answer": "(1, −4)",
+          "answer_type": "text"
+        },
+        {
+          "label": "b",
+          "text": "Find the x-intercepts.",
+          "answer": "(−1, 0) and (3, 0)",
+          "answer_type": "text"
+        },
+        {
+          "label": "c",
+          "text": "Find the y-intercept.",
+          "answer": "(0, −3)",
+          "answer_type": "text"
+        },
+        {
+          "label": "d",
+          "text": "State the domain and range.",
+          "answer": "Domain: all real numbers; Range: y ≥ −4, or [−4, ∞)",
+          "answer_type": "text"
+        }
+      ],
+      "hint": "Vertex form gives you the turning point right away!",
+      "solution_steps": [
+        "Step 1: Vertex form a(x − h)² + k gives vertex (1, −4).",
+        "Step 2: x-intercepts: (x − 1)² − 4 = 0 → (x − 1)² = 4 → x − 1 = ±2 → x = −1 or x = 3.",
+        "Step 3: y-intercept: f(0) = (0 − 1)² − 4 = 1 − 4 = −3. Point: (0, −3).",
+        "Step 4: Domain: all reals. Range: y ≥ −4 since parabola opens upward."
+      ],
+      "tags": [
+        "graphing",
+        "quadratic",
+        "vertex-form",
+        "intercepts",
+        "domain",
+        "range"
+      ]
+    },
+    {
+      "id": "gen-fn-005",
+      "unit": "functions",
+      "standard": "3.e",
+      "difficulty": "easy",
+      "type": "multi-part",
+      "skill": "model",
+      "source_file": "generated",
+      "question_text": "A gym charges a $75 enrollment fee plus $40 per month.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Write a function C(m) for the total cost after m months.",
+          "answer": "C(m) = 40m + 75",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "What is the slope and what does it represent?",
+          "answer": "40; the monthly membership fee ($40/month)",
+          "answer_type": "text"
+        },
+        {
+          "label": "c",
+          "text": "How much will you have paid after 1 year?",
+          "answer": "$555",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "d",
+          "text": "If you've spent $475, how many months have you been a member?",
+          "answer": "10 months",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Monthly fee is slope, enrollment fee is y-intercept!",
+      "solution_steps": [
+        "Step 1: C(m) = 40m + 75 (rate × months + initial fee).",
+        "Step 2: Slope = 40, representing the $40 monthly cost.",
+        "Step 3: C(12) = 40(12) + 75 = 480 + 75 = $555.",
+        "Step 4: 475 = 40m + 75 → 400 = 40m → m = 10 months."
+      ],
+      "tags": [
+        "linear-model",
+        "real-world",
+        "slope",
+        "y-intercept",
+        "gym"
+      ]
+    },
+    {
+      "id": "gen-fn-006",
+      "unit": "functions",
+      "standard": "3.f",
+      "difficulty": "medium",
+      "type": "multi-part",
+      "skill": "identify",
+      "source_file": "generated",
+      "question_text": "A hiker records elevation (in feet) during a trail run:\n\n| Miles | 0    | 1    | 2    | 3    | 4    | 5    | 6    |\n|-------|------|------|------|------|------|------|------|\n| Elev. | 2400 | 2800 | 3100 | 3300 | 3200 | 2900 | 2500 |",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Over which 1-mile interval is the hiker gaining elevation fastest?",
+          "answer": "Mile 0 to mile 1 (gained 400 ft)",
+          "answer_type": "text"
+        },
+        {
+          "label": "b",
+          "text": "At approximately what mile does the hiker reach peak elevation?",
+          "answer": "Mile 3 (3300 ft)",
+          "answer_type": "text"
+        },
+        {
+          "label": "c",
+          "text": "Over which interval is elevation decreasing?",
+          "answer": "Mile 3 to mile 6",
+          "answer_type": "text"
+        },
+        {
+          "label": "d",
+          "text": "Estimate the hiker's elevation at mile 1.5.",
+          "answer": "≈ 2950 ft (average of 2800 and 3100)",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Look for the steepest climb and the highest point!",
+      "solution_steps": [
+        "Step 1: Changes: 0→1: +400, 1→2: +300, 2→3: +200, 3→4: −100, 4→5: −300, 5→6: −400.",
+        "Step 2: Fastest gain: mile 0 to 1 with +400 ft.",
+        "Step 3: Peak at mile 3 = 3300 ft (highest value).",
+        "Step 4: Decreasing from mile 3 to mile 6. Midpoint estimate: (2800 + 3100)/2 = 2950 ft."
+      ],
+      "tags": [
+        "graph-analysis",
+        "real-world",
+        "hiking",
+        "rate-of-change",
+        "increasing-decreasing"
+      ]
+    },
+    {
+      "id": "gen-fn-007",
+      "unit": "functions",
+      "standard": "3.g",
+      "difficulty": "easy",
+      "type": "multi-part",
+      "skill": "solve",
+      "source_file": "generated",
+      "question_text": "Given f(x) = 5x − 10, find and verify the inverse function.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Find the inverse function f⁻¹(x).",
+          "answer": "f⁻¹(x) = (x + 10)/5",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "Verify by showing f(f⁻¹(x)) = x.",
+          "answer": "f((x + 10)/5) = 5·(x + 10)/5 − 10 = x + 10 − 10 = x ✓",
+          "answer_type": "text"
+        },
+        {
+          "label": "c",
+          "text": "Find f⁻¹(15).",
+          "answer": "5",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Swap x and y, then solve for the new y!",
+      "solution_steps": [
+        "Step 1: Write y = 5x − 10. Swap x and y: x = 5y − 10.",
+        "Step 2: Solve: x + 10 = 5y → y = (x + 10)/5. So f⁻¹(x) = (x + 10)/5.",
+        "Step 3: Verify: f(f⁻¹(x)) = 5·(x + 10)/5 − 10 = (x + 10) − 10 = x. ✓",
+        "Step 4: f⁻¹(15) = (15 + 10)/5 = 25/5 = 5."
+      ],
+      "tags": [
+        "inverse-functions",
+        "verification",
+        "composition"
+      ]
+    },
+    {
+      "id": "gen-fn-008",
+      "unit": "functions",
+      "standard": "3.h",
+      "difficulty": "hard",
+      "type": "multi-part",
+      "skill": "model",
+      "source_file": "generated",
+      "question_text": "A food truck has revenue R(x) = 8.50x and costs C(x) = 3.25x + 340, where x is meals sold per day.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Write the profit function P(x) = R(x) − C(x).",
+          "answer": "P(x) = 5.25x − 340",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "How many meals must be sold to break even? (Round up to a whole meal.)",
+          "answer": "65 meals",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "What is the profit if 120 meals are sold?",
+          "answer": "$290",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "d",
+          "text": "How many meals are needed for a $500 profit?",
+          "answer": "160 meals",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Profit = Revenue minus Cost—find where it hits zero!",
+      "solution_steps": [
+        "Step 1: P(x) = 8.50x − (3.25x + 340) = 5.25x − 340.",
+        "Step 2: Break even: 5.25x − 340 = 0 → x = 340/5.25 ≈ 64.76 → 65 meals (round up).",
+        "Step 3: P(120) = 5.25(120) − 340 = 630 − 340 = $290.",
+        "Step 4: 500 = 5.25x − 340 → 840 = 5.25x → x = 160 meals."
+      ],
+      "tags": [
+        "function-operations",
+        "real-world",
+        "profit",
+        "break-even",
+        "food-truck"
+      ]
+    },
+    {
+      "id": "gen-fn-009",
+      "unit": "functions",
+      "standard": "3.i",
+      "difficulty": "medium",
+      "type": "multi-part",
+      "skill": "solve",
+      "source_file": "generated",
+      "question_text": "The formula for converting Celsius to Fahrenheit is F(c) = (9/5)c + 32.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Find the inverse function F⁻¹(x) that converts Fahrenheit to Celsius.",
+          "answer": "F⁻¹(x) = (5/9)(x − 32)",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "Convert 212°F to Celsius.",
+          "answer": "100°C",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "At what temperature are Fahrenheit and Celsius equal?",
+          "answer": "−40°",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Swap the variables and solve—classic inverse move!",
+      "solution_steps": [
+        "Step 1: Swap: x = (9/5)y + 32 → x − 32 = (9/5)y → y = (5/9)(x − 32).",
+        "Step 2: F⁻¹(212) = (5/9)(212 − 32) = (5/9)(180) = 100°C.",
+        "Step 3: Set c = (9/5)c + 32 → c − (9/5)c = 32 → −(4/5)c = 32 → c = −40°."
+      ],
+      "tags": [
+        "inverse-functions",
+        "real-world",
+        "temperature",
+        "conversion"
       ]
     }
   ]
