@@ -747,7 +747,7 @@ table th {
     height: 450px;
     margin: 20px auto;
     padding: 20px;
-    background: white;
+    background: var(--bg-card);
     border-radius: 8px;
 }
 

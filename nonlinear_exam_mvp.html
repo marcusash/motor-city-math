@@ -13,8 +13,8 @@
     <style>
         .notation-bar {
             font-size: 0.85rem;
-            background: #002D62;
-            color: white;
+            background: var(--accent-navy);
+            color: var(--text-inverse);
             padding: 6px 16px;
             position: sticky;
             top: 0;
@@ -26,9 +26,9 @@
             text-align: center;
             margin: 40px 0 30px;
             padding: 15px;
-            background: #f0f4ff;
-            border: 2px solid #C8102E;
-            color: #C8102E;
+            background: var(--bg-card);
+            border: 2px solid var(--accent-red);
+            color: var(--accent-red);
             font-weight: 600;
             font-size: 1.2em;
             letter-spacing: 0.5px;
@@ -39,13 +39,14 @@
             max-width: 350px;
             padding: 10px 12px;
             font-size: 1rem;
-            border: 2px solid #BEC0C2;
+            border: 2px solid var(--border-default);
             border-radius: 4px;
-            background: white;
+            background: var(--bg-input);
+            color: var(--text-primary);
             margin: 8px 0;
         }
         .math-select:focus {
-            border-color: #1D42BA;
+            border-color: var(--border-focus);
             box-shadow: 0 0 0 3px rgba(29,66,186,0.15);
             outline: none;
         }
@@ -58,19 +59,21 @@
         }
         .input-group label {
             font-weight: 600;
-            color: #002D62;
+            color: var(--accent-navy);
             min-width: 30px;
         }
         .input-group input[type="number"],
         .input-group input[type="text"] {
             width: 120px;
             padding: 8px 10px;
-            border: 2px solid #BEC0C2;
+            border: 2px solid var(--border-default);
             border-radius: 4px;
             font-size: 1rem;
+            background: var(--bg-input);
+            color: var(--text-primary);
         }
         .input-group input:focus {
-            border-color: #1D42BA;
+            border-color: var(--border-focus);
             box-shadow: 0 0 0 3px rgba(29,66,186,0.15);
             outline: none;
         }
@@ -78,15 +81,17 @@
             width: 100%;
             min-height: 80px;
             padding: 10px;
-            border: 2px solid #BEC0C2;
+            border: 2px solid var(--border-default);
             border-radius: 4px;
             font-family: inherit;
             font-size: 0.95rem;
             resize: vertical;
             margin: 8px 0;
+            background: var(--bg-input);
+            color: var(--text-primary);
         }
         .work-area:focus {
-            border-color: #1D42BA;
+            border-color: var(--border-focus);
             box-shadow: 0 0 0 3px rgba(29,66,186,0.15);
             outline: none;
         }
@@ -99,18 +104,20 @@
             gap: 10px;
             padding: 10px 14px;
             margin: 6px 0;
-            border: 2px solid #BEC0C2;
+            border: 2px solid var(--border-default);
             border-radius: 6px;
             cursor: pointer;
             transition: border-color 0.15s;
+            background: var(--bg-card);
+            color: var(--text-primary);
         }
         .radio-option:hover {
-            border-color: #1D42BA;
+            border-color: var(--border-focus);
         }
         .radio-option input[type="radio"] {
             width: 18px;
             height: 18px;
-            accent-color: #1D42BA;
+            accent-color: var(--accent-blue);
         }
 
         /* Canvas graphing */
@@ -119,7 +126,7 @@
             margin: 16px 0;
         }
         .graph-container canvas {
-            border: 2px solid #002D62;
+            border: 2px solid var(--accent-navy);
             border-radius: 4px;
             cursor: crosshair;
             display: block;
@@ -127,8 +134,8 @@
         }
         .graph-tooltip {
             position: fixed;
-            background: #002D62;
-            color: white;
+            background: var(--accent-navy);
+            color: var(--text-inverse);
             font: 600 14px/1 monospace;
             padding: 4px 8px;
             border-radius: 4px;
@@ -139,7 +146,7 @@
         }
         .point-counter {
             font-weight: 600;
-            color: #002D62;
+            color: var(--accent-navy);
             margin: 8px 0;
             font-size: 0.95rem;
         }
@@ -147,31 +154,31 @@
             display: inline-block;
             padding: 8px 16px;
             margin: 4px 4px 4px 0;
-            border: 2px solid #1D42BA;
-            background: white;
-            color: #1D42BA;
+            border: 2px solid var(--accent-blue);
+            background: var(--bg-card);
+            color: var(--accent-blue);
             font-weight: 600;
             border-radius: 4px;
             cursor: pointer;
             font-size: 0.9rem;
         }
-        .graph-btn:hover { background: #f0f4ff; }
+        .graph-btn:hover { background: var(--bg-input); }
         .graph-btn:disabled {
             opacity: 0.4;
             cursor: not-allowed;
         }
         .graph-btn.active {
-            background: #1D42BA;
-            color: white;
+            background: var(--accent-blue);
+            color: var(--text-inverse);
         }
         .graph-btn.check-graph {
-            background: #1D42BA;
-            color: white;
-            border-color: #1D42BA;
+            background: var(--accent-blue);
+            color: var(--text-inverse);
+            border-color: var(--accent-blue);
         }
         .graph-btn.check-graph:disabled {
-            background: #BEC0C2;
-            border-color: #BEC0C2;
+            background: var(--border-default);
+            border-color: var(--border-default);
         }
         .graph-result {
             font-weight: 600;
@@ -182,14 +189,14 @@
         }
         .graph-result.show { display: block; }
         .graph-result.correct { background: #F0FFF4; color: #1B7D3A; border: 1px solid #1B7D3A; }
-        .graph-result.incorrect { background: #FFF5F5; color: #C8102E; border: 1px solid #C8102E; }
+        .graph-result.incorrect { background: #FFF5F5; color: var(--accent-red); border: 1px solid var(--accent-red); }
 
         /* Hint system (3-layer) */
         .hint-btn {
             display: none;
             padding: 6px 14px;
             margin: 6px 4px 6px 0;
-            border: 2px solid #E8A317;
+            border: 2px solid var(--color-warning);
             background: #FFFFF0;
             color: #665500;
             font-weight: 600;
@@ -206,21 +213,21 @@
             font-size: 0.95rem;
             line-height: 1.6;
         }
-        .hint-layer.layer1 { background: #FFFFF0; border: 2px solid #E8A317; }
+        .hint-layer.layer1 { background: #FFFFF0; border: 2px solid var(--color-warning); }
         .hint-layer.layer2 { background: #F0FFF4; border: 2px solid #1B7D3A; }
-        .hint-layer.layer3 { background: white; border: 2px solid #BEC0C2; }
+        .hint-layer.layer3 { background: var(--bg-card); border: 2px solid var(--border-default); }
         .hint-layer.show { display: block; }
         .hint-layer button {
             padding: 5px 12px;
             margin: 6px 4px 0 0;
             border: 2px solid currentColor;
-            background: white;
+            background: var(--bg-card);
             font-weight: 600;
             border-radius: 4px;
             cursor: pointer;
             font-size: 0.85rem;
         }
-        .hint-layer.layer1 button { color: #665500; border-color: #E8A317; }
+        .hint-layer.layer1 button { color: #665500; border-color: var(--color-warning); }
         .hint-layer.layer2 button { color: #1B7D3A; border-color: #1B7D3A; }
 
         /* SAAS grade badge */
