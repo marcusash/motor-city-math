@@ -1,0 +1,1764 @@
+[
+  {
+    "id": "gen-lm-001",
+    "unit": "linear-models",
+    "standard": "4.a",
+    "difficulty": "easy",
+    "type": "short",
+    "skill": "evaluate",
+    "source_file": "generated",
+    "question_text": "Kai earns XP in a video game modeled by f(x) = 3x + 10, where x is the number of eliminations in a match. If Kai gets 7 eliminations, how much XP does he earn?",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Find f(7)",
+        "answer": "31",
+        "answer_type": "numeric"
+      }
+    ],
+    "hint": "Plug 7 in for x and simplify.",
+    "solution_steps": [
+      "Step 1: f(7) = 3(7) + 10",
+      "Step 2: f(7) = 21 + 10 = 31"
+    ],
+    "tags": [
+      "function-evaluation",
+      "substitution",
+      "gaming"
+    ]
+  },
+  {
+    "id": "gen-lm-002",
+    "unit": "linear-models",
+    "standard": "4.a",
+    "difficulty": "easy",
+    "type": "short",
+    "skill": "evaluate",
+    "source_file": "generated",
+    "question_text": "A music streaming app tracks weekly new songs added to Kai's playlist with g(w) = 5w - 2, where w is the number of weeks. How many total songs are added after 6 weeks?",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Find g(6)",
+        "answer": "28",
+        "answer_type": "numeric"
+      }
+    ],
+    "hint": "Substitute 6 for w and compute.",
+    "solution_steps": [
+      "Step 1: g(6) = 5(6) - 2",
+      "Step 2: g(6) = 30 - 2 = 28"
+    ],
+    "tags": [
+      "function-evaluation",
+      "substitution",
+      "music-streaming"
+    ]
+  },
+  {
+    "id": "gen-lm-003",
+    "unit": "linear-models",
+    "standard": "4.a",
+    "difficulty": "easy",
+    "type": "short",
+    "skill": "evaluate",
+    "source_file": "generated",
+    "question_text": "Kai's phone data remaining (in GB) is modeled by D(t) = -0.5t + 8, where t is the number of days since the billing cycle started. How much data remains after 4 days?",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Find D(4)",
+        "answer": "6",
+        "answer_type": "numeric"
+      }
+    ],
+    "hint": "Replace t with 4 and simplify.",
+    "solution_steps": [
+      "Step 1: D(4) = -0.5(4) + 8",
+      "Step 2: D(4) = -2 + 8 = 6 GB"
+    ],
+    "tags": [
+      "function-evaluation",
+      "substitution",
+      "phone-data"
+    ]
+  },
+  {
+    "id": "gen-lm-004",
+    "unit": "linear-models",
+    "standard": "4.a",
+    "difficulty": "medium",
+    "type": "short",
+    "skill": "evaluate",
+    "source_file": "generated",
+    "question_text": "The price (in dollars) of a sneaker customization is modeled by P(x) = 12x + 45, where x is the number of design layers. Find P(3/4).",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Find P(3/4)",
+        "answer": "54",
+        "answer_type": "numeric"
+      }
+    ],
+    "hint": "Multiply 12 by the fraction, then add 45.",
+    "solution_steps": [
+      "Step 1: P(3/4) = 12(3/4) + 45",
+      "Step 2: P(3/4) = 9 + 45 = 54"
+    ],
+    "tags": [
+      "function-evaluation",
+      "fractions",
+      "sneaker-prices"
+    ]
+  },
+  {
+    "id": "gen-lm-005",
+    "unit": "linear-models",
+    "standard": "4.a",
+    "difficulty": "medium",
+    "type": "multi-part",
+    "skill": "evaluate",
+    "source_file": "generated",
+    "question_text": "The Pistons' projected score is modeled by f(q) = 28q - 3, where q is the number of quarters completed.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Find f(2). What does it mean?",
+        "answer": "53 — projected score after 2 quarters",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "b",
+        "text": "Find f(1/2). What does it mean?",
+        "answer": "11 — projected score halfway through the 1st quarter",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "c",
+        "text": "Explain why this model is linear.",
+        "answer": "The rate of change is constant: 28 points per quarter",
+        "answer_type": "text"
+      }
+    ],
+    "hint": "Substitute each value for q carefully.",
+    "solution_steps": [
+      "Step 1: f(2) = 28(2) - 3 = 56 - 3 = 53",
+      "Step 2: f(1/2) = 28(1/2) - 3 = 14 - 3 = 11",
+      "Step 3: Linear because the same amount (28) is added per quarter"
+    ],
+    "tags": [
+      "function-evaluation",
+      "fractions",
+      "linear-pattern",
+      "pistons",
+      "basketball"
+    ]
+  },
+  {
+    "id": "gen-lm-006",
+    "unit": "linear-models",
+    "standard": "4.a",
+    "difficulty": "medium",
+    "type": "multi-part",
+    "skill": "interpret",
+    "source_file": "generated",
+    "question_text": "A food delivery app shows the delivery fee as D(m) = 1.5m + 3.99, where m is miles from the restaurant.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "What does 1.5 represent in context?",
+        "answer": ".50 per mile — the per-mile delivery charge",
+        "answer_type": "text"
+      },
+      {
+        "label": "b",
+        "text": "What does 3.99 represent in context?",
+        "answer": ".99 base delivery fee (charged regardless of distance)",
+        "answer_type": "text"
+      },
+      {
+        "label": "c",
+        "text": "Find the delivery fee for 5 miles.",
+        "answer": "11.49",
+        "answer_type": "numeric"
+      }
+    ],
+    "hint": "Slope is the rate; the constant is the starting fee.",
+    "solution_steps": [
+      "Step 1: 1.5 = cost per mile (.50/mile)",
+      "Step 2: 3.99 = base delivery fee (.99)",
+      "Step 3: D(5) = 1.5(5) + 3.99 = 7.50 + 3.99 = .49"
+    ],
+    "tags": [
+      "function-evaluation",
+      "slope-interpretation",
+      "y-intercept-interpretation",
+      "food-delivery"
+    ]
+  },
+  {
+    "id": "gen-lm-007",
+    "unit": "linear-models",
+    "standard": "4.a",
+    "difficulty": "medium",
+    "type": "short",
+    "skill": "evaluate",
+    "source_file": "generated",
+    "question_text": "In an online game, Kai's health points are modeled by h(x) = -4x + 100, where x is the number of hits taken. Find h(5/2).",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Find h(5/2)",
+        "answer": "90",
+        "answer_type": "numeric"
+      }
+    ],
+    "hint": "Multiply -4 by the fraction first.",
+    "solution_steps": [
+      "Step 1: h(5/2) = -4(5/2) + 100",
+      "Step 2: h(5/2) = -10 + 100 = 90"
+    ],
+    "tags": [
+      "function-evaluation",
+      "fractions",
+      "gaming"
+    ]
+  },
+  {
+    "id": "gen-lm-008",
+    "unit": "linear-models",
+    "standard": "4.a",
+    "difficulty": "hard",
+    "type": "multi-part",
+    "skill": "evaluate",
+    "source_file": "generated",
+    "question_text": "Kai's dad drives and the gas remaining is modeled by G(m) = -(1/24)m + 16, where m is miles driven and G is gallons remaining.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Find G(0) and explain what it means.",
+        "answer": "16 — the tank starts with 16 gallons (full tank)",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "b",
+        "text": "Find G(96).",
+        "answer": "12",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "c",
+        "text": "Find G(192).",
+        "answer": "8",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "d",
+        "text": "Is G(m) linear? How do you know?",
+        "answer": "Yes — constant rate of change: the car uses 1/24 gallon per mile",
+        "answer_type": "text"
+      }
+    ],
+    "hint": "Divide miles by 24 to find gallons used.",
+    "solution_steps": [
+      "Step 1: G(0) = -(1/24)(0) + 16 = 16 gallons (full tank)",
+      "Step 2: G(96) = -(96/24) + 16 = -4 + 16 = 12 gallons",
+      "Step 3: G(192) = -(192/24) + 16 = -8 + 16 = 8 gallons",
+      "Step 4: Linear because gallons decrease by a constant 1/24 per mile"
+    ],
+    "tags": [
+      "function-evaluation",
+      "fractions",
+      "linear-pattern",
+      "driving"
+    ]
+  },
+  {
+    "id": "gen-lm-009",
+    "unit": "linear-models",
+    "standard": "4.a",
+    "difficulty": "hard",
+    "type": "multi-part",
+    "skill": "solve",
+    "source_file": "generated",
+    "question_text": "Kai's monthly song listens are modeled by f(w) = 15w + 20. His friend Jaylen's are modeled by g(w) = 12w + 44, where w is weeks into the month.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Find f(4) and g(4).",
+        "answer": "f(4) = 80; g(4) = 92",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "b",
+        "text": "After how many weeks do they have the same number of listens?",
+        "answer": "8",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "c",
+        "text": "Are both functions linear? Explain.",
+        "answer": "Yes — both have constant rates of change (15 and 12 per week)",
+        "answer_type": "text"
+      }
+    ],
+    "hint": "Set the two functions equal and solve for w.",
+    "solution_steps": [
+      "Step 1: f(4) = 15(4) + 20 = 60 + 20 = 80; g(4) = 12(4) + 44 = 48 + 44 = 92",
+      "Step 2: Set equal: 15w + 20 = 12w + 44",
+      "Step 3: 3w = 24, so w = 8 weeks",
+      "Step 4: Both linear — constant rates of 15 and 12 per week"
+    ],
+    "tags": [
+      "function-evaluation",
+      "system-of-equations",
+      "linear-pattern",
+      "music-streaming"
+    ]
+  },
+  {
+    "id": "gen-lm-010",
+    "unit": "linear-models",
+    "standard": "4.b",
+    "difficulty": "easy",
+    "type": "short",
+    "skill": "model",
+    "source_file": "generated",
+    "question_text": "A pair of limited-edition sneakers is worth  new and loses  in resale value each month. Write a linear model V(m) for the value after m months.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Write V(m)",
+        "answer": "V(m) = -8m + 120",
+        "answer_type": "equation"
+      }
+    ],
+    "hint": "Value drops /month — that's your slope.",
+    "solution_steps": [
+      "Step 1: Initial value =  (y-intercept)",
+      "Step 2: Rate of change = -/month (slope)",
+      "Step 3: V(m) = -8m + 120"
+    ],
+    "tags": [
+      "linear-modeling",
+      "slope",
+      "y-intercept",
+      "sneaker-prices"
+    ]
+  },
+  {
+    "id": "gen-lm-011",
+    "unit": "linear-models",
+    "standard": "4.b",
+    "difficulty": "easy",
+    "type": "short",
+    "skill": "model",
+    "source_file": "generated",
+    "question_text": "Kai pays .99 per month for a music streaming subscription with no setup fee. Write a model C(m) for his total cost after m months.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Write C(m)",
+        "answer": "C(m) = 10.99m",
+        "answer_type": "equation"
+      }
+    ],
+    "hint": "No setup fee means the y-intercept is zero.",
+    "solution_steps": [
+      "Step 1: Rate = .99/month, no initial fee",
+      "Step 2: C(m) = 10.99m"
+    ],
+    "tags": [
+      "linear-modeling",
+      "slope",
+      "music-streaming"
+    ]
+  },
+  {
+    "id": "gen-lm-012",
+    "unit": "linear-models",
+    "standard": "4.b",
+    "difficulty": "easy",
+    "type": "short",
+    "skill": "model",
+    "source_file": "generated",
+    "question_text": "A pizza delivery charges .50 per mile driven plus a flat .00 service fee. Write the total delivery cost T(m) where m is miles.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Write T(m)",
+        "answer": "T(m) = 2.50m + 5",
+        "answer_type": "equation"
+      }
+    ],
+    "hint": "Per-mile charge is slope; flat fee is y-intercept.",
+    "solution_steps": [
+      "Step 1: Rate = .50/mile (slope)",
+      "Step 2: Flat fee = .00 (y-intercept)",
+      "Step 3: T(m) = 2.50m + 5"
+    ],
+    "tags": [
+      "linear-modeling",
+      "slope",
+      "y-intercept",
+      "food-delivery"
+    ]
+  },
+  {
+    "id": "gen-lm-013",
+    "unit": "linear-models",
+    "standard": "4.b",
+    "difficulty": "medium",
+    "type": "multi-part",
+    "skill": "model",
+    "source_file": "generated",
+    "question_text": "Kai starts a new video game with 500 bonus coins. He earns 75 coins for each level he completes.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Write C(n) for total coins after n levels.",
+        "answer": "C(n) = 75n + 500",
+        "answer_type": "equation"
+      },
+      {
+        "label": "b",
+        "text": "How many coins after 12 levels?",
+        "answer": "1400",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "c",
+        "text": "How many levels to reach 2,000 coins?",
+        "answer": "20",
+        "answer_type": "numeric"
+      }
+    ],
+    "hint": "Bonus coins are the start; per-level coins are the rate.",
+    "solution_steps": [
+      "Step 1: C(n) = 75n + 500",
+      "Step 2: C(12) = 75(12) + 500 = 900 + 500 = 1,400",
+      "Step 3: 75n + 500 = 2000 → 75n = 1500 → n = 20 levels"
+    ],
+    "tags": [
+      "linear-modeling",
+      "evaluate-function",
+      "solving-equations",
+      "gaming"
+    ]
+  },
+  {
+    "id": "gen-lm-014",
+    "unit": "linear-models",
+    "standard": "4.b",
+    "difficulty": "medium",
+    "type": "multi-part",
+    "skill": "model",
+    "source_file": "generated",
+    "question_text": "Kai's phone plan includes 15 GB of data per month. He uses an average of 0.6 GB per day.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Write D(d) for data remaining after d days.",
+        "answer": "D(d) = -0.6d + 15",
+        "answer_type": "equation"
+      },
+      {
+        "label": "b",
+        "text": "How much data is left after 10 days?",
+        "answer": "9",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "c",
+        "text": "After how many days will he run out of data?",
+        "answer": "25",
+        "answer_type": "numeric"
+      }
+    ],
+    "hint": "Using data means subtracting — slope is negative.",
+    "solution_steps": [
+      "Step 1: D(d) = -0.6d + 15",
+      "Step 2: D(10) = -0.6(10) + 15 = -6 + 15 = 9 GB",
+      "Step 3: 0 = -0.6d + 15 → 0.6d = 15 → d = 25 days"
+    ],
+    "tags": [
+      "linear-modeling",
+      "evaluate-function",
+      "x-intercept",
+      "phone-data"
+    ]
+  },
+  {
+    "id": "gen-lm-015",
+    "unit": "linear-models",
+    "standard": "4.b",
+    "difficulty": "medium",
+    "type": "multi-part",
+    "skill": "model",
+    "source_file": "generated",
+    "question_text": "The Pistons charter a team bus that costs  per game plus .45 per mile for fuel.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Write C(m) for total bus cost where m is miles.",
+        "answer": "C(m) = 0.45m + 350",
+        "answer_type": "equation"
+      },
+      {
+        "label": "b",
+        "text": "What is the cost for a 180-mile road trip?",
+        "answer": "431",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "c",
+        "text": "The travel budget is . What is the maximum distance?",
+        "answer": "333",
+        "answer_type": "numeric"
+      }
+    ],
+    "hint": "Flat fee plus per-mile cost — classic linear setup.",
+    "solution_steps": [
+      "Step 1: C(m) = 0.45m + 350",
+      "Step 2: C(180) = 0.45(180) + 350 = 81 + 350 = ",
+      "Step 3: 0.45m + 350 = 500 → 0.45m = 150 → m = 333.3 → 333 miles max"
+    ],
+    "tags": [
+      "linear-modeling",
+      "evaluate-function",
+      "solving-equations",
+      "pistons",
+      "basketball"
+    ]
+  },
+  {
+    "id": "gen-lm-016",
+    "unit": "linear-models",
+    "standard": "4.b",
+    "difficulty": "medium",
+    "type": "multi-part",
+    "skill": "model",
+    "source_file": "generated",
+    "question_text": "Kai's older sister has ,200 saved for a car and saves  per week from her job.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Write S(w) for total savings after w weeks.",
+        "answer": "S(w) = 85w + 1200",
+        "answer_type": "equation"
+      },
+      {
+        "label": "b",
+        "text": "How much will she have after 16 weeks?",
+        "answer": "2560",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "c",
+        "text": "How many weeks to save ,000?",
+        "answer": "33",
+        "answer_type": "numeric"
+      }
+    ],
+    "hint": "Starting amount plus weekly savings — write y = mx + b.",
+    "solution_steps": [
+      "Step 1: S(w) = 85w + 1200",
+      "Step 2: S(16) = 85(16) + 1200 = 1360 + 1200 = ,560",
+      "Step 3: 85w + 1200 = 4000 → 85w = 2800 → w ≈ 32.94 → 33 weeks"
+    ],
+    "tags": [
+      "linear-modeling",
+      "evaluate-function",
+      "solving-equations",
+      "driving"
+    ]
+  },
+  {
+    "id": "gen-lm-017",
+    "unit": "linear-models",
+    "standard": "4.b",
+    "difficulty": "hard",
+    "type": "multi-part",
+    "skill": "model",
+    "source_file": "generated",
+    "question_text": "A DoorDash driver earns .50 per delivery plus .35 per mile driven. Each delivery averages 4 miles.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Write E(d) for total earnings after d deliveries.",
+        "answer": "E(d) = 4.90d",
+        "answer_type": "equation"
+      },
+      {
+        "label": "b",
+        "text": "How much does the driver earn for 15 deliveries?",
+        "answer": "73.50",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "c",
+        "text": "How many deliveries to earn ",
+        "answer": "41",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "d",
+        "text": "What is the slope and what does it mean?",
+        "answer": "4.90 — the driver earns .90 per delivery (base + mileage)",
+        "answer_type": "text"
+      }
+    ],
+    "hint": "Combine per-delivery and per-mile pay into one rate.",
+    "solution_steps": [
+      "Step 1: Per delivery: .50 + .35(4) = .50 + .40 = .90",
+      "Step 2: E(d) = 4.90d",
+      "Step 3: E(15) = 4.90(15) = .50",
+      "Step 4: 4.90d = 200 → d = 40.82 → 41 deliveries (round up)"
+    ],
+    "tags": [
+      "linear-modeling",
+      "combined-rates",
+      "solving-equations",
+      "food-delivery"
+    ]
+  },
+  {
+    "id": "gen-lm-018",
+    "unit": "linear-models",
+    "standard": "4.b",
+    "difficulty": "hard",
+    "type": "multi-part",
+    "skill": "model",
+    "source_file": "generated",
+    "question_text": "The Pistons sell lower-bowl tickets at  each and upper-bowl tickets at  each.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Write a revenue model R in terms of x (lower-bowl) and y (upper-bowl) tickets sold.",
+        "answer": "R = 95x + 45y",
+        "answer_type": "equation"
+      },
+      {
+        "label": "b",
+        "text": "Find total revenue if 4,500 lower-bowl and 8,200 upper-bowl tickets are sold.",
+        "answer": "796500",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "c",
+        "text": "If revenue must reach ,000 and 5,000 lower-bowl tickets sell, how many upper-bowl tickets are needed?",
+        "answer": "7223",
+        "answer_type": "numeric"
+      }
+    ],
+    "hint": "Revenue = price × quantity for each section, then add.",
+    "solution_steps": [
+      "Step 1: R = 95x + 45y",
+      "Step 2: R = 95(4500) + 45(8200) = 427,500 + 369,000 = ,500",
+      "Step 3: 95(5000) + 45y = 800,000 → 475,000 + 45y = 800,000 → 45y = 325,000 → y ≈ 7,222.2 → 7,223 tickets"
+    ],
+    "tags": [
+      "linear-modeling",
+      "two-variable",
+      "revenue",
+      "pistons",
+      "basketball"
+    ]
+  },
+  {
+    "id": "gen-lm-019",
+    "unit": "linear-models",
+    "standard": "4.c",
+    "difficulty": "easy",
+    "type": "short",
+    "skill": "solve",
+    "source_file": "generated",
+    "question_text": "Find the slope of the line passing through (1, 5) and (4, 14).",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Find the slope.",
+        "answer": "3",
+        "answer_type": "numeric"
+      }
+    ],
+    "hint": "Slope = rise over run — subtract the y's, then the x's.",
+    "solution_steps": [
+      "Step 1: m = (14 - 5)/(4 - 1)",
+      "Step 2: m = 9/3 = 3"
+    ],
+    "tags": [
+      "slope-formula",
+      "two-points"
+    ]
+  },
+  {
+    "id": "gen-lm-020",
+    "unit": "linear-models",
+    "standard": "4.c",
+    "difficulty": "easy",
+    "type": "short",
+    "skill": "solve",
+    "source_file": "generated",
+    "question_text": "Write the equation of the line through (2, 11) and (6, 31) in slope-intercept form.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Write the equation in y = mx + b form.",
+        "answer": "y = 5x + 1",
+        "answer_type": "equation"
+      }
+    ],
+    "hint": "Find slope first, then use a point to get b.",
+    "solution_steps": [
+      "Step 1: m = (31 - 11)/(6 - 2) = 20/4 = 5",
+      "Step 2: y - 11 = 5(x - 2) → y = 5x - 10 + 11",
+      "Step 3: y = 5x + 1"
+    ],
+    "tags": [
+      "slope-formula",
+      "slope-intercept-form",
+      "two-points"
+    ]
+  },
+  {
+    "id": "gen-lm-021",
+    "unit": "linear-models",
+    "standard": "4.c",
+    "difficulty": "easy",
+    "type": "short",
+    "skill": "interpret",
+    "source_file": "generated",
+    "question_text": "A limited-edition sneaker costs  at week 2 and  at week 8. What is the rate of price increase per week?",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Find the rate (slope).",
+        "answer": "10",
+        "answer_type": "numeric"
+      }
+    ],
+    "hint": "Use the slope formula with the two data points.",
+    "solution_steps": [
+      "Step 1: m = (220 - 160)/(8 - 2)",
+      "Step 2: m = 60/6 =  per week"
+    ],
+    "tags": [
+      "slope-formula",
+      "rate-of-change",
+      "sneaker-prices"
+    ]
+  },
+  {
+    "id": "gen-lm-022",
+    "unit": "linear-models",
+    "standard": "4.c",
+    "difficulty": "medium",
+    "type": "multi-part",
+    "skill": "model",
+    "source_file": "generated",
+    "question_text": "After 3 months, Kai has 84 songs in his playlist. After 7 months, he has 132 songs.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Find the rate of songs added per month.",
+        "answer": "12",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "b",
+        "text": "Write the equation in slope-intercept form.",
+        "answer": "y = 12x + 48",
+        "answer_type": "equation"
+      },
+      {
+        "label": "c",
+        "text": "How many songs did Kai start with (month 0)?",
+        "answer": "48",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "d",
+        "text": "How many songs after 12 months?",
+        "answer": "192",
+        "answer_type": "numeric"
+      }
+    ],
+    "hint": "Two points give you slope; plug back in for the intercept.",
+    "solution_steps": [
+      "Step 1: m = (132 - 84)/(7 - 3) = 48/4 = 12 songs/month",
+      "Step 2: y - 84 = 12(x - 3) → y = 12x - 36 + 84 = 12x + 48",
+      "Step 3: At x = 0: y = 48 songs initially",
+      "Step 4: At x = 12: y = 12(12) + 48 = 144 + 48 = 192 songs"
+    ],
+    "tags": [
+      "slope-formula",
+      "slope-intercept-form",
+      "y-intercept",
+      "music-streaming"
+    ]
+  },
+  {
+    "id": "gen-lm-023",
+    "unit": "linear-models",
+    "standard": "4.c",
+    "difficulty": "medium",
+    "type": "multi-part",
+    "skill": "model",
+    "source_file": "generated",
+    "question_text": "A food delivery costs .50 for 3 miles and .00 for 6 miles.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Find the cost per mile (slope).",
+        "answer": "2.50",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "b",
+        "text": "Write the equation C(m) in slope-intercept form.",
+        "answer": "C(m) = 2.50m + 7",
+        "answer_type": "equation"
+      },
+      {
+        "label": "c",
+        "text": "What is the base fee (y-intercept)?",
+        "answer": "7",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "d",
+        "text": "What is the cost for a 10-mile delivery?",
+        "answer": "32",
+        "answer_type": "numeric"
+      }
+    ],
+    "hint": "Slope is the per-mile charge; y-intercept is the base fee.",
+    "solution_steps": [
+      "Step 1: m = (22.00 - 14.50)/(6 - 3) = 7.50/3 = .50/mile",
+      "Step 2: 14.50 = 2.50(3) + b → b = 14.50 - 7.50 = .00",
+      "Step 3: C(m) = 2.50m + 7",
+      "Step 4: C(10) = 2.50(10) + 7 = 25 + 7 = "
+    ],
+    "tags": [
+      "slope-formula",
+      "slope-intercept-form",
+      "y-intercept-interpretation",
+      "food-delivery"
+    ]
+  },
+  {
+    "id": "gen-lm-024",
+    "unit": "linear-models",
+    "standard": "4.c",
+    "difficulty": "medium",
+    "type": "multi-part",
+    "skill": "solve",
+    "source_file": "generated",
+    "question_text": "Through game 5, the Pistons had scored 520 total season points. Through game 10, they had scored 845 total points.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Find the average points-per-game rate (slope).",
+        "answer": "65",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "b",
+        "text": "Write the equation P(g) for total points after g games.",
+        "answer": "P(g) = 65g + 195",
+        "answer_type": "equation"
+      },
+      {
+        "label": "c",
+        "text": "Predict total points through game 20.",
+        "answer": "1495",
+        "answer_type": "numeric"
+      }
+    ],
+    "hint": "Slope = change in points divided by change in games.",
+    "solution_steps": [
+      "Step 1: m = (845 - 520)/(10 - 5) = 325/5 = 65 points/game",
+      "Step 2: P(g) - 520 = 65(g - 5) → P(g) = 65g - 325 + 520 = 65g + 195",
+      "Step 3: P(20) = 65(20) + 195 = 1300 + 195 = 1,495 points"
+    ],
+    "tags": [
+      "slope-formula",
+      "slope-intercept-form",
+      "prediction",
+      "pistons",
+      "basketball"
+    ]
+  },
+  {
+    "id": "gen-lm-025",
+    "unit": "linear-models",
+    "standard": "4.c",
+    "difficulty": "medium",
+    "type": "multi-part",
+    "skill": "solve",
+    "source_file": "generated",
+    "question_text": "On a road trip, Kai notes the odometer reads 12,340 miles at hour 1 and 12,529 miles at hour 4.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Find the average speed (slope).",
+        "answer": "63",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "b",
+        "text": "Write the odometer model O(t) where t is hours.",
+        "answer": "O(t) = 63t + 12277",
+        "answer_type": "equation"
+      },
+      {
+        "label": "c",
+        "text": "What was the odometer reading at the start (t = 0)?",
+        "answer": "12277",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "d",
+        "text": "Predict the odometer reading at hour 6.",
+        "answer": "12655",
+        "answer_type": "numeric"
+      }
+    ],
+    "hint": "Speed is the slope — miles per hour between two readings.",
+    "solution_steps": [
+      "Step 1: m = (12529 - 12340)/(4 - 1) = 189/3 = 63 mph",
+      "Step 2: O(t) - 12340 = 63(t - 1) → O(t) = 63t - 63 + 12340 = 63t + 12277",
+      "Step 3: O(0) = 12,277 miles",
+      "Step 4: O(6) = 63(6) + 12277 = 378 + 12277 = 12,655 miles"
+    ],
+    "tags": [
+      "slope-formula",
+      "slope-intercept-form",
+      "rate-of-change",
+      "driving"
+    ]
+  },
+  {
+    "id": "gen-lm-026",
+    "unit": "linear-models",
+    "standard": "4.c",
+    "difficulty": "hard",
+    "type": "multi-part",
+    "skill": "solve",
+    "source_file": "generated",
+    "question_text": "Kai tracks his competitive rank points in an online game. After 5 matches he has 1,240 points. After 13 matches he has 1,640 points.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Find the slope (points gained per match).",
+        "answer": "50",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "b",
+        "text": "Write the equation R(n) for rank points after n matches.",
+        "answer": "R(n) = 50n + 990",
+        "answer_type": "equation"
+      },
+      {
+        "label": "c",
+        "text": "What was his starting rank before any matches?",
+        "answer": "990",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "d",
+        "text": "After how many matches will he reach 2,000 points?",
+        "answer": "21",
+        "answer_type": "numeric"
+      }
+    ],
+    "hint": "Find slope from two points, then solve for the intercept.",
+    "solution_steps": [
+      "Step 1: m = (1640 - 1240)/(13 - 5) = 400/8 = 50 pts/match",
+      "Step 2: R(n) - 1240 = 50(n - 5) → R(n) = 50n - 250 + 1240 = 50n + 990",
+      "Step 3: R(0) = 990 starting points",
+      "Step 4: 50n + 990 = 2000 → 50n = 1010 → n = 20.2 → after match 21"
+    ],
+    "tags": [
+      "slope-formula",
+      "slope-intercept-form",
+      "solving-equations",
+      "gaming"
+    ]
+  },
+  {
+    "id": "gen-lm-027",
+    "unit": "linear-models",
+    "standard": "4.c",
+    "difficulty": "hard",
+    "type": "multi-part",
+    "skill": "solve",
+    "source_file": "generated",
+    "question_text": "Kai compares two phone plans. Plan A: at 2 GB used, the bill is ; at 10 GB used, the bill is . Plan B: flat /month unlimited.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Write Plan A's equation C(g) where g is GB used.",
+        "answer": "C(g) = 5g + 28",
+        "answer_type": "equation"
+      },
+      {
+        "label": "b",
+        "text": "At what data usage are the two plans the same price?",
+        "answer": "7.4",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "c",
+        "text": "Which plan is cheaper at 12 GB? By how much?",
+        "answer": "Plan B by ",
+        "answer_type": "text"
+      },
+      {
+        "label": "d",
+        "text": "Interpret the slope and y-intercept of Plan A.",
+        "answer": "Slope = /GB (cost per GB); y-intercept =  (base monthly fee)",
+        "answer_type": "text"
+      }
+    ],
+    "hint": "Build Plan A from two points, then compare to Plan B.",
+    "solution_steps": [
+      "Step 1: Slope = (78 - 38)/(10 - 2) = 40/8 = /GB",
+      "Step 2: 38 = 5(2) + b → b = 28; C(g) = 5g + 28",
+      "Step 3: Set equal: 5g + 28 = 65 → 5g = 37 → g = 7.4 GB",
+      "Step 4: At 12 GB — Plan A: 5(12) + 28 = ; Plan B: ; Plan B saves "
+    ],
+    "tags": [
+      "slope-formula",
+      "slope-intercept-form",
+      "comparison",
+      "phone-data"
+    ]
+  },
+  {
+    "id": "gen-lm-028",
+    "unit": "linear-models",
+    "standard": "4.d",
+    "difficulty": "easy",
+    "type": "short",
+    "skill": "interpret",
+    "source_file": "generated",
+    "question_text": "A scatterplot shows hours of basketball practice per week (x-axis) vs free-throw percentage (y-axis). The data shows a strong positive trend. What does this mean in context?",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Interpret the positive trend.",
+        "answer": "As weekly practice hours increase, free-throw percentage tends to increase",
+        "answer_type": "text"
+      }
+    ],
+    "hint": "Positive trend = both variables go up together.",
+    "solution_steps": [
+      "Step 1: Positive trend means as x increases, y increases",
+      "Step 2: More practice hours is associated with higher free-throw percentages"
+    ],
+    "tags": [
+      "scatterplot",
+      "correlation",
+      "interpretation",
+      "basketball"
+    ]
+  },
+  {
+    "id": "gen-lm-029",
+    "unit": "linear-models",
+    "standard": "4.d",
+    "difficulty": "easy",
+    "type": "short",
+    "skill": "solve",
+    "source_file": "generated",
+    "question_text": "A line of best fit on a scatterplot passes through (2, 40) and (8, 70). Find the slope of the best-fit line.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Find the slope.",
+        "answer": "5",
+        "answer_type": "numeric"
+      }
+    ],
+    "hint": "Use the slope formula with the two points on the line.",
+    "solution_steps": [
+      "Step 1: m = (70 - 40)/(8 - 2)",
+      "Step 2: m = 30/6 = 5"
+    ],
+    "tags": [
+      "slope-formula",
+      "line-of-best-fit",
+      "scatterplot"
+    ]
+  },
+  {
+    "id": "gen-lm-030",
+    "unit": "linear-models",
+    "standard": "4.d",
+    "difficulty": "medium",
+    "type": "multi-part",
+    "skill": "model",
+    "source_file": "generated",
+    "question_text": "A Pistons coach tracks minutes played (x) vs points scored (y). The line of best fit passes through (12, 8) and (36, 26).",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Find the slope of the best-fit line.",
+        "answer": "0.75",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "b",
+        "text": "Write the equation in point-slope form using (12, 8).",
+        "answer": "y - 8 = 0.75(x - 12)",
+        "answer_type": "equation"
+      },
+      {
+        "label": "c",
+        "text": "Convert to slope-intercept form.",
+        "answer": "y = 0.75x - 1",
+        "answer_type": "equation"
+      },
+      {
+        "label": "d",
+        "text": "Predict points scored for 40 minutes played.",
+        "answer": "29",
+        "answer_type": "numeric"
+      }
+    ],
+    "hint": "Find slope, write point-slope, then convert.",
+    "solution_steps": [
+      "Step 1: m = (26 - 8)/(36 - 12) = 18/24 = 0.75",
+      "Step 2: Point-slope: y - 8 = 0.75(x - 12)",
+      "Step 3: y = 0.75x - 9 + 8 = 0.75x - 1",
+      "Step 4: y = 0.75(40) - 1 = 30 - 1 = 29 points"
+    ],
+    "tags": [
+      "scatterplot",
+      "line-of-best-fit",
+      "point-slope-form",
+      "slope-intercept-form",
+      "pistons",
+      "basketball"
+    ]
+  },
+  {
+    "id": "gen-lm-031",
+    "unit": "linear-models",
+    "standard": "4.d",
+    "difficulty": "medium",
+    "type": "multi-part",
+    "skill": "model",
+    "source_file": "generated",
+    "question_text": "Kai tracks playlists created (x) vs monthly listeners (y) for his music account. The best-fit line passes through (5, 320) and (15, 720).",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Find the slope.",
+        "answer": "40",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "b",
+        "text": "Write the equation in slope-intercept form.",
+        "answer": "y = 40x + 120",
+        "answer_type": "equation"
+      },
+      {
+        "label": "c",
+        "text": "Interpret the slope in context.",
+        "answer": "Each additional playlist brings about 40 more monthly listeners",
+        "answer_type": "text"
+      },
+      {
+        "label": "d",
+        "text": "Predict monthly listeners with 20 playlists.",
+        "answer": "920",
+        "answer_type": "numeric"
+      }
+    ],
+    "hint": "Slope tells you listeners gained per new playlist.",
+    "solution_steps": [
+      "Step 1: m = (720 - 320)/(15 - 5) = 400/10 = 40",
+      "Step 2: y - 320 = 40(x - 5) → y = 40x - 200 + 320 = 40x + 120",
+      "Step 3: Slope = 40 listeners per playlist",
+      "Step 4: y = 40(20) + 120 = 800 + 120 = 920 listeners"
+    ],
+    "tags": [
+      "scatterplot",
+      "line-of-best-fit",
+      "slope-interpretation",
+      "prediction",
+      "music-streaming"
+    ]
+  },
+  {
+    "id": "gen-lm-032",
+    "unit": "linear-models",
+    "standard": "4.d",
+    "difficulty": "medium",
+    "type": "multi-part",
+    "skill": "solve",
+    "source_file": "generated",
+    "question_text": "Kai plots hours gaming per week (x) vs reaction time in milliseconds (y). The best-fit line passes through (4, 280) and (10, 220).",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Find the slope.",
+        "answer": "-10",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "b",
+        "text": "Write the equation in slope-intercept form.",
+        "answer": "y = -10x + 320",
+        "answer_type": "equation"
+      },
+      {
+        "label": "c",
+        "text": "Interpret the slope.",
+        "answer": "Each additional gaming hour per week is associated with a 10 ms decrease in reaction time",
+        "answer_type": "text"
+      },
+      {
+        "label": "d",
+        "text": "Predict reaction time at 15 hours/week.",
+        "answer": "170",
+        "answer_type": "numeric"
+      }
+    ],
+    "hint": "Negative slope means reaction time drops with more gaming.",
+    "solution_steps": [
+      "Step 1: m = (220 - 280)/(10 - 4) = -60/6 = -10",
+      "Step 2: y - 280 = -10(x - 4) → y = -10x + 40 + 280 = -10x + 320",
+      "Step 3: Slope = -10 ms per hour of gaming",
+      "Step 4: y = -10(15) + 320 = -150 + 320 = 170 ms"
+    ],
+    "tags": [
+      "scatterplot",
+      "line-of-best-fit",
+      "negative-slope",
+      "prediction",
+      "gaming"
+    ]
+  },
+  {
+    "id": "gen-lm-033",
+    "unit": "linear-models",
+    "standard": "4.d",
+    "difficulty": "medium",
+    "type": "multi-part",
+    "skill": "interpret",
+    "source_file": "generated",
+    "question_text": "A restaurant tracks advertising spending (in hundreds of dollars, x) vs daily orders (y). The best-fit line is y = 8x + 15.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Interpret the slope in context.",
+        "answer": "Each additional  in advertising is associated with about 8 more daily orders",
+        "answer_type": "text"
+      },
+      {
+        "label": "b",
+        "text": "Interpret the y-intercept in context.",
+        "answer": "With  in advertising, the restaurant averages about 15 daily orders",
+        "answer_type": "text"
+      },
+      {
+        "label": "c",
+        "text": "Predict daily orders with  in advertising (x = 6).",
+        "answer": "63",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "d",
+        "text": "How much advertising (in dollars) to reach 100 daily orders?",
+        "answer": "1062.50",
+        "answer_type": "numeric"
+      }
+    ],
+    "hint": "x is in hundreds of dollars — watch the units!",
+    "solution_steps": [
+      "Step 1: Slope = 8 orders per  in advertising",
+      "Step 2: y-intercept = 15 orders with no advertising",
+      "Step 3: y = 8(6) + 15 = 48 + 15 = 63 orders",
+      "Step 4: 8x + 15 = 100 → 8x = 85 → x = 10.625 → ,062.50"
+    ],
+    "tags": [
+      "line-of-best-fit",
+      "slope-interpretation",
+      "y-intercept-interpretation",
+      "prediction",
+      "food-delivery"
+    ]
+  },
+  {
+    "id": "gen-lm-034",
+    "unit": "linear-models",
+    "standard": "4.d",
+    "difficulty": "hard",
+    "type": "multi-part",
+    "skill": "model",
+    "source_file": "generated",
+    "question_text": "Kai tracks sneaker resale prices over time. Days since release (x): 5, 10, 20, 30, 40. Resale price ($, y): 240, 270, 320, 365, 415. The line of best fit passes through (5, 240) and (40, 415).",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Find the slope of the best-fit line.",
+        "answer": "5",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "b",
+        "text": "Write the equation in slope-intercept form.",
+        "answer": "y = 5x + 215",
+        "answer_type": "equation"
+      },
+      {
+        "label": "c",
+        "text": "Predict the resale price after 60 days.",
+        "answer": "515",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "d",
+        "text": "The actual price at day 20 was . Find the residual.",
+        "answer": "5",
+        "answer_type": "numeric"
+      }
+    ],
+    "hint": "Residual = actual value minus predicted value.",
+    "solution_steps": [
+      "Step 1: m = (415 - 240)/(40 - 5) = 175/35 = 5",
+      "Step 2: y - 240 = 5(x - 5) → y = 5x - 25 + 240 = 5x + 215",
+      "Step 3: At day 60: y = 5(60) + 215 = 300 + 215 = ",
+      "Step 4: Predicted at day 20: 5(20) + 215 = . Residual = 320 - 315 = "
+    ],
+    "tags": [
+      "scatterplot",
+      "line-of-best-fit",
+      "residual",
+      "prediction",
+      "sneaker-prices"
+    ]
+  },
+  {
+    "id": "gen-lm-035",
+    "unit": "linear-models",
+    "standard": "4.d",
+    "difficulty": "hard",
+    "type": "multi-part",
+    "skill": "model",
+    "source_file": "generated",
+    "question_text": "A basketball coach tracks practice free throws per week (x) vs game free-throw percentage (y) for players. The best-fit line passes through (50, 60) and (200, 84).",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Find the slope.",
+        "answer": "0.16",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "b",
+        "text": "Write the equation in slope-intercept form.",
+        "answer": "y = 0.16x + 52",
+        "answer_type": "equation"
+      },
+      {
+        "label": "c",
+        "text": "Predict FT% for a player shooting 300 practice free throws/week.",
+        "answer": "100",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "d",
+        "text": "Is the prediction in (c) reliable? Explain.",
+        "answer": "Not very reliable — 300 is far beyond the data range (extrapolation), and 100% FT is unrealistically high",
+        "answer_type": "text"
+      }
+    ],
+    "hint": "Beware of predictions outside the data range!",
+    "solution_steps": [
+      "Step 1: m = (84 - 60)/(200 - 50) = 24/150 = 0.16",
+      "Step 2: y - 60 = 0.16(x - 50) → y = 0.16x - 8 + 60 = 0.16x + 52",
+      "Step 3: y = 0.16(300) + 52 = 48 + 52 = 100%",
+      "Step 4: Unreliable — extrapolating far beyond data (50 to 200 range)"
+    ],
+    "tags": [
+      "scatterplot",
+      "line-of-best-fit",
+      "extrapolation",
+      "prediction",
+      "basketball"
+    ]
+  },
+  {
+    "id": "gen-lm-036",
+    "unit": "linear-models",
+    "standard": "4.d",
+    "difficulty": "hard",
+    "type": "multi-part",
+    "skill": "interpret",
+    "source_file": "generated",
+    "question_text": "A driving school tracks hours of practice (x) vs driving test score (y). The best-fit line passes through (5, 62) and (25, 90).",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Find the slope and interpret it.",
+        "answer": "1.4 — each additional practice hour is associated with a 1.4-point increase in test score",
+        "answer_type": "text"
+      },
+      {
+        "label": "b",
+        "text": "Write the equation in slope-intercept form.",
+        "answer": "y = 1.4x + 55",
+        "answer_type": "equation"
+      },
+      {
+        "label": "c",
+        "text": "A student scored 76. Estimate their practice hours.",
+        "answer": "15",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "d",
+        "text": "Interpret the y-intercept. Does it make sense?",
+        "answer": "55 — predicted score with 0 hours of practice. Somewhat reasonable as a baseline, but no one takes the test without some practice",
+        "answer_type": "text"
+      }
+    ],
+    "hint": "Use the equation backwards to estimate inputs from outputs.",
+    "solution_steps": [
+      "Step 1: m = (90 - 62)/(25 - 5) = 28/20 = 1.4 points per hour",
+      "Step 2: y - 62 = 1.4(x - 5) → y = 1.4x - 7 + 62 = 1.4x + 55",
+      "Step 3: 1.4x + 55 = 76 → 1.4x = 21 → x = 15 hours",
+      "Step 4: y-intercept = 55; a baseline score, though not perfectly realistic"
+    ],
+    "tags": [
+      "scatterplot",
+      "line-of-best-fit",
+      "slope-interpretation",
+      "y-intercept-interpretation",
+      "driving"
+    ]
+  },
+  {
+    "id": "gen-lm-037",
+    "unit": "linear-models",
+    "standard": "4.e",
+    "difficulty": "easy",
+    "type": "short",
+    "skill": "graph",
+    "source_file": "generated",
+    "question_text": "For the function D(t) = -2t + 10, identify the slope and y-intercept.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "What is the y-intercept?",
+        "answer": "10",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "b",
+        "text": "What is the slope?",
+        "answer": "-2",
+        "answer_type": "numeric"
+      }
+    ],
+    "hint": "Slope is with the variable; y-intercept stands alone.",
+    "solution_steps": [
+      "Step 1: Compare D(t) = -2t + 10 to y = mx + b",
+      "Step 2: Slope m = -2; y-intercept b = 10"
+    ],
+    "tags": [
+      "slope",
+      "y-intercept",
+      "slope-intercept-form"
+    ]
+  },
+  {
+    "id": "gen-lm-038",
+    "unit": "linear-models",
+    "standard": "4.e",
+    "difficulty": "easy",
+    "type": "multi-part",
+    "skill": "graph",
+    "source_file": "generated",
+    "question_text": "A pair of sneakers depreciates in value according to V(m) = -15m + 180, where m is months and V is value in dollars.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "What is the y-intercept? What does it mean?",
+        "answer": "180 — the original price of the sneakers is ",
+        "answer_type": "text"
+      },
+      {
+        "label": "b",
+        "text": "What is the slope? What does it mean?",
+        "answer": "-15 — the sneakers lose  in value each month",
+        "answer_type": "text"
+      },
+      {
+        "label": "c",
+        "text": "After how many months is the value ",
+        "answer": "12",
+        "answer_type": "numeric"
+      }
+    ],
+    "hint": "Set V(m) = 0 and solve for the x-intercept.",
+    "solution_steps": [
+      "Step 1: y-intercept = 180 → original price ",
+      "Step 2: Slope = -15 → loses /month",
+      "Step 3: 0 = -15m + 180 → 15m = 180 → m = 12 months"
+    ],
+    "tags": [
+      "slope",
+      "y-intercept",
+      "x-intercept",
+      "interpretation",
+      "sneaker-prices"
+    ]
+  },
+  {
+    "id": "gen-lm-039",
+    "unit": "linear-models",
+    "standard": "4.e",
+    "difficulty": "medium",
+    "type": "multi-part",
+    "skill": "graph",
+    "source_file": "generated",
+    "question_text": "Kai starts with 200 V-Bucks and spends 25 per week. His balance is modeled by V(w) = -25w + 200.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "List three key points for graphing: (0, ?), (4, ?), (8, ?).",
+        "answer": "(0, 200), (4, 100), (8, 0)",
+        "answer_type": "text"
+      },
+      {
+        "label": "b",
+        "text": "When does Kai run out of V-Bucks?",
+        "answer": "8 weeks",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "c",
+        "text": "State the domain and range in context.",
+        "answer": "Domain: 0 ≤ w ≤ 8; Range: 0 ≤ V ≤ 200",
+        "answer_type": "text"
+      }
+    ],
+    "hint": "Find the x-intercept — that's when the balance hits zero.",
+    "solution_steps": [
+      "Step 1: V(0) = 200; V(4) = -100 + 200 = 100; V(8) = -200 + 200 = 0",
+      "Step 2: V-Bucks gone at w = 8 weeks",
+      "Step 3: Domain: 0 to 8 weeks; Range:  to "
+    ],
+    "tags": [
+      "graphing",
+      "key-points",
+      "domain",
+      "range",
+      "gaming"
+    ]
+  },
+  {
+    "id": "gen-lm-040",
+    "unit": "linear-models",
+    "standard": "4.e",
+    "difficulty": "medium",
+    "type": "multi-part",
+    "skill": "graph",
+    "source_file": "generated",
+    "question_text": "A food delivery driver's earnings are modeled by E(h) = 18h + 12, where h is hours worked and the  is a daily sign-on bonus.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Identify the y-intercept and its meaning.",
+        "answer": "12 —  sign-on bonus before any hours worked",
+        "answer_type": "text"
+      },
+      {
+        "label": "b",
+        "text": "Identify the slope and its meaning.",
+        "answer": "18 — earns  per hour",
+        "answer_type": "text"
+      },
+      {
+        "label": "c",
+        "text": "Find earnings after 6 hours.",
+        "answer": "120",
+        "answer_type": "numeric"
+      },
+      {
+        "label": "d",
+        "text": "How many hours to earn  Round up.",
+        "answer": "14",
+        "answer_type": "numeric"
+      }
+    ],
+    "hint": "Slope is hourly pay; y-intercept is the daily bonus.",
+    "solution_steps": [
+      "Step 1: y-intercept = 12 →  sign-on bonus",
+      "Step 2: Slope = 18 → /hour",
+      "Step 3: E(6) = 18(6) + 12 = 108 + 12 = ",
+      "Step 4: 18h + 12 = 250 → 18h = 238 → h ≈ 13.2 → 14 hours"
+    ],
+    "tags": [
+      "graphing",
+      "slope-interpretation",
+      "y-intercept-interpretation",
+      "solving-equations",
+      "food-delivery"
+    ]
+  },
+  {
+    "id": "gen-lm-041",
+    "unit": "linear-models",
+    "standard": "4.e",
+    "difficulty": "medium",
+    "type": "multi-part",
+    "skill": "graph",
+    "source_file": "generated",
+    "question_text": "Pistons season-ticket cost is modeled by S(g) = 45g + 150, where g is the number of games and  is a membership fee.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "Identify the slope and y-intercept. What does each mean?",
+        "answer": "Slope = 45 (/game); y-intercept = 150 ( membership fee)",
+        "answer_type": "text"
+      },
+      {
+        "label": "b",
+        "text": "List three key points for graphing: (0, ?), (10, ?), (20, ?).",
+        "answer": "(0, 150), (10, 600), (20, 1050)",
+        "answer_type": "text"
+      },
+      {
+        "label": "c",
+        "text": "A fan paid ,500 total. How many games did they attend?",
+        "answer": "30",
+        "answer_type": "numeric"
+      }
+    ],
+    "hint": "Membership fee is the starting point on the y-axis.",
+    "solution_steps": [
+      "Step 1: Slope = 45 (cost per game); y-intercept = 150 (membership)",
+      "Step 2: S(0) = 150; S(10) = 450 + 150 = 600; S(20) = 900 + 150 = 1050",
+      "Step 3: 45g + 150 = 1500 → 45g = 1350 → g = 30 games"
+    ],
+    "tags": [
+      "graphing",
+      "key-points",
+      "slope-interpretation",
+      "y-intercept-interpretation",
+      "pistons",
+      "basketball"
+    ]
+  },
+  {
+    "id": "gen-lm-042",
+    "unit": "linear-models",
+    "standard": "4.e",
+    "difficulty": "hard",
+    "type": "multi-part",
+    "skill": "graph",
+    "source_file": "generated",
+    "question_text": "Kai's mom drives to a meeting 180 miles away at a constant 60 mph. The distance remaining is D(t) = -60t + 180.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "List four key graphing points: (0, ?), (1, ?), (2, ?), (3, ?).",
+        "answer": "(0, 180), (1, 120), (2, 60), (3, 0)",
+        "answer_type": "text"
+      },
+      {
+        "label": "b",
+        "text": "Find the x-intercept and explain what it means.",
+        "answer": "(3, 0) — she arrives at the meeting after 3 hours",
+        "answer_type": "text"
+      },
+      {
+        "label": "c",
+        "text": "Interpret the slope in context.",
+        "answer": "-60 — she gets 60 miles closer to the meeting each hour",
+        "answer_type": "text"
+      },
+      {
+        "label": "d",
+        "text": "State the domain and range in context.",
+        "answer": "Domain: 0 ≤ t ≤ 3 hours; Range: 0 ≤ D ≤ 180 miles",
+        "answer_type": "text"
+      }
+    ],
+    "hint": "The x-intercept tells you when she arrives.",
+    "solution_steps": [
+      "Step 1: D(0) = 180; D(1) = 120; D(2) = 60; D(3) = 0",
+      "Step 2: x-intercept at t = 3 → arrives in 3 hours",
+      "Step 3: Slope = -60 → 60 miles closer per hour",
+      "Step 4: Domain: 0 to 3 hours; Range: 0 to 180 miles"
+    ],
+    "tags": [
+      "graphing",
+      "key-points",
+      "x-intercept",
+      "slope-interpretation",
+      "domain",
+      "range",
+      "driving"
+    ]
+  },
+  {
+    "id": "gen-lm-043",
+    "unit": "linear-models",
+    "standard": "4.e",
+    "difficulty": "hard",
+    "type": "multi-part",
+    "skill": "graph",
+    "source_file": "generated",
+    "question_text": "Two music artists' follower counts are modeled by A(w) = 50w + 400 and B(w) = 30w + 600, where w is weeks.",
+    "sub_parts": [
+      {
+        "label": "a",
+        "text": "After how many weeks do they have the same followers? How many?",
+        "answer": "Week 10 — both have 900 followers",
+        "answer_type": "text"
+      },
+      {
+        "label": "b",
+        "text": "After week 10, which artist has more followers? Why?",
+        "answer": "Artist A — A's slope (50/week) is greater than B's (30/week)",
+        "answer_type": "text"
+      },
+      {
+        "label": "c",
+        "text": "Interpret the slopes of both functions.",
+        "answer": "A gains 50 followers/week; B gains 30 followers/week",
+        "answer_type": "text"
+      },
+      {
+        "label": "d",
+        "text": "Find both artists' followers at week 20.",
+        "answer": "A(20) = 1400; B(20) = 1200",
+        "answer_type": "text"
+      }
+    ],
+    "hint": "Set the two functions equal to find the crossover week.",
+    "solution_steps": [
+      "Step 1: 50w + 400 = 30w + 600 → 20w = 200 → w = 10",
+      "Step 2: A(10) = 50(10) + 400 = 900; B(10) = 30(10) + 600 = 900 ✓",
+      "Step 3: After week 10, A grows faster (slope 50 > 30)",
+      "Step 4: A(20) = 50(20) + 400 = 1400; B(20) = 30(20) + 600 = 1200"
+    ],
+    "tags": [
+      "graphing",
+      "system-of-equations",
+      "slope-comparison",
+      "intersection",
+      "music-streaming"
+    ]
+  }
+]
