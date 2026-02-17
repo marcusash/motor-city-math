@@ -774,6 +774,18 @@ table th {
     font-size: 3em;
     font-weight: 700;
     letter-spacing: -1px;
+    line-height: 1.1;
+}
+.score-card .score-pct {
+    font-size: 2em;
+    font-weight: 700;
+    opacity: 0.85;
+    margin-top: 4px;
+}
+.score-card .score-message {
+    font-size: 1.1em;
+    margin-top: 12px;
+    line-height: 1.5;
 }
 
 /* === Streak Counter === */
@@ -843,6 +855,12 @@ table th {
     height: 100%;
     border-radius: 4px;
     transition: width 0.6s ease-out;
+}
+.standard-pct {
+    font-weight: 700;
+    font-size: 1.2em;
+    color: #333;
+    display: inline;
 }
 .standard-copy {
     font-size: 0.9em;
@@ -1008,5 +1026,5 @@ table th {
     .timer-value { font-size: 1em; }
 }
 @media print {
-    .timer, .timer-toast { display: none; }
+    .timer, .timer-toast, .score-card, .standards-grid { display: none; }
 }

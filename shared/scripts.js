@@ -257,21 +257,40 @@ function gradeTest(config) {
     var pct = Math.round((score / total) * 100);
     var result = document.getElementById(resultId);
     if (result) {
-        // Voice guide: celebrate results, not effort. Max 12 words.
-        var msg;
-        if (pct >= 90) msg = '🔥 ' + score + '/' + total + '. Locked in.';
-        else if (pct >= 80) msg = score + '/' + total + '. Close. One more pass.';
-        else if (pct >= 70) msg = score + '/' + total + '. Getting there. Keep pushing.';
-        else msg = score + '/' + total + '. Needs work. Run it again.';
+        // Remove any previous scorecard/standards grid from prior submission
+        var oldCard = result.parentNode.querySelector('.score-card');
+        if (oldCard) oldCard.remove();
+        var oldGrid = result.parentNode.querySelector('.standards-grid');
+        if (oldGrid) oldGrid.remove();
+
+        // Voice copy per .scorecard-spec.md and .voice-guide.md
+        var line1, line2, passing;
+        if (pct >= 95) { line1 = '🔥 Nothing but net.'; line2 = 'You own this unit.'; passing = true; }
+        else if (pct >= 90) { line1 = '💪 Clean.'; line2 = 'Small gaps. Let\'s close them.'; passing = true; }
+        else if (pct >= 80) { line1 = 'Solid work.'; line2 = 'A few to revisit. See below.'; passing = false; }
+        else if (pct >= 70) { line1 = '📈 Getting there.'; line2 = 'Run it again. You\'ll climb.'; passing = false; }
+        else if (pct >= 60) { line1 = 'Not there yet.'; line2 = 'Focus on the reds. One at a time.'; passing = false; }
+        else { line1 = 'Tough round.'; line2 = 'Start with the hints. Build back up.'; passing = false; }
 
         var streakHtml = maxStreak >= 3
             ? '<div class="streak-badge">Best streak: <span class="streak-number">' + maxStreak + '</span> 🔥</div>'
             : '';
 
+        var cardClass = passing ? 'score-card passing' : 'score-card needs-work';
+        var cardHtml = '<div class="' + cardClass + '">' +
+            '<div class="score-number">' + score + ' / ' + total + '</div>' +
+            '<div class="score-pct">' + pct + '%</div>' +
+            '<div class="score-message">' + line1 + '<br>' + line2 + '</div>' +
+            streakHtml + '</div>';
+
+        // Keep legacy result div for backward compat, hide it
         result.className = 'result show ' + (pct >= 70 ? 'correct' : 'incorrect');
-        result.innerHTML = '<div>Done. ' + total + '/' + total + ' answered.</div>' +
-            '<div>' + msg + ' (' + pct + '%)</div>' + streakHtml;
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        result.style.display = 'none';
+        result.innerHTML = score + '/' + total + ' (' + pct + '%)';
+
+        // Insert scorecard after result div
+        result.insertAdjacentHTML('afterend', cardHtml);
+        window.scrollTo({ top: result.parentNode.querySelector('.score-card').offsetTop - 20, behavior: 'smooth' });
     }
 
     // Render per-standard breakdown if standards were provided
@@ -283,7 +302,7 @@ function gradeTest(config) {
             var pb = stdScores[b].total ? (stdScores[b].correct / stdScores[b].total) : 0;
             return pa - pb;
         });
-        var cardsHtml = '<div class="standards-grid"><h3 class="standards-heading">Standards Breakdown</h3>';
+        var cardsHtml = '<div class="standards-grid"><h3 class="standards-heading">STANDARDS</h3>';
         stdKeys.forEach(function(id) {
             var s = stdScores[id];
             var sp = s.total ? Math.round((s.correct / s.total) * 100) : 0;
@@ -294,11 +313,13 @@ function gradeTest(config) {
                 '<span class="standard-name">' + s.name + '</span>' +
                 '<span class="standard-fraction">' + s.correct + '/' + s.total + '</span></div>' +
                 '<div class="standard-bar"><div class="standard-fill" style="width:' + sp + '%;background:' + color + '"></div></div>' +
+                '<div class="standard-pct">' + sp + '%</div>' +
                 '<div class="standard-copy">' + copy + '</div></div>';
         });
         cardsHtml += '</div>';
-        var resultEl = document.getElementById(resultId);
-        if (resultEl) resultEl.insertAdjacentHTML('afterend', cardsHtml);
+        var scoreCard = result.parentNode.querySelector('.score-card');
+        if (scoreCard) scoreCard.insertAdjacentHTML('afterend', cardsHtml);
+        else if (result) result.insertAdjacentHTML('afterend', cardsHtml);
     }
 
     // Save score for dashboard
