@@ -660,13 +660,16 @@ var MCM_SRS = (function() {
         var qIds = Object.keys(data.questions);
         var boxes = [0, 0, 0, 0, 0, 0];
         qIds.forEach(function(id) { boxes[data.questions[id].box]++; });
+        var today = new Date().toISOString().slice(0,10);
+        var todaySessions = data.sessions.filter(function(s) { return s.date === today; });
         return {
             seen: qIds.length,
             boxes: boxes,
             sessions: data.sessions.length,
             streak: data.streaks.current,
             bestStreak: data.streaks.best,
-            todayDone: data.sessions.some(function(s) { return s.date === new Date().toISOString().slice(0,10); })
+            todayDone: todaySessions.length > 0,
+            todaySessionCount: todaySessions.length
         };
     }
 

@@ -488,6 +488,8 @@
             var elapsed = sessionStartTime ? Math.round((Date.now() - sessionStartTime) / 1000) : 0;
             MCM_SRS.recordSession(total, score, elapsed);
             updateSrsStats();
+            // Daily goal badge
+            showDailyGoalBadge();
         }
 
         var pct = total > 0 ? Math.round((score / total) * 100) : 0;
@@ -547,6 +549,29 @@
         el.innerHTML = '🧠 <strong>' + stats.seen + '</strong> questions seen · ' + boxHtml +
             (stats.streak > 0 ? ' · 🔥 ' + stats.streak + '-day streak' : '') +
             (stats.todayDone ? ' · ✅ Done for today' : '');
+    }
+
+    function showDailyGoalBadge() {
+        var existing = document.getElementById('dailyGoalBadge');
+        if (existing) existing.remove();
+        if (typeof MCM_SRS === 'undefined') return;
+        var stats = MCM_SRS.getStats();
+        var badge = document.createElement('div');
+        badge.id = 'dailyGoalBadge';
+        badge.style.cssText = 'text-align:center;padding:12px;margin:12px 0;border-radius:8px;font-weight:700;font-size:1.05em;';
+        if (stats.todaySessionCount > 1) {
+            badge.style.background = 'var(--color-correct-bg)';
+            badge.style.color = 'var(--color-correct)';
+            badge.style.border = '2px solid var(--color-correct)';
+            badge.textContent = 'Bonus round! 💪';
+        } else {
+            badge.style.background = 'var(--color-correct-bg)';
+            badge.style.color = 'var(--color-correct)';
+            badge.style.border = '2px solid var(--color-correct)';
+            badge.textContent = '✅ Done for today';
+        }
+        var filterBar = document.querySelector('.filter-bar');
+        if (filterBar) filterBar.appendChild(badge);
     }
 
     /* ========== INIT ========== */
