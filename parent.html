@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motor City Math — Parent Dashboard</title>
+    <link rel="stylesheet" href="shared/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>if(typeof Chart==="undefined"){var s=document.createElement("script");s.src="shared/chart.min.js";document.head.appendChild(s);}</script>
+    <script src="shared/chart-theme.js"></script>
+    <script src="shared/scripts.js"></script>
+    <style>
+        /* Parent-specific layout */
+        .parent-dash { max-width: 900px; margin: 0 auto; padding: 16px; }
+        .dash-header { text-align: center; margin-bottom: 20px; }
+        .dash-header h1 { color: var(--accent-navy); font-size: 1.5em; font-weight: 700; margin: 0; }
+        .dash-header .subtitle { color: var(--text-secondary); font-size: 0.9em; margin-top: 4px; }
+        .pistons-stripe {
+            height: 3px;
+            background: linear-gradient(90deg, #C8102E 30%, #1D42BA 50%, #C8102E 70%);
+            border-radius: 2px;
+            margin: 12px 0 20px;
+        }
+        .back-link {
+            display: inline-block;
+            color: var(--accent-blue);
+            font-size: 0.85em;
+            text-decoration: none;
+            margin-bottom: 8px;
+        }
+        .back-link:hover { text-decoration: underline; }
+
+        .section-title {
+            color: var(--accent-navy);
+            font-weight: 700;
+            font-size: 0.95em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin: 24px 0 10px;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-default);
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 16px;
+            box-shadow: var(--shadow-card);
+        }
+
+        /* Latest test */
+        .latest-test-name { font-size: 0.9em; color: var(--text-secondary); margin-bottom: 8px; }
+        .latest-score { font-size: 2.5em; font-weight: 700; color: var(--accent-navy); line-height: 1.1; }
+        .latest-detail { font-size: 0.95em; color: var(--text-secondary); margin-top: 4px; }
+        .latest-voice { font-size: 0.95em; margin-top: 8px; color: var(--text-primary); }
+        .card.passing-card {
+            background: linear-gradient(135deg, #002D62 0%, #1D42BA 100%);
+            color: #FFFFFF;
+            border: none;
+        }
+        .card.passing-card .latest-test-name,
+        .card.passing-card .latest-detail { color: rgba(255,255,255,0.8); }
+        .card.passing-card .latest-score,
+        .card.passing-card .latest-voice { color: #FFFFFF; }
+
+        /* Summary stats */
+        .stat-row { display: flex; justify-content: space-between; padding: 6px 0; font-size: 0.95em; }
+        .stat-label { color: var(--text-secondary); }
+        .stat-value { color: var(--text-primary); font-weight: 600; }
+
+        /* Chart containers */
+        .chart-wrap { position: relative; height: 220px; }
+        .chart-wrap.time-chart { height: 150px; }
+
+        /* Standards grid */
+        .std-grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
+        .std-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-default);
+            border-radius: 6px;
+            padding: 12px;
+        }
+        .std-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px; }
+        .std-name { font-weight: 600; color: var(--text-primary); font-size: 0.9em; }
+        .std-pct { font-weight: 700; font-size: 1.1em; }
+        .std-bar { height: 8px; background: var(--border-subtle); border-radius: 4px; overflow: hidden; }
+        .std-fill { height: 100%; border-radius: 4px; transition: width 0.6s ease; }
+        .std-fraction { font-size: 0.8em; color: var(--text-secondary); margin-top: 4px; }
+
+        /* Color tiers */
+        .tier-green .std-pct { color: #1B7D3A; }
+        .tier-green .std-fill { background: #1B7D3A; }
+        .tier-blue .std-pct { color: #1D42BA; }
+        .tier-blue .std-fill { background: #1D42BA; }
+        .tier-amber .std-pct { color: #E8A317; }
+        .tier-amber .std-fill { background: #E8A317; }
+        .tier-red .std-pct { color: #C8102E; }
+        .tier-red .std-fill { background: #C8102E; }
+
+        /* Empty state */
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-secondary);
+        }
+        .empty-state .icon { font-size: 2.5em; margin-bottom: 12px; }
+
+        .footer { text-align: center; color: var(--text-secondary); font-size: 0.85em; padding: 20px 0 10px; }
+
+        /* Desktop two-column */
+        @media (min-width: 768px) {
+            .parent-dash { padding: 24px; }
+            .dash-header h1 { font-size: 2em; }
+            .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+            .chart-wrap { height: 260px; }
+            .chart-wrap.time-chart { height: 200px; }
+            .std-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        /* Print: hide everything */
+        @media print { body { display: none; } }
+    </style>
+</head>
+<body>
+    <div class="parent-dash">
+        <a href="index.html" class="back-link">← Back to Dashboard</a>
+        <header class="dash-header">
+            <h1>MOTOR CITY MATH</h1>
+            <div class="subtitle">Parent View · Kai</div>
+            <div class="pistons-stripe"></div>
+        </header>
+
+        <div id="emptyState" class="empty-state" style="display:none;">
+            <div class="icon">🏀</div>
+            <p><strong>No tests taken yet.</strong></p>
+            <p>Kai hasn't submitted any scored tests.</p>
+        </div>
+
+        <div id="mainContent" style="display:none;">
+            <!-- Latest Test + Summary (two-col on desktop) -->
+            <div class="two-col">
+                <div>
+                    <div class="section-title">Latest Test</div>
+                    <div class="card" id="latestCard">
+                        <div class="latest-test-name" id="latestName"></div>
+                        <div class="latest-score" id="latestScore"></div>
+                        <div class="latest-detail" id="latestDetail"></div>
+                        <div class="latest-voice" id="latestVoice"></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="section-title">Summary</div>
+                    <div class="card" id="summaryCard"></div>
+                </div>
+            </div>
+
+            <!-- Score Trend + Time Spent (two-col on desktop) -->
+            <div class="two-col">
+                <div>
+                    <div class="section-title">Score Trend</div>
+                    <div class="card">
+                        <div class="chart-wrap">
+                            <canvas id="trendChart" aria-label="Score trend chart" role="img"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="section-title">Time Spent</div>
+                    <div class="card">
+                        <div class="chart-wrap time-chart">
+                            <canvas id="timeChart" aria-label="Time spent per test" role="img"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Standards -->
+            <div class="section-title">Standards</div>
+            <div class="std-grid" id="standardsGrid"></div>
+        </div>
+
+        <div class="footer">Motor City Math 💪</div>
+    </div>
+
+    <script>
+    /* ========== TEST REGISTRY ========== */
+    var testRegistry = {
+        'mcm-quiz-1117': {name: 'Quiz 11/17', file: 'quiz_251117.html', questions: 4},
+        'mcm-quiz-1120': {name: 'Quiz 11/20', file: 'quiz_251120.html', questions: 5},
+        'mcm-quiz-1121': {name: 'Quiz 11/21', file: 'quiz_251121.html', questions: 7},
+        'mcm-index-results': {name: 'Linear Functions', file: 'linear_functions_test.html', questions: 14},
+        'mcm-index-calc': {name: 'Linear + Calc', file: 'index_calc.html', questions: 16},
+        'mcm-nonlinear-test': {name: 'Nonlinear Functions', file: 'nonlinear_functions_test.html', questions: 7},
+        'mcm-exponents-exam': {name: 'Exponents Exam', file: 'exponents_exam.html', questions: 6},
+        'mcm-unit1-v1': {name: 'Exponents Unit 1 v1', file: '20260119_Exponents_Unit1.html', questions: 17},
+        'mcm-unit1-v2': {name: 'Exponents Unit 1 v2', file: '20260119_Exponents_Unit1_2nd.html', questions: 17},
+        'mcm-unit1-v3': {name: 'Exponents Unit 1 v3', file: '20260119_Exponents_Unit1_3rd.html', questions: 17},
+        'mcm-final-exam': {name: 'Final Exam', file: 'final_exam_251123.html', questions: 20},
+        'mcm-final-mini': {name: 'Final Exam Mini', file: 'final_exam_251123_mini.html', questions: 8},
+        'mcm-unit2-nonlinear-review': {name: 'Unit 2 Review', file: 'unit2_nonlinear_review.html', questions: 26},
+        'mcm-mvp-nonlinear': {name: 'Nonlinear Exam MVP', file: 'nonlinear_exam_mvp.html', questions: 15}
+    };
+
+    /* ========== DATA HELPERS ========== */
+    function getScores() {
+        try { return JSON.parse(localStorage.getItem('mcm_scores') || '{}'); } catch(e) { return {}; }
+    }
+
+    function getStandardScores() {
+        try { return JSON.parse(localStorage.getItem('standardScores') || '{}'); } catch(e) { return {}; }
+    }
+
+    /** Extract a flat entry from simple or MVP format */
+    function resolveEntry(entry) {
+        if (!entry) return null;
+        if (entry.attempts && entry.attempts.length > 0) {
+            var latest = entry.attempts[entry.attempts.length - 1];
+            return {
+                score: latest.score,
+                total: latest.total,
+                pct: latest.pct != null ? latest.pct : Math.round((latest.score / latest.total) * 100),
+                timestamp: latest.timestamp || entry.timestamp,
+                time: latest.time || entry.time || null
+            };
+        }
+        return {
+            score: entry.score,
+            total: entry.total,
+            pct: entry.pct != null ? entry.pct : (entry.score && entry.total ? Math.round((entry.score / entry.total) * 100) : 0),
+            timestamp: entry.timestamp || null,
+            time: entry.time || null
+        };
+    }
+
+    /** Build sorted list of all completed tests */
+    function getCompletedTests(scores) {
+        var results = [];
+        var keys = Object.keys(scores);
+        for (var i = 0; i < keys.length; i++) {
+            var key = keys[i];
+            var entry = resolveEntry(scores[key]);
+            if (!entry) continue;
+            var reg = testRegistry[key];
+            results.push({
+                key: key,
+                name: reg ? reg.name : key,
+                score: entry.score,
+                total: entry.total,
+                pct: entry.pct,
+                timestamp: entry.timestamp,
+                time: entry.time
+            });
+        }
+        // Sort by timestamp ascending
+        results.sort(function(a, b) {
+            if (!a.timestamp) return -1;
+            if (!b.timestamp) return 1;
+            return new Date(a.timestamp) - new Date(b.timestamp);
+        });
+        return results;
+    }
+
+    function formatDate(ts) {
+        if (!ts) return '';
+        var d = new Date(ts);
+        return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    }
+
+    function formatMinutes(time) {
+        if (time == null) return null;
+        if (typeof time === 'number') return Math.round(time / 60);
+        if (typeof time === 'string') {
+            var parts = time.split(':');
+            if (parts.length >= 2) return parseInt(parts[0], 10);
+            return Math.round(parseInt(time, 10) / 60);
+        }
+        return null;
+    }
+
+    /* ========== VOICE COPY (parent voice) ========== */
+    function getVoiceCopy(tests) {
+        if (tests.length === 0) return '';
+        var latest = tests[tests.length - 1];
+        if (tests.length === 1) return '📝 First test done. ' + latest.pct + '%.';
+
+        // Check if all scores ≥ 90
+        var allHigh = tests.every(function(t) { return t.pct >= 90; });
+        if (allHigh) return '💪 Strong across the board.';
+
+        // Trend: compare last 3 or last 2
+        var recent = tests.slice(-3);
+        if (recent.length >= 2) {
+            var first = recent[0].pct;
+            var last = recent[recent.length - 1].pct;
+            var diff = last - first;
+            if (diff > 5) return '📈 Trending up. ' + latest.pct + '% latest.';
+            if (diff < -5) return '📉 Dropped from ' + first + '% to ' + last + '%.';
+            return '➡️ Holding at ' + latest.pct + '%. Consistent.';
+        }
+        return '📈 Trending up. ' + latest.pct + '% latest.';
+    }
+
+    /* ========== LATEST TEST CARD ========== */
+    function buildLatestTest(completed) {
+        var card = document.getElementById('latestCard');
+        if (completed.length === 0) return;
+
+        var latest = completed[completed.length - 1];
+        var isPassing = latest.pct >= 90;
+        if (isPassing) card.classList.add('passing-card');
+
+        document.getElementById('latestName').textContent = latest.name + (latest.timestamp ? ' · ' + formatDate(latest.timestamp) : '');
+        document.getElementById('latestScore').textContent = latest.pct + '%';
+
+        var detail = latest.score + '/' + latest.total;
+        var mins = formatMinutes(latest.time);
+        if (mins) detail += ' · ' + mins + ' min';
+        document.getElementById('latestDetail').textContent = detail;
+        document.getElementById('latestVoice').textContent = getVoiceCopy(completed);
+    }
+
+    /* ========== SUMMARY STATS ========== */
+    function buildSummary(completed) {
+        var card = document.getElementById('summaryCard');
+        if (completed.length === 0) return;
+
+        var totalPct = 0, totalTime = 0, timeCount = 0, bestPct = 0, bestName = '';
+        for (var i = 0; i < completed.length; i++) {
+            totalPct += completed[i].pct;
+            if (completed[i].pct > bestPct) {
+                bestPct = completed[i].pct;
+                bestName = completed[i].name;
+            }
+            var mins = formatMinutes(completed[i].time);
+            if (mins) { totalTime += mins; timeCount++; }
+        }
+
+        var avgPct = Math.round(totalPct / completed.length);
+        var avgTime = timeCount > 0 ? Math.round(totalTime / timeCount) : null;
+
+        // Guess current unit from latest test name
+        var latestName = completed[completed.length - 1].name;
+        var unit = 'Unknown';
+        if (/nonlinear|unit\s*2/i.test(latestName)) unit = 'Nonlinear';
+        else if (/exponent|unit\s*1/i.test(latestName)) unit = 'Exponents';
+        else if (/linear|calc/i.test(latestName)) unit = 'Linear';
+        else if (/final/i.test(latestName)) unit = 'Final';
+        else if (/quiz/i.test(latestName)) unit = 'Quizzes';
+
+        var html = '';
+        html += '<div class="stat-row"><span class="stat-label">Tests taken</span><span class="stat-value">' + completed.length + '</span></div>';
+        html += '<div class="stat-row"><span class="stat-label">Average score</span><span class="stat-value">' + avgPct + '%</span></div>';
+        if (avgTime) html += '<div class="stat-row"><span class="stat-label">Average time</span><span class="stat-value">' + avgTime + ' min</span></div>';
+        html += '<div class="stat-row"><span class="stat-label">Best score</span><span class="stat-value">' + bestPct + '% (' + bestName + ')</span></div>';
+        html += '<div class="stat-row"><span class="stat-label">Current unit</span><span class="stat-value">' + unit + '</span></div>';
+        card.innerHTML = html;
+    }
+
+    /* ========== SCORE TREND CHART ========== */
+    function buildTrendChart(completed) {
+        if (completed.length === 0) return;
+        var ctx = document.getElementById('trendChart').getContext('2d');
+
+        // Group by unit for multi-series
+        var unitMap = {};
+        var allLabels = [];
+        for (var i = 0; i < completed.length; i++) {
+            var t = completed[i];
+            var uname = guessUnit(t.key, t.name);
+            if (!unitMap[uname]) unitMap[uname] = [];
+            unitMap[uname].push({ label: shortName(t.name), pct: t.pct, index: i });
+            allLabels.push(shortName(t.name));
+        }
+
+        var unitNames = Object.keys(unitMap);
+        var colors = ['#1D42BA', '#C8102E', '#002D62', '#1B7D3A', '#E8A317', '#BEC0C2'];
+
+        // Single-series if only one unit
+        var datasets;
+        if (unitNames.length <= 1) {
+            datasets = [{
+                label: unitNames[0] || 'Scores',
+                data: completed.map(function(t) { return t.pct; }),
+                borderColor: MCM_CHART_COLORS.primary,
+                backgroundColor: MCM_CHART_COLORS.fill,
+                pointBackgroundColor: MCM_CHART_COLORS.point,
+                fill: true,
+                tension: 0.3
+            }];
+        } else {
+            // Multi-series: each unit is a separate line, sparse data
+            datasets = unitNames.map(function(uname, ui) {
+                var data = new Array(completed.length).fill(null);
+                unitMap[uname].forEach(function(item) { data[item.index] = item.pct; });
+                return {
+                    label: uname,
+                    data: data,
+                    borderColor: colors[ui % colors.length],
+                    pointBackgroundColor: colors[ui % colors.length],
+                    fill: false,
+                    tension: 0.3,
+                    spanGaps: true
+                };
+            });
+        }
+
+        new Chart(ctx, {
+            type: 'line',
+            data: { labels: allLabels, datasets: datasets },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        min: 0, max: 100,
+                        ticks: { callback: function(v) { return v + '%'; } },
+                        grid: { color: 'var(--chart-grid)' }
+                    },
+                    x: { grid: { display: false }, ticks: { maxRotation: 45, font: { size: 11 } } }
+                },
+                plugins: {
+                    legend: { display: unitNames.length > 1, position: 'top', labels: { boxWidth: 12, font: { size: 11 } } },
+                    annotation: {
+                        annotations: {
+                            target: {
+                                type: 'line', yMin: 80, yMax: 80,
+                                borderColor: MCM_CHART_COLORS.target,
+                                borderWidth: 1, borderDash: [6, 4],
+                                label: { content: '80% target', display: true, position: 'start', font: { size: 10 }, color: MCM_CHART_COLORS.target }
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    /* ========== TIME SPENT CHART ========== */
+    function buildTimeChart(completed) {
+        var labels = [], data = [], hasTime = false;
+        for (var i = 0; i < completed.length; i++) {
+            var mins = formatMinutes(completed[i].time);
+            labels.push(shortName(completed[i].name));
+            if (mins) { data.push(mins); hasTime = true; }
+            else { data.push(0); }
+        }
+        if (!hasTime) {
+            document.getElementById('timeChart').parentNode.parentNode.innerHTML =
+                '<p style="text-align:center;color:var(--text-secondary);padding:20px;">No time data recorded yet.</p>';
+            return;
+        }
+        var ctx = document.getElementById('timeChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Minutes',
+                    data: data,
+                    backgroundColor: MCM_CHART_COLORS.primary,
+                    borderRadius: 4,
+                    barThickness: 18
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        ticks: { callback: function(v) { return v + 'm'; } },
+                        grid: { color: 'var(--chart-grid)' }
+                    },
+                    y: { grid: { display: false }, ticks: { font: { size: 11 } } }
+                },
+                plugins: { legend: { display: false } }
+            }
+        });
+    }
+
+    /* ========== STANDARDS GRID ========== */
+    function buildStandards() {
+        var standardScores = getStandardScores();
+        var grid = document.getElementById('standardsGrid');
+
+        // Also check mcm_scores entries for embedded standardScores
+        var scores = getScores();
+        var keys = Object.keys(scores);
+        for (var i = 0; i < keys.length; i++) {
+            var entry = scores[keys[i]];
+            if (entry && entry.standardScores) {
+                var skeys = Object.keys(entry.standardScores);
+                for (var j = 0; j < skeys.length; j++) {
+                    var sid = skeys[j], ss = entry.standardScores[sid];
+                    if (!standardScores[sid]) {
+                        standardScores[sid] = { name: ss.name || sid, correct: 0, total: 0 };
+                    }
+                    standardScores[sid].correct += (ss.correct || 0);
+                    standardScores[sid].total += (ss.total || 0);
+                    if (ss.name) standardScores[sid].name = ss.name;
+                }
+            }
+        }
+
+        var stdKeys = Object.keys(standardScores);
+        if (stdKeys.length === 0) {
+            grid.innerHTML = '<p style="text-align:center;color:var(--text-secondary);padding:16px;grid-column:1/-1;">No standard data recorded yet.</p>';
+            return;
+        }
+
+        // Sort lowest first
+        stdKeys.sort(function(a, b) {
+            var pa = standardScores[a].total ? (standardScores[a].correct / standardScores[a].total) : 0;
+            var pb = standardScores[b].total ? (standardScores[b].correct / standardScores[b].total) : 0;
+            return pa - pb;
+        });
+
+        var html = '';
+        for (var k = 0; k < stdKeys.length; k++) {
+            var id = stdKeys[k];
+            var s = standardScores[id];
+            var pct = s.total ? Math.round((s.correct / s.total) * 100) : 0;
+            var tier = pct >= 90 ? 'green' : pct >= 70 ? 'blue' : pct >= 50 ? 'amber' : 'red';
+            html += '<div class="std-item tier-' + tier + '">' +
+                '<div class="std-head"><span class="std-name">' + (s.name || id) + '</span>' +
+                '<span class="std-pct">' + pct + '%</span></div>' +
+                '<div class="std-bar"><div class="std-fill" style="width:' + pct + '%"></div></div>' +
+                '<div class="std-fraction">' + s.correct + '/' + s.total + ' · ' + id + '</div></div>';
+        }
+        grid.innerHTML = html;
+    }
+
+    /* ========== UTILITY ========== */
+    function shortName(name) {
+        return name.length > 16 ? name.substring(0, 14) + '…' : name;
+    }
+
+    function guessUnit(key, name) {
+        if (/nonlinear|unit2/i.test(key) || /nonlinear|unit\s*2/i.test(name)) return 'Nonlinear';
+        if (/exponent|unit1/i.test(key) || /exponent|unit\s*1/i.test(name)) return 'Exponents';
+        if (/linear|calc|index/i.test(key) || /linear|calc/i.test(name)) return 'Linear';
+        if (/final/i.test(key) || /final/i.test(name)) return 'Final';
+        if (/quiz/i.test(key) || /quiz/i.test(name)) return 'Quizzes';
+        return 'Other';
+    }
+
+    /* ========== INIT ========== */
+    window.addEventListener('DOMContentLoaded', function() {
+        var scores = getScores();
+        var completed = getCompletedTests(scores);
+
+        if (completed.length === 0) {
+            document.getElementById('emptyState').style.display = 'block';
+            return;
+        }
+
+        document.getElementById('mainContent').style.display = 'block';
+        buildLatestTest(completed);
+        buildSummary(completed);
+        buildTrendChart(completed);
+        buildTimeChart(completed);
+        buildStandards();
+    });
+    </script>
+</body>
+</html>
