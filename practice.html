@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Motor City Math — Practice Mode</title>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]});"></script>
     <link rel="stylesheet" href="shared/styles.css">
     <link rel="stylesheet" href="shared/print.css">
     <style>
@@ -145,6 +147,10 @@
 </head>
 <body>
     <div class="container">
+        <div class="print-header">
+            <strong>Motor City Math — Practice Mode</strong><br>
+            Name: _____________________ Date: ___________
+        </div>
         <header class="practice-header">
             <h1>Motor City Math — Practice Mode</h1>
             <div class="subtitle">313 questions · 6 units · Pick your focus</div>
@@ -195,6 +201,7 @@
 
         <div class="button-container" id="actionButtons" style="display:none; margin-top:20px; gap:10px; flex-wrap:wrap;">
             <button class="submit-btn" onclick="gradePractice()">CHECK ANSWERS</button>
+            <button class="answer-key-btn" id="showAnswersBtn" onclick="revealAnswers()" style="display:none; background:#1D42BA;">Show Answers</button>
             <button class="print-btn" onclick="window.print()">Print</button>
             <button class="generate-btn" onclick="generatePractice()">NEW TEST</button>
         </div>
@@ -322,9 +329,9 @@
         document.getElementById('finalResult').className = 'result';
         document.getElementById('finalResult').innerHTML = '';
 
-        // Re-render MathJax
-        if (window.MathJax && MathJax.typesetPromise) {
-            MathJax.typesetPromise();
+        // Re-render KaTeX
+        if (window.renderMathInElement) {
+            renderMathInElement(document.getElementById('questionsArea'), {delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]});
         }
     }
 
@@ -436,6 +443,29 @@
         } catch(e) {}
 
         window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        // Show the "Show Answers" button
+        var saBtn = document.getElementById('showAnswersBtn');
+        if (saBtn) saBtn.style.display = 'inline-block';
+    }
+
+    function revealAnswers() {
+        currentQuestions.forEach(function(q, idx) {
+            var parts = q.sub_parts && q.sub_parts.length > 0 ? q.sub_parts : [{ answer: q.answer || '', label: '' }];
+            var ansHtml = '<div class="answer-reveal" style="margin-top:8px;padding:8px 12px;background:#f0f4ff;border-left:3px solid #1D42BA;border-radius:4px;font-size:0.9rem;">';
+            parts.forEach(function(part) {
+                if (!part.answer) return;
+                var label = part.label ? '<strong>(' + part.label + ')</strong> ' : '';
+                ansHtml += '<div>' + label + '✓ ' + part.answer + '</div>';
+            });
+            if (q.hint) ansHtml += '<div style="color:#6C6E70;margin-top:4px;">💡 ' + q.hint + '</div>';
+            ansHtml += '</div>';
+            var fb = document.getElementById('fb_' + idx);
+            if (fb) {
+                var existing = fb.parentNode.querySelector('.answer-reveal');
+                if (!existing) fb.insertAdjacentHTML('afterend', ansHtml);
+            }
+        });
     }
 
     /* ========== INIT ========== */
