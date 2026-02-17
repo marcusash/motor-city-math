@@ -628,6 +628,19 @@ table th {
     letter-spacing: -1px;
 }
 
+/* === Streak Counter === */
+.streak-badge {
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 0.85em;
+    color: #666;
+}
+.streak-badge .streak-number {
+    color: #C8102E;
+    font-weight: 700;
+    font-size: 1.1em;
+}
+
 .score-card .score-label {
     font-size: 1.1em;
     text-transform: uppercase;

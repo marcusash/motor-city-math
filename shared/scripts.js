@@ -207,6 +207,7 @@ function gradeTest(config) {
     var feedbacks = config.feedbacks;
     var resultId = config.resultId || 'finalResult';
     var score = 0, total = 0;
+    var streak = 0, maxStreak = 0;
 
     questions.forEach(function(q, i) {
         var txt = '', correct = 0;
@@ -222,8 +223,11 @@ function gradeTest(config) {
             if (isCorrect) {
                 score++;
                 correct++;
+                streak++;
+                if (streak > maxStreak) maxStreak = streak;
                 txt += feedbacks[i][j * 2] + '\n';
             } else {
+                streak = 0;
                 txt += feedbacks[i][j * 2 + 1] + '\n';
             }
         });
@@ -245,9 +249,13 @@ function gradeTest(config) {
         else if (pct >= 70) msg = score + '/' + total + '. Getting there. Keep pushing.';
         else msg = score + '/' + total + '. Needs work. Run it again.';
 
+        var streakHtml = maxStreak >= 3
+            ? '<div class="streak-badge">Best streak: <span class="streak-number">' + maxStreak + '</span> 🔥</div>'
+            : '';
+
         result.className = 'result show ' + (pct >= 70 ? 'correct' : 'incorrect');
         result.innerHTML = '<div>Done. ' + total + '/' + total + ' answered.</div>' +
-            '<div>' + msg + ' (' + pct + '%)</div>';
+            '<div>' + msg + ' (' + pct + '%)</div>' + streakHtml;
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
@@ -261,10 +269,11 @@ function gradeTest(config) {
             score: score,
             total: total,
             pct: pct,
+            streak: maxStreak,
             timestamp: new Date().toISOString()
         };
         localStorage.setItem('mcm_scores', JSON.stringify(scores));
     }
 
-    return { score: score, total: total, pct: pct };
+    return { score: score, total: total, pct: pct, streak: maxStreak };
 }

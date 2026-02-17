@@ -110,7 +110,10 @@
     .answer-key-modal,
     .score-card,
     .calc-toggle-btn,
-    .calculator-modal {
+    .calculator-modal,
+    .streak-counter,
+    .streak-badge,
+    .progress-bar-sticky {
         display: none !important;
     }
 
