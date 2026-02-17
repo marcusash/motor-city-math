@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="shared/styles.css">
     <link rel="stylesheet" href="shared/print.css">
     <link rel="stylesheet" href="shared/katex/katex.min.css">
-    <script src="shared/katex/katex.min.js"></script>
+    <script defer src="shared/katex/katex.min.js"></script>
+    <script defer src="shared/katex/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]});"></script>
     <script src="shared/chart.min.js"></script>
     <script>if(typeof Chart==='undefined'){document.write('<script src="https://cdn.jsdelivr.net/npm/chart.js"><\/script>')}</script>
     <script src="shared/chart-theme.js"></script>
@@ -498,6 +499,11 @@
 
             // Show form
             document.getElementById('testForm').style.display = '';
+
+            // Render math in dynamically inserted questions
+            if (typeof renderMathInElement === 'function') {
+                renderMathInElement(container, {delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]});
+            }
 
             // Re-init timer if time param was set (scripts.js auto-init may
             // have already fired before we set data-time-minutes)
