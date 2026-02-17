@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Motor City Math — Test Builder</title>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]});"></script>
     <link rel="stylesheet" href="shared/styles.css">
     <link rel="stylesheet" href="shared/print.css">
     <style>
@@ -140,6 +142,10 @@
 </head>
 <body>
     <div class="builder">
+        <div class="print-header">
+            <strong>Motor City Math — Custom Test</strong><br>
+            Name: _____________________ Date: ___________
+        </div>
         <header class="builder-header">
             <h1>Motor City Math — Test Builder</h1>
             <div class="subtitle">Build custom tests from 313 questions</div>
@@ -389,8 +395,8 @@
             document.getElementById('answerKey').className = 'answer-key';
         }
 
-        // Re-render MathJax
-        if (window.MathJax && MathJax.typesetPromise) MathJax.typesetPromise();
+        // Re-render KaTeX
+        if (window.renderMathInElement) renderMathInElement(document.getElementById('testOutput'), {delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]});
     }
 
     function escHtml(s) {
