@@ -153,9 +153,15 @@ function initTextareaResize() {
  * Normalize a string for comparison: lowercase, strip whitespace and special chars.
  */
 function norm(a) {
-    return typeof a === 'string'
-        ? a.toLowerCase().replace(/\s+|\*|\$/g, '')
-        : a;
+    if (typeof a !== 'string') return a;
+    // Superscript → caret notation: x¹¹ → x^11
+    var supers = {'⁰':'0','¹':'1','²':'2','³':'3','⁴':'4','⁵':'5','⁶':'6','⁷':'7','⁸':'8','⁹':'9','⁻':'-'};
+    var s = a;
+    var superRe = /[⁰¹²³⁴⁵⁶⁷⁸⁹⁻]+/g;
+    s = s.replace(superRe, function(m) {
+        return '^' + m.split('').map(function(c){ return supers[c] || c; }).join('');
+    });
+    return s.toLowerCase().replace(/\s+|\*|\$|\{|\}/g, '');
 }
 
 /**
