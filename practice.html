@@ -189,8 +189,16 @@
                 <label for="filterCount">Questions</label>
                 <input type="number" id="filterCount" min="1" max="50" value="10" style="width:80px;">
             </div>
+            <div class="filter-group">
+                <label for="smartMode">Mode</label>
+                <select id="smartMode" style="min-width:150px;">
+                    <option value="random">Random</option>
+                    <option value="smart" selected>🧠 Smart Practice</option>
+                </select>
+            </div>
             <button class="generate-btn" onclick="generatePractice()">GENERATE TEST</button>
             <div class="filter-info" id="filterInfo">Loading question bank...</div>
+            <div id="srsStats" style="width:100%;font-size:0.85em;color:#6C6E70;display:none;"></div>
         </div>
 
         <form id="practiceForm" onsubmit="return false;">
@@ -309,10 +317,12 @@
     }
 
     /* ========== GENERATE ========== */
+    var sessionStartTime = null;
     function generatePractice() {
         var filtered = filterQuestions();
         var count = parseInt(document.getElementById('filterCount').value) || 10;
         count = Math.min(count, filtered.length, 50);
+        var mode = document.getElementById('smartMode').value;
 
         if (filtered.length === 0) {
             document.getElementById('questionsArea').innerHTML = '<div class="no-questions">No questions match your filters. Try broadening your selection.</div>';
@@ -320,10 +330,19 @@
             return;
         }
 
-        // Shuffle and pick
-        var shuffled = filtered.slice().sort(function() { return Math.random() - 0.5; });
-        currentQuestions = shuffled.slice(0, count);
+        if (mode === 'smart' && typeof MCM_SRS !== 'undefined') {
+            var filters = {
+                unit: document.getElementById('filterUnit').value || undefined,
+                standard: document.getElementById('filterStandard').value || undefined,
+                difficulty: document.getElementById('filterDifficulty').value || undefined
+            };
+            currentQuestions = MCM_SRS.buildQueue(questionBank, filters, count);
+        } else {
+            var shuffled = filtered.slice().sort(function() { return Math.random() - 0.5; });
+            currentQuestions = shuffled.slice(0, count);
+        }
 
+        sessionStartTime = Date.now();
         renderQuestions();
         document.getElementById('actionButtons').style.display = 'flex';
         document.getElementById('finalResult').className = 'result';
@@ -386,6 +405,7 @@
     /* ========== GRADING ========== */
     function gradePractice() {
         var score = 0, total = 0, results = [];
+        var mode = document.getElementById('smartMode').value;
 
         currentQuestions.forEach(function(q, idx) {
             var qCorrect = true;
@@ -417,12 +437,24 @@
 
             results.push(qCorrect);
 
+            // Record SRS answer in smart mode
+            if (mode === 'smart' && typeof MCM_SRS !== 'undefined' && q.id) {
+                MCM_SRS.recordAnswer(q.id, qCorrect);
+            }
+
             var fb = document.getElementById('fb_' + idx);
             if (fb) {
                 fb.className = 'answer-feedback show ' + (qCorrect ? 'correct' : 'incorrect');
                 fb.textContent = qCorrect ? '🔥 Correct.' : 'Check your work.';
             }
         });
+
+        // Record SRS session
+        if (mode === 'smart' && typeof MCM_SRS !== 'undefined') {
+            var elapsed = sessionStartTime ? Math.round((Date.now() - sessionStartTime) / 1000) : 0;
+            MCM_SRS.recordSession(total, score, elapsed);
+            updateSrsStats();
+        }
 
         var pct = total > 0 ? Math.round((score / total) * 100) : 0;
         var resultEl = document.getElementById('finalResult');
@@ -468,8 +500,26 @@
         });
     }
 
+    /* ========== SRS STATS ========== */
+    function updateSrsStats() {
+        if (typeof MCM_SRS === 'undefined') return;
+        var stats = MCM_SRS.getStats();
+        var el = document.getElementById('srsStats');
+        if (!el) return;
+        if (stats.seen === 0) { el.style.display = 'none'; return; }
+        el.style.display = 'block';
+        var boxLabels = ['New', 'Learning', '1 day', '3 days', '7 days', 'Mastered'];
+        var boxHtml = stats.boxes.map(function(c, i) { return boxLabels[i] + ': ' + c; }).join(' · ');
+        el.innerHTML = '🧠 <strong>' + stats.seen + '</strong> questions seen · ' + boxHtml +
+            (stats.streak > 0 ? ' · 🔥 ' + stats.streak + '-day streak' : '') +
+            (stats.todayDone ? ' · ✅ Done for today' : '');
+    }
+
     /* ========== INIT ========== */
-    window.addEventListener('DOMContentLoaded', loadQuestions);
+    window.addEventListener('DOMContentLoaded', function() {
+        loadQuestions();
+        updateSrsStats();
+    });
     </script>
 </body>
 </html>
