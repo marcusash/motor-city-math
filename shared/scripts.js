@@ -170,7 +170,8 @@ function checkAnswer(userAnswer, correctAnswer, tolerance) {
     if (tolerance === undefined) tolerance = 0.5;
 
     if (typeof correctAnswer === 'number') {
-        return Math.abs(parseFloat(userAnswer) - correctAnswer) <= tolerance;
+        var cleaned = String(userAnswer).replace(/[$,]/g, '');
+        return Math.abs(parseFloat(cleaned) - correctAnswer) <= tolerance;
     }
 
     var u = norm(userAnswer);
