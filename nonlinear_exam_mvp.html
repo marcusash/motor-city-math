@@ -1252,6 +1252,56 @@
         gradeEl.innerHTML = '<div class="grade-badge" style="background:' + gradeColors[grade] + ';color:white;">Grade: ' + grade + '</div>' +
             '<div style="color:' + gradeColors[grade] + ';font-weight:700;font-size:1.1rem;">SAAS Score: ' + pct + '%</div>';
 
+        // Per-standard scoring breakdown
+        var stdMap = [
+            {id:'W2.b', name:'Identify transformations'},
+            {id:'W2.b', name:'Identify transformations'},
+            {id:'W2.b', name:'Identify transformations'},
+            {id:'W3.d', name:'Exponential one-to-one'},
+            {id:'W3.b', name:'Solve nonlinear equations'},
+            {id:'W3.b', name:'Solve nonlinear equations'},
+            {id:'W3.d', name:'Exponential one-to-one'},
+            {id:'W3.c', name:'Solve rational equations'},
+            {id:'W3.b', name:'Solve nonlinear equations'},
+            {id:'W3.d', name:'Exponential one-to-one'},
+            {id:'W3.b', name:'Solve nonlinear equations'},
+            {id:'W2.c', name:'Graph using transformations'},
+            {id:'W2.e', name:'Function characteristics'},
+            {id:'W3.a', name:'Explain solving steps'},
+            {id:'5.a',  name:'Exponential models'}
+        ];
+        var stdScores = {};
+        for (var si = 0; si < results.length; si++) {
+            var st = stdMap[si];
+            if (!stdScores[st.id]) stdScores[st.id] = {name:st.name, correct:0, total:0};
+            stdScores[st.id].total++;
+            if (results[si]) stdScores[st.id].correct++;
+        }
+        var stdKeys = Object.keys(stdScores);
+        stdKeys.sort(function(a,b) {
+            var pa = stdScores[a].total ? stdScores[a].correct/stdScores[a].total : 0;
+            var pb = stdScores[b].total ? stdScores[b].correct/stdScores[b].total : 0;
+            return pa - pb;
+        });
+        var cardsHtml = '<div class="standards-grid"><h3 class="standards-heading">Standards Breakdown</h3>';
+        stdKeys.forEach(function(id) {
+            var s = stdScores[id];
+            var sp = s.total ? Math.round((s.correct/s.total)*100) : 0;
+            var color = sp >= 90 ? '#1B7D3A' : sp >= 70 ? '#1D42BA' : sp >= 50 ? '#E8A317' : '#C8102E';
+            var copy = sp >= 90 ? 'Locked in ✅' : sp >= 70 ? 'Solid.' : sp >= 50 ? 'Getting there.' : '⚠️ Needs work.';
+            cardsHtml += '<div class="standard-card" style="border-left-color:'+color+'">' +
+                '<div class="standard-header"><span class="standard-id">'+id+'</span>' +
+                '<span class="standard-name">'+s.name+'</span>' +
+                '<span class="standard-fraction">'+s.correct+'/'+s.total+'</span></div>' +
+                '<div class="standard-bar"><div class="standard-fill" style="width:'+sp+'%;background:'+color+'"></div></div>' +
+                '<div class="standard-copy">'+copy+'</div></div>';
+        });
+        cardsHtml += '</div>';
+        // Remove old grid if re-grading
+        var oldGrid = document.querySelector('.standards-grid');
+        if (oldGrid) oldGrid.remove();
+        gradeEl.insertAdjacentHTML('afterend', cardsHtml);
+
         // Show hint buttons for wrong answers
         for (var i = 0; i < results.length; i++) {
             if (!results[i]) {
