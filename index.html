@@ -177,8 +177,11 @@
             <a href="practice.html" style="display:inline-block; padding:12px 32px; background:#1D42BA; color:white; font-weight:700; font-size:1.05rem; border-radius:6px; text-decoration:none;">🏀 Practice Mode — 313 Questions</a>
             <a href="test-builder.html" style="display:inline-block; padding:12px 32px; background:#C8102E; color:white; font-weight:700; font-size:1.05rem; border-radius:6px; text-decoration:none;">🏗️ Test Builder</a>
             <a href="test.html" style="display:inline-block; padding:12px 32px; background:#1B7D3A; color:white; font-weight:700; font-size:1.05rem; border-radius:6px; text-decoration:none;">📝 Quick Test</a>
-            <a href="parent.html" style="display:inline-block; padding:12px 32px; background:#002D62; color:white; font-weight:700; font-size:1.05rem; border-radius:6px; text-decoration:none;">📊 Parent View</a>
+            <a href="parent.html" style="display:inline-block; padding:12px 32px; background:var(--accent-navy); color:white; font-weight:700; font-size:1.05rem; border-radius:6px; text-decoration:none;">📊 Parent View</a>
         </div>
+
+        <div class="section-title">Quick Tests</div>
+        <div class="test-grid" id="quickTestGrid"></div>
 
         <div class="section-title">All Tests</div>
         <div class="test-grid" id="testGrid"></div>
@@ -481,11 +484,31 @@
         }
     }
 
+    /* ========== QUICK TESTS ========== */
+    function buildQuickTests() {
+        var units = [
+            { id: 'exponents', name: '🔢 Exponents', icon: '⚡' },
+            { id: 'linear', name: '📈 Linear', icon: '📈' },
+            { id: 'nonlinear', name: '📉 Nonlinear', icon: '📉' },
+            { id: 'functions', name: '𝑓(x) Functions', icon: '🔁' }
+        ];
+        var grid = document.getElementById('quickTestGrid');
+        var html = '';
+        units.forEach(function(u) {
+            html += '<a href="test.html?unit=' + u.id + '&count=10" class="test-link" style="border-left-color:var(--color-correct); text-align:center;">' +
+                '<div style="font-size:1.3em; margin-bottom:4px;">' + u.icon + '</div>' +
+                u.name + ' Quick Test' +
+                '<div class="test-meta">10 random questions</div></a>';
+        });
+        grid.innerHTML = html;
+    }
+
     /* ========== INIT ========== */
     window.addEventListener('DOMContentLoaded', function() {
         buildChart();
         var stdResult = buildStandards();
         buildStudyNext(stdResult);
+        buildQuickTests();
         buildTestGrid();
         buildStats();
     });
