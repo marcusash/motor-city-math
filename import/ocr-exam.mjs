@@ -77,4 +77,5 @@ const fullText = allText.map(p => `=== PAGE ${p.page} ===\n${p.text}`).join('\n\
 writeFileSync(textPath, fullText);
 console.log(`Plain text saved to: ${textPath}`);
 
-await Tesseract.terminate();
+// Tesseract workers clean up automatically
+console.log('\nDone.');
