@@ -1,0 +1,677 @@
+{
+  "version": "1.0",
+  "generated_by": "copilot",
+  "description": "Generated Algebra II questions — Non-Linear Functions (Unit 6)",
+  "question_count": 17,
+  "questions": [
+    {
+      "id": "gen-nl-001",
+      "unit": "nonlinear-functions",
+      "standard": "6.a",
+      "difficulty": "easy",
+      "type": "short",
+      "skill": "identify",
+      "source_file": "generated",
+      "question_text": "Find the vertex and axis of symmetry of f(x) = 2(x + 1)² − 5.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "What is the vertex?",
+          "answer": "(-1, -5)",
+          "answer_type": "text"
+        },
+        {
+          "label": "b",
+          "text": "What is the axis of symmetry?",
+          "answer": "x = -1",
+          "answer_type": "equation"
+        }
+      ],
+      "hint": "In vertex form, (h, k) is right there—read it!",
+      "solution_steps": [
+        "Step 1: Vertex form is a(x − h)² + k. Here f(x) = 2(x − (−1))² + (−5).",
+        "Step 2: The vertex is (h, k) = (−1, −5).",
+        "Step 3: The axis of symmetry is the vertical line x = h = −1."
+      ],
+      "tags": ["quadratic", "vertex-form", "axis-of-symmetry"]
+    },
+    {
+      "id": "gen-nl-002",
+      "unit": "nonlinear-functions",
+      "standard": "6.a",
+      "difficulty": "medium",
+      "type": "graph",
+      "skill": "graph",
+      "source_file": "generated",
+      "question_text": "Graph f(x) = x² − 6x + 8 by finding key features.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Find the vertex.",
+          "answer": "(3, -1)",
+          "answer_type": "text"
+        },
+        {
+          "label": "b",
+          "text": "Find the x-intercepts.",
+          "answer": "(2, 0) and (4, 0)",
+          "answer_type": "text"
+        },
+        {
+          "label": "c",
+          "text": "Find the y-intercept.",
+          "answer": "(0, 8)",
+          "answer_type": "text"
+        },
+        {
+          "label": "d",
+          "text": "State the domain and range.",
+          "answer": "Domain: all real numbers; Range: y ≥ −1",
+          "answer_type": "text"
+        }
+      ],
+      "hint": "Factor to find zeros, then use the midpoint for vertex!",
+      "solution_steps": [
+        "Step 1: Factor: x² − 6x + 8 = (x − 2)(x − 4). Zeros at x = 2 and x = 4.",
+        "Step 2: Vertex x-value = (2 + 4)/2 = 3. f(3) = 9 − 18 + 8 = −1. Vertex: (3, −1).",
+        "Step 3: y-intercept: f(0) = 0 − 0 + 8 = 8. Point: (0, 8).",
+        "Step 4: Domain: (−∞, ∞). Range: [−1, ∞) since parabola opens up."
+      ],
+      "tags": ["quadratic", "standard-form", "factoring", "graphing", "intercepts"]
+    },
+    {
+      "id": "gen-nl-003",
+      "unit": "nonlinear-functions",
+      "standard": "6.a",
+      "difficulty": "medium",
+      "type": "multi-part",
+      "skill": "model",
+      "source_file": "generated",
+      "question_text": "A soccer ball is kicked and its height in feet is modeled by h(t) = −16t² + 48t + 2, where t is time in seconds.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "When does the ball reach its maximum height?",
+          "answer": "1.5 seconds",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "b",
+          "text": "What is the maximum height?",
+          "answer": "38 feet",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "When does the ball hit the ground? Round to the nearest hundredth.",
+          "answer": "≈ 3.04 seconds",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Use the vertex formula for the peak—it's the max!",
+      "solution_steps": [
+        "Step 1: Max height at t = −b/(2a) = −48/(2·(−16)) = 48/32 = 1.5 s.",
+        "Step 2: h(1.5) = −16(2.25) + 48(1.5) + 2 = −36 + 72 + 2 = 38 ft.",
+        "Step 3: Set h(t) = 0: −16t² + 48t + 2 = 0 → 8t² − 24t − 1 = 0.",
+        "Step 4: t = (24 ± √(576 + 32))/16 = (24 ± √608)/16 ≈ (24 ± 24.66)/16.",
+        "Step 5: Positive root: t ≈ 48.66/16 ≈ 3.04 seconds."
+      ],
+      "tags": ["quadratic", "projectile-motion", "vertex", "real-world", "modeling"]
+    },
+    {
+      "id": "gen-nl-004",
+      "unit": "nonlinear-functions",
+      "standard": "6.a",
+      "difficulty": "hard",
+      "type": "multi-part",
+      "skill": "model",
+      "source_file": "generated",
+      "question_text": "A company's daily profit in dollars is P(x) = −2x² + 120x − 1000, where x is units sold.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "How many units maximize profit?",
+          "answer": "30 units",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "b",
+          "text": "What is the maximum daily profit?",
+          "answer": "$800",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "How many units must be sold to break even? (Find both values.)",
+          "answer": "10 units and 50 units",
+          "answer_type": "text"
+        },
+        {
+          "label": "d",
+          "text": "For what range of units sold is the company profitable?",
+          "answer": "10 < x < 50",
+          "answer_type": "text"
+        }
+      ],
+      "hint": "Vertex gives the max—set P(x) = 0 for break-even.",
+      "solution_steps": [
+        "Step 1: x = −120/(2·(−2)) = 120/4 = 30 units.",
+        "Step 2: P(30) = −2(900) + 120(30) − 1000 = −1800 + 3600 − 1000 = $800.",
+        "Step 3: Set P(x) = 0: −2x² + 120x − 1000 = 0 → x² − 60x + 500 = 0.",
+        "Step 4: Factor: (x − 10)(x − 50) = 0 → x = 10 or x = 50.",
+        "Step 5: Profitable when P(x) > 0, between the zeros: 10 < x < 50."
+      ],
+      "tags": ["quadratic", "profit", "break-even", "real-world", "optimization"]
+    },
+    {
+      "id": "gen-nl-005",
+      "unit": "nonlinear-functions",
+      "standard": "6.b",
+      "difficulty": "easy",
+      "type": "short",
+      "skill": "identify",
+      "source_file": "generated",
+      "question_text": "For f(x) = √(x − 4) + 1, state the starting point, domain, and range.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "What is the starting point?",
+          "answer": "(4, 1)",
+          "answer_type": "text"
+        },
+        {
+          "label": "b",
+          "text": "State the domain.",
+          "answer": "x ≥ 4, or [4, ∞)",
+          "answer_type": "text"
+        },
+        {
+          "label": "c",
+          "text": "State the range.",
+          "answer": "y ≥ 1, or [1, ∞)",
+          "answer_type": "text"
+        }
+      ],
+      "hint": "What's under the radical must be ≥ 0!",
+      "solution_steps": [
+        "Step 1: The expression under the radical is x − 4 ≥ 0, so x ≥ 4.",
+        "Step 2: Starting point: when x = 4, f(4) = √0 + 1 = 1. Point: (4, 1).",
+        "Step 3: The smallest output is 1 (when x = 4), and √ grows without bound, so range is y ≥ 1."
+      ],
+      "tags": ["square-root", "domain", "range", "starting-point"]
+    },
+    {
+      "id": "gen-nl-006",
+      "unit": "nonlinear-functions",
+      "standard": "6.b",
+      "difficulty": "medium",
+      "type": "graph",
+      "skill": "graph",
+      "source_file": "generated",
+      "question_text": "Graph f(x) = −√(x + 2) + 3 and analyze the function.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Identify the starting point.",
+          "answer": "(-2, 3)",
+          "answer_type": "text"
+        },
+        {
+          "label": "b",
+          "text": "State the domain.",
+          "answer": "x ≥ −2, or [−2, ∞)",
+          "answer_type": "text"
+        },
+        {
+          "label": "c",
+          "text": "State the range.",
+          "answer": "y ≤ 3, or (−∞, 3]",
+          "answer_type": "text"
+        },
+        {
+          "label": "d",
+          "text": "Describe the transformations from the parent y = √x.",
+          "answer": "Shifted left 2, reflected over x-axis, shifted up 3",
+          "answer_type": "text"
+        }
+      ],
+      "hint": "Reflect, shift—start from the parent shape!",
+      "solution_steps": [
+        "Step 1: Parent is y = √x. Replace x with (x + 2): shifts left 2.",
+        "Step 2: Negative sign reflects the graph over the x-axis.",
+        "Step 3: Adding 3 shifts the graph up 3. Starting point: (−2, 3).",
+        "Step 4: Domain: x + 2 ≥ 0 → x ≥ −2. Range: y ≤ 3 (reflected, so output goes down)."
+      ],
+      "tags": ["square-root", "transformations", "graphing", "reflection"]
+    },
+    {
+      "id": "gen-nl-007",
+      "unit": "nonlinear-functions",
+      "standard": "6.b",
+      "difficulty": "hard",
+      "type": "multi-part",
+      "skill": "model",
+      "source_file": "generated",
+      "question_text": "The speed of a car in mph after braking on wet pavement can be estimated by S(d) = √(12d), where d is the skid-mark length in feet.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Find the speed if the skid marks are 75 feet long.",
+          "answer": "30 mph",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "b",
+          "text": "How long are the skid marks for a car going 48 mph?",
+          "answer": "192 feet",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "State the domain and range in context.",
+          "answer": "Domain: d ≥ 0 (skid length); Range: S ≥ 0 (speed)",
+          "answer_type": "text"
+        }
+      ],
+      "hint": "Square both sides to undo the radical!",
+      "solution_steps": [
+        "Step 1: S(75) = √(12 · 75) = √900 = 30 mph.",
+        "Step 2: Set 48 = √(12d). Square both sides: 2304 = 12d → d = 192 ft.",
+        "Step 3: Domain: d ≥ 0 (can't have negative skid length). Range: S ≥ 0 (speed is non-negative)."
+      ],
+      "tags": ["square-root", "real-world", "braking-distance", "modeling"]
+    },
+    {
+      "id": "gen-nl-008",
+      "unit": "nonlinear-functions",
+      "standard": "6.c",
+      "difficulty": "easy",
+      "type": "short",
+      "skill": "identify",
+      "source_file": "generated",
+      "question_text": "For f(x) = 3/(x − 2) + 1, identify the vertical and horizontal asymptotes.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "What is the vertical asymptote?",
+          "answer": "x = 2",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "What is the horizontal asymptote?",
+          "answer": "y = 1",
+          "answer_type": "equation"
+        }
+      ],
+      "hint": "Asymptotes come from shifts of the parent 1/x.",
+      "solution_steps": [
+        "Step 1: Parent function is 1/x with asymptotes x = 0 and y = 0.",
+        "Step 2: Denominator (x − 2) = 0 when x = 2 → vertical asymptote: x = 2.",
+        "Step 3: The +1 shifts the horizontal asymptote up to y = 1."
+      ],
+      "tags": ["rational", "asymptotes", "parent-function"]
+    },
+    {
+      "id": "gen-nl-009",
+      "unit": "nonlinear-functions",
+      "standard": "6.c",
+      "difficulty": "medium",
+      "type": "graph",
+      "skill": "graph",
+      "source_file": "generated",
+      "question_text": "Graph f(x) = −2/(x + 1) + 4 and analyze the function.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Find the vertical asymptote.",
+          "answer": "x = −1",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "Find the horizontal asymptote.",
+          "answer": "y = 4",
+          "answer_type": "equation"
+        },
+        {
+          "label": "c",
+          "text": "State the domain and range.",
+          "answer": "Domain: all reals except x = −1; Range: all reals except y = 4",
+          "answer_type": "text"
+        },
+        {
+          "label": "d",
+          "text": "Plot at least 4 points on the graph.",
+          "answer": "(0, 2), (1, 3), (−2, 6), (−3, 5)",
+          "answer_type": "text"
+        }
+      ],
+      "hint": "Find the center (asymptotes), then plot points on each side.",
+      "solution_steps": [
+        "Step 1: VA at x + 1 = 0 → x = −1. HA at y = 4.",
+        "Step 2: f(0) = −2/1 + 4 = 2. f(1) = −2/2 + 4 = 3.",
+        "Step 3: f(−2) = −2/(−1) + 4 = 2 + 4 = 6. f(−3) = −2/(−2) + 4 = 1 + 4 = 5.",
+        "Step 4: Domain: (−∞, −1) ∪ (−1, ∞). Range: (−∞, 4) ∪ (4, ∞)."
+      ],
+      "tags": ["rational", "graphing", "asymptotes", "transformations"]
+    },
+    {
+      "id": "gen-nl-010",
+      "unit": "nonlinear-functions",
+      "standard": "6.c",
+      "difficulty": "hard",
+      "type": "multi-part",
+      "skill": "model",
+      "source_file": "generated",
+      "question_text": "A science class starts with 100 mL of water and adds salt. The concentration (g/mL) is modeled by C(s) = s/(s + 100), where s is grams of salt added.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "What is the concentration after adding 25 g of salt?",
+          "answer": "0.2 g/mL",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "b",
+          "text": "How much salt is needed for a concentration of 0.5 g/mL?",
+          "answer": "100 grams",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "What is the horizontal asymptote and what does it mean in context?",
+          "answer": "y = 1; the concentration approaches but never reaches 1 g/mL",
+          "answer_type": "text"
+        },
+        {
+          "label": "d",
+          "text": "Can the concentration ever equal exactly 1 g/mL? Explain.",
+          "answer": "No. s/(s + 100) = 1 leads to s = s + 100, which is impossible.",
+          "answer_type": "text"
+        }
+      ],
+      "hint": "Set up the equation and solve—watch the asymptote!",
+      "solution_steps": [
+        "Step 1: C(25) = 25/(25 + 100) = 25/125 = 0.2 g/mL.",
+        "Step 2: 0.5 = s/(s + 100) → 0.5(s + 100) = s → 0.5s + 50 = s → 50 = 0.5s → s = 100 g.",
+        "Step 3: As s → ∞, s/(s + 100) → 1. The HA is y = 1.",
+        "Step 4: Setting s/(s + 100) = 1 gives s = s + 100, a contradiction. Concentration never reaches 1."
+      ],
+      "tags": ["rational", "real-world", "concentration", "asymptotes", "modeling"]
+    },
+    {
+      "id": "gen-nl-011",
+      "unit": "nonlinear-functions",
+      "standard": "6.d",
+      "difficulty": "easy",
+      "type": "short",
+      "skill": "identify",
+      "source_file": "generated",
+      "question_text": "For f(x) = (x + 2)³ − 3, identify the inflection point and state the domain and range.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "What is the inflection point?",
+          "answer": "(-2, -3)",
+          "answer_type": "text"
+        },
+        {
+          "label": "b",
+          "text": "State the domain.",
+          "answer": "All real numbers, (−∞, ∞)",
+          "answer_type": "text"
+        },
+        {
+          "label": "c",
+          "text": "State the range.",
+          "answer": "All real numbers, (−∞, ∞)",
+          "answer_type": "text"
+        }
+      ],
+      "hint": "Cubics pass through the inflection point—read (h, k)!",
+      "solution_steps": [
+        "Step 1: The form a(x − h)³ + k has inflection point (h, k).",
+        "Step 2: f(x) = (x − (−2))³ + (−3), so inflection point is (−2, −3).",
+        "Step 3: Cubic functions have domain and range of all real numbers."
+      ],
+      "tags": ["cubic", "inflection-point", "domain", "range"]
+    },
+    {
+      "id": "gen-nl-012",
+      "unit": "nonlinear-functions",
+      "standard": "6.d",
+      "difficulty": "medium",
+      "type": "graph",
+      "skill": "graph",
+      "source_file": "generated",
+      "question_text": "Graph f(x) = −(x − 2)³ + 1 and analyze the function.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Find the inflection point.",
+          "answer": "(2, 1)",
+          "answer_type": "text"
+        },
+        {
+          "label": "b",
+          "text": "State the domain and range.",
+          "answer": "Domain: all reals; Range: all reals",
+          "answer_type": "text"
+        },
+        {
+          "label": "c",
+          "text": "Describe the end behavior.",
+          "answer": "As x → ∞, f(x) → −∞; as x → −∞, f(x) → ∞",
+          "answer_type": "text"
+        },
+        {
+          "label": "d",
+          "text": "List the transformations from the parent y = x³.",
+          "answer": "Right 2, reflected over x-axis, up 1",
+          "answer_type": "text"
+        }
+      ],
+      "hint": "Reflect the parent cubic, then shift right and up.",
+      "solution_steps": [
+        "Step 1: Parent y = x³ shifted right 2: (x − 2)³.",
+        "Step 2: Negative reflects over x-axis: −(x − 2)³.",
+        "Step 3: +1 shifts up. Inflection point: (2, 1).",
+        "Step 4: Reflected cubic: as x → ∞, y → −∞; as x → −∞, y → ∞."
+      ],
+      "tags": ["cubic", "transformations", "graphing", "end-behavior", "reflection"]
+    },
+    {
+      "id": "gen-nl-013",
+      "unit": "nonlinear-functions",
+      "standard": "6.d",
+      "difficulty": "medium",
+      "type": "multi-part",
+      "skill": "model",
+      "source_file": "generated",
+      "question_text": "An engineering team models the deflection (in mm) of a beam as D(x) = 0.5(x − 4)³ + 8, where x is the distance in meters from one end.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "What is the deflection at x = 4 meters?",
+          "answer": "8 mm",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "b",
+          "text": "What is the inflection point and what does it represent?",
+          "answer": "(4, 8); where the curvature of the beam changes direction",
+          "answer_type": "text"
+        },
+        {
+          "label": "c",
+          "text": "Find the deflection at x = 6 meters.",
+          "answer": "12 mm",
+          "answer_type": "numeric"
+        }
+      ],
+      "hint": "Plug in—the inflection point is where curvature flips.",
+      "solution_steps": [
+        "Step 1: D(4) = 0.5(4 − 4)³ + 8 = 0.5(0) + 8 = 8 mm.",
+        "Step 2: Inflection point is (4, 8) from the form a(x − h)³ + k.",
+        "Step 3: D(6) = 0.5(6 − 4)³ + 8 = 0.5(8) + 8 = 4 + 8 = 12 mm."
+      ],
+      "tags": ["cubic", "real-world", "engineering", "inflection-point", "modeling"]
+    },
+    {
+      "id": "gen-nl-014",
+      "unit": "nonlinear-functions",
+      "standard": "6.e",
+      "difficulty": "easy",
+      "type": "short",
+      "skill": "identify",
+      "source_file": "generated",
+      "question_text": "A function passes through (0, 0), (1, 1), (4, 2), and (9, 3). Its graph starts at the origin and curves upward, getting flatter. What type of function is this?",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Identify the function type.",
+          "answer": "Square root function",
+          "answer_type": "text"
+        },
+        {
+          "label": "b",
+          "text": "Write the parent equation that fits these points.",
+          "answer": "f(x) = √x",
+          "answer_type": "equation"
+        }
+      ],
+      "hint": "Perfect squares go in, integers come out—what's that?",
+      "solution_steps": [
+        "Step 1: Check outputs: √0 = 0, √1 = 1, √4 = 2, √9 = 3. All match.",
+        "Step 2: The function is f(x) = √x (square root parent function)."
+      ],
+      "tags": ["function-identification", "square-root", "pattern-recognition"]
+    },
+    {
+      "id": "gen-nl-015",
+      "unit": "nonlinear-functions",
+      "standard": "6.e",
+      "difficulty": "medium",
+      "type": "multi-part",
+      "skill": "identify",
+      "source_file": "generated",
+      "question_text": "A graph shows a curve with a vertical asymptote at x = 0 and a horizontal asymptote at y = 0. As x → ∞, y approaches 0 from above. As x → 0⁺, y → ∞.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "What type of function is this?",
+          "answer": "Rational function",
+          "answer_type": "text"
+        },
+        {
+          "label": "b",
+          "text": "Which parent function does it most closely resemble?",
+          "answer": "f(x) = 1/x (right branch, x > 0)",
+          "answer_type": "text"
+        },
+        {
+          "label": "c",
+          "text": "State the domain and range based on the description.",
+          "answer": "Domain: x > 0, (0, ∞); Range: y > 0, (0, ∞)",
+          "answer_type": "text"
+        }
+      ],
+      "hint": "Asymptotes in both directions? Think rational!",
+      "solution_steps": [
+        "Step 1: Vertical and horizontal asymptotes are signatures of rational functions.",
+        "Step 2: VA at x = 0 and HA at y = 0 match y = 1/x.",
+        "Step 3: Only positive values described → domain: x > 0, range: y > 0."
+      ],
+      "tags": ["function-identification", "rational", "asymptotes", "graph-analysis"]
+    },
+    {
+      "id": "gen-nl-016",
+      "unit": "nonlinear-functions",
+      "standard": "6.e",
+      "difficulty": "medium",
+      "type": "multi-part",
+      "skill": "identify",
+      "source_file": "generated",
+      "question_text": "Match each description to its function type: quadratic, square root, rational, or cubic.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Has a vertex and a line of symmetry.",
+          "answer": "Quadratic",
+          "answer_type": "text"
+        },
+        {
+          "label": "b",
+          "text": "Has both a vertical and a horizontal asymptote.",
+          "answer": "Rational",
+          "answer_type": "text"
+        },
+        {
+          "label": "c",
+          "text": "Has an inflection point with domain and range both all real numbers.",
+          "answer": "Cubic",
+          "answer_type": "text"
+        },
+        {
+          "label": "d",
+          "text": "Has a restricted domain starting at a specific x-value and only increases (or only decreases).",
+          "answer": "Square root",
+          "answer_type": "text"
+        }
+      ],
+      "hint": "Each function family has its own signature features!",
+      "solution_steps": [
+        "Step 1: Vertex + symmetry = parabola = quadratic.",
+        "Step 2: Two asymptotes = rational (like y = 1/x).",
+        "Step 3: Inflection point + all-real domain and range = cubic.",
+        "Step 4: Restricted domain with one-direction curve = square root."
+      ],
+      "tags": ["function-identification", "matching", "key-features", "function-families"]
+    },
+    {
+      "id": "gen-nl-017",
+      "unit": "nonlinear-functions",
+      "standard": "6.e",
+      "difficulty": "hard",
+      "type": "multi-part",
+      "skill": "identify",
+      "source_file": "generated",
+      "question_text": "You are given a table of values:\n\n| x  | −2 | −1 | 0 | 1 | 2  | 3  |\n|----|----|----|---|---|----|----|  \n| y  | −8 | −1 | 0 | 1 | 8  | 27 |",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Identify the function type.",
+          "answer": "Cubic function",
+          "answer_type": "text"
+        },
+        {
+          "label": "b",
+          "text": "Write a possible equation.",
+          "answer": "f(x) = x³",
+          "answer_type": "equation"
+        },
+        {
+          "label": "c",
+          "text": "Describe the end behavior.",
+          "answer": "As x → ∞, y → ∞; as x → −∞, y → −∞",
+          "answer_type": "text"
+        },
+        {
+          "label": "d",
+          "text": "What is the inflection point?",
+          "answer": "(0, 0)",
+          "answer_type": "text"
+        }
+      ],
+      "hint": "Check the pattern—are outputs cubes of inputs?",
+      "solution_steps": [
+        "Step 1: (−2)³ = −8 ✓, (−1)³ = −1 ✓, 0³ = 0 ✓, 1³ = 1 ✓, 2³ = 8 ✓, 3³ = 27 ✓.",
+        "Step 2: The function is f(x) = x³, a cubic.",
+        "Step 3: End behavior: as x → ±∞, y → ±∞ (same direction as x).",
+        "Step 4: Inflection point of y = x³ is at the origin (0, 0)."
+      ],
+      "tags": ["function-identification", "cubic", "tables", "end-behavior", "inflection-point"]
+    }
+  ]
+}
