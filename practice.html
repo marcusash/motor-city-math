@@ -203,6 +203,15 @@
         </div>
 
         <form id="practiceForm" onsubmit="return false;">
+            <div id="progressBar" style="display:none; margin-bottom:16px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+                    <span id="progressText" style="font-weight:600; font-size:0.95em; color:var(--accent-navy);">Question 1 of 10</span>
+                    <span id="progressPct" style="font-weight:700; color:var(--accent-blue);"></span>
+                </div>
+                <div style="height:6px; background:var(--border-subtle); border-radius:3px; overflow:hidden;">
+                    <div id="progressFill" style="height:100%; background:var(--accent-blue); border-radius:3px; transition:width 0.3s ease; width:0%"></div>
+                </div>
+            </div>
             <div id="questionsArea">
                 <div class="no-questions" id="emptyState">Select your filters and click GENERATE TEST to start practicing.</div>
             </div>
@@ -397,6 +406,30 @@
         });
 
         area.innerHTML = html;
+        
+        // Show progress bar
+        var progressBar = document.getElementById('progressBar');
+        if (currentQuestions.length > 0) {
+            progressBar.style.display = 'block';
+            updateProgress(1, currentQuestions.length);
+            // Track which question is in view via input focus
+            area.addEventListener('focusin', function(e) {
+                var qDiv = e.target.closest('.rendered-question');
+                if (qDiv) {
+                    var qIdx = parseInt(qDiv.id.replace('rq_', '')) + 1;
+                    updateProgress(qIdx, currentQuestions.length);
+                }
+            });
+        } else {
+            progressBar.style.display = 'none';
+        }
+    }
+
+    function updateProgress(current, total) {
+        document.getElementById('progressText').textContent = 'Question ' + current + ' of ' + total;
+        var pct = Math.round((current / total) * 100);
+        document.getElementById('progressPct').textContent = pct + '%';
+        document.getElementById('progressFill').style.width = pct + '%';
     }
 
     function escapeHtml(str) {
