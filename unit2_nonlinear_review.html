@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Algebra 2: Nonlinear Functions Review</title>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]});"></script>
     <link rel="stylesheet" href="shared/styles.css">
     <link rel="stylesheet" href="shared/print.css">
     <style>
@@ -806,8 +809,10 @@
                 d) \\(\\frac{2}{(x-3)^2} + 1 = 0 \\Rightarrow \\frac{2}{(x-3)^2} = -1\\) — <strong>No real solution</strong> (left side always positive)</div>
             `;
             showAnswerKey(answerKeyHTML, function() {
-                if (window.MathJax) {
-                    MathJax.typesetPromise([document.getElementById('answerKeyBody')]);
+                if (window.renderMathInElement) {
+                    renderMathInElement(document.getElementById('answerKeyBody'), {
+                        delimiters: [{left: '\\(', right: '\\)', display: false}, {left: '\\[', right: '\\]', display: true}]
+                    });
                 }
             });
         }

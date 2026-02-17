@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Algebra 2 - Exponents Unit 1 Test (3rd Attempt)</title>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]});"></script>
     <link rel="stylesheet" href="shared/styles.css">
     <link rel="stylesheet" href="shared/print.css">
     <style>
@@ -545,10 +548,10 @@
                 \(E = 10.8 \times 10^{10} = 1.08 \times 10^{11}\) Joules</div>
             `;
             showAnswerKey(answerKeyHTML, function() {
-                if (window.MathJax) {
-                    MathJax.typesetPromise([document.getElementById('answerKeyBody')]).then(function() {
-                        console.log('MathJax rendering complete');
-                    }).catch(function(err) { console.log('MathJax rendering error:', err); });
+                if (window.renderMathInElement) {
+                    renderMathInElement(document.getElementById('answerKeyBody'), {
+                        delimiters: [{left: '\\(', right: '\\)', display: false}, {left: '\\[', right: '\\]', display: true}]
+                    });
                 }
             });
         }
