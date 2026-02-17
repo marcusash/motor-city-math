@@ -182,11 +182,11 @@ header {
     text-align: center;
     margin-bottom: 40px;
     padding-bottom: 20px;
-    border-bottom: 3px solid #C8102E;
+    border-bottom: 3px solid var(--accent-red);
 }
 
 h1 {
-    color: #002D62;
+    color: var(--accent-navy);
     font-size: 2.5em;
     margin-bottom: 10px;
     font-weight: 700;
@@ -194,7 +194,7 @@ h1 {
 }
 
 .subtitle {
-    color: #666;
+    color: var(--text-secondary);
     font-size: 1.2em;
 }
 
@@ -206,9 +206,9 @@ header .date {
 
 /* === Question Cards === */
 .question-card {
-    background: #ffffff;
-    border: 1px solid #BEC0C2;
-    border-left: 4px solid #C8102E;
+    background: var(--bg-card);
+    border: 1px solid var(--border-default);
+    border-left: 4px solid var(--accent-red);
     padding: 30px;
     margin-bottom: 24px;
     border-radius: 4px;
@@ -220,11 +220,11 @@ header .date {
 }
 
 .question-card.answered-correct {
-    border-left-color: #1B7D3A;
+    border-left-color: var(--color-correct);
 }
 
 .question-card.answered-incorrect {
-    border-left-color: #C8102E;
+    border-left-color: var(--color-incorrect);
 }
 
 .question-number {
@@ -572,6 +572,7 @@ input:focus, textarea:focus {
     border-radius: 5px;
     display: none;
     white-space: pre-line;
+    color: var(--text-primary);
 }
 
 .answer-feedback.show {
