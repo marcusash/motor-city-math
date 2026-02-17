@@ -254,6 +254,73 @@
           "question_count": 3
         }
       ]
+    },
+    {
+      "id": "unit7",
+      "name": "Transformations & Nonlinear Equations",
+      "trimester": "winter",
+      "standards": [
+        {
+          "id": "W2.a",
+          "name": "Sketch parent functions",
+          "description": "I can sketch graphs of parent functions.",
+          "question_count": 0
+        },
+        {
+          "id": "W2.b",
+          "name": "Identify transformations",
+          "description": "I can identify the parent function and transformations from a graph or equation.",
+          "question_count": 8
+        },
+        {
+          "id": "W2.c",
+          "name": "Graph using transformations",
+          "description": "I can graph a function using parent shapes and transformations.",
+          "question_count": 8
+        },
+        {
+          "id": "W2.d",
+          "name": "Write equation from graph",
+          "description": "I can write an equation for a function given a graph.",
+          "question_count": 4
+        },
+        {
+          "id": "W2.e",
+          "name": "Function characteristics",
+          "description": "I can describe characteristics of functions such as domain, range, symmetry, extrema, asymptotes, end behavior, and intervals of increasing or decreasing.",
+          "question_count": 4
+        },
+        {
+          "id": "W3.a",
+          "name": "Explain solving steps",
+          "description": "I can explain the reasoning for each step of solving an equation.",
+          "question_count": 2
+        },
+        {
+          "id": "W3.b",
+          "name": "Solve nonlinear equations",
+          "description": "I can solve nonlinear equations using inverse operations, including quadratic, power, and radical functions.",
+          "question_count": 8
+        },
+        {
+          "id": "W3.c",
+          "name": "Solve rational equations",
+          "description": "I can solve rational equations.",
+          "question_count": 2
+        },
+        {
+          "id": "W3.d",
+          "name": "Exponential one-to-one property",
+          "description": "I can solve exponential equations using the one-to-one property.",
+          "question_count": 4
+        },
+        {
+          "id": "W3.e",
+          "name": "Extraneous solutions",
+          "description": "I can identify extraneous solutions.",
+          "question_count": 1
+        }
+      ]
     }
   ],
   "difficulty_rubric": {
