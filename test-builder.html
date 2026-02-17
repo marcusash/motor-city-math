@@ -206,6 +206,7 @@
         <div class="action-bar" id="actionBar" style="display:none; margin-bottom:20px; display:flex; gap:10px; flex-wrap:wrap;">
             <button class="print-btn" onclick="window.print()">🖨️ Print Test</button>
             <button class="build-btn" style="background:#1D42BA;" onclick="buildTest()">🔄 Regenerate</button>
+            <button class="build-btn" style="background:var(--color-correct);" id="interactiveBtn" onclick="openInteractive()">🎮 Open Interactive</button>
             <a href="index.html" style="color:#1D42BA; font-weight:600; align-self:center;">← Dashboard</a>
         </div>
 
@@ -329,6 +330,18 @@
 
         renderTest(selected, title, includeWork, includeKey);
         document.getElementById('actionBar').style.display = 'flex';
+    }
+
+    function openInteractive() {
+        var unit = document.getElementById('testUnit').value;
+        var diff = document.getElementById('testDiff').value;
+        var count = document.getElementById('testCount').value || '15';
+        var stds = getSelectedStandards();
+        var params = ['count=' + count];
+        if (unit) params.push('unit=' + encodeURIComponent(unit));
+        if (diff && diff !== 'ramp') params.push('difficulty=' + encodeURIComponent(diff));
+        if (stds.length > 0) params.push('standard=' + stds.map(encodeURIComponent).join(','));
+        window.location.href = 'test.html?' + params.join('&');
     }
 
     function shuffle(arr) {
