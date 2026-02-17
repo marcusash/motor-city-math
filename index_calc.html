@@ -3,290 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Algebra 2 - Linear Functions Practice Test</title>
+    <title>Algebra 2 - Linear Functions Practice Test (Calculator)</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="shared/chart-theme.js"></script>
+    <link rel="stylesheet" href="shared/styles.css">
+    <link rel="stylesheet" href="shared/print.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 40px;
-            padding-bottom: 20px;
-            border-bottom: 3px solid #667eea;
-        }
-
-        h1 {
-            color: #333;
-            font-size: 2.5em;
-            margin-bottom: 10px;
-        }
-
-        .subtitle {
-            color: #666;
-            font-size: 1.2em;
-        }
-
-        .question-card {
-            background: #f8f9fa;
-            border-left: 5px solid #667eea;
-            padding: 25px;
-            margin-bottom: 30px;
-            border-radius: 10px;
-            transition: transform 0.2s;
-        }
-
-        .question-card:hover {
-            transform: translateX(5px);
-        }
-
-        .question-number {
-            color: #667eea;
-            font-weight: bold;
-            font-size: 1.3em;
-            margin-bottom: 10px;
-        }
-
-        .question-text {
-            color: #333;
-            font-size: 1.1em;
-            line-height: 1.6;
-            margin-bottom: 15px;
-        }
-
-        .chart-container {
-            max-width: 700px;
-            height: 450px;
-            margin: 20px auto;
-            padding: 20px;
-            background: white;
-            border-radius: 10px;
-        }
-
-        .input-group {
-            margin: 15px 0;
-        }
-
-        .input-group label {
-            display: block;
-            color: #555;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .input-group input {
-            width: 100%;
-            max-width: 300px;
-            padding: 12px;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            font-size: 1em;
-            transition: border-color 0.3s;
-        }
-
-        .input-group input:focus {
-            outline: none;
-            border-color: #667eea;
-        }
-
-        .input-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            font-size: 1em;
-            min-height: 80px;
-            font-family: inherit;
-            transition: border-color 0.3s;
-        }
-
-        .input-group textarea:focus {
-            outline: none;
-            border-color: #667eea;
-        }
-
-        .submit-btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            padding: 15px 40px;
-            font-size: 1.2em;
-            border-radius: 10px;
-            cursor: pointer;
-            display: block;
-            margin: 40px auto 20px;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
-        }
-
-        .print-btn {
-            background: white;
-            color: #667eea;
-            border: 2px solid #667eea;
-            padding: 12px 30px;
-            font-size: 1em;
-            border-radius: 10px;
-            cursor: pointer;
-            display: block;
-            margin: 20px auto;
-            transition: all 0.2s;
-        }
-
-        .print-btn:hover {
-            background: #667eea;
-            color: white;
-        }
-
-        .answer-key-btn {
-            background: #10b981;
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            font-size: 1em;
-            border-radius: 10px;
-            cursor: pointer;
-            display: block;
-            margin: 20px auto;
-            transition: all 0.2s;
-        }
-
-        .answer-key-btn:hover {
-            background: #059669;
-            transform: translateY(-2px);
-        }
-
-        .answer-key-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 1000;
-            overflow-y: auto;
-        }
-
-        .answer-key-content {
-            background: white;
-            max-width: 800px;
-            margin: 50px auto;
-            padding: 40px;
-            border-radius: 15px;
-            position: relative;
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 2em;
-            cursor: pointer;
-            color: #666;
-            background: none;
-            border: none;
-            padding: 0;
-            width: 40px;
-            height: 40px;
-            line-height: 40px;
-            text-align: center;
-        }
-
-        .close-modal:hover {
-            color: #000;
-        }
-
-        .answer-key-title {
-            color: #10b981;
-            font-size: 2em;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .answer-item {
-            background: #f8f9fa;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-left: 4px solid #10b981;
-            border-radius: 5px;
-        }
-
-        .answer-item strong {
-            color: #10b981;
-        }
-
-        .work-area {
-            background: #f9fafb;
-            border: 2px dashed #ccc;
-            border-radius: 8px;
-            padding: 15px;
-            margin: 15px 0;
-            min-height: 120px;
-        }
-
-        .work-area textarea {
-            width: 100%;
-            min-height: 100px;
-            border: none;
-            background: transparent;
-            resize: vertical;
-            font-family: 'Courier New', monospace;
-            font-size: 0.95em;
-            padding: 10px;
-        }
-
-        .work-label {
-            font-weight: 600;
-            color: #555;
-            margin-bottom: 8px;
-            display: block;
-        }
-
-        .final-answer-box {
-            background: #fff;
-            border: 3px solid #667eea;
-            border-radius: 8px;
-            padding: 15px;
-            margin-top: 10px;
-        }
-
-        .final-answer-label {
-            font-weight: bold;
-            color: #667eea;
-            margin-bottom: 8px;
-            display: block;
-            font-size: 1.1em;
-        }
-
+        /* File-specific: math input panel and calculator widget */
         .math-input-toggle {
-            background: #667eea;
+            background: #1D42BA;
             color: white;
             border: none;
             padding: 8px 16px;
-            border-radius: 5px;
+            border-radius: 4px;
             cursor: pointer;
             font-size: 0.9em;
             margin-top: 10px;
@@ -294,13 +23,13 @@
         }
 
         .math-input-toggle:hover {
-            background: #5568d3;
+            background: #153399;
         }
 
         .math-input-panel {
-            background: #f8f9fa;
-            border: 2px solid #667eea;
-            border-radius: 10px;
+            background: #f0f4ff;
+            border: 2px solid #1D42BA;
+            border-radius: 4px;
             padding: 15px;
             margin-top: 10px;
             display: none;
@@ -312,8 +41,8 @@
 
         .math-display {
             background: white;
-            border: 2px solid #ddd;
-            border-radius: 5px;
+            border: 2px solid #BEC0C2;
+            border-radius: 4px;
             padding: 12px;
             min-height: 45px;
             font-size: 1.3em;
@@ -331,21 +60,21 @@
         }
 
         .math-insert-btn {
-            background: #4CAF50;
+            background: #1B7D3A;
             color: white;
             border: none;
             padding: 8px 16px;
-            border-radius: 5px;
+            border-radius: 4px;
             cursor: pointer;
             font-size: 0.9em;
         }
 
         .math-clear-btn {
-            background: #f44336;
+            background: #C8102E;
             color: white;
             border: none;
             padding: 8px 16px;
-            border-radius: 5px;
+            border-radius: 4px;
             cursor: pointer;
             font-size: 0.9em;
         }
@@ -357,26 +86,26 @@
         }
 
         .math-btn {
-            background: #667eea;
+            background: #1D42BA;
             color: white;
             border: none;
             padding: 12px;
-            border-radius: 5px;
+            border-radius: 4px;
             cursor: pointer;
             font-size: 1.1em;
             transition: background 0.2s;
         }
 
         .math-btn:hover {
-            background: #5568d3;
+            background: #153399;
         }
 
         .math-btn.special {
-            background: #764ba2;
+            background: #002D62;
         }
 
         .math-btn.special:hover {
-            background: #653a8d;
+            background: #001D42;
         }
 
         .calc-header {
@@ -385,12 +114,12 @@
             align-items: center;
             margin-bottom: 15px;
             padding-bottom: 10px;
-            border-bottom: 2px solid #667eea;
+            border-bottom: 2px solid #C8102E;
         }
 
         .calc-title {
             font-weight: bold;
-            color: #667eea;
+            color: #C8102E;
             font-size: 1.2em;
         }
 
@@ -407,8 +136,8 @@
             width: 100%;
             padding: 15px;
             font-size: 1.3em;
-            border: 2px solid #ddd;
-            border-radius: 8px;
+            border: 2px solid #BEC0C2;
+            border-radius: 4px;
             margin-bottom: 15px;
             text-align: right;
             font-family: 'Courier New', monospace;
@@ -424,55 +153,55 @@
         .calc-btn {
             padding: 15px;
             font-size: 1.1em;
-            border: 2px solid #ddd;
-            border-radius: 8px;
+            border: 2px solid #BEC0C2;
+            border-radius: 4px;
             background: white;
             cursor: pointer;
             transition: all 0.2s;
         }
 
         .calc-btn:hover {
-            background: #667eea;
+            background: #1D42BA;
             color: white;
-            border-color: #667eea;
+            border-color: #1D42BA;
         }
 
         .calc-btn.operator {
-            background: #764ba2;
+            background: #002D62;
             color: white;
-            border-color: #764ba2;
+            border-color: #002D62;
         }
 
         .calc-btn.operator:hover {
-            background: #5a3680;
+            background: #001D42;
         }
 
         .calc-btn.equals {
-            background: #10b981;
+            background: #1B7D3A;
             color: white;
-            border-color: #10b981;
+            border-color: #1B7D3A;
             grid-column: span 2;
         }
 
         .calc-btn.equals:hover {
-            background: #059669;
+            background: #156330;
         }
 
         .calc-btn.clear {
-            background: #ef4444;
+            background: #C8102E;
             color: white;
-            border-color: #ef4444;
+            border-color: #C8102E;
         }
 
         .calc-btn.clear:hover {
-            background: #dc2626;
+            background: #A00D24;
         }
 
         .calc-toggle-btn {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background: #667eea;
+            background: #1D42BA;
             color: white;
             border: none;
             padding: 15px 20px;
@@ -481,153 +210,20 @@
             width: 60px;
             height: 60px;
             cursor: pointer;
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 5px 15px rgba(29, 66, 186, 0.4);
             transition: all 0.2s;
             z-index: 998;
         }
 
         .calc-toggle-btn:hover {
             transform: scale(1.1);
-            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.6);
+            box-shadow: 0 8px 20px rgba(29, 66, 186, 0.6);
         }
 
         @media print {
-            body {
-                background: white;
-                padding: 0;
-            }
-
-            .container {
-                box-shadow: none;
-                padding: 20px;
-                max-width: 100%;
-            }
-
-            .question-card {
-                background: white;
-                border: 2px solid #000;
-                page-break-inside: avoid;
-                margin-bottom: 20px;
-            }
-
-            .question-number {
-                color: #000;
-                border-bottom: 1px solid #000;
-                padding-bottom: 5px;
-            }
-
-            .chart-container {
-                border: 1px solid #000;
-                background: white;
-            }
-
-            input, textarea {
-                border: 1px solid #000;
-                background: white;
-            }
-
-            .submit-btn, .print-btn, .result, .answer-feedback, .answer-key-btn, .math-input-toggle, .math-input-panel {
+            .math-input-toggle, .math-input-panel, .calc-toggle-btn {
                 display: none !important;
             }
-
-            .work-area {
-                border: 1px solid #000;
-                min-height: 80px;
-            }
-
-            .final-answer-box {
-                border: 2px solid #000;
-            }
-
-            header {
-                border-bottom: 2px solid #000;
-            }
-
-            h1 {
-                color: #000;
-            }
-
-            .subtitle {
-                color: #333;
-            }
-
-            table td, table th {
-                border: 1px solid #000;
-            }
-
-            table th {
-                background: #ddd;
-                color: #000;
-            }
-
-            .math-notation {
-                background: #f0f0f0;
-                border: 1px solid #000;
-            }
-        }
-
-        .result {
-            text-align: center;
-            margin-top: 20px;
-            padding: 20px;
-            border-radius: 10px;
-            font-size: 1.3em;
-            font-weight: bold;
-            display: none;
-        }
-
-        .result.show {
-            display: block;
-        }
-
-        .correct {
-            color: #22c55e;
-            background: #f0fdf4;
-            border: 2px solid #22c55e;
-        }
-
-        .incorrect {
-            color: #ef4444;
-            background: #fef2f2;
-            border: 2px solid #ef4444;
-        }
-
-        .answer-feedback {
-            margin-top: 10px;
-            padding: 10px;
-            border-radius: 5px;
-            display: none;
-            white-space: pre-line;
-        }
-
-        .answer-feedback.show {
-            display: block;
-        }
-
-        .math-notation {
-            font-family: 'Courier New', monospace;
-            background: #e8eaf6;
-            padding: 2px 6px;
-            border-radius: 3px;
-        }
-
-        table {
-            width: 100%;
-            max-width: 400px;
-            margin: 15px auto;
-            border-collapse: collapse;
-        }
-
-        table td, table th {
-            border: 2px solid #667eea;
-            padding: 10px;
-            text-align: center;
-        }
-
-        table th {
-            background: #667eea;
-            color: white;
-            font-weight: bold;
         }
     </style>
 </head>
@@ -636,7 +232,7 @@
         <header>
             <h1>🎓 Algebra 2 Practice Test</h1>
             <div class="subtitle">Linear Functions - Standards 3 & 4</div>
-            <div style="margin-top: 20px; padding: 15px; background: #f0f9ff; border-radius: 10px; border: 2px solid #667eea;">
+            <div style="margin-top: 20px; padding: 15px; background: #f0f4ff; border-radius: 4px; border: 2px solid #1D42BA;">
                 <strong>📌 Instructions:</strong>
                 <ul style="margin: 10px 0 0 20px; text-align: left;">
                     <li>Use the <strong>📝 Show Your Work</strong> area to write your calculations and steps</li>
@@ -1087,8 +683,8 @@
                 <div class="answer-feedback" id="feedback16"></div>
             </div>
 
-            <button type="button" class="print-btn" onclick="window.print()">🖨️ Print Version (Black & White)</button>
-            <button type="button" class="answer-key-btn" onclick="showAnswerKey()">📋 View Answer Key</button>
+            <button type="button" class="print-btn" onclick="printTest()">🖨️ Print Version (Black & White)</button>
+            <button type="button" class="answer-key-btn" onclick="showCalcAnswerKey()">📋 View Answer Key</button>
             <button type="button" class="submit-btn" onclick="gradeTest()">Submit Test</button>
         </form>
 
@@ -1104,6 +700,7 @@
         </div>
     </div>
 
+    <script src="shared/scripts.js"></script>
     <script>
         // Chart 2
         new Chart(document.getElementById('chart2'), {
@@ -1113,7 +710,7 @@
                 datasets: [{
                     label: 'Monthly Cost ($)',
                     data: [15, 21, 27, 33, 39, 45],
-                    borderColor: '#667eea',
+                    borderColor: MCM_CHART_COLORS.primary,
                     borderWidth: 3,
                     pointRadius: 8
                 }]
@@ -1137,7 +734,7 @@
                 datasets: [{
                     label: 'Profit ($)',
                     data: [5000, 7500, 10000, 12500, 15000, 17500, 20000],
-                    borderColor: '#764ba2',
+                    borderColor: MCM_CHART_COLORS.secondary,
                     borderWidth: 3,
                     pointRadius: 8
                 }]
@@ -1161,7 +758,7 @@
                 datasets: [{
                     label: 'Temperature (°F)',
                     data: [50, 58, 66, 74, 70],
-                    borderColor: '#f59e0b',
+                    borderColor: '#E8A317',
                     borderWidth: 3,
                     pointRadius: 8
                 }]
@@ -1177,6 +774,7 @@
             }
         });
 
+        // Grading logic — preserved exactly for math accuracy
         const answers = {
             q1: 'y=25x+10', q2a: 33, q2b: 5, q3a: 0, q3b: 6, q3c: 5000, q3d: 20000,
             q4a: 150, q4b: 'initial', q4c: 15, q5a: 'h=8-0.5t', q5b: -0.5, q5c: 'burn', q5d: 16,
@@ -1262,39 +860,24 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        function showAnswerKey() {
-            const answerKeyHTML = `
-                <div class="answer-item"><strong>Q1:</strong> y = 25x + 10 (Slope = (110-60)/(4-2) = 25, y-intercept = 10)</div>
-                <div class="answer-item"><strong>Q2a:</strong> $33<br><strong>Q2b:</strong> 5 devices</div>
-                <div class="answer-item"><strong>Q3a:</strong> Domain: 0 to 6 months<br><strong>Q3b:</strong> Range: $5,000 to $20,000</div>
-                <div class="answer-item"><strong>Q4a:</strong> 150 gallons (initial water in tank)<br><strong>Q4b:</strong> Represents the starting amount of water<br><strong>Q4c:</strong> 15 minutes</div>
-                <div class="answer-item"><strong>Q5a:</strong> h = 8 - 0.5t<br><strong>Q5b:</strong> -0.5 (burn rate per hour)<br><strong>Q5c:</strong> Rate at which candle burns down<br><strong>Q5d:</strong> 16 hours</div>
-                <div class="answer-item"><strong>Q6a:</strong> Hour 0 to 6<br><strong>Q6b:</strong> 74°F<br><strong>Q6c:</strong> 62°F (slope = -2, so 70 + 2(-2) = 62)</div>
-                <div class="answer-item"><strong>Q7a:</strong> t = (C - 25)/45<br><strong>Q7b:</strong> 8 tickets</div>
-                <div class="answer-item"><strong>Q8a:</strong> P(x) = 18x - 500<br><strong>Q8b:</strong> 27.78 products<br><strong>Q8c:</strong> $400 profit</div>
-                <div class="answer-item"><strong>Q9a:</strong> 120 GB<br><strong>Q9b:</strong> $47.50</div>
-                <div class="answer-item"><strong>Q10a:</strong> Constant rate of change (same amount added each month)<br><strong>Q10b:</strong> C(m) = 35m + 75</div>
-                <div class="answer-item"><strong>Q11a:</strong> C = 60h + 85<br><strong>Q11b:</strong> $295<br><strong>Q11c:</strong> 4 hours</div>
-                <div class="answer-item"><strong>Q12a:</strong> Cost per mile driven ($0.25/mile)<br><strong>Q12b:</strong> Base/fixed rental fee ($40)<br><strong>Q12c:</strong> $90</div>
-                <div class="answer-item"><strong>Q13a:</strong> 20 (slope = (180-100)/(7-3))<br><strong>Q13b:</strong> y - 100 = 20(x - 3)<br><strong>Q13c:</strong> y = 20x + 40</div>
-                <div class="answer-item"><strong>Q14a:</strong> 200 (initial savings)<br><strong>Q14b:</strong> 50 (monthly savings)<br><strong>Q14c:</strong> $500<br><strong>Q14d:</strong> 6 months</div>
-                <div class="answer-item"><strong>Q15a:</strong> Multiplies by same factor (doubles) repeatedly, not adding constant<br><strong>Q15b:</strong> P(t) = 500(2)^t<br><strong>Q15c:</strong> 4,000 bacteria</div>
-                <div class="answer-item"><strong>Q16a:</strong> V(t) = 28000(0.85)^t<br><strong>Q16b:</strong> $14,636.56<br><strong>Q16c:</strong> Decay - base is less than 1, value decreases over time</div>
-            `;
-            document.getElementById('answerKeyBody').innerHTML = answerKeyHTML;
-            document.getElementById('answerKeyModal').style.display = 'block';
-        }
-
-        function closeAnswerKey() {
-            document.getElementById('answerKeyModal').style.display = 'none';
-        }
-
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            const modal = document.getElementById('answerKeyModal');
-            if (event.target === modal) {
-                closeAnswerKey();
-            }
+        function showCalcAnswerKey() {
+            var answerKeyHTML = '<div class="answer-item"><strong>Q1:</strong> y = 25x + 10 (Slope = (110-60)/(4-2) = 25, y-intercept = 10)</div>' +
+                '<div class="answer-item"><strong>Q2a:</strong> $33<br><strong>Q2b:</strong> 5 devices</div>' +
+                '<div class="answer-item"><strong>Q3a:</strong> Domain: 0 to 6 months<br><strong>Q3b:</strong> Range: $5,000 to $20,000</div>' +
+                '<div class="answer-item"><strong>Q4a:</strong> 150 gallons (initial water in tank)<br><strong>Q4b:</strong> Represents the starting amount of water<br><strong>Q4c:</strong> 15 minutes</div>' +
+                '<div class="answer-item"><strong>Q5a:</strong> h = 8 - 0.5t<br><strong>Q5b:</strong> -0.5 (burn rate per hour)<br><strong>Q5c:</strong> Rate at which candle burns down<br><strong>Q5d:</strong> 16 hours</div>' +
+                '<div class="answer-item"><strong>Q6a:</strong> Hour 0 to 6<br><strong>Q6b:</strong> 74°F<br><strong>Q6c:</strong> 62°F (slope = -2, so 70 + 2(-2) = 62)</div>' +
+                '<div class="answer-item"><strong>Q7a:</strong> t = (C - 25)/45<br><strong>Q7b:</strong> 8 tickets</div>' +
+                '<div class="answer-item"><strong>Q8a:</strong> P(x) = 18x - 500<br><strong>Q8b:</strong> 27.78 products<br><strong>Q8c:</strong> $400 profit</div>' +
+                '<div class="answer-item"><strong>Q9a:</strong> 120 GB<br><strong>Q9b:</strong> $47.50</div>' +
+                '<div class="answer-item"><strong>Q10a:</strong> Constant rate of change (same amount added each month)<br><strong>Q10b:</strong> C(m) = 35m + 75</div>' +
+                '<div class="answer-item"><strong>Q11a:</strong> C = 60h + 85<br><strong>Q11b:</strong> $295<br><strong>Q11c:</strong> 4 hours</div>' +
+                '<div class="answer-item"><strong>Q12a:</strong> Cost per mile driven ($0.25/mile)<br><strong>Q12b:</strong> Base/fixed rental fee ($40)<br><strong>Q12c:</strong> $90</div>' +
+                '<div class="answer-item"><strong>Q13a:</strong> 20 (slope = (180-100)/(7-3))<br><strong>Q13b:</strong> y - 100 = 20(x - 3)<br><strong>Q13c:</strong> y = 20x + 40</div>' +
+                '<div class="answer-item"><strong>Q14a:</strong> 200 (initial savings)<br><strong>Q14b:</strong> 50 (monthly savings)<br><strong>Q14c:</strong> $500<br><strong>Q14d:</strong> 6 months</div>' +
+                '<div class="answer-item"><strong>Q15a:</strong> Multiplies by same factor (doubles) repeatedly, not adding constant<br><strong>Q15b:</strong> P(t) = 500(2)^t<br><strong>Q15c:</strong> 4,000 bacteria</div>' +
+                '<div class="answer-item"><strong>Q16a:</strong> V(t) = 28000(0.85)^t<br><strong>Q16b:</strong> $14,636.56<br><strong>Q16c:</strong> Decay - base is less than 1, value decreases over time</div>';
+            showAnswerKey(answerKeyHTML);
         }
 
         // Math Input Panel Functions

@@ -5,358 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Algebra 2 - Unit 1 Exam</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="shared/chart-theme.js"></script>
+    <link rel="stylesheet" href="shared/styles.css">
+    <link rel="stylesheet" href="shared/print.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        input, textarea {
-            border: 2px solid #ddd;
-            border-radius: 8px;
-        }
-
-        input:focus, textarea:focus {
-            outline: none;
-            border-color: #8B1E3F;
-        }
-
-        body {
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            background: #f5f5f5;
-            min-height: 100vh;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 0;
-            padding: 40px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 40px;
-            padding-bottom: 20px;
-            border-bottom: 3px solid #8B1E3F;
-        }
-
-        h1 {
-            color: #8B1E3F;
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            font-weight: 400;
-            letter-spacing: -0.5px;
-        }
-
-        .subtitle {
-            color: #666;
-            font-size: 1.2em;
-        }
-
-        .question-card {
-            background: #ffffff;
-            border: 1px solid #e0e0e0;
-            border-left: 4px solid #8B1E3F;
-            padding: 30px;
-            margin-bottom: 25px;
-            border-radius: 0;
-            transition: box-shadow 0.2s;
-        }
-
-        .question-card:hover {
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        }
-
-        .question-number {
-            color: #8B1E3F;
-            font-weight: 600;
-            font-size: 1.2em;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .question-text {
-            color: #333;
-            font-size: 1.1em;
-            line-height: 1.6;
-            margin-bottom: 15px;
-        }
-
-        .chart-container {
-            max-width: 700px;
-            height: 450px;
-            margin: 20px auto;
-            padding: 20px;
-            background: white;
-            border-radius: 10px;
-            border: 2px solid #e0e0e0;
-        }
-
-        .input-group {
-            margin: 15px 0;
-        }
-
-        .input-group label {
-            display: block;
-            color: #555;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .input-group input {
-            width: 100%;
-            max-width: 300px;
-            padding: 12px;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            font-size: 1em;
-            transition: border-color 0.3s;
-        }
-
-        .input-group input:focus {
-            outline: none;
-            border-color: #8B1E3F;
-        }
-
-        .input-group textarea {
-            width: 100%;
-            padding: 14px;
-            padding-bottom: 20px;
-            padding-right: 20px;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            font-size: 1em;
-            min-height: 80px;
-            font-family: inherit;
-            transition: border-color 0.3s;
-            resize: vertical;
-            box-sizing: border-box;
-        }
-
-        .input-group textarea:focus {
-            outline: none;
-            border-color: #8B1E3F;
-        }
-
-        .submit-btn {
-            background: #8B1E3F;
-            color: white;
-            border: none;
-            padding: 15px 40px;
-            font-size: 1.1em;
-            border-radius: 3px;
-            cursor: pointer;
-            display: block;
-            margin: 40px auto 20px;
-            transition: background 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 600;
-        }
-
-        .submit-btn:hover {
-            background: #6B1530;
-        }
-
-        .print-btn {
-            background: white;
-            color: #8B1E3F;
-            border: 2px solid #8B1E3F;
-            padding: 12px 30px;
-            font-size: 1em;
-            border-radius: 3px;
-            cursor: pointer;
-            display: block;
-            margin: 20px auto;
-            transition: all 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 600;
-        }
-
-        .print-btn:hover {
-            background: #8B1E3F;
-            color: white;
-        }
-
-        .answer-key-btn {
-            background: #8B1E3F;
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            font-size: 1em;
-            border-radius: 3px;
-            cursor: pointer;
-            display: block;
-            margin: 20px auto;
-            transition: all 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 600;
-        }
-
-        .answer-key-btn:hover {
-            background: #6B1530;
-        }
-
-        .answer-key-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 1000;
-            overflow-y: auto;
-        }
-
-        .answer-key-content {
-            background: white;
-            max-width: 1000px;
-            margin: 50px auto;
-            padding: 40px;
-            border-radius: 0;
-            position: relative;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 2em;
-            cursor: pointer;
-            color: #666;
-            background: none;
-            border: none;
-            padding: 0;
-            width: 40px;
-            height: 40px;
-            line-height: 40px;
-            text-align: center;
-        }
-
-        .close-modal:hover {
-            color: #000;
-        }
-
-        .answer-key-title {
-            color: #8B1E3F;
-            font-size: 2.5em;
-            margin-bottom: 30px;
-            text-align: center;
-            font-weight: 400;
-            letter-spacing: -0.5px;
-            padding-bottom: 20px;
-            border-bottom: 3px solid #8B1E3F;
-        }
-
-        .answer-item {
-            background: #ffffff;
-            padding: 30px;
-            margin-bottom: 25px;
-            border: 1px solid #e0e0e0;
-            border-left: 4px solid #8B1E3F;
-            border-radius: 0;
-            transition: box-shadow 0.2s;
-        }
-
-        .answer-item:hover {
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        }
-
-        .answer-item strong {
-            color: #8B1E3F;
-            font-weight: 600;
-        }
-
-        .work-area {
-            background: #fafafa;
-            border: 1px solid #d0d0d0;
-            border-radius: 0;
-            padding: 20px;
-            margin: 20px 0;
-            min-height: 120px;
-        }
-
-        .work-area textarea {
-            width: 100%;
-            min-height: 100px;
-            border: 2px solid #ddd;
-            background: white;
-            resize: vertical;
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            font-size: 0.95em;
-            padding: 14px;
-            padding-bottom: 20px;
-            padding-right: 20px;
-            border-radius: 8px;
-            box-sizing: border-box;
-        }
-
-        .custom-resize-handle {
-            position: absolute;
-            bottom: 12px;
-            right: 12px;
-            width: 16px;
-            height: 16px;
-            cursor: ns-resize;
-            color: #999;
-            font-size: 20px;
-            line-height: 12px;
-            user-select: none;
-            transform: rotate(90deg);
-        }
-
-        .work-label {
-            font-weight: 600;
-            color: #8B1E3F;
-            margin-bottom: 10px;
-            display: block;
-            text-transform: uppercase;
-            font-size: 0.9em;
-            letter-spacing: 0.5px;
-        }
-
-        .final-answer-box {
-            background: #fafafa;
-            border: 2px solid #8B1E3F;
-            border-radius: 0;
-            padding: 20px;
-            margin-top: 15px;
-        }
-
-        .final-answer-label {
-            font-weight: 600;
-            color: #8B1E3F;
-            margin-bottom: 12px;
-            display: block;
-            font-size: 1em;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-
-
+        /* Calculator-specific styles */
         .calc-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 15px;
             padding-bottom: 10px;
-            border-bottom: 2px solid #8B1E3F;
+            border-bottom: 2px solid #C8102E;
         }
 
         .calc-title {
             font-weight: bold;
-            color: #8B1E3F;
+            color: #002D62;
             font-size: 1.2em;
         }
 
@@ -373,8 +38,8 @@
             width: 100%;
             padding: 15px;
             font-size: 1.3em;
-            border: 2px solid #ddd;
-            border-radius: 8px;
+            border: 2px solid #BEC0C2;
+            border-radius: 4px;
             margin-bottom: 15px;
             text-align: right;
             font-family: 'Courier New', monospace;
@@ -390,27 +55,27 @@
         .calc-btn {
             padding: 15px;
             font-size: 1.1em;
-            border: 2px solid #ddd;
-            border-radius: 8px;
+            border: 2px solid #BEC0C2;
+            border-radius: 4px;
             background: white;
             cursor: pointer;
             transition: all 0.2s;
         }
 
         .calc-btn:hover {
-            background: #8B1E3F;
+            background: #1D42BA;
             color: white;
-            border-color: #8B1E3F;
+            border-color: #1D42BA;
         }
 
         .calc-btn.operator {
-            background: #6B1530;
+            background: #002D62;
             color: white;
-            border-color: #6B1530;
+            border-color: #002D62;
         }
 
         .calc-btn.operator:hover {
-            background: #5a3680;
+            background: #1D42BA;
         }
 
         .calc-btn.equals {
@@ -425,20 +90,20 @@
         }
 
         .calc-btn.clear {
-            background: #ef4444;
+            background: #C8102E;
             color: white;
-            border-color: #ef4444;
+            border-color: #C8102E;
         }
 
         .calc-btn.clear:hover {
-            background: #dc2626;
+            background: #A00D24;
         }
 
         .calc-toggle-btn {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background: #667eea;
+            background: #1D42BA;
             color: white;
             border: none;
             padding: 15px 20px;
@@ -447,207 +112,14 @@
             width: 60px;
             height: 60px;
             cursor: pointer;
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 5px 15px rgba(29, 66, 186, 0.4);
             transition: all 0.2s;
             z-index: 998;
         }
 
         .calc-toggle-btn:hover {
             transform: scale(1.1);
-            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.6);
-        }
-
-        @media print {
-            * {
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
-                color: #000 !important;
-                background: white !important;
-                border-color: #000 !important;
-            }
-
-            body {
-                background: white !important;
-                padding: 0;
-            }
-
-            .container {
-                box-shadow: none;
-                padding: 20px;
-                max-width: 100%;
-                background: white !important;
-            }
-
-            .question-card {
-                background: white !important;
-                border: 2px solid #000 !important;
-                border-left: 5px solid #000 !important;
-                page-break-inside: avoid;
-                margin-bottom: 20px;
-            }
-
-            .question-number {
-                color: #000 !important;
-                border-bottom: 1px solid #000;
-                padding-bottom: 5px;
-            }
-
-            .chart-container {
-                border: 1px solid #000 !important;
-                background: white !important;
-                page-break-inside: avoid !important;
-                height: auto !important;
-                max-height: none !important;
-                overflow: visible !important;
-            }
-
-            canvas {
-                -webkit-filter: grayscale(100%) !important;
-                filter: grayscale(100%) !important;
-                max-width: 100% !important;
-                height: auto !important;
-                max-height: none !important;
-            }
-
-            input, textarea {
-                border: 1px solid #000 !important;
-                background: white !important;
-                color: #000 !important;
-                padding: 14px !important;
-                box-sizing: border-box !important;
-            }
-            
-            textarea {
-                padding-bottom: 20px !important;
-                padding-right: 20px !important;
-            }
-
-            .submit-btn, .print-btn, .result, .answer-feedback, .answer-key-btn {
-                display: none !important;
-            }
-
-            .work-area {
-                border: 1px solid #000 !important;
-                background: white !important;
-                min-height: 80px;
-            }
-
-            .final-answer-box {
-                border: 2px solid #000 !important;
-                background: white !important;
-            }
-
-            .final-answer-label {
-                color: #000 !important;
-            }
-
-            header {
-                border-bottom: 2px solid #000;
-                background: white !important;
-            }
-
-            h1 {
-                color: #000 !important;
-            }
-
-            .subtitle {
-                color: #000 !important;
-            }
-
-            .question-text {
-                color: #000 !important;
-            }
-
-            table {
-                border: 1px solid #000;
-            }
-
-            table td, table th {
-                border: 1px solid #000 !important;
-                background: white !important;
-                color: #000 !important;
-            }
-
-            table th {
-                background: #e5e5e5 !important;
-                color: #000 !important;
-            }
-
-            .math-notation {
-                background: #e5e5e5 !important;
-                border: 1px solid #000;
-                color: #000 !important;
-            }
-
-            label, .work-label {
-                color: #000 !important;
-            }
-        }
-
-        .result {
-            text-align: center;
-            margin-top: 20px;
-            padding: 20px;
-            border-radius: 10px;
-            font-size: 1.3em;
-            font-weight: bold;
-            display: none;
-        }
-
-        .result.show {
-            display: block;
-        }
-
-        .correct {
-            color: #22c55e;
-            background: #f0fdf4;
-            border: 2px solid #22c55e;
-        }
-
-        .incorrect {
-            color: #ef4444;
-            background: #fef2f2;
-            border: 2px solid #ef4444;
-        }
-
-        .answer-feedback {
-            margin-top: 10px;
-            padding: 10px;
-            border-radius: 5px;
-            display: none;
-            white-space: pre-line;
-        }
-
-        .answer-feedback.show {
-            display: block;
-        }
-
-        .math-notation {
-            font-family: 'Courier New', monospace;
-            background: #f5e6ea;
-            padding: 3px 7px;
-            border-radius: 2px;
-            font-weight: 600;
-            color: #8B1E3F;
-        }
-
-        table {
-            width: 100%;
-            max-width: 400px;
-            margin: 15px auto;
-            border-collapse: collapse;
-        }
-
-        table td, table th {
-            border: 2px solid #8B1E3F;
-            padding: 10px;
-            text-align: center;
-        }
-
-        table th {
-            background: #8B1E3F;
-            color: white;
-            font-weight: bold;
+            box-shadow: 0 8px 20px rgba(29, 66, 186, 0.6);
         }
     </style>
 </head>
@@ -656,7 +128,7 @@
         <header>
             <h1>Algebra 2 Practice Test</h1>
             <div class="subtitle">Unit 1 Assessment - Final Prep</div>
-            <div style="margin-top: 20px; padding: 15px; background: #fdf5f7; border-radius: 10px; border: 2px solid #8B1E3F;">
+            <div style="margin-top: 20px; padding: 15px; background: #f0f4ff; border-radius: 10px; border: 2px solid #C8102E;">
                 <strong>Standards Covered:</strong>
                 <ul style="margin: 10px 0 0 0; padding: 0; list-style: none; column-count: 2; column-gap: 30px; text-align: center;">
                     <li style="margin-bottom: 5px;"><strong>Standard 1.a:</strong> Evaluating expressions</li>
@@ -864,10 +336,10 @@
                 </div>
             </div>
 
-            <button type="button" class="print-btn" onclick="window.print()">Print Version (Black & White)</button>
-            <button type="button" class="answer-key-btn" onclick="showAnswerKey()">View Answer Key</button>
-            <button type="button" class="answer-key-btn" onclick="saveResults()" style="background: #2563eb;">Save Results</button>
-            <button type="button" class="answer-key-btn" onclick="loadResults()" style="background: #7c3aed;">Load Saved Results</button>
+            <button type="button" class="print-btn" onclick="printTest()">Print Test</button>
+            <button type="button" class="answer-key-btn" onclick="showMiniExamAnswerKey()">View Answer Key</button>
+            <button type="button" class="answer-key-btn" onclick="saveResults('finalExamMini_results')" style="background: #1D42BA;">Save Results</button>
+            <button type="button" class="answer-key-btn" onclick="loadResults('finalExamMini_results')" style="background: #002D62;">Load Saved Results</button>
         </form>
     </div>
 
@@ -880,56 +352,14 @@
         </div>
     </div>
 
+    <script src="shared/scripts.js"></script>
     <script>
-        // Custom resize handle positioning
+        // Initialize custom textarea resize handles
         document.addEventListener('DOMContentLoaded', function() {
-            const textareas = document.querySelectorAll('textarea');
-            textareas.forEach(function(textarea) {
-                // Disable default resize
-                textarea.style.resize = 'none';
-                
-                // Create custom resize handle
-                const resizeHandle = document.createElement('div');
-                resizeHandle.className = 'custom-resize-handle';
-                resizeHandle.innerHTML = '⋰';
-                
-                // Wrap textarea in container
-                const wrapper = document.createElement('div');
-                wrapper.style.position = 'relative';
-                wrapper.style.display = 'inline-block';
-                wrapper.style.width = '100%';
-                textarea.parentNode.insertBefore(wrapper, textarea);
-                wrapper.appendChild(textarea);
-                wrapper.appendChild(resizeHandle);
-                
-                // Add resize functionality
-                let startY, startHeight;
-                resizeHandle.addEventListener('mousedown', function(e) {
-                    startY = e.clientY;
-                    startHeight = parseInt(window.getComputedStyle(textarea).height, 10);
-                    document.addEventListener('mousemove', doResize);
-                    document.addEventListener('mouseup', stopResize);
-                    e.preventDefault();
-                });
-                
-                function doResize(e) {
-                    textarea.style.height = (startHeight + e.clientY - startY) + 'px';
-                }
-                
-                function stopResize() {
-                    document.removeEventListener('mousemove', doResize);
-                    document.removeEventListener('mouseup', stopResize);
-                }
-            });
+            initTextareaResize();
         });
 
-        function showAnswerKey() {
-            const password = prompt("Enter password to view answer key:");
-            if (password !== '121274') {
-                alert('Incorrect password. Access denied.');
-                return;
-            }
-            
+        function showMiniExamAnswerKey() {
             const answerKeyHTML = `
                 <div class="answer-item"><strong>Q1:</strong> 210 (Work: 3pq - q²(4p - 2q) + p²q with p=-4, q=3: 3(-4)(3) - (3)²(4(-4) - 2(3)) + (-4)²(3) = -36 - 9(-16 - 6) + 16(3) = -36 - 9(-22) + 48 = -36 + 198 + 48 = 210)</div>
                 <div class="answer-item"><strong>Q2:</strong> 5.4 meters (Work: h = 1 + 12(2) - 4.9(2)² = 1 + 24 - 4.9(4) = 1 + 24 - 19.6 = 5.4)</div>
@@ -940,61 +370,7 @@
                 <div class="answer-item"><strong>Q7:</strong> x < 6/5 or x < 1.2 (Work: -3/4·x + 5/2 > 1/3(9x - 6), expand: -3/4·x + 5/2 > 3x - 2, multiply by 12: -9x + 30 > 36x - 24, collect terms: -9x - 36x > -24 - 30, -45x > -54, x < 54/45 = 6/5 = 1.2); Graph: Open circle at 6/5 (or 1.2), arrow pointing left</div>
                 <div class="answer-item"><strong>Q8:</strong> -53 (Work: g(-3) = (-3)² - 4(-3) - 1 = 9 + 12 - 1 = 20, then f(20) = -3(20) + 7 = -60 + 7 = -53)</div>
             `;
-            document.getElementById('answerKeyBody').innerHTML = answerKeyHTML;
-            document.getElementById('answerKeyModal').style.display = 'block';
-        }
-
-        function closeAnswerKey() {
-            document.getElementById('answerKeyModal').style.display = 'none';
-        }
-
-        window.onclick = function(event) {
-            if (event.target === document.getElementById('answerKeyModal')) {
-                closeAnswerKey();
-            }
-        }
-
-        function saveResults() {
-            const formData = {};
-            const inputs = document.querySelectorAll('input, textarea');
-            inputs.forEach(input => {
-                if (input.id) {
-                    formData[input.id] = input.value || input.textContent || '';
-                }
-            });
-            
-            const saveData = {
-                timestamp: new Date().toISOString(),
-                formData: formData
-            };
-            
-            localStorage.setItem('algebra2TestResults', JSON.stringify(saveData));
-            alert('Results saved successfully! You can reload them anytime.');
-        }
-
-        function loadResults() {
-            const saved = localStorage.getItem('algebra2TestResults');
-            if (!saved) {
-                alert('No saved results found.');
-                return;
-            }
-            
-            const saveData = JSON.parse(saved);
-            const savedDate = new Date(saveData.timestamp).toLocaleString();
-            
-            if (confirm(`Load results from ${savedDate}?`)) {
-                Object.keys(saveData.formData).forEach(id => {
-                    const element = document.getElementById(id);
-                    if (element) {
-                        if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-                            element.value = saveData.formData[id];
-                        } else {
-                            element.textContent = saveData.formData[id];
-                        }
-                    }
-                });
-                alert('Results loaded successfully!');
-            }
+            showAnswerKey(answerKeyHTML);
         }
     </script>
 </body>
