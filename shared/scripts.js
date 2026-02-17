@@ -177,7 +177,8 @@ function checkAnswer(userAnswer, correctAnswer, tolerance) {
     var c = norm(correctAnswer);
 
     // For keyword-type answers, check if the user's answer contains the key prefix
-    var keywords = ['initial', 'burn', 'constant', 'per', 'base', 'multiply', 'decay'];
+    var keywords = ['initial', 'burn', 'constant', 'per', 'base', 'multiply', 'decay',
+        'cubic', 'quadratic', 'square', 'absolute', 'reciprocal', '1/x', 'noreal'];
     for (var i = 0; i < keywords.length; i++) {
         if (c.includes(keywords[i])) {
             return u.includes(c.substring(0, 4));

@@ -81,6 +81,7 @@
                     <textarea id="q1_transformations" placeholder="Describe each transformation..."></textarea>
                 </div>
             </div>
+            <div class="answer-feedback" id="feedback1"></div>
 
             <!-- Question 2 -->
             <div class="question-card">
@@ -99,6 +100,7 @@
                     <textarea id="q2_transformations" placeholder="Describe each transformation..."></textarea>
                 </div>
             </div>
+            <div class="answer-feedback" id="feedback2"></div>
 
             <!-- Question 3 -->
             <div class="question-card">
@@ -117,6 +119,7 @@
                     <textarea id="q3_transformations" placeholder="Describe each transformation..."></textarea>
                 </div>
             </div>
+            <div class="answer-feedback" id="feedback3"></div>
 
             <!-- Question 4 -->
             <div class="question-card">
@@ -135,6 +138,7 @@
                     <textarea id="q4_transformations" placeholder="Describe each transformation..."></textarea>
                 </div>
             </div>
+            <div class="answer-feedback" id="feedback4"></div>
 
             <!-- Question 5 (detailed) -->
             <div class="question-card">
@@ -169,6 +173,7 @@
                     <textarea id="work5" placeholder="Show your calculations..."></textarea>
                 </div>
             </div>
+            <div class="answer-feedback" id="feedback5"></div>
 
             <!-- Question 6 (detailed) -->
             <div class="question-card">
@@ -203,6 +208,7 @@
                     <textarea id="work6" placeholder="Show your calculations..."></textarea>
                 </div>
             </div>
+            <div class="answer-feedback" id="feedback6"></div>
 
             <!-- ======== SECTION: Equation Solving (Q7-Q12) ======== -->
             <div class="section-divider">Section B — Solve Equations (Q7–Q12)</div>
@@ -224,6 +230,7 @@
                     <textarea id="work7" placeholder="Show each step..."></textarea>
                 </div>
             </div>
+            <div class="answer-feedback" id="feedback7"></div>
 
             <!-- Question 8 -->
             <div class="question-card">
@@ -242,6 +249,7 @@
                     <textarea id="work8" placeholder="Show each step..."></textarea>
                 </div>
             </div>
+            <div class="answer-feedback" id="feedback8"></div>
 
             <!-- Question 9 -->
             <div class="question-card">
@@ -260,6 +268,7 @@
                     <textarea id="work9" placeholder="Show each step..."></textarea>
                 </div>
             </div>
+            <div class="answer-feedback" id="feedback9"></div>
 
             <!-- Question 10 -->
             <div class="question-card">
@@ -278,6 +287,7 @@
                     <textarea id="work10" placeholder="Show each step..."></textarea>
                 </div>
             </div>
+            <div class="answer-feedback" id="feedback10"></div>
 
             <!-- Question 11 -->
             <div class="question-card">
@@ -296,6 +306,7 @@
                     <textarea id="work11" placeholder="Show each step..."></textarea>
                 </div>
             </div>
+            <div class="answer-feedback" id="feedback11"></div>
 
             <!-- Question 12 -->
             <div class="question-card">
@@ -314,6 +325,7 @@
                     <textarea id="work12" placeholder="Show each step..."></textarea>
                 </div>
             </div>
+            <div class="answer-feedback" id="feedback12"></div>
 
             <!-- ======== SECTION: Graph to Equation (Q13-Q16) ======== -->
             <div class="section-divider">Section C — Write Equations from Graphs (Q13–Q16)</div>
@@ -422,6 +434,7 @@
                     <textarea id="work17" placeholder="Show each step..."></textarea>
                 </div>
             </div>
+            <div class="answer-feedback" id="feedback17"></div>
 
             <!-- Question 18 -->
             <div class="question-card">
@@ -440,6 +453,7 @@
                     <textarea id="work18" placeholder="Show each step..."></textarea>
                 </div>
             </div>
+            <div class="answer-feedback" id="feedback18"></div>
 
             <!-- Question 19 -->
             <div class="question-card">
@@ -458,6 +472,7 @@
                     <textarea id="work19" placeholder="Show each step..."></textarea>
                 </div>
             </div>
+            <div class="answer-feedback" id="feedback19"></div>
 
             <!-- Question 20 -->
             <div class="question-card">
@@ -476,6 +491,7 @@
                     <textarea id="work20" placeholder="Show each step..."></textarea>
                 </div>
             </div>
+            <div class="answer-feedback" id="feedback20"></div>
 
             <!-- Question 21 -->
             <div class="question-card">
@@ -494,6 +510,7 @@
                     <textarea id="work21" placeholder="Show each step..."></textarea>
                 </div>
             </div>
+            <div class="answer-feedback" id="feedback21"></div>
 
             <!-- Question 22 -->
             <div class="question-card">
@@ -512,6 +529,7 @@
                     <textarea id="work22" placeholder="Show each step..."></textarea>
                 </div>
             </div>
+            <div class="answer-feedback" id="feedback22"></div>
 
             <!-- ======== SECTION: Capstone / Word Problems (Q23-Q26) ======== -->
             <div class="section-divider">Section E — Capstone &amp; Word Problems (Q23–Q26)</div>
@@ -575,6 +593,7 @@
                     <textarea id="work25" placeholder="Show your model setup and solving steps..."></textarea>
                 </div>
             </div>
+            <div class="answer-feedback" id="feedback25"></div>
 
             <!-- Question 26 -->
             <div class="question-card">
@@ -609,12 +628,15 @@
                     <textarea id="work26" placeholder="Show calculations for intercepts and table values..."></textarea>
                 </div>
             </div>
+            <div class="answer-feedback" id="feedback26"></div>
 
             <button type="button" class="print-btn" onclick="printTest()">Print Version (Black &amp; White)</button>
+            <button type="button" class="submit-btn" onclick="gradeReview()">Submit Test</button>
             <button type="button" class="answer-key-btn" onclick="showReviewAnswerKey()">View Answer Key</button>
             <button type="button" class="btn-secondary" onclick="saveResults('mcm-unit2-nonlinear-review')">Save Results</button>
             <button type="button" class="btn-ghost" onclick="loadResults('mcm-unit2-nonlinear-review')">Load Saved Results</button>
         </form>
+        <div class="result" id="finalResult"></div>
     </div>
 
     <!-- Answer Key Modal -->
@@ -628,6 +650,60 @@
 
     <script src="shared/scripts.js"></script>
     <script>
+        function gradeNonlinearReview() {
+            gradeTest({
+                questions: [
+                    [[['q1_parent', 'y=x^3']], 'feedback1'],
+                    [[['q2_parent', 'y=sqrt(x)']], 'feedback2'],
+                    [[['q3_parent', 'y=1/x']], 'feedback3'],
+                    [[['q4_parent', 'y=sqrt(x)']], 'feedback4'],
+                    [[['q5_parent', 'y=|x|'], ['q5_domain', '(-inf,inf)'], ['q5_xintercepts', '5,-3']], 'feedback5'],
+                    [[['q6_parent', 'y=x^2'], ['q6_domain', '(-inf,inf)']], 'feedback6'],
+                    [[['q7_answer', -0.5, 0.1]], 'feedback7'],
+                    [[['q8_answer', '1,-1/3']], 'feedback8'],
+                    [[['q9_answer', 340.67, 0.5]], 'feedback9'],
+                    [[['q10_answer', 'sqrt(5),-sqrt(5)']], 'feedback10'],
+                    [[['q11_answer', '-1+cbrt(-2/3)']], 'feedback11'],
+                    [[['q12_answer', 'sqrt(7),-sqrt(7)']], 'feedback12'],
+                    [[['q17_answer', 5]], 'feedback17'],
+                    [[['q18_answer', 'no real solution']], 'feedback18'],
+                    [[['q19_answer', 3.5, 0.1]], 'feedback19'],
+                    [[['q20_answer', 0.96875, 0.02]], 'feedback20'],
+                    [[['q21_answer', '2/3']], 'feedback21'],
+                    [[['q22_answer', 216]], 'feedback22'],
+                    [[['q23_answer', 'sqrt(Gm1m2/F)']], 'feedback23'],
+                    [[['q24_answer', 'kT^2/(4pi^2)']], 'feedback24'],
+                    [[['q25a_answer', '40*2^(t/10)'], ['q25b_answer', 50]], 'feedback25'],
+                    [[['q26a_answer', 'y=1/x^2'], ['q26c_answer', 'x=3,y=1'], ['q26d_answer', 'no real solution']], 'feedback26']
+                ],
+                feedbacks: [
+                    ['\u2713 y = x\u00b3 \u2014 cubic parent correct', '\u2717 Parent is y = x\u00b3 (cubic)'],
+                    ['\u2713 y = \u221ax \u2014 square root parent', '\u2717 Parent is y = \u221ax (square root)'],
+                    ['\u2713 y = 1/x \u2014 reciprocal parent', '\u2717 Parent is y = 1/x (reciprocal)'],
+                    ['\u2713 y = \u221ax \u2014 square root parent', '\u2717 Parent is y = \u221ax (square root)'],
+                    ['\u2713 y = |x| \u2014 absolute value', '\u2717 Parent is y = |x|', '\u2713 Domain: all reals', '\u2717 Domain is (-\u221e, \u221e)', '\u2713 x-intercepts: 5 and -3', '\u2717 Set (1/2)|x-1| - 2 = 0'],
+                    ['\u2713 y = x\u00b2 \u2014 quadratic parent', '\u2717 Parent is y = x\u00b2', '\u2713 Domain: all reals', '\u2717 Domain is (-\u221e, \u221e)'],
+                    ['\u2713 x = -1/2 \u2014 exponential solve clean', '\u2717 3\u2074 = 81, so 2x+5 = 4, x = -1/2'],
+                    ['\u2713 x = 1 or x = -1/3', '\u2717 (3x-1)\u00b2 = 4, so 3x-1 = \u00b12'],
+                    ['\u2713 x = 1022/3 \u2248 340.67', '\u2717 Raise to 5th power: 3x+2 = 1024'],
+                    ['\u2713 x = \u00b1\u221a5 \u2014 both solutions', '\u2717 Isolate radical, square: x\u00b2 = 5'],
+                    ['\u2713 Cube root solution correct', '\u2717 (x+1)\u00b3 = -2/3, cube root both sides'],
+                    ['\u2713 x = \u00b1\u221a7 \u2014 exponential solve', '\u2717 2^(x\u00b2-3) = 16 = 2\u2074, so x\u00b2 = 7'],
+                    ['\u2713 x = 5 \u2014 locked in', '\u2717 3^(5-x) = 1 = 3\u2070, so 5-x = 0'],
+                    ['\u2713 No real solution \u2014 sharp catch', '\u2717 \u221ax cannot be negative'],
+                    ['\u2713 x = 7/2 \u2014 rational equation clean', '\u2717 Cross-multiply: 6x-1 = 10x-15'],
+                    ['\u2713 x = 31/32 \u2014 cube root solve', '\u2717 Cube both sides: 2/(x-1) = -64'],
+                    ['\u2713 x = 2/3 \u2014 radical equation', '\u2717 Square both sides: 2x+1 = 3-x'],
+                    ['\u2713 x = 216 \u2014 fractional exponent', '\u2717 x^(2/3) = 36, x = 36^(3/2) = 216'],
+                    ['\u2713 r = \u221a(Gm\u2081m\u2082/F) \u2014 rearranged', '\u2717 Isolate r\u00b2, take square root'],
+                    ['\u2713 m = kT\u00b2/(4\u03c0\u00b2) \u2014 clean algebra', '\u2717 Divide by 2\u03c0, square, multiply by k'],
+                    ['\u2713 P(t) = 40\u00b72^(t/10) \u2014 model correct', '\u2717 Starts at 40, doubles every 10 years', '\u2713 t = 50 years \u2014 perfect', '\u2717 2^(t/10) = 32 = 2\u2075, t = 50'],
+                    ['\u2713 y = 1/x\u00b2 \u2014 parent identified', '\u2717 Parent function is y = 1/x\u00b2', '\u2713 Asymptotes: x=3, y=1', '\u2717 Vertical: x = 3, Horizontal: y = 1', '\u2713 No real x-intercept \u2014 correct', '\u2717 2/(x-3)\u00b2 + 1 = 0 has no real solution']
+                ],
+                storageKey: 'nonlinear_review'
+            });
+        }
+
         function showReviewAnswerKey() {
             const answerKeyHTML = `
                 <div class="answer-item"><strong>Q1 — \\(f(x) = -(x+2)^3\\)</strong><br>
@@ -727,6 +803,60 @@
                 if (window.MathJax) {
                     MathJax.typesetPromise([document.getElementById('answerKeyBody')]);
                 }
+            });
+        }
+
+        function gradeReview() {
+            gradeTest({
+                questions: [
+                    // Section A — parent function identification
+                    [[['q1_parent', 'cubic']], 'feedback1'],
+                    [[['q2_parent', 'square root']], 'feedback2'],
+                    [[['q3_parent', 'reciprocal']], 'feedback3'],
+                    [[['q4_parent', 'square root']], 'feedback4'],
+                    [[['q5_parent', 'absolute value']], 'feedback5'],
+                    [[['q6_parent', 'quadratic']], 'feedback6'],
+                    // Section B — solve equations
+                    [[['q7_answer', -0.5, 0.1]], 'feedback7'],
+                    [[['q8_answer', 1, 0.1]], 'feedback8'],
+                    [[['q9_answer', 340.67, 1]], 'feedback9'],
+                    [[['q10_answer', 2.236, 0.1]], 'feedback10'],
+                    [[['q11_answer', -1.874, 0.1]], 'feedback11'],
+                    [[['q12_answer', 2.646, 0.1]], 'feedback12'],
+                    // Section D
+                    [[['q17_answer', 5, 0.1]], 'feedback17'],
+                    [[['q18_answer', 'no real solution']], 'feedback18'],
+                    [[['q19_answer', 3.5, 0.1]], 'feedback19'],
+                    [[['q20_answer', 0.969, 0.05]], 'feedback20'],
+                    [[['q21_answer', 0.667, 0.05]], 'feedback21'],
+                    [[['q22_answer', 216, 1]], 'feedback22'],
+                    // Section E
+                    [[['q25a_answer', 'p(t)=40*2^(t/10)'], ['q25b_answer', 50, 1]], 'feedback25'],
+                    [[['q26a_answer', '1/x^2'], ['q26d_answer', 'no real solution']], 'feedback26']
+                ],
+                feedbacks: [
+                    ['\u2713 Cubic', '\u2717 Think: what basic curve is this?'],
+                    ['\u2713 Square root', '\u2717 Think: y = \u221ax shape'],
+                    ['\u2713 Reciprocal', '\u2717 Think: y = 1/x shape'],
+                    ['\u2713 Square root', '\u2717 Think: y = \u221ax reflected'],
+                    ['\u2713 Absolute value', '\u2717 Think: V-shape = |x|'],
+                    ['\u2713 Quadratic', '\u2717 Think: parabola = x\u00b2'],
+                    ['\u2713 x = -1/2', '\u2717 3\u2074=81, so 2x+5=4, x=-1/2'],
+                    ['\u2713 x = 1 or -1/3', '\u2717 (3x-1)\u00b2=4, 3x-1=\u00b12'],
+                    ['\u2713 x \u2248 340.67', '\u2717 4\u2075=1024, x=(1024-2)/3'],
+                    ['\u2713 x = \u00b1\u221a5', '\u2717 x\u00b2=5, x=\u00b1\u221a5\u22482.236'],
+                    ['\u2713 x \u2248 -1.874', '\u2717 (x+1)\u00b3=-2/3, cube root'],
+                    ['\u2713 x = \u00b1\u221a7', '\u2717 x\u00b2=7, x=\u00b1\u221a7\u22482.646'],
+                    ['\u2713 x = 5', '\u2717 3\u2070=1, so 5-x=0'],
+                    ['\u2713 No real solution', '\u2717 \u221ax can\'t be negative'],
+                    ['\u2713 x = 7/2', '\u2717 Cross-multiply: 6x-1=10x-15'],
+                    ['\u2713 x = 31/32', '\u2717 2/(x-1)=-64, x-1=-1/32'],
+                    ['\u2713 x = 2/3', '\u2717 Square both sides: 2x+1=3-x'],
+                    ['\u2713 x = 216', '\u2717 x^(2/3)=36, x=36^(3/2)'],
+                    ['\u2713 P(t)=40\u00b72^(t/10)', '\u2717 Doubles every 10 years', '\u2713 t = 50 years', '\u2717 2^(t/10)=32=2\u2075, t=50'],
+                    ['\u2713 y = 1/x\u00b2', '\u2717 Reciprocal squared parent', '\u2713 No real solution', '\u2717 2/(x-3)\u00b2 always positive']
+                ],
+                storageKey: 'unit2_review'
             });
         }
     </script>
