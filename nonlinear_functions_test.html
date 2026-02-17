@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Non-Linear Functions Test</title>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="stylesheet" href="shared/styles.css">
     <link rel="stylesheet" href="shared/print.css">
@@ -178,6 +177,7 @@
                     <input type="text" id="q1_vertex">
                 </div>
             </div>
+            <div class="answer-feedback" id="feedback1"></div>
 
             <!-- Question 2: Square Root Function -->
             <div class="question-card">
@@ -232,6 +232,7 @@
                     <input type="text" id="q2_start">
                 </div>
             </div>
+            <div class="answer-feedback" id="feedback2"></div>
 
             <!-- Question 3: Rational Function -->
             <div class="question-card">
@@ -286,6 +287,7 @@
                     <input type="text" id="q3_range">
                 </div>
             </div>
+            <div class="answer-feedback" id="feedback3"></div>
 
             <!-- Question 4: Cubic Function -->
             <div class="question-card">
@@ -340,6 +342,7 @@
                     <input type="text" id="q4_inflection">
                 </div>
             </div>
+            <div class="answer-feedback" id="feedback4"></div>
 
             <!-- Question 5: Rational Function -->
             <div class="question-card">
@@ -394,6 +397,7 @@
                     <input type="text" id="q5_range">
                 </div>
             </div>
+            <div class="answer-feedback" id="feedback5"></div>
 
             <!-- Question 6: Function Identification -->
             <div class="question-card">
@@ -435,6 +439,7 @@
                     <input type="text" id="q6_features">
                 </div>
             </div>
+            <div class="answer-feedback" id="feedback6"></div>
 
             <!-- Question 7: Exponential Function Identification -->
             <div class="question-card">
@@ -476,8 +481,9 @@
                     <input type="text" id="q7_features">
                 </div>
             </div>
+            <div class="answer-feedback" id="feedback7"></div>
 
-            <button type="button" class="print-btn" onclick="printTest()">Print Version (Black & White)</button>
+            <button type="button" class="print-btn"onclick="printTest()">Print Version (Black & White)</button>
             <button type="button" class="answer-key-btn" onclick="showNonlinearAnswerKey()">View Answer Key</button>
             <button type="button" class="answer-key-btn" onclick="saveResults('nonlinear_test_results')" style="background: #1D42BA;">Save Results</button>
             <button type="button" class="answer-key-btn" onclick="loadResults('nonlinear_test_results')" style="background: #002D62;">Load Saved Results</button>
