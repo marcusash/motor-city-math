@@ -45,6 +45,7 @@ body.arena-mode {
     --accent-red-hover: #FF4D63;
     --accent-blue: #4A72E8;
     --accent-blue-hover: #6B8FFF;
+    --accent-navy: #A0B8E8;
     --border-default: #2A3352;
     --border-focus: #4A72E8;
     --border-subtle: #1E2742;
@@ -761,7 +762,7 @@ table th {
 
 .score-card.passing {
     background: linear-gradient(135deg, var(--accent-navy) 0%, var(--accent-blue) 100%);
-    color: white;
+    color: var(--text-inverse);
 }
 
 .score-card.needs-work {
