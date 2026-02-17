@@ -60,6 +60,8 @@
                 </div>
             </div>
 
+            <div class="answer-feedback" id="feedback1"></div>
+
             <!-- Question 2 -->
             <div class="question-card">
                 <div class="question-number">Question 2</div>
@@ -74,6 +76,8 @@
                 </div>
             </div>
 
+            <div class="answer-feedback" id="feedback2"></div>
+
             <!-- Question 3 -->
             <div class="question-card">
                 <div class="question-number">Question 3</div>
@@ -87,6 +91,8 @@
                     <input type="text" id="q3_answer">
                 </div>
             </div>
+
+            <div class="answer-feedback" id="feedback3"></div>
 
             <!-- Question 4 -->
             <div class="question-card">
@@ -126,6 +132,8 @@
                 </div>
             </div>
 
+            <div class="answer-feedback" id="feedback4"></div>
+
             <!-- Question 5 -->
             <div class="question-card">
                 <div class="question-number">Question 5</div>
@@ -156,6 +164,8 @@
                 </div>
             </div>
 
+            <div class="answer-feedback" id="feedback5"></div>
+
             <!-- Question 6 -->
             <div class="question-card">
                 <div class="question-number">Question 6</div>
@@ -173,6 +183,8 @@
                     <input type="text" id="q6_answer">
                 </div>
             </div>
+
+            <div class="answer-feedback" id="feedback6"></div>
 
             <!-- Question 7 -->
             <div class="question-card">
@@ -192,6 +204,8 @@
                 </div>
             </div>
 
+            <div class="answer-feedback" id="feedback7"></div>
+
             <!-- Question 8 -->
             <div class="question-card">
                 <div class="question-number">Question 8</div>
@@ -209,6 +223,8 @@
                     <input type="text" id="q8_answer">
                 </div>
             </div>
+
+            <div class="answer-feedback" id="feedback8"></div>
 
             <!-- Question 9 -->
             <div class="question-card">
@@ -228,6 +244,8 @@
                 </div>
             </div>
 
+            <div class="answer-feedback" id="feedback9"></div>
+
             <!-- Question 10 -->
             <div class="question-card">
                 <div class="question-number">Question 10</div>
@@ -245,6 +263,8 @@
                     <input type="text" id="q10_answer">
                 </div>
             </div>
+
+            <div class="answer-feedback" id="feedback10"></div>
 
             <!-- Question 11 -->
             <div class="question-card">
@@ -264,6 +284,8 @@
                 </div>
             </div>
 
+            <div class="answer-feedback" id="feedback11"></div>
+
             <!-- Question 12 -->
             <div class="question-card">
                 <div class="question-number">Question 12</div>
@@ -282,6 +304,8 @@
                 </div>
             </div>
 
+            <div class="answer-feedback" id="feedback12"></div>
+
             <!-- Question 13 -->
             <div class="question-card">
                 <div class="question-number">Question 13</div>
@@ -297,6 +321,8 @@
                     <input type="text" id="q13_answer">
                 </div>
             </div>
+
+            <div class="answer-feedback" id="feedback13"></div>
 
             <!-- Question 14 -->
             <div class="question-card">
@@ -368,6 +394,8 @@
                 </table>
             </div>
 
+            <div class="answer-feedback" id="feedback16"></div>
+
             <!-- Question 17 -->
             <div class="question-card">
                 <div class="question-number">Question 17</div>
@@ -382,6 +410,8 @@
                 </div>
             </div>
 
+            <div class="answer-feedback" id="feedback17"></div>
+
             <!-- Question 18 -->
             <div class="question-card">
                 <div class="question-number">Question 18</div>
@@ -395,6 +425,8 @@
                     <input type="text" id="q18_answer">
                 </div>
             </div>
+
+            <div class="answer-feedback" id="feedback18"></div>
 
             <!-- Question 19 -->
             <div class="question-card">
@@ -418,13 +450,17 @@
                 </div>
             </div>
 
+            <div class="answer-feedback" id="feedback19"></div>
+
             <div class="button-container">
+                <button type="button" class="submit-btn" onclick="gradeUnit1v3Exam()">Submit Test</button>
                 <button type="button" class="print-btn" onclick="printTest()">Print Test</button>
                 <button type="button" class="answer-key-btn" onclick="showUnit1v3AnswerKey()">View Answer Key</button>
                 <button type="button" class="answer-key-btn" onclick="saveResults('exponents_test_v3_results')" style="background: #1D42BA;">Save Results</button>
                 <button type="button" class="answer-key-btn" onclick="loadResults('exponents_test_v3_results')" style="background: #002D62;">Load Saved Results</button>
             </div>
         </form>
+        <div class="result" id="finalResult"></div>
     </div>
 
     <!-- Answer Key Modal -->
@@ -514,6 +550,60 @@
                         console.log('MathJax rendering complete');
                     }).catch(function(err) { console.log('MathJax rendering error:', err); });
                 }
+            });
+        }
+
+        function gradeUnit1v3Exam() {
+            gradeTest({
+                questions: [
+                    [[['q1_answer', 144]], 'feedback1'],
+                    [[['q2_answer', '7fifthrt(x^3)']], 'feedback2'],
+                    [[['q3_answer', '6(3x)^(1/4)']], 'feedback3'],
+                    [[['q4a', 5], ['q4b', 6], ['q4c', 4], ['q4d', 1500], ['q4e', '49/9'], ['q4f', 5]], 'feedback4'],
+                    [[['q5a', '6sqrt5'], ['q5b', -6], ['q5c', '9i'], ['q5d', '6x^5sqrt2']], 'feedback5'],
+                    [[['q6_answer', '28x^9']], 'feedback6'],
+                    [[['q7_answer', '27x^11']], 'feedback7'],
+                    [[['q8_answer', '9/x^7']], 'feedback8'],
+                    [[['q9_answer', '18x+9x^2+2x^4+x^5']], 'feedback9'],
+                    [[['q10_answer', '3x/y^3']], 'feedback10'],
+                    [[['q11_answer', '4x^7+40x^5+100x^3']], 'feedback11'],
+                    [[['q12_answer', 4]], 'feedback12'],
+                    [[['q13_answer', '9a^3b^2']], 'feedback13'],
+                    [[['q17_answer', '4.76x10^10']], 'feedback17'],
+                    [[['q18_answer', 0.00000815]], 'feedback18'],
+                    [[['q19_answer', '1.08x10^11']], 'feedback19']
+                ],
+                feedbacks: [
+                    ['\u2713 144 — exponent before multiply, nice', '\u2717 Careful: -2(-2)\u00b3(3)\u00b2 = -2(-8)(9) = 144'],
+                    ['\u2713 Radical form nailed', '\u2717 Move exponent to radical: 7\u2075\u221a(x\u00b3)'],
+                    ['\u2713 Rational exponent form correct', '\u2717 Fourth root = exponent 1/4: 6(3x)^(1/4)'],
+                    [
+                        '\u2713 125^(1/3) = 5', '\u2717 Cube root of 125 is 5',
+                        '\u2713 36^(1/2) = 6', '\u2717 Square root of 36 is 6',
+                        '\u2713 32^(2/5) = 4', '\u2717 Fifth root of 32 = 2, then 2\u00b2 = 4',
+                        '\u2713 1500 — decimal exponent solid', '\u2717 \u221a(2.25\u00d710\u2076) = 1.5\u00d71000 = 1500',
+                        '\u2713 49/9 — negative exponent flipped', '\u2717 Flip fraction, square: (7/3)\u00b2 = 49/9',
+                        '\u2713 5 — fractional exponent clean', '\u2717 25^(1/2) = \u221a25 = 5'
+                    ],
+                    [
+                        '\u2713 6\u221a5 — perfect simplification', '\u2717 \u221a180 = \u221a(36\u00b75) = 6\u221a5',
+                        '\u2713 -6 — cube root correct', '\u2717 \u00b3\u221a(-216) = -6',
+                        '\u2713 9i — imaginary number solid', '\u2717 \u221a(-81) = 9i',
+                        '\u2713 6x\u2075\u221a2 — variable simplification clean', '\u2717 \u221a(72x\u00b9\u2070) = 6x\u2075\u221a2'
+                    ],
+                    ['\u2713 28x\u2079 — product rule nailed', '\u2717 Multiply coefficients, add exponents: 28x\u2079'],
+                    ['\u2713 27x\u00b9\u00b9 — power of a product solid', '\u2717 Cube the 3x\u00b2 first: 27x\u2076, then multiply: 27x\u00b9\u00b9'],
+                    ['\u2713 9/x\u2077 — quotient rule clean', '\u2717 Divide coefficients, subtract exponents: 9/x\u2077'],
+                    ['\u2713 18x+9x\u00b2+2x\u2074+x\u2075 — nice distribution', '\u2717 Distribute each term carefully: 18x+9x\u00b2+2x\u2074+x\u2075'],
+                    ['\u2713 3x/y\u00b3 — fraction simplification solid', '\u2717 Multiply fractions, cancel: 3x/y\u00b3'],
+                    ['\u2713 Expanded and distributed perfectly', '\u2717 FOIL the square, then distribute: 4x\u2077+40x\u2075+100x\u00b3'],
+                    ['\u2713 x = 4 — exponential equation solved', '\u2717 Convert to base 2: 2(x+2)=3x, so x=4'],
+                    ['\u2713 9a\u00b3b\u00b2 — height found', '\u2717 Solve: h = 54a\u2075b\u00b3/(6a\u00b2b) = 9a\u00b3b\u00b2'],
+                    ['\u2713 Scientific notation correct', '\u2717 Move decimal 10 places: 4.76 \u00d7 10\u00b9\u2070'],
+                    ['\u2713 0.00000815 — decimal conversion solid', '\u2717 Move decimal 6 left: 0.00000815'],
+                    ['\u2713 1.08 \u00d7 10\u00b9\u00b9 Joules — great work', '\u2717 E = (1/2)mv\u00b2: 1.08 \u00d7 10\u00b9\u00b9']
+                ],
+                storageKey: 'exponents_unit1_3rd'
             });
         }
     </script>
