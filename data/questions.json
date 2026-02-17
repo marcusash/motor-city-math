@@ -1,0 +1,4716 @@
+{
+  "version": "1.0.0",
+  "generated_by": "Agent R",
+  "description": "Motor City Math question bank - all Algebra II questions extracted from HTML test files",
+  "question_count": 142,
+  "questions": [
+    {
+      "id": "lin-001",
+      "unit": "functions",
+      "standard": "3.a",
+      "difficulty": "hard",
+      "type": "evaluate",
+      "source_file": "index.html",
+      "source_question": 1,
+      "question_text": "Given f(x)=2x+3, h(x) table {(-3,8),(-1,6),(0,3),(2,1),(3,-2)}, and g(x) graph with points x=[-5..8] y=[1,-2,-3,-1,2,4,3,-1,-2,1,3,2,0,-1], evaluate composite expressions.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "f(4) - h(2)",
+          "answer": "10",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "b",
+          "text": "g(-3) · h(-1)",
+          "answer": "-18",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "f(h(3))",
+          "answer": "-1",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "d",
+          "text": "g(f(2))",
+          "answer": "0",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "e",
+          "text": "g(h⁻¹(3))",
+          "answer": "4",
+          "answer_type": "numeric"
+        }
+      ],
+      "tags": [
+        "function-composition",
+        "tables",
+        "graph-reading",
+        "inverse-functions"
+      ]
+    },
+    {
+      "id": "lin-002",
+      "unit": "functions",
+      "standard": "3.b",
+      "difficulty": "medium",
+      "type": "identify",
+      "source_file": "index.html",
+      "source_question": 2,
+      "question_text": "For each sequence, explain whether it can be modeled by a linear function, an exponential function, or neither.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "A: -5, 2, 9, 16, 23, ...",
+          "answer": "Linear",
+          "answer_type": "text"
+        },
+        {
+          "label": "a_exp",
+          "text": "Explain how you know (A)",
+          "answer": "Common difference of +7",
+          "answer_type": "text"
+        },
+        {
+          "label": "b",
+          "text": "B: 3, 9, 27, 81, 243, ...",
+          "answer": "Exponential",
+          "answer_type": "text"
+        },
+        {
+          "label": "b_exp",
+          "text": "Explain how you know (B)",
+          "answer": "Common ratio of ×3",
+          "answer_type": "text"
+        },
+        {
+          "label": "c",
+          "text": "C: 64, 32, 16, 8, 4, ...",
+          "answer": "Exponential",
+          "answer_type": "text"
+        },
+        {
+          "label": "c_exp",
+          "text": "Explain how you know (C)",
+          "answer": "Common ratio of ×0.5 (÷2)",
+          "answer_type": "text"
+        },
+        {
+          "label": "d",
+          "text": "D: 7, 14, 22, 31, 41, ...",
+          "answer": "Neither",
+          "answer_type": "text"
+        },
+        {
+          "label": "d_exp",
+          "text": "Explain how you know (D)",
+          "answer": "Differences increase (7, 8, 9, 10)",
+          "answer_type": "text"
+        },
+        {
+          "label": "e",
+          "text": "E: 50, 42, 34, 26, 18, ...",
+          "answer": "Linear",
+          "answer_type": "text"
+        },
+        {
+          "label": "e_exp",
+          "text": "Explain how you know (E)",
+          "answer": "Common difference of -8",
+          "answer_type": "text"
+        }
+      ],
+      "tags": [
+        "sequences",
+        "linear-vs-exponential",
+        "common-difference",
+        "common-ratio"
+      ]
+    },
+    {
+      "id": "lin-003",
+      "unit": "functions",
+      "standard": "3.c",
+      "difficulty": "medium",
+      "type": "graph",
+      "source_file": "index.html",
+      "source_question": 3,
+      "question_text": "Given f(x) = 3x - x², make a table of values, plot points, and draw a graph of y = f(x).",
+      "sub_parts": [
+        {
+          "label": "table_x=-2",
+          "text": "f(-2)",
+          "answer": "-10",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "table_x=-1",
+          "text": "f(-1)",
+          "answer": "-4",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "table_x=0",
+          "text": "f(0)",
+          "answer": "0",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "table_x=1",
+          "text": "f(1)",
+          "answer": "2",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "table_x=2",
+          "text": "f(2)",
+          "answer": "2",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "table_x=3",
+          "text": "f(3)",
+          "answer": "0",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "table_x=4",
+          "text": "f(4)",
+          "answer": "-4",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "graph",
+          "text": "Plot the points and draw the parabola (opens downward, vertex near (1.5, 2.25))",
+          "answer": "Downward parabola through plotted points",
+          "answer_type": "graph"
+        }
+      ],
+      "tags": [
+        "quadratic",
+        "graphing",
+        "table-of-values",
+        "parabola"
+      ]
+    },
+    {
+      "id": "lin-004",
+      "unit": "functions",
+      "standard": "3.d",
+      "difficulty": "hard",
+      "type": "interpret",
+      "source_file": "index.html",
+      "source_question": 4,
+      "question_text": "Analyze the graph of y=h(x) with points x=[-4,-3,-2,-1,0,1,2,3,4,5,6] y=[-1,0,1,2,3,3.5,3.2,2.5,1.8,2.2,3]. Evaluate function values, inverses, and identify domain/range/intercepts.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "h(-2) ≈",
+          "answer": "1",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "b",
+          "text": "h(1/2) =",
+          "answer": "3.25",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "h(0) =",
+          "answer": "3",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "d",
+          "text": "h⁻¹(1) ≈",
+          "answer": "-2",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "e",
+          "text": "h⁻¹(3) =",
+          "answer": "0",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "f",
+          "text": "h⁻¹(3.5) ≈",
+          "answer": "1",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "g",
+          "text": "h is increasing when",
+          "answer": "-4 ≤ x ≤ 1",
+          "answer_type": "text"
+        },
+        {
+          "label": "h",
+          "text": "h is decreasing when",
+          "answer": "1 < x ≤ 4",
+          "answer_type": "text"
+        },
+        {
+          "label": "i",
+          "text": "Domain of h",
+          "answer": "[-4, 6]",
+          "answer_type": "text"
+        },
+        {
+          "label": "j",
+          "text": "Range of h",
+          "answer": "[-1, 3.5]",
+          "answer_type": "text"
+        },
+        {
+          "label": "k",
+          "text": "Maximum value of h",
+          "answer": "3.5",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "l",
+          "text": "x-intercept of h",
+          "answer": "-3",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "m",
+          "text": "y-intercept of h",
+          "answer": "3",
+          "answer_type": "numeric"
+        }
+      ],
+      "tags": [
+        "graph-analysis",
+        "domain",
+        "range",
+        "intercepts",
+        "increasing-decreasing",
+        "inverse-functions"
+      ]
+    },
+    {
+      "id": "lin-005",
+      "unit": "functions",
+      "standard": "3.e",
+      "difficulty": "medium",
+      "type": "model",
+      "source_file": "index.html",
+      "source_question": 5,
+      "question_text": "A candle starts at 8 inches and burns at 0.5 inches/hour. Write an equation, identify slope meaning, and find when it burns out.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Write equation for height h after t hours",
+          "answer": "h = 8 - 0.5t",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "What is the slope?",
+          "answer": "-0.5",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "What does the slope mean?",
+          "answer": "The candle burns down 0.5 inches per hour",
+          "answer_type": "text"
+        },
+        {
+          "label": "d",
+          "text": "When does the candle burn out?",
+          "answer": "16",
+          "answer_type": "numeric"
+        }
+      ],
+      "tags": [
+        "linear-model",
+        "slope-intercept",
+        "real-world",
+        "rate-of-change"
+      ]
+    },
+    {
+      "id": "lin-006",
+      "unit": "functions",
+      "standard": "3.f",
+      "difficulty": "medium",
+      "type": "interpret",
+      "source_file": "index.html",
+      "source_question": 6,
+      "question_text": "Temperature changes throughout a day shown on graph: hours [0,2,4,6,8], temps [50,58,66,74,70]°F. Analyze the graph.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Temperature increasing from hour ___ to ___",
+          "answer": "0 to 6",
+          "answer_type": "text"
+        },
+        {
+          "label": "b",
+          "text": "Maximum temperature",
+          "answer": "74",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "If hour 6-8 trend continues, predict temp at hour 10",
+          "answer": "66",
+          "answer_type": "numeric"
+        }
+      ],
+      "tags": [
+        "graph-interpretation",
+        "temperature",
+        "trend-prediction",
+        "slope"
+      ]
+    },
+    {
+      "id": "lin-007",
+      "unit": "functions",
+      "standard": "3.g",
+      "difficulty": "medium",
+      "type": "solve",
+      "source_file": "index.html",
+      "source_question": 7,
+      "question_text": "Concert tickets: C(t) = 45t + 25. Find the inverse function and use it to determine how many tickets were bought for $385.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Find inverse function C⁻¹(t)",
+          "answer": "(t - 25)/45",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "If someone spent $385, how many tickets?",
+          "answer": "8",
+          "answer_type": "numeric"
+        }
+      ],
+      "tags": [
+        "inverse-functions",
+        "linear-model",
+        "real-world"
+      ]
+    },
+    {
+      "id": "lin-008",
+      "unit": "functions",
+      "standard": "3.h",
+      "difficulty": "medium",
+      "type": "solve",
+      "source_file": "index.html",
+      "source_question": 8,
+      "question_text": "Business: Revenue R(x)=30x, Cost C(x)=12x+500. Write profit function, find break-even, and calculate profit for 50 products.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Write profit function P(x) = R(x) - C(x)",
+          "answer": "P(x) = 18x - 500",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "Break-even quantity",
+          "answer": "27.78",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "Profit for 50 products",
+          "answer": "400",
+          "answer_type": "numeric"
+        }
+      ],
+      "tags": [
+        "function-operations",
+        "profit",
+        "break-even",
+        "real-world"
+      ]
+    },
+    {
+      "id": "lin-009",
+      "unit": "functions",
+      "standard": "3.i",
+      "difficulty": "easy",
+      "type": "solve",
+      "source_file": "index.html",
+      "source_question": 9,
+      "question_text": "If f(x) = 4x + 8, find f⁻¹(-4) and the general inverse function f⁻¹(x).",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "f⁻¹(-4)",
+          "answer": "-3",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "b",
+          "text": "f⁻¹(x)",
+          "answer": "(x - 8)/4",
+          "answer_type": "equation"
+        }
+      ],
+      "tags": [
+        "inverse-functions",
+        "linear"
+      ]
+    },
+    {
+      "id": "lin-010",
+      "unit": "functions",
+      "standard": "4.a",
+      "difficulty": "easy",
+      "type": "evaluate",
+      "source_file": "index.html",
+      "source_question": 10,
+      "question_text": "If h(x) = 8x + 5 and h(3/4) = p, what is the value of p?",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "p = h(3/4)",
+          "answer": "11",
+          "answer_type": "numeric"
+        }
+      ],
+      "tags": [
+        "function-evaluation",
+        "fractions",
+        "substitution"
+      ]
+    },
+    {
+      "id": "lin-011",
+      "unit": "functions",
+      "standard": "4.c",
+      "difficulty": "medium",
+      "type": "model",
+      "source_file": "index.html",
+      "source_question": 12,
+      "question_text": "Car rental: 12 miles costs $62, 20 miles costs $78. Find the per-mile fee, flat fee, and cost for 15 miles.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Additional fee per mile driven",
+          "answer": "$2/mile",
+          "answer_type": "text"
+        },
+        {
+          "label": "b",
+          "text": "Flat fee for the rental",
+          "answer": "$38",
+          "answer_type": "text"
+        },
+        {
+          "label": "c",
+          "text": "Cost for 15 miles",
+          "answer": "$68",
+          "answer_type": "text"
+        }
+      ],
+      "tags": [
+        "two-points",
+        "slope",
+        "y-intercept",
+        "linear-equation",
+        "real-world"
+      ]
+    },
+    {
+      "id": "lin-012",
+      "unit": "functions",
+      "standard": "4.d",
+      "difficulty": "hard",
+      "type": "interpret",
+      "source_file": "index.html",
+      "source_question": 13,
+      "question_text": "Scatterplot of study time vs test scores with line of best fit from (2,62) to (10,98). Interpret dots, find residual at 6 hrs, write equation, predict for 7 hrs.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "What do the dots on the graph represent?",
+          "answer": "Each practice test showing relationship between study time and test score",
+          "answer_type": "text"
+        },
+        {
+          "label": "b",
+          "text": "At 6 hours, how many points more than predicted by line of best fit?",
+          "answer": "8",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "Write a model (equation for line of best fit)",
+          "answer": "y = 4.5x + 53",
+          "answer_type": "equation"
+        },
+        {
+          "label": "d",
+          "text": "Predicted test score for 7 hours of study? Is it reasonable?",
+          "answer": "84.5 points; yes, reasonable based on data trend",
+          "answer_type": "text"
+        }
+      ],
+      "tags": [
+        "scatterplot",
+        "line-of-best-fit",
+        "residual",
+        "prediction",
+        "linear-regression"
+      ]
+    },
+    {
+      "id": "lin-013",
+      "unit": "functions",
+      "standard": "5.a",
+      "difficulty": "medium",
+      "type": "model",
+      "source_file": "index.html",
+      "source_question": 15,
+      "question_text": "Bacteria doubles every 3 hours, starting with 500. Explain why exponential, write model P(t)=a(b)^t, find count after 9 hours.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Why is this modeled by exponential, not linear?",
+          "answer": "Population multiplies by constant factor (doubles) each period, rather than adding a constant amount",
+          "answer_type": "text"
+        },
+        {
+          "label": "b",
+          "text": "Write exponential model P(t) where t = number of 3-hour periods",
+          "answer": "P(t) = 500(2)^t",
+          "answer_type": "equation"
+        },
+        {
+          "label": "c",
+          "text": "How many bacteria after 9 hours (3 periods)?",
+          "answer": "4000",
+          "answer_type": "numeric"
+        }
+      ],
+      "tags": [
+        "exponential-growth",
+        "bacteria",
+        "doubling",
+        "exponential-model"
+      ]
+    },
+    {
+      "id": "lin-014",
+      "unit": "functions",
+      "standard": "5.b & 5.c",
+      "difficulty": "medium",
+      "type": "model",
+      "source_file": "index.html",
+      "source_question": 16,
+      "question_text": "Car depreciates 15% per year, bought for $28,000. Write exponential model V(t)=a(1+r)^t, find value after 4 years, identify growth or decay.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Write exponential model V(t)",
+          "answer": "V(t) = 28000(0.85)^t",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "Value after 4 years",
+          "answer": "$14,616.18",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "Is this exponential growth or decay? Explain.",
+          "answer": "Exponential decay — base (0.85) is less than 1, value decreases by 15% each year",
+          "answer_type": "text"
+        }
+      ],
+      "tags": [
+        "exponential-decay",
+        "depreciation",
+        "percent-decrease",
+        "exponential-model"
+      ]
+    },
+    {
+      "id": "lin-calc-001",
+      "unit": "functions",
+      "standard": "3.a",
+      "difficulty": "medium",
+      "type": "model",
+      "source_file": "index_calc.html",
+      "source_question": 1,
+      "question_text": "A rideshare driver tracks their daily earnings. Use the table below to analyze the relationship:\n\nHours (h) | Earnings ($)\n2         | 60\n4         | 110\n6         | 160\n8         | 210\n\nWrite a linear equation in slope-intercept form that models the driver's earnings.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Write the equation in slope-intercept form",
+          "answer": "y = 25x + 10",
+          "answer_type": "equation"
+        }
+      ],
+      "tags": [
+        "slope-intercept-form",
+        "table-to-equation",
+        "slope",
+        "y-intercept",
+        "real-world-modeling"
+      ]
+    },
+    {
+      "id": "lin-calc-002",
+      "unit": "functions",
+      "standard": "3.b",
+      "difficulty": "easy",
+      "type": "evaluate",
+      "source_file": "index_calc.html",
+      "source_question": 2,
+      "question_text": "The graph shows a streaming service's monthly cost based on devices. Data points: (0,15), (1,21), (2,27), (3,33), (4,39), (5,45).",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "What is the cost for 3 devices?",
+          "answer": "33",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "b",
+          "text": "How many devices can you have for $45?",
+          "answer": "5",
+          "answer_type": "numeric"
+        }
+      ],
+      "tags": [
+        "reading-graphs",
+        "evaluate-function",
+        "linear-graph"
+      ]
+    },
+    {
+      "id": "lin-calc-003",
+      "unit": "functions",
+      "standard": "3.c",
+      "difficulty": "easy",
+      "type": "identify",
+      "source_file": "index_calc.html",
+      "source_question": 3,
+      "question_text": "The graph shows a company's profit over 6 months. Data points: (0,5000), (1,7500), (2,10000), (3,12500), (4,15000), (5,17500), (6,20000). Find the domain and range.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Domain minimum (months)",
+          "answer": "0",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "b",
+          "text": "Domain maximum (months)",
+          "answer": "6",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "Range minimum (dollars)",
+          "answer": "5000",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "d",
+          "text": "Range maximum (dollars)",
+          "answer": "20000",
+          "answer_type": "numeric"
+        }
+      ],
+      "tags": [
+        "domain",
+        "range",
+        "reading-graphs",
+        "interval-notation"
+      ]
+    },
+    {
+      "id": "lin-calc-004",
+      "unit": "functions",
+      "standard": "3.d",
+      "difficulty": "medium",
+      "type": "interpret",
+      "source_file": "index_calc.html",
+      "source_question": 4,
+      "question_text": "A water tank is being filled: W(t) = 20t + 150\n\na) Find the y-intercept and explain what it represents.\nb) If the tank holds 450 gallons, when is it full?",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Y-intercept (gallons)",
+          "answer": "150",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "b",
+          "text": "What does the y-intercept represent?",
+          "answer": "The initial amount of water in the tank before filling begins",
+          "answer_type": "text"
+        },
+        {
+          "label": "c",
+          "text": "Time to fill to 450 gallons (minutes)",
+          "answer": "15",
+          "answer_type": "numeric"
+        }
+      ],
+      "tags": [
+        "y-intercept",
+        "interpretation",
+        "solving-equations",
+        "function-notation"
+      ]
+    },
+    {
+      "id": "lin-calc-005",
+      "unit": "functions",
+      "standard": "3.e",
+      "difficulty": "medium",
+      "type": "model",
+      "source_file": "index_calc.html",
+      "source_question": 5,
+      "question_text": "A candle starts at 8 inches and burns at 0.5 inches/hour.\n\na) Write equation for height h after t hours\nb) What is the slope? What does it mean?\nc) When does the candle burn out?",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Write the equation for height h after t hours",
+          "answer": "h = 8 - 0.5t",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "What is the slope?",
+          "answer": "-0.5",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "What does the slope mean?",
+          "answer": "The candle burns down 0.5 inches per hour",
+          "answer_type": "text"
+        },
+        {
+          "label": "d",
+          "text": "When does the candle burn out? (hours)",
+          "answer": "16",
+          "answer_type": "numeric"
+        }
+      ],
+      "tags": [
+        "slope",
+        "rate-of-change",
+        "linear-modeling",
+        "x-intercept",
+        "real-world-modeling"
+      ]
+    },
+    {
+      "id": "lin-calc-006",
+      "unit": "functions",
+      "standard": "3.f",
+      "difficulty": "hard",
+      "type": "interpret",
+      "source_file": "index_calc.html",
+      "source_question": 6,
+      "question_text": "Temperature changes throughout a day. Graph data points: (0,50), (2,58), (4,66), (6,74), (8,70).\n\na) When is temperature increasing?\nb) What is the maximum temperature?\nc) If the hour 6-8 trend continues, predict temp at hour 10.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Temperature increasing from hour:",
+          "answer": "0",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "b",
+          "text": "Temperature increasing to hour:",
+          "answer": "6",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "Maximum temperature (°F)",
+          "answer": "74",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "d",
+          "text": "Predicted temperature at hour 10 (°F), continuing hour 6-8 trend",
+          "answer": "66",
+          "answer_type": "numeric"
+        }
+      ],
+      "tags": [
+        "reading-graphs",
+        "slope",
+        "extrapolation",
+        "increasing-decreasing",
+        "prediction"
+      ]
+    },
+    {
+      "id": "lin-calc-007",
+      "unit": "functions",
+      "standard": "3.g",
+      "difficulty": "medium",
+      "type": "solve",
+      "source_file": "index_calc.html",
+      "source_question": 7,
+      "question_text": "Concert tickets: C(t) = 45t + 25\n\na) Find inverse function C⁻¹(x)\nb) If someone spent $385, how many tickets?",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Find the inverse function",
+          "answer": "t = (C - 25) / 45",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "Number of tickets for $385",
+          "answer": "8",
+          "answer_type": "numeric"
+        }
+      ],
+      "tags": [
+        "inverse-functions",
+        "solving-equations",
+        "function-notation"
+      ]
+    },
+    {
+      "id": "lin-calc-008",
+      "unit": "functions",
+      "standard": "3.h",
+      "difficulty": "hard",
+      "type": "solve",
+      "source_file": "index_calc.html",
+      "source_question": 8,
+      "question_text": "Business functions:\nRevenue: R(x) = 30x\nCost: C(x) = 12x + 500\n\na) Write profit function P(x) = R(x) - C(x)\nb) Break-even quantity?\nc) Profit for 50 products?",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Write the profit function P(x)",
+          "answer": "P(x) = 18x - 500",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "Break-even quantity",
+          "answer": "27.78",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "Profit for 50 products ($)",
+          "answer": "400",
+          "answer_type": "numeric"
+        }
+      ],
+      "tags": [
+        "function-operations",
+        "break-even",
+        "profit-function",
+        "evaluate-function"
+      ]
+    },
+    {
+      "id": "lin-calc-009",
+      "unit": "functions",
+      "standard": "3.i",
+      "difficulty": "medium",
+      "type": "solve",
+      "source_file": "index_calc.html",
+      "source_question": 9,
+      "question_text": "Phone plan: P(g) = 0.10g + 40\n\na) If bill was $52, how many GB used?\nb) What's the bill for 75 GB?",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "GB used for a $52 bill",
+          "answer": "120",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "b",
+          "text": "Bill for 75 GB ($)",
+          "answer": "47.50",
+          "answer_type": "numeric"
+        }
+      ],
+      "tags": [
+        "function-notation",
+        "solving-equations",
+        "evaluate-function"
+      ]
+    },
+    {
+      "id": "lin-calc-010",
+      "unit": "functions",
+      "standard": "4.a",
+      "difficulty": "easy",
+      "type": "identify",
+      "source_file": "index_calc.html",
+      "source_question": 10,
+      "question_text": "Gym: $35/month + $75 enrollment fee\n\na) Why is this linear?\nb) Write model C(m)",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Why is this situation linear?",
+          "answer": "Constant rate of change — the same amount ($35) is added each month",
+          "answer_type": "text"
+        },
+        {
+          "label": "b",
+          "text": "Write the model C(m)",
+          "answer": "C(m) = 35m + 75",
+          "answer_type": "equation"
+        }
+      ],
+      "tags": [
+        "identifying-linear",
+        "constant-rate-of-change",
+        "linear-modeling"
+      ]
+    },
+    {
+      "id": "lin-calc-011",
+      "unit": "functions",
+      "standard": "4.b",
+      "difficulty": "medium",
+      "type": "model",
+      "source_file": "index_calc.html",
+      "source_question": 11,
+      "question_text": "Plumber: $85 service call + $60/hour\n\na) Write equation for cost C and hours h\nb) Cost for 3.5 hours?\nc) If charged $325, how many hours?",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Write the equation for cost",
+          "answer": "C = 60h + 85",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "Cost for 3.5 hours ($)",
+          "answer": "295",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "Hours worked if charged $325",
+          "answer": "4",
+          "answer_type": "numeric"
+        }
+      ],
+      "tags": [
+        "linear-modeling",
+        "evaluate-function",
+        "solving-equations",
+        "real-world-modeling"
+      ]
+    },
+    {
+      "id": "lin-calc-012",
+      "unit": "functions",
+      "standard": "4.c",
+      "difficulty": "medium",
+      "type": "interpret",
+      "source_file": "index_calc.html",
+      "source_question": 12,
+      "question_text": "Car rental: C = 0.25m + 40\n\na) What does 0.25 represent?\nb) What does 40 represent?\nc) Cost for 200 miles?",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "What does 0.25 represent?",
+          "answer": "Cost per mile driven ($0.25/mile)",
+          "answer_type": "text"
+        },
+        {
+          "label": "b",
+          "text": "What does 40 represent?",
+          "answer": "Base/fixed rental fee ($40)",
+          "answer_type": "text"
+        },
+        {
+          "label": "c",
+          "text": "Cost for 200 miles ($)",
+          "answer": "90",
+          "answer_type": "numeric"
+        }
+      ],
+      "tags": [
+        "slope-interpretation",
+        "y-intercept-interpretation",
+        "evaluate-function"
+      ]
+    },
+    {
+      "id": "lin-calc-013",
+      "unit": "functions",
+      "standard": "4.d",
+      "difficulty": "medium",
+      "type": "solve",
+      "source_file": "index_calc.html",
+      "source_question": 13,
+      "question_text": "Line through (3, 100) and (7, 180)\n\na) Find slope\nb) Write in point-slope form using (3, 100)\nc) Convert to slope-intercept form",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Find the slope",
+          "answer": "20",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "b",
+          "text": "Write in point-slope form using (3, 100)",
+          "answer": "y - 100 = 20(x - 3)",
+          "answer_type": "equation"
+        },
+        {
+          "label": "c",
+          "text": "Convert to slope-intercept form",
+          "answer": "y = 20x + 40",
+          "answer_type": "equation"
+        }
+      ],
+      "tags": [
+        "slope-formula",
+        "point-slope-form",
+        "slope-intercept-form",
+        "equation-forms"
+      ]
+    },
+    {
+      "id": "lin-calc-014",
+      "unit": "functions",
+      "standard": "4.e",
+      "difficulty": "medium",
+      "type": "evaluate",
+      "source_file": "index_calc.html",
+      "source_question": 14,
+      "question_text": "Savings: S = 50m + 200\n\na) Y-intercept?\nb) Slope?\nc) Amount after 6 months?\nd) Months to reach $500?",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Y-intercept",
+          "answer": "200",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "b",
+          "text": "Slope",
+          "answer": "50",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "Amount after 6 months ($)",
+          "answer": "500",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "d",
+          "text": "Months to reach $500",
+          "answer": "6",
+          "answer_type": "numeric"
+        }
+      ],
+      "tags": [
+        "slope",
+        "y-intercept",
+        "evaluate-function",
+        "solving-equations",
+        "graphing"
+      ]
+    },
+    {
+      "id": "lin-calc-015",
+      "unit": "exponential-functions",
+      "standard": "5.a",
+      "difficulty": "medium",
+      "type": "model",
+      "source_file": "index_calc.html",
+      "source_question": 15,
+      "question_text": "A population of bacteria doubles every 3 hours. The lab starts with 500 bacteria.\n\na) Explain why this situation is modeled by an exponential function, not linear.\nb) Write an exponential model P(t) = a(b)^t where t is the number of 3-hour periods.\nc) How many bacteria will there be after 9 hours (3 periods)?",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Explain why this is exponential, not linear",
+          "answer": "The population multiplies by the same factor (doubles) each period, rather than adding a constant amount",
+          "answer_type": "text"
+        },
+        {
+          "label": "b",
+          "text": "Write the exponential model P(t)",
+          "answer": "P(t) = 500(2)^t",
+          "answer_type": "equation"
+        },
+        {
+          "label": "c",
+          "text": "Bacteria after 9 hours (3 periods)",
+          "answer": "4000",
+          "answer_type": "numeric"
+        }
+      ],
+      "tags": [
+        "exponential-growth",
+        "exponential-modeling",
+        "repeated-multiplication",
+        "bacteria-growth"
+      ]
+    },
+    {
+      "id": "lin-calc-016",
+      "unit": "exponential-functions",
+      "standard": "5.b & 5.c",
+      "difficulty": "hard",
+      "type": "model",
+      "source_file": "index_calc.html",
+      "source_question": 16,
+      "question_text": "A car's value depreciates by 15% each year. You bought it for $28,000.\n\na) Write an exponential model V(t) = a(1 + r)^t for the car's value after t years.\nb) What will the car be worth after 4 years?\nc) Is this exponential growth or decay? Explain how you know.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Write the exponential model V(t)",
+          "answer": "V(t) = 28000(0.85)^t",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "Value after 4 years ($)",
+          "answer": "14616.18",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "Is this exponential growth or decay? Explain.",
+          "answer": "Decay — the base (0.85) is less than 1, so the value decreases over time",
+          "answer_type": "text"
+        }
+      ],
+      "tags": [
+        "exponential-decay",
+        "depreciation",
+        "exponential-modeling",
+        "growth-vs-decay"
+      ]
+    },
+    {
+      "id": "exam1-001",
+      "unit": "expressions-equations",
+      "standard": "1.a",
+      "difficulty": "medium",
+      "type": "evaluate",
+      "source_file": "final_exam_251123.html",
+      "source_question": 1,
+      "question_text": "If p = -4 and q = 3, evaluate the expression: 3pq - q²(4p - 2q) + p²q",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Evaluate 3pq - q²(4p - 2q) + p²q with p = -4, q = 3",
+          "answer": "210",
+          "answer_type": "numeric"
+        }
+      ],
+      "tags": [
+        "evaluating-expressions",
+        "substitution",
+        "order-of-operations"
+      ]
+    },
+    {
+      "id": "exam1-002",
+      "unit": "expressions-equations",
+      "standard": "1.c",
+      "difficulty": "easy",
+      "type": "evaluate",
+      "source_file": "final_exam_251123.html",
+      "source_question": 2,
+      "question_text": "The height h, in meters, of a baseball above the ground t seconds after being hit is modeled by the formula h = 1 + 12t - 4.9t². How high is the ball 2 seconds after being hit?",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Find the height at t = 2",
+          "answer": "5.4 meters",
+          "answer_type": "numeric"
+        }
+      ],
+      "tags": [
+        "quadratic-model",
+        "substitution",
+        "real-world-application"
+      ]
+    },
+    {
+      "id": "exam1-003",
+      "unit": "expressions-equations",
+      "standard": "1.c",
+      "difficulty": "hard",
+      "type": "solve",
+      "source_file": "final_exam_251123.html",
+      "source_question": 3,
+      "question_text": "A company determines an employee's yearly productivity score using the formula P = (ks - b)/r. a) Solve the formula for s. b) Find s when P = 92, k = 3.5, b = 18, r = 2.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Solve the formula for s in terms of P, k, b, and r",
+          "answer": "s = (Pr + b)/k",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "Find s when P = 92, k = 3.5, b = 18, r = 2",
+          "answer": "≈ 57.71 (58 projects)",
+          "answer_type": "numeric"
+        }
+      ],
+      "tags": [
+        "literal-equations",
+        "formulas",
+        "real-world-application"
+      ]
+    },
+    {
+      "id": "exam1-004",
+      "unit": "expressions-equations",
+      "standard": "1.d",
+      "difficulty": "hard",
+      "type": "model",
+      "source_file": "final_exam_251123.html",
+      "source_question": 4,
+      "question_text": "A recreation center rents kayaks: $14.50 launch fee, $3.90/hour, 7% maintenance tax on subtotal, 15% off-peak discount on total. a) Write an equation for off-peak cost C(h). b) If a customer paid $49.39 off-peak, how many hours? c) What would the same rental cost during normal hours?",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Write an equation for the total cost C(h) for renting a kayak for h hours during off-peak hours",
+          "answer": "C(h) = 0.85 × 1.07(14.50 + 3.90h) or C(h) = 0.9095(14.50 + 3.90h)",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "If a customer paid $49.39 during off-peak hours, how many hours did they rent? (Round to nearest tenth)",
+          "answer": "≈ 10.2 hours",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "What would the same rental cost during normal (non-discount) hours?",
+          "answer": "≈ $58.08",
+          "answer_type": "numeric"
+        }
+      ],
+      "tags": [
+        "linear-model",
+        "real-world-application",
+        "tax",
+        "discount",
+        "modeling"
+      ]
+    },
+    {
+      "id": "exam1-005",
+      "unit": "expressions-equations",
+      "standard": "2.a",
+      "difficulty": "medium",
+      "type": "solve",
+      "source_file": "final_exam_251123.html",
+      "source_question": 5,
+      "question_text": "Solve for x: 7x - 4 = 2(3x - 5) - (x + 12)",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Solve for x",
+          "answer": "x = -9",
+          "answer_type": "numeric"
+        }
+      ],
+      "tags": [
+        "linear-equations",
+        "distributive-property",
+        "multi-step"
+      ]
+    },
+    {
+      "id": "exam1-006",
+      "unit": "expressions-equations",
+      "standard": "2.b",
+      "difficulty": "medium",
+      "type": "solve",
+      "source_file": "final_exam_251123.html",
+      "source_question": 6,
+      "question_text": "Solve for k in terms of a and b: 7 + 4k - b = 3a(2k + ab)",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Solve for k",
+          "answer": "k = (3a²b + b - 7)/(4 - 6a)",
+          "answer_type": "equation"
+        }
+      ],
+      "tags": [
+        "literal-equations",
+        "algebraic-manipulation",
+        "factoring"
+      ]
+    },
+    {
+      "id": "exam1-007",
+      "unit": "expressions-equations",
+      "standard": "2.c",
+      "difficulty": "hard",
+      "type": "solve",
+      "source_file": "final_exam_251123.html",
+      "source_question": 7,
+      "question_text": "Solve for x: -3/4 x + 5/2 > 1/3(9x - 6). Graph the solution.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Solve the inequality",
+          "answer": "x < 6/5",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "Describe the graph",
+          "answer": "Open circle at 6/5 (1.2), arrow pointing left",
+          "answer_type": "text"
+        }
+      ],
+      "tags": [
+        "linear-inequalities",
+        "fractions",
+        "graphing-inequalities"
+      ]
+    },
+    {
+      "id": "exam1-008",
+      "unit": "functions",
+      "standard": "3.a",
+      "difficulty": "medium",
+      "type": "evaluate",
+      "source_file": "final_exam_251123.html",
+      "source_question": 8,
+      "question_text": "Given f(x) = -3x + 7 and g(x) = x² - 4x - 1, find f(g(-3)).",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Find f(g(-3))",
+          "answer": "-53",
+          "answer_type": "numeric"
+        }
+      ],
+      "tags": [
+        "function-composition",
+        "quadratic-functions",
+        "linear-functions"
+      ]
+    },
+    {
+      "id": "exam1-009",
+      "unit": "functions",
+      "standard": "3.b",
+      "difficulty": "medium",
+      "type": "identify",
+      "source_file": "final_exam_251123.html",
+      "source_question": 9,
+      "question_text": "For each sequence, determine whether it can be modeled by a linear function, an exponential function, or neither. Explain your reasoning.",
+      "sub_parts": [
+        {
+          "label": "A",
+          "text": "50, 42, 34, 26, 18, ...",
+          "answer": "Linear (common difference of -8)",
+          "answer_type": "text"
+        },
+        {
+          "label": "B",
+          "text": "2, 6, 18, 54, 162, ...",
+          "answer": "Exponential (common ratio of 3)",
+          "answer_type": "text"
+        },
+        {
+          "label": "C",
+          "text": "2, 5, 10, 17, 26, ...",
+          "answer": "Neither (differences increase: 3, 5, 7, 9)",
+          "answer_type": "text"
+        },
+        {
+          "label": "D",
+          "text": "-12, -5, 2, 9, 16, ...",
+          "answer": "Linear (common difference of 7)",
+          "answer_type": "text"
+        },
+        {
+          "label": "E",
+          "text": "1, 4, 9, 16, 25, ...",
+          "answer": "Neither (perfect squares; differences increase: 3, 5, 7, 9)",
+          "answer_type": "text"
+        },
+        {
+          "label": "F",
+          "text": "729, 486, 324, 216, 144, ...",
+          "answer": "Exponential (common ratio of 2/3)",
+          "answer_type": "text"
+        }
+      ],
+      "tags": [
+        "sequences",
+        "linear-functions",
+        "exponential-functions",
+        "pattern-recognition"
+      ]
+    },
+    {
+      "id": "exam1-010",
+      "unit": "functions",
+      "standard": "3.c",
+      "difficulty": "medium",
+      "type": "graph",
+      "source_file": "final_exam_251123.html",
+      "source_question": 10,
+      "question_text": "Given f(x) = -x² + 4x + 5, make a table of values, plot points, and draw a graph of y = f(x).",
+      "sub_parts": [
+        {
+          "label": "table",
+          "text": "Complete the table for x = -2, -1, 0, 1, 2, 3, 4",
+          "answer": "f(-2)=-7, f(-1)=0, f(0)=5, f(1)=8, f(2)=9, f(3)=8, f(4)=5",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "graph",
+          "text": "Plot the points and draw the parabola",
+          "answer": "Downward-opening parabola with vertex at (2, 9)",
+          "answer_type": "graph"
+        }
+      ],
+      "tags": [
+        "quadratic-functions",
+        "graphing",
+        "table-of-values",
+        "parabola"
+      ]
+    },
+    {
+      "id": "exam1-011",
+      "unit": "functions",
+      "standard": "3.e",
+      "difficulty": "medium",
+      "type": "model",
+      "source_file": "final_exam_251123.html",
+      "source_question": 11,
+      "question_text": "A water tank contains 500 gallons and is draining at 15 gallons per minute. a) Write an equation for W after t minutes. b) How much water after 12 minutes? c) When will the tank be empty?",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Write an equation for the amount of water W after t minutes",
+          "answer": "W = 500 - 15t",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "How much water is left after 12 minutes?",
+          "answer": "320 gallons",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "When will the tank be empty?",
+          "answer": "33.33 minutes (33⅓)",
+          "answer_type": "numeric"
+        }
+      ],
+      "tags": [
+        "linear-model",
+        "real-world-application",
+        "rate-of-change"
+      ]
+    },
+    {
+      "id": "exam1-012",
+      "unit": "functions",
+      "standard": "3.f",
+      "difficulty": "easy",
+      "type": "interpret",
+      "source_file": "final_exam_251123.html",
+      "source_question": 12,
+      "question_text": "A car's value over time is shown on the graph. a) What was the car's initial value? b) By how much does the value decrease each year? c) What will the value be in year 5?",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "What was the car's initial value?",
+          "answer": "$20,000",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "b",
+          "text": "By how much does the value decrease each year?",
+          "answer": "$5,000 per year",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "What will the value be in year 5?",
+          "answer": "$0",
+          "answer_type": "numeric"
+        }
+      ],
+      "tags": [
+        "graph-analysis",
+        "linear-functions",
+        "depreciation",
+        "interpreting-graphs"
+      ]
+    },
+    {
+      "id": "exam1-013",
+      "unit": "functions",
+      "standard": "3.g",
+      "difficulty": "hard",
+      "type": "solve",
+      "source_file": "final_exam_251123.html",
+      "source_question": 13,
+      "question_text": "If g(x) = (3x + 7)/(2x - 5), find g⁻¹(2) and the inverse function g⁻¹(x).",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Find g⁻¹(2)",
+          "answer": "17",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "b",
+          "text": "Find g⁻¹(x)",
+          "answer": "g⁻¹(x) = (5x + 7)/(2x - 3)",
+          "answer_type": "equation"
+        }
+      ],
+      "tags": [
+        "inverse-functions",
+        "rational-functions",
+        "algebraic-manipulation"
+      ]
+    },
+    {
+      "id": "exam1-014",
+      "unit": "functions",
+      "standard": "3.a",
+      "difficulty": "hard",
+      "type": "evaluate",
+      "source_file": "final_exam_251123.html",
+      "source_question": 14,
+      "question_text": "Let f(x) = 2x + 3. Values of h(x) are given in a table: h(-3)=8, h(-1)=6, h(0)=3, h(2)=1, h(3)=-2. The graph of g(x) is provided. Evaluate the following expressions.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "f(4) - h(2)",
+          "answer": "10",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "b",
+          "text": "g(-3) · h(-1)",
+          "answer": "-18",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "f(h(3))",
+          "answer": "-1",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "d",
+          "text": "g(f(2))",
+          "answer": "2",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "e",
+          "text": "g(h⁻¹(3))",
+          "answer": "2",
+          "answer_type": "numeric"
+        }
+      ],
+      "tags": [
+        "function-composition",
+        "function-tables",
+        "graph-reading",
+        "inverse-functions"
+      ]
+    },
+    {
+      "id": "exam1-015",
+      "unit": "linear-models",
+      "standard": "4.d",
+      "difficulty": "hard",
+      "type": "model",
+      "source_file": "final_exam_251123.html",
+      "source_question": 15,
+      "question_text": "A scatterplot shows study hours vs quiz scores with a line of best fit. a) Find the slope using two points on the line. b) Write point-slope form using (4, 75). c) Convert to slope-intercept form. d) Predict score for 11 hours.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Find the approximate slope of the line of best fit",
+          "answer": "5",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "b",
+          "text": "Write the equation in point-slope form using (4, 75)",
+          "answer": "y - 75 = 5(x - 4)",
+          "answer_type": "equation"
+        },
+        {
+          "label": "c",
+          "text": "Convert to slope-intercept form",
+          "answer": "y = 5x + 55",
+          "answer_type": "equation"
+        },
+        {
+          "label": "d",
+          "text": "Predict the quiz score for 11 hours of study",
+          "answer": "110",
+          "answer_type": "numeric"
+        }
+      ],
+      "tags": [
+        "scatterplot",
+        "line-of-best-fit",
+        "point-slope-form",
+        "slope-intercept-form",
+        "prediction"
+      ]
+    },
+    {
+      "id": "exam1-016",
+      "unit": "exponential-functions",
+      "standard": "5.a",
+      "difficulty": "medium",
+      "type": "model",
+      "source_file": "final_exam_251123.html",
+      "source_question": 16,
+      "question_text": "A botanist studies a plant species that multiplies at a constant rate. Week 0: 12 plants, Week 1: 18, Week 2: 27, Week 3: 40.5. a) Determine the exponential model P(t) = a·bᵗ. b) Predict plants after 6 weeks.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Determine the exponential model P(t) = a·bᵗ",
+          "answer": "P(t) = 12(1.5)ᵗ",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "Predict the number of plants after 6 weeks",
+          "answer": "≈ 136.7",
+          "answer_type": "numeric"
+        }
+      ],
+      "tags": [
+        "exponential-growth",
+        "exponential-model",
+        "real-world-application"
+      ]
+    },
+    {
+      "id": "exam1-017",
+      "unit": "exponential-functions",
+      "standard": "5.b",
+      "difficulty": "hard",
+      "type": "model",
+      "source_file": "final_exam_251123.html",
+      "source_question": 17,
+      "question_text": "A coastal property worth $620,000 decreases in value by 3.8% each year. a) Write an exponential model V(t). b) Find value after 12 years. c) When will the value drop below $300,000?",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Write an exponential model V(t) = a(1 + r)ᵗ",
+          "answer": "V(t) = 620000(0.962)ᵗ",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "Find the value after 12 years (round to nearest dollar)",
+          "answer": "≈ $389,839",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "After how many years will the value drop below $300,000?",
+          "answer": "19 years (solve 620000(0.962)ᵗ = 300000; t = ln(300000/620000)/ln(0.962) ≈ 18.8, round up to 19)",
+          "answer_type": "numeric"
+        }
+      ],
+      "tags": [
+        "exponential-decay",
+        "exponential-model",
+        "depreciation",
+        "logarithms"
+      ]
+    },
+    {
+      "id": "exam1-018",
+      "unit": "linear-models",
+      "standard": "4.c",
+      "difficulty": "medium",
+      "type": "solve",
+      "source_file": "final_exam_251123.html",
+      "source_question": 18,
+      "question_text": "You are given the three points A(2, 1), B(6, 7), C(10, 13). Are these three points on the same line? If they are, write the equation of the line in slope-intercept form. If they are not, explain how you know.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Determine if the points are collinear and write the equation if so",
+          "answer": "Yes, collinear. y = 1.5x - 2",
+          "answer_type": "equation"
+        }
+      ],
+      "tags": [
+        "collinear-points",
+        "slope",
+        "slope-intercept-form",
+        "linear-equations"
+      ]
+    },
+    {
+      "id": "inv-001",
+      "unit": "functions",
+      "standard": "3.g",
+      "difficulty": "medium",
+      "type": "solve",
+      "source_file": "quiz_251117.html",
+      "source_question": 1,
+      "question_text": "Given f(x) = (6x + 11)/7: a) Find the inverse function f⁻¹(x). b) Verify your answer by computing f(f⁻¹(x)) = x. c) Find f⁻¹(9).",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Find the inverse function f⁻¹(x)",
+          "answer": "f⁻¹(x) = (7x - 11)/6",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "Verify your answer by computing f(f⁻¹(x)) = x",
+          "answer": "f(f⁻¹(x)) = (6·(7x-11)/6 + 11)/7 = (7x-11+11)/7 = x ✓",
+          "answer_type": "text"
+        },
+        {
+          "label": "c",
+          "text": "Find f⁻¹(9)",
+          "answer": "26/3 ≈ 8.67",
+          "answer_type": "numeric"
+        }
+      ],
+      "tags": [
+        "inverse-functions",
+        "linear",
+        "verification",
+        "evaluation"
+      ]
+    },
+    {
+      "id": "inv-002",
+      "unit": "functions",
+      "standard": "3.i",
+      "difficulty": "medium",
+      "type": "interpret",
+      "source_file": "quiz_251117.html",
+      "source_question": 2,
+      "question_text": "The table shows values of g(x): x: -4,-1,2,5,8 and g(x): -18,-3,12,27,42. a) Find g⁻¹(27). b) Find g⁻¹(12). c) Is g(x) linear? Explain and write the equation. d) Find g⁻¹(x).",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Find g⁻¹(27)",
+          "answer": "5",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "b",
+          "text": "Find g⁻¹(12)",
+          "answer": "2",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "Is g(x) linear? Explain and write the equation for g(x)",
+          "answer": "Yes, linear. Constant rate of change: slope = 15/3 = 5. g(x) = 5x + 2",
+          "answer_type": "text"
+        },
+        {
+          "label": "d",
+          "text": "Find the inverse function g⁻¹(x)",
+          "answer": "g⁻¹(x) = (x - 2)/5",
+          "answer_type": "equation"
+        }
+      ],
+      "tags": [
+        "inverse-functions",
+        "tables",
+        "linear",
+        "slope"
+      ]
+    },
+    {
+      "id": "inv-003",
+      "unit": "functions",
+      "standard": "3.i",
+      "difficulty": "medium",
+      "type": "model",
+      "source_file": "quiz_251117.html",
+      "source_question": 3,
+      "question_text": "A streaming service charges C(g) = (8g + 45)/6, where g is gigabytes streamed and C is cost in dollars. a) Find the inverse function C⁻¹(g). b) If your bill was $18, how many gigabytes did you stream? c) Verify your answer.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Find the inverse function C⁻¹(g)",
+          "answer": "C⁻¹(g) = (6g - 45)/8",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "If your bill was $18, how many gigabytes did you stream?",
+          "answer": "63/8 = 7.875 gigabytes",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "Verify your answer by substituting back into the original formula",
+          "answer": "C(7.875) = (8(7.875) + 45)/6 = 108/6 = 18 ✓",
+          "answer_type": "text"
+        }
+      ],
+      "tags": [
+        "inverse-functions",
+        "word-problem",
+        "linear",
+        "verification"
+      ]
+    },
+    {
+      "id": "inv-004",
+      "unit": "functions",
+      "standard": "3.i",
+      "difficulty": "hard",
+      "type": "solve",
+      "source_file": "quiz_251117.html",
+      "source_question": 4,
+      "question_text": "Given f(x) = (7x - 5)/(2x + 3): a) Find the inverse function f⁻¹(x). b) Verify your answer by showing that f(f⁻¹(4)) = 4.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Find the inverse function f⁻¹(x)",
+          "answer": "f⁻¹(x) = (3x + 5)/(7 - 2x)",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "Verify by showing f(f⁻¹(4)) = 4",
+          "answer": "f⁻¹(4) = 17/(-1) = -17; f(-17) = (-119-5)/(-34+3) = -124/-31 = 4 ✓",
+          "answer_type": "text"
+        }
+      ],
+      "tags": [
+        "inverse-functions",
+        "rational",
+        "verification",
+        "factoring"
+      ]
+    },
+    {
+      "id": "linexp1-001",
+      "unit": "linear-models",
+      "standard": "4.b",
+      "difficulty": "hard",
+      "type": "model",
+      "source_file": "quiz_251120.html",
+      "source_question": 1,
+      "question_text": "Sarah subscribes to a cloud storage service. She starts the year with 150 GB of available storage. Each month, her photos and videos use 8.5 GB.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Write a function S(m) for storage remaining after m months",
+          "answer": "S(m) = 150 - 8.5m",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "Draw a graph of the remaining storage as a function of months",
+          "answer": "Linear graph from (0, 150) decreasing to (17.65, 0)",
+          "answer_type": "text"
+        },
+        {
+          "label": "c",
+          "text": "Find S(7) and explain what it means",
+          "answer": "S(7) = 90.5 GB; after 7 months, 90.5 GB of storage remains",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "d",
+          "text": "Find the intercepts and explain their meaning",
+          "answer": "y-intercept: (0, 150) — initial storage. x-intercept: (17.65, 0) — storage full after ~17.65 months",
+          "answer_type": "text"
+        },
+        {
+          "label": "e",
+          "text": "What is an appropriate domain? Explain.",
+          "answer": "0 ≤ m ≤ 17.65",
+          "answer_type": "text"
+        },
+        {
+          "label": "f",
+          "text": "What does the slope mean in context?",
+          "answer": "-8.5; storage decreases by 8.5 GB per month",
+          "answer_type": "text"
+        }
+      ],
+      "tags": [
+        "linear-functions",
+        "word-problem",
+        "slope",
+        "intercepts",
+        "domain",
+        "graphing"
+      ]
+    },
+    {
+      "id": "linexp1-002",
+      "unit": "exponential-functions",
+      "standard": "5.c",
+      "difficulty": "hard",
+      "type": "interpret",
+      "source_file": "quiz_251120.html",
+      "source_question": 2,
+      "question_text": "The value of a car (in thousands of dollars) is modeled by an exponential function V from year 0 to year 10. Use the graph provided.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Estimate V(3) and explain its meaning",
+          "answer": "V(3) ≈ 15.36 thousand ($15,360); after 3 years the car is worth ~$15,360",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "b",
+          "text": "Find V⁻¹(12) and explain what it represents",
+          "answer": "V⁻¹(12) ≈ 4.5 years; the car reaches $12,000 in value after ~4.5 years",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "By what factor did the car’s value change each year?",
+          "answer": "0.8 (decreases by 20% each year)",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "d",
+          "text": "Write an equation for V(t)",
+          "answer": "V(t) = 30(0.8)^t",
+          "answer_type": "equation"
+        }
+      ],
+      "tags": [
+        "exponential-decay",
+        "graph-reading",
+        "inverse",
+        "decay-factor"
+      ]
+    },
+    {
+      "id": "linexp1-003",
+      "unit": "linear-models",
+      "standard": "4.b",
+      "difficulty": "medium",
+      "type": "model",
+      "source_file": "quiz_251120.html",
+      "source_question": 3,
+      "question_text": "A water tank contains 120 gallons. Water is drained at a constant rate of 3.5 gallons per minute.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Write a function W(t) for water remaining after t minutes",
+          "answer": "W(t) = 120 - 3.5t",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "What is the slope? What does it represent?",
+          "answer": "-3.5; water decreases by 3.5 gallons per minute",
+          "answer_type": "text"
+        },
+        {
+          "label": "c",
+          "text": "Graph the function",
+          "answer": "Linear graph from (0, 120) to (34.29, 0)",
+          "answer_type": "text"
+        },
+        {
+          "label": "d",
+          "text": "After how many minutes will the tank be empty?",
+          "answer": "120/3.5 ≈ 34.29 minutes",
+          "answer_type": "numeric"
+        }
+      ],
+      "tags": [
+        "linear-functions",
+        "word-problem",
+        "slope",
+        "x-intercept",
+        "graphing"
+      ]
+    },
+    {
+      "id": "linexp1-004",
+      "unit": "exponential-functions",
+      "standard": "5.b",
+      "difficulty": "hard",
+      "type": "model",
+      "source_file": "quiz_251120.html",
+      "source_question": 4,
+      "question_text": "Marcus invests $2,500 in a savings account earning 4.2% interest compounded annually.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Write an exponential function A(t) for the balance after t years",
+          "answer": "A(t) = 2500(1.042)^t",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "What will the balance be after 12 years?",
+          "answer": "≈ $4,087.00",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "In what year will the balance first exceed $4,000?",
+          "answer": "≈ 12 years (t ≈ 11.4, round up)",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "d",
+          "text": "Is this exponential growth or decay? Explain.",
+          "answer": "Exponential growth; base 1.042 > 1 and rate is positive (+4.2%)",
+          "answer_type": "text"
+        }
+      ],
+      "tags": [
+        "exponential-growth",
+        "compound-interest",
+        "logarithms",
+        "word-problem"
+      ]
+    },
+    {
+      "id": "linexp1-005",
+      "unit": "exponential-functions",
+      "standard": "5.a",
+      "difficulty": "hard",
+      "type": "model",
+      "source_file": "quiz_251120.html",
+      "source_question": 5,
+      "question_text": "A smartphone battery drains over time while watching videos. The graph shows the battery percentage over the first 6 hours.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "What is the initial battery percentage (t=0)? What is it after 1 hour?",
+          "answer": "Initial: 100%; at t=1: 90%",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "b",
+          "text": "By what factor does the battery change each hour?",
+          "answer": "0.9",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "Is this exponential growth or decay? Explain.",
+          "answer": "Exponential decay; factor 0.9 < 1, battery decreasing",
+          "answer_type": "text"
+        },
+        {
+          "label": "d",
+          "text": "Write an exponential function B(t) for battery percentage after t hours",
+          "answer": "B(t) = 100(0.9)^t",
+          "answer_type": "equation"
+        },
+        {
+          "label": "e",
+          "text": "Find the battery percentage after 10 hours",
+          "answer": "≈ 35%",
+          "answer_type": "numeric"
+        }
+      ],
+      "tags": [
+        "exponential-decay",
+        "graph-reading",
+        "decay-factor",
+        "prediction"
+      ]
+    },
+    {
+      "id": "linexp2-001",
+      "unit": "linear-models",
+      "standard": "4.b",
+      "difficulty": "hard",
+      "type": "model",
+      "source_file": "quiz_251121.html",
+      "source_question": 1,
+      "question_text": "Mike receives a $75 coffee shop gift card. Each week he spends $6.25.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Write a function C(w) for the balance remaining after w weeks",
+          "answer": "C(w) = 75 - 6.25w",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "Draw a graph of the remaining balance as a function of weeks",
+          "answer": "Linear graph from (0, 75) decreasing to (12, 0)",
+          "answer_type": "text"
+        },
+        {
+          "label": "c",
+          "text": "Find C(5) and explain what it means",
+          "answer": "C(5) = $43.75; after 5 weeks, $43.75 remains on the card",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "d",
+          "text": "Find the intercepts and explain their meaning",
+          "answer": "y-intercept: (0, 75) — initial balance. x-intercept: (12, 0) — card empty after 12 weeks",
+          "answer_type": "text"
+        },
+        {
+          "label": "e",
+          "text": "What is an appropriate domain? Explain.",
+          "answer": "0 ≤ w ≤ 12",
+          "answer_type": "text"
+        },
+        {
+          "label": "f",
+          "text": "What does the slope mean in context?",
+          "answer": "-6.25; balance decreases by $6.25 per week",
+          "answer_type": "text"
+        }
+      ],
+      "tags": [
+        "linear-functions",
+        "word-problem",
+        "slope",
+        "intercepts",
+        "domain",
+        "graphing"
+      ]
+    },
+    {
+      "id": "linexp2-002",
+      "unit": "exponential-functions",
+      "standard": "5.c",
+      "difficulty": "hard",
+      "type": "interpret",
+      "source_file": "quiz_251121.html",
+      "source_question": 2,
+      "question_text": "The value of a laptop (in dollars) is modeled by an exponential function L from year 0 to year 5. Use the graph provided.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Estimate L(2) and explain its meaning",
+          "answer": "L(2) ≈ $675; after 2 years the laptop is worth ~$675",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "b",
+          "text": "Find L⁻¹(500) and explain what it represents",
+          "answer": "L⁻¹(500) ≈ 2.7 years; the laptop reaches $500 value after ~2.7 years",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "By what factor did the laptop’s value change each year?",
+          "answer": "0.75 (decreases by 25% each year)",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "d",
+          "text": "Write an equation for L(t)",
+          "answer": "L(t) = 1200(0.75)^t",
+          "answer_type": "equation"
+        }
+      ],
+      "tags": [
+        "exponential-decay",
+        "graph-reading",
+        "inverse",
+        "decay-factor"
+      ]
+    },
+    {
+      "id": "linexp2-003",
+      "unit": "linear-models",
+      "standard": "4.b",
+      "difficulty": "medium",
+      "type": "model",
+      "source_file": "quiz_251121.html",
+      "source_question": 3,
+      "question_text": "A swimming pool contains 8,000 gallons. Water is pumped out at 125 gallons per hour.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Write a function P(h) for water remaining after h hours",
+          "answer": "P(h) = 8000 - 125h",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "What is the slope? What does it represent?",
+          "answer": "-125; water decreases by 125 gallons per hour",
+          "answer_type": "text"
+        },
+        {
+          "label": "c",
+          "text": "Graph the function",
+          "answer": "Linear graph from (0, 8000) to (64, 0)",
+          "answer_type": "text"
+        },
+        {
+          "label": "d",
+          "text": "After how many hours will the pool be empty?",
+          "answer": "64 hours",
+          "answer_type": "numeric"
+        }
+      ],
+      "tags": [
+        "linear-functions",
+        "word-problem",
+        "slope",
+        "x-intercept",
+        "graphing"
+      ]
+    },
+    {
+      "id": "linexp2-004",
+      "unit": "exponential-functions",
+      "standard": "5.b",
+      "difficulty": "hard",
+      "type": "model",
+      "source_file": "quiz_251121.html",
+      "source_question": 4,
+      "question_text": "A small town has a population of 12,000 growing at 3.5% per year.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Write an exponential function P(t) for the population after t years",
+          "answer": "P(t) = 12000(1.035)^t",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "What will the population be after 8 years?",
+          "answer": "≈ 15,802",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "In how many years will the population exceed 18,000?",
+          "answer": "≈ 12 years (t ≈ 11.8, round up)",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "d",
+          "text": "Is this exponential growth or decay? Explain.",
+          "answer": "Exponential growth; base 1.035 > 1 and rate is positive (+3.5%)",
+          "answer_type": "text"
+        }
+      ],
+      "tags": [
+        "exponential-growth",
+        "population",
+        "logarithms",
+        "word-problem"
+      ]
+    },
+    {
+      "id": "linexp2-005",
+      "unit": "exponential-functions",
+      "standard": "5.a",
+      "difficulty": "hard",
+      "type": "model",
+      "source_file": "quiz_251121.html",
+      "source_question": 5,
+      "question_text": "A cup of hot coffee is cooling down in a room. The graph shows the temperature (°F) over the first 5 minutes. Room temperature is 70°F.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "What is the initial temperature (t=0)? What is it after 1 minute?",
+          "answer": "Initial: 200°F; at t=1: 180.5°F",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "b",
+          "text": "By what factor does the excess temperature change each minute?",
+          "answer": "0.85",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "Is this exponential growth or decay? Explain.",
+          "answer": "Exponential decay; factor 0.85 < 1, temperature decreasing toward room temp",
+          "answer_type": "text"
+        },
+        {
+          "label": "d",
+          "text": "Write an exponential function T(t) for temperature after t minutes",
+          "answer": "T(t) = 70 + 130(0.85)^t",
+          "answer_type": "equation"
+        },
+        {
+          "label": "e",
+          "text": "Find the coffee temperature after 10 minutes",
+          "answer": "≈ 96°F",
+          "answer_type": "numeric"
+        }
+      ],
+      "tags": [
+        "exponential-decay",
+        "graph-reading",
+        "cooling",
+        "Newton-cooling-law"
+      ]
+    },
+    {
+      "id": "linexp2-006",
+      "unit": "functions",
+      "standard": "3.i",
+      "difficulty": "hard",
+      "type": "solve",
+      "source_file": "quiz_251121.html",
+      "source_question": 6,
+      "question_text": "If g(x) = (3x + 7)/(2x - 5), find g⁻¹(2) and the inverse function g⁻¹(x).",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Find g⁻¹(2)",
+          "answer": "17",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "b",
+          "text": "Find the inverse function g⁻¹(x)",
+          "answer": "g⁻¹(x) = (5x + 7)/(2x - 3)",
+          "answer_type": "equation"
+        }
+      ],
+      "tags": [
+        "inverse-functions",
+        "rational",
+        "evaluation"
+      ]
+    },
+    {
+      "id": "linexp2-007",
+      "unit": "linear-models",
+      "standard": "4.d",
+      "difficulty": "medium",
+      "type": "interpret",
+      "source_file": "quiz_251121.html",
+      "source_question": 7,
+      "question_text": "A teacher tracks hours studied vs quiz scores. A scatterplot shows data with a line of best fit.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "What is the approximate slope of the line of best fit?",
+          "answer": "5",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "b",
+          "text": "Write the equation in point-slope form using (4, 75)",
+          "answer": "y - 75 = 5(x - 4)",
+          "answer_type": "equation"
+        },
+        {
+          "label": "c",
+          "text": "Convert to slope-intercept form",
+          "answer": "y = 5x + 55",
+          "answer_type": "equation"
+        },
+        {
+          "label": "d",
+          "text": "Predict the quiz score for 11 hours of study",
+          "answer": "110",
+          "answer_type": "numeric"
+        }
+      ],
+      "tags": [
+        "scatterplot",
+        "line-of-best-fit",
+        "point-slope-form",
+        "slope-intercept-form",
+        "prediction"
+      ]
+    },
+    {
+      "id": "nonlin-001",
+      "unit": "nonlinear-functions",
+      "standard": "6.a",
+      "difficulty": "medium",
+      "type": "graph",
+      "source_file": "nonlinear_functions_test.html",
+      "source_question": 1,
+      "question_text": "Given f(x) = -1/2(x - 3)² - 4: a) Plot the graph. b) State the domain. c) State the range. d) Identify the vertex.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Plot the graph of the function",
+          "answer": "Downward-opening parabola with vertex at (3, -4)",
+          "answer_type": "text"
+        },
+        {
+          "label": "b",
+          "text": "State the domain",
+          "answer": "All real numbers, (-∞, ∞)",
+          "answer_type": "text"
+        },
+        {
+          "label": "c",
+          "text": "State the range",
+          "answer": "y ≤ -4, or (-∞, -4]",
+          "answer_type": "text"
+        },
+        {
+          "label": "d",
+          "text": "Identify the vertex",
+          "answer": "(3, -4)",
+          "answer_type": "text"
+        }
+      ],
+      "tags": [
+        "quadratic",
+        "vertex-form",
+        "domain",
+        "range",
+        "graphing"
+      ]
+    },
+    {
+      "id": "nonlin-002",
+      "unit": "nonlinear-functions",
+      "standard": "6.b",
+      "difficulty": "medium",
+      "type": "graph",
+      "source_file": "nonlinear_functions_test.html",
+      "source_question": 2,
+      "question_text": "Given f(x) = √(x + 3) - 2: a) Plot the graph. b) State the domain. c) State the range. d) Identify the starting point.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Plot the graph of the function",
+          "answer": "Square root curve starting at (-3, -2)",
+          "answer_type": "text"
+        },
+        {
+          "label": "b",
+          "text": "State the domain",
+          "answer": "x ≥ -3, or [-3, ∞)",
+          "answer_type": "text"
+        },
+        {
+          "label": "c",
+          "text": "State the range",
+          "answer": "y ≥ -2, or [-2, ∞)",
+          "answer_type": "text"
+        },
+        {
+          "label": "d",
+          "text": "Identify the starting point",
+          "answer": "(-3, -2)",
+          "answer_type": "text"
+        }
+      ],
+      "tags": [
+        "square-root",
+        "domain",
+        "range",
+        "transformations",
+        "graphing"
+      ]
+    },
+    {
+      "id": "nonlin-003",
+      "unit": "nonlinear-functions",
+      "standard": "6.c",
+      "difficulty": "hard",
+      "type": "graph",
+      "source_file": "nonlinear_functions_test.html",
+      "source_question": 3,
+      "question_text": "Given f(x) = 4/x + 3: a) Plot the graph. b) Plot vertical and horizontal asymptotes. c) State the domain. d) State the range.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Plot the graph of the function",
+          "answer": "Rational curve with two branches around asymptotes at x=0 and y=3",
+          "answer_type": "text"
+        },
+        {
+          "label": "b",
+          "text": "Plot the vertical and horizontal asymptotes",
+          "answer": "Vertical asymptote: x = 0; Horizontal asymptote: y = 3",
+          "answer_type": "text"
+        },
+        {
+          "label": "c",
+          "text": "State the domain",
+          "answer": "All real numbers except x = 0, or (-∞, 0) ∪ (0, ∞)",
+          "answer_type": "text"
+        },
+        {
+          "label": "d",
+          "text": "State the range",
+          "answer": "All real numbers except y = 3, or (-∞, 3) ∪ (3, ∞)",
+          "answer_type": "text"
+        }
+      ],
+      "tags": [
+        "rational",
+        "asymptotes",
+        "domain",
+        "range",
+        "graphing"
+      ]
+    },
+    {
+      "id": "nonlin-004",
+      "unit": "nonlinear-functions",
+      "standard": "6.d",
+      "difficulty": "medium",
+      "type": "graph",
+      "source_file": "nonlinear_functions_test.html",
+      "source_question": 4,
+      "question_text": "Given f(x) = (x - 1)³ + 2: a) Plot the graph. b) State the domain. c) State the range. d) Identify the inflection point.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Plot the graph of the function",
+          "answer": "Cubic curve with inflection point at (1, 2)",
+          "answer_type": "text"
+        },
+        {
+          "label": "b",
+          "text": "State the domain",
+          "answer": "All real numbers, (-∞, ∞)",
+          "answer_type": "text"
+        },
+        {
+          "label": "c",
+          "text": "State the range",
+          "answer": "All real numbers, (-∞, ∞)",
+          "answer_type": "text"
+        },
+        {
+          "label": "d",
+          "text": "Identify the inflection point",
+          "answer": "(1, 2)",
+          "answer_type": "text"
+        }
+      ],
+      "tags": [
+        "cubic",
+        "inflection-point",
+        "domain",
+        "range",
+        "graphing"
+      ]
+    },
+    {
+      "id": "nonlin-005",
+      "unit": "nonlinear-functions",
+      "standard": "6.e",
+      "difficulty": "hard",
+      "type": "graph",
+      "source_file": "nonlinear_functions_test.html",
+      "source_question": 5,
+      "question_text": "Given f(x) = -6/(x - 3) + 1: a) Plot the graph. b) Plot vertical and horizontal asymptotes. c) State the domain. d) State the range.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Plot the graph of the function",
+          "answer": "Rational curve with two branches around asymptotes at x=3 and y=1",
+          "answer_type": "text"
+        },
+        {
+          "label": "b",
+          "text": "Plot the vertical and horizontal asymptotes",
+          "answer": "Vertical asymptote: x = 3; Horizontal asymptote: y = 1",
+          "answer_type": "text"
+        },
+        {
+          "label": "c",
+          "text": "State the domain",
+          "answer": "All real numbers except x = 3, or (-∞, 3) ∪ (3, ∞)",
+          "answer_type": "text"
+        },
+        {
+          "label": "d",
+          "text": "State the range",
+          "answer": "All real numbers except y = 1, or (-∞, 1) ∪ (1, ∞)",
+          "answer_type": "text"
+        }
+      ],
+      "tags": [
+        "rational",
+        "asymptotes",
+        "domain",
+        "range",
+        "transformations",
+        "graphing"
+      ]
+    },
+    {
+      "id": "nonlin-006",
+      "unit": "nonlinear-functions",
+      "standard": "6.e",
+      "difficulty": "medium",
+      "type": "identify",
+      "source_file": "nonlinear_functions_test.html",
+      "source_question": 6,
+      "question_text": "Study the graph shown. a) Identify the function type. b) State the domain. c) State the range. d) Identify key features.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Identify what type of non-linear function is shown",
+          "answer": "Square root function",
+          "answer_type": "text"
+        },
+        {
+          "label": "b",
+          "text": "State the domain from the graph",
+          "answer": "x ≥ -2, or [-2, ∞)",
+          "answer_type": "text"
+        },
+        {
+          "label": "c",
+          "text": "State the range from the graph",
+          "answer": "y ≥ -3, or [-3, ∞)",
+          "answer_type": "text"
+        },
+        {
+          "label": "d",
+          "text": "Identify key features",
+          "answer": "Starting point: (-2, -3). Function: f(x) = 2√(x + 2) - 3",
+          "answer_type": "text"
+        }
+      ],
+      "tags": [
+        "function-identification",
+        "square-root",
+        "graph-reading",
+        "domain",
+        "range"
+      ]
+    },
+    {
+      "id": "nonlin-007",
+      "unit": "nonlinear-functions",
+      "standard": "6.e",
+      "difficulty": "medium",
+      "type": "identify",
+      "source_file": "nonlinear_functions_test.html",
+      "source_question": 7,
+      "question_text": "Study the graph shown. a) Identify the function type. b) State the domain. c) State the range. d) If exponential, identify the horizontal asymptote and growth/decay.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Identify what type of non-linear function is shown",
+          "answer": "Exponential function",
+          "answer_type": "text"
+        },
+        {
+          "label": "b",
+          "text": "State the domain from the graph",
+          "answer": "All real numbers, (-∞, ∞)",
+          "answer_type": "text"
+        },
+        {
+          "label": "c",
+          "text": "State the range from the graph",
+          "answer": "y < 0, or (-∞, 0)",
+          "answer_type": "text"
+        },
+        {
+          "label": "d",
+          "text": "Identify horizontal asymptote and growth/decay",
+          "answer": "HA: y = 0. Exponential growth reflected over x-axis. f(x) = -2^x",
+          "answer_type": "text"
+        }
+      ],
+      "tags": [
+        "function-identification",
+        "exponential",
+        "asymptotes",
+        "graph-reading",
+        "reflection"
+      ]
+    },
+    {
+      "id": "exam1m-001",
+      "unit": "expressions-equations",
+      "standard": "1.a",
+      "difficulty": "medium",
+      "type": "evaluate",
+      "source_file": "final_exam_251123_mini.html",
+      "source_question": 1,
+      "question_text": "If p = -4 and q = 3, evaluate: 3pq - q²(4p - 2q) + p²q",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Evaluate the expression",
+          "answer": "210",
+          "answer_type": "numeric"
+        }
+      ],
+      "tags": [
+        "order-of-operations",
+        "substitution",
+        "exponents"
+      ]
+    },
+    {
+      "id": "exam1m-002",
+      "unit": "expressions-equations",
+      "standard": "1.a",
+      "difficulty": "easy",
+      "type": "evaluate",
+      "source_file": "final_exam_251123_mini.html",
+      "source_question": 2,
+      "question_text": "The height h (in meters) of a baseball t seconds after being hit is h = 1 + 12t - 4.9t². How high is the ball 2 seconds after being hit?",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Find the height at t = 2",
+          "answer": "5.4 meters",
+          "answer_type": "numeric"
+        }
+      ],
+      "tags": [
+        "quadratic",
+        "substitution",
+        "word-problem"
+      ]
+    },
+    {
+      "id": "exam1m-003",
+      "unit": "expressions-equations",
+      "standard": "2.b",
+      "difficulty": "medium",
+      "type": "solve",
+      "source_file": "final_exam_251123_mini.html",
+      "source_question": 3,
+      "question_text": "A company uses the formula P = (ks - b)/r. a) Solve for s. b) Find s when P=92, k=3.5, b=18, r=2.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Solve the formula for s in terms of P, k, b, and r",
+          "answer": "s = (Pr + b)/k",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "Find s when P=92, k=3.5, b=18, r=2",
+          "answer": "≈ 58",
+          "answer_type": "numeric"
+        }
+      ],
+      "tags": [
+        "literal-equations",
+        "substitution",
+        "word-problem"
+      ]
+    },
+    {
+      "id": "exam1m-004",
+      "unit": "expressions-equations",
+      "standard": "1.d",
+      "difficulty": "hard",
+      "type": "model",
+      "source_file": "final_exam_251123_mini.html",
+      "source_question": 4,
+      "question_text": "Kayak rental: $14.50 launch fee, $3.90/hr, 7% maintenance tax on subtotal, 15% off-peak discount on total.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Write equation for total off-peak cost C(h)",
+          "answer": "C(h) = 0.85 × 1.07 × (14.50 + 3.90h) = 0.9095(14.50 + 3.90h)",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "Customer paid $49.39 off-peak; how many hours?",
+          "answer": "≈ 10.2 hours",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "What would the same rental cost at normal (non-discount) hours?",
+          "answer": "≈ $58.11",
+          "answer_type": "numeric"
+        }
+      ],
+      "tags": [
+        "linear-functions",
+        "word-problem",
+        "percent",
+        "tax",
+        "discount"
+      ]
+    },
+    {
+      "id": "exam1m-005",
+      "unit": "expressions-equations",
+      "standard": "2.a",
+      "difficulty": "medium",
+      "type": "solve",
+      "source_file": "final_exam_251123_mini.html",
+      "source_question": 5,
+      "question_text": "Solve for x: 7x - 4 = 2(3x - 5) - (x + 12)",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Solve for x",
+          "answer": "x = -9",
+          "answer_type": "numeric"
+        }
+      ],
+      "tags": [
+        "linear-equations",
+        "distributive-property",
+        "combining-like-terms"
+      ]
+    },
+    {
+      "id": "exam1m-006",
+      "unit": "expressions-equations",
+      "standard": "2.b",
+      "difficulty": "hard",
+      "type": "solve",
+      "source_file": "final_exam_251123_mini.html",
+      "source_question": 6,
+      "question_text": "Solve for k in terms of a and b: 7 + 4k - b = 3a(2k + ab)",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Solve for k",
+          "answer": "k = (3a²b + b - 7)/(4 - 6a)",
+          "answer_type": "equation"
+        }
+      ],
+      "tags": [
+        "literal-equations",
+        "factoring",
+        "multi-variable"
+      ]
+    },
+    {
+      "id": "exam1m-007",
+      "unit": "expressions-equations",
+      "standard": "2.c, 2.d",
+      "difficulty": "hard",
+      "type": "solve",
+      "source_file": "final_exam_251123_mini.html",
+      "source_question": 7,
+      "question_text": "Solve for x: -3/4 · x + 5/2 > 1/3(9x - 6)",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Solve the inequality",
+          "answer": "x < 6/5 (or x < 1.2)",
+          "answer_type": "text"
+        },
+        {
+          "label": "b",
+          "text": "Describe the graph",
+          "answer": "Open circle at 6/5 (1.2), arrow pointing left",
+          "answer_type": "text"
+        }
+      ],
+      "tags": [
+        "inequalities",
+        "fractions",
+        "graphing",
+        "number-line"
+      ]
+    },
+    {
+      "id": "exam1m-008",
+      "unit": "functions",
+      "standard": "3.a",
+      "difficulty": "medium",
+      "type": "evaluate",
+      "source_file": "final_exam_251123_mini.html",
+      "source_question": 8,
+      "question_text": "Given f(x) = -3x + 7 and g(x) = x² - 4x - 1. Find f(g(-3)).",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Find f(g(-3))",
+          "answer": "-53",
+          "answer_type": "numeric"
+        }
+      ],
+      "tags": [
+        "function-composition",
+        "quadratic",
+        "linear",
+        "evaluation"
+      ]
+    },
+    {
+      "id": "expexam-001",
+      "unit": "exponents",
+      "standard": "exponents",
+      "difficulty": "easy",
+      "type": "solve",
+      "source_file": "exponents_exam.html",
+      "source_question": 1,
+      "question_text": "Product, Quotient, and Power Rules — Simplify each expression with positive exponents only.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "x⁴ · x⁷",
+          "answer": "x¹¹",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "(2a³b²)(-3a⁴b)",
+          "answer": "-6a⁷b³",
+          "answer_type": "equation"
+        },
+        {
+          "label": "c",
+          "text": "y⁸ / y³",
+          "answer": "y⁵",
+          "answer_type": "equation"
+        },
+        {
+          "label": "d",
+          "text": "(3m²n⁻¹)³",
+          "answer": "27m⁶/n³",
+          "answer_type": "equation"
+        }
+      ],
+      "tags": [
+        "product-rule",
+        "quotient-rule",
+        "power-rule",
+        "exponents"
+      ]
+    },
+    {
+      "id": "expexam-002",
+      "unit": "exponents",
+      "standard": "exponents",
+      "difficulty": "medium",
+      "type": "solve",
+      "source_file": "exponents_exam.html",
+      "source_question": 2,
+      "question_text": "Negative Exponents and Rational Expressions — Rewrite with positive exponents only. Simplify if possible.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "x⁻⁵",
+          "answer": "1/x⁵",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "(4a⁻³b²) / (2a)",
+          "answer": "2b²/a⁴",
+          "answer_type": "equation"
+        },
+        {
+          "label": "c",
+          "text": "(p/q)⁻⁴",
+          "answer": "q⁴/p⁴",
+          "answer_type": "equation"
+        },
+        {
+          "label": "d",
+          "text": "(6x⁻²y³) / (9x⁴)",
+          "answer": "2y³/(3x⁶)",
+          "answer_type": "equation"
+        }
+      ],
+      "tags": [
+        "negative-exponents",
+        "rational-expressions",
+        "simplifying"
+      ]
+    },
+    {
+      "id": "expexam-003",
+      "unit": "exponents",
+      "standard": "exponents",
+      "difficulty": "medium",
+      "type": "solve",
+      "source_file": "exponents_exam.html",
+      "source_question": 3,
+      "question_text": "Power of a Product / Power of a Quotient — Simplify each expression completely.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "(2x²y³)²",
+          "answer": "4x⁴y⁶",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "(3a² / 5b³)³",
+          "answer": "27a⁶/(125b⁹)",
+          "answer_type": "equation"
+        },
+        {
+          "label": "c",
+          "text": "(x⁻¹ - 2x²)²",
+          "answer": "x⁻² - 4x + 4x⁴ (or 1/x² - 4x + 4x⁴)",
+          "answer_type": "equation"
+        }
+      ],
+      "tags": [
+        "power-of-product",
+        "power-of-quotient",
+        "binomial-expansion",
+        "exponents"
+      ]
+    },
+    {
+      "id": "expexam-004",
+      "unit": "exponents",
+      "standard": "exponents",
+      "difficulty": "medium",
+      "type": "solve",
+      "source_file": "exponents_exam.html",
+      "source_question": 4,
+      "question_text": "Distribute and Combine Like Terms Using Exponent Rules — Expand and simplify.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "3x²(4x⁵ - x³ + 6)",
+          "answer": "12x⁷ - 3x⁵ + 18x²",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "2z(5z³ + z - 8)",
+          "answer": "10z⁴ + 2z² - 16z",
+          "answer_type": "equation"
+        },
+        {
+          "label": "c",
+          "text": "(3x²y⁻¹)(2xy³ - 4x⁻²y)",
+          "answer": "6x³y² - 12",
+          "answer_type": "equation"
+        }
+      ],
+      "tags": [
+        "distributive-property",
+        "exponents",
+        "combining-like-terms"
+      ]
+    },
+    {
+      "id": "expexam-005",
+      "unit": "exponents",
+      "standard": "exponents",
+      "difficulty": "medium",
+      "type": "identify",
+      "source_file": "exponents_exam.html",
+      "source_question": 5,
+      "question_text": "Understanding Exponent Structure & Common Mistakes — True or False? If false, rewrite correctly and explain.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "(x + y)² = x² + y²",
+          "answer": "FALSE. Correct: (x + y)² = x² + 2xy + y². Cannot distribute exponent over addition.",
+          "answer_type": "text"
+        },
+        {
+          "label": "b",
+          "text": "(x - 3)² = x² - 9",
+          "answer": "FALSE. Correct: (x - 3)² = x² - 6x + 9. Missing the middle term -6x.",
+          "answer_type": "text"
+        },
+        {
+          "label": "c",
+          "text": "(xy)⁻³ = x⁻³y⁻³",
+          "answer": "TRUE. Power of a product rule applies to negative exponents.",
+          "answer_type": "text"
+        }
+      ],
+      "tags": [
+        "common-mistakes",
+        "true-false",
+        "binomial-expansion",
+        "exponent-rules"
+      ]
+    },
+    {
+      "id": "expexam-006",
+      "unit": "exponents",
+      "standard": "exponents",
+      "difficulty": "hard",
+      "type": "solve",
+      "source_file": "exponents_exam.html",
+      "source_question": 6,
+      "question_text": "Mixed Review / Challenge Problems — Simplify completely.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "(8x⁵y⁻²) / (4x⁻³y⁴)",
+          "answer": "2x⁸/y⁶",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "(-3x² / 2y³)⁻²",
+          "answer": "4y⁶/(9x⁴)",
+          "answer_type": "equation"
+        },
+        {
+          "label": "c",
+          "text": "[(2a⁻¹b²)³] / (4a²b⁻¹)",
+          "answer": "2b⁷/a⁵",
+          "answer_type": "equation"
+        }
+      ],
+      "tags": [
+        "mixed-exponent-rules",
+        "negative-exponents",
+        "challenge",
+        "simplifying"
+      ]
+    },
+    {
+      "id": "exp1-001",
+      "unit": "exponents",
+      "standard": "W1.a",
+      "difficulty": "easy",
+      "type": "evaluate",
+      "source_file": "20260119_Exponents_Unit1.html",
+      "source_question": 1,
+      "question_text": "If x = -2, what is the value of 3x⁴?",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "3x⁴ when x = -2",
+          "answer": "48",
+          "answer_type": "numeric"
+        }
+      ],
+      "tags": [
+        "exponents",
+        "evaluation",
+        "power-rule"
+      ]
+    },
+    {
+      "id": "exp1-002",
+      "unit": "exponents",
+      "standard": "W1.b",
+      "difficulty": "easy",
+      "type": "convert",
+      "source_file": "20260119_Exponents_Unit1.html",
+      "source_question": 2,
+      "question_text": "Rewrite the rational exponent as a radical: 5x^(3/4)",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "5x^(3/4)",
+          "answer": "5∜(x³)",
+          "answer_type": "equation"
+        }
+      ],
+      "tags": [
+        "exponents",
+        "rational-exponents",
+        "radicals"
+      ]
+    },
+    {
+      "id": "exp1-003",
+      "unit": "exponents",
+      "standard": "W1.b",
+      "difficulty": "easy",
+      "type": "convert",
+      "source_file": "20260119_Exponents_Unit1.html",
+      "source_question": 3,
+      "question_text": "Rewrite the expression using rational exponents: 3√(5x)",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "3√(5x)",
+          "answer": "3(5x)^(1/2)",
+          "answer_type": "equation"
+        }
+      ],
+      "tags": [
+        "exponents",
+        "rational-exponents",
+        "radicals"
+      ]
+    },
+    {
+      "id": "exp1-004",
+      "unit": "exponents",
+      "standard": "W1.d",
+      "difficulty": "medium",
+      "type": "evaluate",
+      "source_file": "20260119_Exponents_Unit1.html",
+      "source_question": 4,
+      "question_text": "Evaluate the following:",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "27^(1/3)",
+          "answer": "3",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "b",
+          "text": "81^(1/2)",
+          "answer": "9",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "16^(3/4)",
+          "answer": "8",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "d",
+          "text": "√(3.2³)",
+          "answer": "≈ 5.72",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "e",
+          "text": "(3/4)^(-2)",
+          "answer": "16/9",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "f",
+          "text": "4^(2.5)",
+          "answer": "32",
+          "answer_type": "numeric"
+        }
+      ],
+      "tags": [
+        "exponents",
+        "rational-exponents",
+        "negative-exponents",
+        "radicals"
+      ]
+    },
+    {
+      "id": "exp1-005",
+      "unit": "exponents",
+      "standard": "W1.d",
+      "difficulty": "medium",
+      "type": "simplify",
+      "source_file": "20260119_Exponents_Unit1.html",
+      "source_question": 5,
+      "question_text": "Simplify:",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "√200",
+          "answer": "10√2",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "∛(-64)",
+          "answer": "-4",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "√(-36)",
+          "answer": "6i",
+          "answer_type": "equation"
+        },
+        {
+          "label": "d",
+          "text": "√(18x⁶)",
+          "answer": "3x³√2",
+          "answer_type": "equation"
+        }
+      ],
+      "tags": [
+        "radicals",
+        "simplifying-radicals",
+        "cube-roots",
+        "complex-numbers",
+        "imaginary-numbers"
+      ]
+    },
+    {
+      "id": "exp1-006",
+      "unit": "exponents",
+      "standard": "W1.a",
+      "difficulty": "easy",
+      "type": "simplify",
+      "source_file": "20260119_Exponents_Unit1.html",
+      "source_question": 6,
+      "question_text": "Simplify each expression. Rewrite any negative exponents: (5x⁴)(3x³)",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "(5x⁴)(3x³)",
+          "answer": "15x⁷",
+          "answer_type": "equation"
+        }
+      ],
+      "tags": [
+        "exponents",
+        "product-rule"
+      ]
+    },
+    {
+      "id": "exp1-007",
+      "unit": "exponents",
+      "standard": "W1.a",
+      "difficulty": "medium",
+      "type": "simplify",
+      "source_file": "20260119_Exponents_Unit1.html",
+      "source_question": 7,
+      "question_text": "Simplify: x⁴(3x²)²",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "x⁴(3x²)²",
+          "answer": "9x⁸",
+          "answer_type": "equation"
+        }
+      ],
+      "tags": [
+        "exponents",
+        "power-rule",
+        "product-rule"
+      ]
+    },
+    {
+      "id": "exp1-008",
+      "unit": "exponents",
+      "standard": "W1.a",
+      "difficulty": "medium",
+      "type": "simplify",
+      "source_file": "20260119_Exponents_Unit1.html",
+      "source_question": 8,
+      "question_text": "Simplify: 36x⁵ / (4x⁹)",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "36x⁵ / (4x⁹)",
+          "answer": "9/x⁴ or 9x⁻⁴",
+          "answer_type": "equation"
+        }
+      ],
+      "tags": [
+        "exponents",
+        "quotient-rule",
+        "negative-exponents"
+      ]
+    },
+    {
+      "id": "exp1-009",
+      "unit": "exponents",
+      "standard": "W1.c",
+      "difficulty": "hard",
+      "type": "simplify",
+      "source_file": "20260119_Exponents_Unit1.html",
+      "source_question": 9,
+      "question_text": "Simplify: (4x + x⁶) / x² · 3x²",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "(4x + x⁶) / x² · 3x²",
+          "answer": "12x + 3x⁶",
+          "answer_type": "equation"
+        }
+      ],
+      "tags": [
+        "exponents",
+        "quotient-rule",
+        "distributive-property"
+      ]
+    },
+    {
+      "id": "exp1-010",
+      "unit": "exponents",
+      "standard": "W1.a",
+      "difficulty": "medium",
+      "type": "simplify",
+      "source_file": "20260119_Exponents_Unit1.html",
+      "source_question": 10,
+      "question_text": "Simplify: (8y / x³) · (x⁵ / (4xy³))",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "(8y / x³) · (x⁵ / (4xy³))",
+          "answer": "2x / y²",
+          "answer_type": "equation"
+        }
+      ],
+      "tags": [
+        "exponents",
+        "quotient-rule",
+        "product-rule"
+      ]
+    },
+    {
+      "id": "exp1-011",
+      "unit": "exponents",
+      "standard": "W1.c",
+      "difficulty": "hard",
+      "type": "simplify",
+      "source_file": "20260119_Exponents_Unit1.html",
+      "source_question": 11,
+      "question_text": "Simplify: 2x⁴(x³ + 3)²",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "2x⁴(x³ + 3)²",
+          "answer": "2x¹⁰ + 12x⁷ + 18x⁴",
+          "answer_type": "equation"
+        }
+      ],
+      "tags": [
+        "exponents",
+        "distributive-property",
+        "binomial-expansion"
+      ]
+    },
+    {
+      "id": "exp1-012",
+      "unit": "exponents",
+      "standard": "W1.a",
+      "difficulty": "hard",
+      "type": "evaluate",
+      "source_file": "20260119_Exponents_Unit1.html",
+      "source_question": 12,
+      "question_text": "If 2^x = 5, what is the value of 3 · 4^x?",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "3 · 4^x given 2^x = 5",
+          "answer": "75",
+          "answer_type": "numeric"
+        }
+      ],
+      "tags": [
+        "exponents",
+        "power-rule",
+        "substitution"
+      ]
+    },
+    {
+      "id": "exp1-013",
+      "unit": "exponents",
+      "standard": "W1.a",
+      "difficulty": "hard",
+      "type": "solve",
+      "source_file": "20260119_Exponents_Unit1.html",
+      "source_question": 13,
+      "question_text": "The formula for the volume of a cylinder is V = πr²h. If the volume is 72πa³b² and the height is 8a, what is the radius?",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Find r given V = 72πa³b² and h = 8a",
+          "answer": "3ab",
+          "answer_type": "equation"
+        }
+      ],
+      "tags": [
+        "exponents",
+        "quotient-rule",
+        "formulas",
+        "radicals"
+      ]
+    },
+    {
+      "id": "exp1-014",
+      "unit": "exponents",
+      "standard": "W1.a",
+      "difficulty": "medium",
+      "type": "identify",
+      "source_file": "20260119_Exponents_Unit1.html",
+      "source_question": 14,
+      "question_text": "Explain the error: 5x⁻³ = 1/(5x³)",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Identify and correct the error",
+          "answer": "Only x⁻³ goes to the denominator, not 5. Correct: 5x⁻³ = 5/x³",
+          "answer_type": "text"
+        }
+      ],
+      "tags": [
+        "exponents",
+        "negative-exponents",
+        "error-analysis"
+      ]
+    },
+    {
+      "id": "exp1-015",
+      "unit": "exponents",
+      "standard": "W1.a",
+      "difficulty": "medium",
+      "type": "identify",
+      "source_file": "20260119_Exponents_Unit1.html",
+      "source_question": 15,
+      "question_text": "Explain the error: √(x¹² / x⁴) = x⁴",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Identify and correct the error",
+          "answer": "No error — √(x¹²/x⁴) = √(x⁸) = x⁴ is correct",
+          "answer_type": "text"
+        }
+      ],
+      "tags": [
+        "exponents",
+        "quotient-rule",
+        "radicals",
+        "error-analysis"
+      ]
+    },
+    {
+      "id": "exp1-016",
+      "unit": "exponents",
+      "standard": "W1.a",
+      "difficulty": "hard",
+      "type": "identify",
+      "source_file": "20260119_Exponents_Unit1.html",
+      "source_question": 16,
+      "question_text": "Explain the steps used to simplify: 2 · 27^(x+1). These steps may contain errors.",
+      "sub_parts": [
+        {
+          "label": "step2",
+          "text": "2¹ · 27^(x+1)",
+          "answer": "Rewriting 2 as 2¹ (identity property)",
+          "answer_type": "text"
+        },
+        {
+          "label": "step3",
+          "text": "2¹ · (3³)^(x+1)",
+          "answer": "Rewriting 27 as 3³ (since 27 = 3³)",
+          "answer_type": "text"
+        },
+        {
+          "label": "step4",
+          "text": "2 · 3^(3x+3)",
+          "answer": "Power of a power rule: (aᵐ)ⁿ = aᵐⁿ",
+          "answer_type": "text"
+        },
+        {
+          "label": "step5",
+          "text": "6^(3x+3)",
+          "answer": "ERROR — Cannot combine bases that are different. 2 · 3^(3x+3) ≠ 6^(3x+3)",
+          "answer_type": "text"
+        }
+      ],
+      "tags": [
+        "exponents",
+        "power-rule",
+        "product-rule",
+        "error-analysis"
+      ]
+    },
+    {
+      "id": "exp1-017",
+      "unit": "exponents",
+      "standard": "W1.e",
+      "difficulty": "easy",
+      "type": "convert",
+      "source_file": "20260119_Exponents_Unit1.html",
+      "source_question": 17,
+      "question_text": "Write the number in scientific notation: 72,500,000,000",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "72,500,000,000",
+          "answer": "7.25 × 10¹⁰",
+          "answer_type": "equation"
+        }
+      ],
+      "tags": [
+        "scientific-notation"
+      ]
+    },
+    {
+      "id": "exp1-018",
+      "unit": "exponents",
+      "standard": "W1.e",
+      "difficulty": "easy",
+      "type": "convert",
+      "source_file": "20260119_Exponents_Unit1.html",
+      "source_question": 18,
+      "question_text": "Convert from scientific notation to a normal decimal: 5.67 × 10⁻⁴",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "5.67 × 10⁻⁴",
+          "answer": "0.000567",
+          "answer_type": "numeric"
+        }
+      ],
+      "tags": [
+        "scientific-notation"
+      ]
+    },
+    {
+      "id": "exp1-019",
+      "unit": "exponents",
+      "standard": "W1.e",
+      "difficulty": "hard",
+      "type": "model",
+      "source_file": "20260119_Exponents_Unit1.html",
+      "source_question": 19,
+      "question_text": "Ideal gas law: P = NkT/V. Find pressure if N = 3.5 × 10²⁴ atoms, k = 1.381 × 10⁻²³ J/K, T = 3.15 × 10² K, V = 5.8 × 10⁻³ m³.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Calculate pressure P in Pascals",
+          "answer": "2.62 × 10⁶ Pascals",
+          "answer_type": "equation"
+        }
+      ],
+      "tags": [
+        "scientific-notation",
+        "exponents",
+        "word-problem",
+        "ideal-gas-law"
+      ]
+    },
+    {
+      "id": "exp2-001",
+      "unit": "exponents",
+      "standard": "W1.a",
+      "difficulty": "easy",
+      "type": "evaluate",
+      "source_file": "20260119_Exponents_Unit1_2nd.html",
+      "source_question": 1,
+      "question_text": "If x = -2, what is the value of -4x⁵?",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "-4x⁵ when x = -2",
+          "answer": "128",
+          "answer_type": "numeric"
+        }
+      ],
+      "tags": [
+        "exponents",
+        "evaluation",
+        "power-rule"
+      ]
+    },
+    {
+      "id": "exp2-002",
+      "unit": "exponents",
+      "standard": "W1.b",
+      "difficulty": "easy",
+      "type": "convert",
+      "source_file": "20260119_Exponents_Unit1_2nd.html",
+      "source_question": 2,
+      "question_text": "Rewrite the rational exponent as a radical: 4x^(2/5)",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "4x^(2/5)",
+          "answer": "4⁵√(x²)",
+          "answer_type": "equation"
+        }
+      ],
+      "tags": [
+        "exponents",
+        "rational-exponents",
+        "radicals"
+      ]
+    },
+    {
+      "id": "exp2-003",
+      "unit": "exponents",
+      "standard": "W1.b",
+      "difficulty": "easy",
+      "type": "convert",
+      "source_file": "20260119_Exponents_Unit1_2nd.html",
+      "source_question": 3,
+      "question_text": "Rewrite the expression using rational exponents: 5∛(2x)",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "5∛(2x)",
+          "answer": "5(2x)^(1/3)",
+          "answer_type": "equation"
+        }
+      ],
+      "tags": [
+        "exponents",
+        "rational-exponents",
+        "radicals"
+      ]
+    },
+    {
+      "id": "exp2-004",
+      "unit": "exponents",
+      "standard": "W1.d",
+      "difficulty": "medium",
+      "type": "evaluate",
+      "source_file": "20260119_Exponents_Unit1_2nd.html",
+      "source_question": 4,
+      "question_text": "Evaluate the following:",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "64^(1/3)",
+          "answer": "4",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "b",
+          "text": "49^(1/2)",
+          "answer": "7",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "81^(3/4)",
+          "answer": "27",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "d",
+          "text": "√(1.44 × 10⁴)",
+          "answer": "120",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "e",
+          "text": "(2/5)^(-2)",
+          "answer": "25/4",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "f",
+          "text": "9^(1.5)",
+          "answer": "27",
+          "answer_type": "numeric"
+        }
+      ],
+      "tags": [
+        "exponents",
+        "rational-exponents",
+        "negative-exponents",
+        "radicals",
+        "scientific-notation"
+      ]
+    },
+    {
+      "id": "exp2-005",
+      "unit": "exponents",
+      "standard": "W1.d",
+      "difficulty": "medium",
+      "type": "simplify",
+      "source_file": "20260119_Exponents_Unit1_2nd.html",
+      "source_question": 5,
+      "question_text": "Simplify:",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "√288",
+          "answer": "12√2",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "∛(-125)",
+          "answer": "-5",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "√(-49)",
+          "answer": "7i",
+          "answer_type": "equation"
+        },
+        {
+          "label": "d",
+          "text": "√(50x⁸)",
+          "answer": "5x⁴√2",
+          "answer_type": "equation"
+        }
+      ],
+      "tags": [
+        "radicals",
+        "simplifying-radicals",
+        "cube-roots",
+        "complex-numbers",
+        "imaginary-numbers"
+      ]
+    },
+    {
+      "id": "exp2-006",
+      "unit": "exponents",
+      "standard": "W1.a",
+      "difficulty": "easy",
+      "type": "simplify",
+      "source_file": "20260119_Exponents_Unit1_2nd.html",
+      "source_question": 6,
+      "question_text": "Simplify each expression. Rewrite any negative exponents: (4x⁵)(6x²)",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "(4x⁵)(6x²)",
+          "answer": "24x⁷",
+          "answer_type": "equation"
+        }
+      ],
+      "tags": [
+        "exponents",
+        "product-rule"
+      ]
+    },
+    {
+      "id": "exp2-007",
+      "unit": "exponents",
+      "standard": "W1.a",
+      "difficulty": "medium",
+      "type": "simplify",
+      "source_file": "20260119_Exponents_Unit1_2nd.html",
+      "source_question": 7,
+      "question_text": "Simplify: x³(2x⁴)²",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "x³(2x⁴)²",
+          "answer": "4x¹¹",
+          "answer_type": "equation"
+        }
+      ],
+      "tags": [
+        "exponents",
+        "power-rule",
+        "product-rule"
+      ]
+    },
+    {
+      "id": "exp2-008",
+      "unit": "exponents",
+      "standard": "W1.a",
+      "difficulty": "medium",
+      "type": "simplify",
+      "source_file": "20260119_Exponents_Unit1_2nd.html",
+      "source_question": 8,
+      "question_text": "Simplify: 48x⁶ / (6x¹⁰)",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "48x⁶ / (6x¹⁰)",
+          "answer": "8/x⁴ or 8x⁻⁴",
+          "answer_type": "equation"
+        }
+      ],
+      "tags": [
+        "exponents",
+        "quotient-rule",
+        "negative-exponents"
+      ]
+    },
+    {
+      "id": "exp2-009",
+      "unit": "exponents",
+      "standard": "W1.c",
+      "difficulty": "hard",
+      "type": "simplify",
+      "source_file": "20260119_Exponents_Unit1_2nd.html",
+      "source_question": 9,
+      "question_text": "Simplify: (6x + x⁴) / x³ · 2x³",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "(6x + x⁴) / x³ · 2x³",
+          "answer": "12x + 2x⁴",
+          "answer_type": "equation"
+        }
+      ],
+      "tags": [
+        "exponents",
+        "quotient-rule",
+        "distributive-property"
+      ]
+    },
+    {
+      "id": "exp2-010",
+      "unit": "exponents",
+      "standard": "W1.a",
+      "difficulty": "medium",
+      "type": "simplify",
+      "source_file": "20260119_Exponents_Unit1_2nd.html",
+      "source_question": 10,
+      "question_text": "Simplify: (12y² / x⁴) · (x⁶ / (3xy⁵))",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "(12y² / x⁴) · (x⁶ / (3xy⁵))",
+          "answer": "4x / y³",
+          "answer_type": "equation"
+        }
+      ],
+      "tags": [
+        "exponents",
+        "quotient-rule",
+        "product-rule"
+      ]
+    },
+    {
+      "id": "exp2-011",
+      "unit": "exponents",
+      "standard": "W1.c",
+      "difficulty": "hard",
+      "type": "simplify",
+      "source_file": "20260119_Exponents_Unit1_2nd.html",
+      "source_question": 11,
+      "question_text": "Simplify: 3x²(x⁴ + 2)²",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "3x²(x⁴ + 2)²",
+          "answer": "3x¹⁰ + 12x⁶ + 12x²",
+          "answer_type": "equation"
+        }
+      ],
+      "tags": [
+        "exponents",
+        "distributive-property",
+        "binomial-expansion"
+      ]
+    },
+    {
+      "id": "exp2-012",
+      "unit": "exponents",
+      "standard": "W1.a",
+      "difficulty": "hard",
+      "type": "evaluate",
+      "source_file": "20260119_Exponents_Unit1_2nd.html",
+      "source_question": 12,
+      "question_text": "If 3^x = 5, what is the value of 3^(x+2)?",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "3^(x+2) given 3^x = 5",
+          "answer": "45",
+          "answer_type": "numeric"
+        }
+      ],
+      "tags": [
+        "exponents",
+        "product-rule",
+        "substitution"
+      ]
+    },
+    {
+      "id": "exp2-013",
+      "unit": "exponents",
+      "standard": "W1.a",
+      "difficulty": "hard",
+      "type": "solve",
+      "source_file": "20260119_Exponents_Unit1_2nd.html",
+      "source_question": 13,
+      "question_text": "The formula for surface area of a sphere is S = 4πr². If the surface area is 100πa⁶b⁴, what is the radius?",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Find r given S = 100πa⁶b⁴",
+          "answer": "5a³b²",
+          "answer_type": "equation"
+        }
+      ],
+      "tags": [
+        "exponents",
+        "quotient-rule",
+        "formulas",
+        "radicals"
+      ]
+    },
+    {
+      "id": "exp2-014",
+      "unit": "exponents",
+      "standard": "W1.a",
+      "difficulty": "medium",
+      "type": "identify",
+      "source_file": "20260119_Exponents_Unit1_2nd.html",
+      "source_question": 14,
+      "question_text": "Explain the error: (x³)⁴ = x⁷",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Identify and correct the error",
+          "answer": "Student added exponents instead of multiplying. Correct: (x³)⁴ = x^(3·4) = x¹²",
+          "answer_type": "text"
+        }
+      ],
+      "tags": [
+        "exponents",
+        "power-rule",
+        "error-analysis"
+      ]
+    },
+    {
+      "id": "exp2-015",
+      "unit": "exponents",
+      "standard": "W1.a",
+      "difficulty": "medium",
+      "type": "identify",
+      "source_file": "20260119_Exponents_Unit1_2nd.html",
+      "source_question": 15,
+      "question_text": "Explain the error: x^(1/2) · x^(1/3) = x^(1/6)",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Identify and correct the error",
+          "answer": "Student multiplied exponents instead of adding. Correct: x^(1/2) · x^(1/3) = x^(1/2 + 1/3) = x^(5/6)",
+          "answer_type": "text"
+        }
+      ],
+      "tags": [
+        "exponents",
+        "product-rule",
+        "rational-exponents",
+        "error-analysis"
+      ]
+    },
+    {
+      "id": "exp2-016",
+      "unit": "exponents",
+      "standard": "W1.a",
+      "difficulty": "hard",
+      "type": "identify",
+      "source_file": "20260119_Exponents_Unit1_2nd.html",
+      "source_question": 16,
+      "question_text": "Explain the steps used to simplify: 4 · 8^(x+2). These steps may contain errors.",
+      "sub_parts": [
+        {
+          "label": "step2",
+          "text": "2² · 8^(x+2)",
+          "answer": "Rewriting 4 as 2² (identity property)",
+          "answer_type": "text"
+        },
+        {
+          "label": "step3",
+          "text": "2² · (2³)^(x+2)",
+          "answer": "Rewriting 8 as 2³ (since 8 = 2³)",
+          "answer_type": "text"
+        },
+        {
+          "label": "step4",
+          "text": "2² · 2^(3x+6)",
+          "answer": "Power of a power rule: (aᵐ)ⁿ = aᵐⁿ",
+          "answer_type": "text"
+        },
+        {
+          "label": "step5",
+          "text": "2^(3x+8)",
+          "answer": "Product of powers rule: aᵐ · aⁿ = a^(m+n), so 2² · 2^(3x+6) = 2^(3x+8) ✓",
+          "answer_type": "text"
+        }
+      ],
+      "tags": [
+        "exponents",
+        "power-rule",
+        "product-rule",
+        "step-analysis"
+      ]
+    },
+    {
+      "id": "exp2-017",
+      "unit": "exponents",
+      "standard": "W1.e",
+      "difficulty": "easy",
+      "type": "convert",
+      "source_file": "20260119_Exponents_Unit1_2nd.html",
+      "source_question": 17,
+      "question_text": "Write the number in scientific notation: 385,000,000",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "385,000,000",
+          "answer": "3.85 × 10⁸",
+          "answer_type": "equation"
+        }
+      ],
+      "tags": [
+        "scientific-notation"
+      ]
+    },
+    {
+      "id": "exp2-018",
+      "unit": "exponents",
+      "standard": "W1.e",
+      "difficulty": "easy",
+      "type": "convert",
+      "source_file": "20260119_Exponents_Unit1_2nd.html",
+      "source_question": 18,
+      "question_text": "Convert from scientific notation to a normal decimal: 2.34 × 10⁻⁵",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "2.34 × 10⁻⁵",
+          "answer": "0.0000234",
+          "answer_type": "numeric"
+        }
+      ],
+      "tags": [
+        "scientific-notation"
+      ]
+    },
+    {
+      "id": "exp2-019",
+      "unit": "exponents",
+      "standard": "W1.e",
+      "difficulty": "hard",
+      "type": "model",
+      "source_file": "20260119_Exponents_Unit1_2nd.html",
+      "source_question": 19,
+      "question_text": "Newton's Law of Universal Gravitation: F = Gm₁m₂/r². Find the gravitational force between two asteroids with m₁ = 8.4 × 10¹² kg, m₂ = 3.5 × 10¹⁰ kg, r = 7.0 × 10⁵ m. G = 6.67 × 10⁻¹¹ N·m²/kg².",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Calculate force F in Newtons",
+          "answer": "≈ 4.0 × 10¹ (40) Newtons",
+          "answer_type": "equation"
+        }
+      ],
+      "tags": [
+        "scientific-notation",
+        "exponents",
+        "word-problem",
+        "gravitation"
+      ]
+    },
+    {
+      "id": "exp3-001",
+      "unit": "exponents",
+      "standard": "W1.a",
+      "difficulty": "easy",
+      "type": "evaluate",
+      "source_file": "20260119_Exponents_Unit1_3rd.html",
+      "source_question": 1,
+      "question_text": "If x = -2 and y = 3, what is the value of -2x³y²?",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "-2x³y² when x = -2, y = 3",
+          "answer": "144",
+          "answer_type": "numeric"
+        }
+      ],
+      "tags": [
+        "exponents",
+        "evaluation",
+        "power-rule"
+      ]
+    },
+    {
+      "id": "exp3-002",
+      "unit": "exponents",
+      "standard": "W1.b",
+      "difficulty": "easy",
+      "type": "convert",
+      "source_file": "20260119_Exponents_Unit1_3rd.html",
+      "source_question": 2,
+      "question_text": "Rewrite the rational exponent as a radical: 7x^(3/5)",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "7x^(3/5)",
+          "answer": "7⁵√(x³)",
+          "answer_type": "equation"
+        }
+      ],
+      "tags": [
+        "exponents",
+        "rational-exponents",
+        "radicals"
+      ]
+    },
+    {
+      "id": "exp3-003",
+      "unit": "exponents",
+      "standard": "W1.b",
+      "difficulty": "easy",
+      "type": "convert",
+      "source_file": "20260119_Exponents_Unit1_3rd.html",
+      "source_question": 3,
+      "question_text": "Rewrite the expression using rational exponents: 6∜(3x)",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "6∜(3x)",
+          "answer": "6(3x)^(1/4)",
+          "answer_type": "equation"
+        }
+      ],
+      "tags": [
+        "exponents",
+        "rational-exponents",
+        "radicals"
+      ]
+    },
+    {
+      "id": "exp3-004",
+      "unit": "exponents",
+      "standard": "W1.d",
+      "difficulty": "medium",
+      "type": "evaluate",
+      "source_file": "20260119_Exponents_Unit1_3rd.html",
+      "source_question": 4,
+      "question_text": "Evaluate the following:",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "125^(1/3)",
+          "answer": "5",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "b",
+          "text": "36^(1/2)",
+          "answer": "6",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "32^(2/5)",
+          "answer": "4",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "d",
+          "text": "√(2.25 × 10⁶)",
+          "answer": "1500",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "e",
+          "text": "(3/7)^(-2)",
+          "answer": "49/9",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "f",
+          "text": "25^(0.5)",
+          "answer": "5",
+          "answer_type": "numeric"
+        }
+      ],
+      "tags": [
+        "exponents",
+        "rational-exponents",
+        "negative-exponents",
+        "radicals",
+        "scientific-notation"
+      ]
+    },
+    {
+      "id": "exp3-005",
+      "unit": "exponents",
+      "standard": "W1.d",
+      "difficulty": "medium",
+      "type": "simplify",
+      "source_file": "20260119_Exponents_Unit1_3rd.html",
+      "source_question": 5,
+      "question_text": "Simplify:",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "√180",
+          "answer": "6√5",
+          "answer_type": "equation"
+        },
+        {
+          "label": "b",
+          "text": "∛(-216)",
+          "answer": "-6",
+          "answer_type": "numeric"
+        },
+        {
+          "label": "c",
+          "text": "√(-81)",
+          "answer": "9i",
+          "answer_type": "equation"
+        },
+        {
+          "label": "d",
+          "text": "√(72x¹⁰)",
+          "answer": "6x⁵√2",
+          "answer_type": "equation"
+        }
+      ],
+      "tags": [
+        "radicals",
+        "simplifying-radicals",
+        "cube-roots",
+        "complex-numbers",
+        "imaginary-numbers"
+      ]
+    },
+    {
+      "id": "exp3-006",
+      "unit": "exponents",
+      "standard": "W1.a",
+      "difficulty": "easy",
+      "type": "simplify",
+      "source_file": "20260119_Exponents_Unit1_3rd.html",
+      "source_question": 6,
+      "question_text": "Simplify each expression. Rewrite any negative exponents: (7x³)(4x⁶)",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "(7x³)(4x⁶)",
+          "answer": "28x⁹",
+          "answer_type": "equation"
+        }
+      ],
+      "tags": [
+        "exponents",
+        "product-rule"
+      ]
+    },
+    {
+      "id": "exp3-007",
+      "unit": "exponents",
+      "standard": "W1.a",
+      "difficulty": "medium",
+      "type": "simplify",
+      "source_file": "20260119_Exponents_Unit1_3rd.html",
+      "source_question": 7,
+      "question_text": "Simplify: x⁵(3x²)³",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "x⁵(3x²)³",
+          "answer": "27x¹¹",
+          "answer_type": "equation"
+        }
+      ],
+      "tags": [
+        "exponents",
+        "power-rule",
+        "product-rule"
+      ]
+    },
+    {
+      "id": "exp3-008",
+      "unit": "exponents",
+      "standard": "W1.a",
+      "difficulty": "medium",
+      "type": "simplify",
+      "source_file": "20260119_Exponents_Unit1_3rd.html",
+      "source_question": 8,
+      "question_text": "Simplify: 72x⁴ / (8x¹¹)",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "72x⁴ / (8x¹¹)",
+          "answer": "9/x⁷ or 9x⁻⁷",
+          "answer_type": "equation"
+        }
+      ],
+      "tags": [
+        "exponents",
+        "quotient-rule",
+        "negative-exponents"
+      ]
+    },
+    {
+      "id": "exp3-009",
+      "unit": "exponents",
+      "standard": "W1.c",
+      "difficulty": "hard",
+      "type": "simplify",
+      "source_file": "20260119_Exponents_Unit1_3rd.html",
+      "source_question": 9,
+      "question_text": "Simplify: (9x² + x⁵) / x⁴ · (2x³ + x⁴)",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "(9x² + x⁵) / x⁴ · (2x³ + x⁴)",
+          "answer": "18x + 9x² + 2x⁴ + x⁵",
+          "answer_type": "equation"
+        }
+      ],
+      "tags": [
+        "exponents",
+        "quotient-rule",
+        "distributive-property",
+        "polynomial-multiplication"
+      ]
+    },
+    {
+      "id": "exp3-010",
+      "unit": "exponents",
+      "standard": "W1.a",
+      "difficulty": "medium",
+      "type": "simplify",
+      "source_file": "20260119_Exponents_Unit1_3rd.html",
+      "source_question": 10,
+      "question_text": "Simplify: (15y³ / x⁵) · (x⁸ / (5x²y⁶))",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "(15y³ / x⁵) · (x⁸ / (5x²y⁶))",
+          "answer": "3x / y³",
+          "answer_type": "equation"
+        }
+      ],
+      "tags": [
+        "exponents",
+        "quotient-rule",
+        "product-rule"
+      ]
+    },
+    {
+      "id": "exp3-011",
+      "unit": "exponents",
+      "standard": "W1.c",
+      "difficulty": "hard",
+      "type": "simplify",
+      "source_file": "20260119_Exponents_Unit1_3rd.html",
+      "source_question": 11,
+      "question_text": "Simplify: 4x³(x² + 5)²",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "4x³(x² + 5)²",
+          "answer": "4x⁷ + 40x⁵ + 100x³",
+          "answer_type": "equation"
+        }
+      ],
+      "tags": [
+        "exponents",
+        "distributive-property",
+        "binomial-expansion"
+      ]
+    },
+    {
+      "id": "exp3-012",
+      "unit": "exponents",
+      "standard": "W1.a",
+      "difficulty": "hard",
+      "type": "solve",
+      "source_file": "20260119_Exponents_Unit1_3rd.html",
+      "source_question": 12,
+      "question_text": "Solve for x: 4^(x+2) = 8^x",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Solve 4^(x+2) = 8^x",
+          "answer": "x = 4",
+          "answer_type": "numeric"
+        }
+      ],
+      "tags": [
+        "exponents",
+        "power-rule",
+        "exponential-equations"
+      ]
+    },
+    {
+      "id": "exp3-013",
+      "unit": "exponents",
+      "standard": "W1.a",
+      "difficulty": "hard",
+      "type": "solve",
+      "source_file": "20260119_Exponents_Unit1_3rd.html",
+      "source_question": 13,
+      "question_text": "The formula for area of a triangle is A = (1/2)bh. If the area is 54a⁵b³ and the base is 12a²b, what is the height?",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Find h given A = 54a⁵b³ and b = 12a²b",
+          "answer": "9a³b²",
+          "answer_type": "equation"
+        }
+      ],
+      "tags": [
+        "exponents",
+        "quotient-rule",
+        "formulas"
+      ]
+    },
+    {
+      "id": "exp3-014",
+      "unit": "exponents",
+      "standard": "W1.a",
+      "difficulty": "medium",
+      "type": "identify",
+      "source_file": "20260119_Exponents_Unit1_3rd.html",
+      "source_question": 14,
+      "question_text": "Explain the error: x⁸ / x³ = x^(8/3)",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Identify and correct the error",
+          "answer": "Student divided exponents instead of subtracting. Correct: x⁸/x³ = x^(8-3) = x⁵",
+          "answer_type": "text"
+        }
+      ],
+      "tags": [
+        "exponents",
+        "quotient-rule",
+        "error-analysis"
+      ]
+    },
+    {
+      "id": "exp3-015",
+      "unit": "exponents",
+      "standard": "W1.a",
+      "difficulty": "medium",
+      "type": "identify",
+      "source_file": "20260119_Exponents_Unit1_3rd.html",
+      "source_question": 15,
+      "question_text": "Explain the error: x^(2/3) / x^(1/2) = x^(1/3)",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Identify and correct the error",
+          "answer": "Student subtracted numerators only instead of finding common denominators. Correct: x^(2/3 - 1/2) = x^(4/6 - 3/6) = x^(1/6)",
+          "answer_type": "text"
+        }
+      ],
+      "tags": [
+        "exponents",
+        "quotient-rule",
+        "rational-exponents",
+        "error-analysis"
+      ]
+    },
+    {
+      "id": "exp3-016",
+      "unit": "exponents",
+      "standard": "W1.a",
+      "difficulty": "hard",
+      "type": "identify",
+      "source_file": "20260119_Exponents_Unit1_3rd.html",
+      "source_question": 16,
+      "question_text": "Explain the steps used to simplify: 9 · 27^(x+1). These steps may contain errors.",
+      "sub_parts": [
+        {
+          "label": "step2",
+          "text": "3² · 27^(x+1)",
+          "answer": "Rewriting 9 as 3² (identity property)",
+          "answer_type": "text"
+        },
+        {
+          "label": "step3",
+          "text": "3² · (3³)^(x+1)",
+          "answer": "Rewriting 27 as 3³ (since 27 = 3³)",
+          "answer_type": "text"
+        },
+        {
+          "label": "step4",
+          "text": "3² · 3^(3x+3)",
+          "answer": "Power of a power rule: (aᵐ)ⁿ = aᵐⁿ",
+          "answer_type": "text"
+        },
+        {
+          "label": "step5",
+          "text": "3^(3x+5)",
+          "answer": "Product of powers rule: aᵐ · aⁿ = a^(m+n), so 3² · 3^(3x+3) = 3^(3x+5) ✓",
+          "answer_type": "text"
+        }
+      ],
+      "tags": [
+        "exponents",
+        "power-rule",
+        "product-rule",
+        "step-analysis"
+      ]
+    },
+    {
+      "id": "exp3-017",
+      "unit": "exponents",
+      "standard": "W1.e",
+      "difficulty": "easy",
+      "type": "convert",
+      "source_file": "20260119_Exponents_Unit1_3rd.html",
+      "source_question": 17,
+      "question_text": "Write the number in scientific notation: 47,600,000,000",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "47,600,000,000",
+          "answer": "4.76 × 10¹⁰",
+          "answer_type": "equation"
+        }
+      ],
+      "tags": [
+        "scientific-notation"
+      ]
+    },
+    {
+      "id": "exp3-018",
+      "unit": "exponents",
+      "standard": "W1.e",
+      "difficulty": "easy",
+      "type": "convert",
+      "source_file": "20260119_Exponents_Unit1_3rd.html",
+      "source_question": 18,
+      "question_text": "Convert from scientific notation to a normal decimal: 8.15 × 10⁻⁶",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "8.15 × 10⁻⁶",
+          "answer": "0.00000815",
+          "answer_type": "numeric"
+        }
+      ],
+      "tags": [
+        "scientific-notation"
+      ]
+    },
+    {
+      "id": "exp3-019",
+      "unit": "exponents",
+      "standard": "W1.e",
+      "difficulty": "hard",
+      "type": "model",
+      "source_file": "20260119_Exponents_Unit1_3rd.html",
+      "source_question": 19,
+      "question_text": "Kinetic energy: E = (1/2)mv². Find the kinetic energy of a spacecraft with mass m = 2.4 × 10⁴ kg traveling at velocity v = 3.0 × 10³ m/s.",
+      "sub_parts": [
+        {
+          "label": "a",
+          "text": "Calculate kinetic energy E in Joules",
+          "answer": "1.08 × 10¹¹ Joules",
+          "answer_type": "equation"
+        }
+      ],
+      "tags": [
+        "scientific-notation",
+        "exponents",
+        "word-problem",
+        "kinetic-energy"
+      ]
+    }
+  ]
+}

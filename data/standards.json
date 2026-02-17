@@ -1,0 +1,288 @@
+{
+  "curriculum": "SAAS Algebra II",
+  "school": "Seattle Academy of Arts & Sciences",
+  "year": "2025-2026",
+  "units": [
+    {
+      "id": "unit1",
+      "name": "Exponents & Radicals",
+      "trimester": "fall",
+      "standards": [
+        {
+          "id": "W1.a",
+          "name": "Rules of exponents",
+          "description": "Simplify expressions using the rules of exponents: product rule, quotient rule, power rule, zero exponent, negative exponents. Priority target.",
+          "question_count": 30
+        },
+        {
+          "id": "W1.b",
+          "name": "Roots and rational exponents",
+          "description": "Translate between roots and rational exponents. Convert radical notation to exponent form and vice versa.",
+          "question_count": 6
+        },
+        {
+          "id": "W1.c",
+          "name": "Algebraic properties",
+          "description": "Apply the distributive, commutative, and associative properties to manipulate expressions involving exponents.",
+          "question_count": 6
+        },
+        {
+          "id": "W1.d",
+          "name": "Square and cube roots",
+          "description": "Simplify and evaluate square roots and cube roots without a calculator.",
+          "question_count": 6
+        },
+        {
+          "id": "W1.e",
+          "name": "Scientific notation",
+          "description": "Perform operations with numbers expressed in scientific notation, including multiplication, division, and unit conversions.",
+          "question_count": 9
+        },
+        {
+          "id": "W1.f",
+          "name": "Imaginary numbers",
+          "description": "Simplify roots of negatives using imaginary numbers (i = √-1).",
+          "question_count": 0
+        }
+      ]
+    },
+    {
+      "id": "unit2",
+      "name": "Expressions & Equations",
+      "trimester": "fall",
+      "standards": [
+        {
+          "id": "1.a",
+          "name": "Evaluating expressions",
+          "description": "Evaluate algebraic expressions by substituting values, including multi-variable expressions with exponents and grouping symbols.",
+          "question_count": 3
+        },
+        {
+          "id": "1.c",
+          "name": "Real-life models and formulas",
+          "description": "Interpret and use formulas that model real-life situations, including multi-step formulas with rates, costs, and compound operations.",
+          "question_count": 2
+        },
+        {
+          "id": "1.d",
+          "name": "Modeling real-life situations",
+          "description": "Write algebraic models (equations, functions) to represent real-world scenarios.",
+          "question_count": 2
+        },
+        {
+          "id": "2.a",
+          "name": "Multi-step linear equations",
+          "description": "Solve linear equations requiring distribution, combining like terms, and variable isolation across multiple steps.",
+          "question_count": 2
+        },
+        {
+          "id": "2.b",
+          "name": "Literal equations",
+          "description": "Solve equations for a specified variable when multiple variables are present (rearranging formulas).",
+          "question_count": 3
+        },
+        {
+          "id": "2.c",
+          "name": "Linear inequalities",
+          "description": "Solve and graph linear inequalities, including multi-step inequalities with fractions and distribution.",
+          "question_count": 1
+        },
+        {
+          "id": "2.d",
+          "name": "Graphing inequalities",
+          "description": "Graph solutions to linear inequalities on a number line with correct open/closed circles and direction.",
+          "question_count": 0
+        }
+      ]
+    },
+    {
+      "id": "unit3",
+      "name": "Functions",
+      "trimester": "fall",
+      "standards": [
+        {
+          "id": "3.a",
+          "name": "Function composition",
+          "description": "Evaluate composite functions f(g(x)) using tables, graphs, and algebraic definitions. Includes multi-function composition with f, g, h.",
+          "question_count": 5
+        },
+        {
+          "id": "3.b",
+          "name": "Sequence analysis",
+          "description": "Identify sequences as linear (constant difference), exponential (constant ratio), or neither. Explain reasoning.",
+          "question_count": 3
+        },
+        {
+          "id": "3.c",
+          "name": "Graphing functions",
+          "description": "Create tables of values and graph functions. Identify key features: vertex, intercepts, domain, range. Includes quadratics, square root, rational.",
+          "question_count": 3
+        },
+        {
+          "id": "3.d",
+          "name": "Graph analysis",
+          "description": "Read and interpret graphs: evaluate f(x) from graph, find intervals of increase/decrease, identify domain, range, extrema, intercepts.",
+          "question_count": 2
+        },
+        {
+          "id": "3.e",
+          "name": "Real-life applications",
+          "description": "Model real-world situations with linear functions. Interpret slope and y-intercept in context (rate of change, initial value).",
+          "question_count": 3
+        },
+        {
+          "id": "3.f",
+          "name": "Drawing conclusions from graphs",
+          "description": "Analyze graphs to draw conclusions: predict values, identify trends, extrapolate using slope.",
+          "question_count": 3
+        },
+        {
+          "id": "3.g",
+          "name": "Inverse functions",
+          "description": "Find inverse functions algebraically. Use inverse notation f⁻¹(x). Verify using composition f(f⁻¹(x)) = x.",
+          "question_count": 4
+        },
+        {
+          "id": "3.h",
+          "name": "Function operations",
+          "description": "Perform operations on functions: addition, subtraction, multiplication. Apply to profit/cost/revenue models.",
+          "question_count": 2
+        },
+        {
+          "id": "3.i",
+          "name": "Finding inverse functions",
+          "description": "Solve equations in function notation. Find inverse functions including rational functions. Evaluate inverse at specific values.",
+          "question_count": 6
+        }
+      ]
+    },
+    {
+      "id": "unit4",
+      "name": "Linear Models",
+      "trimester": "winter",
+      "standards": [
+        {
+          "id": "4.a",
+          "name": "Function evaluation",
+          "description": "Evaluate functions at given inputs, including fractions. Identify linear patterns in real-world contexts.",
+          "question_count": 2
+        },
+        {
+          "id": "4.b",
+          "name": "Write linear models",
+          "description": "Write linear equations from verbal descriptions of rates and initial values. Model cost, distance, and other real-world linear relationships.",
+          "question_count": 5
+        },
+        {
+          "id": "4.c",
+          "name": "Writing equations from points",
+          "description": "Write linear equations from two points. Interpret slope and intercepts in context. Calculate costs/values at given inputs.",
+          "question_count": 3
+        },
+        {
+          "id": "4.d",
+          "name": "Scatterplots and best fit lines",
+          "description": "Analyze scatterplots, find line of best fit. Write equations in point-slope and slope-intercept form. Make predictions.",
+          "question_count": 4
+        },
+        {
+          "id": "4.e",
+          "name": "Graph linear functions",
+          "description": "Graph linear functions from equations. Interpret graphs including savings, spending, and rate-based models.",
+          "question_count": 1
+        }
+      ]
+    },
+    {
+      "id": "unit5",
+      "name": "Exponential Functions",
+      "trimester": "winter",
+      "standards": [
+        {
+          "id": "5.a",
+          "name": "Exponential models",
+          "description": "Write exponential models P(t) = a·b^t from word problems. Distinguish exponential growth from linear growth. Evaluate at given values.",
+          "question_count": 5
+        },
+        {
+          "id": "5.b",
+          "name": "Exponential growth",
+          "description": "Model exponential growth (b > 1). Identify growth rate, initial value, and evaluate future values. Includes population, investment, and bacteria growth.",
+          "question_count": 3
+        },
+        {
+          "id": "5.c",
+          "name": "Exponential decay",
+          "description": "Model exponential decay (0 < b < 1). Identify decay rate, initial value, and evaluate future values. Includes depreciation, temperature cooling, battery drain.",
+          "question_count": 2
+        }
+      ]
+    },
+    {
+      "id": "unit6",
+      "name": "Non-Linear Functions",
+      "trimester": "winter",
+      "standards": [
+        {
+          "id": "6.a",
+          "name": "Quadratic functions",
+          "description": "Identify, graph, and analyze quadratic functions. Find vertex, domain, range. Understand transformations.",
+          "question_count": 1
+        },
+        {
+          "id": "6.b",
+          "name": "Square root functions",
+          "description": "Identify, graph, and analyze square root functions. Find domain, range, starting point.",
+          "question_count": 1
+        },
+        {
+          "id": "6.c",
+          "name": "Rational functions",
+          "description": "Identify, graph, and analyze rational functions. Find vertical and horizontal asymptotes, domain, range.",
+          "question_count": 1
+        },
+        {
+          "id": "6.d",
+          "name": "Cubic functions",
+          "description": "Identify, graph, and analyze cubic functions. Find inflection point, domain, range.",
+          "question_count": 1
+        },
+        {
+          "id": "6.e",
+          "name": "Function identification",
+          "description": "Identify function type from graph (quadratic, square root, rational, cubic, exponential). State key features.",
+          "question_count": 3
+        }
+      ]
+    }
+  ],
+  "difficulty_rubric": {
+    "easy": {
+      "description": "Single concept, 1-2 steps. Direct application of one rule or formula.",
+      "examples": [
+        "Evaluate 3(-2)^4",
+        "Simplify x^4 · x^7",
+        "Find slope from two points"
+      ],
+      "cognitive_load": "Recall and apply one procedure"
+    },
+    "medium": {
+      "description": "2-3 concepts combined, 3-4 steps. Requires choosing strategy and applying multiple rules.",
+      "examples": [
+        "Simplify (2a³b²)(−3a⁴b)",
+        "Write linear model from word problem",
+        "Find inverse function and evaluate"
+      ],
+      "cognitive_load": "Connect concepts, multi-step execution"
+    },
+    "hard": {
+      "description": "4+ steps, multi-concept integration. Requires problem decomposition, multiple representations, or novel application.",
+      "examples": [
+        "Function composition with tables, graphs, and algebra",
+        "Exponential model with logarithmic solve",
+        "Error analysis requiring rule identification"
+      ],
+      "cognitive_load": "Analyze, synthesize, evaluate across representations"
+    }
+  }
+}
