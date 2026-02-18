@@ -193,6 +193,9 @@
         <div class="test-grid" id="testGrid"></div>
 
         <div class="stats-bar" id="statsBar"></div>
+        <div style="text-align:center; margin: 16px 0 8px;">
+            <button class="nav-btn secondary" onclick="exportScores()">📤 Send Scores to Dad</button>
+        </div>
         <div class="footer">Built with 💪🏾 by Dad · Motor City Math</div>
     </div>
 
@@ -525,6 +528,37 @@
         buildTestGrid();
         buildStats();
     });
+
+    function exportScores() {
+        var data = {
+            version: 1,
+            exported: new Date().toISOString(),
+            student: 'Kai',
+            mcm_scores: null,
+            mcm_srs: null,
+            standardScores: null
+        };
+
+        try { data.mcm_scores = JSON.parse(localStorage.getItem('mcm_scores') || 'null'); } catch(e) {}
+        try { data.mcm_srs = JSON.parse(localStorage.getItem('mcm_srs') || 'null'); } catch(e) {}
+        try { data.standardScores = JSON.parse(localStorage.getItem('standardScores') || 'null'); } catch(e) {}
+
+        if (!data.mcm_scores && !data.mcm_srs) {
+            alert('No scores to export yet. Take a test first!');
+            return;
+        }
+
+        var json = JSON.stringify(data, null, 2);
+        var blob = new Blob([json], { type: 'application/json' });
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = 'kai-scores-' + new Date().toISOString().slice(0, 10) + '.json';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    }
     </script>
 </body>
 </html>

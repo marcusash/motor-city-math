@@ -183,7 +183,12 @@
         <div style="text-align:center; margin-top:24px;">
             <a href="index.html" style="color:var(--accent-blue); font-weight:600; text-decoration:none; font-size:0.95em;">← Back to Dashboard</a>
         </div>
-        <div style="text-align:center; color:var(--border-default); font-size:0.85em; padding:20px 0 10px;">Built with 💪🏾 by Dad · Motor City Math</div>
+        <div style="text-align:center; margin: 16px 0 8px;">
+            <button class="nav-btn secondary" onclick="document.getElementById('importFile').click()">📥 Import Kai's Scores</button>
+            <input type="file" id="importFile" accept=".json" style="display:none" onchange="importScores(this)">
+            <div id="importStatus" style="margin-top:8px; font-size:0.9em; color:var(--text-secondary);"></div>
+        </div>
+        <div style="text-align:center; color:var(--text-secondary); font-size:0.85em; padding:20px 0 10px;">Built with 💪🏾 by Dad · Motor City Math</div>
 
     </div>
 
@@ -577,6 +582,88 @@
         buildTimeChart(completed);
         buildStandards();
     });
+
+    function importScores(input) {
+        var file = input.files[0];
+        if (!file) return;
+
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            try {
+                var data = JSON.parse(e.target.result);
+            } catch(err) {
+                document.getElementById('importStatus').textContent = '❌ Invalid file — not valid JSON.';
+                return;
+            }
+
+            if (!data.mcm_scores && !data.mcm_srs) {
+                document.getElementById('importStatus').textContent = '❌ No score data found in this file.';
+                return;
+            }
+
+            var imported = 0;
+
+            // Merge mcm_scores (keep newest timestamp per test)
+            if (data.mcm_scores) {
+                var existing = {};
+                try { existing = JSON.parse(localStorage.getItem('mcm_scores') || '{}'); } catch(e) {}
+
+                var keys = Object.keys(data.mcm_scores);
+                for (var i = 0; i < keys.length; i++) {
+                    var key = keys[i];
+                    var incoming = data.mcm_scores[key];
+                    var current = existing[key];
+
+                    if (!current || !current.timestamp || (incoming.timestamp && incoming.timestamp > current.timestamp)) {
+                        existing[key] = incoming;
+                        imported++;
+                    }
+                }
+                localStorage.setItem('mcm_scores', JSON.stringify(existing));
+            }
+
+            // Merge standardScores (additive — sum correct/total per standard)
+            if (data.standardScores) {
+                var existingStd = {};
+                try { existingStd = JSON.parse(localStorage.getItem('standardScores') || '{}'); } catch(e) {}
+
+                var skeys = Object.keys(data.standardScores);
+                for (var j = 0; j < skeys.length; j++) {
+                    var sid = skeys[j];
+                    var inc = data.standardScores[sid];
+                    if (!existingStd[sid]) {
+                        existingStd[sid] = inc;
+                    } else {
+                        existingStd[sid].correct = (existingStd[sid].correct || 0) + (inc.correct || 0);
+                        existingStd[sid].total = (existingStd[sid].total || 0) + (inc.total || 0);
+                        if (inc.name) existingStd[sid].name = inc.name;
+                    }
+                }
+                localStorage.setItem('standardScores', JSON.stringify(existingStd));
+            }
+
+            // Replace mcm_srs if incoming is newer (by session count)
+            if (data.mcm_srs && data.mcm_srs.version === 1) {
+                var existingSrs = null;
+                try { existingSrs = JSON.parse(localStorage.getItem('mcm_srs')); } catch(e) {}
+
+                if (!existingSrs || !existingSrs.sessions ||
+                    (data.mcm_srs.sessions && data.mcm_srs.sessions.length > (existingSrs.sessions || []).length)) {
+                    localStorage.setItem('mcm_srs', JSON.stringify(data.mcm_srs));
+                }
+            }
+
+            var dateStr = data.exported ? new Date(data.exported).toLocaleDateString() : 'unknown date';
+            document.getElementById('importStatus').textContent =
+                '✅ Imported ' + imported + ' test score' + (imported !== 1 ? 's' : '') + ' from ' + dateStr;
+
+            input.value = '';
+
+            setTimeout(function() { location.reload(); }, 1500);
+        };
+
+        reader.readAsText(file);
+    }
     </script>
 </body>
 </html>
