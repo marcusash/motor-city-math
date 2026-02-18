@@ -87,7 +87,7 @@ for (const filePath of filesToCheck) {
     var bannedCdn = 'polyfill' + '.io';
     if (content.includes(bannedCdn)) {
         // Skip self (this file contains the string as a check target)
-        if (!fileName.includes('pre-commit-check')) {
+        if (!fileName.includes('pre-commit-check') && !fileName.includes('f-validation')) {
             block(fileName, 'Contains ' + bannedCdn + ' reference — compromised CDN (B-F4)');
         }
     }
@@ -124,6 +124,9 @@ for (const filePath of filesToCheck) {
     if (!fs.existsSync(filePath)) continue;
     const content = fs.readFileSync(filePath, 'utf-8');
     const fileName = path.relative(ROOT, filePath);
+
+    // Skip test/validation files (contain CDN strings as check targets)
+    if (fileName.includes('f-validation')) continue;
 
     for (const check of cdnChecks) {
         if (check.pattern.test(content)) {
