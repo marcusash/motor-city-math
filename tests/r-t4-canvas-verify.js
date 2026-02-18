@@ -70,7 +70,7 @@ check("Q6: x=\u00B12.236", mvp.indexOf("2.236, -2.236") !== -1);
 check("Q7: x=2", mvp.indexOf("'q7_x', 2") !== -1);
 check("Q8: x=5.667", mvp.indexOf("'q8_x', 5.667") !== -1);
 check("Q9: x=3", mvp.indexOf("'q9_x', 3") !== -1);
-check("Q10: x=\u00B12.236", mvp.indexOf("'q10_x1', 'q10_x2', 2.236") !== -1);
+check("Q10: x=\u00B12.449", mvp.indexOf("'q10_x1', 'q10_x2', 2.449") !== -1);
 check("Q11: x=9", mvp.indexOf("'q11_x', 9") !== -1);
 check("Q14: answer B", mvp.indexOf("=== 'B'") !== -1);
 check("Q15: t=20", mvp.indexOf("'q15_t', 20") !== -1);

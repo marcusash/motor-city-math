@@ -171,19 +171,19 @@
     },
     {
       "id": "q10",
-      "question": "4 · 3^(x² - 2) = 108",
+      "question": "4 · 3^(x² - 3) = 108",
       "section": "B",
       "standard": "W3",
       "type": "exponential",
-      "answers": { "x1": 2.236, "x2": -2.236 },
+      "answers": { "x1": 2.449, "x2": -2.449 },
       "hint": "Divide by 4 first, then rewrite 27 as a power of 3. Set exponents equal.",
-      "answer_display": "x = ±√5 ≈ ±2.236",
+      "answer_display": "x = ±√6 ≈ ±2.449",
       "solution_steps": [
-        "Step 1: Divide by 4: 3^(x² − 2) = 27.",
-        "Step 2: Rewrite: 3^(x² − 2) = 3³.",
-        "Step 3: Set exponents equal: x² − 2 = 3 → x² = 5.",
-        "Step 4: x = ±√5 ≈ ±2.236.",
-        "Step 5: Check: 4·3^(5−2) = 4·27 = 108 ✓"
+        "Step 1: Divide by 4: 3^(x² − 3) = 27.",
+        "Step 2: Rewrite: 3^(x² − 3) = 3³.",
+        "Step 3: Set exponents equal: x² − 3 = 3 → x² = 6.",
+        "Step 4: x = ±√6 ≈ ±2.449.",
+        "Step 5: Check: 4·3^(6−3) = 4·27 = 108 ✓"
       ]
     },
     {
