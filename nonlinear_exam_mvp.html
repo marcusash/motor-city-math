@@ -954,9 +954,9 @@
     function getCanvasColors() {
         var cs = getComputedStyle(document.documentElement);
         return {
-            grid: cs.getPropertyValue('--border-subtle').trim() || '#ddd',
-            axis: cs.getPropertyValue('--text-primary').trim() || '#000',
-            label: cs.getPropertyValue('--text-primary').trim() || '#000',
+            grid: cs.getPropertyValue('--border-subtle').trim() || '#E2E5EF',
+            axis: cs.getPropertyValue('--text-primary').trim() || '#1A1F36',
+            label: cs.getPropertyValue('--text-primary').trim() || '#1A1F36',
             blue: cs.getPropertyValue('--accent-blue').trim() || '#1D42BA',
             correct: cs.getPropertyValue('--color-correct').trim() || '#1B7D3A',
             incorrect: cs.getPropertyValue('--color-incorrect').trim() || '#C8102E',
@@ -1311,7 +1311,7 @@
         var total = 15;
         var pct = Math.round((score / total) * 100);
         var grade = pct >= 92 ? 4 : pct >= 82 ? 3 : pct >= 70 ? 2 : 1;
-        var gradeColors = { 4: '#1D42BA', 3: '#6C6E70', 2: '#E8A317', 1: '#C8102E' };
+        var gradeColors = { 4: '#1D42BA', 3: '#5E6378', 2: '#E8A317', 1: '#C8102E' };
 
         // Voice guide result message
         var msg;
