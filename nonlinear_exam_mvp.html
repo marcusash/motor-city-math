@@ -954,8 +954,8 @@
     // Canvas drawing constants — always white background, navy/gray lines
     var CANVAS = {
         bg:        '#FFFFFF',
-        gridMajor: '#D8DCE6',
-        gridMinor: '#EDF0F5',
+        gridMajor: '#B0B8C8',
+        gridMinor: '#D0D5E0',
         axis:      '#002D62',
         label:     '#002D62',
         blue:      '#1D42BA',
@@ -973,8 +973,8 @@
 
         var step = d.pw / 32; // pixels per unit
 
-        // Minor grid lines (every 1 unit) — subtle, uses --grid-minor token
-        ctx.strokeStyle = CANVAS.gridMinor; ctx.lineWidth = 0.5;
+        // Minor grid lines (every 1 unit)
+        ctx.strokeStyle = CANVAS.gridMinor; ctx.lineWidth = 1;
         for (var i = 0; i <= 32; i++) {
             var x = d.ml + i * step;
             ctx.beginPath(); ctx.moveTo(x, d.mt); ctx.lineTo(x, d.mt + d.ph); ctx.stroke();
@@ -982,8 +982,8 @@
             ctx.beginPath(); ctx.moveTo(d.ml, y); ctx.lineTo(d.ml + d.pw, y); ctx.stroke();
         }
 
-        // Major grid lines (every 5 units) — visible
-        ctx.strokeStyle = CANVAS.gridMajor; ctx.lineWidth = 1;
+        // Major grid lines (every 5 units)
+        ctx.strokeStyle = CANVAS.gridMajor; ctx.lineWidth = 1.5;
         for (var i2 = -15; i2 <= 15; i2 += 5) {
             if (i2 === 0) continue;
             var mx = d.ml + (i2 + 16) * step;
@@ -1022,10 +1022,10 @@
         drawGrid(canvasId);
         var ctx = d.ctx;
 
-        // Draw asymptotes (dashed blue)
+        // Draw asymptotes (dashed red — distinct from navy axes)
         ctx.save();
         ctx.setLineDash([8, 6]);
-        ctx.strokeStyle = CANVAS.blue; ctx.lineWidth = 2;
+        ctx.strokeStyle = CANVAS.incorrect; ctx.lineWidth = 2.5;
         d.asymptotes.vertical.forEach(function(gx) {
             var sx = d.ml + ((gx + 16) / 32) * d.pw;
             ctx.beginPath(); ctx.moveTo(sx, d.mt); ctx.lineTo(sx, d.mt + d.ph); ctx.stroke();
