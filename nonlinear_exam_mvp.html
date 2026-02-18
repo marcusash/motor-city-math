@@ -614,7 +614,7 @@
             <!-- Q10 -->
             <div class="question-card">
                 <div class="question-number">Question 10</div>
-                <p>Solve: \( 4 \cdot 3^{x^2 - 2} = 108 \)</p>
+                <p>Solve: \( 4 \cdot 3^{x^2 - 3} = 108 \)</p>
                 <textarea class="work-area" placeholder="Show your work..."></textarea>
                 <div class="input-group">
                     <label>x₁ =</label>
@@ -630,15 +630,15 @@
                 <button onclick="showHintLayer(10,2)">SHOW ANSWER</button>
             </div>
             <div class="hint-layer layer2" id="hint10_2">
-                <p>x = ±√5 ≈ ±2.236</p>
+                <p>x = ±√6 ≈ ±2.449</p>
                 <button onclick="showHintLayer(10,3)">SHOW SOLUTION</button>
             </div>
             <div class="hint-layer layer3" id="hint10_3">
-                <p>Step 1: Divide by 4: 3^(x² − 2) = 27.</p>
-                <p>Step 2: Rewrite: 3^(x² − 2) = 3³.</p>
-                <p>Step 3: Set exponents equal: x² − 2 = 3 → x² = 5.</p>
-                <p>Step 4: x = ±√5 ≈ ±2.236.</p>
-                <p>Step 5: Check: 4·3^(5−2) = 4·27 = 108 ✓</p>
+                <p>Step 1: Divide by 4: 3^(x² − 3) = 27.</p>
+                <p>Step 2: Rewrite: 3^(x² − 3) = 3³.</p>
+                <p>Step 3: Set exponents equal: x² − 3 = 3 → x² = 6.</p>
+                <p>Step 4: x = ±√6 ≈ ±2.449.</p>
+                <p>Step 5: Check: 4·3^(6−3) = 4·27 = 108 ✓</p>
             </div>
 
             <!-- Q11 -->
@@ -1264,11 +1264,11 @@
         if (q9ok) score++;
         showFeedback(9, q9ok, q9ok ? '🔥 Square both sides. Done.' : 'Square both sides to remove √.');
 
-        // Q10: ± 2.236
-        var q10ok = checkPlusMinus('q10_x1', 'q10_x2', 2.236, -2.236, 0.01);
+        // Q10: ± 2.449
+        var q10ok = checkPlusMinus('q10_x1', 'q10_x2', 2.449, -2.449, 0.01);
         results.push(q10ok);
         if (q10ok) score++;
-        showFeedback(10, q10ok, q10ok ? '🔥 ±√5 again. Pattern.' : 'Divide by 4, rewrite 27 as 3³.');
+        showFeedback(10, q10ok, q10ok ? '🔥 ±√6. Different from Q6.' : 'Divide by 4, rewrite 27 as 3³.');
 
         // Q11: x = 9
         var q11ok = checkSingle('q11_x', 9, 0.01);
@@ -1464,7 +1464,7 @@
             '<p><strong>Q7:</strong> x = 2</p>' +
             '<p><strong>Q8:</strong> x = 17/3 ≈ 5.667</p>' +
             '<p><strong>Q9:</strong> x = 3</p>' +
-            '<p><strong>Q10:</strong> x = ±√5 ≈ ±2.236</p>' +
+            '<p><strong>Q10:</strong> x = ±√6 ≈ ±2.449</p>' +
             '<p><strong>Q11:</strong> x = 9</p>' +
             '<h3>Section C</h3>' +
             '<p><strong>Q12:</strong> Vertex: (−2, 5). Domain: all reals. Range: y ≤ 5. Key points: (−4,1), (−3,4), (−2,5), (−1,4), (0,1).</p>' +

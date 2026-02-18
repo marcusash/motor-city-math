@@ -463,7 +463,7 @@ function initTimer(opts) {
         btn.id = 'arenaToggle';
         btn.setAttribute('aria-label', 'Toggle Arena Mode');
         btn.title = 'Arena Mode';
-        btn.textContent = '🏟️';
+        btn.textContent = '🏀'; // basketball — Arena Mode toggle
         btn.onclick = function() {
             document.body.classList.toggle('arena-mode');
             var isArena = document.body.classList.contains('arena-mode');
