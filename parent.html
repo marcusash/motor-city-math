@@ -622,24 +622,9 @@
                 localStorage.setItem('mcm_scores', JSON.stringify(existing));
             }
 
-            // Merge standardScores (additive — sum correct/total per standard)
+            // Replace standardScores (imported data is the complete picture from Kai's browser)
             if (data.standardScores) {
-                var existingStd = {};
-                try { existingStd = JSON.parse(localStorage.getItem('standardScores') || '{}'); } catch(e) {}
-
-                var skeys = Object.keys(data.standardScores);
-                for (var j = 0; j < skeys.length; j++) {
-                    var sid = skeys[j];
-                    var inc = data.standardScores[sid];
-                    if (!existingStd[sid]) {
-                        existingStd[sid] = inc;
-                    } else {
-                        existingStd[sid].correct = (existingStd[sid].correct || 0) + (inc.correct || 0);
-                        existingStd[sid].total = (existingStd[sid].total || 0) + (inc.total || 0);
-                        if (inc.name) existingStd[sid].name = inc.name;
-                    }
-                }
-                localStorage.setItem('standardScores', JSON.stringify(existingStd));
+                localStorage.setItem('standardScores', JSON.stringify(data.standardScores));
             }
 
             // Replace mcm_srs if incoming is newer (by session count)
