@@ -822,13 +822,16 @@
             const plotWidth = width - marginLeft - marginRight;
             const plotHeight = height - marginTop - marginBottom;
             
+            // Canvas drawing constants — always white, navy/gray lines
+            var CANVAS = { bg: '#FFFFFF', gridMajor: '#D8DCE6', gridMinor: '#EDF0F5', axis: '#002D62', label: '#002D62', blue: '#1D42BA', correct: '#1B7D3A', incorrect: '#C8102E', pointStroke: '#FFFFFF' };
+
             function drawGrid() {
                 ctx.clearRect(0, 0, width, height);
-                ctx.fillStyle = '#FFFFFF';
+                ctx.fillStyle = CANVAS.bg;
                 ctx.fillRect(0, 0, width, height);
                 
                 // Draw grid (22x22 for x: -11 to 11, y: -11 to 11)
-                ctx.strokeStyle = '#ddd';
+                ctx.strokeStyle = CANVAS.gridMajor;
                 ctx.lineWidth = 1;
                 
                 // Vertical lines (x-axis: -11 to 11, 22 divisions)
@@ -850,7 +853,7 @@
                 }
                 
                 // Draw axes (darker)
-                ctx.strokeStyle = '#000';
+                ctx.strokeStyle = CANVAS.axis;
                 ctx.lineWidth = 2;
                 
                 // X-axis (at y=0, which is middle of plot)
@@ -868,7 +871,7 @@
                 ctx.stroke();
                 
                 // Label axes
-                ctx.fillStyle = '#000';
+                ctx.fillStyle = CANVAS.label;
                 ctx.font = '16px Arial';
                 ctx.fillText('x', width - 25, xAxisY - 10);
                 ctx.fillText('y', yAxisX + 10, marginTop + 5);

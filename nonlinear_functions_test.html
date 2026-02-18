@@ -516,6 +516,9 @@
         // Store graph data for each canvas
         const graphData = {};
 
+        // Canvas drawing constants — always white, navy/gray lines
+        var CANVAS = { bg: '#FFFFFF', gridMajor: '#D8DCE6', gridMinor: '#EDF0F5', axis: '#002D62', label: '#002D62', blue: '#1D42BA', correct: '#1B7D3A', incorrect: '#C8102E', pointStroke: '#FFFFFF' };
+
         // Initialize all interactive graph canvases
         function initGraph(canvasId) {
             const canvas = document.getElementById(canvasId);
@@ -551,11 +554,11 @@
             
             function drawGrid() {
                 ctx.clearRect(0, 0, width, height);
-                ctx.fillStyle = '#FFFFFF';
+                ctx.fillStyle = CANVAS.bg;
                 ctx.fillRect(0, 0, width, height);
                 
                 // Draw grid (32x32 for x: -16 to 16, y: -16 to 16)
-                ctx.strokeStyle = '#ddd';
+                ctx.strokeStyle = CANVAS.gridMajor;
                 ctx.lineWidth = 1;
                 
                 // Vertical lines
@@ -577,7 +580,7 @@
                 }
                 
                 // Draw axes (darker)
-                ctx.strokeStyle = '#000';
+                ctx.strokeStyle = CANVAS.axis;
                 ctx.lineWidth = 2;
                 
                 // X-axis (at y=0, which is middle of plot)
@@ -595,7 +598,7 @@
                 ctx.stroke();
                 
                 // Label axes
-                ctx.fillStyle = '#000';
+                ctx.fillStyle = CANVAS.label;
                 ctx.font = '16px Arial';
                 ctx.fillText('x', width - 25, xAxisY - 10);
                 ctx.fillText('y', yAxisX + 10, marginTop + 5);
@@ -679,11 +682,11 @@
             
             // Clear and redraw grid
             ctx.clearRect(0, 0, data.width, data.height);
-            ctx.fillStyle = '#FFFFFF';
+            ctx.fillStyle = CANVAS.bg;
             ctx.fillRect(0, 0, data.width, data.height);
             
             // Draw grid
-            ctx.strokeStyle = '#ddd';
+            ctx.strokeStyle = CANVAS.gridMajor;
             ctx.lineWidth = 1;
             
             for (let i = 0; i <= 32; i++) {
@@ -703,7 +706,7 @@
             }
             
             // Draw axes
-            ctx.strokeStyle = '#000';
+            ctx.strokeStyle = CANVAS.axis;
             ctx.lineWidth = 2;
             
             const xAxisY = data.marginTop + data.plotHeight / 2;
@@ -719,7 +722,7 @@
             ctx.stroke();
             
             // Labels
-            ctx.fillStyle = '#000';
+            ctx.fillStyle = CANVAS.label;
             ctx.font = '16px Arial';
             ctx.fillText('x', data.width - 25, xAxisY - 10);
             ctx.fillText('y', yAxisX + 10, data.marginTop + 5);
@@ -1079,11 +1082,11 @@
             
             function drawGrid() {
                 ctx.clearRect(0, 0, width, height);
-                ctx.fillStyle = '#FFFFFF';
+                ctx.fillStyle = CANVAS.bg;
                 ctx.fillRect(0, 0, width, height);
                 
                 // Draw grid
-                ctx.strokeStyle = '#ddd';
+                ctx.strokeStyle = CANVAS.gridMajor;
                 ctx.lineWidth = 1;
                 
                 for (let i = 0; i <= 32; i++) {
@@ -1103,7 +1106,7 @@
                 }
                 
                 // Draw axes
-                ctx.strokeStyle = '#000';
+                ctx.strokeStyle = CANVAS.axis;
                 ctx.lineWidth = 2;
                 
                 const xAxisY = marginTop + plotHeight / 2;
@@ -1119,7 +1122,7 @@
                 ctx.stroke();
                 
                 // Labels
-                ctx.fillStyle = '#000';
+                ctx.fillStyle = CANVAS.label;
                 ctx.font = '16px Arial';
                 ctx.fillText('x', width - 25, xAxisY - 10);
                 ctx.fillText('y', yAxisX + 10, marginTop + 5);
@@ -1197,11 +1200,11 @@
             
             function drawGrid() {
                 ctx.clearRect(0, 0, width, height);
-                ctx.fillStyle = '#FFFFFF';
+                ctx.fillStyle = CANVAS.bg;
                 ctx.fillRect(0, 0, width, height);
                 
                 // Draw grid
-                ctx.strokeStyle = '#ddd';
+                ctx.strokeStyle = CANVAS.gridMajor;
                 ctx.lineWidth = 1;
                 
                 for (let i = 0; i <= 32; i++) {
@@ -1221,7 +1224,7 @@
                 }
                 
                 // Draw axes
-                ctx.strokeStyle = '#000';
+                ctx.strokeStyle = CANVAS.axis;
                 ctx.lineWidth = 2;
                 
                 const xAxisY = marginTop + plotHeight / 2;
@@ -1237,7 +1240,7 @@
                 ctx.stroke();
                 
                 // Labels
-                ctx.fillStyle = '#000';
+                ctx.fillStyle = CANVAS.label;
                 ctx.font = '16px Arial';
                 ctx.fillText('x', width - 25, xAxisY - 10);
                 ctx.fillText('y', yAxisX + 10, marginTop + 5);

@@ -382,6 +382,9 @@
             initTextareaResize();
         });
 
+        // Canvas drawing constants — always white, navy/gray lines
+        var CANVAS = { bg: '#FFFFFF', gridMajor: '#D8DCE6', gridMinor: '#EDF0F5', axis: '#002D62', label: '#002D62', blue: '#1D42BA', correct: '#1B7D3A', incorrect: '#C8102E', pointStroke: '#FFFFFF' };
+
         // Chart 1 - Interactive plotting grid for coffee gift card
         (function() {
             const canvas = document.getElementById('chart1');
@@ -402,9 +405,9 @@
             
             function drawGrid() {
                 ctx.clearRect(0, 0, width, height);
-                ctx.fillStyle = '#FFFFFF';
+                ctx.fillStyle = CANVAS.bg;
                 ctx.fillRect(0, 0, width, height);
-                ctx.strokeStyle = '#ddd';
+                ctx.strokeStyle = CANVAS.gridMajor;
                 ctx.lineWidth = 1;
                 
                 // Draw vertical grid lines
@@ -426,7 +429,7 @@
                 }
                 
                 // Draw axes
-                ctx.strokeStyle = '#000';
+                ctx.strokeStyle = CANVAS.axis;
                 ctx.lineWidth = 2;
                 ctx.beginPath();
                 ctx.moveTo(marginLeft, marginTop);
@@ -435,7 +438,7 @@
                 ctx.stroke();
                 
                 // Label axes
-                ctx.fillStyle = '#000';
+                ctx.fillStyle = CANVAS.label;
                 ctx.font = '14px Arial';
                 ctx.textAlign = 'center';
                 
@@ -602,9 +605,9 @@
             
             function drawGrid() {
                 ctx.clearRect(0, 0, width, height);
-                ctx.fillStyle = '#FFFFFF';
+                ctx.fillStyle = CANVAS.bg;
                 ctx.fillRect(0, 0, width, height);
-                ctx.strokeStyle = '#ddd';
+                ctx.strokeStyle = CANVAS.gridMajor;
                 ctx.lineWidth = 1;
                 
                 // Draw vertical grid lines
@@ -626,7 +629,7 @@
                 }
                 
                 // Draw axes
-                ctx.strokeStyle = '#000';
+                ctx.strokeStyle = CANVAS.axis;
                 ctx.lineWidth = 2;
                 ctx.beginPath();
                 ctx.moveTo(marginLeft, marginTop);
@@ -635,7 +638,7 @@
                 ctx.stroke();
                 
                 // Label axes
-                ctx.fillStyle = '#000';
+                ctx.fillStyle = CANVAS.label;
                 ctx.font = '14px Arial';
                 ctx.textAlign = 'center';
                 
