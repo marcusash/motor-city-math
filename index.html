@@ -139,9 +139,16 @@
 
         .footer { text-align: center; color: var(--border-default); font-size: 0.85em; padding: 20px 0 10px; }
         .nav-btn {
-            display: inline-block; padding: 12px 32px; color: var(--text-inverse);
+            display: inline-block; padding: 12px 32px;
             font-weight: 700; font-size: 1.05rem; border-radius: 6px; text-decoration: none;
+            border: 2px solid transparent; transition: background 0.15s, border-color 0.15s;
         }
+        .nav-btn.primary { background: var(--accent-red); color: var(--text-inverse); }
+        .nav-btn.primary:hover { background: #a00d24; }
+        .nav-btn.secondary { background: transparent; color: var(--accent-blue); border-color: var(--accent-blue); }
+        .nav-btn.secondary:hover { background: rgba(29,66,186,0.06); }
+        .nav-btn.ghost { background: transparent; color: var(--accent-navy); border-color: var(--border-default); }
+        .nav-btn.ghost:hover { border-color: var(--accent-blue); }
 
         @media (max-width: 768px) {
             .standards-grid { grid-template-columns: 1fr; }
@@ -180,10 +187,10 @@
         <ul class="study-list" id="studyList"></ul>
 
         <div style="text-align:center; margin: 20px 0; display:flex; justify-content:center; gap:12px; flex-wrap:wrap;">
-            <a href="practice.html" class="nav-btn" style="background:var(--accent-blue);">🏀 Practice Mode — 313 Questions</a>
-            <a href="test-builder.html" class="nav-btn" style="background:var(--accent-red);">🏗️ Test Builder</a>
-            <a href="test.html" class="nav-btn" style="background:var(--color-correct);">📝 Quick Test</a>
-            <a href="parent.html" class="nav-btn" style="background:var(--accent-navy);">📊 Parent View</a>
+            <a href="practice.html" class="nav-btn primary">🏀 Practice Mode — 313 Questions</a>
+            <a href="test-builder.html" class="nav-btn secondary">🏗️ Test Builder</a>
+            <a href="test.html" class="nav-btn secondary">📝 Quick Test</a>
+            <a href="parent.html" class="nav-btn ghost">📊 Parent View</a>
         </div>
 
         <div class="section-title">Quick Tests</div>

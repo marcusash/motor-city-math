@@ -26,10 +26,17 @@
         .section-title {
             color: var(--accent-navy);
             font-weight: 700;
-            font-size: 0.95em;
+            font-size: 1.15em;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin: 24px 0 10px;
+        }
+
+        .pistons-stripe {
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-red) 30%, var(--accent-blue) 50%, var(--accent-red) 70%);
+            border-radius: 2px;
+            margin: 16px 0 0;
         }
 
         /* Cards */
@@ -117,17 +124,16 @@
     <a href="#main" class="sr-only">Skip to content</a>
     <div class="container" role="main" id="main">
         <header>
-            <div style="display:flex; justify-content:space-between; align-items:center;">
-                <a href="index.html" class="back-link">← Back to Dashboard</a>
-            </div>
-            <h1>Parent Dashboard</h1>
-            <div class="subtitle">Motor City Math · Kai's Progress</div>
+            <a href="index.html" class="back-link">← Back to Dashboard</a>
+            <h1>Motor City Math</h1>
+            <div class="subtitle">Parent Dashboard · Kai's Progress</div>
+            <div class="pistons-stripe"></div>
         </header>
 
         <div id="emptyState" class="empty-state" style="display:none;">
             <div class="icon">🏀</div>
-            <p><strong>No tests taken yet.</strong></p>
-            <p>Kai hasn't submitted any scored tests.</p>
+            <p><strong>No scores yet.</strong></p>
+            <p>Kai hasn't taken any scored tests yet.</p>
             <a href="index.html" class="submit-btn" style="display:inline-block; margin-top:16px; text-decoration:none;">← Take a Test</a>
         </div>
 
@@ -173,6 +179,11 @@
             <div class="section-title">Standards</div>
             <div class="std-grid" id="standardsGrid"></div>
         </div>
+
+        <div style="text-align:center; margin-top:24px;">
+            <a href="index.html" style="color:var(--accent-blue); font-weight:600; text-decoration:none; font-size:0.95em;">← Back to Dashboard</a>
+        </div>
+        <div style="text-align:center; color:var(--border-default); font-size:0.85em; padding:20px 0 10px;">Built with 💪🏾 by Dad · Motor City Math</div>
 
     </div>
 
