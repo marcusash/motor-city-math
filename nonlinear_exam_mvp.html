@@ -11,16 +11,38 @@
     <link rel="stylesheet" href="shared/styles.css">
     <link rel="stylesheet" href="shared/print.css">
     <style>
-        .notation-bar {
-            font-size: 0.85rem;
-            background: var(--accent-navy);
-            color: var(--text-inverse);
-            padding: 8px 16px;
-            position: sticky;
-            top: 0;
-            z-index: 10;
-            text-align: center;
-            letter-spacing: 0.3px;
+        .notation-card {
+            background: var(--bg-card);
+            border: 2px solid var(--accent-blue);
+            border-left: 5px solid var(--accent-blue);
+            border-radius: 6px;
+            padding: 16px 20px;
+            margin: 24px 0;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        .notation-card .notation-title {
+            font-weight: 700;
+            color: var(--accent-blue);
+            font-size: 1em;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .notation-card code {
+            background: var(--bg-input);
+            border: 1px solid var(--border-default);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.9em;
+            font-weight: 600;
+            color: var(--accent-navy);
+        }
+        .notation-card .decimal-note {
+            display: block;
+            margin-top: 8px;
+            font-weight: 600;
+            color: var(--accent-red);
         }
         .section-divider {
             text-align: center;
@@ -258,7 +280,7 @@
         }
 
         @media print {
-            .notation-bar { display: none; }
+            .notation-card { border-color: #000 !important; }
             .section-divider {
                 border: 2px solid #000 !important;
                 background: white !important;
@@ -275,10 +297,6 @@
 </head>
 <body>
     <a href="#main" class="sr-only">Skip to content</a>
-    <div class="notation-bar">
-        <strong>Typing math?</strong> <code>^</code> for exponents (x^2) · <code>sqrt()</code> for √ · <code>pi</code> for π · Decimals OK (2.236 instead of √5)
-    </div>
-
     <div class="container" role="main" id="main">
         <div class="print-header">
             <strong>Algebra 2: Nonlinear Functions Exam</strong><br>
@@ -288,6 +306,14 @@
             <h1>Algebra 2: Nonlinear Functions Exam</h1>
             <div class="subtitle">Unit 2 · Standards W2 &amp; W3 · 15 Questions · ~60 min</div>
         </header>
+
+        <div class="notation-card">
+            <div class="notation-title">📝 How to Enter Answers</div>
+            <code>^</code> for exponents → type <code>x^2</code> for x² · 
+            <code>sqrt()</code> for √ → type <code>sqrt(5)</code> for √5 · 
+            <code>pi</code> for π
+            <span class="decimal-note">⚠️ Round all decimal answers to 2 decimal places (e.g. type 2.24 not √5)</span>
+        </div>
 
         <form id="testForm" onsubmit="return false;">
 
@@ -944,40 +970,51 @@
         var c = getCanvasColors();
         ctx.clearRect(0, 0, d.w, d.h);
 
-        // Grid lines
-        ctx.strokeStyle = c.grid; ctx.lineWidth = 1;
+        var step = d.pw / 32; // pixels per unit
+
+        // Minor grid lines (every 1 unit) — very subtle
+        ctx.strokeStyle = c.grid; ctx.lineWidth = 0.3;
+        ctx.globalAlpha = 0.35;
         for (var i = 0; i <= 32; i++) {
-            var x = d.ml + (i * d.pw) / 32;
+            var x = d.ml + i * step;
             ctx.beginPath(); ctx.moveTo(x, d.mt); ctx.lineTo(x, d.mt + d.ph); ctx.stroke();
-        }
-        for (var j = 0; j <= 32; j++) {
-            var y = d.mt + (j * d.ph) / 32;
+            var y = d.mt + i * step;
             ctx.beginPath(); ctx.moveTo(d.ml, y); ctx.lineTo(d.ml + d.pw, y); ctx.stroke();
         }
+        ctx.globalAlpha = 1.0;
 
-        // Axes
+        // Major grid lines (every 5 units) — visible
+        ctx.strokeStyle = c.grid; ctx.lineWidth = 1;
+        for (var i2 = -15; i2 <= 15; i2 += 5) {
+            if (i2 === 0) continue;
+            var mx = d.ml + (i2 + 16) * step;
+            ctx.beginPath(); ctx.moveTo(mx, d.mt); ctx.lineTo(mx, d.mt + d.ph); ctx.stroke();
+            var my = d.mt + (16 - i2) * step;
+            ctx.beginPath(); ctx.moveTo(d.ml, my); ctx.lineTo(d.ml + d.pw, my); ctx.stroke();
+        }
+
+        // Axes (thicker, prominent)
         ctx.strokeStyle = c.axis; ctx.lineWidth = 2;
         var xAxisY = d.mt + d.ph / 2;
         var yAxisX = d.ml + d.pw / 2;
         ctx.beginPath(); ctx.moveTo(d.ml, xAxisY); ctx.lineTo(d.ml + d.pw, xAxisY); ctx.stroke();
         ctx.beginPath(); ctx.moveTo(yAxisX, d.mt); ctx.lineTo(yAxisX, d.mt + d.ph); ctx.stroke();
 
-        // Labels
-        ctx.fillStyle = c.label; ctx.font = '12px Arial'; ctx.textAlign = 'center';
-        for (var n = -16; n <= 16; n += 4) {
+        // Labels (every 5 units, larger bold font)
+        ctx.fillStyle = c.label; ctx.font = 'bold 14px Arial'; ctx.textAlign = 'center';
+        for (var n = -15; n <= 15; n += 5) {
             if (n === 0) continue;
-            var lx = d.ml + d.pw / 2 + (n * d.pw / 32);
-            ctx.fillText(n, lx, xAxisY + 18);
+            var lx = d.ml + d.pw / 2 + (n * step);
+            ctx.fillText(n, lx, xAxisY + 20);
         }
         ctx.textAlign = 'right';
-        for (var m = -16; m <= 16; m += 4) {
+        for (var m = -15; m <= 15; m += 5) {
             if (m === 0) continue;
-            var ly = d.mt + d.ph / 2 - (m * d.ph / 32);
-            ctx.fillText(m, yAxisX - 6, ly + 4);
+            var ly = d.mt + d.ph / 2 - (m * step);
+            ctx.fillText(m, yAxisX - 8, ly + 5);
         }
         ctx.textAlign = 'left';
-        ctx.font = '14px Arial';
-        ctx.fillText('0', yAxisX + 4, xAxisY + 16);
+        ctx.fillText('0', yAxisX + 6, xAxisY + 18);
     }
 
     function redrawGraph(canvasId) {
@@ -1462,3 +1499,106 @@
         <a href="parent.html" style="color:var(--accent-navy); font-weight:600;">📊 Parent View</a>
     </nav></body>
 </html>
+
+<body>
+    <div class="notation-bar">
+        <strong>Typing math?</strong> <code>^</code> for exponents (x^2) &middot; <code>sqrt()</code> for &radic; &middot; <code>pi</code> for &pi; &middot; Decimals OK (2.236 instead of &radic;5)
+    </div>
+    <div class="container">
+        <header>
+            <h1>Algebra 2: Nonlinear Functions Exam</h1>
+            <div class="subtitle">Unit 2 &middot; Standards W2 &amp; W3 &middot; 15 Questions &middot; ~60 min</div>
+        </header>
+        <form id="testForm">
+
+            <div class="section-divider">Section A &mdash; Identify &amp; Transform (Q1&ndash;Q3)</div>
+
+            <div class="question-card">
+                <div class="question-number">Question 1</div>
+                <div class="question-text">
+                    Identify the parent function and describe all transformations.<br><br>
+                    \(f(x) = 2(x - 3)^3 + 1\)
+                </div>
+                <div class="input-group">
+                    <label>Parent Function:</label>
+                    <select id="q1_parent" class="math-select">
+                        <option value="">&mdash; Choose parent function &mdash;</option>
+                        <option value="quadratic">y = x&sup2; (quadratic)</option>
+                        <option value="cubic">y = x&sup3; (cubic)</option>
+                        <option value="absolute">y = |x| (absolute value)</option>
+                        <option value="sqrt">y = &radic;x (square root)</option>
+                        <option value="exponential">y = b&#739; (exponential)</option>
+                        <option value="rational">y = 1/x (rational)</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label>Transformations:</label>
+                    <textarea id="q1_transformations" placeholder="Describe each transformation..."></textarea>
+                </div>
+            </div>
+            <div class="answer-feedback" id="feedback1"></div>
+            <div class="hint-container" id="hint1"></div>
+
+            <div class="question-card">
+                <div class="question-number">Question 2</div>
+                <div class="question-text">
+                    Identify the parent function, describe transformations, state domain &amp; range, and find x-intercepts.<br><br>
+                    \(f(x) = -|x + 4| + 3\)
+                </div>
+                <div class="input-group">
+                    <label>Parent Function:</label>
+                    <select id="q2_parent" class="math-select">
+                        <option value="">&mdash; Choose parent function &mdash;</option>
+                        <option value="quadratic">y = x&sup2; (quadratic)</option>
+                        <option value="cubic">y = x&sup3; (cubic)</option>
+                        <option value="absolute">y = |x| (absolute value)</option>
+                        <option value="sqrt">y = &radic;x (square root)</option>
+                        <option value="exponential">y = b&#739; (exponential)</option>
+                        <option value="rational">y = 1/x (rational)</option>
+                    </select>
+                </div>
+                <div class="inline-inputs">
+                    <label>x&#8321; = <input type="number" id="q2_x1" step="any" placeholder="e.g. -1"></label>
+                    <label>x&#8322; = <input type="number" id="q2_x2" step="any" placeholder="e.g. -7"></label>
+                </div>
+                <div class="input-group">
+                    <label>Transformations, Domain &amp; Range:</label>
+                    <textarea id="q2_transformations" placeholder="Transformations: ...
+Domain: ...
+Range: ..."></textarea>
+                </div>
+            </div>
+            <div class="answer-feedback" id="feedback2"></div>
+            <div class="hint-container" id="hint2"></div>
+
+            <div class="question-card">
+                <div class="question-number">Question 3</div>
+                <div class="question-text">
+                    Identify the parent function, describe transformations, state domain &amp; range, and find x-intercepts.<br><br>
+                    \(f(x) = 3(x - 1)^2 - 12\)
+                </div>
+                <div class="input-group">
+                    <label>Parent Function:</label>
+                    <select id="q3_parent" class="math-select">
+                        <option value="">&mdash; Choose parent function &mdash;</option>
+                        <option value="quadratic">y = x&sup2; (quadratic)</option>
+                        <option value="cubic">y = x&sup3; (cubic)</option>
+                        <option value="absolute">y = |x| (absolute value)</option>
+                        <option value="sqrt">y = &radic;x (square root)</option>
+                        <option value="exponential">y = b&#739; (exponential)</option>
+                        <option value="rational">y = 1/x (rational)</option>
+                    </select>
+                </div>
+                <div class="inline-inputs">
+                    <label>x&#8321; = <input type="number" id="q3_x1" step="any" placeholder="e.g. 3"></label>
+                    <label>x&#8322; = <input type="number" id="q3_x2" step="any" placeholder="e.g. -1"></label>
+                </div>
+                <div class="input-group">
+                    <label>Transformations, Domain &amp; Range:</label>
+                    <textarea id="q3_transformations" placeholder="Transformations: ...
+Domain: ...
+Range: ..."></textarea>
+                </div>
+            </div>
+            <div class="answer-feedback" id="feedback3"></div>
+            <div class="hint-container" id="hint3"></div>
