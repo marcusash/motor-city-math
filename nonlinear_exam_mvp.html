@@ -951,34 +951,30 @@
         drawGrid(canvasId);
     }
 
-    function getCanvasColors() {
-        var cs = getComputedStyle(document.documentElement);
-        return {
-            grid: cs.getPropertyValue('--border-subtle').trim() || '#E2E5EF',
-            gridMinor: cs.getPropertyValue('--grid-minor').trim() || '#EDF0F5',
-            axis: cs.getPropertyValue('--text-primary').trim() || '#1A1F36',
-            label: cs.getPropertyValue('--text-primary').trim() || '#1A1F36',
-            blue: cs.getPropertyValue('--accent-blue').trim() || '#1D42BA',
-            correct: cs.getPropertyValue('--color-correct').trim() || '#1B7D3A',
-            incorrect: cs.getPropertyValue('--color-incorrect').trim() || '#C8102E',
-            pointStroke: '#FFFFFF'
-        };
-    }
+    // Canvas drawing constants — always white background, navy/gray lines
+    var CANVAS = {
+        bg:        '#FFFFFF',
+        gridMajor: '#D8DCE6',
+        gridMinor: '#EDF0F5',
+        axis:      '#002D62',
+        label:     '#002D62',
+        blue:      '#1D42BA',
+        correct:   '#1B7D3A',
+        incorrect: '#C8102E',
+        pointStroke: '#FFFFFF'
+    };
 
     function drawGrid(canvasId) {
         var d = graphData[canvasId];
         var ctx = d.ctx;
-        var c = getCanvasColors();
         ctx.clearRect(0, 0, d.w, d.h);
-
-        // Always white canvas background ("whiteboard in dark room")
-        ctx.fillStyle = '#FFFFFF';
+        ctx.fillStyle = CANVAS.bg;
         ctx.fillRect(0, 0, d.w, d.h);
 
         var step = d.pw / 32; // pixels per unit
 
         // Minor grid lines (every 1 unit) — subtle, uses --grid-minor token
-        ctx.strokeStyle = c.gridMinor; ctx.lineWidth = 0.5;
+        ctx.strokeStyle = CANVAS.gridMinor; ctx.lineWidth = 0.5;
         for (var i = 0; i <= 32; i++) {
             var x = d.ml + i * step;
             ctx.beginPath(); ctx.moveTo(x, d.mt); ctx.lineTo(x, d.mt + d.ph); ctx.stroke();
@@ -987,7 +983,7 @@
         }
 
         // Major grid lines (every 5 units) — visible
-        ctx.strokeStyle = c.grid; ctx.lineWidth = 1;
+        ctx.strokeStyle = CANVAS.gridMajor; ctx.lineWidth = 1;
         for (var i2 = -15; i2 <= 15; i2 += 5) {
             if (i2 === 0) continue;
             var mx = d.ml + (i2 + 16) * step;
@@ -997,14 +993,14 @@
         }
 
         // Axes (thicker, prominent)
-        ctx.strokeStyle = c.axis; ctx.lineWidth = 2;
+        ctx.strokeStyle = CANVAS.axis; ctx.lineWidth = 2;
         var xAxisY = d.mt + d.ph / 2;
         var yAxisX = d.ml + d.pw / 2;
         ctx.beginPath(); ctx.moveTo(d.ml, xAxisY); ctx.lineTo(d.ml + d.pw, xAxisY); ctx.stroke();
         ctx.beginPath(); ctx.moveTo(yAxisX, d.mt); ctx.lineTo(yAxisX, d.mt + d.ph); ctx.stroke();
 
         // Labels (every 5 units, larger bold font)
-        ctx.fillStyle = c.label; ctx.font = 'bold 14px Arial'; ctx.textAlign = 'center';
+        ctx.fillStyle = CANVAS.label; ctx.font = 'bold 14px Arial'; ctx.textAlign = 'center';
         for (var n = -15; n <= 15; n += 5) {
             if (n === 0) continue;
             var lx = d.ml + d.pw / 2 + (n * step);
@@ -1025,12 +1021,11 @@
         if (!d) return;
         drawGrid(canvasId);
         var ctx = d.ctx;
-        var c = getCanvasColors();
 
         // Draw asymptotes (dashed blue)
         ctx.save();
         ctx.setLineDash([8, 6]);
-        ctx.strokeStyle = c.blue; ctx.lineWidth = 2;
+        ctx.strokeStyle = CANVAS.blue; ctx.lineWidth = 2;
         d.asymptotes.vertical.forEach(function(gx) {
             var sx = d.ml + ((gx + 16) / 32) * d.pw;
             ctx.beginPath(); ctx.moveTo(sx, d.mt); ctx.lineTo(sx, d.mt + d.ph); ctx.stroke();
@@ -1047,7 +1042,7 @@
                 ? function(x) { return -(x + 2) * (x + 2) + 5; }
                 : function(x) { return Math.abs(x - 1) < 0.05 ? null : 3 / (x - 1) - 2; };
             ctx.save();
-            ctx.strokeStyle = c.blue; ctx.lineWidth = 3;
+            ctx.strokeStyle = CANVAS.blue; ctx.lineWidth = 3;
             ctx.beginPath();
             var started = false;
             for (var gx = -16; gx <= 16; gx += 0.05) {
@@ -1066,11 +1061,11 @@
         d.points.forEach(function(p) {
             ctx.beginPath();
             ctx.arc(p.x, p.y, 6, 0, 2 * Math.PI);
-            if (p.status === 'correct') { ctx.fillStyle = c.correct; }
-            else if (p.status === 'incorrect') { ctx.fillStyle = c.incorrect; }
-            else { ctx.fillStyle = c.blue; }
+            if (p.status === 'correct') { ctx.fillStyle = CANVAS.correct; }
+            else if (p.status === 'incorrect') { ctx.fillStyle = CANVAS.incorrect; }
+            else { ctx.fillStyle = CANVAS.blue; }
             ctx.fill();
-            ctx.strokeStyle = c.pointStroke; ctx.lineWidth = 1.5;
+            ctx.strokeStyle = CANVAS.pointStroke; ctx.lineWidth = 1.5;
             ctx.stroke();
         });
     }
@@ -1488,12 +1483,6 @@
     window.addEventListener('DOMContentLoaded', function() {
         initGraph('graphQ12');
         initGraph('graphQ13');
-
-        // Redraw canvases when Arena Mode toggles
-        new MutationObserver(function() {
-            redrawGraph('graphQ12');
-            redrawGraph('graphQ13');
-        }).observe(document.body, { attributes: true, attributeFilter: ['class'] });
     });
     </script>
 
