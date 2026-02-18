@@ -226,7 +226,7 @@
             display: none;
         }
         .graph-result.show { display: block; }
-        .graph-result.correct { background: #F0FFF4; color: #1B7D3A; border: 1px solid #1B7D3A; }
+        .graph-result.correct { background: var(--color-correct-bg); color: var(--color-correct); border: 1px solid var(--color-correct); }
         .graph-result.incorrect { background: #FFF5F5; color: var(--accent-red); border: 1px solid var(--accent-red); }
 
         /* Hint system (3-layer) */
@@ -235,7 +235,7 @@
             padding: 8px 16px;
             margin: 10px 4px 10px 0;
             border: 2px solid var(--color-warning);
-            background: #FFFFF0;
+            background: var(--color-warning-bg);
             color: #665500;
             font-weight: 600;
             border-radius: 4px;
@@ -251,8 +251,8 @@
             font-size: 0.95rem;
             line-height: 1.6;
         }
-        .hint-layer.layer1 { background: #FFFFF0; border: 2px solid var(--color-warning); }
-        .hint-layer.layer2 { background: #F0FFF4; border: 2px solid #1B7D3A; }
+        .hint-layer.layer1 { background: var(--color-warning-bg); border: 2px solid var(--color-warning); }
+        .hint-layer.layer2 { background: var(--color-correct-bg); border: 2px solid var(--color-correct); }
         .hint-layer.layer3 { background: var(--bg-card); border: 2px solid var(--border-default); }
         .hint-layer.show { display: block; }
         .hint-layer button {
@@ -266,7 +266,7 @@
             font-size: 0.85rem;
         }
         .hint-layer.layer1 button { color: #665500; border-color: var(--color-warning); }
-        .hint-layer.layer2 button { color: #1B7D3A; border-color: #1B7D3A; }
+        .hint-layer.layer2 button { color: var(--color-correct); border-color: var(--color-correct); }
 
         /* SAAS grade badge */
         .grade-badge {

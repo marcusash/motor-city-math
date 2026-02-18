@@ -13,7 +13,7 @@
     <style>
         /* File-specific: math input panel and calculator widget */
         .math-input-toggle {
-            background: #1D42BA;
+            background: var(--accent-blue);
             color: white;
             border: none;
             padding: 8px 16px;
@@ -25,12 +25,12 @@
         }
 
         .math-input-toggle:hover {
-            background: #153399;
+            background: var(--accent-blue-hover);
         }
 
         .math-input-panel {
             background: var(--bg-highlight);
-            border: 2px solid #1D42BA;
+            border: 2px solid var(--accent-blue);
             border-radius: 4px;
             padding: 15px;
             margin-top: 10px;
@@ -43,7 +43,7 @@
 
         .math-display {
             background: white;
-            border: 2px solid #BEC0C2;
+            border: 2px solid var(--border-default);
             border-radius: 4px;
             padding: 12px;
             min-height: 45px;
@@ -62,7 +62,7 @@
         }
 
         .math-insert-btn {
-            background: #1B7D3A;
+            background: var(--color-correct);
             color: white;
             border: none;
             padding: 8px 16px;
@@ -72,7 +72,7 @@
         }
 
         .math-clear-btn {
-            background: #C8102E;
+            background: var(--accent-red);
             color: white;
             border: none;
             padding: 8px 16px;
@@ -88,7 +88,7 @@
         }
 
         .math-btn {
-            background: #1D42BA;
+            background: var(--accent-blue);
             color: white;
             border: none;
             padding: 12px;
@@ -99,11 +99,11 @@
         }
 
         .math-btn:hover {
-            background: #153399;
+            background: var(--accent-blue-hover);
         }
 
         .math-btn.special {
-            background: #002D62;
+            background: var(--accent-navy);
         }
 
         .math-btn.special:hover {
@@ -116,12 +116,12 @@
             align-items: center;
             margin-bottom: 15px;
             padding-bottom: 10px;
-            border-bottom: 2px solid #C8102E;
+            border-bottom: 2px solid var(--accent-red);
         }
 
         .calc-title {
             font-weight: bold;
-            color: #C8102E;
+            color: var(--accent-red);
             font-size: 1.2em;
         }
 
@@ -138,12 +138,12 @@
             width: 100%;
             padding: 15px;
             font-size: 1.3em;
-            border: 2px solid #BEC0C2;
+            border: 2px solid var(--border-default);
             border-radius: 4px;
             margin-bottom: 15px;
             text-align: right;
             font-family: 'Courier New', monospace;
-            background: #f9fafb;
+            background: var(--bg-page);
         }
 
         .calc-buttons {
@@ -155,7 +155,7 @@
         .calc-btn {
             padding: 15px;
             font-size: 1.1em;
-            border: 2px solid #BEC0C2;
+            border: 2px solid var(--border-default);
             border-radius: 4px;
             background: white;
             cursor: pointer;
@@ -163,15 +163,15 @@
         }
 
         .calc-btn:hover {
-            background: #1D42BA;
+            background: var(--accent-blue);
             color: white;
-            border-color: #1D42BA;
+            border-color: var(--accent-blue);
         }
 
         .calc-btn.operator {
-            background: #002D62;
+            background: var(--accent-navy);
             color: white;
-            border-color: #002D62;
+            border-color: var(--accent-navy);
         }
 
         .calc-btn.operator:hover {
@@ -179,9 +179,9 @@
         }
 
         .calc-btn.equals {
-            background: #1B7D3A;
+            background: var(--color-correct);
             color: white;
-            border-color: #1B7D3A;
+            border-color: var(--color-correct);
             grid-column: span 2;
         }
 
@@ -190,20 +190,20 @@
         }
 
         .calc-btn.clear {
-            background: #C8102E;
+            background: var(--accent-red);
             color: white;
-            border-color: #C8102E;
+            border-color: var(--accent-red);
         }
 
         .calc-btn.clear:hover {
-            background: #A00D24;
+            background: var(--accent-red-hover);
         }
 
         .calc-toggle-btn {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background: #1D42BA;
+            background: var(--accent-blue);
             color: white;
             border: none;
             padding: 15px 20px;
