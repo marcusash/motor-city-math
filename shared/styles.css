@@ -92,7 +92,7 @@ body.arena-mode .arena-toggle { background: var(--accent-navy); border-color: va
     gap: 4px;
     font-variant-numeric: tabular-nums;
 }
-.timer-icon { font-size: 1em; }
+.timer-icon { font-size: 1em; color: var(--accent-navy); }
 .timer-value {
     font-weight: 600;
     font-size: 1.1em;
@@ -890,7 +890,7 @@ table th {
     margin-bottom: 4px;
 }
 .standard-card {
-    background: white;
+    background: var(--bg-card);
     border: 1px solid var(--border-default);
     border-left: 4px solid var(--border-default);
     padding: 16px;
