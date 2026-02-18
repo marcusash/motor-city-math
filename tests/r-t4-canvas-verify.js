@@ -78,7 +78,9 @@ check("Q15: t=20", mvp.indexOf("'q15_t', 20") !== -1);
 console.log('\n6. Canvas setup:');
 check("initGraph('graphQ12')", mvp.indexOf("initGraph('graphQ12')") !== -1);
 check("initGraph('graphQ13')", mvp.indexOf("initGraph('graphQ13')") !== -1);
-check('MutationObserver for Arena toggle', mvp.indexOf('MutationObserver') !== -1);
+// A2 arch: canvas is always white, MutationObserver intentionally removed
+check('Static CANVAS constant (always white)', mvp.indexOf("var CANVAS") !== -1 || mvp.indexOf('getCanvasColors') !== -1);
+check('White background fillRect', mvp.indexOf('fillRect(0, 0, d.w, d.h)') !== -1);
 check('Asymptote VA tolerance check', mvp.indexOf('asymptotes.vertical[0] - 1)') !== -1);
 check('Asymptote HA tolerance check', mvp.indexOf('asymptotes.horizontal[0] - (-2))') !== -1);
 
