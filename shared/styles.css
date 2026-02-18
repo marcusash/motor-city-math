@@ -6,31 +6,32 @@
 
 /* === CSS Custom Properties (Design Tokens) === */
 :root {
-    --bg-page: #F5F5F5;
+    --bg-page: #F4F5F9;
     --bg-card: #FFFFFF;
-    --bg-input: #FFFFFF;
+    --bg-input: #F8F9FC;
     --bg-overlay: rgba(0, 0, 0, 0.5);
-    --text-primary: #333333;
-    --text-secondary: #666666;
+    --text-primary: #1A1F36;
+    --text-secondary: #5E6378;
     --text-inverse: #FFFFFF;
     --accent-red: #C8102E;
     --accent-red-hover: #A00D24;
     --accent-blue: #1D42BA;
     --accent-blue-hover: #1535A0;
     --accent-navy: #002D62;
-    --border-default: #BEC0C2;
+    --border-default: #C8CCD8;
     --border-focus: #1D42BA;
-    --border-subtle: #E8E8E8;
+    --border-subtle: #E2E5EF;
     --color-correct: #1B7D3A;
     --color-correct-bg: #F0FFF4;
     --color-incorrect: #C8102E;
     --color-incorrect-bg: #FFF5F5;
     --color-warning: #E8A317;
     --color-warning-bg: #FFFFF0;
-    --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.06);
-    --bg-highlight: #f0f4ff;
-    --chart-grid: #E8E8E8;
-    --chart-label: #333333;
+    --shadow-card: 0 2px 8px rgba(0, 45, 98, 0.06);
+    --bg-highlight: #EEF1FA;
+    --chart-grid: #E2E5EF;
+    --chart-label: #1A1F36;
+    --grid-minor: #EDF0F5;
 }
 
 /* === Arena Mode (Dark Theme) === */
@@ -60,6 +61,7 @@ body.arena-mode {
     --bg-highlight: #1A2240;
     --chart-grid: #2A3352;
     --chart-label: #E0E4EB;
+    --grid-minor: #1E2742;
 }
 
 /* Arena Mode toggle button */
