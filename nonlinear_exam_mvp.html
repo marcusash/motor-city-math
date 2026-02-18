@@ -955,12 +955,13 @@
         var cs = getComputedStyle(document.documentElement);
         return {
             grid: cs.getPropertyValue('--border-subtle').trim() || '#E2E5EF',
+            gridMinor: cs.getPropertyValue('--grid-minor').trim() || '#EDF0F5',
             axis: cs.getPropertyValue('--text-primary').trim() || '#1A1F36',
             label: cs.getPropertyValue('--text-primary').trim() || '#1A1F36',
             blue: cs.getPropertyValue('--accent-blue').trim() || '#1D42BA',
             correct: cs.getPropertyValue('--color-correct').trim() || '#1B7D3A',
             incorrect: cs.getPropertyValue('--color-incorrect').trim() || '#C8102E',
-            pointStroke: cs.getPropertyValue('--bg-card').trim() || '#fff'
+            pointStroke: '#FFFFFF'
         };
     }
 
@@ -970,18 +971,20 @@
         var c = getCanvasColors();
         ctx.clearRect(0, 0, d.w, d.h);
 
+        // Always white canvas background ("whiteboard in dark room")
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fillRect(0, 0, d.w, d.h);
+
         var step = d.pw / 32; // pixels per unit
 
-        // Minor grid lines (every 1 unit) — very subtle
-        ctx.strokeStyle = c.grid; ctx.lineWidth = 0.3;
-        ctx.globalAlpha = 0.35;
+        // Minor grid lines (every 1 unit) — subtle, uses --grid-minor token
+        ctx.strokeStyle = c.gridMinor; ctx.lineWidth = 0.5;
         for (var i = 0; i <= 32; i++) {
             var x = d.ml + i * step;
             ctx.beginPath(); ctx.moveTo(x, d.mt); ctx.lineTo(x, d.mt + d.ph); ctx.stroke();
             var y = d.mt + i * step;
             ctx.beginPath(); ctx.moveTo(d.ml, y); ctx.lineTo(d.ml + d.pw, y); ctx.stroke();
         }
-        ctx.globalAlpha = 1.0;
 
         // Major grid lines (every 5 units) — visible
         ctx.strokeStyle = c.grid; ctx.lineWidth = 1;
