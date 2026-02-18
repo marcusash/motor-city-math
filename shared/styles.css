@@ -90,6 +90,7 @@ body.arena-mode .arena-toggle { background: var(--accent-navy); border-color: va
     gap: 4px;
     font-variant-numeric: tabular-nums;
 }
+.timer-icon { font-size: 1em; }
 .timer-value {
     font-weight: 600;
     font-size: 1.1em;
@@ -167,7 +168,6 @@ body {
     color: var(--text-primary);
     min-height: 100vh;
     padding: 20px;
-    color: var(--text-primary);
 }
 
 /* === Layout === */
@@ -888,29 +888,6 @@ table th {
     margin-top: 8px;
 }
 
-/* === Accessibility === */
-.sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-}
-
-:focus-visible {
-    outline: 3px solid var(--accent-blue);
-    outline-offset: 2px;
-    border-radius: 2px;
-}
-
-:focus:not(:focus-visible) {
-    outline: none;
-}
-
 /* === Responsive === */
 @media (max-width: 768px) {
     .container {
@@ -979,62 +956,6 @@ table th {
     margin-top: 40px;
 }
 
-/* === Timer (.timer-spec.md) === */
-.timer {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    font-variant-numeric: tabular-nums;
-}
-.timer-icon { font-size: 1em; }
-.timer-value {
-    font-weight: 600;
-    font-size: 1.1em;
-    color: var(--accent-navy);
-    transition: color 0.5s ease;
-    min-width: 3.5em;
-    text-align: right;
-}
-.timer.warning .timer-value { color: var(--color-warning); }
-.timer.urgent .timer-value { color: var(--accent-red); }
-@keyframes timerPulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
-}
-.timer.pulse .timer-value { animation: timerPulse 0.2s ease-out; }
-.timer.times-up .timer-value { font-weight: 700; letter-spacing: 1px; }
-
-/* Timer toast */
-.timer-toast {
-    position: fixed;
-    top: 80px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--accent-navy);
-    color: white;
-    padding: 12px 24px;
-    border-radius: 8px;
-    font-size: 0.95em;
-    font-weight: 600;
-    z-index: 100;
-    animation: toastIn 0.3s ease-out, toastOut 0.3s ease-in 2.7s forwards;
-    box-shadow: 0 4px 16px rgba(0, 45, 98, 0.25);
-}
-@keyframes toastIn {
-    from { opacity: 0; transform: translateX(-50%) translateY(-10px); }
-    to { opacity: 1; transform: translateX(-50%) translateY(0); }
-}
-@keyframes toastOut {
-    from { opacity: 1; }
-    to { opacity: 0; }
-}
-
-/* Timer responsive */
-@media (max-width: 768px) {
-    .timer { display: flex; margin-top: 4px; }
-    .timer-value { font-size: 1em; }
-}
 @media print {
     .timer, .timer-toast, .score-card, .standards-grid { display: none; }
 }
