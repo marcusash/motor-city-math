@@ -137,7 +137,7 @@
         @media print {
             .config-panel, .build-btn, .action-bar { display: none !important; }
             .gen-test { display: block !important; }
-            .gen-question { border-color: #000; }
+            .gen-question { border-color: #000; } /* print needs black borders */
         }
         @media (max-width: 768px) {
             .config-row { flex-direction: column; }
@@ -405,7 +405,7 @@
                 } else {
                     akHtml += q.answer || '—';
                 }
-                akHtml += ' <span style="color:#6C6E70;font-size:0.8em;">[' + q.standard + ']</span></div>';
+                akHtml += ' <span style="color:var(--text-secondary);font-size:0.8em;">[' + q.standard + ']</span></div>';
             });
             document.getElementById('answerKey').innerHTML = akHtml;
             document.getElementById('answerKey').className = 'answer-key show';
