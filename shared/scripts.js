@@ -461,8 +461,8 @@ function initTimer(opts) {
         var btn = document.createElement('button');
         btn.className = 'arena-toggle';
         btn.id = 'arenaToggle';
-        btn.setAttribute('aria-label', 'Toggle Arena Mode');
-        btn.title = 'Arena Mode';
+        btn.setAttribute('aria-label', 'Toggle dark mode');
+        btn.title = 'Arena Mode (Dark/Light)';
         btn.textContent = '🏀'; // basketball — Arena Mode toggle
         btn.onclick = function() {
             document.body.classList.toggle('arena-mode');

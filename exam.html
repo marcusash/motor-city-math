@@ -77,8 +77,10 @@
     </style>
 </head>
 <body>
+    <script>if(localStorage.getItem('mcm-arena-mode')==='on')document.body.classList.add('arena-mode');</script>
     <div class="exam-container">
         <header class="test-header">
+            <a href="index.html" class="header-back" aria-label="Back to dashboard">←</a>
             <h1 id="examTitle"></h1>
         </header>
         <p class="subtitle exam-subtitle" id="examSubtitle"></p>
