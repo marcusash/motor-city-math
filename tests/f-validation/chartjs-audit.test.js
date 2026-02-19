@@ -25,11 +25,8 @@ function section(title) { console.log(`\n── ${title} ──`); }
 // ===================================================================
 section('1. Chart.js Usage Inventory');
 
-const chartFiles = [
-    'index.html', 'index_calc.html',
-    'final_exam_251123.html', 'final_exam_251123_mini.html',
-    'quiz_251117.html', 'quiz_251120.html', 'quiz_251121.html'
-];
+const chartFiles = fs.readdirSync(ROOT)
+    .filter(f => f.endsWith('.html') && fs.statSync(path.join(ROOT, f)).isFile());
 
 const chartInstances = {};
 for (const file of chartFiles) {

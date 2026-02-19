@@ -103,8 +103,10 @@ for (const file of htmlFiles) {
 // ===================================================================
 section('4. Chart Print Handling');
 
-const chartFiles = ['index.html', 'index_calc.html', 'final_exam_251123.html',
-    'quiz_251120.html', 'quiz_251121.html'];
+const chartFiles = htmlFiles.filter(f => {
+    const content = fs.readFileSync(path.join(ROOT, f), 'utf-8');
+    return /new Chart\(|chart\.js/i.test(content);
+});
 
 for (const file of chartFiles) {
     const content = fs.readFileSync(path.join(ROOT, file), 'utf-8');

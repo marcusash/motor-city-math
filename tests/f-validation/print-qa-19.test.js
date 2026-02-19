@@ -131,13 +131,7 @@ if (printCssExists) {
 // ===================================================================
 section('5. New Files Since F-3 Audit');
 
-const newFiles = [
-    'nonlinear_exam_mvp.html',
-    'test.html',
-    'practice.html',
-    'test-builder.html',
-    'parent.html'
-];
+const newFiles = ALL_FILES.filter(f => f !== 'index.html' && f !== 'final_exam_251123.html' && f !== 'final_exam_251123_mini.html');
 
 for (const file of newFiles) {
     const filePath = path.join(ROOT, file);

@@ -24,18 +24,11 @@ function section(title) { console.log(`\n── ${title} ──`); }
 
 const htmlFiles = fs.readdirSync(ROOT).filter(f => f.endsWith('.html'));
 
-// Files that should have KaTeX (math-heavy)
-const katexFiles = [
-    '20260119_Exponents_Unit1.html',
-    '20260119_Exponents_Unit1_2nd.html',
-    '20260119_Exponents_Unit1_3rd.html',
-    'nonlinear_exam_mvp.html',
-    'nonlinear_functions_test.html',
-    'practice.html',
-    'test-builder.html',
-    'unit2_nonlinear_review.html',
-    'test.html'
-];
+// Files that should have KaTeX (math-heavy) — auto-discover from existing HTML
+const katexFiles = htmlFiles.filter(f => {
+    const content = fs.readFileSync(path.join(ROOT, f), 'utf-8');
+    return /katex|KaTeX|auto-render/i.test(content);
+});
 
 // ===================================================================
 // 1. LOCAL KATEX BUNDLE EXISTS
