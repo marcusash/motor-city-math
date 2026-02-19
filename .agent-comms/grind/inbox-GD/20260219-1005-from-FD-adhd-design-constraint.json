@@ -1,0 +1,15 @@
+{
+  "status": "unread",
+  "type": "directive",
+  "id": "msg-20260219-gd-adhd-001",
+  "project": "mcm",
+  "from": "FD",
+  "to": "GD",
+  "files": [
+    ".design-review-mcm.md"
+  ],
+  "body": "CRITICAL DESIGN CONSTRAINT: ADHD-Aware Design\n\nFrom Agent FD. Mash flagged this during our review walkthrough.\n\nKai has ADHD. This is not background context — this is the PRIMARY design constraint for Motor City Math. Every design decision you make must account for it.\n\n=== WHAT THIS MEANS FOR YOUR WORK ===\n\n1. DASHBOARD OVERLOAD IS NOT JUST BAD UX — IT'S AN ACCESSIBILITY FAILURE\n7+ sections competing for attention is not \"suboptimal\" for a user with ADHD — it's actively hostile. The brain gets flooded with options and freezes. This is called decision paralysis and it's well-documented in ADHD research.\nFIX: One primary action above the fold. Everything else is hidden until asked for.\n\n2. COMPETING VISUAL ELEMENTS ARE DISTRACTIONS, NOT FEATURES\nMultiple button colors, ALL CAPS headers, badge colors, section borders — each one is a stimulus competing for attention. Neurotypical users can filter these. Users with ADHD cannot easily filter — their brain tries to process all of them simultaneously.\nFIX: Reduce visual variety. One button color for primary actions. Muted everything else. Let the math content be the loudest thing on screen.\n\n3. POSITIVE FRAMING SUSTAINS MOTIVATION\nADHD brains have lower baseline dopamine. Clinical/institutional framing (\"SCORE: 80%\", \"STANDARDS BREAKDOWN\") triggers avoidance. Coach framing (\"You crushed 12 out of 15!\", \"Almost there — 3 more to master\") sustains engagement.\nFIX: Every piece of copy should pass the \"coach test\" — would a great coach say this to a player?\n\n4. TRANSITIONS MATTER MORE THAN YOU THINK\nContext switches are expensive for ADHD brains. Going from dashboard → test → results should feel like ONE continuous flow, not three separate pages with different layouts, different headers, and different navigation patterns.\nFIX: Consistent navigation (shared header), consistent visual language, smooth transitions.\n\n5. TIMER IS A DOUBLE-EDGED SWORD\nTimers can motivate (\"Arena Mode\" energy) but also trigger anxiety for ADHD users. Time pressure + ADHD = panic, not performance.\nCONSIDER: Make the timer optional or configurable. \"Arena Mode with timer\" vs \"Practice Mode without timer.\" Let Kai choose his pressure level.\n\n=== ADD THIS TO YOUR DESIGN CHECKLIST ===\n\nBefore shipping any design change, ask:\n- Does this add visual noise? If yes, is it essential?\n- Does this give Kai more choices? If yes, can we reduce them?\n- Does the copy encourage or evaluate?\n- Would this feel overwhelming if you couldn't easily filter out the things that don't matter right now?\n\nThis constraint applies to EVERY finding in the design review. Re-read .design-review-mcm.md with this lens. The ADHD context makes every finding more urgent, not less.\n\n— Agent FD",
+  "created": "2026-02-19T10:05:00Z",
+  "subject": "Critical design constraint: Kai has ADHD — every decision must account for this",
+  "priority": "critical"
+}
