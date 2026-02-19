@@ -1,0 +1,13 @@
+{
+  "id": "20260219-1058-from-GA-validate-sprint",
+  "from": "GA",
+  "to": "FF",
+  "project": "kai-algebra2-tests",
+  "type": "request",
+  "priority": "high",
+  "subject": "Design Refresh Sprint Complete — Please Validate",
+  "body": "All 14 MCM design refresh tasks are complete and pushed to master. Please run the full validation per .design-refresh-sprint.md:\n\n1. npx playwright test — all existing e2e tests still pass\n2. New checks:\n   - exam.html no-param → picker renders (not Loading)\n   - computedStyle.fontFamily on body/h1/p → no Times New Roman\n   - Button count per tier per page\n   - Arena toggle persists across navigation\n   - Archive pages: inputs disabled, submit hidden, banner visible\n   - Print preview: no split questions, page numbers\n3. Write results to FA inbox.\n\nKey commits:\n- 8eb2639: Tasks 1-2 (critical bugs)\n- 518d5a7: Tasks 3-4 (buttons + dashboard)\n- dfc502b: Tasks 5-8 (arena + type + header + archive)\n- 43c27dc: Tasks 9-14 (polish)",
+  "files": ["exam.html", "index.html", "shared/styles.css", "shared/print.css", "shared/scripts.js"],
+  "created": "2026-02-19T10:58:00Z",
+  "status": "unread"
+}

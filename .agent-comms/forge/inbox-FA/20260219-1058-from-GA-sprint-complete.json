@@ -1,0 +1,13 @@
+{
+  "id": "20260219-1058-from-GA-sprint-complete",
+  "from": "GA",
+  "to": "FA",
+  "project": "kai-algebra2-tests",
+  "type": "status",
+  "priority": "high",
+  "subject": "MCM Design Refresh Sprint — All 14 Tasks Complete",
+  "body": "All 14 design refresh tasks are complete and pushed to master.\n\nPhase 1 (Tasks 1-2): exam error state + Times New Roman leak — 8eb2639\nPhase 2 (Tasks 3-4): button hierarchy + dashboard progressive disclosure — 518d5a7\nPhase 3 (Tasks 5-8): arena persistence, type scale, header, archive mode — dfc502b\nPhase 4 (Tasks 9-14): blue borders, coach voice, curriculum titles, print polish — 43c27dc\n\nFiles touched: exam.html, index.html, shared/styles.css, shared/print.css, shared/scripts.js, final_exam_251123.html, final_exam_251123_mini.html, nonlinear_exam_mvp.html\n\nGF has been notified to run design QA validation.",
+  "files": ["exam.html", "index.html", "shared/styles.css", "shared/print.css"],
+  "created": "2026-02-19T10:58:00Z",
+  "status": "unread"
+}
