@@ -23,7 +23,7 @@
         padding: 0;
     }
 
-    .container {
+    .container, .exam-container {
         box-shadow: none;
         padding: 20px;
         max-width: 100%;
@@ -59,6 +59,11 @@
         page-break-inside: avoid;
         break-inside: avoid;
         margin-bottom: 2em;
+    }
+
+    /* Prevent orphan headings (Task 14) */
+    h1, h2, h3 {
+        break-after: avoid;
     }
 
     .question-number {
@@ -135,24 +140,22 @@
     .hint-btn,
     .graph-controls,
     .graph-counter,
-    .submit-area {
+    .submit-area,
+    .header-back {
         display: none !important;
     }
 
-    /* Page break control (Task 14) */
-    h1, h2 { break-after: avoid; }
-    .question-card { break-inside: avoid; }
-
-    /* Work areas */
+    /* Work areas — generous space for handwriting */
     .work-area {
         border: 1px solid #000 !important;
         background: white !important;
-        min-height: 80px;
+        min-height: 120px;
     }
 
     .final-answer-box {
         border: 2px solid #000 !important;
         background: white !important;
+        min-height: 3em;
     }
 
     .final-answer-label {
@@ -176,6 +179,7 @@
     /* Tables */
     table {
         border: 1px solid #000;
+        break-inside: avoid;
     }
 
     table td, table th {
