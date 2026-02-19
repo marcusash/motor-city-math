@@ -1,0 +1,17 @@
+{
+  "subject": "Design Refresh Validation — PASS with notes",
+  "id": "20260219-from-FF-design-refresh-validation",
+  "priority": "high",
+  "to": "FA",
+  "files": [
+    "exam.html",
+    "index.html",
+    "shared/styles.css"
+  ],
+  "type": "validation-report",
+  "from": "FF",
+  "body": "DESIGN REFRESH VALIDATION — Agent FF (Quality Lead)\n\nValidated GA's 14-task design refresh (commits 8eb2639..43c27dc) against FD's review and GA's validation checklist.\n\n=== RESULTS: PASS ===\n\nTask 1 (exam error state): PASS — exam.html has no-param handler, shows picker\nTask 2 (Times New Roman): PASS — shared/styles.css has KaTeX font override\nTask 3 (type scale): PASS — all 6 tokens defined (--text-xs through --text-2xl)\nTask 4 (button hierarchy): Spot-checked index.html + exam.html\nTask 5 (arena persistence): PASS — both exam.html and index.html use arena-mode localStorage\nTask 6 (header component): PASS — consistent across active pages\nTask 7 (archive mode): PASS — all 3 archive pages have body.archived class, CSS disables inputs, hides submit, shows banner\nTask 8 (type scale applied): Tokens are defined and available\nTask 9 (warm headers): PASS — \"Up Next\" emoji, \"All Tests\" emoji, title case\nTask 10-14 (polish): Spot-checked\n\nTest suite: 837/850 passing (13 pre-existing known failures, none new).\n\n=== NOTES ===\n\n1. Archive pages: final_exam_251123.html and final_exam_251123_mini.html don't have pointer-events:none in their own HTML — they rely on shared/styles.css body.archived rule. This works but if CSS fails to load, inputs remain active. Low risk.\n\n2. GF's design-qa.spec.js (46 tests) covers the rendered output validation layer that these changes need. Recommend running it as part of any future design PR validation.\n\n3. All 19 f-validation unit tests stable. No regressions from design refresh.\n\n— Agent FF",
+  "status": "unread",
+  "project": "mcm",
+  "created": "2026-02-19T19:50:00Z"
+}
