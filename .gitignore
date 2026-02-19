@@ -28,3 +28,6 @@ package-lock.json
 
 # OCR rendered images (large binary, regenerable)
 import/ocr-output/*.png
+
+# Design QA screenshots (local baselines, regenerable)
+tests/f-validation/screenshots/

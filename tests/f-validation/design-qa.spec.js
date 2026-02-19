@@ -454,13 +454,65 @@ async function checkNavigation(page) {
     }
 
     // ================================================================
+    // CATEGORY 6: Screenshot Baseline
+    // ================================================================
+    console.log('\n══ CATEGORY 6: Screenshot Baseline ══');
+    const screenshotDir = path.join(__dirname, 'screenshots');
+    if (!fs.existsSync(screenshotDir)) fs.mkdirSync(screenshotDir, { recursive: true });
+
+    // Reset viewport for screenshots
+    const screenshotContext = await browser.newContext({ viewport: { width: 1440, height: 900 } });
+    let newScreenshots = 0, comparedScreenshots = 0, driftScreenshots = 0;
+
+    for (const file of PAGES) {
+        const pageName = file.replace('.html', '');
+        const page = await screenshotContext.newPage();
+        await page.goto(pageUrl(file), { waitUntil: 'domcontentloaded', timeout: 15000 });
+        await page.waitForTimeout(2000);
+
+        const screenshotPath = path.join(screenshotDir, `${pageName}.png`);
+        const tempPath = path.join(screenshotDir, `${pageName}.new.png`);
+
+        if (!fs.existsSync(screenshotPath)) {
+            // First run — capture baseline
+            await page.screenshot({ path: screenshotPath, fullPage: true });
+            newScreenshots++;
+            console.log(`  📸 ${pageName}: baseline captured`);
+        } else {
+            // Subsequent run — capture temp and compare file sizes as rough drift check
+            await page.screenshot({ path: tempPath, fullPage: true });
+            const baseSize = fs.statSync(screenshotPath).size;
+            const newSize = fs.statSync(tempPath).size;
+            const sizeDiff = Math.abs(baseSize - newSize) / baseSize;
+
+            if (sizeDiff > 0.05) {
+                // >5% file size change = likely visual drift
+                driftScreenshots++;
+                test(`${pageName}: screenshot stable`, false,
+                    `file size changed ${(sizeDiff * 100).toFixed(1)}% (${baseSize}→${newSize} bytes)`);
+                // Keep new screenshot for manual comparison
+                const diffPath = path.join(screenshotDir, `${pageName}.drift.png`);
+                fs.renameSync(tempPath, diffPath);
+            } else {
+                comparedScreenshots++;
+                fs.unlinkSync(tempPath);
+            }
+        }
+
+        await page.close();
+    }
+
+    console.log(`  Screenshots: ${newScreenshots} new baselines, ${comparedScreenshots} stable, ${driftScreenshots} drifted`);
+    await screenshotContext.close();
+
+    // ================================================================
     // SUMMARY
     // ================================================================
     await browser.close();
     server.close();
 
     console.log(`\n${'═'.repeat(55)}`);
-    console.log('DESIGN QA RESULTS — Categories 1-5');
+    console.log('DESIGN QA RESULTS — Categories 1-6');
     console.log(`${'═'.repeat(55)}`);
     console.log(`  Total: ${total} tests`);
     console.log(`  ✅ Passed: ${pass}`);
