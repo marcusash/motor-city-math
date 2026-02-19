@@ -33,6 +33,9 @@
     --chart-label: #1A1F36;
     --grid-minor: #EDF0F5;
 
+    /* Font stack */
+    --font-body: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
     /* Type Scale — 6 sizes (FD review H3) */
     --text-xs: 0.75rem;   /* 12px — captions, labels */
     --text-sm: 0.875rem;  /* 14px — secondary text */
@@ -191,7 +194,7 @@ html {
 }
 
 body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: var(--font-body);
     background: var(--bg-page);
     color: var(--text-primary);
     min-height: 100vh;
@@ -199,8 +202,14 @@ body {
 }
 
 /* KaTeX serif fallback containment — prevent Times New Roman from leaking into UI (FD C2) */
-.katex {
-    font-family: KaTeX_Main, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+.katex, .katex * {
+    font-family: KaTeX_Main, KaTeX_Math, "Times New Roman", serif !important;
+}
+.katex-display + *, .katex-html ~ * {
+    font-family: inherit;
+}
+h1, h2, h3, h4, h5, h6, p, label, button, a, li, td, th {
+    font-family: var(--font-body);
 }
 
 /* === Layout === */
@@ -592,8 +601,7 @@ input:focus, textarea:focus, select:focus {
     background: var(--bg-input);
     color: var(--text-primary);
     resize: vertical;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 0.95em;
+    font-family: var(--font-body);    font-size: 0.95em;
     padding: 14px;
     padding-bottom: 20px;
     padding-right: 20px;
