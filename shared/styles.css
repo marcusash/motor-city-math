@@ -80,8 +80,8 @@ body.arena-mode {
     background: var(--bg-card);
     border: 1px solid var(--border-default);
     border-radius: 50%;
-    width: 36px;
-    height: 36px;
+    width: 44px;
+    height: 44px;
     font-size: 1.1em;
     cursor: pointer;
     transition: background 0.2s, border-color 0.2s;
@@ -186,6 +186,10 @@ body.arena-mode .arena-toggle { background: var(--accent-navy); border-color: va
 }
 
 /* === Base === */
+html {
+    overflow-x: hidden;
+}
+
 body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     background: var(--bg-page);
@@ -1036,6 +1040,14 @@ table th {
 
     .chart-container {
         height: 250px;
+    }
+
+    /* WCAG 2.5.8: minimum 44px touch targets on mobile */
+    a, button, select, input {
+        min-height: 44px;
+    }
+    input[type="number"], input[type="text"], select {
+        font-size: 16px; /* prevents iOS zoom */
     }
 }
 
