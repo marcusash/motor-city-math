@@ -225,8 +225,8 @@ async function fillAllCorrect() {
 
         await test('fill all correct answers and grade', async () => {
             await fillAllCorrect();
-            // Click grade/submit button
-            const gradeBtn = await page.$('button[id*="grade"], button[id*="submit"], button:has-text("Grade"), button:has-text("Submit"), button:has-text("Check")');
+            // Click the main grade/submit button (not the graph check buttons)
+            const gradeBtn = await page.$('button:has-text("SUBMIT"), button:has-text("GRADE"), .submit-area button');
             assert(gradeBtn, 'Grade button not found');
             await gradeBtn.click();
             await page.waitForTimeout(2000);
