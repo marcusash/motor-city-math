@@ -93,6 +93,20 @@ body.arena-mode {
 .arena-toggle:hover { border-color: var(--accent-blue); }
 body.arena-mode .arena-toggle { background: var(--accent-navy); border-color: var(--accent-blue); }
 
+/* === Shared Navigation (FD review C3) === */
+.nav-back {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: var(--text-sm);
+    font-weight: 600;
+    z-index: 5;
+    transition: color 0.15s;
+}
+.nav-back:hover { color: var(--accent-blue); }
+
 /* === Timer === */
 .timer {
     display: inline-flex;

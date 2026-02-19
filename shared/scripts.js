@@ -473,6 +473,25 @@ function initTimer(opts) {
     });
 })();
 
+/* === Shared Navigation (FD review C3) === */
+(function() {
+    document.addEventListener('DOMContentLoaded', function() {
+        var header = document.querySelector('header');
+        if (!header) return;
+        // Don't add back link on the dashboard itself
+        var path = window.location.pathname;
+        if (path.endsWith('index.html') || path.endsWith('/')) return;
+        // Skip if page already has a back link in the header
+        if (header.querySelector('a[href*="index"]')) return;
+        var back = document.createElement('a');
+        back.href = 'index.html';
+        back.className = 'nav-back';
+        back.textContent = '← Dashboard';
+        back.setAttribute('aria-label', 'Back to Dashboard');
+        header.insertBefore(back, header.firstChild);
+    });
+})();
+
 /* === Countdown Timer (.timer-spec.md) === */
 
 /**
