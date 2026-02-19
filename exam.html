@@ -13,9 +13,9 @@
     <style>
         .exam-container { max-width: 800px; margin: 0 auto; padding: 16px; }
         .exam-subtitle { text-align: center; color: var(--text-secondary); font-size: 0.95em; margin: -8px 0 16px; }
-        .question-card { background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 8px; padding: 20px; margin-bottom: 16px; position: relative; box-shadow: var(--shadow-card); }
-        .question-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
-        .question-number { font-weight: 800; color: var(--accent-navy); font-size: 1.1em; }
+        .question-card { background: var(--bg-card); border: 1px solid var(--border-default); border-left: none; border-radius: 8px; padding: 20px 20px 20px 24px; margin-bottom: 16px; position: relative; box-shadow: var(--shadow-card); }
+        .question-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 2px solid var(--border-subtle); }
+        .question-number { font-weight: 800; color: var(--accent-navy); font-size: 1.1em; letter-spacing: 0.05em; }
         .standard-badge { background: var(--bg-highlight); color: var(--accent-blue); font-size: 0.75em; font-weight: 700; padding: 2px 8px; border-radius: 12px; }
         .input-group { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 10px 0; }
         .input-group label { font-weight: 600; color: var(--text-primary); min-width: 120px; }
@@ -58,7 +58,7 @@
         .saas-grade { display: inline-block; padding: 6px 20px; border-radius: 20px; font-weight: 800; font-size: 1.3em; color: white; }
         .saas-grade.g4 { background: var(--color-correct); }
         .saas-grade.g3 { background: var(--accent-blue); }
-        .saas-grade.g2 { background: #E8A317; }
+        .saas-grade.g2 { background: var(--color-warning); }
         .saas-grade.g1 { background: var(--color-incorrect); }
         .standards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 8px; margin: 16px 0; text-align: left; }
         .std-card { background: var(--bg-highlight); border-radius: 8px; padding: 10px 14px; }
