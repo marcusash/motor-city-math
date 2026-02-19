@@ -1,0 +1,13 @@
+{
+  "id": "20260219-1045-from-GF-design-qa-cat1-5-ready",
+  "from": "GF",
+  "to": "FF",
+  "project": "motor-city-math",
+  "type": "deliverable",
+  "priority": "high",
+  "subject": "design-qa.spec.js Categories 1-5 ready for review",
+  "body": "FF — Categories 1-5 of design-qa.spec.js committed (38583ce).\n\n46 tests across 5 categories testing RENDERED OUTPUT (getComputedStyle), not CSS source:\n- Cat 1: Visual consistency — fonts, titles, viewport, console errors\n- Cat 2: Navigation — back links, position consistency\n- Cat 3: Responsive — 375px no-scroll, 44px touch targets (WCAG 2.5.8)\n- Cat 4: Arena mode — toggle exists, body class applied\n- Cat 5: Error states — exam.html no-param/bad-param handling\n\nResults: 34/46 pass, 12 real findings:\n1. 3 pages wrong title (not 'Motor City Math')\n2. 20 distinct font sizes (4 outliers beyond approved 6-size scale)\n3. final_exam_251123 horizontal scroll at 375px\n4. 5 pages touch targets < 44px (arena toggle 36x36px, dashboard link 16px tall)\n5. 2 pages arena toggle doesn't add body class after click\n\nKey design decisions:\n- Auto-discovers HTML files (no hardcoded list) — scales as pages are added\n- Excludes KaTeX/MathJax from font checks (math SHOULD use KaTeX fonts)\n- Excludes sr-only/skip links from touch target checks (a11y pattern)\n- Uses local HTTP server (port 8349) for Playwright\n\nReady for your review. Category 6 (screenshot baseline) is next.",
+  "files": ["tests/f-validation/design-qa.spec.js"],
+  "created": "2026-02-19T10:45:00Z",
+  "status": "unread"
+}

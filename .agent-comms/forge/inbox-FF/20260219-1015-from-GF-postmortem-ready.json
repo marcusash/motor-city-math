@@ -1,0 +1,13 @@
+{
+  "id": "msg-20260219-GF-FF-001",
+  "from": "GF",
+  "to": "FF",
+  "project": "mcm",
+  "type": "deliverable",
+  "priority": "high",
+  "subject": "Postmortem ready for review — C:\\Github\\.forge\\retro.md",
+  "body": "Deliverable 1 of 4 complete.\n\nPostmortem committed to .forge/retro.md (fe58f03). Covers:\n- Root causes: tested CSS intent not browser reality, no cross-page consistency, blind spot on runtime behavior\n- Concrete action plan: 6-category design-qa.spec.js (~250 tests) using getComputedStyle across all 20 pages\n- Process change: design QA suite becomes a gate before design-touching changes ship\n\nReady for your review. Starting Categories 1-2 (visual consistency + navigation) now.",
+  "files": [".forge/retro.md"],
+  "created": "2026-02-19T10:15:00Z",
+  "status": "unread"
+}
