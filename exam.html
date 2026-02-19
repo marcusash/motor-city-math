@@ -42,7 +42,7 @@
         .graph-btn { padding: 6px 14px; border: 1px solid var(--border-default); border-radius: 6px; background: var(--bg-input); color: var(--text-primary); cursor: pointer; font-size: 0.85em; font-weight: 600; }
         .graph-btn:hover { border-color: var(--accent-blue); }
         .graph-btn.active { background: var(--accent-blue); color: white; border-color: var(--accent-blue); }
-        .graph-btn.check-graph { background: var(--accent-red); color: white; border-color: var(--accent-red); }
+        .graph-btn.check-graph { background: transparent; color: var(--accent-navy); border-color: var(--accent-navy); font-weight: 700; }
         .graph-btn.check-graph:disabled { opacity: 0.5; cursor: not-allowed; }
         .graph-counter { text-align: center; color: var(--text-secondary); font-size: 0.85em; margin: 4px 0; }
         .graph-result { display: none; text-align: center; font-weight: 700; padding: 8px; border-radius: 6px; margin: 8px 0; }
@@ -92,7 +92,7 @@
         <div id="scorecard" style="display:none;"></div>
 
         <div style="text-align:center; margin: 16px 0;">
-            <a href="index.html" class="nav-btn secondary" style="text-decoration:none;">← Back to Dashboard</a>
+            <a href="index.html" class="nav-btn ghost" style="text-decoration:none;">← Back to Dashboard</a>
         </div>
         <div class="footer" style="text-align:center; color:var(--text-secondary); font-size:0.85em; padding:10px 0;">Built with 💪🏾 by Dad · Motor City Math</div>
     </div>
@@ -727,7 +727,7 @@
         });
         html += '</div>';
 
-        html += '<div style="margin-top:16px;"><a href="index.html" class="nav-btn primary" style="text-decoration:none;">🏀 BACK TO DASHBOARD</a></div>';
+        html += '<div style="margin-top:16px;"><a href="index.html" class="nav-btn secondary" style="text-decoration:none;">🏀 Back to Dashboard</a></div>';
         html += '</div>';
 
         document.getElementById('scorecard').innerHTML = html;

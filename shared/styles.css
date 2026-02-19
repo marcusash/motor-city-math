@@ -416,9 +416,9 @@ input:focus, textarea:focus, select:focus {
 
 .print-btn,
 .btn-secondary {
-    background: var(--bg-card);
-    color: var(--accent-blue);
-    border: 2px solid var(--accent-blue);
+    background: transparent;
+    color: var(--accent-navy);
+    border: 2px solid var(--accent-navy);
     padding: 12px 28px;
     font-size: 1em;
     font-weight: 700;
@@ -433,7 +433,7 @@ input:focus, textarea:focus, select:focus {
 
 .print-btn:hover,
 .btn-secondary:hover {
-    background: var(--accent-blue);
+    background: var(--accent-navy);
     color: white;
 }
 
@@ -459,22 +459,20 @@ input:focus, textarea:focus, select:focus {
 }
 
 .btn-ghost {
-    background: transparent;
+    background: none;
     color: var(--text-secondary);
     border: none;
     padding: 10px 24px;
     font-size: var(--text-sm);
     font-weight: 600;
-    text-transform: uppercase;
     letter-spacing: 1px;
     border-radius: 4px;
     cursor: pointer;
-    text-decoration: none;
+    text-decoration: underline;
 }
 
 .btn-ghost:hover {
     color: var(--text-primary);
-    text-decoration: underline;
 }
 
 /* === Answer Key Modal === */

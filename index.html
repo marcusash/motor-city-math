@@ -20,13 +20,17 @@
             color: var(--accent-navy);
             font-weight: 700;
             font-size: 1.15em;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
             margin: 28px 0 12px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            cursor: pointer;
+            list-style: none;
         }
+        .section-title::-webkit-details-marker { display: none; }
+        .section-title::after { content: '▸'; transition: transform 0.2s; margin-left: 8px; }
+        details[open] > .section-title::after { transform: rotate(90deg); }
+        .dash-section { margin-bottom: 8px; }
         .chart-box {
             background: var(--bg-card);
             border: 1px solid var(--border-default);
@@ -136,13 +140,13 @@
             display: inline-block; padding: 12px 32px;
             font-weight: 700; font-size: 1.05rem; border-radius: 6px; text-decoration: none;
             border: 2px solid transparent; transition: background 0.15s, border-color 0.15s;
+            cursor: pointer;
         }
-        .nav-btn.primary { background: var(--accent-red); color: var(--text-inverse); }
-        .nav-btn.primary:hover { background: var(--accent-red-hover); }
-        .nav-btn.secondary { background: transparent; color: var(--accent-blue); border-color: var(--accent-blue); }
+        .nav-btn.primary { background: var(--accent-red); color: var(--text-inverse); border-color: var(--accent-red); }
+        .nav-btn.primary:hover { background: var(--accent-red-hover); border-color: var(--accent-red-hover); }
+        .nav-btn.secondary { background: transparent; color: var(--accent-navy); border-color: var(--accent-navy); }
         .nav-btn.secondary:hover { background: var(--bg-highlight); }
-        .nav-btn.ghost { background: transparent; color: var(--accent-navy); border-color: var(--border-default); }
-        .nav-btn.ghost:hover { border-color: var(--accent-blue); }
+        .nav-btn.ghost { background: transparent; color: var(--text-secondary); border: none; text-decoration: underline; }
 
         @media (max-width: 768px) {
             .standards-grid { grid-template-columns: 1fr; }
@@ -161,38 +165,45 @@
             <div class="subtitle">Algebra II · Kai</div>
         </header>
 
-        <div class="section-title">
-            <span id="unitTitle">Score History</span>
+        <!-- UP NEXT: One primary action above the fold -->
+        <div style="text-align:center; margin: 0 0 24px; padding: 24px; background: var(--bg-card); border-radius: 8px; border: 1px solid var(--border-default);">
+            <div style="font-size:var(--text-lg); font-weight:700; color:var(--accent-navy); margin-bottom:4px;">Up Next 🏀</div>
+            <div id="upNextInfo" style="color:var(--text-secondary); margin-bottom:16px;">Retake Practice — Nonlinear Functions</div>
+            <a href="exam.html?file=retake-practice-1" class="nav-btn primary">Start Practice</a>
+            <div class="stats-bar" id="statsBar" style="margin-top:16px;"></div>
         </div>
-        <div class="chart-box">
-            <canvas id="scoreChart" aria-label="Score history chart" role="img"></canvas>
-            <div class="empty-state" id="emptyChart" style="display:none;">
-                <div class="icon">🏀</div>
-                <p>No scores yet. Take your first test.</p>
-                <p style="font-size:0.9em;">Ask Dad for your next test.</p>
+
+        <!-- Collapsible sections below the fold -->
+        <details class="dash-section">
+            <summary class="section-title">Your Stats 📊</summary>
+            <div class="chart-box">
+                <canvas id="scoreChart" aria-label="Score history chart" role="img"></canvas>
+                <div class="empty-state" id="emptyChart" style="display:none;">
+                    <div class="icon">🏀</div>
+                    <p>Let's get your first score on the board. 🏀</p>
+                </div>
             </div>
-        </div>
+        </details>
 
-        <div class="section-title">Standards Breakdown</div>
-        <div class="standards-grid" id="standardsGrid" role="list"></div>
+        <details class="dash-section">
+            <summary class="section-title">Your Game Plan 🎯</summary>
+            <div class="standards-grid" id="standardsGrid" role="list"></div>
+            <ul class="study-list" id="studyList"></ul>
+        </details>
 
-        <div class="section-title">What to Study Next</div>
-        <ul class="study-list" id="studyList"></ul>
+        <details class="dash-section">
+            <summary class="section-title">All Tests 🏆</summary>
+            <div class="test-grid" id="retakeGrid"></div>
+            <div class="test-grid" id="testGrid" style="margin-top:12px;"></div>
+        </details>
 
-        <div class="section-title" style="color:var(--accent-red);">🏀 Retake Practice — Nonlinear Functions</div>
-        <div class="test-grid" id="retakeGrid"></div>
+        <details class="dash-section">
+            <summary class="section-title">Send to Dad 📱</summary>
+            <div style="text-align:center; margin: 16px 0 8px;">
+                <button class="nav-btn ghost" onclick="exportScores()">📤 Send Scores to Dad</button>
+            </div>
+        </details>
 
-        <div style="text-align:center; margin: 20px 0; display:flex; justify-content:center; gap:12px; flex-wrap:wrap;">
-            <a href="nonlinear_exam_mvp.html" class="nav-btn primary">📝 Take the Test</a>
-        </div>
-
-        <div class="section-title">All Tests</div>
-        <div class="test-grid" id="testGrid"></div>
-
-        <div class="stats-bar" id="statsBar"></div>
-        <div style="text-align:center; margin: 16px 0 8px;">
-            <button class="nav-btn secondary" onclick="exportScores()">📤 Send Scores to Dad</button>
-        </div>
         <div class="footer">Built with 💪🏾 by Dad · Motor City Math</div>
     </div>
 
