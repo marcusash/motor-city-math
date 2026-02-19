@@ -32,6 +32,14 @@
     --chart-grid: #E2E5EF;
     --chart-label: #1A1F36;
     --grid-minor: #EDF0F5;
+
+    /* Type Scale — 6 sizes (FD review H3) */
+    --text-xs: 0.75rem;   /* 12px — captions, labels */
+    --text-sm: 0.875rem;  /* 14px — secondary text */
+    --text-base: 1rem;    /* 16px — body, questions */
+    --text-lg: 1.25rem;   /* 20px — section headers */
+    --text-xl: 1.75rem;   /* 28px — page subtitles */
+    --text-2xl: 2.5rem;   /* 40px — page titles */
 }
 
 /* === Arena Mode (Dark Theme) === */
@@ -172,6 +180,11 @@ body {
     padding: 20px;
 }
 
+/* KaTeX serif fallback containment — prevent Times New Roman from leaking into UI (FD C2) */
+.katex {
+    font-family: KaTeX_Main, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
 /* === Layout === */
 .container {
     max-width: 1000px;
@@ -198,7 +211,7 @@ header {
 
 h1 {
     color: var(--accent-navy);
-    font-size: 2.5em;
+    font-size: var(--text-2xl);
     margin-bottom: 10px;
     font-weight: 700;
     letter-spacing: -0.5px;
@@ -206,12 +219,12 @@ h1 {
 
 .subtitle {
     color: var(--text-secondary);
-    font-size: 1.2em;
+    font-size: var(--text-lg);
 }
 
 header .date {
     color: var(--text-secondary);
-    font-size: 1em;
+    font-size: var(--text-base);
     margin-top: 10px;
 }
 
@@ -259,7 +272,7 @@ header .date {
 .question-number {
     color: var(--accent-navy);
     font-weight: 800;
-    font-size: 1.3em;
+    font-size: var(--text-lg);
     margin-bottom: 16px;
     padding-bottom: 10px;
     text-transform: uppercase;
@@ -269,7 +282,7 @@ header .date {
 
 .question-text {
     color: var(--text-primary);
-    font-size: 1.1em;
+    font-size: var(--text-base);
     line-height: 1.6;
     margin-bottom: 15px;
 }
@@ -376,7 +389,7 @@ input:focus, textarea:focus, select:focus {
 
 .print-btn,
 .btn-secondary {
-    background: white;
+    background: var(--bg-card);
     color: var(--accent-blue);
     border: 2px solid var(--accent-blue);
     padding: 12px 28px;
@@ -398,9 +411,9 @@ input:focus, textarea:focus, select:focus {
 }
 
 .answer-key-btn {
-    background: var(--accent-red);
-    color: white;
-    border: none;
+    background: var(--bg-card);
+    color: var(--accent-navy);
+    border: 2px solid var(--accent-navy);
     padding: 12px 30px;
     font-size: 1em;
     border-radius: 4px;
@@ -414,25 +427,27 @@ input:focus, textarea:focus, select:focus {
 }
 
 .answer-key-btn:hover {
-    background: var(--accent-red-hover);
+    background: var(--accent-navy);
+    color: white;
 }
 
 .btn-ghost {
     background: transparent;
     color: var(--text-secondary);
-    border: 1px solid var(--border-default);
+    border: none;
     padding: 10px 24px;
-    font-size: 0.9em;
+    font-size: var(--text-sm);
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
     border-radius: 4px;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .btn-ghost:hover {
-    border-color: var(--text-primary);
     color: var(--text-primary);
+    text-decoration: underline;
 }
 
 /* === Answer Key Modal === */
@@ -481,7 +496,7 @@ input:focus, textarea:focus, select:focus {
 
 .answer-key-title {
     color: #002D62;
-    font-size: 2.5em;
+    font-size: var(--text-2xl);
     margin-bottom: 30px;
     text-align: center;
     font-weight: 700;
@@ -883,7 +898,7 @@ table th {
 }
 .standards-heading {
     grid-column: 1 / -1;
-    font-size: 0.85em;
+    font-size: var(--text-xs);
     text-transform: uppercase;
     letter-spacing: 1px;
     color: var(--text-secondary);
@@ -958,7 +973,7 @@ table th {
     }
 
     h1 {
-        font-size: 1.8em;
+        font-size: var(--text-xl);
     }
 
     .question-card {
@@ -992,7 +1007,7 @@ table th {
 
 @media (max-width: 480px) {
     h1 {
-        font-size: 1.5em;
+        font-size: var(--text-lg);
     }
 
     .container {
@@ -1015,7 +1030,7 @@ table th {
     text-align: center;
     padding: 20px;
     color: var(--text-secondary);
-    font-size: 0.9em;
+    font-size: var(--text-sm);
     margin-top: 40px;
 }
 

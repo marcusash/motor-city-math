@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/svg+xml" href="shared/favicon.svg">
-    <title>Loading... — Motor City Math</title>
+    <title>Motor City Math — Exam</title>
     <link rel="stylesheet" href="shared/katex/katex.min.css">
     <script defer src="shared/katex/katex.min.js"></script>
     <script defer src="shared/katex/auto-render.min.js"></script>
@@ -66,6 +66,14 @@
         .std-card .std-score { color: var(--text-secondary); font-size: 0.85em; }
         .submit-area { text-align: center; margin: 24px 0; }
         .error-msg { text-align: center; padding: 40px; color: var(--color-incorrect); font-size: 1.2em; }
+        .exam-picker { text-align: center; padding: 24px 0; }
+        .exam-picker p { color: var(--text-secondary); font-size: 1.05em; margin-bottom: 20px; }
+        .exam-picker-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; max-width: 600px; margin: 0 auto; }
+        .exam-picker-card { display: block; text-decoration: none; background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 8px; padding: 16px; text-align: left; position: relative; box-shadow: var(--shadow-card); transition: border-color 0.15s, box-shadow 0.15s; }
+        .exam-picker-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; border-radius: 8px 0 0 8px; background: linear-gradient(to bottom, var(--accent-red), var(--accent-blue), var(--accent-red)); }
+        .exam-picker-card:hover { border-color: var(--accent-blue); box-shadow: 0 2px 12px rgba(0,45,98,0.12); }
+        .exam-picker-card .card-title { font-weight: 700; color: var(--text-primary); font-size: 1em; margin-bottom: 4px; }
+        .exam-picker-card .card-desc { color: var(--text-secondary); font-size: 0.85em; }
     </style>
 </head>
 <body>
@@ -108,8 +116,18 @@
         var params = new URLSearchParams(window.location.search);
         var file = params.get('file');
         if (!file) {
-            document.getElementById('questionsContainer').innerHTML = '<div class="error-msg">No exam specified. Use: exam.html?file=retake-practice-1</div>';
             document.getElementById('examTitle').textContent = 'Motor City Math';
+            document.getElementById('examSubtitle').textContent = 'Pick a test to get started 🏀';
+            document.getElementById('questionsContainer').innerHTML =
+                '<div class="exam-picker">' +
+                '<div class="exam-picker-grid">' +
+                '<a class="exam-picker-card" href="exam.html?file=retake-practice-1"><div class="card-title">Retake Practice 1</div><div class="card-desc">15 questions · Mixed topics</div></a>' +
+                '<a class="exam-picker-card" href="exam.html?file=retake-practice-2"><div class="card-title">Retake Practice 2</div><div class="card-desc">15 questions · Mixed topics</div></a>' +
+                '<a class="exam-picker-card" href="exam.html?file=retake-practice-3"><div class="card-title">Retake Practice 3</div><div class="card-desc">15 questions · Mixed topics</div></a>' +
+                '<a class="exam-picker-card" href="exam.html?file=retake-practice-4"><div class="card-title">Retake Practice 4</div><div class="card-desc">15 questions · Mixed topics</div></a>' +
+                '<a class="exam-picker-card" href="exam.html?file=retake-practice-5"><div class="card-title">Retake Practice 5</div><div class="card-desc">15 questions · Mixed topics</div></a>' +
+                '</div>' +
+                '</div>';
             return;
         }
 
