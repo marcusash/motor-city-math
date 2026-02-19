@@ -15,9 +15,34 @@
       "type": "identify",
       "question_html": "Identify the parent function and find the x-intercepts: \\( f(x) = 4(x - 2)^2 - 64 \\)",
       "inputs": [
-        { "id": "q1_parent", "type": "dropdown", "label": "Parent function", "options": ["quadratic", "cubic", "absolute", "sqrt", "rational", "exponential"], "answer": "quadratic" },
-        { "id": "q1_x1", "type": "number", "label": "x₁ =", "answer": 6, "tolerance": 0.1 },
-        { "id": "q1_x2", "type": "number", "label": "x₂ =", "answer": -2, "tolerance": 0.1 }
+        {
+          "id": "q1_parent",
+          "type": "dropdown",
+          "label": "Parent function",
+          "options": [
+            "quadratic",
+            "cubic",
+            "absolute",
+            "sqrt",
+            "rational",
+            "exponential"
+          ],
+          "answer": "quadratic"
+        },
+        {
+          "id": "q1_x1",
+          "type": "number",
+          "label": "x₁ =",
+          "answer": 6,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q1_x2",
+          "type": "number",
+          "label": "x₂ =",
+          "answer": -2,
+          "tolerance": 0.1
+        }
       ],
       "plus_minus": true,
       "hint": "Set f(x)=0. Isolate the squared term.",
@@ -39,8 +64,27 @@
       "type": "identify",
       "question_html": "Identify the parent function and find the x-intercept: \\( f(x) = \\sqrt{x + 1} - 7 \\)",
       "inputs": [
-        { "id": "q2_parent", "type": "dropdown", "label": "Parent function", "options": ["quadratic", "cubic", "absolute", "sqrt", "rational", "exponential"], "answer": "sqrt" },
-        { "id": "q2_x1", "type": "number", "label": "x-intercept =", "answer": 48, "tolerance": 0.1 }
+        {
+          "id": "q2_parent",
+          "type": "dropdown",
+          "label": "Parent function",
+          "options": [
+            "quadratic",
+            "cubic",
+            "absolute",
+            "sqrt",
+            "rational",
+            "exponential"
+          ],
+          "answer": "sqrt"
+        },
+        {
+          "id": "q2_x1",
+          "type": "number",
+          "label": "x-intercept =",
+          "answer": 48,
+          "tolerance": 0.1
+        }
       ],
       "hint": "Set f(x)=0. Square both sides.",
       "solution_steps": [
@@ -59,9 +103,34 @@
       "type": "identify",
       "question_html": "Identify the parent function and find the x-intercepts: \\( f(x) = -5|x - 3| + 30 \\)",
       "inputs": [
-        { "id": "q3_parent", "type": "dropdown", "label": "Parent function", "options": ["quadratic", "cubic", "absolute", "sqrt", "rational", "exponential"], "answer": "absolute" },
-        { "id": "q3_x1", "type": "number", "label": "x₁ =", "answer": 9, "tolerance": 0.1 },
-        { "id": "q3_x2", "type": "number", "label": "x₂ =", "answer": -3, "tolerance": 0.1 }
+        {
+          "id": "q3_parent",
+          "type": "dropdown",
+          "label": "Parent function",
+          "options": [
+            "quadratic",
+            "cubic",
+            "absolute",
+            "sqrt",
+            "rational",
+            "exponential"
+          ],
+          "answer": "absolute"
+        },
+        {
+          "id": "q3_x1",
+          "type": "number",
+          "label": "x₁ =",
+          "answer": 9,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q3_x2",
+          "type": "number",
+          "label": "x₂ =",
+          "answer": -3,
+          "tolerance": 0.1
+        }
       ],
       "plus_minus": true,
       "hint": "Set f(x)=0. |x-3| = 6 gives two answers.",
@@ -82,7 +151,13 @@
       "type": "exponential",
       "question_html": "Solve: \\( 4^{3x - 2} = 64 \\)",
       "inputs": [
-        { "id": "q4_x", "type": "number", "label": "x =", "answer": 1.667, "tolerance": 0.02 }
+        {
+          "id": "q4_x",
+          "type": "number",
+          "label": "x =",
+          "answer": 1.667,
+          "tolerance": 0.02
+        }
       ],
       "hint": "Rewrite 64 as 4³. Set exponents equal.",
       "solution_steps": [
@@ -102,8 +177,20 @@
       "type": "quadratic",
       "question_html": "Solve: \\( 3(x + 5)^2 - 108 = 0 \\)",
       "inputs": [
-        { "id": "q5_x1", "type": "number", "label": "x₁ =", "answer": 1, "tolerance": 0.1 },
-        { "id": "q5_x2", "type": "number", "label": "x₂ =", "answer": -11, "tolerance": 0.1 }
+        {
+          "id": "q5_x1",
+          "type": "number",
+          "label": "x₁ =",
+          "answer": 1,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q5_x2",
+          "type": "number",
+          "label": "x₂ =",
+          "answer": -11,
+          "tolerance": 0.1
+        }
       ],
       "plus_minus": true,
       "hint": "Isolate the squared term. Then ±.",
@@ -124,7 +211,13 @@
       "type": "radical",
       "question_html": "Solve: \\( \\sqrt{x + 11} + 1 = 8 \\)",
       "inputs": [
-        { "id": "q6_x", "type": "number", "label": "x =", "answer": 38, "tolerance": 0.01 }
+        {
+          "id": "q6_x",
+          "type": "number",
+          "label": "x =",
+          "answer": 38,
+          "tolerance": 0.01
+        }
       ],
       "hint": "Isolate the √, then square both sides.",
       "solution_steps": [
@@ -144,7 +237,13 @@
       "type": "exponential",
       "question_html": "Solve: \\( 27^{x + 1} = 9 \\)",
       "inputs": [
-        { "id": "q7_x", "type": "number", "label": "x =", "answer": -0.333, "tolerance": 0.02 }
+        {
+          "id": "q7_x",
+          "type": "number",
+          "label": "x =",
+          "answer": -0.333,
+          "tolerance": 0.02
+        }
       ],
       "hint": "Rewrite both sides as powers of 3.",
       "solution_steps": [
@@ -165,7 +264,13 @@
       "type": "rational",
       "question_html": "Solve: \\( \\dfrac{2x + 7}{x - 3} = 5 \\)",
       "inputs": [
-        { "id": "q8_x", "type": "number", "label": "x =", "answer": 7.333, "tolerance": 0.02 }
+        {
+          "id": "q8_x",
+          "type": "number",
+          "label": "x =",
+          "answer": 7.333,
+          "tolerance": 0.02
+        }
       ],
       "hint": "Multiply both sides by (x - 3).",
       "solution_steps": [
@@ -185,8 +290,20 @@
       "type": "radical",
       "question_html": "Solve: \\( \\sqrt{x^2 + 51} = 10 \\)",
       "inputs": [
-        { "id": "q9_x1", "type": "number", "label": "x₁ =", "answer": 7, "tolerance": 0.01 },
-        { "id": "q9_x2", "type": "number", "label": "x₂ =", "answer": -7, "tolerance": 0.01 }
+        {
+          "id": "q9_x1",
+          "type": "number",
+          "label": "x₁ =",
+          "answer": 7,
+          "tolerance": 0.01
+        },
+        {
+          "id": "q9_x2",
+          "type": "number",
+          "label": "x₂ =",
+          "answer": -7,
+          "tolerance": 0.01
+        }
       ],
       "plus_minus": true,
       "hint": "Square both sides. You'll get x² = something. Don't forget ±.",
@@ -205,18 +322,24 @@
       "section": "B",
       "standard": "W3.e",
       "type": "extraneous",
-      "question_html": "Solve and check for extraneous solutions: \\( \\sqrt{x + 2} = x - 4 \\)",
+      "question_html": "Solve and check for extraneous solutions: \\\\( \\\\sqrt{x + 12} = x - 8 \\\\)",
       "inputs": [
-        { "id": "q10_x", "type": "number", "label": "Valid x =", "answer": 7, "tolerance": 0.1 }
+        {
+          "id": "q10_x",
+          "type": "number",
+          "label": "Valid x =",
+          "answer": 13,
+          "tolerance": 0.1
+        }
       ],
       "hint": "Square both sides. Factor. Check BOTH in the original.",
       "solution_steps": [
-        "Square: x + 2 = (x-4)² = x² - 8x + 16.",
-        "x² - 9x + 14 = 0 → (x-7)(x-2) = 0.",
-        "x = 7 or x = 2.",
-        "Check x=7: √9 = 3 and 7-4 = 3 ✓",
-        "Check x=2: √4 = 2 and 2-4 = -2 ✗ → extraneous.",
-        "Only x = 7 is valid."
+        "Square: x + 12 = (x-8)² = x² - 16x + 64.",
+        "x² - 17x + 52 = 0 → (x-13)(x-4) = 0.",
+        "x = 13 or x = 4.",
+        "Check x=13: √25 = 5 and 13-8 = 5 ✓",
+        "Check x=4: √16 = 4 and 4-8 = -4 ✗ → extraneous.",
+        "Only x = 13 is valid."
       ],
       "feedback_correct": "🔥 Caught the extraneous one.",
       "feedback_wrong": "Square both sides, then check BOTH answers back in the original."
@@ -229,7 +352,13 @@
       "type": "fractional-exp",
       "question_html": "Solve: \\( 5x^{3/2} + 20 = 1100 \\)",
       "inputs": [
-        { "id": "q11_x", "type": "number", "label": "x =", "answer": 36, "tolerance": 0.01 }
+        {
+          "id": "q11_x",
+          "type": "number",
+          "label": "x =",
+          "answer": 36,
+          "tolerance": 0.01
+        }
       ],
       "hint": "Isolate x^(3/2), then raise both sides to the 2/3 power.",
       "solution_steps": [
@@ -249,14 +378,47 @@
       "type": "graph",
       "question_html": "Graph \\( f(x) = -(x - 4)^2 + 9 \\). State the vertex.",
       "inputs": [
-        { "id": "q12_vx", "type": "number", "label": "Vertex x =", "answer": 4, "tolerance": 0.1 },
-        { "id": "q12_vy", "type": "number", "label": "Vertex y =", "answer": 9, "tolerance": 0.1 }
+        {
+          "id": "q12_vx",
+          "type": "number",
+          "label": "Vertex x =",
+          "answer": 4,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q12_vy",
+          "type": "number",
+          "label": "Vertex y =",
+          "answer": 9,
+          "tolerance": 0.1
+        }
       ],
       "graph": {
         "canvas_id": "graphQ12",
         "function": "-(Math.pow(x - 4, 2)) + 9",
         "function_display": "f(x) = -(x-4)² + 9",
-        "key_points": [[2, 5], [3, 8], [4, 9], [5, 8], [6, 5]],
+        "key_points": [
+          [
+            2,
+            5
+          ],
+          [
+            3,
+            8
+          ],
+          [
+            4,
+            9
+          ],
+          [
+            5,
+            8
+          ],
+          [
+            6,
+            5
+          ]
+        ],
         "min_points": 5,
         "tolerance": 0.25,
         "asymptotes": null
@@ -283,17 +445,57 @@
       "type": "graph",
       "question_html": "Graph \\( f(x) = \\dfrac{3}{x + 2} - 1 \\) and draw asymptotes. State the asymptotes.",
       "inputs": [
-        { "id": "q13_va", "type": "number", "label": "Vertical asymptote x =", "answer": -2, "tolerance": 0.1 },
-        { "id": "q13_ha", "type": "number", "label": "Horizontal asymptote y =", "answer": -1, "tolerance": 0.1 }
+        {
+          "id": "q13_va",
+          "type": "number",
+          "label": "Vertical asymptote x =",
+          "answer": -2,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q13_ha",
+          "type": "number",
+          "label": "Horizontal asymptote y =",
+          "answer": -1,
+          "tolerance": 0.1
+        }
       ],
       "graph": {
         "canvas_id": "graphQ13",
         "function": "3 / (x + 2) - 1",
         "function_display": "f(x) = 3/(x+2) - 1",
-        "key_points": [[-4, -2.5], [-3, -4], [-1, 2], [0, 0.5], [1, 0]],
+        "key_points": [
+          [
+            -4,
+            -2.5
+          ],
+          [
+            -3,
+            -4
+          ],
+          [
+            -1,
+            2
+          ],
+          [
+            0,
+            0.5
+          ],
+          [
+            1,
+            0
+          ]
+        ],
         "min_points": 5,
         "tolerance": 0.25,
-        "asymptotes": { "vertical": [-2], "horizontal": [-1] }
+        "asymptotes": {
+          "vertical": [
+            -2
+          ],
+          "horizontal": [
+            -1
+          ]
+        }
       },
       "hint": "VA: denominator = 0. HA: the -1 outside the fraction.",
       "solution_steps": [
@@ -317,11 +519,27 @@
       "type": "multiple-choice",
       "question_html": "The surface area of a cylinder is \\( S = 2\\pi r^2 + 2\\pi rh \\). Which correctly solves for \\( h \\)?",
       "inputs": [
-        { "id": "q14", "type": "radio", "label": "", "options": [
-            { "value": "A", "text": "\\( h = \\dfrac{S}{2\\pi r^2} \\)" },
-            { "value": "B", "text": "\\( h = \\dfrac{S - 2\\pi r}{2\\pi r^2} \\)" },
-            { "value": "C", "text": "\\( h = \\dfrac{S - 2\\pi r^2}{2\\pi r} \\)" },
-            { "value": "D", "text": "\\( h = S - 2\\pi r^2 - 2\\pi r \\)" }
+        {
+          "id": "q14",
+          "type": "radio",
+          "label": "",
+          "options": [
+            {
+              "value": "A",
+              "text": "\\( h = \\dfrac{S}{2\\pi r^2} \\)"
+            },
+            {
+              "value": "B",
+              "text": "\\( h = \\dfrac{S - 2\\pi r}{2\\pi r^2} \\)"
+            },
+            {
+              "value": "C",
+              "text": "\\( h = \\dfrac{S - 2\\pi r^2}{2\\pi r} \\)"
+            },
+            {
+              "value": "D",
+              "text": "\\( h = S - 2\\pi r^2 - 2\\pi r \\)"
+            }
           ],
           "answer": "C"
         }
@@ -344,7 +562,13 @@
       "type": "word-problem",
       "question_html": "A radioactive isotope starts at 2,000 grams and has a half-life of 8 years. The amount remaining is modeled by \\( A(t) = 2000 \\cdot 0.5^{t/8} \\). How many years until only 125 grams remain?",
       "inputs": [
-        { "id": "q15_t", "type": "number", "label": "t =", "answer": 32, "tolerance": 0.5 }
+        {
+          "id": "q15_t",
+          "type": "number",
+          "label": "t =",
+          "answer": 32,
+          "tolerance": 0.5
+        }
       ],
       "hint": "Set A(t) = 125. Divide by 2000. What power of 0.5?",
       "solution_steps": [

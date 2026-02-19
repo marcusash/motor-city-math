@@ -15,9 +15,34 @@
       "type": "identify",
       "question_html": "Identify the parent function and find the x-intercepts: \\( f(x) = 5(x + 1)^2 - 80 \\)",
       "inputs": [
-        { "id": "q1_parent", "type": "dropdown", "label": "Parent function", "options": ["quadratic", "cubic", "absolute", "sqrt", "rational", "exponential"], "answer": "quadratic" },
-        { "id": "q1_x1", "type": "number", "label": "x₁ =", "answer": 3, "tolerance": 0.1 },
-        { "id": "q1_x2", "type": "number", "label": "x₂ =", "answer": -5, "tolerance": 0.1 }
+        {
+          "id": "q1_parent",
+          "type": "dropdown",
+          "label": "Parent function",
+          "options": [
+            "quadratic",
+            "cubic",
+            "absolute",
+            "sqrt",
+            "rational",
+            "exponential"
+          ],
+          "answer": "quadratic"
+        },
+        {
+          "id": "q1_x1",
+          "type": "number",
+          "label": "x₁ =",
+          "answer": 3,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q1_x2",
+          "type": "number",
+          "label": "x₂ =",
+          "answer": -5,
+          "tolerance": 0.1
+        }
       ],
       "plus_minus": true,
       "hint": "Set f(x)=0. Isolate the squared term.",
@@ -39,8 +64,27 @@
       "type": "identify",
       "question_html": "Identify the parent function and find the x-intercept: \\( f(x) = \\sqrt{x - 7} - 5 \\)",
       "inputs": [
-        { "id": "q2_parent", "type": "dropdown", "label": "Parent function", "options": ["quadratic", "cubic", "absolute", "sqrt", "rational", "exponential"], "answer": "sqrt" },
-        { "id": "q2_x1", "type": "number", "label": "x-intercept =", "answer": 32, "tolerance": 0.1 }
+        {
+          "id": "q2_parent",
+          "type": "dropdown",
+          "label": "Parent function",
+          "options": [
+            "quadratic",
+            "cubic",
+            "absolute",
+            "sqrt",
+            "rational",
+            "exponential"
+          ],
+          "answer": "sqrt"
+        },
+        {
+          "id": "q2_x1",
+          "type": "number",
+          "label": "x-intercept =",
+          "answer": 32,
+          "tolerance": 0.1
+        }
       ],
       "hint": "Set f(x)=0. Square both sides.",
       "solution_steps": [
@@ -59,9 +103,34 @@
       "type": "identify",
       "question_html": "Identify the parent function and find the x-intercepts: \\( f(x) = -4|x + 2| + 24 \\)",
       "inputs": [
-        { "id": "q3_parent", "type": "dropdown", "label": "Parent function", "options": ["quadratic", "cubic", "absolute", "sqrt", "rational", "exponential"], "answer": "absolute" },
-        { "id": "q3_x1", "type": "number", "label": "x₁ =", "answer": 4, "tolerance": 0.1 },
-        { "id": "q3_x2", "type": "number", "label": "x₂ =", "answer": -8, "tolerance": 0.1 }
+        {
+          "id": "q3_parent",
+          "type": "dropdown",
+          "label": "Parent function",
+          "options": [
+            "quadratic",
+            "cubic",
+            "absolute",
+            "sqrt",
+            "rational",
+            "exponential"
+          ],
+          "answer": "absolute"
+        },
+        {
+          "id": "q3_x1",
+          "type": "number",
+          "label": "x₁ =",
+          "answer": 4,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q3_x2",
+          "type": "number",
+          "label": "x₂ =",
+          "answer": -8,
+          "tolerance": 0.1
+        }
       ],
       "plus_minus": true,
       "hint": "Set f(x)=0. |x+2| = 6 gives two answers.",
@@ -82,7 +151,13 @@
       "type": "exponential",
       "question_html": "Solve: \\( 3^{2x + 1} = 81 \\)",
       "inputs": [
-        { "id": "q4_x", "type": "number", "label": "x =", "answer": 1.5, "tolerance": 0.01 }
+        {
+          "id": "q4_x",
+          "type": "number",
+          "label": "x =",
+          "answer": 1.5,
+          "tolerance": 0.01
+        }
       ],
       "hint": "Rewrite 81 as 3⁴. Set exponents equal.",
       "solution_steps": [
@@ -102,8 +177,20 @@
       "type": "quadratic",
       "question_html": "Solve: \\( 2(x - 3)^2 - 50 = 0 \\)",
       "inputs": [
-        { "id": "q5_x1", "type": "number", "label": "x₁ =", "answer": 8, "tolerance": 0.1 },
-        { "id": "q5_x2", "type": "number", "label": "x₂ =", "answer": -2, "tolerance": 0.1 }
+        {
+          "id": "q5_x1",
+          "type": "number",
+          "label": "x₁ =",
+          "answer": 8,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q5_x2",
+          "type": "number",
+          "label": "x₂ =",
+          "answer": -2,
+          "tolerance": 0.1
+        }
       ],
       "plus_minus": true,
       "hint": "Isolate the squared term. Then ±.",
@@ -124,7 +211,13 @@
       "type": "radical",
       "question_html": "Solve: \\( \\sqrt{4x - 3} + 2 = 9 \\)",
       "inputs": [
-        { "id": "q6_x", "type": "number", "label": "x =", "answer": 13, "tolerance": 0.01 }
+        {
+          "id": "q6_x",
+          "type": "number",
+          "label": "x =",
+          "answer": 13,
+          "tolerance": 0.01
+        }
       ],
       "hint": "Isolate the √, then square both sides.",
       "solution_steps": [
@@ -144,7 +237,13 @@
       "type": "exponential",
       "question_html": "Solve: \\( 16^{x - 1} = 8 \\)",
       "inputs": [
-        { "id": "q7_x", "type": "number", "label": "x =", "answer": 1.75, "tolerance": 0.01 }
+        {
+          "id": "q7_x",
+          "type": "number",
+          "label": "x =",
+          "answer": 1.75,
+          "tolerance": 0.01
+        }
       ],
       "hint": "Rewrite both sides as powers of 2.",
       "solution_steps": [
@@ -165,7 +264,13 @@
       "type": "rational",
       "question_html": "Solve: \\( \\dfrac{6x + 1}{x - 2} = 5 \\)",
       "inputs": [
-        { "id": "q8_x", "type": "number", "label": "x =", "answer": -11, "tolerance": 0.01 }
+        {
+          "id": "q8_x",
+          "type": "number",
+          "label": "x =",
+          "answer": -11,
+          "tolerance": 0.01
+        }
       ],
       "hint": "Multiply both sides by (x - 2).",
       "solution_steps": [
@@ -183,20 +288,32 @@
       "section": "B",
       "standard": "W3.b",
       "type": "radical",
-      "question_html": "Solve: \\( \\sqrt{x^2 + 36} = 10 \\)",
+      "question_html": "Solve: \\( \\sqrt{x^2 + 28} = 8 \\)",
       "inputs": [
-        { "id": "q9_x1", "type": "number", "label": "x₁ =", "answer": 8, "tolerance": 0.01 },
-        { "id": "q9_x2", "type": "number", "label": "x₂ =", "answer": -8, "tolerance": 0.01 }
+        {
+          "id": "q9_x1",
+          "type": "number",
+          "label": "x₁ =",
+          "answer": 6,
+          "tolerance": 0.01
+        },
+        {
+          "id": "q9_x2",
+          "type": "number",
+          "label": "x₂ =",
+          "answer": -6,
+          "tolerance": 0.01
+        }
       ],
       "plus_minus": true,
       "hint": "Square both sides. You'll get x² = something. Don't forget ±.",
       "solution_steps": [
-        "Square both sides: x² + 36 = 100.",
-        "x² = 64.",
-        "x = ±8.",
-        "Check: √(64 + 36) = √100 = 10 ✓"
+        "Square both sides: x² + 28 = 64.",
+        "x² = 36.",
+        "x = ±6.",
+        "Check: √(36 + 28) = √64 = 8 ✓"
       ],
-      "feedback_correct": "🔥 ±8. Don't forget both.",
+      "feedback_correct": "🔥 ±6. Don't forget both.",
       "feedback_wrong": "Square both sides, then remember ± for x²."
     },
     {
@@ -207,7 +324,13 @@
       "type": "extraneous",
       "question_html": "Solve and check for extraneous solutions: \\( \\sqrt{x + 7} = x + 5 \\)",
       "inputs": [
-        { "id": "q10_x", "type": "number", "label": "Valid x =", "answer": -3, "tolerance": 0.1 }
+        {
+          "id": "q10_x",
+          "type": "number",
+          "label": "Valid x =",
+          "answer": -3,
+          "tolerance": 0.1
+        }
       ],
       "hint": "Square both sides. Factor. Check BOTH in the original.",
       "solution_steps": [
@@ -229,7 +352,13 @@
       "type": "fractional-exp",
       "question_html": "Solve: \\( 2x^{3/2} - 14 = 672 \\)",
       "inputs": [
-        { "id": "q11_x", "type": "number", "label": "x =", "answer": 49, "tolerance": 0.01 }
+        {
+          "id": "q11_x",
+          "type": "number",
+          "label": "x =",
+          "answer": 49,
+          "tolerance": 0.01
+        }
       ],
       "hint": "Isolate x^(3/2), then raise both sides to the 2/3 power.",
       "solution_steps": [
@@ -249,14 +378,47 @@
       "type": "graph",
       "question_html": "Graph \\( f(x) = 2(x - 2)^2 - 8 \\). State the vertex.",
       "inputs": [
-        { "id": "q12_vx", "type": "number", "label": "Vertex x =", "answer": 2, "tolerance": 0.1 },
-        { "id": "q12_vy", "type": "number", "label": "Vertex y =", "answer": -8, "tolerance": 0.1 }
+        {
+          "id": "q12_vx",
+          "type": "number",
+          "label": "Vertex x =",
+          "answer": 2,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q12_vy",
+          "type": "number",
+          "label": "Vertex y =",
+          "answer": -8,
+          "tolerance": 0.1
+        }
       ],
       "graph": {
         "canvas_id": "graphQ12",
         "function": "2 * Math.pow(x - 2, 2) - 8",
         "function_display": "f(x) = 2(x-2)² - 8",
-        "key_points": [[0, 0], [1, -6], [2, -8], [3, -6], [4, 0]],
+        "key_points": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            -6
+          ],
+          [
+            2,
+            -8
+          ],
+          [
+            3,
+            -6
+          ],
+          [
+            4,
+            0
+          ]
+        ],
         "min_points": 5,
         "tolerance": 0.25,
         "asymptotes": null
@@ -283,17 +445,57 @@
       "type": "graph",
       "question_html": "Graph \\( f(x) = \\dfrac{-2}{x - 4} + 3 \\) and draw asymptotes. State the asymptotes.",
       "inputs": [
-        { "id": "q13_va", "type": "number", "label": "Vertical asymptote x =", "answer": 4, "tolerance": 0.1 },
-        { "id": "q13_ha", "type": "number", "label": "Horizontal asymptote y =", "answer": 3, "tolerance": 0.1 }
+        {
+          "id": "q13_va",
+          "type": "number",
+          "label": "Vertical asymptote x =",
+          "answer": 4,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q13_ha",
+          "type": "number",
+          "label": "Horizontal asymptote y =",
+          "answer": 3,
+          "tolerance": 0.1
+        }
       ],
       "graph": {
         "canvas_id": "graphQ13",
         "function": "-2 / (x - 4) + 3",
         "function_display": "f(x) = -2/(x-4) + 3",
-        "key_points": [[2, 4], [3, 5], [5, 1], [6, 2], [8, 2.5]],
+        "key_points": [
+          [
+            2,
+            4
+          ],
+          [
+            3,
+            5
+          ],
+          [
+            5,
+            1
+          ],
+          [
+            6,
+            2
+          ],
+          [
+            8,
+            2.5
+          ]
+        ],
         "min_points": 5,
         "tolerance": 0.25,
-        "asymptotes": { "vertical": [4], "horizontal": [3] }
+        "asymptotes": {
+          "vertical": [
+            4
+          ],
+          "horizontal": [
+            3
+          ]
+        }
       },
       "hint": "VA: denominator = 0. HA: the +3 outside the fraction.",
       "solution_steps": [
@@ -317,11 +519,27 @@
       "type": "multiple-choice",
       "question_html": "The circumference of a circle is \\( C = 2\\pi r \\). Which correctly solves for \\( r \\)?",
       "inputs": [
-        { "id": "q14", "type": "radio", "label": "", "options": [
-            { "value": "A", "text": "\\( r = \\dfrac{C}{2\\pi} \\)" },
-            { "value": "B", "text": "\\( r = \\dfrac{2C}{\\pi} \\)" },
-            { "value": "C", "text": "\\( r = \\dfrac{C \\cdot \\pi}{2} \\)" },
-            { "value": "D", "text": "\\( r = 2C\\pi \\)" }
+        {
+          "id": "q14",
+          "type": "radio",
+          "label": "",
+          "options": [
+            {
+              "value": "A",
+              "text": "\\( r = \\dfrac{C}{2\\pi} \\)"
+            },
+            {
+              "value": "B",
+              "text": "\\( r = \\dfrac{2C}{\\pi} \\)"
+            },
+            {
+              "value": "C",
+              "text": "\\( r = \\dfrac{C \\cdot \\pi}{2} \\)"
+            },
+            {
+              "value": "D",
+              "text": "\\( r = 2C\\pi \\)"
+            }
           ],
           "answer": "A"
         }
@@ -343,7 +561,13 @@
       "type": "word-problem",
       "question_html": "A town's population starts at 5,000 and grows by 50% every 10 years. The population is modeled by \\( P(t) = 5000 \\cdot 1.5^{t/10} \\). How many years until the population reaches 16,875?",
       "inputs": [
-        { "id": "q15_t", "type": "number", "label": "t =", "answer": 30, "tolerance": 0.5 }
+        {
+          "id": "q15_t",
+          "type": "number",
+          "label": "t =",
+          "answer": 30,
+          "tolerance": 0.5
+        }
       ],
       "hint": "Set P(t) = 16875. Divide by 5000. What power of 1.5?",
       "solution_steps": [
