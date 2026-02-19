@@ -325,8 +325,10 @@
         var scores = getScores();
         var stdData = {};
 
-        // Aggregate per-question standard data from MVP-style storage
+        // Aggregate per-question standard data from MVP exam only
+        // Practice exams (retake: true) are excluded so they don't inflate scores
         tests.forEach(function(t) {
+            if (t.retake) return; // Skip practice exams for standards
             var s = scores[t.key];
             if (!s) return;
 
@@ -345,17 +347,6 @@
                         stdData[std].types[type]++;
                     });
                 }
-            }
-
-            // Simple format with standardScores
-            if (s.standardScores) {
-                Object.keys(s.standardScores).forEach(function(id) {
-                    var ss = s.standardScores[id];
-                    if (!stdData[id]) stdData[id] = { correct: 0, total: 0, types: {}, name: ss.name };
-                    stdData[id].correct += ss.correct || 0;
-                    stdData[id].total += ss.total || 0;
-                    if (ss.name) stdData[id].name = ss.name;
-                });
             }
         });
 

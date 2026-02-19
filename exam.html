@@ -789,18 +789,8 @@
             localStorage.setItem('mcm_scores', JSON.stringify(scores));
         } catch(e) {}
 
-        // Save standardScores
-        try {
-            var existing = JSON.parse(localStorage.getItem('standardScores') || '{}');
-            var stdKeys = Object.keys(stdScores);
-            for (var i = 0; i < stdKeys.length; i++) {
-                var sid = stdKeys[i];
-                if (!existing[sid]) existing[sid] = { correct: 0, total: 0, name: sid };
-                existing[sid].correct += stdScores[sid].correct;
-                existing[sid].total += stdScores[sid].total;
-            }
-            localStorage.setItem('standardScores', JSON.stringify(existing));
-        } catch(e) {}
+        // standardScores are now derived from attempts[].questions in the dashboard
+        // Removed: additive accumulator that never reset, causing score inflation
 
         // LPM stub
         if (typeof MCM_LPM !== 'undefined' && MCM_LPM.recordResults) {
