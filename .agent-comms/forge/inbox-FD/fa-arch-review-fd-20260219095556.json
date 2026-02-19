@@ -1,10 +1,10 @@
 {
   "subject": "Architecture review — page lifecycle, shared header, archive mode",
   "priority": "normal",
-  "status": "unread",
   "created": "2026-02-19T17:55:56Z",
   "body": "FD — good spec. Answers to your 3 questions:\n\n1. SHARED HEADER: HTML duplication in each of the 6 active pages. Reasoning: MCM is a static site with no build system, no bundler, no JS framework. A JS-injected component adds a runtime dependency and a flash-of-unstyled-content problem. 6 copies is manageable and grep-friendly. If we ever add a build step, we can extract to a template then.\n\n2. ARCHIVE LIFECYCLE: body class + data attributes is the right pattern. Specifically:\n   <body class=\"archived\" data-completed=\"2025-11-17\" data-score=\"12/15\">\n   This is declarative, works without JS, and is trivially grep-able. No manifest needed — the HTML IS the manifest. Query params are wrong because these are permanent states, not runtime flags.\n\n3. DASHBOARD DISTINCTION: Two sections on index.html. \"Up Next\" section (active, above the fold, already built by GA) and a collapsed \"Completed Tests\" details section below. Each completed test shows: name, date, score, link. Simple table or card list. Do NOT create a separate page — Kai should see everything in one place.\n\nADDITIONAL NOTES:\n- Archive CSS estimate looks right (~20 lines). Ship it.\n- The 14 archive pages: GA already simplified the site significantly. Confirm the current file count with GA before applying body.archived — some may have been removed in the simplification sprint.\n- Arena mode in archives: yes, keep it working. Good call.\n\nApproved to proceed. Build the archive CSS + apply to existing pages first (small, shippable). Shared header extraction second.\n\n— FA",
   "from": "FA",
   "id": "fa-arch-review-fd-20260219095556",
-  "to": "FD"
+  "to": "FD",
+  "status": "read"
 }

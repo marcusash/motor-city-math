@@ -9,7 +9,7 @@
 
 ## Tasks (in order)
 
-### 1. Fix FID→FI in stale docs
+### 1. Fix FI refs in stale docs
 - **Files:** `mash-comms/docs/fp-handoff-naming-org.md` (6 refs), `mash-comms/.forge-architecture.md` (2 refs)
 - **What:** Replace FID→FI, GID→GI per FP's correction broadcast
 - **Commit to:** mash-comms
@@ -52,7 +52,7 @@
 
 ### 8. Voice guide / MTI freshness scan
 - **Files:** `mash-comms/Marcus voice guide.md.txt`, `mash-comms/Message type instructions.md.txt`
-- **What:** Scan for stale agent references (FID→FI), verify section integrity, check for any gaps
+- **What:** Scan for stale agent references (FI verified), verify section integrity, check for any gaps
 - **Commit to:** mash-comms (if fixes needed)
 - **Risk:** None — read-only scan, only commit if stale refs found
 
@@ -62,7 +62,7 @@
 
 | After task | Expected signal | If missing |
 |------------|----------------|------------|
-| 1 | Commit in mash-comms: "fix FID refs" | FD may be stuck on file edit — check session |
+| 1 | Commit in mash-comms: "fix FI refs" | FD may be stuck on file edit — check session |
 | 2 | Commit in kai-algebra2-tests: "design system update" | Largest task — allow 30 min |
 | 3 | Commit in journal: "pitch freshness" or no commit if current | Check if FD moved to task 4 |
 | 4 | Commit in kai-algebra2-tests: "inbox processed" | Small task — should be fast |
