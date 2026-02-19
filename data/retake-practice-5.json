@@ -318,7 +318,7 @@
       "question_html": "The surface area of a cylinder is \\( S = 2\\pi r^2 + 2\\pi rh \\). Which correctly solves for \\( h \\)?",
       "inputs": [
         { "id": "q14", "type": "radio", "label": "", "options": [
-            { "value": "A", "text": "\\( h = \\dfrac{S}{2\\pi r} - r \\)" },
+            { "value": "A", "text": "\\( h = \\dfrac{S}{2\\pi r^2} \\)" },
             { "value": "B", "text": "\\( h = \\dfrac{S - 2\\pi r}{2\\pi r^2} \\)" },
             { "value": "C", "text": "\\( h = \\dfrac{S - 2\\pi r^2}{2\\pi r} \\)" },
             { "value": "D", "text": "\\( h = S - 2\\pi r^2 - 2\\pi r \\)" }
@@ -331,8 +331,7 @@
         "S = 2πr² + 2πrh.",
         "Subtract 2πr²: S - 2πr² = 2πrh.",
         "Divide by 2πr: h = (S - 2πr²)/(2πr).",
-        "Answer: C.",
-        "Note: A simplifies to the same thing (S/(2πr) - r = (S-2πr²)/(2πr)), so A is also correct, but C is the standard form."
+        "Answer: C."
       ],
       "feedback_correct": "🔥 Formula rearrangement. Clean.",
       "feedback_wrong": "Subtract 2πr² first, then divide by 2πr."
