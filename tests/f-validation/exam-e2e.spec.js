@@ -447,20 +447,23 @@ async function fillAllCorrect() {
             if (gradeBtn) {
                 await gradeBtn.click();
                 await page.waitForTimeout(2000);
-                // Look for hint button near Q4
-                const hintBtn = await page.$('button:has-text("Hint"), button:has-text("hint"), [class*="hint"]');
+                // Hint layers appear after grading on wrong answers — look for HINT button
+                const hintBtn = await page.$('#hints-rp1-q4 .hint-btn, button:has-text("HINT")');
                 assert(hintBtn, 'Hint button not found after wrong answer');
             } else SKIP();
         });
 
         await test('clicking hint shows hint text', async () => {
-            const hintBtn = await page.$('button:has-text("Hint"), button:has-text("hint"), [class*="hint"]');
+            // The hint button for Q4 specifically
+            const hintBtn = await page.$('#hints-rp1-q4 .hint-btn');
             if (!hintBtn) SKIP();
             await hintBtn.click();
             await page.waitForTimeout(500);
-            const body = await page.textContent('body');
+            const hintEl = await page.$('#hint-rp1-q4-1');
+            if (!hintEl) SKIP();
+            const hintText = await hintEl.textContent();
             // Q4 hint: "Rewrite 49 as 7². Set exponents equal."
-            assert(body.includes('Rewrite') || body.includes('exponent') || body.includes('hint'),
+            assert(hintText && (hintText.includes('Rewrite') || hintText.includes('exponent')),
                 'Hint text not shown after clicking');
         });
 
