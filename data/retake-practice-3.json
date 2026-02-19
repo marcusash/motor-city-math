@@ -1,0 +1,361 @@
+{
+  "exam_id": "retake-practice-3",
+  "title": "Unit 2 Retake Practice #3 — Nonlinear Functions",
+  "subtitle": "Standards W2 & W3 · 15 Questions · ~60 min",
+  "time_minutes": 60,
+  "created": "2026-02-19",
+  "created_by": "Agent R",
+  "purpose": "Third practice exam — all new numbers. Builds fluency through varied repetition.",
+  "questions": [
+    {
+      "id": "rp3-q1",
+      "number": 1,
+      "section": "A",
+      "standard": "W2.b",
+      "type": "identify",
+      "question_html": "Identify the parent function and find the x-intercepts: \\( f(x) = 3(x - 6)^2 - 48 \\)",
+      "inputs": [
+        { "id": "q1_parent", "type": "dropdown", "label": "Parent function", "options": ["quadratic", "cubic", "absolute", "sqrt", "rational", "exponential"], "answer": "quadratic" },
+        { "id": "q1_x1", "type": "number", "label": "x₁ =", "answer": 10, "tolerance": 0.1 },
+        { "id": "q1_x2", "type": "number", "label": "x₂ =", "answer": 2, "tolerance": 0.1 }
+      ],
+      "plus_minus": true,
+      "hint": "Set f(x)=0. Isolate the squared term.",
+      "solution_steps": [
+        "Parent: y = x² (quadratic — highest power is 2).",
+        "Set 0 = 3(x-6)² - 48.",
+        "3(x-6)² = 48 → (x-6)² = 16.",
+        "x - 6 = ±4 → x = 10 or x = 2."
+      ],
+      "feedback_correct": "🔥 Parent and intercepts nailed.",
+      "feedback_wrong_parent": "Check the exponent for parent type.",
+      "feedback_wrong_intercepts": "Parent right. Set f(x)=0 and solve."
+    },
+    {
+      "id": "rp3-q2",
+      "number": 2,
+      "section": "A",
+      "standard": "W2.b",
+      "type": "identify",
+      "question_html": "Identify the parent function and find the x-intercept: \\( f(x) = \\sqrt{x + 5} - 6 \\)",
+      "inputs": [
+        { "id": "q2_parent", "type": "dropdown", "label": "Parent function", "options": ["quadratic", "cubic", "absolute", "sqrt", "rational", "exponential"], "answer": "sqrt" },
+        { "id": "q2_x1", "type": "number", "label": "x-intercept =", "answer": 31, "tolerance": 0.1 }
+      ],
+      "hint": "Set f(x)=0. Square both sides.",
+      "solution_steps": [
+        "Parent: y = √x (square root function).",
+        "Set 0 = √(x+5) - 6 → √(x+5) = 6.",
+        "Square: x + 5 = 36 → x = 31."
+      ],
+      "feedback_correct": "🔥 Square root identified. Clean.",
+      "feedback_wrong_parent": "Look at the √ symbol."
+    },
+    {
+      "id": "rp3-q3",
+      "number": 3,
+      "section": "A",
+      "standard": "W2.b",
+      "type": "identify",
+      "question_html": "Identify the parent function and find the x-intercepts: \\( f(x) = -3|x - 4| + 15 \\)",
+      "inputs": [
+        { "id": "q3_parent", "type": "dropdown", "label": "Parent function", "options": ["quadratic", "cubic", "absolute", "sqrt", "rational", "exponential"], "answer": "absolute" },
+        { "id": "q3_x1", "type": "number", "label": "x₁ =", "answer": 9, "tolerance": 0.1 },
+        { "id": "q3_x2", "type": "number", "label": "x₂ =", "answer": -1, "tolerance": 0.1 }
+      ],
+      "plus_minus": true,
+      "hint": "Set f(x)=0. |x-4| = 5 gives two answers.",
+      "solution_steps": [
+        "Parent: y = |x| (absolute value — V shape).",
+        "Transformations: right 4, stretch ×3, reflect over x-axis, up 15.",
+        "x-intercepts: 0 = -3|x-4| + 15 → |x-4| = 5.",
+        "x - 4 = 5 → x = 9, or x - 4 = -5 → x = -1."
+      ],
+      "feedback_correct": "🔥 Absolute value. Both intercepts.",
+      "feedback_wrong_parent": "The | | symbols mean absolute value."
+    },
+    {
+      "id": "rp3-q4",
+      "number": 4,
+      "section": "B",
+      "standard": "W3.d",
+      "type": "exponential",
+      "question_html": "Solve: \\( 2^{4x - 5} = 32 \\)",
+      "inputs": [
+        { "id": "q4_x", "type": "number", "label": "x =", "answer": 2.5, "tolerance": 0.01 }
+      ],
+      "hint": "Rewrite 32 as 2⁵. Set exponents equal.",
+      "solution_steps": [
+        "Rewrite: 2^(4x-5) = 2⁵.",
+        "Set exponents equal: 4x - 5 = 5.",
+        "4x = 10 → x = 10/4 = 2.5.",
+        "Check: 2^(10-5) = 2⁵ = 32 ✓"
+      ],
+      "feedback_correct": "🔥 Exponent match. Clean.",
+      "feedback_wrong": "Rewrite 32 as a power of 2."
+    },
+    {
+      "id": "rp3-q5",
+      "number": 5,
+      "section": "B",
+      "standard": "W3.b",
+      "type": "quadratic",
+      "question_html": "Solve: \\( 3(x + 4)^2 - 75 = 0 \\)",
+      "inputs": [
+        { "id": "q5_x1", "type": "number", "label": "x₁ =", "answer": 1, "tolerance": 0.1 },
+        { "id": "q5_x2", "type": "number", "label": "x₂ =", "answer": -9, "tolerance": 0.1 }
+      ],
+      "plus_minus": true,
+      "hint": "Isolate the squared term. Then ±.",
+      "solution_steps": [
+        "3(x+4)² = 75 → (x+4)² = 25.",
+        "x + 4 = ±5.",
+        "x = -4 + 5 = 1 or x = -4 - 5 = -9.",
+        "Check: 3(1+4)² - 75 = 3(25) - 75 = 0 ✓"
+      ],
+      "feedback_correct": "🔥 Both solutions found.",
+      "feedback_wrong": "Isolate (x+4)², then take ± square root."
+    },
+    {
+      "id": "rp3-q6",
+      "number": 6,
+      "section": "B",
+      "standard": "W3.b",
+      "type": "radical",
+      "question_html": "Solve: \\( \\sqrt{2x + 5} - 4 = 3 \\)",
+      "inputs": [
+        { "id": "q6_x", "type": "number", "label": "x =", "answer": 22, "tolerance": 0.01 }
+      ],
+      "hint": "Isolate the √, then square both sides.",
+      "solution_steps": [
+        "√(2x+5) = 7.",
+        "Square both sides: 2x + 5 = 49.",
+        "2x = 44 → x = 22.",
+        "Check: √(44+5) - 4 = √49 - 4 = 7 - 4 = 3 ✓"
+      ],
+      "feedback_correct": "🔥 Square both sides. Done.",
+      "feedback_wrong": "Isolate the √ first, THEN square."
+    },
+    {
+      "id": "rp3-q7",
+      "number": 7,
+      "section": "B",
+      "standard": "W3.d",
+      "type": "exponential",
+      "question_html": "Solve: \\( 8^{x + 1} = 32 \\)",
+      "inputs": [
+        { "id": "q7_x", "type": "number", "label": "x =", "answer": 0.667, "tolerance": 0.02 }
+      ],
+      "hint": "Rewrite both sides as powers of 2.",
+      "solution_steps": [
+        "Rewrite: 8 = 2³, so 8^(x+1) = 2^(3x+3).",
+        "Rewrite: 32 = 2⁵.",
+        "2^(3x+3) = 2⁵ → 3x + 3 = 5.",
+        "3x = 2 → x = 2/3 ≈ 0.667.",
+        "Check: 8^(5/3) = (2³)^(5/3) = 2⁵ = 32 ✓"
+      ],
+      "feedback_correct": "🔥 Common base. Smooth.",
+      "feedback_wrong": "Both 8 and 32 are powers of 2."
+    },
+    {
+      "id": "rp3-q8",
+      "number": 8,
+      "section": "B",
+      "standard": "W3.c",
+      "type": "rational",
+      "question_html": "Solve: \\( \\dfrac{3x + 5}{x - 1} = 4 \\)",
+      "inputs": [
+        { "id": "q8_x", "type": "number", "label": "x =", "answer": 9, "tolerance": 0.01 }
+      ],
+      "hint": "Multiply both sides by (x - 1).",
+      "solution_steps": [
+        "Multiply: 3x + 5 = 4(x - 1).",
+        "3x + 5 = 4x - 4.",
+        "9 = x.",
+        "Check: (3·9 + 5)/(9 - 1) = 32/8 = 4 ✓"
+      ],
+      "feedback_correct": "🔥 Clean algebra.",
+      "feedback_wrong": "Multiply both sides by (x - 1)."
+    },
+    {
+      "id": "rp3-q9",
+      "number": 9,
+      "section": "B",
+      "standard": "W3.b",
+      "type": "radical",
+      "question_html": "Solve: \\( \\sqrt{x^2 + 11} = 6 \\)",
+      "inputs": [
+        { "id": "q9_x1", "type": "number", "label": "x₁ =", "answer": 5, "tolerance": 0.01 },
+        { "id": "q9_x2", "type": "number", "label": "x₂ =", "answer": -5, "tolerance": 0.01 }
+      ],
+      "plus_minus": true,
+      "hint": "Square both sides. You'll get x² = something. Don't forget ±.",
+      "solution_steps": [
+        "Square both sides: x² + 11 = 36.",
+        "x² = 25.",
+        "x = ±5.",
+        "Check: √(25 + 11) = √36 = 6 ✓"
+      ],
+      "feedback_correct": "🔥 ±5. Don't forget both.",
+      "feedback_wrong": "Square both sides, then remember ± for x²."
+    },
+    {
+      "id": "rp3-q10",
+      "number": 10,
+      "section": "B",
+      "standard": "W3.e",
+      "type": "extraneous",
+      "question_html": "Solve and check for extraneous solutions: \\( \\sqrt{2x + 1} = x - 1 \\)",
+      "inputs": [
+        { "id": "q10_x", "type": "number", "label": "Valid x =", "answer": 4, "tolerance": 0.1 }
+      ],
+      "hint": "Square both sides. Factor. Check BOTH in the original.",
+      "solution_steps": [
+        "Square: 2x + 1 = (x-1)² = x² - 2x + 1.",
+        "x² - 4x = 0 → x(x - 4) = 0.",
+        "x = 0 or x = 4.",
+        "Check x=4: √9 = 3 and 4-1 = 3 ✓",
+        "Check x=0: √1 = 1 and 0-1 = -1 ✗ → extraneous.",
+        "Only x = 4 is valid."
+      ],
+      "feedback_correct": "🔥 Caught the extraneous one.",
+      "feedback_wrong": "Square both sides, then check BOTH answers back in the original."
+    },
+    {
+      "id": "rp3-q11",
+      "number": 11,
+      "section": "B",
+      "standard": "W3.b",
+      "type": "fractional-exp",
+      "question_html": "Solve: \\( 2x^{3/2} - 10 = 240 \\)",
+      "inputs": [
+        { "id": "q11_x", "type": "number", "label": "x =", "answer": 25, "tolerance": 0.01 }
+      ],
+      "hint": "Isolate x^(3/2), then raise both sides to the 2/3 power.",
+      "solution_steps": [
+        "2x^(3/2) = 250 → x^(3/2) = 125.",
+        "Raise to 2/3: x = 125^(2/3).",
+        "125^(1/3) = 5, then 5² = 25.",
+        "Check: 2(25)^(3/2) - 10 = 2·125 - 10 = 250 - 10 = 240 ✓"
+      ],
+      "feedback_correct": "🔥 125^(2/3) = 25. Solid.",
+      "feedback_wrong": "Isolate x^(3/2) first, then use the 2/3 power."
+    },
+    {
+      "id": "rp3-q12",
+      "number": 12,
+      "section": "C",
+      "standard": "W2.c",
+      "type": "graph",
+      "question_html": "Graph \\( f(x) = (x + 3)^2 - 1 \\). State the vertex.",
+      "inputs": [
+        { "id": "q12_vx", "type": "number", "label": "Vertex x =", "answer": -3, "tolerance": 0.1 },
+        { "id": "q12_vy", "type": "number", "label": "Vertex y =", "answer": -1, "tolerance": 0.1 }
+      ],
+      "graph": {
+        "canvas_id": "graphQ12",
+        "function": "Math.pow(x + 3, 2) - 1",
+        "function_display": "f(x) = (x+3)² - 1",
+        "key_points": [[-5, 3], [-4, 0], [-3, -1], [-2, 0], [-1, 3]],
+        "min_points": 5,
+        "tolerance": 0.25,
+        "asymptotes": null
+      },
+      "hint": "Vertex form: f(x) = (x-h)² + k. Vertex is (h, k).",
+      "solution_steps": [
+        "Vertex form: (x+3)² - 1 → vertex at (-3, -1).",
+        "Opens UP (positive leading coefficient).",
+        "Plot vertex (-3, -1).",
+        "x=-4: f(-4) = 1-1 = 0 → (-4, 0).",
+        "x=-5: f(-5) = 4-1 = 3 → (-5, 3).",
+        "x=-2: f(-2) = 1-1 = 0 → (-2, 0).",
+        "x=-1: f(-1) = 4-1 = 3 → (-1, 3).",
+        "Draw U-shaped parabola opening up."
+      ],
+      "feedback_correct": "🔥 Clean graph. Vertex locked.",
+      "feedback_wrong": "Vertex is (-h, k) from (x+h)² + k form."
+    },
+    {
+      "id": "rp3-q13",
+      "number": 13,
+      "section": "C",
+      "standard": "W2.e",
+      "type": "graph",
+      "question_html": "Graph \\( f(x) = \\dfrac{4}{x + 3} - 2 \\) and draw asymptotes. State the asymptotes.",
+      "inputs": [
+        { "id": "q13_va", "type": "number", "label": "Vertical asymptote x =", "answer": -3, "tolerance": 0.1 },
+        { "id": "q13_ha", "type": "number", "label": "Horizontal asymptote y =", "answer": -2, "tolerance": 0.1 }
+      ],
+      "graph": {
+        "canvas_id": "graphQ13",
+        "function": "4 / (x + 3) - 2",
+        "function_display": "f(x) = 4/(x+3) - 2",
+        "key_points": [[-5, -4], [-2, 2], [-1, 0], [1, -1], [5, -1.5]],
+        "min_points": 5,
+        "tolerance": 0.25,
+        "asymptotes": { "vertical": [-3], "horizontal": [-2] }
+      },
+      "hint": "VA: denominator = 0. HA: the -2 outside the fraction.",
+      "solution_steps": [
+        "Parent: y = 1/x shifted left 3, stretched ×4, down 2.",
+        "VA: x + 3 = 0 → x = -3.",
+        "HA: y = -2 (the constant outside).",
+        "Plot: f(-5) = 4/(-2)-2 = -4 → (-5, -4).",
+        "f(-2) = 4/1-2 = 2 → (-2, 2).",
+        "f(-1) = 4/2-2 = 0 → (-1, 0).",
+        "f(1) = 4/4-2 = -1 → (1, -1).",
+        "f(5) = 4/8-2 = -1.5 → (5, -1.5)."
+      ],
+      "feedback_correct": "🔥 Both asymptotes and graph correct.",
+      "feedback_wrong": "VA: set denominator = 0. HA: what does y approach?"
+    },
+    {
+      "id": "rp3-q14",
+      "number": 14,
+      "section": "D",
+      "standard": "W3.a",
+      "type": "multiple-choice",
+      "question_html": "The area of a trapezoid is \\( A = \\dfrac{1}{2}(b_1 + b_2)h \\). Which correctly solves for \\( h \\)?",
+      "inputs": [
+        { "id": "q14", "type": "radio", "label": "", "options": [
+            { "value": "A", "text": "\\( h = \\dfrac{A}{2(b_1 + b_2)} \\)" },
+            { "value": "B", "text": "\\( h = \\dfrac{2A}{b_1 + b_2} \\)" },
+            { "value": "C", "text": "\\( h = \\dfrac{A(b_1 + b_2)}{2} \\)" },
+            { "value": "D", "text": "\\( h = \\dfrac{2A}{b_1 \\cdot b_2} \\)" }
+          ],
+          "answer": "B"
+        }
+      ],
+      "hint": "Multiply by 2, then divide by (b₁ + b₂).",
+      "solution_steps": [
+        "A = ½(b₁ + b₂)h.",
+        "Multiply by 2: 2A = (b₁ + b₂)h.",
+        "Divide by (b₁ + b₂): h = 2A/(b₁ + b₂).",
+        "Answer: B."
+      ],
+      "feedback_correct": "🔥 Formula rearrangement. Clean.",
+      "feedback_wrong": "Isolate h: multiply by 2, then divide by the sum."
+    },
+    {
+      "id": "rp3-q15",
+      "number": 15,
+      "section": "D",
+      "standard": "W3.a",
+      "type": "word-problem",
+      "question_html": "An investment starts at $1,200 and triples every 4 years. The value is modeled by \\( V(t) = 1200 \\cdot 3^{t/4} \\). How many years until the investment reaches $97,200?",
+      "inputs": [
+        { "id": "q15_t", "type": "number", "label": "t =", "answer": 16, "tolerance": 0.5 }
+      ],
+      "hint": "Set V(t) = 97200. Divide by 1200. What power of 3?",
+      "solution_steps": [
+        "1200 · 3^(t/4) = 97200.",
+        "3^(t/4) = 81.",
+        "81 = 3⁴, so t/4 = 4.",
+        "t = 16 years.",
+        "Check: 1200 · 3⁴ = 1200 · 81 = 97200 ✓"
+      ],
+      "feedback_correct": "🔥 16 years. Exponential growth.",
+      "feedback_wrong": "Divide by 1200 first. Then: 3^? = 81."
+    }
+  ]
+}
