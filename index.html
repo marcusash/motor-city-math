@@ -184,13 +184,7 @@
 
         <div style="text-align:center; margin: 20px 0; display:flex; justify-content:center; gap:12px; flex-wrap:wrap;">
             <a href="nonlinear_exam_mvp.html" class="nav-btn primary">📝 Take the Test</a>
-            <a href="practice.html" class="nav-btn secondary">🏀 Practice Mode</a>
-            <a href="test-builder.html" class="nav-btn secondary">🏗️ Test Builder</a>
-            <a href="parent.html" class="nav-btn ghost">📊 Parent View</a>
         </div>
-
-        <div class="section-title">Quick Tests</div>
-        <div class="test-grid" id="quickTestGrid"></div>
 
         <div class="section-title">All Tests</div>
         <div class="test-grid" id="testGrid"></div>
@@ -211,19 +205,8 @@
         { file: 'exam.html?file=retake-practice-4', name: 'Retake Practice #4', unit: 'nonlinear', key: 'mcm-retake-practice-4', questions: 15, retake: true },
         { file: 'exam.html?file=retake-practice-5', name: 'Retake Practice #5', unit: 'nonlinear', key: 'mcm-retake-practice-5', questions: 15, retake: true },
         { file: 'nonlinear_exam_mvp.html', name: 'Nonlinear Functions Exam (MVP)', unit: 'nonlinear', key: 'mcm-nonlinear-exam-mvp', questions: 15 },
-        { file: 'linear_functions_test.html', name: 'Linear Functions Practice', unit: 'linear', key: 'mcm-index-results', questions: 14 },
-        { file: 'index_calc.html', name: 'Linear Functions (Calculator)', unit: 'linear', key: 'mcm-index-calc-results', questions: 17 },
-        { file: 'exponents_exam.html', name: 'Exponents Exam', unit: 'exponents', key: 'exponents_exam', questions: 20 },
-        { file: '20260119_Exponents_Unit1.html', name: 'Exponents Unit 1', unit: 'exponents', key: 'exponents_unit1', questions: 17 },
-        { file: '20260119_Exponents_Unit1_2nd.html', name: 'Exponents Unit 1 (2nd)', unit: 'exponents', key: 'exponents_unit1_2nd', questions: 17 },
-        { file: '20260119_Exponents_Unit1_3rd.html', name: 'Exponents Unit 1 (3rd)', unit: 'exponents', key: 'exponents_unit1_3rd', questions: 17 },
-        { file: 'nonlinear_functions_test.html', name: 'Nonlinear Functions Test', unit: 'nonlinear', key: 'nonlinear_test', questions: 23 },
-        { file: 'unit2_nonlinear_review.html', name: 'Nonlinear Review (Unit 2)', unit: 'nonlinear', key: 'nonlinear_review', questions: 26 },
         { file: 'final_exam_251123.html', name: 'Final Exam (Nov 23)', unit: 'final', key: 'mcm-final-exam-results', questions: 20 },
-        { file: 'final_exam_251123_mini.html', name: 'Final Exam Mini', unit: 'final', key: 'mcm-final-exam-mini-results', questions: 10 },
-        { file: 'quiz_251117.html', name: 'Quiz (Nov 17)', unit: 'quizzes', key: 'quiz_251117', questions: 5 },
-        { file: 'quiz_251120.html', name: 'Quiz (Nov 20)', unit: 'quizzes', key: 'quiz_251120', questions: 10 },
-        { file: 'quiz_251121.html', name: 'Quiz (Nov 21)', unit: 'quizzes', key: 'quiz_251121', questions: 10 }
+        { file: 'final_exam_251123_mini.html', name: 'Final Exam Mini', unit: 'final', key: 'mcm-final-exam-mini-results', questions: 10 }
     ];
 
     /* ========== READ SCORES ========== */
@@ -418,9 +401,7 @@
             var emoji = pct < 70 ? '🏀' : pct < 90 ? '📈' : '✅';
             var action = pct < 70 ? 'Start here.' : pct < 90 ? 'Almost there.' : 'Review only.';
             var name = s.name || id;
-            var practiceLink = 'test.html?standard=' + encodeURIComponent(id) + '&count=10';
-            html += '<li class="study-item"><span class="emoji">' + emoji + '</span> <strong>' + id + '</strong> (' + name + ') — ' + pct + '%. ' + action +
-                ' <a href="' + practiceLink + '" style="color:var(--accent-blue);font-weight:600;font-size:0.85em;">Practice →</a></li>';
+            html += '<li class="study-item"><span class="emoji">' + emoji + '</span> <strong>' + id + '</strong> (' + name + ') — ' + pct + '%. ' + action + '</li>';
             count++;
         });
         list.innerHTML = html || '<li class="study-item"><span class="emoji">✅</span> All standards looking strong!</li>';
@@ -509,25 +490,6 @@
         }
     }
 
-    /* ========== QUICK TESTS ========== */
-    function buildQuickTests() {
-        var units = [
-            { id: 'exponents', name: '🔢 Exponents', icon: '⚡' },
-            { id: 'linear', name: '📈 Linear', icon: '📈' },
-            { id: 'nonlinear', name: '📉 Nonlinear', icon: '📉' },
-            { id: 'functions', name: '𝑓(x) Functions', icon: '🔁' }
-        ];
-        var grid = document.getElementById('quickTestGrid');
-        var html = '';
-        units.forEach(function(u) {
-            html += '<a href="test.html?unit=' + u.id + '&count=10" class="test-link" style="border-left-color:var(--color-correct); text-align:center;">' +
-                '<div style="font-size:1.3em; margin-bottom:4px;">' + u.icon + '</div>' +
-                u.name + ' Quick Test' +
-                '<div class="test-meta">10 random questions</div></a>';
-        });
-        grid.innerHTML = html;
-    }
-
     /* ========== RETAKE GRID ========== */
     function buildRetakeGrid() {
         var scores = getScores();
@@ -561,7 +523,6 @@
         var stdResult = buildStandards();
         buildStudyNext(stdResult);
         buildRetakeGrid();
-        buildQuickTests();
         buildTestGrid();
         buildStats();
     });

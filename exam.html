@@ -708,7 +708,7 @@
         });
         html += '</div>';
 
-        html += '<div style="margin-top:16px;"><a href="practice.html" class="nav-btn primary" style="text-decoration:none;">🏀 PRACTICE WEAK STANDARDS</a></div>';
+        html += '<div style="margin-top:16px;"><a href="index.html" class="nav-btn primary" style="text-decoration:none;">🏀 BACK TO DASHBOARD</a></div>';
         html += '</div>';
 
         document.getElementById('scorecard').innerHTML = html;
@@ -763,13 +763,6 @@
             }
             localStorage.setItem('standardScores', JSON.stringify(existing));
         } catch(e) {}
-
-        // SRS integration (if available)
-        if (typeof MCM_SRS !== 'undefined' && MCM_SRS.recordAnswer) {
-            examData.questions.forEach(function(q, i) {
-                try { MCM_SRS.recordAnswer(q.id, results[i]); } catch(e) {}
-            });
-        }
 
         // LPM stub
         if (typeof MCM_LPM !== 'undefined' && MCM_LPM.recordResults) {
