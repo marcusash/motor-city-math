@@ -647,11 +647,10 @@
                 // Check for specific wrong feedback variants
                 if (!qCorrect) {
                     if (q.feedback_wrong_parent || q.feedback_wrong_intercepts) {
-                        // Check which part was wrong
-                        var parentEl = document.getElementById(q.id.replace('rp1-', '') + '_parent');
-                        if (parentEl) {
-                            var parentInp = q.inputs.find(function(i) { return i.id.indexOf('_parent') !== -1; });
-                            if (parentInp && parentEl.value === parentInp.answer && q.feedback_wrong_intercepts) {
+                        var parentInp = q.inputs.find(function(i) { return i.id.indexOf('_parent') !== -1; });
+                        var parentEl = parentInp ? document.getElementById(parentInp.id) : null;
+                        if (parentEl && parentInp) {
+                            if (parentEl.value === parentInp.answer && q.feedback_wrong_intercepts) {
                                 msg = q.feedback_wrong_intercepts;
                             } else if (q.feedback_wrong_parent) {
                                 msg = q.feedback_wrong_parent;
