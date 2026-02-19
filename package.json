@@ -4,7 +4,7 @@
     "chart.js": "^4.5.1",
     "katex": "^0.16.9",
     "pdf-parse": "^2.4.5",
-    "pdfjs-dist": "^4.0.379",
+    "pdfjs-dist": "^3.11.174",
     "playwright": "^1.58.2",
     "tesseract.js": "^7.0.0"
   }
