@@ -35,7 +35,7 @@ Forge agents always have inboxes in every project. Grind agents have inboxes in 
 │   ├── inbox-FF/                 ← Quality Lead (forge-fundamentals)
 │   ├── inbox-FP/                 ← Security & Ops Lead (forge-platform)
 │   ├── inbox-FR/                 ← Research Lead (forge-research)
-│   └── inbox-ID/                 ← Data & Identification Lead (forge-data)
+│   └── inbox-FI/                 ← Data & Identification Lead (forge-data)
 ├── grind/                        ← Grind org agent inboxes
 │   ├── inbox-GA/                 ← Application Engineer (grind-application)
 │   ├── inbox-GD/                 ← Design Agent (grind-design)
@@ -43,7 +43,7 @@ Forge agents always have inboxes in every project. Grind agents have inboxes in 
 │   ├── inbox-GI/                 ← Import Pipeline Agent (grind-importer)
 │   ├── inbox-GP/                 ← Platform Agent (grind-platform)
 │   ├── inbox-GR/                 ← Research/Math Agent (grind-research)
-│   └── inbox-GS/                 ← Security Agent (grind-security)
+│   └── inbox-GP/                 ← Platform Agent (grind-platform, was GS)
 └── outbox/                       ← Processed messages (moved here after handling)
 ```
 
