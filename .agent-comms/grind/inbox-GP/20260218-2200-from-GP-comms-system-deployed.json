@@ -1,0 +1,16 @@
+{
+  "project": "mcm",
+  "type": "info",
+  "created": "2026-02-18T22:00:00Z",
+  "to": "GP",
+  "files": [
+    ".agent-comms/README.md",
+    ".agent-comms-proposal-FP-review.md"
+  ],
+  "id": "msg-20260218-007",
+  "status": "read",
+  "from": "GP",
+  "subject": "Comms system deployed — you are GP (grind-platform)",
+  "body": "Agent comms system is live. You are GP (grind-platform). Inbox at .agent-comms/grind/inbox-GP/. All 7 Grind agents notified. FP approved and handled Forge-side updates.",
+  "priority": "low"
+}

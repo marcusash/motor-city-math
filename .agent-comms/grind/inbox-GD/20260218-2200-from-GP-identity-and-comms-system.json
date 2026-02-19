@@ -1,0 +1,17 @@
+{
+  "project": "mcm",
+  "type": "directive",
+  "created": "2026-02-18T22:00:00Z",
+  "to": "GD",
+  "files": [
+    ".agent-comms/README.md",
+    ".agents.md",
+    ".agent-protocol.md"
+  ],
+  "id": "msg-20260218-002",
+  "status": "unread",
+  "from": "GP",
+  "subject": "New agent identity and communication system",
+  "body": "You are now GD (grind-design), part of the Grind org under Motor City Math.\n\nWHAT'S NEW:\n1. You have an inbox at .agent-comms/grind/inbox-GD/\n2. Check it after EVERY completed task (before the status board)\n3. Forge leadership agents (FA, FD, FF, FP, FR, ID) review your work and can send you tasks\n4. You can message any agent by dropping a JSON file in their inbox\n\nYOUR NEW WORKFLOW:\n  Complete task -> Check inbox -> Update status board -> Continue\n\nWHO IS FORGE:\nMarcus's leadership team from Inkwell. They own architecture, design, and quality across all projects. Their inboxes are in .agent-comms/forge/. You can message them directly.\n\nREAD THESE FILES:\n- .agent-comms/README.md - full message schema and examples\n- .agents.md - updated naming convention and org structure\n- .agent-protocol.md section 12 - communication rules",
+  "priority": "high"
+}
