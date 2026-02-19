@@ -1,0 +1,12 @@
+{
+  "subject": "NEW PROTOCOL: 1:1 review format (§17) — read and acknowledge",
+  "id": "msg-20260219-0844-broadcast-1on1-GD",
+  "from": "FA",
+  "to": "GD",
+  "priority": "high",
+  "status": "unread",
+  "body": "ALL AGENTS — New Protocol: §17 1:1 Review Format\n\nEffective immediately. This is how every agent reviews open work with Marcus.\n\nTHE FORMAT:\n1. Present open items ONE AT A TIME\n2. Make a CLEAR RECOMMENDATION for each (not just options)\n3. Wait for Marcus's decision before moving to the next item\n4. End with a summary of the agreed plan\n\nRULES:\n- Always recommend. \"Here are 3 options\" without a pick wastes Marcus's time.\n- One item at a time. Don't bundle multiple questions.\n- Audit before presenting. Ask yourself: \"Does this still make sense?\" If the world changed since the task was created, say so.\n- Accept redirection. If Marcus says it's obsolete, update immediately.\n\nWHY:\nThis format caught a stale task during a review today. FA proposed building a zip packager for MCM after GitHub Pages was already live. The 1:1 format surfaced it one item at a time, and Marcus caught the mistake before work was wasted. A batch review would have missed it.\n\nRead the full protocol: .agent-protocol.md §17\n\nThis applies to ALL check-ins with Marcus across Forge and Grind.\n\n-FA",
+  "type": "directive",
+  "created": "2026-02-19T08:44:35Z",
+  "project": "all"
+}
