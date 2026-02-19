@@ -363,7 +363,7 @@
         var keys = Object.keys(stdData);
 
         if (keys.length === 0) {
-            grid.innerHTML = '<div class="empty-state" style="grid-column:1/-1;padding:20px;"><p>No standard data yet. Complete a test to see your breakdown.</p></div>';
+            grid.innerHTML = '<div class="empty-state" style="grid-column:1/-1;padding:20px;"><p>Take a test and we\'ll break down your game. 📊</p></div>';
             return;
         }
 
@@ -399,7 +399,7 @@
     function buildStudyNext(stdResult) {
         var list = document.getElementById('studyList');
         if (!stdResult || !stdResult.keys || stdResult.keys.length === 0) {
-            list.innerHTML = '<li class="study-item"><span class="emoji">🏀</span> Take a test to get personalized study recommendations.</li>';
+            list.innerHTML = '<li class="study-item"><span class="emoji">💪</span> Your highlights reel starts with test #1.</li>';
             return;
         }
 
@@ -495,7 +495,7 @@
 
         var bar = document.getElementById('statsBar');
         if (testCount === 0) {
-            bar.textContent = 'No tests completed yet.';
+            bar.textContent = 'Your highlights reel starts with test #1. 💪';
         } else {
             var dateStr = lastTest ? new Date(lastTest).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) : '—';
             bar.textContent = 'Last test: ' + dateStr + (lastPct !== null ? ' · ' + lastPct + '%' : '') + ' · ' + testCount + ' test' + (testCount !== 1 ? 's' : '') + ' completed';
@@ -554,7 +554,7 @@
         try { data.standardScores = JSON.parse(localStorage.getItem('standardScores') || 'null'); } catch(e) {}
 
         if (!data.mcm_scores && !data.mcm_srs) {
-            alert('No scores to export yet. Take a test first!');
+            alert('Take a test first, then we\'ll send your scores! 🏀');
             return;
         }
 

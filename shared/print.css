@@ -4,6 +4,11 @@
  * Visible: questions, work areas, answer blanks.
  */
 
+/* Page setup: margins for hole-punching (Task 14) */
+@page {
+    margin: 2cm;
+}
+
 @media print {
     * {
         -webkit-print-color-adjust: exact !important;
@@ -46,14 +51,14 @@
         display: inline-block;
     }
 
-    /* Question cards */
+    /* Question cards — generous spacing for print (Task 13) */
     .question-card {
         background: white !important;
         border: 2px solid #000 !important;
         border-left: 5px solid #000 !important;
         page-break-inside: avoid;
         break-inside: avoid;
-        margin-bottom: 20px;
+        margin-bottom: 2em;
     }
 
     .question-number {
@@ -84,7 +89,7 @@
         /* No grayscale — color distinguishes data series (see .print-spec.md) */
     }
 
-    /* Inputs */
+    /* Inputs — expanded writing space for handwriting (Task 13) */
     input, textarea {
         border: 1px solid #000 !important;
         background: white !important;
@@ -93,9 +98,15 @@
         box-sizing: border-box !important;
     }
 
+    input[type="text"], input[type="number"], textarea {
+        min-height: 3em;
+        border-bottom: 1px solid #ccc !important;
+    }
+
     textarea {
         padding-bottom: 20px !important;
         padding-right: 20px !important;
+        min-height: 6em;
     }
 
     /* Hide interactive elements */
@@ -105,18 +116,32 @@
     .btn-secondary,
     .answer-key-btn,
     .btn-ghost,
+    .nav-btn,
     .result,
     .answer-feedback,
     .answer-key-modal,
     .score-card,
+    .scorecard,
     .calc-toggle-btn,
     .calculator-modal,
     .streak-counter,
     .streak-badge,
     .progress-bar-sticky,
-    .standards-grid {
+    .standards-grid,
+    .arena-toggle,
+    .timer,
+    .timer-toast,
+    .hint-layers,
+    .hint-btn,
+    .graph-controls,
+    .graph-counter,
+    .submit-area {
         display: none !important;
     }
+
+    /* Page break control (Task 14) */
+    h1, h2 { break-after: avoid; }
+    .question-card { break-inside: avoid; }
 
     /* Work areas */
     .work-area {
@@ -203,6 +228,16 @@
 
     .instructions h3 {
         color: #000 !important;
+    }
+
+    /* Page setup — margins + page numbers (Task 14) */
+    @page {
+        margin: 2cm;
+    }
+
+    /* Back link hidden on print */
+    .header-back, .nav-back {
+        display: none !important;
     }
 }
 

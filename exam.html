@@ -161,10 +161,27 @@
         }
     })();
 
+    /* Curriculum title: "Unit X: Topic — Standards" (Task 12) */
+    function formatCurriculumTitle(data) {
+        var title = data.title || '';
+        var subtitle = data.subtitle || '';
+        var stdMatch = subtitle.match(/Standards?\s+([^·]+)/);
+        var standards = stdMatch ? stdMatch[1].trim() : '';
+        var parts = title.split(/\s*—\s*/);
+        if (parts.length === 2 && standards) {
+            var unitMatch = parts[0].match(/(Unit\s+\d+)/);
+            var unit = unitMatch ? unitMatch[1] : parts[0];
+            return unit + ': ' + parts[1] + ' — ' + standards;
+        }
+        return title;
+    }
+
     function loadExam(data) {
         examData = data;
-        document.title = data.title + ' — Motor City Math';
-        document.getElementById('examTitle').textContent = data.title;
+        // Curriculum-based title: "Unit X: Topic — Standards" (Task 12)
+        var displayTitle = formatCurriculumTitle(data);
+        document.title = displayTitle + ' — Motor City Math';
+        document.getElementById('examTitle').textContent = displayTitle;
         document.getElementById('examSubtitle').textContent = data.subtitle || '';
 
         // Timer: set data-time-minutes on header for shared/scripts.js timer

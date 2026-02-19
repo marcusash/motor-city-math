@@ -288,17 +288,8 @@ header .date {
     top: -1px;
     bottom: -1px;
     width: 4px;
-    background: linear-gradient(
-        to bottom,
-        var(--accent-red) 0%, var(--accent-red) 30%,
-        var(--accent-blue) 30%, var(--accent-blue) 70%,
-        var(--accent-red) 70%, var(--accent-red) 100%
-    );
+    background: var(--accent-blue);
     border-radius: 4px 0 0 4px;
-}
-
-.question-card:hover {
-    box-shadow: 0 4px 16px rgba(0, 45, 98, 0.08);
 }
 
 .question-card.answered-correct::before {
@@ -307,6 +298,10 @@ header .date {
 
 .question-card.answered-incorrect::before {
     background: var(--color-incorrect);
+}
+
+.question-card:hover {
+    box-shadow: 0 4px 16px rgba(0, 45, 98, 0.08);
 }
 
 .question-number {
