@@ -302,15 +302,50 @@ function verify() {
   }
 
   // --- W-5: Graph direction identical in 3+ consecutive exams ---
-  // Q12: check opens up vs down
+  // Q12: check opens up vs down using graph.function (reliable JS), not question_html
   const q12Directions = allExams.map(e => {
-    const eq = e.questions[11].eq;
-    return eq.includes('-') && (eq.startsWith('-') || eq.match(/^-\(/)) ? 'down' : 'up';
+    const q = e.questions[11];
+    const funcStr = q.graphFunction || q.eq || '';
+    // Leading negative means opens down: "-Math.pow(...)", "-(Math.pow(..."
+    return funcStr.match(/^\s*-/) ? 'down' : 'up';
   });
   // Check any 3 consecutive
   for (let i = 0; i <= q12Directions.length - 3; i++) {
     if (q12Directions[i] === q12Directions[i+1] && q12Directions[i+1] === q12Directions[i+2]) {
       errors.warn.push(`W-5: Q12 opens ${q12Directions[i]} in 3 consecutive exams: ${examLabels[i]}, ${examLabels[i+1]}, ${examLabels[i+2]}`);
+    }
+  }
+
+  // --- I-2: Template count per slot (flag when 3+ exams use same equation form) ---
+  // Classify equation templates by extracting structural form
+  const TEMPLATE_SLOTS = { 8: 'Q8-rational', 11: 'Q11-frac-exp', 13: 'Q13-graph-rational', 15: 'Q15-word' };
+  for (const [qiStr, slotLabel] of Object.entries(TEMPLATE_SLOTS)) {
+    const qi = parseInt(qiStr) - 1; // 0-indexed
+    const templates = {};
+    for (const exam of allExams) {
+      const q = exam.questions[qi];
+      let tmpl = 'unknown';
+      const eq = q.eq || '';
+      if (qi === 7) { // Q8 rational
+        if (eq.match(/\(.+\)\/\(.+\)\s*=/) || eq.match(/dfrac\{.*\}\{.*\}\s*=/)) tmpl = '(ax+b)/(x-c)=d';
+        else if (eq.match(/\/\(.+\)\s*\+/)) tmpl = 'a/(x-h)+k=d';
+      } else if (qi === 10) { // Q11 fractional exponent
+        if (eq.match(/x\^\{?3\/2\}?/) || eq.match(/x\^?\(3\/2\)/)) tmpl = 'ax^(3/2)+b=c';
+        else if (eq.match(/x\^\{?2\/3\}?/)) tmpl = 'ax^(2/3)+b=c';
+      } else if (qi === 12) { // Q13 graph rational
+        const funcStr = q.graphFunction || eq;
+        if (funcStr.match(/^-?\d.*\/.*Math\.pow/) || funcStr.match(/\(.*x.*\)\/\(.*x.*\)/)) tmpl = '(ax+b)/(x-c)';
+        else tmpl = 'a/(x-h)+k';
+      } else if (qi === 14) { // Q15 word problem
+        tmpl = q.eq || 'word-generic';
+      }
+      templates[tmpl] = templates[tmpl] || [];
+      templates[tmpl].push(exam.id);
+    }
+    for (const [tmpl, exams] of Object.entries(templates)) {
+      if (exams.length >= MAX_SAME_TEMPLATE_PER_SLOT && tmpl !== 'unknown') {
+        errors.info.push(`I-2: ${slotLabel} template "${tmpl}" used in ${exams.length}/${allExams.length} exams: ${exams.join(', ')}`);
+      }
     }
   }
 
