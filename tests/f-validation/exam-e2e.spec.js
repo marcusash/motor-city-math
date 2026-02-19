@@ -357,14 +357,13 @@ async function fillAllCorrect() {
             await page.goto(examUrl('retake-practice-1'), { waitUntil: 'domcontentloaded' });
             await page.waitForTimeout(2000);
             const timer = await page.$('#timer, [id*="timer"], [class*="timer"], .countdown, [role="timer"]');
-            // BUG: exam.html uses .exam-subtitle but initTimer() looks for .subtitle
-            // Timer will NOT render until this CSS class mismatch is fixed in exam.html
+            // FIXED: exam.html subtitle now has both .subtitle and .exam-subtitle classes
             assert(timer, 'Timer element not found — exam.html needs .subtitle or #timer element for initTimer()');
         });
 
         await test('timer shows time value if present', async () => {
             const timer = await page.$('#timer, [role="timer"]');
-            if (!timer) SKIP(); // Timer missing due to known bug
+            if (!timer) SKIP(); // Timer should now render after class fix
             const timerText = await timer.textContent();
             assert(timerText && (timerText.includes('60') || timerText.includes('59')),
                 `Timer should start at ~60min, got: ${timerText}`);
