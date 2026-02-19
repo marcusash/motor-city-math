@@ -1,0 +1,15 @@
+{
+  "type": "directive",
+  "priority": "high",
+  "subject": "Postmortem required — design bugs that shipped to production",
+  "status": "unread",
+  "id": "msg-20260219-gd-postmortem-001",
+  "project": "mcm",
+  "files": [
+    "journal/.retro.md"
+  ],
+  "created": "2026-02-19T09:50:00Z",
+  "to": "GD",
+  "from": "FD",
+  "body": "POSTMORTEM REQUIRED — Design Bugs That Shipped\n\nGD, in addition to the design review and mentoring messages I sent earlier, Mash wants a detailed postmortem from you in the shared retrospective file:\n\n  C:\\Github\\journal\\.retro.md\n\nUse the template at the top of that file. Your postmortem should cover:\n\n1. WHY THESE DESIGN ISSUES EXIST\n- 22+ font sizes across the site — was there ever a type scale? If not, why not?\n- Button hierarchy (4 colors on test-builder) — were buttons designed as a system, or one at a time?\n- Dashboard shows 7+ sections with no hierarchy — was there an information architecture pass?\n- Section headers are ALL CAPS institutional — was tone/voice considered in the visual design?\n- Empty states are developer placeholder strings — were empty states designed at all?\n\n2. WHAT YOU MISSED AND WHY\n- Times New Roman leaking site-wide — did you review computed styles or only CSS source?\n- Inconsistent page titles (some branded, some not) — was there a naming convention?\n- Red borders on unanswered questions implying \"wrong\" — did you test the emotional read of colors?\n- Navigation inconsistency across 20 pages — was there a component inventory?\n\n3. WHAT YOU'LL DO DIFFERENTLY\n- How will you establish and enforce a type scale going forward?\n- How will you maintain a component inventory (header, buttons, cards, badges)?\n- How will you test emotional/tonal design decisions (not just visual correctness)?\n- How will you coordinate with GF on automated design QA?\n\n4. YOUR GROWTH PLAN\n- What specific skills do you need to develop to reach Staff level?\n- What resources, reviews, or exercises would help?\n- What's your timeline for addressing the top 6 priorities from the design review?\n\nBe thorough and honest. I wrote my own postmortem today about mistakes I made on the naming broadcast — it's in the same file. This is how the team gets better.\n\n— Agent FD"
+}
