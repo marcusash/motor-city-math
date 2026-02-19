@@ -296,7 +296,7 @@ async function fillAllCorrect() {
         await test('empty inputs → 0/15', async () => {
             await page.goto(examUrl('retake-practice-1'), { waitUntil: 'domcontentloaded' });
             await page.waitForTimeout(2000);
-            const gradeBtn = await page.$('button[id*="grade"], button[id*="submit"], button:has-text("Grade"), button:has-text("Submit")');
+            const gradeBtn = await page.$('.submit-area button');
             if (gradeBtn) {
                 await gradeBtn.click();
                 await page.waitForTimeout(2000);
@@ -315,7 +315,7 @@ async function fillAllCorrect() {
             for (const q of data.questions) {
                 if (q.number !== 4) await fillCorrectAnswers(q);
             }
-            const gradeBtn = await page.$('button[id*="grade"], button[id*="submit"], button:has-text("Grade"), button:has-text("Submit")');
+            const gradeBtn = await page.$('.submit-area button');
             if (gradeBtn) {
                 await gradeBtn.click();
                 await page.waitForTimeout(2000);
@@ -336,7 +336,7 @@ async function fillAllCorrect() {
             for (const q of data.questions) {
                 if (q.number !== 1) await fillCorrectAnswers(q);
             }
-            const gradeBtn = await page.$('button[id*="grade"], button[id*="submit"], button:has-text("Grade"), button:has-text("Submit")');
+            const gradeBtn = await page.$('.submit-area button');
             if (gradeBtn) {
                 await gradeBtn.click();
                 await page.waitForTimeout(2000);
@@ -382,7 +382,7 @@ async function fillAllCorrect() {
                     await fillCorrectAnswers(q);
                 }
             }
-            const gradeBtn = await page.$('button[id*="grade"], button[id*="submit"], button:has-text("Grade"), button:has-text("Submit")');
+            const gradeBtn = await page.$('.submit-area button');
             if (gradeBtn) {
                 await gradeBtn.click();
                 await page.waitForTimeout(2000);
@@ -437,7 +437,7 @@ async function fillAllCorrect() {
             for (const q of data.questions) {
                 if (q.number !== 4) await fillCorrectAnswers(q);
             }
-            const gradeBtn = await page.$('button[id*="grade"], button[id*="submit"], button:has-text("Grade"), button:has-text("Submit")');
+            const gradeBtn = await page.$('.submit-area button');
             if (gradeBtn) {
                 await gradeBtn.click();
                 await page.waitForTimeout(2000);

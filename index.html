@@ -138,9 +138,9 @@
             border: 2px solid transparent; transition: background 0.15s, border-color 0.15s;
         }
         .nav-btn.primary { background: var(--accent-red); color: var(--text-inverse); }
-        .nav-btn.primary:hover { background: #a00d24; }
+        .nav-btn.primary:hover { background: var(--accent-red-hover); }
         .nav-btn.secondary { background: transparent; color: var(--accent-blue); border-color: var(--accent-blue); }
-        .nav-btn.secondary:hover { background: rgba(29,66,186,0.06); }
+        .nav-btn.secondary:hover { background: var(--bg-highlight); }
         .nav-btn.ghost { background: transparent; color: var(--accent-navy); border-color: var(--border-default); }
         .nav-btn.ghost:hover { border-color: var(--accent-blue); }
 
@@ -431,6 +431,7 @@
         var html = '';
 
         tests.forEach(function(t) {
+            if (t.retake) return;
             var s = scores[t.key];
             var scoreHtml = '';
             var sparkHtml = '';
