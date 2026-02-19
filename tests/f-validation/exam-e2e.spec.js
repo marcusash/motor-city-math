@@ -278,7 +278,7 @@ async function fillAllCorrect() {
                 if (dropdown) await fillInput(dropdown.id, dropdown.answer);
 
                 // Grade
-                const gradeBtn = await page.$('button[id*="grade"], button[id*="submit"], button:has-text("Grade"), button:has-text("Submit")');
+                const gradeBtn = await page.$('.submit-area button');
                 if (gradeBtn) await gradeBtn.click();
                 await page.waitForTimeout(2000);
 

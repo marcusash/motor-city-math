@@ -179,6 +179,9 @@
         <div class="section-title">What to Study Next</div>
         <ul class="study-list" id="studyList"></ul>
 
+        <div class="section-title" style="color:var(--accent-red);">🏀 Retake Practice — Nonlinear Functions</div>
+        <div class="test-grid" id="retakeGrid"></div>
+
         <div style="text-align:center; margin: 20px 0; display:flex; justify-content:center; gap:12px; flex-wrap:wrap;">
             <a href="nonlinear_exam_mvp.html" class="nav-btn primary">📝 Take the Test</a>
             <a href="practice.html" class="nav-btn secondary">🏀 Practice Mode</a>
@@ -202,6 +205,9 @@
     <script>
     /* ========== TEST REGISTRY ========== */
     var tests = [
+        { file: 'exam.html?file=retake-practice-1', name: 'Retake Practice #1', unit: 'nonlinear', key: 'mcm-retake-practice-1', questions: 15, retake: true },
+        { file: 'exam.html?file=retake-practice-2', name: 'Retake Practice #2', unit: 'nonlinear', key: 'mcm-retake-practice-2', questions: 15, retake: true },
+        { file: 'exam.html?file=retake-practice-3', name: 'Retake Practice #3', unit: 'nonlinear', key: 'mcm-retake-practice-3', questions: 15, retake: true },
         { file: 'nonlinear_exam_mvp.html', name: 'Nonlinear Functions Exam (MVP)', unit: 'nonlinear', key: 'mcm-nonlinear-exam-mvp', questions: 15 },
         { file: 'linear_functions_test.html', name: 'Linear Functions Practice', unit: 'linear', key: 'mcm-index-results', questions: 14 },
         { file: 'index_calc.html', name: 'Linear Functions (Calculator)', unit: 'linear', key: 'mcm-index-calc-results', questions: 17 },
@@ -519,11 +525,39 @@
         grid.innerHTML = html;
     }
 
+    /* ========== RETAKE GRID ========== */
+    function buildRetakeGrid() {
+        var scores = getScores();
+        var grid = document.getElementById('retakeGrid');
+        var retakeTests = tests.filter(function(t) { return t.retake; });
+        var html = '';
+        retakeTests.forEach(function(t, i) {
+            var scoreHtml = '';
+            var s = scores[t.key];
+            if (s) {
+                var pct = null;
+                if (s.attempts && s.attempts.length > 0) {
+                    pct = s.attempts[s.attempts.length - 1].pct;
+                } else {
+                    pct = s.pct || (s.score && s.total ? Math.round(s.score / s.total * 100) : null);
+                }
+                if (pct !== null) {
+                    scoreHtml = '<span class="test-score' + (pct < 70 ? ' low' : '') + '">' + pct + '%</span>';
+                }
+            }
+            html += '<a href="' + t.file + '" class="test-link" style="border-left-color:var(--accent-red);">' +
+                '📝 ' + t.name + scoreHtml +
+                '<div class="test-meta">' + t.questions + ' questions · 60 min · nonlinear</div></a>';
+        });
+        grid.innerHTML = html;
+    }
+
     /* ========== INIT ========== */
     window.addEventListener('DOMContentLoaded', function() {
         buildChart();
         var stdResult = buildStandards();
         buildStudyNext(stdResult);
+        buildRetakeGrid();
         buildQuickTests();
         buildTestGrid();
         buildStats();
