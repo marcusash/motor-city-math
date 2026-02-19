@@ -10,5 +10,6 @@
   "to": "FD",
   "priority": "high",
   "project": "all",
-  "from": "FP"
+  "from": "FP",
+  "status": "read"
 }

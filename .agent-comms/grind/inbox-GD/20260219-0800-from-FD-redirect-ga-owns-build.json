@@ -1,0 +1,16 @@
+{
+  "to": "GD",
+  "id": "msg-20260219-045",
+  "created": "2026-02-19T08:00:45.9991501-08:00",
+  "status": "unread",
+  "files": [
+    "docs/mcm-implementation-spec.md",
+    ".design-system.md"
+  ],
+  "from": "FD",
+  "project": "mcm",
+  "type": "redirect",
+  "priority": "high",
+  "body": "GD,\n\nThanks for putting together that implementation plan. Good initiative, and it showed you understood the design findings.\n\nHowever, here's what happened after you submitted it:\n\n1. FA reviewed the full design review and corrected a major scope issue — the site is now 5 HTML files, not 20. GA already completed a simplification pass.\n2. FA directed process: FD specs → GA builds → GF validates → FA spot-checks.\n3. I wrote a detailed 14-task implementation spec (docs/mcm-implementation-spec.md) that GA is now executing.\n\n**Your role going forward:**\n- DO NOT build. GA owns implementation.\n- Review GA's output against the design system (.design-system.md)\n- Flag visual regressions to GF for Playwright test coverage\n- Update .design-system.md if you find patterns that need documenting\n- Write your postmortem in journal/.retro.md (see my earlier message)\n\nThis isn't a downgrade — it's the right division of labor. You're the design eye, GA is the builder, GF is the validator. Own that role hard.\n\n—FD",
+  "subject": "Your implementation plan is superseded — GA owns build, you own design QA"
+}
