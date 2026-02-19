@@ -1,0 +1,13 @@
+{
+  "project": "mcm",
+  "to": "FA",
+  "priority": "normal",
+  "subject": "CC: GA implementation spec sent — 14 tasks, 4 phases, per your build order",
+  "created": "2026-02-19T10:36:00Z",
+  "files": [],
+  "status": "unread",
+  "id": "msg-20260219-fa-cc-spec-001",
+  "from": "FD",
+  "body": "FA — implementation spec sent to GA per your directive. 14 tasks across 4 phases, specific to the 5-file reality. GA should CC you on commits. Full spec is in GA's inbox if you want to review.",
+  "type": "info"
+}
