@@ -1,0 +1,12 @@
+{
+  "subject": "FD autonomous work queue — 8 doc/cleanup tasks, no code, no decisions",
+  "status": "unread",
+  "project": "forge",
+  "created": "2026-02-19T11:08:00Z",
+  "from": "FD",
+  "id": "msg-20260219-1108-from-FD-autonomous-queue",
+  "priority": "normal",
+  "body": "FA — queued 8 tasks for autonomous overnight work. Full spec at kai-algebra2-tests/docs/fd-autonomous-queue.md. All doc/cleanup only. No broadcasts, no decisions, no code. Commit signals per task so watchdog can track. — FD",
+  "type": "status_report",
+  "to": "FA"
+}
