@@ -1,0 +1,360 @@
+{
+  "exam_id": "retake-practice-4",
+  "title": "Unit 2 Retake Practice #4 — Nonlinear Functions",
+  "subtitle": "Standards W2 & W3 · 15 Questions · ~60 min",
+  "time_minutes": 60,
+  "created": "2026-02-19",
+  "created_by": "Agent R",
+  "purpose": "Fourth practice exam — all new numbers. Building fluency and confidence before retake.",
+  "questions": [
+    {
+      "id": "rp4-q1",
+      "number": 1,
+      "section": "A",
+      "standard": "W2.b",
+      "type": "identify",
+      "question_html": "Identify the parent function and find the x-intercepts: \\( f(x) = 5(x + 1)^2 - 80 \\)",
+      "inputs": [
+        { "id": "q1_parent", "type": "dropdown", "label": "Parent function", "options": ["quadratic", "cubic", "absolute", "sqrt", "rational", "exponential"], "answer": "quadratic" },
+        { "id": "q1_x1", "type": "number", "label": "x₁ =", "answer": 3, "tolerance": 0.1 },
+        { "id": "q1_x2", "type": "number", "label": "x₂ =", "answer": -5, "tolerance": 0.1 }
+      ],
+      "plus_minus": true,
+      "hint": "Set f(x)=0. Isolate the squared term.",
+      "solution_steps": [
+        "Parent: y = x² (quadratic — highest power is 2).",
+        "Set 0 = 5(x+1)² - 80.",
+        "5(x+1)² = 80 → (x+1)² = 16.",
+        "x + 1 = ±4 → x = 3 or x = -5."
+      ],
+      "feedback_correct": "🔥 Parent and intercepts nailed.",
+      "feedback_wrong_parent": "Check the exponent for parent type.",
+      "feedback_wrong_intercepts": "Parent right. Set f(x)=0 and solve."
+    },
+    {
+      "id": "rp4-q2",
+      "number": 2,
+      "section": "A",
+      "standard": "W2.b",
+      "type": "identify",
+      "question_html": "Identify the parent function and find the x-intercept: \\( f(x) = \\sqrt{x - 7} - 5 \\)",
+      "inputs": [
+        { "id": "q2_parent", "type": "dropdown", "label": "Parent function", "options": ["quadratic", "cubic", "absolute", "sqrt", "rational", "exponential"], "answer": "sqrt" },
+        { "id": "q2_x1", "type": "number", "label": "x-intercept =", "answer": 32, "tolerance": 0.1 }
+      ],
+      "hint": "Set f(x)=0. Square both sides.",
+      "solution_steps": [
+        "Parent: y = √x (square root function).",
+        "Set 0 = √(x-7) - 5 → √(x-7) = 5.",
+        "Square: x - 7 = 25 → x = 32."
+      ],
+      "feedback_correct": "🔥 Square root identified. Clean.",
+      "feedback_wrong_parent": "Look at the √ symbol."
+    },
+    {
+      "id": "rp4-q3",
+      "number": 3,
+      "section": "A",
+      "standard": "W2.b",
+      "type": "identify",
+      "question_html": "Identify the parent function and find the x-intercepts: \\( f(x) = -4|x + 2| + 24 \\)",
+      "inputs": [
+        { "id": "q3_parent", "type": "dropdown", "label": "Parent function", "options": ["quadratic", "cubic", "absolute", "sqrt", "rational", "exponential"], "answer": "absolute" },
+        { "id": "q3_x1", "type": "number", "label": "x₁ =", "answer": 4, "tolerance": 0.1 },
+        { "id": "q3_x2", "type": "number", "label": "x₂ =", "answer": -8, "tolerance": 0.1 }
+      ],
+      "plus_minus": true,
+      "hint": "Set f(x)=0. |x+2| = 6 gives two answers.",
+      "solution_steps": [
+        "Parent: y = |x| (absolute value — V shape).",
+        "Transformations: left 2, stretch ×4, reflect over x-axis, up 24.",
+        "x-intercepts: 0 = -4|x+2| + 24 → |x+2| = 6.",
+        "x + 2 = 6 → x = 4, or x + 2 = -6 → x = -8."
+      ],
+      "feedback_correct": "🔥 Absolute value. Both intercepts.",
+      "feedback_wrong_parent": "The | | symbols mean absolute value."
+    },
+    {
+      "id": "rp4-q4",
+      "number": 4,
+      "section": "B",
+      "standard": "W3.d",
+      "type": "exponential",
+      "question_html": "Solve: \\( 3^{2x + 1} = 81 \\)",
+      "inputs": [
+        { "id": "q4_x", "type": "number", "label": "x =", "answer": 1.5, "tolerance": 0.01 }
+      ],
+      "hint": "Rewrite 81 as 3⁴. Set exponents equal.",
+      "solution_steps": [
+        "Rewrite: 3^(2x+1) = 3⁴.",
+        "Set exponents equal: 2x + 1 = 4.",
+        "2x = 3 → x = 3/2 = 1.5.",
+        "Check: 3^(3+1) = 3⁴ = 81 ✓"
+      ],
+      "feedback_correct": "🔥 Exponent match. Clean.",
+      "feedback_wrong": "Rewrite 81 as a power of 3."
+    },
+    {
+      "id": "rp4-q5",
+      "number": 5,
+      "section": "B",
+      "standard": "W3.b",
+      "type": "quadratic",
+      "question_html": "Solve: \\( 2(x - 3)^2 - 50 = 0 \\)",
+      "inputs": [
+        { "id": "q5_x1", "type": "number", "label": "x₁ =", "answer": 8, "tolerance": 0.1 },
+        { "id": "q5_x2", "type": "number", "label": "x₂ =", "answer": -2, "tolerance": 0.1 }
+      ],
+      "plus_minus": true,
+      "hint": "Isolate the squared term. Then ±.",
+      "solution_steps": [
+        "2(x-3)² = 50 → (x-3)² = 25.",
+        "x - 3 = ±5.",
+        "x = 3 + 5 = 8 or x = 3 - 5 = -2.",
+        "Check: 2(8-3)² - 50 = 2(25) - 50 = 0 ✓"
+      ],
+      "feedback_correct": "🔥 Both solutions found.",
+      "feedback_wrong": "Isolate (x-3)², then take ± square root."
+    },
+    {
+      "id": "rp4-q6",
+      "number": 6,
+      "section": "B",
+      "standard": "W3.b",
+      "type": "radical",
+      "question_html": "Solve: \\( \\sqrt{4x - 3} + 2 = 9 \\)",
+      "inputs": [
+        { "id": "q6_x", "type": "number", "label": "x =", "answer": 13, "tolerance": 0.01 }
+      ],
+      "hint": "Isolate the √, then square both sides.",
+      "solution_steps": [
+        "√(4x-3) = 7.",
+        "Square both sides: 4x - 3 = 49.",
+        "4x = 52 → x = 13.",
+        "Check: √(52-3) + 2 = √49 + 2 = 7 + 2 = 9 ✓"
+      ],
+      "feedback_correct": "🔥 Square both sides. Done.",
+      "feedback_wrong": "Isolate the √ first, THEN square."
+    },
+    {
+      "id": "rp4-q7",
+      "number": 7,
+      "section": "B",
+      "standard": "W3.d",
+      "type": "exponential",
+      "question_html": "Solve: \\( 16^{x - 1} = 8 \\)",
+      "inputs": [
+        { "id": "q7_x", "type": "number", "label": "x =", "answer": 1.75, "tolerance": 0.01 }
+      ],
+      "hint": "Rewrite both sides as powers of 2.",
+      "solution_steps": [
+        "Rewrite: 16 = 2⁴, so 16^(x-1) = 2^(4x-4).",
+        "Rewrite: 8 = 2³.",
+        "2^(4x-4) = 2³ → 4x - 4 = 3.",
+        "4x = 7 → x = 7/4 = 1.75.",
+        "Check: 16^(0.75) = (2⁴)^(0.75) = 2³ = 8 ✓"
+      ],
+      "feedback_correct": "🔥 Common base. Smooth.",
+      "feedback_wrong": "Both 16 and 8 are powers of 2."
+    },
+    {
+      "id": "rp4-q8",
+      "number": 8,
+      "section": "B",
+      "standard": "W3.c",
+      "type": "rational",
+      "question_html": "Solve: \\( \\dfrac{6x + 1}{x - 2} = 5 \\)",
+      "inputs": [
+        { "id": "q8_x", "type": "number", "label": "x =", "answer": -11, "tolerance": 0.01 }
+      ],
+      "hint": "Multiply both sides by (x - 2).",
+      "solution_steps": [
+        "Multiply: 6x + 1 = 5(x - 2).",
+        "6x + 1 = 5x - 10.",
+        "x = -11.",
+        "Check: (6·(-11) + 1)/((-11) - 2) = -65/-13 = 5 ✓"
+      ],
+      "feedback_correct": "🔥 Clean algebra.",
+      "feedback_wrong": "Multiply both sides by (x - 2)."
+    },
+    {
+      "id": "rp4-q9",
+      "number": 9,
+      "section": "B",
+      "standard": "W3.b",
+      "type": "radical",
+      "question_html": "Solve: \\( \\sqrt{x^2 + 36} = 10 \\)",
+      "inputs": [
+        { "id": "q9_x1", "type": "number", "label": "x₁ =", "answer": 8, "tolerance": 0.01 },
+        { "id": "q9_x2", "type": "number", "label": "x₂ =", "answer": -8, "tolerance": 0.01 }
+      ],
+      "plus_minus": true,
+      "hint": "Square both sides. You'll get x² = something. Don't forget ±.",
+      "solution_steps": [
+        "Square both sides: x² + 36 = 100.",
+        "x² = 64.",
+        "x = ±8.",
+        "Check: √(64 + 36) = √100 = 10 ✓"
+      ],
+      "feedback_correct": "🔥 ±8. Don't forget both.",
+      "feedback_wrong": "Square both sides, then remember ± for x²."
+    },
+    {
+      "id": "rp4-q10",
+      "number": 10,
+      "section": "B",
+      "standard": "W3.e",
+      "type": "extraneous",
+      "question_html": "Solve and check for extraneous solutions: \\( \\sqrt{x + 7} = x + 5 \\)",
+      "inputs": [
+        { "id": "q10_x", "type": "number", "label": "Valid x =", "answer": -3, "tolerance": 0.1 }
+      ],
+      "hint": "Square both sides. Factor. Check BOTH in the original.",
+      "solution_steps": [
+        "Square: x + 7 = (x+5)² = x² + 10x + 25.",
+        "x² + 9x + 18 = 0 → (x+3)(x+6) = 0.",
+        "x = -3 or x = -6.",
+        "Check x=-3: √4 = 2 and -3+5 = 2 ✓",
+        "Check x=-6: √1 = 1 and -6+5 = -1 ✗ → extraneous.",
+        "Only x = -3 is valid."
+      ],
+      "feedback_correct": "🔥 Caught the extraneous one.",
+      "feedback_wrong": "Square both sides, then check BOTH answers back in the original."
+    },
+    {
+      "id": "rp4-q11",
+      "number": 11,
+      "section": "B",
+      "standard": "W3.b",
+      "type": "fractional-exp",
+      "question_html": "Solve: \\( 2x^{3/2} - 14 = 672 \\)",
+      "inputs": [
+        { "id": "q11_x", "type": "number", "label": "x =", "answer": 49, "tolerance": 0.01 }
+      ],
+      "hint": "Isolate x^(3/2), then raise both sides to the 2/3 power.",
+      "solution_steps": [
+        "2x^(3/2) = 686 → x^(3/2) = 343.",
+        "Raise to 2/3: x = 343^(2/3).",
+        "343^(1/3) = 7, then 7² = 49.",
+        "Check: 2(49)^(3/2) - 14 = 2·343 - 14 = 686 - 14 = 672 ✓"
+      ],
+      "feedback_correct": "🔥 343^(2/3) = 49. Solid.",
+      "feedback_wrong": "Isolate x^(3/2) first, then use the 2/3 power."
+    },
+    {
+      "id": "rp4-q12",
+      "number": 12,
+      "section": "C",
+      "standard": "W2.c",
+      "type": "graph",
+      "question_html": "Graph \\( f(x) = 2(x - 2)^2 - 8 \\). State the vertex.",
+      "inputs": [
+        { "id": "q12_vx", "type": "number", "label": "Vertex x =", "answer": 2, "tolerance": 0.1 },
+        { "id": "q12_vy", "type": "number", "label": "Vertex y =", "answer": -8, "tolerance": 0.1 }
+      ],
+      "graph": {
+        "canvas_id": "graphQ12",
+        "function": "2 * Math.pow(x - 2, 2) - 8",
+        "function_display": "f(x) = 2(x-2)² - 8",
+        "key_points": [[0, 0], [1, -6], [2, -8], [3, -6], [4, 0]],
+        "min_points": 5,
+        "tolerance": 0.25,
+        "asymptotes": null
+      },
+      "hint": "Vertex form: f(x) = a(x-h)² + k. Vertex is (h, k).",
+      "solution_steps": [
+        "Vertex form: 2(x-2)² - 8 → vertex at (2, -8).",
+        "Opens UP (positive a=2, steeper than normal).",
+        "Plot vertex (2, -8).",
+        "x=0: f(0) = 2(4)-8 = 0 → (0, 0).",
+        "x=1: f(1) = 2(1)-8 = -6 → (1, -6).",
+        "x=3: f(3) = 2(1)-8 = -6 → (3, -6).",
+        "x=4: f(4) = 2(4)-8 = 0 → (4, 0).",
+        "Draw narrower U-shaped parabola."
+      ],
+      "feedback_correct": "🔥 Clean graph. Vertex locked.",
+      "feedback_wrong": "Vertex is (h, k) from a(x-h)² + k form."
+    },
+    {
+      "id": "rp4-q13",
+      "number": 13,
+      "section": "C",
+      "standard": "W2.e",
+      "type": "graph",
+      "question_html": "Graph \\( f(x) = \\dfrac{-2}{x - 4} + 3 \\) and draw asymptotes. State the asymptotes.",
+      "inputs": [
+        { "id": "q13_va", "type": "number", "label": "Vertical asymptote x =", "answer": 4, "tolerance": 0.1 },
+        { "id": "q13_ha", "type": "number", "label": "Horizontal asymptote y =", "answer": 3, "tolerance": 0.1 }
+      ],
+      "graph": {
+        "canvas_id": "graphQ13",
+        "function": "-2 / (x - 4) + 3",
+        "function_display": "f(x) = -2/(x-4) + 3",
+        "key_points": [[2, 4], [3, 5], [5, 1], [6, 2], [8, 2.5]],
+        "min_points": 5,
+        "tolerance": 0.25,
+        "asymptotes": { "vertical": [4], "horizontal": [3] }
+      },
+      "hint": "VA: denominator = 0. HA: the +3 outside the fraction.",
+      "solution_steps": [
+        "Parent: y = 1/x shifted right 4, reflected, stretched ×2, up 3.",
+        "VA: x - 4 = 0 → x = 4.",
+        "HA: y = 3 (the constant outside).",
+        "Plot: f(2) = -2/(-2)+3 = 1+3 = 4 → (2, 4).",
+        "f(3) = -2/(-1)+3 = 2+3 = 5 → (3, 5).",
+        "f(5) = -2/1+3 = -2+3 = 1 → (5, 1).",
+        "f(6) = -2/2+3 = -1+3 = 2 → (6, 2).",
+        "f(8) = -2/4+3 = -0.5+3 = 2.5 → (8, 2.5)."
+      ],
+      "feedback_correct": "🔥 Both asymptotes and graph correct.",
+      "feedback_wrong": "VA: set denominator = 0. HA: what does y approach?"
+    },
+    {
+      "id": "rp4-q14",
+      "number": 14,
+      "section": "D",
+      "standard": "W3.a",
+      "type": "multiple-choice",
+      "question_html": "The circumference of a circle is \\( C = 2\\pi r \\). Which correctly solves for \\( r \\)?",
+      "inputs": [
+        { "id": "q14", "type": "radio", "label": "", "options": [
+            { "value": "A", "text": "\\( r = \\dfrac{C}{2\\pi} \\)" },
+            { "value": "B", "text": "\\( r = \\dfrac{2C}{\\pi} \\)" },
+            { "value": "C", "text": "\\( r = \\dfrac{C \\cdot \\pi}{2} \\)" },
+            { "value": "D", "text": "\\( r = 2C\\pi \\)" }
+          ],
+          "answer": "A"
+        }
+      ],
+      "hint": "Just divide both sides by 2π.",
+      "solution_steps": [
+        "C = 2πr.",
+        "Divide by 2π: r = C/(2π).",
+        "Answer: A."
+      ],
+      "feedback_correct": "🔥 Formula rearrangement. Clean.",
+      "feedback_wrong": "Isolate r: divide both sides by 2π."
+    },
+    {
+      "id": "rp4-q15",
+      "number": 15,
+      "section": "D",
+      "standard": "W3.a",
+      "type": "word-problem",
+      "question_html": "A town's population starts at 5,000 and grows by 50% every 10 years. The population is modeled by \\( P(t) = 5000 \\cdot 1.5^{t/10} \\). How many years until the population reaches 16,875?",
+      "inputs": [
+        { "id": "q15_t", "type": "number", "label": "t =", "answer": 30, "tolerance": 0.5 }
+      ],
+      "hint": "Set P(t) = 16875. Divide by 5000. What power of 1.5?",
+      "solution_steps": [
+        "5000 · 1.5^(t/10) = 16875.",
+        "1.5^(t/10) = 3.375.",
+        "3.375 = 1.5³, so t/10 = 3.",
+        "t = 30 years.",
+        "Check: 5000 · 1.5³ = 5000 · 3.375 = 16875 ✓"
+      ],
+      "feedback_correct": "🔥 30 years. Exponential growth.",
+      "feedback_wrong": "Divide by 5000 first. Then: 1.5^? = 3.375."
+    }
+  ]
+}
