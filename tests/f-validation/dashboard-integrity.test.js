@@ -61,15 +61,17 @@ function extractChartData(scores, tests) {
     return { labels, data, tooltips, hasData };
 }
 
-// Standards aggregation — index.html lines 306-378
+// Standards aggregation — index.html buildStandards()
+// MVP exams only — practice exams (retake: true) excluded
 function aggregateStandards(scores, tests) {
     var stdData = {};
 
     tests.forEach(function(t) {
+        if (t.retake) return; // Skip practice exams for standards
         var s = scores[t.key];
         if (!s) return;
 
-        // MVP format
+        // MVP format with per-question tracking
         if (s.attempts && s.attempts.length > 0) {
             var latest = s.attempts[s.attempts.length - 1];
             if (latest.questions) {
@@ -84,17 +86,6 @@ function aggregateStandards(scores, tests) {
                     stdData[std].types[type]++;
                 });
             }
-        }
-
-        // Simple format
-        if (s.standardScores) {
-            Object.keys(s.standardScores).forEach(function(id) {
-                var ss = s.standardScores[id];
-                if (!stdData[id]) stdData[id] = { correct: 0, total: 0, types: {}, name: ss.name };
-                stdData[id].correct += ss.correct || 0;
-                stdData[id].total += ss.total || 0;
-                if (ss.name) stdData[id].name = ss.name;
-            });
         }
     });
 
@@ -132,12 +123,15 @@ function getStudyRecs(stdResult) {
     return recs;
 }
 
-// Sample test config (subset)
+// Sample test config (subset) — includes practice exams with retake flag
 const TESTS = [
     { key: 'mcm-exponents-exam', name: 'Exponents Exam' },
     { key: 'mcm-nonlinear-exam-mvp', name: 'Nonlinear Exam MVP' },
     { key: 'mcm-quiz-251120', name: 'Quiz 11/20' },
-    { key: 'mcm-index-calc', name: 'Functions Exam' }
+    { key: 'mcm-index-calc', name: 'Functions Exam' },
+    { key: 'mcm-retake-practice-1', name: 'Retake Practice #1', retake: true },
+    { key: 'mcm-retake-practice-2', name: 'Retake Practice #2', retake: true },
+    { key: 'mcm-retake-practice-3', name: 'Retake Practice #3', retake: true }
 ];
 
 // ===================================================================
@@ -209,37 +203,92 @@ test('MVP W3 type tracking: exponential and radical',
     std1.data['W3'].types['exponential'] === 1 && std1.data['W3'].types['radical'] === 1);
 
 // ===================================================================
-// 4. STANDARDS AGGREGATION — SIMPLE FORMAT
+// 4. SCOREBUG REGRESSION — MVP=47% + Practice=100% must show 47%
 // ===================================================================
-section('4. Standards Aggregation (Simple)');
+section('4. Scorebug Regression (practice exams excluded)');
 
-const simpleWithStd = {
-    'mcm-exponents-exam': {
-        score: 18, total: 20, pct: 90,
-        standardScores: {
-            'W1.a': { correct: 8, total: 10, name: 'Rules of exponents' },
-            'W1.b': { correct: 4, total: 5, name: 'Roots and rational exp' },
-            'W1.e': { correct: 6, total: 5, name: 'Scientific notation' }
-        }
+const scorebugScores = {
+    // MVP exam: Kai scored 7/15 = 47%
+    'mcm-nonlinear-exam-mvp': {
+        attempts: [{
+            score: 7, total: 15, pct: 47,
+            questions: {
+                q1: { correct: true, type: 'identify', standard: 'W2' },
+                q2: { correct: false, type: 'identify', standard: 'W2' },
+                q3: { correct: true, type: 'graph', standard: 'W2' },
+                q4: { correct: false, type: 'exponential', standard: 'W3' },
+                q5: { correct: false, type: 'exponential', standard: 'W3' },
+                q6: { correct: true, type: 'radical', standard: 'W3' },
+                q7: { correct: false, type: 'identify', standard: 'W2' },
+                q8: { correct: true, type: 'graph', standard: 'W2' },
+                q9: { correct: false, type: 'exponential', standard: 'W3' },
+                q10: { correct: false, type: 'radical', standard: 'W3' },
+                q11: { correct: true, type: 'identify', standard: 'W2' },
+                q12: { correct: true, type: 'graph', standard: 'W2' },
+                q13: { correct: false, type: 'exponential', standard: 'W3' },
+                q14: { correct: true, type: 'radical', standard: 'W3' },
+                q15: { correct: false, type: 'word-problem', standard: 'W3' }
+            }
+        }]
+    },
+    // Practice exams: all 100%
+    'mcm-retake-practice-1': {
+        attempts: [{
+            score: 15, total: 15, pct: 100,
+            questions: {
+                q1: { correct: true, standard: 'W2' }, q2: { correct: true, standard: 'W2' },
+                q3: { correct: true, standard: 'W2' }, q4: { correct: true, standard: 'W3' },
+                q5: { correct: true, standard: 'W3' }, q6: { correct: true, standard: 'W3' },
+                q7: { correct: true, standard: 'W2' }, q8: { correct: true, standard: 'W2' },
+                q9: { correct: true, standard: 'W3' }, q10: { correct: true, standard: 'W3' },
+                q11: { correct: true, standard: 'W2' }, q12: { correct: true, standard: 'W2' },
+                q13: { correct: true, standard: 'W3' }, q14: { correct: true, standard: 'W3' },
+                q15: { correct: true, standard: 'W3' }
+            }
+        }]
+    },
+    'mcm-retake-practice-2': {
+        attempts: [{
+            score: 15, total: 15, pct: 100,
+            questions: {
+                q1: { correct: true, standard: 'W2' }, q2: { correct: true, standard: 'W2' },
+                q3: { correct: true, standard: 'W3' }, q4: { correct: true, standard: 'W3' },
+                q5: { correct: true, standard: 'W2' }, q6: { correct: true, standard: 'W2' },
+                q7: { correct: true, standard: 'W3' }, q8: { correct: true, standard: 'W3' },
+                q9: { correct: true, standard: 'W2' }, q10: { correct: true, standard: 'W2' },
+                q11: { correct: true, standard: 'W3' }, q12: { correct: true, standard: 'W3' },
+                q13: { correct: true, standard: 'W2' }, q14: { correct: true, standard: 'W2' },
+                q15: { correct: true, standard: 'W3' }
+            }
+        }]
     }
 };
 
-const std2 = aggregateStandards(simpleWithStd, TESTS);
-test('Simple W1.a: 8/10', std2.data['W1.a'].correct === 8 && std2.data['W1.a'].total === 10);
-test('Simple W1.b: 4/5', std2.data['W1.b'].correct === 4 && std2.data['W1.b'].total === 5);
-test('Simple: name preserved', std2.data['W1.a'].name === 'Rules of exponents');
+const sbStd = aggregateStandards(scorebugScores, TESTS);
+
+// W2: MVP has q1(✓) q2(✗) q3(✓) q7(✗) q8(✓) q11(✓) q12(✓) = 5/7 = 71%
+test('Scorebug: W2 total from MVP only (7, not 21+)', sbStd.data['W2'].total === 7);
+test('Scorebug: W2 correct from MVP only (5)', sbStd.data['W2'].correct === 5);
+var w2pct = Math.round((sbStd.data['W2'].correct / sbStd.data['W2'].total) * 100);
+test('Scorebug: W2 pct = 71%, not 100%', w2pct === 71);
+
+// W3: MVP has q4(✗) q5(✗) q6(✓) q9(✗) q10(✗) q13(✗) q14(✓) q15(✗) = 2/8 = 25%
+test('Scorebug: W3 total from MVP only (8, not 24+)', sbStd.data['W3'].total === 8);
+test('Scorebug: W3 correct from MVP only (2)', sbStd.data['W3'].correct === 2);
+var w3pct = Math.round((sbStd.data['W3'].correct / sbStd.data['W3'].total) * 100);
+test('Scorebug: W3 pct = 25%, not 100%', w3pct === 25);
+
+// Practice scores must NOT appear in standards at all
+test('Scorebug: only 2 standards (W2, W3) — no practice contamination', sbStd.keys.length === 2);
 
 // ===================================================================
-// 5. MIXED FORMATS
+// 5. MIXED FORMATS — Only MVP-format attempts counted
 // ===================================================================
 section('5. Mixed Format Aggregation');
 
 const mixedScores = {
     'mcm-exponents-exam': {
-        score: 18, total: 20, pct: 90,
-        standardScores: {
-            'W1.a': { correct: 8, total: 10, name: 'Rules of exponents' }
-        }
+        score: 18, total: 20, pct: 90
     },
     'mcm-nonlinear-exam-mvp': {
         attempts: [{
@@ -253,10 +302,9 @@ const mixedScores = {
 };
 
 const std3 = aggregateStandards(mixedScores, TESTS);
-test('Mixed: W1.a from simple format', std3.data['W1.a'].correct === 8);
 test('Mixed: W2 from MVP format', std3.data['W2'].correct === 1);
 test('Mixed: W3 from MVP format', std3.data['W3'].correct === 0);
-test('Mixed: 3 standards total', std3.keys.length === 3);
+test('Mixed: only standards with question data appear', std3.keys.length === 2);
 
 // ===================================================================
 // 6. STANDARD SORTING (weakest first)
@@ -265,12 +313,23 @@ section('6. Standards Sorted Weakest First');
 
 const sortScores = {
     'mcm-exponents-exam': {
-        score: 15, total: 20, pct: 75,
-        standardScores: {
-            'W1.a': { correct: 9, total: 10 },  // 90%
-            'W1.b': { correct: 2, total: 5 },    // 40%
-            'W1.c': { correct: 5, total: 7 }     // 71%
-        }
+        attempts: [{
+            score: 15, total: 20, pct: 75,
+            questions: {
+                q1: { correct: true, standard: 'W1.a' }, q2: { correct: true, standard: 'W1.a' },
+                q3: { correct: true, standard: 'W1.a' }, q4: { correct: true, standard: 'W1.a' },
+                q5: { correct: true, standard: 'W1.a' }, q6: { correct: true, standard: 'W1.a' },
+                q7: { correct: true, standard: 'W1.a' }, q8: { correct: true, standard: 'W1.a' },
+                q9: { correct: true, standard: 'W1.a' }, q10: { correct: false, standard: 'W1.a' },
+                q11: { correct: true, standard: 'W1.b' }, q12: { correct: true, standard: 'W1.b' },
+                q13: { correct: false, standard: 'W1.b' }, q14: { correct: false, standard: 'W1.b' },
+                q15: { correct: false, standard: 'W1.b' },
+                q16: { correct: true, standard: 'W1.c' }, q17: { correct: true, standard: 'W1.c' },
+                q18: { correct: true, standard: 'W1.c' }, q19: { correct: true, standard: 'W1.c' },
+                q20: { correct: true, standard: 'W1.c' }, q21: { correct: false, standard: 'W1.c' },
+                q22: { correct: false, standard: 'W1.c' }
+            }
+        }]
     }
 };
 
