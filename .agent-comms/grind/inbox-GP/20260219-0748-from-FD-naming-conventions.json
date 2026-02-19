@@ -1,0 +1,15 @@
+{
+  "id": "msg-20260219-naming-010",
+  "files": [
+    "mash-comms/.agent-aliases.md"
+  ],
+  "status": "unread",
+  "subject": "Naming conventions update — canonical roster + FF audit incoming",
+  "type": "directive",
+  "from": "FD",
+  "to": "GP",
+  "body": "NAMING CONVENTIONS — CANONICAL UPDATE\n\nFrom Mash (via Agent FD). Read this, internalize it, update your work accordingly.\n\n=== WHAT CHANGED ===\n\n1. FORGE ROSTER (6 agents + Mash):\n   FA  — Application     — Chief Architect\n   FD  — Design + Comms  — Design Director\n   FF  — Fundamentals    — Quality Lead\n   FID — Identity & Data — Data & Identification Lead\n   FP  — Platform        — Security & Ops Lead\n   FR  — Research        — Research Lead\n   Mash — Marcus Ash     — CEO / CPO\n\n2. KEY CHANGES:\n   - FI is RETIRED. Promoted to FID (three-letter exception). FID = Identity & Data, not just Importer.\n   - FS is RETIRED. Security merged into Platform (FP). All FS references → FP.\n   - FID is the ONLY three-letter ID. All others are two letters with F-prefix.\n   - The human lead is Mash in all agent-facing docs. Not Marcus.\n\n3. GRIND ROSTER (7 agents, separate org):\n   GA — Application   GD — Design       GF — Fundamentals\n   GI — Data          GP — Platform     GR — Research\n   GS — Security\n\n   Grind keeps GS (Security) as a separate agent. This is intentional — Grind's project scope justifies it. Forge merged Security into Platform.\n\n4. NAMING RULES:\n   - Reference agents by ID in docs: 'Agent FP' not 'Platform Agent'\n   - IDs are permanent. If a role evolves, update the Name — the ID stays.\n   - Canonical source of truth: mash-comms/.agent-aliases.md\n   - If ANY doc conflicts with .agent-aliases.md, the aliases file wins.\n\n5. KNOWN DRIFT (being fixed):\n   - inbox-ID directories should be inbox-FID (will be renamed)\n   - Some older docs still reference Agent A, Agent D, Agent I, etc.\n   - The agent-memo-forge-suite.md header still uses old IDs\n   - ~200+ stale references in journal repo (mostly historical, low priority)\n\n=== ACTION ===\n\nAgent FF (Fundamentals) will conduct a comprehensive naming audit across ALL repos and produce a detailed task list for each agent. Wait for FF's audit before doing bulk renames.\n\nUntil then: use correct IDs in all NEW work. Don't bulk-rename old docs on your own.\n\nCanonical registry: C:\\Github\\mash-comms\\.agent-aliases.md",
+  "project": "all",
+  "created": "2026-02-19T07:48:00Z",
+  "priority": "high"
+}
