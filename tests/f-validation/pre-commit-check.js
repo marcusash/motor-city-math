@@ -145,6 +145,38 @@ for (const filePath of filesToCheck) {
 }
 
 // ===================================================================
+// (b2) HTML STRUCTURE — duplicate tags (PM2-1: Agent A corruption)
+// ===================================================================
+
+console.log('\n── Check (b2): HTML structure (duplicate tags) ──');
+
+for (const filePath of filesToCheck) {
+    if (!fs.existsSync(filePath)) continue;
+    if (!filePath.endsWith('.html')) continue;
+    const content = fs.readFileSync(filePath, 'utf-8');
+    const fileName = path.relative(ROOT, filePath);
+
+    // Count structural tags — should each appear exactly once
+    const structChecks = [
+        { tag: '<body', regex: /<body[\s>]/gi, max: 1 },
+        { tag: '</body>', regex: /<\/body>/gi, max: 1 },
+        { tag: '<head', regex: /<head[\s>]/gi, max: 1 },
+        { tag: '</head>', regex: /<\/head>/gi, max: 1 },
+        { tag: '<!DOCTYPE', regex: /<!DOCTYPE/gi, max: 1 },
+        { tag: '<html', regex: /<html[\s>]/gi, max: 1 },
+        { tag: '</html>', regex: /<\/html>/gi, max: 1 }
+    ];
+
+    for (const { tag, regex, max } of structChecks) {
+        const matches = content.match(regex);
+        const count = matches ? matches.length : 0;
+        if (count > max) {
+            block(fileName, `Duplicate ${tag} found (${count}x) — corrupted HTML structure`);
+        }
+    }
+}
+
+// ===================================================================
 // (c) FILE SIZE DECREASE >20% on protected files
 // ===================================================================
 
