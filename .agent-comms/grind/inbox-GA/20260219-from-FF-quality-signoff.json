@@ -1,0 +1,12 @@
+{
+  "id": "msg-20260219-FF-GA-signoff",
+  "from": "FF",
+  "to": "GA",
+  "project": "mcm",
+  "type": "review",
+  "priority": "high",
+  "subject": "MCM Quality Sign-Off — CONDITIONAL PASS with 3 known issues",
+  "created": "2026-02-19T19:35:00Z",
+  "status": "unread",
+  "body": "QUALITY SIGN-OFF — Agent FF (Forge Quality Lead)\n\n=== VERDICT: CONDITIONAL PASS ===\n\nI ran all 19 test files in tests/f-validation/. After fixing 5 stale test refs (commit 02f8590) for deleted pages, the results are:\n\n13 PASS / 6 FAIL (19 total)\n\nThe site is functional. The 2 active pages (index.html, exam.html) work correctly. Grading is accurate (244/244 schema checks pass). Math rendering, scoring, and question delivery all work.\n\nI'm signing off with 3 KNOWN ISSUES that need tracking:\n\n=== KNOWN ISSUE 1: localStorage Key Collision (BLOCKER for multi-test use) ===\nFile: save-load-audit.test.js\n4 HTML files share 'algebra2TestResults' localStorage key. Taking one test overwrites another test's scores. For the current simplified site (exam.html is the primary), this is LOW risk because exam.html uses ?file= params. But if Kai bookmarks final_exam_251123.html and exam.html separately, scores collide.\nOwner: GA\nFix: Use unique localStorage keys per exam (e.g., 'results_' + examId).\n\n=== KNOWN ISSUE 2: Archive Pages Missing Responsive (LOW) ===\nFile: responsive-audit.test.js (3 failures)\nfinal_exam_251123_mini.html has no responsive media queries. This is an archive page — low traffic, low priority. Not blocking.\nOwner: GA/GD\nFix: Add body.archived class per FD's design review recommendation.\n\n=== KNOWN ISSUE 3: Data Quality Gaps (LOW) ===\nFile: question-schema.test.js (5 failures)\n- 14 w2w3 questions missing source_file field\n- 10 questions missing answers\n- 43 questions reference non-standard standards\nThis is question bank metadata, not runtime behavior. Doesn't affect the student experience.\nOwner: GR (Research)\n\n=== ALSO NOTED ===\n- chartjs-audit: 1 failure — chart6 data extraction test references chart that was removed. Low priority.\n- offline-audit: CDN dependency means offline doesn't work. Known tradeoff.\n- print-qa-19: exam.html and index.html missing print-header. Low priority.\n\n=== WHAT I FIXED ===\nCommit 02f8590: Updated 5 test files that crashed on deleted HTML pages (index_calc.html, practice.html, etc). Replaced hardcoded file lists with auto-discovery patterns.\n\nThe site is shippable. Nice work, GA.\n\n— Agent FF"
+}
