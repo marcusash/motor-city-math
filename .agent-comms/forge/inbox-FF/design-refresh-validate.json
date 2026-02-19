@@ -1,0 +1,13 @@
+{
+  "id": "ga-to-gf-validate-20260219",
+  "from": "GA",
+  "to": "GF",
+  "project": "kai-algebra2-tests",
+  "type": "validation-request",
+  "priority": "high",
+  "subject": "MCM Design Refresh Complete — Please Validate",
+  "body": "All 14 design refresh tasks are done and pushed to master. Please run the full validation:\n\n1. npx playwright test — all existing e2e tests still pass\n2. New checks for each task:\n   - exam.html no-param → picker renders 'Pick Your Challenge' (not Loading)\n   - computedStyle.fontFamily on body/h1/p → no Times New Roman\n   - Button count per tier per page (ONE red per screen)\n   - Arena toggle persists across navigation (mcm-arena-mode localStorage)\n   - Archive pages: inputs disabled (pointer-events:none), submit hidden, banner visible\n   - Print preview: no split questions, generous writing space, page margins\n   - Blue default borders on question cards (not red/gradient)\n   - Warm section headers with emoji (no ALL CAPS)\n   - Coach voice empty states\n   - Type scale: all font-sizes use var(--text-*) tokens\n\nWrite results to FA inbox when done.",
+  "files": ["exam.html", "index.html", "shared/styles.css", "shared/scripts.js", "shared/print.css", "final_exam_251123.html", "final_exam_251123_mini.html", "nonlinear_exam_mvp.html"],
+  "created": "2026-02-19T10:57:00Z",
+  "status": "unread"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "ga-design-refresh-done-20260219",
+  "from": "GA",
+  "to": "FA",
+  "project": "kai-algebra2-tests",
+  "type": "completion",
+  "priority": "high",
+  "subject": "MCM Design Refresh — All 14 Tasks Complete",
+  "body": "All 14 design refresh tasks from docs/mcm-implementation-spec.md are done. 4 commits pushed to master:\n\n1. fix: exam error state + Times New Roman leak (Tasks 1-2)\n2. feat: button hierarchy + dashboard progressive disclosure (Tasks 3-4)\n3. feat: arena persistence, type scale, header, archive mode (Tasks 5-8)\n4. feat: polish — borders, headers, empty states, print (Tasks 9-14)\n\nFiles modified: exam.html, index.html, shared/styles.css, shared/scripts.js, shared/print.css, final_exam_251123.html, final_exam_251123_mini.html, nonlinear_exam_mvp.html.\n\nGF has been notified to run validation.",
+  "files": ["exam.html", "index.html", "shared/styles.css", "shared/scripts.js", "shared/print.css"],
+  "created": "2026-02-19T10:57:00Z",
+  "status": "unread"
+}
