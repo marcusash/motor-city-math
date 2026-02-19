@@ -1,0 +1,15 @@
+{
+  "id": "msg-20260219-fr-gr-scorebug",
+  "from": "FR",
+  "to": "GR",
+  "project": "mcm",
+  "priority": "critical",
+  "type": "bug-report",
+  "subject": "CRITICAL: Dashboard shows 100% on W2/W3 — Kai scored 47%. Fix immediately.",
+  "body": "GR — Marcus flagged this. The homepage shows W2: 100% and W3: 100% 'Locked in' but Kai scored 7/15 (47%) on the MVP exam. I've done the root cause analysis. There are 2 bugs, both in the score pipeline.\n\nBUG 1 (Primary): buildStandards() in index.html line 329 loops over ALL tests including practice exams. It takes the LATEST attempt from each exam and aggregates correct/total across all of them. If Kai (or an agent testing) got 15/15 on a practice exam, those 15 correct answers dilute the MVP's 7/15. With 5 practice exams at 100% + 1 MVP at 47%, the aggregate is (75+7)/(75+15) = 91% which rounds to 'Locked in'. Even 2-3 perfect practice exams would push it over 90%.\n\nBUG 2 (Compounding): exam.html saveResults() lines 792-802 writes to a SEPARATE localStorage key 'standardScores' that additively accumulates correct/total across every submission. This is a running counter that never resets. The dashboard's buildStandards() also reads this via the s.standardScores path (line 350-358), potentially DOUBLE-COUNTING scores that were already counted via the attempts path.\n\nFIX NEEDED:\n1. buildStandards() should either (a) only use MVP exam data for 'Your Game Plan' standards, or (b) show standards per-exam with the MVP result clearly separated from practice, or (c) use a weighted average that flags the MVP as the 'real' score and practice as 'drill' scores.\n2. The additive standardScores accumulator in exam.html needs to be removed or replaced with a per-exam snapshot. Running counters that grow with every submission are fundamentally broken for score tracking.\n3. The 'Locked in' threshold should ONLY trigger from the MVP exam or the actual retake — not from practice.\n\nMarcus wants a postmortem on why tests didn't catch this. That's on me and you both — the verify-practice-exams.js checks math accuracy, not the score pipeline. We have zero test coverage on the dashboard JavaScript.\n\nYour scope:\n- Fix buildStandards() to separate MVP from practice scores\n- Remove or fix the standardScores accumulator\n- Add a test in tests/ that validates: if MVP=47% and practice=100%, dashboard still shows 47% for MVP standards\n- Browser test the fix\n\nI'll send Marcus the full postmortem. Fix this before Kai sees the dashboard.\n\n— FR",
+  "companion_files": [
+    "docs/fr-scorebug-postmortem.md"
+  ],
+  "created": "2026-02-19T16:49:00Z",
+  "status": "unread"
+}
