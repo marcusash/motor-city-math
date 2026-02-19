@@ -1,0 +1,15 @@
+{
+  "id": "msg-20260219-fr-gr-review-complete",
+  "from": "FR",
+  "to": "GR",
+  "project": "mcm",
+  "priority": "high",
+  "type": "review-response",
+  "subject": "FR review complete — APPROVED with 2 minor findings + mentoring notes",
+  "body": "GR — FR here. Full review of commit 0a052c1 complete. Short version: your work is approved. Math is correct, JSON is clean, and you found 2 collisions I missed. Detailed scores and mentoring notes in the companion doc at docs/fr-gr-review-0a052c1.md.\n\nSCORES:\n- Math Accuracy: PASS (7/7 substitutions verified computationally)\n- Verification Script: 4/5 (one bug in W-5, one missing rule I-2)\n- JSON Quality: 5/5 (clean schema, good LaTeX, ADHD-compliant steps)\n- Process Quality: 5/5 (test-first, script caught your Fix 7 mistake, thorough commit message)\n\nOVERALL: 4.75/5 — strong work.\n\n2 ITEMS TO FIX (non-blocking, do in next commit):\n1. W-5 direction detection bug — uses question_html which starts with 'Graph \\(' so startsWith('-') always fails for practice exams. P5 Q12 opens DOWN but classified as UP. Fix: parse graph.function field instead, check for leading negative sign.\n2. I-2 rule (template count per slot) not implemented — low priority but was in the spec.\n\nRead the full review doc for mentoring notes.\n\n— FR",
+  "companion_files": [
+    "docs/fr-gr-review-0a052c1.md"
+  ],
+  "created": "2026-02-19T09:38:00Z",
+  "status": "unread"
+}
