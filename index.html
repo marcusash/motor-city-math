@@ -521,6 +521,48 @@
         grid.innerHTML = html;
     }
 
+    /* ========== UP NEXT (ADHD: one recommendation) ========== */
+    function updateUpNext() {
+        var scores = getScores();
+        var retakes = tests.filter(function(t) { return t.retake; });
+        var next = null;
+
+        // Priority 1: first practice exam with no score
+        for (var i = 0; i < retakes.length; i++) {
+            var s = scores[retakes[i].key];
+            if (!s || !s.attempts || s.attempts.length === 0) {
+                next = retakes[i];
+                break;
+            }
+        }
+
+        // Priority 2: lowest-scoring practice exam (below 92% / Grade 4)
+        if (!next) {
+            var lowest = null, lowestPct = 100;
+            retakes.forEach(function(t) {
+                var s = scores[t.key];
+                if (s && s.attempts && s.attempts.length > 0) {
+                    var last = s.attempts[s.attempts.length - 1];
+                    var pct = Math.round((last.correct / last.total) * 100);
+                    if (pct < lowestPct) { lowestPct = pct; lowest = t; }
+                }
+            });
+            if (lowest && lowestPct < 92) next = lowest;
+        }
+
+        // Priority 3: all ≥92% — celebrate
+        if (!next) {
+            document.getElementById('upNextInfo').textContent = 'All practice exams at Grade 4. You crushed it. 💪';
+            var btn = document.querySelector('.nav-btn.primary');
+            if (btn) { btn.textContent = 'Run It Back'; btn.href = 'exam.html?file=retake-practice-7'; }
+            return;
+        }
+
+        document.getElementById('upNextInfo').textContent = next.name;
+        var btn = document.querySelector('.nav-btn.primary');
+        if (btn) btn.href = next.file;
+    }
+
     /* ========== INIT ========== */
     window.addEventListener('DOMContentLoaded', function() {
         buildChart();
@@ -529,6 +571,7 @@
         buildRetakeGrid();
         buildTestGrid();
         buildStats();
+        updateUpNext();
     });
 
     function exportScores() {
