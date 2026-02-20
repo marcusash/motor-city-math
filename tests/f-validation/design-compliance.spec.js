@@ -10,9 +10,9 @@
  * Or:  node tests/f-validation/design-compliance.spec.js  (standalone)
  *
  * Covers:
- *  - f-t7-light:  All 19 pages, light mode token verification
- *  - f-t7-dark:   All 19 pages, Arena Mode token verification
- *  - f-t7-responsive: 6 key pages at 375px + 768px
+ *  - f-t7-light:  All pages, light mode token verification
+ *  - f-t7-dark:   All pages, Arena Mode token verification
+ *  - f-t7-responsive: All pages at 375px + 768px
  *  - site-b10:    Snap-to-grid verification
  *  - Hardcoded hex detection (no inline styles bypassing tokens)
  *  - Canvas always-white rule
@@ -77,18 +77,14 @@ const BANNED_HEX_INLINE = [
 // All 19 HTML files
 const ALL_FILES = fs.readdirSync(ROOT).filter(f => f.endsWith('.html')).sort();
 
-// Key pages for responsive testing
-const RESPONSIVE_PAGES = [
-    'index.html', 'practice.html', 'test-builder.html',
-    'nonlinear_exam_mvp.html', 'parent.html', 'test.html'
-];
+// Key pages for responsive testing (auto-discovered — all existing HTML files)
+const RESPONSIVE_PAGES = ALL_FILES.slice();
 
-// Pages with interactive graphing canvas (not just Chart.js)
-const GRAPH_CANVAS_PAGES = [
-    'nonlinear_exam_mvp.html', 'nonlinear_functions_test.html',
-    'index_calc.html', 'linear_functions_test.html',
-    'final_exam_251123.html', 'quiz_251120.html', 'quiz_251121.html'
-];
+// Pages with interactive graphing canvas (filter to those that exist and contain canvas)
+const GRAPH_CANVAS_PAGES = ALL_FILES.filter(f => {
+    const content = fs.readFileSync(path.join(ROOT, f), 'utf-8');
+    return content.includes('<canvas') && !content.includes('exam-picker');
+});
 
 // ===================================================================
 // TEST RUNNER
@@ -387,7 +383,7 @@ async function run() {
     // ===============================================================
     section('SUITE 5: Typography');
 
-    for (const file of ['index.html', 'nonlinear_exam_mvp.html', 'practice.html']) {
+    for (const file of ALL_FILES.filter(f => f !== 'exam.html')) {
         const url = BASE_URL + '/' + file;
         const page = await context.newPage();
         try {
