@@ -31,6 +31,41 @@
         .section-title::after { content: '▸'; transition: transform 0.2s; margin-left: 8px; }
         details[open] > .section-title::after { transform: rotate(90deg); }
         .dash-section { margin-bottom: 8px; }
+        .hero-card {
+            text-align: center;
+            margin: 0 0 24px;
+            padding: 24px;
+            background: var(--bg-card);
+            border-radius: 8px;
+            border: 1px solid var(--border-default);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(
+                to right,
+                var(--accent-red) 0%, var(--accent-red) 30%,
+                var(--accent-blue) 30%, var(--accent-blue) 70%,
+                var(--accent-red) 70%, var(--accent-red) 100%
+            );
+            border-radius: 8px 8px 0 0;
+        }
+        .hero-card .hero-title {
+            font-size: var(--text-lg);
+            font-weight: 700;
+            color: var(--accent-navy);
+            margin-bottom: 4px;
+        }
+        .hero-card .hero-subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
         .chart-box {
             background: var(--bg-card);
             border: 1px solid var(--border-default);
@@ -166,9 +201,9 @@
         </header>
 
         <!-- UP NEXT: One primary action above the fold -->
-        <div style="text-align:center; margin: 0 0 24px; padding: 24px; background: var(--bg-card); border-radius: 8px; border: 1px solid var(--border-default);">
-            <div style="font-size:var(--text-lg); font-weight:700; color:var(--accent-navy); margin-bottom:4px;">Up Next 🏀</div>
-            <div id="upNextInfo" style="color:var(--text-secondary); margin-bottom:16px;">Retake Practice — Nonlinear Functions</div>
+        <div class="hero-card">
+            <div class="hero-title">Up Next 🏀</div>
+            <div class="hero-subtitle" id="upNextInfo">Retake Practice — Nonlinear Functions</div>
             <a href="exam.html?file=retake-practice-1" class="nav-btn primary">Start Practice</a>
             <div class="stats-bar" id="statsBar" style="margin-top:16px;"></div>
         </div>
