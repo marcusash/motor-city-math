@@ -812,20 +812,27 @@
         var grade = pct >= 92 ? 4 : pct >= 82 ? 3 : pct >= 70 ? 2 : 1;
         var gradeClass = 'g' + grade;
 
+        // Coach voice message based on grade
+        var coachMsg = '';
+        if (grade === 4) coachMsg = 'Grade 4. That\'s the standard. You earned it. 💪';
+        else if (grade === 3) coachMsg = 'Almost there. A few more right and you\'re at Grade 4. 🏀';
+        else if (grade === 2) coachMsg = 'Good start. Review the hints below and run it back. 🔄';
+        else coachMsg = 'Rough one. Check the hints, study the gaps, then come back stronger. 💪';
+
         var html = '<div class="scorecard">';
-        html += '<h2>📊 Results</h2>';
-        html += '<div class="score-big">' + score + '/' + total + '</div>';
-        html += '<div class="score-pct">' + pct + '%</div>';
-        html += '<div class="saas-grade ' + gradeClass + '">SAAS Grade: ' + grade + '</div>';
+        html += '<h2>You got ' + score + ' out of ' + total + '</h2>';
+        html += '<div class="score-big">' + pct + '%</div>';
+        html += '<div class="saas-grade ' + gradeClass + '">Grade ' + grade + '</div>';
+        html += '<p style="margin-top:12px; color:var(--text-secondary); font-size:var(--text-sm);">' + coachMsg + '</p>';
 
         // Per-standard breakdown
-        html += '<h3 style="margin-top:20px; color:var(--text-primary);">Standards Breakdown</h3>';
+        html += '<h3 style="margin-top:20px; color:var(--text-primary);">Your Game Plan</h3>';
         html += '<div class="standards-grid">';
         var stdKeys = Object.keys(stdScores).sort();
         stdKeys.forEach(function(std) {
             var s = stdScores[std];
             var sPct = s.total > 0 ? Math.round((s.correct / s.total) * 100) : 0;
-            var icon = sPct >= 85 ? '🟢' : sPct >= 60 ? '🔵' : sPct > 0 ? '🟡' : '⬜';
+            var icon = sPct >= 85 ? '✅' : sPct >= 60 ? '🏀' : sPct > 0 ? '🎯' : '⬜';
             html += '<div class="std-card">';
             html += '<div class="std-name">' + icon + ' ' + std + '</div>';
             html += '<div class="std-score">' + s.correct + '/' + s.total + ' (' + sPct + '%)</div>';
@@ -833,7 +840,13 @@
         });
         html += '</div>';
 
-        html += '<div style="margin-top:16px;"><a href="index.html" class="nav-btn secondary" style="text-decoration:none;">🏀 Back to Dashboard</a></div>';
+        // CTA: different based on grade
+        if (grade >= 3) {
+            html += '<div style="margin-top:16px;"><a href="index.html" class="nav-btn primary" style="text-decoration:none;">🏀 Back to Dashboard</a></div>';
+        } else {
+            html += '<div style="margin-top:16px;"><a href="javascript:location.reload()" class="nav-btn primary" style="text-decoration:none;">🔄 Run It Back</a>';
+            html += ' <a href="index.html" class="nav-btn ghost" style="text-decoration:none; margin-left:8px;">← Dashboard</a></div>';
+        }
         html += '</div>';
 
         document.getElementById('scorecard').innerHTML = html;
