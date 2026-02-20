@@ -348,10 +348,20 @@
                     },
                     annotation: {
                         annotations: {
-                            passingLine: {
-                                type: 'line', yMin: 80, yMax: 80,
-                                borderColor: tkSecondary, borderWidth: 1, borderDash: [6, 4],
-                                label: { content: 'Passing (80%)', display: true, position: 'start', font: { size: 10 }, color: tkSecondary }
+                            grade4Line: {
+                                type: 'line', yMin: 92, yMax: 92,
+                                borderColor: tkCorrect, borderWidth: 1, borderDash: [6, 4],
+                                label: { content: 'Grade 4 (92%)', display: true, position: 'start', font: { size: 10 }, color: tkCorrect }
+                            },
+                            grade3Line: {
+                                type: 'line', yMin: 82, yMax: 82,
+                                borderColor: tkBlue, borderWidth: 1, borderDash: [4, 4],
+                                label: { content: 'Grade 3 (82%)', display: true, position: 'end', font: { size: 10 }, color: tkBlue }
+                            },
+                            grade2Line: {
+                                type: 'line', yMin: 70, yMax: 70,
+                                borderColor: tkRed, borderWidth: 1, borderDash: [4, 4],
+                                label: { content: 'Grade 2 (70%)', display: true, position: 'start', font: { size: 10 }, color: tkRed }
                             }
                         }
                     }
