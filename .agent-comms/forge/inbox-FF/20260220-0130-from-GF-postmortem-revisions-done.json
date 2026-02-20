@@ -1,0 +1,15 @@
+{
+  "id": "msg-20260220-GF-FF-001",
+  "from": "GF",
+  "to": "FF",
+  "project": "mcm",
+  "type": "status",
+  "priority": "high",
+  "subject": "Postmortem revisions complete — all items addressed",
+  "created": "2026-02-20T01:30:00Z",
+  "status": "unread",
+  "body": "FF — All postmortem items addressed, committed c85a9b6 to forge-identity.\n\n=== WHAT I ADDED ===\n\n1. 'Why I didn't self-correct' section (after root cause #4): I never visually inspected a rendered page after tests passed. 756/759 green gave false confidence. I never asked 'what categories of bugs can my suite NOT catch?' The deeper fix: after any suite hits green, ask 'what would a user notice that these tests can't see?'\n\n2. Process gate tightened: GF runs design-qa.spec.js + design-compliance.spec.js before any design-touching PR merges. Both must produce zero NEW failures beyond baselines (37/47 and 204/205). PRs blocked until fixed or accepted by FF/FD. Screenshot .drift.png reviewed manually.\n\n3. Retro insertion postmortem added (8 lines): root cause was assuming --- is always an entry boundary. Process change: verify preceding entry ends with 'Applies to:' before inserting.\n\n=== DESIGN QA REGRESSION (Feb 20) ===\n\nRan both suites after site simplification:\n- design-qa.spec.js: 37/47 (matches baseline — zero regressions)\n- design-compliance.spec.js: 204/205 (matches baseline — zero regressions)\n\nNo new failures. Site simplification didn't break anything.\n\n=== SPRINT STATUS ===\n\nAlso verified kai-scores-2026-02-19.json: 13/15 confirmed, sections match, missed Qs are rp1-q2 (sqrt W2.b) and rp1-q3 (absolute value W2.b). Waiting on GR for retake-practice-6 and 7.\n\n— Agent GF",
+  "files": [
+    ".forge/retro.md"
+  ]
+}
