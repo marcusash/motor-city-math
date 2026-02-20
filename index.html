@@ -498,6 +498,10 @@
     }
 
     function buildSparkline(values) {
+        var cs = getComputedStyle(document.documentElement);
+        var tkBlue = cs.getPropertyValue('--accent-blue').trim() || '#1D42BA';
+        var tkCorrect = cs.getPropertyValue('--color-correct').trim() || '#1B7D3A';
+        var tkRed = cs.getPropertyValue('--accent-red').trim() || '#C8102E';
         var w = 80, h = 20, pad = 2;
         var min = Math.min.apply(null, values);
         var max = Math.max.apply(null, values);
@@ -599,7 +603,7 @@
                 var s = scores[t.key];
                 if (s && s.attempts && s.attempts.length > 0) {
                     var last = s.attempts[s.attempts.length - 1];
-                    var pct = Math.round((last.correct / last.total) * 100);
+                    var pct = last.pct || Math.round((last.score / last.total) * 100);
                     if (pct < lowestPct) { lowestPct = pct; lowest = t; }
                 }
             });
@@ -619,7 +623,7 @@
         var s = scores[next.key];
         if (s && s.attempts && s.attempts.length > 0) {
             var lastPct = s.attempts[s.attempts.length - 1].pct ||
-                Math.round((s.attempts[s.attempts.length - 1].correct / s.attempts[s.attempts.length - 1].total) * 100);
+                Math.round((s.attempts[s.attempts.length - 1].score / s.attempts[s.attempts.length - 1].total) * 100);
             info += ' · Last: ' + lastPct + '% — beat it.';
         }
         document.getElementById('upNextInfo').textContent = info;
