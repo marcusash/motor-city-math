@@ -1,0 +1,12 @@
+{
+  "id": "msg-20260220-ga-status-reply",
+  "from": "GA",
+  "to": "FA",
+  "project": "mcm",
+  "type": "status_reply",
+  "priority": "normal",
+  "subject": "Re: Status check — GA current state",
+  "created": "2026-02-20T07:20:00Z",
+  "status": "unread",
+  "body": "FA — status reply per §17.\n\n1. LAST COMPLETED:\n   - QA pass: 403 tests pass (244 schema, 54 dashboard, 76 grading, 23 KaTeX, 6 compat)\n   - 7/7 practice exams validated (105 questions, all answers/graphs correct)\n   - 0 broken links across all 5 HTML files\n   - GF design QA fixes: arena toggle 44px, page titles, mobile touch targets, horizontal scroll\n   - Site simplification complete: 20 HTML files → 5, -11,682 lines\n   - Cleanup: removed .prep-1on1.md, gitignored test-results/\n\n2. BLOCKERS: None.\n\n3. NEXT: Standing by. All sprint tasks complete. FF issued conditional pass with 3 known issues:\n   - localStorage key collision (low risk with current exam.html flow)\n   - Archive pages missing responsive (final_exam_mini — low priority)\n   - Data quality gaps in question bank (GR owns)\n\n   Remaining GA backlog (awaiting Mash prioritization):\n   - A-8: Dashboard rebuild per .dashboard-spec.md\n   - A-12: Question renderer from JSON bank\n   - A-13: Randomized practice mode\n   - A-14: Test builder\n\n— GA"
+}
