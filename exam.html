@@ -13,7 +13,8 @@
     <style>
         .exam-container { max-width: 800px; margin: 0 auto; padding: 16px; }
         .exam-subtitle { text-align: center; color: var(--text-secondary); font-size: var(--text-sm); margin: -8px 0 16px; }
-        .question-card { background: var(--bg-card); border: 1px solid var(--border-default); border-left: none; border-radius: 8px; padding: 20px 20px 20px 24px; margin-bottom: 16px; position: relative; box-shadow: var(--shadow-card); }
+        .question-card { background: var(--bg-card); border: 1px solid var(--border-default); border-left: none; border-radius: 8px; padding: 20px 20px 20px 24px; margin-bottom: 16px; position: relative; box-shadow: var(--shadow-card); transition: border-color 0.2s; }
+        .question-card.answered { border-color: var(--accent-blue); }
         .question-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 2px solid var(--border-subtle); }
         .question-number { font-weight: 800; color: var(--accent-navy); font-size: var(--text-base); letter-spacing: 0.05em; }
         .standard-badge { background: var(--bg-highlight); color: var(--accent-blue); font-size: var(--text-xs); font-weight: 700; padding: 2px 8px; border-radius: 12px; }
@@ -679,7 +680,12 @@
                     hasValue = true;
                 }
             });
-            if (hasValue) answered++;
+            if (hasValue) {
+                answered++;
+                card.classList.add('answered');
+            } else {
+                card.classList.remove('answered');
+            }
         });
 
         var pct = total > 0 ? Math.round((answered / total) * 100) : 0;
