@@ -66,6 +66,25 @@
         .std-card .std-score { color: var(--text-secondary); font-size: var(--text-sm); }
         .submit-area { text-align: center; margin: 24px 0; }
         .error-msg { text-align: center; padding: 40px; color: var(--color-incorrect); font-size: var(--text-lg); }
+        /* Progress bar — ADHD: show progress position */
+        .progress-strip {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 8px 16px;
+            display: none;
+            align-items: center;
+            gap: 12px;
+            font-size: var(--text-sm);
+            color: var(--text-secondary);
+            box-shadow: 0 2px 8px rgba(0,45,98,0.06);
+        }
+        .progress-strip.active { display: flex; }
+        .progress-bar { flex: 1; height: 6px; background: var(--border-subtle); border-radius: 3px; overflow: hidden; }
+        .progress-fill { height: 100%; background: var(--accent-blue); border-radius: 3px; transition: width 0.3s ease; }
+        .progress-text { font-weight: 600; white-space: nowrap; }
         .exam-picker { text-align: center; padding: 24px 0; }
         .exam-picker p { color: var(--text-secondary); font-size: var(--text-base); margin-bottom: 20px; }
         .exam-picker-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; max-width: 600px; margin: 0 auto; }
@@ -89,6 +108,11 @@
             <h1 id="examTitle"></h1>
         </header>
         <p class="subtitle exam-subtitle" id="examSubtitle"></p>
+
+        <div class="progress-strip" id="progressStrip">
+            <div class="progress-text" id="progressText">0 / 15</div>
+            <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+        </div>
 
         <div id="questionsContainer"></div>
 
@@ -209,6 +233,9 @@
                 ]
             });
         }
+
+        // Initialize progress tracking
+        initProgress(data.questions.length);
     }
 
     /* --- Question Renderer --- */
@@ -620,10 +647,63 @@
         }
     }
 
+    /* --- Progress Tracking (ADHD: show progress position) --- */
+    function initProgress(totalQuestions) {
+        var strip = document.getElementById('progressStrip');
+        var fill = document.getElementById('progressFill');
+        var text = document.getElementById('progressText');
+        if (!strip) return;
+
+        strip.classList.add('active');
+        text.textContent = '0 / ' + totalQuestions;
+
+        var container = document.getElementById('questionsContainer');
+        container.addEventListener('input', function() {
+            updateProgress(totalQuestions);
+        });
+        container.addEventListener('change', function() {
+            updateProgress(totalQuestions);
+        });
+    }
+
+    function updateProgress(total) {
+        var answered = 0;
+        var cards = document.querySelectorAll('.question-card');
+        cards.forEach(function(card) {
+            var inputs = card.querySelectorAll('input, select, textarea');
+            var hasValue = false;
+            inputs.forEach(function(inp) {
+                if (inp.type === 'radio') {
+                    if (inp.checked) hasValue = true;
+                } else if (inp.value && inp.value.trim() !== '') {
+                    hasValue = true;
+                }
+            });
+            if (hasValue) answered++;
+        });
+
+        var pct = total > 0 ? Math.round((answered / total) * 100) : 0;
+        var fill = document.getElementById('progressFill');
+        var text = document.getElementById('progressText');
+        if (fill) fill.style.width = pct + '%';
+        if (text) text.textContent = answered + ' / ' + total;
+
+        // Color shift at milestones
+        if (fill) {
+            if (pct >= 100) fill.style.background = 'var(--color-correct)';
+            else if (pct >= 50) fill.style.background = 'var(--accent-blue)';
+            else fill.style.background = 'var(--accent-blue)';
+        }
+    }
+
     /* --- Grading Engine --- */
     function gradeExam() {
         if (examGraded) return;
         examGraded = true;
+
+        // Hide progress bar after grading
+        var strip = document.getElementById('progressStrip');
+        if (strip) strip.classList.remove('active');
 
         var questions = examData.questions;
         var score = 0, total = questions.length;
