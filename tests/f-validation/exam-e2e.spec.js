@@ -235,7 +235,8 @@ async function fillAllCorrect() {
         await test('score shows 13/15 (without graph interaction)', async () => {
             const body = await page.textContent('body');
             // Without canvas clicks, Q12+Q13 graphs fail → 13/15
-            assert(body.includes('13/15') || body.includes('13 / 15') || body.includes('15/15'),
+            // GD updated scorecard: "You got 13 out of 15" instead of "13/15"
+            assert(body.includes('13/15') || body.includes('13 / 15') || body.includes('15/15') || body.includes('13 out of 15') || body.includes('15 out of 15'),
                 'Score should be 13/15 or 15/15');
         });
 
@@ -284,7 +285,7 @@ async function fillAllCorrect() {
 
                 const body = await page.textContent('body');
                 // 13/15 max without graph interaction (Q12/Q13 always fail without canvas clicks)
-                assert(body.includes('13/15') || body.includes('13 / 15') || body.includes('15/15'),
+                assert(body.includes('13/15') || body.includes('13 / 15') || body.includes('15/15') || body.includes('13 out of 15') || body.includes('15 out of 15'),
                     `Q${pm.num} reversed order should still score 13/15 (sans graphs)`);
             });
         }
@@ -302,7 +303,7 @@ async function fillAllCorrect() {
                 await gradeBtn.click();
                 await page.waitForTimeout(2000);
                 const body = await page.textContent('body');
-                assert(body.includes('0/15') || body.includes('0 / 15') || body.includes('0%'),
+                assert(body.includes('0/15') || body.includes('0 / 15') || body.includes('0%') || body.includes('0 out of 15'),
                     'Empty submission should score 0/15');
             } else SKIP();
         });
@@ -322,7 +323,7 @@ async function fillAllCorrect() {
                 await page.waitForTimeout(2000);
                 const body = await page.textContent('body');
                 // 12/15: Q4 wrong + Q12,Q13 graphs fail without canvas
-                assert(body.includes('12/15') || body.includes('12 / 15') || body.includes('14/15'),
+                assert(body.includes('12/15') || body.includes('12 / 15') || body.includes('14/15') || body.includes('12 out of 15') || body.includes('14 out of 15'),
                     'One wrong non-graph Q should score 12/15 (or 14/15 if graphs auto-pass)');
             } else SKIP();
         });
@@ -343,7 +344,7 @@ async function fillAllCorrect() {
                 await gradeBtn.click();
                 await page.waitForTimeout(2000);
                 const body = await page.textContent('body');
-                assert(body.includes('12/15') || body.includes('12 / 15') || body.includes('14/15'),
+                assert(body.includes('12/15') || body.includes('12 / 15') || body.includes('14/15') || body.includes('12 out of 15') || body.includes('14 out of 15'),
                     'Wrong dropdown should drop score by 1');
             } else SKIP();
         });
@@ -392,7 +393,7 @@ async function fillAllCorrect() {
                 await page.waitForTimeout(2000);
                 const body = await page.textContent('body');
                 // Without graphs: 12/15 (80%) → SAAS 3 or with graphs: 14/15 (93%) → SAAS 4
-                assert(body.includes('12/15') || body.includes('14/15'), 
+                assert(body.includes('12/15') || body.includes('14/15') || body.includes('12 out of 15') || body.includes('14 out of 15'), 
                     'Score should show 12/15 or 14/15 depending on graph auto-check');
             } else SKIP();
         });
