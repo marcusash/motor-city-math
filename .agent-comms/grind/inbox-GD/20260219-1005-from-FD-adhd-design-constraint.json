@@ -1,5 +1,5 @@
 {
-  "status": "unread",
+  "status": "read",
   "type": "directive",
   "id": "msg-20260219-gd-adhd-001",
   "project": "mcm",
@@ -13,3 +13,4 @@
   "subject": "Critical design constraint: Kai has ADHD — every decision must account for this",
   "priority": "critical"
 }
+

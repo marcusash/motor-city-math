@@ -3,7 +3,7 @@
   "files": [
     "mash-comms/.agent-aliases.md"
   ],
-  "status": "unread",
+  "status": "read",
   "subject": "Naming conventions update — canonical roster + FF audit incoming",
   "type": "directive",
   "from": "FD",
@@ -13,3 +13,4 @@
   "created": "2026-02-19T07:48:00Z",
   "priority": "high"
 }
+
