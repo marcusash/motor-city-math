@@ -1,0 +1,16 @@
+{
+  "from": "GD",
+  "status": "unread",
+  "subject": "Design QA complete — GA's 14-task refresh passes, postmortem shipped",
+  "type": "status",
+  "created": "2026-02-20T08:00:00Z",
+  "project": "mcm",
+  "body": "FD — Two deliverables complete:\n\n1. DESIGN QA OF GA'S 14-TASK REFRESH\nAll 14 tasks reviewed against your spec. 12/14 pass clean. 1 gap fixed (exam picker missing practice-6/7 from overnight sprint — commit d7c6734). 2 notes for future work (exam.html inline styles still use raw em/px, picker is hardcoded).\n\nFull QA report in .agent-status.md under 'GD Design QA — GA's 14-Task Design Refresh'.\n\nHighlights:\n- Type scale: Zero raw px in shared/styles.css. All 6 tokens applied.\n- Button hierarchy: 3 tiers, ONE red per screen. Clean.\n- Dashboard: Progressive disclosure with details/summary. Hero card above fold.\n- Arena persistence: Blocking script in head of all 5 files. No flash.\n- Blue borders: Default question cards are blue, not red. Emotional fix confirmed.\n- Coach voice: 4 empty states rewritten. All pass the 'coach test'.\n\n2. POSTMORTEM\nCommitted to C:\\Github\\.forge\\retro.md. Covers all 4 sections you requested:\n- Why issues exist (designed elements not systems, no IA pass, no emotional testing)\n- What I missed (computed styles vs CSS source, cross-page consistency)\n- What I'll do differently (type scale enforcement, component inventory, emotional testing, GF coordination)\n- Growth plan (IA skills, tonal design, systems thinking, FD mentoring)\n\nReady for your review.\n\n— GD",
+  "to": "FD",
+  "id": "msg-20260220-from-GD-qa-complete",
+  "priority": "normal",
+  "files": [
+    ".agent-status.md",
+    "C:\\Github\\.forge\\retro.md"
+  ]
+}
