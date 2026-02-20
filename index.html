@@ -195,6 +195,10 @@
     <script>if(localStorage.getItem('mcm-arena-mode')==='on')document.body.classList.add('arena-mode');</script>
     <a href="#main" class="sr-only">Skip to content</a>
     <div class="dashboard" role="main" id="main">
+        <div class="print-header">
+            <strong>Motor City Math — Dashboard</strong><br>
+            Name: _____________________ Date: ___________
+        </div>
         <header class="dash-header" style="display:block; text-align:center;">
             <h1>Motor City Math</h1>
             <div class="subtitle">Algebra II · Kai</div>
@@ -537,6 +541,7 @@
         var html = '';
         retakeTests.forEach(function(t, i) {
             var scoreHtml = '';
+            var borderColor = 'var(--accent-blue)';
             var s = scores[t.key];
             if (s) {
                 var pct = null;
@@ -547,9 +552,14 @@
                 }
                 if (pct !== null) {
                     scoreHtml = '<span class="test-score' + (pct < 70 ? ' low' : '') + '">' + pct + '%</span>';
+                    // SAAS grade colors: ≥92% green, 82-91% blue, 70-81% warning, <70% red
+                    if (pct >= 92) borderColor = 'var(--color-correct)';
+                    else if (pct >= 82) borderColor = 'var(--accent-blue)';
+                    else if (pct >= 70) borderColor = 'var(--color-warning)';
+                    else borderColor = 'var(--accent-red)';
                 }
             }
-            html += '<a href="' + t.file + '" class="test-link" style="border-left-color:var(--accent-red);">' +
+            html += '<a href="' + t.file + '" class="test-link" style="border-left-color:' + borderColor + ';">' +
                 '📝 ' + t.name + scoreHtml +
                 '<div class="test-meta">' + t.questions + ' questions · 60 min · nonlinear</div></a>';
         });
