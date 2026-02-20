@@ -31,3 +31,6 @@ import/ocr-output/*.png
 
 # Design QA screenshots (local baselines, regenerable)
 tests/f-validation/screenshots/
+
+# Playwright test results (regenerable)
+test-results/
