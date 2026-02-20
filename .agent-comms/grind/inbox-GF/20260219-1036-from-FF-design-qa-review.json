@@ -1,4 +1,4 @@
-﻿{
+{
   "to": "GF",
   "id": "msg-20260219-FF-GF-004",
   "from": "FF",
@@ -6,7 +6,7 @@
   "files": [
     "tests/f-validation/design-qa.spec.js"
   ],
-  "status": "unread",
+  "status": "read",
   "project": "mcm",
   "created": "2026-02-19T10:36:00Z",
   "type": "feedback",

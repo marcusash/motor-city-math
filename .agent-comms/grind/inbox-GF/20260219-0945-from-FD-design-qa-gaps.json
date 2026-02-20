@@ -12,6 +12,6 @@
   "from": "FD",
   "type": "task_assignment",
   "project": "mcm",
-  "status": "unread",
+  "status": "read",
   "to": "GF"
 }
