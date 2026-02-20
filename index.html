@@ -135,7 +135,8 @@
         .stats-bar {
             text-align: center;
             color: var(--text-secondary);
-            font-size: var(--text-sm);            padding: 12px 0;
+            font-size: var(--text-sm);
+            padding: 12px 0;
             border-top: 1px solid var(--border-subtle);
             margin-top: 16px;
         }
@@ -603,7 +604,15 @@
             return;
         }
 
-        document.getElementById('upNextInfo').textContent = next.name;
+        // Show name + last score (if retrying) as motivation
+        var info = next.name;
+        var s = scores[next.key];
+        if (s && s.attempts && s.attempts.length > 0) {
+            var lastPct = s.attempts[s.attempts.length - 1].pct ||
+                Math.round((s.attempts[s.attempts.length - 1].correct / s.attempts[s.attempts.length - 1].total) * 100);
+            info += ' · Last: ' + lastPct + '% — beat it.';
+        }
+        document.getElementById('upNextInfo').textContent = info;
         var btn = document.querySelector('.nav-btn.primary');
         if (btn) btn.href = next.file;
     }
