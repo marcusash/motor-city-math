@@ -184,6 +184,8 @@
                     try { loadExam(JSON.parse(xhr.responseText)); } catch(e) {
                         document.getElementById('questionsContainer').innerHTML = '<div class="error-msg">Error parsing exam JSON.</div>';
                     }
+                } else {
+                    document.getElementById('questionsContainer').innerHTML = '<div class="error-msg">Could not load exam: ' + file + '.json</div>';
                 }
             };
             xhr.onerror = function() {

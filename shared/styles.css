@@ -247,6 +247,11 @@ header {
     text-decoration: none;
     font-size: var(--text-lg);
     z-index: 5;
+    min-width: 44px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 .header-back:hover { color: var(--accent-blue); }
 
