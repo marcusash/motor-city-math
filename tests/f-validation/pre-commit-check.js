@@ -187,8 +187,9 @@ const PROTECTED_FILES = [
     'shared/scripts.js',
     'shared/styles.css',
     'index.html',
-    'index_calc.html',
-    'final_exam_251123.html'
+    'exam.html',
+    'final_exam_251123.html',
+    'final_exam_251123_mini.html'
 ];
 
 for (const relFile of PROTECTED_FILES) {
