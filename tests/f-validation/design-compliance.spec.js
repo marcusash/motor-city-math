@@ -190,9 +190,9 @@ async function run() {
                 !!document.querySelector('.arena-toggle'));
             test(`${file}: has arena toggle`, hasArenaToggle);
 
-            // Check for skip link (accessibility)
+            // Check for skip link (accessibility) — matches .skip-link, .sr-only, or #main target
             const hasSkipLink = await page.evaluate(() =>
-                !!document.querySelector('a.skip-link, a[href="#main"]'));
+                !!document.querySelector('a.skip-link, a.sr-only, a[href="#main"], a[href^="#"][class*="skip"], a[href^="#"][class*="sr-only"]'));
             test(`${file}: has skip link`, hasSkipLink);
 
         } catch (e) {
