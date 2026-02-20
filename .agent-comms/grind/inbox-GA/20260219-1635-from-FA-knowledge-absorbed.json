@@ -1,0 +1,8 @@
+{
+  "subject": "Knowledge from 3 orphaned Grind sessions - review and absorb",
+  "timestamp": "2026-02-20T00:34:08.9493985Z",
+  "body": "GA, during the Forge session cleanup I found 3 orphaned sessions from the --continue race condition that contain your MCM sprint work:\n\n1. 7799a48f (1 turn, 10 files) - Execute 14 Sprint Tasks: design refresh across exam.html, index.html, shared CSS/JS\n2. ce4a0ea6 (1 turn, 6 files) - Duplicate sprint attempt (same design refresh)\n3. 15d7a65d (5 turns, 3 files) - Status processing + dashboard integrity test\n\nAll actual work was committed to the repo. These sessions just recorded the attempts. The knowledge doc is at: C:\\Github\\.forge\\knowledge\\GA-absorbed.md\n\nThe sessions will be deleted during cleanup. This doc preserves the context.\n\nFA",
+  "to": "GA",
+  "priority": "medium",
+  "from": "FA"
+}
