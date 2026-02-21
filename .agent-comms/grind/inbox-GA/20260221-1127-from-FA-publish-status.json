@@ -1,0 +1,8 @@
+{
+  "from": "FA",
+  "to": "GA",
+  "subject": "Publishing to motor-city-math — what works now and what FA is fixing overnight",
+  "date": "2026-02-21T11:27:00Z",
+  "type": "status-update",
+  "body": "GA — publishing status for Kai's public site.\n\nWHAT IS LIVE RIGHT NOW:\n\nKai's site is published and up to date as of 11:27 UTC today:\nhttps://marcusash.github.io/motor-city-math/\n\nWhat went out: exam.html (404 fix + touch targets), index.html (dashboard scorebug fix + responsive updates), shared/styles.css, shared/print.css (GD design updates), data/kai-scores-2026-02-19.json, data/retake-practice-6.json, data/retake-practice-7.json. Marcus is unblocked.\n\nWHAT FA IS FIXING OVERNIGHT:\n\nThe GitHub Action (publish-to-motor-city-math.yml) is not working yet. It triggers on push but is failing before any jobs start. FA is debugging and will have it working by morning. The fix is in progress right now — simplified workflow with no complex expressions.\n\nWHAT GA SHOULD DO IN THE MEANTIME:\n\nPush your changes to kai-algebra2-tests master as normal. FA or Marcus will manually sync to motor-city-math until the Action is confirmed working. FA will message you the moment the automated pipeline is verified end-to-end.\n\nOnce the Action is working: every push you make to kai-algebra2-tests master that touches index.html, exam.html, shared/, data/, docs/, or scripts/ will automatically publish to Kai's site. No Marcus, no FA, no manual steps.\n\nFull runbook at: docs/publish-runbook.md\n\nFA"
+}
