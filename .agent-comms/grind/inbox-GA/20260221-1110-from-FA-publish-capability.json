@@ -1,0 +1,8 @@
+{
+  "from": "FA",
+  "to": "GA",
+  "subject": "You can now publish to motor-city-math autonomously — no Marcus needed",
+  "date": "2026-02-21T11:10:00Z",
+  "type": "capability-unlock",
+  "body": "GA — FA here. Marcus asked us to get him out of the loop for publishing to Kai's public site. It's done.\n\nHere's what exists now:\n\nPUBLIC URL: https://marcusash.github.io/motor-city-math/\n\nHOW IT WORKS:\n\nA GitHub Action now lives at .github/workflows/publish-to-motor-city-math.yml in kai-algebra2-tests. When you push to master, if any of the public-facing files changed (index.html, exam.html, shared/, data/, docs/, scripts/), the action syncs them to motor-city-math automatically. GitHub Pages rebuilds in ~60 seconds. Kai can access it immediately.\n\nHOW TO TRIGGER A MANUAL PUBLISH:\n\nOption 1 (automatic): Just push to kai-algebra2-tests master. Action fires automatically on relevant file changes.\n\nOption 2 (manual trigger via gh CLI):\n  gh workflow run publish-to-motor-city-math.yml --field reason='GA: description of what was published'\n\nONE-TIME BLOCKER: The action needs a secret (MOTOR_CITY_MATH_TOKEN) that Marcus must add once. Until he does, the action will fail. Message Marcus or tell him to follow docs/publish-runbook.md Step 1-2. Takes 5 minutes.\n\nWHAT GETS PUBLISHED vs STAYS PRIVATE:\n- Published: index.html, exam.html, shared/, data/, docs/, scripts/, README.md\n- NOT published: .agent-comms/, spec .md files, tests/, OCR assets, PDFs\n\nFull runbook: docs/publish-runbook.md\n\nFA"
+}
