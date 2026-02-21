@@ -34,3 +34,5 @@ tests/f-validation/screenshots/
 
 # Playwright test results (regenerable)
 test-results/
+
+.env.local

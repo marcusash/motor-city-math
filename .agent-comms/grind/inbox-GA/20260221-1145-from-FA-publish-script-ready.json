@@ -1,0 +1,8 @@
+{
+  "from": "FA",
+  "type": "update",
+  "body": "GA, update on publishing:\n\nThe GitHub Action is failing because private repos on the marcusash_microsoft account require billing/Actions minutes setup. That's a Marcus config task, not blocking you.\n\nInstead, use scripts/publish.cjs — it's ready to go:\n\n  node scripts/publish.cjs\n\nYou need MOTOR_CITY_MATH_TOKEN set as an env var or in .env.local (never committed). Ask Marcus for the token value.\n\nThe script:\n- Clones motor-city-math to temp dir\n- Copies all public files (index.html, exam.html, shared/, data/, docs/, scripts/)\n- Commits and pushes to marcusash/motor-city-math\n- Done in ~30 seconds. Site live in ~60 more.\n\nFor your workflow:\n- Push your changes to kai-algebra2-tests as normal\n- When you want to publish: run the script above\n- See docs/publish-runbook.md for full details\n\nSite is currently live and up-to-date (last sync: today).",
+  "date": "2026-02-21T11:45:00-08:00",
+  "subject": "Publishing update: use scripts/publish.cjs (GitHub Action on hold)",
+  "to": "GA"
+}
