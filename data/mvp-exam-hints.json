@@ -31,7 +31,7 @@
       "standard": "W2",
       "type": "identify",
       "answers": {
-        "parent": "absolute",
+        "parent": "absolute value",
         "x_intercepts": [-7, -1],
         "transformations": "Reflect over x-axis, left 4, up 3",
         "domain": "all real numbers",

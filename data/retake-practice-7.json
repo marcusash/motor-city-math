@@ -22,8 +22,8 @@
           "options": [
             "quadratic",
             "cubic",
-            "absolute",
-            "sqrt",
+            "absolute value",
+            "square root",
             "rational",
             "exponential"
           ],
@@ -47,11 +47,11 @@
       "plus_minus": true,
       "hint": "Set f(x)=0. Isolate the squared term.",
       "solution_steps": [
-        "Parent: y = x\\u00B2 (quadratic).",
-        "Set 0 = 3(x-1)\\u00B2 - 12 \\u2192 (x-1)\\u00B2 = 4.",
-        "x - 1 = \\u00B12 \\u2192 x = 3 or x = -1."
+        "Parent: y = x² (quadratic).",
+        "Set 0 = 3(x-1)² - 12 → (x-1)² = 4.",
+        "x - 1 = ±2 → x = 3 or x = -1."
       ],
-      "feedback_correct": "\\uD83D\\uDD25 Quadratic intercepts. Clean.",
+      "feedback_correct": "🔥 Quadratic intercepts. Clean.",
       "feedback_wrong_parent": "Check the exponent for parent type.",
       "feedback_wrong_intercepts": "Parent right. Set f(x)=0 and solve."
     },
@@ -70,12 +70,12 @@
           "options": [
             "quadratic",
             "cubic",
-            "absolute",
-            "sqrt",
+            "absolute value",
+            "square root",
             "rational",
             "exponential"
           ],
-          "answer": "sqrt"
+          "answer": "square root"
         },
         {
           "id": "q2_x1",
@@ -87,12 +87,12 @@
       ],
       "hint": "Set f(x)=0. Square both sides after isolating the root.",
       "solution_steps": [
-        "Parent: y = \\u221Ax (square root).",
-        "Set 0 = \\u221A(3x-6) - 3 \\u2192 \\u221A(3x-6) = 3.",
-        "Square: 3x - 6 = 9 \\u2192 3x = 15 \\u2192 x = 5."
+        "Parent: y = √x (square root).",
+        "Set 0 = √(3x-6) - 3 → √(3x-6) = 3.",
+        "Square: 3x - 6 = 9 → 3x = 15 → x = 5."
       ],
-      "feedback_correct": "\\uD83D\\uDD25 Square root intercept. Solid.",
-      "feedback_wrong_parent": "Look at the \\u221A symbol."
+      "feedback_correct": "🔥 Square root intercept. Solid.",
+      "feedback_wrong_parent": "Look at the √ symbol."
     },
     {
       "id": "rp7-q3",
@@ -109,12 +109,12 @@
           "options": [
             "quadratic",
             "cubic",
-            "absolute",
-            "sqrt",
+            "absolute value",
+            "square root",
             "rational",
             "exponential"
           ],
-          "answer": "absolute"
+          "answer": "absolute value"
         },
         {
           "id": "q3_x1",
@@ -135,11 +135,11 @@
       "hint": "Set f(x)=0. Isolate the |expression|.",
       "solution_steps": [
         "Parent: y = |x| (absolute value).",
-        "Set 0 = -2|x+4| + 6 \\u2192 2|x+4| = 6 \\u2192 |x+4| = 3.",
-        "x + 4 = 3 \\u2192 x = -1.",
-        "x + 4 = -3 \\u2192 x = -7."
+        "Set 0 = -2|x+4| + 6 → 2|x+4| = 6 → |x+4| = 3.",
+        "x + 4 = 3 → x = -1.",
+        "x + 4 = -3 → x = -7."
       ],
-      "feedback_correct": "\\uD83D\\uDD25 Both intercepts found.",
+      "feedback_correct": "🔥 Both intercepts found.",
       "feedback_wrong_parent": "The | | bars mean absolute value.",
       "feedback_wrong_intercepts": "Set the absolute value expression = 3."
     },
@@ -161,11 +161,11 @@
       ],
       "hint": "Rewrite both sides as powers of 2.",
       "solution_steps": [
-        "8^(x-1) = (2\\u00B3)^(x-1) = 2^(3x-3).",
+        "8^(x-1) = (2³)^(x-1) = 2^(3x-3).",
         "32 = 2\\u2075.",
-        "3x - 3 = 5 \\u2192 3x = 8 \\u2192 x = 8/3 \\u2248 2.667."
+        "3x - 3 = 5 → 3x = 8 → x = 8/3 \\u2248 2.667."
       ],
-      "feedback_correct": "\\uD83D\\uDD25 Common base. 8/3."
+      "feedback_correct": "🔥 Common base. 8/3."
     },
     {
       "id": "rp7-q5",
@@ -191,13 +191,13 @@
         }
       ],
       "plus_minus": true,
-      "hint": "Isolate the squared term. Then \\u00B1.",
+      "hint": "Isolate the squared term. Then ±.",
       "solution_steps": [
-        "2(x+3)\\u00B2 = 50 \\u2192 (x+3)\\u00B2 = 25.",
-        "x + 3 = \\u00B15.",
+        "2(x+3)² = 50 → (x+3)² = 25.",
+        "x + 3 = ±5.",
         "x = 2 or x = -8."
       ],
-      "feedback_correct": "\\uD83D\\uDD25 Both solutions found."
+      "feedback_correct": "🔥 Both solutions found."
     },
     {
       "id": "rp7-q6",
@@ -215,13 +215,13 @@
           "tolerance": 0.1
         }
       ],
-      "hint": "Isolate the \\u221A, then square both sides.",
+      "hint": "Isolate the √, then square both sides.",
       "solution_steps": [
-        "\\u221A(4x+5) = 7.",
+        "√(4x+5) = 7.",
         "Square: 4x + 5 = 49.",
-        "4x = 44 \\u2192 x = 11."
+        "4x = 44 → x = 11."
       ],
-      "feedback_correct": "\\uD83D\\uDD25 Square both sides. Done."
+      "feedback_correct": "🔥 Square both sides. Done."
     },
     {
       "id": "rp7-q7",
@@ -241,11 +241,11 @@
       ],
       "hint": "Rewrite both sides as powers of 5.",
       "solution_steps": [
-        "25\\u02E3 = (5\\u00B2)\\u02E3 = 5^(2x).",
-        "125^(x-1) = (5\\u00B3)^(x-1) = 5^(3x-3).",
-        "2x = 3x - 3 \\u2192 x = 3."
+        "25\\u02E3 = (5²)\\u02E3 = 5^(2x).",
+        "125^(x-1) = (5³)^(x-1) = 5^(3x-3).",
+        "2x = 3x - 3 → x = 3."
       ],
-      "feedback_correct": "\\uD83D\\uDD25 Common base. Smooth."
+      "feedback_correct": "🔥 Common base. Smooth."
     },
     {
       "id": "rp7-q8",
@@ -253,7 +253,7 @@
       "section": "B",
       "standard": "W3.c",
       "type": "rational",
-      "question_html": "Solve: \\\\( \\\\dfrac{5x - 3}{x + 2} = 3 \\\\)",
+      "question_html": "Solve: \\( \\dfrac{5x - 3}{x + 2} = 3 \\)",
       "inputs": [
         {
           "id": "q8_x",
@@ -269,7 +269,7 @@
         "5x - 3 = 3x + 6.",
         "2x = 9 → x = 4.5."
       ],
-      "feedback_correct": "\\uD83D\\uDD25 Clean algebra."
+      "feedback_correct": "🔥 Clean algebra."
     },
     {
       "id": "rp7-q9",
@@ -277,7 +277,7 @@
       "section": "B",
       "standard": "W3.b",
       "type": "radical",
-      "question_html": "Solve: \\\\( \\\\sqrt{x^2 + 19} = 10 \\\\)",
+      "question_html": "Solve: \\( \\sqrt{x^2 + 19} = 10 \\)",
       "inputs": [
         {
           "id": "q9_x1",
@@ -308,7 +308,7 @@
       "section": "B",
       "standard": "W3.e",
       "type": "extraneous",
-      "question_html": "Solve and check for extraneous solutions: \\\\( \\\\sqrt{x - 5} = x - 11 \\\\)",
+      "question_html": "Solve and check for extraneous solutions: \\( \\sqrt{x - 5} = x - 11 \\)",
       "inputs": [
         {
           "id": "q10_x",
@@ -326,7 +326,7 @@
         "Check x=9: √4 = 2, but 9-11 = -2. Extraneous!",
         "Check x=14: √9 = 3, and 14-11 = 3. ✓"
       ],
-      "feedback_correct": "\\uD83D\\uDD25 Caught the extraneous one."
+      "feedback_correct": "🔥 Caught the extraneous one."
     },
     {
       "id": "rp7-q11",
@@ -334,7 +334,7 @@
       "section": "B",
       "standard": "W3.b",
       "type": "fractional-exp",
-      "question_html": "Solve: \\\\( 2x^{3/2} = 1024 \\\\)",
+      "question_html": "Solve: \\( 2x^{3/2} = 1024 \\)",
       "inputs": [
         {
           "id": "q11_x",
@@ -377,7 +377,7 @@
       "graph": {
         "canvas_id": "graphQ12",
         "function": "3 * Math.pow(x - 2, 2) - 3",
-        "function_display": "f(x) = 3(x-2)\\u00B2 - 3",
+        "function_display": "f(x) = 3(x-2)² - 3",
         "key_points": [
           [
             0,
@@ -411,14 +411,14 @@
         "min_points": 5,
         "tolerance": 0.25
       },
-      "hint": "Vertex form: f(x) = a(x-h)\\u00B2 + k. Vertex is (h, k).",
+      "hint": "Vertex form: f(x) = a(x-h)² + k. Vertex is (h, k).",
       "solution_steps": [
         "Vertex form: a = 3, h = 2, k = -3.",
         "Vertex: (2, -3).",
-        "Opens up, narrower than y=x\\u00B2.",
+        "Opens up, narrower than y=x².",
         "Plot: f(0)=3(4)-3=9, f(1)=3(1)-3=0, f(3)=3(1)-3=0, f(4)=3(4)-3=9."
       ],
-      "feedback_correct": "\\uD83D\\uDD25 Vertex and graph correct."
+      "feedback_correct": "🔥 Vertex and graph correct."
     },
     {
       "id": "rp7-q13",
@@ -482,11 +482,11 @@
       },
       "hint": "VA: denominator = 0. HA: the constant outside the fraction.",
       "solution_steps": [
-        "VA: x + 2 = 0 \\u2192 x = -2.",
+        "VA: x + 2 = 0 → x = -2.",
         "HA: y = 4 (the constant added).",
         "Plot: f(-4)=-2/(-2)+4=5, f(-3)=-2/(-1)+4=6, f(-1)=-2/1+4=2, f(0)=-2/2+4=3, f(2)=-2/4+4=3.5."
       ],
-      "feedback_correct": "\\uD83D\\uDD25 Both asymptotes correct."
+      "feedback_correct": "🔥 Both asymptotes correct."
     },
     {
       "id": "rp7-q14",
@@ -521,14 +521,14 @@
           "answer": "A"
         }
       ],
-      "hint": "Square both sides to eliminate the \\u221A. Then isolate L.",
+      "hint": "Square both sides to eliminate the √. Then isolate L.",
       "solution_steps": [
-        "T = 2\\u03C0\\u221A(L/g).",
-        "T\\u00B2 = 4\\u03C0\\u00B2(L/g).",
-        "L = T\\u00B2g/(4\\u03C0\\u00B2).",
+        "T = 2π√(L/g).",
+        "T² = 4π²(L/g).",
+        "L = T²g/(4π²).",
         "Answer: A."
       ],
-      "feedback_correct": "\\uD83D\\uDD25 Formula rearrangement. Clean."
+      "feedback_correct": "🔥 Formula rearrangement. Clean."
     },
     {
       "id": "rp7-q15",
@@ -536,7 +536,7 @@
       "section": "D",
       "standard": "W3.a",
       "type": "word-problem",
-      "question_html": "An investment starts at ,000 and doubles every 8 years. The value is modeled by \\\\( V(t) = 2000 \\\\cdot 2^{t/8} \\\\). How many years until the investment reaches ,000?",
+      "question_html": "An investment starts at ,000 and doubles every 8 years. The value is modeled by \\( V(t) = 2000 \\cdot 2^{t/8} \\). How many years until the investment reaches ,000?",
       "inputs": [
         {
           "id": "q15_t",
