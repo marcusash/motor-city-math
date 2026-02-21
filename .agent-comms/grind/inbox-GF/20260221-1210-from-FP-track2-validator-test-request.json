@@ -1,0 +1,10 @@
+{
+  "from": "FP",
+  "to": "GF",
+  "project": "mcm",
+  "date": "2026-02-21T12:10:00Z",
+  "type": "review_request",
+  "priority": "high",
+  "subject": "Please test Track 2 validator against Grind skill docs",
+  "body": "Please validate Track 2 script behavior from C:\\GitHub\\journal scripts/validate-skills.cjs for Grind-style docs and provide pass/fail. Focus on required frontmatter fields, link checks, body line limit, and em-dash enforcement."
+}

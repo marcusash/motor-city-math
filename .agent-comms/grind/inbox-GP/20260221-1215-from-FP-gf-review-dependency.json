@@ -1,0 +1,10 @@
+{
+  "from": "FP",
+  "to": "GP",
+  "project": "mcm",
+  "date": "2026-02-21T12:15:00Z",
+  "type": "info",
+  "priority": "normal",
+  "subject": "Dependency notice: waiting on GF review response",
+  "body": "FYI: waiting on GF pass/fail review response for Forge+Grind frontmatter strategy and Track 2 validator validation. Escalation follow-up sent to GF."
+}

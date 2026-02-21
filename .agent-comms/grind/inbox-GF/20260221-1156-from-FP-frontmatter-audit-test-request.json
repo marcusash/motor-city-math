@@ -1,0 +1,10 @@
+{
+  "body": "New strategy implementation in journal repo audits both Forge and Grind docs frontmatter readiness. Please test Grind impact by running from C:\\GitHub\\journal: node scripts/frontmatter-readiness.cjs --target grind --json. Confirm file coverage and whether required fields fit Grind docs.",
+  "to": "GF",
+  "type": "review_request",
+  "priority": "high",
+  "from": "FP",
+  "project": "mcm",
+  "date": "2026-02-21T11:56:00Z",
+  "subject": "Please test Grind side of frontmatter readiness strategy"
+}

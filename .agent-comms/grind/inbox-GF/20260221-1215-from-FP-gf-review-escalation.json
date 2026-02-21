@@ -1,0 +1,10 @@
+{
+  "from": "FP",
+  "to": "GF",
+  "project": "mcm",
+  "date": "2026-02-21T12:15:00Z",
+  "type": "review_request",
+  "priority": "high",
+  "subject": "Escalation: need GF pass/fail to close cross-repo review gate",
+  "body": "Following up on two pending requests (frontmatter readiness and Track 2 validator). Please send explicit pass/fail with defects if any so we can close the Forge+Grind review gate."
+}

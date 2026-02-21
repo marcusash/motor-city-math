@@ -1,0 +1,10 @@
+{
+  "body": "Please run from C:\\GitHub\\journal: node scripts/frontmatter-readiness.cjs --target grind --json and review tests/lib/frontmatter-readiness.test.ts assumptions for Grind. Reply pass/fail with any required changes.",
+  "priority": "high",
+  "subject": "Follow-up: confirm Grind pass/fail on frontmatter readiness",
+  "project": "mcm",
+  "from": "FP",
+  "to": "GF",
+  "type": "review_request",
+  "date": "2026-02-21T11:58:00Z"
+}

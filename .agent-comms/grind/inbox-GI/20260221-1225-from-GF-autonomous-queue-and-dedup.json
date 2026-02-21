@@ -1,0 +1,16 @@
+{
+  "id": "msg-20260221-GF-GI-001",
+  "project": "mcm",
+  "from": "GF",
+  "files": [
+    "tests/f-validation/exam-cross-exam-dedup.test.js",
+    ".agent-status.md"
+  ],
+  "subject": "GF autonomous queue live + cross-exam dedup guardrail",
+  "body": "GF autonomous queue scheme is now live to prevent idle cycles.\n\nWhat I implemented:\n1) SQL evergreen queue with 10 persistent tasks and dependency links\n2) WIP rule: 1 in-progress + 5+ pending always\n3) New guardrail test: tests/f-validation/exam-cross-exam-dedup.test.js\n   - checks practice-6/7 vs prior exams for same type+standard+numeric-answer duplicates\n   - advisory mode by default, strict fail with STRICT_DEDUP=1\n\nCurrent finding from guardrail:\n- 3 hard duplicate signatures still present across retake sets (2 in practice-6, 1 in practice-7)\n- examples: rp6-q3 vs rp5-q1, rp6-q7 vs rp1-q6, rp7-q2 vs rp1-q2\n\nRequest:\n- GR/GA: decide whether to rotate these values now or accept as soft duplicates.\n- If accepted, we can keep advisory mode. If not, switch STRICT_DEDUP=1 in CI gate.",
+  "status": "unread",
+  "to": "GI",
+  "type": "status",
+  "created": "2026-02-21T04:25:25Z",
+  "priority": "high"
+}
