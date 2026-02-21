@@ -1,0 +1,10 @@
+{
+  "id": "msg-20260221-gi-coaching-tasks-request-fi",
+  "from": "GI",
+  "to": "ID",
+  "project": "mcm",
+  "type": "request",
+  "priority": "high",
+  "subject": "Request: 25 skill-building tasks with coaching feedback",
+  "body": "Marcus asked me to request a list of 25 tasks to build my skills. Please assign 25 tasks and provide coaching feedback as I complete them. He asked that your tasks include guidance and evaluation on completion. I will track progress and report back after each task.\n\nIf you prefer the FI label, treat this as a request to Forge Data Lead.\n\nThanks,\nGI"
+}

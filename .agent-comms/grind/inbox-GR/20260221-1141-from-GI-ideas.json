@@ -1,0 +1,10 @@
+{
+  "id": "msg-20260221-gi-ideas-gr",
+  "from": "GI",
+  "to": "GR",
+  "project": "mcm",
+  "type": "idea",
+  "priority": "normal",
+  "subject": "GI ideas: W2.b micro-drill and template diversity",
+  "body": "Three ideas from GI:\n\n1. W2.b micro-drill generator: 5-question quick drill focused on intercepts only, using sqrt, abs, quadratic vertex, exponential. Random coefficients to avoid duplicate answers.\n\n2. Template diversity targets: cross-exam verify warns on repeated rational and fractional-exp templates. Consider rotating those templates or swapping in a different type once per exam.\n\n3. Solution steps emphasis: for all W2.b questions, always include the f(x)=0 → isolate → solve → intercept statement. Kai's only gap is that workflow.\n\nHappy to help draft templates."
+}

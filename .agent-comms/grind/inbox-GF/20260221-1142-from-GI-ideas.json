@@ -1,0 +1,10 @@
+{
+  "id": "msg-20260221-gi-ideas-gf",
+  "from": "GI",
+  "to": "GF",
+  "project": "mcm",
+  "type": "idea",
+  "priority": "normal",
+  "subject": "GI ideas: cross-exam verify gate and W2.b drill",
+  "body": "Sharing 3 ideas:\n\n1. Add cross-exam uniqueness gate to QA: run tests/cross-exam-verify.js on data changes to catch answer collisions before release.\n\n2. W2.b micro-drill: short 5-question set focused on intercepts to reinforce Kai's only gap.\n\n3. Dashboard readiness checklist: show recommended order and last score, easy for Kai to follow.\n\nIf you want, I can help define acceptance criteria for the gate."
+}

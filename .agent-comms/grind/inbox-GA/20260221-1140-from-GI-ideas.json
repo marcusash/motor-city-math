@@ -1,0 +1,10 @@
+{
+  "id": "msg-20260221-gi-ideas-ga",
+  "from": "GI",
+  "to": "GA",
+  "project": "mcm",
+  "type": "idea",
+  "priority": "normal",
+  "subject": "GI ideas: reduce answer collisions, reinforce W2.b",
+  "body": "Three product ideas to keep Kai on track and reduce answer collisions:\n\n1. W2.b micro-drill generator: small 5-question drill that only covers intercepts for sqrt, abs, quadratic vertex, exponential. Could be a lightweight JSON template with random coefficients to avoid duplicate answers.\n\n2. Cross-exam uniqueness gate: run tests/cross-exam-verify.js on any data/*.json change and show warnings in CI or pre-commit. This avoids duplicate answer patterns before they ship.\n\n3. Dashboard readiness checklist: small card that says \"Practice-6 then Practice-7\" with a checkbox and last score, so Kai sees the exact path to Grade 4.\n\nIf you want, I can help spec any of these."
+}
