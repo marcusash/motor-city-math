@@ -13,7 +13,7 @@
       "section": "A",
       "standard": "W2.b",
       "type": "identify",
-      "question_html": "Identify the parent function and find the x-intercepts: \\\\( f(x) = 3(x - 1)^2 - 12 \\\\)",
+      "question_html": "Identify the parent function and find the x-intercepts: \\( f(x) = 3(x - 1)^2 - 12 \\)",
       "inputs": [
         {
           "id": "q1_parent",
@@ -32,14 +32,14 @@
         {
           "id": "q1_x1",
           "type": "number",
-          "label": "x\\u2081 =",
+          "label": "x₁ =",
           "answer": 3,
           "tolerance": 0.1
         },
         {
           "id": "q1_x2",
           "type": "number",
-          "label": "x\\u2082 =",
+          "label": "x₂ =",
           "answer": -1,
           "tolerance": 0.1
         }
@@ -61,7 +61,7 @@
       "section": "A",
       "standard": "W2.b",
       "type": "identify",
-      "question_html": "Identify the parent function and find the x-intercept: \\\\( f(x) = \\\\sqrt{3x - 6} - 3 \\\\)",
+      "question_html": "Identify the parent function and find the x-intercept: \\( f(x) = \\sqrt{3x - 6} - 3 \\)",
       "inputs": [
         {
           "id": "q2_parent",
@@ -100,7 +100,7 @@
       "section": "A",
       "standard": "W2.b",
       "type": "identify",
-      "question_html": "Identify the parent function and find the x-intercepts: \\\\( f(x) = -2|x + 4| + 6 \\\\)",
+      "question_html": "Identify the parent function and find the x-intercepts: \\( f(x) = -2|x + 4| + 6 \\)",
       "inputs": [
         {
           "id": "q3_parent",
@@ -119,14 +119,14 @@
         {
           "id": "q3_x1",
           "type": "number",
-          "label": "x\\u2081 =",
+          "label": "x₁ =",
           "answer": -1,
           "tolerance": 0.1
         },
         {
           "id": "q3_x2",
           "type": "number",
-          "label": "x\\u2082 =",
+          "label": "x₂ =",
           "answer": -7,
           "tolerance": 0.1
         }
@@ -149,7 +149,7 @@
       "section": "B",
       "standard": "W3.d",
       "type": "exponential",
-      "question_html": "Solve: \\\\( 8^{x-1} = 32 \\\\)",
+      "question_html": "Solve: \\( 8^{x-1} = 32 \\)",
       "inputs": [
         {
           "id": "q4_x",
@@ -173,19 +173,19 @@
       "section": "B",
       "standard": "W3.b",
       "type": "quadratic",
-      "question_html": "Solve: \\\\( 2(x + 3)^2 - 50 = 0 \\\\)",
+      "question_html": "Solve: \\( 2(x + 3)^2 - 50 = 0 \\)",
       "inputs": [
         {
           "id": "q5_x1",
           "type": "number",
-          "label": "x\\u2081 =",
+          "label": "x₁ =",
           "answer": 2,
           "tolerance": 0.1
         },
         {
           "id": "q5_x2",
           "type": "number",
-          "label": "x\\u2082 =",
+          "label": "x₂ =",
           "answer": -8,
           "tolerance": 0.1
         }
@@ -205,7 +205,7 @@
       "section": "B",
       "standard": "W3.b",
       "type": "radical",
-      "question_html": "Solve: \\\\( \\\\sqrt{4x + 5} - 1 = 6 \\\\)",
+      "question_html": "Solve: \\( \\sqrt{4x + 5} - 1 = 6 \\)",
       "inputs": [
         {
           "id": "q6_x",
@@ -229,7 +229,7 @@
       "section": "B",
       "standard": "W3.d",
       "type": "exponential",
-      "question_html": "Solve: \\\\( 25^x = 125^{x-1} \\\\)",
+      "question_html": "Solve: \\( 25^x = 125^{x-1} \\)",
       "inputs": [
         {
           "id": "q7_x",
@@ -253,7 +253,7 @@
       "section": "B",
       "standard": "W3.c",
       "type": "rational",
-      "question_html": "Solve: \\\\\\\\( \\\\\\\\dfrac{5x - 3}{x + 2} = 3 \\\\\\\\)",
+      "question_html": "Solve: \\\\( \\\\dfrac{5x - 3}{x + 2} = 3 \\\\)",
       "inputs": [
         {
           "id": "q8_x",
@@ -277,19 +277,19 @@
       "section": "B",
       "standard": "W3.b",
       "type": "radical",
-      "question_html": "Solve: \\\\\\\\( \\\\\\\\sqrt{x^2 + 19} = 10 \\\\\\\\)",
+      "question_html": "Solve: \\\\( \\\\sqrt{x^2 + 19} = 10 \\\\)",
       "inputs": [
         {
           "id": "q9_x1",
           "type": "number",
-          "label": "x\\u2081 =",
+          "label": "x₁ =",
           "answer": 9,
           "tolerance": 0.1
         },
         {
           "id": "q9_x2",
           "type": "number",
-          "label": "x\\u2082 =",
+          "label": "x₂ =",
           "answer": -9,
           "tolerance": 0.1
         }
@@ -308,7 +308,7 @@
       "section": "B",
       "standard": "W3.e",
       "type": "extraneous",
-      "question_html": "Solve and check for extraneous solutions: \\\\\\\\( \\\\\\\\sqrt{x - 5} = x - 11 \\\\\\\\)",
+      "question_html": "Solve and check for extraneous solutions: \\\\( \\\\sqrt{x - 5} = x - 11 \\\\)",
       "inputs": [
         {
           "id": "q10_x",
@@ -334,7 +334,7 @@
       "section": "B",
       "standard": "W3.b",
       "type": "fractional-exp",
-      "question_html": "Solve: \\\\\\\\( 2x^{3/2} = 1024 \\\\\\\\)",
+      "question_html": "Solve: \\\\( 2x^{3/2} = 1024 \\\\)",
       "inputs": [
         {
           "id": "q11_x",
@@ -357,7 +357,7 @@
       "section": "C",
       "standard": "W2.c",
       "type": "graph",
-      "question_html": "Graph \\\\( f(x) = 3(x - 2)^2 - 3 \\\\). State the vertex.",
+      "question_html": "Graph \\( f(x) = 3(x - 2)^2 - 3 \\). State the vertex.",
       "inputs": [
         {
           "id": "q12_vx",
@@ -426,7 +426,7 @@
       "section": "C",
       "standard": "W2.e",
       "type": "graph",
-      "question_html": "Graph \\\\( f(x) = \\\\dfrac{-2}{x + 2} + 4 \\\\) and draw asymptotes. State the asymptotes.",
+      "question_html": "Graph \\( f(x) = \\dfrac{-2}{x + 2} + 4 \\) and draw asymptotes. State the asymptotes.",
       "inputs": [
         {
           "id": "q13_va",
@@ -494,7 +494,7 @@
       "section": "D",
       "standard": "W3.a",
       "type": "multiple-choice",
-      "question_html": "The period of a pendulum is \\\\( T = 2\\\\pi\\\\sqrt{\\\\dfrac{L}{g}} \\\\). Which correctly solves for \\\\( L \\\\)?",
+      "question_html": "The period of a pendulum is \\( T = 2\\pi\\sqrt{\\dfrac{L}{g}} \\). Which correctly solves for \\( L \\)?",
       "inputs": [
         {
           "id": "q14",
@@ -503,19 +503,19 @@
           "options": [
             {
               "value": "A",
-              "text": "\\\\( L = \\\\dfrac{T^2 g}{4\\\\pi^2} \\\\)"
+              "text": "\\( L = \\dfrac{T^2 g}{4\\pi^2} \\)"
             },
             {
               "value": "B",
-              "text": "\\\\( L = \\\\dfrac{T}{2\\\\pi\\\\sqrt{g}} \\\\)"
+              "text": "\\( L = \\dfrac{T}{2\\pi\\sqrt{g}} \\)"
             },
             {
               "value": "C",
-              "text": "\\\\( L = \\\\dfrac{T^2}{4\\\\pi g} \\\\)"
+              "text": "\\( L = \\dfrac{T^2}{4\\pi g} \\)"
             },
             {
               "value": "D",
-              "text": "\\\\( L = \\\\dfrac{4\\\\pi^2 g}{T^2} \\\\)"
+              "text": "\\( L = \\dfrac{4\\pi^2 g}{T^2} \\)"
             }
           ],
           "answer": "A"
@@ -536,7 +536,7 @@
       "section": "D",
       "standard": "W3.a",
       "type": "word-problem",
-      "question_html": "An investment starts at ,000 and doubles every 8 years. The value is modeled by \\\\\\\\( V(t) = 2000 \\\\\\\\cdot 2^{t/8} \\\\\\\\). How many years until the investment reaches ,000?",
+      "question_html": "An investment starts at ,000 and doubles every 8 years. The value is modeled by \\\\( V(t) = 2000 \\\\cdot 2^{t/8} \\\\). How many years until the investment reaches ,000?",
       "inputs": [
         {
           "id": "q15_t",

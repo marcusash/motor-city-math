@@ -13,7 +13,7 @@
       "section": "A",
       "standard": "W2.b",
       "type": "identify",
-      "question_html": "Identify the parent function and find the x-intercepts: \\\\( f(x) = -(x + 5)^2 + 9 \\\\)",
+      "question_html": "Identify the parent function and find the x-intercepts: \\( f(x) = -(x + 5)^2 + 9 \\)",
       "inputs": [
         {
           "id": "q1_parent",
@@ -32,14 +32,14 @@
         {
           "id": "q1_x1",
           "type": "number",
-          "label": "x\\u2081 =",
+          "label": "x₁ =",
           "answer": -2,
           "tolerance": 0.1
         },
         {
           "id": "q1_x2",
           "type": "number",
-          "label": "x\\u2082 =",
+          "label": "x₂ =",
           "answer": -8,
           "tolerance": 0.1
         }
@@ -62,7 +62,7 @@
       "section": "A",
       "standard": "W2.b",
       "type": "identify",
-      "question_html": "Identify the parent function and find the x-intercept: \\\\( f(x) = \\\\sqrt{2x + 10} - 4 \\\\)",
+      "question_html": "Identify the parent function and find the x-intercept: \\( f(x) = \\sqrt{2x + 10} - 4 \\)",
       "inputs": [
         {
           "id": "q2_parent",
@@ -103,7 +103,7 @@
       "section": "A",
       "standard": "W2.b",
       "type": "identify",
-      "question_html": "Identify the parent function and find the x-intercepts: \\\\( f(x) = -3|x - 2| + 12 \\\\)",
+      "question_html": "Identify the parent function and find the x-intercepts: \\( f(x) = -3|x - 2| + 12 \\)",
       "inputs": [
         {
           "id": "q3_parent",
@@ -122,14 +122,14 @@
         {
           "id": "q3_x1",
           "type": "number",
-          "label": "x\\u2081 =",
+          "label": "x₁ =",
           "answer": 6,
           "tolerance": 0.1
         },
         {
           "id": "q3_x2",
           "type": "number",
-          "label": "x\\u2082 =",
+          "label": "x₂ =",
           "answer": -2,
           "tolerance": 0.1
         }
@@ -152,7 +152,7 @@
       "section": "B",
       "standard": "W3.d",
       "type": "exponential",
-      "question_html": "Solve: \\\\\\\\( 2^{x+2} = 128 \\\\\\\\)",
+      "question_html": "Solve: \\\\( 2^{x+2} = 128 \\\\)",
       "inputs": [
         {
           "id": "q4_x",
@@ -176,7 +176,7 @@
       "section": "B",
       "standard": "W3.d",
       "type": "exponential",
-      "question_html": "Solve: \\\\( 4^{2x+1} = 64 \\\\)",
+      "question_html": "Solve: \\( 4^{2x+1} = 64 \\)",
       "inputs": [
         {
           "id": "q5_x",
@@ -201,19 +201,19 @@
       "section": "B",
       "standard": "W3.b",
       "type": "quadratic",
-      "question_html": "Solve: \\\\\\\\( 2(x - 3)^2 - 32 = 0 \\\\\\\\)",
+      "question_html": "Solve: \\\\( 2(x - 3)^2 - 32 = 0 \\\\)",
       "inputs": [
         {
           "id": "q6_x1",
           "type": "number",
-          "label": "x\\u2081 =",
+          "label": "x₁ =",
           "answer": 7,
           "tolerance": 0.1
         },
         {
           "id": "q6_x2",
           "type": "number",
-          "label": "x\\u2082 =",
+          "label": "x₂ =",
           "answer": -1,
           "tolerance": 0.1
         }
@@ -233,7 +233,7 @@
       "section": "B",
       "standard": "W3.b",
       "type": "radical",
-      "question_html": "Solve: \\\\( \\\\sqrt{5x - 1} + 2 = 7 \\\\)",
+      "question_html": "Solve: \\( \\sqrt{5x - 1} + 2 = 7 \\)",
       "inputs": [
         {
           "id": "q7_x",
@@ -257,7 +257,7 @@
       "section": "B",
       "standard": "W3.d",
       "type": "exponential",
-      "question_html": "Solve: \\\\( 27^x = 9^{x+2} \\\\)",
+      "question_html": "Solve: \\( 27^x = 9^{x+2} \\)",
       "inputs": [
         {
           "id": "q8_x",
@@ -281,7 +281,7 @@
       "section": "B",
       "standard": "W3.c",
       "type": "rational",
-      "question_html": "Solve: \\\\( \\\\dfrac{3x + 2}{x - 1} = 5 \\\\)",
+      "question_html": "Solve: \\( \\dfrac{3x + 2}{x - 1} = 5 \\)",
       "inputs": [
         {
           "id": "q9_x",
@@ -305,7 +305,7 @@
       "section": "B",
       "standard": "W3.e",
       "type": "extraneous",
-      "question_html": "Solve and check for extraneous solutions: \\\\\\\\( \\\\\\\\sqrt{x - 2} = x - 8 \\\\\\\\)",
+      "question_html": "Solve and check for extraneous solutions: \\\\( \\\\sqrt{x - 2} = x - 8 \\\\)",
       "inputs": [
         {
           "id": "q10_x",
@@ -331,7 +331,7 @@
       "section": "B",
       "standard": "W3.b",
       "type": "fractional-exp",
-      "question_html": "Solve: \\\\( 3x^{2/3} - 12 = 0 \\\\)",
+      "question_html": "Solve: \\( 3x^{2/3} - 12 = 0 \\)",
       "inputs": [
         {
           "id": "q11_x",
@@ -354,7 +354,7 @@
       "section": "C",
       "standard": "W2.c",
       "type": "graph",
-      "question_html": "Graph \\\\( f(x) = -2(x + 1)^2 + 6 \\\\). State the vertex.",
+      "question_html": "Graph \\( f(x) = -2(x + 1)^2 + 6 \\). State the vertex.",
       "inputs": [
         {
           "id": "q12_vx",
@@ -423,7 +423,7 @@
       "section": "C",
       "standard": "W2.e",
       "type": "graph",
-      "question_html": "Graph \\\\( f(x) = \\\\dfrac{4}{x - 3} - 2 \\\\) and draw asymptotes. State the asymptotes.",
+      "question_html": "Graph \\( f(x) = \\dfrac{4}{x - 3} - 2 \\) and draw asymptotes. State the asymptotes.",
       "inputs": [
         {
           "id": "q13_va",
@@ -491,7 +491,7 @@
       "section": "D",
       "standard": "W3.a",
       "type": "multiple-choice",
-      "question_html": "The surface area of a sphere is \\\\( S = 4\\\\pi r^2 \\\\). Which correctly solves for \\\\( r \\\\)?",
+      "question_html": "The surface area of a sphere is \\( S = 4\\pi r^2 \\). Which correctly solves for \\( r \\)?",
       "inputs": [
         {
           "id": "q14",
@@ -500,19 +500,19 @@
           "options": [
             {
               "value": "A",
-              "text": "\\\\( r = \\\\dfrac{S}{4\\\\pi} \\\\)"
+              "text": "\\( r = \\dfrac{S}{4\\pi} \\)"
             },
             {
               "value": "B",
-              "text": "\\\\( r = \\\\sqrt{\\\\dfrac{S}{4\\\\pi}} \\\\)"
+              "text": "\\( r = \\sqrt{\\dfrac{S}{4\\pi}} \\)"
             },
             {
               "value": "C",
-              "text": "\\\\( r = \\\\sqrt{\\\\dfrac{S}{4\\\\pi^2}} \\\\)"
+              "text": "\\( r = \\sqrt{\\dfrac{S}{4\\pi^2}} \\)"
             },
             {
               "value": "D",
-              "text": "\\\\( r = \\\\dfrac{S^2}{4\\\\pi} \\\\)"
+              "text": "\\( r = \\dfrac{S^2}{4\\pi} \\)"
             }
           ],
           "answer": "B"
@@ -533,7 +533,7 @@
       "section": "D",
       "standard": "W3.a",
       "type": "word-problem",
-      "question_html": "A radioactive sample starts with 800 grams and has a half-life of 4 years. The remaining mass is modeled by \\\\\\\\( A(t) = 800 \\\\\\\\cdot \\\\\\\\left(\\\\\\\\dfrac{1}{2}\\\\\\\\right)^{t/4} \\\\\\\\). How many years until 100 grams remain?",
+      "question_html": "A radioactive sample starts with 800 grams and has a half-life of 4 years. The remaining mass is modeled by \\\\( A(t) = 800 \\\\cdot \\\\left(\\\\dfrac{1}{2}\\\\right)^{t/4} \\\\). How many years until 100 grams remain?",
       "inputs": [
         {
           "id": "q15_t",
