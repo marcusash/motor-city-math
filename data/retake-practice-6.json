@@ -1,0 +1,556 @@
+{
+  "exam_id": "retake-practice-6",
+  "title": "Unit 2 Retake Practice — W2.b Intercept Drill",
+  "subtitle": "Standards W2 & W3 · 15 Questions · ~60 min · Extra W2.b practice",
+  "time_minutes": 60,
+  "created": "2026-02-20",
+  "created_by": "Agent GA",
+  "purpose": "W2.b intercept drill. Kai missed Q2/Q3 on practice-1 (both W2.b). This exam has 4 W2.b questions (normally 3) with varied parent types.",
+  "questions": [
+    {
+      "id": "rp6-q1",
+      "number": 1,
+      "section": "A",
+      "standard": "W2.b",
+      "type": "identify",
+      "question_html": "Identify the parent function and find the x-intercepts: \\\\( f(x) = -(x + 5)^2 + 9 \\\\)",
+      "inputs": [
+        {
+          "id": "q1_parent",
+          "type": "dropdown",
+          "label": "Parent function",
+          "options": [
+            "quadratic",
+            "cubic",
+            "absolute",
+            "sqrt",
+            "rational",
+            "exponential"
+          ],
+          "answer": "quadratic"
+        },
+        {
+          "id": "q1_x1",
+          "type": "number",
+          "label": "x\\u2081 =",
+          "answer": -2,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q1_x2",
+          "type": "number",
+          "label": "x\\u2082 =",
+          "answer": -8,
+          "tolerance": 0.1
+        }
+      ],
+      "plus_minus": true,
+      "hint": "Set f(x)=0. Move 9 to the other side, remove the negative.",
+      "solution_steps": [
+        "Parent: y = x\\u00B2 (quadratic \\u2014 highest power is 2).",
+        "Set 0 = -(x+5)\\u00B2 + 9.",
+        "(x+5)\\u00B2 = 9.",
+        "x + 5 = \\u00B13 \\u2192 x = -2 or x = -8."
+      ],
+      "feedback_correct": "\\uD83D\\uDD25 Quadratic intercepts nailed.",
+      "feedback_wrong_parent": "Look at the exponent \\u2014 it\\u2019s squared.",
+      "feedback_wrong_intercepts": "Parent right. Set f(x)=0 and solve."
+    },
+    {
+      "id": "rp6-q2",
+      "number": 2,
+      "section": "A",
+      "standard": "W2.b",
+      "type": "identify",
+      "question_html": "Identify the parent function and find the x-intercept: \\\\( f(x) = \\\\sqrt{2x + 10} - 4 \\\\)",
+      "inputs": [
+        {
+          "id": "q2_parent",
+          "type": "dropdown",
+          "label": "Parent function",
+          "options": [
+            "quadratic",
+            "cubic",
+            "absolute",
+            "sqrt",
+            "rational",
+            "exponential"
+          ],
+          "answer": "sqrt"
+        },
+        {
+          "id": "q2_x1",
+          "type": "number",
+          "label": "x-intercept =",
+          "answer": 3,
+          "tolerance": 0.1
+        }
+      ],
+      "hint": "Set f(x)=0. Square both sides after isolating the \\u221A.",
+      "solution_steps": [
+        "Parent: y = \\u221Ax (square root function).",
+        "Set 0 = \\u221A(2x+10) - 4 \\u2192 \\u221A(2x+10) = 4.",
+        "Square: 2x + 10 = 16 \\u2192 2x = 6.",
+        "x = 3."
+      ],
+      "feedback_correct": "\\uD83D\\uDD25 Square root identified. Clean.",
+      "feedback_wrong_parent": "Look at the \\u221A symbol.",
+      "feedback_wrong_intercepts": "Set f(x)=0 and isolate the root."
+    },
+    {
+      "id": "rp6-q3",
+      "number": 3,
+      "section": "A",
+      "standard": "W2.b",
+      "type": "identify",
+      "question_html": "Identify the parent function and find the x-intercepts: \\\\( f(x) = -3|x - 2| + 12 \\\\)",
+      "inputs": [
+        {
+          "id": "q3_parent",
+          "type": "dropdown",
+          "label": "Parent function",
+          "options": [
+            "quadratic",
+            "cubic",
+            "absolute",
+            "sqrt",
+            "rational",
+            "exponential"
+          ],
+          "answer": "absolute"
+        },
+        {
+          "id": "q3_x1",
+          "type": "number",
+          "label": "x\\u2081 =",
+          "answer": 6,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q3_x2",
+          "type": "number",
+          "label": "x\\u2082 =",
+          "answer": -2,
+          "tolerance": 0.1
+        }
+      ],
+      "plus_minus": true,
+      "hint": "Set f(x)=0. Isolate the |expression|.",
+      "solution_steps": [
+        "Parent: y = |x| (absolute value function).",
+        "Set 0 = -3|x-2| + 12 \\u2192 3|x-2| = 12 \\u2192 |x-2| = 4.",
+        "x - 2 = 4 \\u2192 x = 6.",
+        "x - 2 = -4 \\u2192 x = -2."
+      ],
+      "feedback_correct": "\\uD83D\\uDD25 Both intercepts. Solid.",
+      "feedback_wrong_parent": "The | | bars mean absolute value.",
+      "feedback_wrong_intercepts": "Set the absolute value expression = 4."
+    },
+    {
+      "id": "rp6-q4",
+      "number": 4,
+      "section": "B",
+      "standard": "W3.d",
+      "type": "exponential",
+      "question_html": "Solve: \\\\\\\\( 2^{x+2} = 128 \\\\\\\\)",
+      "inputs": [
+        {
+          "id": "q4_x",
+          "type": "number",
+          "label": "x =",
+          "answer": 5,
+          "tolerance": 0.01
+        }
+      ],
+      "hint": "Rewrite 128 as a power of 2. Set exponents equal.",
+      "solution_steps": [
+        "2^(x+2) = 128.",
+        "128 = 2⁷.",
+        "x + 2 = 7 → x = 5."
+      ],
+      "feedback_correct": "🔥 Exponent match. Clean."
+    },
+    {
+      "id": "rp6-q5",
+      "number": 5,
+      "section": "B",
+      "standard": "W3.d",
+      "type": "exponential",
+      "question_html": "Solve: \\\\( 4^{2x+1} = 64 \\\\)",
+      "inputs": [
+        {
+          "id": "q5_x",
+          "type": "number",
+          "label": "x =",
+          "answer": 1,
+          "tolerance": 0.01
+        }
+      ],
+      "hint": "Rewrite 64 as 4\\u00B3. Set exponents equal.",
+      "solution_steps": [
+        "4^(2x+1) = 64.",
+        "64 = 4\\u00B3.",
+        "2x + 1 = 3 \\u2192 2x = 2.",
+        "x = 1."
+      ],
+      "feedback_correct": "\\uD83D\\uDD25 Exponent match. Clean."
+    },
+    {
+      "id": "rp6-q6",
+      "number": 6,
+      "section": "B",
+      "standard": "W3.b",
+      "type": "quadratic",
+      "question_html": "Solve: \\\\\\\\( 2(x - 3)^2 - 32 = 0 \\\\\\\\)",
+      "inputs": [
+        {
+          "id": "q6_x1",
+          "type": "number",
+          "label": "x\\u2081 =",
+          "answer": 7,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q6_x2",
+          "type": "number",
+          "label": "x\\u2082 =",
+          "answer": -1,
+          "tolerance": 0.1
+        }
+      ],
+      "plus_minus": true,
+      "hint": "Isolate the squared term. Then \\u00B1.",
+      "solution_steps": [
+        "2(x-3)² = 32 → (x-3)² = 16.",
+        "x - 3 = ±4.",
+        "x = 7 or x = -1."
+      ],
+      "feedback_correct": "\\uD83D\\uDD25 Both solutions found."
+    },
+    {
+      "id": "rp6-q7",
+      "number": 7,
+      "section": "B",
+      "standard": "W3.b",
+      "type": "radical",
+      "question_html": "Solve: \\\\( \\\\sqrt{5x - 1} + 2 = 7 \\\\)",
+      "inputs": [
+        {
+          "id": "q7_x",
+          "type": "number",
+          "label": "x =",
+          "answer": 5.2,
+          "tolerance": 0.1
+        }
+      ],
+      "hint": "Isolate the \\u221A, then square both sides.",
+      "solution_steps": [
+        "\\u221A(5x-1) = 5.",
+        "Square: 5x - 1 = 25.",
+        "5x = 26 \\u2192 x = 5.2."
+      ],
+      "feedback_correct": "\\uD83D\\uDD25 Square both sides. Done."
+    },
+    {
+      "id": "rp6-q8",
+      "number": 8,
+      "section": "B",
+      "standard": "W3.d",
+      "type": "exponential",
+      "question_html": "Solve: \\\\( 27^x = 9^{x+2} \\\\)",
+      "inputs": [
+        {
+          "id": "q8_x",
+          "type": "number",
+          "label": "x =",
+          "answer": 4,
+          "tolerance": 0.01
+        }
+      ],
+      "hint": "Rewrite both sides as powers of 3.",
+      "solution_steps": [
+        "27\\u02E3 = (3\\u00B3)\\u02E3 = 3^(3x).",
+        "9^(x+2) = (3\\u00B2)^(x+2) = 3^(2x+4).",
+        "3x = 2x + 4 \\u2192 x = 4."
+      ],
+      "feedback_correct": "\\uD83D\\uDD25 Common base. Smooth."
+    },
+    {
+      "id": "rp6-q9",
+      "number": 9,
+      "section": "B",
+      "standard": "W3.c",
+      "type": "rational",
+      "question_html": "Solve: \\\\( \\\\dfrac{3x + 2}{x - 1} = 5 \\\\)",
+      "inputs": [
+        {
+          "id": "q9_x",
+          "type": "number",
+          "label": "x =",
+          "answer": 3.5,
+          "tolerance": 0.1
+        }
+      ],
+      "hint": "Multiply both sides by (x - 1).",
+      "solution_steps": [
+        "3x + 2 = 5(x - 1).",
+        "3x + 2 = 5x - 5.",
+        "7 = 2x \\u2192 x = 3.5."
+      ],
+      "feedback_correct": "\\uD83D\\uDD25 Clean algebra."
+    },
+    {
+      "id": "rp6-q10",
+      "number": 10,
+      "section": "B",
+      "standard": "W3.e",
+      "type": "extraneous",
+      "question_html": "Solve and check for extraneous solutions: \\\\\\\\( \\\\\\\\sqrt{x - 2} = x - 8 \\\\\\\\)",
+      "inputs": [
+        {
+          "id": "q10_x",
+          "type": "number",
+          "label": "x =",
+          "answer": 11,
+          "tolerance": 0.1
+        }
+      ],
+      "hint": "Square both sides. Factor. Check BOTH in the original.",
+      "solution_steps": [
+        "Square: x - 2 = (x-8)² = x² - 16x + 64.",
+        "x² - 17x + 66 = 0 → (x-11)(x-6) = 0.",
+        "x = 11 or x = 6.",
+        "Check x=6: √4 = 2, but 6-8 = -2. Extraneous!",
+        "Check x=11: √9 = 3, and 11-8 = 3. ✓"
+      ],
+      "feedback_correct": "\\uD83D\\uDD25 Caught the extraneous one."
+    },
+    {
+      "id": "rp6-q11",
+      "number": 11,
+      "section": "B",
+      "standard": "W3.b",
+      "type": "fractional-exp",
+      "question_html": "Solve: \\\\( 3x^{2/3} - 12 = 0 \\\\)",
+      "inputs": [
+        {
+          "id": "q11_x",
+          "type": "number",
+          "label": "x =",
+          "answer": 8,
+          "tolerance": 0.01
+        }
+      ],
+      "hint": "Isolate x^(2/3), then raise both sides to the 3/2 power.",
+      "solution_steps": [
+        "3x^(2/3) = 12 \\u2192 x^(2/3) = 4.",
+        "x = 4^(3/2) = (\\u221A4)\\u00B3 = 2\\u00B3 = 8."
+      ],
+      "feedback_correct": "\\uD83D\\uDD25 Fractional exponents. Locked."
+    },
+    {
+      "id": "rp6-q12",
+      "number": 12,
+      "section": "C",
+      "standard": "W2.c",
+      "type": "graph",
+      "question_html": "Graph \\\\( f(x) = -2(x + 1)^2 + 6 \\\\). State the vertex.",
+      "inputs": [
+        {
+          "id": "q12_vx",
+          "type": "number",
+          "label": "Vertex x =",
+          "answer": -1,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q12_vy",
+          "type": "number",
+          "label": "Vertex y =",
+          "answer": 6,
+          "tolerance": 0.1
+        }
+      ],
+      "graph": {
+        "canvas_id": "graphQ12",
+        "function": "-2 * Math.pow(x + 1, 2) + 6",
+        "function_display": "f(x) = -2(x+1)\\u00B2 + 6",
+        "key_points": [
+          [
+            -3,
+            -2
+          ],
+          [
+            -2,
+            4
+          ],
+          [
+            -1,
+            6
+          ],
+          [
+            0,
+            4
+          ],
+          [
+            1,
+            -2
+          ]
+        ],
+        "x_range": [
+          -6,
+          4
+        ],
+        "y_range": [
+          -6,
+          8
+        ],
+        "min_points": 5,
+        "tolerance": 0.25
+      },
+      "hint": "Vertex form: f(x) = a(x-h)\\u00B2 + k. Vertex is (h, k). a=-2 means opens down.",
+      "solution_steps": [
+        "Vertex form: a = -2, h = -1, k = 6.",
+        "Vertex: (-1, 6).",
+        "Opens down (a < 0), narrower than y=x\\u00B2 (|a|>1).",
+        "Plot: f(-3)=-2(4)+6=-2, f(-2)=-2(1)+6=4, f(0)=-2(1)+6=4, f(1)=-2(4)+6=-2."
+      ],
+      "feedback_correct": "\\uD83D\\uDD25 Vertex and graph locked."
+    },
+    {
+      "id": "rp6-q13",
+      "number": 13,
+      "section": "C",
+      "standard": "W2.e",
+      "type": "graph",
+      "question_html": "Graph \\\\( f(x) = \\\\dfrac{4}{x - 3} - 2 \\\\) and draw asymptotes. State the asymptotes.",
+      "inputs": [
+        {
+          "id": "q13_va",
+          "type": "number",
+          "label": "Vertical asymptote x =",
+          "answer": 3,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q13_ha",
+          "type": "number",
+          "label": "Horizontal asymptote y =",
+          "answer": -2,
+          "tolerance": 0.1
+        }
+      ],
+      "graph": {
+        "canvas_id": "graphQ13",
+        "function": "4 / (x - 3) - 2",
+        "function_display": "f(x) = 4/(x-3) - 2",
+        "key_points": [
+          [
+            1,
+            -4
+          ],
+          [
+            2,
+            -6
+          ],
+          [
+            4,
+            2
+          ],
+          [
+            5,
+            0
+          ],
+          [
+            7,
+            -1
+          ]
+        ],
+        "x_range": [
+          -2,
+          10
+        ],
+        "y_range": [
+          -10,
+          8
+        ],
+        "min_points": 5,
+        "tolerance": 0.25
+      },
+      "hint": "VA: denominator = 0. HA: the constant outside the fraction.",
+      "solution_steps": [
+        "VA: x - 3 = 0 \\u2192 x = 3.",
+        "HA: y = -2 (the constant added).",
+        "Plot: f(1)=4/(-2)-2=-4, f(2)=4/(-1)-2=-6, f(4)=4/1-2=2, f(5)=4/2-2=0, f(7)=4/4-2=-1."
+      ],
+      "feedback_correct": "\\uD83D\\uDD25 Both asymptotes correct."
+    },
+    {
+      "id": "rp6-q14",
+      "number": 14,
+      "section": "D",
+      "standard": "W3.a",
+      "type": "multiple-choice",
+      "question_html": "The surface area of a sphere is \\\\( S = 4\\\\pi r^2 \\\\). Which correctly solves for \\\\( r \\\\)?",
+      "inputs": [
+        {
+          "id": "q14",
+          "type": "radio",
+          "label": "",
+          "options": [
+            {
+              "value": "A",
+              "text": "\\\\( r = \\\\dfrac{S}{4\\\\pi} \\\\)"
+            },
+            {
+              "value": "B",
+              "text": "\\\\( r = \\\\sqrt{\\\\dfrac{S}{4\\\\pi}} \\\\)"
+            },
+            {
+              "value": "C",
+              "text": "\\\\( r = \\\\sqrt{\\\\dfrac{S}{4\\\\pi^2}} \\\\)"
+            },
+            {
+              "value": "D",
+              "text": "\\\\( r = \\\\dfrac{S^2}{4\\\\pi} \\\\)"
+            }
+          ],
+          "answer": "B"
+        }
+      ],
+      "hint": "Divide by 4\\u03C0, then square root both sides.",
+      "solution_steps": [
+        "S = 4\\u03C0r\\u00B2.",
+        "r\\u00B2 = S/(4\\u03C0).",
+        "r = \\u221A(S/(4\\u03C0)).",
+        "Answer: B."
+      ],
+      "feedback_correct": "\\uD83D\\uDD25 Formula rearrangement. Clean."
+    },
+    {
+      "id": "rp6-q15",
+      "number": 15,
+      "section": "D",
+      "standard": "W3.a",
+      "type": "word-problem",
+      "question_html": "A radioactive sample starts with 800 grams and has a half-life of 4 years. The remaining mass is modeled by \\\\\\\\( A(t) = 800 \\\\\\\\cdot \\\\\\\\left(\\\\\\\\dfrac{1}{2}\\\\\\\\right)^{t/4} \\\\\\\\). How many years until 100 grams remain?",
+      "inputs": [
+        {
+          "id": "q15_t",
+          "type": "number",
+          "label": "t =",
+          "answer": 12,
+          "tolerance": 0.5
+        }
+      ],
+      "hint": "Set A(t)=100. Divide by 800. What power of 1/2?",
+      "solution_steps": [
+        "800 · (1/2)^(t/4) = 100.",
+        "(1/2)^(t/4) = 100/800 = 1/8.",
+        "1/8 = (1/2)³, so t/4 = 3.",
+        "t = 12 years."
+      ],
+      "feedback_correct": "🔥 Half-life solved. 12 years."
+    }
+  ]
+}

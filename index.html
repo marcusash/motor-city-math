@@ -14,12 +14,12 @@
         body { background: var(--bg-page); }
         .dashboard { max-width: 900px; margin: 0 auto; padding: 20px; }
         .dash-header { text-align: center; margin-bottom: 24px; }
-        .dash-header h1 { color: var(--accent-navy); font-size: 2.5em; font-weight: 700; margin: 0; }
-        .dash-header .subtitle { color: var(--text-secondary); font-weight: 400; font-size: 1.1em; margin-top: 4px; }
+        .dash-header h1 { color: var(--accent-navy); font-size: var(--text-2xl); font-weight: 700; margin: 0; }
+        .dash-header .subtitle { color: var(--text-secondary); font-weight: 400; font-size: var(--text-base); margin-top: 4px; }
         .section-title {
             color: var(--accent-navy);
             font-weight: 700;
-            font-size: 1.15em;
+            font-size: var(--text-base);
             margin: 28px 0 12px;
             display: flex;
             justify-content: space-between;
@@ -31,6 +31,41 @@
         .section-title::after { content: '▸'; transition: transform 0.2s; margin-left: 8px; }
         details[open] > .section-title::after { transform: rotate(90deg); }
         .dash-section { margin-bottom: 8px; }
+        .hero-card {
+            text-align: center;
+            margin: 0 0 24px;
+            padding: 24px;
+            background: var(--bg-card);
+            border-radius: 8px;
+            border: 1px solid var(--border-default);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(
+                to right,
+                var(--accent-red) 0%, var(--accent-red) 30%,
+                var(--accent-blue) 30%, var(--accent-blue) 70%,
+                var(--accent-red) 70%, var(--accent-red) 100%
+            );
+            border-radius: 8px 8px 0 0;
+        }
+        .hero-card .hero-title {
+            font-size: var(--text-lg);
+            font-weight: 700;
+            color: var(--accent-navy);
+            margin-bottom: 4px;
+        }
+        .hero-card .hero-subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
         .chart-box {
             background: var(--bg-card);
             border: 1px solid var(--border-default);
@@ -43,9 +78,9 @@
             text-align: center;
             padding: 40px 20px;
             color: var(--text-secondary);
-            font-size: 1.1em;
+            font-size: var(--text-base);
         }
-        .empty-state .icon { font-size: 2.5em; margin-bottom: 12px; }
+        .empty-state .icon { font-size: var(--text-2xl); margin-bottom: 12px; }
 
         /* Standards grid */
         .standards-grid {
@@ -61,12 +96,12 @@
             border-radius: 4px;
             padding: 14px;
         }
-        .std-card .std-id { font-weight: 700; color: var(--accent-navy); font-size: 0.85em; text-transform: uppercase; }
-        .std-card .std-name { color: var(--text-secondary); font-size: 0.85em; margin-bottom: 8px; }
-        .std-card .std-pct { font-size: 1.6em; font-weight: 800; margin: 4px 0; }
+        .std-card .std-id { font-weight: 700; color: var(--accent-navy); font-size: var(--text-sm); text-transform: uppercase; }
+        .std-card .std-name { color: var(--text-secondary); font-size: var(--text-sm); margin-bottom: 8px; }
+        .std-card .std-pct { font-size: var(--text-xl); font-weight: 800; margin: 4px 0; }
         .std-card .std-bar { height: 8px; background: var(--border-subtle); border-radius: 4px; overflow: hidden; margin: 6px 0; }
         .std-card .std-fill { height: 100%; border-radius: 4px; transition: width 0.6s ease; }
-        .std-card .std-copy { font-size: 0.85em; color: var(--text-secondary); }
+        .std-card .std-copy { font-size: var(--text-sm); color: var(--text-secondary); }
         .std-card.tier-high { border-left-color: var(--color-correct); }
         .std-card.tier-high .std-pct { color: var(--color-correct); }
         .std-card.tier-high .std-fill { background: var(--color-correct); }
@@ -89,18 +124,18 @@
             border-radius: 6px;
             padding: 12px 16px;
             margin: 6px 0;
-            font-size: 0.95em;
+            font-size: var(--text-sm);
             display: flex;
             align-items: center;
             gap: 10px;
         }
-        .study-item .emoji { font-size: 1.3em; }
+        .study-item .emoji { font-size: var(--text-lg); }
 
         /* Stats bar */
         .stats-bar {
             text-align: center;
             color: var(--text-secondary);
-            font-size: 0.85em;
+            font-size: var(--text-sm);
             padding: 12px 0;
             border-top: 1px solid var(--border-subtle);
             margin-top: 16px;
@@ -123,22 +158,22 @@
             text-decoration: none;
             color: var(--accent-navy);
             font-weight: 600;
-            font-size: 0.95em;
+            font-size: var(--text-sm);
             transition: border-color 0.15s, box-shadow 0.15s;
         }
         .test-link:hover {
             border-color: var(--accent-blue);
             box-shadow: 0 2px 8px rgba(29,66,186,0.12);
         }
-        .test-link .test-meta { color: var(--text-secondary); font-weight: 400; font-size: 0.85em; margin-top: 4px; }
+        .test-link .test-meta { color: var(--text-secondary); font-weight: 400; font-size: var(--text-sm); margin-top: 4px; }
         .test-link .test-score { font-weight: 700; color: var(--color-correct); float: right; }
         .test-link .test-score.low { color: var(--accent-red); }
         .sparkline { display: block; margin-top: 6px; }
 
-        .footer { text-align: center; color: var(--text-secondary); font-size: 0.85em; padding: 20px 0 10px; }
+        .footer { text-align: center; color: var(--text-secondary); font-size: var(--text-sm); padding: 20px 0 10px; }
         .nav-btn {
             display: inline-block; padding: 12px 32px;
-            font-weight: 700; font-size: 1.05rem; border-radius: 6px; text-decoration: none;
+            font-weight: 700; font-size: var(--text-base); border-radius: 6px; text-decoration: none;
             border: 2px solid transparent; transition: background 0.15s, border-color 0.15s;
             cursor: pointer;
         }
@@ -151,7 +186,7 @@
         @media (max-width: 768px) {
             .standards-grid { grid-template-columns: 1fr; }
             .test-grid { grid-template-columns: 1fr; }
-            .dash-header h1 { font-size: 1.8em; }
+            .dash-header h1 { font-size: var(--text-xl); }
             .chart-box canvas { max-height: 200px; }
         }
         @media print { .dashboard { display: none; } }
@@ -161,15 +196,19 @@
     <script>if(localStorage.getItem('mcm-arena-mode')==='on')document.body.classList.add('arena-mode');</script>
     <a href="#main" class="sr-only">Skip to content</a>
     <div class="dashboard" role="main" id="main">
+        <div class="print-header">
+            <strong>Motor City Math — Dashboard</strong><br>
+            Name: _____________________ Date: ___________
+        </div>
         <header class="dash-header" style="display:block; text-align:center;">
             <h1>Motor City Math</h1>
             <div class="subtitle">Algebra II · Kai</div>
         </header>
 
         <!-- UP NEXT: One primary action above the fold -->
-        <div style="text-align:center; margin: 0 0 24px; padding: 24px; background: var(--bg-card); border-radius: 8px; border: 1px solid var(--border-default);">
-            <div style="font-size:var(--text-lg); font-weight:700; color:var(--accent-navy); margin-bottom:4px;">Up Next 🏀</div>
-            <div id="upNextInfo" style="color:var(--text-secondary); margin-bottom:16px;">Retake Practice — Nonlinear Functions</div>
+        <div class="hero-card">
+            <div class="hero-title">Up Next 🏀</div>
+            <div class="hero-subtitle" id="upNextInfo">Retake Practice — Nonlinear Functions</div>
             <a href="exam.html?file=retake-practice-1" class="nav-btn primary">Start Practice</a>
             <div class="stats-bar" id="statsBar" style="margin-top:16px;"></div>
         </div>
@@ -216,6 +255,8 @@
         { file: 'exam.html?file=retake-practice-3', name: 'Retake Practice #3', unit: 'nonlinear', key: 'mcm-retake-practice-3', questions: 15, retake: true },
         { file: 'exam.html?file=retake-practice-4', name: 'Retake Practice #4', unit: 'nonlinear', key: 'mcm-retake-practice-4', questions: 15, retake: true },
         { file: 'exam.html?file=retake-practice-5', name: 'Retake Practice #5', unit: 'nonlinear', key: 'mcm-retake-practice-5', questions: 15, retake: true },
+        { file: 'exam.html?file=retake-practice-6', name: 'Retake Practice #6 (W2.b Drill)', unit: 'nonlinear', key: 'mcm-retake-practice-6', questions: 15, retake: true },
+        { file: 'exam.html?file=retake-practice-7', name: 'Retake Practice #7 (Mock Retake)', unit: 'nonlinear', key: 'mcm-retake-practice-7', questions: 15, retake: true },
         { file: 'nonlinear_exam_mvp.html', name: 'Nonlinear Functions Exam (MVP)', unit: 'nonlinear', key: 'mcm-nonlinear-exam-mvp', questions: 15 },
         { file: 'final_exam_251123.html', name: 'Final Exam (Nov 23)', unit: 'final', key: 'mcm-final-exam-results', questions: 20 },
         { file: 'final_exam_251123_mini.html', name: 'Final Exam Mini', unit: 'final', key: 'mcm-final-exam-mini-results', questions: 10 }
@@ -307,10 +348,20 @@
                     },
                     annotation: {
                         annotations: {
-                            passingLine: {
-                                type: 'line', yMin: 80, yMax: 80,
-                                borderColor: tkSecondary, borderWidth: 1, borderDash: [6, 4],
-                                label: { content: 'Passing (80%)', display: true, position: 'start', font: { size: 10 }, color: tkSecondary }
+                            grade4Line: {
+                                type: 'line', yMin: 92, yMax: 92,
+                                borderColor: tkCorrect, borderWidth: 1, borderDash: [6, 4],
+                                label: { content: 'Grade 4 (92%)', display: true, position: 'start', font: { size: 10 }, color: tkCorrect }
+                            },
+                            grade3Line: {
+                                type: 'line', yMin: 82, yMax: 82,
+                                borderColor: tkBlue, borderWidth: 1, borderDash: [4, 4],
+                                label: { content: 'Grade 3 (82%)', display: true, position: 'end', font: { size: 10 }, color: tkBlue }
+                            },
+                            grade2Line: {
+                                type: 'line', yMin: 70, yMax: 70,
+                                borderColor: tkRed, borderWidth: 1, borderDash: [4, 4],
+                                label: { content: 'Grade 2 (70%)', display: true, position: 'start', font: { size: 10 }, color: tkRed }
                             }
                         }
                     }
@@ -447,6 +498,10 @@
     }
 
     function buildSparkline(values) {
+        var cs = getComputedStyle(document.documentElement);
+        var tkBlue = cs.getPropertyValue('--accent-blue').trim() || '#1D42BA';
+        var tkCorrect = cs.getPropertyValue('--color-correct').trim() || '#1B7D3A';
+        var tkRed = cs.getPropertyValue('--accent-red').trim() || '#C8102E';
         var w = 80, h = 20, pad = 2;
         var min = Math.min.apply(null, values);
         var max = Math.max.apply(null, values);
@@ -501,6 +556,7 @@
         var html = '';
         retakeTests.forEach(function(t, i) {
             var scoreHtml = '';
+            var borderColor = 'var(--accent-blue)';
             var s = scores[t.key];
             if (s) {
                 var pct = null;
@@ -511,13 +567,68 @@
                 }
                 if (pct !== null) {
                     scoreHtml = '<span class="test-score' + (pct < 70 ? ' low' : '') + '">' + pct + '%</span>';
+                    // SAAS grade colors: ≥92% green, 82-91% blue, 70-81% warning, <70% red
+                    if (pct >= 92) borderColor = 'var(--color-correct)';
+                    else if (pct >= 82) borderColor = 'var(--accent-blue)';
+                    else if (pct >= 70) borderColor = 'var(--color-warning)';
+                    else borderColor = 'var(--accent-red)';
                 }
             }
-            html += '<a href="' + t.file + '" class="test-link" style="border-left-color:var(--accent-red);">' +
+            html += '<a href="' + t.file + '" class="test-link" style="border-left-color:' + borderColor + ';">' +
                 '📝 ' + t.name + scoreHtml +
                 '<div class="test-meta">' + t.questions + ' questions · 60 min · nonlinear</div></a>';
         });
         grid.innerHTML = html;
+    }
+
+    /* ========== UP NEXT (ADHD: one recommendation) ========== */
+    function updateUpNext() {
+        var scores = getScores();
+        var retakes = tests.filter(function(t) { return t.retake; });
+        var next = null;
+
+        // Priority 1: first practice exam with no score
+        for (var i = 0; i < retakes.length; i++) {
+            var s = scores[retakes[i].key];
+            if (!s || !s.attempts || s.attempts.length === 0) {
+                next = retakes[i];
+                break;
+            }
+        }
+
+        // Priority 2: lowest-scoring practice exam (below 92% / Grade 4)
+        if (!next) {
+            var lowest = null, lowestPct = 100;
+            retakes.forEach(function(t) {
+                var s = scores[t.key];
+                if (s && s.attempts && s.attempts.length > 0) {
+                    var last = s.attempts[s.attempts.length - 1];
+                    var pct = last.pct || Math.round((last.score / last.total) * 100);
+                    if (pct < lowestPct) { lowestPct = pct; lowest = t; }
+                }
+            });
+            if (lowest && lowestPct < 92) next = lowest;
+        }
+
+        // Priority 3: all ≥92% — celebrate
+        if (!next) {
+            document.getElementById('upNextInfo').textContent = 'All practice exams at Grade 4. You crushed it. 💪';
+            var btn = document.querySelector('.nav-btn.primary');
+            if (btn) { btn.textContent = 'Run It Back'; btn.href = 'exam.html?file=retake-practice-7'; }
+            return;
+        }
+
+        // Show name + last score (if retrying) as motivation
+        var info = next.name;
+        var s = scores[next.key];
+        if (s && s.attempts && s.attempts.length > 0) {
+            var lastPct = s.attempts[s.attempts.length - 1].pct ||
+                Math.round((s.attempts[s.attempts.length - 1].score / s.attempts[s.attempts.length - 1].total) * 100);
+            info += ' · Last: ' + lastPct + '% — beat it.';
+        }
+        document.getElementById('upNextInfo').textContent = info;
+        var btn = document.querySelector('.nav-btn.primary');
+        if (btn) btn.href = next.file;
     }
 
     /* ========== INIT ========== */
@@ -528,6 +639,7 @@
         buildRetakeGrid();
         buildTestGrid();
         buildStats();
+        updateUpNext();
     });
 
     function exportScores() {
@@ -564,3 +676,5 @@
     <script src="shared/scripts.js"></script>
 </body>
 </html>
+
+

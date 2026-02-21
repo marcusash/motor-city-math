@@ -220,6 +220,7 @@ h1, h2, h3, h4, h5, h6, p, label, button, a, li, td, th {
     border-radius: 0;
     padding: 40px;
     box-shadow: var(--shadow-card);
+    overflow-x: hidden;
 }
 
 /* === Header === */
@@ -246,6 +247,11 @@ header {
     text-decoration: none;
     font-size: var(--text-lg);
     z-index: 5;
+    min-width: 44px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 .header-back:hover { color: var(--accent-blue); }
 
@@ -279,6 +285,7 @@ header .date {
     border-radius: 4px;
     transition: box-shadow 0.2s;
     position: relative;
+    overflow-x: auto;
 }
 
 .question-card::before {
@@ -1025,6 +1032,11 @@ table th {
         grid-template-columns: 1fr;
     }
 
+    /* Stack side-by-side flex layouts on tablet */
+    .question-card > div[style] {
+        flex-wrap: wrap;
+    }
+
     /* Touch targets: 44px minimum (WCAG 2.5.8) */
     .submit-btn, .btn-primary,
     .print-btn, .btn-secondary,
@@ -1055,6 +1067,11 @@ table th {
 
     .chart-container {
         height: 250px;
+    }
+
+    /* Stack side-by-side flex layouts on phone */
+    .question-card > div[style] {
+        flex-wrap: wrap;
     }
 
     /* WCAG 2.5.8: minimum 44px touch targets on mobile */
