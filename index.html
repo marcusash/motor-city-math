@@ -190,12 +190,40 @@
             .chart-box canvas { max-height: 200px; }
         }
         @media print { .dashboard { display: none; } }
+
+        /* Dad Mode */
+        .dad-banner {
+            display: flex; align-items: center; flex-wrap: wrap; gap: 10px;
+            background: #0d1117; border: 1px solid #e74c3c; border-radius: 8px;
+            padding: 10px 16px; margin-bottom: 20px;
+        }
+        .dad-banner .dad-label { color: #e74c3c; font-weight: 700; font-size: var(--text-sm); white-space: nowrap; }
+        .dad-banner .dad-status { color: #8b949e; font-size: var(--text-sm); flex: 1; }
+        .dad-banner .dad-upload-label {
+            color: #58a6ff; font-size: var(--text-sm); text-decoration: underline;
+            cursor: pointer; white-space: nowrap;
+        }
+        .hero-greeting {
+            text-align: center; font-size: var(--text-lg); font-weight: 600;
+            color: var(--text-primary); margin: -12px 0 20px;
+        }
     </style>
 </head>
 <body>
     <script>if(localStorage.getItem('mcm-arena-mode')==='on')document.body.classList.add('arena-mode');</script>
     <a href="#main" class="sr-only">Skip to content</a>
     <div class="dashboard" role="main" id="main">
+
+        <!-- Dad Mode banner (hidden until ?dad=1) -->
+        <div class="dad-banner" id="dadBanner" style="display:none;">
+            <span class="dad-label">👨 Dad View</span>
+            <span class="dad-status" id="dadStatus">Loading Kai's scores...</span>
+            <label class="dad-upload-label">
+                Update from Kai's device
+                <input type="file" accept=".json" id="dadFileInput" style="display:none;" onchange="loadDadFile(this)">
+            </label>
+        </div>
+
         <div class="print-header">
             <strong>Motor City Math — Dashboard</strong><br>
             Name: _____________________ Date: ___________
@@ -203,6 +231,7 @@
         <header class="dash-header" style="display:block; text-align:center;">
             <h1>Motor City Math</h1>
             <div class="subtitle">Algebra II · Kai</div>
+            <div class="hero-greeting" id="kaiGreeting">Hey Kai! 👋</div>
         </header>
 
         <!-- UP NEXT: One primary action above the fold -->
@@ -214,7 +243,7 @@
         </div>
 
         <!-- Collapsible sections below the fold -->
-        <details class="dash-section">
+        <details class="dash-section" open>
             <summary class="section-title">Your Stats 📊</summary>
             <div class="chart-box">
                 <canvas id="scoreChart" aria-label="Score history chart" role="img"></canvas>
@@ -262,8 +291,13 @@
         { file: 'final_exam_251123_mini.html', name: 'Final Exam Mini', unit: 'final', key: 'mcm-final-exam-mini-results', questions: 10 }
     ];
 
+    /* ========== DAD MODE ========== */
+    var _dadMode = new URLSearchParams(window.location.search).get('dad') === '1';
+    var _dadScores = null;
+
     /* ========== READ SCORES ========== */
     function getScores() {
+        if (_dadMode && _dadScores) return _dadScores;
         try { return JSON.parse(localStorage.getItem('mcm_scores') || '{}'); } catch(e) { return {}; }
     }
 
@@ -632,7 +666,7 @@
     }
 
     /* ========== INIT ========== */
-    window.addEventListener('DOMContentLoaded', function() {
+    function rerenderAll() {
         buildChart();
         var stdResult = buildStandards();
         buildStudyNext(stdResult);
@@ -640,6 +674,53 @@
         buildTestGrid();
         buildStats();
         updateUpNext();
+    }
+
+    function dadModeInit() {
+        if (!_dadMode) return;
+        document.getElementById('dadBanner').style.display = 'flex';
+        if (_dadMode) document.getElementById('kaiGreeting').style.display = 'none';
+        fetch('data/kai-scores-2026-02-21.json')
+            .then(function(r) { return r.json(); })
+            .then(function(data) {
+                if (data && data.mcm_scores) {
+                    _dadScores = data.mcm_scores;
+                    document.getElementById('dadStatus').textContent = 'Kai\'s scores loaded (Feb 21). Click "Update" to load a fresher file.';
+                    rerenderAll();
+                }
+            })
+            .catch(function() {
+                document.getElementById('dadStatus').textContent = 'Click "Update from Kai\'s device" to load his score file.';
+            });
+    }
+
+    function loadDadFile(input) {
+        var file = input.files[0];
+        if (!file) return;
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            try {
+                var data = JSON.parse(e.target.result);
+                if (data && data.mcm_scores) {
+                    _dadScores = data.mcm_scores;
+                    var exported = data.exported
+                        ? new Date(data.exported).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })
+                        : 'unknown date';
+                    document.getElementById('dadStatus').textContent = 'Kai\'s scores loaded from ' + exported + ' export.';
+                    rerenderAll();
+                } else {
+                    alert('File missing score data. Make sure it\'s from the "Send to Dad" button.');
+                }
+            } catch(err) {
+                alert('Could not read score file.');
+            }
+        };
+        reader.readAsText(file);
+    }
+
+    window.addEventListener('DOMContentLoaded', function() {
+        dadModeInit();
+        rerenderAll();
     });
 
     function exportScores() {
