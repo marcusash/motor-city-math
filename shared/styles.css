@@ -1110,6 +1110,17 @@ body.archived::before {
     margin-top: 40px;
 }
 
+/* Print header: hidden on screen, visible only when printing */
+.print-header { display: none; }
+
+/* Test header: right padding prevents arena-toggle button overlapping title */
+.test-header {
+    position: relative;
+    text-align: center;
+    padding: 0 56px;
+}
+
 @media print {
+    .print-header { display: block; margin-bottom: 12px; font-size: 0.9rem; }
     .timer, .timer-toast, .score-card, .standards-grid { display: none; }
 }
