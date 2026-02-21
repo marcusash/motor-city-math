@@ -486,7 +486,7 @@
             2.5
           ]
         ],
-        "min_points": 5,
+        "min_points": 4,
         "tolerance": 0.25,
         "asymptotes": {
           "vertical": [

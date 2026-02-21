@@ -20,8 +20,9 @@
         .standard-badge { background: var(--bg-highlight); color: var(--accent-blue); font-size: var(--text-xs); font-weight: 700; padding: 2px 8px; border-radius: 12px; }
         .input-group { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 10px 0; }
         .input-group label { font-weight: 600; color: var(--text-primary); min-width: 120px; }
-        .input-group input[type="number"], .input-group select { padding: 8px 12px; border: 1px solid var(--border-default); border-radius: 6px; font-size: var(--text-base); background: var(--bg-input); color: var(--text-primary); width: 120px; }
+        .input-group input[type="number"], .input-group input[type="text"], .input-group select { padding: 8px 12px; border: 1px solid var(--border-default); border-radius: 6px; font-size: var(--text-base); background: var(--bg-input); color: var(--text-primary); width: 120px; }
         .input-group select { width: 180px; }
+        .input-hint { font-size: 0.75rem; color: var(--text-secondary, #888); }
         .radio-group { margin: 10px 0; }
         .radio-option { display: flex; align-items: center; gap: 8px; padding: 8px 12px; margin: 4px 0; border: 1px solid var(--border-subtle); border-radius: 6px; cursor: pointer; background: var(--bg-input); }
         .radio-option:hover { border-color: var(--accent-blue); }
@@ -302,7 +303,8 @@
         } else if (inp.type === 'number') {
             html += '<div class="input-group">';
             if (inp.label) html += '<label>' + inp.label + '</label>';
-            html += '<input type="number" id="' + inp.id + '" step="any" autocomplete="off">';
+            html += '<input type="text" inputmode="decimal" id="' + inp.id + '" autocomplete="off" placeholder="e.g. 1.5 or 3/2">';
+            html += '<span class="input-hint">decimal or fraction ok</span>';
             html += '</div>';
         } else if (inp.type === 'radio') {
             html += '<div class="radio-group">';
@@ -705,6 +707,20 @@
     }
 
     /* --- Grading Engine --- */
+
+    // Accept plain decimals, integers, and simple fractions like "4/3" or "-5/2"
+    function parseStudentAnswer(raw) {
+        if (!raw || !raw.trim()) return NaN;
+        var s = raw.trim();
+        var fracMatch = s.match(/^(-?\d+)\s*\/\s*(-?\d+)$/);
+        if (fracMatch) {
+            var num = parseInt(fracMatch[1], 10);
+            var den = parseInt(fracMatch[2], 10);
+            return den === 0 ? NaN : num / den;
+        }
+        return parseFloat(s);
+    }
+
     function gradeExam() {
         if (examGraded) return;
         examGraded = true;
@@ -745,8 +761,8 @@
                     if (!el || el.value !== inp.answer) qCorrect = false;
                 } else if (inp.type === 'number') {
                     var el2 = document.getElementById(inp.id);
-                    var val = el2 ? parseFloat(el2.value) : NaN;
-                    numberInputs.push({ val: val, answer: inp.answer, tolerance: inp.tolerance || 0.1 });
+                    var val = el2 ? parseStudentAnswer(el2.value) : NaN;
+                    numberInputs.push({ val: val, answer: inp.answer, tolerance: inp.tolerance || 0.01 });
                 } else if (inp.type === 'radio') {
                     var selected = document.querySelector('input[name="' + inp.id + '"]:checked');
                     if (!selected || selected.value !== inp.answer) qCorrect = false;
