@@ -25,7 +25,7 @@
     --color-correct-bg: #F0FFF4;
     --color-incorrect: #C8102E;
     --color-incorrect-bg: #FFF5F5;
-    --color-warning: #E8A317;
+    --color-warning: #8A6200; /* was #E8A317 — failed WCAG AA on white (2.17:1). #8A6200 = 5.49:1 PASS */
     --color-warning-bg: #FFFFF0;
     --shadow-card: 0 2px 8px rgba(0, 45, 98, 0.06);
     --bg-highlight: #EEF1FA;
@@ -64,7 +64,7 @@ body.arena-mode {
     --border-subtle: #1E2742;
     --color-correct: #2ECC71;
     --color-correct-bg: #0D2818;
-    --color-incorrect: #E8334A;
+    --color-incorrect: #FF3A55; /* was #E8334A — failed WCAG AA on card bg (4.09:1). #FF3A55 = 4.89:1 PASS */
     --color-incorrect-bg: #2D0A12;
     --color-warning: #F5C842;
     --color-warning-bg: #2D2408;
