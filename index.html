@@ -294,6 +294,7 @@
     /* ========== DAD MODE ========== */
     var _dadMode = new URLSearchParams(window.location.search).get('dad') === '1';
     var _dadScores = null;
+    var _chartInstance = null;
 
     /* ========== READ SCORES ========== */
     function getScores() {
@@ -345,7 +346,8 @@
         var tkRed = cs.getPropertyValue('--accent-red').trim() || '#C8102E';
 
         var ctx = document.getElementById('scoreChart').getContext('2d');
-        new Chart(ctx, {
+        if (_chartInstance) { _chartInstance.destroy(); _chartInstance = null; }
+        _chartInstance = new Chart(ctx, {
             type: 'line',
             data: {
                 labels: labels,
@@ -563,13 +565,15 @@
             if (s) {
                 testCount++;
                 var ts = s.timestamp;
+                var pct = s.pct;
                 if (s.attempts && s.attempts.length > 0) {
                     ts = s.attempts[s.attempts.length - 1].timestamp;
-                    lastPct = s.attempts[s.attempts.length - 1].pct;
-                } else {
-                    lastPct = s.pct;
+                    pct = s.attempts[s.attempts.length - 1].pct;
                 }
-                if (ts && (!lastTest || ts > lastTest)) lastTest = ts;
+                if (ts && (!lastTest || ts > lastTest)) {
+                    lastTest = ts;
+                    lastPct = pct;
+                }
             }
         });
 
