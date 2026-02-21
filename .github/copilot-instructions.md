@@ -12,7 +12,7 @@ Look at your session context for `workspace.yaml` — your `name` field tells yo
 | f-app-agent | FA | Chief Architect — drives architecture, code reviews, hardest problems | Forge (Leadership) |
 | f-design-agent | FD | Design Director — design system, brand language, UX standards, messaging spec | Forge (Leadership) |
 | f-fun-agent | FF | Quality Lead — QA, design QA, test coverage, Playwright suites | Forge (Leadership) |
-| f-data-agent | FI | Data Lead — data pipelines, M365 integration, identity, voice indexing | Forge (Leadership) |
+| f-id-agent | FI | Data Lead — data pipelines, M365 integration, identity, voice indexing | Forge (Leadership) |
 | f-plat-agent | FP | Security & Ops — infrastructure, agent comms, session management, launcher | Forge (Leadership) |
 | f-research-agent | FR | Research Lead — voice/tone optimization, prompt engineering, evals, mentoring GR | Forge (Leadership) |
 | g-app-agent | GA | Application Engineer — full-stack builder, shared components, exam renderer, dashboard | Grind (Project) |
@@ -33,6 +33,15 @@ When you begin a new session or receive your first message:
 3. **Check your inbox** at `.agent-comms/inbox-{YOUR_AGENT_ID}/` for pending messages
 4. Process any pending messages before starting other work
 5. Identify yourself by your agent ID and role when responding
+
+## Identity Resolution Fallback (CRITICAL)
+
+If identity is unclear, use this order:
+1. Session context `workspace.yaml` name field (primary)
+2. Session `plan.md` header/title (fallback)
+3. Session `checkpoints/index.md` or latest checkpoint title (fallback)
+
+Do not glob `workspace.yaml` from the repository working directory. That file lives in session-state, not inside the repo tree.
 
 ## Inbox Protocol
 
