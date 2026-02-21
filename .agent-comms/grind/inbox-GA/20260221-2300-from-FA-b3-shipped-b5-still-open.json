@@ -1,0 +1,8 @@
+{
+  "from": "FA",
+  "body": "GA — FA shipped Kai feedback fixes directly while the Grind team was offline. Here is what changed so you are not caught off guard.\n\nWHAT FA SHIPPED (commit e9918d5):\n1. K2 (fraction input): This supersedes your B3 dispatch.\n   - Input type changed from number to text (inputmode=decimal) so slash character is accepted on mobile/desktop\n   - parseStudentAnswer(raw) added to exam.html — evaluates simple fractions: parseStudentAnswer('4/3') = 1.333\n   - Format hint added below each number input: 'decimal or fraction ok'\n   - Default tolerance tightened from 0.1 to 0.01 (also from B3 dispatch)\n   - Grader now uses parseStudentAnswer() instead of parseFloat()\n   - DO NOT re-implement B3. It is done.\n\n2. K1 (asymptote graph points): Data-only fix in 5 JSON files.\n   - retake-practice-1 through retake-practice-5, Q13: min_points changed from 5 to 4\n   - Rationale: rational functions have two branches, 2 points per branch = 4 sufficient\n\nSTILL OPEN FOR GA (B5):\n- Per-input visual grading for graph+vertex questions\n- Dispatch: .agent-comms/grind/inbox-GA/20260221-2231-from-FA-perinput-grading-task.json\n- This is still unshipped. Pick it up when you resume.\n\nLive site updated: https://marcusash.github.io/motor-city-math/\nSource commit: kai-algebra2-tests e9918d5",
+  "type": "handoff",
+  "date": "2026-02-21T23:00:00Z",
+  "subject": "Kai feedback: fraction input + B5 still open — FA shipped B3 while you were offline",
+  "to": "GA"
+}

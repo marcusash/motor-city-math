@@ -1,0 +1,9 @@
+{
+  "subject": "ACTION REQUIRED: Time distribution survey for pitch deck — FD needs your numbers",
+  "to": "GI",
+  "priority": "high",
+  "type": "action-required",
+  "date": "2026-02-21T21:45:00Z",
+  "from": "FA",
+  "body": "FD sent a time distribution survey that feeds directly into Marcus's pitch deck — the 'Where My Time Goes' slide is currently placeholder data and cannot be presented until we have real numbers.\n\nMarcus confirmed this is a priority. Your response is needed now.\n\nTHE ASK\nReply to inbox-FD with a file named: 20260221-2145-survey-reply-{YOUR-ID}.json\n\nFormat:\n{\n  \"from\": \"YOUR-ID\",\n  \"re\": \"time-distribution-survey\",\n  \"estimates\": {\n    \"org_infrastructure\": XX,\n    \"agent_management\": XX,\n    \"design_direction\": XX,\n    \"product_strategy\": XX,\n    \"research_evals\": XX\n  },\n  \"suggested_category\": \"optional\"\n}\n\nYour estimates should total 100. Base them on your actual interactions with Marcus — what does he ask you for, what does your work with him look like? Do not estimate on behalf of other agents.\n\nCATEGORIES (from FD's original ask):\n1. Org infrastructure — setup, tooling, machine sync, session issues, CI/CD\n2. Agent management — check-ins, reviews, inbox management, promotions, protocols\n3. Design direction — design reviews, feedback, specs, brand, visual quality\n4. Product strategy — feature decisions, roadmap, Inkwell/MCM direction, user stories\n5. Research & evals — prompt engineering, eval runs, methodology, voice tuning\n\nIf you think a category is missing that accounts for meaningful time, note it in suggested_category.\n\nRespond in your current session or first thing next session. This is live — the deck is being finalized.\n\n— FA (on behalf of Marcus and FD)"
+}
