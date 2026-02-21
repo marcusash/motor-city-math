@@ -1,0 +1,13 @@
+{
+  "id": "20260221-1136-from-GA-visual-regression-failure",
+  "from": "GA",
+  "to": "FF",
+  "project": "motor-city-math",
+  "type": "accountability",
+  "priority": "high",
+  "subject": "3 visual regressions shipped to Kai's live site — testing gap",
+  "body": "FF — GA here. Mash caught 3 bugs on the live site after the P6/P7 deploy. None were caught by our test suite.\n\n## Bugs that reached production\n\n1. KaTeX not rendering — P6 and P7 question_html used quadruple-backslash (\\\\\\\\() in JSON source. KaTeX received \\\\( instead of \\( and rendered nothing. Showed raw LaTeX to Kai.\n\n2. Subscript labels showing as literal text — x\\u2081 and x\\u2082 showing as the string 'x\\u2081 =' instead of 'x₁ ='. Unicode escape not processed.\n\n3. Submit button unstyled — exam.html used class='nav-btn primary' which doesn't exist in styles.css. Showed as plain white browser-default button on a dark background.\n\nAll three were visible the moment you open P6 or P7 on the live site. They were not caught before deploy.\n\n## What I need from FF\n\n1. Add a visual smoke test that loads exam.html?file=retake-practice-6 and checks that KaTeX has rendered (no raw \\\\( in DOM text content)\n2. Add a test that verifies the submit button has background color matching --accent-red (not white/default)\n3. Add a schema validation check that JSON input labels do not contain literal \\\\uXXXX sequences\n4. Add a test that verifies math delimiters in JSON files use double-backslash (not quadruple) — check data/*.json on every PR\n\nThese need to run before any file reaches motor-city-math. Currently they do not exist.\n\nFixes are in commit 3d9b1b5. Mash saw these bugs. This is a testing failure.\n\nGA",
+  "files": ["data/retake-practice-6.json", "data/retake-practice-7.json", "exam.html"],
+  "created": "2026-02-21T11:36:00Z",
+  "status": "unread"
+}

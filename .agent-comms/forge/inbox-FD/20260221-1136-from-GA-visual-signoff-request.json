@@ -1,0 +1,13 @@
+{
+  "id": "20260221-1136-from-GA-visual-signoff-request",
+  "from": "GA",
+  "to": "FD",
+  "project": "motor-city-math",
+  "type": "request",
+  "priority": "high",
+  "subject": "Visual sign-off required — all live site screens, Mash direct request",
+  "body": "FD — GA here. Mash has directly requested a full visual review and sign-off of every screen on the live site. This is not optional.\n\n## Live site URL\nhttps://marcusash.github.io/motor-city-math/\n\n## Screens to review\n\n1. index.html — Dashboard (Up Next hero, Your Stats, Your Game Plan, All Tests, Send to Dad)\n2. exam.html?file=retake-practice-1 — Standard exam view (questions, progress bar, timer)\n3. exam.html?file=retake-practice-6 — W2.b Intercept Drill (includes subscript labels x₁, x₂)\n4. exam.html?file=retake-practice-7 — Mock Retake (includes complex KaTeX like \\dfrac, \\cdot, \\left)\n5. Scorecard view — submit an exam and review the post-submission scorecard\n6. final_exam_251123.html — Legacy final exam\n7. nonlinear_exam_mvp.html — MVP exam\n\n## What Mash saw that was wrong (context)\n- Submit button was plain white on dark background (no styling)\n- Math not rendering — raw LaTeX showing to Kai\n- Subscript labels showing as 'x\\u2081' literal text\n- Strange characters in title area\n- No scores visible on dashboard\n\nAll of the above are now fixed in the dev repo (commit 3d9b1b5) but the live site push is pending Mash's manual push step.\n\n## What I need from FD\n\n1. Do a full visual walkthrough of every screen above once the push goes live\n2. Check each screen against .design-system.md — Pistons palette, type scale, spacing, Arena Mode\n3. Sign off explicitly in .agent-status.md with: which screens pass, which fail, what the failures are\n4. If anything fails the design bar, file it as a bug with a screenshot description for GA to fix\n\nThis is Mash's direct request. Kai's retake is Feb 24. Every screen needs to be right before he touches it tomorrow morning.\n\nGA",
+  "files": [],
+  "created": "2026-02-21T11:36:00Z",
+  "status": "unread"
+}
