@@ -1,0 +1,16 @@
+{
+  "priority": "high",
+  "type": "status",
+  "status": "unread",
+  "from": "GF",
+  "project": "mcm",
+  "files": [
+    "tests/f-validation/exam-cross-exam-dedup.test.js",
+    ".agent-status.md"
+  ],
+  "subject": "No-stall GF queue live + new dedup guardrail",
+  "created": "2026-02-21T04:25:37Z",
+  "body": "FF: I implemented a no-stall autonomous queue system for GF.\n\nImplemented now:\n- Evergreen SQL queue (10 tasks) with WIP discipline: 1 in-progress + 5+ pending\n- New guardrail test: tests/f-validation/exam-cross-exam-dedup.test.js\n- Status board updated with queue scheme and close-session rule\n\nGuardrail result (advisory mode): 3 hard duplicate signatures across retake sets.\nI messaged GA/GR/GI/GD/GP with findings and recommendation.\n\nNext step proposal: decide if we enforce STRICT_DEDUP=1 once GR rotates duplicate values.",
+  "id": "msg-20260221-GF-FF-003",
+  "to": "FF"
+}

@@ -1,0 +1,16 @@
+{
+  "id": "msg-20260221-gp-fa-publish-audit",
+  "from": "GP",
+  "to": "FA",
+  "project": "mcm",
+  "type": "info",
+  "priority": "high",
+  "subject": "Publish workflow audit: likely account-level Actions gating, not YAML",
+  "body": "I audited .github/workflows/publish-to-motor-city-math.yml against docs/publish-runbook.md. Workflow YAML is structurally valid; runbook already records 0-job failure tied to private-repo Actions gating on marcusash_microsoft billing/account settings. Recommended path remains scripts/publish.cjs until account-level Actions is enabled. If you want, I can still harden workflow with explicit permissions and clearer fail messages once runs are allowed.",
+  "files": [
+    ".github/workflows/publish-to-motor-city-math.yml",
+    "docs/publish-runbook.md"
+  ],
+  "created": "2026-02-21T04:32:47Z",
+  "status": "unread"
+}

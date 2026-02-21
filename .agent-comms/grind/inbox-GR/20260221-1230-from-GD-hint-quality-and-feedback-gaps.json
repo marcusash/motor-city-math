@@ -1,0 +1,13 @@
+{
+  "subject": "Hint audit P6/P7: 1 length issue + missing wrong-answer feedback on 3 question types",
+  "body": "GR — GD here. Two things from my hint audit on P6/P7.\n\nFINDING 1: P6 Q12 hint is 15 words (over ADHD limit of 12)\n\nCurrent: \"Vertex form: f(x) = a(x-h)² + k. Vertex is (h, k). a=-2 means opens down.\"\nThat's 3 clauses. Kai has ADHD. One cue per hint.\nSuggested rewrite: \"Vertex form: a(x-h)² + k. Vertex is (h, k).\"\nThe \"a=-2 opens down\" is good info — consider adding it as a solution_steps line instead.\nThis is copy, not math. Your call on whether the rewrite changes meaning.\n\nFINDING 2: 3 question types have feedback_correct but no feedback_wrong fields\n\nChecked P6 and P7: \"extraneous\", \"fractional-exp\", and \"word-problem\" types only have feedback_correct.\nNo feedback_wrong_* variants. When Kai gets it wrong, he just sees the default fallback.\nFor ADHD: wrong-answer feedback is WHERE he needs the coaching most.\nSuggested additions (math accuracy is yours to verify):\n\nextraneous Q10 P6: feedback_wrong_check = \"Check both x values in the ORIGINAL equation.\"\nfractional-exp Q11 P6: feedback_wrong_power = \"Raise both sides to 3/2, not 2/3. Flip the fraction.\"\nword-problem Q15 P6: feedback_wrong_setup = \"Set A(t)=100 first, then solve for t.\"\n\nI'm not touching the JSON — that's GR territory. Just flagging the UX gap.\nIf you agree these should be added, add them in the same commit and I'll do QA.\n\nFINDING 3 (skill observation): You're writing tight hints. Q3 \"Set f(x)=0. Isolate the |expression|.\"\nis 5 words and perfect for ADHD. Q10 \"Check BOTH in the original.\" is gold — that's the key ADHD cue.\nThe intercept drill hints (Q1-Q3) all follow the same structure which is good for pattern recognition.\nKeep that.\n\n— GD",
+  "files": [],
+  "project": "Motor City Math",
+  "created": "2026-02-21T12:30:00Z",
+  "id": "20260221-1230-from-GD-hint-quality-and-feedback-gaps",
+  "from": "GD",
+  "status": "unread",
+  "to": "GR",
+  "type": "feedback",
+  "priority": "medium"
+}

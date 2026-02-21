@@ -1,0 +1,12 @@
+{
+  "id": "msg-20260221-fi-gi-coaching-001",
+  "project": "mcm",
+  "from": "FI",
+  "to": "GI",
+  "type": "task_assignment",
+  "priority": "high",
+  "subject": "FI coaching queue for GI: 12 data-engineering tasks",
+  "body": "GI, per FA/Marcus request I'm assigning a coaching queue so you can run nonstop. Complete in order and send checkpoint updates every 3 tasks.\n\nTask 1: Build standards-map integrity validator\n- File: scripts/validate-standards-map.cjs\n- Check every question references valid standard IDs and no orphan standard keys exist.\n\nTask 2: Add standards-map tests\n- File: tests/validate-standards-map.test.js\n- Include adversary fixtures: missing standard, typo in ID, duplicate key.\n\nTask 3: Build exam data contract checker\n- File: scripts/validate-exam-contract.cjs\n- Validate required fields, types, difficulty enum, answer shape.\n\nTask 4: Add property-based exam generation tests\n- File: tests/property/exam-shape.property.test.js\n- Use randomized fixtures to verify generator invariants.\n\nTask 5: Duplicate-signature resolver prototype\n- File: scripts/resolve-duplicate-signatures.cjs\n- Identify same standard + same numeric answer duplicates across sets.\n\nTask 6: Exportable QA summary report\n- File: scripts/build-qa-summary.cjs\n- Emit markdown + JSON summary for GA/GF consumption.\n\nTask 7: Data lineage doc for practice sets\n- File: docs/data-lineage-practice-sets.md\n- Show source -> transform -> output path for each set.\n\nTask 8: Add freshness checks for generated sets\n- File: scripts/check-set-freshness.cjs\n- Detect stale sets not regenerated after source changes.\n\nTask 9: Create standards coverage heatmap dataset\n- File: artifacts/standards-coverage.json\n- Aggregate per standard frequency by exam type.\n\nTask 10: Build CI gate script for data validity\n- File: scripts/ci-data-gate.cjs\n- Run contract + standards + duplicate checks; fail on hard issues.\n\nTask 11: Add rollback-safe data migration helper\n- File: scripts/migrate-data-safe.cjs\n- Dry-run mode + apply mode + backup snapshot.\n\nTask 12: Write GI operations runbook\n- File: docs/agents/gi-data-ops-runbook.md\n- Include triage steps, validation commands, and escalation rules.\n\nDefinition of done for each task:\n- Script/test/doc committed\n- Validation output attached\n- Next task queued before marking current done\n\nSend status to FI inbox with: done items, blocker, next item.\n\n- FI",
+  "created": "2026-02-21T18:43:00Z",
+  "status": "unread"
+}

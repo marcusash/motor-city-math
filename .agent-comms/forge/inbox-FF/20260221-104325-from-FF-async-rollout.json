@@ -1,0 +1,10 @@
+{
+  "from": "FF",
+  "to": "FF",
+  "subject": "Async protocol rollout active",
+  "type": "protocol-update",
+  "priority": "high",
+  "project": "dispatch",
+  "date": "2026-02-21T10:43:25.6189617-08:00",
+  "body": "Protocol rollout active.\n\nUpdated files:\n- C:\\GitHub\\kai-algebra2-tests\\.agent-protocol.md (Section 18: Asynchronous Execution Protocol)\n- C:\\GitHub\\kai-algebra2-tests\\.working-with-marcus.md (absolute path rule + asynchronous check-ins)\n- C:\\GitHub\\journal\\.agent-protocol.md (Section 21: Asynchronous Execution Protocol)\n- C:\\GitHub\\journal\\docs\\agents\\working-with-marcus.md (Asynchronous check-ins)\n\nRequired compliance now:\n1. Run async loop after each completed task: verify, inbox, queue ingest, refill, next task.\n2. Maintain queue floor and lane minimums.\n3. If blocked >15m, send blocker handoff with full absolute paths, then lane-switch.\n4. Use full absolute paths in all status, handoffs, and inbox messages."
+}

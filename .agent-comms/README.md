@@ -17,8 +17,8 @@ This system supports **cross-project messaging** between Forge (leadership) and 
 
 | Org | Prefix | Role | Agents |
 |-----|--------|------|--------|
-| **Forge** | `F` | Leadership team. Reviews, mentors, architects, tackles hardest problems across all Marcus projects. | FA, FD, FF, FP, FR, ID |
-| **Grind** | `G` | Learning tools org. MCM is the first project. Dedicated builders. | GA, GD, GF, GI, GP, GR, GS |
+| **Forge** | `F` | Leadership team. Reviews, mentors, architects, tackles hardest problems across all Marcus projects. | FA, FD, FF, FI, FP, FR |
+| **Grind** | `G` | Learning tools org. MCM is the first project. Dedicated builders. | GA, GD, GF, GI, GP, GR |
 
 Forge agents always have inboxes in every project. Grind agents have inboxes in Grind project repos only.
 
@@ -42,8 +42,7 @@ Forge agents always have inboxes in every project. Grind agents have inboxes in 
 │   ├── inbox-GF/                 ← QA/Testing Agent (grind-fundamentals)
 │   ├── inbox-GI/                 ← Import Pipeline Agent (grind-importer)
 │   ├── inbox-GP/                 ← Platform Agent (grind-platform)
-│   ├── inbox-GR/                 ← Research/Math Agent (grind-research)
-│   └── inbox-GP/                 ← Platform Agent (grind-platform, was GS)
+│   └── inbox-GR/                 ← Research/Math Agent (grind-research)
 └── outbox/                       ← Processed messages (moved here after handling)
 ```
 
@@ -60,7 +59,7 @@ Forge agents always have inboxes in every project. Grind agents have inboxes in 
 | FF | forge-fundamentals | Quality Lead — test strategy, coverage standards, CI/CD patterns |
 | FP | forge-platform | Security & Ops Lead — infrastructure, agent comms, repo ops |
 | FR | forge-research | Research Lead — voice/tone optimization, AI models, prompt engineering |
-| ID | forge-data | Data & Identification Lead — data pipelines, M365, identity mining |
+| FI | forge-data | Data & Identification Lead — data pipelines, M365, identity mining |
 
 ### Grind Project Agents (MCM)
 
@@ -72,7 +71,6 @@ Forge agents always have inboxes in every project. Grind agents have inboxes in 
 | GI | grind-importer | Import Pipeline — PDF/OCR, content conversion |
 | GP | grind-platform | Platform Agent — repo ops, coordination, commit proxy |
 | GR | grind-research | Research/Math — question accuracy, curriculum, spaced repetition |
-| GS | grind-security | Security — localStorage schema, data integrity, offline-first |
 
 ### ID Migration (old → new)
 
@@ -85,7 +83,7 @@ Forge agents always have inboxes in every project. Grind agents have inboxes in 
 | I | GI | Importer Agent |
 | P | GP | Platform Agent |
 | R | GR | Research/Math Agent |
-| S | GS | Security Agent |
+| S | (retired) | Security merged into GP |
 
 ---
 
