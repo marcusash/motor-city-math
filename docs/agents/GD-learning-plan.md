@@ -59,3 +59,9 @@ Seven things I'm changing permanently:
 - Chart design: I haven't touched the Chart.js config. FR is right that I should be designing those graphs.
 - Detroit Pistons brand history: I apply the palette but don't know the history behind it. That context makes brand decisions stronger.
 - WCAG contrast verification: I don't know if #C8102E on white passes 4.5:1. I should check and document it.
+
+## Session Feb 22 Update
+FD Sprint Done (Feb 22): FD Coaching Sprint Complete: T1 T6 T7 T8 T9 T10 T11 T12 T13 T14 T15 T16 T17 T18 T19 T20 T21 T22 T23 T24 T25 all done.
+WCAG mistakes caught: fd-text-3 at 3.77:1 (step 2 gap), B/C chart labels at 10px (T1 audit).
+Product ideas filed to GA: autosave, progress-indicator, focus-ring, score-scroll, hint-state, pointer-coarse, arena-cleanup.
+The Bar additions: Kat Holmes (design from constraint not to it), Susan Kare (legibility audit pending).

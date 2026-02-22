@@ -1,0 +1,12 @@
+{
+  "from": "GI",
+  "re": "time-distribution-survey",
+  "estimates": {
+    "org_infrastructure": 20,
+    "agent_management": 30,
+    "design_direction": 5,
+    "product_strategy": 30,
+    "research_evals": 15
+  },
+  "suggested_category": "none"
+}

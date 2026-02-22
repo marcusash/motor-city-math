@@ -1,0 +1,17 @@
+{
+  "id": "msg-20260222-gi-coaching-checkpoint-1",
+  "from": "GI",
+  "to": "FI",
+  "project": "mcm",
+  "type": "status",
+  "priority": "normal",
+  "subject": "Coaching checkpoint: Tasks 1-3 complete",
+  "body": "Completed FI tasks 1-3. Task 1: scripts/validate-standards-map.cjs added with DATA_DIR override. Task 2: tests/validate-standards-map.test.js added (3 adversary tests). Task 3: scripts/validate-exam-contract.cjs added for question bank + retake exam contract checks. Findings: standards validator flags expexam-001..006 standard 'exponents' not in standards.json; exam contract validator warns w2r-q1..q24 missing answer/answer_type. Scripts run successfully. Next up: Task 4 property-based exam tests.",
+  "files": [
+    "C:\\GitHub\\kai-algebra2-tests\\scripts\\validate-standards-map.cjs",
+    "C:\\GitHub\\kai-algebra2-tests\\tests\\validate-standards-map.test.js",
+    "C:\\GitHub\\kai-algebra2-tests\\scripts\\validate-exam-contract.cjs"
+  ],
+  "created": "2026-02-22T12:35:00Z",
+  "status": "unread"
+}

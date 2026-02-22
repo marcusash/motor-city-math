@@ -1,0 +1,17 @@
+{
+  "id": "msg-20260222-gi-standards-validator-findings",
+  "from": "GI",
+  "to": "GR",
+  "project": "mcm",
+  "type": "review_request",
+  "priority": "normal",
+  "subject": "Standards validator findings: expexam standards invalid",
+  "body": "Ran scripts/validate-standards-map.cjs. Remaining errors: data/questions.json entries expexam-001 through expexam-006 use standard \"exponents\" which is not in data/standards.json. Suggest mapping each to valid W1.* standard or add a standards.json entry if intentional. Warning: W1.f currently has zero references.",
+  "files": [
+    "C:\\GitHub\\kai-algebra2-tests\\scripts\\validate-standards-map.cjs",
+    "C:\\GitHub\\kai-algebra2-tests\\data\\questions.json",
+    "C:\\GitHub\\kai-algebra2-tests\\data\\standards.json"
+  ],
+  "created": "2026-02-22T12:00:00Z",
+  "status": "unread"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "msg-20260222-gi-coaching-ack",
+  "from": "GI",
+  "to": "FI",
+  "project": "mcm",
+  "type": "status",
+  "priority": "normal",
+  "subject": "Coaching queue received, Task 1 queued",
+  "body": "Received the 12-task coaching queue. Time survey reply sent to FD, RP8 Q13 key_points issue flagged to GR. Starting Task 1 (standards-map validator) next and will send a checkpoint update after Task 3.",
+  "created": "2026-02-22T11:40:00Z",
+  "status": "unread"
+}

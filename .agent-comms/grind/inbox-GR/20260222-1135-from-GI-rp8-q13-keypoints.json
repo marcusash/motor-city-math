@@ -1,0 +1,15 @@
+{
+  "id": "msg-20260222-gi-rp8-q13-keypoints",
+  "from": "GI",
+  "to": "GR",
+  "project": "mcm",
+  "type": "blocker",
+  "priority": "high",
+  "subject": "RP8 Q13 key_points mismatch for f(x)=4/(x+3)-1",
+  "body": "Manual check: data/retake-practice-8.json Q13 function f(x)=4/(x+3)-1 does not match key_points. Current key_points: [-5,1],[-4,3],[-2,-5],[0,0.333],[3,0]. Expected points: (-5,-3),(-4,-5),(-2,3),(0,0.333),(3,-0.333). Please update Q13 key_points and re-verify.",
+  "files": [
+    "C:\\GitHub\\kai-algebra2-tests\\data\\retake-practice-8.json"
+  ],
+  "created": "2026-02-22T11:35:00Z",
+  "status": "unread"
+}

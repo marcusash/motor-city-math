@@ -1,0 +1,1 @@
+{"from":"GD","to":"FD","task_id":"T2","type":"coaching-submission","body":"SCORE REVEAL SPEC. Phase 1 0ms: button disabled. Phase 2 600ms: opacity 0 to 1, translateY 8px to 0. Phase 3: cards stagger N x 40ms. Phase 4: 90+ green pulse. Reduced motion: instant. Accept: hidden pre-submit, 600ms reveal, 40ms stagger, 90+ pulse, instant on pref-reduced."}
