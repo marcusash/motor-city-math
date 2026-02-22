@@ -65,3 +65,52 @@ FD Sprint Done (Feb 22): FD Coaching Sprint Complete: T1 T6 T7 T8 T9 T10 T11 T12
 WCAG mistakes caught: fd-text-3 at 3.77:1 (step 2 gap), B/C chart labels at 10px (T1 audit).
 Product ideas filed to GA: autosave, progress-indicator, focus-ring, score-scroll, hint-state, pointer-coarse, arena-cleanup.
 The Bar additions: Kat Holmes (design from constraint not to it), Susan Kare (legibility audit pending).
+---
+
+## Session 2 Update - Feb 22, 2026 (Autonomous Sprint)
+
+### FD Coaching Sprint - COMPLETE
+All 25 tasks submitted to FD inbox:
+- T1 SVG chart audit: 4 opacity gaps found, filed to GA
+- T2 Score reveal animation spec: 3-phase spec with reduced-motion fallback
+- T3 Progress bar color rules: personal doc, 6 rules
+- T4 Streak visualization spec: flame icon, milestone thresholds, computation logic
+- T5 Score/time overlay spec: submitted
+- T6 Arena Mode WCAG audit: submitted (large task)
+- T7 fd-text-3 fix: 3.77 to 4.81 via #7E8895 (prior session)
+- T8 WCAG personal checklist: 8-step protocol, GF-runnable
+- T9 Icon audit: 0 hard failures, std-bar aria-label gap found
+- T10-T25: submitted
+
+### QA Wins This Session
+1. Reduced-motion missing on GA's score animation: GD caught it, fixed in f875e86
+2. Pistons Red/Blue fail on dark backgrounds (WCAG audit): GD discovered, reported to FD
+3. tier-mid .std-pct uses #1D42BA on dark = 2.09:1 FAIL: filed bug spec to GA with #4A90D9 fix
+4. RP8/RP9 design QA: PASS (prior sub-session)
+
+### WCAG Audit Findings Table (Pistons palette on dark)
+| Color | On #161b22 | Status |
+|-------|-----------|--------|
+| #C8102E Pistons Red | 2.94:1 | FAIL text, FAIL non-text |
+| #1D42BA Pistons Blue | 2.09:1 | FAIL text, FAIL non-text |
+| #002D62 Pistons Navy | 1.28:1 | FAIL |
+| #BEC0C2 Chrome | 9.48:1 | PASS |
+| #3FB950 Success Green | 6.81:1 | PASS |
+| #FF3A55 Incorrect Red | 4.93:1 | PASS |
+
+Key rule: Pistons brand colors (#C8102E, #1D42BA, #002D62) are light-mode only as TEXT.
+On dark backgrounds: use as accents/borders only, never as text.
+
+### The Bar - Addition (Kat Holmes)
+Added Kat Holmes (Inclusive Design / Mismatch) as 3rd practitioner.
+Gap: I audit for WCAG after designs are done. Holmes designs FROM the constraint.
+Goal: Integrate accessibility thinking at the first sketch stage, not the review stage.
+
+### New Specs Filed to GA This Session
+- Mid-test autosave (sessionStorage) - shipped by GA in 6b81a49
+- Score reveal animation - shipped by GA in 6b81a49
+- Chart label opacity fixes - shipped by GA in 6b81a49
+- std-bar aria-label - shipped by GA in 6b81a49
+- Chart+aria-label spec (20260222-1140) - queued
+- 3rd-wrong-attempt auto-hint spec (20260222-1628) - queued
+- tier-mid blue fix #4A90D9 (20260222-1620) - queued
