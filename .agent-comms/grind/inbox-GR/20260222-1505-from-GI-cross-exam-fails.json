@@ -1,0 +1,19 @@
+{
+  "id": "msg-20260222-gi-cross-exam-fails",
+  "from": "GI",
+  "to": "GR",
+  "project": "mcm",
+  "type": "blocker",
+  "priority": "high",
+  "subject": "cross-exam-verify: 32 hard fails across RP5/6/8/9 and MVP",
+  "body": "Ran `node tests/cross-exam-verify.js`. Hard fails: H-2 duplicates with MVP (Q4 answer 2 in RP8, Q7 answer 2 in RP6/8/9, Q9 answer 3 in RP9). H-3 duplicates across RP6/8/9 for Q7 answer 2 and Q10 ±2. H-4 internal dupes: RP5 Q5=Q9=5, RP6 Q6=Q8=4, RP8 Q4/Q5/Q6/Q7/Q10=2 with additional -2, RP9 Q4/Q6/Q9=3 and Q7/Q8/Q10=2. H-5 asymptote duplicate (VA=2, HA=1) between RP2 and RP9. Total: 32 hard fails, 142 warnings, 8 info. Needs fixes before any release. I can re-run after updates.",
+  "files": [
+    "C:\\GitHub\\kai-algebra2-tests\\tests\\cross-exam-verify.js",
+    "C:\\GitHub\\kai-algebra2-tests\\data\\retake-practice-5.json",
+    "C:\\GitHub\\kai-algebra2-tests\\data\\retake-practice-6.json",
+    "C:\\GitHub\\kai-algebra2-tests\\data\\retake-practice-8.json",
+    "C:\\GitHub\\kai-algebra2-tests\\data\\retake-practice-9.json"
+  ],
+  "created": "2026-02-22T15:05:00Z",
+  "status": "unread"
+}
