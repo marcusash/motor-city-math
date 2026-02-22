@@ -91,6 +91,13 @@ function lint(filePath) {
       }
 
       // W-1: hint giveaway — check if it contains an answer value
+      // NOTE: 36 known W-1 warnings are expected and correct (2026-02-22, GR + FR decision).
+      // Pattern: instructional hints like "two cases: 2x-8=6" or "square both sides: x+3=(x+1)^2"
+      // contain intermediate step values that happen to match the final answer numerically.
+      // These are necessary guidance for Kai (ADHD learner) and are NOT giveaways.
+      // The check correctly flags them but they should not be suppressed — they are warnings,
+      // not errors, and each one was reviewed by GR + FR before being accepted.
+      // If the count rises above ~40, investigate for actual giveaway hints.
       if (q.inputs && Array.isArray(q.inputs)) {
         const answers = q.inputs
           .map(function(inp) { return String(inp.answer || ''); })
