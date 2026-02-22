@@ -141,6 +141,11 @@
           "tolerance": 0.01
         },
         {
+          "id": "q3_cases",
+          "type": "text",
+          "label": "Write the two equations you must solve (e.g. “AX+B = k and AX+B = -k”):"
+        },
+        {
           "id": "q3_x1",
           "type": "number",
           "label": "Smaller x-intercept =",
@@ -155,13 +160,13 @@
           "tolerance": 0.1
         }
       ],
-      "hint": "Factor 4 out: |4x−8| = 4|x−2|. Now a=4, h=2, k=−12. For intercepts: |4x−8|=12.",
+      "hint": "Factor out the coefficient first. Then set the absolute value equal to the RHS and split into TWO equations: |4x-8| = 12 AND |4x-8| = -12. Solve each separately.",
       "solution_steps": [
         "Factor: |4x−8| = 4|x−2|. So f(x) = 4|x−2| − 12.",
         "a=4, h=2, k=−12. Vertex at (2, −12). Opens UP (a>0).",
-        "x-intercepts: |4x−8| = 12 → 4x−8 = 12 or 4x−8 = −12.",
-        "4x = 20 → x = 5. OR 4x = −4 → x = −1.",
-        "Check: the intercepts are symmetric around x=h=2: (5+(−1))/2 = 2 ✓"
+        "KEY CONCEPT: |expression| = 12 means TWO equations: 4x-8=12  AND  4x-8=-12.",
+        "Solve 4x-8=12 → x = 5.  Solve 4x-8=-12 → x = -1.",
+        "W2.b insight: the ± split is the definition of absolute value. Never skip writing both equations."
       ],
       "feedback_correct": "🔥 Both intercepts. Solid.",
       "feedback_wrong_parent": "The | | bars mean absolute value.",

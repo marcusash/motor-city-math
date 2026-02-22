@@ -138,6 +138,11 @@
           "tolerance": 0.01
         },
         {
+          "id": "q3_cases",
+          "type": "text",
+          "label": "Write the two equations you must solve (e.g. “AX+B = k and AX+B = -k”):"
+        },
+        {
           "id": "q3_x1",
           "type": "number",
           "label": "Smaller x-intercept =",
@@ -152,13 +157,13 @@
           "tolerance": 0.1
         }
       ],
-      "hint": "Factor 3 out: |3x+9| = 3|x+3|. Then h = −3 (notice: x−h form means h is −3 here). For intercepts: |3x+9| = 6.",
+      "hint": "Factor out the coefficient first. Then set the absolute value equal to the RHS and split into TWO equations: |3x+9| = 6 AND |3x+9| = -6. Solve each separately.",
       "solution_steps": [
         "Factor: |3x+9| = 3|x−(−3)|. So f(x) = 3|x−(−3)| − 6.",
         "a = 3, h = −3, k = −6. Shift LEFT 3, stretch ×3, down 6. Vertex at (−3, −6).",
-        "x-intercepts: |3x+9| = 6 → 3x+9 = 6 or 3x+9 = −6.",
-        "3x = −3 → x = −1. OR 3x = −15 → x = −5.",
-        "Critical: h is NEGATIVE when the shift is to the LEFT. f(x)=a|x−h|+k means subtract h."
+        "KEY CONCEPT: |expression| = 6 means TWO equations: 3x+9=6  AND  3x+9=-6.",
+        "Solve 3x+9=6 → x = -1.  Solve 3x+9=-6 → x = -5.",
+        "W2.b insight: the ± split is the definition of absolute value. Never skip writing both equations."
       ],
       "feedback_correct": "🔥 Absolute value. Both intercepts.",
       "feedback_wrong_parent": "The | | symbols mean absolute value.",

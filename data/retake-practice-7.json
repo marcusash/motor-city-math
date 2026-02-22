@@ -148,6 +148,11 @@
           "tolerance": 0.01
         },
         {
+          "id": "q3_cases",
+          "type": "text",
+          "label": "Write the two equations you must solve (e.g. “AX+B = k and AX+B = -k”):"
+        },
+        {
           "id": "q3_x1",
           "type": "number",
           "label": "Smaller x-intercept =",
@@ -162,13 +167,13 @@
           "tolerance": 0.1
         }
       ],
-      "hint": "Factor 2 out: |2x-6| = 2|x-3|. Then a=2, h=3, k=-4. For intercepts: solve |2x-6|=4.",
+      "hint": "Factor out the coefficient first. Then set the absolute value equal to the RHS and split into TWO equations: |2x-6| = 4 AND |2x-6| = -4. Solve each separately.",
       "solution_steps": [
         "Factor: |2x-6| = 2|x-3|. So f(x) = 2|x-3| - 4.",
         "a=2 (vertical stretch), h=3 (shift right 3), k=-4 (shift down 4). Vertex: (3,-4).",
-        "x-intercepts: |2x-6| = 4 -> 2x-6 = 4 or 2x-6 = -4.",
-        "2x = 10 -> x = 5. OR 2x = 2 -> x = 1.",
-        "Symmetry check: midpoint of 1 and 5 is 3 = h (vertex x). Confirmed."
+        "KEY CONCEPT: |expression| = 4 means TWO equations: 2x-6=4  AND  2x-6=-4.",
+        "Solve 2x-6=4 → x = 5.  Solve 2x-6=-4 → x = 1.",
+        "W2.b insight: the ± split is the definition of absolute value. Never skip writing both equations."
       ],
       "feedback_correct": "🔥 Both intercepts. Coefficient inside — you handled it.",
       "feedback_wrong_parent": "The | | bars mean absolute value.",

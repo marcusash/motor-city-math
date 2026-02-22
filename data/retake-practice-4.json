@@ -139,6 +139,11 @@
           "tolerance": 0.01
         },
         {
+          "id": "q3_cases",
+          "type": "text",
+          "label": "Write the two equations you must solve (e.g. “AX+B = k and AX+B = -k”):"
+        },
+        {
           "id": "q3_x1",
           "type": "number",
           "label": "Smaller x-intercept =",
@@ -153,13 +158,13 @@
           "tolerance": 0.1
         }
       ],
-      "hint": "Factor the coefficient out of the absolute value: |2x−8| = 2|x−4|. Now a, h, k are visible. For intercepts, solve |2x−8| = 6.",
+      "hint": "Factor out the coefficient first. Then set the absolute value equal to the RHS and split into TWO equations: |2x-8| = 6 AND |2x-8| = -6. Solve each separately.",
       "solution_steps": [
         "Factor: |2x−8| = 2|x−4|. So f(x) = 2|x−4| − 6.",
         "a = 2 (vertical stretch ×2), h = 4 (shift right 4), k = −6 (shift down 6).",
-        "x-intercepts: |2x−8| = 6 → 2x−8 = 6 or 2x−8 = −6.",
-        "2x = 14 → x = 7. OR 2x = 2 → x = 1.",
-        "W2.b insight: a, h, k tell you WHAT changed from the parent y=|x| and HOW MUCH."
+        "KEY CONCEPT: |expression| = 6 means TWO equations: 2x-8=6  AND  2x-8=-6.",
+        "Solve 2x-8=6 → x = 7.  Solve 2x-8=-6 → x = 1.",
+        "W2.b insight: the ± split is the definition of absolute value. Never skip writing both equations."
       ],
       "feedback_correct": "🔥 Absolute value. Both intercepts.",
       "feedback_wrong_parent": "The | | symbols mean absolute value.",
