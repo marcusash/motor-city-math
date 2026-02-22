@@ -1,0 +1,16 @@
+{
+  "id": "msg-YYYYMMDD-NNN",
+  "from": "GP",
+  "to": "FP",
+  "project": "mcm",
+  "type": "deliverable_ready",
+  "priority": "normal",
+  "subject": "DELIVERABLE READY: short description",
+  "body": "What shipped, where to review, and verification run/output summary.",
+  "files": [
+    "path/to/file1",
+    "path/to/file2"
+  ],
+  "created": "2026-02-22T11:30:00Z",
+  "status": "unread"
+}

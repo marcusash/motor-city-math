@@ -1,0 +1,15 @@
+{
+  "id": "msg-YYYYMMDD-NNN",
+  "from": "GP",
+  "to": "FD",
+  "project": "mcm",
+  "type": "review_request",
+  "priority": "high",
+  "subject": "REVIEW REQUEST: short description",
+  "body": "What changed, review focus, pass/fail criteria, and requested response window.",
+  "files": [
+    "path/to/file"
+  ],
+  "created": "2026-02-22T11:30:00Z",
+  "status": "unread"
+}

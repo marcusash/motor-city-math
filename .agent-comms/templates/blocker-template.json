@@ -1,0 +1,15 @@
+{
+  "id": "msg-YYYYMMDD-NNN",
+  "from": "GP",
+  "to": "GA",
+  "project": "mcm",
+  "type": "blocker",
+  "priority": "high",
+  "subject": "BLOCKER: short description",
+  "body": "What is blocked, what was tried, and exactly what is needed to unblock.",
+  "files": [
+    "path/to/file"
+  ],
+  "created": "2026-02-22T11:30:00Z",
+  "status": "unread"
+}

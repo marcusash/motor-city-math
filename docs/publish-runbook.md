@@ -73,6 +73,29 @@ then the action will auto-trigger on every push.
 
 ---
 
+## Publish Parity Check (Script vs Workflow)
+
+Validated on 2026-02-22:
+- **Same file list:** `index.html`, `exam.html`, `final_exam_251123.html`, `final_exam_251123_mini.html`, `nonlinear_exam_mvp.html`, `_gen.js`, `package.json`, `README.md`
+- **Same directory list:** `shared/`, `data/`, `docs/`, `scripts/`
+- **Same publish gate:** both paths exit cleanly when no staged diff exists in target repo
+- **Same destination:** `marcusash/motor-city-math` `master` branch
+
+Only operational difference:
+- **Script path** uses local token (`MOTOR_CITY_MATH_TOKEN`) and works now
+- **Workflow path** requires Actions runtime + valid secret in private source repo
+
+Use this quick parity command after major publish-script edits:
+
+```powershell
+cd C:\GitHub\kai-algebra2-tests
+node scripts\publish.cjs --help 2>$null
+```
+
+If workflow behavior diverges from script behavior, update this runbook first, then notify GP + FA.
+
+---
+
 ## Current Status
 
 - Script publish: `scripts/publish.cjs` — works, use this

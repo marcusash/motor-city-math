@@ -171,6 +171,7 @@ Every message is a `.json` file placed in the recipient's inbox folder.
 ### Sending a Message
 
 1. Create a `.json` file following the schema above
+   - Starter templates: `C:\GitHub\kai-algebra2-tests\.agent-comms\templates\`
 2. Place it in the recipient's inbox folder
 3. Use the filename format: `{YYYYMMDD}-{HHMM}-from-{your-ID}-{slug}.json`
 4. Commit the message (it's part of the repo)
