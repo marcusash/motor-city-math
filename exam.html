@@ -22,7 +22,8 @@
         .input-group label { font-weight: 600; color: var(--text-primary); min-width: 120px; }
         .input-group input[type="number"], .input-group input[type="text"], .input-group select { padding: 8px 12px; border: 1px solid var(--border-default); border-radius: 6px; font-size: var(--text-base); background: var(--bg-input); color: var(--text-primary); width: 120px; }
         .input-group select { width: 180px; }
-        .input-hint { font-size: 0.75rem; color: var(--text-secondary, #888); }
+        .input-hint { font-size: 0.72rem; color: var(--text-secondary, #888); line-height: 1.3; margin-top: 2px; }
+        .input-with-hint { display: flex; flex-direction: column; gap: 2px; }
         .radio-group { margin: 10px 0; }
         .radio-option { display: flex; align-items: center; gap: 8px; padding: 8px 12px; margin: 4px 0; border: 1px solid var(--border-subtle); border-radius: 6px; cursor: pointer; background: var(--bg-input); }
         .radio-option:hover { border-color: var(--accent-blue); }
@@ -67,6 +68,7 @@
         .std-card .std-name { font-weight: 700; color: var(--text-primary); font-size: var(--text-sm); }
         .std-card .std-score { color: var(--text-secondary); font-size: var(--text-sm); }
         .submit-area { text-align: center; margin: 24px 0; }
+        .submit-warning { background: rgba(249,115,22,0.12); border: 1px solid rgba(249,115,22,0.4); color: var(--text-primary); border-radius: 8px; padding: 12px 16px; margin-bottom: 14px; font-size: var(--text-sm); text-align: left; }
         .error-msg { text-align: center; padding: 40px; color: var(--color-incorrect); font-size: var(--text-lg); }
         /* Progress bar — ADHD: show progress position */
         .progress-strip {
@@ -303,7 +305,10 @@
         } else if (inp.type === 'number') {
             html += '<div class="input-group">';
             if (inp.label) html += '<label>' + inp.label + '</label>';
-            html += '<input type="text" inputmode="decimal" id="' + inp.id + '" autocomplete="off" placeholder="e.g. 1.5 or 3/2">';
+            html += '<div class="input-with-hint">';
+            html += '<input type="text" inputmode="decimal" id="' + inp.id + '" autocomplete="off" placeholder="e.g. 3/2 or sqrt(2)">';
+            html += '<span class="input-hint">decimal · fraction (3/2) · sqrt(2) · 1+sqrt(3)</span>';
+            html += '</div>';
             html += '</div>';
         } else if (inp.type === 'radio') {
             html += '<div class="radio-group">';
@@ -707,21 +712,71 @@
 
     /* --- Grading Engine --- */
 
-    // Accept plain decimals, integers, and simple fractions like "4/3" or "-5/2"
+    // Accept decimals, integers, fractions (4/3), and sqrt expressions (sqrt(2), 1+sqrt(3), (1+sqrt(5))/2)
     function parseStudentAnswer(raw) {
         if (!raw || !raw.trim()) return NaN;
-        var s = raw.trim();
-        var fracMatch = s.match(/^(-?\d+)\s*\/\s*(-?\d+)$/);
+        var s = raw.trim().replace(/\s/g, '');
+
+        // Plain fraction: 4/3 or -5/2
+        var fracMatch = s.match(/^(-?\d+)\/(-?\d+)$/);
         if (fracMatch) {
             var num = parseInt(fracMatch[1], 10);
             var den = parseInt(fracMatch[2], 10);
             return den === 0 ? NaN : num / den;
         }
-        return parseFloat(s);
+
+        // Plain decimal/integer
+        var plain = parseFloat(s);
+        if (!isNaN(plain) && s.match(/^-?\d*\.?\d+$/)) return plain;
+
+        // sqrt() expressions — safe evaluator
+        // Only allow digits, . + - * / ( ) and letters s,q,r,t (only valid as "sqrt")
+        if (/^[0-9.\+\-\*\/\(\)sqrt]+$/.test(s)) {
+            try {
+                // Handle implicit multiplication: 2sqrt(3) -> 2*sqrt(3)
+                var expr = s.replace(/(\d)\s*sqrt/g, '$1*sqrt').replace(/sqrt/g, 'Math.sqrt');
+                var result = Function('"use strict"; return (' + expr + ')')();
+                if (typeof result === 'number' && isFinite(result)) return result;
+            } catch(e) { /* invalid expression — fall through */ }
+        }
+
+        return NaN;
     }
 
     function gradeExam() {
         if (examGraded) return;
+
+        // Block grading if any required field is blank
+        var missing = [];
+        examData.questions.forEach(function(q, qi) {
+            var qLabel = 'Q' + (qi + 1);
+            q.inputs.forEach(function(inp) {
+                if (inp.type === 'dropdown') {
+                    var el = document.getElementById(inp.id);
+                    if (!el || !el.value) missing.push(qLabel + ' — ' + (inp.label || 'Parent function'));
+                } else if (inp.type === 'number') {
+                    var el2 = document.getElementById(inp.id);
+                    if (!el2 || el2.value.trim() === '') missing.push(qLabel + ' — ' + (inp.label || inp.id));
+                } else if (inp.type === 'radio') {
+                    var sel = document.querySelector('input[name="' + inp.id + '"]:checked');
+                    if (!sel) missing.push(qLabel + ' — answer choice');
+                }
+            });
+        });
+        if (missing.length > 0) {
+            var warnEl = document.getElementById('submitWarning');
+            if (!warnEl) {
+                warnEl = document.createElement('div');
+                warnEl.id = 'submitWarning';
+                warnEl.className = 'submit-warning';
+                document.getElementById('submitArea').insertBefore(warnEl, document.getElementById('submitArea').firstChild);
+            }
+            warnEl.innerHTML = '<strong>Fill in everything before grading.</strong> Missing: ' +
+                missing.join(', ') + '.';
+            warnEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            return;
+        }
+
         examGraded = true;
 
         // Hide progress bar after grading
