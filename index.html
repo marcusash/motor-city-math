@@ -574,10 +574,10 @@
             '<stop offset="100%" stop-color="rgba(255,255,255,0.17)"/>' +
             '</linearGradient></defs>' +
             // Grade lines
-            '<line x1="28" y1="'+yC+'" x2="508" y2="'+yC+'" stroke="rgba(255,255,255,0.10)" stroke-width="1" stroke-dasharray="3 7"/>' +
-            '<text x="16" y="'+(yC+3.5)+'" font-size="10" font-weight="700" fill="rgba(255,255,255,0.28)" font-family="system-ui,sans-serif" text-anchor="middle">C</text>' +
-            '<line x1="28" y1="'+yB+'" x2="508" y2="'+yB+'" stroke="rgba(255,255,255,0.14)" stroke-width="1" stroke-dasharray="3 7"/>' +
-            '<text x="16" y="'+(yB+3.5)+'" font-size="10" font-weight="700" fill="rgba(255,255,255,0.35)" font-family="system-ui,sans-serif" text-anchor="middle">B</text>' +
+            '<line x1="28" y1="'+yC+'" x2="508" y2="'+yC+'" stroke="rgba(255,255,255,0.20)" stroke-width="1" stroke-dasharray="3 7"/>' +
+            '<text x="16" y="'+(yC+3.5)+'" font-size="10" font-weight="700" fill="rgba(255,255,255,0.42)" font-family="system-ui,sans-serif" text-anchor="middle">C</text>' +
+            '<line x1="28" y1="'+yB+'" x2="508" y2="'+yB+'" stroke="rgba(255,255,255,0.25)" stroke-width="1" stroke-dasharray="3 7"/>' +
+            '<text x="16" y="'+(yB+3.5)+'" font-size="10" font-weight="700" fill="rgba(255,255,255,0.55)" font-family="system-ui,sans-serif" text-anchor="middle">B</text>' +
             '<line x1="28" y1="'+yA+'" x2="508" y2="'+yA+'" stroke="rgba(63,185,80,0.65)" stroke-width="1" stroke-dasharray="3 7"/>' +
             '<text x="14" y="'+(yA+3.5)+'" font-size="12" font-weight="700" fill="rgba(63,185,80,1)" font-family="system-ui,sans-serif" text-anchor="middle">A</text>' +
             // Fill + FA line
@@ -642,7 +642,7 @@
                 '<div class="std-id">' + id + '</div>' +
                 '<div class="std-name">' + name + '</div>' +
                 '<div class="std-pct">' + (s.total ? pct + '%' : '—') + '</div>' +
-                '<div class="std-bar" role="progressbar" aria-valuenow="' + pct + '" aria-valuemin="0" aria-valuemax="100">' +
+                '<div class="std-bar" role="progressbar" aria-label="' + id + ' ' + pct + '%'" aria-valuenow="' + pct + '" aria-valuemin="0" aria-valuemax="100">' +
                 '<div class="std-fill" style="width:' + pct + '%"></div></div>' +
                 '<div class="std-copy">' + copy + '</div>' +
                 '</div>';

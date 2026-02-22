@@ -57,6 +57,8 @@
         .scorecard { background: var(--bg-card); border: 2px solid var(--accent-blue); border-radius: 12px; padding: 24px; margin: 24px 0; text-align: center; box-shadow: var(--shadow-card); }
         .scorecard h2 { color: var(--text-primary); margin: 0 0 8px; }
         .scorecard .score-big { font-size: var(--text-2xl); font-weight: 900; color: var(--accent-navy); }
+        @keyframes grade-a-flash { 0%,100%{background:transparent} 50%{background:rgba(63,185,80,0.18)} }
+        .grade-a-flash { animation: grade-a-flash 0.6s ease 1; }
         .scorecard .score-pct { font-size: var(--text-lg); color: var(--text-secondary); margin: 4px 0 12px; }
         .saas-grade { display: inline-block; padding: 6px 20px; border-radius: 20px; font-weight: 800; font-size: var(--text-lg); color: white; }
         .saas-grade.g4 { background: var(--color-correct); }
@@ -136,6 +138,47 @@
     <script>
     /* ========== EXAM RENDERER ========== */
     var examData = null;
+    var examId = new URLSearchParams(window.location.search).get('file') || 'unknown';
+
+    function autosave() {
+        if (!examData) return;
+        var state = {};
+        try {
+            examData.questions.forEach(function(q) {
+                q.inputs.forEach(function(inp) {
+                    if (inp.type === 'radio') {
+                        var el = document.querySelector('input[name="' + inp.id + '"]:checked');
+                        state[inp.id] = el ? el.value : '';
+                    } else {
+                        var el = document.getElementById(inp.id);
+                        state[inp.id] = el ? el.value : '';
+                    }
+                });
+            });
+            sessionStorage.setItem('exam-autosave-' + examId, JSON.stringify(state));
+        } catch(e) { /* sessionStorage full or unavailable */ }
+    }
+
+    function restoreAutosave() {
+        try {
+            var saved = sessionStorage.getItem('exam-autosave-' + examId);
+            if (!saved) return;
+            var state = JSON.parse(saved);
+            examData.questions.forEach(function(q) {
+                q.inputs.forEach(function(inp) {
+                    if (inp.type === 'radio') {
+                        if (state[inp.id]) {
+                            var el = document.getElementById(inp.id + '_' + state[inp.id]);
+                            if (el) el.checked = true;
+                        }
+                    } else {
+                        var el = document.getElementById(inp.id);
+                        if (el && state[inp.id]) el.value = state[inp.id];
+                    }
+                });
+            });
+        } catch(e) { /* parse error */ }
+    }
     var graphData = {};
     var examGraded = false;
 
@@ -228,6 +271,10 @@
         }
 
         renderQuestions(data.questions);
+        restoreAutosave();
+        // Delegated autosave listener
+        document.getElementById('questionsContainer').addEventListener('input', autosave);
+        document.getElementById('questionsContainer').addEventListener('change', autosave);
         document.getElementById('submitArea').style.display = '';
 
         // Render KaTeX after DOM is populated
@@ -778,6 +825,7 @@
         }
 
         examGraded = true;
+        sessionStorage.removeItem('exam-autosave-' + examId);
 
         // Hide progress bar after grading
         var strip = document.getElementById('progressStrip');
@@ -914,7 +962,7 @@
 
         var html = '<div class="scorecard">';
         html += '<h2>You got ' + score + ' out of ' + total + '</h2>';
-        html += '<div class="score-big">' + pct + '%</div>';
+        html += '<div class="score-big" id="scoreBigEl">0%</div>';
         html += '<div class="saas-grade ' + gradeClass + '">Grade ' + grade + '</div>';
         html += '<p style="margin-top:12px; color:var(--text-secondary); font-size:var(--text-sm);">' + coachMsg + '</p>';
 
@@ -947,6 +995,26 @@
         html += '</div>';
 
         document.getElementById('scorecard').innerHTML = html;
+        // Animate score reveal
+        (function() {
+            var el = document.getElementById('scoreBigEl');
+            if (!el) return;
+            var start = null, dur = 600;
+            function step(ts) {
+                if (!start) start = ts;
+                var prog = Math.min((ts - start) / dur, 1);
+                el.textContent = Math.round(prog * pct) + '%';
+                if (prog < 1) requestAnimationFrame(step);
+                else {
+                    el.textContent = pct + '%';
+                    if (pct >= 93) {
+                        el.classList.add('grade-a-flash');
+                        document.dispatchEvent(new CustomEvent('mcm:scoreReveal', { detail: { pct: pct, grade: grade } }));
+                    }
+                }
+            }
+            requestAnimationFrame(step);
+        })();
         document.getElementById('scorecard').style.display = '';
     }
 
