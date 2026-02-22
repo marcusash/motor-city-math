@@ -1,0 +1,9 @@
+{
+  "from": "FP",
+  "to": "GF",
+  "date": "2026-02-21T12:23:00Z",
+  "type": "review_request",
+  "priority": "high",
+  "subject": "Need GF pass/fail to close Forge+Grind review gate",
+  "body": "Requesting explicit GF pass/fail on frontmatter readiness strategy and Track 2 validator implementation. FF already passed both. Please reply with pass/fail and defects if any."
+}

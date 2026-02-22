@@ -1,0 +1,1126 @@
+/* Motor City Math — Shared Styles
+ * Design system: .design-system.md v2.0
+ * Palette: Detroit Pistons — #C8102E red, #1D42BA blue, #002D62 navy, #BEC0C2 chrome
+ * Arena Mode: CSS custom properties + dark theme override
+ */
+
+/* === CSS Custom Properties (Design Tokens) === */
+:root {
+    --bg-page: #F4F5F9;
+    --bg-card: #FFFFFF;
+    --bg-input: #F8F9FC;
+    --bg-overlay: rgba(0, 0, 0, 0.5);
+    --text-primary: #1A1F36;
+    --text-secondary: #5E6378;
+    --text-inverse: #FFFFFF;
+    --accent-red: #C8102E;
+    --accent-red-hover: #A00D24;
+    --accent-blue: #1D42BA;
+    --accent-blue-hover: #1535A0;
+    --accent-navy: #002D62;
+    --border-default: #C8CCD8;
+    --border-focus: #1D42BA;
+    --border-subtle: #E2E5EF;
+    --color-correct: #1B7D3A;
+    --color-correct-bg: #F0FFF4;
+    --color-incorrect: #C8102E;
+    --color-incorrect-bg: #FFF5F5;
+    --color-warning: #8A6200; /* was #E8A317 — failed WCAG AA on white (2.17:1). #8A6200 = 5.49:1 PASS */
+    --color-warning-bg: #FFFFF0;
+    --shadow-card: 0 2px 8px rgba(0, 45, 98, 0.06);
+    --bg-highlight: #EEF1FA;
+    --chart-grid: #E2E5EF;
+    --chart-label: #1A1F36;
+    --grid-minor: #EDF0F5;
+
+    /* Font stack */
+    --font-body: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+    /* Type Scale — 6 sizes (FD review H3) */
+    --text-xs: 0.75rem;   /* 12px — captions, labels */
+    --text-sm: 0.875rem;  /* 14px — secondary text */
+    --text-base: 1rem;    /* 16px — body, questions */
+    --text-lg: 1.25rem;   /* 20px — section headers */
+    --text-xl: 1.75rem;   /* 28px — page subtitles */
+    --text-2xl: 2.5rem;   /* 40px — page titles */
+}
+
+/* === Arena Mode (Dark Theme) === */
+body.arena-mode {
+    --bg-page: #0A0E1A;
+    --bg-card: #141B2D;
+    --bg-input: #1A2240;
+    --bg-overlay: rgba(0, 0, 0, 0.7);
+    --text-primary: #E0E4EB;
+    --text-secondary: #8B92A8;
+    --text-inverse: #0A0E1A;
+    --accent-red: #E8334A;
+    --accent-red-hover: #FF4D63;
+    --accent-blue: #4A72E8;
+    --accent-blue-hover: #6B8FFF;
+    --accent-navy: #A0B8E8;
+    --border-default: #2A3352;
+    --border-focus: #4A72E8;
+    --border-subtle: #1E2742;
+    --color-correct: #2ECC71;
+    --color-correct-bg: #0D2818;
+    --color-incorrect: #FF3A55; /* was #E8334A — failed WCAG AA on card bg (4.09:1). #FF3A55 = 4.89:1 PASS */
+    --color-incorrect-bg: #2D0A12;
+    --color-warning: #F5C842;
+    --color-warning-bg: #2D2408;
+    --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --bg-highlight: #1A2240;
+    --chart-grid: #2A3352;
+    --chart-label: #E0E4EB;
+    --grid-minor: #1E2742;
+}
+
+/* Arena Mode toggle button */
+.arena-toggle {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-default);
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    font-size: var(--text-base);
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+}
+.arena-toggle:hover { border-color: var(--accent-blue); }
+body.arena-mode .arena-toggle { background: var(--accent-navy); border-color: var(--accent-blue); }
+
+/* === Shared Navigation (FD review C3) === */
+.nav-back {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: var(--text-sm);
+    font-weight: 600;
+    z-index: 5;
+    transition: color 0.15s;
+}
+.nav-back:hover { color: var(--accent-blue); }
+
+/* === Timer === */
+.timer {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-variant-numeric: tabular-nums;
+}
+.timer-icon { font-size: var(--text-base); color: var(--accent-navy); }
+.timer-value {
+    font-weight: 600;
+    font-size: var(--text-base);
+    color: var(--accent-navy);
+    transition: color 0.5s ease;
+    min-width: 3.5em;
+    text-align: right;
+}
+.timer.warning .timer-value { color: var(--color-warning); }
+.timer.urgent .timer-value { color: var(--color-incorrect); }
+@keyframes timerPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+.timer.pulse .timer-value { animation: timerPulse 0.2s ease-out; }
+.timer.times-up .timer-value { font-weight: 700; letter-spacing: 1px; }
+.timer-toast {
+    position: fixed;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--accent-navy);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: var(--text-sm);
+    font-weight: 600;
+    z-index: 100;
+    animation: toastIn 0.3s ease-out, toastOut 0.3s ease-in 2.7s forwards;
+    box-shadow: 0 4px 16px rgba(0, 45, 98, 0.25);
+}
+@keyframes toastIn {
+    from { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+    to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+@keyframes toastOut { from { opacity: 1; } to { opacity: 0; } }
+@media (max-width: 768px) { .timer-value { font-size: var(--text-base); } }
+@media print { .timer, .timer-toast, .arena-toggle { display: none !important; } }
+
+/* === Reset === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* === Accessibility === */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+:focus-visible {
+    outline: 3px solid var(--accent-blue);
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* === Base === */
+html {
+    overflow-x: hidden;
+}
+
+body {
+    font-family: var(--font-body);
+    background: var(--bg-page);
+    color: var(--text-primary);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* KaTeX serif fallback containment — prevent Times New Roman from leaking into UI (FD C2) */
+.katex, .katex * {
+    font-family: KaTeX_Main, KaTeX_Math, "Times New Roman", serif !important;
+}
+.katex-display + *, .katex-html ~ * {
+    font-family: inherit;
+}
+h1, h2, h3, h4, h5, h6, p, label, button, a, li, td, th {
+    font-family: var(--font-body);
+}
+
+/* === Layout === */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: var(--bg-card);
+    border-radius: 0;
+    padding: 40px;
+    box-shadow: var(--shadow-card);
+    overflow-x: hidden;
+}
+
+/* === Header === */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 4px solid;
+    border-image: linear-gradient(
+        to right,
+        var(--accent-red) 0%, var(--accent-red) 30%,
+        var(--accent-blue) 30%, var(--accent-blue) 70%,
+        var(--accent-red) 70%, var(--accent-red) 100%
+    ) 1;
+}
+
+.header-back {
+    position: absolute;
+    left: 0;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: var(--text-lg);
+    z-index: 5;
+    min-width: 44px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.header-back:hover { color: var(--accent-blue); }
+
+h1 {
+    color: var(--accent-navy);
+    font-size: var(--text-2xl);
+    margin-bottom: 10px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.subtitle {
+    color: var(--text-secondary);
+    font-size: var(--text-lg);
+}
+
+header .date {
+    color: var(--text-secondary);
+    font-size: var(--text-base);
+    margin-top: 10px;
+}
+
+/* === Question Cards === */
+.question-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-default);
+    border-left: none;
+    padding: 30px;
+    padding-left: 34px;
+    margin-bottom: 24px;
+    border-radius: 4px;
+    transition: box-shadow 0.2s;
+    position: relative;
+    overflow-x: auto;
+}
+
+.question-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: -1px;
+    bottom: -1px;
+    width: 4px;
+    background: var(--accent-blue);
+    border-radius: 4px 0 0 4px;
+}
+
+.question-card.answered-correct::before {
+    background: var(--color-correct);
+}
+
+.question-card.answered-incorrect::before {
+    background: var(--color-incorrect);
+}
+
+.question-card:hover {
+    box-shadow: 0 4px 16px rgba(0, 45, 98, 0.08);
+}
+
+.question-number {
+    color: var(--accent-navy);
+    font-weight: 800;
+    font-size: var(--text-lg);
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border-bottom: 2px solid var(--border-subtle);
+}
+
+.question-text {
+    color: var(--text-primary);
+    font-size: var(--text-base);
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* === Input Groups === */
+.input-group {
+    margin: 15px 0;
+}
+
+.input-group label {
+    display: block;
+    color: var(--text-secondary);
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.input-group input {
+    width: 100%;
+    max-width: 400px;
+    padding: 12px 16px;
+    border: 2px solid var(--border-default);
+    border-radius: 4px;
+    font-size: var(--text-base);
+    font-family: inherit;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 3px rgba(29, 66, 186, 0.15);
+}
+
+.input-group input.correct {
+    border-color: var(--color-correct);
+    background: var(--color-correct-bg);
+}
+
+.input-group input.incorrect {
+    border-color: var(--accent-red);
+    background: var(--color-incorrect-bg);
+}
+
+input, textarea, select {
+    border: 2px solid var(--border-default);
+    border-radius: 4px;
+    background: var(--bg-input);
+    color: var(--text-primary);
+}
+
+input::placeholder, textarea::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.7;
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 3px rgba(29, 66, 186, 0.15);
+}
+
+.input-group textarea {
+    width: 100%;
+    padding: 14px;
+    padding-bottom: 20px;
+    padding-right: 20px;
+    border: 2px solid var(--border-default);
+    border-radius: 4px;
+    font-size: var(--text-base);
+    min-height: 80px;
+    font-family: inherit;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    resize: vertical;
+    box-sizing: border-box;
+}
+
+/* === Buttons === */
+.submit-btn,
+.btn-primary {
+    background: var(--accent-red);
+    color: white;
+    border: none;
+    padding: 14px 36px;
+    font-size: var(--text-base);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+    margin: 40px auto 20px;
+    transition: background 0.2s, transform 0.1s;
+}
+
+.submit-btn:hover,
+.btn-primary:hover {
+    background: var(--accent-red-hover);
+}
+
+.submit-btn:active,
+.btn-primary:active {
+    transform: scale(0.98);
+}
+
+.print-btn,
+.btn-secondary {
+    background: transparent;
+    color: var(--accent-navy);
+    border: 2px solid var(--accent-navy);
+    padding: 12px 28px;
+    font-size: var(--text-base);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+    margin: 20px auto;
+    transition: all 0.2s;
+}
+
+.print-btn:hover,
+.btn-secondary:hover {
+    background: var(--accent-navy);
+    color: white;
+}
+
+.answer-key-btn {
+    background: var(--bg-card);
+    color: var(--accent-navy);
+    border: 2px solid var(--accent-navy);
+    padding: 12px 30px;
+    font-size: var(--text-base);
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+    margin: 20px auto;
+    transition: all 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+}
+
+.answer-key-btn:hover {
+    background: var(--accent-navy);
+    color: white;
+}
+
+.btn-ghost {
+    background: none;
+    color: var(--text-secondary);
+    border: none;
+    padding: 10px 24px;
+    font-size: var(--text-sm);
+    font-weight: 600;
+    letter-spacing: 1px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.btn-ghost:hover {
+    color: var(--text-primary);
+}
+
+/* === Answer Key Modal === */
+.answer-key-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.answer-key-content {
+    background: white;
+    color: #1A1F36;
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 40px;
+    border-radius: 0;
+    position: relative;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: var(--text-xl);
+    cursor: pointer;
+    color: var(--text-secondary);
+    background: none;
+    border: none;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+}
+
+.close-modal:hover {
+    color: var(--text-primary);
+}
+
+.answer-key-title {
+    color: #002D62;
+    font-size: var(--text-2xl);
+    margin-bottom: 30px;
+    text-align: center;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    padding-bottom: 20px;
+    border-bottom: 4px solid;
+    border-image: linear-gradient(
+        to right,
+        #C8102E 0%, #C8102E 30%,
+        #1D42BA 30%, #1D42BA 70%,
+        #C8102E 70%, #C8102E 100%
+    ) 1;
+}
+
+.answer-key-content h3 {
+    color: #C8102E;
+    margin-top: 24px;
+}
+
+.answer-key-content strong {
+    color: #C8102E;
+}
+
+.answer-item {
+    background: var(--bg-card);
+    padding: 30px;
+    padding-left: 34px;
+    margin-bottom: 24px;
+    border: 1px solid var(--border-default);
+    border-left: none;
+    border-radius: 4px;
+    transition: box-shadow 0.2s;
+    position: relative;
+}
+
+.answer-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: -1px;
+    bottom: -1px;
+    width: 4px;
+    background: linear-gradient(
+        to bottom,
+        var(--accent-red) 0%, var(--accent-red) 30%,
+        var(--accent-blue) 30%, var(--accent-blue) 70%,
+        var(--accent-red) 70%, var(--accent-red) 100%
+    );
+    border-radius: 4px 0 0 4px;
+}
+
+.answer-item:hover {
+    box-shadow: 0 4px 16px rgba(0, 45, 98, 0.08);
+}
+
+.answer-item strong {
+    color: var(--accent-red);
+    font-weight: 600;
+}
+
+/* === Work Area === */
+.work-area {
+    background: var(--bg-card);
+    border: 1px solid var(--border-default);
+    border-radius: 0;
+    padding: 20px;
+    margin: 20px 0;
+    min-height: 120px;
+}
+
+.work-area textarea {
+    width: 100%;
+    min-height: 100px;
+    border: 2px solid var(--border-default);
+    background: var(--bg-input);
+    color: var(--text-primary);
+    resize: vertical;
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    padding: 14px;
+    padding-bottom: 20px;
+    padding-right: 20px;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.work-label {
+    font-weight: 600;
+    color: var(--accent-red);
+    margin-bottom: 10px;
+    display: block;
+    text-transform: uppercase;
+    font-size: var(--text-sm);
+    letter-spacing: 0.5px;
+}
+
+/* === Custom Resize Handle === */
+.custom-resize-handle {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    width: 16px;
+    height: 16px;
+    cursor: ns-resize;
+    color: var(--text-secondary);
+    font-size: var(--text-lg);
+    line-height: 12px;
+    user-select: none;
+    transform: rotate(90deg);
+}
+
+/* === Final Answer Box === */
+.final-answer-box {
+    background: var(--bg-card);
+    border: 2px solid var(--accent-red);
+    border-radius: 0;
+    padding: 20px;
+    margin-top: 15px;
+}
+
+.final-answer-label {
+    font-weight: 600;
+    color: var(--accent-red);
+    margin-bottom: 12px;
+    display: block;
+    font-size: var(--text-base);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* === Auto-Grading Results === */
+.result {
+    text-align: center;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    font-size: var(--text-lg);
+    font-weight: bold;
+    display: none;
+}
+
+.result.show {
+    display: block;
+}
+
+.correct {
+    color: var(--color-correct);
+    background: var(--color-correct-bg);
+    border: 2px solid var(--color-correct);
+}
+
+.incorrect {
+    color: var(--accent-red);
+    background: var(--color-incorrect-bg);
+    border: 2px solid var(--accent-red);
+}
+
+.answer-feedback {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    display: none;
+    white-space: pre-line;
+    color: var(--text-primary);
+}
+
+.answer-feedback.show {
+    display: block;
+}
+
+/* === Math Notation === */
+.math-notation {
+    font-family: 'Courier New', monospace;
+    background: var(--bg-card);
+    padding: 3px 7px;
+    border-radius: 2px;
+    font-weight: 600;
+    color: var(--accent-blue);
+}
+
+/* === Tables === */
+table {
+    width: 100%;
+    max-width: 400px;
+    margin: 15px auto;
+    border-collapse: collapse;
+}
+
+table td, table th {
+    border: 2px solid var(--accent-red);
+    padding: 10px;
+    text-align: center;
+}
+
+table th {
+    background: var(--accent-red);
+    color: white;
+    font-weight: bold;
+}
+
+/* === Steps Table (exponent tests) === */
+.steps-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    background: white;
+}
+
+.steps-table th, .steps-table td {
+    border: 2px solid var(--accent-red);
+    padding: 12px 15px;
+    text-align: left;
+}
+
+.steps-table th {
+    background: var(--accent-red);
+    color: white;
+    font-weight: bold;
+}
+
+.steps-table td input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid var(--border-default);
+    border-radius: 4px;
+}
+
+/* === Learning Targets (exponent tests) === */
+.learning-targets {
+    padding: 20px;
+    background: var(--bg-card);
+    border: 2px solid var(--accent-blue);
+    margin-bottom: 30px;
+}
+
+.learning-targets h3 {
+    color: var(--accent-blue);
+    margin-bottom: 10px;
+    font-size: var(--text-lg);
+}
+
+.learning-targets ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.learning-targets li {
+    padding: 5px 0;
+    color: var(--text-primary);
+    font-size: var(--text-sm);
+}
+
+.learning-targets li::before {
+    content: "✓ ";
+    color: var(--accent-red);
+    font-weight: bold;
+}
+
+/* === Instructions Box === */
+.instructions {
+    padding: 15px 20px;
+    background: var(--color-warning-bg);
+    border: 1px solid var(--color-warning);
+    margin-bottom: 30px;
+}
+
+.instructions h3 {
+    color: var(--color-warning);
+    margin-bottom: 8px;
+}
+
+.instructions ul {
+    margin-left: 20px;
+    color: var(--color-warning);
+}
+
+/* === Sub-Questions Grid (exponent tests) === */
+.sub-questions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.sub-question {
+    background: var(--bg-card);
+    padding: 15px;
+    border: 1px solid var(--border-subtle);
+}
+
+.sub-question label {
+    display: block;
+    font-weight: 600;
+    color: var(--accent-red);
+    margin-bottom: 8px;
+}
+
+.sub-question input {
+    width: 100%;
+    max-width: 300px;
+    padding: 12px;
+    border: 2px solid var(--border-default);
+    border-radius: 4px;
+    font-size: var(--text-base);
+    transition: border-color 0.2s;
+}
+
+.sub-question input:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 3px rgba(29, 66, 186, 0.15);
+}
+
+/* === Standards Info Box === */
+.standards-box {
+    margin-top: 20px;
+    padding: 15px;
+    background: var(--bg-card);
+    border-radius: 4px;
+    border: 2px solid var(--accent-blue);
+}
+
+.standards-box strong {
+    color: var(--accent-navy);
+}
+
+.standards-box ul {
+    margin: 10px 0 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* === Chart Container === */
+.chart-container {
+    max-width: 700px;
+    height: 450px;
+    margin: 20px auto;
+    padding: 20px;
+    background: var(--bg-card);
+    border-radius: 8px;
+}
+
+/* === Score Card === */
+.score-card {
+    text-align: center;
+    padding: 32px;
+    border-radius: 8px;
+    margin: 32px 0;
+}
+
+.score-card.passing {
+    background: linear-gradient(135deg, var(--accent-navy) 0%, var(--accent-blue) 100%);
+    color: var(--text-inverse);
+}
+
+.score-card.needs-work {
+    background: var(--bg-page);
+    border: 2px solid var(--border-default);
+    color: var(--text-primary);
+}
+
+.score-card .score-number {
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    letter-spacing: -1px;
+    line-height: 1.1;
+}
+.score-card .score-pct {
+    font-size: var(--text-xl);
+    font-weight: 700;
+    opacity: 0.85;
+    margin-top: 4px;
+}
+.score-card .score-message {
+    font-size: var(--text-base);
+    margin-top: 12px;
+    line-height: 1.5;
+}
+
+/* === Streak Counter === */
+.streak-badge {
+    display: inline-block;
+    margin-top: 8px;
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+}
+.streak-badge .streak-number {
+    color: var(--accent-red);
+    font-weight: 700;
+    font-size: var(--text-base);
+}
+
+/* === Per-Standard Scoring === */
+.standards-grid {
+    margin: 24px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+.standards-heading {
+    grid-column: 1 / -1;
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-secondary);
+    margin-bottom: 4px;
+}
+.standard-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-default);
+    border-left: 4px solid var(--border-default);
+    padding: 16px;
+    border-radius: 4px;
+}
+.standard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 8px;
+}
+.standard-id {
+    font-weight: 700;
+    color: var(--accent-navy);
+    font-size: var(--text-base);
+}
+.standard-name {
+    color: var(--text-secondary);
+    font-size: var(--text-sm);
+    flex: 1;
+    margin-left: 8px;
+}
+.standard-fraction {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+.standard-bar {
+    height: 8px;
+    background: var(--border-subtle);
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 8px 0;
+}
+.standard-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.6s ease-out;
+}
+.standard-pct {
+    font-weight: 700;
+    font-size: var(--text-lg);
+    color: var(--text-primary);
+    display: inline;
+}
+.standard-copy {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    margin-top: 4px;
+}
+@media (max-width: 768px) {
+    .standards-grid { grid-template-columns: 1fr; }
+}
+
+.score-card .score-label {
+    font-size: var(--text-base);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 8px;
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+    .container {
+        padding: 24px;
+    }
+
+    h1 {
+        font-size: var(--text-xl);
+    }
+
+    .question-card {
+        padding: 20px;
+    }
+
+    .input-group input {
+        max-width: 100%;
+    }
+
+    .chart-container {
+        height: 300px;
+    }
+
+    .sub-questions {
+        grid-template-columns: 1fr;
+    }
+
+    /* Stack side-by-side flex layouts on tablet */
+    .question-card > div[style] {
+        flex-wrap: wrap;
+    }
+
+    /* Touch targets: 44px minimum (WCAG 2.5.8) */
+    .submit-btn, .btn-primary,
+    .print-btn, .btn-secondary,
+    .answer-key-btn, .btn-ghost {
+        min-height: 44px;
+    }
+
+    /* iOS zoom prevention: font-size ≥16px on inputs */
+    input, textarea, select {
+        font-size: var(--text-base);
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: var(--text-lg);
+    }
+
+    .container {
+        padding: 16px;
+    }
+
+    .submit-btn,
+    .print-btn,
+    .answer-key-btn {
+        width: 100%;
+    }
+
+    .chart-container {
+        height: 250px;
+    }
+
+    /* Stack side-by-side flex layouts on phone */
+    .question-card > div[style] {
+        flex-wrap: wrap;
+    }
+
+    /* WCAG 2.5.8: minimum 44px touch targets on mobile */
+    a, button, select, input {
+        min-height: 44px;
+    }
+    input[type="number"], input[type="text"], select {
+        font-size: var(--text-base); /* prevents iOS zoom */
+    }
+}
+
+/* === Archive Mode (completed tests) === */
+body.archived input, body.archived select, body.archived textarea {
+    pointer-events: none;
+    opacity: 0.85;
+}
+body.archived .submit-btn, body.archived .answer-key-btn {
+    display: none;
+}
+body.archived::before {
+    content: "✅ Completed " attr(data-completed) " · Score: " attr(data-score);
+    display: block;
+    text-align: center;
+    padding: 8px;
+    background: var(--bg-highlight);
+    color: var(--text-secondary);
+    font-size: var(--text-sm);
+}
+
+/* === Footer === */
+.footer {
+    text-align: center;
+    padding: 20px;
+    color: var(--text-secondary);
+    font-size: var(--text-sm);
+    margin-top: 40px;
+}
+
+/* Print header: hidden on screen, visible only when printing */
+.print-header { display: none; }
+
+/* Test header: right padding prevents arena-toggle button overlapping title */
+.test-header {
+    position: relative;
+    text-align: center;
+    padding: 0 56px;
+}
+
+@media print {
+    .print-header { display: block; margin-bottom: 12px; font-size: 0.9rem; }
+    .timer, .timer-toast, .score-card, .standards-grid { display: none; }
+}
