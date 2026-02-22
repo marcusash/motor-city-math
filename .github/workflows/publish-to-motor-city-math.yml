@@ -1,21 +1,7 @@
 name: Publish to motor-city-math
 
 on:
-  push:
-    branches: [master]
-    paths:
-      - 'index.html'
-      - 'exam.html'
-      - 'final_exam_251123.html'
-      - 'final_exam_251123_mini.html'
-      - 'nonlinear_exam_mvp.html'
-      - 'shared/**'
-      - 'data/**'
-      - 'docs/**'
-      - 'scripts/**'
-      - '_gen.js'
-      - 'package.json'
-  workflow_dispatch:
+  workflow_dispatch: # manual only — auto-trigger disabled until MOTOR_CITY_MATH_TOKEN is rotated
 
 jobs:
   publish:
