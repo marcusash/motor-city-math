@@ -12,7 +12,7 @@
     <script src="shared/chart-theme.js"></script>
     <style>
         body { background: var(--bg-page); }
-        .dashboard { max-width: 900px; margin: 0 auto; padding: 20px; }
+        .dashboard { max-width: 600px; margin: 0 auto; padding: 28px 20px 80px; }
         .dash-header { text-align: center; margin-bottom: 24px; }
         .dash-header h1 { color: var(--accent-navy); font-size: var(--text-2xl); font-weight: 700; margin: 0; }
         .dash-header .subtitle { color: var(--text-secondary); font-weight: 400; font-size: var(--text-base); margin-top: 4px; }
@@ -302,7 +302,12 @@
             text-align: center; font-size: var(--text-lg); font-weight: 600;
             color: var(--text-primary); margin: -12px 0 20px;
         }
-        /* ── Trend Chart (FD design) ──────────────────────────────────── */
+        /* ── App Header (FD redesign) ─────────────────────────────────── */
+        .app-hd { text-align: center; margin-bottom: 24px; }
+        .app-hd h1 { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.025em; color: var(--fd-text-1); margin: 0; }
+        .app-hd p  { color: var(--fd-text-2); font-size: 0.82rem; margin-top: 4px; }
+        /* Hide arena toggle — FD design is always dark */
+        #arenaToggle { display: none !important; }
         .trend-card {
             background: var(--fd-card); border: 1px solid var(--fd-border);
             border-radius: var(--fd-r); padding: 18px 18px 14px; margin-bottom: 14px;
@@ -351,10 +356,9 @@
             <strong>Motor City Math — Dashboard</strong><br>
             Name: _____________________ Date: ___________
         </div>
-        <header class="dash-header" style="display:block; text-align:center;">
-            <h1>Motor City Math</h1>
-            <div class="subtitle">Algebra II · Kai</div>
-            <div class="hero-greeting" id="kaiGreeting">Hey Kai! 👋</div>
+        <header class="app-hd">
+            <h1>Motor City Math 🏀</h1>
+            <p>Algebra II &middot; Kai</p>
         </header>
 
         <!-- UP NEXT hero (FD redesign) -->
