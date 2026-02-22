@@ -980,6 +980,22 @@
     }
 
     window.addEventListener('DOMContentLoaded', function() {
+        // ?restore=1 — auto-seeds localStorage from server JSON, no file needed
+        // Dad can text Kai: https://marcusash.github.io/motor-city-math/?restore=1
+        var _restoreMode = new URLSearchParams(window.location.search).get('restore') === '1';
+        if (_restoreMode) {
+            fetch('data/kai-scores-2026-02-21.json')
+                .then(function(r) { return r.json(); })
+                .then(function(data) {
+                    if (data && data.mcm_scores) {
+                        localStorage.setItem('mcm_scores', JSON.stringify(data.mcm_scores));
+                        alert('✅ Scores restored! Original exam, Practice 1 & Practice 2 are all back.');
+                        window.location.href = window.location.pathname;
+                    }
+                })
+                .catch(function() { alert('Could not load score file.'); });
+            return;
+        }
         dadModeInit();
         rerenderAll();
     });
