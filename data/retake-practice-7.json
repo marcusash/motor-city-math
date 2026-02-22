@@ -209,33 +209,33 @@
       "section": "B",
       "standard": "W3.b",
       "type": "quadratic",
-      "question_html": "Solve using the quadratic formula: ( 3x^2 + 7x - 6 = 0 )",
+      "question_html": "Solve by factoring: \\( 2x^2 + 6x - 8 = 0 \\)",
       "inputs": [
         {
           "id": "q5_x1",
           "type": "number",
-          "label": "x1 =",
-          "answer": -3,
+          "label": "Smaller x =",
+          "answer": -4,
           "tolerance": 0.05
         },
         {
           "id": "q5_x2",
           "type": "number",
-          "label": "x2 =",
-          "answer": 0.6667,
-          "tolerance": 0.02
+          "label": "Larger x =",
+          "answer": 1,
+          "tolerance": 0.05
         }
       ],
-      "hint": "a=3, b=7, c=-6. Discriminant: b^2 - 4ac = 49 + 72 = 121. sqrt(121) = 11. Then x = (-7 +/- 11) / 6.",
+      "hint": "First: is there a GCF you can factor out from ALL three terms? Pull it out. Then factor the simpler quadratic that remains.",
       "solution_steps": [
-        "Quadratic formula: x = (-b +/- sqrt(b^2-4ac)) / 2a.",
-        "a=3, b=7, c=-6. Discriminant = 49 - 4(3)(-6) = 49 + 72 = 121.",
-        "sqrt(121) = 11. x = (-7 +/- 11) / 6.",
-        "x = (-7+11)/6 = 4/6 = 2/3. OR x = (-7-11)/6 = -18/6 = -3.",
-        "W3.b: this equation is not in vertex form. Quadratic formula or factoring are the tools."
+        "Step 1 — always check GCF first: GCF(2, 6, 8) = 2. Factor it out: 2(x² + 3x - 4) = 0.",
+        "Step 2 — now a=1, factor normally: find two numbers that multiply to -4 and add to 3: +4 and -1.",
+        "2(x + 4)(x - 1) = 0.",
+        "ZPP: x + 4 = 0 → x = -4.  OR  x - 1 = 0 → x = 1.",
+        "Key: when a≠1, always look for GCF before anything else. Missing the GCF makes factoring much harder than it needs to be."
       ],
       "feedback_correct": "🔥 Both solutions found.",
-      "feedback_wrong": "Use the quadratic formula. a=3, b=7, c=-6. Discriminant = 121. sqrt(121)=11."
+      "feedback_wrong": "First pull out the GCF: GCF(2,6,8)=2. That gives 2(x²+3x-4)=0. Then factor x²+3x-4."
     },
     {
       "id": "rp7-q6",
