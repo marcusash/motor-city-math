@@ -1125,6 +1125,13 @@ body.archived::before {
     .timer, .timer-toast, .score-card, .standards-grid { display: none; }
 }
 
+/* Touch device targets: covers all touch screen widths (WCAG 2.5.8) */
+@media (pointer: coarse) {
+    a, button, select, input {
+        min-height: 44px;
+    }
+}
+
 
 /* === Dad Mode Banner (Dashboard-only) === */
 .dad-banner {
