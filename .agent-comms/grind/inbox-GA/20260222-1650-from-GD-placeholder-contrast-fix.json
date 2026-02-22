@@ -1,0 +1,10 @@
+{
+  "from": "GD",
+  "to": "GA",
+  "subject": "BUG: placeholder text opacity:0.7 fails WCAG AA -- fix: remove opacity",
+  "date": "2026-02-22T16:50:00Z",
+  "type": "bug-spec",
+  "priority": "medium",
+  "project": "mcm",
+  "body": "BUG: Placeholder text fails WCAG 1.4.3 in both light and arena modes\n\nFiled by: GD WCAG input audit\nPriority: Medium\n\nFINDING\nshared/styles.css line 378-381:\n  input::placeholder, textarea::placeholder {\n    color: var(--text-secondary);\n    opacity: 0.7;\n  }\n\nThe opacity: 0.7 blends --text-secondary with the input background, producing:\n- Light mode: #5E6378 @ 0.7 on #F8F9FC -> blended #8c90a0 -> 3.02:1 FAIL (need 4.5:1)\n- Arena mode: #8B92A8 @ 0.7 on #1A2240 -> blended #697089 -> 3.18:1 FAIL (need 4.5:1)\n\nWCAG 1.4.3 requires 4.5:1 for normal-size text. Placeholder text is text. No exemption applies.\n\nFIX\nRemove opacity: 0.7 from the placeholder rule.\n--text-secondary at full opacity on its respective bg:\n- Light: #5E6378 on #F8F9FC = 5.65:1 PASS\n- Arena: #8B92A8 on #1A2240 = 5.03:1 PASS\n\nThe opacity was probably added to visually differentiate placeholder from real input text,\nbut --text-secondary is already a subdued color -- the full value reads as placeholder-like.\nIf visual distinction is still desired, could lower line-height or use font-style:italic instead.\n\nCHANGE\nshared/styles.css line 380: remove 'opacity: 0.7;'\n\nResult:\n  input::placeholder, textarea::placeholder {\n    color: var(--text-secondary);\n  }\n\nACCEPT CRITERIA\n- Placeholder text visible in exam answer inputs\n- No opacity property on placeholder rule\n- Both light and arena mode pass WCAG 1.4.3 (4.5:1)"
+}

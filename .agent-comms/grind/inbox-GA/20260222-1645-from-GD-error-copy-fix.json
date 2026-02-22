@@ -1,0 +1,10 @@
+{
+  "from": "GD",
+  "to": "GA",
+  "subject": "BUG: exam error state copy uses technical language -- replace with MCM voice",
+  "date": "2026-02-22T16:45:00Z",
+  "type": "bug-spec",
+  "priority": "medium",
+  "project": "mcm",
+  "body": "BUG SPEC: Error state copy uses technical language (HTTP status, corruption warnings)\n\nFiled by: GD voice/copy review\nPriority: Medium\n\nCURRENT MESSAGES (shown to Kai):\n1. fetch failure: \"Could not load {file}. Check your connection and try again.\"\n2. JSON parse error: \"Error reading exam data. The file may be corrupted.\"\n3. HTTP error: \"Could not load {file} (status {N}).\"\n4. XHR onerror: \"Network error loading {file}. Try reloading.\"\n\nPROBLEMS:\n- Message 2 says \"corrupted\" -- scary to a 15-year-old, implies data loss\n- Message 3 shows raw HTTP status code ({N}) -- meaningless to Kai\n- None use MCM coach voice (.voice-guide.md: direct, calm, tells you exactly what to do)\n- No encouragement or next step specificity\n\nPROPOSED COPY (MCM voice, ADHD-appropriate, max 12 words per message):\n1. fetch failure: \"Can't reach this test. Check your wifi and try again.\"\n   CTA button label: \"Try again\" (not \"Retry\")\n2. JSON parse error: \"Something's off with this file. Try a different test.\"\n3. HTTP 404: \"Test not found. Pick a different one.\"\n4. HTTP other: \"Server error ({N}). Refresh or pick a different test.\"\n4. XHR onerror: \"Can't connect right now. Refresh and try again.\"\n\nACCEPT CRITERIA:\n- No HTTP status codes in user-facing copy (except as fallback in parens for non-404 errors)\n- No word \"corrupted\" visible to Kai\n- Each message <= 12 words\n- Each message includes a clear action (what to do next)\n- Back button text: \"Pick a different test\" (already good -- keep)\n- Retry button text: change \"Retry\" -> \"Try again\" (warmer, MCM voice)\n\nImplementation: update showLoadError call sites in exam.html lines 259, 267, 270, 274.\nAlso change Retry button label at line 249."
+}

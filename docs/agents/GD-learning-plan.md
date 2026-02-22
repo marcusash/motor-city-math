@@ -114,3 +114,60 @@ Goal: Integrate accessibility thinking at the first sketch stage, not the review
 - Chart+aria-label spec (20260222-1140) - queued
 - 3rd-wrong-attempt auto-hint spec (20260222-1628) - queued
 - tier-mid blue fix #4A90D9 (20260222-1620) - queued
+
+---
+
+## Session 3 Update (Feb 22, 2026 - Afternoon)
+
+### Autonomous Sprint Delivery
+
+QA and WCAG audit work completed this session:
+
+**Specs filed to GA (4 new):**
+- Focus ring WCAG fix (20260222-1635): shared/styles.css :focus-visible #1D42BA -> must add --accent-blue-on-dark for dashboard
+- Error state copy in MCM voice (20260222-1645): removed HTTP codes, rewrote in coach voice, added "Try again" label
+- Placeholder contrast fix (20260222-1650): opacity:0.7 on --text-secondary = 3.02:1 FAIL; fix is removing opacity
+- Input border WCAG fix (20260222-1655): --border-default 1.52:1 FAIL on inputs; add --border-input token
+
+**QA findings this session:**
+- saveResults timestamp: PASS (#1097 has new Date().toISOString() -- streak computation unblocked)
+- Arena focus ring: #4A72E8 on #141B2D = 3.97:1 PASS (arena mode is correct)
+- Error state copy: FAIL -- HTTP status codes shown to Kai, "corrupted" message too technical
+
+### Pistons Brand History -- 3 Design Lessons
+
+Research: Detroit Pistons brand evolution and what it means for MCM.
+
+**1. The Bad Boys era (1988-1990) -- contrast as identity**
+- Palette: White on Cobalt Blue (#0034A0-ish) and Red (#CC0000-ish). Hard edges. No gradients.
+- The Bad Boys team used aggression and physicality as visual language: black accents, tight lettering.
+- MCM lesson: High contrast is not just WCAG compliance -- it IS the Pistons brand. Low-contrast UI is off-brand. Every time I spec #4A90D9 over #1D42BA on dark, I am being more Pistons, not less.
+
+**2. The Teal-and-Red era (1996-2001) -- brand dilution by trend-chasing**
+- Pistons briefly adopted teal (see: Charlotte Hornets era palette) to look modern. It bombed.
+- The team had no identity, went through multiple coaching changes, finished out of playoffs.
+- MCM lesson: Do not add brand colors to MCM because they look nice. Every color must earn its place from the Pistons identity system. No pastels, no teals, no "charcoal grey + orange" modernization unless it ships with a real brand rationale.
+
+**3. The 2001 navy-red-blue return -- constraint as discipline**
+- Pistons reverted to navy-blue + red + chrome silver. Won the championship in 2004 with this palette.
+- The return to constraint unlocked identity clarity. Ben Wallace, Chauncey Billups: the team knew who they were.
+- MCM lesson: The design system's constraint (#C8102E, #1D42BA, #002D62, #BEC0C2) is a feature. When I am tempted to add a color token "just for this case," I should first ask: can I make the existing palette work? The answer is usually yes.
+
+### WCAG Audit Running Totals (as of Session 3)
+
+| Check | Result | Filed |
+|---|---|---|
+| Pistons Red (#C8102E) on dark | 2.94:1 FAIL | FD inbox |
+| Pistons Blue (#1D42BA) on dark | 2.09:1 FAIL | FD inbox |
+| Pistons Navy on dark | 1.28:1 FAIL | FD inbox |
+| tier-mid std-pct text | 2.09:1 FAIL | GA inbox |
+| Dashboard :focus-visible | 2.09:1 FAIL | GA inbox |
+| Placeholder text (both modes) | 3.02-3.18:1 FAIL | GA inbox |
+| Input borders (both modes) | 1.26-1.52:1 FAIL | GA inbox |
+| exam.html :focus-visible | 14.02:1 PASS | no action |
+| Arena :focus-visible | 3.97:1 PASS | no action |
+| Arena focus border on input | 3.61:1 PASS | no action |
+| score-number, correct/incorrect text | (not yet audited) | pending |
+
+### Next Skills Focus: T16 (ADHD + timing research)
+5 peer-reviewed findings on ADHD + UI timing. Real research, not just WCAG. Planned for next session.

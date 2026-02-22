@@ -1,0 +1,10 @@
+{
+  "from": "GD",
+  "to": "GA",
+  "subject": "BUG: input borders 1.5:1 fail WCAG 1.4.11 -- fix: add --border-input token",
+  "date": "2026-02-22T16:55:00Z",
+  "type": "bug-spec",
+  "priority": "medium",
+  "project": "mcm",
+  "body": "BUG: Input borders fail WCAG 1.4.11 Non-text Contrast (need 3:1 for UI components)\n\nFiled by: GD WCAG input audit\nPriority: Medium\n\nFINDING\nshared/styles.css: .input-group input { border: 2px solid var(--border-default); }\n- Light mode: --border-default #C8CCD8 on --bg-input #F8F9FC = 1.52:1 FAIL\n- Arena dark: --border-default #2A3352 on --bg-input #1A2240 = 1.26:1 FAIL\nWCAG 1.4.11 Non-text Contrast requires UI component borders to be 3:1 against adjacent colors.\nInputs are interactive, non-decorative -> no exemption.\n\nFOCUS STATES (passing, do not change):\n- Light focus: --accent-blue #1D42BA on #F8F9FC = 7.85:1 PASS\n- Arena focus: --accent-blue #4A72E8 on #1A2240 = 3.61:1 PASS\n\nFIX\nAdd a dedicated --border-input token for form elements (separate from --border-default which\ncontrols card borders and decorative dividers -- those may be intentionally subtle).\n\nIn shared/styles.css :root (light):\n  --border-input: #8A8FA5;   /* 3.04:1 on #F8F9FC -- WCAG 1.4.11 pass */\n\nIn shared/styles.css body.arena-mode (dark):\n  --border-input: #6B748F;   /* 3.36:1 on #1A2240 -- WCAG 1.4.11 pass */\n\nThen update:\n  .input-group input, .input-group textarea, select {\n    border: 2px solid var(--border-input);   /* was var(--border-default) */\n  }\n\nDo NOT change --border-default on cards/dividers -- those are decorative.\nOnly change interactive input borders.\n\nACCEPT CRITERIA\n- Input/textarea borders visible against their background\n- Input border contrast >= 3:1 against both bg-input and bg-page in both modes\n- Focus ring unchanged (still uses --accent-blue variants)\n- Card and divider borders unchanged"
+}
