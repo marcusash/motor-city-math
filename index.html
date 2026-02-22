@@ -271,6 +271,10 @@
             <summary class="section-title">Send to Dad 📱</summary>
             <div style="text-align:center; margin: 16px 0 8px;">
                 <button class="nav-btn ghost" onclick="exportScores()">📤 Send Scores to Dad</button>
+                <label class="nav-btn ghost" style="cursor:pointer; display:inline-block; margin-top:8px;">
+                    📥 Load Corrected Scores
+                    <input type="file" accept=".json" style="display:none;" onchange="restoreScores(this)">
+                </label>
             </div>
         </details>
 
@@ -791,6 +795,25 @@
         dadModeInit();
         rerenderAll();
     });
+
+    function restoreScores(input) {
+        var file = input.files[0];
+        if (!file) return;
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            try {
+                var data = JSON.parse(e.target.result);
+                if (data && data.mcm_scores) {
+                    localStorage.setItem('mcm_scores', JSON.stringify(data.mcm_scores));
+                    alert('Scores restored. Reloading...');
+                    location.reload();
+                } else {
+                    alert('Invalid score file. Use the "Send Scores to Dad" export.');
+                }
+            } catch(err) { alert('Could not read file.'); }
+        };
+        reader.readAsText(file);
+    }
 
     function exportScores() {
         var data = {
