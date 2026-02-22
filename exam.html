@@ -918,9 +918,13 @@
         });
         html += '</div>';
 
-        // CTA: different based on grade
-        if (grade >= 3) {
+        // CTA: practice exams get "Run It Back"; real exams lock after grading
+        var isRetake = examData && examData.exam_id && examData.exam_id.indexOf('retake') !== -1;
+        if (grade >= 3 || !isRetake) {
             html += '<div style="margin-top:16px;"><a href="index.html" class="nav-btn primary" style="text-decoration:none;">🏀 Back to Dashboard</a></div>';
+            if (!isRetake && grade < 3) {
+                html += '<p style="margin-top:10px; color:var(--text-secondary); font-size:var(--text-sm);">Score locked. Study the hints above, then hit the practice tests. 💪</p>';
+            }
         } else {
             html += '<div style="margin-top:16px;"><a href="javascript:location.reload()" class="nav-btn primary" style="text-decoration:none;">🔄 Run It Back</a>';
             html += ' <a href="index.html" class="nav-btn ghost" style="text-decoration:none; margin-left:8px;">← Dashboard</a></div>';
@@ -960,6 +964,11 @@
         try {
             var scores = JSON.parse(localStorage.getItem('mcm_scores') || '{}');
             if (!scores[storageKey]) scores[storageKey] = { attempts: [], best: null };
+            // Real exams (not retake practice): lock after first attempt. Score of truth = first submission.
+            var isRetakeExam = storageKey.indexOf('retake') !== -1;
+            if (!isRetakeExam && scores[storageKey].attempts.length > 0) {
+                return; // Score already recorded, do not overwrite
+            }
             scores[storageKey].attempts.push(attempt);
             if (!scores[storageKey].best || pct > scores[storageKey].best.pct) {
                 scores[storageKey].best = { score: score, pct: pct, grade: grade };
