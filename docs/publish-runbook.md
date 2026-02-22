@@ -64,6 +64,13 @@ failing with 0 jobs. Root cause: private repo Actions require billing setup on t
 To resolve GitHub Actions: add a payment method to github.com/marcusash_microsoft account settings,
 then the action will auto-trigger on every push.
 
+### Quick Triage Decision Tree
+
+1. **Workflow shows "0 jobs" immediately:** treat as account-level Actions gating (billing/settings), not YAML syntax.
+2. **Workflow starts but publish step fails auth:** rotate `MOTOR_CITY_MATH_TOKEN`, confirm `Contents` + `Workflows` write on `marcusash/motor-city-math`.
+3. **Workflow succeeds but site not updated:** verify Pages source is `master` `/` on target repo, then republish via `node scripts/publish.cjs`.
+4. **Need urgent release for Kai:** bypass Action and run `node scripts/publish.cjs` directly.
+
 ---
 
 ## Current Status

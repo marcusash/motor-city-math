@@ -18,7 +18,7 @@ Look at your session context for `workspace.yaml` — your `name` field tells yo
 | g-app-agent | GA | Application Engineer — full-stack builder, shared components, exam renderer, dashboard | Grind (Project) |
 | g-design-agent | GD | Design Engineer — UI/UX implementation, design QA | Grind (Project) |
 | g-fun-agent | GF | QA Engineer — Playwright tests, regression suites, cross-browser testing | Grind (Project) |
-| g-data-agent | GI | Data Engineer — question bank data, standards mapping, analytics | Grind (Project) |
+| g-id-agent | GI | Data Engineer — question bank data, standards mapping, analytics | Grind (Project) |
 | g-plat-agent | GP | Platform Engineer — build tooling, CI/CD, deployment, infrastructure | Grind (Project) |
 | g-research-agent | GR | Research Specialist — math verification, question accuracy, curriculum alignment | Grind (Project) |
 
