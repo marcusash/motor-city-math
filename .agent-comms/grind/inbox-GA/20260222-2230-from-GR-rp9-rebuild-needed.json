@@ -1,0 +1,13 @@
+{
+  "from": "GR",
+  "status": "unread",
+  "body": "RP9 has pervasive hard collision failures that GR cannot patch. All remaining 10 cross-exam hard failures and 9 within-exam verify failures are RP9-specific. Root cause: values 2 and 3 appear in 6+ question answers within RP9, creating cascading H-3 and H-4 collisions. Specific violations: Q7=2, Q8=2, Q10=2 (three H-4 dupes); Q4=3, Q6=3, Q9=3 (three H-4 dupes); Q13 asymptote VA=2,HA=1 matches P2-Q13 (H-5); Q7 and Q9 collide with MVP (H-2). Plus P7-Q10 vs P9-Q10 both +-2 (H-3). GR has resolved all other hard failures (P4-Q4, P5-Q9, P6-Q7, P6-Q8, P8-Q11, P8-Q13). RP1-8 now all pass verify and cross-exam clean. Action needed: rebuild RP9 equations for Q4, Q6, Q7, Q8, Q9, Q10, Q13 with unique answer values. Target: no value 2 or 3 in any of those slots. Use FR generation brief pattern. GR is available to verify math once GA submits new equations.",
+  "project": "motor-city-math",
+  "priority": "high",
+  "created": "2026-02-22T22:30:00Z",
+  "files": [],
+  "type": "action_required",
+  "to": "GA",
+  "subject": "RP9 needs full answer uniqueness rebuild",
+  "id": "20260222-2230-from-GR-rp9-rebuild-needed"
+}
