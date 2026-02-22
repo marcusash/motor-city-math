@@ -816,7 +816,7 @@
                 } else if (inp.type === 'number') {
                     var el2 = document.getElementById(inp.id);
                     var val = el2 ? parseStudentAnswer(el2.value) : NaN;
-                    numberInputs.push({ val: val, answer: inp.answer, tolerance: inp.tolerance || 0.01 });
+                    numberInputs.push({ el: el2, val: val, answer: inp.answer, tolerance: inp.tolerance || 0.01 });
                 } else if (inp.type === 'radio') {
                     var selected = document.querySelector('input[name="' + inp.id + '"]:checked');
                     if (!selected || selected.value !== inp.answer) qCorrect = false;
@@ -833,7 +833,13 @@
                 if (!order1 && !order2) qCorrect = false;
             } else {
                 numberInputs.forEach(function(n) {
-                    if (isNaN(n.val) || Math.abs(n.val - n.answer) > n.tolerance) qCorrect = false;
+                    var ok = !isNaN(n.val) && Math.abs(n.val - n.answer) <= n.tolerance;
+                    if (!ok) qCorrect = false;
+                    if (n.el) {
+                        n.el.style.borderColor = ok ? 'var(--color-correct, #3FB950)' : 'var(--color-incorrect, #F85149)';
+                        n.el.style.borderWidth = '2px';
+                        n.el.style.borderStyle = 'solid';
+                    }
                 });
             }
 

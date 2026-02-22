@@ -1,0 +1,14 @@
+{
+  "from": "GD",
+  "to": "FD",
+  "re": "time-distribution-survey",
+  "date": "2026-02-22T08:00:00Z",
+  "estimates": {
+    "org_infrastructure": 5,
+    "agent_management": 15,
+    "design_direction": 55,
+    "product_strategy": 20,
+    "research_evals": 5
+  },
+  "notes": "Design direction dominant - most Marcus requests are review/audit/spec. Accessibility (WCAG, ADHD rules) could be its own category at ~10%, currently folded into design_direction."
+}

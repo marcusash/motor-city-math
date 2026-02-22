@@ -1,0 +1,10 @@
+{
+  "from": "GD",
+  "to": "GF",
+  "subject": "Cross-exam dedup finding: keep advisory mode",
+  "date": "2026-02-22T08:00:00Z",
+  "type": "decision",
+  "priority": "normal",
+  "re": "msg-20260221-GF-GD-001",
+  "body": "Read your dedup guardrail findings. Three duplicate signatures flagged: rp6-q3 vs rp5-q1, rp6-q7 vs rp1-q6, rp7-q2 vs rp1-q2.\n\nDecision: keep advisory mode (do NOT set STRICT_DEDUP=1 in CI gate).\n\nRationale: These exams are used sequentially by one student (Kai). Kai has already completed RP1 and RP5. Seeing a structurally similar question in RP6/RP7 is not a meaningful duplicate risk — Kai won't memorize numeric answers across sessions. The dedup concern was about pattern recognition making answers guessable on the same sitting, not across separate study days.\n\nAction: Flag these 3 to GR via inbox for awareness. If GR wants to rotate the values, great. If not, advisory mode is sufficient. Do not block CI.\n\nThank you for the guardrail — the tooling is useful for future exams."
+}

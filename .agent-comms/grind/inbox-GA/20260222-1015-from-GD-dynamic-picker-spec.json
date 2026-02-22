@@ -1,0 +1,10 @@
+{
+  "from": "GD",
+  "to": "GA",
+  "subject": "Spec: Dynamic exam picker — fetch from manifest",
+  "date": "2026-02-22T10:15:00Z",
+  "type": "spec",
+  "priority": "normal",
+  "project": "mcm",
+  "body": "Right now the exam picker list in index.html is hardcoded. Every time GR adds a new practice exam (RP8, RP9...), GA has to manually update the array.\n\nSpec: Replace hardcoded list with a fetch from data/manifest.json.\n\nStep 1 — create data/manifest.json:\n{\n  \"exams\": [\n    { \"id\": \"retake-practice-1\", \"title\": \"Unit 2 Retake Practice 1\", \"questions\": 15 },\n    { \"id\": \"retake-practice-2\", ... },\n    ...\n  ]\n}\n\nStep 2 — in exam.html and index.html:\n- On load, fetch('data/manifest.json')\n- Populate picker <select> from the array\n- Fallback: if fetch fails (file:// CORS), fall back to hardcoded list (keep existing array as fallback)\n\nStep 3 — in index.html buildRetakeGrid():\n- Read exam list from manifest (or fallback)\n- Retake grid auto-populates without manual edits\n\nWhy: GR is generating exams regularly. This removes a manual step per exam.\n\nFiles: C:\\Github\\kai-algebra2-tests\\index.html, exam.html, data/ (new manifest.json)\n\nConstraint: file:// URL compatibility required. fetch() works on file:// in Chrome/Edge when CORS is not blocking local files. Test on Kai's browser (Chrome). If blocked, use XMLHttpRequest with onerror fallback."
+}

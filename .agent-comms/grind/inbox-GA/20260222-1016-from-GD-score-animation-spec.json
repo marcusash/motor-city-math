@@ -1,0 +1,10 @@
+{
+  "from": "GD",
+  "to": "GA",
+  "subject": "Spec: Score reveal animation (ADHD-optimized counter)",
+  "date": "2026-02-22T10:16:00Z",
+  "type": "spec",
+  "priority": "normal",
+  "project": "mcm",
+  "body": "After grading, exam.html shows score immediately with no animation. For Kai (ADHD), a brief animated reveal creates a moment of suspense that makes the score feel earned.\n\nSpec: Score counter animation on exam.html grade reveal.\n\nBehavior:\n1. After gradeExam() runs, show score section\n2. Count up from 0 to final % in ~600ms using requestAnimationFrame\n3. On reach: flash green (if passing, score >= 80%) or show static (if not)\n4. Max 1 sound hook (optional): window.dispatchEvent(new CustomEvent('mcm:scoreReveal', { detail: { pct } })) — Kai can wire audio later\n\nImplementation:\nfunction animateScore(targetPct, el, duration) {\n  var start = performance.now();\n  function step(now) {\n    var t = Math.min((now - start) / duration, 1);\n    el.textContent = Math.round(t * targetPct) + '%';\n    if (t < 1) requestAnimationFrame(step);\n    else el.textContent = targetPct + '%';\n  }\n  requestAnimationFrame(step);\n}\n\nADHD rules:\n- Duration: 600ms max. No longer. Attention drops.\n- No looping, no repeat. One reveal, done.\n- If score >= 93%: add class 'grade-a-flash' which pulses green once (CSS keyframe, 300ms)\n- Keep it snappy. Celebrate the result, not the wait.\n\nFile: C:\\Github\\kai-algebra2-tests\\exam.html\nTarget element: wherever the final score % is displayed after gradeExam()"
+}

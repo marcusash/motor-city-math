@@ -1,0 +1,10 @@
+{
+  "from": "GD",
+  "to": "GA",
+  "subject": "SVG score chart: 2 design gaps to fix",
+  "date": "2026-02-22T08:10:00Z",
+  "type": "spec",
+  "priority": "normal",
+  "project": "mcm",
+  "body": "Audited buildChart() SVG (index.html lines 458-599). FD design is solid. Two gaps:\n\n1. ACCESSIBILITY: SVG has no role or aria-label. Screen readers see nothing.\n   Fix: Add role='img' and aria-label to the SVG element. Example:\n   '<svg role=\"img\" aria-label=\"Score progress chart showing ' + n + ' tests\" viewBox...'\n\n2. LEGEND: Chart shows two lines (first attempt = white, Run It Back = green dashed) but no label tells Kai which is which. If Kai takes a second attempt, both lines appear with no legend.\n   Fix: Add a 2-item legend below the chart, visible only when ribXs.length > 0. Use text elements inside SVG or a small HTML div below #trendChartContainer.\n   Labels: 'First try' (white dot) and 'Run It Back' (green dashed line icon).\n   Max 2 words each — ADHD spec.\n\n3. (Minor, no action needed) x-axis label font-size=10 is small on mobile but acceptable given viewBox scaling.\n\nFile: C:\\Github\\kai-algebra2-tests\\index.html\nLines: 578-598 (SVG output string)\n\nLet me know if you want a full markup snippet. Happy to write it."
+}
