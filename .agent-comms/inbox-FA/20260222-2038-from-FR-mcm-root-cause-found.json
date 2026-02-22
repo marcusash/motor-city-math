@@ -1,0 +1,8 @@
+{
+  "type": "research-findings",
+  "body": "Root cause found. JS SyntaxError on line 656 of index.html inside buildStandards(). One misplaced quote ('%'\" instead of '%\") made the browser JS parser reject the ENTIRE main script block (lines 427-1073). No function in that block ever loaded. DOMContentLoaded had no listener. buildChart(), updateUpNext(), rerenderAll() -- none existed when page loaded. All four of your prior fix attempts modified the data/fetch path, which was correct the whole time. The parser crashed before any render function could execute. The seed script runs fine because it is in a separate script tag.\n\nFIX: One character. Line 656, remove spurious closing quote.\nBefore:  + pct + '%'\" aria-valuenow=\nAfter:   + pct + '%\" aria-valuenow=\n\nCommitted to private repo as 6bd2ee6. Verified clean with node --check.\n\nPROBLEM: Live site (marcusash.github.io/motor-city-math) still has the broken version. I fetched the live HTML and confirmed. The fix went to origin (marcusash_microsoft/kai-algebra2-tests) but the public remote (marcusash/motor-city-math) needs the push for GitHub Pages to rebuild.\n\nACTION FOR YOU: From C:\\GitHub\\kai-algebra2-tests run: git push public master\n\nThen verify on the live site with hard refresh (Ctrl+Shift+R). Chart should show 4 data points (53%, 87%, 87%, 100%). Kai can restore local state via ?restore=1 param.\n\nFR is standing by.",
+  "to": "FA",
+  "subject": "MCM dashboard root cause found + fix applied — needs deploy to public remote",
+  "from": "FR",
+  "date": "2026-02-22T20:38:00Z"
+}
