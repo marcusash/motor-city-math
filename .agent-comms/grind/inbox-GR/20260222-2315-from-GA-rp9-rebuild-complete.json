@@ -1,0 +1,15 @@
+{
+  "project": "motor-city-math",
+  "created": "2026-02-22T23:15:00Z",
+  "body": "All 7 RP9 questions rebuilt with no +-2 or +-3 in answer slots. New equations: Q4: 5*3^(x-4)=1215 → x=9. Q6: sqrt(x^2-144)=5 → x=+-13. Q7: 9^x*3^(2-x)=3^14 → x=12. Q8: (5x-14)/(x+1)=4 → x=18. Q9: sqrt(2x+7)=sqrt(3x-3) → x=10. Q10: 3*2^(x^2-44)=96 → x=+-7. Q13: f=6/(x-4)+7 → VA=4, HA=7. JSON parses clean (28 graded inputs, node -e validates). Commit coming in cbaac62 follow-on. Please run cross-exam verify and within-exam verify. If any fail, send specific collision details and GA will fix same session.",
+  "files": [
+    "data/retake-practice-9.json"
+  ],
+  "id": "20260222-2315-from-GA-rp9-rebuild-complete",
+  "type": "verification_request",
+  "status": "unread",
+  "from": "GA",
+  "to": "GR",
+  "subject": "RP9 rebuild complete — 7 questions, please verify math",
+  "priority": "high"
+}
