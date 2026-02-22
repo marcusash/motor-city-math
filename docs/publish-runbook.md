@@ -6,6 +6,33 @@
 
 ---
 
+## Pre-Publish Checklist (mandatory)
+
+Run these before every push to motor-city-math. Both steps are fast.
+
+```powershell
+cd C:\GitHub\kai-algebra2-tests
+
+# Step 1: fetch public remote (motor-city-math diverges independently -- always check)
+git fetch public
+
+# Step 2: syntax-check the main script block
+# Copy lines 427-1073 from index.html into a temp file and run:
+#   node --check temp-script.js
+# Or extract inline with a one-liner:
+node -e "
+const fs = require('fs');
+const html = fs.readFileSync('index.html','utf8');
+const m = html.match(/<script>([\s\S]+?)<\/script>/g);
+if (m) m.forEach((b,i) => { try { require('vm').Script(b.replace(/<\/?script>/g,'')); } catch(e) { console.error('Block',i,e.message); process.exit(1); } });
+console.log('All script blocks OK');
+"
+```
+
+If either check fails, do not push. Fix first.
+
+---
+
 ## Quick Publish (agents use this)
 
 ```powershell
