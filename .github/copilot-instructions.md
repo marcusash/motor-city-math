@@ -60,6 +60,7 @@ Do not glob `workspace.yaml` from the repository working directory. That file li
 - **Co-authored-by trailer** on all git commits: `Co-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>`
 - **No secrets in code.** No API keys, tokens, or credentials in commits.
 - **Em dash ban.** Never use em dashes (— or –) in any output. Use colons, commas, or periods.
+- **Marcus uses speech dictation.** His messages often contain voice transcription errors, especially in acronyms, agent IDs, and technical terms. If anything in a Marcus message is unclear, ambiguous, or looks like a typo, stop and ask for clarification before executing. Do not guess and act on a major change. Confirm first.
 
 ## Repository Context
 
