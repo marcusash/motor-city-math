@@ -17,8 +17,10 @@
     --accent-red-hover: #A00D24;
     --accent-blue: #1D42BA;
     --accent-blue-hover: #1535A0;
+    --accent-blue-on-dark: #4A90D9; /* 5.18:1 on #161b22 — WCAG 2.4.11 focus on dark */
     --accent-navy: #002D62;
     --border-default: #C8CCD8;
+    --border-input: #8A8FA5;  /* 3.04:1 on #F8F9FC — WCAG 1.4.11 non-text contrast */
     --border-focus: #1D42BA;
     --border-subtle: #E2E5EF;
     --color-correct: #1B7D3A;
@@ -60,6 +62,7 @@ body.arena-mode {
     --accent-blue-hover: #6B8FFF;
     --accent-navy: #A0B8E8;
     --border-default: #2A3352;
+    --border-input: #6B748F;  /* 3.36:1 on #1A2240 — WCAG 1.4.11 non-text contrast */
     --border-focus: #4A72E8;
     --border-subtle: #1E2742;
     --color-correct: #2ECC71;
@@ -179,7 +182,7 @@ body.arena-mode .arena-toggle { background: var(--accent-navy); border-color: va
 }
 
 :focus-visible {
-    outline: 3px solid var(--accent-blue);
+    outline: 3px solid var(--accent-blue-on-dark);
     outline-offset: 2px;
     border-radius: 2px;
 }
@@ -345,7 +348,7 @@ header .date {
     width: 100%;
     max-width: 400px;
     padding: 12px 16px;
-    border: 2px solid var(--border-default);
+    border: 2px solid var(--border-input);
     border-radius: 4px;
     font-size: var(--text-base);
     font-family: inherit;
@@ -369,7 +372,7 @@ header .date {
 }
 
 input, textarea, select {
-    border: 2px solid var(--border-default);
+    border: 2px solid var(--border-input);
     border-radius: 4px;
     background: var(--bg-input);
     color: var(--text-primary);
@@ -377,7 +380,6 @@ input, textarea, select {
 
 input::placeholder, textarea::placeholder {
     color: var(--text-secondary);
-    opacity: 0.7;
 }
 
 input:focus, textarea:focus, select:focus {
@@ -391,7 +393,7 @@ input:focus, textarea:focus, select:focus {
     padding: 14px;
     padding-bottom: 20px;
     padding-right: 20px;
-    border: 2px solid var(--border-default);
+    border: 2px solid var(--border-input);
     border-radius: 4px;
     font-size: var(--text-base);
     min-height: 80px;

@@ -193,6 +193,7 @@
     }
     var graphData = {};
     var examGraded = false;
+    var attemptCounts = {}; // per-question wrong-answer attempt counter (session only)
 
     // Canvas drawing constants
     var CANVAS = {
@@ -241,22 +242,28 @@
 
         var url = 'data/' + file + '.json';
 
-        function showLoadError(msg) {
+        function showLoadError(msg, hideRetry) {
             document.getElementById('questionsContainer').innerHTML =
                 '<div class="error-msg">' +
                 '<p style="margin:0 0 16px">' + msg + '</p>' +
                 '<a href="exam.html" class="btn-ghost" style="display:inline-block;margin-right:10px">← Pick a different test</a>' +
-                '<button onclick="location.reload()" style="padding:8px 18px;border:1px solid var(--border-default);border-radius:6px;background:var(--bg-input);color:var(--text-primary);cursor:pointer;font-size:var(--text-sm)">Retry</button>' +
+                (hideRetry ? '' : '<button onclick="location.reload()" style="padding:8px 18px;border:1px solid var(--border-default);border-radius:6px;background:var(--bg-input);color:var(--text-primary);cursor:pointer;font-size:var(--text-sm)">Try again</button>') +
                 '</div>';
         }
 
         // Fetch with file:// fallback
         if (typeof fetch === 'function' && window.location.protocol !== 'file:') {
             fetch(url).then(function(r) {
-                if (!r.ok) throw new Error('Not found');
+                if (r.status === 404) throw new Error('404');
+                if (!r.ok) throw new Error('status:' + r.status);
                 return r.json();
-            }).then(loadExam).catch(function() {
-                showLoadError('Could not load <strong>' + file + '</strong>. Check your connection and try again.');
+            }).then(loadExam).catch(function(e) {
+                var msg = e && e.message === '404'
+                    ? 'Test not found. Pick a different one.'
+                    : e && e.message && e.message.indexOf('status:') === 0
+                        ? 'Server error. Refresh or pick a different test.'
+                        : "Can't reach this test. Check your wifi and try again.";
+                showLoadError(msg);
             });
         } else {
             var xhr = new XMLHttpRequest();
@@ -264,14 +271,16 @@
             xhr.onload = function() {
                 if (xhr.status === 200 || xhr.status === 0) {
                     try { loadExam(JSON.parse(xhr.responseText)); } catch(e) {
-                        showLoadError('Error reading exam data. The file may be corrupted.');
+                        showLoadError("Something's off with this file. Try a different test.", true);
                     }
+                } else if (xhr.status === 404) {
+                    showLoadError('Test not found. Pick a different one.', true);
                 } else {
-                    showLoadError('Could not load <strong>' + file + '</strong> (status ' + xhr.status + ').');
+                    showLoadError('Server error (' + xhr.status + '). Refresh or pick a different test.');
                 }
             };
             xhr.onerror = function() {
-                showLoadError('Network error loading <strong>' + file + '</strong>. Try reloading.');
+                showLoadError("Can't connect right now. Refresh and try again.");
             };
             xhr.send();
         }
@@ -299,6 +308,12 @@
         document.title = displayTitle + ' — Motor City Math';
         document.getElementById('examTitle').textContent = displayTitle;
         document.getElementById('examSubtitle').textContent = data.subtitle || '';
+
+        // State 5: empty questions guard
+        if (!data.questions || data.questions.length === 0) {
+            showLoadError('This test has no questions yet. Pick a different one.', true);
+            return;
+        }
 
         // Show answer format guide if exam has any number inputs
         var hasNumberInputs = data.questions.some(function(q) {
@@ -804,6 +819,21 @@
 
     /* --- Grading Engine --- */
 
+    function triggerRescue(qId, fbEl) {
+        var hints = document.getElementById('hints-' + qId);
+        if (!hints) return;
+        hints.style.display = '';
+        var hint1 = document.getElementById('hint-' + qId + '-1');
+        if (hint1) hint1.style.display = '';
+        var hintBtn2 = document.getElementById('hintBtn-' + qId + '-2');
+        if (hintBtn2) hintBtn2.style.display = '';
+        var hintBtn3 = document.getElementById('hintBtn-' + qId + '-3');
+        if (hintBtn3) hintBtn3.style.display = '';
+        if (fbEl) fbEl.textContent = 'Off target. Check the hint below.';
+        var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        hints.scrollIntoView({ behavior: prefersReduced ? 'instant' : 'smooth', block: 'nearest' });
+    }
+
     // Accept decimals, integers, fractions (4/3), and sqrt expressions (sqrt(2), 1+sqrt(3), (1+sqrt(5))/2)
     function parseStudentAnswer(raw) {
         if (!raw || !raw.trim()) return NaN;
@@ -980,10 +1010,12 @@
                 fb.textContent = msg;
             }
 
-            // Show hints on wrong answers
+            // Show hints on wrong answers; track attempt count for auto-rescue
             if (!qCorrect) {
                 var hints = document.getElementById('hints-' + q.id);
                 if (hints) hints.style.display = '';
+                attemptCounts[q.id] = (attemptCounts[q.id] || 0) + 1;
+                if (attemptCounts[q.id] >= 3) triggerRescue(q.id, fb);
             }
         });
 
@@ -1118,7 +1150,17 @@
                 scores[storageKey].best = { score: score, pct: pct, grade: grade };
             }
             localStorage.setItem('mcm_scores', JSON.stringify(scores));
-        } catch(e) {}
+        } catch(e) {
+            // State 6: localStorage unavailable or full — show inline note below scorecard
+            var sc = document.getElementById('scorecard');
+            if (sc && !document.getElementById('storage-fail-note')) {
+                var note = document.createElement('p');
+                note.id = 'storage-fail-note';
+                note.style.cssText = 'font-size:var(--text-sm);color:var(--text-secondary);margin-top:12px;text-align:center';
+                note.textContent = 'Score not saved (storage full). Screenshot this page.';
+                sc.appendChild(note);
+            }
+        }
 
         // standardScores are now derived from attempts[].questions in the dashboard
         // Removed: additive accumulator that never reset, causing score inflation
