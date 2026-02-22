@@ -993,6 +993,21 @@
         }
         dadModeInit();
         rerenderAll();
+
+        // Auto-seed: if localStorage has no scores, fetch latest from server
+        var _localScores = getScores();
+        var _hasLocal = Object.keys(_localScores).length > 0;
+        if (!_hasLocal && !_dadMode) {
+            fetch('data/kai-scores-latest.json?v=' + Date.now())
+                .then(function(r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+                .then(function(data) {
+                    if (data && data.mcm_scores) {
+                        localStorage.setItem('mcm_scores', JSON.stringify(data.mcm_scores));
+                        rerenderAll();
+                    }
+                })
+                .catch(function() { /* silent: server scores optional */ });
+        }
     });
 
     function restoreScores(input) {
