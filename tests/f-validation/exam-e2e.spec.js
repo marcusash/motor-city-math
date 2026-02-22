@@ -124,6 +124,38 @@ async function fillAllCorrect() {
     }
 }
 
+// Helper: click one graph point using canvas coordinate transform from page graphData
+async function clickGraphPoint(canvasId, gx, gy) {
+    const pos = await page.evaluate(({ canvasId, gx, gy }) => {
+        if (!window.graphData || !window.graphData[canvasId]) return null;
+        const gd = window.graphData[canvasId];
+        const canvas = document.getElementById(canvasId);
+        if (!canvas) return null;
+        const pad = gd.pad || 40;
+        const xDen = (gd.xMax - gd.xMin) || 1;
+        const yDen = (gd.yMax - gd.yMin) || 1;
+        const x = pad + ((gx - gd.xMin) / xDen) * (canvas.width - pad * 2);
+        const y = canvas.height - pad - ((gy - gd.yMin) / yDen) * (canvas.height - pad * 2);
+        return { x, y };
+    }, { canvasId, gx, gy });
+    if (!pos) return false;
+    await page.click(`#${canvasId}`, { position: { x: pos.x, y: pos.y } });
+    return true;
+}
+
+// Helper: plot graph key points for a question
+async function fillGraphFromQuestion(q) {
+    if (!q.graph || !q.graph.canvas_id || !Array.isArray(q.graph.key_points)) return false;
+    const minPts = q.graph.min_points || 5;
+    const pts = q.graph.key_points.slice(0, minPts);
+    let clicked = 0;
+    for (const [x, y] of pts) {
+        const ok = await clickGraphPoint(q.graph.canvas_id, x, y);
+        if (ok) clicked++;
+    }
+    return clicked >= Math.min(minPts, pts.length);
+}
+
 // ============================================================
 // MAIN
 // ============================================================
@@ -244,6 +276,25 @@ async function fillAllCorrect() {
             const body = await page.textContent('body');
             assert(body.includes('SAAS') || body.includes('Grade'),
                 'SAAS grade not shown');
+        });
+
+        await test('graph helper can drive Q12/Q13 to target score (opt-in)', async () => {
+            if (process.env.ENABLE_GRAPH_AUTOMATION !== '1') SKIP();
+            await page.goto(examUrl('retake-practice-1'), { waitUntil: 'domcontentloaded' });
+            await page.waitForTimeout(2000);
+            await fillAllCorrect();
+            const q12 = data.questions.find(q => q.number === 12);
+            const q13 = data.questions.find(q => q.number === 13);
+            const ok12 = await fillGraphFromQuestion(q12);
+            const ok13 = await fillGraphFromQuestion(q13);
+            assert(ok12 && ok13, 'Could not plot required graph points for Q12/Q13');
+            const gradeBtn = await page.$('.submit-area button');
+            assert(gradeBtn, 'Grade button not found');
+            await gradeBtn.click();
+            await page.waitForTimeout(2000);
+            const body = await page.textContent('body');
+            assert(body.includes('15/15') || body.includes('15 / 15') || body.includes('15 out of 15'),
+                'Expected 15/15 after graph automation');
         });
 
         // ==================================================
