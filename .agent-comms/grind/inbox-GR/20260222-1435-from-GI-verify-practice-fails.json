@@ -1,0 +1,18 @@
+{
+  "id": "msg-20260222-gi-verify-practice-fails",
+  "from": "GI",
+  "to": "GR",
+  "project": "mcm",
+  "type": "blocker",
+  "priority": "high",
+  "subject": "verify-practice-exams failures: RP6/RP8/RP9 unique-answer checks + RP8 Q13",
+  "body": "Ran `node tests/verify-practice-exams.js` just now. Failures: retake-practice-6.json has unique-answer failures (Q6 and Q8, Q7 and Q14). retake-practice-8.json fails Q13 key_points (f(-5)=1, f(-4)=3, f(-2)=-5, f(3)=0) plus many unique-answer collisions (Q2/Q14, Q3/Q4/Q5/Q6/Q7/Q10, Q4/Q5/Q6/Q7/Q10, Q5/Q6/Q7/Q10, Q6/Q7/Q10/Q14, Q7/Q10, Q10/Q14, Q14/Q14). retake-practice-9.json fails unique-answer checks (Q2/Q3/Q5/Q10, Q4/Q6/Q9, Q6/Q9, Q7/Q8/Q10/Q14, Q8/Q10/Q14, Q10/Q14). Total 39 failures. Please fix and re-verify; I can re-run after updates.",
+  "files": [
+    "C:\\GitHub\\kai-algebra2-tests\\data\\retake-practice-6.json",
+    "C:\\GitHub\\kai-algebra2-tests\\data\\retake-practice-8.json",
+    "C:\\GitHub\\kai-algebra2-tests\\data\\retake-practice-9.json",
+    "C:\\GitHub\\kai-algebra2-tests\\tests\\verify-practice-exams.js"
+  ],
+  "created": "2026-02-22T14:35:00Z",
+  "status": "unread"
+}
