@@ -209,33 +209,39 @@
       "section": "B",
       "standard": "W3.b",
       "type": "quadratic",
-      "question_html": "Solve by factoring: \\( 2x^2 + 6x - 8 = 0 \\)",
+      "question_html": "Solve by factoring: \\( 2x^2 + 7x + 3 = 0 \\)",
       "inputs": [
+        {
+          "id": "q5_factored",
+          "type": "text",
+          "label": "Write the factored form (e.g. (2x+1)(x+3)=0):"
+        },
         {
           "id": "q5_x1",
           "type": "number",
           "label": "Smaller x =",
-          "answer": -4,
+          "answer": -3,
           "tolerance": 0.05
         },
         {
           "id": "q5_x2",
           "type": "number",
           "label": "Larger x =",
-          "answer": 1,
+          "answer": -0.5,
           "tolerance": 0.05
         }
       ],
-      "hint": "First: is there a GCF you can factor out from ALL three terms? Pull it out. Then factor the simpler quadratic that remains.",
+      "hint": "a≠1 means you cannot just find two numbers that add to b and multiply to c. Use the AC method: multiply a×c, find factor pair of that product that adds to b, split the middle term, then factor by grouping.",
       "solution_steps": [
-        "Step 1 — always check GCF first: GCF(2, 6, 8) = 2. Factor it out: 2(x² + 3x - 4) = 0.",
-        "Step 2 — now a=1, factor normally: find two numbers that multiply to -4 and add to 3: +4 and -1.",
-        "2(x + 4)(x - 1) = 0.",
-        "ZPP: x + 4 = 0 → x = -4.  OR  x - 1 = 0 → x = 1.",
-        "Key: when a≠1, always look for GCF before anything else. Missing the GCF makes factoring much harder than it needs to be."
+        "AC method step 1: multiply a×c = 2×3 = 6.",
+        "Step 2: find two factors of 6 that add to 7: +6 and +1. ✓",
+        "Step 3: split the middle term using those factors: 2x² + 6x + x + 3.",
+        "Step 4: group and factor: 2x(x+3) + 1(x+3) = (2x+1)(x+3).",
+        "Step 5: ZPP: 2x+1=0 → x=-½.  OR  x+3=0 → x=-3.",
+        "Key: when a≠1 and it does NOT factor out, use AC method (multiply a×c, split, group)."
       ],
       "feedback_correct": "🔥 Both solutions found.",
-      "feedback_wrong": "First pull out the GCF: GCF(2,6,8)=2. That gives 2(x²+3x-4)=0. Then factor x²+3x-4."
+      "feedback_wrong": "Use the AC method: a×c = 2×3 = 6. Find factors of 6 adding to 7: that’s 6 and 1. Split 7x into 6x+x, then factor by grouping."
     },
     {
       "id": "rp7-q6",
