@@ -176,25 +176,25 @@
       "section": "B",
       "standard": "W3.d",
       "type": "exponential",
-      "question_html": "Solve: \\( 3^{2x + 1} = 81 \\)",
+      "question_html": "Solve: \\( 5^{2x - 3} = 625 \\)",
       "inputs": [
         {
           "id": "q4_x",
           "type": "number",
           "label": "x =",
-          "answer": 1.5,
+          "answer": 3.5,
           "tolerance": 0.01
         }
       ],
-      "hint": "Rewrite 81 as 3⁴. Set exponents equal.",
+      "hint": "Rewrite 625 as 5⁴. Set exponents equal.",
       "solution_steps": [
-        "Rewrite: 3^(2x+1) = 3⁴.",
-        "Set exponents equal: 2x + 1 = 4.",
-        "2x = 3 → x = 3/2 = 1.5.",
-        "Check: 3^(3+1) = 3⁴ = 81 ✓"
+        "Rewrite: 5^(2x-3) = 5⁴.",
+        "Set exponents equal: 2x - 3 = 4.",
+        "2x = 7 → x = 7/2 = 3.5.",
+        "Check: 5^(2×3.5-3) = 5^4 = 625 ✓"
       ],
       "feedback_correct": "🔥 Exponent match. Clean.",
-      "feedback_wrong": "Rewrite 81 as a power of 3."
+      "feedback_wrong": "Rewrite 625 as a power of 5 (5⁴). Then set exponents equal."
     },
     {
       "id": "rp4-q5",

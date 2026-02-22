@@ -330,23 +330,23 @@
       "section": "B",
       "standard": "W3.b",
       "type": "fractional-exp",
-      "question_html": "Solve: \\( 3x^{2/3} = 48 \\)",
+      "question_html": "Solve: \\( 4x^{2/3} = 100 \\)",
       "inputs": [
         {
           "id": "q11_x",
           "type": "number",
           "label": "x =",
-          "answer": 64,
+          "answer": 125,
           "tolerance": 0.05
         }
       ],
-      "hint": "Divide by 3 first. Then raise both sides to the 3/2 power to undo the 2/3.",
+      "hint": "Divide by 4 first. Then raise both sides to the 3/2 power to undo the 2/3.",
       "solution_steps": [
-        "x^(2/3)=16.",
-        "x = 16^(3/2) = (√16)³ = 4³ = 64.",
-        "Check: 3×64^(2/3) = 3×(4³)^(2/3) = 3×4² = 48 ✓"
+        "x^(2/3) = 25.",
+        "x = 25^(3/2) = (√25)³ = 5³ = 125.",
+        "Check: 4×125^(2/3) = 4×(∛125)² = 4×5² = 4×25 = 100 ✓"
       ],
-      "feedback_wrong": "Divide by 3: x^(2/3)=16. Raise to 3/2: x=16^(3/2)=(√16)³=64."
+      "feedback_wrong": "Divide by 4: x^(2/3)=25. Raise to 3/2: x=25^(3/2)=(√25)³=5³=125."
     },
     {
       "id": "rp8-q12",
