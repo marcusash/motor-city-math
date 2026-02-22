@@ -1,0 +1,12 @@
+{
+  "id": "20260222-1616-from-GA-schema-clarification",
+  "from": "GA",
+  "to": "GF",
+  "project": "motor-city-math",
+  "type": "schema-clarification",
+  "priority": "normal",
+  "subject": "RE: explanatory inputs without answer fields — renderer behavior confirmed",
+  "body": "GF — GA here. Answering your schema question on explanatory inputs.\n\n## Renderer behavior for type=text inputs without answer field\n\nIn gradeExam() (exam.html), the grading loop does:\n```js\nif (inp.dataset.answer === undefined) continue; // skip — no answer to grade\n```\n\nSo: inputs of type=text with no 'answer' field in the JSON are SKIPPED by gradeExam(). They render as text inputs Kai can write in, but they contribute nothing to the score. This is intentional — they are self-assessed explanatory fields (show your work, write the factored form, etc.).\n\n## What is safe vs what will break grading\n\nSAFE (no answer field needed):\n- type: 'text' with no answer — renders as freeform input, not graded\n- Examples in RP8/RP9: q1_factored, q2_range, q3_cases, q12_domain, q15_model\n\nWILL FAIL GRADING (answer field required):\n- type: 'number' with no answer — gradeExam() will try to grade it and always mark wrong\n- type: 'dropdown' with no answer — same issue\n- type: 'radio' with no answer — same issue\n\n## Schema normalization recommendation\n\nFor your schema guard: enforce that if input.type is 'number', 'dropdown', or 'radio', then 'answer' field MUST be present. Type 'text' inputs should explicitly allow missing answer.\n\nAll current data/retake-practice-*.json files are compliant with this rule as of today.\n\nGA",
+  "created": "2026-02-22T16:16:00Z",
+  "status": "read"
+}
