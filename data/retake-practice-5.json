@@ -157,7 +157,7 @@
           "tolerance": 0.1
         }
       ],
-      "hint": "Factor out the coefficient first. Then use the absolute value definition: if |3x+9| = 6, there are TWO cases: 3x+9=6  (positive case)  OR  -(3x+9)=6  (negative case). Multiply the negative case by -1 to solve.",
+      "hint": "Factor out the coefficient. Two cases: positive (3x+9=6) OR negative (-(3x+9)=6). Solve each.",
       "solution_steps": [
         "Factor: |3x+9| = 3|x−(−3)|. So f(x) = 3|x−(−3)| − 6.",
         "a = 3, h = −3, k = −6. Shift LEFT 3, stretch ×3, down 6. Vertex at (−3, −6).",
@@ -324,7 +324,7 @@
           "tolerance": 0.01
         }
       ],
-      "hint": "Square both sides — but the right side is a binomial. You will get a quadratic. Factor it. Then check BOTH answers in the original equation.",
+      "hint": "Square both sides — right side is a binomial, giving a quadratic. Factor it. Check BOTH answers.",
       "solution_steps": [
         "Square both sides: x - 3 = (x−5)² = x² − 10x + 25.",
         "Rearrange: x² − 11x + 28 = 0 → (x−7)(x−4) = 0.",

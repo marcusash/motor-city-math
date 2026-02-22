@@ -160,7 +160,7 @@
           "tolerance": 0.1
         }
       ],
-      "hint": "Factor out the coefficient first. Then use the absolute value definition: if |4x-8| = 12, there are TWO cases: 4x-8=12  (positive case)  OR  -(4x-8)=12  (negative case). Multiply the negative case by -1 to solve.",
+      "hint": "Factor out the coefficient. Two cases: positive (4x-8=12) OR negative (-(4x-8)=12). Solve each.",
       "solution_steps": [
         "Factor: |4x−8| = 4|x−2|. So f(x) = 4|x−2| − 12.",
         "a=4, h=2, k=−12. Vertex at (2, −12). Opens UP (a>0).",
@@ -270,7 +270,7 @@
           "tolerance": 0.01
         }
       ],
-      "hint": "Two radicals cannot both be eliminated at once. Isolate ONE radical on one side, then square. You will still have a radical after the first square — isolate and square again.",
+      "hint": "Isolate ONE radical, square both sides. A radical will remain — isolate and square again.",
       "solution_steps": [
         "Isolate one radical: √(x+11) = √(x+2) + 1.",
         "Square both sides: x+11 = (√(x+2)+1)² = (x+2)+2√(x+2)+1.",

@@ -158,7 +158,7 @@
           "tolerance": 0.1
         }
       ],
-      "hint": "Factor out the coefficient first. Then use the absolute value definition: if |2x-8| = 6, there are TWO cases: 2x-8=6  (positive case)  OR  -(2x-8)=6  (negative case). Multiply the negative case by -1 to solve.",
+      "hint": "Factor out the coefficient. Two cases: positive (2x-8=6) OR negative (-(2x-8)=6). Solve each.",
       "solution_steps": [
         "Factor: |2x−8| = 2|x−4|. So f(x) = 2|x−4| − 6.",
         "a = 2 (vertical stretch ×2), h = 4 (shift right 4), k = −6 (shift down 6).",
@@ -592,7 +592,7 @@
           "tolerance": 0.5
         }
       ],
-      "hint": "P(t) = P₀ · r^(t/T). Identify P₀ (starting value), r (growth factor = 1 + rate), T (period in years). Then set P(t) = 16875.",
+      "hint": "P(t) = P₀ · r^(t/T). Identify P₀, r (growth factor), T (period in years). Set P(t) = 16875.",
       "solution_steps": [
         "P₀ = 5000 (starting value). Growth factor r = 1.5 (50% growth). Period T = 10 years.",
         "Model: P(t) = 5000 · 1.5^(t/10).",
