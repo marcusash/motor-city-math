@@ -13,7 +13,7 @@
       "section": "A",
       "standard": "W2.b",
       "type": "identify",
-      "question_html": "Identify the parent function and find the x-intercepts: \\( f(x) = 3(x - 1)^2 - 12 \\)",
+      "question_html": "Identify the parent function and find the x-intercepts of ( f(x) = x^2 + x - 6 ). (Hint: factor.)",
       "inputs": [
         {
           "id": "q1_parent",
@@ -32,24 +32,25 @@
         {
           "id": "q1_x1",
           "type": "number",
-          "label": "x₁ =",
-          "answer": 3,
+          "label": "Smaller x-intercept =",
+          "answer": -3,
           "tolerance": 0.1
         },
         {
           "id": "q1_x2",
           "type": "number",
-          "label": "x₂ =",
-          "answer": -1,
+          "label": "Larger x-intercept =",
+          "answer": 2,
           "tolerance": 0.1
         }
       ],
-      "plus_minus": true,
-      "hint": "Set f(x)=0. Isolate the squared term.",
+      "hint": "Find two numbers that multiply to -6 and add to +1. Then set each factor = 0.",
       "solution_steps": [
-        "Parent: y = x² (quadratic).",
-        "Set 0 = 3(x-1)² - 12 → (x-1)² = 4.",
-        "x - 1 = ±2 → x = 3 or x = -1."
+        "Standard form: x^2+x-6. Need factors of -6 that add to +1: (+3)(-2) works.",
+        "f(x) = (x+3)(x-2). Zero Product: x+3=0 or x-2=0.",
+        "x = -3 or x = 2.",
+        "W3.b: the plus-or-minus-sqrt method does NOT apply here (not in vertex form). Must factor.",
+        "Key insight: recognizing which algorithm the equation form requires is the core skill."
       ],
       "feedback_correct": "🔥 Quadratic intercepts. Clean.",
       "feedback_wrong_parent": "Check the exponent for parent type.",
@@ -100,7 +101,7 @@
       "section": "A",
       "standard": "W2.b",
       "type": "identify",
-      "question_html": "Identify the parent function and find the x-intercepts: \\( f(x) = |2x - 6| - 4 \\)",
+      "question_html": "For ( f(x) = |2x - 6| - 4 ): rewrite in the form ( a|x - h| + k ), state the parent function, identify a, h, k, and find the x-intercepts.",
       "inputs": [
         {
           "id": "q3_parent",
@@ -117,27 +118,48 @@
           "answer": "absolute value"
         },
         {
+          "id": "q3_a",
+          "type": "number",
+          "label": "a =",
+          "answer": 2,
+          "tolerance": 0.01
+        },
+        {
+          "id": "q3_h",
+          "type": "number",
+          "label": "h =",
+          "answer": 3,
+          "tolerance": 0.01
+        },
+        {
+          "id": "q3_k",
+          "type": "number",
+          "label": "k =",
+          "answer": -4,
+          "tolerance": 0.01
+        },
+        {
           "id": "q3_x1",
           "type": "number",
-          "label": "x₁ =",
-          "answer": 5,
+          "label": "Smaller x-intercept =",
+          "answer": 1,
           "tolerance": 0.1
         },
         {
           "id": "q3_x2",
           "type": "number",
-          "label": "x₂ =",
-          "answer": 1,
+          "label": "Larger x-intercept =",
+          "answer": 5,
           "tolerance": 0.1
         }
       ],
-      "plus_minus": true,
-      "hint": "Set f(x)=0. |2x−6| = 4. Be careful — there is a coefficient inside the absolute value.",
+      "hint": "Factor 2 out: |2x-6| = 2|x-3|. Then a=2, h=3, k=-4. For intercepts: solve |2x-6|=4.",
       "solution_steps": [
-        "Parent: y = |x| (absolute value — V shape, opens UP because no negative sign outside).",
-        "Set 0 = |2x−6| − 4 → |2x−6| = 4.",
-        "2x − 6 = 4 → 2x = 10 → x = 5.",
-        "2x − 6 = −4 → 2x = 2 → x = 1."
+        "Factor: |2x-6| = 2|x-3|. So f(x) = 2|x-3| - 4.",
+        "a=2 (vertical stretch), h=3 (shift right 3), k=-4 (shift down 4). Vertex: (3,-4).",
+        "x-intercepts: |2x-6| = 4 -> 2x-6 = 4 or 2x-6 = -4.",
+        "2x = 10 -> x = 5. OR 2x = 2 -> x = 1.",
+        "Symmetry check: midpoint of 1 and 5 is 3 = h (vertex x). Confirmed."
       ],
       "feedback_correct": "🔥 Both intercepts. Coefficient inside — you handled it.",
       "feedback_wrong_parent": "The | | bars mean absolute value.",
@@ -173,31 +195,33 @@
       "section": "B",
       "standard": "W3.b",
       "type": "quadratic",
-      "question_html": "Solve: \\( 2(x + 3)^2 - 50 = 0 \\)",
+      "question_html": "Solve using the quadratic formula: ( 3x^2 + 7x - 6 = 0 )",
       "inputs": [
         {
           "id": "q5_x1",
           "type": "number",
-          "label": "x₁ =",
-          "answer": 2,
-          "tolerance": 0.1
+          "label": "x1 =",
+          "answer": -3,
+          "tolerance": 0.05
         },
         {
           "id": "q5_x2",
           "type": "number",
-          "label": "x₂ =",
-          "answer": -8,
-          "tolerance": 0.1
+          "label": "x2 =",
+          "answer": 0.6667,
+          "tolerance": 0.02
         }
       ],
-      "plus_minus": true,
-      "hint": "Isolate the squared term. Then ±.",
+      "hint": "a=3, b=7, c=-6. Discriminant: b^2 - 4ac = 49 + 72 = 121. sqrt(121) = 11. Then x = (-7 +/- 11) / 6.",
       "solution_steps": [
-        "2(x+3)² = 50 → (x+3)² = 25.",
-        "x + 3 = ±5.",
-        "x = 2 or x = -8."
+        "Quadratic formula: x = (-b +/- sqrt(b^2-4ac)) / 2a.",
+        "a=3, b=7, c=-6. Discriminant = 49 - 4(3)(-6) = 49 + 72 = 121.",
+        "sqrt(121) = 11. x = (-7 +/- 11) / 6.",
+        "x = (-7+11)/6 = 4/6 = 2/3. OR x = (-7-11)/6 = -18/6 = -3.",
+        "W3.b: this equation is not in vertex form. Quadratic formula or factoring are the tools."
       ],
-      "feedback_correct": "🔥 Both solutions found."
+      "feedback_correct": "🔥 Both solutions found.",
+      "feedback_wrong": "Use the quadratic formula. a=3, b=7, c=-6. Discriminant = 121. sqrt(121)=11."
     },
     {
       "id": "rp7-q6",
@@ -303,7 +327,7 @@
       "section": "B",
       "standard": "W3.e",
       "type": "extraneous",
-      "question_html": "Solve and check for extraneous solutions: \\( \\sqrt{x - 5} = x - 11 \\)",
+      "question_html": "Solve: ( sqrt{x + 12} = x - 8 )",
       "inputs": [
         {
           "id": "q10_x",
@@ -313,7 +337,7 @@
           "tolerance": 0.1
         }
       ],
-      "hint": "Square both sides. Factor. Check BOTH in the original.",
+      "hint": "Square both sides. Solve the resulting equation. Your answer may have fewer valid solutions than you expect.",
       "solution_steps": [
         "Square: x - 5 = (x-11)² = x² - 22x + 121.",
         "x² - 23x + 126 = 0 → (x-14)(x-9) = 0.",
@@ -352,7 +376,7 @@
       "section": "C",
       "standard": "W2.c",
       "type": "graph",
-      "question_html": "Graph \\( f(x) = 3(x - 2)^2 - 3 \\). State the vertex.",
+      "question_html": "Graph ( f(x) = 3(x-2)^2 - 3 ) and answer all of the following:",
       "inputs": [
         {
           "id": "q12_vx",
@@ -367,6 +391,26 @@
           "label": "Vertex y =",
           "answer": -3,
           "tolerance": 0.1
+        },
+        {
+          "id": "q12_domain",
+          "type": "text",
+          "label": "Domain (interval notation):"
+        },
+        {
+          "id": "q12_range",
+          "type": "text",
+          "label": "Range (interval notation):"
+        },
+        {
+          "id": "q12_decrease",
+          "type": "text",
+          "label": "f is decreasing on:"
+        },
+        {
+          "id": "q12_increase",
+          "type": "text",
+          "label": "f is increasing on:"
         }
       ],
       "graph": {
@@ -406,12 +450,14 @@
         "min_points": 5,
         "tolerance": 0.25
       },
-      "hint": "Vertex form: f(x) = a(x-h)² + k. Vertex is (h, k).",
+      "hint": "Domain of a quadratic is always all reals. Range depends on direction of opening. The function changes direction at the vertex.",
       "solution_steps": [
-        "Vertex form: a = 3, h = 2, k = -3.",
-        "Vertex: (2, -3).",
-        "Opens up, narrower than y=x².",
-        "Plot: f(0)=3(4)-3=9, f(1)=3(1)-3=0, f(3)=3(1)-3=0, f(4)=3(4)-3=9."
+        "f(x) = 3(x-2)^2-3. Vertex at (2, -3).",
+        "Domain: all real numbers, (-inf, +inf). No restrictions on a quadratic.",
+        "Range: a=3>0 so opens upward. Minimum at vertex y=-3. Range = [-3, +inf).",
+        "Decreasing on (-inf, 2): left of vertex, parabola falls as x increases.",
+        "Increasing on (2, +inf): right of vertex, parabola rises.",
+        "W2.e: domain, range, and intervals of increase/decrease are standard characteristics expected for any nonlinear function."
       ],
       "feedback_correct": "🔥 Vertex and graph correct."
     },
@@ -421,7 +467,7 @@
       "section": "C",
       "standard": "W2.e",
       "type": "graph",
-      "question_html": "Graph \\( f(x) = \\dfrac{-2}{x + 2} + 4 \\) and draw asymptotes. State the asymptotes.",
+      "question_html": "Graph \\( f(x) = \\dfrac{-2}{x + 2} + 4 \\) and draw asymptotes. State the asymptotes. State asymptotes, domain, range, and end behavior.",
       "inputs": [
         {
           "id": "q13_va",
@@ -436,6 +482,21 @@
           "label": "Horizontal asymptote y =",
           "answer": 4,
           "tolerance": 0.1
+        },
+        {
+          "id": "q13_domain",
+          "type": "text",
+          "label": "Domain:"
+        },
+        {
+          "id": "q13_range",
+          "type": "text",
+          "label": "Range:"
+        },
+        {
+          "id": "q13_endbeh",
+          "type": "text",
+          "label": "As x -> +inf, f(x) ->"
         }
       ],
       "graph": {
@@ -475,11 +536,13 @@
         "min_points": 5,
         "tolerance": 0.25
       },
-      "hint": "VA: denominator = 0. HA: the constant outside the fraction.",
+      "hint": "VA tells you what x is excluded (domain). HA tells you what y is excluded (range). As x gets huge, the fraction term approaches 0, so f approaches the HA.",
       "solution_steps": [
-        "VA: x + 2 = 0 → x = -2.",
-        "HA: y = 4 (the constant added).",
-        "Plot: f(-4)=-2/(-2)+4=5, f(-3)=-2/(-1)+4=6, f(-1)=-2/1+4=2, f(0)=-2/2+4=3, f(2)=-2/4+4=3.5."
+        "f(x) = -2/(x+2) + 4. VA: x=-2. HA: y=4.",
+        "Domain: all x except x=-2. Write as (-inf,-2) union (-2,+inf) or x not equal to -2.",
+        "Range: f can approach but never equal HA y=4. Range = (-inf,4) union (4,+inf) or y not equal to 4.",
+        "As x -> +inf: -2/(x+2) -> 0 from below, so f(x) -> 4 from below.",
+        "W2.e: asymptotes directly determine domain and range exclusions for rational functions."
       ],
       "feedback_correct": "🔥 Both asymptotes correct."
     },
@@ -487,43 +550,42 @@
       "id": "rp7-q14",
       "number": 14,
       "section": "D",
-      "standard": "W3.a",
+      "standard": "W2.d",
       "type": "multiple-choice",
-      "question_html": "The period of a pendulum is \\( T = 2\\pi\\sqrt{\\dfrac{L}{g}} \\). Which correctly solves for \\( L \\)?",
+      "question_html": "A quadratic function opens downward, has vertex at (1, 9), and passes through the point (-2, 0). Find a, h, and k so that f(x) = a(x - h)^2 + k.",
       "inputs": [
         {
-          "id": "q14",
-          "type": "radio",
-          "label": "",
-          "options": [
-            {
-              "value": "A",
-              "text": "\\( L = \\dfrac{T^2 g}{4\\pi^2} \\)"
-            },
-            {
-              "value": "B",
-              "text": "\\( L = \\dfrac{T}{2\\pi\\sqrt{g}} \\)"
-            },
-            {
-              "value": "C",
-              "text": "\\( L = \\dfrac{T^2}{4\\pi g} \\)"
-            },
-            {
-              "value": "D",
-              "text": "\\( L = \\dfrac{4\\pi^2 g}{T^2} \\)"
-            }
-          ],
-          "answer": "A"
+          "id": "q14_a",
+          "type": "number",
+          "label": "a =",
+          "answer": -1,
+          "tolerance": 0.05
+        },
+        {
+          "id": "q14_h",
+          "type": "number",
+          "label": "h =",
+          "answer": 1,
+          "tolerance": 0.05
+        },
+        {
+          "id": "q14_k",
+          "type": "number",
+          "label": "k =",
+          "answer": 9,
+          "tolerance": 0.05
         }
       ],
-      "hint": "Square both sides to eliminate the √. Then isolate L.",
+      "hint": "Vertex (1,9) tells you h=1 and k=9 for free. Substitute the point (-2,0) to solve for a.",
       "solution_steps": [
-        "T = 2π√(L/g).",
-        "T² = 4π²(L/g).",
-        "L = T²g/(4π²).",
-        "Answer: A."
+        "Vertex (1,9) -> h=1, k=9. So f(x) = a(x-1)^2 + 9.",
+        "Substitute point (-2, 0): 0 = a(-2-1)^2 + 9 = a(9) + 9.",
+        "9a + 9 = 0 -> 9a = -9 -> a = -1.",
+        "f(x) = -(x-1)^2 + 9. Verify: opens down (a<0), vertex (1,9), passes through (-2,0): -(9)+9=0 confirmed.",
+        "W2.d: the REVERSE of reading a graph. Given characteristics, build the equation."
       ],
-      "feedback_correct": "🔥 Formula rearrangement. Clean."
+      "feedback_correct": "W2.d mastered: you can write an equation from features, not just read features from an equation.",
+      "feedback_wrong": "Vertex gives h and k directly. Then plug in the point (-2,0) to solve for a."
     },
     {
       "id": "rp7-q15",
@@ -531,30 +593,33 @@
       "section": "D",
       "standard": "W3.a",
       "type": "word-problem",
-      "question_html": "An investment starts at ,000 and doubles every 8 years.<br>(a) Write the exponential growth model <em>V</em>(<em>t</em>) for the value after <em>t</em> years.<br>(b) What is the value of the investment after <strong>24 years</strong>?",
+      "question_html": "A bacteria colony has 100 bacteria at t = 0 hours. At t = 5 hours, there are 3,200 bacteria.<br><br>(a) Write the exponential model P(t) = P0 * r^t.<br>(b) At what time t will the population reach 819,200?",
       "inputs": [
         {
           "id": "q15_model",
           "type": "text",
-          "label": "V(t) ="
+          "label": "(a) P(t) ="
         },
         {
-          "id": "q15_value",
+          "id": "q15_t",
           "type": "number",
-          "label": "V(24) = $",
-          "answer": 16000,
-          "tolerance": 1
+          "label": "(b) t =",
+          "answer": 13,
+          "tolerance": 0.1
         }
       ],
-      "hint": "Write V(t) = V₀ · 2^(t/T). Then evaluate at t = 24. This is plug-in, not solve — no algebra needed for part (b).",
+      "hint": "You must solve for r FIRST. P(5)=3200: 100 * r^5 = 3200 -> r^5 = 32. What number raised to the 5th power equals 32?",
       "solution_steps": [
-        "V₀ = 2000 (starting value). Doubles (factor 2) every T = 8 years.",
-        "Model: V(t) = 2000 · 2^(t/8).",
-        "V(24) = 2000 · 2^(24/8) = 2000 · 2³ = 2000 · 8 = 16,000.",
-        "The investment is worth ,000 after 24 years."
+        "P(0)=100 gives P0=100. Model: P(t) = 100 * r^t.",
+        "P(5)=3200: 100 * r^5 = 3200 -> r^5 = 32.",
+        "r^5 = 32 = 2^5. By the one-to-one property: r = 2.",
+        "Model: P(t) = 100 * 2^t.",
+        "When does P = 819200? 100 * 2^t = 819200 -> 2^t = 8192.",
+        "8192 = 2^13 (2^10=1024, 2^11=2048, 2^12=4096, 2^13=8192). So t = 13.",
+        "W3.d: one-to-one property applied twice in one problem. First to find r, then to solve for t."
       ],
       "feedback_correct": "🔥 Model written and evaluated. ,000.",
-      "feedback_wrong": "Write V(t) = 2000 · 2^(t/8) first. Then plug in t=24."
+      "feedback_wrong": "Start with finding r: 100 * r^5 = 3200 -> r^5 = 32 -> r = 2. Then P(t) = 100 * 2^t. Then solve 100 * 2^t = 819200."
     }
   ]
 }
