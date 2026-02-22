@@ -59,6 +59,7 @@
         .scorecard .score-big { font-size: var(--text-2xl); font-weight: 900; color: var(--accent-navy); }
         @keyframes grade-a-flash { 0%,100%{background:transparent} 50%{background:rgba(63,185,80,0.18)} }
         .grade-a-flash { animation: grade-a-flash 0.6s ease 1; }
+        @media (prefers-reduced-motion: reduce) { .grade-a-flash { animation: none; background: rgba(63,185,80,0.18); } }
         .scorecard .score-pct { font-size: var(--text-lg); color: var(--text-secondary); margin: 4px 0 12px; }
         .saas-grade { display: inline-block; padding: 6px 20px; border-radius: 20px; font-weight: 800; font-size: var(--text-lg); color: white; }
         .saas-grade.g4 { background: var(--color-correct); }
@@ -231,13 +232,22 @@
 
         var url = 'data/' + file + '.json';
 
+        function showLoadError(msg) {
+            document.getElementById('questionsContainer').innerHTML =
+                '<div class="error-msg">' +
+                '<p style="margin:0 0 16px">' + msg + '</p>' +
+                '<a href="exam.html" class="btn-ghost" style="display:inline-block;margin-right:10px">← Pick a different test</a>' +
+                '<button onclick="location.reload()" style="padding:8px 18px;border:1px solid var(--border-default);border-radius:6px;background:var(--bg-input);color:var(--text-primary);cursor:pointer;font-size:var(--text-sm)">Retry</button>' +
+                '</div>';
+        }
+
         // Fetch with file:// fallback
         if (typeof fetch === 'function' && window.location.protocol !== 'file:') {
             fetch(url).then(function(r) {
                 if (!r.ok) throw new Error('Not found');
                 return r.json();
             }).then(loadExam).catch(function() {
-                document.getElementById('questionsContainer').innerHTML = '<div class="error-msg">Could not load exam: ' + file + '.json</div>';
+                showLoadError('Could not load <strong>' + file + '</strong>. Check your connection and try again.');
             });
         } else {
             var xhr = new XMLHttpRequest();
@@ -245,14 +255,14 @@
             xhr.onload = function() {
                 if (xhr.status === 200 || xhr.status === 0) {
                     try { loadExam(JSON.parse(xhr.responseText)); } catch(e) {
-                        document.getElementById('questionsContainer').innerHTML = '<div class="error-msg">Error parsing exam JSON.</div>';
+                        showLoadError('Error reading exam data. The file may be corrupted.');
                     }
                 } else {
-                    document.getElementById('questionsContainer').innerHTML = '<div class="error-msg">Could not load exam: ' + file + '.json</div>';
+                    showLoadError('Could not load <strong>' + file + '</strong> (status ' + xhr.status + ').');
                 }
             };
             xhr.onerror = function() {
-                document.getElementById('questionsContainer').innerHTML = '<div class="error-msg">Could not load exam: ' + file + '.json</div>';
+                showLoadError('Network error loading <strong>' + file + '</strong>. Try reloading.');
             };
             xhr.send();
         }
@@ -1016,6 +1026,15 @@
         (function() {
             var el = document.getElementById('scoreBigEl');
             if (!el) return;
+            var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (prefersReduced) {
+                el.textContent = pct + '%';
+                if (pct >= 93) {
+                    el.classList.add('grade-a-flash');
+                    document.dispatchEvent(new CustomEvent('mcm:scoreReveal', { detail: { pct: pct, grade: grade } }));
+                }
+                return;
+            }
             var start = null, dur = 600;
             function step(ts) {
                 if (!start) start = ts;
