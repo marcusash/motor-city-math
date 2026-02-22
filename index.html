@@ -602,10 +602,8 @@
         var scores = getScores();
         var stdData = {};
 
-        // Aggregate per-question standard data from MVP exam only
-        // Practice exams (retake: true) are excluded so they don't inflate scores
+        // Aggregate per-question standard data from all tests with question tracking
         tests.forEach(function(t) {
-            if (t.retake) return; // Skip practice exams for standards
             var s = scores[t.key];
             if (!s) return;
 
