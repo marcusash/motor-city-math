@@ -55,9 +55,9 @@ W2.d is "construct equation from given characteristics." GR must include one que
 This is FR's primary research output for this project. GR must import this as a skill.
 
 ### QDS — Question Diversity Score
-Score from 0 to 1. Measures structural variation across the 7 retake practices:
+Score from 0 to 1. Measures structural variation across the 7 retake practices. Computed on **7 dimensions: PF, OR, SC, QA, CX, ST, AV** (answer verification method added 2026-02-22 per FA recommendation).
 
-**QDS = 1 - (proportion of questions sharing surface structure)**
+**SSI(q_i, q_j) = matching dimensions / 7. QDS = 1 - mean(SSI over all pairs).**
 
 | QDS | Interpretation |
 |-----|---------------|
@@ -215,6 +215,19 @@ For each question type, GR must rotate through these variant classes:
 ## 7. How to Grade GR's Future Outputs
 
 When Marcus asks GR to generate a new practice exam, evaluate it against these criteria:
+
+**QDS is now computed on 7 dimensions (PF, OR, SC, QA, CX, ST, AV). SSI = matching dimensions / 7.**
+
+**Dimension 7 — AV (Answer Verification Method):** How Kai confirms the answer. Variants: substitute-back arithmetic, graph inspection, sign-check, interval-test, approximate/estimate. If all questions in a bank use the same verification method, Kai can pattern-match without the underlying concept being solid. GR must vary AV across questions as a first-class checklist item — not a bonus.
+
+**Updated pre-flight checklist for each new question:**
+1. PF: different presentation form from previous occurrence of this concept
+2. OR: at least one negative-coefficient variant per concept
+3. SC: at least one irrational or no-real-solution variant
+4. QA: at least one construct or transfer question (not just identify/compute)
+5. CX: at least one real-world context per 5 questions
+6. ST: at least one 5+ step question per concept
+7. **AV: at least two different verification methods per concept across the practice set**
 
 **Structural Variation (40% of score):**
 - Does each question type appear in a different variant class than the previous practice?

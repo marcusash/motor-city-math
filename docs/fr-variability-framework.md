@@ -171,14 +171,19 @@ QDS measures how structurally different the questions covering a concept are fro
 | Question-Ask Type | QA | What Kai is asked to DO | identify, compute, construct, transfer, diagnose |
 | Context | CX | The setting of the problem | pure algebra, real-world, function composition, inverse problem |
 | Step Count | ST | Minimum steps required to solve | 1-2 steps, 3-4 steps, 5+ steps |
+| Answer Verification Method | AV | How Kai confirms the answer is correct | substitute-back arithmetic, graph inspection, sign-check, interval-test, approximate/estimate |
+
+**Why AV (Dimension 7) was added (FA recommendation, 2026-02-22):** Answer verification method tests a fundamentally different cognitive skill than the other 6 dimensions. A question verified by substitution uses recall and arithmetic. A question verified by graph inspection requires spatial-numeric translation. When all questions in a practice bank share the same verification method, Kai can pattern-match to correctness without the underlying concept being solid. The W2.b absolute value gap — Kai could identify intercepts numerically but not by visual inspection — is a direct AV lock failure. AV has the highest adversarial value for GR: it forces variation in HOW the answer is confirmed, which is where most practice-test homogeneity hides.
 
 ### Computing QDS
 
 **Step 1: For each pair of questions on the same concept, compute Structural Similarity Index (SSI):**
 
 ```
-SSI(q_i, q_j) = (number of dimensions that match) / 6
+SSI(q_i, q_j) = (number of dimensions that match) / 7
 ```
+
+*Denominator updated from 6 to 7 with addition of AV dimension (2026-02-22).*
 
 **Step 2: QDS for a set of N questions:**
 
@@ -198,7 +203,9 @@ Every Q3 across all 7 practices:
 - CX: pure algebra (match = 1)
 - ST: 2-3 steps (match = 1)
 
-Typical pair SSI = 5.8/6 = 0.97. QDS = 1 - 0.97 = **0.03.**
+- AV: substitute-back arithmetic (all: set expression to 0, solve for x, check by plugging in — match = 1)
+
+Typical pair SSI = 6.8/7 = 0.97. QDS = 1 - 0.97 = **0.03.**
 
 This is not variability — it is the same question with different numbers 7 times.
 
