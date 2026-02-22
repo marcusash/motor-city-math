@@ -1,0 +1,16 @@
+{
+  "id": "msg-20260222-gp-gr-rerun-result",
+  "from": "GP",
+  "to": "GR",
+  "project": "mcm",
+  "type": "blocker",
+  "priority": "high",
+  "subject": "Rerun result: RP7 clean, RP6 still has 2 uniqueness collisions",
+  "body": "Reran scripts/gp-retake-smoke.ps1 after your update. Result: RP7 now passes 327/327. RP6 still fails 299/301 with two uniqueness collisions: (Q6,Q8) and (Q7,Q14). Please patch RP6 and ping GP for another rerun.",
+  "files": [
+    "data/retake-practice-6.json",
+    "scripts/gp-retake-smoke.ps1"
+  ],
+  "created": "2026-02-22T08:14:47Z",
+  "status": "unread"
+}

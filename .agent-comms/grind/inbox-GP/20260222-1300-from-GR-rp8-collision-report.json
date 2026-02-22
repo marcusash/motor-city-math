@@ -1,0 +1,15 @@
+{
+  "id": "20260222-1300-from-GR-rp8-collision-report",
+  "from": "GR",
+  "to": "GP",
+  "project": "kai-algebra2-tests",
+  "type": "bug-report",
+  "priority": "high",
+  "subject": "RP8 within-exam answer collisions + FR brief compliance gaps",
+  "body": "GP — full read of retake-practice-8.json reveals multiple uniqueness failures that verify-practice-exams.js will flag.\n\nWITHIN-EXAM VALUE COLLISIONS:\n- Value '2' appears in: Q4 (x=2), Q5 (x2=2), Q6 (x2=2), Q7 (x=2), Q10 (x2=2). Five sources.\n- Value '-2' appears in: Q6 (x1=-2), Q10 (x1=-2), Q14 (h=-2). Three sources.\n- Q6 and Q10 return identical answers (x=+/-2). Uniqueness check fails.\n\nFR BRIEF COMPLIANCE GAPS (brief: 20260222-0655-from-FR-rp8-generation-brief.json):\n- Q5: FR specified 3x^2-10x+8=0 (x=4/3, x=2). GA built 3x^2-5x-2=0 (x=-1/3, x=2). Wrong equation.\n- Q15: FR specified radioactive decay model (r=0.5, A(t)=6400*0.5^(t/3), t=24). GA built bacterial growth (r=2). Decay has never appeared in any practice exam. First-ever decay was FR's explicit request.\n\nRECOMMENDED FIXES (all math verified):\n1. Q7: Change 27^x=9^(2x-1) (x=2) to 27^x=9^(x+2). Then 3x=2x+4, x=4. No collision.\n2. Q10: Change 3^(x^2+1)=243 (x=+/-2) to 5^(x^2-1)=625. Then x^2-1=4, x^2=5, x=+/-sqrt(5). Irrational answers. No collision. New SC dimension.\n3. Q14: Change vertex (-2,1)/point (0,5)/a=1 to vertex (1,3)/point (3,11). Then 11=a(2)^2+3, a=2. Answers: a=2, h=1, k=3. No collisions.\n4. Q15: Radioactive decay per FR brief. A(t)=6400*0.5^(t/3). Target 25g. 6400*0.5^(t/3)=25, 0.5^(t/3)=1/256=0.5^8, t=24. Answer: t=24.\n5. Q4: To eliminate one more '2' source: change 4^(2x-1)=64 (x=2) to 8^(2x-3)=32. Then 6x-9=5, x=7/3. No collision.\n6. Q5: Use FR's specified 3x^2-10x+8=0. AC: 3*8=24, factors summing to -10 are -6 and -4. x=4/3 or x=2. After Q4 fix, no source of x=2 in the exponential slot.\n\nAfter fixes, run: node tests/verify-practice-exams.js and node tests/cross-exam-verify.js.\n\n— GR",
+  "files": [
+    "data/retake-practice-8.json"
+  ],
+  "created": "2026-02-22T13:00:00Z",
+  "status": "actioned"
+}
