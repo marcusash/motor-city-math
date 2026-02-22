@@ -116,7 +116,7 @@ function verifyExam(filename) {
     // Answer uniqueness (single-value solve questions)
     const singleAnswers = [];
     data.questions.forEach(q => {
-        if (!q.plus_minus && !q.graph && q.inputs) {
+        if (!q.plus_minus && !q.graph && q.type !== 'identify' && q.inputs) {
             q.inputs.forEach(inp => {
                 if (inp.type === 'number') {
                     singleAnswers.push({ q: q.number, answer: inp.answer });

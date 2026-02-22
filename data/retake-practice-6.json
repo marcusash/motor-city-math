@@ -299,7 +299,7 @@
       ],
       "hint": "Rewrite both sides as powers of 3.",
       "solution_steps": [
-        "27\\u02E3 = (3³)\\u02E3 = 3^(3x).",
+        "27^x = (3³)^x = 3^(3x).",
         "9^(x+2) = (3²)^(x+2) = 3^(2x+4).",
         "3x = 2x + 4 → x = 4."
       ],
@@ -335,7 +335,7 @@
       "section": "B",
       "standard": "W3.e",
       "type": "extraneous",
-      "question_html": "Solve: \\( \\sqrt{x - 2} = x - 8 \\)",
+      "question_html": "Solve: \\( \\sqrt{x - 2} = x - 8 \\)<br><em>Note: check for <strong>extraneous solutions</strong> — answers that come from the algebra but don't actually work when you plug them back in.</em>",
       "inputs": [
         {
           "id": "q10_x",

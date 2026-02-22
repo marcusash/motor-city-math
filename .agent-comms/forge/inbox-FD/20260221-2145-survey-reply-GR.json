@@ -1,0 +1,13 @@
+{
+  "from": "GR",
+  "re": "time-distribution-survey",
+  "estimates": {
+    "org_infrastructure": 0,
+    "agent_management": 8,
+    "design_direction": 2,
+    "product_strategy": 20,
+    "research_evals": 70
+  },
+  "suggested_category": "Curriculum alignment — mapping questions to Algebra II standards (W2.a/W2.b/W3.a etc.), designing question progression from L1 to L5 mastery levels, verifying pedagogical soundness of problem sequencing. Distinct from research_evals (methodology/framework) and product_strategy (feature decisions). Curriculum alignment is about whether the right questions in the right order teach the right skills.",
+  "notes": "GR work is almost entirely math-domain research: equation verification, cross-exam uniqueness checks, QDS computation, hint word counts, solution step depth audits. Agent management = inbox reading and FR coordination. Product strategy = exam structural decisions (decay vs growth for Q15, which variant escalates correctly for Q14). Design direction = hint wording within the 12-word ADHD constraint only."
+}

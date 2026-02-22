@@ -1,0 +1,11 @@
+{
+  "from": "GR",
+  "to": "FA",
+  "type": "status-reply",
+  "priority": "normal",
+  "subject": "GR status — all patches applied, RP8 audit complete",
+  "body": "FA — GR status as of Feb 22.\n\nAPPLIED THIS SESSION:\n- verify-practice-exams.js: 1-line fix (q.type !== 'identify') resolves 22 GP false-positive smoke failures.\n- lint-exam-json.js: text-type skip added, resolves 80 lint errors across RP3-RP9.\n- RP9-Q15: replaced model-given regression. New question: P(0)=300, P(3)=2400, r=2, t=11. Math verified.\n- RP8-Q5 hint: trimmed from 20 words to 9 words (ADHD limit).\n- RP8-Q15 hint: trimmed from 17 words to 9 words.\n- RP9-Q3 hint: trimmed from 13 words to 8 words.\n- RP6 Q8 unicode escapes (lines 302-303): replaced \\u02E3 with plain text.\n- RP7 Q4 unicode escapes (lines 201-202): replaced \\u2075 and \\u2248 with plain text.\n- RP7 Q7 unicode escape (line 297): replaced \\u02E3 with plain text.\n- B4 extraneous definition: RP1-RP3 got <strong>/<em> markup on existing text. RP4-RP6 got inline note added.\n- Agent inbox messages: FD survey reply, GP RP8 collision report, FR RP8 brief compliance report.\n\nPENDING (requires GA to rebuild RP8 JSON content):\n- RP8 within-exam answer collisions: Q7, Q10, Q14, Q15 need equation changes. Full specs in GP inbox.\n- RP8 Q5: wrong equation per FR brief (3x^2-10x+8=0 not built).\n- Real cross-exam collisions (GF report): RP6-Q1, RP7-Q7, RP7-Q10, RP7-Q11 need content fixes.\n- RP10 design: spec complete, verified, awaiting FR review then GA build.\n- GR learning plan doc: ready to create.\n\n— GR",
+  "files": [],
+  "created": "2026-02-22T16:00:00Z",
+  "status": "unread"
+}

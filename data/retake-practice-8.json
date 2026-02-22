@@ -178,7 +178,7 @@
           "tolerance": 0.05
         }
       ],
-      "hint": "AC method: a×c = 3×(-2) = -6. Find factors of -6 that add to -5. Split middle term, factor by grouping.",
+      "hint": "AC: multiply a×c = −6. Find factors adding to −5. Split and group.",
       "solution_steps": [
         "a×c = -6. Factors adding to -5: -6 and +1.",
         "Split: 3x² - 6x + x - 2.",
@@ -584,7 +584,7 @@
           "tolerance": 0.1
         }
       ],
-      "hint": "Solve for r FIRST. P(4)=800: 50·r⁴=800 → r⁴=16. What number raised to the 4th power equals 16?",
+      "hint": "Find r first: 50·r⁴=800. Solve for r, then write your model.",
       "solution_steps": [
         "P₀=50. Model: P(t)=50·r^t.",
         "P(4)=800: 50·r⁴=800 → r⁴=16=2⁴ → r=2.",

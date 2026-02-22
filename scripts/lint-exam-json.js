@@ -109,6 +109,8 @@ function lintFile(filepath) {
 
     // 7. Per-input checks
     for (const inp of (q.inputs || [])) {
+      // Text inputs are free-response with no auto-grade answer
+      if (inp.type === 'text') { continue; }
       // Required input fields
       for (const field of REQUIRED_INPUT) {
         if (!(field in inp)) localError(`Question ${qid} input ${inp.id || '?'}: missing field "${field}"`);

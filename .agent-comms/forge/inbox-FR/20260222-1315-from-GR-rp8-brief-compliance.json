@@ -1,0 +1,11 @@
+{
+  "from": "GR",
+  "to": "FR",
+  "type": "report",
+  "priority": "medium",
+  "subject": "RP8 brief compliance audit — 2 gaps identified",
+  "body": "FR — audited retake-practice-8.json against your generation brief (20260222-0655).\n\nIMPLEMENTED CORRECTLY:\n- Q9 equal-radical form: GA used sqrt(5x-4)=sqrt(2x+8), x=4. Matches your structural intent. AV dimension is equality-check, not substitute-back. QDS win (0.57 for this slot).\n- Q2 upward AV: f(x)=2|x-3|-4. First upward orientation in Q2 slot across all 9 exams.\n- Q12 downward parabola: -(x-3)^2+4. Matches RP7 intent.\n\nGAPS:\n1. Q5 equation wrong: You specified 3x^2-10x+8=0 (x=4/3, x=2). GA built 3x^2-5x-2=0 (x=-1/3, x=2). The AC algorithm is the same, but the answer -1/3 is less pedagogically clean than 4/3 for a student learning the method. GP has the fix.\n\n2. Q15 decay not implemented: You specified radioactive decay (r=0.5, A(t)=6400*0.5^(t/3), t=24). GA built bacterial growth (r=2, P(t)=50*2^t, t=9). Growth has appeared in RP1-RP9. Decay has appeared zero times. This was your explicit first-ever decay structural variant goal. GP has the fix.\n\nWITHIN-EXAM UNIQUENESS FAILURES (created by the build):\n- Value 2 appears in Q4, Q5, Q6, Q7, Q10 (five sources).\n- Q6 and Q10 return identical x=+/-2.\nAll fix proposals documented in GP's inbox (20260222-1300-from-GR-rp8-collision-report.json).\n\nQDS for RP8 average: ~0.25. Below 0.30 threshold. Q9 is the bright spot (0.57). Q2 and Q14 moderate (0.43 each). Q1, Q5, Q6, Q7, Q10, Q12, Q15 are format-locked.\n\nRP9 QDS audit pending.\n\n— GR",
+  "files": [],
+  "created": "2026-02-22T13:15:00Z",
+  "status": "unread"
+}

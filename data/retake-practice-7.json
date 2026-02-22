@@ -198,8 +198,8 @@
       "hint": "Rewrite both sides as powers of 2.",
       "solution_steps": [
         "8^(x-1) = (2³)^(x-1) = 2^(3x-3).",
-        "32 = 2\\u2075.",
-        "3x - 3 = 5 → 3x = 8 → x = 8/3 \\u2248 2.667."
+        "32 = 2^5.",
+        "3x - 3 = 5 → 3x = 8 → x = 8/3 ≈ 2.667."
       ],
       "feedback_correct": "🔥 Common base. 8/3."
     },
@@ -294,7 +294,7 @@
       ],
       "hint": "Rewrite both sides as powers of 5.",
       "solution_steps": [
-        "25\\u02E3 = (5²)\\u02E3 = 5^(2x).",
+        "25^x = (5²)^x = 5^(2x).",
         "125^(x-1) = (5³)^(x-1) = 5^(3x-3).",
         "2x = 3x - 3 → x = 3."
       ],

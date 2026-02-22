@@ -322,7 +322,7 @@
       "section": "B",
       "standard": "W3.e",
       "type": "extraneous",
-      "question_html": "Solve and check for extraneous solutions: \\( \\sqrt{x + 3} = x - 3 \\)",
+      "question_html": "Solve and check for <strong>extraneous solutions</strong> <em>(answers that come from the algebra but don't actually work when you plug them back in)</em>: \\( \\sqrt{x + 3} = x - 3 \\)",
       "inputs": [
         {
           "id": "q10_x",

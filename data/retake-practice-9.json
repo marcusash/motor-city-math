@@ -123,7 +123,7 @@
           "tolerance": 0.05
         }
       ],
-      "hint": "Isolate the absolute value. Can you factor inside before writing the two cases?",
+      "hint": "Isolate the absolute value, then write both cases.",
       "solution_steps": [
         "Isolate: |3x-9| = 9.",
         "Factor: |3(x-3)| = 9 → 3|x-3| = 9 → |x-3| = 3.",
@@ -573,29 +573,29 @@
       "section": "D",
       "standard": "W3.a",
       "type": "word-problem",
-      "question_html": "An investment of $500 doubles every 3 years.<br><br>(a) Write the model P(t) = 500 · 2^(t/3).<br>(b) Confirm the model, then find when the investment reaches $64,000.",
+      "question_html": "A bacteria colony has 300 bacteria at t=0. At t=3 hours there are 2400 bacteria.<br><br>(a) Write the model P(t) = P₀ · r^t.<br>(b) At what time t will the population reach 614,400?",
       "inputs": [
         {
-          "id": "q15_confirm",
+          "id": "q15_model",
           "type": "text",
-          "label": "(a) Verify: at t=3, P = ?"
+          "label": "(a) P(t) ="
         },
         {
           "id": "q15_t",
           "type": "number",
           "label": "(b) t =",
-          "answer": 21,
+          "answer": 11,
           "tolerance": 0.1
         }
       ],
-      "hint": "The model is given: P(t)=500·2^(t/3). Set it equal to 64000. Solve for t/3 first.",
+      "hint": "Find r first: P(3)=2400 means 300·r³=2400. Solve for r, then write the model.",
       "solution_steps": [
-        "Model: P(t)=500·2^(t/3). At t=3: 500·2^(3/3)=500·2=1000. Doubles ✓",
-        "Set P=64000: 500·2^(t/3)=64000 → 2^(t/3)=128=2⁷.",
-        "t/3=7 → t=21 years.",
-        "Check: 500×2⁷=500×128=64000 ✓"
+        "P₀=300. P(3)=2400: 300·r³=2400 → r³=8=2³ → r=2.",
+        "Model: P(t) = 300·2^t.",
+        "When P=614400? 300·2^t=614400 → 2^t=2048=2¹¹ → t=11 hours.",
+        "Check: 300×2¹¹=300×2048=614400 ✓"
       ],
-      "feedback_wrong": "500·2^(t/3)=64000 → 2^(t/3)=128=2⁷ → t/3=7 → t=21."
+      "feedback_wrong": "Find r first: 300·r³=2400 → r³=8 → r=2. Then P(t)=300·2^t. Then t=11."
     }
   ]
 }
