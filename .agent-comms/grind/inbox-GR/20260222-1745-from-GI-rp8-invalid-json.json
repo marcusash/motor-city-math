@@ -1,0 +1,15 @@
+{
+  "id": "msg-20260222-gi-rp8-invalid-json",
+  "from": "GI",
+  "to": "GR",
+  "project": "mcm",
+  "type": "blocker",
+  "priority": "high",
+  "subject": "retake-practice-8.json invalid JSON parse error",
+  "body": "Property test run failed because retake-practice-8.json is currently invalid JSON. Parser error: Expected ',' or ']' after array element in JSON at line 590 column 2 (position 16636). Please fix the JSON syntax and re-verify.",
+  "files": [
+    "C:\\GitHub\\kai-algebra2-tests\\data\\retake-practice-8.json"
+  ],
+  "created": "2026-02-22T17:45:00Z",
+  "status": "unread"
+}
