@@ -354,28 +354,34 @@
       "id": "rp7-q10",
       "number": 10,
       "section": "B",
-      "standard": "W3.e",
-      "type": "extraneous",
-      "question_html": "Solve: \\\\( \\\\sqrt{3x + 4} = x \\\\)",
+      "standard": "W3.d",
+      "type": "exponential",
+      "question_html": "Solve: \\( 4 \\cdot 2^{x^2 + 1} = 128 \\)",
       "inputs": [
         {
-          "id": "q10_x",
+          "id": "q10_x1",
           "type": "number",
-          "label": "x =",
-          "answer": 4,
-          "tolerance": 0.1
+          "label": "Smaller x =",
+          "answer": -2,
+          "tolerance": 0.05
+        },
+        {
+          "id": "q10_x2",
+          "type": "number",
+          "label": "Larger x =",
+          "answer": 2,
+          "tolerance": 0.05
         }
       ],
-      "hint": "Square both sides. Solve the resulting equation. Your answer may have fewer valid solutions than you expect.",
+      "hint": "Divide both sides by 4 first to isolate the exponential. Then rewrite both sides as powers of 2. You will get x² = a number.",
       "solution_steps": [
-        "Square both sides: 3x+4 = x^2.",
-        "Rearrange: x^2 - 3x - 4 = 0. Factor: (x-4)(x+1) = 0.",
-        "x = 4 or x = -1.",
-        "Check x=4: sqrt(16) = 4. Valid.",
-        "Check x=-1: sqrt(1) = 1, but RHS = -1. 1 does not equal -1. Extraneous.",
-        "Answer: x = 4 only. W3.e: always check. The extraneous root looked valid until you checked."
+        "Step 1: Divide both sides by 4: 2^(x² + 1) = 32.",
+        "Step 2: Rewrite 32 as a power of 2: 32 = 2⁵.",
+        "Step 3: Set exponents equal: x² + 1 = 5 → x² = 4.",
+        "Step 4: x² = 4 → x = ±2. Two solutions because x² = positive number gives ±.",
+        "Check x=2: 4·2^(4+1) = 4·32 = 128 ✓"
       ],
-      "feedback_correct": "🔥 Caught the extraneous one."
+      "feedback_wrong": "Divide by 4 first: 2^(x²+1)=32=2⁵. Set exponents equal: x²+1=5. Then x²=4 gives TWO answers: x=±2."
     },
     {
       "id": "rp7-q11",
