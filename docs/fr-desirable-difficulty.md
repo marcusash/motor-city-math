@@ -108,4 +108,26 @@ Spacing recommendation specific to Kai: do not do more than 2 retake practices i
 
 ---
 
+## The Testing Effect: Standalone AV Practice vs. Embedded AV Practice
+
+**Updated:** 2026-02-22
+
+Rohrer & Karpicke (2006) established that retrieval practice (testing yourself) produces better long-term retention than restudying the same material, even when restudy time is longer. This is the testing effect.
+
+**Applied to Kai's AV gap:**
+
+Kai has a documented Answer Verification dimension lock — he can solve correctly but uses the wrong verification strategy when visual inspection is required. Two approaches to address this:
+
+**Option A: Embedded AV practice** — Q3 in each RP is a composite question (identify parent, find x-intercepts, verify using graph inspection). Kai practices AV inside a larger problem.
+
+**Option B: Standalone AV practice** — A single dedicated question: "Given f(x) = 2|x-3|-4, what is the most efficient way to verify your x-intercept answers: (a) substitute back into the equation, (b) graph and read intercepts visually, (c) set y=0 and solve again?" This is a retrieval practice question: Kai must recall and select the strategy, not just execute it.
+
+**FR recommendation:** The testing effect predicts Option B produces stronger retention of AV strategy selection than Option A. Here is why: in Option A, the AV task is the final step of a multi-step problem. Kai is already fatigued from the identify and solve steps. Cognitive load theory predicts the verification step receives the least attention when it comes last. In Option B, AV strategy selection is the entire cognitive task. Kai must recall and reason about strategy choice, not just execute one.
+
+**GR implementation:** Add one standalone AV selection question per exam, positioned at Q4 (before the main solve block). Format: multiple-choice with 3 verification strategies, one for the parent function just identified in Q3. This takes 30 seconds to answer but trains the strategy-selection pathway directly.
+
+**Expected effect:** If Kai answers the Q4 AV selection question correctly across RP5-RP8, FR predicts W2.b visual-inspection variants will show improvement in RP6+ scores. If Kai misses Q4 AV selection, that is the diagnostic finding — strategy knowledge is not yet consolidated even before execution is required.
+
+---
+
 *Decision this changes for Marcus: if GR is generating questions that are simply "harder" (more algebraic steps, larger numbers, longer word problems), the difficulty is not desirable — it is just more work. Redirect GR to structural variation as the design target.*
