@@ -157,12 +157,12 @@
           "tolerance": 0.1
         }
       ],
-      "hint": "Factor out the coefficient first. Then set the absolute value equal to the RHS and split into TWO equations: |3x+9| = 6 AND |3x+9| = -6. Solve each separately.",
+      "hint": "Factor out the coefficient first. Then use the absolute value definition: if |3x+9| = 6, there are TWO cases: 3x+9=6  (positive case)  OR  -(3x+9)=6  (negative case). Multiply the negative case by -1 to solve.",
       "solution_steps": [
         "Factor: |3x+9| = 3|x−(−3)|. So f(x) = 3|x−(−3)| − 6.",
         "a = 3, h = −3, k = −6. Shift LEFT 3, stretch ×3, down 6. Vertex at (−3, −6).",
-        "KEY CONCEPT: |expression| = 6 means TWO equations: 3x+9=6  AND  3x+9=-6.",
-        "Solve 3x+9=6 → x = -1.  Solve 3x+9=-6 → x = -5.",
+        "KEY CONCEPT: |A| = k means A = k  OR  -(A) = k. So: 3x+9=6  AND  -(3x+9)=6.",
+        "Case 1: 3x+9=6 → x = -1.  Case 2: multiply both sides by -1 → 3x+9=-6 → x = -5.",
         "W2.b insight: the ± split is the definition of absolute value. Never skip writing both equations."
       ],
       "feedback_correct": "🔥 Absolute value. Both intercepts.",

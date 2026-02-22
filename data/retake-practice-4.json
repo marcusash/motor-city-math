@@ -158,12 +158,12 @@
           "tolerance": 0.1
         }
       ],
-      "hint": "Factor out the coefficient first. Then set the absolute value equal to the RHS and split into TWO equations: |2x-8| = 6 AND |2x-8| = -6. Solve each separately.",
+      "hint": "Factor out the coefficient first. Then use the absolute value definition: if |2x-8| = 6, there are TWO cases: 2x-8=6  (positive case)  OR  -(2x-8)=6  (negative case). Multiply the negative case by -1 to solve.",
       "solution_steps": [
         "Factor: |2x−8| = 2|x−4|. So f(x) = 2|x−4| − 6.",
         "a = 2 (vertical stretch ×2), h = 4 (shift right 4), k = −6 (shift down 6).",
-        "KEY CONCEPT: |expression| = 6 means TWO equations: 2x-8=6  AND  2x-8=-6.",
-        "Solve 2x-8=6 → x = 7.  Solve 2x-8=-6 → x = 1.",
+        "KEY CONCEPT: |A| = k means A = k  OR  -(A) = k. So: 2x-8=6  AND  -(2x-8)=6.",
+        "Case 1: 2x-8=6 → x = 7.  Case 2: multiply both sides by -1 → 2x-8=-6 → x = 1.",
         "W2.b insight: the ± split is the definition of absolute value. Never skip writing both equations."
       ],
       "feedback_correct": "🔥 Absolute value. Both intercepts.",

@@ -167,12 +167,12 @@
           "tolerance": 0.1
         }
       ],
-      "hint": "Factor out the coefficient first. Then set the absolute value equal to the RHS and split into TWO equations: |2x-6| = 4 AND |2x-6| = -4. Solve each separately.",
+      "hint": "Factor out the coefficient first. Then use the absolute value definition: if |2x-6| = 4, there are TWO cases: 2x-6=4  (positive case)  OR  -(2x-6)=4  (negative case). Multiply the negative case by -1 to solve.",
       "solution_steps": [
         "Factor: |2x-6| = 2|x-3|. So f(x) = 2|x-3| - 4.",
         "a=2 (vertical stretch), h=3 (shift right 3), k=-4 (shift down 4). Vertex: (3,-4).",
-        "KEY CONCEPT: |expression| = 4 means TWO equations: 2x-6=4  AND  2x-6=-4.",
-        "Solve 2x-6=4 → x = 5.  Solve 2x-6=-4 → x = 1.",
+        "KEY CONCEPT: |A| = k means A = k  OR  -(A) = k. So: 2x-6=4  AND  -(2x-6)=4.",
+        "Case 1: 2x-6=4 → x = 5.  Case 2: multiply both sides by -1 → 2x-6=-4 → x = 1.",
         "W2.b insight: the ± split is the definition of absolute value. Never skip writing both equations."
       ],
       "feedback_correct": "🔥 Both intercepts. Coefficient inside — you handled it.",

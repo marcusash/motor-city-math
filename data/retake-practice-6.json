@@ -160,12 +160,12 @@
           "tolerance": 0.1
         }
       ],
-      "hint": "Factor out the coefficient first. Then set the absolute value equal to the RHS and split into TWO equations: |4x-8| = 12 AND |4x-8| = -12. Solve each separately.",
+      "hint": "Factor out the coefficient first. Then use the absolute value definition: if |4x-8| = 12, there are TWO cases: 4x-8=12  (positive case)  OR  -(4x-8)=12  (negative case). Multiply the negative case by -1 to solve.",
       "solution_steps": [
         "Factor: |4x−8| = 4|x−2|. So f(x) = 4|x−2| − 12.",
         "a=4, h=2, k=−12. Vertex at (2, −12). Opens UP (a>0).",
-        "KEY CONCEPT: |expression| = 12 means TWO equations: 4x-8=12  AND  4x-8=-12.",
-        "Solve 4x-8=12 → x = 5.  Solve 4x-8=-12 → x = -1.",
+        "KEY CONCEPT: |A| = k means A = k  OR  -(A) = k. So: 4x-8=12  AND  -(4x-8)=12.",
+        "Case 1: 4x-8=12 → x = 5.  Case 2: multiply both sides by -1 → 4x-8=-12 → x = -1.",
         "W2.b insight: the ± split is the definition of absolute value. Never skip writing both equations."
       ],
       "feedback_correct": "🔥 Both intercepts. Solid.",
