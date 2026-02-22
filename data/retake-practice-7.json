@@ -247,25 +247,34 @@
       "id": "rp7-q6",
       "number": 6,
       "section": "B",
-      "standard": "W3.b",
+      "standard": "W3.c",
       "type": "radical",
-      "question_html": "Solve: \\( \\sqrt{4x + 5} - 1 = 6 \\)",
+      "question_html": "Solve: \\( \\sqrt{x^2 + 9} - 5 = 0 \\)",
       "inputs": [
         {
-          "id": "q6_x",
+          "id": "q6_x1",
           "type": "number",
-          "label": "x =",
-          "answer": 11,
-          "tolerance": 0.1
+          "label": "Smaller x =",
+          "answer": -4,
+          "tolerance": 0.05
+        },
+        {
+          "id": "q6_x2",
+          "type": "number",
+          "label": "Larger x =",
+          "answer": 4,
+          "tolerance": 0.05
         }
       ],
-      "hint": "Isolate the √, then square both sides.",
+      "hint": "Isolate the radical first. When you square both sides you will get x² = a number. What does that give you?",
       "solution_steps": [
-        "√(4x+5) = 7.",
-        "Square: 4x + 5 = 49.",
-        "4x = 44 → x = 11."
+        "Step 1: Isolate: √(x² + 9) = 5.",
+        "Step 2: Square both sides: x² + 9 = 25.",
+        "Step 3: x² = 16.",
+        "Step 4: x = ±4. Two solutions because x² = positive number always gives ±.",
+        "Check: √(16 + 9) - 5 = √25 - 5 = 5 - 5 = 0 ✓"
       ],
-      "feedback_correct": "🔥 Square both sides. Done."
+      "feedback_wrong": "After isolating and squaring: x² = 16. Remember x² = k has TWO solutions: x = ±√k."
     },
     {
       "id": "rp7-q7",
