@@ -941,7 +941,7 @@
     function dadModeInit() {
         if (!_dadMode) return;
         document.getElementById('dadBanner').style.display = 'flex';
-        fetch('data/kai-scores-2026-02-21.json')
+        fetch('data/kai-scores-2026-02-22.json')
             .then(function(r) { return r.json(); })
             .then(function(data) {
                 if (data && data.mcm_scores) {
@@ -984,7 +984,7 @@
         // Dad can text Kai: https://marcusash.github.io/motor-city-math/?restore=1
         var _restoreMode = new URLSearchParams(window.location.search).get('restore') === '1';
         if (_restoreMode) {
-            fetch('data/kai-scores-2026-02-21.json')
+            fetch('data/kai-scores-2026-02-22.json')
                 .then(function(r) { return r.json(); })
                 .then(function(data) {
                     if (data && data.mcm_scores) {
@@ -1057,3 +1057,4 @@
 
 
 <!-- publish test 2026-02-21T03:35:13 -->
+
