@@ -13,7 +13,7 @@
       "section": "A",
       "standard": "W2.b",
       "type": "identify",
-      "question_html": "Identify the parent function and find the x-intercepts: \\( f(x) = -(x + 5)^2 + 9 \\)",
+      "question_html": "Identify the parent function and find the x-intercepts: \\( f(x) = (x + 3)(x - 5) \\)",
       "inputs": [
         {
           "id": "q1_parent",
@@ -22,8 +22,8 @@
           "options": [
             "quadratic",
             "cubic",
-            "absolute",
-            "sqrt",
+            "absolute value",
+            "square root",
             "rational",
             "exponential"
           ],
@@ -33,28 +33,28 @@
           "id": "q1_x1",
           "type": "number",
           "label": "x₁ =",
-          "answer": -2,
+          "answer": -3,
           "tolerance": 0.1
         },
         {
           "id": "q1_x2",
           "type": "number",
           "label": "x₂ =",
-          "answer": -8,
+          "answer": 5,
           "tolerance": 0.1
         }
       ],
-      "plus_minus": true,
-      "hint": "Set f(x)=0. Move 9 to the other side, remove the negative.",
+      "hint": "Expand mentally: what is the degree? For intercepts, use the Zero Product Property directly on the factored form.",
       "solution_steps": [
-        "Parent: y = x\\u00B2 (quadratic \\u2014 highest power is 2).",
-        "Set 0 = -(x+5)\\u00B2 + 9.",
-        "(x+5)\\u00B2 = 9.",
-        "x + 5 = \\u00B13 \\u2192 x = -2 or x = -8."
+        "Expand: (x+3)(x−5) = x² − 2x − 15. Highest power = 2 → parent is quadratic.",
+        "Zero Product Property: set each factor = 0.",
+        "x+3 = 0 → x = −3.",
+        "x−5 = 0 → x = 5.",
+        "No squaring, no ±. Factored form gives roots DIRECTLY. This is why form matters."
       ],
-      "feedback_correct": "\\uD83D\\uDD25 Quadratic intercepts nailed.",
-      "feedback_wrong_parent": "Look at the exponent \\u2014 it\\u2019s squared.",
-      "feedback_wrong_intercepts": "Parent right. Set f(x)=0 and solve."
+      "feedback_correct": "🔥 Quadratic intercepts nailed.",
+      "feedback_wrong_parent": "Expand: what is the highest power of x?",
+      "feedback_wrong_intercepts": "Set each factor = 0 separately. Zero Product Property."
     },
     {
       "id": "rp6-q2",
@@ -71,12 +71,12 @@
           "options": [
             "quadratic",
             "cubic",
-            "absolute",
-            "sqrt",
+            "absolute value",
+            "square root",
             "rational",
             "exponential"
           ],
-          "answer": "sqrt"
+          "answer": "square root"
         },
         {
           "id": "q2_x1",
@@ -86,15 +86,15 @@
           "tolerance": 0.1
         }
       ],
-      "hint": "Set f(x)=0. Square both sides after isolating the \\u221A.",
+      "hint": "Set f(x)=0. Square both sides after isolating the √.",
       "solution_steps": [
-        "Parent: y = \\u221Ax (square root function).",
-        "Set 0 = \\u221A(2x+10) - 4 \\u2192 \\u221A(2x+10) = 4.",
-        "Square: 2x + 10 = 16 \\u2192 2x = 6.",
+        "Parent: y = √x (square root function).",
+        "Set 0 = √(2x+10) - 4 → √(2x+10) = 4.",
+        "Square: 2x + 10 = 16 → 2x = 6.",
         "x = 3."
       ],
-      "feedback_correct": "\\uD83D\\uDD25 Square root identified. Clean.",
-      "feedback_wrong_parent": "Look at the \\u221A symbol.",
+      "feedback_correct": "🔥 Square root identified. Clean.",
+      "feedback_wrong_parent": "Look at the √ symbol.",
       "feedback_wrong_intercepts": "Set f(x)=0 and isolate the root."
     },
     {
@@ -103,7 +103,7 @@
       "section": "A",
       "standard": "W2.b",
       "type": "identify",
-      "question_html": "Identify the parent function and find the x-intercepts: \\( f(x) = -3|x - 2| + 12 \\)",
+      "question_html": "For \\( f(x) = |4x - 8| - 12 \\): rewrite in the form \\( a|x - h| + k \\), state the parent function, identify <em>a</em>, <em>h</em>, <em>k</em>, and find the x-intercepts.",
       "inputs": [
         {
           "id": "q3_parent",
@@ -112,39 +112,65 @@
           "options": [
             "quadratic",
             "cubic",
-            "absolute",
-            "sqrt",
+            "absolute value",
+            "square root",
             "rational",
             "exponential"
           ],
-          "answer": "absolute"
+          "answer": "absolute value"
+        },
+        {
+          "id": "q3_a",
+          "type": "number",
+          "label": "a =",
+          "answer": 4,
+          "tolerance": 0.01
+        },
+        {
+          "id": "q3_h",
+          "type": "number",
+          "label": "h =",
+          "answer": 2,
+          "tolerance": 0.01
+        },
+        {
+          "id": "q3_k",
+          "type": "number",
+          "label": "k =",
+          "answer": -12,
+          "tolerance": 0.01
+        },
+        {
+          "id": "q3_cases",
+          "type": "text",
+          "label": "Write the two equations you must solve (e.g. “AX+B = k and AX+B = -k”):"
         },
         {
           "id": "q3_x1",
           "type": "number",
-          "label": "x₁ =",
-          "answer": 6,
+          "label": "Smaller x-intercept =",
+          "answer": -1,
           "tolerance": 0.1
         },
         {
           "id": "q3_x2",
           "type": "number",
-          "label": "x₂ =",
-          "answer": -2,
+          "label": "Larger x-intercept =",
+          "answer": 5,
           "tolerance": 0.1
         }
       ],
-      "plus_minus": true,
-      "hint": "Set f(x)=0. Isolate the |expression|.",
+      "hint": "Factor out the coefficient first. Then use the absolute value definition: if |4x-8| = 12, there are TWO cases: 4x-8=12  (positive case)  OR  -(4x-8)=12  (negative case). Multiply the negative case by -1 to solve.",
       "solution_steps": [
-        "Parent: y = |x| (absolute value function).",
-        "Set 0 = -3|x-2| + 12 \\u2192 3|x-2| = 12 \\u2192 |x-2| = 4.",
-        "x - 2 = 4 \\u2192 x = 6.",
-        "x - 2 = -4 \\u2192 x = -2."
+        "Factor: |4x−8| = 4|x−2|. So f(x) = 4|x−2| − 12.",
+        "a=4, h=2, k=−12. Vertex at (2, −12). Opens UP (a>0).",
+        "KEY CONCEPT: |A| = k means A = k  OR  -(A) = k. So: 4x-8=12  AND  -(4x-8)=12.",
+        "Case 1: 4x-8=12 → x = 5.  Case 2: multiply both sides by -1 → 4x-8=-12 → x = -1.",
+        "W2.b insight: the ± split is the definition of absolute value. Never skip writing both equations."
       ],
-      "feedback_correct": "\\uD83D\\uDD25 Both intercepts. Solid.",
+      "feedback_correct": "🔥 Both intercepts. Solid.",
       "feedback_wrong_parent": "The | | bars mean absolute value.",
-      "feedback_wrong_intercepts": "Set the absolute value expression = 4."
+      "feedback_wrong_intercepts": "After splitting two cases, divide by 4. Do not forget that step."
     },
     {
       "id": "rp6-q4",
@@ -152,7 +178,7 @@
       "section": "B",
       "standard": "W3.d",
       "type": "exponential",
-      "question_html": "Solve: \\\\( 2^{x+2} = 128 \\\\)",
+      "question_html": "Solve: \\( 2^{x+2} = 128 \\)",
       "inputs": [
         {
           "id": "q4_x",
@@ -186,14 +212,14 @@
           "tolerance": 0.01
         }
       ],
-      "hint": "Rewrite 64 as 4\\u00B3. Set exponents equal.",
+      "hint": "Rewrite 64 as 4³. Set exponents equal.",
       "solution_steps": [
         "4^(2x+1) = 64.",
-        "64 = 4\\u00B3.",
-        "2x + 1 = 3 \\u2192 2x = 2.",
+        "64 = 4³.",
+        "2x + 1 = 3 → 2x = 2.",
         "x = 1."
       ],
-      "feedback_correct": "\\uD83D\\uDD25 Exponent match. Clean."
+      "feedback_correct": "🔥 Exponent match. Clean."
     },
     {
       "id": "rp6-q6",
@@ -201,31 +227,32 @@
       "section": "B",
       "standard": "W3.b",
       "type": "quadratic",
-      "question_html": "Solve: \\\\( 2(x - 3)^2 - 32 = 0 \\\\)",
+      "question_html": "Solve: \\( x^2 - x - 12 = 0 \\)",
       "inputs": [
         {
           "id": "q6_x1",
           "type": "number",
           "label": "x₁ =",
-          "answer": 7,
+          "answer": 4,
           "tolerance": 0.1
         },
         {
           "id": "q6_x2",
           "type": "number",
           "label": "x₂ =",
-          "answer": -1,
+          "answer": -3,
           "tolerance": 0.1
         }
       ],
-      "plus_minus": true,
-      "hint": "Isolate the squared term. Then \\u00B1.",
+      "hint": "Standard form. Find two numbers: product = −12, sum = −1.",
       "solution_steps": [
-        "2(x-3)² = 32 → (x-3)² = 16.",
-        "x - 3 = ±4.",
-        "x = 7 or x = -1."
+        "Standard form. Two numbers: product = −12, sum = −1. Those are −4 and +3. Check: (−4)(+3)=−12, −4+3=−1 ✓.",
+        "Factor: (x−4)(x+3) = 0.",
+        "x = 4 or x = −3.",
+        "Check: 16−4−12=0 ✓ and 9+3−12=0 ✓"
       ],
-      "feedback_correct": "\\uD83D\\uDD25 Both solutions found."
+      "feedback_correct": "🔥 Standard form factored. Both roots found.",
+      "feedback_wrong": "Cannot take ±√ here. Find two numbers, factor, then solve each factor = 0."
     },
     {
       "id": "rp6-q7",
@@ -233,23 +260,26 @@
       "section": "B",
       "standard": "W3.b",
       "type": "radical",
-      "question_html": "Solve: \\( \\sqrt{5x - 1} + 2 = 7 \\)",
+      "question_html": "Solve: \\( \\sqrt{x + 7} - \\sqrt{x - 1} = 2 \\)",
       "inputs": [
         {
           "id": "q7_x",
           "type": "number",
           "label": "x =",
-          "answer": 5.2,
-          "tolerance": 0.1
+          "answer": 2,
+          "tolerance": 0.01
         }
       ],
-      "hint": "Isolate the \\u221A, then square both sides.",
+      "hint": "Two radicals cannot both be eliminated at once. Isolate ONE radical on one side, then square. You will still have a radical after the first square — isolate and square again.",
       "solution_steps": [
-        "\\u221A(5x-1) = 5.",
-        "Square: 5x - 1 = 25.",
-        "5x = 26 \\u2192 x = 5.2."
+        "Isolate one radical: √(x+7) = √(x−1) + 2.",
+        "Square both sides: x+7 = (√(x−1)+2)² = (x−1)+4√(x−1)+4.",
+        "x+7 = x+3+4√(x−1) → 4 = 4√(x−1) → √(x−1) = 1.",
+        "Square again: x−1 = 1 → x = 2.",
+        "Check: √9 − √1 = 3 − 1 = 2 ✓"
       ],
-      "feedback_correct": "\\uD83D\\uDD25 Square both sides. Done."
+      "feedback_correct": "🔥 Two rounds of squaring. That is the full technique.",
+      "feedback_wrong": "You cannot eliminate both radicals at once. Isolate one, square, simplify, then isolate the remaining radical and square again."
     },
     {
       "id": "rp6-q8",
@@ -269,11 +299,11 @@
       ],
       "hint": "Rewrite both sides as powers of 3.",
       "solution_steps": [
-        "27\\u02E3 = (3\\u00B3)\\u02E3 = 3^(3x).",
-        "9^(x+2) = (3\\u00B2)^(x+2) = 3^(2x+4).",
-        "3x = 2x + 4 \\u2192 x = 4."
+        "27\\u02E3 = (3³)\\u02E3 = 3^(3x).",
+        "9^(x+2) = (3²)^(x+2) = 3^(2x+4).",
+        "3x = 2x + 4 → x = 4."
       ],
-      "feedback_correct": "\\uD83D\\uDD25 Common base. Smooth."
+      "feedback_correct": "🔥 Common base. Smooth."
     },
     {
       "id": "rp6-q9",
@@ -295,9 +325,9 @@
       "solution_steps": [
         "3x + 2 = 5(x - 1).",
         "3x + 2 = 5x - 5.",
-        "7 = 2x \\u2192 x = 3.5."
+        "7 = 2x → x = 3.5."
       ],
-      "feedback_correct": "\\uD83D\\uDD25 Clean algebra."
+      "feedback_correct": "🔥 Clean algebra."
     },
     {
       "id": "rp6-q10",
@@ -305,7 +335,7 @@
       "section": "B",
       "standard": "W3.e",
       "type": "extraneous",
-      "question_html": "Solve and check for extraneous solutions: \\\\( \\\\sqrt{x - 2} = x - 8 \\\\)",
+      "question_html": "Solve: \\( \\sqrt{x - 2} = x - 8 \\)",
       "inputs": [
         {
           "id": "q10_x",
@@ -315,7 +345,7 @@
           "tolerance": 0.1
         }
       ],
-      "hint": "Square both sides. Factor. Check BOTH in the original.",
+      "hint": "Square both sides. Solve the resulting quadratic. Your solution(s) must satisfy the original equation.",
       "solution_steps": [
         "Square: x - 2 = (x-8)² = x² - 16x + 64.",
         "x² - 17x + 66 = 0 → (x-11)(x-6) = 0.",
@@ -323,7 +353,7 @@
         "Check x=6: √4 = 2, but 6-8 = -2. Extraneous!",
         "Check x=11: √9 = 3, and 11-8 = 3. ✓"
       ],
-      "feedback_correct": "\\uD83D\\uDD25 Caught the extraneous one."
+      "feedback_correct": "🔥 Correct valid solution found. You knew to verify."
     },
     {
       "id": "rp6-q11",
@@ -343,10 +373,10 @@
       ],
       "hint": "Isolate x^(2/3), then raise both sides to the 3/2 power.",
       "solution_steps": [
-        "3x^(2/3) = 12 \\u2192 x^(2/3) = 4.",
-        "x = 4^(3/2) = (\\u221A4)\\u00B3 = 2\\u00B3 = 8."
+        "3x^(2/3) = 12 → x^(2/3) = 4.",
+        "x = 4^(3/2) = (√4)³ = 2³ = 8."
       ],
-      "feedback_correct": "\\uD83D\\uDD25 Fractional exponents. Locked."
+      "feedback_correct": "🔥 Fractional exponents. Locked."
     },
     {
       "id": "rp6-q12",
@@ -374,7 +404,7 @@
       "graph": {
         "canvas_id": "graphQ12",
         "function": "-2 * Math.pow(x + 1, 2) + 6",
-        "function_display": "f(x) = -2(x+1)\\u00B2 + 6",
+        "function_display": "f(x) = -2(x+1)² + 6",
         "key_points": [
           [
             -3,
@@ -408,14 +438,14 @@
         "min_points": 5,
         "tolerance": 0.25
       },
-      "hint": "Vertex form: f(x) = a(x-h)\\u00B2 + k. Vertex is (h, k). a=-2 means opens down.",
+      "hint": "Vertex form: f(x) = a(x-h)² + k. Vertex is (h, k). a=-2 means opens down.",
       "solution_steps": [
         "Vertex form: a = -2, h = -1, k = 6.",
         "Vertex: (-1, 6).",
-        "Opens down (a < 0), narrower than y=x\\u00B2 (|a|>1).",
+        "Opens down (a < 0), narrower than y=x² (|a|>1).",
         "Plot: f(-3)=-2(4)+6=-2, f(-2)=-2(1)+6=4, f(0)=-2(1)+6=4, f(1)=-2(4)+6=-2."
       ],
-      "feedback_correct": "\\uD83D\\uDD25 Vertex and graph locked."
+      "feedback_correct": "🔥 Vertex and graph locked."
     },
     {
       "id": "rp6-q13",
@@ -479,53 +509,52 @@
       },
       "hint": "VA: denominator = 0. HA: the constant outside the fraction.",
       "solution_steps": [
-        "VA: x - 3 = 0 \\u2192 x = 3.",
+        "VA: x - 3 = 0 → x = 3.",
         "HA: y = -2 (the constant added).",
         "Plot: f(1)=4/(-2)-2=-4, f(2)=4/(-1)-2=-6, f(4)=4/1-2=2, f(5)=4/2-2=0, f(7)=4/4-2=-1."
       ],
-      "feedback_correct": "\\uD83D\\uDD25 Both asymptotes correct."
+      "feedback_correct": "🔥 Both asymptotes correct."
     },
     {
       "id": "rp6-q14",
       "number": 14,
       "section": "D",
-      "standard": "W3.a",
-      "type": "multiple-choice",
-      "question_html": "The surface area of a sphere is \\( S = 4\\pi r^2 \\). Which correctly solves for \\( r \\)?",
+      "standard": "W2.b",
+      "type": "construct",
+      "question_html": "An absolute value function opens <strong>upward</strong>, has vertex at (−2, −6), and passes through the point (1, 0).<br>Find <em>a</em>, <em>h</em>, and <em>k</em> so that <em>f</em>(<em>x</em>) = <em>a</em>|<em>x</em> − <em>h</em>| + <em>k</em>.",
       "inputs": [
         {
-          "id": "q14",
-          "type": "radio",
-          "label": "",
-          "options": [
-            {
-              "value": "A",
-              "text": "\\( r = \\dfrac{S}{4\\pi} \\)"
-            },
-            {
-              "value": "B",
-              "text": "\\( r = \\sqrt{\\dfrac{S}{4\\pi}} \\)"
-            },
-            {
-              "value": "C",
-              "text": "\\( r = \\sqrt{\\dfrac{S}{4\\pi^2}} \\)"
-            },
-            {
-              "value": "D",
-              "text": "\\( r = \\dfrac{S^2}{4\\pi} \\)"
-            }
-          ],
-          "answer": "B"
+          "id": "q14_a",
+          "type": "number",
+          "label": "a =",
+          "answer": 2,
+          "tolerance": 0.01
+        },
+        {
+          "id": "q14_h",
+          "type": "number",
+          "label": "h =",
+          "answer": -2,
+          "tolerance": 0.01
+        },
+        {
+          "id": "q14_k",
+          "type": "number",
+          "label": "k =",
+          "answer": -6,
+          "tolerance": 0.01
         }
       ],
-      "hint": "Divide by 4\\u03C0, then square root both sides.",
+      "hint": "Vertex (h, k) gives you h and k directly. Then plug in the point (1, 0) to find a.",
       "solution_steps": [
-        "S = 4\\u03C0r\\u00B2.",
-        "r\\u00B2 = S/(4\\u03C0).",
-        "r = \\u221A(S/(4\\u03C0)).",
-        "Answer: B."
+        "Vertex (−2, −6): h = −2, k = −6.",
+        "So f(x) = a|x − (−2)| + (−6) = a|x + 2| − 6.",
+        "Plug in (1, 0): 0 = a|1 + 2| − 6 = 3a − 6.",
+        "3a = 6 → a = 2.",
+        "f(x) = 2|x + 2| − 6. Opens up ✓ (positive a)."
       ],
-      "feedback_correct": "\\uD83D\\uDD25 Formula rearrangement. Clean."
+      "feedback_correct": "🔥 L3 construct: you built the function from features. That’s the real skill.",
+      "feedback_wrong": "Start with vertex: h=−2, k=−6. Then use the given point to find a."
     },
     {
       "id": "rp6-q15",
@@ -533,8 +562,13 @@
       "section": "D",
       "standard": "W3.a",
       "type": "word-problem",
-      "question_html": "A radioactive sample starts with 800 grams and has a half-life of 4 years. The remaining mass is modeled by \\\\( A(t) = 800 \\\\cdot \\\\left(\\\\dfrac{1}{2}\\\\right)^{t/4} \\\\). How many years until 100 grams remain?",
+      "question_html": "A radioactive sample starts with 800 grams and has a half-life of 4 years.<br>(a) Write an exponential decay model <em>A</em>(<em>t</em>) for the mass remaining after <em>t</em> years.<br>(b) Using your model, how many years until 100 grams remain?",
       "inputs": [
+        {
+          "id": "q15_model",
+          "type": "text",
+          "label": "A(t) ="
+        },
         {
           "id": "q15_t",
           "type": "number",
@@ -543,12 +577,13 @@
           "tolerance": 0.5
         }
       ],
-      "hint": "Set A(t)=100. Divide by 800. What power of 1/2?",
+      "hint": "A(t) = A₀ · r^(t/T). A₀ = 800, decay factor r = 0.5, period T = 4. Then set A(t) = 100.",
       "solution_steps": [
-        "800 · (1/2)^(t/4) = 100.",
-        "(1/2)^(t/4) = 100/800 = 1/8.",
-        "1/8 = (1/2)³, so t/4 = 3.",
-        "t = 12 years."
+        "A₀ = 800. Decay factor r = 0.5. Period T = 4 years.",
+        "Model: A(t) = 800 · 0.5^(t/4).",
+        "Set 800 · 0.5^(t/4) = 100 → 0.5^(t/4) = 1/8.",
+        "1/8 = 0.5³, so t/4 = 3 → t = 12 years.",
+        "Check: 800 · 0.5³ = 800 · 0.125 = 100 ✓"
       ],
       "feedback_correct": "🔥 Half-life solved. 12 years."
     }

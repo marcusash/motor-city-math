@@ -22,8 +22,8 @@
           "options": [
             "quadratic",
             "cubic",
-            "absolute",
-            "sqrt",
+            "absolute value",
+            "square root",
             "rational",
             "exponential"
           ],
@@ -71,12 +71,12 @@
           "options": [
             "quadratic",
             "cubic",
-            "absolute",
-            "sqrt",
+            "absolute value",
+            "square root",
             "rational",
             "exponential"
           ],
-          "answer": "sqrt"
+          "answer": "square root"
         },
         {
           "id": "q2_x1",
@@ -101,7 +101,7 @@
       "section": "A",
       "standard": "W2.b",
       "type": "identify",
-      "question_html": "Identify the parent function and find the x-intercepts: \\( f(x) = -4|x + 2| + 24 \\)",
+      "question_html": "For \\( f(x) = |2x - 8| - 6 \\): rewrite in the form \\( a|x - h| + k \\), state the parent function, identify <em>a</em>, <em>h</em>, <em>k</em>, and find the x-intercepts.",
       "inputs": [
         {
           "id": "q3_parent",
@@ -110,38 +110,65 @@
           "options": [
             "quadratic",
             "cubic",
-            "absolute",
-            "sqrt",
+            "absolute value",
+            "square root",
             "rational",
             "exponential"
           ],
-          "answer": "absolute"
+          "answer": "absolute value"
+        },
+        {
+          "id": "q3_a",
+          "type": "number",
+          "label": "a =",
+          "answer": 2,
+          "tolerance": 0.01
+        },
+        {
+          "id": "q3_h",
+          "type": "number",
+          "label": "h =",
+          "answer": 4,
+          "tolerance": 0.01
+        },
+        {
+          "id": "q3_k",
+          "type": "number",
+          "label": "k =",
+          "answer": -6,
+          "tolerance": 0.01
+        },
+        {
+          "id": "q3_cases",
+          "type": "text",
+          "label": "Write the two equations you must solve (e.g. “AX+B = k and AX+B = -k”):"
         },
         {
           "id": "q3_x1",
           "type": "number",
-          "label": "x₁ =",
-          "answer": 4,
+          "label": "Smaller x-intercept =",
+          "answer": 1,
           "tolerance": 0.1
         },
         {
           "id": "q3_x2",
           "type": "number",
-          "label": "x₂ =",
-          "answer": -8,
+          "label": "Larger x-intercept =",
+          "answer": 7,
           "tolerance": 0.1
         }
       ],
-      "plus_minus": true,
-      "hint": "Set f(x)=0. |x+2| = 6 gives two answers.",
+      "hint": "Factor out the coefficient first. Then use the absolute value definition: if |2x-8| = 6, there are TWO cases: 2x-8=6  (positive case)  OR  -(2x-8)=6  (negative case). Multiply the negative case by -1 to solve.",
       "solution_steps": [
-        "Parent: y = |x| (absolute value — V shape).",
-        "Transformations: left 2, stretch ×4, reflect over x-axis, up 24.",
-        "x-intercepts: 0 = -4|x+2| + 24 → |x+2| = 6.",
-        "x + 2 = 6 → x = 4, or x + 2 = -6 → x = -8."
+        "Factor: |2x−8| = 2|x−4|. So f(x) = 2|x−4| − 6.",
+        "a = 2 (vertical stretch ×2), h = 4 (shift right 4), k = −6 (shift down 6).",
+        "KEY CONCEPT: |A| = k means A = k  OR  -(A) = k. So: 2x-8=6  AND  -(2x-8)=6.",
+        "Case 1: 2x-8=6 → x = 7.  Case 2: multiply both sides by -1 → 2x-8=-6 → x = 1.",
+        "W2.b insight: the ± split is the definition of absolute value. Never skip writing both equations."
       ],
       "feedback_correct": "🔥 Absolute value. Both intercepts.",
-      "feedback_wrong_parent": "The | | symbols mean absolute value."
+      "feedback_wrong_parent": "The | | symbols mean absolute value.",
+      "feedback_wrong": "Factor first: |2x−8| = 2|x−4|. Do not try to read a, h, k from the original form with 2 inside the bars."
     },
     {
       "id": "rp4-q4",
@@ -175,33 +202,34 @@
       "section": "B",
       "standard": "W3.b",
       "type": "quadratic",
-      "question_html": "Solve: \\( 2(x - 3)^2 - 50 = 0 \\)",
+      "question_html": "Solve: \\( x^2 - 5x - 6 = 0 \\)",
       "inputs": [
         {
           "id": "q5_x1",
           "type": "number",
           "label": "x₁ =",
-          "answer": 8,
+          "answer": 6,
           "tolerance": 0.1
         },
         {
           "id": "q5_x2",
           "type": "number",
           "label": "x₂ =",
-          "answer": -2,
+          "answer": -1,
           "tolerance": 0.1
         }
       ],
       "plus_minus": true,
-      "hint": "Isolate the squared term. Then ±.",
+      "hint": "Standard form — not vertex form. Find two numbers that multiply to −6 and add to −5. Factor.",
       "solution_steps": [
-        "2(x-3)² = 50 → (x-3)² = 25.",
-        "x - 3 = ±5.",
-        "x = 3 + 5 = 8 or x = 3 - 5 = -2.",
-        "Check: 2(8-3)² - 50 = 2(25) - 50 = 0 ✓"
+        "Standard form ax²+bx+c=0. Vertex form (±√) does NOT work here.",
+        "Need two numbers: product = −6, sum = −5. Those are: −6 and +1.",
+        "Factor: (x−6)(x+1) = 0.",
+        "x = 6 or x = −1.",
+        "Check: 36−30−6=0 ✓ and 1+5−6=0 ✓"
       ],
-      "feedback_correct": "🔥 Both solutions found.",
-      "feedback_wrong": "Isolate (x-3)², then take ± square root."
+      "feedback_correct": "🔥 Factored standard form. Both roots.",
+      "feedback_wrong": "This is NOT vertex form — you cannot take ±√ directly. Find two numbers that multiply to −6 and add to −5."
     },
     {
       "id": "rp4-q6",
@@ -288,33 +316,24 @@
       "section": "B",
       "standard": "W3.b",
       "type": "radical",
-      "question_html": "Solve: \\( \\sqrt{x^2 + 28} = 8 \\)",
+      "question_html": "Solve: \\( 3\\sqrt{x - 2} + 1 = 13 \\)",
       "inputs": [
         {
-          "id": "q9_x1",
+          "id": "q9_x",
           "type": "number",
-          "label": "x₁ =",
-          "answer": 6,
-          "tolerance": 0.01
-        },
-        {
-          "id": "q9_x2",
-          "type": "number",
-          "label": "x₂ =",
-          "answer": -6,
+          "label": "x =",
+          "answer": 18,
           "tolerance": 0.01
         }
       ],
-      "plus_minus": true,
-      "hint": "Square both sides. You'll get x² = something. Don't forget ±.",
+      "hint": "There is a coefficient 3 in front of the √. You must divide it off before squaring.",
       "solution_steps": [
-        "Square both sides: x² + 28 = 64.",
-        "x² = 36.",
-        "x = ±6.",
-        "Check: √(36 + 28) = √64 = 8 ✓"
+        "3√(x−2) = 12 → √(x−2) = 4. (Divide by 3 FIRST — cannot square yet.)",
+        "Square: x − 2 = 16 → x = 18.",
+        "Check: 3√16 + 1 = 12 + 1 = 13 ✓"
       ],
-      "feedback_correct": "🔥 ±6. Don't forget both.",
-      "feedback_wrong": "Square both sides, then remember ± for x²."
+      "feedback_correct": "🔥 Coefficient on radical — divide it off first.",
+      "feedback_wrong": "Do NOT square immediately. Subtract 1, then divide by 3, THEN square."
     },
     {
       "id": "rp4-q10",
@@ -322,7 +341,7 @@
       "section": "B",
       "standard": "W3.e",
       "type": "extraneous",
-      "question_html": "Solve and check for extraneous solutions: \\( \\sqrt{x + 7} = x + 5 \\)",
+      "question_html": "Solve: \\( \\sqrt{x + 7} = x + 5 \\)",
       "inputs": [
         {
           "id": "q10_x",
@@ -332,7 +351,7 @@
           "tolerance": 0.1
         }
       ],
-      "hint": "Square both sides. Factor. Check BOTH in the original.",
+      "hint": "Square both sides. You will get a quadratic. Solve it. Make sure your answers actually work in the original equation.",
       "solution_steps": [
         "Square: x + 7 = (x+5)² = x² + 10x + 25.",
         "x² + 9x + 18 = 0 → (x+3)(x+6) = 0.",
@@ -341,8 +360,7 @@
         "Check x=-6: √1 = 1 and -6+5 = -1 ✗ → extraneous.",
         "Only x = -3 is valid."
       ],
-      "feedback_correct": "🔥 Caught the extraneous one.",
-      "feedback_wrong": "Square both sides, then check BOTH answers back in the original."
+      "feedback_correct": "🔥 Caught the extraneous one."
     },
     {
       "id": "rp4-q11",
@@ -486,7 +504,7 @@
             2.5
           ]
         ],
-        "min_points": 5,
+        "min_points": 4,
         "tolerance": 0.25,
         "asymptotes": {
           "vertical": [
@@ -559,8 +577,13 @@
       "section": "D",
       "standard": "W3.a",
       "type": "word-problem",
-      "question_html": "A town's population starts at 5,000 and grows by 50% every 10 years. The population is modeled by \\( P(t) = 5000 \\cdot 1.5^{t/10} \\). How many years until the population reaches 16,875?",
+      "question_html": "A town’s population starts at 5,000 and grows by 50% every 10 years.<br>(a) Write an exponential model <em>P</em>(<em>t</em>) for the population after <em>t</em> years.<br>(b) Using your model, how many years until the population reaches 16,875?",
       "inputs": [
+        {
+          "id": "q15_model",
+          "type": "text",
+          "label": "P(t) ="
+        },
         {
           "id": "q15_t",
           "type": "number",
@@ -569,12 +592,12 @@
           "tolerance": 0.5
         }
       ],
-      "hint": "Set P(t) = 16875. Divide by 5000. What power of 1.5?",
+      "hint": "P(t) = P₀ · r^(t/T). Identify P₀ (starting value), r (growth factor = 1 + rate), T (period in years). Then set P(t) = 16875.",
       "solution_steps": [
-        "5000 · 1.5^(t/10) = 16875.",
-        "1.5^(t/10) = 3.375.",
-        "3.375 = 1.5³, so t/10 = 3.",
-        "t = 30 years.",
+        "P₀ = 5000 (starting value). Growth factor r = 1.5 (50% growth). Period T = 10 years.",
+        "Model: P(t) = 5000 · 1.5^(t/10).",
+        "Set 5000 · 1.5^(t/10) = 16875 → 1.5^(t/10) = 3.375.",
+        "3.375 = 1.5³, so t/10 = 3 → t = 30 years.",
         "Check: 5000 · 1.5³ = 5000 · 3.375 = 16875 ✓"
       ],
       "feedback_correct": "🔥 30 years. Exponential growth.",

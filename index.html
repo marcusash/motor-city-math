@@ -12,7 +12,7 @@
     <script src="shared/chart-theme.js"></script>
     <style>
         body { background: var(--bg-page); }
-        .dashboard { max-width: 900px; margin: 0 auto; padding: 20px; }
+        .dashboard { max-width: 600px; margin: 0 auto; padding: 28px 20px 80px; }
         .dash-header { text-align: center; margin-bottom: 24px; }
         .dash-header h1 { color: var(--accent-navy); font-size: var(--text-2xl); font-weight: 700; margin: 0; }
         .dash-header .subtitle { color: var(--text-secondary); font-weight: 400; font-size: var(--text-base); margin-top: 4px; }
@@ -190,48 +190,224 @@
             .chart-box canvas { max-height: 200px; }
         }
         @media print { .dashboard { display: none; } }
+
+        /* Dashboard header: suppress global header border so hero-card accent bar doesn't double up */
+        header.dash-header { border-bottom: none; padding-bottom: 0; margin-bottom: 16px; }
+
+        /* ── FD Design Tokens (Feb 2026 redesign) ─────────────────────── */
+        :root {
+            --fd-bg:      #0d1117;
+            --fd-card:    #161b22;
+            --fd-raised:  #1c2128;
+            --fd-border:  rgba(255,255,255,0.07);
+            --fd-border2: rgba(255,255,255,0.14);
+            --fd-green:   #3FB950;   /* reserved: scores ≥ 93% only */
+            --fd-text-1:  #E6EDF3;
+            --fd-text-2:  #8B949E;
+            --fd-text-3:  #6E7681;
+            --fd-r:       10px;
+        }
+
+        /* ── Hero (FD redesign) ───────────────────────────────────────── */
+        .hero {
+            background: var(--fd-card);
+            border: 1px solid var(--fd-border);
+            border-radius: var(--fd-r);
+            padding: 28px 24px 22px;
+            margin-bottom: 14px;
+            text-align: center;
+        }
+        .hero-eye {
+            font-size: 0.72rem; font-weight: 700;
+            letter-spacing: 0.1em; text-transform: uppercase;
+            color: var(--fd-text-2); margin-bottom: 6px;
+        }
+        .hero-name {
+            font-size: 1.1rem; font-weight: 700;
+            margin-bottom: 20px; color: var(--fd-text-1);
+            letter-spacing: 0.01em;
+        }
+        .hero-last {
+            color: var(--fd-text-2);
+            font-size: 0.75rem; margin-top: 16px;
+            letter-spacing: 0.01em;
+            border: none; padding: 0;
+        }
+        .hero-last b { color: var(--fd-text-1); font-weight: 700; }
+
+        /* ── Last 2 Tests cards ───────────────────────────────────────── */
+        .slabel {
+            font-size: 0.68rem; font-weight: 700;
+            letter-spacing: 0.11em; text-transform: uppercase;
+            color: var(--fd-text-3); margin-bottom: 10px;
+            display: block;
+        }
+        .cards-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
+        .test-card {
+            background: var(--fd-card); border: 1px solid var(--fd-border);
+            border-radius: var(--fd-r); padding: 18px 18px 14px;
+            display: flex; flex-direction: column;
+        }
+        .tc-head {
+            display: flex; justify-content: space-between;
+            align-items: flex-start; margin-bottom: 12px;
+        }
+        .tc-name { font-size: 0.82rem; font-weight: 700; color: var(--fd-text-1); }
+        .tc-date { font-size: 0.73rem; color: var(--fd-text-3); margin-top: 3px; }
+        .tc-score {
+            font-size: 2.5rem; font-weight: 900; line-height: 1;
+            letter-spacing: -0.025em;
+        }
+        .tc-attempt { font-size: 0.73rem; color: var(--fd-text-3); margin: 5px 0 16px; }
+        .tc-rib {
+            margin-top: auto; border-top: 1px solid var(--fd-border); padding-top: 11px;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .tc-norib {
+            margin-top: auto; border-top: 1px solid var(--fd-border); padding-top: 11px;
+            font-size: 0.73rem; color: var(--fd-text-3);
+        }
+        .rib-text { font-size: 0.73rem; color: var(--fd-text-2); line-height: 1.6; }
+        .rib-delta { font-weight: 700; }
+
+        /* ── Bottom Nav ───────────────────────────────────────────────── */
+        .bottom-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 24px 0; }
+        .bn-tile {
+            background: var(--fd-card); border: 1px solid var(--fd-border);
+            border-radius: 8px; padding: 15px 18px;
+            display: flex; justify-content: space-between; align-items: center;
+            cursor: pointer; transition: border-color 0.12s;
+            text-decoration: none;
+        }
+        .bn-tile:hover { border-color: var(--fd-border2); }
+        .bn-title { font-size: 0.875rem; font-weight: 700; color: var(--fd-text-1); }
+        .bn-sub { font-size: 0.73rem; color: var(--fd-text-2); margin-top: 3px; }
+        .bn-arrow { color: var(--fd-text-2); font-size: 0.85rem; }
+        @media (max-width: 500px) {
+            .cards-2 { grid-template-columns: 1fr; }
+            .bottom-nav { grid-template-columns: 1fr; }
+        }
+        .dad-banner {
+            display: flex; align-items: center; flex-wrap: wrap; gap: 10px;
+            background: #0d1117; border: 1px solid #e74c3c; border-radius: 8px;
+            padding: 10px 16px; margin-bottom: 20px;
+        }
+        .dad-banner .dad-label { color: #e74c3c; font-weight: 700; font-size: var(--text-sm); white-space: nowrap; }
+        .dad-banner .dad-status { color: #8b949e; font-size: var(--text-sm); flex: 1; }
+        .dad-banner .dad-upload-label {
+            color: #58a6ff; font-size: var(--text-sm); text-decoration: underline;
+            cursor: pointer; white-space: nowrap;
+        }
+        .hero-greeting {
+            text-align: center; font-size: var(--text-lg); font-weight: 600;
+            color: var(--text-primary); margin: -12px 0 20px;
+        }
+        /* ── App Header (FD redesign) ─────────────────────────────────── */
+        .app-hd { text-align: center; margin-bottom: 24px; }
+        .app-hd h1 { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.025em; color: var(--fd-text-1); margin: 0; }
+        .app-hd p  { color: var(--fd-text-2); font-size: 0.82rem; margin-top: 4px; }
+        /* Hide arena toggle — FD design is always dark */
+        #arenaToggle { display: none !important; }
+        .trend-card {
+            background: var(--fd-card); border: 1px solid var(--fd-border);
+            border-radius: var(--fd-r); padding: 18px 18px 14px; margin-bottom: 14px;
+        }
+        .trend-hd {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 14px;
+        }
+        .ch-legend {
+            display: flex; align-items: center; gap: 16px;
+            font-size: 0.82rem; color: var(--fd-text-2);
+        }
+        .ch-legend span { display: flex; align-items: center; gap: 8px; }
+        .swatch-solid {
+            display: inline-block; width: 22px; height: 2px;
+            background: rgba(255,255,255,0.52); border-radius: 2px; flex-shrink: 0;
+        }
+        .swatch-dash {
+            display: inline-block; width: 22px; height: 2px;
+            background: repeating-linear-gradient(to right,rgba(255,255,255,0.35) 0,rgba(255,255,255,0.35) 5px,transparent 5px,transparent 8px);
+            flex-shrink: 0;
+        }
+        .trend-hd-r { font-size: 0.73rem; color: var(--fd-text-3); }
+        .trend-hd-r b { color: var(--fd-green); font-weight: 700; font-size: 0.82rem; }
+        .trend-empty {
+            text-align: center; padding: 28px 0; color: var(--fd-text-3); font-size: 0.85rem;
+        }
     </style>
 </head>
 <body>
     <script>if(localStorage.getItem('mcm-arena-mode')==='on')document.body.classList.add('arena-mode');</script>
     <a href="#main" class="sr-only">Skip to content</a>
     <div class="dashboard" role="main" id="main">
+
+        <!-- Dad Mode banner (hidden until ?dad=1) -->
+        <div class="dad-banner" id="dadBanner" style="display:none;">
+            <span class="dad-label">👨 Dad View</span>
+            <span class="dad-status" id="dadStatus">Loading Kai's scores...</span>
+            <label class="dad-upload-label">
+                Update from Kai's device
+                <input type="file" accept=".json" id="dadFileInput" style="display:none;" onchange="loadDadFile(this)">
+            </label>
+        </div>
+
         <div class="print-header">
             <strong>Motor City Math — Dashboard</strong><br>
             Name: _____________________ Date: ___________
         </div>
-        <header class="dash-header" style="display:block; text-align:center;">
-            <h1>Motor City Math</h1>
-            <div class="subtitle">Algebra II · Kai</div>
+        <header class="app-hd">
+            <h1>Motor City Math 🏀</h1>
+            <p>Algebra II &middot; Kai</p>
         </header>
 
-        <!-- UP NEXT: One primary action above the fold -->
-        <div class="hero-card">
-            <div class="hero-title">Up Next 🏀</div>
-            <div class="hero-subtitle" id="upNextInfo">Retake Practice — Nonlinear Functions</div>
+        <!-- UP NEXT hero (FD redesign) -->
+        <div class="hero">
+            <div class="hero-eye">Up Next</div>
+            <div class="hero-name" id="upNextInfo">Retake Practice — Nonlinear Functions</div>
             <a href="exam.html?file=retake-practice-1" class="nav-btn primary">Start Practice</a>
-            <div class="stats-bar" id="statsBar" style="margin-top:16px;"></div>
+            <div class="hero-last" id="statsBar"></div>
+        </div>
+
+        <!-- Progress Chart (FD design) -->
+        <span class="slabel">Your Progress</span>
+        <div class="trend-card">
+            <div class="trend-hd">
+                <div class="ch-legend">
+                    <span><span class="swatch-solid"></span>First attempt</span>
+                    <span><span class="swatch-dash"></span>Run it back</span>
+                </div>
+                <div class="trend-hd-r">Target: <b>A (93%+)</b></div>
+            </div>
+            <div id="trendChartContainer"></div>
+        </div>
+
+        <!-- Last 2 Tests -->
+        <span class="slabel" id="last2Label" style="display:none;">Last 2 Tests</span>
+        <div class="cards-2" id="last2Grid" style="display:none;"></div>
+
+        <!-- Bottom Nav -->
+        <div class="bottom-nav">
+            <div class="bn-tile" onclick="var s=document.getElementById('allTestsSection');s.open=true;s.scrollIntoView({behavior:'smooth'});">
+                <div><div class="bn-title">All Tests</div><div class="bn-sub">Every score over time</div></div>
+                <span class="bn-arrow">&#8594;</span>
+            </div>
+            <div class="bn-tile" onclick="var s=document.getElementById('gamePlanSection');s.open=true;s.scrollIntoView({behavior:'smooth'});">
+                <div><div class="bn-title">Per Standard</div><div class="bn-sub">W2 &middot; W3 breakdown</div></div>
+                <span class="bn-arrow">&#8594;</span>
+            </div>
         </div>
 
         <!-- Collapsible sections below the fold -->
-        <details class="dash-section">
-            <summary class="section-title">Your Stats 📊</summary>
-            <div class="chart-box">
-                <canvas id="scoreChart" aria-label="Score history chart" role="img"></canvas>
-                <div class="empty-state" id="emptyChart" style="display:none;">
-                    <div class="icon">🏀</div>
-                    <p>Let's get your first score on the board. 🏀</p>
-                </div>
-            </div>
-        </details>
+        
 
-        <details class="dash-section">
+        <details class="dash-section" id="gamePlanSection">
             <summary class="section-title">Your Game Plan 🎯</summary>
             <div class="standards-grid" id="standardsGrid" role="list"></div>
             <ul class="study-list" id="studyList"></ul>
         </details>
 
-        <details class="dash-section">
+        <details class="dash-section" id="allTestsSection">
             <summary class="section-title">All Tests 🏆</summary>
             <div class="test-grid" id="retakeGrid"></div>
             <div class="test-grid" id="testGrid" style="margin-top:12px;"></div>
@@ -241,6 +417,10 @@
             <summary class="section-title">Send to Dad 📱</summary>
             <div style="text-align:center; margin: 16px 0 8px;">
                 <button class="nav-btn ghost" onclick="exportScores()">📤 Send Scores to Dad</button>
+                <label class="nav-btn ghost" style="cursor:pointer; display:inline-block; margin-top:8px;">
+                    📥 Load Corrected Scores
+                    <input type="file" accept=".json" style="display:none;" onchange="restoreScores(this)">
+                </label>
             </div>
         </details>
 
@@ -257,120 +437,166 @@
         { file: 'exam.html?file=retake-practice-5', name: 'Retake Practice #5', unit: 'nonlinear', key: 'mcm-retake-practice-5', questions: 15, retake: true },
         { file: 'exam.html?file=retake-practice-6', name: 'Retake Practice #6 (W2.b Drill)', unit: 'nonlinear', key: 'mcm-retake-practice-6', questions: 15, retake: true },
         { file: 'exam.html?file=retake-practice-7', name: 'Retake Practice #7 (Mock Retake)', unit: 'nonlinear', key: 'mcm-retake-practice-7', questions: 15, retake: true },
+        { file: 'exam.html?file=retake-practice-8', name: 'Retake Practice #8', unit: 'nonlinear', key: 'mcm-retake-practice-8', questions: 15, retake: true },
+        { file: 'exam.html?file=retake-practice-9', name: 'Retake Practice #9', unit: 'nonlinear', key: 'mcm-retake-practice-9', questions: 15, retake: true },
         { file: 'nonlinear_exam_mvp.html', name: 'Nonlinear Functions Exam (MVP)', unit: 'nonlinear', key: 'mcm-nonlinear-exam-mvp', questions: 15 },
         { file: 'final_exam_251123.html', name: 'Final Exam (Nov 23)', unit: 'final', key: 'mcm-final-exam-results', questions: 20 },
         { file: 'final_exam_251123_mini.html', name: 'Final Exam Mini', unit: 'final', key: 'mcm-final-exam-mini-results', questions: 10 }
     ];
 
+    /* ========== DAD MODE ========== */
+    var _dadMode = new URLSearchParams(window.location.search).get('dad') === '1';
+    var _dadScores = null;
+    var _chartInstance = null;
+
     /* ========== READ SCORES ========== */
     function getScores() {
+        if (_dadMode && _dadScores) return _dadScores;
         try { return JSON.parse(localStorage.getItem('mcm_scores') || '{}'); } catch(e) { return {}; }
     }
 
-    /* ========== SCORE CHART ========== */
+    /* ========== SCORE CHART (FD SVG design) ========== */
     function buildChart() {
+        var container = document.getElementById('trendChartContainer');
+        if (!container) return;
         var scores = getScores();
-        var labels = [], data = [], tooltips = [];
-        var hasData = false;
 
-        tests.forEach(function(t) {
+        // Collect ordered data points: original exam first, then retake practices
+        var pts = [];
+        var origScore = scores['mcm-nonlinear-exam-mvp'];
+        if (origScore) {
+            var att = origScore.attempts || (origScore.pct ? [origScore] : []);
+            if (att[0]) {
+                var fa = att[0].pct || Math.round(att[0].score / att[0].total * 100);
+                var rib = att[1] ? (att[1].pct || Math.round(att[1].score / att[1].total * 100)) : null;
+                pts.push({ label: '1st Test', fa: fa, rib: rib });
+            }
+        }
+        var retakes = tests.filter(function(t) { return t.retake; });
+        var practiceNum = 0;
+        retakes.forEach(function(t) {
             var s = scores[t.key];
-            if (s) {
-                hasData = true;
-                var pct = s.pct || (s.score && s.total ? Math.round(s.score / s.total * 100) : 0);
-                labels.push(t.name.length > 20 ? t.name.substring(0, 18) + '…' : t.name);
-                data.push(pct);
-                tooltips.push(t.name + ': ' + pct + '% · ' + (s.score || '?') + '/' + (s.total || '?'));
-            }
-            // Check extended format (MVP-style with attempts)
-            if (scores[t.key] && scores[t.key].attempts) {
-                var att = scores[t.key].attempts;
-                if (att.length > 0) {
-                    var latest = att[att.length - 1];
-                    // Already pushed from simple format — update with latest attempt
-                    var idx = labels.length - 1;
-                    if (idx >= 0) {
-                        data[idx] = latest.pct;
-                        tooltips[idx] = t.name + ': ' + latest.pct + '% · ' + latest.score + '/' + latest.total;
-                    }
-                }
-            }
+            if (!s) return;
+            var att = s.attempts || (s.pct ? [s] : []);
+            if (!att[0]) return;
+            practiceNum++;
+            var fa = att[0].pct || Math.round(att[0].score / att[0].total * 100);
+            var rib = att[1] ? (att[1].pct || Math.round(att[1].score / att[1].total * 100)) : null;
+            pts.push({ label: 'Practice ' + practiceNum, fa: fa, rib: rib });
         });
 
-        if (!hasData) {
-            document.getElementById('scoreChart').style.display = 'none';
-            document.getElementById('emptyChart').style.display = 'block';
+        if (pts.length === 0) {
+            container.innerHTML = '<div class="trend-empty">🏀 Complete your first test to see your progress</div>';
             return;
         }
 
-        var cs = getComputedStyle(document.documentElement);
-        var tkBlue = cs.getPropertyValue('--accent-blue').trim() || '#1D42BA';
-        var tkGrid = cs.getPropertyValue('--chart-grid').trim() || '#E2E5EF';
-        var tkSecondary = cs.getPropertyValue('--text-secondary').trim() || '#5E6378';
-        var tkCorrect = cs.getPropertyValue('--color-correct').trim() || '#1B7D3A';
-        var tkRed = cs.getPropertyValue('--accent-red').trim() || '#C8102E';
+        // Coordinate math
+        var n = pts.length;
+        var xL = 50, xR = 490;
+        var xs = pts.map(function(_, i) {
+            return n === 1 ? (xL + xR) / 2 : xL + i * (xR - xL) / (n - 1);
+        });
+        function yPt(s) {
+            var clamped = Math.min(100, Math.max(40, s));
+            return 14 + 95 * (1 - (clamped - 40) / 60);
+        }
+        // Grade reference y-values (A=93%, B=80%, C=67%)
+        var yA = 25.1, yB = 45.7, yC = 66.3;
 
-        var ctx = document.getElementById('scoreChart').getContext('2d');
-        new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: labels,
-                datasets: [{
-                    label: 'Score %',
-                    data: data,
-                    borderColor: tkBlue,
-                    backgroundColor: 'rgba(29, 66, 186, 0.08)',
-                    borderWidth: 3,
-                    pointBackgroundColor: tkBlue,
-                    pointRadius: 5,
-                    pointHoverRadius: 7,
-                    fill: true,
-                    tension: 0.3
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        min: 0, max: 100,
-                        ticks: { callback: function(v) { return v + '%'; } },
-                        grid: { color: tkGrid }
-                    },
-                    x: { grid: { display: false } }
-                },
-                plugins: {
-                    legend: { display: false },
-                    tooltip: {
-                        callbacks: {
-                            label: function(ctx) { return tooltips[ctx.dataIndex] || ''; }
-                        }
-                    },
-                    annotation: {
-                        annotations: {
-                            grade4Line: {
-                                type: 'line', yMin: 92, yMax: 92,
-                                borderColor: tkCorrect, borderWidth: 1, borderDash: [6, 4],
-                                label: { content: 'Grade 4 (92%)', display: true, position: 'start', font: { size: 10 }, color: tkCorrect }
-                            },
-                            grade3Line: {
-                                type: 'line', yMin: 82, yMax: 82,
-                                borderColor: tkBlue, borderWidth: 1, borderDash: [4, 4],
-                                label: { content: 'Grade 3 (82%)', display: true, position: 'end', font: { size: 10 }, color: tkBlue }
-                            },
-                            grade2Line: {
-                                type: 'line', yMin: 70, yMax: 70,
-                                borderColor: tkRed, borderWidth: 1, borderDash: [4, 4],
-                                label: { content: 'Grade 2 (70%)', display: true, position: 'start', font: { size: 10 }, color: tkRed }
-                            }
-                        }
-                    }
-                },
-                animation: { duration: 800, easing: 'easeOutQuart' }
+        // Build smooth bezier path through points
+        function makePath(xArr, yArr) {
+            if (!xArr.length) return '';
+            if (xArr.length === 1) return 'M ' + xArr[0] + ',' + yArr[0];
+            var d = 'M ' + xArr[0] + ',' + yArr[0];
+            for (var i = 1; i < xArr.length; i++) {
+                var cx = (xArr[i-1] + xArr[i]) / 2;
+                d += ' C ' + cx + ',' + yArr[i-1] + ' ' + cx + ',' + yArr[i] + ' ' + xArr[i] + ',' + yArr[i];
+            }
+            return d;
+        }
+
+        var faYs = pts.map(function(p) { return yPt(p.fa); });
+        var faPath = makePath(xs, faYs);
+        var fillPath = faPath + ' V 108 H ' + xs[0] + ' Z';
+
+        // RIB points (where rib score exists)
+        var ribXs = [], ribYs = [], ribPcts = [];
+        pts.forEach(function(p, i) {
+            if (p.rib !== null && p.rib !== undefined) {
+                ribXs.push(xs[i]); ribYs.push(yPt(p.rib)); ribPcts.push(p.rib);
             }
         });
-    }
+        var ribPath = ribXs.length > 1 ? makePath(ribXs, ribYs) : '';
 
+        // Last scores for right-edge labels
+        var lastX = xs[n-1], lastFaY = faYs[n-1], lastFaPct = pts[n-1].fa;
+        var lastRibPct = ribPcts.length ? ribPcts[ribPcts.length-1] : null;
+        var lastRibY = ribYs.length ? ribYs[ribYs.length-1] : null;
+        var lastRibX = ribXs.length ? ribXs[ribXs.length-1] : null;
+        var labelX = (lastRibPct !== null ? lastRibX : lastX) + 10;
+
+        // FA dots SVG
+        var faDots = pts.map(function(p, i) {
+            var x = xs[i], y = faYs[i];
+            if (i === n-1 && p.fa >= 93) {
+                return '<circle cx="'+x+'" cy="'+y+'" r="9" fill="rgba(63,185,80,0.07)"/>' +
+                       '<circle cx="'+x+'" cy="'+y+'" r="5" fill="rgba(63,185,80,0.15)" stroke="#3FB950" stroke-width="2"/>' +
+                       '<circle cx="'+x+'" cy="'+y+'" r="2" fill="#3FB950"/>';
+            }
+            return '<circle cx="'+x+'" cy="'+y+'" r="4" fill="#161b22" stroke="rgba(255,255,255,0.5)" stroke-width="2"/>';
+        }).join('');
+
+        // RIB dots SVG
+        var ribDots = ribXs.map(function(rx, i) {
+            var isLast = i === ribXs.length-1;
+            var isGreen = ribPcts[i] >= 93;
+            if (isLast && isGreen) {
+                return '<circle cx="'+rx+'" cy="'+ribYs[i]+'" r="9" fill="rgba(63,185,80,0.07)"/>' +
+                       '<circle cx="'+rx+'" cy="'+ribYs[i]+'" r="5" fill="rgba(63,185,80,0.15)" stroke="#3FB950" stroke-width="2"/>' +
+                       '<circle cx="'+rx+'" cy="'+ribYs[i]+'" r="2" fill="#3FB950"/>';
+            }
+            return '<circle cx="'+rx+'" cy="'+ribYs[i]+'" r="3" fill="#161b22" stroke="rgba(255,255,255,0.28)" stroke-width="1.5"/>';
+        }).join('');
+
+        // Score labels
+        var faColor = lastFaPct >= 93 ? '#3FB950' : '#8B949E';
+        var rightLabels = '';
+        if (lastRibPct !== null) {
+            var ribColor = lastRibPct >= 93 ? '#3FB950' : '#E6EDF3';
+            rightLabels = '<text x="'+(labelX+4)+'" y="'+(lastRibY+4)+'" font-size="12" font-weight="700" fill="'+ribColor+'" font-family="system-ui,sans-serif">'+lastRibPct+'%</text>' +
+                          '<text x="'+(labelX+4)+'" y="'+(lastFaY+4)+'" font-size="12" font-weight="700" fill="'+faColor+'" font-family="system-ui,sans-serif">'+lastFaPct+'%</text>';
+        } else {
+            rightLabels = '<text x="'+(labelX+4)+'" y="'+(lastFaY+4)+'" font-size="12" font-weight="700" fill="'+faColor+'" font-family="system-ui,sans-serif">'+lastFaPct+'%</text>';
+        }
+
+        // X-axis labels
+        var xLabels = pts.map(function(p, i) {
+            return '<text x="'+xs[i]+'" y="116" font-size="10" fill="rgba(255,255,255,0.35)" text-anchor="middle" font-family="system-ui,sans-serif">'+p.label+'</text>';
+        }).join('');
+
+        var gid = 'fdg' + Date.now();
+        container.innerHTML =
+            '<svg viewBox="0 0 560 120" height="120" style="display:block;width:100%;overflow:visible">' +
+            '<defs><linearGradient id="'+gid+'" x1="'+xs[0]+'" y1="108" x2="'+lastX+'" y2="'+lastFaY+'" gradientUnits="userSpaceOnUse">' +
+            '<stop offset="0%" stop-color="rgba(255,255,255,0.01)"/>' +
+            '<stop offset="55%" stop-color="rgba(255,255,255,0.08)"/>' +
+            '<stop offset="100%" stop-color="rgba(255,255,255,0.17)"/>' +
+            '</linearGradient></defs>' +
+            // Grade lines
+            '<line x1="28" y1="'+yC+'" x2="508" y2="'+yC+'" stroke="rgba(255,255,255,0.10)" stroke-width="1" stroke-dasharray="3 7"/>' +
+            '<text x="16" y="'+(yC+3.5)+'" font-size="10" font-weight="700" fill="rgba(255,255,255,0.28)" font-family="system-ui,sans-serif" text-anchor="middle">C</text>' +
+            '<line x1="28" y1="'+yB+'" x2="508" y2="'+yB+'" stroke="rgba(255,255,255,0.14)" stroke-width="1" stroke-dasharray="3 7"/>' +
+            '<text x="16" y="'+(yB+3.5)+'" font-size="10" font-weight="700" fill="rgba(255,255,255,0.35)" font-family="system-ui,sans-serif" text-anchor="middle">B</text>' +
+            '<line x1="28" y1="'+yA+'" x2="508" y2="'+yA+'" stroke="rgba(63,185,80,0.65)" stroke-width="1" stroke-dasharray="3 7"/>' +
+            '<text x="14" y="'+(yA+3.5)+'" font-size="12" font-weight="700" fill="rgba(63,185,80,1)" font-family="system-ui,sans-serif" text-anchor="middle">A</text>' +
+            // Fill + FA line
+            '<path d="'+fillPath+'" fill="url(#'+gid+')"/>' +
+            '<path d="'+faPath+'" fill="none" stroke="rgba(255,255,255,0.52)" stroke-width="2.5" stroke-linecap="round"/>' +
+            // RIB line + dots
+            (ribPath ? '<path d="'+ribPath+'" fill="none" stroke="rgba(63,185,80,0.65)" stroke-width="1.5" stroke-dasharray="5 4" stroke-linecap="round"/>' : '') +
+            ribDots + faDots + rightLabels + xLabels +
+            '</svg>';
+    }
     /* ========== STANDARDS ========== */
     function buildStandards() {
         var scores = getScores();
@@ -520,6 +746,73 @@
             '</svg>';
     }
 
+    /* ========== LAST 2 TESTS CARDS (FD redesign) ========== */
+    function buildLast2Tests() {
+        var scores = getScores();
+        var grid = document.getElementById('last2Grid');
+        var label = document.getElementById('last2Label');
+        if (!grid) return;
+
+        var played = [];
+        tests.forEach(function(t) {
+            var s = scores[t.key];
+            if (!s) return;
+            var firstAtt = null, ribAtt = null, ts = 0;
+            if (s.attempts && s.attempts.length > 0) {
+                firstAtt = s.attempts[0];
+                ribAtt = s.attempts.length > 1 ? s.attempts[s.attempts.length - 1] : null;
+                ts = firstAtt.timestamp || 0;
+            } else if (s.pct || s.score) {
+                firstAtt = { pct: s.pct || Math.round((s.score / s.total) * 100), score: s.score, total: s.total, timestamp: s.timestamp };
+                ts = s.timestamp || 0;
+            }
+            if (!firstAtt) return;
+            played.push({ t: t, firstAtt: firstAtt, ribAtt: ribAtt, ts: ts });
+        });
+
+        if (played.length === 0) {
+            if (label) label.style.display = 'none';
+            grid.style.display = 'none';
+            return;
+        }
+
+        played.sort(function(a, b) { return (b.ts || 0) - (a.ts || 0); });
+        var recent = played.slice(0, 2);
+
+        if (label) label.style.display = 'block';
+        grid.style.display = 'grid';
+
+        var html = '';
+        recent.forEach(function(item) {
+            var pct = item.firstAtt.pct || Math.round(((item.firstAtt.score || 0) / (item.firstAtt.total || 1)) * 100);
+            var isGreen = pct >= 93;
+            var scoreColor = isGreen ? 'var(--fd-green)' : 'var(--fd-text-1)';
+            var dateStr = item.firstAtt.timestamp
+                ? new Date(item.firstAtt.timestamp).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
+                : '';
+            var ribHtml = '';
+            if (item.ribAtt) {
+                var ribPct = item.ribAtt.pct || Math.round(((item.ribAtt.score || 0) / (item.ribAtt.total || 1)) * 100);
+                var delta = ribPct - pct;
+                var deltaStr = delta > 0 ? ' +' + delta : (delta < 0 ? ' ' + delta : '');
+                ribHtml = '<div class="tc-rib"><div class="rib-text">Run It Back<br>' +
+                    '<span class="rib-delta" style="color:' + (ribPct >= 93 ? 'var(--fd-green)' : 'var(--fd-text-2)') + '">' +
+                    ribPct + '%' + deltaStr + '</span></div></div>';
+            } else {
+                ribHtml = '<div class="tc-norib">No retake yet</div>';
+            }
+            html += '<div class="test-card">' +
+                '<div class="tc-head"><div>' +
+                '<div class="tc-name">' + item.t.name + '</div>' +
+                (dateStr ? '<div class="tc-date">' + dateStr + '</div>' : '') +
+                '</div></div>' +
+                '<div class="tc-score" style="color:' + scoreColor + '">' + pct + '%</div>' +
+                '<div class="tc-attempt">First attempt &middot; ' + (item.firstAtt.score || '?') + '/' + (item.firstAtt.total || '?') + '</div>' +
+                ribHtml + '</div>';
+        });
+        grid.innerHTML = html;
+    }
+
     /* ========== STATS BAR ========== */
     function buildStats() {
         var scores = getScores();
@@ -529,13 +822,15 @@
             if (s) {
                 testCount++;
                 var ts = s.timestamp;
+                var pct = s.pct;
                 if (s.attempts && s.attempts.length > 0) {
                     ts = s.attempts[s.attempts.length - 1].timestamp;
-                    lastPct = s.attempts[s.attempts.length - 1].pct;
-                } else {
-                    lastPct = s.pct;
+                    pct = s.attempts[s.attempts.length - 1].pct;
                 }
-                if (ts && (!lastTest || ts > lastTest)) lastTest = ts;
+                if (ts && (!lastTest || ts > lastTest)) {
+                    lastTest = ts;
+                    lastPct = pct;
+                }
             }
         });
 
@@ -632,15 +927,82 @@
     }
 
     /* ========== INIT ========== */
-    window.addEventListener('DOMContentLoaded', function() {
+    function rerenderAll() {
         buildChart();
         var stdResult = buildStandards();
         buildStudyNext(stdResult);
         buildRetakeGrid();
         buildTestGrid();
         buildStats();
+        buildLast2Tests();
         updateUpNext();
+    }
+
+    function dadModeInit() {
+        if (!_dadMode) return;
+        document.getElementById('dadBanner').style.display = 'flex';
+        if (_dadMode) document.getElementById('kaiGreeting').style.display = 'none';
+        fetch('data/kai-scores-2026-02-21.json')
+            .then(function(r) { return r.json(); })
+            .then(function(data) {
+                if (data && data.mcm_scores) {
+                    _dadScores = data.mcm_scores;
+                    document.getElementById('dadStatus').textContent = 'Kai\'s scores loaded (Feb 21). Click "Update" to load a fresher file.';
+                    rerenderAll();
+                }
+            })
+            .catch(function() {
+                document.getElementById('dadStatus').textContent = 'Click "Update from Kai\'s device" to load his score file.';
+            });
+    }
+
+    function loadDadFile(input) {
+        var file = input.files[0];
+        if (!file) return;
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            try {
+                var data = JSON.parse(e.target.result);
+                if (data && data.mcm_scores) {
+                    _dadScores = data.mcm_scores;
+                    var exported = data.exported
+                        ? new Date(data.exported).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })
+                        : 'unknown date';
+                    document.getElementById('dadStatus').textContent = 'Kai\'s scores loaded from ' + exported + ' export.';
+                    rerenderAll();
+                } else {
+                    alert('File missing score data. Make sure it\'s from the "Send to Dad" button.');
+                }
+            } catch(err) {
+                alert('Could not read score file.');
+            }
+        };
+        reader.readAsText(file);
+    }
+
+    window.addEventListener('DOMContentLoaded', function() {
+        dadModeInit();
+        rerenderAll();
     });
+
+    function restoreScores(input) {
+        var file = input.files[0];
+        if (!file) return;
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            try {
+                var data = JSON.parse(e.target.result);
+                if (data && data.mcm_scores) {
+                    localStorage.setItem('mcm_scores', JSON.stringify(data.mcm_scores));
+                    alert('Scores restored. Reloading...');
+                    location.reload();
+                } else {
+                    alert('Invalid score file. Use the "Send Scores to Dad" export.');
+                }
+            } catch(err) { alert('Could not read file.'); }
+        };
+        reader.readAsText(file);
+    }
 
     function exportScores() {
         var data = {
@@ -678,3 +1040,5 @@
 </html>
 
 
+
+<!-- publish test 2026-02-21T03:35:13 -->

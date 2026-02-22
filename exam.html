@@ -20,8 +20,10 @@
         .standard-badge { background: var(--bg-highlight); color: var(--accent-blue); font-size: var(--text-xs); font-weight: 700; padding: 2px 8px; border-radius: 12px; }
         .input-group { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 10px 0; }
         .input-group label { font-weight: 600; color: var(--text-primary); min-width: 120px; }
-        .input-group input[type="number"], .input-group select { padding: 8px 12px; border: 1px solid var(--border-default); border-radius: 6px; font-size: var(--text-base); background: var(--bg-input); color: var(--text-primary); width: 120px; }
+        .input-group input[type="number"], .input-group input[type="text"], .input-group select { padding: 8px 12px; border: 1px solid var(--border-default); border-radius: 6px; font-size: var(--text-base); background: var(--bg-input); color: var(--text-primary); width: 120px; }
         .input-group select { width: 180px; }
+        .input-hint { font-size: 0.72rem; color: var(--text-secondary, #888); line-height: 1.3; margin-top: 2px; }
+        .input-with-hint { display: flex; flex-direction: column; gap: 2px; }
         .radio-group { margin: 10px 0; }
         .radio-option { display: flex; align-items: center; gap: 8px; padding: 8px 12px; margin: 4px 0; border: 1px solid var(--border-subtle); border-radius: 6px; cursor: pointer; background: var(--bg-input); }
         .radio-option:hover { border-color: var(--accent-blue); }
@@ -66,6 +68,7 @@
         .std-card .std-name { font-weight: 700; color: var(--text-primary); font-size: var(--text-sm); }
         .std-card .std-score { color: var(--text-secondary); font-size: var(--text-sm); }
         .submit-area { text-align: center; margin: 24px 0; }
+        .submit-warning { background: rgba(249,115,22,0.12); border: 1px solid rgba(249,115,22,0.4); color: var(--text-primary); border-radius: 8px; padding: 12px 16px; margin-bottom: 14px; font-size: var(--text-sm); text-align: left; }
         .error-msg { text-align: center; padding: 40px; color: var(--color-incorrect); font-size: var(--text-lg); }
         /* Progress bar — ADHD: show progress position */
         .progress-strip {
@@ -302,7 +305,10 @@
         } else if (inp.type === 'number') {
             html += '<div class="input-group">';
             if (inp.label) html += '<label>' + inp.label + '</label>';
-            html += '<input type="number" id="' + inp.id + '" step="any" autocomplete="off">';
+            html += '<div class="input-with-hint">';
+            html += '<input type="text" inputmode="decimal" id="' + inp.id + '" autocomplete="off" placeholder="e.g. 3/2 or sqrt(2)">';
+            html += '<span class="input-hint">decimal · fraction (3/2) · sqrt(2) · 1+sqrt(3)</span>';
+            html += '</div>';
             html += '</div>';
         } else if (inp.type === 'radio') {
             html += '<div class="radio-group">';
@@ -705,8 +711,72 @@
     }
 
     /* --- Grading Engine --- */
+
+    // Accept decimals, integers, fractions (4/3), and sqrt expressions (sqrt(2), 1+sqrt(3), (1+sqrt(5))/2)
+    function parseStudentAnswer(raw) {
+        if (!raw || !raw.trim()) return NaN;
+        var s = raw.trim().replace(/\s/g, '');
+
+        // Plain fraction: 4/3 or -5/2
+        var fracMatch = s.match(/^(-?\d+)\/(-?\d+)$/);
+        if (fracMatch) {
+            var num = parseInt(fracMatch[1], 10);
+            var den = parseInt(fracMatch[2], 10);
+            return den === 0 ? NaN : num / den;
+        }
+
+        // Plain decimal/integer
+        var plain = parseFloat(s);
+        if (!isNaN(plain) && s.match(/^-?\d*\.?\d+$/)) return plain;
+
+        // sqrt() expressions — safe evaluator
+        // Only allow digits, . + - * / ( ) and letters s,q,r,t (only valid as "sqrt")
+        if (/^[0-9.\+\-\*\/\(\)sqrt]+$/.test(s)) {
+            try {
+                // Handle implicit multiplication: 2sqrt(3) -> 2*sqrt(3)
+                var expr = s.replace(/(\d)\s*sqrt/g, '$1*sqrt').replace(/sqrt/g, 'Math.sqrt');
+                var result = Function('"use strict"; return (' + expr + ')')();
+                if (typeof result === 'number' && isFinite(result)) return result;
+            } catch(e) { /* invalid expression — fall through */ }
+        }
+
+        return NaN;
+    }
+
     function gradeExam() {
         if (examGraded) return;
+
+        // Block grading if any required field is blank
+        var missing = [];
+        examData.questions.forEach(function(q, qi) {
+            var qLabel = 'Q' + (qi + 1);
+            q.inputs.forEach(function(inp) {
+                if (inp.type === 'dropdown') {
+                    var el = document.getElementById(inp.id);
+                    if (!el || !el.value) missing.push(qLabel + ' — ' + (inp.label || 'Parent function'));
+                } else if (inp.type === 'number') {
+                    var el2 = document.getElementById(inp.id);
+                    if (!el2 || el2.value.trim() === '') missing.push(qLabel + ' — ' + (inp.label || inp.id));
+                } else if (inp.type === 'radio') {
+                    var sel = document.querySelector('input[name="' + inp.id + '"]:checked');
+                    if (!sel) missing.push(qLabel + ' — answer choice');
+                }
+            });
+        });
+        if (missing.length > 0) {
+            var warnEl = document.getElementById('submitWarning');
+            if (!warnEl) {
+                warnEl = document.createElement('div');
+                warnEl.id = 'submitWarning';
+                warnEl.className = 'submit-warning';
+                document.getElementById('submitArea').insertBefore(warnEl, document.getElementById('submitArea').firstChild);
+            }
+            warnEl.innerHTML = '<strong>Fill in everything before grading.</strong> Missing: ' +
+                missing.join(', ') + '.';
+            warnEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            return;
+        }
+
         examGraded = true;
 
         // Hide progress bar after grading
@@ -745,8 +815,8 @@
                     if (!el || el.value !== inp.answer) qCorrect = false;
                 } else if (inp.type === 'number') {
                     var el2 = document.getElementById(inp.id);
-                    var val = el2 ? parseFloat(el2.value) : NaN;
-                    numberInputs.push({ val: val, answer: inp.answer, tolerance: inp.tolerance || 0.1 });
+                    var val = el2 ? parseStudentAnswer(el2.value) : NaN;
+                    numberInputs.push({ val: val, answer: inp.answer, tolerance: inp.tolerance || 0.01 });
                 } else if (inp.type === 'radio') {
                     var selected = document.querySelector('input[name="' + inp.id + '"]:checked');
                     if (!selected || selected.value !== inp.answer) qCorrect = false;
@@ -848,9 +918,13 @@
         });
         html += '</div>';
 
-        // CTA: different based on grade
-        if (grade >= 3) {
+        // CTA: practice exams get "Run It Back"; real exams lock after grading
+        var isRetake = examData && examData.exam_id && examData.exam_id.indexOf('retake') !== -1;
+        if (grade >= 3 || !isRetake) {
             html += '<div style="margin-top:16px;"><a href="index.html" class="nav-btn primary" style="text-decoration:none;">🏀 Back to Dashboard</a></div>';
+            if (!isRetake && grade < 3) {
+                html += '<p style="margin-top:10px; color:var(--text-secondary); font-size:var(--text-sm);">Score locked. Study the hints above, then hit the practice tests. 💪</p>';
+            }
         } else {
             html += '<div style="margin-top:16px;"><a href="javascript:location.reload()" class="nav-btn primary" style="text-decoration:none;">🔄 Run It Back</a>';
             html += ' <a href="index.html" class="nav-btn ghost" style="text-decoration:none; margin-left:8px;">← Dashboard</a></div>';
@@ -890,6 +964,11 @@
         try {
             var scores = JSON.parse(localStorage.getItem('mcm_scores') || '{}');
             if (!scores[storageKey]) scores[storageKey] = { attempts: [], best: null };
+            // Real exams (not retake practice): lock after first attempt. Score of truth = first submission.
+            var isRetakeExam = storageKey.indexOf('retake') !== -1;
+            if (!isRetakeExam && scores[storageKey].attempts.length > 0) {
+                return; // Score already recorded, do not overwrite
+            }
             scores[storageKey].attempts.push(attempt);
             if (!scores[storageKey].best || pct > scores[storageKey].best.pct) {
                 scores[storageKey].best = { score: score, pct: pct, grade: grade };

@@ -13,7 +13,7 @@
       "section": "A",
       "standard": "W2.b",
       "type": "identify",
-      "question_html": "Identify the parent function and find the x-intercepts: \\( f(x) = 3(x - 1)^2 - 12 \\)",
+      "question_html": "Identify the parent function and find the x-intercepts of ( f(x) = x^2 + x - 6 ). (Hint: factor.)",
       "inputs": [
         {
           "id": "q1_parent",
@@ -22,8 +22,8 @@
           "options": [
             "quadratic",
             "cubic",
-            "absolute",
-            "sqrt",
+            "absolute value",
+            "square root",
             "rational",
             "exponential"
           ],
@@ -32,26 +32,27 @@
         {
           "id": "q1_x1",
           "type": "number",
-          "label": "x₁ =",
-          "answer": 3,
+          "label": "Smaller x-intercept =",
+          "answer": -3,
           "tolerance": 0.1
         },
         {
           "id": "q1_x2",
           "type": "number",
-          "label": "x₂ =",
-          "answer": -1,
+          "label": "Larger x-intercept =",
+          "answer": 2,
           "tolerance": 0.1
         }
       ],
-      "plus_minus": true,
-      "hint": "Set f(x)=0. Isolate the squared term.",
+      "hint": "Find two numbers that multiply to -6 and add to +1. Then set each factor = 0.",
       "solution_steps": [
-        "Parent: y = x\\u00B2 (quadratic).",
-        "Set 0 = 3(x-1)\\u00B2 - 12 \\u2192 (x-1)\\u00B2 = 4.",
-        "x - 1 = \\u00B12 \\u2192 x = 3 or x = -1."
+        "Standard form: x^2+x-6. Need factors of -6 that add to +1: (+3)(-2) works.",
+        "f(x) = (x+3)(x-2). Zero Product: x+3=0 or x-2=0.",
+        "x = -3 or x = 2.",
+        "W3.b: the plus-or-minus-sqrt method does NOT apply here (not in vertex form). Must factor.",
+        "Key insight: recognizing which algorithm the equation form requires is the core skill."
       ],
-      "feedback_correct": "\\uD83D\\uDD25 Quadratic intercepts. Clean.",
+      "feedback_correct": "🔥 Quadratic intercepts. Clean.",
       "feedback_wrong_parent": "Check the exponent for parent type.",
       "feedback_wrong_intercepts": "Parent right. Set f(x)=0 and solve."
     },
@@ -61,7 +62,7 @@
       "section": "A",
       "standard": "W2.b",
       "type": "identify",
-      "question_html": "Identify the parent function and find the x-intercept: \\( f(x) = \\sqrt{3x - 6} - 3 \\)",
+      "question_html": "Identify the parent function and find the x-intercepts: \\( f(x) = -2|x + 1| + 6 \\)",
       "inputs": [
         {
           "id": "q2_parent",
@@ -70,29 +71,38 @@
           "options": [
             "quadratic",
             "cubic",
-            "absolute",
-            "sqrt",
+            "absolute value",
+            "square root",
             "rational",
             "exponential"
           ],
-          "answer": "sqrt"
+          "answer": "absolute value"
         },
         {
           "id": "q2_x1",
           "type": "number",
-          "label": "x-intercept =",
-          "answer": 5,
+          "label": "Smaller x-intercept =",
+          "answer": -4,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q2_x2",
+          "type": "number",
+          "label": "Larger x-intercept =",
+          "answer": 2,
           "tolerance": 0.1
         }
       ],
-      "hint": "Set f(x)=0. Square both sides after isolating the root.",
+      "hint": "Set f(x)=0 and isolate the absolute value. Then split into two cases: inside = +3 and inside = -3.",
       "solution_steps": [
-        "Parent: y = \\u221Ax (square root).",
-        "Set 0 = \\u221A(3x-6) - 3 \\u2192 \\u221A(3x-6) = 3.",
-        "Square: 3x - 6 = 9 \\u2192 3x = 15 \\u2192 x = 5."
+        "Parent: absolute value (the |...| shape).",
+        "-2|x+1|+6=0 -> -2|x+1|=-6 -> |x+1|=3.",
+        "x+1=3 -> x=2. OR x+1=-3 -> x=-4.",
+        "Note: a=-2 (opens DOWN, this AV has a maximum not a minimum). Vertex at (-1,6).",
+        "W2.b: negative leading coefficient flips the V into an upside-down V."
       ],
-      "feedback_correct": "\\uD83D\\uDD25 Square root intercept. Solid.",
-      "feedback_wrong_parent": "Look at the \\u221A symbol."
+      "feedback_correct": "🔥 Square root intercept. Solid.",
+      "feedback_wrong_parent": "Look at the √ symbol."
     },
     {
       "id": "rp7-q3",
@@ -100,7 +110,7 @@
       "section": "A",
       "standard": "W2.b",
       "type": "identify",
-      "question_html": "Identify the parent function and find the x-intercepts: \\( f(x) = -2|x + 4| + 6 \\)",
+      "question_html": "For ( f(x) = |2x - 6| - 4 ): rewrite in the form ( a|x - h| + k ), state the parent function, identify a, h, k, and find the x-intercepts.",
       "inputs": [
         {
           "id": "q3_parent",
@@ -109,39 +119,65 @@
           "options": [
             "quadratic",
             "cubic",
-            "absolute",
-            "sqrt",
+            "absolute value",
+            "square root",
             "rational",
             "exponential"
           ],
-          "answer": "absolute"
+          "answer": "absolute value"
+        },
+        {
+          "id": "q3_a",
+          "type": "number",
+          "label": "a =",
+          "answer": 2,
+          "tolerance": 0.01
+        },
+        {
+          "id": "q3_h",
+          "type": "number",
+          "label": "h =",
+          "answer": 3,
+          "tolerance": 0.01
+        },
+        {
+          "id": "q3_k",
+          "type": "number",
+          "label": "k =",
+          "answer": -4,
+          "tolerance": 0.01
+        },
+        {
+          "id": "q3_cases",
+          "type": "text",
+          "label": "Write the two equations you must solve (e.g. “AX+B = k and AX+B = -k”):"
         },
         {
           "id": "q3_x1",
           "type": "number",
-          "label": "x₁ =",
-          "answer": -1,
+          "label": "Smaller x-intercept =",
+          "answer": 1,
           "tolerance": 0.1
         },
         {
           "id": "q3_x2",
           "type": "number",
-          "label": "x₂ =",
-          "answer": -7,
+          "label": "Larger x-intercept =",
+          "answer": 5,
           "tolerance": 0.1
         }
       ],
-      "plus_minus": true,
-      "hint": "Set f(x)=0. Isolate the |expression|.",
+      "hint": "Factor out the coefficient first. Then use the absolute value definition: if |2x-6| = 4, there are TWO cases: 2x-6=4  (positive case)  OR  -(2x-6)=4  (negative case). Multiply the negative case by -1 to solve.",
       "solution_steps": [
-        "Parent: y = |x| (absolute value).",
-        "Set 0 = -2|x+4| + 6 \\u2192 2|x+4| = 6 \\u2192 |x+4| = 3.",
-        "x + 4 = 3 \\u2192 x = -1.",
-        "x + 4 = -3 \\u2192 x = -7."
+        "Factor: |2x-6| = 2|x-3|. So f(x) = 2|x-3| - 4.",
+        "a=2 (vertical stretch), h=3 (shift right 3), k=-4 (shift down 4). Vertex: (3,-4).",
+        "KEY CONCEPT: |A| = k means A = k  OR  -(A) = k. So: 2x-6=4  AND  -(2x-6)=4.",
+        "Case 1: 2x-6=4 → x = 5.  Case 2: multiply both sides by -1 → 2x-6=-4 → x = 1.",
+        "W2.b insight: the ± split is the definition of absolute value. Never skip writing both equations."
       ],
-      "feedback_correct": "\\uD83D\\uDD25 Both intercepts found.",
+      "feedback_correct": "🔥 Both intercepts. Coefficient inside — you handled it.",
       "feedback_wrong_parent": "The | | bars mean absolute value.",
-      "feedback_wrong_intercepts": "Set the absolute value expression = 3."
+      "feedback_wrong_intercepts": "Set |2x−6| = 4. Solve both cases. Divide by 2 at the end."
     },
     {
       "id": "rp7-q4",
@@ -161,11 +197,11 @@
       ],
       "hint": "Rewrite both sides as powers of 2.",
       "solution_steps": [
-        "8^(x-1) = (2\\u00B3)^(x-1) = 2^(3x-3).",
+        "8^(x-1) = (2³)^(x-1) = 2^(3x-3).",
         "32 = 2\\u2075.",
-        "3x - 3 = 5 \\u2192 3x = 8 \\u2192 x = 8/3 \\u2248 2.667."
+        "3x - 3 = 5 → 3x = 8 → x = 8/3 \\u2248 2.667."
       ],
-      "feedback_correct": "\\uD83D\\uDD25 Common base. 8/3."
+      "feedback_correct": "🔥 Common base. 8/3."
     },
     {
       "id": "rp7-q5",
@@ -173,55 +209,72 @@
       "section": "B",
       "standard": "W3.b",
       "type": "quadratic",
-      "question_html": "Solve: \\( 2(x + 3)^2 - 50 = 0 \\)",
+      "question_html": "Solve by factoring: \\( 2x^2 + 7x + 3 = 0 \\)",
       "inputs": [
+        {
+          "id": "q5_factored",
+          "type": "text",
+          "label": "Write the factored form (e.g. (2x+1)(x+3)=0):"
+        },
         {
           "id": "q5_x1",
           "type": "number",
-          "label": "x₁ =",
-          "answer": 2,
-          "tolerance": 0.1
+          "label": "Smaller x =",
+          "answer": -3,
+          "tolerance": 0.05
         },
         {
           "id": "q5_x2",
           "type": "number",
-          "label": "x₂ =",
-          "answer": -8,
-          "tolerance": 0.1
+          "label": "Larger x =",
+          "answer": -0.5,
+          "tolerance": 0.05
         }
       ],
-      "plus_minus": true,
-      "hint": "Isolate the squared term. Then \\u00B1.",
+      "hint": "a≠1 means you cannot just find two numbers that add to b and multiply to c. Use the AC method: multiply a×c, find factor pair of that product that adds to b, split the middle term, then factor by grouping.",
       "solution_steps": [
-        "2(x+3)\\u00B2 = 50 \\u2192 (x+3)\\u00B2 = 25.",
-        "x + 3 = \\u00B15.",
-        "x = 2 or x = -8."
+        "AC method step 1: multiply a×c = 2×3 = 6.",
+        "Step 2: find two factors of 6 that add to 7: +6 and +1. ✓",
+        "Step 3: split the middle term using those factors: 2x² + 6x + x + 3.",
+        "Step 4: group and factor: 2x(x+3) + 1(x+3) = (2x+1)(x+3).",
+        "Step 5: ZPP: 2x+1=0 → x=-½.  OR  x+3=0 → x=-3.",
+        "Key: when a≠1 and it does NOT factor out, use AC method (multiply a×c, split, group)."
       ],
-      "feedback_correct": "\\uD83D\\uDD25 Both solutions found."
+      "feedback_correct": "🔥 Both solutions found.",
+      "feedback_wrong": "Use the AC method: a×c = 2×3 = 6. Find factors of 6 adding to 7: that’s 6 and 1. Split 7x into 6x+x, then factor by grouping."
     },
     {
       "id": "rp7-q6",
       "number": 6,
       "section": "B",
-      "standard": "W3.b",
+      "standard": "W3.c",
       "type": "radical",
-      "question_html": "Solve: \\( \\sqrt{4x + 5} - 1 = 6 \\)",
+      "question_html": "Solve: \\( \\sqrt{x^2 + 9} - 5 = 0 \\)",
       "inputs": [
         {
-          "id": "q6_x",
+          "id": "q6_x1",
           "type": "number",
-          "label": "x =",
-          "answer": 11,
-          "tolerance": 0.1
+          "label": "Smaller x =",
+          "answer": -4,
+          "tolerance": 0.05
+        },
+        {
+          "id": "q6_x2",
+          "type": "number",
+          "label": "Larger x =",
+          "answer": 4,
+          "tolerance": 0.05
         }
       ],
-      "hint": "Isolate the \\u221A, then square both sides.",
+      "hint": "Isolate the radical first. When you square both sides you will get x² = a number. What does that give you?",
       "solution_steps": [
-        "\\u221A(4x+5) = 7.",
-        "Square: 4x + 5 = 49.",
-        "4x = 44 \\u2192 x = 11."
+        "Step 1: Isolate: √(x² + 9) = 5.",
+        "Step 2: Square both sides: x² + 9 = 25.",
+        "Step 3: x² = 16.",
+        "Step 4: x = ±4. Two solutions because x² = positive number always gives ±.",
+        "Check: √(16 + 9) - 5 = √25 - 5 = 5 - 5 = 0 ✓"
       ],
-      "feedback_correct": "\\uD83D\\uDD25 Square both sides. Done."
+      "feedback_wrong": "After isolating and squaring: x² = 16. Remember x² = k has TWO solutions: x = ±√k."
     },
     {
       "id": "rp7-q7",
@@ -241,11 +294,11 @@
       ],
       "hint": "Rewrite both sides as powers of 5.",
       "solution_steps": [
-        "25\\u02E3 = (5\\u00B2)\\u02E3 = 5^(2x).",
-        "125^(x-1) = (5\\u00B3)^(x-1) = 5^(3x-3).",
-        "2x = 3x - 3 \\u2192 x = 3."
+        "25\\u02E3 = (5²)\\u02E3 = 5^(2x).",
+        "125^(x-1) = (5³)^(x-1) = 5^(3x-3).",
+        "2x = 3x - 3 → x = 3."
       ],
-      "feedback_correct": "\\uD83D\\uDD25 Common base. Smooth."
+      "feedback_correct": "🔥 Common base. Smooth."
     },
     {
       "id": "rp7-q8",
@@ -253,7 +306,7 @@
       "section": "B",
       "standard": "W3.c",
       "type": "rational",
-      "question_html": "Solve: \\\\( \\\\dfrac{5x - 3}{x + 2} = 3 \\\\)",
+      "question_html": "Solve: \\( \\dfrac{5x - 3}{x + 2} = 3 \\)",
       "inputs": [
         {
           "id": "q8_x",
@@ -269,7 +322,7 @@
         "5x - 3 = 3x + 6.",
         "2x = 9 → x = 4.5."
       ],
-      "feedback_correct": "\\uD83D\\uDD25 Clean algebra."
+      "feedback_correct": "🔥 Clean algebra."
     },
     {
       "id": "rp7-q9",
@@ -277,56 +330,58 @@
       "section": "B",
       "standard": "W3.b",
       "type": "radical",
-      "question_html": "Solve: \\\\( \\\\sqrt{x^2 + 19} = 10 \\\\)",
+      "question_html": "Solve: \\( \\sqrt{3x - 5} = \\sqrt{x + 7} \\)",
       "inputs": [
         {
-          "id": "q9_x1",
+          "id": "q9_x",
           "type": "number",
-          "label": "x₁ =",
-          "answer": 9,
-          "tolerance": 0.1
-        },
-        {
-          "id": "q9_x2",
-          "type": "number",
-          "label": "x₂ =",
-          "answer": -9,
-          "tolerance": 0.1
+          "label": "x =",
+          "answer": 6,
+          "tolerance": 0.01
         }
       ],
-      "plus_minus": true,
-      "hint": "Square both sides. You’ll get x² = something. Don’t forget ±.",
+      "hint": "If two square roots are equal, what must be true about the expressions inside them?",
       "solution_steps": [
-        "x² + 19 = 100 → x² = 81.",
-        "x = ±9."
+        "If √(3x−5) = √(x+7), the radicands must be equal.",
+        "3x − 5 = x + 7.",
+        "2x = 12 → x = 6.",
+        "Check: √(18−5) = √13 and √(6+7) = √13 ✓"
       ],
-      "feedback_correct": "🔥 ±9. Don’t forget both."
+      "feedback_correct": "🔥 Equal radicands. x = 6.",
+      "feedback_wrong": "If √(A) = √(B), then A = B. Set the insides equal and solve."
     },
     {
       "id": "rp7-q10",
       "number": 10,
       "section": "B",
-      "standard": "W3.e",
-      "type": "extraneous",
-      "question_html": "Solve and check for extraneous solutions: \\\\( \\\\sqrt{x - 5} = x - 11 \\\\)",
+      "standard": "W3.d",
+      "type": "exponential",
+      "question_html": "Solve: \\( 4 \\cdot 2^{x^2 + 1} = 128 \\)",
       "inputs": [
         {
-          "id": "q10_x",
+          "id": "q10_x1",
           "type": "number",
-          "label": "x =",
-          "answer": 14,
-          "tolerance": 0.1
+          "label": "Smaller x =",
+          "answer": -2,
+          "tolerance": 0.05
+        },
+        {
+          "id": "q10_x2",
+          "type": "number",
+          "label": "Larger x =",
+          "answer": 2,
+          "tolerance": 0.05
         }
       ],
-      "hint": "Square both sides. Factor. Check BOTH in the original.",
+      "hint": "Divide both sides by 4 first to isolate the exponential. Then rewrite both sides as powers of 2. You will get x² = a number.",
       "solution_steps": [
-        "Square: x - 5 = (x-11)² = x² - 22x + 121.",
-        "x² - 23x + 126 = 0 → (x-14)(x-9) = 0.",
-        "x = 14 or x = 9.",
-        "Check x=9: √4 = 2, but 9-11 = -2. Extraneous!",
-        "Check x=14: √9 = 3, and 14-11 = 3. ✓"
+        "Step 1: Divide both sides by 4: 2^(x² + 1) = 32.",
+        "Step 2: Rewrite 32 as a power of 2: 32 = 2⁵.",
+        "Step 3: Set exponents equal: x² + 1 = 5 → x² = 4.",
+        "Step 4: x² = 4 → x = ±2. Two solutions because x² = positive number gives ±.",
+        "Check x=2: 4·2^(4+1) = 4·32 = 128 ✓"
       ],
-      "feedback_correct": "\\uD83D\\uDD25 Caught the extraneous one."
+      "feedback_wrong": "Divide by 4 first: 2^(x²+1)=32=2⁵. Set exponents equal: x²+1=5. Then x²=4 gives TWO answers: x=±2."
     },
     {
       "id": "rp7-q11",
@@ -334,7 +389,7 @@
       "section": "B",
       "standard": "W3.b",
       "type": "fractional-exp",
-      "question_html": "Solve: \\\\( 2x^{3/2} = 1024 \\\\)",
+      "question_html": "Solve: \\( 2x^{3/2} = 1024 \\)",
       "inputs": [
         {
           "id": "q11_x",
@@ -357,7 +412,7 @@
       "section": "C",
       "standard": "W2.c",
       "type": "graph",
-      "question_html": "Graph \\( f(x) = 3(x - 2)^2 - 3 \\). State the vertex.",
+      "question_html": "Graph ( f(x) = 3(x-2)^2 - 3 ) and answer all of the following:",
       "inputs": [
         {
           "id": "q12_vx",
@@ -372,12 +427,32 @@
           "label": "Vertex y =",
           "answer": -3,
           "tolerance": 0.1
+        },
+        {
+          "id": "q12_domain",
+          "type": "text",
+          "label": "Domain (interval notation):"
+        },
+        {
+          "id": "q12_range",
+          "type": "text",
+          "label": "Range (interval notation):"
+        },
+        {
+          "id": "q12_decrease",
+          "type": "text",
+          "label": "f is decreasing on:"
+        },
+        {
+          "id": "q12_increase",
+          "type": "text",
+          "label": "f is increasing on:"
         }
       ],
       "graph": {
         "canvas_id": "graphQ12",
         "function": "3 * Math.pow(x - 2, 2) - 3",
-        "function_display": "f(x) = 3(x-2)\\u00B2 - 3",
+        "function_display": "f(x) = 3(x-2)² - 3",
         "key_points": [
           [
             0,
@@ -411,14 +486,16 @@
         "min_points": 5,
         "tolerance": 0.25
       },
-      "hint": "Vertex form: f(x) = a(x-h)\\u00B2 + k. Vertex is (h, k).",
+      "hint": "Domain of a quadratic is always all reals. Range depends on direction of opening. The function changes direction at the vertex.",
       "solution_steps": [
-        "Vertex form: a = 3, h = 2, k = -3.",
-        "Vertex: (2, -3).",
-        "Opens up, narrower than y=x\\u00B2.",
-        "Plot: f(0)=3(4)-3=9, f(1)=3(1)-3=0, f(3)=3(1)-3=0, f(4)=3(4)-3=9."
+        "f(x) = 3(x-2)^2-3. Vertex at (2, -3).",
+        "Domain: all real numbers, (-inf, +inf). No restrictions on a quadratic.",
+        "Range: a=3>0 so opens upward. Minimum at vertex y=-3. Range = [-3, +inf).",
+        "Decreasing on (-inf, 2): left of vertex, parabola falls as x increases.",
+        "Increasing on (2, +inf): right of vertex, parabola rises.",
+        "W2.e: domain, range, and intervals of increase/decrease are standard characteristics expected for any nonlinear function."
       ],
-      "feedback_correct": "\\uD83D\\uDD25 Vertex and graph correct."
+      "feedback_correct": "🔥 Vertex and graph correct."
     },
     {
       "id": "rp7-q13",
@@ -426,7 +503,7 @@
       "section": "C",
       "standard": "W2.e",
       "type": "graph",
-      "question_html": "Graph \\( f(x) = \\dfrac{-2}{x + 2} + 4 \\) and draw asymptotes. State the asymptotes.",
+      "question_html": "Graph \\( f(x) = \\dfrac{-2}{x + 2} + 4 \\) and draw asymptotes. State the asymptotes. State asymptotes, domain, range, and end behavior.",
       "inputs": [
         {
           "id": "q13_va",
@@ -441,6 +518,21 @@
           "label": "Horizontal asymptote y =",
           "answer": 4,
           "tolerance": 0.1
+        },
+        {
+          "id": "q13_domain",
+          "type": "text",
+          "label": "Domain:"
+        },
+        {
+          "id": "q13_range",
+          "type": "text",
+          "label": "Range:"
+        },
+        {
+          "id": "q13_endbeh",
+          "type": "text",
+          "label": "As x -> +inf, f(x) ->"
         }
       ],
       "graph": {
@@ -480,55 +572,56 @@
         "min_points": 5,
         "tolerance": 0.25
       },
-      "hint": "VA: denominator = 0. HA: the constant outside the fraction.",
+      "hint": "VA tells you what x is excluded (domain). HA tells you what y is excluded (range). As x gets huge, the fraction term approaches 0, so f approaches the HA.",
       "solution_steps": [
-        "VA: x + 2 = 0 \\u2192 x = -2.",
-        "HA: y = 4 (the constant added).",
-        "Plot: f(-4)=-2/(-2)+4=5, f(-3)=-2/(-1)+4=6, f(-1)=-2/1+4=2, f(0)=-2/2+4=3, f(2)=-2/4+4=3.5."
+        "f(x) = -2/(x+2) + 4. VA: x=-2. HA: y=4.",
+        "Domain: all x except x=-2. Write as (-inf,-2) union (-2,+inf) or x not equal to -2.",
+        "Range: f can approach but never equal HA y=4. Range = (-inf,4) union (4,+inf) or y not equal to 4.",
+        "As x -> +inf: -2/(x+2) -> 0 from below, so f(x) -> 4 from below.",
+        "W2.e: asymptotes directly determine domain and range exclusions for rational functions."
       ],
-      "feedback_correct": "\\uD83D\\uDD25 Both asymptotes correct."
+      "feedback_correct": "🔥 Both asymptotes correct."
     },
     {
       "id": "rp7-q14",
       "number": 14,
       "section": "D",
-      "standard": "W3.a",
+      "standard": "W2.d",
       "type": "multiple-choice",
-      "question_html": "The period of a pendulum is \\( T = 2\\pi\\sqrt{\\dfrac{L}{g}} \\). Which correctly solves for \\( L \\)?",
+      "question_html": "A quadratic function opens downward, has vertex at (1, 9), and passes through the point (-2, 0). Find a, h, and k so that f(x) = a(x - h)^2 + k.",
       "inputs": [
         {
-          "id": "q14",
-          "type": "radio",
-          "label": "",
-          "options": [
-            {
-              "value": "A",
-              "text": "\\( L = \\dfrac{T^2 g}{4\\pi^2} \\)"
-            },
-            {
-              "value": "B",
-              "text": "\\( L = \\dfrac{T}{2\\pi\\sqrt{g}} \\)"
-            },
-            {
-              "value": "C",
-              "text": "\\( L = \\dfrac{T^2}{4\\pi g} \\)"
-            },
-            {
-              "value": "D",
-              "text": "\\( L = \\dfrac{4\\pi^2 g}{T^2} \\)"
-            }
-          ],
-          "answer": "A"
+          "id": "q14_a",
+          "type": "number",
+          "label": "a =",
+          "answer": -1,
+          "tolerance": 0.05
+        },
+        {
+          "id": "q14_h",
+          "type": "number",
+          "label": "h =",
+          "answer": 1,
+          "tolerance": 0.05
+        },
+        {
+          "id": "q14_k",
+          "type": "number",
+          "label": "k =",
+          "answer": 9,
+          "tolerance": 0.05
         }
       ],
-      "hint": "Square both sides to eliminate the \\u221A. Then isolate L.",
+      "hint": "Vertex (1,9) tells you h=1 and k=9 for free. Substitute the point (-2,0) to solve for a.",
       "solution_steps": [
-        "T = 2\\u03C0\\u221A(L/g).",
-        "T\\u00B2 = 4\\u03C0\\u00B2(L/g).",
-        "L = T\\u00B2g/(4\\u03C0\\u00B2).",
-        "Answer: A."
+        "Vertex (1,9) -> h=1, k=9. So f(x) = a(x-1)^2 + 9.",
+        "Substitute point (-2, 0): 0 = a(-2-1)^2 + 9 = a(9) + 9.",
+        "9a + 9 = 0 -> 9a = -9 -> a = -1.",
+        "f(x) = -(x-1)^2 + 9. Verify: opens down (a<0), vertex (1,9), passes through (-2,0): -(9)+9=0 confirmed.",
+        "W2.d: the REVERSE of reading a graph. Given characteristics, build the equation."
       ],
-      "feedback_correct": "\\uD83D\\uDD25 Formula rearrangement. Clean."
+      "feedback_correct": "W2.d mastered: you can write an equation from features, not just read features from an equation.",
+      "feedback_wrong": "Vertex gives h and k directly. Then plug in the point (-2,0) to solve for a."
     },
     {
       "id": "rp7-q15",
@@ -536,24 +629,33 @@
       "section": "D",
       "standard": "W3.a",
       "type": "word-problem",
-      "question_html": "An investment starts at ,000 and doubles every 8 years. The value is modeled by \\\\( V(t) = 2000 \\\\cdot 2^{t/8} \\\\). How many years until the investment reaches ,000?",
+      "question_html": "A bacteria colony has 100 bacteria at t = 0 hours. At t = 5 hours, there are 3,200 bacteria.<br><br>(a) Write the exponential model P(t) = P0 * r^t.<br>(b) At what time t will the population reach 819,200?",
       "inputs": [
+        {
+          "id": "q15_model",
+          "type": "text",
+          "label": "(a) P(t) ="
+        },
         {
           "id": "q15_t",
           "type": "number",
-          "label": "t =",
-          "answer": 40,
-          "tolerance": 0.5
+          "label": "(b) t =",
+          "answer": 13,
+          "tolerance": 0.1
         }
       ],
-      "hint": "Set V(t)=64000. Divide by 2000. What power of 2?",
+      "hint": "You must solve for r FIRST. P(5)=3200: 100 * r^5 = 3200 -> r^5 = 32. What number raised to the 5th power equals 32?",
       "solution_steps": [
-        "2000 · 2^(t/8) = 64000.",
-        "2^(t/8) = 32.",
-        "32 = 2⁵, so t/8 = 5.",
-        "t = 40 years."
+        "P(0)=100 gives P0=100. Model: P(t) = 100 * r^t.",
+        "P(5)=3200: 100 * r^5 = 3200 -> r^5 = 32.",
+        "r^5 = 32 = 2^5. By the one-to-one property: r = 2.",
+        "Model: P(t) = 100 * 2^t.",
+        "When does P = 819200? 100 * 2^t = 819200 -> 2^t = 8192.",
+        "8192 = 2^13 (2^10=1024, 2^11=2048, 2^12=4096, 2^13=8192). So t = 13.",
+        "W3.d: one-to-one property applied twice in one problem. First to find r, then to solve for t."
       ],
-      "feedback_correct": "🔥 40 years. Compound growth."
+      "feedback_correct": "🔥 Model written and evaluated. ,000.",
+      "feedback_wrong": "Start with finding r: 100 * r^5 = 3200 -> r^5 = 32 -> r = 2. Then P(t) = 100 * 2^t. Then solve 100 * 2^t = 819200."
     }
   ]
 }

@@ -22,8 +22,8 @@
           "options": [
             "quadratic",
             "cubic",
-            "absolute",
-            "sqrt",
+            "absolute value",
+            "square root",
             "rational",
             "exponential"
           ],
@@ -71,12 +71,12 @@
           "options": [
             "quadratic",
             "cubic",
-            "absolute",
-            "sqrt",
+            "absolute value",
+            "square root",
             "rational",
             "exponential"
           ],
-          "answer": "sqrt"
+          "answer": "square root"
         },
         {
           "id": "q2_x1",
@@ -110,12 +110,12 @@
           "options": [
             "quadratic",
             "cubic",
-            "absolute",
-            "sqrt",
+            "absolute value",
+            "square root",
             "rational",
             "exponential"
           ],
-          "answer": "absolute"
+          "answer": "absolute value"
         },
         {
           "id": "q3_x1",
@@ -484,7 +484,7 @@
             3.5
           ]
         ],
-        "min_points": 5,
+        "min_points": 4,
         "tolerance": 0.25,
         "asymptotes": {
           "vertical": [

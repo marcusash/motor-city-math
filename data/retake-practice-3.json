@@ -22,8 +22,8 @@
           "options": [
             "quadratic",
             "cubic",
-            "absolute",
-            "sqrt",
+            "absolute value",
+            "square root",
             "rational",
             "exponential"
           ],
@@ -71,12 +71,12 @@
           "options": [
             "quadratic",
             "cubic",
-            "absolute",
-            "sqrt",
+            "absolute value",
+            "square root",
             "rational",
             "exponential"
           ],
-          "answer": "sqrt"
+          "answer": "square root"
         },
         {
           "id": "q2_x1",
@@ -110,12 +110,12 @@
           "options": [
             "quadratic",
             "cubic",
-            "absolute",
-            "sqrt",
+            "absolute value",
+            "square root",
             "rational",
             "exponential"
           ],
-          "answer": "absolute"
+          "answer": "absolute value"
         },
         {
           "id": "q3_x1",
@@ -486,7 +486,7 @@
             -1.5
           ]
         ],
-        "min_points": 5,
+        "min_points": 4,
         "tolerance": 0.25,
         "asymptotes": {
           "vertical": [
@@ -560,8 +560,13 @@
       "section": "D",
       "standard": "W3.a",
       "type": "word-problem",
-      "question_html": "An investment starts at $1,200 and triples every 4 years. The value is modeled by \\( V(t) = 1200 \\cdot 3^{t/4} \\). How many years until the investment reaches $97,200?",
+      "question_html": "An investment starts at \\$1,200 and triples every 4 years.<br><strong>(a)</strong> Write an exponential model for the value \\( V \\) after \\( t \\) years.<br><strong>(b)</strong> How many years until the investment reaches \\$97,200?",
       "inputs": [
+        {
+          "id": "q15_model",
+          "type": "text",
+          "label": "V(t) ="
+        },
         {
           "id": "q15_t",
           "type": "number",
@@ -570,13 +575,13 @@
           "tolerance": 0.5
         }
       ],
-      "hint": "Set V(t) = 97200. Divide by 1200. What power of 3?",
+      "hint": "Build the model: start · growth^(t/period). Then set V(t) = 97200 and solve.",
       "solution_steps": [
-        "1200 · 3^(t/4) = 97200.",
+        "Model: V(t) = 1200 · 3^(t/4).  [initial=1200, base=3, period=4]",
+        "Set: 1200 · 3^(t/4) = 97200.",
         "3^(t/4) = 81.",
         "81 = 3⁴, so t/4 = 4.",
-        "t = 16 years.",
-        "Check: 1200 · 3⁴ = 1200 · 81 = 97200 ✓"
+        "t = 16 years."
       ],
       "feedback_correct": "🔥 16 years. Exponential growth.",
       "feedback_wrong": "Divide by 1200 first. Then: 3^? = 81."

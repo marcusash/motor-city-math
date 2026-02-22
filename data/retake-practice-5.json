@@ -13,7 +13,7 @@
       "section": "A",
       "standard": "W2.b",
       "type": "identify",
-      "question_html": "Identify the parent function and find the x-intercepts: \\( f(x) = 4(x - 2)^2 - 64 \\)",
+      "question_html": "Identify the parent function and find the x-intercepts: \\( f(x) = x(x - 6) \\)",
       "inputs": [
         {
           "id": "q1_parent",
@@ -22,8 +22,8 @@
           "options": [
             "quadratic",
             "cubic",
-            "absolute",
-            "sqrt",
+            "absolute value",
+            "square root",
             "rational",
             "exponential"
           ],
@@ -33,24 +33,23 @@
           "id": "q1_x1",
           "type": "number",
           "label": "x₁ =",
-          "answer": 6,
+          "answer": 0,
           "tolerance": 0.1
         },
         {
           "id": "q1_x2",
           "type": "number",
           "label": "x₂ =",
-          "answer": -2,
+          "answer": 6,
           "tolerance": 0.1
         }
       ],
-      "plus_minus": true,
-      "hint": "Set f(x)=0. Isolate the squared term.",
+      "hint": "Expand or use the Zero Product Property. What degree is this function?",
       "solution_steps": [
-        "Parent: y = x² (quadratic — highest power is 2).",
-        "Set 0 = 4(x-2)² - 64.",
-        "4(x-2)² = 64 → (x-2)² = 16.",
-        "x - 2 = ±4 → x = 6 or x = -2."
+        "Expand: x(x−6) = x² − 6x. Highest power is 2 → parent is quadratic.",
+        "Zero Product Property: x = 0 sets first factor to zero.",
+        "x − 6 = 0 → x = 6 sets second factor to zero.",
+        "Intercepts: x = 0 and x = 6. No ±√ needed — factored form gives roots directly."
       ],
       "feedback_correct": "🔥 Parent and intercepts nailed.",
       "feedback_wrong_parent": "Check the exponent for parent type.",
@@ -71,12 +70,12 @@
           "options": [
             "quadratic",
             "cubic",
-            "absolute",
-            "sqrt",
+            "absolute value",
+            "square root",
             "rational",
             "exponential"
           ],
-          "answer": "sqrt"
+          "answer": "square root"
         },
         {
           "id": "q2_x1",
@@ -101,7 +100,7 @@
       "section": "A",
       "standard": "W2.b",
       "type": "identify",
-      "question_html": "Identify the parent function and find the x-intercepts: \\( f(x) = -5|x - 3| + 30 \\)",
+      "question_html": "For \\( f(x) = |3x + 9| - 6 \\): rewrite in the form \\( a|x - h| + k \\), state the parent function, identify <em>a</em>, <em>h</em>, <em>k</em>, and find the x-intercepts.",
       "inputs": [
         {
           "id": "q3_parent",
@@ -110,38 +109,65 @@
           "options": [
             "quadratic",
             "cubic",
-            "absolute",
-            "sqrt",
+            "absolute value",
+            "square root",
             "rational",
             "exponential"
           ],
-          "answer": "absolute"
+          "answer": "absolute value"
+        },
+        {
+          "id": "q3_a",
+          "type": "number",
+          "label": "a =",
+          "answer": 3,
+          "tolerance": 0.01
+        },
+        {
+          "id": "q3_h",
+          "type": "number",
+          "label": "h =",
+          "answer": -3,
+          "tolerance": 0.01
+        },
+        {
+          "id": "q3_k",
+          "type": "number",
+          "label": "k =",
+          "answer": -6,
+          "tolerance": 0.01
+        },
+        {
+          "id": "q3_cases",
+          "type": "text",
+          "label": "Write the two equations you must solve (e.g. “AX+B = k and AX+B = -k”):"
         },
         {
           "id": "q3_x1",
           "type": "number",
-          "label": "x₁ =",
-          "answer": 9,
+          "label": "Smaller x-intercept =",
+          "answer": -5,
           "tolerance": 0.1
         },
         {
           "id": "q3_x2",
           "type": "number",
-          "label": "x₂ =",
-          "answer": -3,
+          "label": "Larger x-intercept =",
+          "answer": -1,
           "tolerance": 0.1
         }
       ],
-      "plus_minus": true,
-      "hint": "Set f(x)=0. |x-3| = 6 gives two answers.",
+      "hint": "Factor out the coefficient first. Then use the absolute value definition: if |3x+9| = 6, there are TWO cases: 3x+9=6  (positive case)  OR  -(3x+9)=6  (negative case). Multiply the negative case by -1 to solve.",
       "solution_steps": [
-        "Parent: y = |x| (absolute value — V shape).",
-        "Transformations: right 3, stretch ×5, reflect over x-axis, up 30.",
-        "x-intercepts: 0 = -5|x-3| + 30 → |x-3| = 6.",
-        "x - 3 = 6 → x = 9, or x - 3 = -6 → x = -3."
+        "Factor: |3x+9| = 3|x−(−3)|. So f(x) = 3|x−(−3)| − 6.",
+        "a = 3, h = −3, k = −6. Shift LEFT 3, stretch ×3, down 6. Vertex at (−3, −6).",
+        "KEY CONCEPT: |A| = k means A = k  OR  -(A) = k. So: 3x+9=6  AND  -(3x+9)=6.",
+        "Case 1: 3x+9=6 → x = -1.  Case 2: multiply both sides by -1 → 3x+9=-6 → x = -5.",
+        "W2.b insight: the ± split is the definition of absolute value. Never skip writing both equations."
       ],
       "feedback_correct": "🔥 Absolute value. Both intercepts.",
-      "feedback_wrong_parent": "The | | symbols mean absolute value."
+      "feedback_wrong_parent": "The | | symbols mean absolute value.",
+      "feedback_wrong": "After splitting two cases, you must divide by 3 in each. Do not stop at 3x = −3."
     },
     {
       "id": "rp5-q4",
@@ -175,33 +201,33 @@
       "section": "B",
       "standard": "W3.b",
       "type": "quadratic",
-      "question_html": "Solve: \\( 3(x + 5)^2 - 108 = 0 \\)",
+      "question_html": "Solve: \\( x^2 - 2x - 15 = 0 \\)",
       "inputs": [
         {
           "id": "q5_x1",
           "type": "number",
           "label": "x₁ =",
-          "answer": 1,
+          "answer": 5,
           "tolerance": 0.1
         },
         {
           "id": "q5_x2",
           "type": "number",
           "label": "x₂ =",
-          "answer": -11,
+          "answer": -3,
           "tolerance": 0.1
         }
       ],
       "plus_minus": true,
-      "hint": "Isolate the squared term. Then ±.",
+      "hint": "Standard form. Two numbers: product = −15, sum = −2.",
       "solution_steps": [
-        "3(x+5)² = 108 → (x+5)² = 36.",
-        "x + 5 = ±6.",
-        "x = -5 + 6 = 1 or x = -5 - 6 = -11.",
-        "Check: 3(1+5)² - 108 = 3(36) - 108 = 0 ✓"
+        "Standard form. Find two numbers: product = −15, sum = −2. Those are: −5 and +3. Wait — check: (−5)(+3)=−15 and −5+3=−2. Yes.",
+        "Factor: (x−5)(x+3) = 0.",
+        "x = 5 or x = −3.",
+        "Check: 25−10−15=0 ✓ and 9+6−15=0 ✓"
       ],
       "feedback_correct": "🔥 Both solutions found.",
-      "feedback_wrong": "Isolate (x+5)², then take ± square root."
+      "feedback_wrong": "Cannot use ±√ here. Find the two numbers first."
     },
     {
       "id": "rp5-q6",
@@ -288,33 +314,27 @@
       "section": "B",
       "standard": "W3.b",
       "type": "radical",
-      "question_html": "Solve: \\( \\sqrt{x^2 + 51} = 10 \\)",
+      "question_html": "Solve: \\( \\sqrt{x + 4} = x - 2 \\)",
       "inputs": [
         {
-          "id": "q9_x1",
+          "id": "q9_x",
           "type": "number",
-          "label": "x₁ =",
-          "answer": 7,
-          "tolerance": 0.01
-        },
-        {
-          "id": "q9_x2",
-          "type": "number",
-          "label": "x₂ =",
-          "answer": -7,
+          "label": "x =",
+          "answer": 5,
           "tolerance": 0.01
         }
       ],
-      "plus_minus": true,
-      "hint": "Square both sides. You'll get x² = something. Don't forget ±.",
+      "hint": "Square both sides — but the right side is a binomial. You will get a quadratic. Factor it. Then check BOTH answers in the original equation.",
       "solution_steps": [
-        "Square both sides: x² + 51 = 100.",
-        "x² = 49.",
-        "x = ±7.",
-        "Check: √(49 + 51) = √100 = 10 ✓"
+        "Square both sides: x + 4 = (x−2)² = x² − 4x + 4.",
+        "Rearrange: x² − 5x = 0 → x(x−5) = 0.",
+        "x = 0 or x = 5. Must check both in the original — squaring can create false solutions.",
+        "Check x=0: √4 = 2, but 0−2 = −2. Left ≠ Right — extraneous!",
+        "Check x=5: √9 = 3, and 5−2 = 3. ✓",
+        "Answer: x = 5 only. The quadratic gave a false solution — this is why you must always check."
       ],
-      "feedback_correct": "🔥 ±7. Don't forget both.",
-      "feedback_wrong": "Square both sides, then remember ± for x²."
+      "feedback_correct": "🔥 You caught the extraneous root. That is the full skill.",
+      "feedback_wrong": "Square both sides — you get a quadratic, not a linear equation. Factor it, then CHECK both answers back in the original."
     },
     {
       "id": "rp5-q10",
@@ -322,7 +342,7 @@
       "section": "B",
       "standard": "W3.e",
       "type": "extraneous",
-      "question_html": "Solve and check for extraneous solutions: \\\\( \\\\sqrt{x + 12} = x - 8 \\\\)",
+      "question_html": "Solve: \\( \\sqrt{x + 12} = x - 8 \\)",
       "inputs": [
         {
           "id": "q10_x",
@@ -332,7 +352,7 @@
           "tolerance": 0.1
         }
       ],
-      "hint": "Square both sides. Factor. Check BOTH in the original.",
+      "hint": "Square both sides. You will get a quadratic. Solve it. Your answer may or may not have two valid solutions.",
       "solution_steps": [
         "Square: x + 12 = (x-8)² = x² - 16x + 64.",
         "x² - 17x + 52 = 0 → (x-13)(x-4) = 0.",
@@ -486,7 +506,7 @@
             0
           ]
         ],
-        "min_points": 5,
+        "min_points": 4,
         "tolerance": 0.25,
         "asymptotes": {
           "vertical": [
@@ -516,8 +536,8 @@
       "number": 14,
       "section": "D",
       "standard": "W3.a",
-      "type": "multiple-choice",
-      "question_html": "The surface area of a cylinder is \\( S = 2\\pi r^2 + 2\\pi rh \\). Which correctly solves for \\( h \\)?",
+      "type": "error-analysis",
+      "question_html": "A student solved \\( 2(x-4)^2 - 8 = 0 \\) and showed this work:<br><br>Step 1: \\( 2(x-4)^2 = 8 \\)<br>Step 2: \\( (x-4)^2 = 4 \\)<br>Step 3: \\( x - 4 = 2 \\)<br>Step 4: \\( x = 6 \\)<br><br>The student got <strong>x = 6 only</strong>. Select the statement that correctly identifies the error.",
       "inputs": [
         {
           "id": "q14",
@@ -526,33 +546,34 @@
           "options": [
             {
               "value": "A",
-              "text": "\\( h = \\dfrac{S}{2\\pi r^2} \\)"
+              "text": "Step 1 is wrong: should move −8 first before working with the squared term"
             },
             {
               "value": "B",
-              "text": "\\( h = \\dfrac{S - 2\\pi r}{2\\pi r^2} \\)"
+              "text": "Step 2 is wrong: dividing by 2 gives (x−4)² = 2, not 4"
             },
             {
               "value": "C",
-              "text": "\\( h = \\dfrac{S - 2\\pi r^2}{2\\pi r} \\)"
+              "text": "Step 3 is wrong: taking the square root requires ±, giving x−4 = ±2, so x = 6 OR x = 2"
             },
             {
               "value": "D",
-              "text": "\\( h = S - 2\\pi r^2 - 2\\pi r \\)"
+              "text": "No error — x = 6 is the only solution because the equation has one root"
             }
           ],
           "answer": "C"
         }
       ],
-      "hint": "Subtract 2πr², then divide by 2πr.",
+      "hint": "What is the rule for taking a square root of both sides of an equation?",
       "solution_steps": [
-        "S = 2πr² + 2πrh.",
-        "Subtract 2πr²: S - 2πr² = 2πrh.",
-        "Divide by 2πr: h = (S - 2πr²)/(2πr).",
-        "Answer: C."
+        "Steps 1 and 2 are correct: 2(x−4)²=8 → (x−4)²=4.",
+        "Step 3 is the error. √4 = ±2, not just +2.",
+        "x−4 = +2 → x = 6. AND x−4 = −2 → x = 2.",
+        "Both solutions are valid. Missing ± means always losing one answer.",
+        "W3.a principle: every time you take a square root, you introduce ±. There is no exception."
       ],
-      "feedback_correct": "🔥 Formula rearrangement. Clean.",
-      "feedback_wrong": "Subtract 2πr² first, then divide by 2πr."
+      "feedback_correct": "🔥 W3.a: you know WHY ± is required at every square root step.",
+      "feedback_wrong": "The error is in Step 3. Square roots always produce two cases: positive and negative."
     },
     {
       "id": "rp5-q15",
@@ -560,8 +581,13 @@
       "section": "D",
       "standard": "W3.a",
       "type": "word-problem",
-      "question_html": "A radioactive isotope starts at 2,000 grams and has a half-life of 8 years. The amount remaining is modeled by \\( A(t) = 2000 \\cdot 0.5^{t/8} \\). How many years until only 125 grams remain?",
+      "question_html": "A radioactive isotope starts at 2,000 grams and has a half-life of 8 years.<br>(a) Write an exponential decay model <em>A</em>(<em>t</em>) for the amount remaining after <em>t</em> years.<br>(b) Using your model, how many years until only 125 grams remain?",
       "inputs": [
+        {
+          "id": "q15_model",
+          "type": "text",
+          "label": "A(t) ="
+        },
         {
           "id": "q15_t",
           "type": "number",
@@ -570,12 +596,12 @@
           "tolerance": 0.5
         }
       ],
-      "hint": "Set A(t) = 125. Divide by 2000. What power of 0.5?",
+      "hint": "A(t) = A₀ · r^(t/T). Decay = multiply by 0.5 per half-life. Half-life T = 8 years. Then set A(t) = 125.",
       "solution_steps": [
-        "2000 · 0.5^(t/8) = 125.",
-        "0.5^(t/8) = 0.0625.",
-        "0.0625 = 0.5⁴, so t/8 = 4.",
-        "t = 32 years.",
+        "A₀ = 2000 (starting amount). Decay factor r = 0.5 (half-life). Period T = 8 years.",
+        "Model: A(t) = 2000 · 0.5^(t/8).",
+        "Set 2000 · 0.5^(t/8) = 125 → 0.5^(t/8) = 0.0625.",
+        "0.0625 = 0.5⁴, so t/8 = 4 → t = 32 years.",
         "Check: 2000 · 0.5⁴ = 2000 · 0.0625 = 125 ✓"
       ],
       "feedback_correct": "🔥 32 years. Exponential decay.",
