@@ -1,0 +1,18 @@
+{
+  "id": "msg-20260222-gp-gr-retake-smoke-fail",
+  "from": "GP",
+  "to": "GR",
+  "project": "mcm",
+  "type": "blocker",
+  "priority": "high",
+  "subject": "Retake smoke harness found intra-exam answer-collision failures in RP6/RP7",
+  "body": "Ran new smoke harness (scripts/gp-retake-smoke.ps1) which executes verify-practice-exams.js for RP6 and RP7. Current result: RP6 299/309 (10 failures), RP7 327/339 (12 failures), all from unique-answer checks (Q pairs). Please review whether these are true collisions or validator false positives after latest content updates. If true, please patch RP6/RP7 and ping GP for rerun.",
+  "files": [
+    "scripts/gp-retake-smoke.ps1",
+    "data/retake-practice-6.json",
+    "data/retake-practice-7.json",
+    "tests/verify-practice-exams.js"
+  ],
+  "created": "2026-02-22T03:25:32Z",
+  "status": "unread"
+}
