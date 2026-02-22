@@ -101,7 +101,7 @@
       "section": "A",
       "standard": "W2.b",
       "type": "identify",
-      "question_html": "Identify the parent function and find the x-intercepts: \\( f(x) = -5|x - 3| + 30 \\)",
+      "question_html": "Identify the parent function and find the x-intercepts: \\( f(x) = 3|x + 2| - 9 \\)",
       "inputs": [
         {
           "id": "q3_parent",
@@ -121,24 +121,23 @@
           "id": "q3_x1",
           "type": "number",
           "label": "x₁ =",
-          "answer": 9,
+          "answer": 1,
           "tolerance": 0.1
         },
         {
           "id": "q3_x2",
           "type": "number",
           "label": "x₂ =",
-          "answer": -3,
+          "answer": -5,
           "tolerance": 0.1
         }
       ],
       "plus_minus": true,
-      "hint": "Set f(x)=0. |x-3| = 6 gives two answers.",
+      "hint": "Set f(x)=0. |x+2| = 3 gives two answers. Does this V open up or down?",
       "solution_steps": [
-        "Parent: y = |x| (absolute value — V shape).",
-        "Transformations: right 3, stretch ×5, reflect over x-axis, up 30.",
-        "x-intercepts: 0 = -5|x-3| + 30 → |x-3| = 6.",
-        "x - 3 = 6 → x = 9, or x - 3 = -6 → x = -3."
+        "Parent: y = |x| (absolute value — V shape, opens UP because coefficient 3 is positive).",
+        "Set 0 = 3|x+2| − 9 → 3|x+2| = 9 → |x+2| = 3.",
+        "x + 2 = 3 → x = 1, or x + 2 = −3 → x = −5."
       ],
       "feedback_correct": "🔥 Absolute value. Both intercepts.",
       "feedback_wrong_parent": "The | | symbols mean absolute value."
@@ -288,33 +287,33 @@
       "section": "B",
       "standard": "W3.b",
       "type": "radical",
-      "question_html": "Solve: \\( \\sqrt{x^2 + 51} = 10 \\)",
+      "question_html": "Solve: \\( \\sqrt{x^2 - 15} = 7 \\)",
       "inputs": [
         {
           "id": "q9_x1",
           "type": "number",
           "label": "x₁ =",
-          "answer": 7,
+          "answer": 8,
           "tolerance": 0.01
         },
         {
           "id": "q9_x2",
           "type": "number",
           "label": "x₂ =",
-          "answer": -7,
+          "answer": -8,
           "tolerance": 0.01
         }
       ],
       "plus_minus": true,
-      "hint": "Square both sides. You'll get x² = something. Don't forget ±.",
+      "hint": "Square both sides. Notice the subtraction inside the radical. Don’t forget ±.",
       "solution_steps": [
-        "Square both sides: x² + 51 = 100.",
-        "x² = 49.",
-        "x = ±7.",
-        "Check: √(49 + 51) = √100 = 10 ✓"
+        "Square both sides: x² − 15 = 49.",
+        "x² = 64.",
+        "x = ±8.",
+        "Check: √(64 − 15) = √49 = 7 ✓"
       ],
-      "feedback_correct": "🔥 ±7. Don't forget both.",
-      "feedback_wrong": "Square both sides, then remember ± for x²."
+      "feedback_correct": "🔥 ±8. Subtraction inside — solid.",
+      "feedback_wrong": "Square both sides. Add 15 to both sides. Then ±."
     },
     {
       "id": "rp5-q10",
@@ -560,8 +559,13 @@
       "section": "D",
       "standard": "W3.a",
       "type": "word-problem",
-      "question_html": "A radioactive isotope starts at 2,000 grams and has a half-life of 8 years. The amount remaining is modeled by \\( A(t) = 2000 \\cdot 0.5^{t/8} \\). How many years until only 125 grams remain?",
+      "question_html": "A radioactive isotope starts at 2,000 grams and has a half-life of 8 years.<br>(a) Write an exponential decay model <em>A</em>(<em>t</em>) for the amount remaining after <em>t</em> years.<br>(b) Using your model, how many years until only 125 grams remain?",
       "inputs": [
+        {
+          "id": "q15_model",
+          "type": "text",
+          "label": "A(t) ="
+        },
         {
           "id": "q15_t",
           "type": "number",
@@ -570,12 +574,12 @@
           "tolerance": 0.5
         }
       ],
-      "hint": "Set A(t) = 125. Divide by 2000. What power of 0.5?",
+      "hint": "A(t) = A₀ · r^(t/T). Decay = multiply by 0.5 per half-life. Half-life T = 8 years. Then set A(t) = 125.",
       "solution_steps": [
-        "2000 · 0.5^(t/8) = 125.",
-        "0.5^(t/8) = 0.0625.",
-        "0.0625 = 0.5⁴, so t/8 = 4.",
-        "t = 32 years.",
+        "A₀ = 2000 (starting amount). Decay factor r = 0.5 (half-life). Period T = 8 years.",
+        "Model: A(t) = 2000 · 0.5^(t/8).",
+        "Set 2000 · 0.5^(t/8) = 125 → 0.5^(t/8) = 0.0625.",
+        "0.0625 = 0.5⁴, so t/8 = 4 → t = 32 years.",
         "Check: 2000 · 0.5⁴ = 2000 · 0.0625 = 125 ✓"
       ],
       "feedback_correct": "🔥 32 years. Exponential decay.",

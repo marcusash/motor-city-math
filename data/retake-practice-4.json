@@ -101,7 +101,7 @@
       "section": "A",
       "standard": "W2.b",
       "type": "identify",
-      "question_html": "Identify the parent function and find the x-intercepts: \\( f(x) = -4|x + 2| + 24 \\)",
+      "question_html": "Identify the parent function and find the x-intercepts: \\( f(x) = 4|x - 5| - 12 \\)",
       "inputs": [
         {
           "id": "q3_parent",
@@ -121,24 +121,23 @@
           "id": "q3_x1",
           "type": "number",
           "label": "x₁ =",
-          "answer": 4,
+          "answer": 8,
           "tolerance": 0.1
         },
         {
           "id": "q3_x2",
           "type": "number",
           "label": "x₂ =",
-          "answer": -8,
+          "answer": 2,
           "tolerance": 0.1
         }
       ],
       "plus_minus": true,
-      "hint": "Set f(x)=0. |x+2| = 6 gives two answers.",
+      "hint": "Set f(x)=0. The coefficient is positive — which direction does this V open?",
       "solution_steps": [
-        "Parent: y = |x| (absolute value — V shape).",
-        "Transformations: left 2, stretch ×4, reflect over x-axis, up 24.",
-        "x-intercepts: 0 = -4|x+2| + 24 → |x+2| = 6.",
-        "x + 2 = 6 → x = 4, or x + 2 = -6 → x = -8."
+        "Parent: y = |x| (absolute value — V shape, opens UP because leading coefficient is positive).",
+        "Set 0 = 4|x−5| − 12 → 4|x−5| = 12 → |x−5| = 3.",
+        "x − 5 = 3 → x = 8, or x − 5 = −3 → x = 2."
       ],
       "feedback_correct": "🔥 Absolute value. Both intercepts.",
       "feedback_wrong_parent": "The | | symbols mean absolute value."
@@ -288,33 +287,33 @@
       "section": "B",
       "standard": "W3.b",
       "type": "radical",
-      "question_html": "Solve: \\( \\sqrt{x^2 + 28} = 8 \\)",
+      "question_html": "Solve: \\( \\sqrt{x^2 - 7} = 3 \\)",
       "inputs": [
         {
           "id": "q9_x1",
           "type": "number",
           "label": "x₁ =",
-          "answer": 6,
+          "answer": 4,
           "tolerance": 0.01
         },
         {
           "id": "q9_x2",
           "type": "number",
           "label": "x₂ =",
-          "answer": -6,
+          "answer": -4,
           "tolerance": 0.01
         }
       ],
       "plus_minus": true,
-      "hint": "Square both sides. You'll get x² = something. Don't forget ±.",
+      "hint": "Square both sides. There is a subtraction inside — watch your algebra. Don’t forget ±.",
       "solution_steps": [
-        "Square both sides: x² + 28 = 64.",
-        "x² = 36.",
-        "x = ±6.",
-        "Check: √(36 + 28) = √64 = 8 ✓"
+        "Square both sides: x² − 7 = 9.",
+        "x² = 16.",
+        "x = ±4.",
+        "Check: √(16 − 7) = √9 = 3 ✓"
       ],
-      "feedback_correct": "🔥 ±6. Don't forget both.",
-      "feedback_wrong": "Square both sides, then remember ± for x²."
+      "feedback_correct": "🔥 ±4. Subtraction inside — don’t forget both.",
+      "feedback_wrong": "Square both sides, then isolate x². Remember ±."
     },
     {
       "id": "rp4-q10",
@@ -559,8 +558,13 @@
       "section": "D",
       "standard": "W3.a",
       "type": "word-problem",
-      "question_html": "A town's population starts at 5,000 and grows by 50% every 10 years. The population is modeled by \\( P(t) = 5000 \\cdot 1.5^{t/10} \\). How many years until the population reaches 16,875?",
+      "question_html": "A town’s population starts at 5,000 and grows by 50% every 10 years.<br>(a) Write an exponential model <em>P</em>(<em>t</em>) for the population after <em>t</em> years.<br>(b) Using your model, how many years until the population reaches 16,875?",
       "inputs": [
+        {
+          "id": "q15_model",
+          "type": "text",
+          "label": "P(t) ="
+        },
         {
           "id": "q15_t",
           "type": "number",
@@ -569,12 +573,12 @@
           "tolerance": 0.5
         }
       ],
-      "hint": "Set P(t) = 16875. Divide by 5000. What power of 1.5?",
+      "hint": "P(t) = P₀ · r^(t/T). Identify P₀ (starting value), r (growth factor = 1 + rate), T (period in years). Then set P(t) = 16875.",
       "solution_steps": [
-        "5000 · 1.5^(t/10) = 16875.",
-        "1.5^(t/10) = 3.375.",
-        "3.375 = 1.5³, so t/10 = 3.",
-        "t = 30 years.",
+        "P₀ = 5000 (starting value). Growth factor r = 1.5 (50% growth). Period T = 10 years.",
+        "Model: P(t) = 5000 · 1.5^(t/10).",
+        "Set 5000 · 1.5^(t/10) = 16875 → 1.5^(t/10) = 3.375.",
+        "3.375 = 1.5³, so t/10 = 3 → t = 30 years.",
         "Check: 5000 · 1.5³ = 5000 · 3.375 = 16875 ✓"
       ],
       "feedback_correct": "🔥 30 years. Exponential growth.",

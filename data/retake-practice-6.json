@@ -233,23 +233,24 @@
       "section": "B",
       "standard": "W3.b",
       "type": "radical",
-      "question_html": "Solve: \\( \\sqrt{5x - 1} + 2 = 7 \\)",
+      "question_html": "Solve: \\( \\sqrt{2x + 3} - 5 = 2 \\)",
       "inputs": [
         {
           "id": "q7_x",
           "type": "number",
           "label": "x =",
-          "answer": 5.2,
+          "answer": 23,
           "tolerance": 0.1
         }
       ],
       "hint": "Isolate the √, then square both sides.",
       "solution_steps": [
-        "√(5x-1) = 5.",
-        "Square: 5x - 1 = 25.",
-        "5x = 26 → x = 5.2."
+        "√(2x+3) − 5 = 2 → √(2x+3) = 7.",
+        "Square both sides: 2x + 3 = 49 → 2x = 46.",
+        "x = 23.",
+        "Check: √(46+3) − 5 = √49 − 5 = 7 − 5 = 2 ✓"
       ],
-      "feedback_correct": "🔥 Square both sides. Done."
+      "feedback_correct": "🔥 Square both sides. x = 23."
     },
     {
       "id": "rp6-q8",
@@ -489,43 +490,42 @@
       "id": "rp6-q14",
       "number": 14,
       "section": "D",
-      "standard": "W3.a",
-      "type": "multiple-choice",
-      "question_html": "The surface area of a sphere is \\( S = 4\\pi r^2 \\). Which correctly solves for \\( r \\)?",
+      "standard": "W2.b",
+      "type": "construct",
+      "question_html": "An absolute value function opens <strong>upward</strong>, has vertex at (−2, −6), and passes through the point (1, 0).<br>Find <em>a</em>, <em>h</em>, and <em>k</em> so that <em>f</em>(<em>x</em>) = <em>a</em>|<em>x</em> − <em>h</em>| + <em>k</em>.",
       "inputs": [
         {
-          "id": "q14",
-          "type": "radio",
-          "label": "",
-          "options": [
-            {
-              "value": "A",
-              "text": "\\( r = \\dfrac{S}{4\\pi} \\)"
-            },
-            {
-              "value": "B",
-              "text": "\\( r = \\sqrt{\\dfrac{S}{4\\pi}} \\)"
-            },
-            {
-              "value": "C",
-              "text": "\\( r = \\sqrt{\\dfrac{S}{4\\pi^2}} \\)"
-            },
-            {
-              "value": "D",
-              "text": "\\( r = \\dfrac{S^2}{4\\pi} \\)"
-            }
-          ],
-          "answer": "B"
+          "id": "q14_a",
+          "type": "number",
+          "label": "a =",
+          "answer": 2,
+          "tolerance": 0.01
+        },
+        {
+          "id": "q14_h",
+          "type": "number",
+          "label": "h =",
+          "answer": -2,
+          "tolerance": 0.01
+        },
+        {
+          "id": "q14_k",
+          "type": "number",
+          "label": "k =",
+          "answer": -6,
+          "tolerance": 0.01
         }
       ],
-      "hint": "Divide by 4π, then square root both sides.",
+      "hint": "Vertex (h, k) gives you h and k directly. Then plug in the point (1, 0) to find a.",
       "solution_steps": [
-        "S = 4πr².",
-        "r² = S/(4π).",
-        "r = √(S/(4π)).",
-        "Answer: B."
+        "Vertex (−2, −6): h = −2, k = −6.",
+        "So f(x) = a|x − (−2)| + (−6) = a|x + 2| − 6.",
+        "Plug in (1, 0): 0 = a|1 + 2| − 6 = 3a − 6.",
+        "3a = 6 → a = 2.",
+        "f(x) = 2|x + 2| − 6. Opens up ✓ (positive a)."
       ],
-      "feedback_correct": "🔥 Formula rearrangement. Clean."
+      "feedback_correct": "🔥 L3 construct: you built the function from features. That’s the real skill.",
+      "feedback_wrong": "Start with vertex: h=−2, k=−6. Then use the given point to find a."
     },
     {
       "id": "rp6-q15",
@@ -533,8 +533,13 @@
       "section": "D",
       "standard": "W3.a",
       "type": "word-problem",
-      "question_html": "A radioactive sample starts with 800 grams and has a half-life of 4 years. The remaining mass is modeled by \\( A(t) = 800 \\cdot \\left(\\dfrac{1}{2}\\right)^{t/4} \\). How many years until 100 grams remain?",
+      "question_html": "A radioactive sample starts with 800 grams and has a half-life of 4 years.<br>(a) Write an exponential decay model <em>A</em>(<em>t</em>) for the mass remaining after <em>t</em> years.<br>(b) Using your model, how many years until 100 grams remain?",
       "inputs": [
+        {
+          "id": "q15_model",
+          "type": "text",
+          "label": "A(t) ="
+        },
         {
           "id": "q15_t",
           "type": "number",
@@ -543,12 +548,13 @@
           "tolerance": 0.5
         }
       ],
-      "hint": "Set A(t)=100. Divide by 800. What power of 1/2?",
+      "hint": "A(t) = A₀ · r^(t/T). A₀ = 800, decay factor r = 0.5, period T = 4. Then set A(t) = 100.",
       "solution_steps": [
-        "800 · (1/2)^(t/4) = 100.",
-        "(1/2)^(t/4) = 100/800 = 1/8.",
-        "1/8 = (1/2)³, so t/4 = 3.",
-        "t = 12 years."
+        "A₀ = 800. Decay factor r = 0.5. Period T = 4 years.",
+        "Model: A(t) = 800 · 0.5^(t/4).",
+        "Set 800 · 0.5^(t/4) = 100 → 0.5^(t/4) = 1/8.",
+        "1/8 = 0.5³, so t/4 = 3 → t = 12 years.",
+        "Check: 800 · 0.5³ = 800 · 0.125 = 100 ✓"
       ],
       "feedback_correct": "🔥 Half-life solved. 12 years."
     }

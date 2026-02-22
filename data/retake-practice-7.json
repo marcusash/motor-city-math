@@ -100,7 +100,7 @@
       "section": "A",
       "standard": "W2.b",
       "type": "identify",
-      "question_html": "Identify the parent function and find the x-intercepts: \\( f(x) = -2|x + 4| + 6 \\)",
+      "question_html": "Identify the parent function and find the x-intercepts: \\( f(x) = |2x - 6| - 4 \\)",
       "inputs": [
         {
           "id": "q3_parent",
@@ -120,28 +120,28 @@
           "id": "q3_x1",
           "type": "number",
           "label": "x₁ =",
-          "answer": -1,
+          "answer": 5,
           "tolerance": 0.1
         },
         {
           "id": "q3_x2",
           "type": "number",
           "label": "x₂ =",
-          "answer": -7,
+          "answer": 1,
           "tolerance": 0.1
         }
       ],
       "plus_minus": true,
-      "hint": "Set f(x)=0. Isolate the |expression|.",
+      "hint": "Set f(x)=0. |2x−6| = 4. Be careful — there is a coefficient inside the absolute value.",
       "solution_steps": [
-        "Parent: y = |x| (absolute value).",
-        "Set 0 = -2|x+4| + 6 → 2|x+4| = 6 → |x+4| = 3.",
-        "x + 4 = 3 → x = -1.",
-        "x + 4 = -3 → x = -7."
+        "Parent: y = |x| (absolute value — V shape, opens UP because no negative sign outside).",
+        "Set 0 = |2x−6| − 4 → |2x−6| = 4.",
+        "2x − 6 = 4 → 2x = 10 → x = 5.",
+        "2x − 6 = −4 → 2x = 2 → x = 1."
       ],
-      "feedback_correct": "🔥 Both intercepts found.",
+      "feedback_correct": "🔥 Both intercepts. Coefficient inside — you handled it.",
       "feedback_wrong_parent": "The | | bars mean absolute value.",
-      "feedback_wrong_intercepts": "Set the absolute value expression = 3."
+      "feedback_wrong_intercepts": "Set |2x−6| = 4. Solve both cases. Divide by 2 at the end."
     },
     {
       "id": "rp7-q4",
@@ -277,30 +277,25 @@
       "section": "B",
       "standard": "W3.b",
       "type": "radical",
-      "question_html": "Solve: \\( \\sqrt{x^2 + 19} = 10 \\)",
+      "question_html": "Solve: \\( \\sqrt{3x - 5} = \\sqrt{x + 7} \\)",
       "inputs": [
         {
-          "id": "q9_x1",
+          "id": "q9_x",
           "type": "number",
-          "label": "x₁ =",
-          "answer": 9,
-          "tolerance": 0.1
-        },
-        {
-          "id": "q9_x2",
-          "type": "number",
-          "label": "x₂ =",
-          "answer": -9,
-          "tolerance": 0.1
+          "label": "x =",
+          "answer": 6,
+          "tolerance": 0.01
         }
       ],
-      "plus_minus": true,
-      "hint": "Square both sides. You’ll get x² = something. Don’t forget ±.",
+      "hint": "If two square roots are equal, what must be true about the expressions inside them?",
       "solution_steps": [
-        "x² + 19 = 100 → x² = 81.",
-        "x = ±9."
+        "If √(3x−5) = √(x+7), the radicands must be equal.",
+        "3x − 5 = x + 7.",
+        "2x = 12 → x = 6.",
+        "Check: √(18−5) = √13 and √(6+7) = √13 ✓"
       ],
-      "feedback_correct": "🔥 ±9. Don’t forget both."
+      "feedback_correct": "🔥 Equal radicands. x = 6.",
+      "feedback_wrong": "If √(A) = √(B), then A = B. Set the insides equal and solve."
     },
     {
       "id": "rp7-q10",
@@ -536,24 +531,30 @@
       "section": "D",
       "standard": "W3.a",
       "type": "word-problem",
-      "question_html": "An investment starts at ,000 and doubles every 8 years. The value is modeled by \\( V(t) = 2000 \\cdot 2^{t/8} \\). How many years until the investment reaches ,000?",
+      "question_html": "An investment starts at ,000 and doubles every 8 years.<br>(a) Write the exponential growth model <em>V</em>(<em>t</em>) for the value after <em>t</em> years.<br>(b) What is the value of the investment after <strong>24 years</strong>?",
       "inputs": [
         {
-          "id": "q15_t",
+          "id": "q15_model",
+          "type": "text",
+          "label": "V(t) ="
+        },
+        {
+          "id": "q15_value",
           "type": "number",
-          "label": "t =",
-          "answer": 40,
-          "tolerance": 0.5
+          "label": "V(24) = $",
+          "answer": 16000,
+          "tolerance": 1
         }
       ],
-      "hint": "Set V(t)=64000. Divide by 2000. What power of 2?",
+      "hint": "Write V(t) = V₀ · 2^(t/T). Then evaluate at t = 24. This is plug-in, not solve — no algebra needed for part (b).",
       "solution_steps": [
-        "2000 · 2^(t/8) = 64000.",
-        "2^(t/8) = 32.",
-        "32 = 2⁵, so t/8 = 5.",
-        "t = 40 years."
+        "V₀ = 2000 (starting value). Doubles (factor 2) every T = 8 years.",
+        "Model: V(t) = 2000 · 2^(t/8).",
+        "V(24) = 2000 · 2^(24/8) = 2000 · 2³ = 2000 · 8 = 16,000.",
+        "The investment is worth ,000 after 24 years."
       ],
-      "feedback_correct": "🔥 40 years. Compound growth."
+      "feedback_correct": "🔥 Model written and evaluated. ,000.",
+      "feedback_wrong": "Write V(t) = 2000 · 2^(t/8) first. Then plug in t=24."
     }
   ]
 }
