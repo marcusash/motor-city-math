@@ -327,23 +327,24 @@
       "section": "B",
       "standard": "W3.e",
       "type": "extraneous",
-      "question_html": "Solve: ( sqrt{x + 12} = x - 8 )",
+      "question_html": "Solve: \\\\( \\\\sqrt{3x + 4} = x \\\\)",
       "inputs": [
         {
           "id": "q10_x",
           "type": "number",
           "label": "x =",
-          "answer": 14,
+          "answer": 4,
           "tolerance": 0.1
         }
       ],
       "hint": "Square both sides. Solve the resulting equation. Your answer may have fewer valid solutions than you expect.",
       "solution_steps": [
-        "Square: x - 5 = (x-11)² = x² - 22x + 121.",
-        "x² - 23x + 126 = 0 → (x-14)(x-9) = 0.",
-        "x = 14 or x = 9.",
-        "Check x=9: √4 = 2, but 9-11 = -2. Extraneous!",
-        "Check x=14: √9 = 3, and 14-11 = 3. ✓"
+        "Square both sides: 3x+4 = x^2.",
+        "Rearrange: x^2 - 3x - 4 = 0. Factor: (x-4)(x+1) = 0.",
+        "x = 4 or x = -1.",
+        "Check x=4: sqrt(16) = 4. Valid.",
+        "Check x=-1: sqrt(1) = 1, but RHS = -1. 1 does not equal -1. Extraneous.",
+        "Answer: x = 4 only. W3.e: always check. The extraneous root looked valid until you checked."
       ],
       "feedback_correct": "🔥 Caught the extraneous one."
     },
