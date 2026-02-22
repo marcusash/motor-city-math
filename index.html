@@ -930,17 +930,23 @@
     function dadModeInit() {
         if (!_dadMode) return;
         document.getElementById('dadBanner').style.display = 'flex';
-        fetch('data/kai-scores-2026-02-22.json')
-            .then(function(r) { return r.json(); })
+        document.getElementById('dadStatus').textContent = 'Loading Kai\'s scores...';
+        fetch('data/kai-scores-latest.json?v=' + Date.now())
+            .then(function(r) { if (!r.ok) throw new Error(r.status); return r.json(); })
             .then(function(data) {
                 if (data && data.mcm_scores) {
                     _dadScores = data.mcm_scores;
-                    document.getElementById('dadStatus').textContent = 'Kai\'s scores loaded (Feb 21). Click "Update" to load a fresher file.';
+                    var exported = data.exported
+                        ? new Date(data.exported).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })
+                        : 'unknown date';
+                    document.getElementById('dadStatus').textContent = 'Kai\'s scores as of ' + exported + '. Click "Update" to load a newer file.';
                     rerenderAll();
+                } else {
+                    document.getElementById('dadStatus').textContent = 'Score file found but empty. Click "Update" to load from Kai\'s device.';
                 }
             })
-            .catch(function() {
-                document.getElementById('dadStatus').textContent = 'Click "Update from Kai\'s device" to load his score file.';
+            .catch(function(err) {
+                document.getElementById('dadStatus').textContent = 'Could not load scores (' + err + '). Click "Update" to load from Kai\'s device.';
             });
     }
 
@@ -973,7 +979,7 @@
         // Dad can text Kai: https://marcusash.github.io/motor-city-math/?restore=1
         var _restoreMode = new URLSearchParams(window.location.search).get('restore') === '1';
         if (_restoreMode) {
-            fetch('data/kai-scores-2026-02-22.json')
+            fetch('data/kai-scores-latest.json?v=' + Date.now())
                 .then(function(r) { return r.json(); })
                 .then(function(data) {
                     if (data && data.mcm_scores) {
