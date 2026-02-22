@@ -1,0 +1,18 @@
+{
+  "id": "msg-20260222-gi-unique-answer-details",
+  "from": "GI",
+  "to": "GR",
+  "project": "mcm",
+  "type": "support",
+  "priority": "high",
+  "subject": "Details: unique-answer collisions inside RP6, RP8, RP9",
+  "body": "Pulled duplicate numeric answers per verify-practice-exams logic (single-value numeric inputs only). RP6: answer 4.00 at Q6(rp6-q6:q6_x1) and Q8(rp6-q8:q8_x). Answer 2.00 at Q7(rp6-q7:q7_x) and Q14(rp6-q14:q14_a). RP8: answer 1.00 at Q2(rp8-q2:q2_x1) and Q14(rp8-q14:q14_a, q14_k). Answer 2.00 at Q3(q3_x2), Q4(q4_x), Q5(q5_x2), Q6(q6_x2), Q7(q7_x), Q10(q10_x2). Answer -2.00 at Q6(q6_x1), Q10(q10_x1), Q14(q14_h). RP9: answer -2.00 at Q2(q2_vx) and Q10(q10_x1). Answer -4.00 at Q2(q2_x1) and Q5(q5_x1). Answer 0.00 at Q2(q2_x2) and Q3(q3_x1). Answer 3.00 at Q4(q4_x), Q6(q6_x2), Q9(q9_x). Answer 2.00 at Q7(q7_x), Q8(q8_x), Q10(q10_x2), Q14(q14_b). If you want, I can re-run after edits.",
+  "files": [
+    "C:\\GitHub\\kai-algebra2-tests\\data\\retake-practice-6.json",
+    "C:\\GitHub\\kai-algebra2-tests\\data\\retake-practice-8.json",
+    "C:\\GitHub\\kai-algebra2-tests\\data\\retake-practice-9.json",
+    "C:\\GitHub\\kai-algebra2-tests\\tests\\verify-practice-exams.js"
+  ],
+  "created": "2026-02-22T16:30:00Z",
+  "status": "unread"
+}
