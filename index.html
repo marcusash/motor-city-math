@@ -191,7 +191,8 @@
         }
         @media print { .dashboard { display: none; } }
 
-        /* Dad Mode */
+        /* Dashboard header: suppress global header border so hero-card accent bar doesn't double up */
+        header.dash-header { border-bottom: none; padding-bottom: 0; margin-bottom: 16px; }
         .dad-banner {
             display: flex; align-items: center; flex-wrap: wrap; gap: 10px;
             background: #0d1117; border: 1px solid #e74c3c; border-radius: 8px;
@@ -338,66 +339,130 @@
             return;
         }
 
+        var isDark = document.body.classList.contains('arena-mode');
+        if (isDark && typeof setChartMode === 'function') setChartMode('arena');
+
         var cs = getComputedStyle(document.documentElement);
         var tkBlue = cs.getPropertyValue('--accent-blue').trim() || '#1D42BA';
-        var tkGrid = cs.getPropertyValue('--chart-grid').trim() || '#E2E5EF';
-        var tkSecondary = cs.getPropertyValue('--text-secondary').trim() || '#5E6378';
+        var tkGrid = isDark ? 'rgba(255,255,255,0.08)' : (cs.getPropertyValue('--chart-grid').trim() || '#E2E5EF');
+        var tkSecondary = isDark ? '#AAAABC' : (cs.getPropertyValue('--text-secondary').trim() || '#5E6378');
         var tkCorrect = cs.getPropertyValue('--color-correct').trim() || '#1B7D3A';
         var tkRed = cs.getPropertyValue('--accent-red').trim() || '#C8102E';
+        var tkLabel = isDark ? '#E8E8ED' : '#1A1F36';
+
+        var yMin = Math.max(0, Math.min.apply(null, data) - 20);
 
         var ctx = document.getElementById('scoreChart').getContext('2d');
         if (_chartInstance) { _chartInstance.destroy(); _chartInstance = null; }
+
+        // Grade reference lines as flat datasets — no annotation plugin needed
+        var grade4Data = labels.map(function() { return 92; });
+        var grade3Data = labels.map(function() { return 82; });
+        var grade2Data = labels.map(function() { return 70; });
+
+        // Inline data labels plugin
+        var dataLabelPlugin = {
+            id: 'pointLabels',
+            afterDatasetsDraw: function(chart) {
+                var ctx = chart.ctx;
+                var meta = chart.getDatasetMeta(0);
+                if (meta.hidden) return;
+                ctx.save();
+                ctx.font = 'bold 12px ' + MCM_CHART_COLORS.fontFamily;
+                ctx.fillStyle = tkLabel;
+                ctx.textAlign = 'center';
+                meta.data.forEach(function(point, i) {
+                    ctx.fillText(data[i] + '%', point.x, point.y - 10);
+                });
+                ctx.restore();
+            }
+        };
+
         _chartInstance = new Chart(ctx, {
             type: 'line',
+            plugins: [dataLabelPlugin],
             data: {
                 labels: labels,
-                datasets: [{
-                    label: 'Score %',
-                    data: data,
-                    borderColor: tkBlue,
-                    backgroundColor: 'rgba(29, 66, 186, 0.08)',
-                    borderWidth: 3,
-                    pointBackgroundColor: tkBlue,
-                    pointRadius: 5,
-                    pointHoverRadius: 7,
-                    fill: true,
-                    tension: 0.3
-                }]
+                datasets: [
+                    {
+                        label: 'Score %',
+                        data: data,
+                        borderColor: tkBlue,
+                        backgroundColor: isDark ? 'rgba(74, 114, 232, 0.15)' : 'rgba(29, 66, 186, 0.08)',
+                        borderWidth: 3,
+                        pointBackgroundColor: tkBlue,
+                        pointRadius: 6,
+                        pointHoverRadius: 8,
+                        fill: true,
+                        tension: 0.3,
+                        order: 1
+                    },
+                    {
+                        label: 'Grade 4 (92%)',
+                        data: grade4Data,
+                        borderColor: tkCorrect,
+                        borderWidth: 1,
+                        borderDash: [6, 4],
+                        pointRadius: 0,
+                        fill: false,
+                        order: 2
+                    },
+                    {
+                        label: 'Grade 3 (82%)',
+                        data: grade3Data,
+                        borderColor: tkBlue,
+                        borderWidth: 1,
+                        borderDash: [4, 4],
+                        pointRadius: 0,
+                        fill: false,
+                        order: 3
+                    },
+                    {
+                        label: 'Grade 2 (70%)',
+                        data: grade2Data,
+                        borderColor: tkRed,
+                        borderWidth: 1,
+                        borderDash: [4, 4],
+                        pointRadius: 0,
+                        fill: false,
+                        order: 4
+                    }
+                ]
             },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
                 scales: {
                     y: {
-                        min: 0, max: 100,
-                        ticks: { callback: function(v) { return v + '%'; } },
+                        min: yMin,
+                        max: 100,
+                        ticks: {
+                            callback: function(v) { return v + '%'; },
+                            color: tkLabel
+                        },
                         grid: { color: tkGrid }
                     },
-                    x: { grid: { display: false } }
+                    x: {
+                        grid: { display: false },
+                        ticks: { color: tkLabel }
+                    }
                 },
                 plugins: {
-                    legend: { display: false },
-                    tooltip: {
-                        callbacks: {
-                            label: function(ctx) { return tooltips[ctx.dataIndex] || ''; }
+                    legend: {
+                        display: true,
+                        labels: {
+                            filter: function(item) { return item.datasetIndex > 0; },
+                            color: tkSecondary,
+                            font: { size: 11 },
+                            boxWidth: 20,
+                            padding: 12
                         }
                     },
-                    annotation: {
-                        annotations: {
-                            grade4Line: {
-                                type: 'line', yMin: 92, yMax: 92,
-                                borderColor: tkCorrect, borderWidth: 1, borderDash: [6, 4],
-                                label: { content: 'Grade 4 (92%)', display: true, position: 'start', font: { size: 10 }, color: tkCorrect }
-                            },
-                            grade3Line: {
-                                type: 'line', yMin: 82, yMax: 82,
-                                borderColor: tkBlue, borderWidth: 1, borderDash: [4, 4],
-                                label: { content: 'Grade 3 (82%)', display: true, position: 'end', font: { size: 10 }, color: tkBlue }
-                            },
-                            grade2Line: {
-                                type: 'line', yMin: 70, yMax: 70,
-                                borderColor: tkRed, borderWidth: 1, borderDash: [4, 4],
-                                label: { content: 'Grade 2 (70%)', display: true, position: 'start', font: { size: 10 }, color: tkRed }
+                    tooltip: {
+                        callbacks: {
+                            label: function(ctx) {
+                                if (ctx.datasetIndex === 0) return tooltips[ctx.dataIndex] || '';
+                                return ctx.dataset.label;
                             }
                         }
                     }
