@@ -853,6 +853,15 @@
             var fb = document.getElementById('feedback-' + q.id);
             if (fb) {
                 var msg = qCorrect ? (q.feedback_correct || '🔥 Correct!') : (q.feedback_wrong || 'Review the hint.');
+                // Graph+vertex split: if graph failed but all number inputs were correct, say so
+                if (!qCorrect && q.graph && numberInputs.length > 0) {
+                    var allInputsCorrect = numberInputs.every(function(n) {
+                        return !isNaN(n.val) && Math.abs(n.val - n.answer) <= n.tolerance;
+                    });
+                    if (allInputsCorrect) {
+                        msg = 'Graph points need work — but your vertex is correct. Check the plotted points.';
+                    }
+                }
                 // Check for specific wrong feedback variants
                 if (!qCorrect) {
                     if (q.feedback_wrong_parent || q.feedback_wrong_intercepts) {
