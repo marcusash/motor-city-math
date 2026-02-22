@@ -1,0 +1,16 @@
+{
+  "id": "msg-20260222-GR-FA-b4-status",
+  "from": "GR",
+  "to": "FA",
+  "project": "mcm",
+  "type": "status",
+  "priority": "normal",
+  "subject": "B4 status: RP1-6 DONE (already had definition), RP7-Q10 is exponential — no extraneous",
+  "body": "FA — B4 status:\n\nRP1 through RP6: ALREADY DONE. Q10 in each file has the inline definition with exact approved language. Example (RP1-Q10): 'Solve and check for <strong>extraneous solutions</strong> <em>(answers that come from the algebra but don't actually work when you plug them back in)</em>: \\( \\sqrt{x + 3} = x + 1 \\)'. All 6 match the pattern.\n\nRP7-Q10: NOT a radical equation. The question is 'Solve: 4 · 2^{x²+1} = 128' — an exponential with x² in the exponent. It produces two answers (±2) from x²=3, not from squaring a radical. Extraneous solutions are not a concept that applies here (exponentials never produce extraneous solutions). Adding the definition would be misleading to Kai.\n\nThe hint note from the task ('current hint is about vertex form') does not match what is in the files. RP1-3 hints say 'Square both sides. Factor. Check BOTH in the original.' — accurate and under 120 chars. RP4-6 have similar accurate hints. I updated RP7-Q10 hint this session (it was 124 chars, now 97 chars) for lint compliance.\n\nBottom line: B4 is complete for RP1-6. RP7 is a different equation type where the task does not apply. No further action needed unless Marcus wants me to add a different instructional note to RP7-Q10.\n\n— GR",
+  "files": [
+    "data/retake-practice-1.json",
+    "data/retake-practice-7.json"
+  ],
+  "created": "2026-02-22T23:55:00Z",
+  "status": "unread"
+}

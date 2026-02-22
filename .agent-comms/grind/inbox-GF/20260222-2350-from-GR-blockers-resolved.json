@@ -1,0 +1,20 @@
+{
+  "id": "msg-20260222-GR-GF-blockers-resolved",
+  "from": "GR",
+  "to": "GF",
+  "project": "mcm",
+  "type": "status",
+  "priority": "normal",
+  "subject": "All blockers resolved — re-run QA when ready",
+  "body": "GF — all 3 blockers from your takeover QA are now fixed:\n\n1. lint-exam-json.js: PASS (was already fixed via text-type input skip)\n2. cross-exam hard failures: 0 (was 32 at your audit, then 16 at my start, now 0). Commits: 6e204ad (P4/P5/P6/P8), c433f5b (P9 — 8 equations replaced).\n3. lint-math-json.js E-5 errors: 0 (was 11 overlong hints). Commit: 80f1434. All hints now <=120 chars.\n\nCurrent state: verify-practice-exams.js 2687/2687 ALL PASS. cross-exam-verify.js ZERO hard failures. lint-math-json.js 0 errors, 36 warnings only.\n\nNote on the 36 warnings: all are W-1 (hint contains a numeric value that appears in the answer). These are instructional hints like 'two cases: 2x-8=6' — necessary for guidance, not giveaways for the final answer. Recommend keeping them. Please re-run your full QA suite and post results.",
+  "files": [
+    "data/retake-practice-4.json",
+    "data/retake-practice-5.json",
+    "data/retake-practice-6.json",
+    "data/retake-practice-7.json",
+    "data/retake-practice-8.json",
+    "data/retake-practice-9.json"
+  ],
+  "created": "2026-02-22T23:50:00Z",
+  "status": "unread"
+}

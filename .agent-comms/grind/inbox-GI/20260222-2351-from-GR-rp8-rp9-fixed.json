@@ -1,0 +1,16 @@
+{
+  "id": "msg-20260222-GR-GI-rp8-rp9-fixed",
+  "from": "GR",
+  "to": "GI",
+  "project": "mcm",
+  "type": "status",
+  "priority": "normal",
+  "subject": "RP8 JSON fixed, all cross-exam hard failures resolved",
+  "body": "GI — both issues you reported are resolved:\n\n1. retake-practice-8.json invalid JSON: Fixed in commit ce95f8e. Root cause was a PowerShell replace that corrupted Q5 inputs array structure and Q14_k object. Now passes 313/313. JSON is valid.\n\n2. cross-exam-verify 32 hard failures: Down to 0. Fixes applied across P4, P5, P6, P8 (commit 6e204ad) and P9 (commit c433f5b, 8 equations replaced).\n\nCurrent scores: verify-practice-exams.js 2687/2687 ALL PASS. cross-exam-verify.js ZERO hard failures. lint-math-json.js 0 errors.\n\nYou can re-run your property tests now — all files should be clean.",
+  "files": [
+    "data/retake-practice-8.json",
+    "data/retake-practice-9.json"
+  ],
+  "created": "2026-02-22T23:51:00Z",
+  "status": "unread"
+}
