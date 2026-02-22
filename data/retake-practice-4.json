@@ -158,7 +158,7 @@
           "tolerance": 0.1
         }
       ],
-      "hint": "Factor out the coefficient first. Then use the absolute value definition: if |2x-8| = 6, there are TWO cases: 2x-8=6  (positive case)  OR  -(2x-8)=6  (negative case). Multiply the negative case by -1 to solve.",
+      "hint": "Factor out the coefficient. Two cases: positive (2x-8=6) OR negative (-(2x-8)=6). Solve each.",
       "solution_steps": [
         "Factor: |2x−8| = 2|x−4|. So f(x) = 2|x−4| − 6.",
         "a = 2 (vertical stretch ×2), h = 4 (shift right 4), k = −6 (shift down 6).",
@@ -176,25 +176,25 @@
       "section": "B",
       "standard": "W3.d",
       "type": "exponential",
-      "question_html": "Solve: \\( 3^{2x + 1} = 81 \\)",
+      "question_html": "Solve: \\( 5^{2x - 3} = 625 \\)",
       "inputs": [
         {
           "id": "q4_x",
           "type": "number",
           "label": "x =",
-          "answer": 1.5,
+          "answer": 3.5,
           "tolerance": 0.01
         }
       ],
-      "hint": "Rewrite 81 as 3⁴. Set exponents equal.",
+      "hint": "Rewrite 625 as 5⁴. Set exponents equal.",
       "solution_steps": [
-        "Rewrite: 3^(2x+1) = 3⁴.",
-        "Set exponents equal: 2x + 1 = 4.",
-        "2x = 3 → x = 3/2 = 1.5.",
-        "Check: 3^(3+1) = 3⁴ = 81 ✓"
+        "Rewrite: 5^(2x-3) = 5⁴.",
+        "Set exponents equal: 2x - 3 = 4.",
+        "2x = 7 → x = 7/2 = 3.5.",
+        "Check: 5^(2×3.5-3) = 5^4 = 625 ✓"
       ],
       "feedback_correct": "🔥 Exponent match. Clean.",
-      "feedback_wrong": "Rewrite 81 as a power of 3."
+      "feedback_wrong": "Rewrite 625 as a power of 5 (5⁴). Then set exponents equal."
     },
     {
       "id": "rp4-q5",
@@ -341,7 +341,7 @@
       "section": "B",
       "standard": "W3.e",
       "type": "extraneous",
-      "question_html": "Solve: \\( \\sqrt{x + 7} = x + 5 \\)",
+      "question_html": "Solve: \\( \\sqrt{x + 7} = x + 5 \\)<br><em>Note: check for <strong>extraneous solutions</strong> — answers that come from the algebra but don't actually work when you plug them back in.</em>",
       "inputs": [
         {
           "id": "q10_x",
@@ -592,7 +592,7 @@
           "tolerance": 0.5
         }
       ],
-      "hint": "P(t) = P₀ · r^(t/T). Identify P₀ (starting value), r (growth factor = 1 + rate), T (period in years). Then set P(t) = 16875.",
+      "hint": "P(t) = P₀ · r^(t/T). Identify P₀, r (growth factor), T (period in years). Set P(t) = 16875.",
       "solution_steps": [
         "P₀ = 5000 (starting value). Growth factor r = 1.5 (50% growth). Period T = 10 years.",
         "Model: P(t) = 5000 · 1.5^(t/10).",

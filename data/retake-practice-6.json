@@ -160,7 +160,7 @@
           "tolerance": 0.1
         }
       ],
-      "hint": "Factor out the coefficient first. Then use the absolute value definition: if |4x-8| = 12, there are TWO cases: 4x-8=12  (positive case)  OR  -(4x-8)=12  (negative case). Multiply the negative case by -1 to solve.",
+      "hint": "Factor out the coefficient. Two cases: positive (4x-8=12) OR negative (-(4x-8)=12). Solve each.",
       "solution_steps": [
         "Factor: |4x−8| = 4|x−2|. So f(x) = 4|x−2| − 12.",
         "a=4, h=2, k=−12. Vertex at (2, −12). Opens UP (a>0).",
@@ -260,23 +260,23 @@
       "section": "B",
       "standard": "W3.b",
       "type": "radical",
-      "question_html": "Solve: \\( \\sqrt{x + 7} - \\sqrt{x - 1} = 2 \\)",
+      "question_html": "Solve: \\( \\sqrt{x + 11} - \\sqrt{x + 2} = 1 \\)",
       "inputs": [
         {
           "id": "q7_x",
           "type": "number",
           "label": "x =",
-          "answer": 2,
+          "answer": 14,
           "tolerance": 0.01
         }
       ],
-      "hint": "Two radicals cannot both be eliminated at once. Isolate ONE radical on one side, then square. You will still have a radical after the first square — isolate and square again.",
+      "hint": "Isolate ONE radical, square both sides. A radical will remain — isolate and square again.",
       "solution_steps": [
-        "Isolate one radical: √(x+7) = √(x−1) + 2.",
-        "Square both sides: x+7 = (√(x−1)+2)² = (x−1)+4√(x−1)+4.",
-        "x+7 = x+3+4√(x−1) → 4 = 4√(x−1) → √(x−1) = 1.",
-        "Square again: x−1 = 1 → x = 2.",
-        "Check: √9 − √1 = 3 − 1 = 2 ✓"
+        "Isolate one radical: √(x+11) = √(x+2) + 1.",
+        "Square both sides: x+11 = (√(x+2)+1)² = (x+2)+2√(x+2)+1.",
+        "x+11 = x+3+2√(x+2) → 8 = 2√(x+2) → √(x+2) = 4.",
+        "Square again: x+2 = 16 → x = 14.",
+        "Check: √25 − √16 = 5 − 4 = 1 ✓"
       ],
       "feedback_correct": "🔥 Two rounds of squaring. That is the full technique.",
       "feedback_wrong": "You cannot eliminate both radicals at once. Isolate one, square, simplify, then isolate the remaining radical and square again."
@@ -287,21 +287,22 @@
       "section": "B",
       "standard": "W3.d",
       "type": "exponential",
-      "question_html": "Solve: \\( 27^x = 9^{x+2} \\)",
+      "question_html": "Solve: \\( 27^x = 9^{x+3} \\)",
       "inputs": [
         {
           "id": "q8_x",
           "type": "number",
           "label": "x =",
-          "answer": 4,
+          "answer": 6,
           "tolerance": 0.01
         }
       ],
       "hint": "Rewrite both sides as powers of 3.",
       "solution_steps": [
-        "27\\u02E3 = (3³)\\u02E3 = 3^(3x).",
-        "9^(x+2) = (3²)^(x+2) = 3^(2x+4).",
-        "3x = 2x + 4 → x = 4."
+        "27^x = (3³)^x = 3^(3x).",
+        "9^(x+3) = (3²)^(x+3) = 3^(2x+6).",
+        "3x = 2x + 6 → x = 6.",
+        "Check: 27^6 = 3^18, 9^9 = 3^18 ✓"
       ],
       "feedback_correct": "🔥 Common base. Smooth."
     },
@@ -335,7 +336,7 @@
       "section": "B",
       "standard": "W3.e",
       "type": "extraneous",
-      "question_html": "Solve: \\( \\sqrt{x - 2} = x - 8 \\)",
+      "question_html": "Solve: \\( \\sqrt{x - 2} = x - 8 \\)<br><em>Note: check for <strong>extraneous solutions</strong> — answers that come from the algebra but don't actually work when you plug them back in.</em>",
       "inputs": [
         {
           "id": "q10_x",

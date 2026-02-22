@@ -57,6 +57,9 @@
         .scorecard { background: var(--bg-card); border: 2px solid var(--accent-blue); border-radius: 12px; padding: 24px; margin: 24px 0; text-align: center; box-shadow: var(--shadow-card); }
         .scorecard h2 { color: var(--text-primary); margin: 0 0 8px; }
         .scorecard .score-big { font-size: var(--text-2xl); font-weight: 900; color: var(--accent-navy); }
+        @keyframes grade-a-flash { 0%,100%{background:transparent} 50%{background:rgba(63,185,80,0.18)} }
+        .grade-a-flash { animation: grade-a-flash 0.6s ease 1; }
+        @media (prefers-reduced-motion: reduce) { .grade-a-flash { animation: none; background: rgba(63,185,80,0.18); } }
         .scorecard .score-pct { font-size: var(--text-lg); color: var(--text-secondary); margin: 4px 0 12px; }
         .saas-grade { display: inline-block; padding: 6px 20px; border-radius: 20px; font-weight: 800; font-size: var(--text-lg); color: white; }
         .saas-grade.g4 { background: var(--color-correct); }
@@ -97,6 +100,14 @@
         .exam-picker-card:hover { border-color: var(--accent-blue); box-shadow: 0 2px 12px rgba(0,45,98,0.12); }
         .exam-picker-card .card-title { font-weight: 700; color: var(--text-primary); font-size: var(--text-base); margin-bottom: 4px; }
         .exam-picker-card .card-desc { color: var(--text-secondary); font-size: var(--text-sm); }
+        /* WCAG 2.4.7: visible focus indicator */
+        :focus-visible { outline: 2px solid rgba(255,255,255,0.9); outline-offset: 2px; }
+        /* Answer format guide */
+        .answer-format-guide {
+            font-size: var(--text-sm); color: var(--text-secondary);
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: 6px; padding: 8px 14px; margin: 8px 0 16px; line-height: 1.5;
+        }
     </style>
 </head>
 <body>
@@ -112,6 +123,9 @@
             <h1 id="examTitle"></h1>
         </header>
         <p class="subtitle exam-subtitle" id="examSubtitle"></p>
+        <div class="answer-format-guide" id="answerFormatGuide" style="display:none">
+            <strong>Answer formats:</strong> whole numbers (5 or -8) &nbsp;&middot;&nbsp; fractions (4/3) &nbsp;&middot;&nbsp; square roots (sqrt(5) or 2sqrt(3))
+        </div>
 
         <div class="progress-strip" id="progressStrip">
             <div class="progress-text" id="progressText">0 / 15</div>
@@ -136,6 +150,47 @@
     <script>
     /* ========== EXAM RENDERER ========== */
     var examData = null;
+    var examId = new URLSearchParams(window.location.search).get('file') || 'unknown';
+
+    function autosave() {
+        if (!examData) return;
+        var state = {};
+        try {
+            examData.questions.forEach(function(q) {
+                q.inputs.forEach(function(inp) {
+                    if (inp.type === 'radio') {
+                        var el = document.querySelector('input[name="' + inp.id + '"]:checked');
+                        state[inp.id] = el ? el.value : '';
+                    } else {
+                        var el = document.getElementById(inp.id);
+                        state[inp.id] = el ? el.value : '';
+                    }
+                });
+            });
+            sessionStorage.setItem('exam-autosave-' + examId, JSON.stringify(state));
+        } catch(e) { /* sessionStorage full or unavailable */ }
+    }
+
+    function restoreAutosave() {
+        try {
+            var saved = sessionStorage.getItem('exam-autosave-' + examId);
+            if (!saved) return;
+            var state = JSON.parse(saved);
+            examData.questions.forEach(function(q) {
+                q.inputs.forEach(function(inp) {
+                    if (inp.type === 'radio') {
+                        if (state[inp.id]) {
+                            var el = document.getElementById(inp.id + '_' + state[inp.id]);
+                            if (el) el.checked = true;
+                        }
+                    } else {
+                        var el = document.getElementById(inp.id);
+                        if (el && state[inp.id]) el.value = state[inp.id];
+                    }
+                });
+            });
+        } catch(e) { /* parse error */ }
+    }
     var graphData = {};
     var examGraded = false;
 
@@ -153,23 +208,47 @@
         if (!file) {
             document.getElementById('examTitle').textContent = 'Pick Your Challenge 🏀';
             document.getElementById('examSubtitle').textContent = 'Choose a test below to get started';
-            document.getElementById('questionsContainer').innerHTML =
-                '<div class="exam-picker">' +
-                '<div class="exam-picker-grid">' +
-                '<a class="exam-picker-card" href="exam.html?file=retake-practice-1"><div class="card-title">Retake Practice 1</div><div class="card-desc">15 questions · Nonlinear Functions</div></a>' +
-                '<a class="exam-picker-card" href="exam.html?file=retake-practice-2"><div class="card-title">Retake Practice 2</div><div class="card-desc">15 questions · Nonlinear Functions</div></a>' +
-                '<a class="exam-picker-card" href="exam.html?file=retake-practice-3"><div class="card-title">Retake Practice 3</div><div class="card-desc">15 questions · Nonlinear Functions</div></a>' +
-                '<a class="exam-picker-card" href="exam.html?file=retake-practice-4"><div class="card-title">Retake Practice 4</div><div class="card-desc">15 questions · Nonlinear Functions</div></a>' +
-                '<a class="exam-picker-card" href="exam.html?file=retake-practice-5"><div class="card-title">Retake Practice 5</div><div class="card-desc">15 questions · Nonlinear Functions</div></a>' +
-                '<a class="exam-picker-card" href="exam.html?file=retake-practice-6"><div class="card-title">Retake Practice 6 (W2.b Drill)</div><div class="card-desc">15 questions · W2.b Intercepts</div></a>' +
-                '<a class="exam-picker-card" href="exam.html?file=retake-practice-7"><div class="card-title">Retake Practice 7 (Mock Retake)</div><div class="card-desc">15 questions · Full Mock</div></a>' +
-                '</div>' +
-                '<p style="margin-top:20px;"><a href="index.html" class="btn-ghost">← Back to Dashboard</a></p>' +
-                '</div>';
+            var FALLBACK_EXAMS = [
+                { id: 'retake-practice-1', title: 'Retake Practice 1', desc: '15 questions · Nonlinear Functions' },
+                { id: 'retake-practice-2', title: 'Retake Practice 2', desc: '15 questions · Nonlinear Functions' },
+                { id: 'retake-practice-3', title: 'Retake Practice 3', desc: '15 questions · Nonlinear Functions' },
+                { id: 'retake-practice-4', title: 'Retake Practice 4', desc: '15 questions · Nonlinear Functions' },
+                { id: 'retake-practice-5', title: 'Retake Practice 5', desc: '15 questions · Nonlinear Functions' },
+                { id: 'retake-practice-6', title: 'Retake Practice 6 (W2.b Drill)', desc: '15 questions · W2.b Intercepts' },
+                { id: 'retake-practice-7', title: 'Retake Practice 7 (Mock Retake)', desc: '15 questions · Full Mock' },
+                { id: 'retake-practice-8', title: 'Retake Practice 8', desc: '15 questions · Nonlinear Functions' },
+                { id: 'retake-practice-9', title: 'Retake Practice 9', desc: '15 questions · Nonlinear Functions' }
+            ];
+            function renderPicker(exams) {
+                var cards = exams.map(function(e) {
+                    return '<a class="exam-picker-card" href="exam.html?file=' + e.id + '"><div class="card-title">' + e.title + '</div><div class="card-desc">' + e.desc + '</div></a>';
+                }).join('');
+                document.getElementById('questionsContainer').innerHTML =
+                    '<div class="exam-picker">' +
+                    '<div class="exam-picker-grid">' + cards + '</div>' +
+                    '<p style="margin-top:20px;"><a href="index.html" class="btn-ghost">← Back to Dashboard</a></p>' +
+                    '</div>';
+            }
+            if (typeof fetch === 'function' && window.location.protocol !== 'file:') {
+                fetch('data/manifest.json').then(function(r) { return r.json(); }).then(function(m) {
+                    renderPicker(m.exams || FALLBACK_EXAMS);
+                }).catch(function() { renderPicker(FALLBACK_EXAMS); });
+            } else {
+                renderPicker(FALLBACK_EXAMS);
+            }
             return;
         }
 
         var url = 'data/' + file + '.json';
+
+        function showLoadError(msg) {
+            document.getElementById('questionsContainer').innerHTML =
+                '<div class="error-msg">' +
+                '<p style="margin:0 0 16px">' + msg + '</p>' +
+                '<a href="exam.html" class="btn-ghost" style="display:inline-block;margin-right:10px">← Pick a different test</a>' +
+                '<button onclick="location.reload()" style="padding:8px 18px;border:1px solid var(--border-default);border-radius:6px;background:var(--bg-input);color:var(--text-primary);cursor:pointer;font-size:var(--text-sm)">Retry</button>' +
+                '</div>';
+        }
 
         // Fetch with file:// fallback
         if (typeof fetch === 'function' && window.location.protocol !== 'file:') {
@@ -177,7 +256,7 @@
                 if (!r.ok) throw new Error('Not found');
                 return r.json();
             }).then(loadExam).catch(function() {
-                document.getElementById('questionsContainer').innerHTML = '<div class="error-msg">Could not load exam: ' + file + '.json</div>';
+                showLoadError('Could not load <strong>' + file + '</strong>. Check your connection and try again.');
             });
         } else {
             var xhr = new XMLHttpRequest();
@@ -185,14 +264,14 @@
             xhr.onload = function() {
                 if (xhr.status === 200 || xhr.status === 0) {
                     try { loadExam(JSON.parse(xhr.responseText)); } catch(e) {
-                        document.getElementById('questionsContainer').innerHTML = '<div class="error-msg">Error parsing exam JSON.</div>';
+                        showLoadError('Error reading exam data. The file may be corrupted.');
                     }
                 } else {
-                    document.getElementById('questionsContainer').innerHTML = '<div class="error-msg">Could not load exam: ' + file + '.json</div>';
+                    showLoadError('Could not load <strong>' + file + '</strong> (status ' + xhr.status + ').');
                 }
             };
             xhr.onerror = function() {
-                document.getElementById('questionsContainer').innerHTML = '<div class="error-msg">Could not load exam: ' + file + '.json</div>';
+                showLoadError('Network error loading <strong>' + file + '</strong>. Try reloading.');
             };
             xhr.send();
         }
@@ -221,6 +300,15 @@
         document.getElementById('examTitle').textContent = displayTitle;
         document.getElementById('examSubtitle').textContent = data.subtitle || '';
 
+        // Show answer format guide if exam has any number inputs
+        var hasNumberInputs = data.questions.some(function(q) {
+            return q.inputs && q.inputs.some(function(i) { return i.type === 'number'; });
+        });
+        if (hasNumberInputs) {
+            var guide = document.getElementById('answerFormatGuide');
+            if (guide) guide.style.display = '';
+        }
+
         // Timer: set data-time-minutes on header for shared/scripts.js timer
         if (data.time_minutes) {
             document.querySelector('.test-header').setAttribute('data-time-minutes', data.time_minutes);
@@ -228,6 +316,10 @@
         }
 
         renderQuestions(data.questions);
+        restoreAutosave();
+        // Delegated autosave listener
+        document.getElementById('questionsContainer').addEventListener('input', autosave);
+        document.getElementById('questionsContainer').addEventListener('change', autosave);
         document.getElementById('submitArea').style.display = '';
 
         // Render KaTeX after DOM is populated
@@ -778,6 +870,7 @@
         }
 
         examGraded = true;
+        sessionStorage.removeItem('exam-autosave-' + examId);
 
         // Hide progress bar after grading
         var strip = document.getElementById('progressStrip');
@@ -816,7 +909,7 @@
                 } else if (inp.type === 'number') {
                     var el2 = document.getElementById(inp.id);
                     var val = el2 ? parseStudentAnswer(el2.value) : NaN;
-                    numberInputs.push({ val: val, answer: inp.answer, tolerance: inp.tolerance || 0.01 });
+                    numberInputs.push({ el: el2, val: val, answer: inp.answer, tolerance: inp.tolerance || 0.01 });
                 } else if (inp.type === 'radio') {
                     var selected = document.querySelector('input[name="' + inp.id + '"]:checked');
                     if (!selected || selected.value !== inp.answer) qCorrect = false;
@@ -833,7 +926,13 @@
                 if (!order1 && !order2) qCorrect = false;
             } else {
                 numberInputs.forEach(function(n) {
-                    if (isNaN(n.val) || Math.abs(n.val - n.answer) > n.tolerance) qCorrect = false;
+                    var ok = !isNaN(n.val) && Math.abs(n.val - n.answer) <= n.tolerance;
+                    if (!ok) qCorrect = false;
+                    if (n.el) {
+                        n.el.style.borderColor = ok ? 'var(--color-correct, #3FB950)' : 'var(--color-incorrect, #F85149)';
+                        n.el.style.borderWidth = '2px';
+                        n.el.style.borderStyle = 'solid';
+                    }
                 });
             }
 
@@ -847,6 +946,15 @@
             var fb = document.getElementById('feedback-' + q.id);
             if (fb) {
                 var msg = qCorrect ? (q.feedback_correct || '🔥 Correct!') : (q.feedback_wrong || 'Review the hint.');
+                // Graph+vertex split: if graph failed but all number inputs were correct, say so
+                if (!qCorrect && q.graph && numberInputs.length > 0) {
+                    var allInputsCorrect = numberInputs.every(function(n) {
+                        return !isNaN(n.val) && Math.abs(n.val - n.answer) <= n.tolerance;
+                    });
+                    if (allInputsCorrect) {
+                        msg = 'Graph points need work — but your vertex is correct. Check the plotted points.';
+                    }
+                }
                 // Check for specific wrong feedback variants
                 if (!qCorrect) {
                     if (q.feedback_wrong_parent || q.feedback_wrong_intercepts) {
@@ -862,6 +970,13 @@
                     }
                 }
                 fb.className = 'answer-feedback show ' + (qCorrect ? 'correct' : 'incorrect');
+                // Append format hint if any number input has a non-integer answer
+                if (!qCorrect) {
+                    var hasNonIntAnswer = numberInputs.some(function(n) {
+                        return typeof n.answer === 'number' && n.answer % 1 !== 0;
+                    });
+                    if (hasNonIntAnswer) msg += ' (Accepted: whole numbers, fractions like 4/3, square roots like sqrt(5))';
+                }
                 fb.textContent = msg;
             }
 
@@ -899,7 +1014,7 @@
 
         var html = '<div class="scorecard">';
         html += '<h2>You got ' + score + ' out of ' + total + '</h2>';
-        html += '<div class="score-big">' + pct + '%</div>';
+        html += '<div class="score-big" id="scoreBigEl">0%</div>';
         html += '<div class="saas-grade ' + gradeClass + '">Grade ' + grade + '</div>';
         html += '<p style="margin-top:12px; color:var(--text-secondary); font-size:var(--text-sm);">' + coachMsg + '</p>';
 
@@ -932,6 +1047,35 @@
         html += '</div>';
 
         document.getElementById('scorecard').innerHTML = html;
+        // Animate score reveal
+        (function() {
+            var el = document.getElementById('scoreBigEl');
+            if (!el) return;
+            var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (prefersReduced) {
+                el.textContent = pct + '%';
+                if (pct >= 93) {
+                    el.classList.add('grade-a-flash');
+                    document.dispatchEvent(new CustomEvent('mcm:scoreReveal', { detail: { pct: pct, grade: grade } }));
+                }
+                return;
+            }
+            var start = null, dur = 600;
+            function step(ts) {
+                if (!start) start = ts;
+                var prog = Math.min((ts - start) / dur, 1);
+                el.textContent = Math.round(prog * pct) + '%';
+                if (prog < 1) requestAnimationFrame(step);
+                else {
+                    el.textContent = pct + '%';
+                    if (pct >= 93) {
+                        el.classList.add('grade-a-flash');
+                        document.dispatchEvent(new CustomEvent('mcm:scoreReveal', { detail: { pct: pct, grade: grade } }));
+                    }
+                }
+            }
+            requestAnimationFrame(step);
+        })();
         document.getElementById('scorecard').style.display = '';
     }
 

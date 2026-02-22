@@ -287,21 +287,7 @@
             .cards-2 { grid-template-columns: 1fr; }
             .bottom-nav { grid-template-columns: 1fr; }
         }
-        .dad-banner {
-            display: flex; align-items: center; flex-wrap: wrap; gap: 10px;
-            background: #0d1117; border: 1px solid #e74c3c; border-radius: 8px;
-            padding: 10px 16px; margin-bottom: 20px;
-        }
-        .dad-banner .dad-label { color: #e74c3c; font-weight: 700; font-size: var(--text-sm); white-space: nowrap; }
-        .dad-banner .dad-status { color: #8b949e; font-size: var(--text-sm); flex: 1; }
-        .dad-banner .dad-upload-label {
-            color: #58a6ff; font-size: var(--text-sm); text-decoration: underline;
-            cursor: pointer; white-space: nowrap;
-        }
-        .hero-greeting {
-            text-align: center; font-size: var(--text-lg); font-weight: 600;
-            color: var(--text-primary); margin: -12px 0 20px;
-        }
+        /* .dad-banner and .hero-greeting moved to shared/styles.css */
         /* ── App Header (FD redesign) ─────────────────────────────────── */
         .app-hd { text-align: center; margin-bottom: 24px; }
         .app-hd h1 { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.025em; color: var(--fd-text-1); margin: 0; }
@@ -338,7 +324,7 @@
     </style>
 </head>
 <body>
-    <script>if(localStorage.getItem('mcm-arena-mode')==='on')document.body.classList.add('arena-mode');</script>
+    <script>localStorage.removeItem('mcm-arena-mode');</script>
     <a href="#main" class="sr-only">Skip to content</a>
     <div class="dashboard" role="main" id="main">
 
@@ -563,39 +549,44 @@
         var rightLabels = '';
         if (lastRibPct !== null) {
             var ribColor = lastRibPct >= 93 ? '#3FB950' : '#E6EDF3';
-            rightLabels = '<text x="'+(labelX+4)+'" y="'+(lastRibY+4)+'" font-size="12" font-weight="700" fill="'+ribColor+'" font-family="system-ui,sans-serif">'+lastRibPct+'%</text>' +
-                          '<text x="'+(labelX+4)+'" y="'+(lastFaY+4)+'" font-size="12" font-weight="700" fill="'+faColor+'" font-family="system-ui,sans-serif">'+lastFaPct+'%</text>';
+            rightLabels = '<text x="'+(labelX+4)+'" y="'+(lastRibY+4)+'" font-size="12" font-weight="700" fill="'+ribColor+'" font-family="var(--font-body)">'+lastRibPct+'%</text>' +
+                          '<text x="'+(labelX+4)+'" y="'+(lastFaY+4)+'" font-size="12" font-weight="700" fill="'+faColor+'" font-family="var(--font-body)">'+lastFaPct+'%</text>';
         } else {
-            rightLabels = '<text x="'+(labelX+4)+'" y="'+(lastFaY+4)+'" font-size="12" font-weight="700" fill="'+faColor+'" font-family="system-ui,sans-serif">'+lastFaPct+'%</text>';
+            rightLabels = '<text x="'+(labelX+4)+'" y="'+(lastFaY+4)+'" font-size="12" font-weight="700" fill="'+faColor+'" font-family="var(--font-body)">'+lastFaPct+'%</text>';
         }
 
         // X-axis labels
         var xLabels = pts.map(function(p, i) {
-            return '<text x="'+xs[i]+'" y="116" font-size="10" fill="rgba(255,255,255,0.35)" text-anchor="middle" font-family="system-ui,sans-serif">'+p.label+'</text>';
+            return '<text x="'+xs[i]+'" y="116" font-size="10" fill="rgba(255,255,255,0.35)" text-anchor="middle" font-family="var(--font-body)">'+p.label+'</text>';
         }).join('');
 
         var gid = 'fdg' + Date.now();
+        var legendSvg = ribXs.length > 0 ?
+            '<div style="display:flex;gap:16px;padding:4px 0 0 50px;font-size:11px;font-family:var(--font-body);color:rgba(255,255,255,0.5)">' +
+            '<span><svg width="16" height="10" style="vertical-align:middle;margin-right:4px"><line x1="0" y1="5" x2="16" y2="5" stroke="rgba(255,255,255,0.52)" stroke-width="2.5"/><circle cx="8" cy="5" r="3" fill="#161b22" stroke="rgba(255,255,255,0.5)" stroke-width="2"/></svg>First try</span>' +
+            '<span><svg width="16" height="10" style="vertical-align:middle;margin-right:4px"><line x1="0" y1="5" x2="16" y2="5" stroke="rgba(63,185,80,0.65)" stroke-width="1.5" stroke-dasharray="5 4"/><circle cx="8" cy="5" r="2" fill="#161b22" stroke="rgba(255,255,255,0.28)" stroke-width="1.5"/></svg>Run It Back</span>' +
+            '</div>' : '';
         container.innerHTML =
-            '<svg viewBox="0 0 560 120" height="120" style="display:block;width:100%;overflow:visible">' +
+            '<svg role="img" aria-label="Score progress chart showing ' + n + ' test' + (n !== 1 ? 's' : '') + '" viewBox="0 0 560 120" height="120" style="display:block;width:100%;overflow:visible">' +
             '<defs><linearGradient id="'+gid+'" x1="'+xs[0]+'" y1="108" x2="'+lastX+'" y2="'+lastFaY+'" gradientUnits="userSpaceOnUse">' +
             '<stop offset="0%" stop-color="rgba(255,255,255,0.01)"/>' +
             '<stop offset="55%" stop-color="rgba(255,255,255,0.08)"/>' +
             '<stop offset="100%" stop-color="rgba(255,255,255,0.17)"/>' +
             '</linearGradient></defs>' +
             // Grade lines
-            '<line x1="28" y1="'+yC+'" x2="508" y2="'+yC+'" stroke="rgba(255,255,255,0.10)" stroke-width="1" stroke-dasharray="3 7"/>' +
-            '<text x="16" y="'+(yC+3.5)+'" font-size="10" font-weight="700" fill="rgba(255,255,255,0.28)" font-family="system-ui,sans-serif" text-anchor="middle">C</text>' +
-            '<line x1="28" y1="'+yB+'" x2="508" y2="'+yB+'" stroke="rgba(255,255,255,0.14)" stroke-width="1" stroke-dasharray="3 7"/>' +
-            '<text x="16" y="'+(yB+3.5)+'" font-size="10" font-weight="700" fill="rgba(255,255,255,0.35)" font-family="system-ui,sans-serif" text-anchor="middle">B</text>' +
+            '<line x1="28" y1="'+yC+'" x2="508" y2="'+yC+'" stroke="rgba(255,255,255,0.20)" stroke-width="1" stroke-dasharray="3 7"/>' +
+            '<text x="16" y="'+(yC+3.5)+'" font-size="10" font-weight="700" fill="rgba(255,255,255,0.42)" font-family="var(--font-body)" text-anchor="middle">C</text>' +
+            '<line x1="28" y1="'+yB+'" x2="508" y2="'+yB+'" stroke="rgba(255,255,255,0.25)" stroke-width="1" stroke-dasharray="3 7"/>' +
+            '<text x="16" y="'+(yB+3.5)+'" font-size="10" font-weight="700" fill="rgba(255,255,255,0.55)" font-family="var(--font-body)" text-anchor="middle">B</text>' +
             '<line x1="28" y1="'+yA+'" x2="508" y2="'+yA+'" stroke="rgba(63,185,80,0.65)" stroke-width="1" stroke-dasharray="3 7"/>' +
-            '<text x="14" y="'+(yA+3.5)+'" font-size="12" font-weight="700" fill="rgba(63,185,80,1)" font-family="system-ui,sans-serif" text-anchor="middle">A</text>' +
+            '<text x="14" y="'+(yA+3.5)+'" font-size="12" font-weight="700" fill="rgba(63,185,80,1)" font-family="var(--font-body)" text-anchor="middle">A</text>' +
             // Fill + FA line
             '<path d="'+fillPath+'" fill="url(#'+gid+')"/>' +
             '<path d="'+faPath+'" fill="none" stroke="rgba(255,255,255,0.52)" stroke-width="2.5" stroke-linecap="round"/>' +
             // RIB line + dots
             (ribPath ? '<path d="'+ribPath+'" fill="none" stroke="rgba(63,185,80,0.65)" stroke-width="1.5" stroke-dasharray="5 4" stroke-linecap="round"/>' : '') +
             ribDots + faDots + rightLabels + xLabels +
-            '</svg>';
+            '</svg>' + legendSvg;
     }
     /* ========== STANDARDS ========== */
     function buildStandards() {
@@ -651,7 +642,7 @@
                 '<div class="std-id">' + id + '</div>' +
                 '<div class="std-name">' + name + '</div>' +
                 '<div class="std-pct">' + (s.total ? pct + '%' : '—') + '</div>' +
-                '<div class="std-bar" role="progressbar" aria-valuenow="' + pct + '" aria-valuemin="0" aria-valuemax="100">' +
+                '<div class="std-bar" role="progressbar" aria-label="' + id + ' ' + pct + '%'" aria-valuenow="' + pct + '" aria-valuemin="0" aria-valuemax="100">' +
                 '<div class="std-fill" style="width:' + pct + '%"></div></div>' +
                 '<div class="std-copy">' + copy + '</div>' +
                 '</div>';

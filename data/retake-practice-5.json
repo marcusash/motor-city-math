@@ -157,7 +157,7 @@
           "tolerance": 0.1
         }
       ],
-      "hint": "Factor out the coefficient first. Then use the absolute value definition: if |3x+9| = 6, there are TWO cases: 3x+9=6  (positive case)  OR  -(3x+9)=6  (negative case). Multiply the negative case by -1 to solve.",
+      "hint": "Factor out the coefficient. Two cases: positive (3x+9=6) OR negative (-(3x+9)=6). Solve each.",
       "solution_steps": [
         "Factor: |3x+9| = 3|x−(−3)|. So f(x) = 3|x−(−3)| − 6.",
         "a = 3, h = −3, k = −6. Shift LEFT 3, stretch ×3, down 6. Vertex at (−3, −6).",
@@ -314,27 +314,27 @@
       "section": "B",
       "standard": "W3.b",
       "type": "radical",
-      "question_html": "Solve: \\( \\sqrt{x + 4} = x - 2 \\)",
+      "question_html": "Solve: \\( \\sqrt{x - 3} = x - 5 \\)",
       "inputs": [
         {
           "id": "q9_x",
           "type": "number",
           "label": "x =",
-          "answer": 5,
+          "answer": 7,
           "tolerance": 0.01
         }
       ],
-      "hint": "Square both sides — but the right side is a binomial. You will get a quadratic. Factor it. Then check BOTH answers in the original equation.",
+      "hint": "Square both sides — right side is a binomial, giving a quadratic. Factor it. Check BOTH answers.",
       "solution_steps": [
-        "Square both sides: x + 4 = (x−2)² = x² − 4x + 4.",
-        "Rearrange: x² − 5x = 0 → x(x−5) = 0.",
-        "x = 0 or x = 5. Must check both in the original — squaring can create false solutions.",
-        "Check x=0: √4 = 2, but 0−2 = −2. Left ≠ Right — extraneous!",
-        "Check x=5: √9 = 3, and 5−2 = 3. ✓",
-        "Answer: x = 5 only. The quadratic gave a false solution — this is why you must always check."
+        "Square both sides: x - 3 = (x−5)² = x² − 10x + 25.",
+        "Rearrange: x² − 11x + 28 = 0 → (x−7)(x−4) = 0.",
+        "x = 7 or x = 4. Must check both — squaring can create false solutions.",
+        "Check x=4: √1 = 1, but 4−5 = −1. Left ≠ Right — extraneous!",
+        "Check x=7: √4 = 2, and 7−5 = 2. ✓",
+        "Answer: x = 7 only. The quadratic gave a false solution — always check."
       ],
       "feedback_correct": "🔥 You caught the extraneous root. That is the full skill.",
-      "feedback_wrong": "Square both sides — you get a quadratic, not a linear equation. Factor it, then CHECK both answers back in the original."
+      "feedback_wrong": "Square both sides — you get a quadratic. Factor it, then CHECK both answers back in the original."
     },
     {
       "id": "rp5-q10",
@@ -342,7 +342,7 @@
       "section": "B",
       "standard": "W3.e",
       "type": "extraneous",
-      "question_html": "Solve: \\( \\sqrt{x + 12} = x - 8 \\)",
+      "question_html": "Solve: \\( \\sqrt{x + 12} = x - 8 \\)<br><em>Note: check for <strong>extraneous solutions</strong> — answers that come from the algebra but don't actually work when you plug them back in.</em>",
       "inputs": [
         {
           "id": "q10_x",

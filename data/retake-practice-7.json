@@ -167,7 +167,7 @@
           "tolerance": 0.1
         }
       ],
-      "hint": "Factor out the coefficient first. Then use the absolute value definition: if |2x-6| = 4, there are TWO cases: 2x-6=4  (positive case)  OR  -(2x-6)=4  (negative case). Multiply the negative case by -1 to solve.",
+      "hint": "Factor out the coefficient. Two cases: positive (2x-6=4) OR negative (-(2x-6)=4). Solve each.",
       "solution_steps": [
         "Factor: |2x-6| = 2|x-3|. So f(x) = 2|x-3| - 4.",
         "a=2 (vertical stretch), h=3 (shift right 3), k=-4 (shift down 4). Vertex: (3,-4).",
@@ -198,8 +198,8 @@
       "hint": "Rewrite both sides as powers of 2.",
       "solution_steps": [
         "8^(x-1) = (2³)^(x-1) = 2^(3x-3).",
-        "32 = 2\\u2075.",
-        "3x - 3 = 5 → 3x = 8 → x = 8/3 \\u2248 2.667."
+        "32 = 2^5.",
+        "3x - 3 = 5 → 3x = 8 → x = 8/3 ≈ 2.667."
       ],
       "feedback_correct": "🔥 Common base. 8/3."
     },
@@ -231,7 +231,7 @@
           "tolerance": 0.05
         }
       ],
-      "hint": "a≠1 means you cannot just find two numbers that add to b and multiply to c. Use the AC method: multiply a×c, find factor pair of that product that adds to b, split the middle term, then factor by grouping.",
+      "hint": "a≠1: use AC method. Multiply a×c, find factor pair adding to b, split the middle term, factor by grouping.",
       "solution_steps": [
         "AC method step 1: multiply a×c = 2×3 = 6.",
         "Step 2: find two factors of 6 that add to 7: +6 and +1. ✓",
@@ -294,7 +294,7 @@
       ],
       "hint": "Rewrite both sides as powers of 5.",
       "solution_steps": [
-        "25\\u02E3 = (5²)\\u02E3 = 5^(2x).",
+        "25^x = (5²)^x = 5^(2x).",
         "125^(x-1) = (5³)^(x-1) = 5^(3x-3).",
         "2x = 3x - 3 → x = 3."
       ],
@@ -373,7 +373,7 @@
           "tolerance": 0.05
         }
       ],
-      "hint": "Divide both sides by 4 first to isolate the exponential. Then rewrite both sides as powers of 2. You will get x² = a number.",
+      "hint": "Divide both sides by 4 first. Rewrite both sides as powers of 2. You will get x² = a number.",
       "solution_steps": [
         "Step 1: Divide both sides by 4: 2^(x² + 1) = 32.",
         "Step 2: Rewrite 32 as a power of 2: 32 = 2⁵.",
@@ -486,7 +486,7 @@
         "min_points": 5,
         "tolerance": 0.25
       },
-      "hint": "Domain of a quadratic is always all reals. Range depends on direction of opening. The function changes direction at the vertex.",
+      "hint": "Domain of a quadratic is all reals. Range depends on opening direction — check the vertex.",
       "solution_steps": [
         "f(x) = 3(x-2)^2-3. Vertex at (2, -3).",
         "Domain: all real numbers, (-inf, +inf). No restrictions on a quadratic.",
@@ -572,7 +572,7 @@
         "min_points": 5,
         "tolerance": 0.25
       },
-      "hint": "VA tells you what x is excluded (domain). HA tells you what y is excluded (range). As x gets huge, the fraction term approaches 0, so f approaches the HA.",
+      "hint": "VA: x is excluded (domain). HA: y is excluded (range). As x→∞ the fraction →0, so f approaches the HA.",
       "solution_steps": [
         "f(x) = -2/(x+2) + 4. VA: x=-2. HA: y=4.",
         "Domain: all x except x=-2. Write as (-inf,-2) union (-2,+inf) or x not equal to -2.",

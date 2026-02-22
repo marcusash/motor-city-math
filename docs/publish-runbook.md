@@ -6,77 +6,38 @@
 
 ---
 
-## One-Time Setup (Marcus does this once)
+## Quick Publish (agents use this)
 
-### Step 1: Create a Personal Access Token on the marcusash account
+```powershell
+cd C:\GitHub\kai-algebra2-tests
+MOTOR_CITY_MATH_TOKEN=your_token node scripts/publish.cjs
+```
 
-1. Go to https://github.com/settings/tokens?type=beta while logged in as **marcusash** (not marcusash_microsoft)
+Or store the token once in `.env.local` at the repo root (never committed):
+```
+MOTOR_CITY_MATH_TOKEN=your_token_here
+```
+
+Then just run:
+```powershell
+node scripts/publish.cjs
+```
+
+The script clones motor-city-math to a temp dir, copies all public files, and pushes. Done in ~30 seconds.
+
+---
+
+## One-Time Token Setup (Marcus does this once per year)
+
+1. Go to https://github.com/settings/tokens?type=beta logged in as **marcusash** (not marcusash_microsoft)
 2. Click "Generate new token (fine-grained)"
-3. Name it: `motor-city-math-publish`
-4. Expiration: No expiration (or 1 year, your call)
+3. Name: `motor-city-math-publish`
+4. Expiration: 1 year
 5. Repository access: Only select repositories > `marcusash/motor-city-math`
-6. Permissions: Contents = **Read and Write**
-7. Click "Generate token" — copy it immediately
-
-### Step 2: Add the token as a secret in kai-algebra2-tests
-
-1. Go to https://github.com/marcusash_microsoft/kai-algebra2-tests/settings/secrets/actions
-2. Click "New repository secret"
-3. Name: `MOTOR_CITY_MATH_TOKEN`
-4. Value: paste the token from Step 1
-5. Click "Add secret"
-
-That's it. From this point on, publishing is fully automated.
-
----
-
-## How It Works After Setup
-
-Every push to `kai-algebra2-tests` master triggers the GitHub Action.
-The action syncs these files/dirs to `motor-city-math`:
-- `index.html`, `exam.html`, `final_exam_251123.html`, `final_exam_251123_mini.html`
-- `shared/`, `data/`, `docs/`, `scripts/`, `_gen.js`, `package.json`, `README.md`
-
-Agent comms, spec files, test files, and OCR artifacts are NOT published.
-
-GitHub Pages rebuilds automatically after the push. Live in ~60 seconds.
-
----
-
-## GA Can Trigger a Manual Publish
-
-GA (and any agent) can trigger a publish from the GitHub Actions UI:
-
-1. Go to https://github.com/marcusash_microsoft/kai-algebra2-tests/actions/workflows/publish-to-motor-city-math.yml
-2. Click "Run workflow"
-3. Enter a reason (optional)
-4. Click "Run workflow"
-
-Or via gh CLI (from the kai-algebra2-tests directory):
-```
-gh workflow run publish-to-motor-city-math.yml --field reason="GA: new features published"
-```
-
----
-
-## Manual Push (if Action is not set up yet)
-
-If Marcus needs to publish right now before the PAT is created:
-
-```powershell
-# From a terminal logged in as marcusash (not marcusash_microsoft):
-cd C:\GitHub\kai-algebra2-tests
-git remote add public https://github.com/marcusash/motor-city-math.git
-git push public master
-```
-
-Or using the gh CLI switch:
-```powershell
-gh auth login   # log in as marcusash in a second profile
-gh auth switch  # switch to marcusash
-cd C:\GitHub\kai-algebra2-tests
-git push public master
-```
+6. Permissions: Contents = **Read and Write**, Workflows = **Read and Write**
+7. Copy the token immediately
+8. Create `.env.local` in kai-algebra2-tests with `MOTOR_CITY_MATH_TOKEN=<token>`
+9. Share with GA via secure channel (not in any committed file)
 
 ---
 
@@ -93,9 +54,51 @@ git push public master
 
 ---
 
+## GitHub Action (on hold)
+
+The action at `.github/workflows/publish-to-motor-city-math.yml` is configured but currently
+failing with 0 jobs. Root cause: private repo Actions require billing setup on the
+`marcusash_microsoft` account (GitHub Actions minutes for private repos). Use
+`scripts/publish.cjs` instead until this is resolved.
+
+To resolve GitHub Actions: add a payment method to github.com/marcusash_microsoft account settings,
+then the action will auto-trigger on every push.
+
+### Quick Triage Decision Tree
+
+1. **Workflow shows "0 jobs" immediately:** treat as account-level Actions gating (billing/settings), not YAML syntax.
+2. **Workflow starts but publish step fails auth:** rotate `MOTOR_CITY_MATH_TOKEN`, confirm `Contents` + `Workflows` write on `marcusash/motor-city-math`.
+3. **Workflow succeeds but site not updated:** verify Pages source is `master` `/` on target repo, then republish via `node scripts/publish.cjs`.
+4. **Need urgent release for Kai:** bypass Action and run `node scripts/publish.cjs` directly.
+
+---
+
+## Publish Parity Check (Script vs Workflow)
+
+Validated on 2026-02-22:
+- **Same file list:** `index.html`, `exam.html`, `final_exam_251123.html`, `final_exam_251123_mini.html`, `nonlinear_exam_mvp.html`, `_gen.js`, `package.json`, `README.md`
+- **Same directory list:** `shared/`, `data/`, `docs/`, `scripts/`
+- **Same publish gate:** both paths exit cleanly when no staged diff exists in target repo
+- **Same destination:** `marcusash/motor-city-math` `master` branch
+
+Only operational difference:
+- **Script path** uses local token (`MOTOR_CITY_MATH_TOKEN`) and works now
+- **Workflow path** requires Actions runtime + valid secret in private source repo
+
+Use this quick parity command after major publish-script edits:
+
+```powershell
+cd C:\GitHub\kai-algebra2-tests
+node scripts\publish.cjs --help 2>$null
+```
+
+If workflow behavior diverges from script behavior, update this runbook first, then notify GP + FA.
+
+---
+
 ## Current Status
 
-- GitHub Action: configured in `.github/workflows/publish-to-motor-city-math.yml`
-- Secret `MOTOR_CITY_MATH_TOKEN`: NOT YET ADDED (Marcus must do Step 1-2 above)
-- Last published: 2026-02-19 (commit af5e5c6)
-- kai-algebra2-tests is ahead by: ~8 commits as of 2026-02-21
+- Script publish: `scripts/publish.cjs` — works, use this
+- GitHub Action: configured but failing (billing issue on private repo)
+- Last published: 2026-02-21 commit 4fee5e9
+- Site: https://marcusash.github.io/motor-city-math/ (live)

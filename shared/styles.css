@@ -25,7 +25,7 @@
     --color-correct-bg: #F0FFF4;
     --color-incorrect: #C8102E;
     --color-incorrect-bg: #FFF5F5;
-    --color-warning: #E8A317;
+    --color-warning: #8A6200; /* was #E8A317 — failed WCAG AA on white (2.17:1). #8A6200 = 5.49:1 PASS */
     --color-warning-bg: #FFFFF0;
     --shadow-card: 0 2px 8px rgba(0, 45, 98, 0.06);
     --bg-highlight: #EEF1FA;
@@ -64,7 +64,7 @@ body.arena-mode {
     --border-subtle: #1E2742;
     --color-correct: #2ECC71;
     --color-correct-bg: #0D2818;
-    --color-incorrect: #E8334A;
+    --color-incorrect: #FF3A55; /* was #E8334A — failed WCAG AA on card bg (4.09:1). #FF3A55 = 4.89:1 PASS */
     --color-incorrect-bg: #2D0A12;
     --color-warning: #F5C842;
     --color-warning-bg: #2D2408;
@@ -1110,6 +1110,44 @@ body.archived::before {
     margin-top: 40px;
 }
 
+/* Print header: hidden on screen, visible only when printing */
+.print-header { display: none; }
+
+/* Test header: right padding prevents arena-toggle button overlapping title */
+.test-header {
+    position: relative;
+    text-align: center;
+    padding: 0 56px;
+}
+
 @media print {
+    .print-header { display: block; margin-bottom: 12px; font-size: 0.9rem; }
     .timer, .timer-toast, .score-card, .standards-grid { display: none; }
+}
+
+/* Touch device targets: covers all touch screen widths (WCAG 2.5.8) */
+@media (pointer: coarse) {
+    a, button, select, input {
+        min-height: 44px;
+    }
+}
+
+
+/* === Dad Mode Banner (Dashboard-only) === */
+.dad-banner {
+    display: flex; align-items: center; flex-wrap: wrap; gap: 10px;
+    background: #0d1117; border: 1px solid #e74c3c; border-radius: 8px;
+    padding: 10px 16px; margin-bottom: 20px;
+}
+.dad-banner .dad-label { color: #e74c3c; font-weight: 700; font-size: var(--text-sm); white-space: nowrap; }
+.dad-banner .dad-status { color: #8b949e; font-size: var(--text-sm); flex: 1; }
+.dad-banner .dad-upload-label {
+    color: #58a6ff; font-size: var(--text-sm); text-decoration: underline;
+    cursor: pointer; white-space: nowrap;
+}
+
+/* === Hero Greeting (Dashboard-only) === */
+.hero-greeting {
+    text-align: center; font-size: var(--text-lg); font-weight: 600;
+    color: var(--text-primary); margin: -12px 0 20px;
 }
