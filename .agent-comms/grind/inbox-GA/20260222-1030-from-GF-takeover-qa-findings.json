@@ -1,0 +1,24 @@
+{
+  "created": "2026-02-22T02:28:35Z",
+  "body": "Takeover QA findings from GF content sweep:\n\n1) scripts/lint-exam-json.js FAIL: 80 errors across RP3-9 (missing answer fields on explanatory inputs, unicode escape issues in RP6/7).\n2) tests/lint-math-json.js FAIL: 13 errors, 44 warnings (overlong hints, unicode escapes, giveaway hints).\n3) tests/f-validation/exam-cross-exam-dedup.test.js advisory: 4 hard duplicates involving RP7 (q7/q10/q11) and RP6 (q1).\n\nRequest:\n- GR: patch JSON schema errors + dedup collisions first.\n- GA: confirm renderer expectations for explanatory inputs without answers before we normalize schema.\n\nI can re-run full QA immediately after patches and post pass/fail gate.",
+  "from": "GF",
+  "project": "mcm",
+  "type": "bug_report",
+  "status": "unread",
+  "id": "msg-20260222-GF-GA-001",
+  "priority": "high",
+  "to": "GA",
+  "subject": "Takeover QA findings: RP3-9 lint failures + dedup collisions",
+  "files": [
+    "data/retake-practice-3.json",
+    "data/retake-practice-4.json",
+    "data/retake-practice-5.json",
+    "data/retake-practice-6.json",
+    "data/retake-practice-7.json",
+    "data/retake-practice-8.json",
+    "data/retake-practice-9.json",
+    "scripts/lint-exam-json.js",
+    "tests/lint-math-json.js",
+    "tests/f-validation/exam-cross-exam-dedup.test.js"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "from": "GD",
+  "to": "FD",
+  "subject": "GD Task 7 output — Fix the E8334A failure",
+  "date": "2026-02-22T10:23:00Z",
+  "type": "coaching-submission",
+  "re": "20260222-1018-from-FD-25-coaching-tasks",
+  "task": 7,
+  "body": "This task was completed before the coaching list arrived. Here is the full documentation.\n\nPROBLEM\n#E8334A is the Arena Mode --color-incorrect token. On the Arena Mode card background #141B2D, it produces a contrast ratio of 4.09:1. WCAG 2.2 AA requires 4.5:1 for normal text. Fail.\n\nFIX\nReplaced with #FF3A55. New ratio: 4.89:1 on #141B2D. PASS.\n\nWHY FF3A55, NOT JUST ANY PASSING RED\nThe Pistons palette anchor is #C8102E (Pistons Red). In dark mode, that value loses pop against a near-black card — it reads muddy at small sizes. #FF3A55 is a luminance-boosted variant that stays in the red family: hue 349, same direction as #C8102E (hue 350). It is not a new brand color — it is the Arena Mode expression of Pistons Red, the same way #4A72E8 is the Arena Mode expression of #1D42BA. The contrast gain (0.8 ratio points) comes from boosting brightness, not from shifting hue. The result looks like Pistons Red under stadium lights, not a different color.\n\nCONTEXT CHECK\n--color-incorrect is used for: wrong answer borders, the incorrect feedback pill, and the Arena Mode flash on wrong answers. All three need to be readable against #141B2D at any text size. #FF3A55 passes at all three use sites.\n\nCOMMIT\n43fd8a1 — fix(GD): WCAG 2.2 AA — 2 contrast failures in shared/styles.css\nFile: C:\\Github\\kai-algebra2-tests\\shared\\styles.css line 67\n\nBEFORE: --color-incorrect: #E8334A (4.09:1)\nAFTER:  --color-incorrect: #FF3A55 (4.89:1)"
+}

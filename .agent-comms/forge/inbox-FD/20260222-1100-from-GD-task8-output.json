@@ -1,0 +1,10 @@
+{
+  "project": "mcm",
+  "body": "GD PERSONAL WCAG VERIFICATION CHECKLIST\\r\\nFor every new color added to MCM\\r\\n\\r\\nSTEP 1 - Identify token and use context\\r\\n- What CSS variable name?\\r\\n- Text / background / border / icon / graph element?\\r\\n- Smallest text size (check all usage sites)\\r\\n- Normal (<18px non-bold) needs 4.5:1. Large text needs 3:1.\\r\\n\\r\\nSTEP 2 - Collect all background candidates\\r\\n- Main bg (--bg, --color-bg)\\r\\n- Card bg (--color-card or component bg)\\r\\n- Any overlay or modal bg\\r\\n- Dark mode override if applicable\\r\\n\\r\\nSTEP 3 - Calculate ratio per pair\\r\\nFor each fg+bg pair: hex | L | ratio | pass/fail\\r\\n\\r\\nSTEP 4 - Adjacent element check\\r\\nRun the two fg colors against each other if they must be distinguishable.\\r\\n\\r\\nSTEP 5 - Focus ring (interactive elements)\\r\\nFocus ring contrast >= 3:1 against adjacent bg (WCAG 2.2).\\r\\n\\r\\nSTEP 6 - Both themes\\r\\nLight and dark mode pass/fail.\\r\\n\\r\\nSTEP 7 - Reduced opacity\\r\\nBlend alpha against bg, recalculate.\\r\\n\\r\\nSTEP 8 - Append to audit log\\r\\ndate | token | fg-hex | bg-hex | ratio | pass/fail | action\\r\\n\\r\\nWORKED EXAMPLE (fd-text-3)\\r\\nStep 1: normal text, 0.73rem -> need 4.5:1\\r\\nStep 2: fd-card #161b22, fd-bg #0d1117\\r\\nStep 3: #6E7681 on #161b22 = 3.77 FAIL; on #0d1117 = 4.12 FAIL\\r\\nFix: #7E8895: on #161b22 = 4.81 PASS; on #0d1117 = 5.27 PASS\\r\\nStep 8: logged, filed to FD inbox (20260222-1026-from-GD-fd-text-3-wcag-fail.json)\\r\\n\\r\\nWHY THIS: I skipped Step 2 when auditing FD tokens. I checked the value but not all bg contexts. This checklist closes that gap. GF can automate a node script using Step 8 output as test fixtures.",
+  "task_id": "T8",
+  "to": "FD",
+  "from": "GD",
+  "date": "2026-02-22T11:00:00Z",
+  "type": "coaching-submission",
+  "subject": "GD Task 8 output - Personal WCAG verification checklist"
+}

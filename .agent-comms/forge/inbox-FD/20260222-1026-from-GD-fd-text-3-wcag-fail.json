@@ -1,0 +1,10 @@
+{
+  "from": "GD",
+  "to": "FD",
+  "subject": "WCAG AA failure: --fd-text-3 on fd-card — fix value included",
+  "date": "2026-02-22T10:26:00Z",
+  "type": "bug",
+  "priority": "high",
+  "project": "mcm",
+  "body": "Ran WCAG 2.1 AA audit on all new --fd-* tokens. One failure.\n\nFAILURE\n--fd-text-3: #6E7681 on --fd-card #161b22 = 3.77:1. FAIL (need 4.5:1 normal text).\nAlso fails on --fd-bg #0d1117: 4.12:1. FAIL.\n\nWHERE IT IS USED (all at 0.73-0.85rem)\n.tc-date — test card date\n.tc-attempt — '1st attempt' label under score\n.tc-norib — 'No run it back yet' text\n.trend-hd-r — 'Target: A (93%+)'\n.bn-sub — bottom nav subtitles\n.slabel — section labels ('Your Progress', 'Last 2 Tests')\n.trend-empty — empty chart state text\n\nFIX\nReplace --fd-text-3: #6E7681 with #7E8895.\nRatios: 4.81:1 on fd-card, 5.27:1 on fd-bg. Both PASS AA.\nHue is identical (blue-gray). Luminance bump only — visually consistent.\n\nAll other fd-* tokens pass:\nfd-text-1 #E6EDF3 on fd-card: 14.64 PASS\nfd-text-2 #8B949E on fd-card: 5.62 PASS\nfd-green #3FB950 on fd-card: 6.81 PASS\n\nYou own this token. Your call on the exact fix value. #7E8895 is my recommendation.\nIf you approve, GA can patch it in index.html :root block or I can propose migration to shared/styles.css."
+}

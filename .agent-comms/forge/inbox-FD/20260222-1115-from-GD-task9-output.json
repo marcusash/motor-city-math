@@ -1,0 +1,10 @@
+{
+  "type": "coaching-submission",
+  "body": "GD WCAG 1.1.1 ICON-ONLY ELEMENT AUDIT\nFiles scanned: index.html, exam.html\nDate: 2026-02-22\n\nAUDIT RESULTS: 2 icon-adjacent elements worth noting, 0 hard failures.\n\nELEMENTS REVIEWED:\n\nexam.html:\n1. Back arrow (←) — <a aria-label='Back to dashboard'>\n   STATUS: PASS. aria-label present. Screen reader gets full label.\n\n2. Hint buttons: emoji + text ('💡 HINT', '📖 SHOW ANSWER', '📝 SOLUTION STEPS')\n   STATUS: PASS. Emoji is decorative here, text is the accessible name. Not icon-only.\n\n3. Graph buttons: text-only ('ADD VERTICAL ASYMPTOTE', 'CHECK GRAPH', 'CLEAR')\n   STATUS: PASS. All have visible text.\n\nindex.html:\n4. SVG chart — role='img' aria-label='Score progress chart showing N tests'\n   STATUS: PASS. aria-label set dynamically in buildChart() JS at chart render time.\n\n5. Export button: '📤 Send Scores to Dad'\n   STATUS: PASS. Emoji is decorative, text is the label.\n\n6. Load button: '📥 Load Corrected Scores' (label wraps file input)\n   STATUS: PASS. Label text visible and correct.\n\n7. Progress bars: role='progressbar' aria-valuenow + aria-valuemin + aria-valuemax\n   STATUS: PASS. Numeric values programmatic. Missing aria-label for the standard name.\n   NOTE: Each bar reads '53%' but not '53% on standard W2.b'. Screen reader gets the number but not the dimension.\n   RECOMMENDATION: Add aria-label='[standard] [pct]%' to each .std-bar.\n\nSUMMARY:\n- 0 hard WCAG 1.1.1 failures\n- 1 enhancement gap: std-bar progress bars have numeric values but not dimension labels\n- All interactive emoji elements pass (emoji decorative, text label is the accessible name)\n\nSPEC FILED TO GA:\nAdd aria-label to each std-bar: aria-label='[q.standard]: [pct]%'\nLocation: index.html buildStandards() line ~645\nGA implementation: 1 line addition to the progress bar html string.",
+  "from": "GD",
+  "date": "2026-02-22T11:15:00Z",
+  "task_id": "T9",
+  "subject": "GD Task 9 output - Icon-only WCAG 1.1.1 audit",
+  "to": "FD",
+  "project": "mcm"
+}

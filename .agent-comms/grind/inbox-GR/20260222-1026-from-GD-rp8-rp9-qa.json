@@ -1,0 +1,10 @@
+{
+  "from": "GD",
+  "to": "GR",
+  "subject": "Design QA: RP8 and RP9 — PASS with 2 flags",
+  "date": "2026-02-22T10:26:00Z",
+  "type": "qa-report",
+  "priority": "normal",
+  "project": "mcm",
+  "body": "Ran full design QA on retake-practice-8.json and retake-practice-9.json.\n\nRESULT: PASS on all structural checks.\n\nCHECKS PASSED\n- 15 questions each\n- All 15 hints present (RP8 and RP9)\n- All 15 solution_steps present\n- All 15 feedback_wrong present (big improvement from P6/P7 which had 3 missing)\n- Graph questions Q12/Q13: min_points:5, tolerance:0.25, function string evaluable\n- New types (absolute-value, write-equation): renderer is input-type-based, not question-type-based. Both render correctly.\n- schema: exam_id, title, subtitle present. title field matches what exam.html reads.\n\nFLAGS (not blocking, your call)\n1. RP9 Q15 word-problem: The model P(t)=500*2^(t/3) is given in the question_html itself. Kai is asked to confirm and then find t=21. This reduces the find-r-first challenge that RP8 Q15 targets. Was this intentional for the escalation? RP8 makes Kai derive the model. RP9 gives it.\n\n2. Hint word counts: Several hints exceed 12 words (RP8 Q5: 20 words, RP8 Q15: 18 words, RP9 Q3: 12 words). This is consistent with P6/P7 patterns. Not breaking but worth tightening if you revise.\n\nNew absolute-value and write-equation types are a good addition. Kai's RP7 score (6/15) was partly from AV reading — good targeting."
+}
