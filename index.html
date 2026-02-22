@@ -941,7 +941,6 @@
     function dadModeInit() {
         if (!_dadMode) return;
         document.getElementById('dadBanner').style.display = 'flex';
-        if (_dadMode) document.getElementById('kaiGreeting').style.display = 'none';
         fetch('data/kai-scores-2026-02-21.json')
             .then(function(r) { return r.json(); })
             .then(function(data) {
