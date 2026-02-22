@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MCM A/B Scorecard #2 — FD</title>
+<style>
+  :root {
+    --bg: #0d1117; --card: #161b22; --raised: #1c2128;
+    --green: #3FB950; --red: #f85149; --yellow: #d29922; --blue: #58a6ff;
+    --text-1: #E6EDF3; --text-2: #8B949E; --text-3: #6E7681;
+    --border: #21262d; --border2: #30363d;
+    --r: 10px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text-1); font-family: system-ui,-apple-system,sans-serif; font-size: 14px; padding: 32px 20px 60px; max-width: 900px; margin: 0 auto; }
+
+  h1 { font-size: 1.2rem; font-weight: 700; margin-bottom: 4px; }
+  .meta { font-size: 0.78rem; color: var(--text-2); margin-bottom: 6px; }
+  .prev-link { font-size: 0.73rem; color: var(--text-3); margin-bottom: 32px; display: block; }
+
+  .section-hd {
+    font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--text-3);
+    border-bottom: 1px solid var(--border); padding-bottom: 8px; margin-bottom: 16px;
+  }
+  .section { margin-bottom: 36px; }
+
+  /* ── VERDICT BANNER ── */
+  .verdict-banner {
+    background: linear-gradient(135deg, rgba(63,185,80,0.08), rgba(63,185,80,0.03));
+    border: 1px solid rgba(63,185,80,0.25); border-radius: var(--r);
+    padding: 18px 20px; margin-bottom: 28px;
+  }
+  .verdict-banner h3 { font-size: 0.95rem; font-weight: 700; color: var(--green); margin-bottom: 6px; }
+  .verdict-banner p  { font-size: 0.82rem; color: var(--text-2); line-height: 1.6; }
+  .verdict-banner p + p { margin-top: 6px; }
+
+  /* ── FIX AUDIT TABLE (from scorecard #1) ── */
+  .fix-table { width: 100%; border-collapse: collapse; }
+  .fix-table th {
+    font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-3); text-align: left; padding: 0 12px 10px 0; border-bottom: 1px solid var(--border);
+  }
+  .fix-table td {
+    padding: 10px 12px 10px 0; font-size: 0.82rem; color: var(--text-2);
+    border-bottom: 1px solid rgba(33,38,45,0.6); vertical-align: top; line-height: 1.5;
+  }
+  .fix-table tr:last-child td { border-bottom: none; }
+  .status-pill {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 0.68rem; font-weight: 700; padding: 2px 7px;
+    border-radius: 4px; white-space: nowrap;
+  }
+  .done    { background: rgba(63,185,80,0.1);  color: var(--green);  border: 1px solid rgba(63,185,80,0.25); }
+  .partial { background: rgba(210,153,34,0.1); color: var(--yellow); border: 1px solid rgba(210,153,34,0.25); }
+  .na      { background: rgba(139,148,158,0.1); color: var(--text-3); border: 1px solid var(--border); }
+
+  /* ── ISSUE GRID ── */
+  .issue-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .issue-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 8px; padding: 14px 16px;
+  }
+  .issue-card.fixed { border-color: rgba(63,185,80,0.2); }
+  .issue-top { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+  .issue-sev {
+    font-size: 0.63rem; font-weight: 700; padding: 2px 6px;
+    border-radius: 3px; white-space: nowrap; flex-shrink: 0;
+  }
+  .sev-hi  { background: rgba(248,81,73,0.1);  color: var(--red);    border: 1px solid rgba(248,81,73,0.2); }
+  .sev-mid { background: rgba(210,153,34,0.1); color: var(--yellow); border: 1px solid rgba(210,153,34,0.2); }
+  .sev-lo  { background: rgba(63,185,80,0.08); color: var(--text-3); border: 1px solid var(--border); }
+  .issue-title { font-size: 0.82rem; font-weight: 700; }
+  .issue-desc { font-size: 0.77rem; color: var(--text-2); line-height: 1.5; margin-bottom: 8px; }
+  .fix-note { font-size: 0.73rem; color: var(--text-3); font-style: italic; }
+  .resolution { font-size: 0.73rem; color: var(--green); font-weight: 600; margin-top: 4px; }
+
+  /* ── FILL DESIGN EXPLORATION ── */
+  .explore-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .explore-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 8px; padding: 16px;
+  }
+  .explore-card.active-pick { border-color: rgba(63,185,80,0.3); }
+  .explore-name { font-size: 0.88rem; font-weight: 700; margin-bottom: 2px; }
+  .explore-tag {
+    display: inline-block; font-size: 0.63rem; font-weight: 700; padding: 1px 6px;
+    border-radius: 3px; margin-bottom: 10px;
+  }
+  .tag-pick { background: rgba(63,185,80,0.12); color: var(--green); border: 1px solid rgba(63,185,80,0.25); }
+  .tag-alt  { background: rgba(139,148,158,0.08); color: var(--text-3); border: 1px solid var(--border); }
+  .explore-desc { font-size: 0.78rem; color: var(--text-2); line-height: 1.55; }
+  .explore-desc + .explore-desc { margin-top: 6px; }
+
+  /* ── MINI SVG PREVIEW ── */
+  .chart-preview { margin: 12px 0; background: var(--raised); border-radius: 6px; padding: 10px; }
+
+  /* ── FILL PHILOSOPHY ── */
+  .philosophy {
+    background: var(--card); border: 1px solid var(--border2);
+    border-radius: var(--r); padding: 20px 22px;
+  }
+  .philosophy h3 { font-size: 0.88rem; font-weight: 700; margin-bottom: 10px; color: var(--text-1); }
+  .philosophy p  { font-size: 0.82rem; color: var(--text-2); line-height: 1.65; }
+  .philosophy p + p { margin-top: 8px; }
+  .philosophy .highlight { color: var(--green); font-weight: 600; }
+
+  .dim { color: var(--text-3); font-size: 0.73rem; }
+  strong { color: var(--text-1); }
+</style>
+</head>
+<body>
+
+<h1>MCM Dashboard — A/B Scorecard #2</h1>
+<p class="meta">FD Design Review &middot; Feb 22, 2026 &middot; Round 2 post-feedback</p>
+<span class="prev-link">Follows Scorecard #1 (scorecard.html) &middot; Design locked to A (Fill) per Marcus</span>
+
+<!-- ── VERDICT UPDATE ── -->
+<div class="verdict-banner">
+  <h3>Design pivot: A (Fill) locked as canonical. Gradient retired.</h3>
+  <p>Marcus correctly identified what FD missed. The fill area is not static — it grows as the line climbs. At 47% (1st Test) there is almost no fill. By 88% (Practice 3) the fill covers most of the chart height. The growing mass IS the progress narrative. FD was critiquing a static fill; Marcus was reading a dynamic one. Fill is the right call.</p>
+  <p>This scorecard covers: (1) all issues from Scorecard #1 and their resolution status, (2) the fill gradient tuning applied this round, and (3) remaining open items.</p>
+</div>
+
+<!-- ── SECTION 1: FIXES FROM SCORECARD #1 ── -->
+<div class="section">
+  <div class="section-hd">Fix Audit — Scorecard #1 Issues vs. This Round</div>
+  <table class="fix-table">
+    <thead>
+      <tr>
+        <th style="width:30%">Issue (Scorecard #1)</th>
+        <th style="width:14%">Severity</th>
+        <th style="width:13%">Status</th>
+        <th>Resolution</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>88% label too close to FA endpoint dot</strong></td>
+        <td><span class="status-pill sev-hi" style="font-size:0.65rem;padding:1px 5px;border-radius:3px;background:rgba(248,81,73,0.1);color:var(--red);border:1px solid rgba(248,81,73,0.2)">High</span></td>
+        <td><span class="status-pill partial">~ Partial</span></td>
+        <td>Labels now at y=25 (95%) and y=41 (88%) with 16px vertical gap. The FA dot at cy=33 gives 8px clearance from label. Readable but tight. A small horizontal tick connector is still the clean fix.</td>
+      </tr>
+      <tr>
+        <td><strong>B/C grade lines too invisible</strong></td>
+        <td><span class="status-pill sev-hi" style="font-size:0.65rem;padding:1px 5px;border-radius:3px;background:rgba(248,81,73,0.1);color:var(--red);border:1px solid rgba(248,81,73,0.2)">High</span></td>
+        <td><span class="status-pill done">✓ Fixed</span></td>
+        <td>C line: 6% → 10% opacity. B line: 8% → 14% opacity. Label fills also bumped from 0.20/0.25 to 0.28/0.35. Scale context is now visible without competing with the A grade line.</td>
+      </tr>
+      <tr>
+        <td><strong>"Below A" badge blue tint</strong></td>
+        <td><span class="status-pill sev-mid" style="font-size:0.65rem;padding:1px 5px;border-radius:3px;background:rgba(210,153,34,0.1);color:var(--yellow);border:1px solid rgba(210,153,34,0.2)">Mid</span></td>
+        <td><span class="status-pill done">✓ Fixed</span></td>
+        <td>Changed badge-blu from blue (#7A9BF0 tint) to neutral --text-2 on dark background. No longer reads as an interactive/link affordance. Correctly recessive against the green "A on Retake" badge.</td>
+      </tr>
+      <tr>
+        <td><strong>Trend card bottom padding</strong></td>
+        <td><span class="status-pill sev-mid" style="font-size:0.65rem;padding:1px 5px;border-radius:3px;background:rgba(210,153,34,0.1);color:var(--yellow);border:1px solid rgba(210,153,34,0.2)">Mid</span></td>
+        <td><span class="status-pill done">✓ Fixed</span></td>
+        <td>18px 18px 14px → 18px 18px 18px. Top and bottom internal padding now symmetric.</td>
+      </tr>
+      <tr>
+        <td><strong>tc-head margin-bottom too tall</strong></td>
+        <td><span class="status-pill sev-lo" style="font-size:0.65rem;padding:1px 5px;border-radius:3px;background:rgba(63,185,80,0.06);color:var(--text-3);border:1px solid var(--border)">Low</span></td>
+        <td><span class="status-pill done">✓ Fixed</span></td>
+        <td>18px → 12px. Test cards are more compact. Score number sits tighter under the name/badge row.</td>
+      </tr>
+      <tr>
+        <td><strong>Em dash in hero title</strong></td>
+        <td><span class="status-pill sev-lo" style="font-size:0.65rem;padding:1px 5px;border-radius:3px;background:rgba(63,185,80,0.06);color:var(--text-3);border:1px solid var(--border)">Low</span></td>
+        <td><span class="status-pill done">✓ Fixed</span></td>
+        <td>"Practice Test #4 &mdash; Quadratics" → "Practice Test #4 &middot; Quadratics". Forge em-dash ban respected in both A and B variant hero cards.</td>
+      </tr>
+      <tr>
+        <td><strong>Fill gradient (vertical only)</strong></td>
+        <td><span class="status-pill sev-mid" style="font-size:0.65rem;padding:1px 5px;border-radius:3px;background:rgba(210,153,34,0.1);color:var(--yellow);border:1px solid rgba(210,153,34,0.2)">Mid</span></td>
+        <td><span class="status-pill done">✓ Fixed</span></td>
+        <td>Old: vertical top→bottom 14%→0%. New: diagonal bottom-left→top-right using userSpaceOnUse coordinates (50,108)→(540,22), opacity 1%→24%. Fill now brightens as it moves right AND up — doubling down on the progress narrative.</td>
+      </tr>
+      <tr>
+        <td><strong>Default variant was B (Gradient)</strong></td>
+        <td><span class="status-pill na">N/A</span></td>
+        <td><span class="status-pill done">✓ Fixed</span></td>
+        <td>Swapped to A (Fill) as active default per Marcus's direction. Button selector updated. pg-b no longer has .active on load.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ── SECTION 2: FILL DESIGN EXPLORATION ── -->
+<div class="section">
+  <div class="section-hd">Fill Design — What Was Tried, What's In, What Could Come Next</div>
+  <div class="explore-grid">
+
+    <div class="explore-card active-pick">
+      <div class="explore-name">Diagonal Gradient Fill</div>
+      <span class="explore-tag tag-pick">Current — In Mockup</span>
+      <p class="explore-desc">Gradient runs from bottom-left (x=50,y=108) to top-right (x=540,y=22) in userSpaceOnUse coordinates. Opacity: 1% → 10% → 24%.</p>
+      <p class="explore-desc">Why it works: the gradient intensifies in the same direction as the line climbs — both spatially (bigger fill area) and chromatically (brighter fill). Triple signal: line position + fill area + fill brightness all encoding "you're improving."</p>
+    </div>
+
+    <div class="explore-card">
+      <div class="explore-name">Green Bloom at Achievement</div>
+      <span class="explore-tag tag-alt">Unexplored — Worth Trying</span>
+      <p class="explore-desc">Keep the diagonal white fill but add a very subtle green tint (2-3% opacity rgba(63,185,80)) in the upper-right zone where the line crosses into A territory. The fill would literally turn a trace of green where Kai achieves Grade A.</p>
+      <p class="explore-desc">Risk: could feel noisy if the tint reads as a separate color rather than a subtle achievement glow. Would need to be extremely subtle — maybe 0-0% left → 0-4% green right, layered under the white fill.</p>
+    </div>
+
+    <div class="explore-card">
+      <div class="explore-name">Fill Above A Line (Gap Fill)</div>
+      <span class="explore-tag tag-alt">Unexplored — Bold Move</span>
+      <p class="explore-desc">Instead of filling below the curve, show a subtle fill ABOVE the A grade line in the left portion of the chart (where Kai hasn't reached A yet). This "gap to close" fill fades out as the line approaches and crosses A.</p>
+      <p class="explore-desc">Semantic shift: now the fill shows what Kai needs to earn rather than what he's done. Riskier UX but potentially more motivating for a 14-year-old. Requires careful opacity — can't feel like a penalty zone.</p>
+    </div>
+
+    <div class="explore-card">
+      <div class="explore-name">Striped/Texture Fill Zone</div>
+      <span class="explore-tag tag-alt">Unexplored — Low Priority</span>
+      <p class="explore-desc">Use a repeating diagonal stripe texture instead of a solid gradient fill. Very fine lines (1px every 4px). Creates a technical/graph-paper feel that's distinct from the smooth line.</p>
+      <p class="explore-desc">Likely too noisy at mobile screen density. Probably not the right direction for a clean dark-mode dashboard. Listed for completeness.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── SECTION 3: FILL PHILOSOPHY ── -->
+<div class="section">
+  <div class="section-hd">FD Position — On Fill vs. Gradient (Updated)</div>
+  <div class="philosophy">
+    <h3>Why Marcus is right and why the Fill is stronger than I first argued.</h3>
+    <p>FD's Scorecard #1 critique treated the fill as a static colored region occupying the low-score zone. That framing was wrong. The fill area is not fixed — <span class="highlight">it grows as the line climbs</span>. When Kai's score was 47% on his first test, there is almost no fill visible. By Practice 3 at 88%, the fill covers roughly 70% of the chart height. The chart is accumulating visual mass in proportion to his progress.</p>
+    <p>This is exactly what a progress indicator should do. The gradient variant has a clever encoding in the line stroke itself, but it is a single-channel signal. The fill variant stacks three channels: (1) the line's vertical position, (2) the area under the curve, and (3) with the new diagonal gradient, the fill brightness. All three move in the same direction — up and to the right — as Kai improves.</p>
+    <p>The remaining counterargument is that the fill technically does extend into the "below A" zone for most of the chart. But this is true of any area chart that shows progress from a low starting point. The narrative is not "this area represents failure" — it is "this is how much ground Kai has covered." Those are different readings, and the dark card background, the green A line, and the score labels all work together to make the second reading dominant.</p>
+  </div>
+</div>
+
+<!-- ── SECTION 4: OPEN ITEMS ── -->
+<div class="section">
+  <div class="section-hd">Remaining Open Items After This Round</div>
+  <div class="issue-grid">
+
+    <div class="issue-card">
+      <div class="issue-top">
+        <span class="issue-sev sev-mid">Mid</span>
+        <div class="issue-title">88% label connector</div>
+      </div>
+      <div class="issue-desc">Label at y=41, FA dot at cy=33. 8px gap is readable but a small 10px horizontal tick line from dot to label would eliminate any ambiguity about which data point the label belongs to.</div>
+      <div class="fix-note">Fix: add &lt;line x1="543" y1="33" x2="552" y2="41"&gt; as a faint connector from dot to 88% label.</div>
+    </div>
+
+    <div class="issue-card">
+      <div class="issue-top">
+        <span class="issue-sev sev-mid">Mid</span>
+        <div class="issue-title">Practice 1 double-dot zone</div>
+      </div>
+      <div class="issue-desc">At x=213 there are two dots stacked: FA solid at cy=74.2 and RIB muted at cy=34.6. These are 40px apart which is fine at full size but could compress on smaller screens. No immediate fix needed — acceptable in v1.</div>
+      <div class="fix-note">Monitor at 375px viewport width before calling this done.</div>
+    </div>
+
+    <div class="issue-card">
+      <div class="issue-top">
+        <span class="issue-sev sev-lo">Low</span>
+        <div class="issue-title">Green Bloom fill variant</div>
+      </div>
+      <div class="issue-desc">Worth building as a quick experiment: add a 0%→4% green tint in the right half of the fill to mark the A-achievement zone. Would need to be tested at full size to see if it reads as intentional or noisy.</div>
+      <div class="fix-note">Optional. Build only if Marcus wants to explore further.</div>
+    </div>
+
+    <div class="issue-card">
+      <div class="issue-top">
+        <span class="issue-sev sev-lo">Low</span>
+        <div class="issue-title">Mobile viewport validation</div>
+      </div>
+      <div class="issue-desc">All sizing is done at ~390px equivalent (max-width 430px container). The SVG scales via width:100% but score labels at x=554 may overflow the viewBox on very narrow screens. Need a clip-path or adjusted label positions for sub-375px.</div>
+      <div class="fix-note">Test at iPhone SE width before handoff to GA for integration.</div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

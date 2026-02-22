@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MCM A/B Scorecard — FD</title>
+<style>
+  :root {
+    --bg: #0d1117; --card: #161b22; --raised: #1c2128;
+    --green: #3FB950; --red: #f85149; --yellow: #d29922; --blue: #58a6ff;
+    --text-1: #E6EDF3; --text-2: #8B949E; --text-3: #6E7681;
+    --border: #21262d; --border2: #30363d;
+    --r: 10px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text-1); font-family: system-ui,-apple-system,sans-serif; font-size: 14px; padding: 32px 20px 60px; max-width: 880px; margin: 0 auto; }
+
+  h1 { font-size: 1.2rem; font-weight: 700; margin-bottom: 4px; }
+  .meta { font-size: 0.78rem; color: var(--text-2); margin-bottom: 32px; }
+
+  /* ── SECTION HEADERS ── */
+  .section-hd {
+    font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--text-3);
+    border-bottom: 1px solid var(--border); padding-bottom: 8px; margin-bottom: 16px;
+  }
+  .section { margin-bottom: 36px; }
+
+  /* ── SCORE PILL ── */
+  .score-pill {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 36px; height: 36px; border-radius: 50%; font-size: 0.9rem;
+    font-weight: 800; flex-shrink: 0;
+  }
+  .score-a { background: rgba(63,185,80,0.12); color: var(--green); border: 2px solid rgba(63,185,80,0.35); }
+  .score-b { background: rgba(88,166,255,0.1); color: var(--blue); border: 2px solid rgba(88,166,255,0.25); }
+
+  /* ── AB GRID ── */
+  .ab-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .ab-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: var(--r); padding: 20px;
+  }
+  .ab-card.winner { border-color: rgba(63,185,80,0.3); }
+  .ab-hd {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 16px;
+  }
+  .ab-name { font-size: 1rem; font-weight: 700; }
+  .ab-verdict {
+    font-size: 0.72rem; font-weight: 700; padding: 2px 8px; border-radius: 4px;
+    letter-spacing: 0.05em;
+  }
+  .verdict-pick { background: rgba(63,185,80,0.12); color: var(--green); border: 1px solid rgba(63,185,80,0.3); }
+  .verdict-pass { background: rgba(139,148,158,0.1); color: var(--text-2); border: 1px solid var(--border); }
+
+  .pro-con-label {
+    font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; margin-bottom: 8px;
+  }
+  .label-pro { color: var(--green); }
+  .label-con { color: var(--red); }
+
+  .item-list { list-style: none; margin-bottom: 16px; }
+  .item-list li {
+    display: flex; gap: 8px; align-items: flex-start;
+    font-size: 0.82rem; color: var(--text-2); line-height: 1.5; margin-bottom: 6px;
+  }
+  .item-list li .dot {
+    flex-shrink: 0; width: 6px; height: 6px; border-radius: 50%; margin-top: 6px;
+  }
+  .dot-green { background: var(--green); }
+  .dot-red   { background: var(--red); }
+  .dot-yellow { background: var(--yellow); }
+  .dot-blue  { background: var(--blue); }
+
+  /* ── OVERALL SCORE ROW ── */
+  .overall-row {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;
+  }
+  .score-row-card {
+    background: var(--raised); border: 1px solid var(--border2);
+    border-radius: 8px; padding: 14px 16px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .score-row-card.winner-card { border-color: rgba(63,185,80,0.3); }
+  .score-detail { flex: 1; }
+  .score-name { font-size: 0.78rem; font-weight: 700; margin-bottom: 2px; }
+  .score-sub  { font-size: 0.72rem; color: var(--text-2); }
+  .big-score  { font-size: 1.8rem; font-weight: 900; letter-spacing: -0.03em; line-height: 1; }
+  .big-score.green { color: var(--green); }
+  .big-score.blue  { color: var(--blue); }
+
+  /* ── FIX AUDIT TABLE ── */
+  .fix-table { width: 100%; border-collapse: collapse; }
+  .fix-table th {
+    font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-3); text-align: left; padding: 0 12px 10px 0; border-bottom: 1px solid var(--border);
+  }
+  .fix-table td {
+    padding: 10px 12px 10px 0; font-size: 0.82rem; color: var(--text-2);
+    border-bottom: 1px solid rgba(33,38,45,0.6); vertical-align: top;
+  }
+  .fix-table tr:last-child td { border-bottom: none; }
+  .status-pill {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 0.68rem; font-weight: 700; padding: 2px 7px;
+    border-radius: 4px; white-space: nowrap;
+  }
+  .status-done   { background: rgba(63,185,80,0.1);  color: var(--green);  border: 1px solid rgba(63,185,80,0.25); }
+  .status-partial { background: rgba(210,153,34,0.1); color: var(--yellow); border: 1px solid rgba(210,153,34,0.25); }
+  .status-miss   { background: rgba(248,81,73,0.1);  color: var(--red);    border: 1px solid rgba(248,81,73,0.25); }
+
+  /* ── REMAINING ISSUES ── */
+  .issue-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 8px; padding: 14px 16px; margin-bottom: 10px;
+    display: flex; gap: 14px; align-items: flex-start;
+  }
+  .issue-sev {
+    flex-shrink: 0; font-size: 0.65rem; font-weight: 700; padding: 3px 7px;
+    border-radius: 4px; margin-top: 1px; white-space: nowrap;
+  }
+  .sev-hi  { background: rgba(248,81,73,0.1);  color: var(--red);    border: 1px solid rgba(248,81,73,0.25); }
+  .sev-mid { background: rgba(210,153,34,0.1); color: var(--yellow); border: 1px solid rgba(210,153,34,0.25); }
+  .sev-lo  { background: rgba(63,185,80,0.08); color: var(--text-3); border: 1px solid var(--border); }
+  .issue-body {}
+  .issue-title { font-size: 0.85rem; font-weight: 700; margin-bottom: 3px; }
+  .issue-desc  { font-size: 0.78rem; color: var(--text-2); line-height: 1.5; }
+  .issue-fix   { font-size: 0.73rem; color: var(--text-3); margin-top: 4px; font-style: italic; }
+
+  /* ── VERDICT BANNER ── */
+  .verdict-banner {
+    background: linear-gradient(135deg, rgba(63,185,80,0.08), rgba(63,185,80,0.03));
+    border: 1px solid rgba(63,185,80,0.25); border-radius: var(--r);
+    padding: 20px 22px;
+  }
+  .verdict-banner h3 { font-size: 0.95rem; font-weight: 700; color: var(--green); margin-bottom: 8px; }
+  .verdict-banner p  { font-size: 0.84rem; color: var(--text-2); line-height: 1.6; }
+  .verdict-banner p + p { margin-top: 8px; }
+
+  .dim { color: var(--text-3); font-size: 0.73rem; }
+</style>
+</head>
+<body>
+
+<h1>MCM Dashboard — A/B Scorecard</h1>
+<p class="meta">FD Design Review &middot; Feb 22, 2026 &middot; mockup-ab.html</p>
+
+<!-- ── SECTION 0: OVERALL SCORE ── -->
+<div class="section">
+  <div class="section-hd">Overall Score</div>
+  <div class="overall-row">
+    <div class="score-row-card winner-card">
+      <div class="big-score green">B</div>
+      <div class="score-detail">
+        <div class="score-name">Gradient Stroke <span class="dim">— FD Pick</span></div>
+        <div class="score-sub">Encodes progress directly in the line. Cleaner hierarchy. Story-first.</div>
+      </div>
+    </div>
+    <div class="score-row-card">
+      <div class="big-score blue">A</div>
+      <div class="score-detail">
+        <div class="score-name">Fill</div>
+        <div class="score-sub">More conventional. Readable. But fills the wrong semantic zone.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── SECTION 1: SIDE-BY-SIDE PROS / CONS ── -->
+<div class="section">
+  <div class="section-hd">Design Comparison — Pros &amp; Cons</div>
+  <div class="ab-grid">
+
+    <!-- B: GRADIENT STROKE -->
+    <div class="ab-card winner">
+      <div class="ab-hd">
+        <div class="score-pill score-b">B</div>
+        <div>
+          <div class="ab-name">Gradient Stroke</div>
+          <span class="ab-verdict verdict-pick">FD Pick</span>
+        </div>
+      </div>
+
+      <div class="pro-con-label label-pro">Pros</div>
+      <ul class="item-list">
+        <li><span class="dot dot-green"></span>Line itself IS the narrative — gray start fades to bright white as score climbs. No legend needed to understand it.</li>
+        <li><span class="dot dot-green"></span>No fill competing with the RIB dashed track. Two data series read clearly as separate signals.</li>
+        <li><span class="dot dot-green"></span>Dots echo the gradient (gray → mid → bright → brightest). The dot series reinforces the story the line tells.</li>
+        <li><span class="dot dot-green"></span>Cleaner — negative space is working. Card doesn't feel visually heavy.</li>
+        <li><span class="dot dot-green"></span>The "dim start, bright finish" metaphor maps to Kai's actual learning arc. It's not just decoration, it has meaning.</li>
+      </ul>
+
+      <div class="pro-con-label label-con">Cons</div>
+      <ul class="item-list">
+        <li><span class="dot dot-red"></span>Slightly less immediately readable as a trend chart. New user might not register the gradient is meaningful on first glance.</li>
+        <li><span class="dot dot-red"></span>Starting dot is quite gray (#6E7681 stroke) — can look disconnected from the rest of the line.</li>
+        <li><span class="dot dot-red"></span>The 88% and 95% score labels on the right crowd together more visibly when there's no fill to anchor their position.</li>
+      </ul>
+    </div>
+
+    <!-- A: FILL -->
+    <div class="ab-card">
+      <div class="ab-hd">
+        <div class="score-pill score-a">A</div>
+        <div>
+          <div class="ab-name">Fill</div>
+          <span class="ab-verdict verdict-pass">Secondary</span>
+        </div>
+      </div>
+
+      <div class="pro-con-label label-pro">Pros</div>
+      <ul class="item-list">
+        <li><span class="dot dot-green"></span>Conventional area chart format — immediately readable as a trend even without explanation.</li>
+        <li><span class="dot dot-green"></span>Fill creates visual weight below the line, giving the chart a sense of grounded completeness.</li>
+        <li><span class="dot dot-green"></span>The uniform white line on fill feels clean and high-contrast against the dark area.</li>
+      </ul>
+
+      <div class="pro-con-label label-con">Cons</div>
+      <ul class="item-list">
+        <li><span class="dot dot-red"></span>Fill is semantically backwards for this chart: the filled zone is below the line (low scores). Eye gets drawn DOWN toward failure, not UP toward the A grade.</li>
+        <li><span class="dot dot-red"></span>Fill competes with RIB dashed track — when both overlap in the upper range, the signal blurs.</li>
+        <li><span class="dot dot-red"></span>Uniform line loses expressiveness — it tells you "this happened" but not "this is getting better."</li>
+        <li><span class="dot dot-red"></span>The fill gradient (top = 14% opacity, bottom = 0%) is subtle enough that it doesn't add much, but busy enough that it dilutes the clean card feel.</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── SECTION 2: FIX AUDIT ── -->
+<div class="section">
+  <div class="section-hd">Fix Audit — What Was Promised vs. What Landed</div>
+  <table class="fix-table">
+    <thead>
+      <tr>
+        <th style="width:32%">Fix</th>
+        <th style="width:14%">Status</th>
+        <th>Notes from screenshot</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Dead space above A line</strong><br><span class="dim">y_top 20→14, viewBox 128→120</span></td>
+        <td><span class="status-pill status-done">✓ Fixed</span></td>
+        <td>A grade line now sits ~14px from top of SVG. Both variants show it. Confirmed in screenshots — the dead zone above the dashed A line is substantially reduced.</td>
+      </tr>
+      <tr>
+        <td><strong>Trend card padding</strong><br><span class="dim">20px 20px 16px → 18px 18px 14px</span></td>
+        <td><span class="status-pill status-done">✓ Fixed</span></td>
+        <td>Chart card now matches test card horizontal padding. Looks consistent.</td>
+      </tr>
+      <tr>
+        <td><strong>Hero-last font size</strong><br><span class="dim">0.75rem → 0.84rem</span></td>
+        <td><span class="status-pill status-done">✓ Fixed</span></td>
+        <td>The "Last test: Feb 26 · 88% first attempt · 95% after Run It Back" line is clearly readable in both screenshots. Previously too small.</td>
+      </tr>
+      <tr>
+        <td><strong>Section label size</strong><br><span class="dim">0.68rem → 0.72rem</span></td>
+        <td><span class="status-pill status-done">✓ Fixed</span></td>
+        <td>"YOUR PROGRESS" and "LAST 2 TESTS" labels are legible. Slightly bolder feel confirmed.</td>
+      </tr>
+      <tr>
+        <td><strong>Score number color</strong><br><span class="dim">#7A9BF0 blue → var(--text-1) white</span></td>
+        <td><span class="status-pill status-done">✓ Fixed</span></td>
+        <td>82% and 88% on the test cards are now white. No longer implies the arbitrary blue is meaningful. The badge carries the grade signal.</td>
+      </tr>
+      <tr>
+        <td><strong>Legend line alignment</strong><br><span class="dim">SVG lines → CSS inline-block spans</span></td>
+        <td><span class="status-pill status-partial">~ Partial</span></td>
+        <td>Legend lines are centered to text vertically. But at small font sizes the dashed swatch still reads slightly lighter/thinner than it should. Not broken — just not perfectly tuned.</td>
+      </tr>
+      <tr>
+        <td><strong>Nav tile padding</strong><br><span class="dim">15px → 16px vertical</span></td>
+        <td><span class="status-pill status-done">✓ Fixed</span></td>
+        <td>Consistent with card rhythm throughout. Confirmed visually.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ── SECTION 3: REMAINING ISSUES ── -->
+<div class="section">
+  <div class="section-hd">Remaining Issues — New Findings</div>
+
+  <div class="issue-card">
+    <span class="issue-sev sev-hi">High</span>
+    <div class="issue-body">
+      <div class="issue-title">88% score label on right side is too close to the FA endpoint dot</div>
+      <div class="issue-desc">The FA line endpoint (Practice 3 dot at cy=33) and the "88%" text at y=41 are only 8 SVG units apart. On a 120px viewBox that's roughly 8px visual gap. The label reads ambiguously — is it labeling the FA dot or the A line? Needs to either move further right or be offset more clearly.</div>
+      <div class="issue-fix">Fix: push score labels to x=560 and add a 2px wide colored indicator bar (green for 95%, --text-2 for 88%) between dot and label.</div>
+    </div>
+  </div>
+
+  <div class="issue-card">
+    <span class="issue-sev sev-hi">High</span>
+    <div class="issue-body">
+      <div class="issue-title">B/C grade lines are too invisible — below threshold for functional use</div>
+      <div class="issue-desc">The C line at 6% opacity and B line at 8% opacity are so faint they barely register on the chart. In B (Gradient) especially, with no fill to anchor the chart, the grade context ladder feels absent. User cannot orient to the scale. The A line is correctly green and visible — B and C need to step up slightly to be actually legible as reference lines.</div>
+      <div class="issue-fix">Fix: raise B line to 14% opacity, C line to 10% opacity. Keep them recessive but make them visible enough to read as scale markers.</div>
+    </div>
+  </div>
+
+  <div class="issue-card">
+    <span class="issue-sev sev-mid">Mid</span>
+    <div class="issue-body">
+      <div class="issue-title">Bottom of chart card has inconsistent breathing room</div>
+      <div class="issue-desc">The x-axis labels ("1st Test", "Practice 1") sit at y=116 in a 120px viewBox, then the card has 14px bottom padding on top of that. This creates roughly 14px of whitespace below the x labels. That feels okay but not locked — comparing against the 18px top padding of the chart card, the bottom feels slightly tight.</div>
+      <div class="issue-fix">Fix: add 4px to trend card bottom padding → 18px 18px 18px. Makes top/bottom internal padding equal.</div>
+    </div>
+  </div>
+
+  <div class="issue-card">
+    <span class="issue-sev sev-mid">Mid</span>
+    <div class="issue-body">
+      <div class="issue-title">Practice 2 "Below A" badge color (blue) vs. A on Retake (green) — visual imbalance</div>
+      <div class="issue-desc">The blue badge for "Below A" carries implicit meaning (links, actions) in dark UI design systems. It looks like a tappable pill. The green badge for "A on Retake" correctly reads as achievement. The blue badge for failure/neutral state should be gray (--text-2 tinted) rather than blue to avoid the affordance confusion.</div>
+      <div class="issue-fix">Fix: Change badge-blu to use --text-3 text and a dark neutral background instead of the blue tint.</div>
+    </div>
+  </div>
+
+  <div class="issue-card">
+    <span class="issue-sev sev-mid">Mid</span>
+    <div class="issue-body">
+      <div class="issue-title">First attempt dot at Practice 1 (x=213) — muted RIB dot overlaps</div>
+      <div class="issue-desc">At x=213 there are two dots: the FA solid dot (cy=74.2) and the RIB muted dot (cy=34.6). These are well-separated vertically, but in a compact viewport the area between them could confuse what the dashed line represents. A subtle connector or clearer spatial separation would help.</div>
+      <div class="issue-fix">Note: This is a data density issue. Lower priority — acceptable in v1 if the legend is clear.</div>
+    </div>
+  </div>
+
+  <div class="issue-card">
+    <span class="issue-sev sev-lo">Low</span>
+    <div class="issue-body">
+      <div class="issue-title">tc-head margin-bottom still at 18px — test cards feel tall</div>
+      <div class="issue-desc">The header section of each test card (name + date on left, badge on right) has 18px bottom margin before the score number. This pushes the score lower than it needs to be. 12px would keep the card compact without cramping.</div>
+      <div class="issue-fix">Fix: .tc-head margin-bottom: 18px → 12px</div>
+    </div>
+  </div>
+
+  <div class="issue-card">
+    <span class="issue-sev sev-lo">Low</span>
+    <div class="issue-body">
+      <div class="issue-title">Hero card em dash — renders as literal "—" in title</div>
+      <div class="issue-desc">"Practice Test #4 &mdash; Quadratics" — the em dash renders correctly but violates the Forge em-dash ban. Should be changed to a colon or period separator.</div>
+      <div class="issue-fix">Fix: "Practice Test #4: Quadratics" or "Practice Test #4 · Quadratics"</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ── SECTION 4: VERDICT ── -->
+<div class="section">
+  <div class="section-hd">FD Verdict</div>
+  <div class="verdict-banner">
+    <h3>Carry B (Gradient Stroke) forward as the canonical design.</h3>
+    <p>The gradient line is not decoration — it is the data. The line starts gray when Kai is at 47% and brightens to near-white as he hits 95% on Run It Back. That visual language encodes progress directly in the shape of the data itself. You don't need to read a legend to understand it — the line tells you something is getting better as it brightens.</p>
+    <p>A (Fill) is more conventional, which is also its flaw in this context. The filled zone is the "low score" zone. Every area chart that fills downward visually celebrates the wrong territory. Here, Kai's story is about climbing. The gradient stroke version points up and brightens as it goes. A is cleaner engineering — B is better design.</p>
+    <p>The high-priority fixes (score label ambiguity, B/C line opacity, badge color) are worth knocking out before this is called final. Then it's done.</p>
+  </div>
+</div>
+
+</body>
+</html>
