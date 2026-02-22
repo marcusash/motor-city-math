@@ -193,6 +193,100 @@
 
         /* Dashboard header: suppress global header border so hero-card accent bar doesn't double up */
         header.dash-header { border-bottom: none; padding-bottom: 0; margin-bottom: 16px; }
+
+        /* ── FD Design Tokens (Feb 2026 redesign) ─────────────────────── */
+        :root {
+            --fd-bg:      #0d1117;
+            --fd-card:    #161b22;
+            --fd-raised:  #1c2128;
+            --fd-border:  rgba(255,255,255,0.07);
+            --fd-border2: rgba(255,255,255,0.14);
+            --fd-green:   #3FB950;   /* reserved: scores ≥ 93% only */
+            --fd-text-1:  #E6EDF3;
+            --fd-text-2:  #8B949E;
+            --fd-text-3:  #6E7681;
+            --fd-r:       10px;
+        }
+
+        /* ── Hero (FD redesign) ───────────────────────────────────────── */
+        .hero {
+            background: var(--fd-card);
+            border: 1px solid var(--fd-border);
+            border-radius: var(--fd-r);
+            padding: 28px 24px 22px;
+            margin-bottom: 14px;
+            text-align: center;
+        }
+        .hero-eye {
+            font-size: 0.72rem; font-weight: 700;
+            letter-spacing: 0.1em; text-transform: uppercase;
+            color: var(--fd-text-2); margin-bottom: 6px;
+        }
+        .hero-name {
+            font-size: 1.1rem; font-weight: 700;
+            margin-bottom: 20px; color: var(--fd-text-1);
+            letter-spacing: 0.01em;
+        }
+        .hero-last {
+            color: var(--fd-text-2);
+            font-size: 0.75rem; margin-top: 16px;
+            letter-spacing: 0.01em;
+            border: none; padding: 0;
+        }
+        .hero-last b { color: var(--fd-text-1); font-weight: 700; }
+
+        /* ── Last 2 Tests cards ───────────────────────────────────────── */
+        .slabel {
+            font-size: 0.68rem; font-weight: 700;
+            letter-spacing: 0.11em; text-transform: uppercase;
+            color: var(--fd-text-3); margin-bottom: 10px;
+            display: block;
+        }
+        .cards-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
+        .test-card {
+            background: var(--fd-card); border: 1px solid var(--fd-border);
+            border-radius: var(--fd-r); padding: 18px 18px 14px;
+            display: flex; flex-direction: column;
+        }
+        .tc-head {
+            display: flex; justify-content: space-between;
+            align-items: flex-start; margin-bottom: 12px;
+        }
+        .tc-name { font-size: 0.82rem; font-weight: 700; color: var(--fd-text-1); }
+        .tc-date { font-size: 0.73rem; color: var(--fd-text-3); margin-top: 3px; }
+        .tc-score {
+            font-size: 2.5rem; font-weight: 900; line-height: 1;
+            letter-spacing: -0.025em;
+        }
+        .tc-attempt { font-size: 0.73rem; color: var(--fd-text-3); margin: 5px 0 16px; }
+        .tc-rib {
+            margin-top: auto; border-top: 1px solid var(--fd-border); padding-top: 11px;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .tc-norib {
+            margin-top: auto; border-top: 1px solid var(--fd-border); padding-top: 11px;
+            font-size: 0.73rem; color: var(--fd-text-3);
+        }
+        .rib-text { font-size: 0.73rem; color: var(--fd-text-2); line-height: 1.6; }
+        .rib-delta { font-weight: 700; }
+
+        /* ── Bottom Nav ───────────────────────────────────────────────── */
+        .bottom-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 24px 0; }
+        .bn-tile {
+            background: var(--fd-card); border: 1px solid var(--fd-border);
+            border-radius: 8px; padding: 15px 18px;
+            display: flex; justify-content: space-between; align-items: center;
+            cursor: pointer; transition: border-color 0.12s;
+            text-decoration: none;
+        }
+        .bn-tile:hover { border-color: var(--fd-border2); }
+        .bn-title { font-size: 0.875rem; font-weight: 700; color: var(--fd-text-1); }
+        .bn-sub { font-size: 0.73rem; color: var(--fd-text-2); margin-top: 3px; }
+        .bn-arrow { color: var(--fd-text-2); font-size: 0.85rem; }
+        @media (max-width: 500px) {
+            .cards-2 { grid-template-columns: 1fr; }
+            .bottom-nav { grid-template-columns: 1fr; }
+        }
         .dad-banner {
             display: flex; align-items: center; flex-wrap: wrap; gap: 10px;
             background: #0d1117; border: 1px solid #e74c3c; border-radius: 8px;
@@ -235,12 +329,28 @@
             <div class="hero-greeting" id="kaiGreeting">Hey Kai! 👋</div>
         </header>
 
-        <!-- UP NEXT: One primary action above the fold -->
-        <div class="hero-card">
-            <div class="hero-title">Up Next 🏀</div>
-            <div class="hero-subtitle" id="upNextInfo">Retake Practice — Nonlinear Functions</div>
+        <!-- UP NEXT hero (FD redesign) -->
+        <div class="hero">
+            <div class="hero-eye">Up Next</div>
+            <div class="hero-name" id="upNextInfo">Retake Practice — Nonlinear Functions</div>
             <a href="exam.html?file=retake-practice-1" class="nav-btn primary">Start Practice</a>
-            <div class="stats-bar" id="statsBar" style="margin-top:16px;"></div>
+            <div class="hero-last" id="statsBar"></div>
+        </div>
+
+        <!-- Last 2 Tests -->
+        <span class="slabel" id="last2Label" style="display:none;">Last 2 Tests</span>
+        <div class="cards-2" id="last2Grid" style="display:none;"></div>
+
+        <!-- Bottom Nav -->
+        <div class="bottom-nav">
+            <div class="bn-tile" onclick="var s=document.getElementById('allTestsSection');s.open=true;s.scrollIntoView({behavior:'smooth'});">
+                <div><div class="bn-title">All Tests</div><div class="bn-sub">Every score over time</div></div>
+                <span class="bn-arrow">&#8594;</span>
+            </div>
+            <div class="bn-tile" onclick="var s=document.getElementById('gamePlanSection');s.open=true;s.scrollIntoView({behavior:'smooth'});">
+                <div><div class="bn-title">Per Standard</div><div class="bn-sub">W2 &middot; W3 breakdown</div></div>
+                <span class="bn-arrow">&#8594;</span>
+            </div>
         </div>
 
         <!-- Collapsible sections below the fold -->
@@ -255,13 +365,13 @@
             </div>
         </details>
 
-        <details class="dash-section">
+        <details class="dash-section" id="gamePlanSection">
             <summary class="section-title">Your Game Plan 🎯</summary>
             <div class="standards-grid" id="standardsGrid" role="list"></div>
             <ul class="study-list" id="studyList"></ul>
         </details>
 
-        <details class="dash-section">
+        <details class="dash-section" id="allTestsSection">
             <summary class="section-title">All Tests 🏆</summary>
             <div class="test-grid" id="retakeGrid"></div>
             <div class="test-grid" id="testGrid" style="margin-top:12px;"></div>
@@ -625,6 +735,73 @@
             '</svg>';
     }
 
+    /* ========== LAST 2 TESTS CARDS (FD redesign) ========== */
+    function buildLast2Tests() {
+        var scores = getScores();
+        var grid = document.getElementById('last2Grid');
+        var label = document.getElementById('last2Label');
+        if (!grid) return;
+
+        var played = [];
+        tests.forEach(function(t) {
+            var s = scores[t.key];
+            if (!s) return;
+            var firstAtt = null, ribAtt = null, ts = 0;
+            if (s.attempts && s.attempts.length > 0) {
+                firstAtt = s.attempts[0];
+                ribAtt = s.attempts.length > 1 ? s.attempts[s.attempts.length - 1] : null;
+                ts = firstAtt.timestamp || 0;
+            } else if (s.pct || s.score) {
+                firstAtt = { pct: s.pct || Math.round((s.score / s.total) * 100), score: s.score, total: s.total, timestamp: s.timestamp };
+                ts = s.timestamp || 0;
+            }
+            if (!firstAtt) return;
+            played.push({ t: t, firstAtt: firstAtt, ribAtt: ribAtt, ts: ts });
+        });
+
+        if (played.length === 0) {
+            if (label) label.style.display = 'none';
+            grid.style.display = 'none';
+            return;
+        }
+
+        played.sort(function(a, b) { return (b.ts || 0) - (a.ts || 0); });
+        var recent = played.slice(0, 2);
+
+        if (label) label.style.display = 'block';
+        grid.style.display = 'grid';
+
+        var html = '';
+        recent.forEach(function(item) {
+            var pct = item.firstAtt.pct || Math.round(((item.firstAtt.score || 0) / (item.firstAtt.total || 1)) * 100);
+            var isGreen = pct >= 93;
+            var scoreColor = isGreen ? 'var(--fd-green)' : 'var(--fd-text-1)';
+            var dateStr = item.firstAtt.timestamp
+                ? new Date(item.firstAtt.timestamp).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
+                : '';
+            var ribHtml = '';
+            if (item.ribAtt) {
+                var ribPct = item.ribAtt.pct || Math.round(((item.ribAtt.score || 0) / (item.ribAtt.total || 1)) * 100);
+                var delta = ribPct - pct;
+                var deltaStr = delta > 0 ? ' +' + delta : (delta < 0 ? ' ' + delta : '');
+                ribHtml = '<div class="tc-rib"><div class="rib-text">Run It Back<br>' +
+                    '<span class="rib-delta" style="color:' + (ribPct >= 93 ? 'var(--fd-green)' : 'var(--fd-text-2)') + '">' +
+                    ribPct + '%' + deltaStr + '</span></div></div>';
+            } else {
+                ribHtml = '<div class="tc-norib">No retake yet</div>';
+            }
+            html += '<div class="test-card">' +
+                '<div class="tc-head"><div>' +
+                '<div class="tc-name">' + item.t.name + '</div>' +
+                (dateStr ? '<div class="tc-date">' + dateStr + '</div>' : '') +
+                '</div></div>' +
+                '<div class="tc-score" style="color:' + scoreColor + '">' + pct + '%</div>' +
+                '<div class="tc-attempt">First attempt &middot; ' + (item.firstAtt.score || '?') + '/' + (item.firstAtt.total || '?') + '</div>' +
+                ribHtml + '</div>';
+        });
+        grid.innerHTML = html;
+    }
+
     /* ========== STATS BAR ========== */
     function buildStats() {
         var scores = getScores();
@@ -746,6 +923,7 @@
         buildRetakeGrid();
         buildTestGrid();
         buildStats();
+        buildLast2Tests();
         updateUpNext();
     }
 
