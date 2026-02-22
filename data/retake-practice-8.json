@@ -1,0 +1,598 @@
+{
+  "exam_id": "retake-practice-8",
+  "title": "Unit 2 Retake Practice 8",
+  "subtitle": "Varied structure — continued pressure on RP7 weaknesses",
+  "time_minutes": 50,
+  "created": "2026-02-22",
+  "created_by": "FR",
+  "purpose": "Mock RP7 score 6/15. Maintains pressure on 9 missed types: AV reading, AV two-case solve, AC method, x^2-inside radical, exponential x^2-exponent, downward parabola graph, rational graph, write-equation from vertex+point, word-problem find-r-first.",
+  "questions": [
+    {
+      "id": "rp8-q1",
+      "number": 1,
+      "section": "A",
+      "standard": "W2.a",
+      "type": "quadratic",
+      "question_html": "Solve by factoring: \\( x^2 - 5x - 6 = 0 \\)",
+      "inputs": [
+        {
+          "id": "q1_x1",
+          "type": "number",
+          "label": "Smaller x =",
+          "answer": -1,
+          "tolerance": 0.05
+        },
+        {
+          "id": "q1_x2",
+          "type": "number",
+          "label": "Larger x =",
+          "answer": 6,
+          "tolerance": 0.05
+        }
+      ],
+      "hint": "Find two numbers that multiply to -6 and add to -5.",
+      "solution_steps": [
+        "Factors of -6 adding to -5: -6 and +1.",
+        "(x - 6)(x + 1) = 0.",
+        "x = 6 or x = -1. Check: 36-30-6=0 ✓, 1+5-6=0 ✓"
+      ],
+      "feedback_wrong": "Factors of -6 adding to -5 are -6 and +1: (x-6)(x+1)=0."
+    },
+    {
+      "id": "rp8-q2",
+      "number": 2,
+      "section": "A",
+      "standard": "W2.b",
+      "type": "absolute-value",
+      "question_html": "For \\( f(x) = 2|x - 3| - 4 \\): state the vertex, x-intercepts, and range.",
+      "inputs": [
+        {
+          "id": "q2_vx",
+          "type": "number",
+          "label": "Vertex x =",
+          "answer": 3,
+          "tolerance": 0.05
+        },
+        {
+          "id": "q2_vy",
+          "type": "number",
+          "label": "Vertex y =",
+          "answer": -4,
+          "tolerance": 0.05
+        },
+        {
+          "id": "q2_x1",
+          "type": "number",
+          "label": "Smaller x-intercept =",
+          "answer": 1,
+          "tolerance": 0.05
+        },
+        {
+          "id": "q2_x2",
+          "type": "number",
+          "label": "Larger x-intercept =",
+          "answer": 5,
+          "tolerance": 0.05
+        },
+        {
+          "id": "q2_range",
+          "type": "text",
+          "label": "Range (interval notation):"
+        }
+      ],
+      "hint": "Vertex is at (h,k) from a|x-h|+k. Set f(x)=0 to find x-intercepts.",
+      "solution_steps": [
+        "Vertex: h=3, k=-4 → (3,-4).",
+        "x-intercepts: 2|x-3|=4 → |x-3|=2 → x=5 or x=1.",
+        "a=2>0 opens upward. Range: [-4, +∞)."
+      ],
+      "feedback_wrong": "Vertex is (3,-4). Set f=0: |x-3|=2 gives x=1 and x=5. a>0 so range is [-4,+inf)."
+    },
+    {
+      "id": "rp8-q3",
+      "number": 3,
+      "section": "A",
+      "standard": "W3.a",
+      "type": "absolute-value",
+      "question_html": "Solve: \\( |2x + 4| - 3 = 5 \\). Write BOTH equations before entering answers.",
+      "inputs": [
+        {
+          "id": "q3_cases",
+          "type": "text",
+          "label": "Both cases (write them out):"
+        },
+        {
+          "id": "q3_x1",
+          "type": "number",
+          "label": "Smaller x =",
+          "answer": -6,
+          "tolerance": 0.05
+        },
+        {
+          "id": "q3_x2",
+          "type": "number",
+          "label": "Larger x =",
+          "answer": 2,
+          "tolerance": 0.05
+        }
+      ],
+      "hint": "Isolate the absolute value first. Then write the positive AND negative case.",
+      "solution_steps": [
+        "Isolate: |2x+4| = 8.",
+        "Case 1 (positive): 2x+4=8 → x=2.",
+        "Case 2 (negative): -(2x+4)=8 → 2x+4=-8 → x=-6.",
+        "Check: |4+4|-3=5 ✓ and |-12+4|-3=8-3=5 ✓"
+      ],
+      "feedback_wrong": "Isolate first: |2x+4|=8. Case 1: 2x+4=8. Case 2: -(2x+4)=8."
+    },
+    {
+      "id": "rp8-q4",
+      "number": 4,
+      "section": "B",
+      "standard": "W3.d",
+      "type": "exponential",
+      "question_html": "Solve: \\( 4^{2x-1} = 64 \\)",
+      "inputs": [
+        {
+          "id": "q4_x",
+          "type": "number",
+          "label": "x =",
+          "answer": 2,
+          "tolerance": 0.05
+        }
+      ],
+      "hint": "Rewrite both sides as powers of 2.",
+      "solution_steps": [
+        "4^(2x-1) = (2²)^(2x-1) = 2^(4x-2).",
+        "64 = 2⁶.",
+        "4x-2=6 → x=2.",
+        "Check: 4^(4-1)=4³=64 ✓"
+      ],
+      "feedback_wrong": "4=2² so 4^(2x-1)=2^(4x-2). 64=2⁶. Set 4x-2=6 → x=2."
+    },
+    {
+      "id": "rp8-q5",
+      "number": 5,
+      "section": "B",
+      "standard": "W2.a",
+      "type": "quadratic",
+      "question_html": "Solve by factoring: \\( 3x^2 - 5x - 2 = 0 \\)",
+      "inputs": [
+        {
+          "id": "q5_factored",
+          "type": "text",
+          "label": "Factored form:"
+        },
+        {
+          "id": "q5_x1",
+          "type": "number",
+          "label": "Smaller x =",
+          "answer": -0.333,
+          "tolerance": 0.02
+        },
+        {
+          "id": "q5_x2",
+          "type": "number",
+          "label": "Larger x =",
+          "answer": 2,
+          "tolerance": 0.05
+        }
+      ],
+      "hint": "AC method: a×c = 3×(-2) = -6. Find factors of -6 that add to -5. Split middle term, factor by grouping.",
+      "solution_steps": [
+        "a×c = -6. Factors adding to -5: -6 and +1.",
+        "Split: 3x² - 6x + x - 2.",
+        "Group: 3x(x-2) + 1(x-2) = (3x+1)(x-2) = 0.",
+        "x = -1/3 or x = 2."
+      ],
+      "feedback_wrong": "AC: a×c=-6. Factors adding to -5: -6 and +1. Split and group: (3x+1)(x-2)=0."
+    },
+    {
+      "id": "rp8-q6",
+      "number": 6,
+      "section": "B",
+      "standard": "W3.c",
+      "type": "radical",
+      "question_html": "Solve: \\( \\sqrt{x^2 - 3} - 1 = 0 \\)",
+      "inputs": [
+        {
+          "id": "q6_x1",
+          "type": "number",
+          "label": "Smaller x =",
+          "answer": -2,
+          "tolerance": 0.05
+        },
+        {
+          "id": "q6_x2",
+          "type": "number",
+          "label": "Larger x =",
+          "answer": 2,
+          "tolerance": 0.05
+        }
+      ],
+      "hint": "Isolate the radical, then square. You will get x² = a number. What does that give you?",
+      "solution_steps": [
+        "Isolate: √(x²-3) = 1.",
+        "Square: x²-3=1 → x²=4.",
+        "x=±2. Two solutions because x²=positive always gives ±.",
+        "Check: √(4-3)-1=0 ✓"
+      ],
+      "feedback_wrong": "After squaring: x²=4 → x=±2. Don’t forget the negative solution."
+    },
+    {
+      "id": "rp8-q7",
+      "number": 7,
+      "section": "B",
+      "standard": "W3.d",
+      "type": "exponential",
+      "question_html": "Solve: \\( 27^x = 9^{2x-1} \\)",
+      "inputs": [
+        {
+          "id": "q7_x",
+          "type": "number",
+          "label": "x =",
+          "answer": 2,
+          "tolerance": 0.05
+        }
+      ],
+      "hint": "Rewrite both sides as powers of 3.",
+      "solution_steps": [
+        "27^x = (3³)^x = 3^(3x).",
+        "9^(2x-1) = (3²)^(2x-1) = 3^(4x-2).",
+        "3x = 4x-2 → x=2.",
+        "Check: 27²=729, 9³=729 ✓"
+      ],
+      "feedback_wrong": "27=3³, 9=3². Convert and set exponents equal: 3x=4x-2."
+    },
+    {
+      "id": "rp8-q8",
+      "number": 8,
+      "section": "B",
+      "standard": "W3.c",
+      "type": "rational",
+      "question_html": "Solve: \\( \\dfrac{3x + 2}{x - 4} = 5 \\)",
+      "inputs": [
+        {
+          "id": "q8_x",
+          "type": "number",
+          "label": "x =",
+          "answer": 11,
+          "tolerance": 0.05
+        }
+      ],
+      "hint": "Multiply both sides by (x-4).",
+      "solution_steps": [
+        "3x+2 = 5(x-4) = 5x-20.",
+        "22=2x → x=11.",
+        "Check: (33+2)/(11-4)=35/7=5 ✓"
+      ],
+      "feedback_wrong": "Multiply by (x-4): 3x+2=5x-20 → x=11."
+    },
+    {
+      "id": "rp8-q9",
+      "number": 9,
+      "section": "B",
+      "standard": "W3.b",
+      "type": "radical",
+      "question_html": "Solve: \\( \\sqrt{5x - 4} = \\sqrt{2x + 8} \\)",
+      "inputs": [
+        {
+          "id": "q9_x",
+          "type": "number",
+          "label": "x =",
+          "answer": 4,
+          "tolerance": 0.05
+        }
+      ],
+      "hint": "If √A = √B then A = B. Set radicands equal.",
+      "solution_steps": [
+        "5x-4 = 2x+8.",
+        "3x=12 → x=4.",
+        "Check: √16=√16 ✓"
+      ],
+      "feedback_wrong": "Set radicands equal: 5x-4=2x+8 → x=4."
+    },
+    {
+      "id": "rp8-q10",
+      "number": 10,
+      "section": "B",
+      "standard": "W3.d",
+      "type": "exponential",
+      "question_html": "Solve: \\( 3^{x^2 + 1} = 243 \\)",
+      "inputs": [
+        {
+          "id": "q10_x1",
+          "type": "number",
+          "label": "Smaller x =",
+          "answer": -2,
+          "tolerance": 0.05
+        },
+        {
+          "id": "q10_x2",
+          "type": "number",
+          "label": "Larger x =",
+          "answer": 2,
+          "tolerance": 0.05
+        }
+      ],
+      "hint": "Rewrite 243 as a power of 3. Set exponents equal. You will get x² = a number.",
+      "solution_steps": [
+        "243 = 3⁵.",
+        "x²+1=5 → x²=4.",
+        "x=±2. Two solutions.",
+        "Check: 3^(4+1)=3⁵=243 ✓"
+      ],
+      "feedback_wrong": "243=3⁵. So x²+1=5 → x²=4 → x=±2."
+    },
+    {
+      "id": "rp8-q11",
+      "number": 11,
+      "section": "B",
+      "standard": "W3.b",
+      "type": "fractional-exp",
+      "question_html": "Solve: \\( 3x^{2/3} = 48 \\)",
+      "inputs": [
+        {
+          "id": "q11_x",
+          "type": "number",
+          "label": "x =",
+          "answer": 64,
+          "tolerance": 0.05
+        }
+      ],
+      "hint": "Divide by 3 first. Then raise both sides to the 3/2 power to undo the 2/3.",
+      "solution_steps": [
+        "x^(2/3)=16.",
+        "x = 16^(3/2) = (√16)³ = 4³ = 64.",
+        "Check: 3×64^(2/3) = 3×(4³)^(2/3) = 3×4² = 48 ✓"
+      ],
+      "feedback_wrong": "Divide by 3: x^(2/3)=16. Raise to 3/2: x=16^(3/2)=(√16)³=64."
+    },
+    {
+      "id": "rp8-q12",
+      "number": 12,
+      "section": "C",
+      "standard": "W2.c",
+      "type": "graph",
+      "question_html": "Graph \\( f(x) = -(x-3)^2 + 4 \\) and answer all of the following:",
+      "inputs": [
+        {
+          "id": "q12_vx",
+          "type": "number",
+          "label": "Vertex x =",
+          "answer": 3,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q12_vy",
+          "type": "number",
+          "label": "Vertex y =",
+          "answer": 4,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q12_domain",
+          "type": "text",
+          "label": "Domain (interval notation):"
+        },
+        {
+          "id": "q12_range",
+          "type": "text",
+          "label": "Range (interval notation):"
+        },
+        {
+          "id": "q12_increase",
+          "type": "text",
+          "label": "f is increasing on:"
+        },
+        {
+          "id": "q12_decrease",
+          "type": "text",
+          "label": "f is decreasing on:"
+        }
+      ],
+      "graph": {
+        "canvas_id": "graphQ12",
+        "function": "-(Math.pow(x-3,2))+4",
+        "function_display": "f(x) = -(x-3)² + 4",
+        "key_points": [
+          [
+            1,
+            0
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            5,
+            0
+          ]
+        ],
+        "x_range": [
+          -1,
+          7
+        ],
+        "y_range": [
+          -2,
+          6
+        ],
+        "min_points": 5,
+        "tolerance": 0.25
+      },
+      "hint": "a=-1 means the parabola opens DOWNWARD. The vertex is a MAXIMUM. Range stops at the vertex y-value.",
+      "solution_steps": [
+        "Vertex: h=3, k=4 → (3,4). a=-1<0 so opens DOWNWARD.",
+        "Domain: all real numbers, (-∞,+∞).",
+        "Range: parabola goes DOWN from vertex. Maximum y=4. Range = (-∞, 4].",
+        "Increasing on (-∞,3): left of vertex.",
+        "Decreasing on (3,+∞): right of vertex.",
+        "Key: downward parabola → range is y ≤ k, NOT y ≥ k."
+      ],
+      "feedback_wrong": "a=-1 means DOWNWARD. Range is (-inf,4], not [4,+inf). Increasing is LEFT of vertex."
+    },
+    {
+      "id": "rp8-q13",
+      "number": 13,
+      "section": "C",
+      "standard": "W2.e",
+      "type": "graph",
+      "question_html": "Graph \\( f(x) = \\dfrac{4}{x + 3} - 1 \\) and state asymptotes, domain, range, and end behavior.",
+      "inputs": [
+        {
+          "id": "q13_va",
+          "type": "number",
+          "label": "Vertical asymptote x =",
+          "answer": -3,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q13_ha",
+          "type": "number",
+          "label": "Horizontal asymptote y =",
+          "answer": -1,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q13_domain",
+          "type": "text",
+          "label": "Domain:"
+        },
+        {
+          "id": "q13_range",
+          "type": "text",
+          "label": "Range:"
+        },
+        {
+          "id": "q13_endbeh",
+          "type": "text",
+          "label": "As x → +∞, f(x) →"
+        }
+      ],
+      "graph": {
+        "canvas_id": "graphQ13",
+        "function": "4/(x+3)-1",
+        "function_display": "f(x) = 4/(x+3) - 1",
+        "key_points": [
+          [
+            -5,
+            1
+          ],
+          [
+            -4,
+            3
+          ],
+          [
+            -2,
+            -5
+          ],
+          [
+            0,
+            0.3333333333333333
+          ],
+          [
+            3,
+            0
+          ]
+        ],
+        "x_range": [
+          -9,
+          5
+        ],
+        "y_range": [
+          -7,
+          5
+        ],
+        "min_points": 5,
+        "tolerance": 0.25
+      },
+      "hint": "VA: where denominator=0. HA: y-value the function approaches as x→∞.",
+      "solution_steps": [
+        "VA: x+3=0 → x=-3. HA: as x→∞, 4/(x+3)→0 → y→-1.",
+        "Domain: x≠-3. Write: (-∞,-3)∪(-3,+∞).",
+        "Range: y≠-1. Write: (-∞,-1)∪(-1,+∞).",
+        "As x→+∞: f(x)→-1 from above (4/(x+3) is positive).",
+        "W2.e: asymptotes determine the excluded values in both domain and range."
+      ],
+      "feedback_wrong": "VA: x=-3. HA: y=-1. Domain excludes x=-3. Range excludes y=-1."
+    },
+    {
+      "id": "rp8-q14",
+      "number": 14,
+      "section": "D",
+      "standard": "W2.d",
+      "type": "write-equation",
+      "question_html": "A quadratic opens UPWARD, has vertex at (-2, 1), and passes through (0, 5). Find a, h, k so that f(x) = a(x - h)² + k.",
+      "inputs": [
+        {
+          "id": "q14_a",
+          "type": "number",
+          "label": "a =",
+          "answer": 1,
+          "tolerance": 0.05
+        },
+        {
+          "id": "q14_h",
+          "type": "number",
+          "label": "h =",
+          "answer": -2,
+          "tolerance": 0.05
+        },
+        {
+          "id": "q14_k",
+          "type": "number",
+          "label": "k =",
+          "answer": 1,
+          "tolerance": 0.05
+        }
+      ],
+      "hint": "Vertex (-2,1) gives h=-2, k=1 directly. Substitute (0,5) into f(x)=a(x+2)²+1 to find a.",
+      "solution_steps": [
+        "Vertex (-2,1) → h=-2, k=1. So f(x) = a(x+2)²+1.",
+        "Substitute (0,5): 5 = a(0+2)²+1 = 4a+1.",
+        "4a=4 → a=1.",
+        "f(x) = (x+2)²+1. Verify: f(-2)=0+1=1 ✓, f(0)=4+1=5 ✓, opens up (a>0) ✓"
+      ],
+      "feedback_wrong": "h=-2 and k=1 come from the vertex. Plug (0,5) into a(x+2)²+1=5 to solve for a."
+    },
+    {
+      "id": "rp8-q15",
+      "number": 15,
+      "section": "D",
+      "standard": "W3.a",
+      "type": "word-problem",
+      "question_html": "A bacteria colony starts with 50 bacteria at t=0. At t=4 hours there are 800 bacteria.<br><br>(a) Write the model P(t) = P₀ · r^t.<br>(b) At what time t will the population reach 25,600?",
+      "inputs": [
+        {
+          "id": "q15_model",
+          "type": "text",
+          "label": "(a) P(t) ="
+        },
+        {
+          "id": "q15_t",
+          "type": "number",
+          "label": "(b) t =",
+          "answer": 9,
+          "tolerance": 0.1
+        }
+      ],
+      "hint": "Solve for r FIRST. P(4)=800: 50·r⁴=800 → r⁴=16. What number raised to the 4th power equals 16?",
+      "solution_steps": [
+        "P₀=50. Model: P(t)=50·r^t.",
+        "P(4)=800: 50·r⁴=800 → r⁴=16=2⁴ → r=2.",
+        "Model: P(t) = 50·2^t.",
+        "When P=25600? 50·2^t=25600 → 2^t=512=2⁹ → t=9 hours.",
+        "Check: 50×512=25600 ✓"
+      ],
+      "feedback_wrong": "Find r first: 50·r⁴=800 → r⁴=16 → r=2. Then P(t)=50·2^t. Then t=9."
+    }
+  ]
+}
