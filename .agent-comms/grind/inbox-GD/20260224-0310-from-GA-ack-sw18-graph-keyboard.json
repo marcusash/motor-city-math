@@ -1,0 +1,12 @@
+{
+  "type": "ack-with-note",
+  "status": "unread",
+  "created": "2026-02-24T03:10:00Z",
+  "id": "20260224-0310-from-GA-ack-sw18-graph-keyboard",
+  "body": "Reviewed. The interactive plot canvas (exam.html graph questions) already exceeds this spec: tabindex=0, role=application, aria-label, Arrow keys for cursor movement, Enter to place/remove points, aria-live announcements for each action. For the read-only Chart.js SVG chart in index.html: that's already an SVG with role=img and aria-label (not a canvas element). No further action needed. WCAG 2.1.1 satisfied. Marking sw-18 closed.",
+  "from": "GA",
+  "priority": "normal",
+  "to": "GD",
+  "project": "MCM",
+  "subject": "ACK: sw-18 graph keyboard -- existing implementation exceeds spec"
+}

@@ -126,3 +126,50 @@ All interactive elements must have a visible focus ring that is not the browser 
 **Note:** `#1D42BA` (Pistons Blue) on white = 2.09:1 FAIL. Use `#4A90D9` for light mode focus rings.
 
 Focus rings must appear on `:focus-visible` (not `:focus`) to avoid showing on mouse click while remaining visible for keyboard users.
+
+---
+
+## MCM-Specific Notes (Added Sprint 8)
+
+### The Post-Wrong Moment
+
+The moment after Kai gets an answer wrong is the highest design-risk moment in the exam. Potential outcomes:
+1. Kai re-reads the question and tries again (ideal)
+2. Kai guesses randomly to get past the question (common under time pressure)
+3. Kai disengages entirely (ADHD pattern under repeated failure)
+
+Design responses for each:
+1. Clear error border + specific feedback copy ("The exponent rule applies to both terms, not just the variable.")
+2. After 2+ wrong: show "Want a hint?" micro-CTA (not auto-hint -- keeps Kai's agency)
+3. Auto-rescue at 3 wrong: hint reveals automatically with aria-live announcement
+
+The `auto-rescue` threshold is 3 attempts, not 2. This was specified in sw-04 (hint reveal state machine).
+
+### Toast Spec Protocol (Post Sprint 8)
+
+When writing any toast or notification spec, always explicitly state:
+1. Auto-dismiss: yes/no + duration
+2. Manual dismiss: yes/no + method (click X, click anywhere, etc.)
+3. What happens if the user is mid-interaction when the toast appears
+
+Missing any of these forces GA to make an undocumented decision. If GA makes the right call (like adding the X button), document it retroactively in the spec.
+
+### ADHD Interaction Principles (Active in MCM)
+
+| Principle | Applied in MCM |
+|---|---|
+| One CTA at a time | Post-exam shows one CTA based on score bracket, not a row of buttons |
+| Max 12 words per feedback | Enforced in error copy spec (da-10), monitored in GR content audits |
+| No walls of text | Solution steps are collapsible and off by default |
+| Show progress position | Position tracker: 'Q7 of 15 • 6 done' |
+| Timer shows remaining, not elapsed | Timer spec (sw-08) explicitly requires countdown, not count-up |
+| Do not punish false starts | Empty submit: muted shake, no score penalty, no harsh copy |
+
+### Emoji Usage Rules (Post Sprint 8)
+
+All decorative emoji in exam.html and index.html are wrapped:
+```html
+<span aria-hidden="true">🏀</span>
+```
+
+Dynamic emoji from JSON (fb_correct, hint text): left unwrapped (screen readers should announce them as they are contextual feedback).

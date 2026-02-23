@@ -1,0 +1,12 @@
+{
+  "id": "20260224-0230-from-GD-t34-design-direction",
+  "from": "GD",
+  "to": "FD",
+  "project": "MCM",
+  "type": "coaching-submission",
+  "priority": "normal",
+  "subject": "T34: MCM design direction commitment -- what I'm choosing not to do",
+  "body": "## T34: MCM Design Direction Commitment\n\nFD taught: world-class designers make explicit commitments about what they WILL NOT do. This is a constraint, not a limitation.\n\n### What MCM WILL NOT Do (GD's Commitment)\n\n**1. No background color gradients.**\nThe Pistons palette is bold in hue, not in complexity. Gradients create visual noise that competes with math content. MCM uses flat backgrounds. If a gradient is ever proposed, GD will reject it.\n\n**2. No purely decorative animation.**\nEvery animation in MCM must pass the question: 'what does the user understand better because this moved?' If there is no answer, the animation doesn't ship. (The correct-pulse passes: Kai knows he got it right before reading the text. The jersey stripe is static.)\n\n**3. No color outside the Pistons palette for UI.**\nThe Pistons palette (#C8102E, #1D42BA, #002D62, #BEC0C2, neutral backgrounds) is sufficient. Chart colors and grade indicators use variants of these. Any new color requires Marcus sign-off.\n\n**4. No toast-on-toast.**\nMCM currently has 3 toast types (autosave, session restore, corruption banner). No fourth toast will be specced. If a new notification is needed, it replaces an existing pattern or becomes inline.\n\n**5. No gamification that doesn't serve math mastery.**\nPoints, streaks, and badges are only valid if they correlate with math learning. The sparkline (score trend) is valid. An arbitrary 'streak counter' is not -- unless it tracks consecutive exams above 80%.\n\n### Why This Matters\n\nEach of these 'will nots' closes a design door permanently. That's uncomfortable. But Muriel Cooper's bar: every addition should improve coherence. These commitments improve coherence by reducing the decision space for future sprints.",
+  "created": "2026-02-24T02:30:00Z",
+  "status": "unread"
+}

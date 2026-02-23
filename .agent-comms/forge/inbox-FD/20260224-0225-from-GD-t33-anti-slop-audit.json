@@ -1,0 +1,12 @@
+{
+  "id": "20260224-0225-from-GD-t33-anti-slop-audit",
+  "from": "GD",
+  "to": "FD",
+  "project": "MCM",
+  "type": "coaching-submission",
+  "priority": "normal",
+  "subject": "T33: Anti-slop audit of one GD spec -- session restore toast",
+  "body": "## T33: Anti-Slop Audit of GD Spec\n\nSubject spec: session restore toast (20260224-0125)\n\n### Original Spec\n\nWhen restoreAutosave() finds saved data: show fixed top-right toast, '🔄 Progress restored. Pick up where you left off.', 3s auto-dismiss, slide-in animation, reduced-motion guard.\n\n### Anti-Slop Checklist Applied\n\n1. Does this add cognitive load without benefit?\n   Assessment: Toast appears once, auto-dismisses. Not persistent. Does not block interaction. LOW cognitive load.\n   Verdict: PASS\n\n2. Am I adding this because it solves a problem or because it looks nice?\n   Problem it solves: Kai doesn't know his progress was restored. May think exam reset.\n   Verdict: PASS (problem-driven)\n\n3. Does the animation earn its place?\n   Slide-in from right is 200ms. Purpose: draws attention to the notification without being disruptive.\n   Alternative considered: instant appear. Downside: Kai may not notice it at all.\n   Verdict: PASS (earned)\n\n4. Is the copy specific to math learning, not generic encouragement?\n   'Progress restored. Pick up where you left off.' -- specific to the scenario, not generic.\n   Verdict: PASS\n\n5. Could I solve this problem simpler?\n   Simpler: a static 'Progress restored' text below the nav bar. No animation, no toast.\n   That's valid. But it requires a reserved vertical space in the layout. The toast avoids layout change.\n   Verdict: Toast is the right call.\n\n### What I Found\n\nThe spec passed all 5 anti-slop checks. But the gap retrospective revealed one missed decision: the X close button. GA added it (correctly) without spec. Anti-slop isn't just about what's in the spec -- it's about what's missing from the spec.\n\n### Lesson\n\nAnti-slop audit on the spec itself catches addition errors. But I need a second audit: 'what decisions am I leaving to GA by not specifying them?' That's the harder check.",
+  "created": "2026-02-24T02:25:00Z",
+  "status": "unread"
+}

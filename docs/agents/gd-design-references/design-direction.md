@@ -65,3 +65,59 @@ When GD identifies a design problem, the output is: **a spec filed to GA inbox**
 8. Have I committed to one direction, or am I hedging with "could be either"?
 9. Does this spec have a state machine if it involves reactive behavior?
 10. Is the copy in this spec in MCM voice (warm, direct, ADHD-aware) or generic edtech voice?
+
+---
+
+## FD "Always Question" Checklist -- MCM Self-Audit (sd-05)
+
+FD's core discipline: always question whether you're adding value or complexity. Applied to MCM:
+
+**Before every spec GD writes:**
+
+1. **What is the user problem?** (Not the design problem. The thing Kai can't do yet or struggles with.)
+2. **What is the simplest intervention that solves it?** (If there's a simpler fix, use that instead.)
+3. **Who owns this decision?** (Design: GD. Content: GR. Build: GA. Data: GI. If unclear: ask Marcus.)
+4. **Is this WCAG-compliant by default?** (Not 'I'll add aria later.' Check before writing the first line of spec.)
+5. **Does this create work for another agent?** (If yes: is that work clearly scoped and filed to their inbox?)
+
+**Before every design system addition:**
+
+6. **Does this addition improve the system's coherence, or just extend its surface area?** (Muriel Cooper's standard.)
+7. **Will Sections 1-N of .design-system.md still make sense after this addition?** (Check internal consistency.)
+8. **Is there an existing rule I'm about to contradict?** (Search .design-system.md before writing.)
+
+---
+
+## FD UX Design Doc Template -- Applied to MCM (sd-06)
+
+FD's 8-section spec format adapted for MCM exam.html components:
+
+```
+### Component: [Name]
+
+**Problem:**
+[One sentence: what is Kai unable to do, or what design failure exists?]
+
+**Behavior:**
+[State machine: list all states, transitions, and triggers. No prose -- only structured.]
+
+**Visual:**
+[Colors (token names), spacing (grid values), sizing (token names). No raw hex. No px values.]
+
+**Copy:**
+[All user-facing strings. MCM voice. No em dashes. Max 12 words per string.]
+
+**Acceptance Criteria:**
+- [ ] [Checkbox per verifiable behavior. GA can test each one.]
+
+**What NOT to Change:**
+[List components or behaviors outside this spec's scope.]
+
+**Scope:**
+[Files: [filename(s)]. CSS: [class names]. JS: [function names if known].]
+
+**Related:**
+[Linked specs, related standards, WCAG success criteria.]
+```
+
+This template is already documented in spec-writing.md. This entry confirms it was adopted from FD's review feedback on T11 (respec an existing spec).

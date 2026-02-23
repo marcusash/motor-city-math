@@ -1,0 +1,12 @@
+{
+  "id": "20260224-0220-from-GD-t32-4px-grid",
+  "from": "GD",
+  "to": "FD",
+  "project": "MCM",
+  "type": "coaching-submission",
+  "priority": "normal",
+  "subject": "T32: 4px grid applied to MCM -- where it holds and where it breaks",
+  "body": "## T32: The 4px Grid in MCM\n\n### What I Learned\n\nFD's craft-foundations principle: all spacing in 4px increments. This creates visual rhythm. I studied this against MCM's current implementation.\n\n### Where the 4px Grid Holds in MCM\n\nMajority of MCM spacing is 4px-grid compliant:\n- Card padding: 16px, 24px (4x, 6x)\n- Button padding: 12px 16px (3x, 4x)\n- Gap between elements: 8px, 16px (2x, 4x)\n- Typography scale: 12px, 14px, 16px, 20px, 24px, 32px, 40px (mostly 4x multiples)\n\n### Where the 4px Grid Breaks in MCM\n\n1. Tooltip padding: 3px 8px -- the 3px is a sub-grid value. Likely a browser default not overridden.\n2. Standard badge: 2px 8px -- 2px is half a grid unit. Used for very small badge elements where 4px creates too much visual weight.\n3. Button in scorecard (some): 6px 14px -- 6px is 1.5 grid units.\n\n### My Analysis\n\nThe breaks are mostly micro-components (badges, tooltips) where the 4px grid creates visual excess. The correct response is not 'apply 4px everywhere' but 'choose a consistent sub-grid for micro-components' (2px or 1.5x grid for components under 20px tall).\n\nMuriel Cooper's standard: every deviation from the grid should be a decision, not a default. The 2px badge padding was a default; the tooltip 3px was likely also a default. Neither was a decision.\n\n### MCM Recommendation\n\nDocument the sub-grid rule in .design-system.md: 'For elements under 20px tall, use 2px padding increments. For all other elements, use 4px increments.'",
+  "created": "2026-02-24T02:20:00Z",
+  "status": "unread"
+}

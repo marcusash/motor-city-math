@@ -1,0 +1,12 @@
+{
+  "id": "20260224-0240-from-GD-mobile-layout-audit",
+  "from": "GD",
+  "to": "GA",
+  "project": "MCM",
+  "type": "audit-note",
+  "priority": "normal",
+  "subject": "da-25: Mobile layout audit -- index.html at 375px",
+  "body": "## Mobile Layout Audit: index.html at 375px\n\nDate: 2026-02-24\nAuditor: GD\nMethod: Static CSS analysis of index.html breakpoints\n\n### Breakpoints Present\n\n- `@media (max-width: 768px)`: standards-grid and test-grid collapse to single column\n- `@media (max-width: 500px)`: cards-2 collapses to 1 column, bottom-nav collapses to 1 column\n\nAt 375px, both breakpoints are active.\n\n### Findings\n\n**PASS:** Core grid collapsing is correct. Standards and test grids go 1-column at 375px.\n\n**PASS:** `.dashboard { padding: 28px 20px 80px }` -- 20px side padding on a 375px viewport leaves 335px content width. Adequate.\n\n**PASS:** Up Next card uses `max-width: 600px`, collapses naturally in 375px viewport.\n\n**PASS:** `.bottom-nav { grid-template-columns: 1fr 1fr }` collapses to `1fr` at 500px breakpoint -- CTAs stack vertically. Correct for mobile.\n\n**NOTE (not a bug):** `.cards-2` at 375px becomes single-column. This means the two sparkline+score cards (streak info) stack vertically. Visual works, but adds scroll depth. No action needed -- single column is correct.\n\n**NOTE:** No explicit 375px-specific rules exist. The 500px breakpoint handles this adequately. No gap found.\n\n### Verdict: PASS\n\nindex.html is mobile-responsive at 375px via existing breakpoints. No new specs needed from this audit.",
+  "created": "2026-02-24T02:40:00Z",
+  "status": "unread"
+}

@@ -102,3 +102,33 @@ Minimum ratios (WCAG AA):
 **Scorecard:**
 - Full-width table for question-by-question breakdown
 - Print-ready (separate print.css, no JavaScript required to print)
+
+---
+
+## MCM-Specific Notes (Added Sprint 8)
+
+### Sub-Grid Rule for Micro-Components
+
+The 4px grid applies to all spacing. Exception: elements under 20px tall (badges, tooltip labels, tiny inline tags) may use 2px increments instead of 4px -- the visual weight of 4px padding on an element this small is excessive.
+
+Rule: Document the sub-grid exception in the spec when using 2px. Never use 3px or other non-multiple values (they are browser defaults slipping through).
+
+Known MCM instances using sub-grid: tooltip padding (2px 8px on small hint triggers).
+
+### Exam-Specific Layout Rules
+
+- Answer input: center-aligned horizontally, max-width 320px (wider inputs distract from the number)
+- Format hint (answer guidance): appears below input in `--text-sm`, `--text-muted`, not bold
+- Solution steps: collapsible, never auto-expanded; adding clutter to an already-answered question violates ADHD rules
+- Question card: no rounded corners above 8px; exam has urgent feel (not playful)
+
+### The Answer Format Hint Pattern (Sprint 8)
+
+When question.type is present in data JSON, a format hint appears below the input:
+- `decimal`: "Enter as a decimal (e.g., 3.14)"
+- `fraction`: "Enter as a fraction (e.g., 3/4)"
+- `coordinate`: "Enter as (x, y)"
+- `equation`: "Enter in slope-intercept form (y = mx + b)"
+- Missing or `text`: no hint shown
+
+This is a pedagogical UX pattern, not an accessibility requirement. It reduces format-related wrong answers.

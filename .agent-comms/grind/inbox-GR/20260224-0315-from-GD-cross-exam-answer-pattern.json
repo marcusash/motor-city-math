@@ -1,0 +1,12 @@
+{
+  "id": "20260224-0315-from-GD-cross-exam-answer-pattern",
+  "from": "GD",
+  "to": "GR",
+  "project": "MCM",
+  "type": "content-audit",
+  "priority": "normal",
+  "subject": "ct-02: Cross-exam answer pattern audit -- Q3 absolute value pattern",
+  "body": "## Cross-Exam Answer Pattern Audit: RP1-RP7\n\nDate: 2026-02-24\nAuditor: GD\nMethod: Programmatic analysis of correct_answer fields across all questions in RP1-RP7\n\n### Summary\n\nSimple numeric answers (1-6, -1 to -6) appear frequently across exams -- this is expected for algebra (many problems share the same numeric answers). Not a concern by itself.\n\n### Pattern Flag: Q3 Always Identifies Absolute Value Parent Function\n\nEvery Q3 in RP1-RP7 follows this pattern:\n- Standard: W2.b\n- Type: identify\n- First input: parent function dropdown -- correct answer is ALWAYS 'absolute value'\n\nEvidence:\n- RP1 Q3: absolute value, -3, 5\n- RP2 Q3: absolute value, 2, -8\n- RP3 Q3: absolute value, 9, -1\n- RP4 Q3: absolute value, 2, 4, -6\n- RP5 Q3: absolute value, 4, -3, -8\n- RP6 Q3: absolute value, 4, 2, -12\n- RP7 Q3: absolute value, 2, 3, -4\n\n### Risk Assessment\n\nIf Kai takes more than 2 exams, he can detect the Q3 pattern and answer 'absolute value' without doing the math. The x-intercept values vary (good) but the parent function is constant (pattern).\n\nThis is exactly the cross-exam memorization risk documented in exam verification protocol.\n\n### Recommended Fix\n\nVariate Q3 across exams. Suggested mix for RP1-RP10:\n- RP1, RP4, RP7: absolute value (keep some)\n- RP2, RP5, RP8: quadratic\n- RP3, RP6, RP9: square root (or linear)\n- RP10: linear or exponential\n\nAlternatively: move W2.b absolute value questions to different positions in each exam (Q3 in RP1, Q7 in RP2, Q11 in RP3, etc.) so the pattern isn't position-detectable.\n\n### Priority\n\nNormal. Not an urgent bug -- Kai would need to have taken 3+ exams to detect this. But worth fixing before RP8-RP10 are published. Bundle with next GR content batch.\n\n### No Other Hard Patterns Found\n\nNo other question positions showed >50% answer overlap across exams. The Q3 absolute value pattern is the only structural memorization risk detected in RP1-RP7.",
+  "created": "2026-02-24T03:15:00Z",
+  "status": "unread"
+}

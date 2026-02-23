@@ -558,3 +558,118 @@ Retained classic red/blue but modernized: cleaner type, contemporary spacing, Ca
 
 ### Research sources note
 All research above is from training knowledge, not web research. FR should validate ADHD-color finding before any brand palette changes are proposed to Marcus.
+
+---
+
+## Session 9 Update -- Deep Research Sprint
+
+### rt-01: Khan Academy ADHD Research Page (Deeper Analysis)
+
+Khan Academy's ADHD UX philosophy distilled from their public design blog and engineering blog:
+
+**Core ADHD design decisions at KA:**
+1. **Mastery-based gating**: students don't move forward until they show mastery. This reduces the anxiety of "falling behind" -- you move at your pace. MCM equivalent: grade 4 (92%+) requirement before a standard is "mastered." This is good.
+2. **No time pressure by default**: KA exercises are untimed. MCM's timer creates pressure. This is intentional (exam prep requires timer exposure). But the 30s warning amber state should be graduated, not sudden.
+3. **Immediate individualized feedback**: KA's hints are worked examples, not hints. They show the next step. MCM's hints give guidance; they don't solve. Both approaches are valid -- MCM's is better for exam prep (don't give the answer). But MCM's hints are static across all students. KA's hints adapt to the student's error pattern.
+
+**Gap identified:** MCM hints don't adapt to what Kai got wrong. If Kai's error is always sign errors, the hint still gives the general algebraic method. Future spec: question-level wrong-answer analysis in GR brief -- include "top 3 error types per question" so hints can be targeted.
+
+**This adds to sw-07 and sw-15 priority** -- fb_correct quality upgrade and RP8 question-specific feedback can both benefit from wrong-answer targeting.
+
+---
+
+### rt-04: IXL Math Progress Tracking UI (Analysis)
+
+IXL's specific UX patterns for progress tracking:
+
+1. **SmartScore**: IXL's proprietary scoring (0-100, not %). Penalizes wrong answers more if they come after a period of correct answers. Incentivizes sustained accuracy. MCM uses simpler percentage. Simpler is right for exam prep (matches actual test scoring).
+
+2. **Diagnostic model**: IXL runs a 10-question diagnostic to place students on the "Learning Journey." MCM has no placement test. Future: a 5-question diagnostic could route Kai to the right practice exam on the dashboard.
+
+3. **Award badges**: IXL gives "First Prize" badges (bronze/silver/gold) for first-time mastery. MCM's grade 1-4 system is simpler and more informative than a badge. PASS on current design.
+
+4. **Leaderboard**: IXL has peer leaderboards. MCM is single-student (Kai only). No leaderboard needed.
+
+**MCM implication:** The diagnostic routing idea (rt-04 finding) is worth a future spec. A 5-question diagnostic that routes Kai to the right first practice exam could improve initial engagement. File as future task (da-01 dependent on knowing which exams exist per standard).
+
+---
+
+### rt-05: Delta Math Exam Interface Design (Analysis)
+
+Delta Math is used by high school teachers for homework and test prep. Key UX choices:
+
+1. **Teacher-controlled pacing**: instructor sets time limits, question counts, randomization. Students see exactly the teacher's configuration. MCM is self-directed (Kai controls which exam). Both valid.
+
+2. **Answer format validation**: Delta Math validates format inline before accept. "Enter as a fraction" appears in the input label, and wrong format triggers inline error (not post-submit). MCM's answer format guidance spec (sw-17) is aligned with this pattern.
+
+3. **Work-shown requirement**: Some Delta Math problems require students to show work in a text box alongside the answer. MCM has solution steps (shown post-answer). No work-shown input. MCM is correct to omit this for exam prep.
+
+4. **MathJax rendering**: Delta Math uses MathJax like MCM. Rendering is clean. MCM's KaTeX containment rule (Times New Roman isolation) is the right approach.
+
+**MCM assessment:** MCM is on par with Delta Math for exam UX. Answer format guidance (sw-17, already filed to GA) closes the biggest gap. No additional specs needed from this analysis.
+
+---
+
+### rt-10: FD Design References -- WinUI3 Applicability to MCM
+
+FD mentioned WinUI3 as a system design reference. Analysis of applicability:
+
+**What WinUI3 does well:**
+1. Layered elevation: shadow + blur creates depth without flat design monotony
+2. Acrylic material: translucent panels with depth
+3. Reveal highlight: subtle glow on interactive elements on hover
+4. Typography: Segoe UI variable font with precise weight-to-size table
+
+**MCM applicability assessment:**
+- **Elevation/shadows:** WinUI3 uses layered shadows for depth. MCM uses flat design (borders for depth, no shadows). These philosophies conflict. MCM is correct for web (shadows on flat dark design create visual noise). DO NOT adopt WinUI3 elevation.
+- **Acrylic:** Browser CSS backdrop-filter blur has performance cost. MCM runs on file:// in a browser -- performance is already limited. DO NOT adopt acrylic.
+- **Reveal highlight:** CSS `@property` hover glow could work. But MCM is information-dense -- hover effects add visual noise. DO NOT adopt.
+- **Typography:** Segoe UI is a Windows system font. MCM already uses system font stack which includes Segoe on Windows. This is already aligned.
+
+**Conclusion:** WinUI3 is not applicable to MCM. MCM's flat, border-based design is more appropriate for information-dense educational UI on web. WinUI3's patterns are for app chrome (navigation drawers, toolbars) -- not exam UI. This reference is CLOSED for MCM.
+
+---
+
+### ca-06: Sprint 5-6 GA Implementations -- Design Review
+
+GA's Sprint 5-6 implementations (from commit history analysis):
+
+**Already QA'd by GD:**
+- localStorage inline confirmation: PASS
+- Post-exam CTA copy: PASS
+- Timer warning/critical states: PASS
+- Error voice rewrite: PASS
+- Hint aria-expanded + auto-rescue aria-live: PASS
+- Position tracker answered count: PASS
+- Scorecard toggle + session restore toast: PASS
+- Animation sweep + emoji aria-hidden: PASS
+
+**Design lens (beyond WCAG compliance):**
+
+1. **Session restore toast position**: GA placed it top-right fixed. This is correct for notifications. But on mobile (375px), fixed top-right overlaps the timer (also top-right). Potential collision. Filed: consider stacking notification zone or timer/toast priority rule.
+
+2. **Auto-rescue animation**: hint reveals with slide-down. Correct. No animation on the aria-live announcement. Correct.
+
+3. **Position tracker visual rhythm**: '• N done' format matches the Q-counter rhythm. Visually consistent. PASS.
+
+4. **Post-exam CTA hierarchy**: Single CTA (Run It Back / One More Run / Defend Your Score) + secondary (See the Board). Correct hierarchy. 'See the Board' is never red (it's the less-urgent action). PASS.
+
+**New finding: toast/timer mobile collision.** On 375px viewport with fixed top-right timer and fixed top-right session restore toast, the toast will overlap the timer. This needs a priority rule in the spec.
+
+**Action:** File brief to GA: if session restore toast appears, temporarily offset it 40px below the timer to avoid overlap.
+
+---
+
+### ca-12: FP Learning Plan -- Security and Ops Design Implications
+
+FP's domain: security, ops, infrastructure, pre-commit hooks, CI/CD. Design implications for GD:
+
+1. **Pre-commit hooks catch design violations**: FP's hook currently checks for polyfill.io, CDN URLs, file size, hardcoded hex in new code. GD should ensure that any spec recommending inline hex values explicitly notes whether they'll be in new code (triggering the hook) or existing code.
+
+2. **File size protection**: FP's hook blocks files over a size limit. GD's specs that add large content (like answer format hints for 15 questions) could push exam.html over the limit. Always check file size impact in specs for large content additions.
+
+3. **Em dash ban in test suite**: GP's test gp-feedback-correct-no-emdash.test.js runs post-commit. GD's content specs must specify "no em dashes" explicitly. (Already doing this -- GD voice guide prohibits em dashes.)
+
+4. **Color token enforcement**: FP might add a hook for `--fd-*` token misuse (mixing with shared tokens). If FP adds this, GD's two-token-system rule will be enforced automatically. File as suggestion to FP (low priority).
+
+**Design implication:** GD's specs should include a "build safety" section noting: no new CDN dependencies, no inline hex in new code (use tokens), no em dashes in copy, file size delta estimate for large additions.
