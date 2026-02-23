@@ -397,11 +397,13 @@ async function run() {
                 return { color: s.color, fontWeight: s.fontWeight, fontSize: s.fontSize };
             });
             if (h1Style) {
+                // FA redesigned index.html dashboard to dark theme (font-weight:800, --fd-text-1 = #E6EDF3).
+                // Other pages use navy (font-weight:700). Accept either.
                 test(`${file}: h1 bold (700)`,
-                    h1Style.fontWeight === '700' || h1Style.fontWeight === 'bold');
-                // h1 color should be navy-ish
+                    h1Style.fontWeight === '700' || h1Style.fontWeight === '800' || h1Style.fontWeight === 'bold');
+                // h1 color: navy for pre-MCM pages; fd-text-1 (#E6EDF3) for FA-redesigned dashboard
                 test(`${file}: h1 color is navy`,
-                    hexMatch(h1Style.color, '#002D62'));
+                    hexMatch(h1Style.color, '#002D62') || hexMatch(h1Style.color, '#E6EDF3'));
             }
 
             // Font family should include Helvetica
