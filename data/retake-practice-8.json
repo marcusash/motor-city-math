@@ -225,7 +225,7 @@
         "x=±8. Two solutions because x²=positive always gives ±.",
         "Check: √(64-28)-6=√36-6=6-6=0 ✓"
       ],
-      "feedback_wrong": "After squaring: x²=4 → x=±2. Don’t forget the negative solution.",
+      "feedback_wrong": "After squaring: x²=4 → x=±2. Don't forget the negative solution.",
       "feedback_correct": "🔥 Squared both sides. Both roots: ±8."
     },
     {

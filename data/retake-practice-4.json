@@ -581,7 +581,7 @@
       "section": "D",
       "standard": "W3.a",
       "type": "word-problem",
-      "question_html": "A town’s population starts at 5,000 and grows by 50% every 10 years.<br>(a) Write an exponential model <em>P</em>(<em>t</em>) for the population after <em>t</em> years.<br>(b) Using your model, how many years until the population reaches 16,875?",
+      "question_html": "A town's population starts at 5,000 and grows by 50% every 10 years.<br>(a) Write an exponential model <em>P</em>(<em>t</em>) for the population after <em>t</em> years.<br>(b) Using your model, how many years until the population reaches 16,875?",
       "inputs": [
         {
           "id": "q15_model",
