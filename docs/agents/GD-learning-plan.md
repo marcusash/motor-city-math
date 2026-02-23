@@ -38,6 +38,14 @@ Aarron's book defined emotional design for the web. His bar: interfaces that are
 
 No single person here. But Khan Academy's design team holds the bar for educational UI for students with varied attention spans. Their decisions: one concept per screen, progress always visible, mastery before moving on. Their color system is restrained. Their feedback is immediate and specific. My "answered card" blue border and "smart Up Next" hero card are attempts at their standard. Where I am: I implement ADHD patterns when they're specified. Their bar: they derive the patterns from first principles for each new interaction. I'm applying a checklist. They're doing the thinking. That's the gap I'm closing.
 
+**Updated gap statement (Session 7):** The ADHD UX framework (T31) is an attempt to move from checklist to first-principles thinking. After researching the neuroscience of wrong-answer recovery (Q1), pacing variability (Q2), worked example value (Q3), task-switching cost (Q4), and error recovery patterns (Q5), I now understand WHY the checklist items work. That's progress. But Khan Academy derives NEW patterns for NEW interactions I haven't seen before. I'm still working from a known list. Closing this gap means: next time MCM introduces a new interaction type, GD should derive the ADHD design rules from first principles BEFORE looking at a reference.
+
+### 4. Muriel Cooper — MIT Media Lab
+
+Added Session 7. See The Bar section in Session 7 Update above for full analysis.
+
+**Gap statement:** Cooper designed the media of design itself. GD uses the design system; does not architect it. .design-system.md has grown by accretion (22 sections appended one at a time) without intentional information architecture. The Cooper standard: every addition should improve the system's coherence, not just its surface area. GD's goal for Sprint 9: restructure .design-system.md so sections 1-22 have a coherent user journey (not just chronological appendices). That is the Cooper standard applied.
+
 ---
 
 ## Lessons from FD's Design Review (Feb 19)
