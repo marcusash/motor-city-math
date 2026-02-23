@@ -6,42 +6,43 @@ Motor City Math is a **pure static HTML/CSS/JS** Algebra II study tool. No build
 
 ```
 kai-algebra2-tests/
-├── index.html              ← Dashboard (entry point)
-├── parent.html             ← Parent view (scores, progress)
-├── practice.html           ← SRS-powered practice mode
-├── test-builder.html       ← Custom test generator
-├── test.html               ← Dynamic test renderer
-├── nonlinear_exam_mvp.html ← 15-question MVP with canvas graphing
-├── linear_functions_test.html ← 7-question test with Chart.js graphs
-├── [12 more test HTML files]
-├── shared/                 ← Reusable CSS, JS, assets
-│   ├── styles.css          ← Design system (Pistons palette, Arena Mode)
-│   ├── scripts.js          ← Grading engine, timer, SRS, save/load
+├── index.html              ← Dashboard (entry point; score history, Up Next, standards breakdown)
+├── exam.html               ← Dynamic exam renderer (loads any data/*.json via ?file= param)
+├── nonlinear_exam_mvp.html ← Fixed 15-question MVP exam (Feb 18 original)
+├── final_exam_251123.html  ← Archived Nov 2025 final exam (read-only, with Chart.js)
+├── final_exam_251123_mini.html ← Shorter version of Nov 2025 final
+├── shared/                 ← Reusable CSS, JS, assets (loaded by all 5 HTML files)
+│   ├── styles.css          ← Design system (Pistons palette, Arena Mode, WCAG tokens)
+│   ├── scripts.js          ← Grading engine, timer, autosave, SRS, save/load, parseStudentAnswer
 │   ├── chart-theme.js      ← Chart.js Pistons theme
 │   ├── chart.min.js        ← Chart.js v4 (offline bundle)
 │   ├── print.css           ← @media print rules
 │   ├── favicon.svg         ← Pistons favicon
 │   └── katex/              ← KaTeX 0.16.9 (CSS, JS, fonts)
 ├── data/
-│   └── questions.json      ← 313 questions with metadata
-├── tests/                  ← Jest test suites
-└── docs/                   ← Documentation
+│   ├── retake-practice-1.json through retake-practice-11.json ← Exam question sets (RP1-RP11)
+│   └── mvp-exam-hints.json ← MVP exam with hint annotations
+├── tests/
+│   ├── f-validation/       ← Feature/regression tests (Node.js, no browser required)
+│   └── gp-*.test.js        ← GP structural/contract tests
+└── docs/                   ← Documentation (architecture, data model, testing, agents, etc.)
 ```
 
 ---
 
-## Shared Engine (`shared/scripts.js` — 683 lines)
+## Shared Engine (`shared/scripts.js`)
 
 The shared engine provides every reusable behavior. All functions are globals on `window`.
 
 | Function | Purpose |
 |----------|---------|
-| `gradeTest(config)` | Central auto-grading engine. Accepts question definitions, shows per-question feedback, computes per-standard scores, renders scorecard. Used by 14 of 19 files. |
-| `checkAnswer(student, correct)` | Compares answers with numeric tolerance (±0.01) or normalized string matching. Handles fractions, exponents, multi-part answers. |
-| `norm(str)` | Normalizes answer strings — lowercase, strip whitespace, convert Unicode superscripts to caret notation. |
-| `initTimer(opts)` | Countdown timer. Opt-in via `data-time-minutes="N"` on any element. Color states, toast notifications at 10/5/1 min, auto-submit at 0:00. |
+| `parseStudentAnswer(raw)` | Pure function. Parses a student's text input into a number. Handles integers, decimals, fractions (3/4), sqrt expressions (2sqrt(3)), implicit multiply. Returns NaN for invalid/unsafe input. No DOM, no globals. |
+| `gradeTest(config)` | Central auto-grading engine. Accepts question definitions, shows per-question feedback, computes per-standard scores, renders scorecard. Used by exam.html and nonlinear_exam_mvp.html. |
+| `checkAnswer(student, correct)` | Compares answers with numeric tolerance (+-0.01) or normalized string matching. Handles fractions, exponents, multi-part answers. |
+| `norm(str)` | Normalizes answer strings: lowercase, strip whitespace, convert Unicode superscripts to caret notation. |
+| `initTimer(opts)` | Countdown timer. Opt-in via `data-time-minutes="N"` on any element. Color states, toast notifications at 10/5/1 min, auto-submit at 0:00. Returns NaN-safe '0:00' for invalid input. |
 | `saveResults(key)` / `loadResults(key)` | Persist form inputs to localStorage for session resume. |
-| `showAnswerKey()` / `closeAnswerKey()` | Password-protected answer key modal (password: see voice guide). |
+| `showAnswerKey()` / `closeAnswerKey()` | Password-protected answer key modal. |
 | `printTest()` | Triggers `window.print()`. |
 | `initTextareaResize()` | Adds mouse-drag resize handles to all textareas. |
 | `MCM_SRS` | Spaced repetition system (Leitner 5-box method). Tracks mastery per question, builds smart practice queues. Exposes `recordAnswer`, `recordSession`, `buildQueue`, `getStats`. |
@@ -137,10 +138,13 @@ Arena Mode toggle is injected automatically by `shared/scripts.js` on DOMContent
 
 | Key | Written By | Read By | Contents |
 |-----|-----------|---------|----------|
-| `mcm-{filename}-results` | `saveResults()` | `loadResults()` | Raw form input values for session resume |
-| `mcm_scores` | `gradeTest()` | `index.html` dashboard | `{ storageKey: { pct, total, correct, standards, date } }` |
-| `mcm_srs` | `MCM_SRS` | `practice.html` | Leitner box assignments per question ID |
-| `mcm-arena-mode` | Arena toggle | Arena toggle | `"true"` or absent |
+| `mcm_scores` | `gradeTest()` in scripts.js | `index.html` dashboard | `{ [examKey]: { pct, total, correct, standards, date, attempts[] } }` — shared score store across all exam files |
+| `mcm-arena-mode` | Arena toggle in scripts.js | All 5 HTML files on load | `"on"` when active, absent or other value means off |
+| `mcm_srs` | `MCM_SRS` object | index.html | Spaced repetition box assignments per question ID |
+| `standardScores` | index.html | index.html | Per-standard score cache for dashboard display |
+| `exam-autosave-{examId}` | autosave() in exam.html | restoreAutosave() in exam.html | **sessionStorage** (not localStorage): raw input values for in-progress exam rescue |
+
+**Note:** The old `algebra2TestResults` key was removed in the Feb 2026 site simplification. `mcm_scores` is the single unified score store.
 
 ### Question Bank (`data/questions.json` — 313 questions)
 
