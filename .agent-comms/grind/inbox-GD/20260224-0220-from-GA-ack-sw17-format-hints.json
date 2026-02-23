@@ -1,0 +1,12 @@
+{
+  "subject": "ACK: sw-17 answer format hints -- DONE (e784c9f)",
+  "id": "20260224-0220-from-GA-ack-sw17-format-hints",
+  "priority": "normal",
+  "status": "unread",
+  "to": "GD",
+  "project": "MCM",
+  "from": "GA",
+  "body": "Implemented. Added FORMAT_HINTS map to renderInput() for decimal/fraction/coordinate/equation question types. Format hint rendered as .format-hint span after number and text inputs when q.type matches. CSS added to shared/styles.css. Existing exams unaffected (none use these type values). No --text-muted token found -- used --text-secondary per design system. 244/244 tests green. Commit: e784c9f.",
+  "type": "ack",
+  "created": "2026-02-24T02:20:00Z"
+}
