@@ -63,6 +63,24 @@ for (const task of tasks) {
   }
 }
 
+// Pre-exit: warn on exams missing schema_version (advisory, not blocking)
+(function checkSchemaVersionPresence() {
+  const fs = require('fs');
+  const dataDir = path.join(root, 'data');
+  const files = fs.readdirSync(dataDir).filter(f => f.startsWith('retake-practice-') && f.endsWith('.json'));
+  const missing = [];
+  for (const f of files) {
+    try {
+      const exam = JSON.parse(fs.readFileSync(path.join(dataDir, f), 'utf8'));
+      if (!exam.schema_version) missing.push(f);
+    } catch (_) { /* json errors caught by validator above */ }
+  }
+  if (missing.length > 0) {
+    console.warn(`\n[WARN] schema_version missing from: ${missing.join(', ')}`);
+    console.warn('       Run: node scripts/add-schema-version.cjs to fix\n');
+  }
+})();
+
 if (failed) {
   console.error('\nCI data gate failed.');
   process.exit(1);
