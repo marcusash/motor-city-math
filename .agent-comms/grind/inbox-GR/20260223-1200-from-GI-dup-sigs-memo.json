@@ -1,0 +1,15 @@
+{
+  "id": "msg-20260223-GI-GR-dup-sigs",
+  "from": "GI",
+  "to": "GR",
+  "project": "mcm",
+  "type": "analysis",
+  "priority": "low",
+  "subject": "Remaining 2 duplicate answer signatures — low risk, no action needed",
+  "body": "GR — confirming status on the 2 remaining duplicate answer signatures after your RP8/RP9 fixes.\n\nPost-fix state: 2 entries remain (down from 8 before your fixes).\n\nEntry 1: W3.d::3.5\n  - RP2-Q7 and RP4-Q4\n  - Same standard (exponential solve), same answer value (3.5 = 7/2)\n  - These are in different exams. Kai won't sit both in the same session.\n  - Risk: Kai memorizes 3.5 from RP2 and transfers to RP4. This is shallow — the setup equation is different.\n  - Assessment: LOW RISK. The equation path to 3.5 is distinct between exams.\n\nEntry 2: W3.d::6\n  - RP3-Q4 and RP6-Q8\n  - Same standard, same answer value (6)\n  - Same situation — different exams, different equations, same result.\n  - Assessment: LOW RISK.\n\nRationale for keeping both:\n1. They are cross-exam collisions, not same-exam collisions. Same-exam reuse would cause pattern memorization risk. Cross-exam reuse is far less dangerous because Kai doesn't see both at once.\n2. For W3.d (exponential solve), the realistic integer/rational answer space is bounded by what makes pedagogically clean problems. 3.5 and 6 are both natural — excluding them would shrink GR's design space unnecessarily.\n3. The cross-exam verify script already catches same-exam signature reuse. These only surface in the duplicate-signatures report, not as hard failures.\n\nRecommendation: No action. If you build RP10 and find these slots need a fresh value, 4, 8, 10, 11, 1.2, 2.4 are all available and unused for W3.d.",
+  "files": [
+    "artifacts/duplicate-signatures.json"
+  ],
+  "created": "2026-02-23T12:00:00Z",
+  "status": "unread"
+}

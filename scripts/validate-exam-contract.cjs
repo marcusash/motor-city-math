@@ -11,6 +11,12 @@ const EXAM_PATTERN = /^retake-practice-\d+\.json$/;
 const VALID_INPUT_TYPES = ['number', 'dropdown', 'radio', 'text'];
 const VALID_DIFFICULTY = ['easy', 'medium', 'hard'];
 const VALID_ANSWER_TYPES = ['numeric', 'text', 'equation', 'expression', 'graph'];
+const VALID_QUESTION_TYPES = [
+  'absolute-value', 'construct', 'error-analysis', 'exponential',
+  'extraneous', 'fractional-exp', 'graph', 'identify',
+  'multiple-choice', 'quadratic', 'radical', 'rational',
+  'word-problem', 'write-equation',
+];
 
 let totalErrors = 0;
 let totalWarnings = 0;
@@ -124,6 +130,10 @@ function validateExamFile(filepath) {
 
     if (q && q.difficulty && !VALID_DIFFICULTY.includes(q.difficulty)) {
       error(`${qid}: invalid difficulty "${q.difficulty}"`);
+    }
+
+    if (q && q.type && !VALID_QUESTION_TYPES.includes(q.type)) {
+      error(`${qid}: unknown question type "${q.type}" — add to VALID_QUESTION_TYPES if intentional`);
     }
 
     validateInputs(qid, q && q.inputs ? q.inputs : []);
