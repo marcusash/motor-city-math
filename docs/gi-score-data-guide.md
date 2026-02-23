@@ -40,20 +40,19 @@ Keys are exam IDs prefixed with `mcm-`:
 ```json
 "mcm_scores": {
   "mcm-retake-practice-1": {
-    "score": 13,
-    "total": 15,
-    "pct": 86.67,
-    "date": "2026-02-19",
-    "sections": {
-      "A": { "score": 3, "total": 3 },
-      "B": { "score": 8, "total": 8 },
-      "C": { "score": 2, "total": 2 },
-      "D": { "score": 0, "total": 2 }
-    },
-    "answers": {
-      "q1a": "correct",
-      "q2b": "wrong",
-      ...
+    "attempts": [
+      {
+        "score": 13,
+        "total": 15,
+        "pct": 87,
+        "grade": 3,
+        "timestamp": "2026-02-19T20:23:53.052Z"
+      }
+    ],
+    "best": {
+      "score": 13,
+      "pct": 87,
+      "grade": 3
     }
   }
 }
@@ -62,12 +61,10 @@ Keys are exam IDs prefixed with `mcm-`:
 **Exam ID → key mapping:** `retake-practice-1` → `mcm-retake-practice-1`
 
 Key fields:
-- `score` — number of correct answers
-- `total` — total questions
-- `pct` — percentage correct (score/total * 100)
-- `date` — date of attempt (YYYY-MM-DD)
-- `sections` — per-section breakdown (A/B/C/D)
-- `answers` — per-input answer status (`"correct"` | `"wrong"` | `"skipped"`)
+- `attempts` — array of all attempt records (score, pct, grade, timestamp)
+- `best` — best attempt summary (score, pct, grade)
+
+Note: Per-input/per-question answer tracking is NOT stored in score files. Analytics work at the exam-level (score %, pct) and standard-level (via `standardScores`).
 
 ---
 
