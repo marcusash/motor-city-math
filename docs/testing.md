@@ -33,6 +33,7 @@ Located in `tests/f-validation/`.
 | `sw18-chart-canvas-keyboard.test.js` | sw-18: Chart.js canvas role=img, tabindex, aria-label, keydown handler, focus ring | 15/15 |
 | `build-chart-edge-cases.test.js` | buildChart: empty state, single-point, yPt clamping (0/40/100/150/NaN), SVG aria, grade lines | 18/18 |
 | `evaluate-number-inputs.test.js` | evaluateNumberInputs: ordered/plus-minus grading, tolerance, NaN, empty | 16/16 |
+| `find-missing-inputs.test.js` | findMissingInputLabels: dropdown/number/radio/text validation, null safety, multi-Q | 14/14 |
 
 Run all at once:
 ```powershell

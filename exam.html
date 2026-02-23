@@ -1145,6 +1145,33 @@
     }
 
     /**
+     * Returns an array of human-readable labels for blank required inputs.
+     * Checks dropdown (no value), number (empty string), radio (no selection).
+     * Text inputs are self-graded — not validated here.
+     * @param {Array} questions - exam question objects with inputs[]
+     * @returns {string[]} missing labels, e.g. ['Q1 — Parent function', 'Q3 — answer choice']
+     */
+    function findMissingInputLabels(questions) {
+        var missing = [];
+        (questions || []).forEach(function(q, qi) {
+            var qLabel = 'Q' + (qi + 1);
+            (q.inputs || []).forEach(function(inp) {
+                if (inp.type === 'dropdown') {
+                    var el = document.getElementById(inp.id);
+                    if (!el || !el.value) missing.push(qLabel + ' \u2014 ' + (inp.label || 'Parent function'));
+                } else if (inp.type === 'number') {
+                    var el2 = document.getElementById(inp.id);
+                    if (!el2 || el2.value.trim() === '') missing.push(qLabel + ' \u2014 ' + (inp.label || inp.id));
+                } else if (inp.type === 'radio') {
+                    var sel = document.querySelector('input[name="' + inp.id + '"]:checked');
+                    if (!sel) missing.push(qLabel + ' \u2014 answer choice');
+                }
+            });
+        });
+        return missing;
+    }
+
+    /**
      * Grade all auto-gradable inputs, compute score, show scorecard, save results.
      * Idempotent: no-op if already graded (examGraded flag).
      *
@@ -1165,22 +1192,7 @@
 
         // == SECTION 2: Validation ==
         // Block grading if any required field is blank
-        var missing = [];
-        examData.questions.forEach(function(q, qi) {
-            var qLabel = 'Q' + (qi + 1);
-            (q.inputs || []).forEach(function(inp) {
-                if (inp.type === 'dropdown') {
-                    var el = document.getElementById(inp.id);
-                    if (!el || !el.value) missing.push(qLabel + ' — ' + (inp.label || 'Parent function'));
-                } else if (inp.type === 'number') {
-                    var el2 = document.getElementById(inp.id);
-                    if (!el2 || el2.value.trim() === '') missing.push(qLabel + ' — ' + (inp.label || inp.id));
-                } else if (inp.type === 'radio') {
-                    var sel = document.querySelector('input[name="' + inp.id + '"]:checked');
-                    if (!sel) missing.push(qLabel + ' — answer choice');
-                }
-            });
-        });
+        var missing = findMissingInputLabels(examData.questions);
         if (missing.length > 0) {
             var warnEl = document.getElementById('submitWarning');
             if (!warnEl) {
