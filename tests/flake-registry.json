@@ -58,8 +58,63 @@
       "status": "known-safe",
       "resolution": "None needed. Random suffix + Date.now() makes collision effectively impossible.",
       "first_seen": "2026-02-23"
+    },
+    {
+      "id": "flake-006",
+      "suite": "tests/f-validation/question-schema.test.js",
+      "test": "All questions have required fields (source_file)",
+      "type": "data-dependent",
+      "root_cause": "14 questions have undefined source_file (w2w3-001 through w2w3-005 + 9 others). Data import pipeline omits source_file for some question batches. Not intermittent.",
+      "repro_rate": "100% deterministic fail until GI fixes data",
+      "status": "active",
+      "resolution": "GI to add source_file to missing questions in questions.json. Owner: GI.",
+      "first_seen": "2026-02-23"
+    },
+    {
+      "id": "flake-007",
+      "suite": "tests/f-validation/question-schema.test.js",
+      "test": "All question standards exist in standards.json",
+      "type": "data-dependent",
+      "root_cause": "37 questions reference standards with combined notation (5.b & 5.c, 6.a, W2.c) not present in standards.json. Standards.json is missing multi-standard compound keys.",
+      "repro_rate": "100% deterministic fail until GI/GR reconcile standards",
+      "status": "active",
+      "resolution": "GI to add compound standard keys or GR to split into atomic standards. Owner: GI/GR.",
+      "first_seen": "2026-02-23"
+    },
+    {
+      "id": "flake-008",
+      "suite": "tests/f-validation/save-load-audit.test.js",
+      "test": "Corrupted localStorage uncaught JSON.parse exception",
+      "type": "logic",
+      "root_cause": "importScores() does not wrap JSON.parse in try/catch. Corrupted localStorage string throws uncaught exception and silently fails. Known gap reported to GA via risk brief.",
+      "repro_rate": "100% deterministic fail until GA adds try/catch",
+      "status": "active",
+      "resolution": "GA to add try/catch around JSON.parse in importScores(). Owner: GA.",
+      "first_seen": "2026-02-23"
     }
   ],
   "suppressed": [],
-  "resolved": []
+  "resolved": [
+    {
+      "id": "resolved-001",
+      "suite": "tests/f-validation/keyboard-nav-pass.test.js",
+      "test": "focus-visible outline uses --accent-blue token",
+      "resolved_date": "2026-02-23",
+      "fix": "Token renamed to --accent-blue-on-dark in shared/styles.css. Updated test to match new token."
+    },
+    {
+      "id": "resolved-002",
+      "suite": "tests/f-validation/scorecard-contract.test.js",
+      "test": "score-big element selector",
+      "resolved_date": "2026-02-23",
+      "fix": "exam.html changed template to use id=scoreBigEl. Updated test selector."
+    },
+    {
+      "id": "resolved-003",
+      "suite": "tests/f-validation/error-state-matrix.test.js",
+      "test": "fetch failure shows explicit load error",
+      "resolved_date": "2026-02-23",
+      "fix": "Stale assertion checked for 'Could not load exam:' — actual text is showLoadError pattern. Updated test."
+    }
+  ]
 }
