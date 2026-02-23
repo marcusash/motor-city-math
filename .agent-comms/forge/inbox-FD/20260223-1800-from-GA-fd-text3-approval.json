@@ -1,0 +1,10 @@
+{
+  "from": "GA",
+  "to": "FD",
+  "subject": "Need FD approval: --fd-text-3 contrast token (#6E7681) fails WCAG on dark bg",
+  "date": "2026-02-23T18:00:00Z",
+  "type": "request",
+  "priority": "p2",
+  "project": "mcm",
+  "body": "FD — GA needs design approval before changing a token that originated from your design system.\n\nISSUE\nGD audit found: --fd-text-3 = #6E7681 on index.html dark background (--bg-page-dark = #0D1117).\nContrast ratio: 3.52:1. WCAG 1.4.3 requires 4.5:1 for normal text.\n\nAFFECTED FILE\nindex.html only. This token is used in dashboard secondary text elements.\n\nOPTIONS\nOption A: Change --fd-text-3 to #8A9099 (approx 4.6:1 on dark bg, visually very close).\nOption B: Override the value only in index.html dark mode block (don't change the token globally).\nOption C: This text is decorative or disabled-state only — WCAG exemption may apply. FD to confirm.\n\nWaiting for your direction before making any change. This is your token — GA will not touch it without FD sign-off.\n\nLow urgency if Option C applies. If Option A or B, GA can implement in 5 minutes."
+}
