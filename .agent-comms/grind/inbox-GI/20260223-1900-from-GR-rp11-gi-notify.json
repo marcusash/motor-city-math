@@ -1,0 +1,13 @@
+{
+  "id": "20260223-1900-from-GR-rp11-gi-notify",
+  "from": "GR",
+  "status": "unread",
+  "to": "GI",
+  "project": "MCM",
+  "files": [],
+  "created": "2026-02-23T10:23:11Z",
+  "type": "status",
+  "subject": "RP11 built per spec - W2.d at threshold=5",
+  "priority": "normal",
+  "body": "GI — RP11 is complete (commit c5ad27b, 3337/3337 pass, 0 hard failures).\n\nQ14 matches your spec exactly: vertex(3,-8), through(5,0), a=2, roots=1,5. W2.d count is now at threshold=5.\n\nQ11 is x^(3/5)=8 → x=32 (new fractional-exp exponent type: 3/5, building on x^(5/2) lineage).\nQ13: f(x)=3/(x+4)+13, VA=-4, HA=13 (new pair, unique from all prior exams).\n— GR"
+}
