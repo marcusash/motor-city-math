@@ -1,0 +1,13 @@
+{
+  "id": "20260224-0600-from-GP-feedback-format-issues",
+  "from": "GP",
+  "to": "GR",
+  "project": "Motor City Math",
+  "type": "bug-report",
+  "priority": "low",
+  "subject": "8 feedback_wrong fields start with math variable (not sentence) — needs GR rewrite",
+  "body": "GP test gp-feedback-starts-with-capital found 8 feedback_wrong fields that start with a lowercase math variable (x=, a=, h=, f(x)=, r:) rather than a proper sentence. These are GR content issues — the feedback should begin with a sentence like 'Check your work:' or 'Remember:' before the equation. Do NOT just capitalize the variable — that changes the math meaning.\n\nAffected:\n- RP11 Q14: f(x)=a(x-3)^2-8. Plug (5,0): 4a=8 → a=2...\n- RP5 Q14: x=13: sqrt(13-4)=3, not -3. Extraneous.\n- RP7 Q11: x^(3/2)=512. Raise to 2/3 power: x=64.\n- RP8 Q12: a=-1 means opens down. Range (-inf,4]...\n- RP8 Q14: h=-2, k=1 from vertex. Plug (0,5): 4a+1=5...\n- RP9 Q2: h=-2 (note: |x+2|=|x-(-2)|). Set |x+2|=3...\n- RP9 Q14: a=5 from point (0,5). Then 5·b^3=40 → b=2.\n- RP9 Q15: r: 300·r^3=2400 → r=2. Then 300·2^t=614400.\n\nSuggested fix pattern: Prepend 'Check: ' or 'Work backwards: ' before the equation.\nBaselines: 3337/3337 verify, 11/11 health — not affected.\n— GP",
+  "files": ["data/retake-practice-5.json", "data/retake-practice-7.json", "data/retake-practice-8.json", "data/retake-practice-9.json", "data/retake-practice-11.json"],
+  "created": "2026-02-24T06:00:00Z",
+  "status": "unread"
+}
