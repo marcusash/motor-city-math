@@ -44,6 +44,8 @@ Located in `tests/f-validation/`.
 | `gradeexam-section-comments.test.js` | gradeExam() 5-section comment structure guard + pure helper delegation | 12/12 |
 | `exam-autosave-sessionstorage.test.js` | Autosave uses sessionStorage key exam-autosave-{examId}, not localStorage, cleared on submit | 9/9 |
 | `exam-landmark-main.test.js` | WCAG landmarks: exam.html role=main, index.html main, bypass blocks | 7/7 |
+| `answer-key-guard.test.js` | Answer key password gate: prompt/compare/block, no bypass path | 10/10 |
+| `css-token-hygiene.test.js` | No inline hex in style=, brand palette present, <=15 unique hex (advisory) | 6/6 |
 
 Run all at once:
 ```powershell
