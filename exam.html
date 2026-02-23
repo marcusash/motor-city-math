@@ -201,6 +201,7 @@
     /** Debounce-saves all current input values to sessionStorage (800ms delay). */
     function autosave() {
         clearTimeout(_autosaveTimer);
+        // 800ms debounce: balances data safety with not hammering sessionStorage on each keystroke
         _autosaveTimer = setTimeout(function() {
             if (!examData) return;
             var state = {};
@@ -1349,6 +1350,7 @@
      */
     function showScorecard(score, total, stdScores, results) {
         var pct = total > 0 ? Math.round((score / total) * 100) : 0;
+        // Grade thresholds: 92+ = 4, 82+ = 3, 70+ = 2, <70 = 1 (must match saveResults(); verified by exam-hint-scorecard.test.js)
         var grade = pct >= 92 ? 4 : pct >= 82 ? 3 : pct >= 70 ? 2 : 1;
         var gradeClass = 'g' + grade;
 
@@ -1445,6 +1447,7 @@
      */
     function saveResults(score, total, results, stdScores) {
         var pct = total > 0 ? Math.round((score / total) * 100) : 0;
+        // Grade thresholds: 92+ = 4, 82+ = 3, 70+ = 2, <70 = 1 (must match showScorecard(); verified by exam-hint-scorecard.test.js)
         var grade = pct >= 92 ? 4 : pct >= 82 ? 3 : pct >= 70 ? 2 : 1;
         var storageKey = 'mcm-' + (examData.exam_id || 'unknown');
 
