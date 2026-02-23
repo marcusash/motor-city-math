@@ -179,7 +179,7 @@
       ],
       "feedback_correct": "🔥 a=4 and both intercepts. The two-case split is the core skill.",
       "feedback_wrong_parent": "The | | symbols define absolute value.",
-      "feedback_wrong": "After two cases, divide by 4 in each. x = -1 and x = -5."
+      "feedback_wrong": "After two cases, divide by 4 in each. x = -1 and."
     },
     {
       "id": "rp5-q4",
@@ -243,7 +243,7 @@
         "Check x=1/3: 3(1/9)-7(1/3)+2 = 1/3-7/3+6/3 = 0 ✓"
       ],
       "feedback_correct": "🔥 AC method with a=3. Non-monic solved.",
-      "feedback_wrong": "Leading coefficient is 3 — can't factor like a monic. Use AC: multiply 3×2=6, find factors of 6 that add to -7. Those are -6 and -1."
+      "feedback_wrong": "Leading coefficient is 3 — can't factor like a monic. Use AC:."
     },
     {
       "id": "rp5-q6",
@@ -297,7 +297,7 @@
         "Check: 4^(5.25) = 2^(10.5).  8^(3.5) = 2^(10.5). ✓"
       ],
       "feedback_correct": "🔥 Both sides to base 2. x=9/4.",
-      "feedback_wrong": "Both 4 and 8 are powers of 2. Convert both, then set exponents equal."
+      "feedback_wrong": "Both 4 and 8 are powers of 2. Convert both, then set."
     },
     {
       "id": "rp5-q8",
@@ -354,7 +354,7 @@
         "Answer: x = 7 only."
       ],
       "feedback_correct": "🔥 Quadratic from squaring, extraneous caught.",
-      "feedback_wrong": "Square the ENTIRE right side: (x-4)² = x²-8x+16. Then factor the quadratic and check both answers."
+      "feedback_wrong": "Square the ENTIRE right side: (x-4)² = x²-8x+16. Then factor the quadratic."
     },
     {
       "id": "rp5-q10",
@@ -408,7 +408,7 @@
         "216 = 6³, so x = 6² = 36"
       ],
       "feedback_correct": "🔥 125^(1/3)=5, 5²=25. Cube recognition working.",
-      "feedback_wrong": "Isolate x^(3/2)=125. Then: cube root of 125 first (5×5×5=125, so answer=5), then square it (5²=25)."
+      "feedback_wrong": "Isolate x^(3/2)=125. Then: cube root of 125 first (5×5×5=125, so answer=5), then."
     },
     {
       "id": "rp5-q12",
@@ -474,7 +474,7 @@
         "Plot and draw upward parabola with vertex at (3,-4)."
       ],
       "feedback_correct": "🔥 Vertex from standard form. Both intercepts.",
-      "feedback_wrong": "Not vertex form — use x = -b/(2a) to find vertex x, then plug in to find vertex y."
+      "feedback_wrong": "Not vertex form — use x = -b/(2a) to find vertex x,."
     },
     {
       "id": "rp5-q13",
@@ -547,7 +547,7 @@
         "Left branch is in upper-left; right branch is in lower-right. Opposite of standard 1/x."
       ],
       "feedback_correct": "🔥 VA=2, HA=-3. And you handled the reflected (2-x) form.",
-      "feedback_wrong": "Set 2-x=0 for VA → x=2. HA is the -3 outside. The (2-x) form reflects the graph."
+      "feedback_wrong": "Set 2-x=0 for VA → x=2. HA is the -3 outside. The."
     },
     {
       "id": "rp5-q14",
@@ -592,7 +592,7 @@
         "Rule: before squaring a radical equation, verify the right side is ≥ 0."
       ],
       "feedback_correct": "🔥 W3.a: you recognized the domain violation before touching the algebra.",
-      "feedback_wrong": "Try x=13 in the original: √(13-4) = √9 = 3, not -3. The answer fails. The problem is the equation itself has no solution."
+      "feedback_wrong": "Try x=13 in the original: √(13-4) = √9 = 3, not -3.."
     },
     {
       "id": "rp5-q15",
@@ -625,7 +625,7 @@
         "Note: 27=3³ requires knowing your powers of 3: 3,9,27,81,243..."
       ],
       "feedback_correct": "🔥 Tripling model. 27=3³ recognized. t=15.",
-      "feedback_wrong": "Divide both sides by 100 first. Then: 3^? = 27. Build your powers of 3: 3,9,27,81..."
+      "feedback_wrong": "Divide both sides by 100 first. Then: 3^? = 27. Build your."
     }
   ],
   "fr_approved": true,

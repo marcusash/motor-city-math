@@ -171,7 +171,7 @@
       ],
       "feedback_correct": "🔥 Absolute value. Both intercepts.",
       "feedback_wrong_parent": "The | | symbols mean absolute value.",
-      "feedback_wrong": "Factor first: |2x−8| = 2|x−4|. Do not try to read a, h, k from the original form with 2 inside the bars."
+      "feedback_wrong": "Factor first: |2x−8| = 2|x−4|. Do not try to read a, h,."
     },
     {
       "id": "rp4-q4",
@@ -232,7 +232,7 @@
         "Check: 36−30−6=0 ✓ and 1+5−6=0 ✓"
       ],
       "feedback_correct": "🔥 Factored standard form. Both roots.",
-      "feedback_wrong": "This is NOT vertex form — you cannot take ±√ directly. Find two numbers that multiply to −6 and add to −5."
+      "feedback_wrong": "This is NOT vertex form — you cannot take ±√ directly. Find."
     },
     {
       "id": "rp4-q6",

@@ -44,7 +44,7 @@
         "x = 1/2 or x = 4.",
         "Check: 2(1/4)-9(1/2)+4=1/2-9/2+8/2=0 ✓, 2(16)-36+4=0 ✓"
       ],
-      "feedback_wrong": "AC: a×c=8. Factors of 8 adding to -9: -8 and -1. Split and group: (2x-1)(x-4)=0.",
+      "feedback_wrong": "AC: a×c=8. Factors of 8 adding to -9: -8 and -1. Split.",
       "feedback_correct": "🔥 Correct! Keep that momentum."
     },
     {
@@ -95,7 +95,7 @@
         "x-intercepts: 3|x+2|=6 → |x+2|=2 → x+2=2 or x+2=-2 → x=0 or x=-4.",
         "a=3>0 opens upward. Range: [-6, +∞)."
       ],
-      "feedback_wrong": "Vertex is (-2,-6). Note: h=-2 because |x+2| = |x-(-2)|. Set f=0: |x+2|=2 gives x=0 and x=-4.",
+      "feedback_wrong": "Vertex is (-2,-6). Note: h=-2 because |x+2| = |x-(-2)|. Set f=0: |x+2|=2.",
       "feedback_correct": "🔥 Correct! Keep that momentum."
     },
     {
@@ -197,7 +197,7 @@
         "x = 3/2 = 1.5 or x = -5.",
         "Check: 2(25)+7(-5)-15=50-35-15=0 ✓"
       ],
-      "feedback_wrong": "AC: a×c=-30. Factors adding to +7: +10 and -3. Split and group: (2x-3)(x+5)=0.",
+      "feedback_wrong": "AC: a×c=-30. Factors adding to +7: +10 and -3. Split and group:.",
       "feedback_correct": "🔥 Correct! Keep that momentum."
     },
     {
@@ -255,7 +255,7 @@
         "3^(x+2) = 3^14 → x+2=14 → x=12.",
         "Check: 9^12·3^(-10) = 3^24·3^(-10) = 3^14 ✓"
       ],
-      "feedback_wrong": "9^x = 3^(2x). Then 3^(2x)·3^(2-x) = 3^(x+2) = 3^14. So x+2=14 → x=12.",
+      "feedback_wrong": "9^x = 3^(2x). Then 3^(2x)·3^(2-x) = 3^(x+2) = 3^14. So x+2=14 →.",
       "feedback_correct": "🔥 Correct! Keep that momentum."
     },
     {
@@ -463,7 +463,7 @@
         "Increasing on (-∞,-1). Decreasing on (-1,+∞).",
         "Check: f(-3)=-2(4)+8=0 ✓, f(1)=-2(4)+8=0 ✓"
       ],
-      "feedback_wrong": "Vertex (-1,8), opens down (a=-2<0). x-intercepts: (x+1)²=4 → x=1 or x=-3. Range: (-inf,8].",
+      "feedback_wrong": "Vertex (-1,8), opens down (a=-2<0). x-intercepts: (x+1)²=4 → x=1 or x=-3. Range:.",
       "feedback_correct": "🔥 Correct! Keep that momentum."
     },
     {

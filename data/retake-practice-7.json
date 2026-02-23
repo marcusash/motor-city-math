@@ -246,7 +246,7 @@
         "Key: when a≠1 and it does NOT factor out, use AC method (multiply a×c, split, group)."
       ],
       "feedback_correct": "🔥 Both solutions found.",
-      "feedback_wrong": "Use the AC method: a×c = 2×3 = 6. Find factors of 6 adding to 7: that’s 6 and 1. Split 7x into 6x+x, then factor by grouping."
+      "feedback_wrong": "Use the AC method: a×c = 2×3 = 6. Find factors of."
     },
     {
       "id": "rp7-q6",
@@ -279,7 +279,7 @@
         "Step 4: x = ±4. Two solutions because x² = positive number always gives ±.",
         "Check: √(16 + 9) - 5 = √25 - 5 = 5 - 5 = 0 ✓"
       ],
-      "feedback_wrong": "After isolating and squaring: x² = 16. Remember x² = k has TWO solutions: x = ±√k.",
+      "feedback_wrong": "After isolating and squaring: x² = 16. Remember x² = k has.",
       "feedback_correct": "🔥 Correct! Keep that momentum."
     },
     {
@@ -356,7 +356,7 @@
         "Check: √(18−5) = √13 and √(6+7) = √13 ✓"
       ],
       "feedback_correct": "🔥 Equal radicands. x = 6.",
-      "feedback_wrong": "If √(A) = √(B), then A = B. Set the insides equal and solve."
+      "feedback_wrong": "If √(A) = √(B), then A = B. Set the insides equal."
     },
     {
       "id": "rp7-q10",
@@ -389,7 +389,7 @@
         "Step 4: x² = 4 → x = ±2. Two solutions because x² = positive number gives ±.",
         "Check x=2: 4·2^(4+1) = 4·32 = 128 ✓"
       ],
-      "feedback_wrong": "Divide by 4 first: 2^(x²+1)=32=2⁵. Set exponents equal: x²+1=5. Then x²=4 gives TWO answers: x=±2.",
+      "feedback_wrong": "Divide by 4 first: 2^(x²+1)=32=2⁵. Set exponents equal: x²+1=5. Then x²=4 gives.",
       "feedback_correct": "🔥 Correct! Keep that momentum."
     },
     {
@@ -634,7 +634,7 @@
         "W2.d: the REVERSE of reading a graph. Given characteristics, build the equation."
       ],
       "feedback_correct": "W2.d: build the equation from features, not just read them.",
-      "feedback_wrong": "Vertex gives h and k directly. Then plug in the point (-2,0) to solve for a."
+      "feedback_wrong": "Vertex gives h and k directly. Then plug in the point (-2,0)."
     },
     {
       "id": "rp7-q15",
@@ -668,7 +668,7 @@
         "W3.d: one-to-one property applied twice in one problem. First to find r, then to solve for t."
       ],
       "feedback_correct": "🔥 Model written and evaluated. ,000.",
-      "feedback_wrong": "Start with finding r: 100 * r^5 = 3200 -> r^5 = 32 -> r = 2. Then P(t) = 100 * 2^t. Then solve 100 * 2^t = 819200."
+      "feedback_wrong": "Start with finding r: 100 * r^5 = 3200 -> r^5 =."
     }
   ],
   "version": "2.0"
