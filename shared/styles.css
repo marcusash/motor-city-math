@@ -186,6 +186,25 @@ body.arena-mode .saas-grade.g4 { color: var(--color-correct-bg); }
     border: 0;
 }
 
+/* Skip link — hidden by default, visible on keyboard focus */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    padding: 8px 16px;
+    background: var(--accent-blue);
+    color: #FFFFFF;
+    font-size: var(--text-sm);
+    font-weight: 600;
+    text-decoration: none;
+    z-index: 9999;
+    transition: top 0.15s ease;
+}
+.skip-link:focus-visible {
+    top: 0;
+}
+@media (prefers-reduced-motion: reduce) { .skip-link { transition: none; } }
+
 :focus-visible {
     outline: 3px solid var(--accent-blue-on-dark);
     outline-offset: 2px;

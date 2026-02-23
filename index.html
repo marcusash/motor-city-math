@@ -169,6 +169,7 @@
         .test-link .test-score { font-weight: 700; color: var(--color-correct); float: right; }
         .test-link .test-score.low { color: var(--accent-red); }
         .sparkline { display: block; margin-top: 6px; }
+        .sparkline-zero { display: inline-block; width: 40px; height: 20px; border-bottom: 2px dashed var(--text-secondary); opacity: 0.5; margin-top: 6px; }
 
         .footer { text-align: center; color: var(--text-secondary); font-size: var(--text-sm); padding: 20px 0 10px; }
 
@@ -698,6 +699,8 @@
                     var atts = s.attempts.slice(-5);
                     if (atts.length >= 2) {
                         sparkHtml = buildSparkline(atts.map(function(a) { return a.pct; }));
+                    } else {
+                        sparkHtml = '<span class="sparkline-zero" aria-label="Not yet attempted"></span>';
                     }
                 } else {
                     pct = s.pct || (s.score && s.total ? Math.round(s.score / s.total * 100) : null);
@@ -705,6 +708,8 @@
                 if (pct !== null) {
                     scoreHtml = '<span class="test-score' + (pct < 70 ? ' low' : '') + '">' + pct + '%</span>';
                 }
+            } else {
+                sparkHtml = '<span class="sparkline-zero" aria-label="Not yet attempted"></span>';
             }
             html += '<a href="' + t.file + '" class="test-link">' +
                 t.name + scoreHtml +

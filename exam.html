@@ -91,6 +91,7 @@
         .progress-strip.active { display: flex; }
         .progress-bar { flex: 1; height: 6px; background: var(--border-subtle); border-radius: 3px; overflow: hidden; }
         .progress-fill { height: 100%; background: var(--accent-blue); border-radius: 3px; transition: width 0.3s ease; }
+        @media (prefers-reduced-motion: reduce) { .progress-fill { transition: none; } }
         .progress-text { font-weight: 600; white-space: nowrap; }
         .exam-picker { text-align: center; padding: 24px 0; }
         .exam-picker p { color: var(--text-secondary); font-size: var(--text-base); margin-bottom: 20px; }
@@ -146,7 +147,7 @@
 </head>
 <body>
     <script>if(localStorage.getItem('mcm-arena-mode')==='on')document.body.classList.add('arena-mode');</script>
-    <a href="#questionsContainer" class="sr-only">Skip to questions</a>
+    <a href="#questionsContainer" class="skip-link">Skip to questions</a>
     <div class="exam-container" role="main">
         <div class="print-header">
             <strong>Motor City Math — Practice Test</strong><br>
