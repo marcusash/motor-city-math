@@ -35,6 +35,7 @@ Located in `tests/f-validation/`.
 | `evaluate-number-inputs.test.js` | evaluateNumberInputs: ordered/plus-minus grading, tolerance, NaN, empty | 16/16 |
 | `find-missing-inputs.test.js` | findMissingInputLabels: dropdown/number/radio/text validation, null safety, multi-Q | 14/14 |
 | `exam-answer-format-hint.test.js` | sw-17: format hint on wrong non-int answer, header guide, inline hints, sqrt/fraction parser | 13/13 |
+| `exam-form-label-association.test.js` | WCAG 2.4.6: renderInput() label association for dropdown/number/radio/text + canvas role | 12/12 |
 
 Run all at once:
 ```powershell
