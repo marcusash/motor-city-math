@@ -351,3 +351,97 @@ enhancement noted. No false alarms, no missed issues.
 - [x] T30 skill submission: template consistency + medium-specificity selectors (filed 20260223-0530)
 - Visual QA of GA implementations when they land (focus ring, G4 badge, autosave toast)
 - Verify content completeness after GP bulk fix: DONE (all 10 RPs 15/15/15)
+
+---
+
+## Session 7 Update (Feb 23, 2026 — FD Research Sprint)
+
+### FD Cross-Pollination: 13 Methods Adopted
+
+Marcus directed: research FD's skill development approach and incorporate as much as possible. Full read of:
+- `.forge/learnings/FD.md` (full sprint history, peer review system, The Bar methodology)
+- `.forge/agent-skilling-protocol.md` (org-wide skilling standard)
+- `.forge/design/references/` (all 4 modular reference files)
+- `docs/fd-autonomous-queue.md` (RAMSO pre-flight protocol, queue structure)
+- FD's 25 coaching task brief (5 domains: visual, brand, interaction, copy, systems)
+- All peer agent learning plans (GA, GF, FP, FR, FD)
+
+13 methods extracted from FD's approach. Here is what GD is adopting and how:
+
+| # | FD Method | GD Adoption |
+|---|-----------|-------------|
+| 1 | Learnings log (Context / What worked / What didn't / Key insight / Skill update) | Already in `.forge/learnings/GD.md`. Adding FD's exact format with all 5 fields. |
+| 2 | Skill files as living documents (use, observe, update, cross-pollinate cycle) | Created `docs/agents/gd-design-references/` — 5 modular reference files. |
+| 3 | Git retrospective (after every project: journey, what would I do differently in first 30 min) | Added to sprint closeout ritual. Sprint 7 retrospective logged in learnings. |
+| 4 | Skills.sh research protocol (audit 10+ skills, document which apply and how) | Will run skills.sh audit in Session 8. Target: 10 skills, MCM applicability map. |
+| 5 | Modular design reference files (design-direction, craft-foundations, components, interaction) | `gd-design-references/` now has 5 MCM-adapted files. |
+| 6 | Peer review package (11-file, 8-section format, external reviewers) | `gd-design-references/spec-writing.md` includes GD's peer review README template. |
+| 7 | The Bar: named world-class practitioners with honest gap statements | Updating The Bar section (below). Adding Muriel Cooper. |
+| 8 | Anti-slop checklist (10+ checks including differentiation question and tone commitment) | 10-item checklist added to `design-direction.md` and spec-writing guide. |
+| 9 | State machine requirements for reactive component specs | Added as mandatory to `spec-writing.md`. Sprint 7 starts enforcing this. |
+| 10 | Broadcast-then-incorporate (send design ideas to all agents, process feedback) | Adding to cross-agent protocol. Will send spec format proposal to all grind agents. |
+| 11 | Mini-PRD format (structured product thinking documents) | Will write a MCM Mini-PRD for the post-wrong nudge feature as a skill exercise. |
+| 12 | RAMSO pre-flight checklist (QA checks before any submission) | Adapting RAMSO to GD context: will add to spec-writing guide. |
+| 13 | Human expert review (invited external practitioners to review skill files) | Planning to request a peer review from FD of GD's coaching submissions T1-T30. |
+
+### Key Insight: Constraint-Setters vs Constraint-Appliers
+
+FD's biggest learning from The Bar research: "World-class practitioners SET their own constraints. FD applies constraints set by others."
+
+For GD specifically: I audit WCAG rules. I apply the Pistons palette. I follow the design system.
+
+The Bar insight: senior design engineers don't just apply existing constraints — they CREATE constraints that improve the system. Examples of constraints GD should be setting:
+- The state machine requirement in specs (adopted this session — a new constraint GD is setting)
+- The 4-level contrast hierarchy for MCM (formalized in interaction-visual-clarity.md)
+- The animation derivation rule (need -> mechanism -> value — not just "add a transition")
+
+Next constraint GD should set: A formal spec review protocol that other agents can use to QA GD's specs before they go to GA. GD cannot QA its own specs effectively — need a structured external check.
+
+### The Bar — Updated
+
+**4. Muriel Cooper — MIT Media Lab, designer who built tools for designers**
+
+FD surfaced Muriel Cooper during peer review research. Her bar: designers should shape the media of design itself, not just use it. Cooper built Visible Language Workshop at MIT — created tools that made design systems themselves the medium.
+
+For GD: I use the MCM design system. I don't currently contribute to shaping how the system itself evolves. Cooper would ask: is GD just consuming the design language, or actively evolving it?
+
+The gap: GD makes great individual specs. But the design system documents (`.design-system.md`) grow by accretion — one section appended after another — rather than by intentional system architecture. Cooper's standard: every addition to the system should also improve the system's internal coherence, not just extend its surface area.
+
+Concrete goal: Section 17-20 of `.design-system.md` should not just add content — they should reorganize the existing sections for better coherence. This is the Cooper standard applied to GD's domain.
+
+### State Machine Requirement (Now Mandatory)
+
+As of Session 7, all GD specs for reactive components must include a formal state machine. This is the single highest-leverage spec quality improvement GD can make, adopted from FD's Sprint 4 spec fidelity audit.
+
+**Reactive component = any element with multiple visual states or internal state variables.**
+
+State machine minimum format (see `spec-writing.md` for template):
+- Named states list
+- State variables with types
+- Transitions with triggers
+- Edge cases
+
+**Why this matters:** Without state machines, GA makes implementation decisions that should be design decisions. GA's wrong-state implementations are almost never GA's fault — they're GD's incomplete specs.
+
+### Autonomous Task Backlog (Created This Session)
+
+142 tasks across 8 categories inserted into SQL `gd_tasks` table:
+- `design-audit` (35): systematic audits of MCM components, tokens, WCAG, print
+- `spec-writing` (18): new specs for unbuilt features, reactive components, system invariants
+- `skill-dev` (30): FD methods, research, skills.sh protocol, chart design, data visualization
+- `design-system` (15): .design-system.md Sections 17-22, token documentation, anti-patterns
+- `content` (14): hint quality audits, answer dedup, copy review, standards mapping
+- `cross-agent` (15): peer learning, handoff protocols, spec-first QA proposal
+- `learning-log` (5): learnings file updates, sprint retrospectives
+- `research` (10): competitive analysis, ADHD research, brand history
+
+Execution protocol: check inbox after every task. If new guidance from Marcus or another agent, reprioritize. Otherwise execute by priority (p2 -> normal -> low).
+
+### Reference Library Created
+
+New directory: `docs/agents/gd-design-references/` — 5 files:
+- `README.md`: how to use the library, update protocol
+- `design-direction.md`: MCM personality commitment, ADHD rules, anti-slop checklist
+- `craft-foundations.md`: spacing grid, card system, typography, token systems
+- `interaction-visual-clarity.md`: animation standards, feedback states, anti-patterns, dark mode, contrast hierarchy
+- `spec-writing.md`: mandatory format, state machine template, priority levels, filing protocol

@@ -364,7 +364,7 @@
         "Only x = -3 is valid."
       ],
       "feedback_correct": "🔥 Caught the extraneous one.",
-      "feedback_wrong": "Check your setup. Re-read the question and try again."
+      "feedback_wrong": "Square both sides: x^2+9x+18=0. Factor: (x+3)(x+6)=0."
     },
     {
       "id": "rp4-q11",
