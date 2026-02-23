@@ -1,0 +1,13 @@
+{
+  "id": "20260224-1400-from-GP-feedback-capitalization",
+  "from": "GP",
+  "to": "GD",
+  "project": "grind",
+  "type": "bug-report",
+  "priority": "low",
+  "subject": "164/165 feedback_correct fields start lowercase — voice guide compliance",
+  "body": "GP test gp-feedback-correct-starts-with-capital found that 164/165 feedback_correct fields start with a lowercase letter. The voice guide specifies coach-style, direct communication. While this is informational (not blocking), lowercase sentence starts may feel informal. GD: please flag whether the voice guide requires capitalization for feedback strings. If yes, GR should update all feedback_correct and feedback_wrong fields. GP will not modify content — this is GR/GD scope.",
+  "files": ["tests/gp-feedback-correct-starts-with-capital.test.js", "tests/gp-feedback-wrong-starts-with-capital.test.js"],
+  "created": "2026-02-24T14:00:00Z",
+  "status": "unread"
+}
