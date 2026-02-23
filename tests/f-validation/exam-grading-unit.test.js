@@ -30,14 +30,11 @@ function gradeInput(type, userValue, inp) {
 
 /**
  * Compute scorecard values. Mirrors exam.html showScorecard() / saveResults().
+ * Thresholds: 92%=grade4, 82%=grade3, 70%=grade2, <70%=grade1
  */
 function computeScore(score, total) {
     const pct = total > 0 ? Math.round(score / total * 100) : 0;
-    let grade = 1;
-    if (pct >= 92) grade = 4;
-    else if (pct >= 80) grade = 3;
-    else if (pct >= 70) grade = 2;
-    else if (pct >= 60) grade = 2; // D is still grade 2 in SAAS
+    const grade = pct >= 92 ? 4 : pct >= 82 ? 3 : pct >= 70 ? 2 : 1;
     return { pct, grade };
 }
 
@@ -87,10 +84,10 @@ let s;
 s = computeScore(15, 15); assert(s.pct === 100 && s.grade === 4, 'perfect score grade 4');
 s = computeScore(14, 15); assert(s.pct === 93 && s.grade === 4, '14/15=93 grade 4');
 s = computeScore(13, 15); assert(s.pct === 87 && s.grade === 3, '13/15=87 grade 3');
-s = computeScore(12, 15); assert(s.pct === 80 && s.grade === 3, '12/15=80 grade 3');
+s = computeScore(12, 15); assert(s.pct === 80 && s.grade === 2, '12/15=80 grade 2 (below 82%)');
 s = computeScore(11, 15); assert(s.pct === 73 && s.grade === 2, '11/15=73 grade 2');
-s = computeScore(10, 15); assert(s.pct === 67 && s.grade === 2, '10/15=67 grade 2');
-s = computeScore(9, 15);  assert(s.pct === 60 && s.grade === 2, '9/15=60 grade 2');
+s = computeScore(10, 15); assert(s.pct === 67 && s.grade === 1, '10/15=67 grade 1 (below 70%)');
+s = computeScore(9, 15);  assert(s.pct === 60 && s.grade === 1, '9/15=60 grade 1');
 s = computeScore(8, 15);  assert(s.pct === 53 && s.grade === 1, '8/15=53 grade 1');
 s = computeScore(0, 15);  assert(s.pct === 0 && s.grade === 1, '0/15=0 grade 1');
 
@@ -100,8 +97,8 @@ s = computeScore(0, 0);   assert(s.pct === 0 && !isNaN(s.pct), 'zero-total gives
 // ===== SAAS grade thresholds =====
 console.log('--- Grade thresholds ---');
 assert(computeScore(14, 15).grade === 4, '92%+ = grade 4');  // 93%
-assert(computeScore(13, 15).grade === 3, '80%+ = grade 3');  // 87%
-assert(computeScore(12, 15).grade === 3, '80% = grade 3');   // 80%
+assert(computeScore(13, 15).grade === 3, '82%+ = grade 3');  // 87%
+assert(computeScore(12, 15).grade === 2, '80% = grade 2 (below 82% threshold)');
 assert(computeScore(11, 15).grade === 2, '70%+ = grade 2');  // 73%
 assert(computeScore(8, 15).grade === 1,  '<70% = grade 1');  // 53%
 
