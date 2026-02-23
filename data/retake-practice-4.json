@@ -55,7 +55,8 @@
       ],
       "feedback_correct": "🔥 Parent and intercepts nailed.",
       "feedback_wrong_parent": "Check the exponent for parent type.",
-      "feedback_wrong_intercepts": "Parent right. Set f(x)=0 and solve."
+      "feedback_wrong_intercepts": "Parent right. Set f(x)=0 and solve.",
+      "feedback_wrong": "Check your setup. Re-read the question and try again."
     },
     {
       "id": "rp4-q2",
@@ -94,7 +95,8 @@
         "Square: x - 7 = 25 → x = 32."
       ],
       "feedback_correct": "🔥 Square root identified. Clean.",
-      "feedback_wrong_parent": "Look at the √ symbol."
+      "feedback_wrong_parent": "Look at the √ symbol.",
+      "feedback_wrong": "Check your setup. Re-read the question and try again."
     },
     {
       "id": "rp4-q3",
@@ -361,7 +363,8 @@
         "Check x=-6: √1 = 1 and -6+5 = -1 ✗ → extraneous.",
         "Only x = -3 is valid."
       ],
-      "feedback_correct": "🔥 Caught the extraneous one."
+      "feedback_correct": "🔥 Caught the extraneous one.",
+      "feedback_wrong": "Check your setup. Re-read the question and try again."
     },
     {
       "id": "rp4-q11",
@@ -604,5 +607,6 @@
       "feedback_correct": "🔥 30 years. Exponential growth.",
       "feedback_wrong": "Divide by 5000 first. Then: 1.5^? = 3.375."
     }
-  ]
+  ],
+  "version": "2.0"
 }

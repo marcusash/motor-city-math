@@ -49,7 +49,8 @@
       ],
       "feedback_correct": "🔥 Exponential parent. Same-base method for the intercept.",
       "feedback_wrong_parent": "Is the variable in the base or the exponent? Exponent = exponential parent.",
-      "feedback_wrong_intercepts": "Set f(x)=0. Rewrite 8 as a power of 2."
+      "feedback_wrong_intercepts": "Set f(x)=0. Rewrite 8 as a power of 2.",
+      "feedback_wrong": "Check your setup. Re-read the question and try again."
     },
     {
       "id": "rp5-q2",
@@ -100,7 +101,8 @@
       ],
       "feedback_correct": "🔥 Quadratic. Dividing by -3 correctly and applying ±√.",
       "feedback_wrong_parent": "Highest power is 2 → quadratic.",
-      "feedback_wrong_intercepts": "Divide both sides by -3 first. Then take ±√4 = ±2."
+      "feedback_wrong_intercepts": "Divide both sides by -3 first. Then take ±√4 = ±2.",
+      "feedback_wrong": "Check your setup. Re-read the question and try again."
     },
     {
       "id": "rp5-q3",

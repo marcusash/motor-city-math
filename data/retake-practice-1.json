@@ -55,7 +55,8 @@
       ],
       "feedback_correct": "🔥 Parent and intercepts nailed.",
       "feedback_wrong_parent": "Check the exponent for parent type.",
-      "feedback_wrong_intercepts": "Parent right. Set f(x)=0 and solve."
+      "feedback_wrong_intercepts": "Parent right. Set f(x)=0 and solve.",
+      "feedback_wrong": "Check your setup. Re-read the question and try again."
     },
     {
       "id": "rp1-q2",
@@ -94,7 +95,8 @@
         "Square: x + 4 = 9 → x = 5."
       ],
       "feedback_correct": "🔥 Square root identified. Clean.",
-      "feedback_wrong_parent": "Look at the √ symbol."
+      "feedback_wrong_parent": "Look at the √ symbol.",
+      "feedback_wrong": "Check your setup. Re-read the question and try again."
     },
     {
       "id": "rp1-q3",
@@ -142,7 +144,8 @@
         "x - 1 = 4 → x = 5, or x - 1 = -4 → x = -3."
       ],
       "feedback_correct": "🔥 Absolute value. Both intercepts.",
-      "feedback_wrong_parent": "The | | symbols mean absolute value."
+      "feedback_wrong_parent": "The | | symbols mean absolute value.",
+      "feedback_wrong": "Check your setup. Re-read the question and try again."
     },
     {
       "id": "rp1-q4",
@@ -580,5 +583,6 @@
       "feedback_correct": "🔥 24 hours. Exponential growth.",
       "feedback_wrong": "Divide by 500 first. Then: 3^? = 81."
     }
-  ]
+  ],
+  "version": "2.0"
 }

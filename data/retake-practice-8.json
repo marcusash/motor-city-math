@@ -37,7 +37,8 @@
         "(x - 6)(x + 1) = 0.",
         "x = 6 or x = -1. Check: 36-30-6=0 ✓, 1+5-6=0 ✓"
       ],
-      "feedback_wrong": "Factors of -6 adding to -5 are -6 and +1: (x-6)(x+1)=0."
+      "feedback_wrong": "Factors of -6 adding to -5 are -6 and +1: (x-6)(x+1)=0.",
+      "feedback_correct": "🔥 Correct! Keep that momentum."
     },
     {
       "id": "rp8-q2",
@@ -87,7 +88,8 @@
         "x-intercepts: 2|x-3|=4 → |x-3|=2 → x=5 or x=1.",
         "a=2>0 opens upward. Range: [-4, +∞)."
       ],
-      "feedback_wrong": "Vertex is (3,-4). Set f=0: |x-3|=2 gives x=1 and x=5. a>0 so range is [-4,+inf)."
+      "feedback_wrong": "Vertex is (3,-4). Set f=0: |x-3|=2 gives x=1 and x=5. a>0 so range is [-4,+inf).",
+      "feedback_correct": "🔥 Correct! Keep that momentum."
     },
     {
       "id": "rp8-q3",
@@ -126,7 +128,8 @@
         "Case 2 (negative): -(x-2)=8 → x-2=-8 → x=-6.",
         "Check: |-2(10)+4|-16 = |-16|-16 = 0 ✓ and |-2(-6)+4|-16 = |16|-16 = 0 ✓"
       ],
-      "feedback_wrong": "Factor out the negative: |-2x+4|=2|x-2|. Isolate: 2|x-2|=16 → |x-2|=8. Case 1: x=10. Case 2: x=-6."
+      "feedback_wrong": "Factor out the negative: |-2x+4|=2|x-2|. Isolate: 2|x-2|=16 → |x-2|=8. Case 1: x=10. Case 2: x=-6.",
+      "feedback_correct": "🔥 Correct! Keep that momentum."
     },
     {
       "id": "rp8-q4",
@@ -151,7 +154,8 @@
         "4x+2=8 → 4x=6 → x=3/2=1.5.",
         "Check: 4^(2×1.5+1)=4^4=256 ✓"
       ],
-      "feedback_wrong": "4=2² so 4^(2x+1)=2^(4x+2). 256=2⁸. Set 4x+2=8 → x=3/2."
+      "feedback_wrong": "4=2² so 4^(2x+1)=2^(4x+2). 256=2⁸. Set 4x+2=8 → x=3/2.",
+      "feedback_correct": "🔥 Correct! Keep that momentum."
     },
     {
       "id": "rp8-q5",
@@ -188,7 +192,8 @@
         "Group: 3x(x-2) - 4(x-2) = (3x-4)(x-2) = 0.",
         "x = 4/3 or x = 2."
       ],
-      "feedback_wrong": "AC: a×c=24. Factors adding to -10: -6 and -4. Split and group: (3x-4)(x-2)=0."
+      "feedback_wrong": "AC: a×c=24. Factors adding to -10: -6 and -4. Split and group: (3x-4)(x-2)=0.",
+      "feedback_correct": "🔥 Correct! Keep that momentum."
     },
     {
       "id": "rp8-q6",
@@ -220,7 +225,8 @@
         "x=±8. Two solutions because x²=positive always gives ±.",
         "Check: √(64-28)-6=√36-6=6-6=0 ✓"
       ],
-      "feedback_wrong": "After squaring: x²=4 → x=±2. Don’t forget the negative solution."
+      "feedback_wrong": "After squaring: x²=4 → x=±2. Don’t forget the negative solution.",
+      "feedback_correct": "🔥 Correct! Keep that momentum."
     },
     {
       "id": "rp8-q7",
@@ -245,7 +251,8 @@
         "2x-2=3x-9 → x=7.",
         "Check: 9^6=531441, 27^4=531441 ✓"
       ],
-      "feedback_wrong": "9=3², 27=3³. Convert and set exponents equal: 2x-2=3x-9 → x=7."
+      "feedback_wrong": "9=3², 27=3³. Convert and set exponents equal: 2x-2=3x-9 → x=7.",
+      "feedback_correct": "🔥 Correct! Keep that momentum."
     },
     {
       "id": "rp8-q8",
@@ -269,7 +276,8 @@
         "22=2x → x=11.",
         "Check: (33+2)/(11-4)=35/7=5 ✓"
       ],
-      "feedback_wrong": "Multiply by (x-4): 3x+2=5x-20 → x=11."
+      "feedback_wrong": "Multiply by (x-4): 3x+2=5x-20 → x=11.",
+      "feedback_correct": "🔥 Correct! Keep that momentum."
     },
     {
       "id": "rp8-q9",
@@ -293,7 +301,8 @@
         "3x=12 → x=4.",
         "Check: √16=√16 ✓"
       ],
-      "feedback_wrong": "Set radicands equal: 5x-4=2x+8 → x=4."
+      "feedback_wrong": "Set radicands equal: 5x-4=2x+8 → x=4.",
+      "feedback_correct": "🔥 Correct! Keep that momentum."
     },
     {
       "id": "rp8-q10",
@@ -325,7 +334,8 @@
         "x=±√5 ≈ ±2.236. Two solutions.",
         "Check: 5^(5-1)=5⁴=625 ✓"
       ],
-      "feedback_wrong": "625=5⁴. So x²-1=4 → x²=5 → x=±√5 ≈ ±2.236."
+      "feedback_wrong": "625=5⁴. So x²-1=4 → x²=5 → x=±√5 ≈ ±2.236.",
+      "feedback_correct": "🔥 Correct! Keep that momentum."
     },
     {
       "id": "rp8-q11",
@@ -349,7 +359,8 @@
         "x = 25^(3/2) = (√25)³ = 5³ = 125.",
         "Check: 4×125^(2/3) = 4×(∛125)² = 4×5² = 4×25 = 100 ✓"
       ],
-      "feedback_wrong": "Divide by 4: x^(2/3)=25. Raise to 3/2: x=25^(3/2)=(√25)³=5³=125."
+      "feedback_wrong": "Divide by 4: x^(2/3)=25. Raise to 3/2: x=25^(3/2)=(√25)³=5³=125.",
+      "feedback_correct": "🔥 Correct! Keep that momentum."
     },
     {
       "id": "rp8-q12",
@@ -440,7 +451,8 @@
         "Decreasing on (3,+∞): right of vertex.",
         "Key: downward parabola → range is y ≤ k, NOT y ≥ k."
       ],
-      "feedback_wrong": "a=-1 means DOWNWARD. Range is (-inf,4], not [4,+inf). Increasing is LEFT of vertex."
+      "feedback_wrong": "a=-1 means DOWNWARD. Range is (-inf,4], not [4,+inf). Increasing is LEFT of vertex.",
+      "feedback_correct": "🔥 Correct! Keep that momentum."
     },
     {
       "id": "rp8-q13",
@@ -525,7 +537,8 @@
         "As x→+∞: f(x)→-1 from above (4/(x+3) is positive).",
         "W2.e: asymptotes determine the excluded values in both domain and range."
       ],
-      "feedback_wrong": "VA: x=-3. HA: y=-1. Domain excludes x=-3. Range excludes y=-1."
+      "feedback_wrong": "VA: x=-3. HA: y=-1. Domain excludes x=-3. Range excludes y=-1.",
+      "feedback_correct": "🔥 Correct! Keep that momentum."
     },
     {
       "id": "rp8-q14",
@@ -564,7 +577,8 @@
         "4a=4 → a=1.",
         "f(x) = (x+2)²+1. Verify: f(-2)=0+1=1 ✓, f(0)=4+1=5 ✓, opens up (a>0) ✓"
       ],
-      "feedback_wrong": "h=-2 and k=1 come from the vertex. Plug (0,5) into a(x+2)²+1=5 to solve for a."
+      "feedback_wrong": "h=-2 and k=1 come from the vertex. Plug (0,5) into a(x+2)²+1=5 to solve for a.",
+      "feedback_correct": "🔥 Correct! Keep that momentum."
     },
     {
       "id": "rp8-q15",
@@ -595,7 +609,9 @@
         "One-to-one: t/3 = 6 → t = 18 years.",
         "Check: A(18) = 6400·(0.5)⁶ = 6400/64 = 100 ✓"
       ],
-      "feedback_wrong": "A(t)=6400·(0.5)^(t/3). Set equal to 100: (0.5)^(t/3)=1/64=(0.5)⁶ → t/3=6 → t=18."
+      "feedback_wrong": "A(t)=6400·(0.5)^(t/3). Set equal to 100: (0.5)^(t/3)=1/64=(0.5)⁶ → t/3=6 → t=18.",
+      "feedback_correct": "🔥 Correct! Keep that momentum."
     }
-  ]
+  ],
+  "version": "2.0"
 }

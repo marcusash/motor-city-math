@@ -44,7 +44,8 @@
         "x = 1/2 or x = 4.",
         "Check: 2(1/4)-9(1/2)+4=1/2-9/2+8/2=0 ✓, 2(16)-36+4=0 ✓"
       ],
-      "feedback_wrong": "AC: a×c=8. Factors of 8 adding to -9: -8 and -1. Split and group: (2x-1)(x-4)=0."
+      "feedback_wrong": "AC: a×c=8. Factors of 8 adding to -9: -8 and -1. Split and group: (2x-1)(x-4)=0.",
+      "feedback_correct": "🔥 Correct! Keep that momentum."
     },
     {
       "id": "rp9-q2",
@@ -94,7 +95,8 @@
         "x-intercepts: 3|x+2|=6 → |x+2|=2 → x+2=2 or x+2=-2 → x=0 or x=-4.",
         "a=3>0 opens upward. Range: [-6, +∞)."
       ],
-      "feedback_wrong": "Vertex is (-2,-6). Note: h=-2 because |x+2| = |x-(-2)|. Set f=0: |x+2|=2 gives x=0 and x=-4."
+      "feedback_wrong": "Vertex is (-2,-6). Note: h=-2 because |x+2| = |x-(-2)|. Set f=0: |x+2|=2 gives x=0 and x=-4.",
+      "feedback_correct": "🔥 Correct! Keep that momentum."
     },
     {
       "id": "rp9-q3",
@@ -131,7 +133,8 @@
         "Case 2: -(2x-5)=7 → -2x+5=7 → -2x=2 → x=-1.",
         "Check: |12-5|-2=7-2=5 ✓ and |-2-5|-2=7-2=5 ✓"
       ],
-      "feedback_wrong": "Isolate: |2x-5|=7. Case 1: 2x-5=7 → x=6. Case 2: -(2x-5)=7 → x=-1."
+      "feedback_wrong": "Isolate: |2x-5|=7. Case 1: 2x-5=7 → x=6. Case 2: -(2x-5)=7 → x=-1.",
+      "feedback_correct": "🔥 Correct! Keep that momentum."
     },
     {
       "id": "rp9-q4",
@@ -155,7 +158,8 @@
         "x-4=5 → x=9.",
         "Check: 5×3⁵=5×243=1215 ✓"
       ],
-      "feedback_wrong": "Divide by 5 first: 3^(x-4)=243=3⁵. Then x-4=5 → x=9."
+      "feedback_wrong": "Divide by 5 first: 3^(x-4)=243=3⁵. Then x-4=5 → x=9.",
+      "feedback_correct": "🔥 Correct! Keep that momentum."
     },
     {
       "id": "rp9-q5",
@@ -193,7 +197,8 @@
         "x = 3/2 = 1.5 or x = -5.",
         "Check: 2(25)+7(-5)-15=50-35-15=0 ✓"
       ],
-      "feedback_wrong": "AC: a×c=-30. Factors adding to +7: +10 and -3. Split and group: (2x-3)(x+5)=0."
+      "feedback_wrong": "AC: a×c=-30. Factors adding to +7: +10 and -3. Split and group: (2x-3)(x+5)=0.",
+      "feedback_correct": "🔥 Correct! Keep that momentum."
     },
     {
       "id": "rp9-q6",
@@ -224,7 +229,8 @@
         "x = ±13. Two solutions.",
         "Check: √(169-144)=√25=5 ✓"
       ],
-      "feedback_wrong": "Square both sides: x²-144=25 → x²=169 → x=±13."
+      "feedback_wrong": "Square both sides: x²-144=25 → x²=169 → x=±13.",
+      "feedback_correct": "🔥 Correct! Keep that momentum."
     },
     {
       "id": "rp9-q7",
@@ -249,7 +255,8 @@
         "3^(x+2) = 3^14 → x+2=14 → x=12.",
         "Check: 9^12·3^(-10) = 3^24·3^(-10) = 3^14 ✓"
       ],
-      "feedback_wrong": "9^x = 3^(2x). Then 3^(2x)·3^(2-x) = 3^(x+2) = 3^14. So x+2=14 → x=12."
+      "feedback_wrong": "9^x = 3^(2x). Then 3^(2x)·3^(2-x) = 3^(x+2) = 3^14. So x+2=14 → x=12.",
+      "feedback_correct": "🔥 Correct! Keep that momentum."
     },
     {
       "id": "rp9-q8",
@@ -273,7 +280,8 @@
         "x=18.",
         "Check: (5(18)-14)/(18+1)=(90-14)/19=76/19=4 ✓"
       ],
-      "feedback_wrong": "Multiply by (x+1): 5x-14=4x+4 → x=18."
+      "feedback_wrong": "Multiply by (x+1): 5x-14=4x+4 → x=18.",
+      "feedback_correct": "🔥 Correct! Keep that momentum."
     },
     {
       "id": "rp9-q9",
@@ -297,7 +305,8 @@
         "10=x → x=10.",
         "Check: √(20+7)=√27 and √(30-3)=√27 ✓"
       ],
-      "feedback_wrong": "Set radicands equal: 2x+7=3x-3 → x=10."
+      "feedback_wrong": "Set radicands equal: 2x+7=3x-3 → x=10.",
+      "feedback_correct": "🔥 Correct! Keep that momentum."
     },
     {
       "id": "rp9-q10",
@@ -329,7 +338,8 @@
         "x=±7. Two solutions.",
         "Check: 3×2^(49-44)=3×2⁵=3×32=96 ✓"
       ],
-      "feedback_wrong": "Divide by 3: 2^(x²-44)=32=2⁵. So x²-44=5 → x²=49 → x=±7."
+      "feedback_wrong": "Divide by 3: 2^(x²-44)=32=2⁵. So x²-44=5 → x²=49 → x=±7.",
+      "feedback_correct": "🔥 Correct! Keep that momentum."
     },
     {
       "id": "rp9-q11",
@@ -353,7 +363,8 @@
         "x = 243^(3/5) = (⁵√243)³ = 3³ = 27. (Because 3⁵=243.)",
         "Check: 2×27^(5/3) = 2×(3³)^(5/3) = 2×3⁵ = 2×243 = 486 ✓"
       ],
-      "feedback_wrong": "Divide by 2: x^(5/3)=243. Raise to 3/5: x=243^(3/5)=(⁵√243)³=3³=27."
+      "feedback_wrong": "Divide by 2: x^(5/3)=243. Raise to 3/5: x=243^(3/5)=(⁵√243)³=3³=27.",
+      "feedback_correct": "🔥 Correct! Keep that momentum."
     },
     {
       "id": "rp9-q12",
@@ -452,7 +463,8 @@
         "Increasing on (-∞,-1). Decreasing on (-1,+∞).",
         "Check: f(-3)=-2(4)+8=0 ✓, f(1)=-2(4)+8=0 ✓"
       ],
-      "feedback_wrong": "Vertex (-1,8), opens down (a=-2<0). x-intercepts: (x+1)²=4 → x=1 or x=-3. Range: (-inf,8]."
+      "feedback_wrong": "Vertex (-1,8), opens down (a=-2<0). x-intercepts: (x+1)²=4 → x=1 or x=-3. Range: (-inf,8].",
+      "feedback_correct": "🔥 Correct! Keep that momentum."
     },
     {
       "id": "rp9-q13",
@@ -536,7 +548,8 @@
         "As x→+∞: 6/(x-4)→0 from above, so f(x)→7 from above.",
         "Key: positive numerator (6) means right branch is above HA."
       ],
-      "feedback_wrong": "VA: x=4. HA: y=7. Domain: x≠4. Range: y≠7. As x→+∞, f→7."
+      "feedback_wrong": "VA: x=4. HA: y=7. Domain: x≠4. Range: y≠7. As x→+∞, f→7.",
+      "feedback_correct": "🔥 Correct! Keep that momentum."
     },
     {
       "id": "rp9-q14",
@@ -568,7 +581,8 @@
         "f(x) = 5·2^x.",
         "Verify: f(0)=5×1=5 ✓, f(3)=5×8=40 ✓"
       ],
-      "feedback_wrong": "a=5 from the (0,5) point. Then 5·b³=40 → b³=8 → b=2."
+      "feedback_wrong": "a=5 from the (0,5) point. Then 5·b³=40 → b³=8 → b=2.",
+      "feedback_correct": "🔥 Correct! Keep that momentum."
     },
     {
       "id": "rp9-q15",
@@ -598,7 +612,9 @@
         "When P=614400? 300·2^t=614400 → 2^t=2048=2¹¹ → t=11 hours.",
         "Check: 300×2¹¹=300×2048=614400 ✓"
       ],
-      "feedback_wrong": "Find r first: 300·r³=2400 → r³=8 → r=2. Then P(t)=300·2^t. Then t=11."
+      "feedback_wrong": "Find r first: 300·r³=2400 → r³=8 → r=2. Then P(t)=300·2^t. Then t=11.",
+      "feedback_correct": "🔥 Correct! Keep that momentum."
     }
-  ]
+  ],
+  "version": "2.0"
 }

@@ -1,0 +1,67 @@
+{
+  "generated": "2026-02-23T06:08:17.775Z",
+  "exams": [
+    {
+      "file": "retake-practice-1.json",
+      "q_count": 15,
+      "missing": [],
+      "meta_missing": []
+    },
+    {
+      "file": "retake-practice-10.json",
+      "q_count": 15,
+      "missing": [],
+      "meta_missing": []
+    },
+    {
+      "file": "retake-practice-2.json",
+      "q_count": 15,
+      "missing": [],
+      "meta_missing": []
+    },
+    {
+      "file": "retake-practice-3.json",
+      "q_count": 15,
+      "missing": [],
+      "meta_missing": []
+    },
+    {
+      "file": "retake-practice-4.json",
+      "q_count": 15,
+      "missing": [],
+      "meta_missing": []
+    },
+    {
+      "file": "retake-practice-5.json",
+      "q_count": 15,
+      "missing": [],
+      "meta_missing": []
+    },
+    {
+      "file": "retake-practice-6.json",
+      "q_count": 15,
+      "missing": [],
+      "meta_missing": []
+    },
+    {
+      "file": "retake-practice-7.json",
+      "q_count": 15,
+      "missing": [],
+      "meta_missing": []
+    },
+    {
+      "file": "retake-practice-8.json",
+      "q_count": 15,
+      "missing": [],
+      "meta_missing": []
+    },
+    {
+      "file": "retake-practice-9.json",
+      "q_count": 15,
+      "missing": [],
+      "meta_missing": []
+    }
+  ],
+  "grand_total_questions": 150,
+  "grand_total_issues": 0
+}

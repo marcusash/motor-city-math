@@ -55,7 +55,8 @@
       ],
       "feedback_correct": "🔥 Quadratic intercepts. Clean.",
       "feedback_wrong_parent": "Check the exponent for parent type.",
-      "feedback_wrong_intercepts": "Parent right. Set f(x)=0 and solve."
+      "feedback_wrong_intercepts": "Parent right. Set f(x)=0 and solve.",
+      "feedback_wrong": "Check your setup. Re-read the question and try again."
     },
     {
       "id": "rp7-q2",
@@ -103,7 +104,8 @@
         "W2.b: negative leading coefficient flips the V into an upside-down V."
       ],
       "feedback_correct": "🔥 Square root intercept. Solid.",
-      "feedback_wrong_parent": "Look at the √ symbol."
+      "feedback_wrong_parent": "Look at the √ symbol.",
+      "feedback_wrong": "Check your setup. Re-read the question and try again."
     },
     {
       "id": "rp7-q3",
@@ -178,7 +180,8 @@
       ],
       "feedback_correct": "🔥 Both intercepts. Coefficient inside — you handled it.",
       "feedback_wrong_parent": "The | | bars mean absolute value.",
-      "feedback_wrong_intercepts": "Set |2x−6| = 4. Solve both cases. Divide by 2 at the end."
+      "feedback_wrong_intercepts": "Set |2x−6| = 4. Solve both cases. Divide by 2 at the end.",
+      "feedback_wrong": "Check your setup. Re-read the question and try again."
     },
     {
       "id": "rp7-q4",
@@ -202,7 +205,8 @@
         "32 = 2^5.",
         "3x - 3 = 5 → 3x = 8 → x = 8/3 ≈ 2.667."
       ],
-      "feedback_correct": "🔥 Common base. 8/3."
+      "feedback_correct": "🔥 Common base. 8/3.",
+      "feedback_wrong": "Check your setup. Re-read the question and try again."
     },
     {
       "id": "rp7-q5",
@@ -275,7 +279,8 @@
         "Step 4: x = ±4. Two solutions because x² = positive number always gives ±.",
         "Check: √(16 + 9) - 5 = √25 - 5 = 5 - 5 = 0 ✓"
       ],
-      "feedback_wrong": "After isolating and squaring: x² = 16. Remember x² = k has TWO solutions: x = ±√k."
+      "feedback_wrong": "After isolating and squaring: x² = 16. Remember x² = k has TWO solutions: x = ±√k.",
+      "feedback_correct": "🔥 Correct! Keep that momentum."
     },
     {
       "id": "rp7-q7",
@@ -299,7 +304,8 @@
         "125^(x-1) = (5³)^(x-1) = 5^(3x-3).",
         "2x = 3x - 3 → x = 3."
       ],
-      "feedback_correct": "🔥 Common base. Smooth."
+      "feedback_correct": "🔥 Common base. Smooth.",
+      "feedback_wrong": "Check your setup. Re-read the question and try again."
     },
     {
       "id": "rp7-q8",
@@ -323,7 +329,8 @@
         "5x - 3 = 3x + 6.",
         "2x = 9 → x = 4.5."
       ],
-      "feedback_correct": "🔥 Clean algebra."
+      "feedback_correct": "🔥 Clean algebra.",
+      "feedback_wrong": "Check your setup. Re-read the question and try again."
     },
     {
       "id": "rp7-q9",
@@ -382,7 +389,8 @@
         "Step 4: x² = 4 → x = ±2. Two solutions because x² = positive number gives ±.",
         "Check x=2: 4·2^(4+1) = 4·32 = 128 ✓"
       ],
-      "feedback_wrong": "Divide by 4 first: 2^(x²+1)=32=2⁵. Set exponents equal: x²+1=5. Then x²=4 gives TWO answers: x=±2."
+      "feedback_wrong": "Divide by 4 first: 2^(x²+1)=32=2⁵. Set exponents equal: x²+1=5. Then x²=4 gives TWO answers: x=±2.",
+      "feedback_correct": "🔥 Correct! Keep that momentum."
     },
     {
       "id": "rp7-q11",
@@ -403,9 +411,11 @@
       "hint": "Isolate x^(3/2), then raise both sides to the 2/3 power.",
       "solution_steps": [
         "x^(3/2) = 512.",
-        "x = 512^(2/3) = (∛512)² = 8² = 64."
+        "x = 512^(2/3) = (∛512)² = 8² = 64.",
+        "Check your answer by substituting back into the original equation."
       ],
-      "feedback_correct": "🔥 512^(2/3) = 64. Solid."
+      "feedback_correct": "🔥 512^(2/3) = 64. Solid.",
+      "feedback_wrong": "Check your setup. Re-read the question and try again."
     },
     {
       "id": "rp7-q12",
@@ -496,7 +506,8 @@
         "Increasing on (2, +inf): right of vertex, parabola rises.",
         "W2.e: domain, range, and intervals of increase/decrease are standard characteristics expected for any nonlinear function."
       ],
-      "feedback_correct": "🔥 Vertex and graph correct."
+      "feedback_correct": "🔥 Vertex and graph correct.",
+      "feedback_wrong": "Check your setup. Re-read the question and try again."
     },
     {
       "id": "rp7-q13",
@@ -581,7 +592,8 @@
         "As x -> +inf: -2/(x+2) -> 0 from below, so f(x) -> 4 from below.",
         "W2.e: asymptotes directly determine domain and range exclusions for rational functions."
       ],
-      "feedback_correct": "🔥 Both asymptotes correct."
+      "feedback_correct": "🔥 Both asymptotes correct.",
+      "feedback_wrong": "Check your setup. Re-read the question and try again."
     },
     {
       "id": "rp7-q14",
@@ -658,5 +670,6 @@
       "feedback_correct": "🔥 Model written and evaluated. ,000.",
       "feedback_wrong": "Start with finding r: 100 * r^5 = 3200 -> r^5 = 32 -> r = 2. Then P(t) = 100 * 2^t. Then solve 100 * 2^t = 819200."
     }
-  ]
+  ],
+  "version": "2.0"
 }

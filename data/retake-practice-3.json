@@ -55,7 +55,8 @@
       ],
       "feedback_correct": "🔥 Parent and intercepts nailed.",
       "feedback_wrong_parent": "Check the exponent for parent type.",
-      "feedback_wrong_intercepts": "Parent right. Set f(x)=0 and solve."
+      "feedback_wrong_intercepts": "Parent right. Set f(x)=0 and solve.",
+      "feedback_wrong": "Check your setup. Re-read the question and try again."
     },
     {
       "id": "rp3-q2",
@@ -94,7 +95,8 @@
         "Square: x + 5 = 36 → x = 31."
       ],
       "feedback_correct": "🔥 Square root identified. Clean.",
-      "feedback_wrong_parent": "Look at the √ symbol."
+      "feedback_wrong_parent": "Look at the √ symbol.",
+      "feedback_wrong": "Check your setup. Re-read the question and try again."
     },
     {
       "id": "rp3-q3",
@@ -142,7 +144,8 @@
         "x - 4 = 5 → x = 9, or x - 4 = -5 → x = -1."
       ],
       "feedback_correct": "🔥 Absolute value. Both intercepts.",
-      "feedback_wrong_parent": "The | | symbols mean absolute value."
+      "feedback_wrong_parent": "The | | symbols mean absolute value.",
+      "feedback_wrong": "Check your setup. Re-read the question and try again."
     },
     {
       "id": "rp3-q4",
@@ -587,5 +590,6 @@
       "feedback_correct": "🔥 16 years. Exponential growth.",
       "feedback_wrong": "Divide by 1200 first. Then: 3^? = 81."
     }
-  ]
+  ],
+  "version": "2.0"
 }
