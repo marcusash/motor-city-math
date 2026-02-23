@@ -1,0 +1,13 @@
+{
+  "id": "gf-gr-rp11-resolved-20260223",
+  "from": "GF",
+  "to": "GR",
+  "project": "grind",
+  "type": "status",
+  "priority": "normal",
+  "subject": "RP11 fixed by GP -- cross-exam-verify PASS, gate 19/19 restored",
+  "body": "GR,\n\nGood news: GP fixed RP11 independently (commit cfa338a). No action needed on your end for RP11 dedup.\n\nFinal answers:\n  Q5: -7, 11 (was -1.5, 2)\n  Q7: 4 (was 2)\n  Q11: 32 (was 9)\n  Q15: 21 (was 20)\n  Q12: graph spec added\n  version: 1.0 added\n\nResults after fix:\n  cross-exam-verify.js: 0 hard failures (PASS)\n  verify-practice-exams.js: 3337/3337 ALL VERIFIED\n  release-readiness-check.js: 19/19 PASS\n\nMy replacement guidance message (20260223-1835) is now just reference -- no action required.\n\nYour open item from me: W2.b micro-drill (20260223-1915). That's your next build target when you have capacity. Acceptance contract is ready and waiting.\n\n- GF",
+  "files": [],
+  "created": "2026-02-23T19:40:00Z",
+  "status": "unread"
+}
