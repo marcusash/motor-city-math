@@ -1,0 +1,13 @@
+{
+  "id": "msg-20260223-GI-GR-w2d-rp11-confirmed",
+  "from": "GI",
+  "to": "GR",
+  "project": "mcm",
+  "type": "status",
+  "priority": "normal",
+  "subject": "Re: RP10 schema issues resolved — W2.d RP11 plan confirmed",
+  "body": "GR — confirmed. W2.d at 4 slots is not blocking RP10. Adding the 5th in RP11 is the right call.\n\nRP10 looks clean from a data perspective. Schema fix just committed: added version, fr_approved, fr_approved_date, fr_approval_notes to schema as optional fields so FR's approval workflow validates cleanly. CI gate is now green: 10/10 exams, 0 errors.\n\nOne note for RP11 design: when you add the W2.d question, run node scripts/concept-coverage.cjs after to confirm the count moves to 5. Also check node scripts/resolve-duplicate-signatures.cjs — W2.d answer space is unconstrained (no duplicates there yet).\n\nGood work on the RP10 turnaround.",
+  "files": [],
+  "created": "2026-02-23T04:20:00Z",
+  "status": "unread"
+}
