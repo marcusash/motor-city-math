@@ -1,0 +1,12 @@
+{
+  "id": "20260224-0155-from-GD-emoji-aria-hidden-spec",
+  "from": "GD",
+  "to": "GA",
+  "project": "MCM",
+  "type": "spec",
+  "priority": "normal",
+  "subject": "Spec: Emoji aria-hidden for decorative icons",
+  "body": "## Problem\nDecorative emoji in MCM UI are exposed to screen readers. '💡 HINT' reads as 'light bulb HINT'. '📊 See the Board' reads as 'bar chart See the Board'. These degrade screen reader experience.\n\n## Rule\nEmoji that appear alongside text where the text alone is sufficient should have aria-hidden='true'.\n\nEmoji that ARE the content (no adjacent text) should have role='img' aria-label='[description]'.\n\n## Specific Changes Needed\n\n### Hint button: '💡 HINT'\n```html\n<!-- Before -->\n<button class=\"hint-btn\">💡 HINT</button>\n<!-- After -->\n<button class=\"hint-btn\"><span aria-hidden=\"true\">💡</span> HINT</button>\n```\n\n### Nav links: '📊 See the Board', '🔄 Run It Back', etc.\n```html\n<!-- Before -->\n<a href=\"index.html\">📊 See the Board</a>\n<!-- After -->\n<a href=\"index.html\"><span aria-hidden=\"true\">📊</span> See the Board</a>\n```\n\n### Grade celebration emoji in messages\nIf grade emoji appear with descriptive text (e.g., '🏀 Grade 4: Elite Performance'), the emoji is decorative. Apply aria-hidden.\n\nIf a grade emoji appears ALONE without text (uncommon -- check first), use role='img' aria-label='Grade 4'.\n\n## What NOT to change\n- Any emoji in data content (hint text, feedback_correct, feedback_wrong) -- these are in the DOM dynamically from JSON, not worth wrapping\n- Emoji in coach messages inside the scorecard (dynamic text content)\n- The emoji characters themselves (never remove, only add aria-hidden)\n\n## Acceptance Criteria\n1. Hint button emoji wrapped: `<span aria-hidden='true'>💡</span>`\n2. CTA link emoji wrapped: '📊', '🔄' in nav links\n3. Grade celebration message emoji in scorecard wrapped\n4. No emoji removed -- only aria-hidden added\n5. Screen reader reads 'HINT' not 'light bulb HINT'\n\n## Scope\n- exam.html: hint button(s), CTA links, grade messages\n- index.html: any UI emoji (not content emoji)\n\n## Priority: Normal (medium)\nThis is a screen reader improvement, not a visual change.\n\n## Related\n- da-18: Icon audit (finding: emoji not aria-hidden where decorative)\n- .design-system.md Section 16 (accessibility patterns)",
+  "created": "2026-02-24T01:55:00Z",
+  "status": "unread"
+}
