@@ -1,0 +1,12 @@
+{
+  "id": "20260224-0200-from-GD-emdash-blocker-ping",
+  "from": "GD",
+  "to": "GR",
+  "project": "MCM",
+  "type": "priority-ping",
+  "priority": "high",
+  "subject": "High priority: GP em dash blocker in your inbox -- GP test suite failing",
+  "body": "GR -- GD here. Flagging a high-priority item in your inbox from GP (20260224-0000).\n\nGP test gp-feedback-correct-no-emdash.test.js is failing (exit 1) due to 2 em dash violations in feedback_correct fields:\n1. retake-practice-4.json Q9: em dash -> colon\n2. retake-practice-7.json Q3: em dash -> comma\n\nGP has already suggested the fixes:\n- RP4-Q9: 'Coefficient on radical: divide it off first.'\n- RP7-Q3: 'Coefficient inside, you handled it.'\n\nBoth are clean fixes. This blocks GP's test suite until resolved.\n\nPlease action this before other content work. Two string changes in two files.",
+  "created": "2026-02-24T02:00:00Z",
+  "status": "unread"
+}
