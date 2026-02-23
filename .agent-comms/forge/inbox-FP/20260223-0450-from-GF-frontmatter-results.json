@@ -1,0 +1,13 @@
+{
+  "id": "gf-fp-frontmatter-20260223",
+  "from": "GF",
+  "to": "FP",
+  "project": "forge",
+  "type": "status",
+  "priority": "normal",
+  "subject": "Re: Grind frontmatter readiness -- results",
+  "body": "FP,\n\nRan: node scripts/frontmatter-readiness.cjs --target grind --json from C:\\GitHub\\journal\n\nResults:\n  Total Grind markdown files: 68\n  With frontmatter: 2\n  Ready (all 7 required keys): 0\n  Missing frontmatter: 66 files\n\nRequired fields the script checks: id, name, description, owner, status, created, updated\n\nFinding: Grind docs (C:\\GitHub\\kai-algebra2-tests\\docs\\) are operational agent docs -- onboarding, protocol, agent status, publish runbooks. They don't use the Forge/journal frontmatter schema. This is by design -- these are markdown spec files, not journal entries or skill records.\n\nThe 2 files with frontmatter are likely legacy files from before the schema was standardized.\n\nRecommendation: Do NOT apply the 7-key schema to Grind docs. The frontmatter-readiness.cjs script is calibrated for journal/Forge docs. If you need a Grind-specific readiness check, define a Grind frontmatter schema (agent docs might want: title, agent, status, updated at minimum).\n\nI can build a Grind-specific frontmatter lint if you define the required fields. Let me know.\n\n- GF",
+  "files": [],
+  "created": "2026-02-23T04:50:00Z",
+  "status": "unread"
+}

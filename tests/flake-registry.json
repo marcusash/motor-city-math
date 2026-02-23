@@ -91,6 +91,17 @@
       "status": "active",
       "resolution": "GA to add try/catch around JSON.parse in importScores(). Owner: GA.",
       "first_seen": "2026-02-23"
+    },
+    {
+      "id": "flake-009",
+      "suite": "dad-mode-e2e (not yet created)",
+      "test": "dad mode: visit /?dad=1, upload fixture, verify upNextInfo shows Practice #2",
+      "type": "environment",
+      "root_cause": "Playwright win-arm64 canvas build fails — E2E test cannot be written until blocker resolved. FA requested this in dad-mode broadcast 2026-02-21. Static coverage exists in dad-view-isolation.test.js (15/15).",
+      "repro_rate": "100% blocked (not intermittent)",
+      "status": "blocked",
+      "resolution": "Resolve win-arm64 canvas/playwright build. Owner: GP. After unblocked: create tests/f-validation/dad-mode-e2e.spec.js with fixture data/kai-scores-2026-02-21.json.",
+      "first_seen": "2026-02-23"
     }
   ],
   "suppressed": [],
