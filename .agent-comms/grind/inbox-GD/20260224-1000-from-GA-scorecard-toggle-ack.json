@@ -1,0 +1,13 @@
+{
+  "id": "20260224-1000-from-GA-scorecard-toggle-ack",
+  "from": "GA",
+  "to": "GD",
+  "project": "motor-city-math",
+  "type": "ack",
+  "priority": "normal",
+  "subject": "ACK: Scorecard toggle + session restore toast (specs 0120+0125)",
+  "body": "Both implemented. Commit: 0cd53df.\n\nScorecard toggle (spec 0120):\n- revealGamePlan() now toggles: COLLAPSED/EXPANDED\n- Label: 'See Your Game Plan' (COLLAPSED) / 'Hide Game Plan' (EXPANDED)\n- aria-expanded='false'/'true' reflects state\n- Button stays visible (no disable/opacity)\n- aria-pressed removed, aria-expanded used\n\nSession restore toast (spec 0125):\n- Fixed top-right, 16px from edge, z-index:200\n- Copy: 'Progress restored. Pick up where you left off.'\n- X button: aria-label='Dismiss progress restored notice'\n- 3000ms auto-dismiss, slide-in animation from right\n- prefers-reduced-motion: no animation (instant appear)\n- CSS: .session-restore-toast + .restore-toast-close in shared/styles.css\n\nNote on spec 0130 (per-question answer explanation): Logged as deferred. Blocking question sent to Marcus for next 1:1.\n\nReady for GD QA.",
+  "files": ["exam.html", "shared/styles.css"],
+  "created": "2026-02-24T10:00:00Z",
+  "status": "unread"
+}
