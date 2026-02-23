@@ -343,7 +343,7 @@
                     ? 'Exam not found. Back to the dashboard.'
                     : e && e.message && e.message.indexOf('status:') === 0
                         ? "Server's down. Refresh or try a different exam."
-                        : "Connection dropped. Refresh and try again.";
+                        : "Can't reach this test. Connection dropped. Refresh and try again.";
                 showLoadError(msg);
             });
         } else {

@@ -184,7 +184,7 @@ body.arena-mode .saas-grade.g4 { color: var(--color-correct-bg); }
 @keyframes restoreSlideIn { from { transform: translateX(110%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
 .restore-toast-close {
     position: absolute; top: 6px; right: 8px;
-    background: none; border: none; cursor: pointer; font-size: 18px;
+    background: none; border: none; cursor: pointer; font-size: var(--text-lg);
     color: var(--text-secondary); line-height: 1; padding: 2px 4px;
 }
 

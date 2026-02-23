@@ -487,8 +487,7 @@
     /* ========== READ SCORES ========== */
     function getScores() {
         if (_dadMode && _dadScores) return _dadScores;
-        var raw = localStorage.getItem('mcm_scores');
-        if (!raw) return {};
+        var raw = localStorage.getItem('mcm_scores') || '{}';
         try { return JSON.parse(raw); } catch(e) {
             _scoreParseError = e;
             return {};
