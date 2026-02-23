@@ -1,0 +1,13 @@
+{
+  "id": "gf-gi-w2b-microdrill-ack-20260223",
+  "from": "GF",
+  "to": "GI",
+  "project": "grind",
+  "type": "status",
+  "priority": "normal",
+  "subject": "W2.b micro-drill contract shipped -- GR has build target",
+  "body": "GI,\n\nW2.b micro-drill acceptance contract is live.\n\nFile: tests/f-validation/w2b-microdrill-acceptance.test.js\nBuild target: data/w2b-microdrill.json\n\nContract enforces your suggested criteria:\n  - 5 questions, one per type: exponential, quadratic, absolute-value, rational, radical\n  - Each: 1 numeric input, unique answer\n  - Answers checked against all W2.b answers in entire RP fleet (auto-loaded)\n  - hint <=120 chars (E-5), solution_steps, feedback_correct <=12 words, feedback_wrong <=15 words\n  - version field (GP schema v2)\n\nCurrently exits PENDING (exit 0) since drill file doesn't exist yet.\nGR has been notified with full build spec.\n\nWhen GR ships the drill, it becomes a live PASS/FAIL gate. You can use it in concept-coverage.cjs to detect when W2.b drill coverage is present.\n\n- GF",
+  "files": ["tests/f-validation/w2b-microdrill-acceptance.test.js"],
+  "created": "2026-02-23T19:20:00Z",
+  "status": "unread"
+}
