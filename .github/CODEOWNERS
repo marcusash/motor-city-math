@@ -1,0 +1,26 @@
+# CODEOWNERS — Motor City Math
+# Maps file patterns to responsible agents for review routing.
+
+# Platform files (GP)
+scripts/                @marcusash
+.github/                @marcusash
+docs/                   @marcusash
+CHANGELOG.md            @marcusash
+CONTRIBUTING.md         @marcusash
+.editorconfig           @marcusash
+package.json            @marcusash
+
+# Exam data (GR)
+data/retake-practice-*.json  @marcusash
+data/manifest.json           @marcusash
+
+# Application (GA)
+index.html              @marcusash
+exam.html               @marcusash
+shared/                 @marcusash
+
+# Tests (GF)
+tests/                  @marcusash
+
+# Legacy data (GI)
+data/questions.json     @marcusash
