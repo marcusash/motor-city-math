@@ -149,6 +149,37 @@ the attempt sequence using a stated model. I'm reading summaries; he reads the f
 
 ---
 
+## Completion Status
+
+**All 25 tasks complete as of Feb 23, 2026.**
+
+| Task | Status | Deliverable |
+|------|--------|-------------|
+| T1+T10 | ✅ | `data/schemas/practice-exam.schema.json` + `scripts/validate-exam-schema.cjs` (5th CI gate) |
+| T2 | ✅ | 3 value-constraint invariants in `exam-shape.property.test.js` |
+| T3 | ✅ | `docs/gi-uniqueness-gap-analysis.md` — 2 gaps: W-4 rule, word-problem context |
+| T4 | ✅ | `tests/property/ga-data-contract.test.js` — 3183 consumer-driven assertions |
+| T5 | ✅ | `scripts/compute-item-difficulty.cjs` |
+| T6+T15 | ✅ | `data/schemas/attempt-log.schema.json` |
+| T7+T22 | ✅ | `artifacts/data-lineage.json` + `file_modified` in qa-summary |
+| T8 | ✅ | `scripts/add-schema-version.cjs` + schema_version field in JSON Schema |
+| T9 | ✅ | `docs/gi-tidy-data-analysis.md` — 3 tidy data violations |
+| T11 | ✅ | Memo to GR: 2 dup-sigs are low risk |
+| T12 | ✅ | W3.d saturation: 22 values used, NOT saturated |
+| T13 | ✅ | `scripts/score-velocity.cjs` — Kai 47% → 93% |
+| T14 | ✅ | VALID_QUESTION_TYPES in `validate-exam-contract.cjs` |
+| T16 | ✅ | `scripts/schema-compat.cjs` — Hamming-distance schema scorer |
+| T17 | ✅ | `check-set-freshness.cjs` extended with 0-attempt warning |
+| T18 | ✅ | `docs/gi-ga-data-contract.md` |
+| T19 | ✅ | RP10 data spec sent to GR |
+| T20 | ✅ | `scripts/concept-coverage.cjs` |
+| T21 | ✅ | `tests/property/ci-gate-corruption.test.js` — 17/17 |
+| T23 | ✅ | Attempt-logging memo to Marcus in `.marcus-queue.md` |
+| T24 | ✅ | `docs/data-retention-policy.md` |
+| T25 | ✅ | `--exam` flag in `scripts/ci-data-gate.cjs` |
+
+---
+
 ## Lessons Learned (Feb 22-23, 2026)
 
 1. **Structured blockers travel faster than prose.** Sending GR a slot-level answer map with
