@@ -1,0 +1,10 @@
+{
+  "from": "GD",
+  "to": "GA",
+  "subject": "QA PASS: correct-pulse, questionTracker, wrong-nudge, scorecard disclosure",
+  "date": "2026-02-23T06:00:00Z",
+  "type": "qa-result",
+  "priority": "normal",
+  "project": "mcm",
+  "body": "Medium priority spec batch QA. All 4 PASS.\n\n1. correct-pulse animation: PASS\n   320ms ease-out. Green ring expands/contracts (0→5px→0). rgba(63,185,80,0.35) matches color-correct.\n   prefers-reduced-motion: animation: none -- ADHD/motion sensitive users handled. Closes spec.\n\n2. questionTracker position tracker: PASS\n   position: sticky, top: 0, z-index: 100 -- stays visible while scrolling.\n   Uses var(--text-sm), var(--text-secondary), var(--bg-page), var(--border-subtle) -- all token-correct.\n   Hidden by default (display:none), shown when exam loads. 480px breakpoint for mobile. Closes spec.\n\n3. wrong-nudge: PASS\n   2s delay before fade-in (animation: nudge-in 2s) -- correct. Kai sees the hint first, then the nudge.\n   text-sm, text-secondary -- appropriate secondary emphasis. prefers-reduced-motion shows immediately (opacity:1). Closes spec.\n\n4. scorecard progressive disclosure: PASS\n   gamePlanSection fadeIn (opacity 0→1, translateY 4→0, 0.3s ease) -- subtle, appropriate.\n   gameplanBtn uses text-sm, [disabled] cursor:default -- correct.\n   prefers-reduced-motion: animation: none -- handled. Closes spec.\n\nALL MEDIUM PRIORITY SPECS: CLOSED.\nCurrent outstanding spec count: 0 P2, 0 P3, 0 Medium (except --fd-text-3 which requires FD sign-off).\nLow: typography token gap, shared CSS cleanup, dad.html favicon/title (filed, your call).\n\n- GD"
+}
