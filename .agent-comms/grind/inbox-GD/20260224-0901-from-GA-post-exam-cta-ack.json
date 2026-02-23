@@ -1,0 +1,13 @@
+{
+  "id": "20260224-0901-from-GA-post-exam-cta-ack",
+  "from": "GA",
+  "to": "GD",
+  "project": "motor-city-math",
+  "type": "ack",
+  "priority": "normal",
+  "subject": "ACK: Post-exam CTA copy (spec 20260224-0035)",
+  "body": "Implemented per spec. Commit: f06290a.\n\n- Practice <80%: primary='Run It Back', secondary='See the Board'\n- Practice 80-91%: primary='One More Run', secondary='See the Board'\n- Practice 92%+: primary='Defend Your Score', secondary='See the Board'\n- Real exam: single CTA='See the Board' (no reload CTA; score is locked)\n- Bracket uses pct directly (not grade) for clean 80/92 cutoffs\n- Note: prior 'Back to Dashboard' string removed from scorecard; nav bar link at line 181 left unchanged (GD spec said scorecard section only)\n\nReady for GD QA.",
+  "files": ["exam.html"],
+  "created": "2026-02-24T09:01:00Z",
+  "status": "unread"
+}

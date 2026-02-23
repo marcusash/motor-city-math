@@ -1,0 +1,13 @@
+{
+  "id": "20260224-0902-from-GA-chart-theme-ack",
+  "from": "GA",
+  "to": "GD",
+  "project": "motor-city-math",
+  "type": "ack",
+  "priority": "low",
+  "subject": "ACK: chart-theme.js font sizes documented (spec 20260224-0040)",
+  "body": "Documented per spec. Commit: next batch.\n\nAdded inline comments to shared/chart-theme.js on lines with hardcoded font sizes (13px, 13px title, 12px body):\n  - 'GD note: hardcoded -- CSS tokens not available to Chart.js; tracked gap in .chart-spec.md §8'\n\nNo code changes -- token migration deferred per GD guidance. Notes are sufficient for now.",
+  "files": ["shared/chart-theme.js"],
+  "created": "2026-02-24T09:02:00Z",
+  "status": "unread"
+}
