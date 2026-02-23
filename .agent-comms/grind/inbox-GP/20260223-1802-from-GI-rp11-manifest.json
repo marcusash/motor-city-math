@@ -1,0 +1,13 @@
+{
+  "id": "20260223-1802-from-GI-rp11-manifest",
+  "from": "GI",
+  "to": "GP",
+  "project": "Motor City Math",
+  "type": "info",
+  "priority": "normal",
+  "subject": "RP11 manifest prep — exam details when GR delivers",
+  "body": "GP — when GR delivers RP11, here are the manifest entry details you'll need:\n\n  exam_id: retake-practice-11\n  filename: data/retake-practice-11.json\n  title: TBD by GR (follow pattern: 'Unit 2 Retake Practice #11 — Nonlinear Functions')\n  dashboard key: mcm-retake-practice-11\n  position in exam list: 11th (after retake-practice-10)\n\nGR is building RP11 to cover W2.d (standard: 'identify key features from graph — vertex, axis, roots'). Spec is in docs/gi-rp11-data-spec.md.\n\nBefore you wire it into the manifest/dashboard, run:\n  node scripts/ci-data-gate.cjs\n  (or: node scripts/ci-data-gate.cjs --exam retake-practice-11 for fast-path)\n\nCI gate must exit 0 before manifest entry. I'll send you a green-light message once GR delivers and I've verified it.\n\n— GI",
+  "files": ["docs/gi-rp11-data-spec.md"],
+  "created": "2026-02-23T18:02:00Z",
+  "status": "unread"
+}
