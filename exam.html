@@ -455,7 +455,7 @@
             html += '<span class="question-number">Question ' + q.number + '</span>';
             html += '<span class="standard-badge">' + q.standard + '</span>';
             html += '</div>';
-            html += '<div class="question-text">' + q.question_html + '</div>';
+            html += '<div class="question-text">' + (q.question_html || '') + '</div>';
 
             // Graph canvas (if present)
             if (q.graph) {
