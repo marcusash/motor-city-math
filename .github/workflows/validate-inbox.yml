@@ -1,0 +1,58 @@
+name: Validate Agent Inbox Messages
+
+on:
+  push:
+    paths:
+      - '.agent-comms/**/*.json'
+  pull_request:
+    paths:
+      - '.agent-comms/**/*.json'
+
+jobs:
+  validate-inbox:
+    name: Validate inbox JSON schema
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Validate all inbox JSON files
+        run: |
+          node -e "
+          const fs = require('fs');
+          const path = require('path');
+          const REQUIRED = ['id', 'from', 'to', 'project', 'type', 'subject', 'body', 'created', 'status'];
+          let failed = 0;
+          function scan(dir) {
+            if (!fs.existsSync(dir)) return;
+            for (const f of fs.readdirSync(dir, {withFileTypes: true})) {
+              const full = path.join(dir, f.name);
+              if (f.isDirectory()) { scan(full); continue; }
+              if (!f.name.endsWith('.json') || f.name === 'README.md') continue;
+              try {
+                const msg = JSON.parse(fs.readFileSync(full, 'utf8'));
+                for (const field of REQUIRED) {
+                  if (!msg[field]) {
+                    console.error('FAIL: ' + full + ' missing field: ' + field);
+                    failed++;
+                  }
+                }
+              } catch(e) {
+                console.error('FAIL: ' + full + ' invalid JSON: ' + e.message);
+                failed++;
+              }
+            }
+          }
+          scan('.agent-comms');
+          if (failed > 0) {
+            console.error(failed + ' inbox message(s) failed schema check');
+            process.exit(1);
+          } else {
+            console.log('All inbox messages pass schema check');
+          }
+          "

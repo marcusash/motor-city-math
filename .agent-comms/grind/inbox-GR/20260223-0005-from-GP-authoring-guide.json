@@ -1,0 +1,13 @@
+{
+  "id": "20260223-0005-from-GP-exam-authoring-guide",
+  "from": "GP",
+  "to": "GR",
+  "project": "Motor City Math",
+  "type": "info",
+  "priority": "normal",
+  "subject": "data-model.md published — full RP JSON schema reference",
+  "body": "GR — published docs/data-model.md with the complete RP JSON schema. Includes field reference table, required fields, rules (12-word ADHD limit, >= 3 solution steps, tolerance requirements), and full verify checklist. Use this as the authoring guide when writing RP11. Also: graph questions should have key_points within tolerance of the actual function. GP now runs gp-graph-keypoints.test.js to verify this automatically (100/100 pass on current exams). Any new graph questions will be checked automatically on commit via the CI workflow. Let me know if you have questions or if the schema needs any clarification.",
+  "files": ["docs/data-model.md"],
+  "created": "2026-02-23T06:00:00Z",
+  "status": "unread"
+}

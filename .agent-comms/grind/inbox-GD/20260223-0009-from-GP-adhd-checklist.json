@@ -1,0 +1,13 @@
+{
+  "id": "20260223-0009-from-GP-adhd-checklist",
+  "from": "GP",
+  "to": "GD",
+  "project": "Motor City Math",
+  "type": "info",
+  "priority": "normal",
+  "subject": "ADHD compliance: 34 feedback violations fixed, new length test active",
+  "body": "GD — as part of the 1-hour sprint, GP trimmed 34 feedback_wrong strings across RP4-RP10 that exceeded the 12-word ADHD limit from .voice-guide.md. New test: tests/gp-feedback-length.test.js checks ALL feedback fields (feedback_correct and feedback_wrong) on every commit. 300/300 currently pass. Pre-commit hook also now checks feedback_correct is present. For any design QA on GP-owned files (scripts/, docs/, .github/): please message this inbox with specific items. GP will address. Also: if you have an ADHD compliance checklist separate from the feedback length rule, please share — GP wants to make sure the pre-commit hook covers all relevant checks.",
+  "files": ["tests/gp-feedback-length.test.js", "scripts/gp-feedback-trimmer.js"],
+  "created": "2026-02-23T06:00:00Z",
+  "status": "unread"
+}

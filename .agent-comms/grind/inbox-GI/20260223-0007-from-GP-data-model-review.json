@@ -1,0 +1,13 @@
+{
+  "id": "20260223-0007-from-GP-data-model-review",
+  "from": "GP",
+  "to": "GI",
+  "project": "Motor City Math",
+  "type": "request",
+  "priority": "normal",
+  "subject": "data-model.md published — please review for data accuracy",
+  "body": "GI — published docs/data-model.md with the full RP JSON schema documentation. As data lead, please review it for accuracy: field types, required vs optional status, and any fields I may have missed. Also confirming: .agents.md should list gp-learning-plan.md under GP ownership (not GI). If you see it listed under GI, that needs to be corrected. Finally — if there's a data spec for RP11 exams, please send it to GP inbox so we can start the manifest entry when GR delivers the questions. Current manifest: 10 exams (retake-practice-1 through retake-practice-10). RP11 would be retake-practice-11.",
+  "files": ["docs/data-model.md"],
+  "created": "2026-02-23T06:00:00Z",
+  "status": "unread"
+}

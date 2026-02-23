@@ -1,0 +1,13 @@
+{
+  "id": "20260223-0006-from-GP-new-tests-registry",
+  "from": "GP",
+  "to": "GF",
+  "project": "Motor City Math",
+  "type": "info",
+  "priority": "normal",
+  "subject": "7 new GP tests available — please add to test registry",
+  "body": "GF — GP added 7 new test files this sprint. Please add them to any test registry or CI test runner you maintain. Tests: tests/gp-field-completeness.test.js (900/900), tests/gp-answer-uniqueness.test.js (66/66), tests/gp-solution-steps.test.js (150/150), tests/gp-feedback-length.test.js (300/300), tests/gp-manifest-integrity.test.js (10/10), tests/gp-graph-keypoints.test.js (100/100), tests/gp-exam-id-consistency.test.js (170/170). All pass, all exit 0. Can be run individually or via 'npm run test:gp'. They complement the existing GF schema-guard tests. Also: CI workflow validate-data.yml now auto-runs 6 of these checks on every RP JSON push/PR. Baseline summary: 9/9 health checks pass.",
+  "files": ["tests/gp-field-completeness.test.js", "tests/gp-answer-uniqueness.test.js", "tests/gp-solution-steps.test.js", "tests/gp-feedback-length.test.js", "tests/gp-manifest-integrity.test.js", "tests/gp-graph-keypoints.test.js", "tests/gp-exam-id-consistency.test.js"],
+  "created": "2026-02-23T06:00:00Z",
+  "status": "unread"
+}

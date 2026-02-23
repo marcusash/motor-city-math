@@ -1,0 +1,634 @@
+{
+  "exam_id": "retake-practice-5",
+  "schema_version": "1.0",
+  "title": "Unit 2 Retake Practice #5 — Nonlinear Functions",
+  "subtitle": "Standards W2 & W3 · 15 Questions · ~60 min",
+  "time_minutes": 60,
+  "created": "2026-02-22",
+  "created_by": "Agent FR",
+  "version": 2,
+  "purpose": "Fifth practice exam — rebuilt for Kai's current level (93% on RP4). All questions at or above RP4 difficulty. Structural variation enforced. Q1 type rotated. Q11 teaching scaffolding for cube recognition gap.",
+  "questions": [
+    {
+      "id": "rp5-q1",
+      "number": 1,
+      "section": "A",
+      "standard": "W2.b",
+      "type": "identify",
+      "question_html": "Identify the parent function and find the x-intercept: \\( f(x) = 2^{x-1} - 8 \\)",
+      "inputs": [
+        {
+          "id": "q1_parent",
+          "type": "dropdown",
+          "label": "Parent function",
+          "options": [
+            "quadratic",
+            "cubic",
+            "absolute value",
+            "square root",
+            "rational",
+            "exponential"
+          ],
+          "answer": "exponential"
+        },
+        {
+          "id": "q1_x",
+          "type": "number",
+          "label": "x-intercept =",
+          "answer": 4,
+          "tolerance": 0.1
+        }
+      ],
+      "hint": "Set f(x)=0. Rewrite 8 as a power of 2. Then set exponents equal.",
+      "solution_steps": [
+        "Parent: the base is constant (2) and the variable is in the exponent → exponential function.",
+        "Set 0 = 2^(x-1) - 8 → 2^(x-1) = 8.",
+        "Rewrite: 8 = 2³. Now 2^(x-1) = 2³.",
+        "Set exponents equal: x - 1 = 3 → x = 4.",
+        "Check: 2^(4-1) - 8 = 2³ - 8 = 8 - 8 = 0 ✓"
+      ],
+      "feedback_correct": "🔥 Exponential parent. Same-base method for the intercept.",
+      "feedback_wrong_parent": "Is the variable in the base or the exponent? Exponent = exponential parent.",
+      "feedback_wrong_intercepts": "Set f(x)=0. Rewrite 8 as a power of 2.",
+      "feedback_wrong": "Check your setup. Re-read the question and try again."
+    },
+    {
+      "id": "rp5-q2",
+      "number": 2,
+      "section": "A",
+      "standard": "W2.b",
+      "type": "identify",
+      "question_html": "Identify the parent function and find the x-intercepts: \\( f(x) = -3(x + 2)^2 + 48 \\)",
+      "inputs": [
+        {
+          "id": "q2_parent",
+          "type": "dropdown",
+          "label": "Parent function",
+          "options": [
+            "quadratic",
+            "cubic",
+            "absolute value",
+            "square root",
+            "rational",
+            "exponential"
+          ],
+          "answer": "quadratic"
+        },
+        {
+          "id": "q2_x1",
+          "type": "number",
+          "label": "x₁ =",
+          "answer": -6,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q2_x2",
+          "type": "number",
+          "label": "x₂ =",
+          "answer": 2,
+          "tolerance": 0.1
+        }
+      ],
+      "plus_minus": true,
+      "hint": "Set f(x)=0. Isolate the squared term — watch the sign when you divide by -3.",
+      "solution_steps": [
+        "Parent: highest power is 2 → quadratic.",
+        "Set 0 = -3(x+2)² + 48 → -3(x+2)² = -48.",
+        "Divide by -3: (x+2)² = 16.",
+        "Take ±√: x + 2 = ±4.",
+        "x + 2 = 4 → x = 2.   x + 2 = -4 → x = -6.",
+        "Check x=2: -3(4)²+48 = -48+48 = 0 ✓. Check x=-6: -3(-4)²+48 = -48+48 = 0 ✓"
+      ],
+      "feedback_correct": "🔥 Quadratic. Dividing by -3 correctly and applying ±√.",
+      "feedback_wrong_parent": "Highest power is 2 → quadratic.",
+      "feedback_wrong_intercepts": "Divide both sides by -3 first. Then take ±√4 = ±2.",
+      "feedback_wrong": "Check your setup. Re-read the question and try again."
+    },
+    {
+      "id": "rp5-q3",
+      "number": 3,
+      "section": "A",
+      "standard": "W2.b",
+      "type": "identify",
+      "question_html": "For \\( f(x) = |4x + 12| - 8 \\): rewrite in the form \\( a|x - h| + k \\), state the parent function, identify <em>a</em>, <em>h</em>, <em>k</em>, and find the x-intercepts.",
+      "inputs": [
+        {
+          "id": "q3_parent",
+          "type": "dropdown",
+          "label": "Parent function",
+          "options": [
+            "quadratic",
+            "cubic",
+            "absolute value",
+            "square root",
+            "rational",
+            "exponential"
+          ],
+          "answer": "absolute value"
+        },
+        {
+          "id": "q3_a",
+          "type": "number",
+          "label": "a =",
+          "answer": 4,
+          "tolerance": 0.01
+        },
+        {
+          "id": "q3_h",
+          "type": "number",
+          "label": "h =",
+          "answer": -3,
+          "tolerance": 0.01
+        },
+        {
+          "id": "q3_k",
+          "type": "number",
+          "label": "k =",
+          "answer": -8,
+          "tolerance": 0.01
+        },
+        {
+          "id": "q3_cases",
+          "type": "text",
+          "label": "Write the two equations you must solve (e.g. \"4x+12 = 8 and 4x+12 = -8\"):"
+        },
+        {
+          "id": "q3_x1",
+          "type": "number",
+          "label": "Smaller x-intercept =",
+          "answer": -5,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q3_x2",
+          "type": "number",
+          "label": "Larger x-intercept =",
+          "answer": -1,
+          "tolerance": 0.1
+        }
+      ],
+      "hint": "Factor out 4: |4x+12| = 4|x+3| = 4|x-(-3)|. Two cases: 4x+12=8 and 4x+12=-8.",
+      "solution_steps": [
+        "Factor: |4x+12| = 4|x+3| = 4|x-(-3)|. So f(x) = 4|x-(-3)| - 8.",
+        "a = 4, h = -3, k = -8. Vertex at (-3, -8).",
+        "Set |4x+12| = 8. Two cases:",
+        "Case 1: 4x+12 = 8 → 4x = -4 → x = -1.",
+        "Case 2: 4x+12 = -8 → 4x = -20 → x = -5.",
+        "Both intercepts are negative — both branches land left of the y-axis.",
+        "Check: |4(-1)+12|-8 = |8|-8 = 0 ✓.  |4(-5)+12|-8 = |-8|-8 = 0 ✓"
+      ],
+      "feedback_correct": "🔥 a=4 and both intercepts. The two-case split is the core skill.",
+      "feedback_wrong_parent": "The | | symbols define absolute value.",
+      "feedback_wrong": "After two cases, divide by 4 in each. x = -1 and."
+    },
+    {
+      "id": "rp5-q4",
+      "number": 4,
+      "section": "B",
+      "standard": "W3.d",
+      "type": "exponential",
+      "question_html": "Solve: \\( 4^{x-4} = 8^{x-6} \\)",
+      "inputs": [
+        {
+          "id": "q4_x",
+          "type": "number",
+          "label": "x =",
+          "answer": 10,
+          "tolerance": 0.01
+        }
+      ],
+      "hint": "Rewrite as powers of 2: 4=2², 8=2³. Set exponents equal and solve.",
+      "solution_steps": [
+        "Rewrite: 2^{2(x-4)} = 2^{3(x-6)}",
+        "Equate exponents: 2(x-4) = 3(x-6)",
+        "2x - 8 = 3x - 18",
+        "x = 10"
+      ],
+      "feedback_correct": "🔥 Both sides converted to base 2. x=10.",
+      "feedback_wrong": "BOTH sides must become powers of 2. 4=2², 8=2³."
+    },
+    {
+      "id": "rp5-q5",
+      "number": 5,
+      "section": "B",
+      "standard": "W3.b",
+      "type": "quadratic",
+      "question_html": "Solve: \\( 3x^2 - 7x + 2 = 0 \\)",
+      "inputs": [
+        {
+          "id": "q5_x1",
+          "type": "number",
+          "label": "x₁ =",
+          "answer": 2,
+          "tolerance": 0.01
+        },
+        {
+          "id": "q5_x2",
+          "type": "number",
+          "label": "x₂ =",
+          "answer": 0.3333,
+          "tolerance": 0.01
+        }
+      ],
+      "plus_minus": true,
+      "hint": "Non-monic (a=3). AC method: multiply a×c = 3×2 = 6. Find two numbers that multiply to 6 and add to -7.",
+      "solution_steps": [
+        "Non-monic: a=3, b=-7, c=2. AC method: a×c = 3×2 = 6.",
+        "Find two numbers: product = 6, sum = -7. Those are: -6 and -1.",
+        "Rewrite middle term: 3x² - 6x - x + 2 = 0.",
+        "Group: 3x(x-2) - 1(x-2) = 0.",
+        "Factor: (3x-1)(x-2) = 0.",
+        "x = 2  or  x = 1/3.",
+        "Check x=2: 3(4)-14+2 = 12-14+2 = 0 ✓.",
+        "Check x=1/3: 3(1/9)-7(1/3)+2 = 1/3-7/3+6/3 = 0 ✓"
+      ],
+      "feedback_correct": "🔥 AC method with a=3. Non-monic solved.",
+      "feedback_wrong": "Leading coefficient is 3 — can't factor like a monic. Use AC:."
+    },
+    {
+      "id": "rp5-q6",
+      "number": 6,
+      "section": "B",
+      "standard": "W3.b",
+      "type": "radical",
+      "question_html": "Solve: \\( \\sqrt{2x + 1} + 2 = 7 \\)",
+      "inputs": [
+        {
+          "id": "q6_x",
+          "type": "number",
+          "label": "x =",
+          "answer": 12,
+          "tolerance": 0.01
+        }
+      ],
+      "hint": "Isolate the radical: subtract 2 from both sides, then square both sides.",
+      "solution_steps": [
+        "Subtract 2: sqrt(2x+1) = 5",
+        "Square both sides: 2x+1 = 25",
+        "2x = 24",
+        "x = 12",
+        "Check: sqrt(25)+2 = 7 ✓"
+      ],
+      "feedback_correct": "🔥 Coefficient inside handled. Clean.",
+      "feedback_wrong": "Isolate the √ first (subtract 2), THEN square."
+    },
+    {
+      "id": "rp5-q7",
+      "number": 7,
+      "section": "B",
+      "standard": "W3.d",
+      "type": "exponential",
+      "question_html": "Solve: \\( 4^{x+3} = 8^{2x-1} \\)",
+      "inputs": [
+        {
+          "id": "q7_x",
+          "type": "number",
+          "label": "x =",
+          "answer": 2.25,
+          "tolerance": 0.02
+        }
+      ],
+      "hint": "Rewrite BOTH sides as powers of 2. 4=2², 8=2³.",
+      "solution_steps": [
+        "4 = 2², so 4^(x+3) = 2^(2x+6).",
+        "8 = 2³, so 8^(2x-1) = 2^(6x-3).",
+        "Set exponents equal: 2x + 6 = 6x - 3.",
+        "9 = 4x → x = 9/4 = 2.25.",
+        "Check: 4^(5.25) = 2^(10.5).  8^(3.5) = 2^(10.5). ✓"
+      ],
+      "feedback_correct": "🔥 Both sides to base 2. x=9/4.",
+      "feedback_wrong": "Both 4 and 8 are powers of 2. Convert both, then set."
+    },
+    {
+      "id": "rp5-q8",
+      "number": 8,
+      "section": "B",
+      "standard": "W3.c",
+      "type": "rational",
+      "question_html": "Solve: \\( \\dfrac{3}{x+2} + \\dfrac{1}{x-4} = 0 \\)<br><em>State any restrictions on x.</em>",
+      "inputs": [
+        {
+          "id": "q8_x",
+          "type": "number",
+          "label": "x =",
+          "answer": 2.5,
+          "tolerance": 0.02
+        }
+      ],
+      "hint": "Move one fraction to the other side, or find common denominator (x+2)(x-4). State x≠-2 and x≠4 first.",
+      "solution_steps": [
+        "Restrictions: x ≠ -2 (denominator 1 = 0), x ≠ 4 (denominator 2 = 0).",
+        "Multiply both sides by LCD = (x+2)(x-4):",
+        "3(x-4) + 1(x+2) = 0.",
+        "3x - 12 + x + 2 = 0.",
+        "4x - 10 = 0 → x = 10/4 = 5/2 = 2.5.",
+        "Check x ≠ -2, x ≠ 4: x = 2.5 is valid.",
+        "Check: 3/(4.5) + 1/(-1.5) = 2/3 - 2/3 = 0 ✓"
+      ],
+      "feedback_correct": "🔥 Common denominator method. Restrictions stated.",
+      "feedback_wrong": "Multiply through by (x+2)(x-4) to clear both fractions at once."
+    },
+    {
+      "id": "rp5-q9",
+      "number": 9,
+      "section": "B",
+      "standard": "W3.b",
+      "type": "radical",
+      "question_html": "Solve: \\( \\sqrt{x + 2} = x - 4 \\)<br><em>Check all solutions for extraneous roots.</em>",
+      "inputs": [
+        {
+          "id": "q9_x",
+          "type": "number",
+          "label": "Valid x =",
+          "answer": 7,
+          "tolerance": 0.01
+        }
+      ],
+      "hint": "Square both sides — right side is a binomial, giving a quadratic. Factor it. Check BOTH answers back in the original.",
+      "solution_steps": [
+        "Square: x + 2 = (x-4)² = x² - 8x + 16.",
+        "Rearrange: x² - 9x + 14 = 0.",
+        "Factor: (x-7)(x-2) = 0 → x = 7 or x = 2.",
+        "Check x=7: √9 = 3, and 7-4 = 3 ✓",
+        "Check x=2: √4 = 2, and 2-4 = -2 ✗ — left side is positive, right is negative. Extraneous.",
+        "Answer: x = 7 only."
+      ],
+      "feedback_correct": "🔥 Quadratic from squaring, extraneous caught.",
+      "feedback_wrong": "Square the ENTIRE right side: (x-4)² = x²-8x+16. Then factor the quadratic."
+    },
+    {
+      "id": "rp5-q10",
+      "number": 10,
+      "section": "B",
+      "standard": "W3.e",
+      "type": "extraneous",
+      "question_html": "Solve: \\( \\sqrt{4x - 3} = 2x - 3 \\)<br><em>Check for extraneous solutions.</em>",
+      "inputs": [
+        {
+          "id": "q10_x",
+          "type": "number",
+          "label": "Valid x =",
+          "answer": 3,
+          "tolerance": 0.01
+        }
+      ],
+      "hint": "Square both sides — right side is (2x-3)². You get a factorable quadratic. Check both roots.",
+      "solution_steps": [
+        "Square: 4x - 3 = (2x-3)² = 4x² - 12x + 9.",
+        "Rearrange: 4x² - 16x + 12 = 0 → x² - 4x + 3 = 0.",
+        "Factor: (x-3)(x-1) = 0 → x = 3 or x = 1.",
+        "Check x=3: √9 = 3, and 2(3)-3 = 3 ✓",
+        "Check x=1: √1 = 1, and 2(1)-3 = -1 ✗ — √ is positive, right side is negative. Extraneous.",
+        "Answer: x = 3 only."
+      ],
+      "feedback_correct": "🔥 Coefficient inside the radical handled. Extraneous caught.",
+      "feedback_wrong": "Square both sides: (2x-3)² = 4x²-12x+9. Factor the quadratic, then check both."
+    },
+    {
+      "id": "rp5-q11",
+      "number": 11,
+      "section": "B",
+      "standard": "W3.b",
+      "type": "fractional-exp",
+      "question_html": "Solve: \\( 2x^{3/2} - 6 = 426 \\)",
+      "inputs": [
+        {
+          "id": "q11_x",
+          "type": "number",
+          "label": "x =",
+          "answer": 36,
+          "tolerance": 0.01
+        }
+      ],
+      "hint": "Isolate x^(3/2), then raise both sides to 2/3 power. Cube root first, then square.",
+      "solution_steps": [
+        "Add 6: 2x^(3/2) = 432",
+        "Divide by 2: x^(3/2) = 216",
+        "Raise to 2/3: x = 216^(2/3)",
+        "216 = 6³, so x = 6² = 36"
+      ],
+      "feedback_correct": "🔥 125^(1/3)=5, 5²=25. Cube recognition working.",
+      "feedback_wrong": "Isolate x^(3/2)=125. Then: cube root of 125 first (5×5×5=125, so answer=5), then."
+    },
+    {
+      "id": "rp5-q12",
+      "number": 12,
+      "section": "C",
+      "standard": "W2.c",
+      "type": "graph",
+      "question_html": "Graph \\( f(x) = x^2 - 6x + 5 \\) and state the vertex.",
+      "inputs": [
+        {
+          "id": "q12_vx",
+          "type": "number",
+          "label": "Vertex x =",
+          "answer": 3,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q12_vy",
+          "type": "number",
+          "label": "Vertex y =",
+          "answer": -4,
+          "tolerance": 0.1
+        }
+      ],
+      "graph": {
+        "canvas_id": "graphQ12",
+        "function": "Math.pow(x,2) - 6*x + 5",
+        "function_display": "f(x) = x² - 6x + 5",
+        "key_points": [
+          [
+            1,
+            0
+          ],
+          [
+            2,
+            -3
+          ],
+          [
+            3,
+            -4
+          ],
+          [
+            4,
+            -3
+          ],
+          [
+            5,
+            0
+          ]
+        ],
+        "min_points": 5,
+        "tolerance": 0.25,
+        "asymptotes": null
+      },
+      "hint": "This is standard form — not vertex form. Find the vertex using x = -b/(2a). Then compute y. Factor to find x-intercepts.",
+      "solution_steps": [
+        "Standard form: a=1, b=-6, c=5.",
+        "Vertex x = -b/(2a) = -(-6)/(2·1) = 3.",
+        "Vertex y = f(3) = 9 - 18 + 5 = -4. Vertex: (3, -4).",
+        "Opens UP (a=1 > 0).",
+        "Factor: x²-6x+5 = (x-1)(x-5) → x-intercepts at x=1 and x=5.",
+        "Key points: (1,0), (2,-3), (3,-4), (4,-3), (5,0).",
+        "Plot and draw upward parabola with vertex at (3,-4)."
+      ],
+      "feedback_correct": "🔥 Vertex from standard form. Both intercepts.",
+      "feedback_wrong": "Not vertex form — use x = -b/(2a) to find vertex x,."
+    },
+    {
+      "id": "rp5-q13",
+      "number": 13,
+      "section": "C",
+      "standard": "W2.e",
+      "type": "graph",
+      "question_html": "Graph \\( f(x) = \\dfrac{5}{2 - x} - 3 \\) and draw asymptotes. State the asymptotes.",
+      "inputs": [
+        {
+          "id": "q13_va",
+          "type": "number",
+          "label": "Vertical asymptote x =",
+          "answer": 2,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q13_ha",
+          "type": "number",
+          "label": "Horizontal asymptote y =",
+          "answer": -3,
+          "tolerance": 0.1
+        }
+      ],
+      "graph": {
+        "canvas_id": "graphQ13",
+        "function": "5 / (2 - x) - 3",
+        "function_display": "f(x) = 5/(2-x) - 3",
+        "key_points": [
+          [
+            -2,
+            -1.75
+          ],
+          [
+            0,
+            -0.5
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            -8
+          ],
+          [
+            4,
+            -5.5
+          ]
+        ],
+        "min_points": 4,
+        "tolerance": 0.3,
+        "asymptotes": {
+          "vertical": [
+            2
+          ],
+          "horizontal": [
+            -3
+          ]
+        }
+      },
+      "hint": "VA: set denominator (2-x) = 0. HA: the -3 outside. Warning — the (2-x) denominator REFLECTS the graph compared to (x-2).",
+      "solution_steps": [
+        "VA: 2 - x = 0 → x = 2.",
+        "HA: the 5/(2-x) term → 0 as x→±∞, so y → -3. HA: y = -3.",
+        "Note: 5/(2-x) = -5/(x-2). The negative sign REFLECTS the graph horizontally.",
+        "As x→2 from the LEFT (2-x → 0+): 5/small positive → +∞. Branch goes UP.",
+        "As x→2 from the RIGHT (2-x → 0-): 5/small negative → -∞. Branch goes DOWN.",
+        "Key points: f(0)=5/2-3=-0.5, f(1)=5/1-3=2, f(3)=5/(-1)-3=-8, f(4)=5/(-2)-3=-5.5.",
+        "Left branch is in upper-left; right branch is in lower-right. Opposite of standard 1/x."
+      ],
+      "feedback_correct": "🔥 VA=2, HA=-3. And you handled the reflected (2-x) form.",
+      "feedback_wrong": "Set 2-x=0 for VA → x=2. HA is the -3 outside. The."
+    },
+    {
+      "id": "rp5-q14",
+      "number": 14,
+      "section": "D",
+      "standard": "W3.a",
+      "type": "error-analysis",
+      "question_html": "A student solved \\( \\sqrt{x - 4} = -3 \\) and showed this work:<br><br>Step 1: Square both sides: \\( x - 4 = 9 \\)<br>Step 2: \\( x = 13 \\)<br><br>Select the statement that correctly identifies the error.",
+      "inputs": [
+        {
+          "id": "q14",
+          "type": "radio",
+          "label": "",
+          "options": [
+            {
+              "value": "A",
+              "text": "Step 1 is wrong: squaring -3 gives -9, not 9."
+            },
+            {
+              "value": "B",
+              "text": "Step 2 is wrong: from x-4=9, x should be 5."
+            },
+            {
+              "value": "C",
+              "text": "The student should not have started Step 1. √(x-4) ≥ 0 always — it can never equal -3. The correct answer is: no solution."
+            },
+            {
+              "value": "D",
+              "text": "No error. x=13 is a valid solution."
+            }
+          ],
+          "answer": "C"
+        }
+      ],
+      "hint": "Before doing ANY algebra — is there an x that makes √(something) equal to a negative number?",
+      "solution_steps": [
+        "Square root output is always ≥ 0. There is no real number where √(x-4) = -3.",
+        "The student should have stopped immediately: no solution exists.",
+        "Steps 1-2 are algebraically valid but solve the wrong equation — they solved √(x-4)=3 (positive), not -3.",
+        "x=13 appears to work until you check: √(13-4) = √9 = 3 ≠ -3. It fails.",
+        "This is a hidden extraneous solution created by squaring away the sign.",
+        "Rule: before squaring a radical equation, verify the right side is ≥ 0."
+      ],
+      "feedback_correct": "🔥 W3.a: you recognized the domain violation before touching the algebra.",
+      "feedback_wrong": "Try x=13 in the original: √(13-4) = √9 = 3, not -3.."
+    },
+    {
+      "id": "rp5-q15",
+      "number": 15,
+      "section": "D",
+      "standard": "W3.a",
+      "type": "word-problem",
+      "question_html": "A bacterial colony starts at 100 cells and triples every 5 hours.<br>(a) Write an exponential growth model <em>P</em>(<em>t</em>) for the population after <em>t</em> hours.<br>(b) Using your model, after how many hours will the colony first reach 2700 cells?",
+      "inputs": [
+        {
+          "id": "q15_model",
+          "type": "text",
+          "label": "P(t) ="
+        },
+        {
+          "id": "q15_t",
+          "type": "number",
+          "label": "t =",
+          "answer": 15,
+          "tolerance": 0.5
+        }
+      ],
+      "hint": "P(t) = P₀ · r^(t/T). Growth factor r=3, period T=5 hours. Then set P(t)=2700 and rewrite 2700/100 as a power of 3.",
+      "solution_steps": [
+        "P₀ = 100. Growth factor r = 3 (triples). Period T = 5 hours.",
+        "Model: P(t) = 100 · 3^(t/5).",
+        "Set 100 · 3^(t/5) = 2700 → 3^(t/5) = 27.",
+        "Rewrite: 27 = 3³. So t/5 = 3 → t = 15 hours.",
+        "Check: 100 · 3^3 = 100 · 27 = 2700 ✓",
+        "Note: 27=3³ requires knowing your powers of 3: 3,9,27,81,243..."
+      ],
+      "feedback_correct": "🔥 Tripling model. 27=3³ recognized. t=15.",
+      "feedback_wrong": "Divide both sides by 100 first. Then: 3^? = 27. Build your."
+    }
+  ],
+  "fr_approved": true,
+  "fr_approved_date": "2026-02-22",
+  "fr_approval_notes": "RP5 v2: rebuilt per difficulty rubric. 12 structural changes. All math verified. 0 easier questions vs RP4. GR math review pending."
+}

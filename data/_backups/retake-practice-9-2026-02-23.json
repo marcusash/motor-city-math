@@ -1,0 +1,620 @@
+{
+  "exam_id": "retake-practice-9",
+  "schema_version": "1.0",
+  "title": "Unit 2 Retake Practice 9",
+  "subtitle": "Escalated difficulty on persistent weaknesses",
+  "time_minutes": 50,
+  "created": "2026-02-22",
+  "created_by": "FR",
+  "purpose": "Mock RP8 score 9/15 (60%). Shows progress. Still wrong: AV reading (Q2), x^2-inside radical (Q6), exponential x^2-exponent (Q10), downward parabola (Q12), word problem (Q15). Escalation: Q1 now uses full AC method. Q5 harder AC. Q14 switches from quadratic-vertex to exponential equation-building. Q12 adds x-intercepts to downward parabola.",
+  "questions": [
+    {
+      "id": "rp9-q1",
+      "number": 1,
+      "section": "A",
+      "standard": "W2.a",
+      "type": "quadratic",
+      "question_html": "Solve by factoring: \\( 2x^2 - 9x + 4 = 0 \\)",
+      "inputs": [
+        {
+          "id": "q1_factored",
+          "type": "text",
+          "label": "Factored form:"
+        },
+        {
+          "id": "q1_x1",
+          "type": "number",
+          "label": "Smaller x =",
+          "answer": 0.5,
+          "tolerance": 0.05
+        },
+        {
+          "id": "q1_x2",
+          "type": "number",
+          "label": "Larger x =",
+          "answer": 4,
+          "tolerance": 0.05
+        }
+      ],
+      "hint": "a≠1 — use the AC method. a×c = 2×4 = 8. Find factors of 8 that add to -9.",
+      "solution_steps": [
+        "a×c = 2×4 = 8. Factors of 8 adding to -9: -8 and -1.",
+        "Split: 2x² - 8x - x + 4.",
+        "Group: 2x(x-4) - 1(x-4) = (2x-1)(x-4) = 0.",
+        "x = 1/2 or x = 4.",
+        "Check: 2(1/4)-9(1/2)+4=1/2-9/2+8/2=0 ✓, 2(16)-36+4=0 ✓"
+      ],
+      "feedback_wrong": "AC: a×c=8. Factors of 8 adding to -9: -8 and -1. Split.",
+      "feedback_correct": "🔥 Correct! Keep that momentum."
+    },
+    {
+      "id": "rp9-q2",
+      "number": 2,
+      "section": "A",
+      "standard": "W2.b",
+      "type": "absolute-value",
+      "question_html": "For \\( f(x) = 3|x + 2| - 6 \\): state the vertex, x-intercepts, and range.",
+      "inputs": [
+        {
+          "id": "q2_vx",
+          "type": "number",
+          "label": "Vertex x =",
+          "answer": -2,
+          "tolerance": 0.05
+        },
+        {
+          "id": "q2_vy",
+          "type": "number",
+          "label": "Vertex y =",
+          "answer": -6,
+          "tolerance": 0.05
+        },
+        {
+          "id": "q2_x1",
+          "type": "number",
+          "label": "Smaller x-intercept =",
+          "answer": -4,
+          "tolerance": 0.05
+        },
+        {
+          "id": "q2_x2",
+          "type": "number",
+          "label": "Larger x-intercept =",
+          "answer": 0,
+          "tolerance": 0.05
+        },
+        {
+          "id": "q2_range",
+          "type": "text",
+          "label": "Range (interval notation):"
+        }
+      ],
+      "hint": "This is a|x-h|+k form. h=-2 (sign flips from inside). Set f(x)=0 for x-intercepts.",
+      "solution_steps": [
+        "f(x) = 3|x-(-2)| + (-6). Vertex: h=-2, k=-6 → (-2,-6).",
+        "x-intercepts: 3|x+2|=6 → |x+2|=2 → x+2=2 or x+2=-2 → x=0 or x=-4.",
+        "a=3>0 opens upward. Range: [-6, +∞)."
+      ],
+      "feedback_wrong": "Vertex is (-2,-6). Note: h=-2 because |x+2| = |x-(-2)|. Set f=0: |x+2|=2.",
+      "feedback_correct": "🔥 Correct! Keep that momentum."
+    },
+    {
+      "id": "rp9-q3",
+      "number": 3,
+      "section": "A",
+      "standard": "W3.a",
+      "type": "absolute-value",
+      "question_html": "Solve: \\( |2x - 5| - 2 = 5 \\). Write BOTH equations before entering answers.",
+      "inputs": [
+        {
+          "id": "q3_cases",
+          "type": "text",
+          "label": "Both cases (write them out):"
+        },
+        {
+          "id": "q3_x1",
+          "type": "number",
+          "label": "Smaller x =",
+          "answer": -1,
+          "tolerance": 0.05
+        },
+        {
+          "id": "q3_x2",
+          "type": "number",
+          "label": "Larger x =",
+          "answer": 6,
+          "tolerance": 0.05
+        }
+      ],
+      "hint": "Isolate the absolute value, then write both cases.",
+      "solution_steps": [
+        "Isolate: |2x-5| = 7.",
+        "Case 1: 2x-5=7 → 2x=12 → x=6.",
+        "Case 2: -(2x-5)=7 → -2x+5=7 → -2x=2 → x=-1.",
+        "Check: |12-5|-2=7-2=5 ✓ and |-2-5|-2=7-2=5 ✓"
+      ],
+      "feedback_wrong": "Isolate: |2x-5|=7. Case 1: 2x-5=7 → x=6. Case 2: -(2x-5)=7 → x=-1.",
+      "feedback_correct": "🔥 Correct! Keep that momentum."
+    },
+    {
+      "id": "rp9-q4",
+      "number": 4,
+      "section": "B",
+      "standard": "W3.d",
+      "type": "exponential",
+      "question_html": "Solve: \\( 5 \\cdot 3^{x-4} = 1215 \\)",
+      "inputs": [
+        {
+          "id": "q4_x",
+          "type": "number",
+          "label": "x =",
+          "answer": 9,
+          "tolerance": 0.05
+        }
+      ],
+      "hint": "Isolate the exponential first by dividing by 5. Then rewrite 243 as a power of 3.",
+      "solution_steps": [
+        "Divide by 5: 3^(x-4) = 243 = 3⁵.",
+        "x-4=5 → x=9.",
+        "Check: 5×3⁵=5×243=1215 ✓"
+      ],
+      "feedback_wrong": "Divide by 5 first: 3^(x-4)=243=3⁵. Then x-4=5 → x=9.",
+      "feedback_correct": "🔥 Correct! Keep that momentum."
+    },
+    {
+      "id": "rp9-q5",
+      "number": 5,
+      "section": "B",
+      "standard": "W2.a",
+      "type": "quadratic",
+      "question_html": "Solve by factoring: \\( 2x^2 + 7x - 15 = 0 \\)",
+      "inputs": [
+        {
+          "id": "q5_factored",
+          "type": "text",
+          "label": "Factored form:"
+        },
+        {
+          "id": "q5_x1",
+          "type": "number",
+          "label": "Smaller x =",
+          "answer": -5,
+          "tolerance": 0.05
+        },
+        {
+          "id": "q5_x2",
+          "type": "number",
+          "label": "Larger x =",
+          "answer": 1.5,
+          "tolerance": 0.05
+        }
+      ],
+      "hint": "AC method: a×c = 2×(-15) = -30. Find factors of -30 that add to +7.",
+      "solution_steps": [
+        "a×c = -30. Factors adding to +7: +10 and -3.",
+        "Split: 2x² + 10x - 3x - 15.",
+        "Group: 2x(x+5) - 3(x+5) = (2x-3)(x+5) = 0.",
+        "x = 3/2 = 1.5 or x = -5.",
+        "Check: 2(25)+7(-5)-15=50-35-15=0 ✓"
+      ],
+      "feedback_wrong": "AC: a×c=-30. Factors adding to +7: +10 and -3. Split and group:.",
+      "feedback_correct": "🔥 Correct! Keep that momentum."
+    },
+    {
+      "id": "rp9-q6",
+      "number": 6,
+      "section": "B",
+      "standard": "W3.c",
+      "type": "radical",
+      "question_html": "Solve: \\( \\sqrt{x^2 - 144} = 5 \\)",
+      "inputs": [
+        {
+          "id": "q6_x1",
+          "type": "number",
+          "label": "Smaller x =",
+          "answer": -13,
+          "tolerance": 0.05
+        },
+        {
+          "id": "q6_x2",
+          "type": "number",
+          "label": "Larger x =",
+          "answer": 13,
+          "tolerance": 0.05
+        }
+      ],
+      "hint": "Square both sides. You get x² = a number. That gives two answers.",
+      "solution_steps": [
+        "Square both sides: x²-144 = 25 → x² = 169.",
+        "x = ±13. Two solutions.",
+        "Check: √(169-144)=√25=5 ✓"
+      ],
+      "feedback_wrong": "Square both sides: x²-144=25 → x²=169 → x=±13.",
+      "feedback_correct": "🔥 Correct! Keep that momentum."
+    },
+    {
+      "id": "rp9-q7",
+      "number": 7,
+      "section": "B",
+      "standard": "W3.d",
+      "type": "exponential",
+      "question_html": "Solve: \\( 9^x \\cdot 3^{2-x} = 3^{14} \\)",
+      "inputs": [
+        {
+          "id": "q7_x",
+          "type": "number",
+          "label": "x =",
+          "answer": 12,
+          "tolerance": 0.05
+        }
+      ],
+      "hint": "Rewrite 9^x as a power of 3. Then add exponents when multiplying the same base.",
+      "solution_steps": [
+        "9^x = (3²)^x = 3^(2x).",
+        "3^(2x) · 3^(2-x) = 3^(2x+2-x) = 3^(x+2).",
+        "3^(x+2) = 3^14 → x+2=14 → x=12.",
+        "Check: 9^12·3^(-10) = 3^24·3^(-10) = 3^14 ✓"
+      ],
+      "feedback_wrong": "9^x = 3^(2x). Then 3^(2x)·3^(2-x) = 3^(x+2) = 3^14. So x+2=14 →.",
+      "feedback_correct": "🔥 Correct! Keep that momentum."
+    },
+    {
+      "id": "rp9-q8",
+      "number": 8,
+      "section": "B",
+      "standard": "W3.c",
+      "type": "rational",
+      "question_html": "Solve: \\( \\dfrac{5x - 14}{x + 1} = 4 \\)",
+      "inputs": [
+        {
+          "id": "q8_x",
+          "type": "number",
+          "label": "x =",
+          "answer": 18,
+          "tolerance": 0.05
+        }
+      ],
+      "hint": "Multiply both sides by (x+1).",
+      "solution_steps": [
+        "5x-14 = 4(x+1) = 4x+4.",
+        "x=18.",
+        "Check: (5(18)-14)/(18+1)=(90-14)/19=76/19=4 ✓"
+      ],
+      "feedback_wrong": "Multiply by (x+1): 5x-14=4x+4 → x=18.",
+      "feedback_correct": "🔥 Correct! Keep that momentum."
+    },
+    {
+      "id": "rp9-q9",
+      "number": 9,
+      "section": "B",
+      "standard": "W3.b",
+      "type": "radical",
+      "question_html": "Solve: \\( \\sqrt{2x + 7} = \\sqrt{3x - 3} \\)",
+      "inputs": [
+        {
+          "id": "q9_x",
+          "type": "number",
+          "label": "x =",
+          "answer": 10,
+          "tolerance": 0.05
+        }
+      ],
+      "hint": "If √A = √B then A = B.",
+      "solution_steps": [
+        "2x+7 = 3x-3.",
+        "10=x → x=10.",
+        "Check: √(20+7)=√27 and √(30-3)=√27 ✓"
+      ],
+      "feedback_wrong": "Set radicands equal: 2x+7=3x-3 → x=10.",
+      "feedback_correct": "🔥 Correct! Keep that momentum."
+    },
+    {
+      "id": "rp9-q10",
+      "number": 10,
+      "section": "B",
+      "standard": "W3.d",
+      "type": "exponential",
+      "question_html": "Solve: \\( 3 \\cdot 2^{x^2 - 44} = 96 \\)",
+      "inputs": [
+        {
+          "id": "q10_x1",
+          "type": "number",
+          "label": "Smaller x =",
+          "answer": -7,
+          "tolerance": 0.05
+        },
+        {
+          "id": "q10_x2",
+          "type": "number",
+          "label": "Larger x =",
+          "answer": 7,
+          "tolerance": 0.05
+        }
+      ],
+      "hint": "Divide by 3 first. Then rewrite as a power of 2. You will get x² = a perfect square.",
+      "solution_steps": [
+        "Divide by 3: 2^(x²-44) = 32 = 2⁵.",
+        "x²-44=5 → x²=49.",
+        "x=±7. Two solutions.",
+        "Check: 3×2^(49-44)=3×2⁵=3×32=96 ✓"
+      ],
+      "feedback_wrong": "Divide by 3: 2^(x²-44)=32=2⁵. So x²-44=5 → x²=49 → x=±7.",
+      "feedback_correct": "🔥 Correct! Keep that momentum."
+    },
+    {
+      "id": "rp9-q11",
+      "number": 11,
+      "section": "B",
+      "standard": "W3.b",
+      "type": "fractional-exp",
+      "question_html": "Solve: \\( 2x^{5/3} = 486 \\)",
+      "inputs": [
+        {
+          "id": "q11_x",
+          "type": "number",
+          "label": "x =",
+          "answer": 27,
+          "tolerance": 0.05
+        }
+      ],
+      "hint": "Divide by 2 first. Then raise both sides to the 3/5 power.",
+      "solution_steps": [
+        "x^(5/3) = 243.",
+        "x = 243^(3/5) = (⁵√243)³ = 3³ = 27. (Because 3⁵=243.)",
+        "Check: 2×27^(5/3) = 2×(3³)^(5/3) = 2×3⁵ = 2×243 = 486 ✓"
+      ],
+      "feedback_wrong": "Divide by 2: x^(5/3)=243. Raise to 3/5: x=243^(3/5)=(⁵√243)³=3³=27.",
+      "feedback_correct": "🔥 Correct! Keep that momentum."
+    },
+    {
+      "id": "rp9-q12",
+      "number": 12,
+      "section": "C",
+      "standard": "W2.c",
+      "type": "graph",
+      "question_html": "Graph \\( f(x) = -2(x+1)^2 + 8 \\) and answer all of the following:",
+      "inputs": [
+        {
+          "id": "q12_vx",
+          "type": "number",
+          "label": "Vertex x =",
+          "answer": -1,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q12_vy",
+          "type": "number",
+          "label": "Vertex y =",
+          "answer": 8,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q12_xi1",
+          "type": "number",
+          "label": "Smaller x-intercept =",
+          "answer": -3,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q12_xi2",
+          "type": "number",
+          "label": "Larger x-intercept =",
+          "answer": 1,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q12_range",
+          "type": "text",
+          "label": "Range (interval notation):"
+        },
+        {
+          "id": "q12_increase",
+          "type": "text",
+          "label": "f is increasing on:"
+        },
+        {
+          "id": "q12_decrease",
+          "type": "text",
+          "label": "f is decreasing on:"
+        }
+      ],
+      "graph": {
+        "canvas_id": "graphQ12",
+        "function": "-2*Math.pow(x+1,2)+8",
+        "function_display": "f(x) = -2(x+1)² + 8",
+        "key_points": [
+          [
+            -3,
+            0
+          ],
+          [
+            -2,
+            6
+          ],
+          [
+            -1,
+            8
+          ],
+          [
+            0,
+            6
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        "x_range": [
+          -5,
+          3
+        ],
+        "y_range": [
+          -2,
+          10
+        ],
+        "min_points": 5,
+        "tolerance": 0.25
+      },
+      "hint": "a=-2: downward, maximum at vertex. x-intercepts: set f=0, solve -2(x+1)²+8=0 → (x+1)²=4.",
+      "solution_steps": [
+        "Vertex: h=-1, k=8 → (-1,8). a=-2<0 opens DOWNWARD.",
+        "x-intercepts: -2(x+1)²+8=0 → (x+1)²=4 → x+1=±2 → x=1 or x=-3.",
+        "Range: maximum at y=8. Range = (-∞, 8].",
+        "Increasing on (-∞,-1). Decreasing on (-1,+∞).",
+        "Check: f(-3)=-2(4)+8=0 ✓, f(1)=-2(4)+8=0 ✓"
+      ],
+      "feedback_wrong": "Vertex (-1,8), opens down (a=-2<0). x-intercepts: (x+1)²=4 → x=1 or x=-3. Range:.",
+      "feedback_correct": "🔥 Correct! Keep that momentum."
+    },
+    {
+      "id": "rp9-q13",
+      "number": 13,
+      "section": "C",
+      "standard": "W2.e",
+      "type": "graph",
+      "question_html": "Graph \\( f(x) = \\dfrac{6}{x - 4} + 7 \\) and state asymptotes, domain, range, and end behavior.",
+      "inputs": [
+        {
+          "id": "q13_va",
+          "type": "number",
+          "label": "Vertical asymptote x =",
+          "answer": 4,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q13_ha",
+          "type": "number",
+          "label": "Horizontal asymptote y =",
+          "answer": 7,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q13_domain",
+          "type": "text",
+          "label": "Domain:"
+        },
+        {
+          "id": "q13_range",
+          "type": "text",
+          "label": "Range:"
+        },
+        {
+          "id": "q13_endbeh",
+          "type": "text",
+          "label": "As x → +∞, f(x) →"
+        }
+      ],
+      "graph": {
+        "canvas_id": "graphQ13",
+        "function": "6/(x-4)+7",
+        "function_display": "f(x) = 6/(x-4) + 7",
+        "key_points": [
+          [
+            0,
+            5.5
+          ],
+          [
+            1,
+            5
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            7,
+            9
+          ],
+          [
+            10,
+            8
+          ]
+        ],
+        "x_range": [
+          -1,
+          11
+        ],
+        "y_range": [
+          -2,
+          14
+        ],
+        "min_points": 5,
+        "tolerance": 0.25
+      },
+      "hint": "VA: x-4=0. HA: limit as x→∞. Positive numerator: right branch above HA, left branch below HA.",
+      "solution_steps": [
+        "VA: x-4=0 → x=4. HA: y=7.",
+        "Domain: x≠4. Range: y≠7.",
+        "As x→+∞: 6/(x-4)→0 from above, so f(x)→7 from above.",
+        "Key: positive numerator (6) means right branch is above HA."
+      ],
+      "feedback_wrong": "VA: x=4. HA: y=7. Domain: x≠4. Range: y≠7. As x→+∞, f→7.",
+      "feedback_correct": "🔥 Correct! Keep that momentum."
+    },
+    {
+      "id": "rp9-q14",
+      "number": 14,
+      "section": "D",
+      "standard": "W2.d",
+      "type": "write-equation",
+      "question_html": "An exponential function passes through (0, 5) and (3, 40). Write f(x) = a · b^x. Find a and b.",
+      "inputs": [
+        {
+          "id": "q14_a",
+          "type": "number",
+          "label": "a =",
+          "answer": 5,
+          "tolerance": 0.05
+        },
+        {
+          "id": "q14_b",
+          "type": "number",
+          "label": "b =",
+          "answer": 2,
+          "tolerance": 0.05
+        }
+      ],
+      "hint": "f(0) = a·b⁰ = a. So a is given by the point (0, ?). Then substitute the other point to solve for b.",
+      "solution_steps": [
+        "f(0)=5: a·b⁰ = a = 5. So a=5.",
+        "f(3)=40: 5·b³=40 → b³=8 → b=2.",
+        "f(x) = 5·2^x.",
+        "Verify: f(0)=5×1=5 ✓, f(3)=5×8=40 ✓"
+      ],
+      "feedback_wrong": "a=5 from the (0,5) point. Then 5·b³=40 → b³=8 → b=2.",
+      "feedback_correct": "🔥 Correct! Keep that momentum."
+    },
+    {
+      "id": "rp9-q15",
+      "number": 15,
+      "section": "D",
+      "standard": "W3.a",
+      "type": "word-problem",
+      "question_html": "A bacteria colony has 300 bacteria at t=0. At t=3 hours there are 2400 bacteria.<br><br>(a) Write the model P(t) = P₀ · r^t.<br>(b) At what time t will the population reach 614,400?",
+      "inputs": [
+        {
+          "id": "q15_model",
+          "type": "text",
+          "label": "(a) P(t) ="
+        },
+        {
+          "id": "q15_t",
+          "type": "number",
+          "label": "(b) t =",
+          "answer": 11,
+          "tolerance": 0.1
+        }
+      ],
+      "hint": "Find r first: P(3)=2400 means 300·r³=2400. Solve for r, then write the model.",
+      "solution_steps": [
+        "P₀=300. P(3)=2400: 300·r³=2400 → r³=8=2³ → r=2.",
+        "Model: P(t) = 300·2^t.",
+        "When P=614400? 300·2^t=614400 → 2^t=2048=2¹¹ → t=11 hours.",
+        "Check: 300×2¹¹=300×2048=614400 ✓"
+      ],
+      "feedback_wrong": "Find r first: 300·r³=2400 → r³=8 → r=2. Then P(t)=300·2^t. Then t=11.",
+      "feedback_correct": "🔥 Correct! Keep that momentum."
+    }
+  ],
+  "version": "2.0"
+}

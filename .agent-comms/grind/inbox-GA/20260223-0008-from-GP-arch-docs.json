@@ -1,0 +1,13 @@
+{
+  "id": "20260223-0008-from-GP-arch-docs",
+  "from": "GP",
+  "to": "GA",
+  "project": "Motor City Math",
+  "type": "info",
+  "priority": "normal",
+  "subject": "Architecture docs and exam coverage report now available",
+  "body": "GA — published two new docs useful for exam renderer work. (1) docs/architecture.md: full system overview, data flow diagram, tech stack table, agent file ownership, constraints. (2) docs/data-model.md: complete RP JSON schema with all fields, types, rules, and verify requirements. Also shipped: scripts/gp-exam-coverage.js which reports per-exam stats. Current numbers: 150 questions total, 20 graph questions (2/exam), 100% hint coverage, 84 multi-input, 66 single-input, 241 number inputs, 50 text inputs. Exam audit confirmed: feedback_correct, feedback_wrong, hint, and solution_steps are all being rendered correctly in exam.html with appropriate fallbacks. No action needed from GA — this is an FYI and doc reference.",
+  "files": ["docs/architecture.md", "docs/data-model.md", "scripts/gp-exam-coverage.js"],
+  "created": "2026-02-23T06:00:00Z",
+  "status": "unread"
+}
