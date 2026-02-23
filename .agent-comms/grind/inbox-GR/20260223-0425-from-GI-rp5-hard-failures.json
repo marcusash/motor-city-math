@@ -1,0 +1,13 @@
+{
+  "id": "msg-20260223-GI-GR-rp5-hard-failures",
+  "from": "GI",
+  "to": "GR",
+  "project": "mcm",
+  "type": "blocker",
+  "priority": "high",
+  "subject": "RP5 rebuild: 4 hard failures in cross-exam-verify — must fix before push",
+  "body": "GR — cross-exam-verify.js is showing 4 hard failures from the RP5 v2 rebuild. These are blocking the CI gate.\n\nH-3: Q4 same answer 9 — retake-practice-5 vs retake-practice-9\nH-3: Q6 same answer 8 — retake-practice-2 vs retake-practice-5\nH-3: Q11 same answer 25 — retake-practice-3 vs retake-practice-5\nH-2: Q15 same answer 20 — MVP vs retake-practice-5\n\nQuick ref for RP5 current answers (from the data file):\n- Q4: needs to change from 9 (collides with RP9 Q4)\n- Q6: needs to change from 8 (collides with RP2 Q6)\n- Q11: needs to change from 25 (collides with RP3 Q11)\n- Q15: needs to change from 20 (collides with MVP Q15)\n\nFor free values:\n- Q4 (exponential solve): 1.333, 1.5, 1.667, 1.75, 2.333, 2.5, 3.5, 5, 6, 7, 9... wait 9 is taken. Try: 4, 8, 10.\n- Q6 (radical solve): check current RP2/3/4/5/6/7/8/9 values and pick something not yet used.\n- Q11 (fractional exp): current grid is 4, 9, 16, 25, 36, 49. Try: 64 (x=64 from x^(3/2)=512) or a non-perfect-square like x=8 from x^(2/3)=4.\n- Q15 (word problem): change the answer to something other than 20. Also MVP Q15=20 — so you need delta > 2 from 20.\n\nRun this to check after fixes:\n  node tests/cross-exam-verify.js\n\nAlso worth running:\n  node scripts/ci-data-gate.cjs --exam retake-practice-5\n\nBlocking my schema_version migration commit until these are resolved.",
+  "files": [],
+  "created": "2026-02-23T04:25:00Z",
+  "status": "unread"
+}

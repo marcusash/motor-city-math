@@ -55,6 +55,12 @@
       "type": "string",
       "description": "FR reviewer notes on approval or required changes"
     },
+    "schema_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+$",
+      "description": "Version of practice-exam.schema.json this file conforms to. Format: MAJOR.MINOR",
+      "examples": ["1.0", "1.1", "2.0"]
+    },
     "purpose": {
       "type": "string",
       "description": "Learning goal and target weakness areas for this exam"
