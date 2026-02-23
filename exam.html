@@ -491,7 +491,7 @@
             });
 
             // Feedback area
-            html += '<div class="answer-feedback" id="feedback-' + q.id + '"></div>';
+            html += '<div class="answer-feedback" id="feedback-' + q.id + '" role="alert" aria-live="assertive" aria-atomic="true"></div>';
 
             // Hint layers
             html += '<div class="hint-layers" id="hints-' + q.id + '" style="display:none;">';
@@ -543,7 +543,7 @@
             html += '<div class="input-group">';
             if (inp.label) html += '<label for="' + inp.id + '">' + inp.label + '</label>';
             html += '<div class="input-with-hint">';
-            html += '<input type="text" inputmode="decimal" id="' + inp.id + '" autocomplete="off" placeholder="e.g. 3/2 or sqrt(2)">';
+            html += '<input type="text" inputmode="decimal" id="' + inp.id + '" aria-describedby="feedback-' + (q ? q.id : inp.id) + '" autocomplete="off" placeholder="e.g. 3/2 or sqrt(2)">';
             html += '<span class="input-hint">decimal · fraction (3/2) · sqrt(2) · 1+sqrt(3)</span>';
             html += '</div>';
             if (formatHint) html += formatHint;
@@ -561,7 +561,7 @@
         } else if (inp.type === 'text') {
             html += '<div class="input-group">';
             if (inp.label) html += '<label for="' + inp.id + '">' + inp.label + '</label>';
-            html += '<input type="text" id="' + inp.id + '" style="width:200px;" autocomplete="off">';
+            html += '<input type="text" id="' + inp.id + '" aria-describedby="feedback-' + (q ? q.id : inp.id) + '" style="width:200px;" autocomplete="off">';
             if (formatHint) html += formatHint;
             html += '</div>';
         }
@@ -1322,6 +1322,11 @@
                     }
                 }
                 fb.className = 'answer-feedback show ' + (qCorrect ? 'correct' : 'incorrect');
+                // Set aria-invalid on all inputs for this question
+                (q.inputs || []).forEach(function(inp) {
+                    var el = document.getElementById(inp.id);
+                    if (el) el.setAttribute('aria-invalid', qCorrect ? 'false' : 'true');
+                });
                 // Append format hint if any number input has a non-integer answer
                 if (!qCorrect) {
                     var hasNonIntAnswer = numberInputs.some(function(n) {
