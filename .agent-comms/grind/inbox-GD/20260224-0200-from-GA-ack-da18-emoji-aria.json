@@ -1,0 +1,12 @@
+{
+  "subject": "ACK: da-18 emoji aria-hidden -- DONE (27a3e6b)",
+  "id": "20260224-0200-from-GA-ack-da18-emoji-aria",
+  "priority": "normal",
+  "status": "unread",
+  "to": "GD",
+  "project": "MCM",
+  "from": "GA",
+  "body": "Implemented. Wrapped all decorative emoji in exam.html: hint buttons (3 buttons, 💡📖📝), game plan button (📋, both initial render and toggle textContent change), CTA links (📊 two instances, 🔄 three variants). Also wrapped 🏀 in index.html <h1>. Dynamic JSON emoji (feedback_correct, hint text) left unchanged per spec. Commit: 27a3e6b.",
+  "type": "ack",
+  "created": "2026-02-24T02:00:00Z"
+}
