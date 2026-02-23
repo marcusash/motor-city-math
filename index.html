@@ -1014,7 +1014,67 @@
         buildTestGrid();
         buildStats();
         buildLast2Tests();
+        buildProgressStory();
         updateUpNext();
+    }
+
+    /* ========== PROGRESS STORY (sw-11) ========== */
+    function buildProgressStory() {
+        var card = document.getElementById('progressStoryCard');
+        if (!card) return;
+        try {
+            var scores = getScores();
+            // Collect results in tests-array order (insertion order proxy)
+            var results = [];
+            tests.forEach(function(t) {
+                var s = scores[t.key];
+                if (!s || !s.attempts || !s.attempts.length) return;
+                var last = s.attempts[s.attempts.length - 1];
+                var pct = last.pct != null ? last.pct : Math.round((last.score / last.total) * 100);
+                // Short label: RP1..RP11 for retakes, 'MVP' for original exam, 'Final' for finals
+                var label = t.name.replace('Retake Practice #', 'RP').replace(/ \(.*\)$/, '');
+                if (label.indexOf('MVP') !== -1) label = 'MVP';
+                if (label.indexOf('Final') !== -1) label = 'Final';
+                results.push({ label: label, pct: pct });
+            });
+
+            if (results.length < 3) {
+                card.style.display = 'none';
+                return;
+            }
+
+            var shown = results.slice(-5);
+            var first = shown[0].pct;
+            var last2 = shown[shown.length - 1].pct;
+            var diff = last2 - first;
+            var narrative;
+            if (diff > 3) {
+                narrative = 'You have improved ' + diff + ' points since ' + shown[0].label + '. Keep it up.';
+            } else if (diff < -3) {
+                narrative = 'Scores dipped lately. Review your weakest standard and hit it again.';
+            } else {
+                narrative = 'Consistent scores across your last ' + shown.length + ' exams. Push for the next level.';
+            }
+
+            var rowHtml = '';
+            shown.forEach(function(r, i) {
+                if (i > 0) {
+                    var d = r.pct - shown[i - 1].pct;
+                    var cls = d > 0 ? 'ps-delta-pos' : (d < 0 ? 'ps-delta-neg' : 'ps-delta-flat');
+                    rowHtml += '<span class="progress-story-delta ' + cls + '">' + (d > 0 ? '+' : '') + d + '</span>';
+                }
+                rowHtml += '<div class="progress-story-exam"><div class="ps-label">' + r.label + '</div><div class="ps-pct">' + r.pct + '%</div></div>';
+            });
+
+            card.className = 'progress-story-card';
+            card.innerHTML = '<h3>Your Algebra II journey</h3>' +
+                '<div class="progress-story-row">' + rowHtml + '</div>' +
+                '<p class="progress-story-narrative">' + narrative + '</p>';
+            card.style.display = '';
+        } catch(e) {
+            // Degrade gracefully on any data error
+            card.style.display = 'none';
+        }
     }
 
     function dadModeInit() {
