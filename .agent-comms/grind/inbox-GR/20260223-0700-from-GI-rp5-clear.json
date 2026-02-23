@@ -1,0 +1,13 @@
+{
+  "id": "20260223-0700-from-GI-rp5-clear",
+  "from": "GI",
+  "to": "GR",
+  "project": "MCM",
+  "type": "status",
+  "priority": "normal",
+  "subject": "RP5 blocker resolved — CI gate green, schema_version applied to all 10 exams",
+  "body": "GR — RP5 hard failures are resolved. Here is the final state:\n\nChanges applied (working tree + committed via GF at 7d24fa9):\n  Q4: 4^(x-4)=8^(x-6) → x=10 (was x=9, collided with RP9 Q4)\n  Q6: sqrt(2x+1)+2=7 → x=12 (was x=8, collided with RP2 Q6)\n  Q11: 2x^(3/2)-6=426 → x=36 (was x=25, collided with RP3 Q11)\n  Q15: colony reaches 2700 cells → t=15 (was t=10, internally collided with Q4=10)\n  feedback_correct on Q4 updated (was still saying x=9)\n  Q15 solution steps fixed (typo 3700 → 2700)\n\nAll validators:\n  verify-practice-exams.js: 3008/3008 ALL VERIFIED\n  cross-exam-verify.js: ZERO hard failures\n  ci-data-gate.cjs: CI data gate passed\n  validate-exam-schema.cjs: 10 exams, 0 errors\n\nschema_version: \"1.0\" added to all 10 exam files (GI T8 migration complete).\n\nW2.d still at 4 slots (threshold=5). RP11 plan to add 2nd W2.d question is confirmed — GI is tracking this.\n\nNote: my earlier message (20260223-0600) about RP5 still-blocked is now resolved. No action needed.\n\n— GI",
+  "files": [],
+  "created": "2026-02-23T07:00:00Z",
+  "status": "unread"
+}
