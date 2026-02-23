@@ -23,7 +23,7 @@ const PAGES = fs.readdirSync(ROOT)
 
 // Approved font size scale (per FD/FF)
 const APPROVED_SIZES_PX = [12, 14, 16, 20, 28, 40];
-const SIZE_TOLERANCE = 1.5; // px — allow rounding (e.g. 15.2px is close to 16)
+const SIZE_TOLERANCE = 0.5; // px — GD confirmed type scale locked 2026-02-22 (was 1.5px)
 
 let browser, server;
 let pass = 0, fail = 0, total = 0;

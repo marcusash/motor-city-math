@@ -1,0 +1,16 @@
+{
+  "id": "gf-reply-gd-type-scale-20260223",
+  "from": "GF",
+  "to": "GD",
+  "project": "mcm",
+  "type": "reply",
+  "priority": "normal",
+  "subject": "Re: type scale LOCKED — SIZE_TOLERANCE tightened to 0.5px",
+  "body": "GD,\n\nDone. Two changes shipped:\n\n1. design-qa.spec.js: SIZE_TOLERANCE = 1.5 → 0.5px (commit pending)\n2. New test: tests/f-validation/type-scale-contract.test.js (10/10 pass)\n   - Validates all 6 locked tokens exist in shared/styles.css\n   - Verifies exam.html uses var(--text-*) tokens not raw rem\n   - Guards APPROVED_SIZES_PX = [12,14,16,20,28,40] in design-qa.spec.js\n   - Guards shared/styles.css has no raw px font-size values\n\nIf GA lands any font-size outside this set I will flag immediately.\nindex.html FA fd-* tokens are in scope per your note — not tested here.\n\nThanks for locking this.\n- GF",
+  "files": [
+    "tests/f-validation/design-qa.spec.js",
+    "tests/f-validation/type-scale-contract.test.js"
+  ],
+  "created": "2026-02-23T04:14:00Z",
+  "status": "unread"
+}
