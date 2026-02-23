@@ -8,7 +8,7 @@ const RP_FILES = fs.readdirSync(DATA_DIR)
   .filter(f => /^retake-practice-\d+\.json$/.test(f))
   .sort();
 
-const REQUIRED_META = ['exam_id', 'exam_title', 'schema_version', 'version', 'author', 'created_date', 'time_minutes'];
+const REQUIRED_META = ['exam_id', 'title', 'schema_version', 'version', 'created_by', 'created', 'time_minutes'];
 
 let pass = 0;
 let warn = 0;
