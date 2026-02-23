@@ -195,6 +195,7 @@
     var examId = new URLSearchParams(window.location.search).get('file') || 'unknown';
 
     var _autosaveTimer = null;
+    /** Debounce-saves all current input values to sessionStorage (800ms delay). */
     function autosave() {
         clearTimeout(_autosaveTimer);
         _autosaveTimer = setTimeout(function() {
@@ -377,6 +378,10 @@
         return title;
     }
 
+    /**
+     * Initialise the exam from parsed JSON data.
+     * @param {Object} data - Parsed exam JSON (exam_id, title, questions, time_minutes, etc.)
+     */
     function loadExam(data) {
         examData = data;
         // Curriculum-based title: "Unit X: Topic — Standards" (Task 12)
@@ -447,6 +452,7 @@
     }
 
     /* --- Question Renderer --- */
+    /** Render all question cards into #questionsContainer. @param {Array} questions */
     function renderQuestions(questions) {
         var container = document.getElementById('questionsContainer');
         var html = '';
@@ -907,6 +913,11 @@
     }
 
     /* --- Hint System --- */
+    /**
+     * Show a hint layer for a question. Layers: 1=nudge, 2=answer key, 3=solution steps.
+     * @param {string} qId - Question ID
+     * @param {number} layer - Hint layer (1|2|3)
+     */
     function showHint(qId, layer) {
         var q = examData.questions.find(function(q) { return q.id === qId; });
         if (!q) return;
@@ -1056,6 +1067,10 @@
         if (btn) { btn.textContent = '📋 Game Plan ✓'; btn.disabled = true; btn.style.opacity = '0.5'; btn.setAttribute('aria-pressed', 'true'); }
     }
 
+    /**
+     * Grade all auto-gradable inputs, compute score, show scorecard, save results.
+     * Idempotent: no-op if already graded (examGraded flag).
+     */
     function gradeExam() {
         if (examGraded) return;
         // Hide position tracker during graded state
@@ -1262,6 +1277,13 @@
         document.getElementById('scorecard').scrollIntoView({ behavior: 'smooth' });
     }
 
+    /**
+     * Render the scorecard UI after grading.
+     * @param {number} score - Number of correct answers
+     * @param {number} total - Total questions graded
+     * @param {Object} stdScores - Per-standard score aggregates
+     * @param {Array} results - Per-question result objects
+     */
     function showScorecard(score, total, stdScores, results) {
         var pct = total > 0 ? Math.round((score / total) * 100) : 0;
         var grade = pct >= 92 ? 4 : pct >= 82 ? 3 : pct >= 70 ? 2 : 1;
