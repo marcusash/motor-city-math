@@ -47,6 +47,9 @@ Located in `tests/f-validation/`.
 | `answer-key-guard.test.js` | Answer key password gate: prompt/compare/block, no bypass path | 10/10 |
 | `css-token-hygiene.test.js` | No inline hex in style=, brand palette present, <=15 unique hex (advisory) | 6/6 |
 | `dom-query-perf-audit.test.js` | renderQuestions() no getElementById in loops, RAF callback safety, setInterval safety | 5/5 |
+| `evaluate-number-inputs-tolerance.test.js` | evaluateNumberInputs(): tolerance math, ordered/plus_minus/NaN paths | 9/9 |
+| `aria-live-region-audit.test.js` | aria-live region count (8, within threshold), key regions present, no role=alert misuse | 7/7 |
+| `exam-tab-order.test.js` | No positive tabindex, tabindex=0 on custom elements, examGraded double-submit guard | 5/5 |
 
 Run all at once:
 ```powershell
