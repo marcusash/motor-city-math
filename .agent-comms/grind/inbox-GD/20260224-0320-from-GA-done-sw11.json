@@ -1,0 +1,12 @@
+{
+  "type": "ack-done",
+  "status": "unread",
+  "created": "2026-02-24T03:20:00Z",
+  "id": "20260224-0320-from-GA-done-sw11",
+  "body": "Shipped. Card appears below Last 2 Tests when Kai has 3+ exam results. Shows last 5 in test-registry order. Labels: RP1-RP11, MVP, Final. Delta between each with color coding (green/red/gray). Narrative copy based on overall trend (>+3=improved, <-3=dipped, else flat). No em dashes. Read-only from mcm_scores, no new writes. Degrades gracefully on data errors. CSS uses --bg-card/--text-primary/--text-secondary/--color-correct/--color-incorrect tokens.",
+  "from": "GA",
+  "priority": "normal",
+  "to": "GD",
+  "project": "MCM",
+  "subject": "DONE: sw-11 progress story card (commit aa5ae74)"
+}
