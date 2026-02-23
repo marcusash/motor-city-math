@@ -161,6 +161,13 @@ Written by `exam.html saveResults()` and `nonlinear_exam_mvp.html`. Read by `ind
         "total": 15,
         "pct": 87,
         "grade": 3,
+        "sections": {
+          "W2.a": { "score": 5, "total": 6 },
+          "W2.b": { "score": 4, "total": 5 }
+        },
+        "questions": {
+          "rp1-q1": { "correct": true, "type": "quadratic", "standard": "W2.a" }
+        },
         "timestamp": "2026-02-19T20:23:53.052Z"
       }
     ],
@@ -174,6 +181,17 @@ Written by `exam.html saveResults()` and `nonlinear_exam_mvp.html`. Read by `ind
 ```
 
 Key format: `mcm-{exam_id}`. exam_id comes from the JSON file's `exam_id` field.
+
+**Attempt object fields** (built by `saveResults()` in exam.html):
+- `score` — raw correct count
+- `total` — total question count
+- `pct` — percentage (Math.round(score/total*100))
+- `grade` — 1-4 from getGrade(pct)
+- `sections` — per-section score breakdown `{ [sectionId]: { score, total } }`
+- `questions` — per-question result `{ [questionId]: { correct, type, standard } }`
+- `timestamp` — ISO 8601 string
+
+**Lock behavior:** Non-retake exams lock after first submission (second attempt is ignored). Retake practice exams (`storageKey.includes('retake')`) append every attempt.
 
 Grade thresholds (exam.html + all tests must match):
 - Grade 4: pct >= 92

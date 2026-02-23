@@ -44,6 +44,24 @@ Not directly used in MCM (pure vanilla JS), but foundational for any future Reac
 
 **The practice:** Before reaching for `useEffect`, ask: is this a side effect or a derived state? Derived state belongs in `useMemo` or direct calculation. Side effects (network, DOM, subscriptions) belong in `useEffect`. Most `useEffect` bugs come from treating derived state as a side effect.
 
+### React Hooks Deep Dive
+
+Internalizing the hook model at the level of rendering, not just API surface.
+
+**`useReducer` vs `useState`:** Use `useReducer` when next state depends on previous state OR when multiple related pieces of state change together. The signal: if you find yourself writing `setA(x); setB(y); setC(z)` in one handler, that is a reducer waiting to be extracted. `useState` is for genuinely independent scalar values.
+
+**Custom hook patterns:** A custom hook is just a function that uses other hooks — nothing more. Extract to a custom hook when: (a) the same combination of hooks appears in two components, or (b) the hook body is complex enough that it obscures the component's rendering intent. Never extract "just in case." One real re-use is the minimum.
+
+**Hook naming convention:** Always prefix with `use`. The linter enforces this at runtime to ensure exhaustive deps are checked. Violating the prefix breaks the lint rule and hides stale closures.
+
+**Testing hooks:** Test hooks through the components that use them, not in isolation, unless the hook has no UI surface (e.g., `useLocalStorage`, `useDebounce`). For isolated hook tests, `renderHook()` from `@testing-library/react` is the correct tool — not manual render-to-DOM hacks.
+
+**Stale closure traps:** Every value captured inside a `useEffect` callback is the value from the render when the effect was created. To use the latest value without adding it to deps (when it's a callback), wrap in `useRef`. Pattern: `const callbackRef = useRef(fn); useEffect(() => { callbackRef.current = fn; }); const stableCallback = useCallback(() => callbackRef.current(), []);`
+
+**The exhaustive-deps rule:** Treat it as a contract, not a suggestion. When it flags a dep you want to omit, that is the lint rule telling you the design is wrong — usually a missing `useCallback` or `useMemo` wrapper, or a sign that the effect should be broken apart.
+
+**The practice:** When writing a custom hook, start with the return value — what does the consumer need? Work backwards to the state and effects required to produce it. Never start by listing all the state variables you think you need.
+
 ## 25-Task Self-Directed Queue
 
 Tracking full execution in the SQL session database. This section records learning outcomes per task as completed.
