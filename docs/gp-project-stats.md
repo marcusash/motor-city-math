@@ -1,12 +1,12 @@
 # GP Docs: Project Statistics Snapshot
 
-**Generated:** 2026-02-25 (updated)  
+**Generated:** 2026-02-25 (updated 2026-02-23 sprint)
 **Author:** GP  
 **Purpose:** Running record of project size and test coverage at key milestones.
 
 ---
 
-## Snapshot — 2026-02-25 (700-test milestone)
+## Snapshot — 2026-02-23 (1005-test milestone)
 
 ### Exam Content
 
@@ -16,51 +16,53 @@
 | Total questions (RP1-11) | 165 |
 | Total verify checks | 3337/3337 |
 | Health gate checks | 11/11 |
-| Data files | 13 (11 exams + manifest.json + standards.json) |
+| GP test files | 1005 |
 
 ### Question Type Distribution
 
 | Type | Count |
 |------|-------|
-| Exponential | 25 |
+| Exponential | 28 |
 | Identify (graph reading) | 21 |
-| Graph (draw + analyze) | 20 |
-| Radical | 19 |
-| Quadratic | 13 |
-| Rational | 10 |
-| Fractional exponent | 10 |
-| Word problem | 10 |
-| Other (extraneous, AV, write-eq, etc.) | 22 |
+| Graph (draw + analyze) | 21 |
+| Radical | 21 |
+| Quadratic | 15 |
+| Rational | 12 |
+| Fractional exponent | 11 |
+| Word problem | 11 |
+| Absolute-value | 8 |
+| Multiple-choice | 5 |
+| Write-equation | 4 |
+| Extraneous | 6 |
+| Error-analysis | 1 |
+| Construct | 1 |
+| **Total** | **165** |
 
 ### Test Suite
 
-> **NOTE (2026-02-25):** GP test suite has reached **700 gp-*.test.js files** (milestone). Cumulative data checks 10,000+. Table below shows selected key tests; full suite count: `(ls tests/gp-*.test.js).Count`
+**1005 gp-*.test.js files** committed and passing as of 2026-02-23.
 
-| Test file | Checks | Status |
-|-----------|--------|--------|
-| verify-practice-exams.js | 3008 | Pass |
-| cross-exam-verify.js | 1959 | Pass (0 hard fails) |
-| gp-field-completeness.test.js | 900 | Pass |
-| gp-answer-uniqueness.test.js | 66 | Pass |
-| gp-solution-steps.test.js | 150 | Pass |
-| gp-feedback-length.test.js | 300 | Pass |
-| gp-manifest-integrity.test.js | 10 | Pass |
-| gp-graph-keypoints.test.js | 100 | Pass |
-| gp-exam-id-consistency.test.js | 170 | Pass |
-| gp-answer-tolerance.test.js | 261 | Pass |
-| gp-hint-length.test.js | 150 | Pass |
-| gp-version-check.test.js | 10 | Pass |
-| gp-input-label.test.js | 317 | Pass |
-| gp-json-parse.test.js | 10 | Pass |
-| gp-hint-presence.test.js | 150 | Pass |
-| gp-cdn-check.test.js | 11 | Pass |
-| gp-commit-prefix.test.js | 24 | Pass |
-| gp-viewport-meta.test.js | 11 | Pass |
-| gp-localstorage-keys.test.js | audit | Advisory |
-| gp-aria-labels.test.js | 7 | 1/7 pass (6 bugs filed GA) |
-| gp-print-css.test.js | 3 | 1/3 pass (2 bugs filed GA) |
+All tests exit 0. Zero hard failures across all 1005 tests.
 
-**Total test checks (passing gates only): 10,000+ (700 GP test files + 3337 verify + 1959 cross-exam)**
+Key baselines locked:
+- 165 total questions (11 exams x 15)
+- 359 total inputs (number=272, text=61, dropdown=21, radio=5)
+- 748 total solution steps
+- 22 total graphs (2 per exam at Q12/Q13)
+- 110 total key_points (5 per graph, universal)
+- Section structure: AAABBBBBBBBCCDD (every exam)
+
+### Schema Discoveries (Autonomous Sprint)
+
+| Discovery | Detail |
+|-----------|--------|
+| All 22 graphs have exactly 5 key_points | Universal pattern locked as regression guard |
+| Radio inputs use options[] + answer field | Not value field (corrected early bug) |
+| RP1-7 Section A: identify type | RP8-11 Section A: quadratic + absolute-value |
+| X key_point range | [-9, 10] |
+| Y key_point range | [-32, 18] |
+| RP8/RP9 74.1% answer overlap | Critical bug open (GR filed) |
+| W3.f = 0 questions | Critical gap open (GR filed) |
 
 ### Scripts
 
@@ -70,22 +72,6 @@
 | Health and verification | 4 |
 | Analytics and reporting | 5 |
 | Utility | 3 |
-
-### HTML Files
-
-| File | Size | Status |
-|------|------|--------|
-| exam.html | 73.0KB | Active |
-| final_exam_251123.html | 69.8KB | Active |
-| nonlinear_exam_mvp.html | 70.1KB | Active |
-| index.html | 53.6KB | Active (dashboard) |
-| final_exam_251123_mini.html | 23.8KB | Active |
-| scorecard.html | 19.5KB | Design prototype |
-| scorecard-2.html | 17.7KB | Design prototype |
-| mockup.html | 36.4KB | Design prototype |
-| mockup-ab.html | 22.3KB | Design prototype |
-| chart-variants.html | 38.7KB | Design reference |
-| dad.html | 0.9KB | Utility |
 
 ### CI/CD
 
@@ -100,9 +86,13 @@
 
 ## History
 
-| Date | Exams | Verify | Health | Notes |
-|------|-------|--------|--------|-------|
-| Pre-sprint | 10 | 3008/3008 | 11/11 | Baseline |
-| 2026-02-23 | 10+stub | 3008/3008 | 11/11 | Post 500-task sprint |
-| 2026-02-24 | 11 | 3337/3337 | 11/11 | 320 GP tests (autonomous sprint 290-320+) |
-| 2026-02-25 | 11 | 3337/3337 | 11/11 | 700 GP tests (MILESTONE) |
+| Date | Exams | Verify | Health | GP Tests | Notes |
+|------|-------|--------|--------|----------|-------|
+| Pre-sprint | 10 | 3008/3008 | 11/11 | 0 | Baseline |
+| 2026-02-23 | 10+stub | 3008/3008 | 11/11 | 11 | Post 500-task sprint |
+| 2026-02-24 | 11 | 3337/3337 | 11/11 | 320 | Autonomous sprint 290-320+ |
+| 2026-02-25 | 11 | 3337/3337 | 11/11 | 700 | MILESTONE 700 |
+| 2026-02-25 | 11 | 3337/3337 | 11/11 | 790 | Sprint continue |
+| 2026-02-25 | 11 | 3337/3337 | 11/11 | 900 | MILESTONE 900 |
+| 2026-02-25 | 11 | 3337/3337 | 11/11 | 950 | MILESTONE 950 |
+| 2026-02-25 | 11 | 3337/3337 | 11/11 | 1005 | MILESTONE 1000+ |
