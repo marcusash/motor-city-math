@@ -494,7 +494,7 @@
     function renderGraph(q) {
         var g = q.graph;
         var html = '<div class="graph-container">';
-        html += '<canvas id="' + g.canvas_id + '" width="500" height="500" role="img" aria-label="' + (g.function_display || 'Graph for question') + '"></canvas>';
+        html += '<canvas id="' + g.canvas_id + '" width="500" height="500" role="application" tabindex="0" aria-label="Interactive graph for ' + (g.function_display || g.canvas_id) + '. Arrow keys move cursor. Enter to place point. Delete to remove."></canvas>';
         html += '<div class="graph-tooltip" id="tooltip-' + g.canvas_id + '"></div>';
         html += '</div>';
         html += '<div class="graph-counter" id="counter-' + g.canvas_id + '">Click to plot points on the graph</div>';
@@ -523,8 +523,66 @@
             canvas: canvas, ctx: ctx, config: graphConfig,
             points: [], asymptotes: { vertical: [], horizontal: [] },
             asymptoteMode: null, answerOverlay: false,
-            w: w, h: h, ml: ml, mr: mr, mt: mt, mb: mb, pw: pw, ph: ph
+            w: w, h: h, ml: ml, mr: mr, mt: mt, mb: mb, pw: pw, ph: ph,
+            kbCursor: { x: 0, y: 0 }, kbFocused: false
         };
+
+        // Keyboard accessibility (WCAG 2.1.1)
+        canvas.addEventListener('focus', function() {
+            graphData[canvasId].kbFocused = true;
+            redrawGraph(canvasId);
+            updateGraphCounter(canvasId);
+        });
+        canvas.addEventListener('blur', function() {
+            graphData[canvasId].kbFocused = false;
+            redrawGraph(canvasId);
+        });
+        canvas.addEventListener('keydown', function(e) {
+            var d = graphData[canvasId];
+            var step = e.shiftKey ? 0.25 : 1;
+            var moved = false;
+            if (e.key === 'ArrowRight') { d.kbCursor.x = Math.min(d.kbCursor.x + step, 15); moved = true; }
+            if (e.key === 'ArrowLeft')  { d.kbCursor.x = Math.max(d.kbCursor.x - step, -15); moved = true; }
+            if (e.key === 'ArrowUp')    { d.kbCursor.y = Math.min(d.kbCursor.y + step, 15); moved = true; }
+            if (e.key === 'ArrowDown')  { d.kbCursor.y = Math.max(d.kbCursor.y - step, -15); moved = true; }
+            if (moved) { e.preventDefault(); redrawGraph(canvasId); updateGraphCounter(canvasId); return; }
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                var sx = d.kbCursor.x, sy = d.kbCursor.y;
+                if (d.asymptoteMode === 'vertical') {
+                    d.asymptotes.vertical = [sx]; d.asymptoteMode = null;
+                    var vb = document.getElementById('vaBtn-' + canvasId);
+                    if (vb) vb.classList.remove('active');
+                    updateGraphCounter(canvasId); redrawGraph(canvasId); return;
+                }
+                if (d.asymptoteMode === 'horizontal') {
+                    d.asymptotes.horizontal = [sy]; d.asymptoteMode = null;
+                    var hb2 = document.getElementById('haBtn-' + canvasId);
+                    if (hb2) hb2.classList.remove('active');
+                    updateGraphCounter(canvasId); redrawGraph(canvasId); return;
+                }
+                for (var ri = d.points.length - 1; ri >= 0; ri--) {
+                    if (Math.abs(d.points[ri].gx - sx) < 0.5 && Math.abs(d.points[ri].gy - sy) < 0.5) {
+                        d.points.splice(ri, 1);
+                        updateGraphCounter(canvasId); redrawGraph(canvasId);
+                        announceGraph(canvasId, 'Point removed. ' + d.points.length + ' points total.'); return;
+                    }
+                }
+                var screenX2 = d.ml + ((sx + 16) / 32) * d.pw;
+                var screenY2 = d.mt + ((-sy + 16) / 32) * d.ph;
+                d.points.push({ x: screenX2, y: screenY2, gx: sx, gy: sy, status: null });
+                updateGraphCounter(canvasId); redrawGraph(canvasId);
+                announceGraph(canvasId, 'Point placed at (' + sx + ', ' + sy + '). ' + d.points.length + ' points total.');
+            }
+            if (e.key === 'Delete' || e.key === 'Backspace') {
+                e.preventDefault();
+                var d2 = graphData[canvasId];
+                if (d2.points.length > 0) {
+                    d2.points.pop(); updateGraphCounter(canvasId); redrawGraph(canvasId);
+                    announceGraph(canvasId, 'Last point removed. ' + d2.points.length + ' points total.');
+                }
+            }
+        });
 
         canvas.addEventListener('mousemove', function(e) {
             var rect = canvas.getBoundingClientRect();
@@ -684,6 +742,34 @@
             ctx.strokeStyle = CANVAS.pointStroke; ctx.lineWidth = 1.5;
             ctx.stroke();
         });
+
+        // Keyboard cursor ring (shown when canvas is keyboard-focused)
+        if (d.kbFocused) {
+            var ksx = d.ml + ((d.kbCursor.x + 16) / 32) * d.pw;
+            var ksy = d.mt + ((-d.kbCursor.y + 16) / 32) * d.ph;
+            ctx.save();
+            ctx.beginPath();
+            ctx.arc(ksx, ksy, 9, 0, 2 * Math.PI);
+            ctx.strokeStyle = '#4A90D9';
+            ctx.lineWidth = 2;
+            ctx.setLineDash([4, 2]);
+            ctx.stroke();
+            ctx.setLineDash([]);
+            ctx.restore();
+        }
+    }
+
+    function announceGraph(canvasId, msg) {
+        var lr = document.getElementById('graphLiveRegion');
+        if (!lr) {
+            lr = document.createElement('div');
+            lr.id = 'graphLiveRegion';
+            lr.setAttribute('aria-live', 'polite');
+            lr.setAttribute('aria-atomic', 'true');
+            lr.className = 'sr-only';
+            document.body.appendChild(lr);
+        }
+        lr.textContent = msg;
     }
 
     function updateGraphCounter(canvasId) {
@@ -694,16 +780,17 @@
         var counter = document.getElementById('counter-' + canvasId);
         var checkBtn = document.getElementById('checkBtn-' + canvasId);
 
+        var kbInfo = d.kbFocused ? ' | cursor: (' + d.kbCursor.x + ', ' + d.kbCursor.y + ')' : '';
         var ready = n >= minPts;
         if (cfg.asymptotes) {
             var va = d.asymptotes.vertical.length;
             var ha = d.asymptotes.horizontal.length;
             var needVA = cfg.asymptotes.vertical ? cfg.asymptotes.vertical.length : 0;
             var needHA = cfg.asymptotes.horizontal ? cfg.asymptotes.horizontal.length : 0;
-            counter.textContent = n + ' of ' + minPts + ' points · Asymptotes: ' + (va + ha) + '/' + (needVA + needHA);
+            counter.textContent = n + ' of ' + minPts + ' points · Asymptotes: ' + (va + ha) + '/' + (needVA + needHA) + kbInfo;
             ready = ready && va >= needVA && ha >= needHA;
         } else {
-            counter.textContent = n > 0 ? n + ' of ' + minPts + ' points' : 'Click to plot at least ' + minPts + ' points';
+            counter.textContent = (n > 0 ? n + ' of ' + minPts + ' points' : 'Click or use arrow keys to plot at least ' + minPts + ' points') + kbInfo;
         }
         checkBtn.disabled = !ready;
     }

@@ -563,6 +563,7 @@ input:focus, textarea:focus, select:focus {
     letter-spacing: -0.5px;
     padding-bottom: 20px;
     border-bottom: 4px solid;
+    /* border-image cannot use CSS custom properties in older Safari — hardcoded hex intentional */
     border-image: linear-gradient(
         to right,
         #C8102E 0%, #C8102E 30%,
@@ -572,12 +573,12 @@ input:focus, textarea:focus, select:focus {
 }
 
 .answer-key-content h3 {
-    color: #C8102E;
+    color: var(--accent-red);
     margin-top: 24px;
 }
 
 .answer-key-content strong {
-    color: #C8102E;
+    color: var(--accent-red);
 }
 
 .answer-item {
