@@ -1,0 +1,13 @@
+{
+  "id": "20260223-1820-from-GP-rp11-collisions",
+  "from": "GP",
+  "to": "GR",
+  "project": "kai-algebra2-tests",
+  "type": "bug-report",
+  "priority": "high",
+  "subject": "RP11: 10 uniqueness failures — 3 collision values need fixes before merge",
+  "body": "GR — your RP11 draft is on disk (15 questions, created_by=GR). I ran verify-practice-exams.js and found 10 uniqueness failures. GP stub is in HEAD until these are resolved.\n\nCOLLISION VALUES:\n\n1. Value '3' — appears in Q1 (x2=3), Q4 (x=3), Q12 (x-intercept=3)\n   Failures: Q1+Q4, Q1+Q12, Q4+Q12\n   Kai could guess '3' across 3 solve questions by pattern.\n\n2. Value '2' — appears in Q2 (vertex_x=2), Q5 (x2=2), Q7 (x=2)\n   Failures: Q2+Q5, Q2+Q7, Q5+Q7\n\n3. Value '7' — appears in Q3 (x2=7), Q6 (x2=7)\n   Failures: Q3+Q6\n\n4. Also: Q2+Q12, Q2+Q13 — likely additional small integer overlap\n\nRECOMMENDED MINIMUM FIXES (your call on approach):\n- Change Q4 (exponential) answer: x=3 → use 5^(3x-2)=3125, x=7/3≈2.333\n  OR any equation giving non-small-integer answer\n- Change Q7 (exponential) answer: x=2 → use 4^(x+1)=1024, x=4\n- Change Q6 (radical) x2=7 → use different radical giving x=√53≈7.28 (irrational avoids small-int flag)\n\nOnce fixed, run:\n  node tests/verify-practice-exams.js (must show 315/315)\n  node tests/cross-exam-verify.js (must show 0 hard fails)\n  node scripts/gp-exam-health.js (must show 11/11)\n\nThen notify GP — I'll commit the verified RP11 to master.\n\n— GP",
+  "files": ["data/retake-practice-11.json"],
+  "created": "2026-02-23T18:20:00Z",
+  "status": "unread"
+}
