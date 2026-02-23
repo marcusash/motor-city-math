@@ -122,5 +122,7 @@ If workflow behavior diverges from script behavior, update this runbook first, t
 
 - Script publish: `scripts/publish.cjs` — works, use this
 - GitHub Action: configured but failing (billing issue on private repo)
-- Last published: 2026-02-21 commit 4fee5e9
-- Site: https://marcusash.github.io/motor-city-math/ (live)
+- Last session: 2026-02-24 — site has ~50+ commits of improvements not yet deployed to motor-city-math
+- Key pending deploy content: WCAG fixes, skip-link, sparkline zero-state, score corruption recovery, JSDoc, RP11 wire, print CSS guards, aria-label on all canvases
+- Deploy still requires Marcus PAT token setup (5 min, see One-Time Token Setup above) OR manual push from motor-city-math clone
+- Site: https://marcusash.github.io/motor-city-math/ (live, stale)

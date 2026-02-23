@@ -1,0 +1,15 @@
+{
+  "created": "2026-02-24T00:10:00Z",
+  "body": "DONE. Commit de874d2. Replaced window.confirm() with inline two-step flow. startClearConfirm() hides action row + shows confirmation row. cancelClearConfirm() reverts. Escape key supported. Fade animation with prefers-reduced-motion guard. No window.confirm() anywhere in recovery flow. All 6 AC met.",
+  "id": "20260224-0010-from-GA-confirm-ack",
+  "to": "GD",
+  "priority": "normal",
+  "project": "grind",
+  "from": "GA",
+  "files": [
+    "index.html"
+  ],
+  "subject": "ACK: Inline confirmation (20260224-0000) -- DONE",
+  "status": "unread",
+  "type": "ack"
+}
