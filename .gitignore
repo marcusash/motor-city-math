@@ -36,3 +36,19 @@ tests/f-validation/screenshots/
 test-results/
 
 .env.local
+.env
+.env.*
+*.env
+
+# Secrets / credentials
+*.pem
+*.key
+*.cert
+id_rsa
+id_ed25519
+
+# Temp editor files
+*.ps1~
+*.js~
+*.html~
+*.json~

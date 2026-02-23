@@ -23,6 +23,13 @@ function verifyExam(filename) {
     if (!fs.existsSync(filepath)) { console.log('  NOT FOUND: ' + filepath); return; }
 
     const data = JSON.parse(fs.readFileSync(filepath, 'utf8'));
+
+    // Skip stubs (no questions yet)
+    if (!data.questions || data.questions.length === 0) {
+        console.log('  ⏸  ' + filename + ': stub (0 questions) — skipped');
+        return;
+    }
+
     let pass = 0, fail = 0;
     const issues = [];
 

@@ -1,4 +1,7 @@
 {
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "devDependencies": {
     "ajv": "^8.18.0",
     "canvas": "^3.2.1",
@@ -11,12 +14,17 @@
     "tesseract.js": "^7.0.0"
   },
   "scripts": {
+    "verify": "node tests/verify-practice-exams.js",
     "verify:cross": "node tests/cross-exam-verify.js",
+    "verify:all": "node tests/verify-practice-exams.js && node tests/cross-exam-verify.js",
+    "health": "node scripts/gp-exam-health.js",
     "audit:fields": "node scripts/gp-rp-field-audit.js",
-    "test:gp": "node tests/gp-field-completeness.test.js && node tests/gp-answer-uniqueness.test.js && node tests/gp-solution-steps.test.js && node tests/gp-feedback-length.test.js && node tests/gp-manifest-integrity.test.js",
-    "test:gf": "node tests/f-validation/schema-guard-all-rp.test.js && node tests/f-validation/grading-invariants.property.test.js && node tests/daily-design-gate.js",
     "audit:feedback": "node tests/gp-feedback-length.test.js",
+    "audit:hints": "node tests/gp-hint-length.test.js",
     "audit:all": "node tests/verify-practice-exams.js && node tests/cross-exam-verify.js && node scripts/gp-rp-field-audit.js && node tests/gp-field-completeness.test.js && node tests/gp-feedback-length.test.js",
-    "verify": "node tests/verify-practice-exams.js"
+    "lint:json": "node -e \"const fs=require('fs'),path=require('path'),d=fs.readdirSync('data').filter(f=>f.endsWith('.json'));d.forEach(f=>{try{JSON.parse(fs.readFileSync(path.join('data',f),'utf8'));console.log('OK:',f)}catch(e){console.error('FAIL:',f,e.message);process.exitCode=1}})\"",
+    "test:gp": "node tests/gp-field-completeness.test.js && node tests/gp-answer-uniqueness.test.js && node tests/gp-solution-steps.test.js && node tests/gp-feedback-length.test.js && node tests/gp-manifest-integrity.test.js",
+    "test:gp:all": "node tests/gp-field-completeness.test.js && node tests/gp-answer-uniqueness.test.js && node tests/gp-solution-steps.test.js && node tests/gp-feedback-length.test.js && node tests/gp-manifest-integrity.test.js && node tests/gp-graph-keypoints.test.js && node tests/gp-exam-id-consistency.test.js && node tests/gp-answer-tolerance.test.js && node tests/gp-hint-length.test.js && node tests/gp-version-check.test.js && node tests/gp-input-label.test.js && node tests/gp-json-parse.test.js && node tests/gp-hint-presence.test.js && node tests/gp-cdn-check.test.js && node tests/gp-commit-prefix.test.js",
+    "test:gf": "node tests/f-validation/schema-guard-all-rp.test.js && node tests/f-validation/grading-invariants.property.test.js && node tests/daily-design-gate.js"
   }
 }
