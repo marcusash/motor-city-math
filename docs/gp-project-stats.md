@@ -12,11 +12,11 @@
 
 | Metric | Value |
 |--------|-------|
-| Retake Practice exams | 10 (RP1-10 complete) + RP11 stub |
-| Total questions (RP1-10) | 150 |
-| Total verify checks | 3008/3008 |
+| Retake Practice exams | 11 (RP1-11 all complete) |
+| Total questions (RP1-11) | 165 |
+| Total verify checks | 3337/3337 |
 | Health gate checks | 11/11 |
-| Data files | 12 (10 exams + manifest.json + standards.json) |
+| Data files | 13 (11 exams + manifest.json + standards.json) |
 
 ### Question Type Distribution
 
