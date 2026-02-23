@@ -499,7 +499,7 @@
             if (inp.label) html += '<label for="' + inp.id + '">' + inp.label + '</label>';
             html += '<select id="' + inp.id + '">';
             html += '<option value="">— Select —</option>';
-            inp.options.forEach(function(opt) {
+            (inp.options || []).forEach(function(opt) {
                 html += '<option value="' + opt + '">' + opt + '</option>';
             });
             html += '</select></div>';
@@ -514,7 +514,7 @@
         } else if (inp.type === 'radio') {
             html += '<div class="radio-group">';
             if (inp.label) html += '<div style="font-weight:600; margin-bottom:6px; color:var(--text-primary);">' + inp.label + '</div>';
-            inp.options.forEach(function(opt) {
+            (inp.options || []).forEach(function(opt) {
                 html += '<div class="radio-option">';
                 html += '<input type="radio" name="' + inp.id + '" id="' + inp.id + '_' + opt.value + '" value="' + opt.value + '">';
                 html += '<label for="' + inp.id + '_' + opt.value + '">' + opt.value + '. ' + opt.text + '</label>';
@@ -1262,7 +1262,7 @@
     }
 
     function showScorecard(score, total, stdScores, results) {
-        var pct = Math.round((score / total) * 100);
+        var pct = total > 0 ? Math.round((score / total) * 100) : 0;
         var grade = pct >= 92 ? 4 : pct >= 82 ? 3 : pct >= 70 ? 2 : 1;
         var gradeClass = 'g' + grade;
 
@@ -1355,9 +1355,9 @@
      * Each attempt: { score, total, pct, grade, sections, questions, timestamp }
      */
     function saveResults(score, total, results, stdScores) {
-        var pct = Math.round((score / total) * 100);
+        var pct = total > 0 ? Math.round((score / total) * 100) : 0;
         var grade = pct >= 92 ? 4 : pct >= 82 ? 3 : pct >= 70 ? 2 : 1;
-        var storageKey = 'mcm-' + examData.exam_id;
+        var storageKey = 'mcm-' + (examData.exam_id || 'unknown');
 
         // Build per-question results
         var qResults = {};
