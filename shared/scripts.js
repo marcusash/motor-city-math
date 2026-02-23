@@ -3,6 +3,45 @@
  * Answer key modal, save/load progress, print, textarea resize.
  */
 
+/* === Answer Parser === */
+
+/**
+ * Parse a student's text input into a numeric value.
+ * Accepts: integers, decimals, fractions (4/3), sqrt expressions (sqrt(5), 1+sqrt(3)).
+ * Safe: only allows a whitelisted character set before calling Function().
+ * @param {string} raw - Raw student input string
+ * @returns {number} Parsed numeric value, or NaN if unparseable
+ */
+function parseStudentAnswer(raw) {
+    if (!raw || !raw.trim()) return NaN;
+    var s = raw.trim().replace(/\s/g, '');
+
+    // Plain fraction: 4/3 or -5/2
+    var fracMatch = s.match(/^(-?\d+)\/(-?\d+)$/);
+    if (fracMatch) {
+        var num = parseInt(fracMatch[1], 10);
+        var den = parseInt(fracMatch[2], 10);
+        return den === 0 ? NaN : num / den;
+    }
+
+    // Plain decimal/integer
+    var plain = parseFloat(s);
+    if (!isNaN(plain) && s.match(/^-?\d*\.?\d+$/)) return plain;
+
+    // sqrt() expressions -- safe evaluator
+    // Only allow digits, . + - * / ( ) and letters s,q,r,t (only valid as "sqrt")
+    if (/^[0-9.\+\-\*\/\(\)sqrt]+$/.test(s)) {
+        try {
+            // Handle implicit multiplication: 2sqrt(3) -> 2*sqrt(3)
+            var expr = s.replace(/(\d)\s*sqrt/g, '$1*sqrt').replace(/sqrt/g, 'Math.sqrt');
+            var result = Function('"use strict"; return (' + expr + ')')();
+            if (typeof result === 'number' && isFinite(result)) return result;
+        } catch(e) { /* invalid expression -- fall through */ }
+    }
+
+    return NaN;
+}
+
 /* === Answer Key Modal === */
 
 /**
