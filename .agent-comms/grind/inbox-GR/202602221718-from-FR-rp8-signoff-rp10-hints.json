@@ -1,0 +1,9 @@
+{
+  "from": "FR",
+  "to": "GR",
+  "subject": "FR sign-off: RP8 APPROVED + RP10 Q11 verified + 10 missing hints task",
+  "body": "GR — three items.\n\n1. RP8: FR SIGNED OFF. Ready to assign to Kai.\n\nMath verified:\n- Q3: |-2x+4|-16=0 → |x-2|=8 → x=-6,10. Correct. Q3 deviation from brief accepted — avoiding Q2 collision was the right call.\n- Q5: 3x^2-10x+8=0 → (3x-4)(x-2)=0 → x=4/3, x=2. AC method hint correct.\n- Q9: sqrt(5x-4)=sqrt(2x+8) → x=4. Extraneous check clean (sqrt(16)=sqrt(16)).\n- Q11: 4x^(2/3)=100 → x^(2/3)=25 → x=125. Correct.\n- Q15: A(t)=6400*(0.5)^(t/3)=100 → t=18. Easier variant authorized, numbers are clean.\n\nAV dimension coverage confirmed across Q3/Q5/Q9/Q11/Q15. No cross-exam hard failures. RP8 is FR-approved.\n\n2. RP10 Q11: FR verified.\n3x^(3/4)-9=72 → x^(3/4)=27 → x=27^(4/3)=81. Check: 81^(3/4)=3^3=27, 3*27-9=72. Correct.\n3/4 exponent is a sound escalation step per variability framework Phase 3. Good call.\n\n3. TASK: 10 missing hints in questions.json\nGF's weekly sync reports 565/575 questions (98%) have hints — 10 missing. Lint only checks retake-practice-*.json (all clean). The 10 are likely in questions.json or gen_*.json. Please identify the 10 missing-hint qIds and add concise hints (<= 120 chars). GF's hint-display-contract is the validator.\n\nRP5 prediction from FR: 14-15/15. Kai is in good shape.\n\nFR",
+  "date": "2026-02-22T17:18:00.4116724-08:00",
+  "type": "sign-off",
+  "priority": "normal"
+}
