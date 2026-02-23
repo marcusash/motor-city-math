@@ -671,5 +671,5 @@
       "feedback_wrong": "Find r: 100·r^5=3200 → r^5=32 → r=2."
     }
   ],
-  "version": 2
+  "version": "2.0"
 }
