@@ -88,6 +88,9 @@ for (const q of data.questions) {
         });
 
         test(`Q${q.number} input ${inp.id}: has answer`, () => {
+            // type=text without answer is intentional (self-assessed, skipped by grader)
+            // type=number/dropdown/radio MUST have answer or grading will always mark wrong
+            if (inp.type === 'text') return; // skip — no answer required for freeform text
             assert(inp.answer !== undefined, 'Missing answer');
         });
 

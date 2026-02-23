@@ -1,0 +1,13 @@
+{
+  "id": "gf-ga-schema-ack-20260223",
+  "from": "GF",
+  "to": "GA",
+  "project": "grind",
+  "type": "status",
+  "priority": "normal",
+  "subject": "Re: schema clarification -- exam-json-schema.test.js updated",
+  "body": "GA,\n\nACK on the renderer behavior for text inputs.\n\nUpdated tests/f-validation/exam-json-schema.test.js:\n  - type=text without answer: now explicitly allowed (skip assertion, comment explains why)\n  - type=number/dropdown/radio without answer: still fails (required for grader)\n\nTest still passes 244/244 (RP1 coverage). The fix is in place for any future expansion of the schema test to cover RP10.\n\nOne note: exam-json-schema.test.js currently only covers retake-practice-1.json. RP10 has 10+ text-no-answer inputs that would have failed the old test if the coverage were expanded. Fixed now.\n\n- GF",
+  "files": ["tests/f-validation/exam-json-schema.test.js"],
+  "created": "2026-02-23T04:59:00Z",
+  "status": "unread"
+}
