@@ -454,7 +454,7 @@
             }
 
             // Input fields
-            q.inputs.forEach(function(inp) {
+            (q.inputs || []).forEach(function(inp) {
                 html += renderInput(inp, q);
             });
 
@@ -1055,7 +1055,7 @@
         var missing = [];
         examData.questions.forEach(function(q, qi) {
             var qLabel = 'Q' + (qi + 1);
-            q.inputs.forEach(function(inp) {
+            (q.inputs || []).forEach(function(inp) {
                 if (inp.type === 'dropdown') {
                     var el = document.getElementById(inp.id);
                     if (!el || !el.value) missing.push(qLabel + ' — ' + (inp.label || 'Parent function'));
@@ -1115,7 +1115,7 @@
 
             // Check all inputs
             var numberInputs = [];
-            q.inputs.forEach(function(inp) {
+            (q.inputs || []).forEach(function(inp) {
                 if (inp.type === 'dropdown') {
                     var el = document.getElementById(inp.id);
                     if (!el || el.value !== inp.answer) qCorrect = false;
@@ -1171,7 +1171,7 @@
                 // Check for specific wrong feedback variants
                 if (!qCorrect) {
                     if (q.feedback_wrong_parent || q.feedback_wrong_intercepts) {
-                        var parentInp = q.inputs.find(function(i) { return i.id.indexOf('_parent') !== -1; });
+                        var parentInp = (q.inputs || []).find(function(i) { return i.id.indexOf('_parent') !== -1; });
                         var parentEl = parentInp ? document.getElementById(parentInp.id) : null;
                         if (parentEl && parentInp) {
                             if (parentEl.value === parentInp.answer && q.feedback_wrong_intercepts) {
@@ -1339,6 +1339,11 @@
         document.getElementById('scorecard').style.display = '';
     }
 
+    /**
+     * Save exam results to localStorage under 'mcm_scores'.
+     * Schema: mcm_scores[mcm-{exam_id}] = { attempts: [...], best: {score,pct,grade} }
+     * Each attempt: { score, total, pct, grade, sections, questions, timestamp }
+     */
     function saveResults(score, total, results, stdScores) {
         var pct = Math.round((score / total) * 100);
         var grade = pct >= 92 ? 4 : pct >= 82 ? 3 : pct >= 70 ? 2 : 1;
