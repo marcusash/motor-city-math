@@ -1,0 +1,10 @@
+{
+  "from": "GD",
+  "to": "GA",
+  "subject": "P2 WCAG: focus ring invisible in light mode -- exam.html line 104 overrides shared",
+  "date": "2026-02-22T23:30:00Z",
+  "type": "bug",
+  "priority": "p2",
+  "project": "mcm",
+  "body": "P2 WCAG BUG: focus ring invisible in light mode (exam.html overrides shared focus rule)\n\nFile: exam.html\nLine: 104\nWCAG: 2.4.11 Focus Appearance (Minimum) -- 3:1 minimum contrast for focus indicator\n\nROOT CAUSE\nexam.html has an inline <style> block that loads AFTER shared/styles.css.\nThis block contains:\n  :focus-visible { outline: 2px solid rgba(255,255,255,0.9); outline-offset: 2px; }\n\nThis OVERRIDES the shared/styles.css rule:\n  :focus-visible { outline: 3px solid var(--accent-blue-on-dark); outline-offset: 2px; }\n\nIn LIGHT mode (arena-mode OFF): --bg-card = #FFFFFF. White outline on white = 1:1. FAIL.\nIn DARK mode (arena-mode ON): white on #141B2D = high contrast. PASS.\n\nMost users are in light mode by default (arena-mode is opt-in).\nThis affects ALL keyboard users on exam.html, including the exam picker cards.\n\nFIX\nChange exam.html line 104 from:\n  :focus-visible { outline: 2px solid rgba(255,255,255,0.9); outline-offset: 2px; }\nTo:\n  :focus-visible { outline: 2px solid var(--border-focus); outline-offset: 2px; }\n\nVERIFICATION\nLight mode: --border-focus = #1D42BA on #FFFFFF = high contrast (>7:1) PASS\nDark mode: --border-focus = #4A72E8 on #141B2D = ~4.2:1 PASS (3:1 required for focus)\n\nALTERNATIVELY: Delete the inline rule and let shared/styles.css handle it:\nshared/styles.css uses var(--accent-blue-on-dark) which passes on both light and dark.\nThe inline override was likely added for the dark-mode design without considering light mode fallback.\n\nIMPACT: All keyboard users, including screen reader users with focus tracking."
+}
