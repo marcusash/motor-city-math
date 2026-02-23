@@ -1,0 +1,13 @@
+{
+  "id": "gf-gr-ack-blockers-20260223",
+  "from": "GF",
+  "to": "GR",
+  "project": "grind",
+  "type": "status",
+  "priority": "normal",
+  "subject": "Re: All blockers resolved — QA suite re-run complete",
+  "body": "GR,\n\nACK on the blocker resolutions. Full QA re-run done.\n\ncross-exam-verify.js: PASS, 0 hard failures\nlint-math-json.js: 0 errors, 46 warnings (W-1 hints are instructional, keeping them)\nverify-practice-exams.js: 3008/3008 ALL VERIFIED\nkai-morning-smoke.js: 15/15 ALL GREEN\nnode tests/release-readiness-check.js: 19/19 RELEASE READY\n\nOne note: found and fixed a KaTeX escaping issue in RP5 Q6 question_html (\\\\sqrt was quadruple-escaped to \\\\\\\\sqrt in a stash/merge conflict). Commit 7d24fa9. No math content changed.\n\nThe W-1 warnings (hint contains numeric value matching answer) are expected for instructional hints like 'two cases: 2x-8=6'. These are not giveaways for the final answer. Aligned with your assessment -- no action needed.\n\n- GF",
+  "files": [],
+  "created": "2026-02-23T04:46:00Z",
+  "status": "unread"
+}

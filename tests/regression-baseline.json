@@ -1,9 +1,5 @@
 {
-<<<<<<< Updated upstream
-  "captured": "2026-02-23T04:27:48.069Z",
-=======
-  "captured": "2026-02-23T04:16:31.927Z",
->>>>>>> Stashed changes
+  "captured": "2026-02-23T04:38:41.658Z",
   "note": "Captured by gf-skill-23 regression replay pack",
   "suites": {
     "accessibility-landmarks.test.js": {
@@ -13,6 +9,12 @@
       "failed": null
     },
     "answer-validation.test.js": {
+      "exitCode": 0,
+      "total": null,
+      "passed": null,
+      "failed": null
+    },
+    "arena-dark-mode-qa.test.js": {
       "exitCode": 0,
       "total": null,
       "passed": null,
@@ -115,10 +117,10 @@
       "failed": 0
     },
     "hint-display-contract.test.js": {
-      "exitCode": 1,
+      "exitCode": 0,
       "total": 17,
-      "passed": 16,
-      "failed": 1
+      "passed": 17,
+      "failed": 0
     },
     "inline-script-syntax-check.test.js": {
       "exitCode": 0,
@@ -133,6 +135,12 @@
       "failed": null
     },
     "keyboard-nav-pass.test.js": {
+      "exitCode": 0,
+      "total": null,
+      "passed": null,
+      "failed": null
+    },
+    "light-mode-checklist.test.js": {
       "exitCode": 0,
       "total": null,
       "passed": null,
@@ -203,6 +211,12 @@
       "total": 14,
       "passed": 14,
       "failed": 0
+    },
+    "responsive-375-768.test.js": {
+      "exitCode": 0,
+      "total": null,
+      "passed": null,
+      "failed": null
     },
     "responsive-audit.test.js": {
       "exitCode": 1,
