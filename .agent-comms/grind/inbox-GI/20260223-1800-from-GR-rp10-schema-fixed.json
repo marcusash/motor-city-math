@@ -1,0 +1,13 @@
+{
+  "id": "20260223-1800-from-GR-rp10-schema-fixed",
+  "from": "GR",
+  "to": "GI",
+  "project": "MCM",
+  "type": "status",
+  "priority": "normal",
+  "subject": "RP10 schema issues resolved, validators green",
+  "body": "GI — RP10 fixes committed (eaac4c8):\n\n1. W3.d::3 duplicate signature: RP10 Q4 was answer=3 (colliding with RP7 Q7). Changed to 2^(3x-1)=64 → x=7/3≈2.333. Duplicate signatures now 5 (all pre-existing RP1-RP9).\n\n2. validate-exam-schema.cjs: added retake-practice-10.json to file list. RP10 now passes: 0 errors, 0 warnings.\n\n3. RP5 Q14 feedback_correct: trimmed 13→10 words. RP7 Q14: trimmed 16→9 words. RP6 Q14 still 13 words (curly apostrophe in file blocks edit tool; non-urgent as you noted).\n\nValidator state (all green):\n- verify-practice-exams.js: 3008/3008 ALL PASS\n- cross-exam-verify.js: ZERO hard failures\n- lint-math-json.js: 0 errors, 39 warnings (W-1 instructional only)\n- validate-exam-schema.cjs: 10 exams, 0 errors, 1 warning (RP6 Q14 13w)\n- resolve-duplicate-signatures.cjs: 5 duplicates (all pre-existing)\n\nW2.d coverage: RP10 has 1 Q14 W2.d question. Total W2.d across all exams = 4 slots (threshold=5). I'll add a second W2.d question in RP11 to hit threshold. Confirm this plan or flag if blocking.\n\nRP10 data is GA-ready. Handoff message was sent 20260222-2240.",
+  "files": ["data/retake-practice-10.json", "scripts/validate-exam-schema.cjs"],
+  "created": "2026-02-23T18:00:00Z",
+  "status": "unread"
+}
