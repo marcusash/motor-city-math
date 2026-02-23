@@ -1,0 +1,240 @@
+{
+  "captured": "2026-02-23T00:51:14.791Z",
+  "note": "Captured by gf-skill-23 regression replay pack",
+  "suites": {
+    "accessibility-landmarks.test.js": {
+      "exitCode": 0,
+      "total": null,
+      "passed": null,
+      "failed": null
+    },
+    "answer-validation.test.js": {
+      "exitCode": 0,
+      "total": null,
+      "passed": null,
+      "failed": null
+    },
+    "arena-persistence-audit.test.js": {
+      "exitCode": 0,
+      "total": null,
+      "passed": null,
+      "failed": null
+    },
+    "browser-compat-audit.test.js": {
+      "exitCode": 0,
+      "total": null,
+      "passed": null,
+      "failed": null
+    },
+    "chartjs-audit.test.js": {
+      "exitCode": 1,
+      "total": null,
+      "passed": null,
+      "failed": null
+    },
+    "color-token-enforcement.test.js": {
+      "exitCode": 0,
+      "total": null,
+      "passed": null,
+      "failed": null
+    },
+    "dashboard-integrity.test.js": {
+      "exitCode": 0,
+      "total": null,
+      "passed": null,
+      "failed": null
+    },
+    "error-state-matrix.test.js": {
+      "exitCode": 1,
+      "total": null,
+      "passed": null,
+      "failed": null
+    },
+    "exam-cross-exam-dedup.test.js": {
+      "exitCode": 0,
+      "total": null,
+      "passed": null,
+      "failed": null
+    },
+    "exam-input-answer-contract.test.js": {
+      "exitCode": 0,
+      "total": null,
+      "passed": null,
+      "failed": null
+    },
+    "exam-json-schema.test.js": {
+      "exitCode": 0,
+      "total": 244,
+      "passed": 244,
+      "failed": 0
+    },
+    "export-import-qa.test.js": {
+      "exitCode": 0,
+      "total": 34,
+      "passed": 34,
+      "failed": 0
+    },
+    "flake-registry.test.js": {
+      "exitCode": 0,
+      "total": 10,
+      "passed": 10,
+      "failed": 0
+    },
+    "font-token-enforcement.test.js": {
+      "exitCode": 0,
+      "total": null,
+      "passed": null,
+      "failed": null
+    },
+    "grading-audit.test.js": {
+      "exitCode": 0,
+      "total": null,
+      "passed": null,
+      "failed": null
+    },
+    "grading-regression.test.js": {
+      "exitCode": 0,
+      "total": 5,
+      "passed": 1,
+      "failed": 4
+    },
+    "inline-script-syntax-check.test.js": {
+      "exitCode": 0,
+      "total": 6,
+      "passed": 6,
+      "failed": 0
+    },
+    "katex-audit.test.js": {
+      "exitCode": 0,
+      "total": null,
+      "passed": null,
+      "failed": null
+    },
+    "keyboard-nav-pass.test.js": {
+      "exitCode": 0,
+      "total": null,
+      "passed": null,
+      "failed": null
+    },
+    "localstorage-schema-guard.test.js": {
+      "exitCode": 0,
+      "total": null,
+      "passed": null,
+      "failed": null
+    },
+    "mvp-grading.test.js": {
+      "exitCode": 0,
+      "total": null,
+      "passed": null,
+      "failed": null
+    },
+    "mvp-graphing-e2e.test.js": {
+      "exitCode": 0,
+      "total": null,
+      "passed": null,
+      "failed": null
+    },
+    "mvp-score-storage.test.js": {
+      "exitCode": 0,
+      "total": null,
+      "passed": null,
+      "failed": null
+    },
+    "offline-audit.test.js": {
+      "exitCode": 1,
+      "total": 11,
+      "passed": 5,
+      "failed": 6
+    },
+    "precommit-guard-audit.test.js": {
+      "exitCode": 0,
+      "total": 17,
+      "passed": 17,
+      "failed": 0
+    },
+    "print-audit.test.js": {
+      "exitCode": 1,
+      "total": 11,
+      "passed": 5,
+      "failed": 6
+    },
+    "print-qa-19.test.js": {
+      "exitCode": 1,
+      "total": 11,
+      "passed": 2,
+      "failed": 9
+    },
+    "question-schema.test.js": {
+      "exitCode": 1,
+      "total": 327,
+      "passed": 327,
+      "failed": 0
+    },
+    "question-type-coverage.test.js": {
+      "exitCode": 0,
+      "total": 14,
+      "passed": 14,
+      "failed": 0
+    },
+    "responsive-audit.test.js": {
+      "exitCode": 1,
+      "total": null,
+      "passed": null,
+      "failed": null
+    },
+    "responsive-breakpoint-sweep.test.js": {
+      "exitCode": 0,
+      "total": null,
+      "passed": null,
+      "failed": null
+    },
+    "save-load-audit.test.js": {
+      "exitCode": 1,
+      "total": 11,
+      "passed": 10,
+      "failed": 1
+    },
+    "scorecard-contract.test.js": {
+      "exitCode": 0,
+      "total": null,
+      "passed": null,
+      "failed": null
+    },
+    "seed-repro-extension.test.js": {
+      "exitCode": 0,
+      "total": 27,
+      "passed": 27,
+      "failed": 0
+    },
+    "seed-shuffle.test.js": {
+      "exitCode": 0,
+      "total": null,
+      "passed": null,
+      "failed": null
+    },
+    "standard-score-rollup.test.js": {
+      "exitCode": 0,
+      "total": 28,
+      "passed": 28,
+      "failed": 0
+    },
+    "streak-counter.test.js": {
+      "exitCode": 0,
+      "total": null,
+      "passed": null,
+      "failed": null
+    },
+    "takeover-regression-static.test.js": {
+      "exitCode": 0,
+      "total": 9,
+      "passed": 8,
+      "failed": 1
+    },
+    "timer-contract.test.js": {
+      "exitCode": 0,
+      "total": 25,
+      "passed": 25,
+      "failed": 0
+    }
+  }
+}
