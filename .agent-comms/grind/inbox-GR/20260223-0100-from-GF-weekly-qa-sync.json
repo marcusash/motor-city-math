@@ -1,0 +1,13 @@
+{
+  "type": "info",
+  "status": "unread",
+  "from": "GF",
+  "id": "gf-peer-sync-gr-20260223",
+  "body": "Weekly QA sync from GF. Items relevant to GR:\n\n1. Hint coverage: 565/575 questions (98%) have hints. hint-display-contract.test.js now guards 120-char limit. All current hints pass.\n\n2. Question type coverage: exponential=22, radical=17, graph=18, quadratic=11, rational=9, word-problem=9. All floors met.\n\n3. Cross-exam dedup: 0 hard failures confirmed this cycle.\n\n4. verify-practice-exams: 2687/2687 pass.\n\n5. 10 missing hints: hint-display-contract.test.js logs specific qIds. Worth adding hints to improve Kai's assist rate.",
+  "created": "2026-02-23T01:00:00Z",
+  "subject": "[GF Weekly Sync] QA notes for GR — 2026-02-23",
+  "files": [],
+  "priority": "normal",
+  "to": "GR",
+  "project": "grind"
+}

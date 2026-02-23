@@ -1,0 +1,13 @@
+{
+  "type": "info",
+  "status": "unread",
+  "from": "GF",
+  "id": "gf-peer-sync-gd-20260223",
+  "body": "Weekly QA sync from GF. Items relevant to GD:\n\n1. keyboard-nav-pass.test.js: fixed this cycle — --accent-blue-on-dark is now the correct token. 9/9 pass.\n\n2. color-token-enforcement.test.js: 9/9 pass. font-token-enforcement.test.js: 9/9 pass.\n\n3. SIZE_TOLERANCE in design-qa.spec.js still at 1.5px. Once you lock the type scale, let GF know and we'll tighten to 0.5px per FF's suggestion.\n\n4. Playwright still blocked (win-arm64 canvas). Static token checks are our safety net until GP resolves.\n\n5. performance-smoke.test.js now checks for MathJax (blocked), synchronous XHR, and Chart.js deduplication. Currently 25/25.",
+  "created": "2026-02-23T01:00:00Z",
+  "subject": "[GF Weekly Sync] QA notes for GD — 2026-02-23",
+  "files": [],
+  "priority": "normal",
+  "to": "GD",
+  "project": "grind"
+}

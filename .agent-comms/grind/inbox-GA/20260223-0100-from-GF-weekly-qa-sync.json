@@ -1,0 +1,13 @@
+{
+  "type": "info",
+  "status": "unread",
+  "from": "GF",
+  "id": "gf-peer-sync-ga-20260223",
+  "body": "Weekly QA sync from GF. Items relevant to GA:\n\n1. RISK: save-load-audit.test.js still failing (pre-existing). GA should add try/catch around importScores() and validate data.version field before assigning. See docs/agents/gf-peer-risk-brief-template.md for brief format.\n\n2. NEW: dad-view-isolation.test.js (15/15 pass) now guards _dadMode flag + _dadScores isolation. If you touch dadModeInit() or getScores(), re-run this suite.\n\n3. NEW: export-import-qa.test.js (34/34 pass) validates exportScores() schema. If export format changes, update tests/kai-scores-*.json fixture files.\n\n4. Release readiness gate: node tests/release-readiness-check.js must pass 19/19 before any motor-city-math push. Currently green.\n\n5. Regression baseline updated to 35/42. Run node tests/regression-replay.js to verify no regression after any code change.",
+  "created": "2026-02-23T01:00:00Z",
+  "subject": "[GF Weekly Sync] QA notes for GA — 2026-02-23",
+  "files": [],
+  "priority": "normal",
+  "to": "GA",
+  "project": "grind"
+}
