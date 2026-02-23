@@ -57,8 +57,23 @@ Located in `tests/f-validation/`.
 | `wcag-contrast-token-regression.test.js` | Key WCAG AA token values locked: text-primary, text-secondary, bg-page, color-correct, color-incorrect, arena tokens | 8/8 |
 | `gradeexam-feedback-voice.test.js` | gradeExam() coachMsg: 4 messages, no em dash, under 12 words ADHD limit, MCM voice, grade 4 specific | 9/9 |
 | `rp11-answer-uniqueness.test.js` | RP11: no answer 3+ times, no consecutive dups, version 2.0 string, manifest entry exists | 7/7 |
+| `exam-heading-hierarchy.test.js` | h1 present, no skipped heading levels, no empty static headings (exam.html + index.html) | 8/8 |
+| `score-history-persistence.test.js` | mcm_scores key, attempts schema (score/total/pct/grade/sections/questions/timestamp), JSON round-trip | 14/14 |
+| `shared-scripts-api.test.js` | 10 public functions, parseStudentAnswer contracts, password guard, initTimer null guard | 19/19 |
+| `exam-error-state.test.js` | Color borders, answer-feedback show class, fb.textContent, double-submit guard | 11/11 |
+| `rp11-question-type-coverage.test.js` | 9 types, all 5 core types (quadratic/exponential/radical/rational/abs-val), max 4 per type | 10/10 |
+| `css-no-important-audit.test.js` | Only KaTeX exception outside @media print, no inline style !important | 5/5 |
+| `exam-keyboard-submit.test.js` | `<button>` element, onclick gradeExam, skip link, no positive tabindex, not disabled by default | 8/8 |
+| `gradeexam-section-ordering.test.js` | 5 sections in order 1-5, Section 5 = scorecard+save, helpers delegated | 7/7 |
+| `answer-key-modal-a11y.test.js` | showAnswerKey display:block/none, password guard, role=dialog + aria-modal on modal elements | 12/12 |
+| `exam-timer-display-contract.test.js` | M:SS format, countdown (remaining--), 0:00 terminal, onTimeUp callback, aria-live assertive | 12/12 |
+| `hint-reveal-count.test.js` | All RP11 have 2-8 solution steps, non-empty, no em dash, exam.html renders solution_steps | 8/8 |
+| `index-empty-state.test.js` | Empty state CSS, motivational copy, getScores {} fallback, buildSparkline length guard | 9/9 |
+| `hint-message-diversity.test.js` | 4+ distinct openers, no em dash, no consecutive dups, non-empty | 5/5 |
+| `rp11-question-standards.test.js` | All W2/W3 standard codes valid, W2.b present, 2+ W2 + W3 standards, no domination | 7/7 |
+| `arena-mode-css-completeness.test.js` | .arena-mode overrides 5+ tokens, bg-page dark, text-primary light, JS applies class | 11/11 |
 
-**F-Validation suite total: 88 test files.** Run all at once:
+**F-Validation suite total: 101 test files.** Run all at once:
 ```powershell
 Get-ChildItem tests/f-validation -Filter "*.test.js" | ForEach-Object { node $_.FullName }
 ```
