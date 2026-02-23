@@ -1,0 +1,16 @@
+{
+  "id": "risk-brief-GF-GA-20260223",
+  "from": "GF",
+  "to": "GA",
+  "project": "mcm",
+  "type": "risk-brief",
+  "priority": "normal",
+  "subject": "QA Risk Brief — 2026-02-23",
+  "body": "GA — QA risk brief from this sprint.\n\n## New tests shipped this session\n- inline-script-syntax-check.test.js (6/6) — parses index.html, exam.html, final_exam script blocks via node --check\n- flake-registry.test.js (10/10) — flake registry schema + blocked suite report\n- test-runtime-profile.js — profiles all 33 static suites (baseline: 7.5s total, max 868ms)\n- question-type-coverage.test.js (14/14) — type coverage floors across RP1-RP9\n- seed-repro-extension.test.js (25/25) — exam_id→seed→order pipeline\n- export-import-qa.test.js (34/34) — export/import contract + score file schema\n- precommit-guard-audit.test.js (17/17) — meta-audit of pre-commit-check.js\n\n## Risks for GA\n\n1. save-load-audit.test.js FAILS: 'Corrupted localStorage → uncaught JSON.parse exception → silent failure'. The import path in index.html needs a try/catch wrapper around JSON.parse on localStorage values. This is a P2 bug — Kai loses session silently if localStorage gets corrupted.\n\n2. scorecard-contract.test.js was broken: test expected old 'score-big' template. Fixed to match id=scoreBigEl (exam.html:1049). If you change the scorecard HTML structure, update this test.\n\n3. export-import-qa: import code validates data.mcm_scores presence but NOT data.version. If you ever add a v2 format, the import won't detect the version mismatch and will silently load wrong data.\n\n## What I need from you\n\nPlease add try/catch around localStorage.parse in the load path and fix the save-load-audit failure. It's 1 line of defensive code.",
+  "files": [
+    "tests/f-validation/save-load-audit.test.js",
+    "tests/f-validation/scorecard-contract.test.js"
+  ],
+  "created": "2026-02-23T12:00:00Z",
+  "status": "unread"
+}

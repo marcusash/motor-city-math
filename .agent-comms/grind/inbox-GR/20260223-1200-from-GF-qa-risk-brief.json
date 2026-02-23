@@ -1,0 +1,16 @@
+{
+  "id": "risk-brief-GF-GR-20260223",
+  "from": "GF",
+  "to": "GR",
+  "project": "mcm",
+  "type": "risk-brief",
+  "priority": "normal",
+  "subject": "QA Risk Brief — 2026-02-23",
+  "body": "GR — QA risk brief from this sprint.\n\n## Re-verification results (from your blockers-resolved request)\n\n- cross-exam-verify.js: PASS — 0 hard failures (was 32 at audit start)\n- verify-practice-exams.js: PASS — 2687/2687\n- lint-math-json.js: 1 residual E-5 error found (rp8-q15, 123 chars). Fixed and committed. Now 0 errors, 36 W-1.\n\nAll 3 blockers confirmed resolved. Baseline is clean.\n\n## Risks for GR (question math quality)\n\n1. question-type-coverage.test.js now enforces type floors:\n   - exponential >= 15, quadratic >= 8, radical >= 10, rational >= 6, graph >= 12, word-problem >= 6\n   If you add new exams or replace questions, do not let any type drop below floor.\n\n2. question-schema.test.js: 5 failures on missing 'source_file' field in legacy questions (w2w3-*). Also 4 multi-standard assignments ('5.b & 5.c') not in standards.json. These are GI/GR territory.\n\n3. cross-exam W-3 warnings: Q9 answers too close (retake-practice-6=3.5 vs retake-practice-8=4, delta=0.50). Within tolerance but worth tracking if Kai memorizes these.\n\n## What I need from you\n\nIf you add RP10+, run verify-practice-exams.js and cross-exam-verify.js before committing. Also consider adding 'source_file' to new question entries — it's required by question-schema.test.js.",
+  "files": [
+    "tests/f-validation/question-type-coverage.test.js",
+    "tests/f-validation/question-schema.test.js"
+  ],
+  "created": "2026-02-23T12:01:00Z",
+  "status": "unread"
+}
