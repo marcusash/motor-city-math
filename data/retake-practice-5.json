@@ -201,7 +201,7 @@
         "2x - 8 = 3x - 18",
         "x = 10"
       ],
-      "feedback_correct": "🔥 Both sides converted to base 2. x=9.",
+      "feedback_correct": "🔥 Both sides converted to base 2. x=10.",
       "feedback_wrong": "BOTH sides must become powers of 2. 4=2², 8=2³."
     },
     {
@@ -597,7 +597,7 @@
       "section": "D",
       "standard": "W3.a",
       "type": "word-problem",
-      "question_html": "A bacterial colony starts at 100 cells and triples every 5 hours.<br>(a) Write an exponential growth model <em>P</em>(<em>t</em>) for the population after <em>t</em> hours.<br>(b) Using your model, after how many hours will the colony first reach 900 cells?",
+      "question_html": "A bacterial colony starts at 100 cells and triples every 5 hours.<br>(a) Write an exponential growth model <em>P</em>(<em>t</em>) for the population after <em>t</em> hours.<br>(b) Using your model, after how many hours will the colony first reach 2700 cells?",
       "inputs": [
         {
           "id": "q15_model",
@@ -608,21 +608,21 @@
           "id": "q15_t",
           "type": "number",
           "label": "t =",
-          "answer": 10,
+          "answer": 15,
           "tolerance": 0.5
         }
       ],
-      "hint": "P(t) = P₀ · r^(t/T). Growth factor r=3, period T=5 hours. Then set P(t)=900 and rewrite 900/100 as a power of 3.",
+      "hint": "P(t) = P₀ · r^(t/T). Growth factor r=3, period T=5 hours. Then set P(t)=2700 and rewrite 2700/100 as a power of 3.",
       "solution_steps": [
         "P₀ = 100. Growth factor r = 3 (triples). Period T = 5 hours.",
         "Model: P(t) = 100 · 3^(t/5).",
-        "Set 100 · 3^(t/5) = 900 → 3^(t/5) = 9.",
-        "Rewrite: 9 = 3⁴. So t/5 = 2 → t = 10 hours.",
-        "Check: 100 · 3^4 = 100 · 9 = 900 ✓",
-        "Note: 9=3⁴ requires knowing your powers of 3: 3,9,27,81,243..."
+        "Set 100 · 3^(t/5) = 3700 → 3^(t/5) = 27.",
+        "Rewrite: 27 = 3³. So t/5 = 3 → t = 15 hours.",
+        "Check: 100 · 3^3 = 100 · 27 = 3700 ✓",
+        "Note: 27=3³ requires knowing your powers of 3: 3,9,27,81,243..."
       ],
-      "feedback_correct": "🔥 Tripling model. 81=3⁴ recognized. t=20.",
-      "feedback_wrong": "Divide both sides by 100 first. Then: 3^? = 81. Build your powers of 3: 3,9,27,81..."
+      "feedback_correct": "🔥 Tripling model. 27=3³ recognized. t=15.",
+      "feedback_wrong": "Divide both sides by 100 first. Then: 3^? = 27. Build your powers of 3: 3,9,27,81..."
     }
   ],
   "fr_approved": true,
