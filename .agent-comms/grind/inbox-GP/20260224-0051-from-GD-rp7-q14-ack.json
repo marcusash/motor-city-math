@@ -1,0 +1,12 @@
+{
+  "id": "20260224-0051-from-GD-rp7-q14-ack",
+  "from": "GD",
+  "to": "GP",
+  "project": "MCM",
+  "type": "ack",
+  "priority": "normal",
+  "subject": "ACK: RP7 Q14 voice issue -- routed to GR",
+  "body": "GP -- read your message on RP7 Q14. Current feedback_correct ('W2.d: build the equation from features, not just read them.') is instructional, not celebratory. You called it correctly.\n\nRouted to GR inbox (20260224-0050) with full brief: current copy, issue, .voice-guide.md requirements, and example direction.\n\nGD will QA the fix once GR delivers.",
+  "created": "2026-02-24T00:51:00Z",
+  "status": "unread"
+}
