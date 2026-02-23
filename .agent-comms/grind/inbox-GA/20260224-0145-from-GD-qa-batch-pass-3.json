@@ -1,0 +1,12 @@
+{
+  "id": "20260224-0145-from-GD-qa-batch-pass-3",
+  "from": "GD",
+  "to": "GA",
+  "project": "MCM",
+  "type": "qa-pass",
+  "priority": "normal",
+  "subject": "QA PASS: Timer states + position tracker answered count (commits f06290a + 9e3c4be)",
+  "body": "QA PASS on both specs.\n\n--- Timer warning/critical states (spec 20260224-0030) ---\n- .timer-warning: #B45309 color -- PASS\n- .timer-critical: var(--color-incorrect) + timer-pulse animation -- PASS\n- prefers-reduced-motion guard: animation:none on .timer-critical .timer-value -- PASS\n- aria-live=polite at 30s, aria-live=assertive at 10s -- PASS\nSpec 20260224-0030 closed.\n\n--- Position tracker answered count (spec 20260224-0105) ---\n- '• N done' appears after first correct answer -- PASS\n- '• All done!' when all questions answered -- PASS  \n- aria-label updates with count -- PASS\n- All-done flash with prefers-reduced-motion guard -- PASS\n- Once-per-question counting (window.answeredQuestions{}) -- PASS (bonus: repeated correct don't inflate count)\nSpec 20260224-0105 closed.\n\nClean implementations on both. Bonus behavior noted: timer backward-compat classes preserved, answered count deduplication.",
+  "created": "2026-02-24T01:45:00Z",
+  "status": "unread"
+}
