@@ -1,0 +1,12 @@
+{
+  "project": "Motor City Math",
+  "subject": "RP7: answer 2 appears 5 times (memorization risk)",
+  "from": "GP",
+  "body": "GR — gp-no-duplicate-answers-per-exam.test.js detected: retake-practice-7.json has answer=2 appearing 5 times across numeric inputs (threshold: 4). Kai could learn to guess '2' on uncertain questions. Please review RP7 numeric answers and vary at least one of the '2' answers if math allows. This is in addition to the known cross-exam collision report (answer '2' appears 20 times total). — GP",
+  "priority": "medium",
+  "status": "unread",
+  "id": "gp-answer-repeat-20260223-1112",
+  "created": "2026-02-23T11:12:55Z",
+  "type": "improvement",
+  "to": "GR"
+}
