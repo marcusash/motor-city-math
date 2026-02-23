@@ -1072,7 +1072,6 @@
         if (hintBtn2) hintBtn2.style.display = '';
         var hintBtn3 = document.getElementById('hintBtn-' + qId + '-3');
         if (hintBtn3) hintBtn3.style.display = '';
-        if (fbEl) fbEl.textContent = 'Off target. Check the hint below.';
         // Announce auto-rescue to screen readers (GD spec: aria-live polite on rescue)
         var liveEl = document.createElement('div');
         liveEl.setAttribute('aria-live', 'polite');
@@ -1082,6 +1081,28 @@
         setTimeout(function() { if (liveEl.parentNode) liveEl.parentNode.removeChild(liveEl); }, 3000);
         var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         hints.scrollIntoView({ behavior: prefersReduced ? 'instant' : 'smooth', block: 'nearest' });
+    }
+
+    // sw-16: auto-rescue with delay. Inserts transitional message at t=800ms, reveals hint at t=1200ms.
+    // Manual hint clicks bypass this delay entirely.
+    function scheduleRescue(qId, fbEl) {
+        var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var delay1 = prefersReduced ? 0 : 800;
+        var delay2 = prefersReduced ? 0 : 1200;
+        var hints = document.getElementById('hints-' + qId);
+        if (!hints) return;
+        var msgEl = document.createElement('p');
+        msgEl.id = 'rescue-msg-' + qId;
+        msgEl.setAttribute('aria-live', 'polite');
+        msgEl.style.cssText = 'font-size:var(--text-sm,0.813rem);color:var(--text-secondary,#6E7681);margin:0 0 4px;opacity:0;transition:opacity 200ms';
+        msgEl.textContent = 'Here is a direction to try --';
+        setTimeout(function() {
+            if (document.getElementById('rescue-msg-' + qId)) return; // already added
+            hints.parentNode.insertBefore(msgEl, hints);
+            // Trigger fade-in
+            requestAnimationFrame(function() { requestAnimationFrame(function() { msgEl.style.opacity = '1'; }); });
+        }, delay1);
+        setTimeout(function() { triggerRescue(qId, fbEl); }, delay2);
     }
 
     /**
@@ -1308,7 +1329,7 @@
                 var hints = document.getElementById('hints-' + q.id);
                 if (hints) hints.style.display = '';
                 attemptCounts[q.id] = (attemptCounts[q.id] || 0) + 1;
-                if (attemptCounts[q.id] >= 3) triggerRescue(q.id, fb);
+                if (attemptCounts[q.id] >= 3) scheduleRescue(q.id, fb);
                 // Post-wrong nudge: "Next up: Q[N+1]" after 2s (not on last question, not duplicate)
                 var qIdx = examData.questions.indexOf(q);
                 if (qIdx < examData.questions.length - 1) {
