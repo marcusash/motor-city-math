@@ -416,7 +416,7 @@ function initTimer(opts) {
             timer.setAttribute('role', 'timer');
             timer.setAttribute('aria-live', 'off');
             timer.setAttribute('aria-label', 'Time remaining');
-            timer.innerHTML = '<span class="timer-icon">⏱</span> <span class="timer-value" id="timer-value"></span>';
+            timer.innerHTML = '<span class="timer-icon" aria-hidden="true">⏱</span> <span class="timer-value" id="timer-value"></span>';
             subtitle.style.display = 'flex';
             subtitle.style.justifyContent = 'space-between';
             subtitle.style.alignItems = 'center';
@@ -564,7 +564,7 @@ function initTimer(opts) {
         timerEl.setAttribute('role', 'timer');
         timerEl.setAttribute('aria-live', 'off');
         timerEl.setAttribute('aria-label', 'Time remaining');
-        timerEl.innerHTML = '<span class="timer-icon">⏱</span><span class="timer-value" id="timer-value">' + formatTime(remaining) + '</span>';
+        timerEl.innerHTML = '<span class="timer-icon" aria-hidden="true">⏱</span><span class="timer-value" id="timer-value">' + formatTime(remaining) + '</span>';
 
         // Insert into header subtitle line or after header
         var subtitle = header.querySelector('.subtitle');
