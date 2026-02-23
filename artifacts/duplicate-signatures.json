@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-22T16:25:25.614Z",
+  "generated_at": "2026-02-23T00:26:17.100Z",
   "source": "data/retake-practice-*.json",
   "duplicate_signatures": [
     {
@@ -86,37 +86,19 @@
       ]
     },
     {
-      "signature": "W2.e::1|2",
+      "signature": "W3.d::3.5",
       "items": [
         {
           "exam_id": "retake-practice-2",
-          "question_id": "rp2-q13",
-          "number": 13,
+          "question_id": "rp2-q7",
+          "number": 7,
           "standards": [
-            "W2.e"
+            "W3.d"
           ],
           "answers": [
-            1,
-            2
+            3.5
           ]
         },
-        {
-          "exam_id": "retake-practice-9",
-          "question_id": "rp9-q13",
-          "number": 13,
-          "standards": [
-            "W2.e"
-          ],
-          "answers": [
-            1,
-            2
-          ]
-        }
-      ]
-    },
-    {
-      "signature": "W3.d::1.5",
-      "items": [
         {
           "exam_id": "retake-practice-4",
           "question_id": "rp4-q4",
@@ -125,113 +107,34 @@
             "W3.d"
           ],
           "answers": [
-            1.5
+            3.5
           ]
-        },
+        }
+      ]
+    },
+    {
+      "signature": "W3.d::6",
+      "items": [
         {
-          "exam_id": "retake-practice-8",
-          "question_id": "rp8-q4",
+          "exam_id": "retake-practice-3",
+          "question_id": "rp3-q4",
           "number": 4,
           "standards": [
             "W3.d"
           ],
           "answers": [
-            1.5
-          ]
-        }
-      ]
-    },
-    {
-      "signature": "W3.d::3",
-      "items": [
-        {
-          "exam_id": "retake-practice-7",
-          "question_id": "rp7-q7",
-          "number": 7,
-          "standards": [
-            "W3.d"
-          ],
-          "answers": [
-            3
+            6
           ]
         },
         {
-          "exam_id": "retake-practice-9",
-          "question_id": "rp9-q4",
-          "number": 4,
+          "exam_id": "retake-practice-6",
+          "question_id": "rp6-q8",
+          "number": 8,
           "standards": [
             "W3.d"
           ],
           "answers": [
-            3
-          ]
-        }
-      ]
-    },
-    {
-      "signature": "W3.d::-2|2",
-      "items": [
-        {
-          "exam_id": "retake-practice-7",
-          "question_id": "rp7-q10",
-          "number": 10,
-          "standards": [
-            "W3.d"
-          ],
-          "answers": [
-            -2,
-            2
-          ]
-        },
-        {
-          "exam_id": "retake-practice-8",
-          "question_id": "rp8-q10",
-          "number": 10,
-          "standards": [
-            "W3.d"
-          ],
-          "answers": [
-            -2,
-            2
-          ]
-        },
-        {
-          "exam_id": "retake-practice-9",
-          "question_id": "rp9-q10",
-          "number": 10,
-          "standards": [
-            "W3.d"
-          ],
-          "answers": [
-            -2,
-            2
-          ]
-        }
-      ]
-    },
-    {
-      "signature": "W3.b::64",
-      "items": [
-        {
-          "exam_id": "retake-practice-7",
-          "question_id": "rp7-q11",
-          "number": 11,
-          "standards": [
-            "W3.b"
-          ],
-          "answers": [
-            64
-          ]
-        },
-        {
-          "exam_id": "retake-practice-8",
-          "question_id": "rp8-q11",
-          "number": 11,
-          "standards": [
-            "W3.b"
-          ],
-          "answers": [
-            64
+            6
           ]
         }
       ]

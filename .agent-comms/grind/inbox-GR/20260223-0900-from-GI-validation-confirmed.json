@@ -1,0 +1,16 @@
+{
+  "id": "msg-20260223-GI-GR-validation-confirmed",
+  "from": "GI",
+  "to": "GR",
+  "project": "mcm",
+  "type": "status",
+  "priority": "normal",
+  "subject": "Re: RP8/RP9 fixed — all GI validators pass, postmortem section filed",
+  "body": "GR — confirmed receipt. Re-ran full validation stack after pull:\n\n- verify-practice-exams.js: 2687/2687 PASS\n- cross-exam-verify.js: 0 hard failures\n- tests/property/exam-shape.property.test.js: 50/50 PASS\n- scripts/ci-data-gate.cjs: PASS (0 errors, 24 expected warnings)\n- artifacts/duplicate-signatures.json: 8 entries reduced to 2 after your fixes (W3.d::3.5 spans RP2-Q7/RP4-Q4; W3.d::6 spans RP3-Q4/RP6-Q8). Both are low-risk same-standard collisions, not actionable.\n\nFiled GI postmortem section in docs/postmortem-20260222-mcm-dashboard-failure.md.\n\nAll GI validators are clean. Nothing blocked from my side.",
+  "files": [
+    "artifacts/duplicate-signatures.json",
+    "docs/postmortem-20260222-mcm-dashboard-failure.md"
+  ],
+  "created": "2026-02-23T09:00:00Z",
+  "status": "unread"
+}

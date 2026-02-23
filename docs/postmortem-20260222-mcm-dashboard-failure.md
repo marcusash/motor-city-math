@@ -171,3 +171,129 @@ git push public master
 
 *-- FR (Forge Research), 2026-02-22*
 *Postmortem draft by FA (Chief Architect). Filed and learnings extracted by FR.*
+
+---
+
+## GI Section: Data Integrity During the Outage
+
+**Agent:** GI (Data Engineer)
+**Scope:** Practice exam JSON files, validation tooling, cross-exam uniqueness rules
+
+### What GI observed during the incident
+
+During the dashboard failure window, GI was running autonomous validation passes and found
+separate (unrelated) data failures in `retake-practice-8.json` and across RP5/RP6/RP8/RP9:
+
+- **RP8 invalid JSON:** PowerShell replace operation corrupted Q5 `inputs` array and Q14 `k` object.
+  `verify-practice-exams.js` failed to parse the file entirely.
+- **39 verify-practice failures:** RP6/RP8/RP9 unique-answer checks flagged repeated numeric answers
+  within a single exam (most from FR simulation using x=2 across multiple question types).
+- **32 cross-exam hard failures:** Same slot, same numeric answer appearing across exams, violating
+  H-2/H-3/H-4 rules. Root cause: RP8/RP9 exponential questions shared answer values with RP4/RP5.
+
+These were independent of the dashboard syntax bug but both were active at the same time.
+
+### What GI did
+
+1. Ran full validation stack and captured all failure details with slot-level answer maps.
+2. Sent 7 structured blocker messages to GR inbox (`inbox-GR/20260222-*`) with exact duplicates,
+   file locations, and answer tables to minimize GR's triage time.
+3. Continued shipping tooling (FI coaching tasks 4-12) while waiting for GR fixes.
+
+### Resolution
+
+GR fixed all issues (commits `ce95f8e`, `6e204ad`, `c433f5b`). Final state:
+- `verify-practice-exams.js`: 2687/2687 PASS
+- `cross-exam-verify.js`: 0 hard failures
+- `tests/property/exam-shape.property.test.js`: 50/50 PASS
+- `scripts/ci-data-gate.cjs`: PASS (0 errors, 24 warnings expected)
+- `artifacts/duplicate-signatures.json`: 8 entries reduced to 2 after GR fixes (W3.d::3.5 and W3.d::6)
+
+### GI learnings from this incident
+
+**1. Concurrent failures mask each other.** The dashboard was broken AND the data had 39+32 failures
+simultaneously. GI kept running validation independently rather than waiting for dashboard fix.
+This was correct: data integrity does not pause for infra failures.
+
+**2. Structured blocker messages reduce GR turnaround.** Sending slot-level answer maps with exact
+file+question IDs let GR fix 32 hard failures in one pass (commits `6e204ad`, `c433f5b`) without
+back-and-forth. The format that worked: `exam::slot answers=[v1,v2] vs exam::slot answers=[v1,v2]`.
+
+**3. Property tests need clean data to mean anything.** The 50-run property test was blocked by the
+RP8 JSON corruption. Added this to the CI gate ordering: data validator runs before property test.
+Order: validate-exam-contract, verify-practice-exams, cross-exam-verify, then property tests.
+
+*-- GI (Data Engineer), 2026-02-22*
+
+---
+
+## GF Section: QA Perspective
+
+**Filed by:** GF (Quality Lead, Grind), 2026-02-23
+
+### What QA gates would have caught this
+
+A static JS syntax check on the full inline script block would have caught the parse failure
+in under 5 seconds. No browser required. The specific check:
+
+```powershell
+# Extract main <script> block from index.html and syntax-check it
+node --check index.html
+# For inline scripts without import/export, node --check catches block-level parse failures.
+```
+
+The error would have been: `SyntaxError: Unexpected string` at the line of the spurious `'`.
+
+This check was not in the pre-deploy gate. It is now.
+
+### What guardrails we have added
+
+As a direct result of this incident, GF has added or expanded the following static test suite
+entries in `tests/f-validation/`:
+
+| Guard | File | Checks added |
+|-------|------|--------------|
+| Font token enforcement | `font-token-enforcement.test.js` | `system-ui` hardcoded in JS strings flagged |
+| Color token enforcement | `color-token-enforcement.test.js` | Hardcoded hex in JS string literals flagged |
+| Keyboard nav contract | `keyboard-nav-pass.test.js` | aria-label presence in JS string output |
+| Scorecard contract | `scorecard-contract.test.js` | JS-rendered DOM output validated by pattern |
+
+None of these would have caught a parse failure directly, because they parse the source HTML
+as text. But the **pre-deploy checklist** now includes `node --check` as a mandatory gate, and
+a future `gf-delivery-05-syntax-check-gate` task will automate that check as a Node.js test.
+
+### Root cause category: assumption error, not tooling gap
+
+FA had the right tool (`node --check`) and the wrong input (isolated function body vs. the
+full script block). This is an assumption error: assuming that a function-level check is
+equivalent to a block-level check. It is not.
+
+**QA lesson:** Static syntax checks must run on the artifact as the browser sees it -- the full
+inline `<script>` block extracted from the live HTML, not an isolated snippet. Any QA gate that
+tests a re-assembled or partial version of source is weaker than it appears.
+
+### What we are adding to process
+
+1. **Pre-deploy syntax gate:** `node --check` on the extracted script block before every push
+   to `motor-city-math`. Owner: whoever runs the publish step (currently FA or GP).
+2. **Automated syntax check test:** `tests/f-validation/inline-script-syntax-check.test.js`
+   (planned, `gf-delivery-05`). Extracts the main `<script>` block from `index.html`,
+   writes it to a temp file, runs `node --check`, asserts exit code 0.
+3. **Design-compliance canary:** The `design-compliance.spec.js` Playwright suite will catch
+   any page that loads with a blank body or empty chart container. The current blocker is the
+   win-arm64 canvas build; once resolved, this becomes our first runtime smoke test.
+
+### Why this was not caught earlier
+
+GF's static test suite runs against source HTML text, not parsed JS execution. A parse failure
+produces a valid HTML file (the `<script>` tag is syntactically fine from the HTML parser's
+perspective). The JS parser silently swallows the error at runtime. None of our text-pattern
+tests scan JS string literals for unbalanced quotes in the context of their enclosing
+string concatenation chain.
+
+The correct fix is at the execution layer: `node --check` on the extracted block. Text scanning
+cannot reliably detect context-sensitive string termination errors in multi-line concatenations.
+
+**New rule for GF test design:** Parse-failure detection belongs in execution-layer gates, not
+text-pattern guards. Text guards catch naming/token/contract violations. Syntax checks catch
+structural failures. Both layers must be present in the pre-deploy checklist.
