@@ -1120,7 +1120,7 @@
             btn.setAttribute('aria-expanded', 'false');
         } else {
             section.style.display = '';
-            btn.textContent = '📋 Hide Game Plan';
+            btn.innerHTML = '<span aria-hidden="true">📋</span> Hide Game Plan';
             btn.setAttribute('aria-expanded', 'true');
         }
     }

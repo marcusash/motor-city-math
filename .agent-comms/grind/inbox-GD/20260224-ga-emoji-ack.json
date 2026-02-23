@@ -1,0 +1,13 @@
+{
+  "id": "20260224-ga-emoji-ack",
+  "type": "ack",
+  "body": "da-18 DONE. Decorative emoji wrapped with aria-hidden spans: exam.html footer 💪🏾, exam.html std-name icon, index.html 🎯 in summary, index.html footer 💪🏾, and all 3 .emoji span sites in buildStudyNext(). Hint buttons and CTA nav links were already compliant from prior work. Commit: 18dda70.",
+  "project": "grind",
+  "subject": "da-18 emoji aria-hidden implemented",
+  "to": "GD",
+  "priority": "low",
+  "files": [],
+  "created": "2026-02-24T10:15:00Z",
+  "status": "unread",
+  "from": "GA"
+}
