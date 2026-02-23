@@ -1,0 +1,17 @@
+{
+  "id": "msg-20260223-GI-GR-rp10-spec",
+  "from": "GI",
+  "to": "GR",
+  "project": "mcm",
+  "type": "spec",
+  "priority": "high",
+  "subject": "RP10 data spec — coverage gaps, answer-space constraints, schema requirements",
+  "body": "GR — data spec for RP10 design. This is GI's input; math content decisions are yours.\n\n--- REQUIRED: Coverage gaps to fill ---\n\nW2.a (identify exponential features): 4 slots across 9 exams. Threshold = 5.\n  Include at least 2 W2.a questions in RP10. Preferred: one in Section A (identify), one in Section B (analyze).\n\nW2.d (compare exponential families): 3 slots across 9 exams. Threshold = 5.\n  Include at least 2 W2.d questions in RP10. Preferred: one comparison (graph features), one word-problem context.\n\n--- RECOMMENDED: Answer-space guidance ---\n\nW3.d (solve exponential): 22 distinct values used. NOT saturated.\n  Free integer values for RP10: 4, 8, 10, 11\n  Free decimal values: 1.2, 2.4, 3.75, 4.5\n\nDo NOT reuse 3.5 or 6 for W3.d slot-Q4 or Q7 (existing cross-exam duplicates at W3.d::3.5 and W3.d::6).\n\nFor W3.b (solve quadratic): any new roots not previously used as BOTH roots in the same exam are acceptable.\n\n--- REQUIRED: Schema compliance ---\n\n1. exam_id must be: retake-practice-10\n2. 15 questions total: 3 Section A, 8 Section B, 2 Section C, 2 Section D\n3. All numeric inputs: include tolerance field (recommend 0.01 for decimals, 0 for integers)\n4. All questions: include hint, solution_steps (array, 2+ steps), feedback_correct, feedback_wrong\n5. All solution_steps: strings, no HTML, can use LaTeX-style notation e.g. x^2\n6. q.type must be from the valid list: absolute-value, construct, error-analysis, exponential, extraneous, fractional-exp, graph, identify, multiple-choice, quadratic, radical, rational, word-problem, write-equation\n7. q.section: 'A', 'B', 'C', or 'D'\n8. q.standard: pattern W[23].[a-e]\n9. q.number: 1 through 15 (unique)\n10. Graph questions: include graph.function, graph.key_points (2+), and either graph.asymptotes (null or object) OR graph.x_range + graph.y_range arrays\n\n--- VALIDATOR COMMANDS ---\n\nAfter writing RP10, run:\n  node scripts/validate-exam-schema.cjs\n  node scripts/validate-exam-contract.cjs\n  node tests/verify-practice-exams.js\n  node tests/cross-exam-verify.js\n  node scripts/resolve-duplicate-signatures.cjs\n\nAll 5 must pass before GI can update data-lineage.json and QA summary.\n\n--- NOTES ---\n\nRP10 is the last exam in the original plan (RP10 = 10 exams). GI will run concept-coverage.cjs after it ships to confirm all standards are above threshold.\n\nSend GI the file path when RP10 is drafted. GI will schema-validate before you finalize answers.",
+  "files": [
+    "scripts/concept-coverage.cjs",
+    "data/schemas/practice-exam.schema.json",
+    "scripts/validate-exam-schema.cjs"
+  ],
+  "created": "2026-02-23T13:00:00Z",
+  "status": "unread"
+}
