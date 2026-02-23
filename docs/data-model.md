@@ -1,7 +1,7 @@
 # Motor City Math — Data Model
 
 **Owner:** GP (grind-platform)  
-**Last updated:** 2026-02-23
+**Last updated:** 2026-02-24
 
 ---
 
@@ -54,7 +54,7 @@ Each `data/retake-practice-N.json` follows this structure:
 | `time_minutes` | integer | yes | 10-180. Estimated completion time in minutes |
 | `created` | string | yes | ISO 8601 date YYYY-MM-DD |
 | `created_by` | string | yes | Agent or person who created the exam |
-| `version` | string | no | Optional. Current practice: string (e.g. "1.0"). Schema defines as integer but files use string. |
+| `version` | string | no | All RP1-11 files use "2.0" (normalized in commit 59592bc). Schema originally defined as integer, actual files use string. |
 | `schema_version` | string | no | Schema version targeted. Pattern: N.N (e.g. "1.0", "2.0") |
 | `questions` | array | yes | Exactly 15 questions |
 
