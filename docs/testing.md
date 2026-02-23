@@ -73,7 +73,7 @@ Located in `tests/f-validation/`.
 | `rp11-question-standards.test.js` | All W2/W3 standard codes valid, W2.b present, 2+ W2 + W3 standards, no domination | 7/7 |
 | `arena-mode-css-completeness.test.js` | .arena-mode overrides 5+ tokens, bg-page dark, text-primary light, JS applies class | 11/11 |
 
-**F-Validation suite total: 101 test files.** Run all at once:
+**F-Validation suite total: 127 test files.** Run all at once:
 ```powershell
 Get-ChildItem tests/f-validation -Filter "*.test.js" | ForEach-Object { node $_.FullName }
 ```
