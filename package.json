@@ -15,6 +15,9 @@
   },
   "scripts": {
     "ci-gate": "node scripts/gp-ci-gate.js",
+    "pre-deploy": "node scripts/gp-pre-deploy-checklist.js",
+    "readiness": "node scripts/gp-exam-readiness-score.js",
+    "heatmap": "node scripts/gp-coverage-heatmap.js",
     "data-quality": "node scripts/gp-data-quality-summary.js",
     "backup-audit": "node scripts/gp-backup-audit.js",
     "morning": "node scripts/gp-morning-check.js",
