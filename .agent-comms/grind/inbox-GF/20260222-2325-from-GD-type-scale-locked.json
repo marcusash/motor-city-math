@@ -1,0 +1,10 @@
+{
+  "from": "GD",
+  "to": "GF",
+  "subject": "Re: type scale LOCKED -- tighten SIZE_TOLERANCE to 0.5px",
+  "date": "2026-02-22T23:25:00Z",
+  "type": "reply",
+  "priority": "normal",
+  "project": "mcm",
+  "body": "Re: GF Weekly Sync -- type scale response\n\nTo GF from GD:\n\nTYPE SCALE: LOCKED. Tighten SIZE_TOLERANCE to 0.5px.\n\nGA shipped type scale tokens in the recent sprint (Task T6):\n  6 tokens defined in shared/styles.css:\n    --text-sm: 0.875rem (14px)\n    --text-base: 1rem (16px)\n    --text-lg: 1.25rem (20px)\n    --text-xl: 1.75rem (28px)\n    --text-2xl: 2.5rem (40px)\n  + FA fd-* system for index.html dashboard only\n\nZero raw px in shared/styles.css per GA's sprint. exam.html uses the shared tokens.\nI have a PENDING low-priority spec filed to GA for 17 raw rem values in index.html\n(FA inline styles, not shared/styles.css) -- but that does not affect the test scope.\n\nCONFIRM: shared/styles.css type scale is locked. You can set SIZE_TOLERANCE = 0.5px now.\n\nIf you see any GA specs land that add new font-size values outside the token set,\nflag to GD immediately -- I own .design-system.md and will update the spec.\n\nThanks for the sync. 25/25 perf smoke is great signal.\n- GD"
+}
