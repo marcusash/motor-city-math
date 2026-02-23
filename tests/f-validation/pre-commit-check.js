@@ -87,7 +87,7 @@ for (const filePath of filesToCheck) {
     var bannedCdn = 'polyfill' + '.io';
     if (content.includes(bannedCdn)) {
         // Skip self (this file contains the string as a check target)
-        if (!fileName.includes('pre-commit-check') && !fileName.includes('f-validation')) {
+        if (!fileName.includes('pre-commit-check') && !fileName.includes('f-validation') && !fileName.includes('gp-cdn-check')) {
             block(fileName, 'Contains ' + bannedCdn + ' reference — compromised CDN (B-F4)');
         }
     }
