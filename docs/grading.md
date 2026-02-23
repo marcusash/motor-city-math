@@ -59,10 +59,23 @@ gradeExam()
 
 Dollar signs (`$`) and commas (`,`) are stripped before parsing.
 
-Tolerance is per-input. Common values:
-- `0.01` — exact integer/decimal answers
-- `0.5` — large computed values (scores, prices)
-- `0.3` — graph plot points
+### Tolerance Algorithm
+
+```
+correct = Math.abs(parseStudentAnswer(raw) - answer) <= tolerance
+```
+
+Tolerance defaults to `0.05` if not specified in the input JSON. Common values:
+
+| Tolerance | Use case |
+|-----------|---------|
+| `0.01` | Exact integer or simple decimal answers |
+| `0.05` | Default — decimal answers computed to 2 sig figs |
+| `0.1` | Intercept values where rounding is expected |
+| `0.5` | Large computed values (depreciation, prices, compound interest) |
+| `0.3` | Graph plot points (pixel-to-coordinate conversion has rounding) |
+
+The `plus_minus` field allows two intercepts to be submitted in either order. When `plus_minus: true`, grader checks both `{x1=a, x2=b}` and `{x1=b, x2=a}` as correct.
 
 ---
 
@@ -79,14 +92,25 @@ Returns: `{ correct: number, total: number, asymptoteCorrect: boolean }`
 
 ## Hint System (3-Layer Progressive Disclosure)
 
-| Layer | Trigger | Content |
-|-------|---------|---------|
-| L1 | User clicks HINT | `q.hint` (strategy hint) |
-| L2 | User clicks SHOW ANSWER | Correct answer values |
-| L3 | User clicks SOLUTION STEPS | `q.solution_steps` (worked example) |
-| AUTO | 3rd wrong attempt | All layers revealed immediately |
+| Layer | Trigger | Content | Button text |
+|-------|---------|---------|-------------|
+| L1 | User clicks HINT | `q.hint` (strategy/nudge, max 120 chars) | `💡 HINT` |
+| L2 | User clicks SHOW ANSWER | Correct answer values displayed | `📖 SHOW ANSWER` |
+| L3 | User clicks SOLUTION STEPS | `q.solution_steps` (worked example) | `📝 SOLUTION STEPS` |
+| AUTO | 3rd wrong attempt | All layers revealed immediately | n/a (auto) |
 
-Auto-rescue (3rd wrong attempt) uses `triggerRescue()`. Terminal state per question — cannot un-rescue.
+Layers are progressive: L1 must be viewed before L2 appears, L2 before L3. Auto-rescue shows all at once via `triggerRescue()`. Terminal state per question (cannot un-rescue).
+
+Each hint button uses `aria-expanded` (WCAG 4.1.2). Layer 1 button: `aria-expanded="false"` initially, `"true"` after click. Auto-rescue fires a sr-only `aria-live="polite"` announcement: "Hint revealed. Check below."
+
+Hint data format:
+```json
+{
+  "hint": "Set f(x)=0 and solve for x.",
+  "solution_steps": ["Step 1: ...", "Step 2: ...", "Step 3: ..."]
+}
+```
+`hint` = Layer 1 (L1). Layer 2 content is generated at runtime from the answer values. `solution_steps` = Layer 3 content (rendered as numbered list).
 
 ---
 

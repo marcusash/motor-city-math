@@ -48,19 +48,50 @@ node tests/cross-exam-verify.js
 
 `tests/cross-exam-verify.js` — checks for answer collisions ACROSS all exams. Prevents Kai from memorizing answer patterns.
 
-Output:
-- **Hard failure** (H): Same answer appears in too many exams. Must fix before shipping.
+Output format:
+```
+[H] HARD FAILURE: answer "5" (numeric) appears in 8/11 exams (threshold: 6)
+[I] INFO: answer "quadratic" (dropdown) appears in 9/11 exams — common, expected
+```
+- **Hard failure** (H): Same answer appears above the threshold (varies by type). Must fix before shipping.
 - **Info** (I): Same answer template used widely. Advisory only.
+- Types checked: numeric, dropdown/mc (by value), graph (by coordinate set)
 - Baseline: 0 hard failures.
 
 ### Practice Exam Verification
 
 `tests/verify-practice-exams.js` — verifies all RP1-11 exams for:
-- Required fields present
-- answer/tolerance format
-- solution_steps count
-- feedback_correct/wrong length
+- Required fields present (`id`, `number`, `section`, `standard`, `type`, `hint`, `feedback_correct`, `feedback_wrong`)
+- answer/tolerance format (number inputs must have numeric answers, dropdowns must have string answers)
+- solution_steps count (must have 2+ steps)
+- feedback_correct/wrong length (max 80 / max 120 chars)
 - Baseline: 3008/3008 checks.
+
+### Schema Guard (localStorage)
+
+`tests/f-validation/localstorage-schema-guard.test.js` — auto-discovers all HTML files and:
+- Checks each for localStorage usage
+- Confirms key is `mcm_scores` (not a legacy key)
+- Verifies round-trip get/set shape for the mcm_scores structure
+- Auto-discovers files via `glob('**/*.html')` — no hardcoded list
+- Baseline: 62/62 checks.
+
+### Save/Load Key Format
+
+`tests/f-validation/save-load-audit.test.js` — verifies the mcm_scores key format:
+```
+mcm_scores: {
+  "mcm-{exam_id}": {
+    score: number,
+    outOf: number,
+    pct: number,
+    grade: 1|2|3|4,
+    timestamp: string (ISO),
+    locked: boolean
+  }
+}
+```
+Each exam writes to its own sub-key `mcm-{exam_id}`. Index reads the entire blob and iterates sub-keys. Baseline: 4/4.
 
 ---
 

@@ -112,6 +112,23 @@ Each `data/retake-practice-N.json` follows this structure:
 | `y_range` | array | no | `[min, max]` viewport y bounds (used in RP6+) |
 | `asymptotes` | object | no | `{vertical: [], horizontal: []}`. Optional; null is valid. Used in RP1-7 format. |
 
+### Graph Coordinate System
+
+The canvas renderer maps math coordinates to pixel space. Default viewport is x=[-5,5], y=[-5,5] unless overridden by `x_range`/`y_range`.
+
+Coordinate conventions:
+- `(0, 0)` is the center of the canvas
+- Positive x goes right, positive y goes up (standard math orientation)
+- Grid lines every 1 unit; minor gridlines at 0.5 unit intervals
+- Key points `[x, y]` are in math coordinates, not pixel coordinates
+
+When Kai clicks or uses keyboard to place a point:
+1. Pixel click position is converted to math coordinates
+2. Coordinate is snapped to nearest 0.25 grid unit (prevents off-grid placements)
+3. Point is accepted if `|student_x - key_x| <= tolerance` AND `|student_y - key_y| <= tolerance`
+
+Axis labels come from `x_axis_label` and `y_axis_label` if present; defaults are "x" and "y".
+
 ### Question Types
 
 Valid values for `questions[].type` (14 types):
