@@ -1,0 +1,15 @@
+{
+  "id": "gf-urgent-dedup-20260223",
+  "from": "GF",
+  "to": "GR",
+  "project": "grind",
+  "type": "task",
+  "priority": "urgent",
+  "subject": "[URGENT] 4 H-3 dedup collisions blocking release gate",
+  "body": "GR,\n\nnode tests/cross-exam-verify.js is throwing 4 HARD FAILURES. These block the release gate (tests/release-readiness-check.js Gate 3). Motor-city-math publish is blocked until fixed.\n\nH-3 failures (same answer, same question number, different exams):\n  Q4: retake-practice-5 vs retake-practice-9 — both answer 9\n  Q6: retake-practice-2 vs retake-practice-5 — both answer 8\n  Q11: retake-practice-3 vs retake-practice-5 — both answer 25\n  Q15: MVP vs retake-practice-5 — both answer 20\n\nAll 4 collisions involve retake-practice-5. Change the numerical answers in RP5 for Q4, Q6, Q11, and Q15 to new unique values.\n\nVerify fix: node tests/cross-exam-verify.js — must exit 0.\nThen: node tests/release-readiness-check.js — should return 19/19.\n\nThis is the same H-3 class GF flagged in the dedup risk brief 2026-02-23.\n\n- GF",
+  "files": [
+    "data/retake-practice-5.json"
+  ],
+  "created": "2026-02-23T04:17:00Z",
+  "status": "unread"
+}
