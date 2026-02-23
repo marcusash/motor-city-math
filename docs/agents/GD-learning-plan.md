@@ -171,3 +171,66 @@ Research: Detroit Pistons brand evolution and what it means for MCM.
 
 ### Next Skills Focus: T16 (ADHD + timing research)
 5 peer-reviewed findings on ADHD + UI timing. Real research, not just WCAG. Planned for next session.
+
+---
+
+## Session 4 Update (Feb 22, 2026 - Evening)
+
+### Autonomous Sprint Delivery (Sprint 4)
+
+Marcus re-activated autonomous mode. Directives: Forge TUI design language, postmortem, zero idle.
+
+**Key lessons this session:**
+
+#### 1. TUI -> Web Translation
+Studied FD's Forge TUI design language (--fd-* tokens, dark-first design). Mapped 8 TUI principles to MCM web context:
+- Dark by default: fd-bg (#0d1117) correct. This is the medium, not a mode.
+- Sparse animation: correct-pulse (320ms) and score reveal are the ONLY animations. Both functional. No decoration.
+- Feedback at point of action: correct-pulse glow on input (not below it) = correct TUI alignment.
+- Hierarchy through weight: exam.html needs weight differentiation at text-lg vs text-sm levels.
+
+#### 2. WCAG and Scale
+Audited all FD token values on dark backgrounds. --fd-text-3 (#6E7681) fails on all dark surfaces (3.52-4.12:1). Fix: #7D8590. Filed to GA.
+
+Found: canvas elements have no aria-label or tabindex. WCAG 2.1.1 failure. Filed full keyboard spec to GA (P2).
+
+Found: ALL exam inputs have `<label>` without `for=""`. WCAG 4.1.2 failure. 3-line fix. Filed to GA (P2).
+
+#### 3. Spec Quality
+This session produced 8 GA specs vs 6 last session. Each spec now includes:
+- Why (cognitive rationale or WCAG citation)
+- Full implementation code (not pseudocode)
+- Edge cases (5+ per spec)
+- Exact accept criteria (checkbox format)
+- Scope boundary (what file, what function)
+
+This format is modeled on GA's existing code patterns to minimize interpretation gaps.
+
+#### 4. Design System Documentation
+Added Section 16 to .design-system.md: 5 accessibility patterns discovered this sprint.
+Key rule added: aria-label specs must provide exact string templates (postmortem lesson from P1 outage).
+
+### Specs Filed This Session (8 to GA, 1 to GR)
+| Spec | Type | Priority |
+|------|------|----------|
+| --fd-text-3 WCAG fix (#7D8590) | Bug | P2 |
+| Correct-answer pulse animation | Feature | Medium |
+| Position tracker (Q3 of 15) | Feature | Medium |
+| Post-wrong nudge ("Next up: Q4") | Feature | Medium |
+| label for= on all inputs | Bug | P2 |
+| Scorecard progressive disclosure | Feature | Medium |
+| Typography token gap (17 raw rems) | Audit | Low |
+| Canvas keyboard navigation | Feature | P2 |
+| Exam title voice spec (to GR) | Copy | Low |
+
+### Audit Results This Session
+| Surface | Finding | Status |
+|---------|---------|--------|
+| dad.html | All colors pass (white 19:1, #aaa 8:1, link 9:1) | PASS |
+| exam.html 375px | Layout, touch targets, canvas scale all correct | PASS |
+| shared/styles.css tokens | 2 hardcoded #C8102E in answer-key section | Filed low |
+| exam inputs `<label>` | Missing for= on all 3 input types | Filed P2 |
+| exam canvas | No tabindex, no aria-label, click-only | Filed P2 |
+| --fd-text-3 | 3.77:1 on fd-card FAIL (needs #7D8590) | Filed P2 |
+
+### FD Coaching Status: 25/25 submitted. Awaiting grades.
