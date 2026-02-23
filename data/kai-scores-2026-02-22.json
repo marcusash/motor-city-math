@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exported": "2026-02-22T06:26:22.488Z",
+  "exported": "2026-02-22T22:00:02.263Z",
   "student": "Kai",
   "mcm_scores": {
     "mcm-nonlinear-exam-mvp": {
@@ -159,6 +159,117 @@
       "best": {
         "score": 15,
         "pct": 100,
+        "grade": 4
+      }
+    },
+    "mcm-retake-practice-4": {
+      "attempts": [
+        {
+          "score": 14,
+          "total": 15,
+          "pct": 93,
+          "grade": 4,
+          "sections": {
+            "A": {
+              "score": 3,
+              "total": 3
+            },
+            "B": {
+              "score": 7,
+              "total": 8
+            },
+            "C": {
+              "score": 2,
+              "total": 2
+            },
+            "D": {
+              "score": 2,
+              "total": 2
+            }
+          },
+          "questions": {
+            "rp4-q1": {
+              "correct": true,
+              "type": "identify",
+              "standard": "W2.b"
+            },
+            "rp4-q2": {
+              "correct": true,
+              "type": "identify",
+              "standard": "W2.b"
+            },
+            "rp4-q3": {
+              "correct": true,
+              "type": "identify",
+              "standard": "W2.b"
+            },
+            "rp4-q4": {
+              "correct": true,
+              "type": "exponential",
+              "standard": "W3.d"
+            },
+            "rp4-q5": {
+              "correct": true,
+              "type": "quadratic",
+              "standard": "W3.b"
+            },
+            "rp4-q6": {
+              "correct": true,
+              "type": "radical",
+              "standard": "W3.b"
+            },
+            "rp4-q7": {
+              "correct": true,
+              "type": "exponential",
+              "standard": "W3.d"
+            },
+            "rp4-q8": {
+              "correct": true,
+              "type": "rational",
+              "standard": "W3.c"
+            },
+            "rp4-q9": {
+              "correct": true,
+              "type": "radical",
+              "standard": "W3.b"
+            },
+            "rp4-q10": {
+              "correct": true,
+              "type": "extraneous",
+              "standard": "W3.e"
+            },
+            "rp4-q11": {
+              "correct": false,
+              "type": "fractional-exp",
+              "standard": "W3.b"
+            },
+            "rp4-q12": {
+              "correct": true,
+              "type": "graph",
+              "standard": "W2.c"
+            },
+            "rp4-q13": {
+              "correct": true,
+              "type": "graph",
+              "standard": "W2.e"
+            },
+            "rp4-q14": {
+              "correct": true,
+              "type": "multiple-choice",
+              "standard": "W3.a"
+            },
+            "rp4-q15": {
+              "correct": true,
+              "type": "word-problem",
+              "standard": "W3.a"
+            }
+          },
+          "timestamp": "2026-02-22T21:59:26.161Z"
+        }
+      ],
+      "best": {
+        "score": 14,
+        "pct": 93,
         "grade": 4
       }
     }
