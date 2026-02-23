@@ -1,0 +1,98 @@
+{
+  "id": "w2b-microdrill",
+  "standard": "W2.b",
+  "version": 1,
+  "questions": [
+    {
+      "id": "w2b-d-q1",
+      "number": 1,
+      "standard": "W2.b",
+      "type": "exponential",
+      "question_html": "<p>Find the x-intercept of <strong>f(x) = 2<sup>x</sup> &minus; 2048</strong>.</p>",
+      "inputs": [
+        { "id": "w2b-d-q1-a", "type": "number", "label": "x =", "answer": 11 }
+      ],
+      "hint": "Set f(x) = 0. Express 2048 as a power of 2.",
+      "solution_steps": [
+        "Set 2^x = 2048",
+        "2048 = 2^11",
+        "x = 11"
+      ],
+      "feedback_correct": "🔥 Converted 2048 to 2^11. Intercept found.",
+      "feedback_wrong": "Set 2^x = 2048. Convert: 2048 = 2^11."
+    },
+    {
+      "id": "w2b-d-q2",
+      "number": 2,
+      "standard": "W2.b",
+      "type": "quadratic",
+      "question_html": "<p>Find the <strong>larger</strong> x-intercept of <strong>f(x) = x<sup>2</sup> &minus; 2x &minus; 143</strong>.</p>",
+      "inputs": [
+        { "id": "w2b-d-q2-a", "type": "number", "label": "x =", "answer": 13 }
+      ],
+      "hint": "Factor: find two numbers that multiply to -143 and add to -2.",
+      "solution_steps": [
+        "Factor: (x - 13)(x + 11) = 0",
+        "x = 13 or x = -11",
+        "Larger intercept: x = 13"
+      ],
+      "feedback_correct": "🔥 Factored (x-13)(x+11). Larger root found.",
+      "feedback_wrong": "Factor (x-13)(x+11)=0. Larger root: x=13."
+    },
+    {
+      "id": "w2b-d-q3",
+      "number": 3,
+      "standard": "W2.b",
+      "type": "absolute-value",
+      "question_html": "<p>Find the <strong>larger</strong> x-intercept of <strong>f(x) = |x &minus; 15| &minus; 6</strong>.</p>",
+      "inputs": [
+        { "id": "w2b-d-q3-a", "type": "number", "label": "x =", "answer": 21 }
+      ],
+      "hint": "Set |x-15|=6. Two cases: x-15=6 or x-15=-6.",
+      "solution_steps": [
+        "|x - 15| = 6",
+        "Case 1: x - 15 = 6 → x = 21 (larger)",
+        "Case 2: x - 15 = -6 → x = 9 (smaller)"
+      ],
+      "feedback_correct": "🔥 Two cases solved. Larger root identified.",
+      "feedback_wrong": "Set |x-15|=6. Case 1: x=21. Case 2: x=9."
+    },
+    {
+      "id": "w2b-d-q4",
+      "number": 4,
+      "standard": "W2.b",
+      "type": "rational",
+      "question_html": "<p>Find the x-intercept of <strong>f(x) = (x &minus; 19) / (x + 5)</strong>.</p>",
+      "inputs": [
+        { "id": "w2b-d-q4-a", "type": "number", "label": "x =", "answer": 19 }
+      ],
+      "hint": "Set the numerator equal to 0. Check the denominator is not 0.",
+      "solution_steps": [
+        "Set x - 19 = 0",
+        "x = 19",
+        "Check: 19 + 5 = 24 ≠ 0, so x = 19 is valid"
+      ],
+      "feedback_correct": "🔥 Numerator = 0. Domain check passed.",
+      "feedback_wrong": "Set numerator x-19=0. Solve: x=19."
+    },
+    {
+      "id": "w2b-d-q5",
+      "number": 5,
+      "standard": "W2.b",
+      "type": "radical",
+      "question_html": "<p>Find the x-intercept of <strong>f(x) = &radic;(x &minus; 9) &minus; 4</strong>.</p>",
+      "inputs": [
+        { "id": "w2b-d-q5-a", "type": "number", "label": "x =", "answer": 25 }
+      ],
+      "hint": "Set f(x) = 0. Isolate the radical, then square both sides.",
+      "solution_steps": [
+        "√(x - 9) = 4",
+        "x - 9 = 16",
+        "x = 25",
+        "Check: √(25-9) = √16 = 4 ✓"
+      ],
+      "feedback_correct": "🔥 Isolated radical. Squared. x = 25.",
+      "feedback_wrong": "Isolate: √(x-9)=4. Square: x-9=16 → x=25."
+    }
+  ]
+}
