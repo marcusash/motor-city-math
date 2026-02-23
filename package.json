@@ -8,5 +8,13 @@
     "pdfjs-dist": "^3.11.174",
     "playwright": "^1.58.2",
     "tesseract.js": "^7.0.0"
+  },
+  "scripts": {
+    "verify:cross": "node tests/cross-exam-verify.js",
+    "audit:fields": "node scripts/gp-rp-field-audit.js",
+    "test:gp": "node tests/gp-field-completeness.test.js && node tests/gp-answer-uniqueness.test.js && node tests/gp-solution-steps.test.js && node tests/gp-feedback-length.test.js && node tests/gp-manifest-integrity.test.js",
+    "audit:feedback": "node tests/gp-feedback-length.test.js",
+    "audit:all": "node tests/verify-practice-exams.js && node tests/cross-exam-verify.js && node scripts/gp-rp-field-audit.js && node tests/gp-field-completeness.test.js && node tests/gp-feedback-length.test.js",
+    "verify": "node tests/verify-practice-exams.js"
   }
 }
