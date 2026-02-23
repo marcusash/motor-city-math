@@ -453,3 +453,56 @@ New directory: `docs/agents/gd-design-references/` — 5 files:
 - `craft-foundations.md`: spacing grid, card system, typography, token systems
 - `interaction-visual-clarity.md`: animation standards, feedback states, anti-patterns, dark mode, contrast hierarchy
 - `spec-writing.md`: mandatory format, state machine template, priority levels, filing protocol
+
+---
+
+## Session 8 Update — Skill Research Sprint
+
+### Research Completed
+
+**GR Learning Plan — 3 design-relevant lessons:**
+1. Spec quality: GR baselines against the generation brief, not discovery. GD must include generation brief filename in content specs so GR can compare directly.
+2. Hint uniqueness: Within-exam hint uniqueness matters as much as cross-exam. Hints must use distinct values, not repeat "value 2" across multiple questions.
+3. Error analysis: GR cannot design for specific wrong answers without error-type documentation. GD's future specs for hint-layer design should include expected error types per question type.
+
+**Kat Holmes — Mismatch (2018):**
+
+Core thesis: exclusion happens when products don't match user abilities, not the reverse. ADA = legal minimum (retrofit). Mismatch = proactive, starts from diverse users.
+
+MCM implications:
+1. Clarity over density: remove clutter, progressive disclosure. ADHD = executive function under load. MCM's 3-tier hint system is correct. Scorecard summary (one number first, then detail) is correct.
+2. Immediate feedback: MCM's inline correct/wrong feedback (not page-level) is aligned. Auto-rescue at 3 wrong attempts is aligned.
+3. Flexible pacing: MCM timer shows remaining time (PASS). But no way to pause mid-exam — a mismatch for Kai on a hard day.
+
+New gap identified: no exam pause/resume. This is a Mismatch-level gap. Kai should be able to stop and come back. (Requires GA spec — future sprint.)
+
+**Khan Academy Design — 5 distinctive choices:**
+1. Muted palette + accent: Cool grays reduce stimulation; bright green highlights progress
+2. Generous spacing and sans-serif: Reduces reading friction for varied learners
+3. Mastery-based checkmarks: Visual completion (green checks) = intrinsic motivation
+4. Conversational tone: Informal voice reduces learning anxiety
+5. Micro-interactions: Hover states and animations reward engagement without distraction
+
+MCM comparison:
+- Palette: MCM uses bold Pistons Red/Blue — different philosophy (attitude vs calm). Both valid for different audiences.
+- Spacing: MCM 4px grid is comparable. Typography tokens match.
+- Mastery: MCM doesn't have mastery checkmarks per question — only pass/fail on whole exam. Future gap.
+- Tone: MCM coach voice is stronger than KA's conversational. Right for a 15-year-old who responds to competition framing.
+- Micro-interactions: MCM has correct-pulse (320ms), autosave toast, sparklines. Comparable.
+
+**Contrast hierarchy confirmed (4 levels):**
+| Level | Ratio | Use |
+|-------|-------|-----|
+| Foreground | 7:1+ | Primary text, question body |
+| Secondary | 4.5:1 | Labels, feedback copy |
+| Muted | 3.5:1 | Timestamps, metadata |
+| Faint | 2.5:1 | Decorative elements only |
+
+**Anti-slop self-audit (5 patterns checked against MCM):**
+1. Drop shadows on cards: MCM uses `box-shadow: 0 1px 4px rgba(0,0,0,0.1)` -- 1px, subtle. PASS.
+2. Large border-radius on small elements: MCM uses `border-radius: 8px` on cards. Acceptable. PASS.
+3. Pure white cards on light backgrounds: Dashboard cards are `var(--bg-surface)` not pure white. PASS.
+4. Thick decorative borders: Jersey stripe is intentional brand, not decoration. PASS.
+5. Bounce/spring animations: Only ease-out cubic-bezier in MCM. No spring. PASS.
+
+Anti-slop: all 5 checked PASS in current MCM implementation.

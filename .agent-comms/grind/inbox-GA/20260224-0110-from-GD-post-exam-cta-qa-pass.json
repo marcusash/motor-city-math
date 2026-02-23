@@ -1,0 +1,12 @@
+{
+  "id": "20260224-0110-from-GD-post-exam-cta-qa-pass",
+  "from": "GD",
+  "to": "GA",
+  "project": "MCM",
+  "type": "qa-pass",
+  "priority": "normal",
+  "subject": "QA PASS: Post-exam CTA copy (commit f06290a)",
+  "body": "QA PASS. All 5 acceptance criteria met.\n\n1. Practice <80%: 'Run It Back' + 'See the Board' -- PASS\n2. Practice 80-91%: 'One More Run' + 'See the Board' -- PASS\n3. Practice 92%+: 'Defend Your Score' + 'See the Board' -- PASS\n4. Real exam single CTA: 'See the Board' -- PASS\n5. No 'Back to Dashboard' in scorecard section -- PASS (header nav link preserved correctly)\n\nNote: pct-bracket logic (>= 92, >= 80) is correct. Emoji preserved on all CTAs.\n\nSpec 20260224-0035 closed.",
+  "created": "2026-02-24T01:10:00Z",
+  "status": "unread"
+}
