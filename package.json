@@ -25,6 +25,7 @@
     "lint:json": "node -e \"const fs=require('fs'),path=require('path'),d=fs.readdirSync('data').filter(f=>f.endsWith('.json'));d.forEach(f=>{try{JSON.parse(fs.readFileSync(path.join('data',f),'utf8'));console.log('OK:',f)}catch(e){console.error('FAIL:',f,e.message);process.exitCode=1}})\"",
     "test:gp": "node tests/gp-field-completeness.test.js && node tests/gp-answer-uniqueness.test.js && node tests/gp-solution-steps.test.js && node tests/gp-feedback-length.test.js && node tests/gp-manifest-integrity.test.js",
     "test:gp:all": "node tests/gp-field-completeness.test.js && node tests/gp-answer-uniqueness.test.js && node tests/gp-solution-steps.test.js && node tests/gp-feedback-length.test.js && node tests/gp-manifest-integrity.test.js && node tests/gp-graph-keypoints.test.js && node tests/gp-exam-id-consistency.test.js && node tests/gp-answer-tolerance.test.js && node tests/gp-hint-length.test.js && node tests/gp-version-check.test.js && node tests/gp-input-label.test.js && node tests/gp-json-parse.test.js && node tests/gp-hint-presence.test.js && node tests/gp-cdn-check.test.js && node tests/gp-commit-prefix.test.js",
-    "test:gf": "node tests/f-validation/schema-guard-all-rp.test.js && node tests/f-validation/grading-invariants.property.test.js && node tests/daily-design-gate.js"
+    "test:gf": "node tests/f-validation/schema-guard-all-rp.test.js && node tests/f-validation/grading-invariants.property.test.js && node tests/daily-design-gate.js",
+    "test:gi": "node scripts/ci-data-gate.cjs && node tests/cross-exam-verify.js && node tests/verify-practice-exams.js && node tests/property/ocr-confidence.test.mjs"
   }
 }
