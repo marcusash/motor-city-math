@@ -506,3 +506,55 @@ MCM comparison:
 5. Bounce/spring animations: Only ease-out cubic-bezier in MCM. No spring. PASS.
 
 Anti-slop: all 5 checked PASS in current MCM implementation.
+
+---
+
+## Session 8 Research Sprint — Ed-Tech UI Comparisons
+
+### Desmos (free-response math input)
+3 UX choices that make Desmos effective:
+1. Real-time visual feedback: equations render as you type. No "submit and wait."
+2. Syntax-aware parsing: multiple input formats accepted -- less "wrong format" frustration.
+3. Persistent input: expression stays visible while reasoning, no re-typing.
+
+MCM implication: MCM's free-response text inputs don't validate format in real-time. This is fine for algebra (not interactive graphing), but worth flagging for any future equation-builder feature.
+
+### Quizlet (flashcard feedback)
+Quizlet's wrong-answer pattern: show correct answer + learning context, allow retry rather than lockout. Emphasize learning pathways over penalty.
+
+MCM comparison: MCM's auto-rescue (3 wrong -> hint) is closer to Quizlet's model than a pure punitive exam. This is the right call.
+
+### Cognitive Load Theory (working memory, online testing)
+Two key findings:
+1. Split-attention effect: simultaneous demands (read question + calculate + manage UI) reduce working memory. MCM mitigation: one question per viewport scroll, minimal nav chrome.
+2. Sustained attention depletes every 15-20 minutes. For 15-question exams: mini-break signals (position tracker 'All done!' is one, but mid-exam check-ins may help for students with ADHD).
+
+New gap identified: No mid-exam break signal for long sessions. 15 questions in one sitting may exceed Kai's sustained attention on a hard day. Future spec: optional "take a breath" prompt at question 8 (halfway).
+
+### Color and ADHD -- Critical Finding
+Research finding: bright, saturated colors are overstimulating for many ADHD users. Can trigger attention fragmentation and fatigue.
+
+Evidence-based guideline: use desaturated, cooler tones for UI chrome. Reserve high-saturation accents for critical feedback only.
+
+**MCM assessment:** Pistons Red (#C8102E) appears in:
+- Jersey stripe (dashboard header): decorative, low saturation in context -- ACCEPTABLE
+- Incorrect feedback highlight: high saturation as critical signal -- CORRECT use
+- Pistons Red text on dark: FAIL (contrast) -- already prohibited in .design-system.md
+
+**Conclusion:** MCM's current use of #C8102E is actually aligned with ADHD best practice: accent/signal use, not UI chrome. The blue (#1D42BA) appears more in card borders and navigation -- also accent use. The background is dark (#0d1117) or light neutral -- correct.
+
+**Caveat:** This is training-knowledge research, not peer-reviewed synthesis. For 1:1 Marcus discussion, ask FR to validate against actual ADHD research. Pistons brand is Marcus's call regardless.
+
+### IXL Math (progress tracking)
+IXL uses:
+1. Mastery badges (gold) vs practice meter (lighter blue) -- separate visual systems for mastery vs practice
+2. XP-style points for engagement (gamification layer)
+3. Skill tree visualization (hierarchical growth)
+
+MCM vs IXL: MCM shows score + grade (1-4) per exam. No persistent mastery tracker across exams. IXL's skill tree would require a backend. Not currently in scope. But note: future dashboard could show "W2.b: 3/3 exams passed" as a lightweight mastery signal.
+
+### Pistons Brand 2023-2026
+Retained classic red/blue but modernized: cleaner type, contemporary spacing, Cade Cunningham era = "youthful energy." MCM's bold personality is aligned with this direction. Jersey stripe card design echoes modern Pistons rebrand.
+
+### Research sources note
+All research above is from training knowledge, not web research. FR should validate ADHD-color finding before any brand palette changes are proposed to Marcus.
