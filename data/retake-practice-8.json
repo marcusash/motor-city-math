@@ -94,7 +94,7 @@
       "section": "A",
       "standard": "W3.a",
       "type": "absolute-value",
-      "question_html": "Solve: \\( |2x + 14| - 3 = 5 \\). Write BOTH equations before entering answers.",
+      "question_html": "Solve: \\( |-2x + 4| - 16 = 0 \\). Write BOTH equations before entering answers.",
       "inputs": [
         {
           "id": "q3_cases",
@@ -105,25 +105,27 @@
           "id": "q3_x1",
           "type": "number",
           "label": "Smaller x =",
-          "answer": -11,
+          "answer": -6,
           "tolerance": 0.05
         },
         {
           "id": "q3_x2",
           "type": "number",
           "label": "Larger x =",
-          "answer": -3,
+          "answer": 10,
           "tolerance": 0.05
         }
       ],
-      "hint": "Isolate the absolute value first. Then write the positive AND negative case.",
+      "hint": "Factor out: |-2x+4| = 2|x-2|. Isolate: 2|x-2|=16, then |x-2|=8. Two cases: (x-2)=8 OR -(x-2)=8.",
       "solution_steps": [
-        "Isolate: |2x+14| = 8.",
-        "Case 1 (positive): 2x+14=8 → 2x=-6 → x=-3.",
-        "Case 2 (negative): -(2x+14)=8 → 2x+14=-8 → 2x=-22 → x=-11.",
-        "Check: |2(-3)+14|-3=|-6+14|-3=8-3=5 ✓ and |2(-11)+14|-3=|-22+14|-3=8-3=5 ✓"
+        "Isolate: |-2x+4| = 16.",
+        "Key insight: |-2x+4| = 2|x-2| — negative coefficient inside becomes positive in factored form.",
+        "So 2|x-2| = 16 → |x-2| = 8.",
+        "Case 1 (positive): x-2=8 → x=10.",
+        "Case 2 (negative): -(x-2)=8 → x-2=-8 → x=-6.",
+        "Check: |-2(10)+4|-16 = |-16|-16 = 0 ✓ and |-2(-6)+4|-16 = |16|-16 = 0 ✓"
       ],
-      "feedback_wrong": "Isolate first: |2x+14|=8. Case 1: 2x+14=8 → x=-3. Case 2: -(2x+14)=8 → x=-11."
+      "feedback_wrong": "Factor out the negative: |-2x+4|=2|x-2|. Isolate: 2|x-2|=16 → |x-2|=8. Case 1: x=10. Case 2: x=-6."
     },
     {
       "id": "rp8-q4",
@@ -569,30 +571,30 @@
       "section": "D",
       "standard": "W3.a",
       "type": "word-problem",
-      "question_html": "A bacteria colony starts with 50 bacteria at t=0. At t=4 hours there are 800 bacteria.<br><br>(a) Write the model P(t) = P₀ · r^t.<br>(b) At what time t will the population reach 25,600?",
+      "question_html": "A radioactive sample starts at 6400g and loses half its mass every 3 years.<br><br>(a) Write a decay model A(t) for the amount remaining after t years.<br>(b) How many years until only 100g remain?",
       "inputs": [
         {
           "id": "q15_model",
           "type": "text",
-          "label": "(a) P(t) ="
+          "label": "(a) A(t) ="
         },
         {
           "id": "q15_t",
           "type": "number",
           "label": "(b) t =",
-          "answer": 9,
+          "answer": 18,
           "tolerance": 0.1
         }
       ],
-      "hint": "Find r first: 50·r⁴=800. Solve for r, then write your model.",
+      "hint": "Half-life form: A(t) = A₀·(0.5)^(t/T) where T is the half-life. Set A(t)=100 and use the one-to-one property.",
       "solution_steps": [
-        "P₀=50. Model: P(t)=50·r^t.",
-        "P(4)=800: 50·r⁴=800 → r⁴=16=2⁴ → r=2.",
-        "Model: P(t) = 50·2^t.",
-        "When P=25600? 50·2^t=25600 → 2^t=512=2⁹ → t=9 hours.",
-        "Check: 50×512=25600 ✓"
+        "A₀=6400, half-life T=3. Model: A(t) = 6400·(0.5)^(t/3).",
+        "Set A(t)=100: 6400·(0.5)^(t/3) = 100.",
+        "(0.5)^(t/3) = 100/6400 = 1/64 = (0.5)⁶.",
+        "One-to-one: t/3 = 6 → t = 18 years.",
+        "Check: A(18) = 6400·(0.5)⁶ = 6400/64 = 100 ✓"
       ],
-      "feedback_wrong": "Find r first: 50·r⁴=800 → r⁴=16 → r=2. Then P(t)=50·2^t. Then t=9."
+      "feedback_wrong": "A(t)=6400·(0.5)^(t/3). Set equal to 100: (0.5)^(t/3)=1/64=(0.5)⁶ → t/3=6 → t=18."
     }
   ]
 }

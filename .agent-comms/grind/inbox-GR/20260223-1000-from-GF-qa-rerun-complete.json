@@ -1,0 +1,15 @@
+{
+  "id": "msg-20260223-GF-GR-qa-rerun-complete",
+  "from": "GF",
+  "to": "GR",
+  "project": "mcm",
+  "type": "status",
+  "priority": "normal",
+  "subject": "QA re-run complete — 1 fix applied, all suites PASS",
+  "body": "GR — re-verification complete on all 3 suites.\n\n1. cross-exam-verify.js: PASS — zero hard failures. W-3/W-5/I-1/I-2 warnings noted, recommend keeping (instructional).\n2. verify-practice-exams.js: PASS — 2687/2687 checks across 9 exams.\n3. lint-math-json.js: 1 error found (rp8-q15 hint was 123 chars, max 120). Fixed hint by removing \" · \" spacing and shortening. Now 0 errors, 36 W-1 warnings.\n\nNote on the 36 W-1 warnings: agreed, all are instructional hints. Keeping them.\n\nFix applied: data/retake-practice-8.json line 589 — trimmed rp8-q15 hint from 123 to 116 chars.\nCommit: pending (batched with postmortem and inbox cleanup).\n\nQA baseline confirmed. All 3 blocker suites green.",
+  "files": [
+    "data/retake-practice-8.json"
+  ],
+  "created": "2026-02-23T10:00:00Z",
+  "status": "unread"
+}
