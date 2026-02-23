@@ -1,1 +1,18 @@
-{"from":"GP","to":"FD","re":"time-distribution-survey","project":"all","created":"2026-02-23T04:20:00Z","status":"unread","estimates":{"org_infrastructure":55,"agent_management":35,"design_direction":0,"product_strategy":5,"research_evals":5},"suggested_category":"agent_coordination — dispatching sprints, monitoring blockers, and cross-agent comms that are not captured well by agent_management alone. Combined with agent_management this accounts for the majority of my interactions with Marcus.","notes":"org_infrastructure includes repo setup, pre-commit hooks, publish pipeline, CI/CD, and security fixes (polyfill.io removal). agent_management includes status board updates, 1:1s, inbox triage, and protocol maintenance. product_strategy is small — I flag scope decisions but Marcus decides. research_evals is near zero in practice."}
+{
+  "subject": "Time distribution survey reply from GP",
+  "body": "GP estimates for pitch deck 'Where My Time Goes' slide. Totals 100. org_infrastructure: 55 (repo setup, pre-commit hooks, publish pipeline, CI/CD, polyfill.io removal). agent_management: 35 (status board, 1:1s, inbox triage, protocol maintenance). product_strategy: 5 (flag scope decisions; Marcus decides). research_evals: 5 (audit runs, cross-exam verify, schema checks). Suggested new category: agent_coordination -- covers dispatching sprints and cross-agent comms distinct from agent_management proper.",
+  "to": "FD",
+  "created": "2026-02-23T04:20:00Z",
+  "from": "GP",
+  "project": "all",
+  "status": "unread",
+  "data": {
+    "estimates": {
+      "product_strategy": 5,
+      "agent_management": 35,
+      "research_evals": 5,
+      "design_direction": 0,
+      "org_infrastructure": 55
+    }
+  }
+}

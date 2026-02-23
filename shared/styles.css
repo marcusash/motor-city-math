@@ -38,6 +38,9 @@
     /* Font stack */
     --font-body: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
+    /* Focus indicator — WCAG 2.4.11: >3:1 on both light and dark bg */
+    --border-focus: #1D42BA; /* 8.59:1 on white (light mode). arena-mode overrides below. */
+
     /* Type Scale — 6 sizes (FD review H3) */
     --text-xs: 0.75rem;   /* 12px — captions, labels */
     --text-sm: 0.875rem;  /* 14px — secondary text */
@@ -98,6 +101,8 @@ body.arena-mode {
 }
 .arena-toggle:hover { border-color: var(--accent-blue); }
 body.arena-mode .arena-toggle { background: var(--accent-navy); border-color: var(--accent-blue); }
+/* G4 badge: white-on-#2ECC71 = 2.07:1 FAIL in dark mode. Use dark text instead (8.5:1 PASS). */
+body.arena-mode .saas-grade.g4 { color: var(--color-correct-bg); }
 
 /* === Shared Navigation (FD review C3) === */
 .nav-back {
@@ -491,6 +496,19 @@ input:focus, textarea:focus, select:focus {
 .btn-ghost:hover {
     color: var(--text-primary);
 }
+
+/* === Nav Buttons (shared with exam.html scorecard CTAs) === */
+.nav-btn {
+    display: inline-block; padding: 12px 32px;
+    font-weight: 700; font-size: var(--text-base); border-radius: 6px; text-decoration: none;
+    border: 2px solid transparent; transition: background 0.15s, border-color 0.15s;
+    cursor: pointer;
+}
+.nav-btn.primary { background: var(--accent-red); color: var(--text-inverse); border-color: var(--accent-red); }
+.nav-btn.primary:hover { background: var(--accent-red-hover); border-color: var(--accent-red-hover); }
+.nav-btn.secondary { background: transparent; color: var(--accent-navy); border-color: var(--accent-navy); }
+.nav-btn.secondary:hover { background: var(--accent-navy); color: var(--text-inverse); }
+.nav-btn.ghost { background: transparent; color: var(--text-secondary); border: none; text-decoration: underline; }
 
 /* === Answer Key Modal === */
 .answer-key-modal {

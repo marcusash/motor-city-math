@@ -101,13 +101,46 @@
         .exam-picker-card .card-title { font-weight: 700; color: var(--text-primary); font-size: var(--text-base); margin-bottom: 4px; }
         .exam-picker-card .card-desc { color: var(--text-secondary); font-size: var(--text-sm); }
         /* WCAG 2.4.7: visible focus indicator */
-        :focus-visible { outline: 2px solid rgba(255,255,255,0.9); outline-offset: 2px; }
+        :focus-visible { outline: 2px solid var(--border-focus, var(--accent-blue-on-dark)); outline-offset: 2px; }
         /* Answer format guide */
         .answer-format-guide {
             font-size: var(--text-sm); color: var(--text-secondary);
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: 6px; padding: 8px 14px; margin: 8px 0 16px; line-height: 1.5;
         }
+        /* Correct-answer pulse (320ms, ADHD dopamine window) */
+        @keyframes correct-pulse {
+            0%   { box-shadow: 0 0 0 0px rgba(63,185,80,0); }
+            40%  { box-shadow: 0 0 0 5px rgba(63,185,80,0.35); }
+            100% { box-shadow: 0 0 0 0px rgba(63,185,80,0); }
+        }
+        .correct-pulse { animation: correct-pulse 320ms ease-out forwards; }
+        @media (prefers-reduced-motion: reduce) { .correct-pulse { animation: none !important; } }
+        /* Sticky question tracker */
+        #questionTracker {
+            position: sticky; top: 0; z-index: 100;
+            padding: 6px 16px; font-size: var(--text-sm); color: var(--text-secondary);
+            background: var(--bg-page); box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            text-align: right; border-bottom: 1px solid var(--border-subtle); display: none;
+        }
+        @media (max-width: 480px) { #questionTracker { padding: 4px 12px; } }
+        /* Post-wrong nudge */
+        .wrong-nudge {
+            font-size: var(--text-sm); color: var(--text-secondary);
+            margin: 8px 0 0; opacity: 0;
+            animation: nudge-in 0.4s ease 2s forwards;
+        }
+        @keyframes nudge-in { to { opacity: 1; } }
+        @media (prefers-reduced-motion: reduce) { .wrong-nudge { animation: none; opacity: 1; } }
+        /* Scorecard progressive disclosure */
+        #gamePlanSection { animation: fadeIn 0.3s ease; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(4px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        @media (prefers-reduced-motion: reduce) { #gamePlanSection { animation: none; } }
+        #gameplanBtn { margin-top: 16px; font-size: var(--text-sm); }
+        #gameplanBtn[disabled] { cursor: default; }
     </style>
 </head>
 <body>
@@ -131,6 +164,8 @@
             <div class="progress-text" id="progressText">0 / 15</div>
             <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
         </div>
+
+        <div id="questionTracker" aria-live="polite" aria-label="Question position"></div>
 
         <div id="questionsContainer"></div>
 
@@ -218,7 +253,8 @@
                 { id: 'retake-practice-6', title: 'Retake Practice 6 (W2.b Drill)', desc: '15 questions · W2.b Intercepts' },
                 { id: 'retake-practice-7', title: 'Retake Practice 7 (Mock Retake)', desc: '15 questions · Full Mock' },
                 { id: 'retake-practice-8', title: 'Retake Practice 8', desc: '15 questions · Nonlinear Functions' },
-                { id: 'retake-practice-9', title: 'Retake Practice 9', desc: '15 questions · Nonlinear Functions' }
+                { id: 'retake-practice-9', title: 'Retake Practice 9', desc: '15 questions · Nonlinear Functions' },
+                { id: 'retake-practice-10', title: 'Retake Practice 10', desc: '15 questions · Nonlinear Functions' }
             ];
             function renderPicker(exams) {
                 var cards = exams.map(function(e) {
@@ -337,6 +373,25 @@
         document.getElementById('questionsContainer').addEventListener('change', autosave);
         document.getElementById('submitArea').style.display = '';
 
+        // Question position tracker (ADHD: orientation, WCAG 1.3.1)
+        (function() {
+            var tracker = document.getElementById('questionTracker');
+            var qEls = document.getElementById('questionsContainer').querySelectorAll('.question-card');
+            if (tracker && qEls.length > 1) {
+                tracker.textContent = 'Q1 of ' + qEls.length;
+                tracker.style.display = '';
+                var io = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(e) {
+                        if (e.isIntersecting) {
+                            var idx = Array.prototype.indexOf.call(qEls, e.target) + 1;
+                            tracker.textContent = 'Q' + idx + ' of ' + qEls.length;
+                        }
+                    });
+                }, { rootMargin: '-20% 0px -60% 0px', threshold: 0 });
+                qEls.forEach(function(el) { io.observe(el); });
+            }
+        })();
+
         // Render KaTeX after DOM is populated
         if (typeof renderMathInElement === 'function') {
             renderMathInElement(document.body, {
@@ -402,7 +457,7 @@
         var html = '';
         if (inp.type === 'dropdown') {
             html += '<div class="input-group">';
-            if (inp.label) html += '<label>' + inp.label + '</label>';
+            if (inp.label) html += '<label for="' + inp.id + '">' + inp.label + '</label>';
             html += '<select id="' + inp.id + '">';
             html += '<option value="">— Select —</option>';
             inp.options.forEach(function(opt) {
@@ -411,7 +466,7 @@
             html += '</select></div>';
         } else if (inp.type === 'number') {
             html += '<div class="input-group">';
-            if (inp.label) html += '<label>' + inp.label + '</label>';
+            if (inp.label) html += '<label for="' + inp.id + '">' + inp.label + '</label>';
             html += '<div class="input-with-hint">';
             html += '<input type="text" inputmode="decimal" id="' + inp.id + '" autocomplete="off" placeholder="e.g. 3/2 or sqrt(2)">';
             html += '<span class="input-hint">decimal · fraction (3/2) · sqrt(2) · 1+sqrt(3)</span>';
@@ -429,7 +484,7 @@
             html += '</div>';
         } else if (inp.type === 'text') {
             html += '<div class="input-group">';
-            if (inp.label) html += '<label>' + inp.label + '</label>';
+            if (inp.label) html += '<label for="' + inp.id + '">' + inp.label + '</label>';
             html += '<input type="text" id="' + inp.id + '" style="width:200px;" autocomplete="off">';
             html += '</div>';
         }
@@ -439,7 +494,7 @@
     function renderGraph(q) {
         var g = q.graph;
         var html = '<div class="graph-container">';
-        html += '<canvas id="' + g.canvas_id + '" width="500" height="500"></canvas>';
+        html += '<canvas id="' + g.canvas_id + '" width="500" height="500" role="img" aria-label="' + (g.function_display || 'Graph for question') + '"></canvas>';
         html += '<div class="graph-tooltip" id="tooltip-' + g.canvas_id + '"></div>';
         html += '</div>';
         html += '<div class="graph-counter" id="counter-' + g.canvas_id + '">Click to plot points on the graph</div>';
@@ -865,8 +920,18 @@
         return NaN;
     }
 
+    function revealGamePlan() {
+        var section = document.getElementById('gamePlanSection');
+        var btn = document.getElementById('gameplanBtn');
+        if (section) section.style.display = '';
+        if (btn) { btn.textContent = '📋 Game Plan ✓'; btn.disabled = true; btn.style.opacity = '0.5'; btn.setAttribute('aria-pressed', 'true'); }
+    }
+
     function gradeExam() {
         if (examGraded) return;
+        // Hide position tracker during graded state
+        var tracker = document.getElementById('questionTracker');
+        if (tracker) tracker.style.display = 'none';
 
         // Block grading if any required field is blank
         var missing = [];
@@ -1016,6 +1081,42 @@
                 if (hints) hints.style.display = '';
                 attemptCounts[q.id] = (attemptCounts[q.id] || 0) + 1;
                 if (attemptCounts[q.id] >= 3) triggerRescue(q.id, fb);
+                // Post-wrong nudge: "Next up: Q[N+1]" after 2s (not on last question, not duplicate)
+                var qIdx = examData.questions.indexOf(q);
+                if (qIdx < examData.questions.length - 1) {
+                    var hintContainer = document.getElementById('hints-' + q.id) || fb;
+                    if (hintContainer && !hintContainer.querySelector('.wrong-nudge')) {
+                        var nudge = document.createElement('p');
+                        nudge.className = 'wrong-nudge';
+                        nudge.textContent = 'Next up: Q' + (qIdx + 2);
+                        nudge.setAttribute('aria-live', 'polite');
+                        hintContainer.appendChild(nudge);
+                        // Reduced motion: use JS timeout instead of CSS animation delay
+                        var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                        if (prefersReduced) { nudge.style.opacity = '0'; setTimeout(function() { nudge.style.opacity = '1'; }, 2000); }
+                        // Dismiss on scroll past question
+                        var qBlock = document.getElementById('card-' + q.id);
+                        if (qBlock && 'IntersectionObserver' in window) {
+                            var nudgeIo = new IntersectionObserver(function(entries) {
+                                entries.forEach(function(e) {
+                                    if (!e.isIntersecting && nudge.parentNode) nudge.parentNode.removeChild(nudge);
+                                });
+                            }, { threshold: 0 });
+                            nudgeIo.observe(qBlock);
+                        }
+                    }
+                }
+            } else {
+                // Correct-answer pulse: green glow on each correct number input (ADHD dopamine signal)
+                numberInputs.forEach(function(n) {
+                    if (n.el) {
+                        n.el.classList.add('correct-pulse');
+                        n.el.addEventListener('animationend', function handler() {
+                            n.el.classList.remove('correct-pulse');
+                            n.el.removeEventListener('animationend', handler);
+                        }, { once: true });
+                    }
+                });
             }
         });
 
@@ -1050,19 +1151,27 @@
         html += '<div class="saas-grade ' + gradeClass + '">Grade ' + grade + '</div>';
         html += '<p style="margin-top:12px; color:var(--text-secondary); font-size:var(--text-sm);">' + coachMsg + '</p>';
 
-        // Per-standard breakdown
+        // Phase 1 CTA: See Your Game Plan (progressive disclosure)
+        html += '<button id="gameplanBtn" class="btn-secondary" aria-pressed="false" onclick="revealGamePlan()">📋 See Your Game Plan</button>';
+
+        // Phase 2: hidden until button pressed
+        html += '<div id="gamePlanSection" style="display:none;">';
         html += '<h3 style="margin-top:20px; color:var(--text-primary);">Your Game Plan</h3>';
         html += '<div class="standards-grid">';
         var stdKeys = Object.keys(stdScores).sort();
-        stdKeys.forEach(function(std) {
-            var s = stdScores[std];
-            var sPct = s.total > 0 ? Math.round((s.correct / s.total) * 100) : 0;
-            var icon = sPct >= 85 ? '✅' : sPct >= 60 ? '🏀' : sPct > 0 ? '🎯' : '⬜';
-            html += '<div class="std-card">';
-            html += '<div class="std-name">' + icon + ' ' + std + '</div>';
-            html += '<div class="std-score">' + s.correct + '/' + s.total + ' (' + sPct + '%)</div>';
-            html += '</div>';
-        });
+        if (stdKeys.length === 0) {
+            html += '<p style="color:var(--text-secondary);font-size:var(--text-sm);">No breakdown available.</p>';
+        } else {
+            stdKeys.forEach(function(std) {
+                var s = stdScores[std];
+                var sPct = s.total > 0 ? Math.round((s.correct / s.total) * 100) : 0;
+                var icon = sPct >= 85 ? '✅' : sPct >= 60 ? '🏀' : sPct > 0 ? '🎯' : '⬜';
+                html += '<div class="std-card">';
+                html += '<div class="std-name">' + icon + ' ' + std + '</div>';
+                html += '<div class="std-score">' + s.correct + '/' + s.total + ' (' + sPct + '%)</div>';
+                html += '</div>';
+            });
+        }
         html += '</div>';
 
         // CTA: practice exams get "Run It Back"; real exams lock after grading
@@ -1076,6 +1185,7 @@
             html += '<div style="margin-top:16px;"><a href="javascript:location.reload()" class="nav-btn primary" style="text-decoration:none;">🔄 Run It Back</a>';
             html += ' <a href="index.html" class="nav-btn ghost" style="text-decoration:none; margin-left:8px;">← Dashboard</a></div>';
         }
+        html += '</div>'; // end gamePlanSection
         html += '</div>';
 
         document.getElementById('scorecard').innerHTML = html;
@@ -1086,7 +1196,7 @@
             var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
             if (prefersReduced) {
                 el.textContent = pct + '%';
-                if (pct >= 93) {
+                if (pct >= 92) {
                     el.classList.add('grade-a-flash');
                     document.dispatchEvent(new CustomEvent('mcm:scoreReveal', { detail: { pct: pct, grade: grade } }));
                 }
@@ -1100,7 +1210,7 @@
                 if (prog < 1) requestAnimationFrame(step);
                 else {
                     el.textContent = pct + '%';
-                    if (pct >= 93) {
+                    if (pct >= 92) {
                         el.classList.add('grade-a-flash');
                         document.dispatchEvent(new CustomEvent('mcm:scoreReveal', { detail: { pct: pct, grade: grade } }));
                     }

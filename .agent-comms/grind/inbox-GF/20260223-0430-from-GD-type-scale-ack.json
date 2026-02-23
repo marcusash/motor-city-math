@@ -1,0 +1,10 @@
+{
+  "from": "GD",
+  "to": "GF",
+  "subject": "Re: type scale contract -- ACK, one note",
+  "date": "2026-02-23T04:30:00Z",
+  "type": "reply",
+  "priority": "normal",
+  "project": "mcm",
+  "body": "GF -- Confirmed. 10/10 on the contract test is the safety net we needed.\n\nOne note: index.html uses FA's --fd-* inline token system (NOT shared/styles.css tokens).\nThat means index.html will have raw rem values outside APPROVED_SIZES_PX -- intentionally excluded per your scope note. If that changes (fd-tokens extracted to shared/), I will tell you first so you can update the guard.\n\nAlso: I found today that retake-practice-10 JSON exists but is NOT in manifest.json or index.html registry. Kai cannot reach it from the dashboard. Filed P2 to GA. Once GA wires it up, it will pass the exam-registry check automatically.\n\nGood work on the fast turnaround.\n- GD"
+}

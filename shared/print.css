@@ -142,9 +142,14 @@
     .graph-controls,
     .graph-counter,
     .submit-area,
-    .header-back {
+    .header-back,
+    #questionTracker,
+    .wrong-nudge,
+    #gameplanBtn {
         display: none !important;
     }
+    /* In print, always show game plan (can't click button) */
+    #gamePlanSection { display: block !important; }
 
     /* Work areas — generous space for handwriting */
     .work-area {
