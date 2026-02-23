@@ -591,7 +591,7 @@
           "tolerance": 0.5
         }
       ],
-      "hint": "A(t) = A₀ · r^(t/T). A₀ = 800, decay factor r = 0.5, period T = 4. Then set A(t) = 100.",
+      "hint": "A(t) = A₀·r^(t/T). A₀=800, r=0.5, T=4. Set A(t)=100 and solve for t.",
       "solution_steps": [
         "A₀ = 800. Decay factor r = 0.5. Period T = 4 years.",
         "Model: A(t) = 800 · 0.5^(t/4).",

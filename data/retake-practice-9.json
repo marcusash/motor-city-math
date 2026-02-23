@@ -574,7 +574,7 @@
           "tolerance": 0.05
         }
       ],
-      "hint": "f(0) = a·b⁰ = a. So a is given by the point (0, ?). Then substitute the other point to solve for b.",
+      "hint": "f(0)=a·b⁰=a, so a comes from the y-intercept. Substitute the other point to find b.",
       "solution_steps": [
         "f(0)=5: a·b⁰ = a = 5. So a=5.",
         "f(3)=40: 5·b³=40 → b³=8 → b=2.",

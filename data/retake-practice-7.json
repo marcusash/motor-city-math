@@ -271,7 +271,7 @@
           "tolerance": 0.05
         }
       ],
-      "hint": "Isolate the radical first. When you square both sides you will get x² = a number. What does that give you?",
+      "hint": "Isolate the radical first. Square both sides to get x² = a number. What does that give?",
       "solution_steps": [
         "Step 1: Isolate: √(x² + 9) = 5.",
         "Step 2: Square both sides: x² + 9 = 25.",
@@ -657,7 +657,7 @@
           "tolerance": 0.1
         }
       ],
-      "hint": "You must solve for r FIRST. P(5)=3200: 100 * r^5 = 3200 -> r^5 = 32. What number raised to the 5th power equals 32?",
+      "hint": "Solve for r first. P(5)=3200: 100·r⁵=3200, so r⁵=32. What number raised to 5th power equals 32?",
       "solution_steps": [
         "P(0)=100 gives P0=100. Model: P(t) = 100 * r^t.",
         "P(5)=3200: 100 * r^5 = 3200 -> r^5 = 32.",

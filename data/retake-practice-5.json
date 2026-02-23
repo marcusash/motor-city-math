@@ -231,7 +231,7 @@
         }
       ],
       "plus_minus": true,
-      "hint": "Non-monic (a=3). AC method: multiply a×c = 3×2 = 6. Find two numbers that multiply to 6 and add to -7.",
+      "hint": "Non-monic (a=3). AC method: a×c = 6. Find two numbers that multiply to 6 and add to -7.",
       "solution_steps": [
         "Non-monic: a=3, b=-7, c=2. AC method: a×c = 3×2 = 6.",
         "Find two numbers: product = 6, sum = -7. Those are: -6 and -1.",
@@ -344,7 +344,7 @@
           "tolerance": 0.01
         }
       ],
-      "hint": "Square both sides — right side is a binomial, giving a quadratic. Factor it. Check BOTH answers back in the original.",
+      "hint": "Square both sides to get a quadratic. Factor it. Check BOTH answers in the original equation.",
       "solution_steps": [
         "Square: x + 2 = (x-4)² = x² - 8x + 16.",
         "Rearrange: x² - 9x + 14 = 0.",
@@ -463,7 +463,7 @@
         "tolerance": 0.25,
         "asymptotes": null
       },
-      "hint": "This is standard form — not vertex form. Find the vertex using x = -b/(2a). Then compute y. Factor to find x-intercepts.",
+      "hint": "Standard form, not vertex form. Find vertex: x = -b/(2a). Factor to find x-intercepts.",
       "solution_steps": [
         "Standard form: a=1, b=-6, c=5.",
         "Vertex x = -b/(2a) = -(-6)/(2·1) = 3.",
@@ -536,7 +536,7 @@
           ]
         }
       },
-      "hint": "VA: set denominator (2-x) = 0. HA: the -3 outside. Warning — the (2-x) denominator REFLECTS the graph compared to (x-2).",
+      "hint": "VA: set (2-x)=0. HA: the -3 shift. The (2-x) denominator REFLECTS the graph vs (x-2).",
       "solution_steps": [
         "VA: 2 - x = 0 → x = 2.",
         "HA: the 5/(2-x) term → 0 as x→±∞, so y → -3. HA: y = -3.",
@@ -615,7 +615,7 @@
           "tolerance": 0.5
         }
       ],
-      "hint": "P(t) = P₀ · r^(t/T). Growth factor r=3, period T=5 hours. Then set P(t)=2700 and rewrite 2700/100 as a power of 3.",
+      "hint": "P(t) = P₀·r^(t/T). r=3, T=5 hours. Set P(t)=2700, rewrite 2700/100 as a power of 3.",
       "solution_steps": [
         "P₀ = 100. Growth factor r = 3 (triples). Period T = 5 hours.",
         "Model: P(t) = 100 · 3^(t/5).",
