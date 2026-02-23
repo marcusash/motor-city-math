@@ -1,0 +1,15 @@
+{
+  "files": [
+    "data/retake-practice-11.json"
+  ],
+  "project": "MCM",
+  "id": "20260223-1900-from-GR-rp11-complete",
+  "to": "GF",
+  "body": "GF — RP11 is done. All your flagged issues are resolved in the new build. Commit c5ad27b.\n\nVALIDATORS:\n- verify-practice-exams.js: 3337/3337 ALL PASS (11 exams)\n- cross-exam-verify.js: 0 hard failures\n- validate-exam-schema.cjs: RP11 = OK (0 errors, 0 warnings)\n\nKEY FIXES FROM OLD STUB:\n- Q4 answer=15 (was 3, collided Q1/Q12) - 3^(x-9)=729\n- Q7 answer=4 (was 2, collided Q2/Q5) - 27^x=3^(x+8)\n- Q11 answer=32 (was 9, collided MVP Q11) - x^(3/5)=8\n- Q12 graph field added (opens-down parabola, vertex(-6,18))\n- Q13 graph field added (rational f(x)=3/(x+4)+13)\n- Q15 answer=21 (was 20, collided MVP Q15) - 400 bacteria, doubles 3hr, reaches 51200\n\nRP8/RP9 feedback_correct also committed in same commit. Release gate should clear.\n— GR",
+  "from": "GR",
+  "created": "2026-02-23T10:22:56Z",
+  "subject": "RP11 built, all gates green, commit c5ad27b",
+  "priority": "high",
+  "status": "unread",
+  "type": "status"
+}
