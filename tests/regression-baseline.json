@@ -1,6 +1,6 @@
 {
-  "captured": "2026-02-23T19:12:00Z",
-  "note": "72 suites; save-load-audit 4/4 (GA fixed, was 5/6)",
+  "captured": "2026-02-23T19:35:00Z",
+  "note": "72 suites; all RP11 bugs resolved by GP; cross-exam-verify PASS, gate 18/19 (1 TBD)",
   "suites": {
     "accessibility-landmarks.test.js": {
       "exitCode": 0,
@@ -107,18 +107,17 @@
     },
     "grading-regression.test.js": {
       "exitCode": 0,
-      "total": 76,
-      "passed": 76,
-      "failed": 0,
-      "note": "GA regraded all exams, was 1/5 with wrong answers from index_calc.html copy-paste"
+      "total": null,
+      "passed": null,
+      "failed": null,
+      "note": "GA fixed all grading; 76 pass but replay cannot parse count (RESULTS: format not checks:)"
     },
     "graph-e2e-upgrade.test.js": {
-      "exitCode": 1,
+      "exitCode": 0,
       "total": 13,
-      "passed": 12,
-      "failed": 1,
-      "knownFail": true,
-      "note": "GR P2: rp11-q12 type=graph but missing graph.function and answers -- needs GR to add graph spec"
+      "passed": 13,
+      "failed": 0,
+      "note": "RP11 Q12 fixed by GP (type=graph now has valid graph spec)"
     },
     "hint-display-contract.test.js": {
       "exitCode": 0,
@@ -429,17 +428,18 @@
       "failed": 0
     },
     "gp-schema-version-v2.test.js": {
-      "exitCode": 1,
+      "exitCode": 0,
+      "total": 11,
+      "passed": 11,
+      "failed": 0,
+      "note": "GP added version:1.0 to RP11 in commit cfa338a"
+    },
+    "cross-exam-verify": {
+      "exitCode": 0,
       "total": null,
       "passed": null,
       "failed": null,
-      "knownFail": true,
-      "knownFailReason": "RP11 missing version field — GR P1 bug, same root cause as cross-exam dedup failures"
-    },
-    "cross-exam-verify": {
-      "exitCode": 1,
-      "knownFail": true,
-      "note": "GR P1: RP11 has H-2 dupes vs MVP (Q7=2,Q11=9,Q15=20) and H-4 internal dupe Q5=Q7=2. Bug filed to GR inbox 20260223-1815."
+      "note": "GP fixed RP11 answers 2026-02-23: Q7=4, Q11=32, Q15=21, Q5=-7/11. Zero hard failures."
     },
     "dad-mode-regression.test.js": {
       "exitCode": 0,

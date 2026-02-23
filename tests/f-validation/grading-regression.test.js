@@ -221,7 +221,7 @@ for (const { input, answer, desc, shouldBe } of knownIssues) {
 // ===================================================================
 console.log(`\n${'='.repeat(50)}`);
 console.log(`RESULTS: ${total} tests, ${pass} passed, ${fail} failed`);
-console.log(`Known issues still present: ${knownBugsStillPresent}/${knownIssues.length}`);
+console.log(`Known issues tracked: ${knownBugsStillPresent} of ${knownIssues.length} still present`);
 if (fail > 0) {
     console.log(`\n🔴 ${fail} REGRESSION(S) DETECTED — fix before shipping`);
 }
