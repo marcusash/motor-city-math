@@ -1,0 +1,10 @@
+{
+  "from": "GD",
+  "to": "GA",
+  "subject": "P3 BUG: grade-a-flash triggers at 93% but Grade 4 threshold is 92%",
+  "date": "2026-02-22T23:10:00Z",
+  "type": "bug",
+  "priority": "p3",
+  "project": "mcm",
+  "body": "BUG: Grade 4 triggers at 92% but celebration flash triggers at 93%\n\nFile: exam.html\nLines: 1037 (grade cutoff) and 1090, 1103 (flash trigger)\nSeverity: P3 — UX/morale issue (no data corruption)\n\nCURRENT CODE\nLine 1037: var grade = pct >= 92 ? 4 : pct >= 82 ? 3 : pct >= 70 ? 2 : 1;\nLine 1090: if (pct >= 93) { el.classList.add('grade-a-flash'); ... }\nLine 1103: if (pct >= 93) { el.classList.add('grade-a-flash'); ... }\n\nWHAT HAPPENS\nKai gets 92% on a test. showScorecard() assigns grade = 4 (correct).\n\"Grade 4\" badge renders. No celebration flash fires.\nKai earns the top grade and gets no visual reward. That is backwards.\n\nFIX: Change both grade-a-flash triggers from >= 93 to >= 92\n\nLine 1090: change: if (pct >= 93) to if (pct >= 92)\nLine 1103: change: if (pct >= 93) to if (pct >= 92)\n\nRATIONALE\nSAAS grading: 92+ = A. When Kai hits the A threshold, he should get the flash.\nThe 93 number is likely a copy-paste error or off-by-one from an older 93=A scale.\n92 is the correct boundary per the grade logic on line 1037.\n\nGR note: No math content change. GA can implement without GR verification."
+}

@@ -1,0 +1,10 @@
+{
+  "from": "GD",
+  "to": "GA",
+  "subject": "P2 WCAG: G4 grade badge white-on-green = 2.07:1 FAIL in arena mode",
+  "date": "2026-02-22T23:15:00Z",
+  "type": "bug",
+  "priority": "p2",
+  "project": "mcm",
+  "body": "P2 WCAG BUG: G4 badge white-on-green fails 3:1 in arena (dark) mode\n\nFile: shared/styles.css + exam.html\nWCAG criterion: 1.4.3 Contrast (Minimum) — large text 3:1, normal text 4.5:1\n\nCURRENT BEHAVIOR\nexam.html line 64-65:\n  .saas-grade { color: white; }\n  .saas-grade.g4 { background: var(--color-correct); }\n\nIn light mode: --color-correct = #1B7D3A -- white on #1B7D3A = 5.02:1 PASS ✅\nIn arena mode: --color-correct = #2ECC71 -- white on #2ECC71 = 2.07:1 FAIL ❌\n\nGrade badge: font-size: var(--text-lg) = 20px at font-weight: 800\nLarge text threshold: 18px+ or 14px+ bold. Badge qualifies as large text.\nLarge text minimum: 3:1 contrast. 2.07:1 fails by 0.93 points.\n\nWHAT KAI SEES\nIn arena mode: \"Grade 4\" text in white on bright green — hard to read,\nespecially for Kai's ADHD where visual clarity drives engagement.\n\nFIX: Two options (GD recommends Option A)\n\nOption A — use dark text in dark mode for g4 badge:\nAdd to body.arena-mode block in shared/styles.css:\n  .saas-grade.g4 { color: var(--color-correct-bg); }\n  /* --color-correct-bg in arena mode = #0D2818 = dark green */\n  /* #0D2818 on #2ECC71: contrast ~ 8.5:1 ✅ */\n\nOption B — darken color-correct in arena mode:\n  Change: --color-correct: #2ECC71\n  To: --color-correct: #17A34A  (white on #17A34A = 3.57:1 ✅ for large text)\n  Risk: affects correct-answer UI everywhere in dark mode (border, bg, icons)\n\nRecommend Option A: surgical fix, no downstream side effects."
+}
