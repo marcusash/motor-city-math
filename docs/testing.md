@@ -46,6 +46,7 @@ Located in `tests/f-validation/`.
 | `exam-landmark-main.test.js` | WCAG landmarks: exam.html role=main, index.html main, bypass blocks | 7/7 |
 | `answer-key-guard.test.js` | Answer key password gate: prompt/compare/block, no bypass path | 10/10 |
 | `css-token-hygiene.test.js` | No inline hex in style=, brand palette present, <=15 unique hex (advisory) | 6/6 |
+| `dom-query-perf-audit.test.js` | renderQuestions() no getElementById in loops, RAF callback safety, setInterval safety | 5/5 |
 
 Run all at once:
 ```powershell
