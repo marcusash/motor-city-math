@@ -177,6 +177,10 @@
         .score-error-icon { font-size: 1.1em; }
         .score-error-msg { font-size: var(--text-sm); color: var(--text-primary); line-height: 1.4; }
         .score-error-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+        .score-error-confirm { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; opacity: 0; animation: fadeIn 0.15s ease forwards; }
+        @media (prefers-reduced-motion: reduce) { .score-error-confirm { animation: none; opacity: 1; } }
+        .score-error-confirm-msg { font-size: var(--text-sm); color: var(--text-secondary); }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         .score-error-clear { background: none; border: 1px solid var(--accent-red); color: var(--accent-red); padding: 6px 12px; border-radius: 6px; font-size: var(--text-sm); font-weight: 600; cursor: pointer; }
         .score-error-clear:hover { background: rgba(200,16,46,0.1); }
         .score-error-dismiss { background: none; border: 1px solid var(--text-secondary); color: var(--text-secondary); padding: 6px 12px; border-radius: 6px; font-size: var(--text-sm); cursor: pointer; }
@@ -353,9 +357,14 @@
         <div class="score-error-banner" id="scoreErrorBanner" style="display:none;" role="alert" aria-live="polite">
             <span class="score-error-icon">⚠️</span>
             <span class="score-error-msg">Score history couldn't load. Something went wrong with your saved data.</span>
-            <div class="score-error-actions">
-                <button class="score-error-clear" id="scoreErrorClear" onclick="clearCorruptedScores()">Clear and start fresh</button>
+            <div class="score-error-actions" id="scoreErrorActions">
+                <button class="score-error-clear" id="scoreErrorClear" onclick="startClearConfirm()">Clear and start fresh</button>
                 <button class="score-error-dismiss" id="scoreErrorDismiss" onclick="dismissScoreError()">Dismiss</button>
+            </div>
+            <div class="score-error-confirm" id="scoreErrorConfirm" style="display:none;">
+                <span class="score-error-confirm-msg">Are you sure? This cannot be undone.</span>
+                <button class="score-error-clear" onclick="confirmClearScores()">Yes, clear it</button>
+                <button class="score-error-dismiss" onclick="cancelClearConfirm()">No, keep it</button>
             </div>
         </div>
 
@@ -952,17 +961,32 @@
     function showScoreErrorBanner() {
         var banner = document.getElementById('scoreErrorBanner');
         if (banner) banner.style.display = '';
+        document.addEventListener('keydown', _scoreErrorEscHandler);
     }
     function dismissScoreError() {
         var banner = document.getElementById('scoreErrorBanner');
         if (banner) banner.style.display = 'none';
+        document.removeEventListener('keydown', _scoreErrorEscHandler);
     }
-    function clearCorruptedScores() {
-        if (!confirm('Clear score history? This cannot be undone.')) return;
+    function startClearConfirm() {
+        document.getElementById('scoreErrorActions').style.display = 'none';
+        var confirm = document.getElementById('scoreErrorConfirm');
+        confirm.style.display = '';
+        confirm.querySelector('button').focus();
+    }
+    function cancelClearConfirm() {
+        document.getElementById('scoreErrorConfirm').style.display = 'none';
+        document.getElementById('scoreErrorActions').style.display = '';
+    }
+    function confirmClearScores() {
         localStorage.removeItem('mcm_scores');
         _scoreParseError = null;
         dismissScoreError();
         rerenderAll();
+    }
+    function clearCorruptedScores() { startClearConfirm(); } // legacy alias
+    function _scoreErrorEscHandler(e) {
+        if (e.key === 'Escape') cancelClearConfirm();
     }
     function rerenderAll() {
         buildChart();
