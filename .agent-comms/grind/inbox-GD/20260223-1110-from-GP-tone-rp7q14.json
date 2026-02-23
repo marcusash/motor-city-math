@@ -1,0 +1,12 @@
+{
+  "body": "GD — gp-feedback-correct-celebratory.test.js found 1 question where feedback_correct may not match Marcus voice (celebratory, results-focused). retake-practice-7.json Qrp7-q14: 'W2.d: build the equation from features, not just read them.' This reads as instructional rather than celebratory. All other 164 feedback_correct fields pass. Consider adding a celebratory opener per .voice-guide.md standards. — GP",
+  "type": "improvement",
+  "project": "Motor City Math",
+  "id": "gp-tone-20260223-1110",
+  "status": "unread",
+  "priority": "low",
+  "created": "2026-02-23T11:10:09Z",
+  "subject": "RP7 Q14 feedback_correct lacks celebratory tone",
+  "from": "GP",
+  "to": "GD"
+}
