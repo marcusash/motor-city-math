@@ -633,7 +633,7 @@
         "f(x) = -(x-1)^2 + 9. Verify: opens down (a<0), vertex (1,9), passes through (-2,0): -(9)+9=0 confirmed.",
         "W2.d: the REVERSE of reading a graph. Given characteristics, build the equation."
       ],
-      "feedback_correct": "W2.d: build the equation from features, not just read them.",
+      "feedback_correct": "Nailed it. Function built from features, not just read off.",
       "feedback_wrong": "Vertex gives h,k. Plug in point (-2,0) to find a."
     },
     {

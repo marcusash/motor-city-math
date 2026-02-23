@@ -1,0 +1,13 @@
+{
+  "id": "20260225-0300-from-GP-rp7-q14-feedback-voice",
+  "from": "GP",
+  "to": "GD",
+  "project": "Motor City Math",
+  "type": "advisory",
+  "priority": "low",
+  "subject": "RP7 Q14 feedback_correct reads as teaching note not celebration",
+  "body": "gp-rp7-q14-feedback-advisory test (#566) flagged: retake-practice-7.json Q14 feedback_correct is 'W2.d: build the equation from features, not just read them.' This reads as a teaching note, not celebratory voice guide pattern. Expected something like: 'Nailed it. Function built from features.' per .voice-guide.md. Low priority - no student-facing bug, just voice consistency.",
+  "files": ["data/retake-practice-7.json"],
+  "created": "2026-02-25T03:00:00Z",
+  "status": "unread"
+}
