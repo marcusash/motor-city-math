@@ -1,5 +1,5 @@
 {
-  "captured": "2026-02-23T00:51:14.791Z",
+  "captured": "2026-02-23T01:00:41.544Z",
   "note": "Captured by gf-skill-23 regression replay pack",
   "suites": {
     "accessibility-landmarks.test.js": {
@@ -38,6 +38,12 @@
       "passed": null,
       "failed": null
     },
+    "dad-view-isolation.test.js": {
+      "exitCode": 0,
+      "total": 15,
+      "passed": 15,
+      "failed": 0
+    },
     "dashboard-integrity.test.js": {
       "exitCode": 0,
       "total": null,
@@ -45,7 +51,7 @@
       "failed": null
     },
     "error-state-matrix.test.js": {
-      "exitCode": 1,
+      "exitCode": 0,
       "total": null,
       "passed": null,
       "failed": null
@@ -98,6 +104,12 @@
       "passed": 1,
       "failed": 4
     },
+    "hint-display-contract.test.js": {
+      "exitCode": 0,
+      "total": 17,
+      "passed": 17,
+      "failed": 0
+    },
     "inline-script-syntax-check.test.js": {
       "exitCode": 0,
       "total": 6,
@@ -145,6 +157,12 @@
       "total": 11,
       "passed": 5,
       "failed": 6
+    },
+    "performance-smoke.test.js": {
+      "exitCode": 0,
+      "total": 25,
+      "passed": 25,
+      "failed": 0
     },
     "precommit-guard-audit.test.js": {
       "exitCode": 0,
