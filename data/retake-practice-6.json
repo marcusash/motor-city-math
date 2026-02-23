@@ -56,7 +56,7 @@
       "feedback_correct": "🔥 Quadratic intercepts nailed.",
       "feedback_wrong_parent": "Expand: what is the highest power of x?",
       "feedback_wrong_intercepts": "Set each factor = 0 separately. Zero Product Property.",
-      "feedback_wrong": "Check your setup. Re-read the question and try again."
+      "feedback_wrong": "Set f(x)=0. Zero-product: x=-3 or x=5."
     },
     {
       "id": "rp6-q2",
@@ -98,7 +98,7 @@
       "feedback_correct": "🔥 Square root identified. Clean.",
       "feedback_wrong_parent": "Look at the √ symbol.",
       "feedback_wrong_intercepts": "Set f(x)=0 and isolate the root.",
-      "feedback_wrong": "Check your setup. Re-read the question and try again."
+      "feedback_wrong": "Set root=0. 2x+10=0 gives x=-5."
     },
     {
       "id": "rp6-q3",
@@ -174,7 +174,7 @@
       "feedback_correct": "🔥 Both intercepts. Solid.",
       "feedback_wrong_parent": "The | | bars mean absolute value.",
       "feedback_wrong_intercepts": "After splitting two cases, divide by 4. Do not forget that step.",
-      "feedback_wrong": "Check your setup. Re-read the question and try again."
+      "feedback_wrong": "Factor: 4|x-2|-12. Two cases: 4x-8=±12."
     },
     {
       "id": "rp6-q4",
@@ -199,7 +199,7 @@
         "x + 2 = 7 → x = 5."
       ],
       "feedback_correct": "🔥 Exponent match. Clean.",
-      "feedback_wrong": "Check your setup. Re-read the question and try again."
+      "feedback_wrong": "128=2^7. So x+2=7 → x=5."
     },
     {
       "id": "rp6-q5",
@@ -225,7 +225,7 @@
         "x = 1."
       ],
       "feedback_correct": "🔥 Exponent match. Clean.",
-      "feedback_wrong": "Check your setup. Re-read the question and try again."
+      "feedback_wrong": "64=4^3. So 2x+1=3 → x=1."
     },
     {
       "id": "rp6-q6",
@@ -311,7 +311,7 @@
         "Check: 27^6 = 3^18, 9^9 = 3^18 ✓"
       ],
       "feedback_correct": "🔥 Common base. Smooth.",
-      "feedback_wrong": "Check your setup. Re-read the question and try again."
+      "feedback_wrong": "Rewrite: 3^(3x)=3^(2x+6). Then 3x=2x+6."
     },
     {
       "id": "rp6-q9",
@@ -336,7 +336,7 @@
         "7 = 2x → x = 3.5."
       ],
       "feedback_correct": "🔥 Clean algebra.",
-      "feedback_wrong": "Check your setup. Re-read the question and try again."
+      "feedback_wrong": "Multiply by (x-1). Then 3x+2=5x-5."
     },
     {
       "id": "rp6-q10",
@@ -363,7 +363,7 @@
         "Check x=11: √9 = 3, and 11-8 = 3. ✓"
       ],
       "feedback_correct": "🔥 Correct valid solution found. You knew to verify.",
-      "feedback_wrong": "Check your setup. Re-read the question and try again."
+      "feedback_wrong": "Square both sides. Factor. Check x=3 extraneous."
     },
     {
       "id": "rp6-q11",
@@ -388,7 +388,7 @@
         "Check your answer by substituting back into the original equation."
       ],
       "feedback_correct": "🔥 Fractional exponents. Locked.",
-      "feedback_wrong": "Check your setup. Re-read the question and try again."
+      "feedback_wrong": "Isolate x^(2/3)=4. Raise both sides to 3/2."
     },
     {
       "id": "rp6-q12",
@@ -458,7 +458,7 @@
         "Plot: f(-3)=-2(4)+6=-2, f(-2)=-2(1)+6=4, f(0)=-2(1)+6=4, f(1)=-2(4)+6=-2."
       ],
       "feedback_correct": "🔥 Vertex and graph locked.",
-      "feedback_wrong": "Check your setup. Re-read the question and try again."
+      "feedback_wrong": "Vertex: h=-1, k=6. Opens down (a=-2)."
     },
     {
       "id": "rp6-q13",
@@ -527,7 +527,7 @@
         "Plot: f(1)=4/(-2)-2=-4, f(2)=4/(-1)-2=-6, f(4)=4/1-2=2, f(5)=4/2-2=0, f(7)=4/4-2=-1."
       ],
       "feedback_correct": "🔥 Both asymptotes correct.",
-      "feedback_wrong": "Check your setup. Re-read the question and try again."
+      "feedback_wrong": "VA: denominator=0 → x=3. HA: y=-2."
     },
     {
       "id": "rp6-q14",
@@ -567,7 +567,7 @@
         "3a = 6 → a = 2.",
         "f(x) = 2|x + 2| − 6. Opens up ✓ (positive a)."
       ],
-      "feedback_correct": "Nailed it. Perfect asymptote analysis.",
+      "feedback_correct": "🔥 L3: built the function from features.",
       "feedback_wrong": "Start with vertex: h=−2, k=−6. Then use the given point to find."
     },
     {
@@ -600,7 +600,7 @@
         "Check: 800 · 0.5³ = 800 · 0.125 = 100 ✓"
       ],
       "feedback_correct": "🔥 Half-life solved. 12 years.",
-      "feedback_wrong": "Check your setup. Re-read the question and try again."
+      "feedback_wrong": "A(t)=800·0.5^(t/4)=100. Solve: 0.5^(t/4)=1/8."
     }
   ],
   "version": "2.0"
