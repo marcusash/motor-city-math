@@ -1,6 +1,6 @@
 {
-  "captured": "2026-02-23T19:05:00Z",
-  "note": "71 suites (64 GF + 20 GP); dad-mode-regression added",
+  "captured": "2026-02-23T19:12:00Z",
+  "note": "72 suites; save-load-audit 4/4 (GA fixed, was 5/6)",
   "suites": {
     "accessibility-landmarks.test.js": {
       "exitCode": 0,
@@ -107,9 +107,10 @@
     },
     "grading-regression.test.js": {
       "exitCode": 0,
-      "total": 5,
-      "passed": 1,
-      "failed": 4
+      "total": 76,
+      "passed": 76,
+      "failed": 0,
+      "note": "GA regraded all exams, was 1/5 with wrong answers from index_calc.html copy-paste"
     },
     "graph-e2e-upgrade.test.js": {
       "exitCode": 1,
@@ -237,9 +238,9 @@
     },
     "save-load-audit.test.js": {
       "exitCode": 0,
-      "total": 6,
-      "passed": 5,
-      "failed": 1
+      "total": 4,
+      "passed": 4,
+      "failed": 0
     },
     "scorecard-contract.test.js": {
       "exitCode": 0,
