@@ -172,6 +172,22 @@ body.arena-mode .saas-grade.g4 { color: var(--color-correct-bg); }
 @media (max-width: 768px) { .timer-value { font-size: var(--text-base); } }
 @media print { .timer, .timer-toast, .arena-toggle { display: none !important; } }
 
+/* === Session Restore Toast (GD spec sw-10) === */
+.session-restore-toast {
+    position: fixed; top: 16px; right: 16px; z-index: 200;
+    background: var(--bg-surface, #fff); border: 1px solid var(--border-default, #ccc);
+    border-radius: 8px; padding: 10px 36px 10px 14px;
+    font-size: var(--text-sm); color: var(--text-secondary);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12); max-width: 280px;
+}
+.session-restore-toast--slide { animation: restoreSlideIn 0.2s ease-out; }
+@keyframes restoreSlideIn { from { transform: translateX(110%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+.restore-toast-close {
+    position: absolute; top: 6px; right: 8px;
+    background: none; border: none; cursor: pointer; font-size: 18px;
+    color: var(--text-secondary); line-height: 1; padding: 2px 4px;
+}
+
 /* === Reset === */
 * {
     margin: 0;

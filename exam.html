@@ -245,31 +245,19 @@
         } catch(e) { /* parse error */ }
     }
 
+    /** Shows session restore toast per GD spec sw-10: fixed top-right, slide-in, 3000ms auto-dismiss. */
     function showRestoreToast(count) {
         var el = document.createElement('div');
         el.id = 'restore-toast';
         el.setAttribute('role', 'status');
         el.setAttribute('aria-live', 'polite');
-        el.style.cssText = [
-            'background:var(--bg-highlight)',
-            'border:1px solid var(--border-default)',
-            'border-radius:8px',
-            'padding:10px 16px',
-            'margin-bottom:12px',
-            'font-size:var(--text-sm)',
-            'color:var(--text-secondary)',
-            'text-align:center'
-        ].join(';');
-        el.textContent = count + ' answer' + (count > 1 ? 's' : '') + ' restored. Keep going. \uD83D\uDCBE';
-        var container = document.getElementById('questionsContainer');
-        if (container && container.firstChild) {
-            container.insertBefore(el, container.firstChild);
-        }
+        el.className = 'session-restore-toast';
+        el.innerHTML = '\uD83D\uDD04 Progress restored. Pick up where you left off.' +
+            '<button class="restore-toast-close" aria-label="Dismiss progress restored notice" onclick="(function(e){var t=document.getElementById(\'restore-toast\');if(t)t.remove();})()">\u00D7</button>';
+        document.body.appendChild(el);
+        var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (!prefersReduced) el.classList.add('session-restore-toast--slide');
         setTimeout(function() { if (el.parentNode) el.parentNode.removeChild(el); }, 3000);
-        container.addEventListener('input', function onInput() {
-            if (el.parentNode) el.parentNode.removeChild(el);
-            container.removeEventListener('input', onInput);
-        }, { once: true });
     }
     var graphData = {};
     var examGraded = false;
@@ -1099,11 +1087,21 @@
         return NaN;
     }
 
+    /** Toggle the Game Plan section (progressive disclosure). aria-expanded reflects state. */
     function revealGamePlan() {
         var section = document.getElementById('gamePlanSection');
         var btn = document.getElementById('gameplanBtn');
-        if (section) section.style.display = '';
-        if (btn) { btn.textContent = '📋 Game Plan ✓'; btn.disabled = true; btn.style.opacity = '0.5'; btn.setAttribute('aria-pressed', 'true'); }
+        if (!section || !btn) return;
+        var expanded = btn.getAttribute('aria-expanded') === 'true';
+        if (expanded) {
+            section.style.display = 'none';
+            btn.textContent = '📋 See Your Game Plan';
+            btn.setAttribute('aria-expanded', 'false');
+        } else {
+            section.style.display = '';
+            btn.textContent = '📋 Hide Game Plan';
+            btn.setAttribute('aria-expanded', 'true');
+        }
     }
 
     /**
@@ -1356,7 +1354,7 @@
         html += '<p style="margin-top:12px; color:var(--text-secondary); font-size:var(--text-sm);">' + coachMsg + '</p>';
 
         // Phase 1 CTA: See Your Game Plan (progressive disclosure)
-        html += '<button id="gameplanBtn" class="btn-secondary" aria-pressed="false" onclick="revealGamePlan()">📋 See Your Game Plan</button>';
+        html += '<button id="gameplanBtn" class="btn-secondary" aria-expanded="false" onclick="revealGamePlan()">📋 See Your Game Plan</button>';
 
         // Phase 2: hidden until button pressed
         html += '<div id="gamePlanSection" style="display:none;">';
