@@ -28,6 +28,22 @@ Represents deep understanding over pattern-matching. His discipline: do not reac
 
 **The practice:** When I extract a function, write a comment with the exact two or more call sites that justified the extraction. If I cannot name two, delete the function and inline it.
 
+### React 19 / Modern React Patterns
+
+Not directly used in MCM (pure vanilla JS), but foundational for any future React work. Key patterns to internalize:
+
+**`use()` hook (React 19):** Unwraps a Promise or Context inside a component without useEffect. Replaces the common `useEffect + setState + loading flag` triple. The cognitive model: treat async data as synchronous reads, let Suspense handle the waiting state.
+
+**Key pattern for mental model:**
+- Old: `useEffect(() => { fetch().then(d => setData(d)); }, [])` with separate `loading` state
+- New: `const data = use(fetchPromise)` inside Suspense boundary. Cleaner concern separation.
+
+**`key=` reset technique:** To reset component state on prop change, use `key={userId}`. React unmounts + remounts. No `useEffect` needed to reset. This is Hickey-simple: identity determines state, not mutation.
+
+**Suspense for data fetching:** Suspense boundaries should be placed at the level where the loading state is meaningful to the user. Nest them for progressive disclosure. Do not default to one giant Suspense at the root.
+
+**The practice:** Before reaching for `useEffect`, ask: is this a side effect or a derived state? Derived state belongs in `useMemo` or direct calculation. Side effects (network, DOM, subscriptions) belong in `useEffect`. Most `useEffect` bugs come from treating derived state as a side effect.
+
 ## 25-Task Self-Directed Queue
 
 Tracking full execution in the SQL session database. This section records learning outcomes per task as completed.
