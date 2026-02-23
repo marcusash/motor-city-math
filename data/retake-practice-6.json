@@ -603,5 +603,5 @@
       "feedback_wrong": "A(t)=800·0.5^(t/4)=100. Solve: 0.5^(t/4)=1/8."
     }
   ],
-  "version": "2.0"
+  "version": 2
 }

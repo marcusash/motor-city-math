@@ -608,5 +608,5 @@
       "feedback_wrong": "Divide by 5000 first. Then: 1.5^? = 3.375."
     }
   ],
-  "version": "2.0"
+  "version": 2
 }
