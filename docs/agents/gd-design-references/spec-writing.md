@@ -211,3 +211,32 @@ Reviewed 14 recent GD commits. Pattern analysis:
 
 **GA's implementation speed:**
 GA is turning around specs in <2 hours. This means GD spec quality is the bottleneck, not implementation. Focus on spec completeness, not speed.
+
+---
+
+## Spec Gap Retrospective (Sprint 8)
+
+**One case where GA made an unspecced design decision:**
+
+Session restore toast spec (20260224-0125) said: "3000ms auto-dismiss." GA implemented BOTH auto-dismiss AND a manual X close button.
+
+This was a good call by GA -- the close button is clearly better UX for ADHD users who notice the toast immediately. But GD should have specified it.
+
+**Root cause:** Spec said what the auto-dismiss does, but didn't say whether manual dismissal should exist. GA filled the gap correctly. But this should have been GD's decision.
+
+**Rule change:** For any toast/notification spec, explicitly decide: auto-dismiss only? Manual dismiss only? Both?
+
+Template addition for toast specs:
+```
+## Dismiss Behavior
+- Auto-dismiss after [N]ms: YES/NO
+- Manual close button: YES/NO (if YES: position, aria-label, keyboard: Escape key?)
+```
+
+**Answer format guidance spec (sw-17):**
+
+Current MCM accepts answers as plain text input. There is no format guidance per question type. Examples of current problems:
+- Q asks for "decimal to nearest hundredth" -- Kai types "0.67" or ".67" or "0.670" -- all equivalent, only one graded correct
+- Q asks for "simplified fraction" -- Kai types "3/4" or "6/8" -- non-simplified is wrong, no guidance given
+
+Spec filed to GA: 20260224-0215 (answer format guidance per question type).
