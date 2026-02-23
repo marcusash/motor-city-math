@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/svg+xml" href="shared/favicon.svg">
-    <title>Motor City Math — Dashboard</title>
+    <title>Motor City Math: Dashboard</title>
     <link rel="stylesheet" href="shared/styles.css">
     <link rel="stylesheet" href="shared/print.css">
     <script src="shared/chart.min.js"></script>
@@ -209,7 +209,7 @@
             --fd-text-2:  #8B949E;
             --fd-text-3:  #8B949E;  /* bumped from #6E7681 to pass WCAG 2.1 AA (da-02) */
             --fd-r:       10px;
-            --accent-blue-on-dark: #4A90D9; /* 5.18:1 on #161b22 — WCAG 2.4.11 */
+            --accent-blue-on-dark: #4A90D9; /* 5.18:1 on #161b22 - WCAG 2.4.11 */
         }
 
         /* ── Hero (FD redesign) ───────────────────────────────────────── */
@@ -310,7 +310,7 @@
         .app-hd { text-align: center; margin-bottom: 24px; }
         .app-hd h1 { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.025em; color: var(--fd-text-1); margin: 0; }
         .app-hd p  { color: var(--fd-text-2); font-size: 0.82rem; margin-top: 4px; }
-        /* Hide arena toggle — FD design is always dark */
+        /* Hide arena toggle - FD design is always dark */
         #arenaToggle { display: none !important; }
         .trend-card {
             background: var(--fd-card); border: 1px solid var(--fd-border);
@@ -383,7 +383,7 @@
         </div>
 
         <div class="print-header">
-            <strong>Motor City Math — Dashboard</strong><br>
+            <strong>Motor City Math: Dashboard</strong><br>
             Name: _____________________ Date: ___________
         </div>
         <header class="app-hd">
@@ -394,7 +394,7 @@
         <!-- UP NEXT hero (FD redesign) -->
         <div class="hero">
             <div class="hero-eye">Up Next</div>
-            <div class="hero-name" id="upNextInfo">Retake Practice — Nonlinear Functions</div>
+            <div class="hero-name" id="upNextInfo">Retake Practice: Nonlinear Functions</div>
             <a href="exam.html?file=retake-practice-1" class="nav-btn primary">Start Practice</a>
             <div class="hero-last" id="statsBar"></div>
         </div>
@@ -695,7 +695,7 @@
             html += '<div class="std-card tier-' + tier + '" role="listitem">' +
                 '<div class="std-id">' + id + '</div>' +
                 '<div class="std-name">' + name + '</div>' +
-                '<div class="std-pct">' + (s.total ? pct + '%' : '—') + '</div>' +
+                '<div class="std-pct">' + (s.total ? pct + '%' : '-') + '</div>' +
                 '<div class="std-bar" role="progressbar" aria-label="' + id + ' ' + pct + '%" aria-valuenow="' + pct + '" aria-valuemin="0" aria-valuemax="100">' +
                 '<div class="std-fill" style="width:' + pct + '%"></div></div>' +
                 '<div class="std-copy">' + copy + '</div>' +
@@ -724,7 +724,7 @@
             var emoji = pct < 70 ? '🏀' : pct < 90 ? '📈' : '✅';
             var action = pct < 70 ? 'Start here.' : pct < 90 ? 'Almost there.' : 'Review only.';
             var name = s.name || id;
-            html += '<li class="study-item"><span class="emoji" aria-hidden="true">' + emoji + '</span> <strong>' + id + '</strong> (' + name + ') — ' + pct + '%. ' + action + '</li>';
+            html += '<li class="study-item"><span class="emoji" aria-hidden="true">' + emoji + '</span> <strong>' + id + '</strong> (' + name + '): ' + pct + '%. ' + action + '</li>';
             count++;
         });
         list.innerHTML = html || '<li class="study-item"><span class="emoji" aria-hidden="true">✅</span> All standards looking strong!</li>';
@@ -886,7 +886,7 @@
         if (testCount === 0) {
             bar.textContent = 'Your highlights reel starts with test #1. 💪';
         } else {
-            var dateStr = lastTest ? new Date(lastTest).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) : '—';
+            var dateStr = lastTest ? new Date(lastTest).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) : '-';
             bar.textContent = 'Last test: ' + dateStr + (lastPct !== null ? ' · ' + lastPct + '%' : '') + ' · ' + testCount + ' test' + (testCount !== 1 ? 's' : '') + ' completed';
         }
     }
@@ -953,7 +953,7 @@
             if (lowest && lowestPct < 92) next = lowest;
         }
 
-        // Priority 3: all ≥92% — celebrate
+        // Priority 3: all >=92% - celebrate
         if (!next) {
             document.getElementById('upNextInfo').textContent = 'All practice exams at Grade 4. You crushed it. 💪';
             var btn = document.querySelector('.nav-btn.primary');
@@ -967,7 +967,7 @@
         if (s && s.attempts && s.attempts.length > 0) {
             var lastPct = s.attempts[s.attempts.length - 1].pct ||
                 Math.round((s.attempts[s.attempts.length - 1].score / s.attempts[s.attempts.length - 1].total) * 100);
-            info += ' · Last: ' + lastPct + '% — beat it.';
+            info += ' · Last: ' + lastPct + '%. Beat it.';
         }
         document.getElementById('upNextInfo').textContent = info;
         var btn = document.querySelector('.nav-btn.primary');
@@ -1124,7 +1124,7 @@
     }
 
     window.addEventListener('DOMContentLoaded', function() {
-        // ?restore=1 — auto-seeds localStorage from server JSON, no file needed
+        // ?restore=1 - auto-seeds localStorage from server JSON, no file needed
         // Dad can text Kai: https://marcusash.github.io/motor-city-math/?restore=1
         var _restoreMode = new URLSearchParams(window.location.search).get('restore') === '1';
         if (_restoreMode) {
