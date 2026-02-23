@@ -1,5 +1,5 @@
 {
-  "captured": "2026-02-23T01:00:41.544Z",
+  "captured": "2026-02-23T01:09:15.159Z",
   "note": "Captured by gf-skill-23 regression replay pack",
   "suites": {
     "accessibility-landmarks.test.js": {
@@ -82,8 +82,8 @@
     },
     "flake-registry.test.js": {
       "exitCode": 0,
-      "total": 10,
-      "passed": 10,
+      "total": 13,
+      "passed": 13,
       "failed": 0
     },
     "font-token-enforcement.test.js": {
@@ -103,6 +103,12 @@
       "total": 5,
       "passed": 1,
       "failed": 4
+    },
+    "graph-e2e-upgrade.test.js": {
+      "exitCode": 0,
+      "total": 13,
+      "passed": 13,
+      "failed": 0
     },
     "hint-display-contract.test.js": {
       "exitCode": 0,
@@ -252,6 +258,12 @@
       "exitCode": 0,
       "total": 25,
       "passed": 25,
+      "failed": 0
+    },
+    "touch-target-map.test.js": {
+      "exitCode": 0,
+      "total": 16,
+      "passed": 9,
       "failed": 0
     }
   }
