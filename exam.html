@@ -558,9 +558,11 @@
 
         // Keyboard accessibility (WCAG 2.1.1)
         canvas.addEventListener('focus', function() {
-            graphData[canvasId].kbFocused = true;
+            var d = graphData[canvasId];
+            d.kbFocused = true;
             redrawGraph(canvasId);
             updateGraphCounter(canvasId);
+            announceGraph(canvasId, 'Graph focused. Cursor at (' + d.kbCursor.x + ', ' + d.kbCursor.y + '). Arrow keys to move, Enter to place point.');
         });
         canvas.addEventListener('blur', function() {
             graphData[canvasId].kbFocused = false;
