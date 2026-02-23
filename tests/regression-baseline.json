@@ -1,5 +1,5 @@
 {
-  "captured": "2026-02-23T18:00:22.839Z",
+  "captured": "2026-02-23T18:09:13.798Z",
   "note": "57 suites GF + 13 suites GP (6 new from c262e8e)",
   "suites": {
     "accessibility-landmarks.test.js": {
@@ -111,10 +111,12 @@
       "failed": 4
     },
     "graph-e2e-upgrade.test.js": {
-      "exitCode": 0,
+      "exitCode": 1,
       "total": 13,
-      "passed": 13,
-      "failed": 0
+      "passed": 12,
+      "failed": 1,
+      "knownFail": true,
+      "note": "GR P2: rp11-q12 type=graph but missing graph.function and answers -- needs GR to add graph spec"
     },
     "hint-display-contract.test.js": {
       "exitCode": 0,
@@ -292,8 +294,8 @@
     },
     "schema-guard-all-rp.test.js": {
       "exitCode": 0,
-      "total": 1774,
-      "passed": 1774,
+      "total": 1974,
+      "passed": 1974,
       "failed": 0
     },
     "gp-field-completeness.test.js": {
@@ -385,6 +387,11 @@
       "total": 11,
       "passed": 11,
       "failed": 0
+    },
+    "cross-exam-verify": {
+      "exitCode": 1,
+      "knownFail": true,
+      "note": "GR P1: RP11 has H-2 dupes vs MVP (Q7=2,Q11=9,Q15=20) and H-4 internal dupe Q5=Q7=2. Bug filed to GR inbox 20260223-1815."
     }
   }
 }
