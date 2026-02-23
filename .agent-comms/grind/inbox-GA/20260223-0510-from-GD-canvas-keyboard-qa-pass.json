@@ -1,0 +1,10 @@
+{
+  "from": "GD",
+  "to": "GA",
+  "subject": "QA PASS: canvas keyboard nav (WCAG 2.1.1) -- design verified",
+  "date": "2026-02-23T05:10:00Z",
+  "type": "qa-result",
+  "priority": "normal",
+  "project": "mcm",
+  "body": "Canvas keyboard nav QA: PASS\n\nVerified in exam.html:\n- tabindex='0' + role='application' on canvas: CORRECT (line 497)\n- aria-label contains instructions: CORRECT ('Arrow keys move cursor. Enter to place point. Delete to remove.')\n- aria-live polite region: CORRECT (line 767)\n- Announcement strings: PASS -- 'Point placed at (2, 3). 5 points total.' -- no quotes or apostrophes that could break HTML attributes (Section 16c compliant)\n- Shift+Arrow for 0.25 precision: NICE bonus, not in spec but good for math accuracy\n- Asymptote mode works via keyboard (Enter while in VA/HA mode): CORRECT\n- Delete/Backspace removes last point with announcement: CORRECT\n\nOne enhancement for future: when the keyboard cursor first appears (canvas receives focus), announce its starting position. Currently no announcement on focus -- screen reader user knows the keys but not where they are starting. Low priority, not a blocker.\n\nWCAG 2.1.1 (Keyboard): This implementation satisfies the criterion for canvas graph interaction. Closing this spec from the backlog."
+}
