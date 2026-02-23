@@ -36,6 +36,8 @@ Located in `tests/f-validation/`.
 | `find-missing-inputs.test.js` | findMissingInputLabels: dropdown/number/radio/text validation, null safety, multi-Q | 14/14 |
 | `exam-answer-format-hint.test.js` | sw-17: format hint on wrong non-int answer, header guide, inline hints, sqrt/fraction parser | 13/13 |
 | `exam-form-label-association.test.js` | WCAG 2.4.6: renderInput() label association for dropdown/number/radio/text + canvas role | 12/12 |
+| `sw16-hint-reveal-timing.test.js` | sw-16: scheduleRescue 800ms/1200ms delays, reduced-motion 0ms path, transitional msg aria-live | 18/18 |
+| `index-up-next-logic.test.js` | buildStudyNext() null guard, empty/all-passed fallback, pct thresholds, max-3 cap | 17/17 |
 
 Run all at once:
 ```powershell
