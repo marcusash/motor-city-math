@@ -1126,6 +1126,25 @@
     }
 
     /**
+     * Pure helper: check whether a set of parsed number inputs is correct.
+     * Supports both ordered and plus-minus (either-order) grading.
+     * @param {Array} numberInputs - [{val, answer, tolerance}]
+     * @param {boolean} plusMinus - accept either ordering of two inputs
+     * @returns {boolean} true if all inputs are within tolerance
+     */
+    function evaluateNumberInputs(numberInputs, plusMinus) {
+        if (plusMinus && numberInputs.length === 2) {
+            var a = numberInputs[0], b = numberInputs[1];
+            var order1 = Math.abs(a.val - a.answer) <= a.tolerance && Math.abs(b.val - b.answer) <= b.tolerance;
+            var order2 = Math.abs(a.val - b.answer) <= a.tolerance && Math.abs(b.val - a.answer) <= b.tolerance;
+            return order1 || order2;
+        }
+        return numberInputs.every(function(n) {
+            return !isNaN(n.val) && Math.abs(n.val - n.answer) <= n.tolerance;
+        });
+    }
+
+    /**
      * Grade all auto-gradable inputs, compute score, show scorecard, save results.
      * Idempotent: no-op if already graded (examGraded flag).
      */
@@ -1216,15 +1235,13 @@
             });
 
             // Handle plus_minus: accept either ordering of number inputs
-            if (q.plus_minus && numberInputs.length === 2) {
-                var a = numberInputs[0], b = numberInputs[1];
-                var order1 = Math.abs(a.val - a.answer) <= a.tolerance && Math.abs(b.val - b.answer) <= b.tolerance;
-                var order2 = Math.abs(a.val - b.answer) <= a.tolerance && Math.abs(b.val - a.answer) <= b.tolerance;
-                if (!order1 && !order2) qCorrect = false;
-            } else {
+            var numberInputsCorrect = evaluateNumberInputs(numberInputs, q.plus_minus);
+            if (!numberInputsCorrect) qCorrect = false;
+
+            // Color number input borders based on individual correctness
+            if (!q.plus_minus) {
                 numberInputs.forEach(function(n) {
                     var ok = !isNaN(n.val) && Math.abs(n.val - n.answer) <= n.tolerance;
-                    if (!ok) qCorrect = false;
                     if (n.el) {
                         n.el.style.borderColor = ok ? 'var(--color-correct, #3FB950)' : 'var(--color-incorrect, #F85149)';
                         n.el.style.borderWidth = '2px';
