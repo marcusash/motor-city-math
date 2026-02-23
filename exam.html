@@ -1147,13 +1147,23 @@
     /**
      * Grade all auto-gradable inputs, compute score, show scorecard, save results.
      * Idempotent: no-op if already graded (examGraded flag).
+     *
+     * Concerns (in order):
+     *   1. Guard       — skip if already graded, hide tracker UI
+     *   2. Validation  — block if any required field is blank
+     *   3. Grading     — evaluate each question's inputs, compute scores
+     *   4. Feedback    — display per-question correct/wrong feedback and hints
+     *   5. Scorecard   — render final scorecard, persist score to mcm_scores
      */
     function gradeExam() {
         if (examGraded) return;
+
+        // == SECTION 1: Guard ==
         // Hide position tracker during graded state
         var tracker = document.getElementById('questionTracker');
         if (tracker) tracker.style.display = 'none';
 
+        // == SECTION 2: Validation ==
         // Block grading if any required field is blank
         var missing = [];
         examData.questions.forEach(function(q, qi) {
@@ -1192,6 +1202,7 @@
         var strip = document.getElementById('progressStrip');
         if (strip) strip.classList.remove('active');
 
+        // == SECTION 3: Grading ==
         var questions = examData.questions;
         var score = 0, total = questions.length;
         var results = [];
@@ -1270,6 +1281,7 @@
             }
             results.push(qCorrect);
 
+            // == SECTION 4: Feedback (per-question) ==
             // Show feedback
             var fb = document.getElementById('feedback-' + q.id);
             if (fb) {
@@ -1353,6 +1365,7 @@
             }
         });
 
+        // == SECTION 5: Scorecard + Storage ==
         // Show scorecard
         showScorecard(score, total, stdScores, results);
 
