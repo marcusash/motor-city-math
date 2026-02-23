@@ -340,6 +340,16 @@
             </label>
         </div>
 
+        <!-- Corrupted score data recovery banner (shown only if JSON.parse fails) -->
+        <div class="score-error-banner" id="scoreErrorBanner" style="display:none;" role="alert" aria-live="polite">
+            <span class="score-error-icon">⚠️</span>
+            <span class="score-error-msg">Score history couldn't load. Something went wrong with your saved data.</span>
+            <div class="score-error-actions">
+                <button class="score-error-clear" id="scoreErrorClear" onclick="clearCorruptedScores()">Clear and start fresh</button>
+                <button class="score-error-dismiss" id="scoreErrorDismiss" onclick="dismissScoreError()">Dismiss</button>
+            </div>
+        </div>
+
         <div class="print-header">
             <strong>Motor City Math — Dashboard</strong><br>
             Name: _____________________ Date: ___________
@@ -442,8 +452,14 @@
     /* ========== READ SCORES ========== */
     function getScores() {
         if (_dadMode && _dadScores) return _dadScores;
-        try { return JSON.parse(localStorage.getItem('mcm_scores') || '{}'); } catch(e) { return {}; }
+        var raw = localStorage.getItem('mcm_scores');
+        if (!raw) return {};
+        try { return JSON.parse(raw); } catch(e) {
+            _scoreParseError = e;
+            return {};
+        }
     }
+    var _scoreParseError = null;
 
     /* ========== SCORE CHART (FD SVG design) ========== */
     function buildChart() {

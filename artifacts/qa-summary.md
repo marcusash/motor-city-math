@@ -1,6 +1,6 @@
 # QA Summary
 
-Generated: 2026-02-23T18:51:14.852Z
+Generated: 2026-02-23T18:59:01.704Z
 
 | Exam | Modified | Questions | Missing hints | Missing steps | Missing feedback | Missing inputs | Missing standard | Missing HTML |
 |------|----------|-----------|---------------|---------------|------------------|----------------|------------------|--------------|
@@ -15,6 +15,24 @@ Generated: 2026-02-23T18:51:14.852Z
 | retake-practice-7 | 2026-02-23 | 15 | 0 | 0 | 0 | 0 | 0 | 0 |
 | retake-practice-8 | 2026-02-23 | 15 | 0 | 0 | 0 | 0 | 0 | 0 |
 | retake-practice-9 | 2026-02-23 | 15 | 0 | 0 | 0 | 0 | 0 | 0 |
+
+## Completeness Ranking
+
+Exams with the most missing fields need QA attention first.
+
+| Rank | Exam | Missing fields total |
+|------|------|----------------------|
+| 1 | retake-practice-1 | 0 CLEAN |
+| 2 | retake-practice-10 | 0 CLEAN |
+| 3 | retake-practice-11 | 0 CLEAN |
+| 4 | retake-practice-2 | 0 CLEAN |
+| 5 | retake-practice-3 | 0 CLEAN |
+| 6 | retake-practice-4 | 0 CLEAN |
+| 7 | retake-practice-5 | 0 CLEAN |
+| 8 | retake-practice-6 | 0 CLEAN |
+| 9 | retake-practice-7 | 0 CLEAN |
+| 10 | retake-practice-8 | 0 CLEAN |
+| 11 | retake-practice-9 | 0 CLEAN |
 
 ## retake-practice-1
 

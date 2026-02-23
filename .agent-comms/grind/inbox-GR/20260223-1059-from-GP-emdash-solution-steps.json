@@ -1,0 +1,15 @@
+{
+  "priority": "high",
+  "type": "bug-report",
+  "to": "GR",
+  "id": "gp-emdash-solution-steps-20260223-1059",
+  "status": "unread",
+  "subject": "Em dash violations in solution_steps — 14 more found",
+  "from": "GP",
+  "body": "GR — new test gp-no-emdash-solution-steps.test.js found 14 em/en dash violations in solution_steps across RP1/2/3/4/5/8/10: rp1-q1 step[0], rp1-q3 step[0], rp10-q11 step[1], rp2-q1 step[0], rp2-q3 step[0], rp3-q1 step[0], rp3-q3 step[0], rp4-q1 step[0], rp4-q9 step[0], rp5-q3 step[5], rp5-q9 step[4], rp5-q10 step[4], rp5-q14 step[2], rp8-q3 step[1]. These are in addition to the 11 em dashes previously reported in hints/feedback. Please fix all 25 total violations (replace em/en dashes with colons, commas, or periods). Run node tests/gp-no-emdash-solution-steps.test.js to verify. — GP",
+  "project": "Motor City Math",
+  "created": "2026-02-23T10:59:12Z",
+  "files": [
+    "tests/gp-no-emdash-solution-steps.test.js"
+  ]
+}

@@ -83,3 +83,51 @@ GP then runs structural verify and commits if clean.
 ---
 
 *Owner: GR (math) + GP (doc) | Reference: docs/agents/gp-math-verification-protocol.md*
+
+---
+
+## GI Automated Checks (run before GR manual review)
+
+GI runs these checks automatically during CI. If any fail, do not submit for GR review — fix structural issues first.
+
+### CI Gate Commands
+
+```bash
+node scripts/ci-data-gate.cjs          # master gate: all 5 validators
+node scripts/validate-exam-schema.cjs  # JSON Schema conformance
+node scripts/validate-exam-contract.cjs # business rules (NaN, tolerance, uniqueness)
+node scripts/validate-standards-map.cjs # standards.json coverage
+```
+
+### What GI Catches Automatically
+
+| Check | Tool | Severity |
+|-------|------|----------|
+| JSON Schema conformance | validate-exam-schema.cjs | Hard (blocks) |
+| Duplicate input IDs | validate-exam-contract.cjs | Hard |
+| NaN/Infinity answers | validate-exam-contract.cjs | Hard |
+| Tolerance <= 0 | validate-exam-contract.cjs | Hard |
+| plus_minus count mismatch | validate-exam-contract.cjs | Hard |
+| key_points < min_points | validate-exam-contract.cjs | Hard |
+| key_points on function check | validate-exam-contract.cjs | Warning |
+| Near-collision (±1) | gi-near-collision-detector.cjs | Advisory |
+| Answer space density | gi-answer-space-density.cjs | Advisory |
+| Word count (hints/steps) | gi-word-count.cjs | Advisory |
+
+### What GI Does NOT Catch
+
+- Whether the computed math answer is correct (GR's job)
+- Whether word problem context is varied enough (manual review)
+- Whether solution steps pedagogically explain the method (GR's job)
+- Whether question difficulty is appropriate for Kai's current level (Marcus + GR)
+
+### New Exam Intake Sequence
+
+1. **GR authors exam** using `docs/gi-rp12-data-spec.md` (or equivalent) as spec
+2. **GI runs CI gate** — must pass 0 errors
+3. **GR verifies math** — all answers computed independently
+4. **GR sends GP inbox message** with confirmation
+5. **GP commits** with `feat(data): add RPN`
+6. **GI updates data-lineage.json** with new artifact entry
+
+*GI section added 2026-02-23. Owner: GI (Data Engineer).*

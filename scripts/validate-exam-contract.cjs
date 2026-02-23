@@ -180,6 +180,29 @@ function validateExamFile(filepath) {
       if (kp.length < minPts) {
         error(`${qid}: graph has ${kp.length} key_points but min_points=${minPts}`);
       }
+      // Advisory: verify key_points are on the function (soft check)
+      if (q.graph.function && kp.length > 0) {
+        let evalFn;
+        try {
+          // eslint-disable-next-line no-new-func
+          evalFn = new Function('x', `with(Math) { return (${q.graph.function}); }`);
+        } catch (_) {
+          warn(`${qid}: graph.function failed to compile: "${q.graph.function}"`);
+          evalFn = null;
+        }
+        if (evalFn) {
+          const tol = q.graph.tolerance || 0.25;
+          for (const pt of kp) {
+            const [x, expectedY] = pt;
+            let actualY;
+            try { actualY = evalFn(x); } catch (_) { continue; }
+            if (typeof actualY !== 'number' || !isFinite(actualY)) continue;
+            if (Math.abs(actualY - expectedY) > tol) {
+              warn(`${qid}: key_point [${x},${expectedY}] — f(${x})=${actualY.toFixed(4)}, diff=${Math.abs(actualY-expectedY).toFixed(4)} > tol=${tol}`);
+            }
+          }
+        }
+      }
     }
   }
 }

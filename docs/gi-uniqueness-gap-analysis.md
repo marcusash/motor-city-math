@@ -66,3 +66,21 @@ Both gaps are non-blocking for the current 10 exams. RP11 design is the right ti
 ---
 
 *GI task 3 of 25 learning plan — FR uniqueness research gap analysis complete.*
+
+---
+
+## Update: Post-RP5 Fix Status (2026-02-23)
+
+**RP5 hard failures resolved:** Q4(9→10), Q6(8→12), Q11(25→36), Q15(20→15). CI gate now shows 0 hard failures across all 11 exams.
+
+**Current 2 dup-sigs remain (soft warnings, not blocking):**
+- W3.d::3.5 — two exams have answers 3 and 4 in same slot (±1 near-collision)
+- W3.d::6 — multiple exams cluster around answer 6 in W3.d slots
+
+These are detected by `gi-near-collision-detector.cjs` (advisory only, exits 0).
+
+**W-4 gap status:** Gap still exists as described above. No `word_problem_context` tag added yet. Revisit for RP13+ when context variety becomes an issue.
+
+**W2.d gap:** CLOSED. RP11 added Q14 vertex-form quadratic. W2.d now at 5/5 threshold.
+
+**New tool added:** `scripts/gi-near-collision-detector.cjs` — finds ±1 near-collisions in same slot across exams. Detects 209 advisories in current corpus (expected for 11 exams). Not blocking.
