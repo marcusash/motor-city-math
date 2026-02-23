@@ -346,7 +346,7 @@
         "Only x = 6 is valid."
       ],
       "feedback_correct": "🔥 Caught the extraneous one.",
-      "feedback_wrong": "Square both sides, then check BOTH answers back in the original."
+      "feedback_wrong": "Square both sides. Check both answers in the original."
     },
     {
       "id": "rp2-q11",
@@ -439,7 +439,7 @@
         "Draw U-shaped parabola, narrower than normal."
       ],
       "feedback_correct": "🔥 Clean graph. Vertex locked at (3, -6).",
-      "feedback_wrong": "Vertex is (h, k) from a(x-h)² + k. Here h=3, k=-6."
+      "feedback_wrong": "Vertex x=-b/(2a). Then substitute to find y."
     },
     {
       "id": "rp2-q13",

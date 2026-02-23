@@ -346,7 +346,7 @@
         "Only x = 1 is valid."
       ],
       "feedback_correct": "🔥 Caught the extraneous one.",
-      "feedback_wrong": "Square both sides, then check BOTH answers back in the original."
+      "feedback_wrong": "Square both sides. Check both answers in the original."
     },
     {
       "id": "rp1-q11",

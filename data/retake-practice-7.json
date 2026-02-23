@@ -246,7 +246,7 @@
         "Key: when a≠1 and it does NOT factor out, use AC method (multiply a×c, split, group)."
       ],
       "feedback_correct": "🔥 Both solutions found.",
-      "feedback_wrong": "Use the AC method: a×c = 2×3 = 6. Find factors of."
+      "feedback_wrong": "AC: a×c=6. Factors of 6 adding to -5: -3,-2."
     },
     {
       "id": "rp7-q6",
@@ -279,7 +279,7 @@
         "Step 4: x = ±4. Two solutions because x² = positive number always gives ±.",
         "Check: √(16 + 9) - 5 = √25 - 5 = 5 - 5 = 0 ✓"
       ],
-      "feedback_wrong": "After isolating and squaring: x² = 16. Remember x² = k has.",
+      "feedback_wrong": "Isolate, square: x^2=16. Both ±4 — check both.",
       "feedback_correct": "🔥 Squared both sides. Both roots: ±4."
     },
     {
@@ -356,7 +356,7 @@
         "Check: √(18−5) = √13 and √(6+7) = √13 ✓"
       ],
       "feedback_correct": "🔥 Equal radicands. x = 6.",
-      "feedback_wrong": "If √(A) = √(B), then A = B. Set the insides equal."
+      "feedback_wrong": "If sqrt(A)=sqrt(B), set A=B. Solve."
     },
     {
       "id": "rp7-q10",
@@ -389,7 +389,7 @@
         "Step 4: x² = 4 → x = ±2. Two solutions because x² = positive number gives ±.",
         "Check x=2: 4·2^(4+1) = 4·32 = 128 ✓"
       ],
-      "feedback_wrong": "Divide by 4 first: 2^(x²+1)=32=2⁵. Set exponents equal: x²+1=5. Then x²=4 gives.",
+      "feedback_wrong": "Divide by 4: 2^(x^2+1)=2^5 → x^2+1=5 → x^2=4.",
       "feedback_correct": "🔥 Quadratic exponent. Both roots: ±2."
     },
     {
@@ -634,7 +634,7 @@
         "W2.d: the REVERSE of reading a graph. Given characteristics, build the equation."
       ],
       "feedback_correct": "W2.d: build the equation from features, not just read them.",
-      "feedback_wrong": "Vertex gives h and k directly. Then plug in the point (-2,0)."
+      "feedback_wrong": "Vertex gives h,k. Plug in point (-2,0) to find a."
     },
     {
       "id": "rp7-q15",
@@ -668,7 +668,7 @@
         "W3.d: one-to-one property applied twice in one problem. First to find r, then to solve for t."
       ],
       "feedback_correct": "🔥 Model written and evaluated. ,000.",
-      "feedback_wrong": "Start with finding r: 100 * r^5 = 3200 -> r^5 =."
+      "feedback_wrong": "Find r: 100·r^5=3200 → r^5=32 → r=2."
     }
   ],
   "version": 2

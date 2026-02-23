@@ -37,7 +37,7 @@
         "(x - 6)(x + 1) = 0.",
         "x = 6 or x = -1. Check: 36-30-6=0 ✓, 1+5-6=0 ✓"
       ],
-      "feedback_wrong": "Factors of -6 adding to -5 are -6 and +1: (x-6)(x+1)=0.",
+      "feedback_wrong": "Factors of -6 adding to -5: -6,+1. Factor: (x-6)(x+1)=0.",
       "feedback_correct": "🔥 Factored it. Both roots clean."
     },
     {
@@ -88,7 +88,7 @@
         "x-intercepts: 2|x-3|=4 → |x-3|=2 → x=5 or x=1.",
         "a=2>0 opens upward. Range: [-4, +∞)."
       ],
-      "feedback_wrong": "Vertex is (3,-4). Set f=0: |x-3|=2 gives x=1 and x=5. a>0 so.",
+      "feedback_wrong": "Vertex (3,-4). Set |x-3|=2 → x=1 or x=5.",
       "feedback_correct": "🔥 Vertex, intercepts, range. Full read."
     },
     {
@@ -128,7 +128,7 @@
         "Case 2 (negative): -(x-2)=8 → x-2=-8 → x=-6.",
         "Check: |-2(10)+4|-16 = |-16|-16 = 0 ✓ and |-2(-6)+4|-16 = |16|-16 = 0 ✓"
       ],
-      "feedback_wrong": "Factor out the negative: |-2x+4|=2|x-2|. Isolate: 2|x-2|=16 → |x-2|=8. Case 1: x=10..",
+      "feedback_wrong": "Factor: 2|x-2|=16 → |x-2|=8 → x=10 or x=-6.",
       "feedback_correct": "🔥 Both cases split. Both roots."
     },
     {
@@ -192,7 +192,7 @@
         "Group: 3x(x-2) - 4(x-2) = (3x-4)(x-2) = 0.",
         "x = 4/3 or x = 2."
       ],
-      "feedback_wrong": "AC: a×c=24. Factors adding to -10: -6 and -4. Split and group:.",
+      "feedback_wrong": "AC: a×c=24. Factors adding to -10: -6,-4. Group and factor.",
       "feedback_correct": "🔥 AC method. Two roots."
     },
     {
@@ -451,7 +451,7 @@
         "Decreasing on (3,+∞): right of vertex.",
         "Key: downward parabola → range is y ≤ k, NOT y ≥ k."
       ],
-      "feedback_wrong": "a=-1 means DOWNWARD. Range is (-inf,4], not [4,+inf). Increasing is LEFT of.",
+      "feedback_wrong": "a=-1 means opens down. Range (-inf,4]. Increasing left of vertex.",
       "feedback_correct": "🔥 Parabola graphed. Vertex and roots."
     },
     {
@@ -577,7 +577,7 @@
         "4a=4 → a=1.",
         "f(x) = (x+2)²+1. Verify: f(-2)=0+1=1 ✓, f(0)=4+1=5 ✓, opens up (a>0) ✓"
       ],
-      "feedback_wrong": "h=-2 and k=1 come from the vertex. Plug (0,5) into a(x+2)²+1=5 to.",
+      "feedback_wrong": "h=-2, k=1 from vertex. Plug (0,5): 4a+1=5 → a=1.",
       "feedback_correct": "🔥 Built upward parabola from features."
     },
     {

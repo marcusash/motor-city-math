@@ -171,7 +171,7 @@
       ],
       "feedback_correct": "🔥 Absolute value. Both intercepts.",
       "feedback_wrong_parent": "The | | symbols mean absolute value.",
-      "feedback_wrong": "Factor first: |2x−8| = 2|x−4|. Do not try to read a, h,."
+      "feedback_wrong": "Isolate: |2x-8|=2|x-4|. Then |x-4|=4 → x=8 or x=0."
     },
     {
       "id": "rp4-q4",
@@ -197,7 +197,7 @@
         "Check: 5^(2×3.5-3) = 5^4 = 625 ✓"
       ],
       "feedback_correct": "🔥 Exponent match. Clean.",
-      "feedback_wrong": "Rewrite 625 as a power of 5 (5⁴). Then set exponents equal."
+      "feedback_wrong": "625=5^4. Set exponents equal: x=4."
     },
     {
       "id": "rp4-q5",
@@ -232,7 +232,7 @@
         "Check: 36−30−6=0 ✓ and 1+5−6=0 ✓"
       ],
       "feedback_correct": "🔥 Factored standard form. Both roots.",
-      "feedback_wrong": "This is NOT vertex form — you cannot take ±√ directly. Find."
+      "feedback_wrong": "Not vertex form. Use AC method or quadratic formula."
     },
     {
       "id": "rp4-q6",
@@ -336,7 +336,7 @@
         "Check: 3√16 + 1 = 12 + 1 = 13 ✓"
       ],
       "feedback_correct": "🔥 Coefficient on radical — divide it off first.",
-      "feedback_wrong": "Do NOT square immediately. Subtract 1, then divide by 3, THEN square."
+      "feedback_wrong": "Isolate sqrt first. Then square both sides."
     },
     {
       "id": "rp4-q10",

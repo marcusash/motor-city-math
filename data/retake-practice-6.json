@@ -258,7 +258,7 @@
         "Check: 16−4−12=0 ✓ and 9+3−12=0 ✓"
       ],
       "feedback_correct": "🔥 Standard form factored. Both roots found.",
-      "feedback_wrong": "Cannot take ±√ here. Find two numbers, factor, then solve each factor."
+      "feedback_wrong": "Cannot take ±sqrt directly. Factor, then solve each."
     },
     {
       "id": "rp6-q7",
@@ -285,7 +285,7 @@
         "Check: √25 − √16 = 5 − 4 = 1 ✓"
       ],
       "feedback_correct": "🔥 Two rounds of squaring. That is the full technique.",
-      "feedback_wrong": "You cannot eliminate both radicals at once. Isolate one, square, simplify, then."
+      "feedback_wrong": "Isolate one radical. Then square. Then square again."
     },
     {
       "id": "rp6-q8",
@@ -568,7 +568,7 @@
         "f(x) = 2|x + 2| − 6. Opens up ✓ (positive a)."
       ],
       "feedback_correct": "🔥 L3: built the function from features.",
-      "feedback_wrong": "Start with vertex: h=−2, k=−6. Then use the given point to find."
+      "feedback_wrong": "Vertex h=-2, k=-6. Use given point to find a."
     },
     {
       "id": "rp6-q15",
