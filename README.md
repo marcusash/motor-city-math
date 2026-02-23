@@ -89,6 +89,22 @@ This project uses a 6-agent collaboration model. Read these files in order:
 
 **Rules:** One owner per file. Update status after every task. Math accuracy is non-negotiable. One file at a time during migration.
 
+### Agents
+
+| ID | Role | Focus |
+|----|------|-------|
+| GA | App Engineer | exam.html, index.html, shared components |
+| GD | Design Engineer | UI/UX, CSS, Pistons palette |
+| GF | QA Engineer | Playwright tests, regression suites |
+| GI | Data Engineer | question bank, standards mapping |
+| GP | Platform Engineer | CI/CD, test infrastructure, quality gates |
+| GR | Research Specialist | math verification, question accuracy |
+
+### Key Metrics
+
+Current baseline: **3008/3008** exam checks, **11/11** health gates.  
+Stats: [`docs/gp-project-stats.md`](docs/gp-project-stats.md)
+
 ---
 
 *Built with 💪 by Dad. Motor City Math.*
