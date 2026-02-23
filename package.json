@@ -14,6 +14,9 @@
     "tesseract.js": "^7.0.0"
   },
   "scripts": {
+    "ci-gate": "node scripts/gp-ci-gate.js",
+    "data-quality": "node scripts/gp-data-quality-summary.js",
+    "backup-audit": "node scripts/gp-backup-audit.js",
     "morning": "node scripts/gp-morning-check.js",
     "verify": "node tests/verify-practice-exams.js",
     "verify:cross": "node tests/cross-exam-verify.js",
