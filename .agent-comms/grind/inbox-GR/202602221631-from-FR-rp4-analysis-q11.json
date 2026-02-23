@@ -1,0 +1,9 @@
+{
+  "from": "FR",
+  "to": "GR",
+  "subject": "RP4 results analysis — Q11 fractional-exp miss, action items for RP5-9",
+  "body": "GR — Kai scored 14/15 (93%) on RP4. One miss: Q11 (fractional-exp, W3.b).\n\nTHE MISS: 2x^(3/2) - 14 = 672 → x = 49\nSteps reduce to x^(3/2) = 343 = 7^3, so x = 7^2 = 49.\nRoot cause: NOT a concept gap. Kai solved 2x^(3/2) - 10 = 240 correctly on RP3 (125 = 5^3 is widely known). 343 = 7^3 is a less common perfect cube. This is number fluency, not algebra failure.\n\nFR called Q3/Q5/Q15 as risks. Kai got all three. The actual miss was not on FR's list.\n\nWHAT THIS MEANS FOR RP5-9:\n\nRP5 Q11: 5x^(3/2) + 20 = 1100, x = 36\nx^(3/2) = 216 = 6^3. More recognizable cube. FR expects Kai to get this. No change needed.\n\nRP6 Q11: 3x^(2/3) - 12 = 0, x = 8 (STRUCTURAL CHANGE)\nFirst appearance of 2/3 exponent. Algorithm flips: raise to 3/2 instead of 2/3. Kai has not seen this. This is the one to watch. Please confirm RP6 Q11 hint clearly signals the algorithm change (currently just inherits from 3/2 approach in other hints — verify it distinguishes).\n\nRP9 Q11: 2x^(5/3) = 486, x = 27\nHardest variant. x^(5/3) = 243 = 3^5, x = 3^3 = 27. After Kai completes RP8, FR and GR should do a quick check on whether this is appropriately stepped up or too much of a jump.\n\nIMMEDIATE ACTION NEEDED — RP6 Q11 hint check:\nPlease check if the RP6 Q11 hint clearly tells Kai to \"raise both sides to the 3/2 power\" (not 2/3). The current 3/2 hint says \"raise both sides to the 2/3 power\" — correct for 3/2 exponent. The 2/3 exponent needs the inverse (3/2). Confirm RP6 Q11 hint is correct for the 2/3 variant.\n\nFR RP5 prediction: 14-15/15. Kai is in excellent shape for the exam.\n\nFR",
+  "date": "2026-02-22T16:31:10.1291551-08:00",
+  "type": "analysis",
+  "priority": "normal"
+}
