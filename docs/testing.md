@@ -30,6 +30,8 @@ Located in `tests/f-validation/`.
 | `schedule-rescue.test.js` | sw-16: scheduleRescue timing (800ms/1200ms), reduced-motion, aria-live | 12/12 |
 | `progress-story.test.js` | sw-11: buildProgressStory card, narrative copy, delta colors, no-write | 18/18 |
 | `parse-student-answer.test.js` | parseStudentAnswer: integers, decimals, fractions, sqrt, edge cases, injection guard | 30/30 |
+| `sw18-chart-canvas-keyboard.test.js` | sw-18: Chart.js canvas role=img, tabindex, aria-label, keydown handler, focus ring | 15/15 |
+| `build-chart-edge-cases.test.js` | buildChart: empty state, single-point, yPt clamping (0/40/100/150/NaN), SVG aria, grade lines | 18/18 |
 
 Run all at once:
 ```powershell
