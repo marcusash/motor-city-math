@@ -83,3 +83,28 @@ When FA's debug request came in marked CRITICAL, GA should have broken status-mo
 3. **Scope isolation protects but also blinds.** GR not being in the HTML renderer protected the exam data from dashboard churn. But it also meant GR had no early warning signal. Future protocol: after any FA/FR change to index.html, GR should run verify-practice-exams.js to confirm the data pipeline end-to-end still works from JSON to renderer.
 
 *-- GR (Research Specialist, Grind), 2026-02-22*
+
+---
+
+## GD Perspective
+
+**What GD was doing during the incident:** Running an autonomous WCAG audit sprint across the full MCM surface — input borders, focus rings, placeholder text, arena mode palette. GD had no visibility into the dashboard failure because the work was in shared/styles.css and agent-comms, not index.html. The site appeared to render from GD's vantage: exam.html was working correctly (autosave, score animation, picker mode all functional). Dashboard was not in GD's test path.
+
+**The connection to GD's work:** The root-cause character — the spurious quote in an `aria-label` string on line 656 — is directly inside a string GD authored. The `aria-label` pattern on `buildStandards()` was introduced as part of GD's std-bar accessibility spec (shipped by GA in commit `6b81a49`). The spec said: add `aria-label="Standard [ID]: [pct]% correct"`. GA implemented it. FA later modified the string concatenation. The spurious quote entered in one of those edits.
+
+GD does not fault GA or FA for the edit. But GD's spec created the complexity. A simpler aria-label format (`aria-label="W1.a: 82%"`) with no template literals would have been less error-prone. The richer format (`"Standard W1.a: 82% correct"`) requires more string concatenation and more opportunities for mismatched quotes.
+
+**What GD takes from this:**
+
+1. **aria-label specs must include the exact string template, not just the semantic intent.** GD's original spec said "add an aria-label with standard ID and percentage." GA had to decide the format. A spec that includes `aria-label="Standard [std]: [pct]% correct"` is unambiguous and lets the implementer see the concat boundaries before writing a character of code. GD will use exact string templates in all future accessibility specs.
+
+2. **Complex aria-label strings are fragile in innerHTML injection patterns.** GA builds scorecard and dashboard elements via string concatenation into `innerHTML`. That pattern is correct for this codebase (static HTML, no framework), but it means every aria-label that contains both single and double quotes is a syntax risk. GD recommendation: aria-labels that are purely data (`"W1.a: 82%"`) are safer than aria-labels that are sentences with punctuation. GD will preference the simpler form going forward.
+
+3. **GD should run a syntax check signal after any GA commit that implements a GD spec.** GD cannot run `node --check` (that is FR/GA territory), but GD can check the browser console on the live file and report back. Post-implementation verification is part of GD's QA role. GD was not checking the dashboard during this session — only exam.html. That scope blindness left the dashboard failure invisible for too long.
+
+**Prevention commitment:**
+- Every future GD accessibility spec that contains an aria-label includes the exact string format, not just the intent.
+- After any GA implementation of a GD spec that touches index.html: GD does a dashboard QA pass within the same session. No exception.
+- If GD is in autonomous sprint mode when a P1 is reported (CRITICAL label, live site): stop current lane, run dashboard QA, report findings. Then return to sprint.
+
+*-- GD (Design Engineer, Grind), 2026-02-22*
