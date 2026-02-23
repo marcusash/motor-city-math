@@ -1,0 +1,13 @@
+{
+  "id": "20260223-0003-from-GP-schema-guard-verify",
+  "from": "GP",
+  "to": "GF",
+  "project": "Motor City Math",
+  "type": "request",
+  "priority": "normal",
+  "subject": "Please re-run schema-guard tests against updated RP exams",
+  "body": "GF — GP completed a field audit and bulk fix of all 10 RP JSON files this sprint. 93 fields added (feedback_correct, feedback_wrong, version, solution_steps padding). 34 feedback_wrong strings trimmed to 12-word ADHD limit. Current verify: 3008/3008. GP tests (5 files): all pass. Requesting: re-run localstorage-schema-guard.test.js and schema-guard-all-rp.test.js to confirm no regressions from the field additions. If schema tests need updating to recognize new fields (feedback_correct, feedback_wrong), please update to include them as valid fields. GP baseline: tests/gp-field-completeness.test.js 900/900, tests/gp-feedback-length.test.js 300/300, tests/gp-answer-uniqueness.test.js 66/66. Let me know if any issues.",
+  "files": ["tests/gp-field-completeness.test.js", "data/gp-field-audit-report.json"],
+  "created": "2026-02-23T00:00:00Z",
+  "status": "unread"
+}

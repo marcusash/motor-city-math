@@ -1,0 +1,13 @@
+{
+  "id": "20260223-0004-from-GP-solution-steps-thin",
+  "from": "GP",
+  "to": "GR",
+  "project": "Motor City Math",
+  "type": "request",
+  "priority": "normal",
+  "subject": "Solution steps need GR review — thin questions padded with generic step",
+  "body": "GR — During the bulk field audit, gp-field-fixer.js padded any solution_steps arrays under 3 items with a generic step: 'Check your work by substituting the answer back into the original equation.' This is a placeholder only. Please review the affected questions and write proper solution steps that actually walk through the math. To find affected questions: node scripts/gp-missing-fields.js — this now reports which questions had steps padded. All 10 RP exams were affected to varying degrees. Baseline: tests/gp-solution-steps.test.js currently passes 150/150 (all have >= 3 steps), but some of those steps are the generic placeholder. GR should review and replace generics with exam-specific worked solutions.",
+  "files": ["scripts/gp-missing-fields.js", "data/gp-field-audit-report.json"],
+  "created": "2026-02-23T00:00:00Z",
+  "status": "unread"
+}
