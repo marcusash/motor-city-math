@@ -23,6 +23,9 @@ const ROOT = path.resolve(__dirname, '..', '..');
 const DATA_DIR = path.join(ROOT, 'data');
 
 const REQUIRED_Q_FIELDS = ['id', 'number', 'standard', 'type', 'question_html', 'inputs', 'hint', 'solution_steps'];
+// Note: feedback_correct, feedback_wrong, version are GP-added fields (optional here).
+// Enforcement of those fields is owned by tests/gp-field-completeness.test.js (GP).
+// GF does not duplicate that check.
 const VALID_INPUT_TYPES = ['dropdown', 'number', 'radio', 'text'];
 const HINT_MAX = 120;
 

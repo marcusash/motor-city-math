@@ -3,6 +3,7 @@
     "ajv": "^8.18.0",
     "canvas": "^3.2.1",
     "chart.js": "^4.5.1",
+    "fast-check": "^4.5.3",
     "katex": "^0.16.9",
     "pdf-parse": "^2.4.5",
     "pdfjs-dist": "^3.11.174",
@@ -13,6 +14,7 @@
     "verify:cross": "node tests/cross-exam-verify.js",
     "audit:fields": "node scripts/gp-rp-field-audit.js",
     "test:gp": "node tests/gp-field-completeness.test.js && node tests/gp-answer-uniqueness.test.js && node tests/gp-solution-steps.test.js && node tests/gp-feedback-length.test.js && node tests/gp-manifest-integrity.test.js",
+    "test:gf": "node tests/f-validation/schema-guard-all-rp.test.js && node tests/f-validation/grading-invariants.property.test.js && node tests/daily-design-gate.js",
     "audit:feedback": "node tests/gp-feedback-length.test.js",
     "audit:all": "node tests/verify-practice-exams.js && node tests/cross-exam-verify.js && node scripts/gp-rp-field-audit.js && node tests/gp-field-completeness.test.js && node tests/gp-feedback-length.test.js",
     "verify": "node tests/verify-practice-exams.js"

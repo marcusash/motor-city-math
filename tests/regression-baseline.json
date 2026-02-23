@@ -1,5 +1,5 @@
 {
-  "captured": "2026-02-23T17:54:48.685Z",
+  "captured": "2026-02-23T17:58:19.218Z",
   "note": "Captured by gf-skill-23 regression replay pack + GP 7-test suite added 2026-02-23",
   "suites": {
     "accessibility-landmarks.test.js": {
@@ -337,6 +337,13 @@
       "total": 170,
       "passed": 170,
       "failed": 0
+    },
+    "grading-invariants.property.test.js": {
+      "exitCode": 0,
+      "total": 11,
+      "passed": 11,
+      "failed": 0,
+      "note": "2200 random runs"
     }
   }
 }

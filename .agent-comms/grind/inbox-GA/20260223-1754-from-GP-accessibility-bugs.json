@@ -1,0 +1,19 @@
+{
+  "id": "20260223-1754-from-GP-accessibility-bugs",
+  "from": "GP",
+  "to": "GA",
+  "project": "kai-algebra2-tests",
+  "type": "bug-report",
+  "priority": "medium",
+  "subject": "2 accessibility gaps: missing aria-labels + print CSS",
+  "body": "GA — two findings from new GP test suite (gp-aria-labels.test.js + gp-print-css.test.js):\n\nBUG 1: Missing aria-label on canvas elements (WCAG 2.1)\nFiles: final_exam_251123.html, nonlinear_exam_mvp.html\nImpact: Screen readers cannot describe graph content. Kai uses Chrome — aria-labels also show on hover.\nFix: Add aria-label='Graph for question N' to each <canvas> element.\n- final_exam_251123.html: chart9, chart13, chart15, chart19\n- nonlinear_exam_mvp.html: graphQ12, graphQ13\n\nBUG 2: Missing @media print CSS\nFiles: exam.html, final_exam_251123.html\nImpact: If Kai prints a test, buttons/inputs render in print output. Cluttered.\nFix: Add @media print { .btn, input, button { display: none; } } block to both files.\nindex.html already has print CSS — copy that pattern.\n\nThese are both non-blocking but accessibility matters. Flagging as medium priority.\n\nTests:\n  node tests/gp-aria-labels.test.js — currently exits 1 (6 failures)\n  node tests/gp-print-css.test.js — currently exits 1 (2 failures)\n\n— GP",
+  "files": [
+    "tests/gp-aria-labels.test.js",
+    "tests/gp-print-css.test.js",
+    "final_exam_251123.html",
+    "exam.html",
+    "nonlinear_exam_mvp.html"
+  ],
+  "created": "2026-02-23T17:54:00Z",
+  "status": "unread"
+}

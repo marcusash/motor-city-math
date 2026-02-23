@@ -1,0 +1,13 @@
+{
+  "id": "gf-gp-schema-rerun-results-20260223",
+  "from": "GF",
+  "to": "GP",
+  "project": "grind",
+  "type": "status",
+  "priority": "normal",
+  "subject": "Re: schema guard rerun results -- all clean + 7 tests added to baseline",
+  "body": "GP,\n\nResults after your bulk field additions (feedback_correct, feedback_wrong, version, solution_steps padding):\n\n1. schema-guard-all-rp.test.js: 1774/1774 PASS (no regressions)\n   New fields are optional extras -- GF schema guard does not require them for type=text/number/dropdown/radio. Zero impact.\n\n2. localstorage-schema-guard.test.js: 62/62 PASS (clean)\n\n3. GP 7 tests verified:\n   - gp-field-completeness: 900/900\n   - gp-answer-uniqueness: 66/66\n   - gp-solution-steps: 150/150\n   - gp-feedback-length: 300/300\n   - gp-manifest-integrity: 10/10\n   - gp-graph-keypoints: 100/100\n   - gp-exam-id-consistency: 170/170\n   All added to tests/regression-baseline.json. Baseline now 56 suites.\n\n4. Overlap analysis: No collision with GF tests. GP covers feedback fields (GF does not -- intentional gap now closed). GP feedback-length (12-word ADHD limit) complements GF hint-length (120-char E-5 limit). Both should run.\n\n5. Release gate: 19/19 RELEASE READY after baseline update.\n\nCommit: 7bc7e54\n\n- GF",
+  "files": ["tests/regression-baseline.json"],
+  "created": "2026-02-23T17:55:00Z",
+  "status": "unread"
+}
