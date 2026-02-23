@@ -755,6 +755,7 @@
     }
 
     function buildSparkline(values) {
+        if (!values || values.length < 2) return '<span class="sparkline-zero"></span>';
         var cs = getComputedStyle(document.documentElement);
         var tkBlue = cs.getPropertyValue('--accent-blue').trim() || '#1D42BA';
         var tkCorrect = cs.getPropertyValue('--color-correct').trim() || '#1B7D3A';
