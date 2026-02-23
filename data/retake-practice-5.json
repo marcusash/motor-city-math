@@ -572,7 +572,7 @@
         "Both solutions are valid. Missing ± means always losing one answer.",
         "W3.a principle: every time you take a square root, you introduce ±. There is no exception."
       ],
-      "feedback_correct": "🔥 W3.a: you know WHY ± is required at every square root step.",
+      "feedback_correct": "🔥 W3.a: you know WHY ± is required at every step.",
       "feedback_wrong": "The error is in Step 3. Square roots always produce two cases: positive and negative."
     },
     {

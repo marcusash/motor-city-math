@@ -23,6 +23,7 @@ const EXAM_FILES = [
   'retake-practice-7.json',
   'retake-practice-8.json',
   'retake-practice-9.json',
+  'retake-practice-10.json',
 ];
 
 const ajv = new Ajv({ allErrors: true, allowUnionTypes: true });

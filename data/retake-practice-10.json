@@ -138,23 +138,23 @@
       "section": "B",
       "standard": "W3.d",
       "type": "exponential",
-      "question_html": "Solve: \\( 5^{x+2} = 3125 \\)",
+      "question_html": "Solve: \\( 2^{3x-1} = 64 \\)",
       "inputs": [
         {
           "id": "q4_x",
           "type": "number",
           "label": "x =",
-          "answer": 3,
+          "answer": 2.333,
           "tolerance": 0.05
         }
       ],
-      "hint": "Rewrite 3125 as a power of 5. Then use the one-to-one property.",
+      "hint": "Rewrite 64 as a power of 2. Then set exponents equal and solve the linear equation.",
       "solution_steps": [
-        "3125 = 5^5.",
-        "5^(x+2) = 5^5 → x+2=5 → x=3.",
-        "Check: 5^(3+2)=5^5=3125 ✓"
+        "64 = 2^6.",
+        "2^(3x-1) = 2^6 → 3x-1=6 → 3x=7 → x=7/3≈2.333.",
+        "Check: 2^(3·7/3-1)=2^(7-1)=2^6=64 ✓"
       ],
-      "feedback_wrong": "Rewrite: 3125=5^5. Then x+2=5 → x=3."
+      "feedback_wrong": "Rewrite 64=2^6. Then 3x-1=6 → 3x=7 → x=7/3≈2.333."
     },
     {
       "id": "rp10-q5",
