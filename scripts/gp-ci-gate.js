@@ -41,6 +41,11 @@ const gates = [
   ['section-distribution', 'node tests/gp-section-distribution.test.js'],
   ['feedback-present', 'node tests/gp-feedback-present.test.js'],
   ['hint-present', 'node tests/gp-hint-count-check.test.js'],
+  ['feedback-correct-no-emdash', 'node tests/gp-feedback-correct-no-emdash.test.js'],
+  ['feedback-wrong-no-emdash', 'node tests/gp-feedback-wrong-no-emdash.test.js'],
+  ['question-id-format', 'node tests/gp-question-id-format.test.js'],
+  ['schema-version', 'node tests/gp-exam-schema-version.test.js'],
+  ['question-order', 'node tests/gp-exam-question-order.test.js'],
 ];
 
 let passCount = 0;
