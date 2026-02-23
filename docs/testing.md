@@ -27,6 +27,8 @@ Located in `tests/f-validation/`.
 | `exam-grading-unit.test.js` | Numeric grading, tolerance, comma/dollar strip, MC, pct/grade | 33/33 |
 | `exam-save-results.test.js` | saveResults shape, best tracking, lock, null examId | 24/24 |
 | `exam-hint-scorecard.test.js` | Grade thresholds 92/82/70, coach copy, hint layer IDs | 125/125 |
+| `schedule-rescue.test.js` | sw-16: scheduleRescue timing (800ms/1200ms), reduced-motion, aria-live | 12/12 |
+| `progress-story.test.js` | sw-11: buildProgressStory card, narrative copy, delta colors, no-write | 18/18 |
 
 Run all at once:
 ```powershell
