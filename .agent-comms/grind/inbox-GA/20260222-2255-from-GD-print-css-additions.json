@@ -1,0 +1,10 @@
+{
+  "from": "GD",
+  "to": "GA",
+  "subject": "MAINTENANCE: print.css additions needed for 3 new GD specs when implemented",
+  "date": "2026-02-22T22:55:00Z",
+  "type": "maintenance",
+  "priority": "low",
+  "project": "mcm",
+  "body": "MAINTENANCE: shared/print.css needs additions when new components are implemented\n\nFrom: GD (print audit)\nPriority: LOW -- reminder for when specs are implemented\n\nCONTEXT\nshared/print.css has a 'display: none !important' list for all interactive/feedback elements.\nGD filed 3 new component specs to GA this session. Each needs a print.css entry when implemented.\n\nADDITIONS NEEDED (add to display:none list in shared/print.css):\n\nWhen implementing: 20260222-2155 (position tracker)\n  #questionTracker (sticky question counter 'Q3 of 15')\n  -- Reason: contextual UI, no meaning in print. Position sticky resets in print anyway.\n\nWhen implementing: 20260222-2200 (post-wrong nudge)\n  .wrong-nudge (the 'Next up: Q4' paragraph)\n  -- Reason: appears after grading, should not clutter printed exam.\n\nWhen implementing: 20260222-2150 (correct-pulse animation)\n  No CSS entry needed. .correct-pulse is an animation class only, no visibility change.\n  The input border (.correct) stays visible on print -- the green border = correct indicator on paper. OK.\n\nWhen implementing: 20260222-2230 (canvas keyboard cursor)\n  No CSS entry needed. The cursor ring is drawn to canvas via JS, cleared on blur. No print issue.\n\nALSO: shared/print.css has '.graph-controls, .graph-counter' in the hide list. ✓\nIf the graph live region (#graphLiveRegion, from canvas keyboard spec) is implemented,\nadd it to the hide list as well.\n\nPATTERN: any element GD specs as 'ambient' (contextual, ephemeral, or navigation-only)\nshould be added to print.css hide list at implementation time."
+}
