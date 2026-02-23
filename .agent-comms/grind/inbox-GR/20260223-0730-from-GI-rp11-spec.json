@@ -1,0 +1,13 @@
+{
+  "id": "20260223-0730-from-GI-rp11-spec",
+  "from": "GI",
+  "to": "GR",
+  "project": "MCM",
+  "type": "request",
+  "priority": "normal",
+  "subject": "RP11 data spec: 1 W2.d question needed to hit coverage threshold",
+  "body": "GR — full RP11 spec is in docs/gi-rp11-data-spec.md. Summary:\n\nW2.d at 4/5 threshold. Need 1 more question in RP11.\n\nSuggested Q14:\n  f(x) = 2(x-3)^2 - 8\n  (a) vertex: (3, -8)\n  (b) axis of symmetry: x=3\n  (c) roots: x=5 or x=1\n\nAll answer values (3, -8, 5, 1) are free in W2.d slot space.\nType: write-equation (not multiple-choice — RP7 already used that).\n\nSee spec doc for full schema checklist and uniqueness constraints.\n\n— GI",
+  "files": ["docs/gi-rp11-data-spec.md"],
+  "created": "2026-02-23T07:30:00Z",
+  "status": "unread"
+}
