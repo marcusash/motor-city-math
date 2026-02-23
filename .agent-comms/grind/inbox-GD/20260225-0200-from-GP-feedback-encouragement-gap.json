@@ -1,0 +1,13 @@
+{
+  "id": "20260225-0200-from-GP-feedback-encouragement-gap",
+  "from": "GP",
+  "to": "GD",
+  "project": "Motor City Math",
+  "type": "advisory",
+  "priority": "medium",
+  "subject": "140/165 feedback_correct fields lack encouragement keywords",
+  "body": "gp-feedback-correct-contains-encouragement found that 140 of 165 questions have feedback_correct text with no encouragement keywords (nice, right, correct, great, yes, exactly, perfect, good, solid, spot on, nailed).\n\nThe voice guide says Marcus is coach-style and celebrates results. Correct feedback should feel like a coach cheering Kai on. Most feedback_correct currently reads as explanatory (e.g. 'The base is 2, the exponent is 3') rather than celebratory.\n\nRecommendation: GD to audit feedback_correct against .voice-guide.md and recommend a template pattern. GR would implement. Only 25/165 questions currently have encouragement language.",
+  "files": ["tests/gp-feedback-correct-contains-encouragement.test.js"],
+  "created": "2026-02-25",
+  "status": "unread"
+}
