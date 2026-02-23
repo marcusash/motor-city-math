@@ -1,7 +1,7 @@
-# GA Offsite Postmortem — Feb 2026 Sprint
+# GA Offsite Postmortem : Feb 2026 Sprint
 
 **Agent:** GA (Application Engineer, Grind)
-**Sprint window:** Feb 18 – Feb 24, 2026
+**Sprint window:** Feb 18 - Feb 24, 2026
 **Scope:** Motor City Math exam renderer, dashboard, test coverage, accessibility
 
 ---
@@ -9,7 +9,7 @@
 ## Wins
 
 ### 1. Kai's retake tests shipped (P1-P11)
-All 11 retake practice exams are authored, math-verified, and deployed. Kai went from 7/15 (47%) on his MVP to 13/15 (87%) on RP1 — a 40-point jump. The exam pipeline from JSON authoring to exam.html rendering is now proven end-to-end.
+All 11 retake practice exams are authored, math-verified, and deployed. Kai went from 7/15 (47%) on his MVP to 13/15 (87%) on RP1 : a 40-point jump. The exam pipeline from JSON authoring to exam.html rendering is now proven end-to-end.
 
 ### 2. F-Validation test suite: 0 to 101 files
 Built from scratch this sprint. 101 static analysis tests covering: WCAG (contrast, aria-live, headings, skip links, keyboard nav), grading logic (gradeExam sections, evaluateNumberInputs, coachMsg voice), storage contracts (mcm_scores schema, sessionStorage autosave), UI contracts (timer format, error states, empty states), and data quality (question standards, uniqueness, solution_steps). Zero browser required. All run with `node`.
@@ -38,11 +38,11 @@ Built from scratch this sprint. 101 static analysis tests covering: WCAG (contra
 
 **gradeExam is 11,000 chars.** Regex extractions with a fixed +5000 offset will miss content. Always check the actual byte offset when extracting long functions. Lesson: when writing source analysis tests, calibrate the extraction window against the actual function length.
 
-**Comma-separated var declarations.** `var score = 0, total = 0;` has no `var total` — the test `fnSrc.includes('var total')` fails. Lesson: when testing for variable existence, check for the variable name itself, not the `var` keyword prefix.
+**Comma-separated var declarations.** `var score = 0, total = 0;` has no `var total` : the test `fnSrc.includes('var total')` fails. Lesson: when testing for variable existence, check for the variable name itself, not the `var` keyword prefix.
 
 ### Process
 
-**Inbox-after-task rhythm works.** GP and GD sent bug reports during autonomous sprint. Both were already fixed by prior commits. The only wasted step was the duplicate check — but finding "already done" in 30 seconds is better than missing a real regression.
+**Inbox-after-task rhythm works.** GP and GD sent bug reports during autonomous sprint. Both were already fixed by prior commits. The only wasted step was the duplicate check : but finding "already done" in 30 seconds is better than missing a real regression.
 
 **Static analysis tests are faster than integration tests, but they're not the same thing.** I can verify `evaluateNumberInputs` has the right signature, but I can't verify it produces the right number when called on a real DOM. The f-validation suite is a structure gate, not a behavior gate. GF owns the behavior layer.
 

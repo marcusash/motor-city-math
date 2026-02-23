@@ -1,4 +1,4 @@
-# Motor City Math — Testing Guide
+# Motor City Math : Testing Guide
 
 **Owner:** GF (QA engineer)
 **Last updated:** 2026-02-24
@@ -13,7 +13,7 @@ MCM uses pure Node.js tests (no Jest, no framework). All tests are `.js` files t
 
 ## Test Suites by Category
 
-### F-Validation (Forge standards — run by GA/GF)
+### F-Validation (Forge standards : run by GA/GF)
 
 Located in `tests/f-validation/`.
 
@@ -78,7 +78,7 @@ Located in `tests/f-validation/`.
 Get-ChildItem tests/f-validation -Filter "*.test.js" | ForEach-Object { node $_.FullName }
 ```
 
-### GP Data Tests (exam JSON quality — run by GP/GR before shipping)
+### GP Data Tests (exam JSON quality : run by GP/GR before shipping)
 
 Located in `tests/gp-*.test.js`. Over 80 individual checks covering JSON schema, field completeness, uniqueness, LaTeX format, feedback style.
 
@@ -91,12 +91,12 @@ node tests/cross-exam-verify.js
 
 ### Cross-Exam Verification
 
-`tests/cross-exam-verify.js` — checks for answer collisions ACROSS all exams. Prevents Kai from memorizing answer patterns.
+`tests/cross-exam-verify.js` : checks for answer collisions ACROSS all exams. Prevents Kai from memorizing answer patterns.
 
 Output format:
 ```
 [H] HARD FAILURE: answer "5" (numeric) appears in 8/11 exams (threshold: 6)
-[I] INFO: answer "quadratic" (dropdown) appears in 9/11 exams — common, expected
+[I] INFO: answer "quadratic" (dropdown) appears in 9/11 exams : common, expected
 ```
 - **Hard failure** (H): Same answer appears above the threshold (varies by type). Must fix before shipping.
 - **Info** (I): Same answer template used widely. Advisory only.
@@ -105,7 +105,7 @@ Output format:
 
 ### Practice Exam Verification
 
-`tests/verify-practice-exams.js` — verifies all RP1-11 exams for:
+`tests/verify-practice-exams.js` : verifies all RP1-11 exams for:
 - Required fields present (`id`, `number`, `section`, `standard`, `type`, `hint`, `feedback_correct`, `feedback_wrong`)
 - answer/tolerance format (number inputs must have numeric answers, dropdowns must have string answers)
 - solution_steps count (must have 2+ steps)
@@ -114,16 +114,16 @@ Output format:
 
 ### Schema Guard (localStorage)
 
-`tests/f-validation/localstorage-schema-guard.test.js` — auto-discovers all HTML files and:
+`tests/f-validation/localstorage-schema-guard.test.js` : auto-discovers all HTML files and:
 - Checks each for localStorage usage
 - Confirms key is `mcm_scores` (not a legacy key)
 - Verifies round-trip get/set shape for the mcm_scores structure
-- Auto-discovers files via `glob('**/*.html')` — no hardcoded list
+- Auto-discovers files via `glob('**/*.html')` : no hardcoded list
 - Baseline: 62/62 checks.
 
 ### Save/Load Key Format
 
-`tests/f-validation/save-load-audit.test.js` — verifies the mcm_scores key format:
+`tests/f-validation/save-load-audit.test.js` : verifies the mcm_scores key format:
 ```
 mcm_scores: {
   "mcm-{exam_id}": {
@@ -184,6 +184,6 @@ if (fail > 0) process.exit(1);
 ## Baseline Maintenance
 
 After any code change that affects grading, localStorage, or WCAG:
-1. Run all F-validation tests — confirm all baselines pass
-2. Run `cross-exam-verify.js` — confirm 0 hard failures
+1. Run all F-validation tests : confirm all baselines pass
+2. Run `cross-exam-verify.js` : confirm 0 hard failures
 3. If a test breaks legitimately (feature change), update the test and document the new baseline here.
