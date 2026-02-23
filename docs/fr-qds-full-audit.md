@@ -1,7 +1,7 @@
-# FR QDS Full Audit — RP1 through RP7
+# FR QDS Full Audit — RP1 through RP10
 
 **Author:** FR (Research Lead, Forge)
-**Date:** 2026-02-22
+**Date:** 2026-02-22 (updated 2026-02-22 evening — RP8-10 added)
 **Framework:** QDS 7-dimension framework (fr-variability-framework.md v2, 7 dimensions)
 **Confidence:** Estimated — FR scored each question against the 7 dimensions using structural analysis of question type, standard, and answer characteristics. Inter-rater review by GR is recommended before using these scores to drive generation targets.
 
@@ -18,10 +18,13 @@
 | RP5 | 0.29 | IMPROVING | Q14 error-analysis instead of multiple-choice |
 | RP6 | 0.38 | APPROACHING | Construct Q14, extra exponential, position shift |
 | RP7 | 0.41 | BELOW TARGET | Q14 multiple-choice (W2.d), radical to rational on Q6 — close |
+| RP8 | 0.45 (est.) | AT TARGET | Q3 negative coefficient AV, Q9 equal-radicals, Q11 2/3 exponent. See RP8 notes. |
+| RP9 | 0.14 (est.) | FAIL — cross-exam lock | RP9 is structurally identical to RP8 (same type/std per position). Cross-exam variation near zero. |
+| RP10 | 0.14 (est.) | FAIL — cross-exam lock | RP10 is structurally identical to RP8/RP9 (same type/std per position). |
 
 **Target:** QDS >= 0.45 (per fr-variability-framework.md)
 
-**FR finding:** RP7 scores 0.41 — below target. RP6 scores 0.38. Neither exam fully meets the threshold. The bank has improved significantly from the 0.13 baseline but the target has not yet been hit. RP8 should be designed explicitly to reach 0.45+.
+**FR finding (updated 2026-02-22 evening):** RP8 estimated to reach 0.45 target based on structural changes GR implemented per FR prescription. However: RP9 and RP10 have IDENTICAL structural templates to RP8. This is cross-exam template lock. When the QDS framework says "measures structural variation across retake practices," the goal is that each exam forces a different algorithm selection decision. If Q5 is always W2.a standard-form quadratic using AC method, Kai learns "Q5 = AC method" rather than learning to recognize when to apply AC method. This defeats the variability goal for the last 3 exams. GR must apply position rotation and Q14 type alternation to RP9 and RP10.
 
 ---
 
@@ -147,8 +150,77 @@ If GR implements all 7, estimated RP8 QDS: 0.47-0.52 range.
 
 ---
 
+## RP8 Verification (2026-02-22 evening)
+
+FR signed off RP8 (this session). Confirmed structural changes implemented:
+- Q2: absolute-value identify (vertex, intercepts, range) — W2.b, multi-input
+- Q3: absolute-value solve (|-2x+4|-16=0) — W3.a, negative coefficient inside, two-case
+- Q9: equal-radicals (sqrt(5x-4)=sqrt(2x+8)) — structural shift, AV dimension shifts
+- Q11: 4x^(2/3)=100, x=125 — 2/3 exponent (new to RP8)
+- Q15: radioactive decay word problem (half-life model) — CX dimension shifts from Q14's abstract
+
+FR estimated RP8 QDS: 0.45 (at target, within estimated range). Math verified: all 5 key questions correct.
+
+---
+
+## RP9 and RP10: Cross-Exam Template Lock (CRITICAL FINDING)
+
+### Evidence
+
+FR extracted type/standard/input-count for all 15 questions across RP8, RP9, and RP10. All three exams produce identical structural profiles:
+
+| Position | Type | Standard | RP8 | RP9 | RP10 |
+|----------|------|----------|-----|-----|------|
+| Q1 | quadratic | W2.a | 2 inputs | 3 inputs | 3 inputs |
+| Q2 | absolute-value | W2.b | 5 inputs | 5 inputs | 5 inputs |
+| Q3 | absolute-value | W3.a | 3 inputs | 3 inputs | 3 inputs |
+| Q4 | exponential | W3.d | 1 input | 1 input | 1 input |
+| Q5 | quadratic | W2.a | 3 inputs | 3 inputs | 3 inputs |
+| Q6 | radical | W3.c | 2 inputs | 2 inputs | 2 inputs |
+| Q7 | exponential | W3.d | 1 input | 1 input | 1 input |
+| Q8 | rational | W3.c | 1 input | 1 input | 1 input |
+| Q9 | radical | W3.b | 1 input | 1 input | 1 input |
+| Q10 | exponential | W3.d | 2 inputs | 2 inputs | 2 inputs |
+| Q11 | fractional-exp | W3.b | 1 input | 1 input | 1 input |
+| Q12 | graph | W2.c | 6 inputs | 7 inputs | 7 inputs |
+| Q13 | graph | W2.e | 5 inputs | 5 inputs | 5 inputs |
+| Q14 | write-equation | W2.d | 3 inputs | 2 inputs | 3 inputs |
+| Q15 | word-problem | W3.a | 2 inputs | 2 inputs | 2 inputs |
+
+The only variation is the numbers inside each question. Cross-exam structural variation = 0. This is maximum template lock.
+
+### Risk
+
+Kai's ADHD means he learns through pattern recognition. If the structural template is fixed, Kai can encode: "Q5 is always the factor-and-solve quadratic," "Q8 is always the rational one-step solve," "Q11 is always the fractional exponent." This is position-memorization, not algorithm-recognition. On the real exam (Feb 24-26), question ORDER and POSITION will differ from Kai's practice template, exposing this gap.
+
+### Consecutive Same-Type Adjacencies (suppress within-exam QDS)
+
+All three exams have:
+- Q2/Q3: both absolute-value (suppresses QDS — standard differs W2.b vs W3.a but type is same)
+- Q12/Q13: both graph (W2.c vs W2.e — suppresses QDS)
+
+### GR Recommendations (priority order)
+
+**Minimal fix (2 changes each exam, low risk):**
+
+RP9 changes:
+1. Swap Q10 (exponential W3.d) and Q11 (fractional-exp W3.b) positions. New Q10: fractional-exp. New Q11: exponential. Breaks position memorization for hardest question without new content.
+2. Change Q14 to error-analysis format (give Kai a wrong solution, ask what step is wrong). RP5 used error-analysis — this is already a known format. Standard stays W2.d but QA dimension changes.
+
+RP10 changes:
+1. Swap Q8 (rational W3.c) and Q11 (fractional-exp W3.b) positions. Breaks "Q11 is always fractional-exp" encoding.
+2. Change Q14 to construct format (give Kai 2 data points, ask him to write the equation). RP6 used construct — also known format.
+
+**Estimated QDS impact:** Each swap + Q14 rotation adds approximately 0.05-0.08 to cross-exam QDS.
+
+**What NOT to change:** Do not modify Q1-Q3 (W2.b identify block is intentional), Q12-Q13 (graph block is intentional — graphs require adjacent exposure), Q15 (word-problem is fixed by design). These adjacencies are curriculum-driven, not template lock.
+
+---
+
 ## Confidence Statement
 
-These QDS scores are FR's structural estimates, not precisely computed values. The evidence base is: (1) FR read the type and standard field for all 105 questions across RP1-RP7, (2) FR applied the 7-dimension framework to score consecutive pairs qualitatively. Two independent sources were not gathered — this is a single-pass analysis. Label: **Estimated**.
+These QDS scores are FR's structural estimates, not precisely computed values. The evidence base is: (1) FR read the type and standard field for all 150 questions across RP1-RP10, (2) FR applied the 7-dimension framework to score consecutive pairs qualitatively. Two independent sources were not gathered — this is a single-pass analysis. Label: **Estimated**.
 
 For GR to compute precise QDS: build the 7-dimension SSI matrix in a spreadsheet, one row per consecutive pair, score each dimension 0/1 (match/no-match), sum and divide by 7 per pair, then average. This takes 30-45 minutes but produces a Measured score.
+
+**RP9/RP10 cross-exam lock finding** has higher confidence than the within-exam QDS estimates. The structural template match is observable directly from the type/standard fields — this does not require 7-dimension scoring to confirm. FR confidence on the finding: HIGH.
