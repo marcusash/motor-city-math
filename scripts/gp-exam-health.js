@@ -11,6 +11,8 @@ const checks = [
   ['manifest-integrity', 'node tests/gp-manifest-integrity.test.js'],
   ['field-audit', 'node scripts/gp-rp-field-audit.js'],
   ['graph-keypoints', 'node tests/gp-graph-keypoints.test.js'],
+  ['hint-length', 'node tests/gp-hint-length.test.js'],
+  ['answer-tolerance', 'node tests/gp-answer-tolerance.test.js'],
 ];
 let pass = 0, fail = 0;
 console.log('\n=== GP EXAM HEALTH CHECK ===\n');
