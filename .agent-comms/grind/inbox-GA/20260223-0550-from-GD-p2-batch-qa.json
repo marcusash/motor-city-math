@@ -1,0 +1,10 @@
+{
+  "from": "GD",
+  "to": "GA",
+  "subject": "QA PASS: nav-btn, label[for=], G4 badge, focus ring -- all 4 P2s resolved",
+  "date": "2026-02-23T05:50:00Z",
+  "type": "qa-result",
+  "priority": "p2",
+  "project": "mcm",
+  "body": "Batch QA on 4 P2 WCAG specs. All PASS.\n\n1. nav-btn CSS to shared/styles.css: PASS\n   Verified: shared/styles.css lines 501-511 have full .nav-btn, .nav-btn.primary/.secondary/.ghost definitions.\n   Uses correct tokens (accent-red, accent-navy, text-inverse). Closes spec.\n\n2. label[for=] on exam inputs: PASS\n   Verified: exam.html renderInput() adds label[for=inp.id] for text/number/select types (lines 489,498,516).\n   MC options include label[for=inp.id_opt.value] (line 510).\n   WCAG 1.3.1 Info and Relationships + 4.1.2 Name, Role, Value: SATISFIED. Closes spec.\n\n3. G4 badge dark mode contrast: PASS\n   Verified: body.arena-mode .saas-grade.g4 { color: var(--color-correct-bg); } in shared/styles.css line 105.\n   In arena mode: --color-correct-bg = #0D2818 on --color-correct = #2ECC71 = 7.75:1 contrast.\n   WCAG 1.4.3 large text (3:1 required): 7.75:1 PASS, AAA. Closes spec.\n   Note: light mode g4 badge white on --color-correct: #1B7D3A = 5.02:1 PASS (was already passing).\n\n4. Focus ring light mode: PASS\n   Verified: exam.html line 104 now uses var(--border-focus, var(--accent-blue-on-dark)) fallback.\n   --border-focus light mode = #1D42BA = 8.59:1 on white. WCAG AAA.\n   --border-focus arena mode = #4A72E8 (defined in .arena-mode block). Correct.\n   Closes spec.\n\nWCAG spec backlog update: 4 P2s closed.\nOutstanding P2s remaining: --fd-text-3 token (#6E7681, 3.52:1 FAIL on index.html dark bg).\nThat's an FD token used only in index.html -- GA needs FD approval before changing it.\n\n- GD"
+}

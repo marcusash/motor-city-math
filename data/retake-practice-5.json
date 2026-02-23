@@ -229,11 +229,7 @@
         }
       ],
       "plus_minus": true,
-<<<<<<< Updated upstream
       "hint": "Non-monic (a=3). AC method: multiply a×c = 3×2 = 6. Find two numbers that multiply to 6 and add to -7.",
-=======
-      "hint": "Non-monic: a=3. Use AC method: multiply 3×2=6, find two numbers that multiply to 6 and add to -7.",
->>>>>>> Stashed changes
       "solution_steps": [
         "Non-monic: a=3, b=-7, c=2. AC method: a×c = 3×2 = 6.",
         "Find two numbers: product = 6, sum = -7. Those are: -6 and -1.",
@@ -402,11 +398,7 @@
           "tolerance": 0.01
         }
       ],
-<<<<<<< Updated upstream
       "hint": "Isolate x^(3/2), then raise both sides to 2/3 power. Cube root first, then square.",
-=======
-      "hint": "Isolate x^(3/2), then raise both sides to the 2/3 power. Perfect cube root first, then square.",
->>>>>>> Stashed changes
       "solution_steps": [
         "Add 6: 2x^(3/2) = 432",
         "Divide by 2: x^(3/2) = 216",
@@ -625,9 +617,9 @@
       "solution_steps": [
         "P₀ = 100. Growth factor r = 3 (triples). Period T = 5 hours.",
         "Model: P(t) = 100 · 3^(t/5).",
-        "Set 100 · 3^(t/5) = 3700 → 3^(t/5) = 27.",
+        "Set 100 · 3^(t/5) = 2700 → 3^(t/5) = 27.",
         "Rewrite: 27 = 3³. So t/5 = 3 → t = 15 hours.",
-        "Check: 100 · 3^3 = 100 · 27 = 3700 ✓",
+        "Check: 100 · 3^3 = 100 · 27 = 2700 ✓",
         "Note: 27=3³ requires knowing your powers of 3: 3,9,27,81,243..."
       ],
       "feedback_correct": "🔥 Tripling model. 27=3³ recognized. t=15.",
