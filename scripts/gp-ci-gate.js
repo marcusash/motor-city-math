@@ -46,6 +46,7 @@ const gates = [
   ['question-id-format', 'node tests/gp-question-id-format.test.js'],
   ['schema-version', 'node tests/gp-exam-schema-version.test.js'],
   ['question-order', 'node tests/gp-exam-question-order.test.js'],
+  ['no-emdash-all-fields', 'node tests/gp-no-emdash-all-fields.test.js'],
 ];
 
 let passCount = 0;
