@@ -1325,16 +1325,19 @@
         }
         html += '</div>';
 
-        // CTA: practice exams get "Run It Back"; real exams lock after grading
+        // CTA: practice exams get score-based copy; real exams lock after grading
         var isRetake = examData && examData.exam_id && examData.exam_id.indexOf('retake') !== -1;
-        if (grade >= 3 || !isRetake) {
-            html += '<div style="margin-top:16px;"><a href="index.html" class="nav-btn primary" style="text-decoration:none;">🏀 Back to Dashboard</a></div>';
-            if (!isRetake && grade < 3) {
+        if (!isRetake) {
+            // Real exam: single forward-momentum CTA
+            html += '<div style="margin-top:16px;"><a href="index.html" class="nav-btn primary" style="text-decoration:none;">📊 See the Board</a></div>';
+            if (grade < 3) {
                 html += '<p style="margin-top:10px; color:var(--text-secondary); font-size:var(--text-sm);">Score locked. Study the hints above, then hit the practice tests. 💪</p>';
             }
         } else {
-            html += '<div style="margin-top:16px;"><a href="javascript:location.reload()" class="nav-btn primary" style="text-decoration:none;">🔄 Run It Back</a>';
-            html += ' <a href="index.html" class="nav-btn ghost" style="text-decoration:none; margin-left:8px;">← Dashboard</a></div>';
+            // Practice exam: reload CTA copy based on score bracket
+            var reloadLabel = pct >= 92 ? '🔄 Defend Your Score' : pct >= 80 ? '🔄 One More Run' : '🔄 Run It Back';
+            html += '<div style="margin-top:16px;"><a href="javascript:location.reload()" class="nav-btn primary" style="text-decoration:none;">' + reloadLabel + '</a>';
+            html += ' <a href="index.html" class="nav-btn ghost" style="text-decoration:none; margin-left:8px;">📊 See the Board</a></div>';
         }
         html += '</div>'; // end gamePlanSection
         html += '</div>';

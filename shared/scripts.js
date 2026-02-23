@@ -400,27 +400,29 @@ function initTimer(opts) {
 
     function tick() {
         if (remaining <= 0) {
-            valueEl.textContent = 'TIME';
-            timerEl.className = 'timer times-up urgent';
-            showToast("Time. Let's see where you are.");
-            if (opts.onTimeUp) opts.onTimeUp();
+            valueEl.textContent = '0:00';
+            timerEl.className = 'timer timer-expired';
+            if (!toastsFired['expired']) {
+                toastsFired['expired'] = true;
+                showToast("Time's up! Let's see your score.");
+                setTimeout(function() { if (opts.onTimeUp) opts.onTimeUp(); }, 1500);
+            }
             return;
         }
 
         remaining--;
         valueEl.textContent = formatTime(remaining);
 
-        // State classes
-        var mins = remaining / 60;
-        if (mins <= 1) {
+        // State classes per GD spec: <=30s WARNING, <=10s CRITICAL
+        if (remaining <= 10) {
+            timerEl.className = 'timer timer-critical';
+            if (!toastsFired[10]) { toastsFired[10] = true; timerEl.setAttribute('aria-live', 'assertive'); timerEl.setAttribute('aria-label', '10 seconds remaining'); }
+        } else if (remaining <= 30) {
+            timerEl.className = 'timer timer-warning';
+            if (!toastsFired[30]) { toastsFired[30] = true; timerEl.setAttribute('aria-live', 'polite'); timerEl.setAttribute('aria-label', '30 seconds remaining'); }
+        } else if (remaining <= 60) {
             timerEl.className = 'timer urgent';
-            if (remaining % 15 === 0) timerEl.classList.add('pulse');
-            else timerEl.classList.remove('pulse');
-        } else if (mins <= 5) {
-            timerEl.className = 'timer urgent';
-            if (remaining % 60 === 0) timerEl.classList.add('pulse');
-            else timerEl.classList.remove('pulse');
-        } else if (mins <= 10) {
+        } else if (remaining <= 300) {
             timerEl.className = 'timer warning';
         } else {
             timerEl.className = 'timer';

@@ -136,6 +136,12 @@ body.arena-mode .saas-grade.g4 { color: var(--color-correct-bg); }
 }
 .timer.warning .timer-value { color: var(--color-warning); }
 .timer.urgent .timer-value { color: var(--color-incorrect); }
+/* GD spec: timer-warning (<=30s amber) and timer-critical (<=10s red + pulse) */
+.timer-warning .timer-value { color: #B45309; }
+.timer-critical .timer-value { color: var(--color-incorrect); animation: timer-pulse 1s ease-in-out infinite; }
+.timer-expired .timer-value { font-weight: 700; letter-spacing: 1px; color: var(--color-incorrect); }
+@keyframes timer-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
+@media (prefers-reduced-motion: reduce) { .timer-critical .timer-value { animation: none; } }
 @keyframes timerPulse {
     0% { transform: scale(1); }
     50% { transform: scale(1.05); }
