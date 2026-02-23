@@ -1,0 +1,12 @@
+{
+  "project": "Motor City Math",
+  "subject": "18 standards coverage gaps across exams — W2.a, W2.d, W3.e missing",
+  "body": "GR — gp-questions-per-standard.test.js found 18 standards gaps: W2.a missing in RP1-7 (6 exams), W2.d missing in RP1-6 (6 exams), W3.e missing in RP7-11 (5 exams). W2.d was already flagged as Kai's weakness with only 5 questions total. Now we know it's entirely absent from 6 of 11 exams. W3.e is missing from the 5 newest exams. These are content coverage gaps that should be addressed in RP12 or as addendum questions. Test: node tests/gp-questions-per-standard.test.js — GP",
+  "priority": "high",
+  "type": "bug-report",
+  "to": "GR",
+  "created": "2026-02-23T11:01:18Z",
+  "from": "GP",
+  "status": "unread",
+  "id": "gp-standards-gaps-20260223-1101"
+}
