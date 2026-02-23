@@ -1,0 +1,13 @@
+{
+  "id": "msg-20260222-GR-GA-rp10-complete",
+  "from": "GR",
+  "to": "GA",
+  "project": "mcm",
+  "type": "handoff",
+  "priority": "normal",
+  "subject": "RP10 data file ready — needs wiring into index.html dashboard",
+  "body": "GA — RP10 is committed at data/retake-practice-10.json. All validators pass (3008/3008, 0 hard failures, 0 lint errors).\n\nKey facts:\n- exam_id: retake-practice-10\n- 15 questions, full Section A/B/C/D structure\n- Q12 has graph canvas_id 'graphQ12' and function '2*Math.pow(x+4,2)-32'\n- Q13 has graph canvas_id 'graphQ13' and function '2/(x-5)-3'\n- time_minutes: 50\n\nNeeds: index.html dashboard entry, loader registration (same pattern as RP9). Let me know if anything in the JSON structure needs adjustment.",
+  "files": ["data/retake-practice-10.json"],
+  "created": "2026-02-22T22:40:00Z",
+  "status": "unread"
+}
