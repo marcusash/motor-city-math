@@ -50,6 +50,10 @@ Located in `tests/f-validation/`.
 | `evaluate-number-inputs-tolerance.test.js` | evaluateNumberInputs(): tolerance math, ordered/plus_minus/NaN paths | 9/9 |
 | `aria-live-region-audit.test.js` | aria-live region count (8, within threshold), key regions present, no role=alert misuse | 7/7 |
 | `exam-tab-order.test.js` | No positive tabindex, tabindex=0 on custom elements, examGraded double-submit guard | 5/5 |
+| `css-token-count.test.js` | 35 CSS tokens in shared/styles.css, core tokens present, arena-mode defined | 8/8 |
+| `manifest-sync.test.js` | manifest.json: 11 exams, all IDs match files, all entries have title/desc | 9/9 |
+| `exam-json-version.test.js` | All RP1-11 version === "2.0" string (normalization regression guard) | 13/13 |
+| `exam-print-css.test.js` | @media print hides hint-btn, graph-controls, submit-area, nav-bar, header-back | 8/8 |
 
 Run all at once:
 ```powershell
