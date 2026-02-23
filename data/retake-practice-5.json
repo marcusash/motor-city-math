@@ -249,7 +249,7 @@
       "section": "B",
       "standard": "W3.b",
       "type": "radical",
-      "question_html": "Solve: \\( \\\\sqrt{2x + 1} + 2 = 7 \\)",
+      "question_html": "Solve: \\( \\sqrt{2x + 1} + 2 = 7 \\)",
       "inputs": [
         {
           "id": "q6_x",
