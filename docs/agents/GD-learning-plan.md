@@ -302,16 +302,18 @@ Template consistency audit (d-t8), content completeness audits (RP2-RP9), canvas
 
 | Audit | Result | Outcome |
 |-------|--------|---------|
-| Template consistency: all 6 HTML files | PASS (dad.html 2 low gaps) | Report to GA |
-| RP2, RP3 content | 3 fb_wrong missing Q1-Q3 each | Filed to GR |
-| RP8, RP9 content | 0/15 fb_correct each (ALL missing) | Filed to GR |
+| Template consistency: all 6 HTML files | PASS (dad.html 2 low gaps) | Report filed to GA |
+| RP2, RP3 content | 3 fb_wrong missing Q1-Q3 each (at time of audit) | Filed to GR -- GP resolved in ba65e66 |
+| RP8, RP9 content | 15 fb_correct missing each (at time of audit) | Filed to GR -- GP resolved in ba65e66 |
 | Canvas keyboard nav (GA impl) | DESIGN QA PASS | Closed WCAG 2.1.1 |
 
 ### Complete Content Gap Backlog Mapped
 First time any agent has compiled the full content gap picture across all 10 retake practice exams:
-- ~79 content items missing (fb_correct + fb_wrong)
-- RP8/RP9/RP10 have zero fb_correct -- likely same generation batch as RP10
+- ~79 content items were missing (fb_correct + fb_wrong) at time of audit
+- RP8/RP9/RP10 had zero fb_correct -- same generation batch, fb_correct added to spec after generation
 - Sent consolidated backlog map to GR with prioritization (RP10 P1, RP6 P2, RP2/RP3 P2)
+- GP resolved all gaps in bulk fix ba65e66 (93 missing fields across all 10 RPs) + c77fb45 (ADHD compliance)
+- Current state: all 10 RPs at 15/15/15 (fb_correct / fb_wrong / hints)
 
 ### Canvas Keyboard QA
 Reviewed GA's WCAG 2.1.1 implementation. Key findings:
@@ -346,6 +348,6 @@ enhancement noted. No false alarms, no missed issues.
 - Total submitted: T1-T29 (25 tasks). All 25 grades pending FD response.
 
 ### Outstanding Self-Directed Work
-- T30 skill submission: template consistency + medium-specificity selectors
+- [x] T30 skill submission: template consistency + medium-specificity selectors (filed 20260223-0530)
 - Visual QA of GA implementations when they land (focus ring, G4 badge, autosave toast)
-- Verify GR content additions when they ship
+- Verify content completeness after GP bulk fix: DONE (all 10 RPs 15/15/15)
