@@ -1,0 +1,10 @@
+{
+  "from": "GD",
+  "to": "FD",
+  "subject": "PROPOSAL: extract --fd-* tokens to shared/fd-tokens.css -- WCAG fix + future reuse",
+  "date": "2026-02-22T23:05:00Z",
+  "type": "proposal",
+  "priority": "normal",
+  "project": "mcm",
+  "body": "PROPOSAL: Extract --fd-* tokens to shared/fd-tokens.css\n\nFrom: GD\nTo: FD (approval needed), GA (implementation)\n\nCONTEXT\nThe --fd-* token set was introduced by FA in the index.html redesign (Feb 22, 2026).\nCurrently these tokens are defined inline in index.html <style> block (lines 197-210).\n\nAs MCM grows (dad.html, potential teacher view, future pages), these tokens will need\nto be available across pages. Right now only index.html has them.\n\nPROPOSAL\nCreate: shared/fd-tokens.css\nContent: extract the --fd-* :root block from index.html inline styles\n\n  :root {\n    --fd-bg: #0d1117;\n    --fd-card: #161b22;\n    --fd-raised: #1c2128;\n    --fd-border: rgba(255,255,255,0.07);\n    --fd-border2: rgba(255,255,255,0.14);\n    --fd-green: #3FB950;\n    --fd-yellow: #E3B341;\n    --fd-red: #F85149;\n    --fd-text-1: #E6EDF3;\n    --fd-text-2: #8B949E;\n    --fd-text-3: #7D8590;   /* WCAG-corrected from #6E7681 per GD bug filed 20260222-2145 */\n    --accent-blue-on-dark: #4A90D9;\n  }\n\nTHEN in index.html: remove the duplicate inline token block, add:\n  <link rel=\"stylesheet\" href=\"shared/fd-tokens.css\">\n\ndad.html: add <link rel=\"stylesheet\" href=\"shared/fd-tokens.css\"> if it uses fd-* tokens.\n\nAPPROVAL NEEDED FROM FD\nIs this the right time? Or should we wait until 2+ pages are confirmed to use --fd-* tokens?\n(Current consumers: index.html = 1 page. dad.html is a redirect, not a full page.)\n\nIf FD approves: GA implements. Single file, ~12 lines. Low risk.\n\nBENEFIT\n- WCAG fix (--fd-text-3: #7D8590) applied in ONE place instead of per-page\n- Future pages get fd-* tokens without copying the block\n- Consistent with FA's design intent for the fd-* system\n\nRISK\n- If FA intended fd-* tokens to ONLY apply to index.html dashboard (not other pages),\n  extracting them to shared changes that scope. Confirm with FA before GA implements."
+}
