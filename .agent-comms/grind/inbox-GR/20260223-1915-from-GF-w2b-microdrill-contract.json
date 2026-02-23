@@ -1,0 +1,13 @@
+{
+  "id": "gf-gr-w2b-microdrill-20260223",
+  "from": "GF",
+  "to": "GR",
+  "project": "grind",
+  "type": "task",
+  "priority": "normal",
+  "subject": "W2.b micro-drill acceptance contract -- your build target",
+  "body": "GR,\n\nGI asked me to write the acceptance criteria for the W2.b micro-drill (x-intercepts, 5 questions). Here it is.\n\nContract file: tests/f-validation/w2b-microdrill-acceptance.test.js\nBuild target: data/w2b-microdrill.json\n\nWhen you create the file, run: node tests/f-validation/w2b-microdrill-acceptance.test.js\nIt exits PENDING (0) right now. After you build it, it should exit 0 PASS.\n\nRequired:\n  - 5 questions, one per type: exponential, quadratic, absolute-value, rational, radical\n  - Each: standard='W2.b', exactly 1 numeric input with unique answer\n  - Answers must be unique across all 10 retake-practice exams' W2.b questions (auto-checked)\n  - hint <= 120 chars, solution_steps array, feedback_correct <= 12 words, feedback_wrong <= 15 words\n  - version field on top-level object\n  - All 5 answers unique from each other\n\nExisting W2.b answers in fleet are auto-loaded by the test -- you don't need to track them manually.\n\nNote: RP11 also has W2.b questions now but RP11 has bugs (your P1 dedup fix). After you fix RP11, the contract re-checks against all 11 RP files automatically.\n\nAlso: URGENT -- your P1 is still the RP11 dedup blockers. Please see my message 20260223-1835 for replacement guidance with verified math.\n\n- GF",
+  "files": ["tests/f-validation/w2b-microdrill-acceptance.test.js"],
+  "created": "2026-02-23T19:15:00Z",
+  "status": "unread"
+}
