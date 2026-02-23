@@ -502,6 +502,13 @@
         });
     }
 
+    /**
+     * Renders an HTML input element for a question input descriptor.
+     * Dispatches on inp.type: 'dropdown', 'number', 'radio'.
+     * @param {Object} inp - Input descriptor (id, type, label, options, answer, tolerance)
+     * @param {Object} q - Parent question object
+     * @returns {string} HTML string for the input element
+     */
     function renderInput(inp, q) {
         var html = '';
         if (inp.type === 'dropdown') {
@@ -815,6 +822,11 @@
         }
     }
 
+    /**
+     * Announces a message to screen readers via a polite aria-live region for the graph canvas.
+     * @param {string} canvasId - Canvas ID (for disambiguation)
+     * @param {string} msg - Text to announce
+     */
     function announceGraph(canvasId, msg) {
         var lr = document.getElementById('graphLiveRegion');
         if (!lr) {

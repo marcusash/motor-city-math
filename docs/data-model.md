@@ -126,3 +126,54 @@ Before any exam ships to Kai:
 2. `node tests/cross-exam-verify.js` — 0 hard failures
 3. `node scripts/gp-exam-health.js` — 11/11 checks pass
 4. `npm run test:gp:all` — all GP tests pass
+
+---
+
+## Client Storage
+
+### localStorage (`mcm_scores`)
+
+Written by `exam.html saveResults()` and `nonlinear_exam_mvp.html`. Read by `index.html` dashboard.
+
+```json
+{
+  "mcm-retake-practice-1": {
+    "attempts": [
+      {
+        "score": 13,
+        "total": 15,
+        "pct": 87,
+        "grade": 3,
+        "timestamp": "2026-02-19T20:23:53.052Z"
+      }
+    ],
+    "best": {
+      "score": 13,
+      "pct": 87,
+      "grade": 3
+    }
+  }
+}
+```
+
+Key format: `mcm-{exam_id}`. exam_id comes from the JSON file's `exam_id` field.
+
+Grade thresholds (exam.html + all tests must match):
+- Grade 4: pct >= 92
+- Grade 3: pct >= 82
+- Grade 2: pct >= 70
+- Grade 1: pct < 70
+
+### sessionStorage (`exam-autosave-{examId}`)
+
+Written by `exam.html autosave()` every 800ms while exam is in progress. Read by `restoreAutosave()` on page load.
+
+```json
+{
+  "rp1-q1_x": "4",
+  "rp1-q2_parent": "quadratic",
+  "rp1-q2_x1": "-3"
+}
+```
+
+Key format: `exam-autosave-{examId}`. Cleared when user submits exam.

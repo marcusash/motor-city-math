@@ -73,10 +73,34 @@ DOMContentLoaded
         └─ initTimer({ minutes, onComplete: autoSubmit })
             ├─ Inject timer UI into header
             ├─ Countdown every second
-            ├─ Color states: normal → warning (10min) → urgent (5min) → TIME (0:00)
+            ├─ Color states: normal → warning (5min) → urgent (1min) → timer-warning (30s) → timer-critical (10s, pulses) → timer-expired (0:00)
+            ├─ aria-live polite at 30s, assertive at 10s
             ├─ Toast notifications at 10, 5, 1 minute marks
-            └─ Auto-submit when timer reaches 0:00
+            └─ Auto-submit after 1500ms at 0:00 (opts.onTimeUp)
 ```
+
+### Autosave Flow
+
+```
+restoreAutosave()
+    ├─ Check sessionStorage['exam-autosave-{examId}']
+    ├─ If data: restore all input values + show session restore toast
+    └─ If no data: fresh start, no toast
+
+autosave() [debounced 800ms]
+    ├─ Triggered on every input change
+    └─ Serializes all input values to sessionStorage['exam-autosave-{examId}']
+```
+
+### Canvas Graph (WCAG 2.1.1)
+
+All graph canvas elements support keyboard navigation:
+- `Tab` to focus canvas
+- Arrow keys move cursor (1-unit steps, 0.25 with Shift)
+- `Enter` places a point at cursor position
+- `Backspace` removes the last placed point
+- Visual: cursor ring drawn at current keyboard position
+- aria-live region announces cursor position and point placements
 
 ---
 
@@ -138,28 +162,33 @@ Arena Mode toggle is injected automatically by `shared/scripts.js` on DOMContent
 
 ---
 
-## File Inventory (19 HTML files)
+## File Inventory (5 active HTML files + 11 retake practice JSONs)
+
+Site was simplified from 19 HTML files to 5 in February 2026.
 
 | File | Lines | Grading | Timer | Graphing | Purpose |
 |------|-------|---------|-------|----------|---------|
-| `index.html` | ~600 | — | — | Chart.js | Dashboard: scores, sparklines, Up Next, score corruption recovery |
-| `exam.html` | ~1450 | ✅ JSON | ✅ | ✅ Canvas | **Primary exam renderer** — JSON-driven, loads any retake-practice-*.json |
-| `parent.html` | 570 | — | — | — | Parent view: all scores, per-standard breakdown |
-| `practice.html` | 591 | ✅ shared | — | — | SRS practice with progress bar + daily goal |
-| `test-builder.html` | 427 | — | — | — | Filter questions → generate custom test |
-| `test.html` | 520 | ✅ custom | ✅ | — | Dynamic renderer from URL params + question bank |
-| `nonlinear_exam_mvp.html` | 1486 | ✅ shared | ✅ 60min | ✅ Canvas | 15-question MVP, per-standard scoring |
-| `linear_functions_test.html` | 1362 | ✅ custom | ✅ | ✅ Chart.js | 7 questions with interactive graphing |
-| `index_calc.html` | 1114 | ✅ shared | ✅ | ✅ Chart.js | Calculator-allowed version |
-| `final_exam_251123.html` | 1198 | ✅ shared | ✅ | ✅ Chart.js | 18-question final exam |
-| `final_exam_251123_mini.html` | 433 | ✅ shared | ✅ | — | 8-question mini final |
-| `quiz_251117.html` | 328 | ✅ shared | ✅ | — | Inverse functions quiz |
-| `quiz_251120.html` | 859 | ✅ shared | ✅ | ✅ Chart.js | Linear/exponential quiz |
-| `quiz_251121.html` | 1038 | ✅ shared | ✅ | ✅ Chart.js | Mixed review quiz |
-| `exponents_exam.html` | 449 | ✅ shared | ✅ | — | 6-question exponent rules |
-| `3× Exponents Unit1` | ~635 | ✅ shared | ✅ | — | 19 questions each, different storageKeys |
-| `nonlinear_functions_test.html` | 1385 | ✅ shared | ✅ | ✅ Chart.js | 7 nonlinear questions |
-| `unit2_nonlinear_review.html` | 855 | ✅ shared | ✅ | — | 20-question review |
+| `index.html` | ~1100 | — | — | Chart.js | Dashboard: scores, sparklines, Up Next, score corruption recovery |
+| `exam.html` | ~1550 | ✅ JSON | ✅ | ✅ Canvas | **Primary exam renderer** — JSON-driven, loads any retake-practice-*.json |
+| `nonlinear_exam_mvp.html` | ~1486 | ✅ shared | ✅ 60min | ✅ Canvas | Original 15-question MVP exam (nonlinear functions) |
+| `final_exam_251123.html` | ~1200 | ✅ shared | ✅ | ✅ Chart.js | 18-question final exam (locked after grading) |
+| `final_exam_251123_mini.html` | ~433 | ✅ shared | ✅ | — | 8-question mini final |
+
+### Retake Practice Exams (`data/`)
+
+| File | Exam ID | Status |
+|------|---------|--------|
+| `retake-practice-1.json` | `mcm-retake-practice-1` | Verified (GR) |
+| `retake-practice-2.json` | `mcm-retake-practice-2` | Verified (GR) |
+| `retake-practice-3.json` | `mcm-retake-practice-3` | Verified (GR) |
+| `retake-practice-4.json` | `mcm-retake-practice-4` | Verified (GR) |
+| `retake-practice-5.json` | `mcm-retake-practice-5` | Verified (GR) |
+| `retake-practice-6.json` | `mcm-retake-practice-6` | Verified (GR), W2.b drill |
+| `retake-practice-7.json` | `mcm-retake-practice-7` | Verified (GR), mock retake |
+| `retake-practice-8.json` | `mcm-retake-practice-8` | Verified (GR) |
+| `retake-practice-9.json` | `mcm-retake-practice-9` | Verified (GR), rebuilt for uniqueness |
+| `retake-practice-10.json` | `mcm-retake-practice-10` | Verified (GR) |
+| `retake-practice-11.json` | `mcm-retake-practice-11` | Verified (GR) |
 
 ---
 
