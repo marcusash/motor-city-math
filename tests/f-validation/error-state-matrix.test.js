@@ -32,7 +32,7 @@ test(
 );
 test(
   'fetch failure shows explicit load error',
-  exam.includes('Could not load exam:') && exam.includes('error-msg')
+  exam.includes('showLoadError') && exam.includes('error-msg') && exam.includes("Can't reach this test")
 );
 test(
   'blank-field guard before grading exists',
