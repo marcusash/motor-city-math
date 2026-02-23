@@ -10,7 +10,10 @@
     <script src="shared/chart-theme.js"></script>
     <link rel="stylesheet" href="shared/styles.css">
     <link rel="stylesheet" href="shared/print.css">
-    <style>@media print { button, .submit-btn, .nav-btn, .hint-btn, .calc-toggle-btn { display: none !important; } }</style>
+    <style>@media print { button, .submit-btn, .nav-btn, .hint-btn, .calc-toggle-btn { display: none !important; } }
+    /* sw-18: focus ring for read-only Chart.js canvases */
+    canvas[role="img"]:focus { outline: 2px solid #4A90D9; outline-offset: 2px; }
+    </style>
 </head>
 <body class="archived" data-completed="2025-11-23" data-score="14/20">
 <script>if(localStorage.getItem('mcm-arena-mode')==='on')document.body.classList.add('arena-mode');</script>
@@ -416,7 +419,7 @@
                     A car's value over time is shown on the graph below.
                 </div>
                 <div class="chart-container">
-                    <canvas id="chart13" aria-label="Graph for question 13"></canvas>
+                    <canvas id="chart13" role="img" tabindex="0" aria-label="Graph for question 13"></canvas>
                 </div>
                 <div class="input-group">
                     <label>a) What was the car's initial value?</label>
@@ -503,7 +506,7 @@
                 </div>
                 <div style="clear: both;"></div>
                 <div class="chart-container">
-                    <canvas id="chart15" aria-label="Graph for question 15"></canvas>
+                    <canvas id="chart15" role="img" tabindex="0" aria-label="Graph for question 15"></canvas>
                 </div>
                 <div class="work-area">
                     <span class="work-label">Show Your Work:</span>
@@ -550,7 +553,7 @@
                     <strong>d)</strong> Using your equation, predict the quiz score for a student who studies 11 hours per week.
                 </div>
                 <div class="chart-container">
-                    <canvas id="chart19" aria-label="Graph for question 19"></canvas>
+                    <canvas id="chart19" role="img" tabindex="0" aria-label="Graph for question 19"></canvas>
                 </div>
                 <div class="work-area">
                     <span class="work-label">Show Your Work:</span>
@@ -1010,7 +1013,25 @@
             });
         });
 
-        function showFinalExamAnswerKey() {
+        // sw-18: keyboard announce for read-only Chart.js canvases
+        (function() {
+            var liveEl = document.createElement('div');
+            liveEl.setAttribute('aria-live', 'assertive');
+            liveEl.setAttribute('aria-atomic', 'true');
+            liveEl.className = 'sr-only';
+            document.body.appendChild(liveEl);
+            ['chart13', 'chart15', 'chart19'].forEach(function(id) {
+                var c = document.getElementById(id);
+                if (!c) return;
+                c.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        liveEl.textContent = '';
+                        setTimeout(function() { liveEl.textContent = c.getAttribute('aria-label') || 'Chart'; }, 50);
+                    }
+                });
+            });
+        })();
             const answerKeyHTML = `
                 <div class="answer-item"><strong>Q1:</strong> 210 (Work: 3pq - q²(4p - 2q) + p²q with p=-4, q=3: 3(-4)(3) - (9)(-16-6) + (16)(3) = -36 - 9(-22) + 48 = -36 + 198 + 48 = 210)</div>
                 <div class="answer-item"><strong>Q2:</strong> 5.4 meters (Work: h = 1 + 12(2) - 4.9(2)² = 1 + 24 - 4.9(4) = 1 + 24 - 19.6 = 5.4)</div>
