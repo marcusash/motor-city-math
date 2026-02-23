@@ -1,0 +1,77 @@
+{
+  "audit_id": "gp-audit-2026-02-23",
+  "generated": "2026-02-23",
+  "generated_by": "GP",
+  "baseline": {
+    "verify_checks": 3008,
+    "verify_total": 3008,
+    "health_checks": 11,
+    "health_total": 11,
+    "exams_audited": 10,
+    "status": "PASS"
+  },
+  "field_completeness": {
+    "questions_checked": 150,
+    "fields_added_this_sprint": 93,
+    "status": "PASS"
+  },
+  "adhd_compliance": {
+    "feedback_violations_found": 34,
+    "feedback_violations_fixed": 34,
+    "hint_violations_found": 9,
+    "hint_violations_fixed": 9,
+    "status": "PASS"
+  },
+  "answer_uniqueness": {
+    "within_exam_checks": 66,
+    "within_exam_failures": 0,
+    "cross_exam_hard_fails": 0,
+    "status": "PASS"
+  },
+  "test_suite": {
+    "test_files": 21,
+    "total_checks": 6619,
+    "passing": 6608,
+    "advisory_only": 11,
+    "status": "PASS"
+  },
+  "math_accuracy": {
+    "graph_keypoints_verified": 100,
+    "rp5_q4_fixed": true,
+    "rp5_q13_fixed": true,
+    "rp8_q5_fixed": true,
+    "rp8_q10_fixed": true,
+    "rp8_q15_fixed": true,
+    "status": "PASS"
+  },
+  "open_issues": [
+    {
+      "id": "aria-labels",
+      "severity": "medium",
+      "description": "6 canvas elements missing aria-label in final_exam_251123.html and nonlinear_exam_mvp.html",
+      "assigned_to": "GA",
+      "filed": "2026-02-23"
+    },
+    {
+      "id": "print-css",
+      "severity": "low",
+      "description": "exam.html and final_exam_251123.html missing @media print CSS",
+      "assigned_to": "GA",
+      "filed": "2026-02-23"
+    },
+    {
+      "id": "rp11-collisions",
+      "severity": "high",
+      "description": "GR's RP11 draft has 10 uniqueness failures (values 2, 3, 7 each appear 3x)",
+      "assigned_to": "GR",
+      "filed": "2026-02-23"
+    },
+    {
+      "id": "rp8-q11-tolerance",
+      "severity": "low",
+      "description": "Q11 answer=125 has tolerance=0.05 — advisory to increase to 0.5+",
+      "assigned_to": "GR",
+      "filed": "2026-02-23"
+    }
+  ]
+}
