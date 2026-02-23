@@ -52,7 +52,23 @@ Where N is the next sequential number (currently: 12 for the next exam).
 }
 ```
 
-### ADHD Rules (non-negotiable)
+### Optional Fields
+
+```json
+{
+  "explanation": "This question tests ability to identify the parent function from vertex form. The key insight is recognizing that adding 4 inside the radical shifts the graph left (not right).",
+  "feedback_wrong_parent": "Parent function is wrong. Look at the base operation — is it a square root, absolute value, or quadratic?",
+  "feedback_wrong_intercepts": "Parent is correct! Now focus on where the graph crosses the x-axis (y = 0).",
+  "plus_minus": true
+}
+```
+
+- `explanation` (string): Detailed explanation for the parent/teacher view. Not shown to Kai. Used for review and tutoring context. No length limit.
+- `feedback_wrong_parent` (string): Specific feedback when the parent function input is wrong but intercepts may be correct. ≤ 12 words.
+- `feedback_wrong_intercepts` (string): Specific feedback when the parent is correct but intercepts are wrong. ≤ 12 words.
+- `plus_minus` (boolean): When true, accepts either ordering of two numeric answers (e.g., x-intercepts where order doesn't matter).
+
+
 
 - `hint`: ≤ 20 words. One action. No em dashes.
 - `feedback_correct`: ≤ 12 words. Celebratory, brief.
