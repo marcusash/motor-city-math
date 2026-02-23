@@ -1,6 +1,6 @@
 {
-  "captured": "2026-02-23T17:58:19.218Z",
-  "note": "Captured by gf-skill-23 regression replay pack + GP 7-test suite added 2026-02-23",
+  "captured": "2026-02-23T18:00:22.839Z",
+  "note": "57 suites GF + 13 suites GP (6 new from c262e8e)",
   "suites": {
     "accessibility-landmarks.test.js": {
       "exitCode": 0,
@@ -344,6 +344,47 @@
       "passed": 11,
       "failed": 0,
       "note": "2200 random runs"
+    },
+    "gp-cdn-check.test.js": {
+      "exitCode": 0,
+      "total": 11,
+      "passed": 11,
+      "failed": 0
+    },
+    "gp-localstorage-keys.test.js": {
+      "exitCode": 0,
+      "total": 3,
+      "passed": 3,
+      "failed": 0,
+      "note": "audit mode, exit 0"
+    },
+    "gp-aria-labels.test.js": {
+      "exitCode": 1,
+      "total": null,
+      "passed": null,
+      "failed": 3,
+      "knownFail": true,
+      "note": "GA P2: 3 canvas elements missing aria-label"
+    },
+    "gp-json-parse.test.js": {
+      "exitCode": 0,
+      "total": 10,
+      "passed": 10,
+      "failed": 0
+    },
+    "gp-print-css.test.js": {
+      "exitCode": 1,
+      "total": 3,
+      "passed": 1,
+      "failed": 2,
+      "knownFail": true,
+      "note": "GA P3: exam.html + final_exam_251123 missing print CSS"
+    },
+    "gp-viewport-meta.test.js": {
+      "exitCode": 0,
+      "total": 11,
+      "passed": 11,
+      "failed": 0
     }
   }
 }
