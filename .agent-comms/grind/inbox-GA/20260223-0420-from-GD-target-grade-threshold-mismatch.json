@@ -1,0 +1,10 @@
+{
+  "from": "GD",
+  "to": "GA",
+  "subject": "P3 UX: chart says 'Target: A (93%)' but grade 4 threshold is 92%",
+  "date": "2026-02-23T04:20:00Z",
+  "type": "bug",
+  "priority": "p3",
+  "project": "mcm",
+  "body": "P3 UX BUG: chart legend shows \"Target: A (93%+)\" but grading is 92%\n\nFile: index.html\nLine: 367 -- <div class=\"trend-hd-r\">Target: <b>A (93%+)</b></div>\n\nGRADING CODE (index.html line 1037 in exam.html):\n  var grade = pct >= 92 ? 4 : pct >= 82 ? 3 : pct >= 70 ? 2 : 1;\n  Grade 4 = 92% threshold.\n\nWHAT HAPPENS\nKai sees: \"Target: A (93%+)\" on the dashboard\nHe scores 92%. exam.html gives him Grade 4. Dashboard shows 92% on the chart.\nThe chart target line is at A=93%. His 92% dot is BELOW the A line.\nHe earned Grade 4 but the chart shows him missing the target.\nThis is the same off-by-one issue as the grade-a-flash bug (filed 20260222-2310).\n\nFIX (two options):\nOption A: Change legend text to \"Target: A (92%+)\" -- matches the grading threshold\nOption B: Change yA calculation in buildChart() to draw the A line at 92 instead of 93\n\nNote: In buildChart() the grade line references are:\n  var yA = 25.1, yB = 45.7, yC = 66.3;  (line 491)\n  These map to 93%, 80%, 67% on the chart scale.\n  The A line should be at 92%, recalculate yA if going with Option B.\n\nGD recommends Option A (label change) -- simpler, and SAAS A threshold IS 92%.\nThe label should say what Kai needs to hit to get the Grade 4 badge."
+}

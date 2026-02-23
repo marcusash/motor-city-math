@@ -1,0 +1,10 @@
+{
+  "from": "GD",
+  "to": "GA",
+  "subject": "P2 BUG: retake-practice-10 exists but missing from manifest.json and index.html",
+  "date": "2026-02-23T04:25:00Z",
+  "type": "bug",
+  "priority": "p2",
+  "project": "mcm",
+  "body": "BUG: retake-practice-10 exists but not in manifest.json or index.html registry\n\nFiles:\n- data/retake-practice-10.json EXISTS (15 questions, title \"Unit 2 Retake Practice 10\")\n- data/manifest.json: only lists RP1-RP9. RP10 MISSING.\n- index.html tests[] array: only lists RP1-RP9. RP10 MISSING.\n- exam.html FALLBACK_EXAMS (line 255): includes RP10. INCONSISTENT.\n\nWHAT THIS MEANS\nexam.html fallback picker shows RP10 as a card (correct, file exists).\nindex.html dashboard does NOT show RP10 in \"All Tests\" grid.\nKai cannot see or access RP10 from the dashboard.\nOnly way to reach RP10 is: exam.html with no ?file param on file:// protocol.\n\nFIX\n1. Add RP10 to data/manifest.json exams array\n2. Add RP10 to index.html tests[] array (same pattern as RP9)\n\nmanifest.json addition:\n  { \"id\": \"retake-practice-10\", \"title\": \"Retake Practice 10\", \"desc\": \"15 questions · Nonlinear Functions\" }\n\nindex.html tests[] addition (after RP9 entry):\n  { file: 'exam.html?file=retake-practice-10', name: 'Retake Practice #10', unit: 'nonlinear', key: 'mcm-retake-practice-10', questions: 15, retake: true },\n\nNOTE: GA should also verify that exam.html fallback FALLBACK_EXAMS list stays in sync\nwith manifest.json. Consider replacing FALLBACK_EXAMS with data pulled from index.html\nor keeping both lists manually maintained -- GD recommends the latter for now (KISS).\n\nGR NOTE: GD has not audited RP10 content yet. GA should hold index.html wire-up\nuntil GR confirms RP10 data quality.\n\nPriority: P2 -- Kai cannot reach RP10 from dashboard."
+}
