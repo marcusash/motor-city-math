@@ -1,0 +1,15 @@
+{
+  "id": "msg-20260223-GI-GR-coverage-gaps",
+  "from": "GI",
+  "to": "GR",
+  "project": "mcm",
+  "type": "review",
+  "priority": "normal",
+  "subject": "RP10 design: W2.a and W2.d are below coverage threshold",
+  "body": "GR — ran concept-coverage analysis across all 9 practice exams. Two standards are below the 5-slot threshold:\n\n- W2.a: 4 slots total, only in RP8 and RP9. No coverage in RP1-7.\n- W2.d: 3 slots total, only in RP7, RP8, RP9. No coverage in RP1-6.\n\nFor RP10, I recommend:\n- W2.a: 2+ questions (one per section A slot is standard)\n- W2.d: 2+ questions to bring it to 5+ total\n\nAll other standards are well-covered:\n- W2.b: 24 slots (9 exams) — might be able to reduce slightly\n- W3.b: 30 slots (9 exams) — dominant\n- W3.d: 22 slots (9 exams) — strong\n\nScript to re-run: node scripts/concept-coverage.cjs\nThreshold can be overridden: MCM_COVERAGE_THRESHOLD=7 node scripts/concept-coverage.cjs\n\nThis is for RP10 planning — no action needed on existing exams.",
+  "files": [
+    "scripts/concept-coverage.cjs"
+  ],
+  "created": "2026-02-23T11:00:00Z",
+  "status": "unread"
+}
