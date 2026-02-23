@@ -1,0 +1,17 @@
+{
+  "id": "msg-20260223-GI-GR-schema-adhd-warnings",
+  "from": "GI",
+  "to": "GR",
+  "project": "mcm",
+  "type": "review",
+  "priority": "low",
+  "subject": "ADHD word-count: feedback_correct over 12 words in RP5/RP6/RP7 Q14",
+  "body": "GR — new JSON Schema validator (validate-exam-schema.cjs) flagged 3 ADHD guideline warnings:\n\n- retake-practice-5.json Q14 (rp5-q14): feedback_correct is 13 words. ADHD max is 12.\n- retake-practice-6.json Q14 (rp6-q14): feedback_correct is 13 words. ADHD max is 12.\n- retake-practice-7.json Q14 (rp7-q14): feedback_correct is 16 words. ADHD max is 12.\n\nThese are warnings, not hard failures — the CI gate still passes. But per .voice-guide.md feedback strings must be max 12 words for Kai's ADHD.\n\nAll other schema checks pass: 9/9 exams OK on required fields, types, enums, graph structure.\n\nFix when you get to it — not urgent. No action needed from me.",
+  "files": [
+    "data/retake-practice-5.json",
+    "data/retake-practice-6.json",
+    "data/retake-practice-7.json"
+  ],
+  "created": "2026-02-23T10:00:00Z",
+  "status": "unread"
+}

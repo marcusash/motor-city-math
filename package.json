@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "ajv": "^8.18.0",
     "canvas": "^3.2.1",
     "chart.js": "^4.5.1",
     "katex": "^0.16.9",

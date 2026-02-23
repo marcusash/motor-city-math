@@ -1,0 +1,285 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/marcusash_microsoft/kai-algebra2-tests/data/schemas/practice-exam.schema.json",
+  "title": "MCM Practice Exam",
+  "description": "Schema for Motor City Math practice exam JSON files (retake-practice-N.json)",
+  "type": "object",
+  "required": ["exam_id", "title", "subtitle", "time_minutes", "created", "created_by", "questions"],
+  "additionalProperties": false,
+  "properties": {
+    "exam_id": {
+      "type": "string",
+      "description": "Unique identifier matching the filename without .json extension",
+      "pattern": "^[a-z0-9-]+$",
+      "examples": ["retake-practice-1", "mvp"]
+    },
+    "title": {
+      "type": "string",
+      "minLength": 5,
+      "description": "Human-readable exam title"
+    },
+    "subtitle": {
+      "type": "string",
+      "description": "Standards covered, question count, and estimated time"
+    },
+    "time_minutes": {
+      "type": "integer",
+      "minimum": 10,
+      "maximum": 180,
+      "description": "Estimated completion time in minutes"
+    },
+    "created": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+      "description": "ISO 8601 date (YYYY-MM-DD)"
+    },
+    "created_by": {
+      "type": "string",
+      "description": "Agent or person who created the exam"
+    },
+    "purpose": {
+      "type": "string",
+      "description": "Learning goal and target weakness areas for this exam"
+    },
+    "questions": {
+      "type": "array",
+      "description": "Ordered list of exam questions",
+      "minItems": 15,
+      "maxItems": 15,
+      "items": {
+        "$ref": "#/definitions/question"
+      }
+    }
+  },
+  "definitions": {
+    "question": {
+      "type": "object",
+      "required": ["id", "number", "section", "standard", "type", "question_html", "inputs", "hint", "solution_steps"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique question identifier within the exam",
+          "pattern": "^[a-z0-9-]+$",
+          "examples": ["rp1-q1", "mvp-q5"]
+        },
+        "number": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 20,
+          "description": "Display question number (1-based)"
+        },
+        "section": {
+          "type": "string",
+          "enum": ["A", "B", "C", "D"],
+          "description": "Exam section: A=Identify, B=Solve, C=Graph, D=Apply"
+        },
+        "standard": {
+          "type": "string",
+          "pattern": "^W[23]\\.[a-e]$",
+          "description": "Algebra II standard code from data/standards.json",
+          "examples": ["W2.b", "W3.d", "W2.e"]
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "identify",
+            "quadratic",
+            "radical",
+            "rational",
+            "exponential",
+            "absolute-value",
+            "extraneous",
+            "fractional-exp",
+            "graph",
+            "graph-rational",
+            "word-problem",
+            "write-equation",
+            "multiple-choice",
+            "error-analysis",
+            "construct"
+          ],
+          "description": "Question type controlling renderer behavior"
+        },
+        "question_html": {
+          "type": "string",
+          "minLength": 10,
+          "description": "Question text with LaTeX math (\\(...\\) or \\[...\\])"
+        },
+        "inputs": {
+          "type": "array",
+          "description": "Answer input fields for this question",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/definitions/input"
+          }
+        },
+        "hint": {
+          "type": "string",
+          "minLength": 5,
+          "description": "One-line hint shown on first wrong attempt"
+        },
+        "solution_steps": {
+          "type": "array",
+          "description": "Step-by-step solution shown after max wrong attempts",
+          "minItems": 2,
+          "items": {
+            "type": "string",
+            "minLength": 5
+          }
+        },
+        "plus_minus": {
+          "type": "boolean",
+          "description": "If true, inputs x1 and x2 are interchangeable (both accepted in either order)"
+        },
+        "feedback_correct": {
+          "type": "string",
+          "description": "Shown when all inputs are correct. Max 12 words (ADHD guideline)."
+        },
+        "feedback_wrong": {
+          "type": "string",
+          "description": "Generic wrong-answer feedback when question has a single input or one error type"
+        },
+        "feedback_wrong_parent": {
+          "type": "string",
+          "description": "Wrong-answer feedback specific to parent-function input (identify questions)"
+        },
+        "feedback_wrong_intercepts": {
+          "type": "string",
+          "description": "Wrong-answer feedback specific to intercept inputs (identify questions)"
+        },
+        "graph": {
+          "$ref": "#/definitions/graph_spec",
+          "description": "Graph canvas spec — required when type is 'graph' or 'graph-rational'"
+        }
+      }
+    },
+    "input": {
+      "type": "object",
+      "required": ["id", "type", "label"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9_]+$",
+          "description": "HTML input element ID"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["number", "dropdown", "text", "radio"],
+          "description": "Input rendering type"
+        },
+        "label": {
+          "type": "string",
+          "description": "Label displayed next to the input"
+        },
+        "answer": {
+          "description": "Correct answer. String for dropdown/text, number for numeric inputs.",
+          "oneOf": [
+            {"type": "string"},
+            {"type": "number"}
+          ]
+        },
+        "tolerance": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Acceptable numeric error margin for number inputs"
+        },
+        "options": {
+          "type": "array",
+          "description": "Dropdown options (strings) or radio options (objects with value+text) — required when type is 'dropdown' or 'radio'",
+          "minItems": 2,
+          "items": {
+            "oneOf": [
+              {"type": "string"},
+              {
+                "type": "object",
+                "required": ["value", "text"],
+                "properties": {
+                  "value": {"type": "string"},
+                  "text": {"type": "string"}
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "graph_spec": {
+      "type": "object",
+      "required": ["canvas_id", "function", "function_display", "key_points"],
+      "additionalProperties": false,
+      "properties": {
+        "canvas_id": {
+          "type": "string",
+          "pattern": "^graph[A-Z][a-zA-Z0-9]*$",
+          "description": "HTML canvas element ID",
+          "examples": ["graphQ12", "graphQ13"]
+        },
+        "function": {
+          "type": "string",
+          "minLength": 3,
+          "description": "JavaScript expression for f(x) — evaluated with Math.* available"
+        },
+        "function_display": {
+          "type": "string",
+          "description": "Human-readable function notation for display"
+        },
+        "key_points": {
+          "type": "array",
+          "description": "Array of [x, y] coordinate pairs the graph must pass through",
+          "minItems": 3,
+          "items": {
+            "type": "array",
+            "items": {"type": "number"},
+            "minItems": 2,
+            "maxItems": 2
+          }
+        },
+        "min_points": {
+          "type": "integer",
+          "minimum": 3,
+          "description": "Minimum number of key_points that must evaluate correctly"
+        },
+        "tolerance": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Acceptable y-value error when checking key_points"
+        },
+        "asymptotes": {
+          "description": "Asymptote values for rational function graphs (RP1-5 format). Null means no asymptotes declared.",
+          "oneOf": [
+            {"type": "null"},
+            {
+              "type": "object",
+              "properties": {
+                "vertical": {
+                  "type": "array",
+                  "items": {"type": "number"}
+                },
+                "horizontal": {
+                  "type": "array",
+                  "items": {"type": "number"}
+                }
+              }
+            }
+          ]
+        },
+        "x_range": {
+          "type": "array",
+          "description": "Graph x-axis display range [min, max] (RP6+ format)",
+          "items": {"type": "number"},
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "y_range": {
+          "type": "array",
+          "description": "Graph y-axis display range [min, max] (RP6+ format)",
+          "items": {"type": "number"},
+          "minItems": 2,
+          "maxItems": 2
+        }
+      }
+    }
+  }
+}

@@ -22,6 +22,10 @@ const tasks = [
   {
     name: 'validate-exam-contract',
     args: [path.join(root, 'scripts', 'validate-exam-contract.cjs')]
+  },
+  {
+    name: 'validate-exam-schema',
+    args: [path.join(root, 'scripts', 'validate-exam-schema.cjs')]
   }
 ];
 

@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0",
+  "updated": "2026-02-23",
+  "updated_by": "GF",
+  "description": "MCM QA flake registry. Tracks tests with known intermittent failure patterns. Each entry requires a root cause, reproduction rate estimate, and resolution owner.",
+  "entries": [
+    {
+      "id": "flake-001",
+      "suite": "tests/f-validation/design-compliance.spec.js",
+      "test": "typography: body font on all pages",
+      "type": "environment",
+      "root_cause": "Playwright win-arm64 canvas build fails — suite cannot run. All tests in this file are blocked, not flaky by design.",
+      "repro_rate": "100% blocked (not intermittent)",
+      "status": "blocked",
+      "resolution": "Resolve win-arm64 canvas/playwright build. Owner: GP.",
+      "first_seen": "2026-02-19"
+    },
+    {
+      "id": "flake-002",
+      "suite": "tests/f-validation/design-qa.spec.js",
+      "test": "screenshot baseline: all shared-style pages",
+      "type": "environment",
+      "root_cause": "Same as flake-001 — Playwright runtime blocked on win-arm64.",
+      "repro_rate": "100% blocked",
+      "status": "blocked",
+      "resolution": "Resolve win-arm64 canvas/playwright build. Owner: GP.",
+      "first_seen": "2026-02-19"
+    },
+    {
+      "id": "flake-003",
+      "suite": "tests/f-validation/seed-shuffle.test.js",
+      "test": "shuffle produces unique orderings across seeds",
+      "type": "data-dependent",
+      "root_cause": "SHA-256 hash collision probability is negligible but non-zero. Test uses 100 seeds; at 10! orderings the collision floor is ~0%. In practice: no failures observed.",
+      "repro_rate": "< 0.01% estimated",
+      "status": "known-safe",
+      "resolution": "None needed. Document as acceptable probabilistic pass.",
+      "first_seen": "2026-02-19"
+    },
+    {
+      "id": "flake-004",
+      "suite": "tests/f-validation/localstorage-schema-guard.test.js",
+      "test": "export file matches schema",
+      "type": "data-dependent",
+      "root_cause": "Test reads data/kai-scores-2026-02-22.json as fixture. If that file is deleted or renamed, test fails. Not intermittent — deterministic on file presence.",
+      "repro_rate": "0% if file present; 100% if file removed",
+      "status": "known-safe",
+      "resolution": "Add fixture presence check to pre-commit guard. Owner: GF.",
+      "first_seen": "2026-02-22"
+    },
+    {
+      "id": "flake-005",
+      "suite": "tests/f-validation/inline-script-syntax-check.test.js",
+      "test": "exam.html block[1]: syntax OK",
+      "type": "timing",
+      "root_cause": "test writes to os.tmpdir() — concurrent test runs from two agents could collide on the temp filename. Mitigated by random suffix in filename.",
+      "repro_rate": "< 0.001% estimated",
+      "status": "known-safe",
+      "resolution": "None needed. Random suffix + Date.now() makes collision effectively impossible.",
+      "first_seen": "2026-02-23"
+    }
+  ],
+  "suppressed": [],
+  "resolved": []
+}
