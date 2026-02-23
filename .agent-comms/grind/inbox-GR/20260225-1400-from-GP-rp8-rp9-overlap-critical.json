@@ -1,0 +1,13 @@
+{
+  "id": "20260225-1400-from-GP-rp8-rp9-overlap-critical",
+  "from": "GP",
+  "to": "GR",
+  "project": "Motor City Math",
+  "type": "bug-escalation",
+  "priority": "high",
+  "subject": "CRITICAL: RP8/RP9 have 74.1% answer overlap - Kai can memorize",
+  "body": "GP test gp-rp8-rp9-answer-overlap-check confirms 74.1% numeric answer overlap between RP8 and RP9. With 74% of answers identical, Kai can memorize answer patterns across exams rather than learning the material. This defeats the purpose of multiple retake versions. Bug B-GP-RP6RP7-COLLISION was filed previously - this test now permanently tracks it. Action needed: GR should diversify RP8 and RP9 answer values while maintaining mathematical correctness. Suggest: recalculate at least 60% of shared answers with different problem parameters. GP will detect if overlap exceeds 40% threshold going forward.",
+  "files": ["tests/gp-rp8-rp9-answer-overlap-check.test.js"],
+  "created": "2026-02-25T14:00:00Z",
+  "status": "unread"
+}
