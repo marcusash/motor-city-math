@@ -48,7 +48,7 @@
       "plus_minus": true,
       "hint": "Set f(x)=0. Isolate the squared term.",
       "solution_steps": [
-        "Parent: y = x² (quadratic — highest power is 2).",
+        "Parent: y = x² (quadratic : highest power is 2).",
         "Set 0 = 3(x+2)² - 27.",
         "3(x+2)² = 27 → (x+2)² = 9.",
         "x + 2 = ±3 → x = 1 or x = -5."
@@ -138,7 +138,7 @@
       "plus_minus": true,
       "hint": "Set f(x)=0. |x+3| = 5 gives two answers.",
       "solution_steps": [
-        "Parent: y = |x| (absolute value — V shape).",
+        "Parent: y = |x| (absolute value : V shape).",
         "Transformations: left 3, stretch ×2, reflect over x-axis, up 10.",
         "x-intercepts: 0 = -2|x+3| + 10 → |x+3| = 5.",
         "x + 3 = 5 → x = 2, or x + 3 = -5 → x = -8."

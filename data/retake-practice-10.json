@@ -363,7 +363,7 @@
       "hint": "Add 9, then divide by 3. Then raise both sides to the 4/3 power.",
       "solution_steps": [
         "3x^(3/4) = 81 → x^(3/4) = 27.",
-        "Raise to 4/3: x = 27^(4/3) = (⁴√27)³. Wait — use (27^(1/3))^4 = 3^4 = 81.",
+        "Raise to 4/3: x = 27^(4/3) = (⁴√27)³. Wait : use (27^(1/3))^4 = 3^4 = 81.",
         "Because 27=3³, so 27^(4/3) = (3³)^(4/3) = 3^4 = 81.",
         "Check: 3×81^(3/4)-9 = 3×(81^(1/4))^3-9 = 3×3^3-9 = 81-9 = 72 ✓"
       ],

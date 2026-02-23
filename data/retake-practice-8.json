@@ -122,7 +122,7 @@
       "hint": "Factor out: |-2x+4| = 2|x-2|. Isolate: 2|x-2|=16, then |x-2|=8. Two cases: (x-2)=8 OR -(x-2)=8.",
       "solution_steps": [
         "Isolate: |-2x+4| = 16.",
-        "Key insight: |-2x+4| = 2|x-2| — negative coefficient inside becomes positive in factored form.",
+        "Key insight: |-2x+4| = 2|x-2| : negative coefficient inside becomes positive in factored form.",
         "So 2|x-2| = 16 → |x-2| = 8.",
         "Case 1 (positive): x-2=8 → x=10.",
         "Case 2 (negative): -(x-2)=8 → x-2=-8 → x=-6.",

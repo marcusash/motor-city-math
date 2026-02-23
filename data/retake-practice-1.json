@@ -48,7 +48,7 @@
       "plus_minus": true,
       "hint": "Set f(x)=0. Isolate the squared term.",
       "solution_steps": [
-        "Parent: y = x² (quadratic — highest power is 2).",
+        "Parent: y = x² (quadratic : highest power is 2).",
         "Set 0 = 2(x-3)² - 8.",
         "2(x-3)² = 8 → (x-3)² = 4.",
         "x - 3 = ±2 → x = 5 or x = 1."
@@ -138,7 +138,7 @@
       "plus_minus": true,
       "hint": "Set f(x)=0. |x-1| = 4 gives two answers.",
       "solution_steps": [
-        "Parent: y = |x| (absolute value — V shape).",
+        "Parent: y = |x| (absolute value : V shape).",
         "Transformations: right 1, reflect over x-axis, up 4.",
         "x-intercepts: 0 = -|x-1| + 4 → |x-1| = 4.",
         "x - 1 = 4 → x = 5, or x - 1 = -4 → x = -3."
