@@ -1,6 +1,6 @@
 {
-  "captured": "2026-02-23T18:55:00Z",
-  "note": "70 suites (63 GF + 20 GP); all null counts populated",
+  "captured": "2026-02-23T19:05:00Z",
+  "note": "71 suites (64 GF + 20 GP); dad-mode-regression added",
   "suites": {
     "accessibility-landmarks.test.js": {
       "exitCode": 0,
@@ -439,6 +439,12 @@
       "exitCode": 1,
       "knownFail": true,
       "note": "GR P1: RP11 has H-2 dupes vs MVP (Q7=2,Q11=9,Q15=20) and H-4 internal dupe Q5=Q7=2. Bug filed to GR inbox 20260223-1815."
+    },
+    "dad-mode-regression.test.js": {
+      "exitCode": 0,
+      "total": 28,
+      "passed": 28,
+      "failed": 0
     }
   }
 }
