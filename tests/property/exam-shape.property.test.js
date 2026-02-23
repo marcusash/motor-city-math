@@ -70,6 +70,30 @@ function checkRandomQuestion(exam) {
     if (inp.type === 'number' && typeof inp.tolerance !== 'number') {
       fail(`${exam.file} ${q.id} ${inp.id}: numeric input missing tolerance`);
     }
+    // Value-constraint invariant 1: numeric answers must be finite numbers
+    if (inp.type === 'number' && inp.answer !== undefined) {
+      if (!Number.isFinite(inp.answer)) {
+        fail(`${exam.file} ${q.id} ${inp.id}: numeric answer is not finite (got ${inp.answer})`);
+      }
+    }
+    // Value-constraint invariant 2: tolerance must be non-negative
+    if (inp.type === 'number' && typeof inp.tolerance === 'number') {
+      if (inp.tolerance < 0) {
+        fail(`${exam.file} ${q.id} ${inp.id}: tolerance must be >= 0 (got ${inp.tolerance})`);
+      }
+    }
+    // Value-constraint invariant 3: dropdown/radio answer must be one of the option values
+    if (inp.type === 'dropdown' && Array.isArray(inp.options) && inp.answer !== undefined) {
+      if (!inp.options.includes(inp.answer)) {
+        fail(`${exam.file} ${q.id} ${inp.id}: dropdown answer "${inp.answer}" not in options`);
+      }
+    }
+    if (inp.type === 'radio' && Array.isArray(inp.options) && inp.answer !== undefined) {
+      const values = inp.options.map((opt) => (opt && opt.value !== undefined ? opt.value : opt));
+      if (!values.includes(inp.answer)) {
+        fail(`${exam.file} ${q.id} ${inp.id}: radio answer "${inp.answer}" not in option values`);
+      }
+    }
   });
   if (q.graph) {
     if (!q.graph.function || !Array.isArray(q.graph.key_points) || q.graph.key_points.length < 2) {
