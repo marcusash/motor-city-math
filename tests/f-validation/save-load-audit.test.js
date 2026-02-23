@@ -25,24 +25,22 @@ function section(title) {
 // ===================================================================
 section('1. localStorage Key Inventory');
 
+// Active MCM files only (legacy files removed in site simplification sprint).
+// Pre-MCM files (index_calc.html, quiz_*.html, nonlinear_functions_test.html,
+// 20260119_Exponents_Unit1*.html, exponents_exam.html) were deleted.
+// Their key collisions were B-F3 tech debt -- now resolved by removal.
 const keyMap = {
-    'index.html':                      'algebra2TestResults',
-    'index_calc.html':                 'algebra2TestResults',  // ← COLLISION
-    'final_exam_251123.html':          'algebra2TestResults',  // ← COLLISION
-    'final_exam_251123_mini.html':     'algebra2TestResults',  // ← COLLISION
-    'quiz_251117.html':                'algebra2QuizResults',
-    'quiz_251120.html':                'algebra2Quiz251120',
-    'quiz_251121.html':                'algebra2Quiz251121',
-    'nonlinear_functions_test.html':   'nonlinearFunctionsTest',
-    'exponents_exam.html':             'exponentsExamResults',   // via shared/scripts.js
-    '20260119_Exponents_Unit1.html':   'exponents_test_results',
-    '20260119_Exponents_Unit1_2nd.html': 'exponents_test_2nd_results',
-    '20260119_Exponents_Unit1_3rd.html': 'exponents_test_3rd_results',
+    'index.html':                      'mcm_scores',           // dashboard
+    'exam.html':                       'mcm_scores',           // exam renderer (exam-autosave-{id} in sessionStorage)
+    'final_exam_251123.html':          'mcm_scores',           // migrated to mcm_scores
+    'nonlinear_exam_mvp.html':         'mcm_scores',           // migrated to mcm_scores
+    'final_exam_251123_mini.html':     null,                   // no save/load (arena-mode read only)
 };
 
-// Count collisions
+// Count collisions (skip files with no save/load)
 const keyCounts = {};
 for (const [file, key] of Object.entries(keyMap)) {
+    if (!key) continue;
     keyCounts[key] = (keyCounts[key] || []);
     keyCounts[key].push(file);
 }
@@ -57,7 +55,7 @@ for (const [key, files] of collisions) {
     for (const f of files) console.log(`       - ${f}`);
 }
 
-test('No key collisions', collisions.length === 0);
+test('No unexpected key collisions (mcm_scores sharing is intentional)', collisions.length === 0 || (collisions.length === 1 && collisions[0][0] === 'mcm_scores'));
 
 // ===================================================================
 // 2. DATA FORMAT AUDIT
@@ -83,73 +81,60 @@ test('Shared scripts handles both formats', true);
 section('3. Error Handling Audit');
 
 // Test: What happens with corrupted JSON?
+// All active MCM files now use try/catch on localStorage JSON.parse.
+// Legacy files without try/catch were deleted in the site simplification sprint.
 const implementations = {
-    'shared/scripts.js': { tryCatch: true, corruptionMsg: true },
-    '20260119_Exponents_Unit1.html': { tryCatch: false, corruptionMsg: false },
-    '20260119_Exponents_Unit1_2nd.html': { tryCatch: false, corruptionMsg: false },
-    '20260119_Exponents_Unit1_3rd.html': { tryCatch: false, corruptionMsg: false },
-    'index.html': { tryCatch: false, corruptionMsg: false },
-    'final_exam_251123.html': { tryCatch: false, corruptionMsg: false },
-    'final_exam_251123_mini.html': { tryCatch: false, corruptionMsg: false },
-    'quiz_251117.html': { tryCatch: false, corruptionMsg: false },
-    'quiz_251120.html': { tryCatch: false, corruptionMsg: false },
-    'quiz_251121.html': { tryCatch: false, corruptionMsg: false },
-    'nonlinear_functions_test.html': { tryCatch: false, corruptionMsg: false },
+    'shared/scripts.js':            { tryCatch: true, corruptionMsg: true },
+    'index.html':                   { tryCatch: true, corruptionMsg: false },   // line 442
+    'exam.html':                    { tryCatch: true, corruptionMsg: false },    // saveResults()
+    'final_exam_251123.html':       { tryCatch: true, corruptionMsg: false },   // line 1193
+    'nonlinear_exam_mvp.html':      { tryCatch: true, corruptionMsg: false },   // line 1412
+    'final_exam_251123_mini.html':  { tryCatch: null, corruptionMsg: false },   // no save/load
 };
 
-const withTryCatch = Object.entries(implementations).filter(([k, v]) => v.tryCatch);
-const withoutTryCatch = Object.entries(implementations).filter(([k, v]) => !v.tryCatch);
+const withTryCatch = Object.entries(implementations).filter(([k, v]) => v.tryCatch === true);
+const withoutTryCatch = Object.entries(implementations).filter(([k, v]) => v.tryCatch === false);
 
-console.log(`  Files with try/catch on JSON.parse: ${withTryCatch.length}/11`);
-console.log(`  Files WITHOUT try/catch: ${withoutTryCatch.length}/11`);
-console.log('  ⚠️ Corrupted localStorage → uncaught JSON.parse exception → silent failure');
-console.log('  ✅ shared/scripts.js has try/catch (line 77-82)');
+const total = Object.keys(implementations).length;
+console.log(`  Files with try/catch on JSON.parse: ${withTryCatch.length}/${total}`);
+if (withoutTryCatch.length > 0) {
+    console.log(`  Files WITHOUT try/catch: ${withoutTryCatch.map(([k]) => k).join(', ')}`);
+} else {
+    console.log('  ✅ All active files have try/catch on JSON.parse');
+}
 
-test('Only shared/scripts.js has corruption handling', withTryCatch.length === 1);
+test('All active files have corruption handling', withoutTryCatch.length === 0);
 
 // ===================================================================
 // 4. KEY COLLISION IMPACT
 // ===================================================================
 section('4. Key Collision Impact Analysis');
 
-console.log('  🔴 BLOCKER: "algebra2TestResults" used by 4 different tests:');
-console.log('     1. index.html (Linear Functions, 16 Qs)');
-console.log('     2. index_calc.html (Linear Functions calc, 16 Qs)');
-console.log('     3. final_exam_251123.html (Unit 1 Exam, 18 Qs)');
-console.log('     4. final_exam_251123_mini.html (Unit 1 Mini, 8 Qs)');
+console.log('  ✅ "mcm_scores" is shared by all active exam files — intentional design.');
+console.log('  Each exam writes to a sub-key: mcm-{exam-id} inside the JSON blob.');
+console.log('  index.html reads the full mcm_scores object and displays per-exam history.');
 console.log('');
-console.log('  Impact: Saving on any of these 4 tests OVERWRITES progress');
-console.log('  from the other 3. Kai saves index.html → opens final_exam →');
-console.log('  loads → gets garbage data (wrong input IDs, missing fields).');
-console.log('');
-console.log('  quiz_251117 uses "algebra2QuizResults" — would collide with');
-console.log('  any future quiz that uses the same generic key.');
+console.log('  ✅ Legacy "algebra2TestResults" collision (B-F3) — RESOLVED.');
+console.log('     index_calc.html, quiz_*.html, nonlinear_functions_test.html removed.');
 
 // ===================================================================
 // 5. FUNCTION SIGNATURE MISMATCH
 // ===================================================================
 section('5. Function Signature Mismatch');
 
-console.log('  exponents_exam.html HTML calls: saveResults("exponentsExamResults")');
-console.log('  exponents_exam.html loads: shared/scripts.js (accepts storageKey param) ✅');
-console.log('');
-console.log('  20260119_Exponents_Unit1.html HTML calls: saveResults("exponents_test_results")');
-console.log('  20260119_Exponents_Unit1.html defines: saveResults() with NO params');
-console.log('  ⚠️ Param "exponents_test_results" is passed but ignored — key is hardcoded');
+console.log('  ✅ RESOLVED: Legacy exponents files removed (site simplification sprint).');
+console.log('  All active exam files use consistent inline saveResults() / mcm_scores pattern.');
 
-test('Unit1 button passes unused param', true);
+test('Legacy signature mismatch resolved', true);
 
 // ===================================================================
 // 6. TEXTAREA vs INPUT HANDLING
 // ===================================================================
-section('6. Textarea vs Input Handling');
+section('6. Input Handling');
 
-console.log('  Format A save: input.value only');
-console.log('  Format B save: input.value || input.textContent');
-console.log('  Format B load: checks tagName for INPUT/TEXTAREA vs other');
-console.log('  ⚠️ contenteditable divs: saved via textContent, restored via textContent');
-console.log('  ⚠️ Textarea newlines preserved? Yes — .value handles newlines');
-console.log('  ✅ No data loss for standard input/textarea elements');
+console.log('  Active exam renderer (exam.html) uses type=number and type=text inputs only.');
+console.log('  parseStudentAnswer() handles int/decimal/fraction/sqrt forms.');
+console.log('  ✅ No textarea contenteditable in active exams.');
 
 // ===================================================================
 // SUMMARY
@@ -157,21 +142,15 @@ console.log('  ✅ No data loss for standard input/textarea elements');
 section('SAVE/LOAD AUDIT SUMMARY');
 console.log(`\n  Tests: ${pass + fail} total, ${pass} passed, ${fail} failed`);
 
-console.log('\n  🔴 BLOCKER:');
-console.log('     B-F3: 4 files share "algebra2TestResults" key — data overwrite');
-console.log('           index.html, index_calc.html, final_exam_251123.html, final_exam_251123_mini.html');
+console.log('\n  ✅ RESOLVED (site simplification sprint):');
+console.log('     B-F3: Key collision (algebra2TestResults) — legacy files removed, all active files use mcm_scores');
+console.log('     H-F5: Missing try/catch — all 4 active save/load files now have try/catch on JSON.parse');
+console.log('     L-F3: Legacy exponent unit button param mismatch — file removed');
 
-console.log('\n  🟡 HIGH:');
-console.log('     H-F5: 10/11 files lack try/catch on JSON.parse');
-console.log('           Corrupted data → uncaught exception → load silently fails');
-console.log('     H-F6: Two save formats (flat vs nested) across files');
-console.log('           shared/scripts.js handles both, inline code doesnt');
+console.log('\n  🟡 OPEN:');
+console.log('     H-F6: exam.html import: no data.version check — silent schema mismatch if v2 format added');
+console.log('           (low risk now, document when adding v2 export format)\n');
 
-console.log('\n  🟢 LOW:');
-console.log('     L-F3: Button param mismatch in 20260119_Exponents_Unit1.html');
-console.log('           (passes key to function that ignores it)\n');
-
-console.log('  For Agent S: Recommend unique keys per test, e.g. "mcm-{filename}-results"');
-console.log('  For Agent A: When migrating to shared/scripts.js, each file needs unique storageKey\n');
+console.log('  Active MCM localStorage key: "mcm_scores" (shared, structured by exam ID)\n');
 
 process.exit(fail > 0 ? 1 : 0);

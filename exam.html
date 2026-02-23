@@ -211,20 +211,49 @@
             var saved = sessionStorage.getItem('exam-autosave-' + examId);
             if (!saved) return;
             var state = JSON.parse(saved);
+            var restoredCount = 0;
             examData.questions.forEach(function(q) {
                 q.inputs.forEach(function(inp) {
                     if (inp.type === 'radio') {
                         if (state[inp.id]) {
                             var el = document.getElementById(inp.id + '_' + state[inp.id]);
-                            if (el) el.checked = true;
+                            if (el) { el.checked = true; restoredCount++; }
                         }
                     } else {
                         var el = document.getElementById(inp.id);
-                        if (el && state[inp.id]) el.value = state[inp.id];
+                        if (el && state[inp.id]) { el.value = state[inp.id]; restoredCount++; }
                     }
                 });
             });
+            if (restoredCount > 0) showRestoreToast(restoredCount);
         } catch(e) { /* parse error */ }
+    }
+
+    function showRestoreToast(count) {
+        var el = document.createElement('div');
+        el.id = 'restore-toast';
+        el.setAttribute('role', 'status');
+        el.setAttribute('aria-live', 'polite');
+        el.style.cssText = [
+            'background:var(--bg-highlight)',
+            'border:1px solid var(--border-default)',
+            'border-radius:8px',
+            'padding:10px 16px',
+            'margin-bottom:12px',
+            'font-size:var(--text-sm)',
+            'color:var(--text-secondary)',
+            'text-align:center'
+        ].join(';');
+        el.textContent = count + ' answer' + (count > 1 ? 's' : '') + ' restored. Keep going. \uD83D\uDCBE';
+        var container = document.getElementById('questionsContainer');
+        if (container && container.firstChild) {
+            container.insertBefore(el, container.firstChild);
+        }
+        setTimeout(function() { if (el.parentNode) el.parentNode.removeChild(el); }, 3000);
+        container.addEventListener('input', function onInput() {
+            if (el.parentNode) el.parentNode.removeChild(el);
+            container.removeEventListener('input', onInput);
+        }, { once: true });
     }
     var graphData = {};
     var examGraded = false;
