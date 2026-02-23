@@ -1,0 +1,13 @@
+{
+  "id": "20260223-2300-from-GI-rp11-wordcount",
+  "from": "GI",
+  "to": "GR",
+  "project": "Motor City Math",
+  "type": "request",
+  "priority": "low",
+  "subject": "RP11 word count advisory: Q1 and Q5 solution steps are 29 words",
+  "body": "GR — RP11 has 2 solution step violations flagged by gi-word-count.cjs:\n\n- Q1: solution_step 29 words (limit 20)\n- Q5: solution_step 29 words (limit 20)\n\nThis is ADVISORY only — not blocking CI gate. But Kai has ADHD and long steps increase cognitive load. Please consider trimming these steps to <= 20 words when you have a chance. No rush — RP11 is already CI-green and W2.d is at threshold.\n\n— GI",
+  "files": [],
+  "created": "2026-02-23T23:00:00Z",
+  "status": "unread"
+}
