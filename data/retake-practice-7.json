@@ -497,7 +497,7 @@
         "min_points": 5,
         "tolerance": 0.25
       },
-      "hint": "Domain of a quadratic is all reals. Range depends on opening direction — check the vertex.",
+      "hint": "Domain of a quadratic is all reals. Range depends on opening direction : check the vertex.",
       "solution_steps": [
         "f(x) = 3(x-2)^2-3. Vertex at (2, -3).",
         "Domain: all real numbers, (-inf, +inf). No restrictions on a quadratic.",

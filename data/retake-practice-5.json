@@ -90,7 +90,7 @@
         }
       ],
       "plus_minus": true,
-      "hint": "Set f(x)=0. Isolate the squared term — watch the sign when you divide by -3.",
+      "hint": "Set f(x)=0. Isolate the squared term : watch the sign when you divide by -3.",
       "solution_steps": [
         "Parent: highest power is 2 → quadratic.",
         "Set 0 = -3(x+2)² + 48 → -3(x+2)² = -48.",
@@ -174,7 +174,7 @@
         "Set |4x+12| = 8. Two cases:",
         "Case 1: 4x+12 = 8 → 4x = -4 → x = -1.",
         "Case 2: 4x+12 = -8 → 4x = -20 → x = -5.",
-        "Both intercepts are negative — both branches land left of the y-axis.",
+        "Both intercepts are negative : both branches land left of the y-axis.",
         "Check: |4(-1)+12|-8 = |8|-8 = 0 ✓.  |4(-5)+12|-8 = |-8|-8 = 0 ✓"
       ],
       "feedback_correct": "🔥 Both intercepts from two-case split.",
@@ -350,7 +350,7 @@
         "Rearrange: x² - 9x + 14 = 0.",
         "Factor: (x-7)(x-2) = 0 → x = 7 or x = 2.",
         "Check x=7: √9 = 3, and 7-4 = 3 ✓",
-        "Check x=2: √4 = 2, and 2-4 = -2 ✗ — left side is positive, right is negative. Extraneous.",
+        "Check x=2: √4 = 2, and 2-4 = -2 ✗ : left side is positive, right is negative. Extraneous.",
         "Answer: x = 7 only."
       ],
       "feedback_correct": "🔥 Quadratic from squaring, extraneous caught.",
@@ -372,13 +372,13 @@
           "tolerance": 0.01
         }
       ],
-      "hint": "Square both sides — right side is (2x-3)². You get a factorable quadratic. Check both roots.",
+      "hint": "Square both sides : right side is (2x-3)². You get a factorable quadratic. Check both roots.",
       "solution_steps": [
         "Square: 4x - 3 = (2x-3)² = 4x² - 12x + 9.",
         "Rearrange: 4x² - 16x + 12 = 0 → x² - 4x + 3 = 0.",
         "Factor: (x-3)(x-1) = 0 → x = 3 or x = 1.",
         "Check x=3: √9 = 3, and 2(3)-3 = 3 ✓",
-        "Check x=1: √1 = 1, and 2(1)-3 = -1 ✗ — √ is positive, right side is negative. Extraneous.",
+        "Check x=1: √1 = 1, and 2(1)-3 = -1 ✗ : √ is positive, right side is negative. Extraneous.",
         "Answer: x = 3 only."
       ],
       "feedback_correct": "🔥 Coefficient inside the radical handled. Extraneous caught.",
@@ -582,11 +582,11 @@
           "answer": "C"
         }
       ],
-      "hint": "Before doing ANY algebra — is there an x that makes √(something) equal to a negative number?",
+      "hint": "Before doing ANY algebra : is there an x that makes √(something) equal to a negative number?",
       "solution_steps": [
         "Square root output is always ≥ 0. There is no real number where √(x-4) = -3.",
         "The student should have stopped immediately: no solution exists.",
-        "Steps 1-2 are algebraically valid but solve the wrong equation — they solved √(x-4)=3 (positive), not -3.",
+        "Steps 1-2 are algebraically valid but solve the wrong equation : they solved √(x-4)=3 (positive), not -3.",
         "x=13 appears to work until you check: √(13-4) = √9 = 3 ≠ -3. It fails.",
         "This is a hidden extraneous solution created by squaring away the sign.",
         "Rule: before squaring a radical equation, verify the right side is ≥ 0."

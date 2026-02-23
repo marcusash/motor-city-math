@@ -276,7 +276,7 @@
           "tolerance": 0.01
         }
       ],
-      "hint": "Isolate ONE radical, square both sides. A radical will remain — isolate and square again.",
+      "hint": "Isolate ONE radical, square both sides. A radical will remain : isolate and square again.",
       "solution_steps": [
         "Isolate one radical: √(x+11) = √(x+2) + 1.",
         "Square both sides: x+11 = (√(x+2)+1)² = (x+2)+2√(x+2)+1.",

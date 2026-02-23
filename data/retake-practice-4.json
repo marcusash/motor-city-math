@@ -48,7 +48,7 @@
       "plus_minus": true,
       "hint": "Set f(x)=0. Isolate the squared term.",
       "solution_steps": [
-        "Parent: y = x² (quadratic — highest power is 2).",
+        "Parent: y = x² (quadratic : highest power is 2).",
         "Set 0 = 5(x+1)² - 80.",
         "5(x+1)² = 80 → (x+1)² = 16.",
         "x + 1 = ±4 → x = 3 or x = -5."
@@ -223,7 +223,7 @@
         }
       ],
       "plus_minus": true,
-      "hint": "Standard form — not vertex form. Find two numbers that multiply to −6 and add to −5. Factor.",
+      "hint": "Standard form : not vertex form. Find two numbers that multiply to −6 and add to −5. Factor.",
       "solution_steps": [
         "Standard form ax²+bx+c=0. Vertex form (±√) does NOT work here.",
         "Need two numbers: product = −6, sum = −5. Those are: −6 and +1.",
@@ -331,7 +331,7 @@
       ],
       "hint": "There is a coefficient 3 in front of the √. You must divide it off before squaring.",
       "solution_steps": [
-        "3√(x−2) = 12 → √(x−2) = 4. (Divide by 3 FIRST — cannot square yet.)",
+        "3√(x−2) = 12 → √(x−2) = 4. (Divide by 3 FIRST : cannot square yet.)",
         "Square: x − 2 = 16 → x = 18.",
         "Check: 3√16 + 1 = 12 + 1 = 13 ✓"
       ],

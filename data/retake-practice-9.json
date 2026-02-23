@@ -36,7 +36,7 @@
           "tolerance": 0.05
         }
       ],
-      "hint": "a≠1 — use the AC method. a×c = 2×4 = 8. Find factors of 8 that add to -9.",
+      "hint": "a≠1 : use the AC method. a×c = 2×4 = 8. Find factors of 8 that add to -9.",
       "solution_steps": [
         "a×c = 2×4 = 8. Factors of 8 adding to -9: -8 and -1.",
         "Split: 2x² - 8x - x + 4.",
