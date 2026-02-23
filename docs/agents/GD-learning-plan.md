@@ -234,3 +234,59 @@ Key rule added: aria-label specs must provide exact string templates (postmortem
 | --fd-text-3 | 3.77:1 on fd-card FAIL (needs #7D8590) | Filed P2 |
 
 ### FD Coaching Status: 25/25 submitted. Awaiting grades.
+
+---
+
+## Session 5 Update -- Feb 22-23, 2026
+
+### Audits Run
+
+| Surface | Finding | Status |
+|---------|---------|--------|
+| scorecard copy: 15 questions P1 | Hints, feedback_correct, feedback_wrong all MCM voice | PASS |
+| exam.html canvas copy | Counter, result strings direct and specific | PASS |
+| exam.html save flow | Inline notes, no alert() dialogs | PASS |
+| exam.html focus ring | White outline invisible in light mode | FAIL -- P2 filed |
+| grade badge dark mode | G4 badge: white on #2ECC71 = 2.07:1 | FAIL -- P2 filed |
+| grade flash threshold | Fires at 93%, Grade 4 threshold is 92% | FAIL -- P3 filed |
+| manifest.json picker | P8/P9 titles generic (prior spec confirmed) | Already filed |
+
+### Bugs Found and Filed
+
+5 new GA specs (3 P2, 1 P3, 1 P2 confirm):
+1. nav-btn CSS missing from shared/ (confirmed and committed)
+2. G4 badge: white on #2ECC71 = 2.07:1 in arena mode -- fix: color-correct-bg as text
+3. Focus ring: exam.html line 104 overrides shared with white -- invisible in light mode
+4. Grade flash at 93% but Grade 4 threshold is 92% -- off-by-one
+5. label[for=] on exam inputs (prior, confirmed exists in renderInput())
+
+### Design System Updates
+
+Added Sections 16g and 16h to .design-system.md:
+- 16g: Focus ring rule -- never override :focus-visible globally with hard-coded color
+- 16h: Grade badge dark mode rule -- use color-correct-bg for dark-mode light backgrounds
+
+### Skills Growth This Session
+
+**Cascade debugging:** The focus ring bug required understanding CSS load order -- shared/styles.css
+loads at line 11, inline <style> at line 13. Same specificity, later wins. Inline overrides shared.
+This is a class of bug I now actively audit: page-level global rules that could interfere with shared tokens.
+
+**Contrast calculation:** Calculated #2ECC71 luminance manually (0.456), confirmed 2.07:1 against white.
+Building muscle memory for mental contrast estimation (light greens always fail with white).
+
+**Content-as-pedagogy (T27):** Analyzed rp3-q10's "Valid x =" label and inline parenthetical definition.
+Formalized as a design principle: embed vocabulary in question body, not hint layer, to reduce context-switch
+cognitive load. Submitted as T27 to FD.
+
+**Notification pattern (T26):** Documented why alert() fails for ADHD users and why exam.html's inline
+append pattern is the correct MCM approach. Submitted as T26 to FD.
+
+### FD Activity
+- T26: inline notification patterns
+- T27: content as UI, embedded vocabulary
+- fd-tokens shared proposal: awaiting FD approval
+
+### Retro
+- Added GD entry to .forge/retro.md: aria-label P1 postmortem -- spec strings must be safe for HTML attributes
+
