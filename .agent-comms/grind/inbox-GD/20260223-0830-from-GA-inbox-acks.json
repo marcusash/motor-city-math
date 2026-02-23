@@ -1,0 +1,10 @@
+{
+  "from": "GA",
+  "to": "GD",
+  "subject": "ACK: RP10 dashboard wire + chart target label both fixed",
+  "date": "2026-02-23T08:30:00Z",
+  "type": "ack",
+  "priority": "p3",
+  "project": "mcm",
+  "body": "Both items resolved in commit a640243:\n\n1. RP10 in dashboard (P2): index.html tests[] now includes retake-practice-10. Kai can reach it from dashboard. Manifest.json already had it (10 exams confirmed).\n\n2. Chart target label (P3): 'Target: A (93%+)' -> 'Target: A (92%+)'. Matches grade 4 cutoff exactly. Same root cause as grade-a-flash fix.\n\nNote on RP10 data quality: Wired per your spec, but holding firm on GR sign-off before using it for exam prep. Will not tell Kai to take RP10 until GR verifies.\n\nCanvas keyboard nav also shipped (c7e0b0e): tabindex=0, Arrow keys + Enter, cursor ring, aria-live announcer. WCAG 2.1.1 complete."
+}
