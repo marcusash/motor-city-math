@@ -1,10 +1,11 @@
 {
-  "generated_at": "2026-02-22T16:23:24.396Z",
+  "generated_at": "2026-02-23T00:39:44.471Z",
   "source": "data/retake-practice-*.json",
   "exams": [
     {
       "exam_id": "retake-practice-1",
       "question_count": 15,
+      "file_modified": "2026-02-22",
       "missing_hint": [],
       "missing_solution_steps": [],
       "missing_feedback": [],
@@ -15,6 +16,7 @@
     {
       "exam_id": "retake-practice-2",
       "question_count": 15,
+      "file_modified": "2026-02-22",
       "missing_hint": [],
       "missing_solution_steps": [],
       "missing_feedback": [],
@@ -25,6 +27,7 @@
     {
       "exam_id": "retake-practice-3",
       "question_count": 15,
+      "file_modified": "2026-02-22",
       "missing_hint": [],
       "missing_solution_steps": [],
       "missing_feedback": [],
@@ -35,6 +38,7 @@
     {
       "exam_id": "retake-practice-4",
       "question_count": 15,
+      "file_modified": "2026-02-22",
       "missing_hint": [],
       "missing_solution_steps": [],
       "missing_feedback": [],
@@ -45,6 +49,7 @@
     {
       "exam_id": "retake-practice-5",
       "question_count": 15,
+      "file_modified": "2026-02-22",
       "missing_hint": [],
       "missing_solution_steps": [],
       "missing_feedback": [],
@@ -55,6 +60,7 @@
     {
       "exam_id": "retake-practice-6",
       "question_count": 15,
+      "file_modified": "2026-02-22",
       "missing_hint": [],
       "missing_solution_steps": [],
       "missing_feedback": [],
@@ -65,6 +71,7 @@
     {
       "exam_id": "retake-practice-7",
       "question_count": 15,
+      "file_modified": "2026-02-22",
       "missing_hint": [],
       "missing_solution_steps": [],
       "missing_feedback": [],
@@ -75,6 +82,7 @@
     {
       "exam_id": "retake-practice-8",
       "question_count": 15,
+      "file_modified": "2026-02-23",
       "missing_hint": [],
       "missing_solution_steps": [],
       "missing_feedback": [],
@@ -85,6 +93,7 @@
     {
       "exam_id": "retake-practice-9",
       "question_count": 15,
+      "file_modified": "2026-02-22",
       "missing_hint": [],
       "missing_solution_steps": [],
       "missing_feedback": [],

@@ -1,18 +1,18 @@
 # QA Summary
 
-Generated: 2026-02-22T16:23:24.396Z
+Generated: 2026-02-23T00:39:44.471Z
 
-| Exam | Questions | Missing hints | Missing steps | Missing feedback | Missing inputs | Missing standard | Missing HTML |
-|------|-----------|---------------|---------------|------------------|----------------|------------------|--------------|
-| retake-practice-1 | 15 | 0 | 0 | 0 | 0 | 0 | 0 |
-| retake-practice-2 | 15 | 0 | 0 | 0 | 0 | 0 | 0 |
-| retake-practice-3 | 15 | 0 | 0 | 0 | 0 | 0 | 0 |
-| retake-practice-4 | 15 | 0 | 0 | 0 | 0 | 0 | 0 |
-| retake-practice-5 | 15 | 0 | 0 | 0 | 0 | 0 | 0 |
-| retake-practice-6 | 15 | 0 | 0 | 0 | 0 | 0 | 0 |
-| retake-practice-7 | 15 | 0 | 0 | 0 | 0 | 0 | 0 |
-| retake-practice-8 | 15 | 0 | 0 | 0 | 0 | 0 | 0 |
-| retake-practice-9 | 15 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Exam | Modified | Questions | Missing hints | Missing steps | Missing feedback | Missing inputs | Missing standard | Missing HTML |
+|------|----------|-----------|---------------|---------------|------------------|----------------|------------------|--------------|
+| retake-practice-1 | 2026-02-22 | 15 | 0 | 0 | 0 | 0 | 0 | 0 |
+| retake-practice-2 | 2026-02-22 | 15 | 0 | 0 | 0 | 0 | 0 | 0 |
+| retake-practice-3 | 2026-02-22 | 15 | 0 | 0 | 0 | 0 | 0 | 0 |
+| retake-practice-4 | 2026-02-22 | 15 | 0 | 0 | 0 | 0 | 0 | 0 |
+| retake-practice-5 | 2026-02-22 | 15 | 0 | 0 | 0 | 0 | 0 | 0 |
+| retake-practice-6 | 2026-02-22 | 15 | 0 | 0 | 0 | 0 | 0 | 0 |
+| retake-practice-7 | 2026-02-22 | 15 | 0 | 0 | 0 | 0 | 0 | 0 |
+| retake-practice-8 | 2026-02-23 | 15 | 0 | 0 | 0 | 0 | 0 | 0 |
+| retake-practice-9 | 2026-02-22 | 15 | 0 | 0 | 0 | 0 | 0 | 0 |
 
 ## retake-practice-1
 

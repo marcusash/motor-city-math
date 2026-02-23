@@ -21,6 +21,7 @@ function summarizeExam(filePath) {
   const summary = {
     exam_id: data.exam_id || path.basename(filePath, '.json'),
     question_count: questions.length,
+    file_modified: fs.statSync(filePath).mtime.toISOString().split('T')[0],
     missing_hint: [],
     missing_solution_steps: [],
     missing_feedback: [],
@@ -54,11 +55,11 @@ function buildMarkdown(exams, generatedAt) {
   lines.push('');
   lines.push(`Generated: ${generatedAt}`);
   lines.push('');
-  lines.push('| Exam | Questions | Missing hints | Missing steps | Missing feedback | Missing inputs | Missing standard | Missing HTML |');
-  lines.push('|------|-----------|---------------|---------------|------------------|----------------|------------------|--------------|');
+  lines.push('| Exam | Modified | Questions | Missing hints | Missing steps | Missing feedback | Missing inputs | Missing standard | Missing HTML |');
+  lines.push('|------|----------|-----------|---------------|---------------|------------------|----------------|------------------|--------------|');
   exams.forEach((exam) => {
     lines.push(
-      `| ${exam.exam_id} | ${exam.question_count} | ${exam.missing_hint.length} | ${exam.missing_solution_steps.length} | ${exam.missing_feedback.length} | ${exam.missing_inputs.length} | ${exam.missing_standard.length} | ${exam.missing_question_html.length} |`
+      `| ${exam.exam_id} | ${exam.file_modified || 'unknown'} | ${exam.question_count} | ${exam.missing_hint.length} | ${exam.missing_solution_steps.length} | ${exam.missing_feedback.length} | ${exam.missing_inputs.length} | ${exam.missing_standard.length} | ${exam.missing_question_html.length} |`
     );
   });
   lines.push('');

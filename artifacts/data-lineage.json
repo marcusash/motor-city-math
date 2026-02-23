@@ -1,0 +1,152 @@
+{
+  "version": "1.0",
+  "description": "Machine-readable data lineage for Motor City Math practice exam artifacts",
+  "generated": "2026-02-23",
+  "generated_by": "GI (Data Engineer)",
+  "artifacts": [
+    {
+      "artifact": "data/retake-practice-1.json",
+      "source": "data/kai-scores-2026-02-19.json (MVP results: 7/15)",
+      "transform": "Manual JSON authoring by GR. Questions weighted toward Kai weak areas: graph (0/2), application (0/2), +/- solving (2/4).",
+      "owner": "GR",
+      "test": "node tests/verify-practice-exams.js && node tests/cross-exam-verify.js",
+      "status": "verified"
+    },
+    {
+      "artifact": "data/retake-practice-2.json",
+      "source": "data/kai-scores-2026-02-19.json (RP1 results: 13/15)",
+      "transform": "Manual JSON authoring by GR. Escalated difficulty. Cross-exam dedup vs MVP and RP1.",
+      "owner": "GR",
+      "test": "node tests/verify-practice-exams.js && node tests/cross-exam-verify.js",
+      "status": "verified"
+    },
+    {
+      "artifact": "data/retake-practice-3.json",
+      "source": "data/kai-scores-2026-02-21.json (RP2 results: 13/15)",
+      "transform": "Manual JSON authoring by GR. Cross-exam dedup vs MVP, RP1, RP2.",
+      "owner": "GR",
+      "test": "node tests/verify-practice-exams.js && node tests/cross-exam-verify.js",
+      "status": "verified"
+    },
+    {
+      "artifact": "data/retake-practice-4.json",
+      "source": "data/kai-scores-2026-02-22.json (RP3 results: 15/15)",
+      "transform": "Manual JSON authoring by GR. Cross-exam dedup vs all prior exams.",
+      "owner": "GR",
+      "test": "node tests/verify-practice-exams.js && node tests/cross-exam-verify.js",
+      "status": "verified"
+    },
+    {
+      "artifact": "data/retake-practice-5.json",
+      "source": "MVP results and FR ADHD sequencing analysis",
+      "transform": "Manual JSON authoring by GR. Designed as confidence builder (simpler numbers).",
+      "owner": "GR",
+      "test": "node tests/verify-practice-exams.js && node tests/cross-exam-verify.js",
+      "status": "verified"
+    },
+    {
+      "artifact": "data/retake-practice-6.json",
+      "source": "GI mastery report (W2.b gap: 1/3 identify, intercept-calculation weakness)",
+      "transform": "GR authored with 4 W2.b questions targeting f(x)=0 intercept workflow. Cross-exam dedup edits (commit 759362f).",
+      "owner": "GR",
+      "test": "node tests/verify-practice-exams.js && node tests/cross-exam-verify.js",
+      "status": "verified"
+    },
+    {
+      "artifact": "data/retake-practice-7.json",
+      "source": "GI mastery report continuation; RP6 design spec",
+      "transform": "GR authored. Cross-exam dedup edits (commit 759362f). GI re-verified 32/32 post-fix.",
+      "owner": "GR",
+      "test": "node tests/verify-practice-exams.js && node tests/cross-exam-verify.js",
+      "status": "verified"
+    },
+    {
+      "artifact": "data/retake-practice-8.json",
+      "source": "FR simulation brief (mock RP7 score 6/15). See docs/fr-rp8-brief.md if present.",
+      "transform": "FR generated via simulation. GR fixed JSON corruption (commit ce95f8e) and Q3/Q4 answer uniqueness.",
+      "owner": "GR",
+      "test": "node tests/verify-practice-exams.js && node tests/cross-exam-verify.js",
+      "status": "verified"
+    },
+    {
+      "artifact": "data/retake-practice-9.json",
+      "source": "FR simulation brief round 2. Continued pressure on RP8 weaknesses.",
+      "transform": "FR generated via simulation. GR rebuilt Q4,Q6,Q7,Q8,Q9,Q10,Q13 for uniqueness (commit 35ea1e6).",
+      "owner": "GR",
+      "test": "node tests/verify-practice-exams.js && node tests/cross-exam-verify.js",
+      "status": "verified"
+    },
+    {
+      "artifact": "data/kai-scores-2026-02-19.json",
+      "source": "Kai's browser localStorage (exam.html auto-save)",
+      "transform": "Manual export by Marcus. No transform — raw score snapshot.",
+      "owner": "Marcus",
+      "test": "Spot check only (no automated validator)",
+      "status": "raw"
+    },
+    {
+      "artifact": "data/kai-scores-2026-02-21.json",
+      "source": "Kai's browser localStorage (exam.html auto-save)",
+      "transform": "Manual export by Marcus. No transform — raw score snapshot.",
+      "owner": "Marcus",
+      "test": "Spot check only (no automated validator)",
+      "status": "raw"
+    },
+    {
+      "artifact": "data/kai-scores-2026-02-22.json",
+      "source": "Kai's browser localStorage (exam.html auto-save)",
+      "transform": "Manual export by Marcus. No transform — raw score snapshot.",
+      "owner": "Marcus",
+      "test": "Spot check only (no automated validator)",
+      "status": "raw"
+    },
+    {
+      "artifact": "data/standards.json",
+      "source": "Algebra II curriculum standards (W2 and W3 families)",
+      "transform": "Manual authoring by GR. GI added expexam-001..006 entries to questions.json mapped to W1.a.",
+      "owner": "GR",
+      "test": "node scripts/validate-standards-map.cjs",
+      "status": "verified"
+    },
+    {
+      "artifact": "data/questions.json",
+      "source": "PDF import (import/unit2-review-questions.json) + MVP authoring by GR",
+      "transform": "GI parsed PDFs via pdfjs-dist (import/extract-pdf.mjs). GI corrected Q20 (x=31/32). GR integrated all questions. GR mapped expexam-001..006 to W1.a.",
+      "owner": "GR",
+      "test": "node scripts/validate-exam-contract.cjs",
+      "status": "verified"
+    },
+    {
+      "artifact": "data/manifest.json",
+      "source": "Manual registry of all exam files",
+      "transform": "Manual authoring. Updated by GD and GA when new exams are added.",
+      "owner": "GA",
+      "test": "Cross-reference with data/retake-practice-*.json filenames",
+      "status": "manual"
+    },
+    {
+      "artifact": "artifacts/standards-coverage.json",
+      "source": "data/retake-practice-1.json through retake-practice-9.json",
+      "transform": "Generated by node scripts/build-qa-summary.cjs. Counts questions per standard per exam.",
+      "owner": "GI",
+      "test": "Regenerate and diff. Zero unknown_standards expected.",
+      "status": "generated"
+    },
+    {
+      "artifact": "artifacts/duplicate-signatures.json",
+      "source": "data/retake-practice-1.json through retake-practice-9.json",
+      "transform": "Generated by node scripts/resolve-duplicate-signatures.cjs --write. Format: standard::answers_sorted.",
+      "owner": "GI",
+      "test": "Regenerate and compare. 2 known-low-risk entries as of 2026-02-23.",
+      "status": "generated"
+    },
+    {
+      "artifact": "artifacts/qa-summary.json",
+      "source": "data/retake-practice-1.json through retake-practice-9.json",
+      "transform": "Generated by node scripts/build-qa-summary.cjs. Checks 6 QA fields per question.",
+      "owner": "GI",
+      "test": "Regenerate and check: all missing_* arrays should be empty.",
+      "status": "generated"
+    }
+  ]
+}
