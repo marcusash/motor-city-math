@@ -38,6 +38,9 @@ Located in `tests/f-validation/`.
 | `exam-form-label-association.test.js` | WCAG 2.4.6: renderInput() label association for dropdown/number/radio/text + canvas role | 12/12 |
 | `sw16-hint-reveal-timing.test.js` | sw-16: scheduleRescue 800ms/1200ms delays, reduced-motion 0ms path, transitional msg aria-live | 18/18 |
 | `index-up-next-logic.test.js` | buildStudyNext() null guard, empty/all-passed fallback, pct thresholds, max-3 cap | 17/17 |
+| `timer-nan-guard.test.js` | initTimer() NaN guard: missing time_minutes early exit, formatTime isFinite, exam.html truthy check | 10/10 |
+| `buildsparkline-scoping.test.js` | buildSparkline() local var scoping fix: tkCorrect/tkRed/tkBlue declared inside fn, SVG output | 12/12 |
+| `hint-message-copy.test.js` | scheduleRescue transitional message: no em dash, <=12 words (ADHD), aria-live=polite | 12/12 |
 
 Run all at once:
 ```powershell
