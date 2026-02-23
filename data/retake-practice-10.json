@@ -1,5 +1,6 @@
 {
   "exam_id": "retake-practice-10",
+  "schema_version": "1.0",
   "title": "Unit 2 Retake Practice 10",
   "subtitle": "Consolidation — 3/4-power fractional exponents, multi-base exponentials, extraneous roots",
   "time_minutes": 50,
@@ -415,14 +416,35 @@
         "function": "2*Math.pow(x+4,2)-32",
         "function_display": "f(x) = 2(x+4)² − 32",
         "key_points": [
-          [-8, 0],
-          [-6, -24],
-          [-4, -32],
-          [-2, -24],
-          [0, 0]
+          [
+            -8,
+            0
+          ],
+          [
+            -6,
+            -24
+          ],
+          [
+            -4,
+            -32
+          ],
+          [
+            -2,
+            -24
+          ],
+          [
+            0,
+            0
+          ]
         ],
-        "x_range": [-10, 2],
-        "y_range": [-35, 5],
+        "x_range": [
+          -10,
+          2
+        ],
+        "y_range": [
+          -35,
+          5
+        ],
         "min_points": 5,
         "tolerance": 0.25
       },
@@ -479,14 +501,35 @@
         "function": "2/(x-5)-3",
         "function_display": "f(x) = 2/(x−5) − 3",
         "key_points": [
-          [3, -4],
-          [4, -5],
-          [6, -1],
-          [7, -2],
-          [10, -2.6]
+          [
+            3,
+            -4
+          ],
+          [
+            4,
+            -5
+          ],
+          [
+            6,
+            -1
+          ],
+          [
+            7,
+            -2
+          ],
+          [
+            10,
+            -2.6
+          ]
         ],
-        "x_range": [-1, 11],
-        "y_range": [-8, 4],
+        "x_range": [
+          -1,
+          11
+        ],
+        "y_range": [
+          -8,
+          4
+        ],
         "min_points": 5,
         "tolerance": 0.25
       },

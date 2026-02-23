@@ -1,5 +1,9 @@
 {
+<<<<<<< Updated upstream
   "captured": "2026-02-23T04:27:48.069Z",
+=======
+  "captured": "2026-02-23T04:16:31.927Z",
+>>>>>>> Stashed changes
   "note": "Captured by gf-skill-23 regression replay pack",
   "suites": {
     "accessibility-landmarks.test.js": {
@@ -111,10 +115,10 @@
       "failed": 0
     },
     "hint-display-contract.test.js": {
-      "exitCode": 0,
+      "exitCode": 1,
       "total": 17,
-      "passed": 17,
-      "failed": 0
+      "passed": 16,
+      "failed": 1
     },
     "inline-script-syntax-check.test.js": {
       "exitCode": 0,

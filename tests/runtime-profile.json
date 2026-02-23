@@ -1,206 +1,260 @@
 {
   "date": "2026-02-23",
-  "total_ms": 7518,
-  "suite_count": 33,
-  "failed_count": 10,
+  "total_ms": 8329,
+  "suite_count": 42,
+  "failed_count": 7,
   "slow_count": 0,
   "slow_threshold_ms": 5000,
   "suites": [
     {
+      "suite": "precommit-guard-audit.test.js",
+      "durationMs": 1035,
+      "exitCode": 0,
+      "stderr": ""
+    },
+    {
       "suite": "inline-script-syntax-check.test.js",
-      "durationMs": 868,
+      "durationMs": 793,
       "exitCode": 0,
       "stderr": ""
     },
     {
-      "suite": "accessibility-landmarks.test.js",
-      "durationMs": 615,
-      "exitCode": 0,
-      "stderr": ""
-    },
-    {
-      "suite": "katex-audit.test.js",
-      "durationMs": 349,
-      "exitCode": 0,
-      "stderr": ""
-    },
-    {
-      "suite": "browser-compat-audit.test.js",
-      "durationMs": 300,
-      "exitCode": 0,
-      "stderr": ""
-    },
-    {
-      "suite": "print-qa-19.test.js",
-      "durationMs": 297,
-      "exitCode": 1,
-      "stderr": ""
-    },
-    {
-      "suite": "offline-audit.test.js",
-      "durationMs": 295,
-      "exitCode": 1,
-      "stderr": ""
-    },
-    {
-      "suite": "print-audit.test.js",
-      "durationMs": 295,
+      "suite": "chartjs-audit.test.js",
+      "durationMs": 361,
       "exitCode": 1,
       "stderr": ""
     },
     {
       "suite": "responsive-audit.test.js",
-      "durationMs": 288,
+      "durationMs": 265,
       "exitCode": 1,
       "stderr": ""
     },
     {
-      "suite": "chartjs-audit.test.js",
-      "durationMs": 273,
-      "exitCode": 1,
+      "suite": "katex-audit.test.js",
+      "durationMs": 261,
+      "exitCode": 0,
       "stderr": ""
     },
     {
       "suite": "responsive-breakpoint-sweep.test.js",
-      "durationMs": 270,
+      "durationMs": 259,
       "exitCode": 0,
       "stderr": ""
     },
     {
-      "suite": "streak-counter.test.js",
-      "durationMs": 189,
+      "suite": "accessibility-landmarks.test.js",
+      "durationMs": 256,
       "exitCode": 0,
       "stderr": ""
     },
     {
-      "suite": "arena-persistence-audit.test.js",
-      "durationMs": 185,
-      "exitCode": 0,
-      "stderr": ""
-    },
-    {
-      "suite": "grading-regression.test.js",
-      "durationMs": 184,
-      "exitCode": 0,
-      "stderr": ""
-    },
-    {
-      "suite": "question-schema.test.js",
-      "durationMs": 179,
+      "suite": "print-audit.test.js",
+      "durationMs": 256,
       "exitCode": 1,
+      "stderr": ""
+    },
+    {
+      "suite": "browser-compat-audit.test.js",
+      "durationMs": 244,
+      "exitCode": 0,
+      "stderr": ""
+    },
+    {
+      "suite": "print-qa-19.test.js",
+      "durationMs": 242,
+      "exitCode": 1,
+      "stderr": ""
+    },
+    {
+      "suite": "offline-audit.test.js",
+      "durationMs": 236,
+      "exitCode": 1,
+      "stderr": ""
+    },
+    {
+      "suite": "hint-display-contract.test.js",
+      "durationMs": 200,
+      "exitCode": 0,
+      "stderr": ""
+    },
+    {
+      "suite": "question-type-coverage.test.js",
+      "durationMs": 178,
+      "exitCode": 0,
       "stderr": ""
     },
     {
       "suite": "scorecard-contract.test.js",
-      "durationMs": 179,
-      "exitCode": 1,
-      "stderr": ""
-    },
-    {
-      "suite": "localstorage-schema-guard.test.js",
-      "durationMs": 170,
-      "exitCode": 0,
-      "stderr": ""
-    },
-    {
-      "suite": "takeover-regression-static.test.js",
-      "durationMs": 169,
-      "exitCode": 0,
-      "stderr": ""
-    },
-    {
-      "suite": "dashboard-integrity.test.js",
-      "durationMs": 164,
-      "exitCode": 0,
-      "stderr": ""
-    },
-    {
-      "suite": "error-state-matrix.test.js",
-      "durationMs": 164,
-      "exitCode": 1,
-      "stderr": ""
-    },
-    {
-      "suite": "mvp-score-storage.test.js",
-      "durationMs": 163,
-      "exitCode": 0,
-      "stderr": ""
-    },
-    {
-      "suite": "mvp-grading.test.js",
-      "durationMs": 160,
-      "exitCode": 0,
-      "stderr": ""
-    },
-    {
-      "suite": "seed-shuffle.test.js",
-      "durationMs": 160,
-      "exitCode": 0,
-      "stderr": ""
-    },
-    {
-      "suite": "exam-cross-exam-dedup.test.js",
-      "durationMs": 159,
-      "exitCode": 0,
-      "stderr": ""
-    },
-    {
-      "suite": "keyboard-nav-pass.test.js",
-      "durationMs": 157,
-      "exitCode": 1,
-      "stderr": ""
-    },
-    {
-      "suite": "answer-validation.test.js",
       "durationMs": 152,
       "exitCode": 0,
       "stderr": ""
     },
     {
-      "suite": "exam-input-answer-contract.test.js",
-      "durationMs": 147,
+      "suite": "performance-smoke.test.js",
+      "durationMs": 150,
       "exitCode": 0,
       "stderr": ""
     },
     {
-      "suite": "exam-json-schema.test.js",
-      "durationMs": 147,
+      "suite": "exam-cross-exam-dedup.test.js",
+      "durationMs": 148,
       "exitCode": 0,
       "stderr": ""
     },
     {
-      "suite": "mvp-graphing-e2e.test.js",
+      "suite": "export-import-qa.test.js",
       "durationMs": 144,
       "exitCode": 0,
       "stderr": ""
     },
     {
-      "suite": "save-load-audit.test.js",
-      "durationMs": 144,
-      "exitCode": 1,
-      "stderr": ""
-    },
-    {
-      "suite": "grading-audit.test.js",
+      "suite": "standard-score-rollup.test.js",
       "durationMs": 143,
       "exitCode": 0,
       "stderr": ""
     },
     {
-      "suite": "color-token-enforcement.test.js",
-      "durationMs": 140,
+      "suite": "takeover-regression-static.test.js",
+      "durationMs": 142,
       "exitCode": 0,
       "stderr": ""
     },
     {
-      "suite": "font-token-enforcement.test.js",
+      "suite": "exam-input-answer-contract.test.js",
+      "durationMs": 141,
+      "exitCode": 0,
+      "stderr": ""
+    },
+    {
+      "suite": "seed-repro-extension.test.js",
       "durationMs": 137,
       "exitCode": 0,
       "stderr": ""
     },
     {
+      "suite": "save-load-audit.test.js",
+      "durationMs": 136,
+      "exitCode": 1,
+      "stderr": ""
+    },
+    {
+      "suite": "exam-json-schema.test.js",
+      "durationMs": 131,
+      "exitCode": 0,
+      "stderr": ""
+    },
+    {
+      "suite": "grading-regression.test.js",
+      "durationMs": 130,
+      "exitCode": 0,
+      "stderr": ""
+    },
+    {
+      "suite": "question-schema.test.js",
+      "durationMs": 129,
+      "exitCode": 1,
+      "stderr": ""
+    },
+    {
+      "suite": "arena-persistence-audit.test.js",
+      "durationMs": 128,
+      "exitCode": 0,
+      "stderr": ""
+    },
+    {
+      "suite": "color-token-enforcement.test.js",
+      "durationMs": 128,
+      "exitCode": 0,
+      "stderr": ""
+    },
+    {
+      "suite": "dad-view-isolation.test.js",
+      "durationMs": 127,
+      "exitCode": 0,
+      "stderr": ""
+    },
+    {
+      "suite": "seed-shuffle.test.js",
+      "durationMs": 126,
+      "exitCode": 0,
+      "stderr": ""
+    },
+    {
+      "suite": "mvp-graphing-e2e.test.js",
+      "durationMs": 125,
+      "exitCode": 0,
+      "stderr": ""
+    },
+    {
+      "suite": "keyboard-nav-pass.test.js",
+      "durationMs": 124,
+      "exitCode": 0,
+      "stderr": ""
+    },
+    {
+      "suite": "error-state-matrix.test.js",
+      "durationMs": 123,
+      "exitCode": 0,
+      "stderr": ""
+    },
+    {
+      "suite": "mvp-grading.test.js",
+      "durationMs": 123,
+      "exitCode": 0,
+      "stderr": ""
+    },
+    {
+      "suite": "mvp-score-storage.test.js",
+      "durationMs": 122,
+      "exitCode": 0,
+      "stderr": ""
+    },
+    {
+      "suite": "streak-counter.test.js",
+      "durationMs": 119,
+      "exitCode": 0,
+      "stderr": ""
+    },
+    {
       "suite": "flake-registry.test.js",
-      "durationMs": 132,
+      "durationMs": 118,
+      "exitCode": 0,
+      "stderr": ""
+    },
+    {
+      "suite": "font-token-enforcement.test.js",
+      "durationMs": 118,
+      "exitCode": 0,
+      "stderr": ""
+    },
+    {
+      "suite": "localstorage-schema-guard.test.js",
+      "durationMs": 118,
+      "exitCode": 0,
+      "stderr": ""
+    },
+    {
+      "suite": "timer-contract.test.js",
+      "durationMs": 117,
+      "exitCode": 0,
+      "stderr": ""
+    },
+    {
+      "suite": "dashboard-integrity.test.js",
+      "durationMs": 115,
+      "exitCode": 0,
+      "stderr": ""
+    },
+    {
+      "suite": "grading-audit.test.js",
+      "durationMs": 115,
+      "exitCode": 0,
+      "stderr": ""
+    },
+    {
+      "suite": "answer-validation.test.js",
+      "durationMs": 114,
       "exitCode": 0,
       "stderr": ""
     }

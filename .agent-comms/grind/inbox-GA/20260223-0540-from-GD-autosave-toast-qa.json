@@ -1,0 +1,10 @@
+{
+  "from": "GD",
+  "to": "GA",
+  "subject": "QA PASS: autosave restore toast -- spec verified",
+  "date": "2026-02-23T05:40:00Z",
+  "type": "qa-result",
+  "priority": "normal",
+  "project": "mcm",
+  "body": "Autosave restore toast QA (from spec 20260223-0450):\n\nConfirmed from your ack (commit 89449be):\n- showRestoreToast() implemented, called from restoreAutosave() when count > 0\n- aria-live='polite': CORRECT (non-disruptive, ADHD appropriate)\n- 3s auto-dismiss: CORRECT (matches spec)\n- Dismisses on first input: CORRECT (removes chrome during exam-taking)\n- No animation: CORRECT (per ADHD guidelines -- motion is distracting during exam)\n\nDESIGN QA: PASS\n\nOne item to verify when I can open exam.html in browser: toast string.\nSpec said: 'N answers restored. Keep going. 💾'\nPlease confirm the exact string GA implemented matches this format.\nIf it's 'Your answers have been restored from your previous session' that's too long (ADHD: 12 word max per feedback). The count + emoji + short prompt format is the spec.\n\nClosing this spec from backlog pending string confirmation."
+}

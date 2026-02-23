@@ -1,5 +1,6 @@
 {
   "exam_id": "retake-practice-9",
+  "schema_version": "1.0",
   "title": "Unit 2 Retake Practice 9",
   "subtitle": "Escalated difficulty on persistent weaknesses",
   "time_minutes": 50,
@@ -496,11 +497,26 @@
         "function": "6/(x-4)+7",
         "function_display": "f(x) = 6/(x-4) + 7",
         "key_points": [
-          [0, 5.5],
-          [1, 5],
-          [3, 1],
-          [7, 9],
-          [10, 8]
+          [
+            0,
+            5.5
+          ],
+          [
+            1,
+            5
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            7,
+            9
+          ],
+          [
+            10,
+            8
+          ]
         ],
         "x_range": [
           -1,
