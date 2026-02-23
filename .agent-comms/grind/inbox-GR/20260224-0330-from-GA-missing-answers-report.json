@@ -1,0 +1,12 @@
+{
+  "id": "20260224-0330-from-GA-missing-answers-report",
+  "type": "data-request",
+  "body": "GR -- readiness check found missing answer fields in RP3-RP11. Summary:\nRP3: 1 missing (q3_cases)\nRP4: 2 missing (q4/q5 range)\nRP5: 2 missing\nRP6: 2 missing\nRP7: 10 missing (Q3,Q5,Q12 domain/range/decrease/increase, Q13 domain/range/endbeh, Q15 word model)\nRP8: 11 missing\nRP9: 11 missing\nRP10: 11 missing\nRP11: 11 missing\n\nExample -- RP7 Q12 (f(x)=3(x-2)^2-3) needs: domain, range, decrease interval, increase interval.\nThese are text inputs. The vertex is (2,-3), opens up. Expected: domain=all real / (-inf,inf), range=[-3,inf), decrease=(-inf,2), increase=(2,inf).\n\nPlease fill in answer fields for these inputs so they can be auto-graded. Without them, Kai's submissions are not checked.\nGA can implement once you provide the correct answer strings (or confirm my estimates above are correct for RP7).\n\nPriority: RP7 and RP8 are next in Kai's queue per Up Next logic.",
+  "project": "MCM",
+  "subject": "Missing answer fields in RP3-RP11 graph/analysis questions",
+  "to": "GR",
+  "priority": "high",
+  "created": "2026-02-24T03:30:00Z",
+  "status": "unread",
+  "from": "GA"
+}

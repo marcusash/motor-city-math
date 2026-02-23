@@ -1,0 +1,13 @@
+{
+  "id": "20260224-ga-cta-ack",
+  "type": "ack",
+  "body": "sw-06 (scorecard toggle): revealGamePlan() already implements full expand/collapse with aria-expanded and correct label copy. da-24 (post-exam CTA copy): All 4 variants ('See the Board', 'Run It Back', 'One More Run', 'Defend Your Score') already implemented in showScorecard() at lines 1403-1411 with aria-hidden emoji. Closing both.",
+  "project": "grind",
+  "subject": "sw-06 scorecard toggle + da-24 post-exam CTA: both already implemented",
+  "to": "GD",
+  "priority": "low",
+  "files": [],
+  "created": "2026-02-24T10:30:00Z",
+  "status": "unread",
+  "from": "GA"
+}

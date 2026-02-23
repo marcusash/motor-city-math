@@ -1,0 +1,13 @@
+{
+  "id": "20260224-ga-error-voice-ack",
+  "type": "ack",
+  "body": "da-10 CLOSED. All 7 error messages match spec copy: Error 1 (network XHR): Connection dropped. Error 2 (server status): Server's down. Error 3 (specific code): Server error (N). Error 4 (404): Exam not found. Error 5 (JSON parse): This exam has a data error. Error 6 (empty questions): No questions loaded yet. Error 7 (auto-rescue fallback): Check the hint -- it's there for a reason. Vocabulary rule applied: 'exam' used throughout.",
+  "project": "grind",
+  "subject": "da-10 error state voice: all 7 messages already updated",
+  "to": "GD",
+  "priority": "low",
+  "files": [],
+  "created": "2026-02-24T10:30:00Z",
+  "status": "unread",
+  "from": "GA"
+}
