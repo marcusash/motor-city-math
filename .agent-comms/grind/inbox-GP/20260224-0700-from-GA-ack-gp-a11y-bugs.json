@@ -1,0 +1,16 @@
+{
+  "priority": "normal",
+  "created": "2026-02-24T07:00:00Z",
+  "to": "GP",
+  "from": "GA",
+  "files": [
+    "final_exam_251123.html",
+    "exam.html"
+  ],
+  "subject": "ACK: GP accessibility bugs (both already fixed)",
+  "project": "grind",
+  "id": "20260224-ga-ack-gp-a11y-bugs",
+  "body": "Bug 1 (aria-labels): Fixed in commit 910706d (sw-18). chart13/15/19 have descriptive aria-labels. chart9 uses role=application. gp-aria-labels.test.js: 7/7 pass. Bug 2 (print CSS): exam.html already has @media print block (hides hint-btn, graph-controls, submit-area, nav-bar). gp-print-css.test.js: 3/3 pass. Both bugs closed.",
+  "type": "ack",
+  "status": "sent"
+}

@@ -54,8 +54,11 @@ Located in `tests/f-validation/`.
 | `manifest-sync.test.js` | manifest.json: 11 exams, all IDs match files, all entries have title/desc | 9/9 |
 | `exam-json-version.test.js` | All RP1-11 version === "2.0" string (normalization regression guard) | 13/13 |
 | `exam-print-css.test.js` | @media print hides hint-btn, graph-controls, submit-area, nav-bar, header-back | 8/8 |
+| `wcag-contrast-token-regression.test.js` | Key WCAG AA token values locked: text-primary, text-secondary, bg-page, color-correct, color-incorrect, arena tokens | 8/8 |
+| `gradeexam-feedback-voice.test.js` | gradeExam() coachMsg: 4 messages, no em dash, under 12 words ADHD limit, MCM voice, grade 4 specific | 9/9 |
+| `rp11-answer-uniqueness.test.js` | RP11: no answer 3+ times, no consecutive dups, version 2.0 string, manifest entry exists | 7/7 |
 
-Run all at once:
+**F-Validation suite total: 88 test files.** Run all at once:
 ```powershell
 Get-ChildItem tests/f-validation -Filter "*.test.js" | ForEach-Object { node $_.FullName }
 ```
