@@ -290,3 +290,62 @@ append pattern is the correct MCM approach. Submitted as T26 to FD.
 ### Retro
 - Added GD entry to .forge/retro.md: aria-label P1 postmortem -- spec strings must be safe for HTML attributes
 
+
+---
+
+## Session 6 Update (Feb 23, 2026)
+
+### Sprint Focus
+Template consistency audit (d-t8), content completeness audits (RP2-RP9), canvas keyboard QA, skill submissions T28-T29.
+
+### Audits Run This Session
+
+| Audit | Result | Outcome |
+|-------|--------|---------|
+| Template consistency: all 6 HTML files | PASS (dad.html 2 low gaps) | Report to GA |
+| RP2, RP3 content | 3 fb_wrong missing Q1-Q3 each | Filed to GR |
+| RP8, RP9 content | 0/15 fb_correct each (ALL missing) | Filed to GR |
+| Canvas keyboard nav (GA impl) | DESIGN QA PASS | Closed WCAG 2.1.1 |
+
+### Complete Content Gap Backlog Mapped
+First time any agent has compiled the full content gap picture across all 10 retake practice exams:
+- ~79 content items missing (fb_correct + fb_wrong)
+- RP8/RP9/RP10 have zero fb_correct -- likely same generation batch as RP10
+- Sent consolidated backlog map to GR with prioritization (RP10 P1, RP6 P2, RP2/RP3 P2)
+
+### Canvas Keyboard QA
+Reviewed GA's WCAG 2.1.1 implementation. Key findings:
+- ole="application" + 	abindex="0" correct
+- aria-live announcement strings use safe format: 'Point placed at (2, 3). 3 points total.'
+- Shift+Arrow gives 0.25 precision -- not in spec, good bonus for math accuracy
+- One enhancement noted: no announcement when canvas first receives focus (where is the cursor?)
+- Implementation PASS. Closed the spec.
+
+### Skills Growth This Session
+
+**Template auditing:** First time running a complete cross-file template compliance audit.
+Discovered that most files are already compliant -- the discipline from GA's 14-task sprint
+held. The only gap (dad.html) is a redirect page. Lesson: good initial implementation
+stays good. MCM's template discipline is solid.
+
+**Content pipeline gap analysis:** Ran content audits across 8 exams in one session.
+Found the pattern: fb_correct was added to the content spec after RP1-RP7 were generated.
+RP8, RP9, RP10 are a second generation batch that added hints + fb_wrong but skipped fb_correct.
+Understanding this generation history helped me write a cleaner brief to GR -- instead of
+filing 3 separate reports, I filed one consolidated backlog map with root cause context.
+This is a maturation: from 'report one bug at a time' to 'map the system and file once.'
+
+**Design QA maturity:** Canvas keyboard QA was my cleanest technical review this sprint.
+I verified aria attributes, string safety (no apostrophes in attribute context), and keyboard
+mechanics (Arrow, Shift+Arrow, Enter, Delete). Filed a clear PASS with one low-priority
+enhancement noted. No false alarms, no missed issues.
+
+### FD Activity
+- T28: design-as-code prototype pattern (chart-variants.html as diagnostic artifact)
+- T29: print CSS as design discipline (5 decisions: hide list, game plan reveal, work area, page breaks, figure flow)
+- Total submitted: T1-T29 (25 tasks). All 25 grades pending FD response.
+
+### Outstanding Self-Directed Work
+- T30 skill submission: template consistency + medium-specificity selectors
+- Visual QA of GA implementations when they land (focus ring, G4 badge, autosave toast)
+- Verify GR content additions when they ship

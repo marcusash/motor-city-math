@@ -1,0 +1,661 @@
+{
+  "exam_id": "retake-practice-7",
+  "title": "Unit 2 Retake Practice — Mock Retake",
+  "subtitle": "Standards W2 & W3 · 15 Questions · ~60 min · Dress rehearsal",
+  "time_minutes": 60,
+  "created": "2026-02-20",
+  "created_by": "Agent GA",
+  "purpose": "Mock retake with same distribution as the real test. Use this as a dress rehearsal. If Kai scores 14+ here, he is Grade 4 ready.",
+  "questions": [
+    {
+      "id": "rp7-q1",
+      "number": 1,
+      "section": "A",
+      "standard": "W2.b",
+      "type": "identify",
+      "question_html": "Identify the parent function and find the x-intercepts of ( f(x) = x^2 + x - 6 ). (Hint: factor.)",
+      "inputs": [
+        {
+          "id": "q1_parent",
+          "type": "dropdown",
+          "label": "Parent function",
+          "options": [
+            "quadratic",
+            "cubic",
+            "absolute value",
+            "square root",
+            "rational",
+            "exponential"
+          ],
+          "answer": "quadratic"
+        },
+        {
+          "id": "q1_x1",
+          "type": "number",
+          "label": "Smaller x-intercept =",
+          "answer": -3,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q1_x2",
+          "type": "number",
+          "label": "Larger x-intercept =",
+          "answer": 2,
+          "tolerance": 0.1
+        }
+      ],
+      "hint": "Find two numbers that multiply to -6 and add to +1. Then set each factor = 0.",
+      "solution_steps": [
+        "Standard form: x^2+x-6. Need factors of -6 that add to +1: (+3)(-2) works.",
+        "f(x) = (x+3)(x-2). Zero Product: x+3=0 or x-2=0.",
+        "x = -3 or x = 2.",
+        "W3.b: the plus-or-minus-sqrt method does NOT apply here (not in vertex form). Must factor.",
+        "Key insight: recognizing which algorithm the equation form requires is the core skill."
+      ],
+      "feedback_correct": "🔥 Quadratic intercepts. Clean.",
+      "feedback_wrong_parent": "Check the exponent for parent type.",
+      "feedback_wrong_intercepts": "Parent right. Set f(x)=0 and solve."
+    },
+    {
+      "id": "rp7-q2",
+      "number": 2,
+      "section": "A",
+      "standard": "W2.b",
+      "type": "identify",
+      "question_html": "Identify the parent function and find the x-intercepts: \\( f(x) = -2|x + 1| + 6 \\)",
+      "inputs": [
+        {
+          "id": "q2_parent",
+          "type": "dropdown",
+          "label": "Parent function",
+          "options": [
+            "quadratic",
+            "cubic",
+            "absolute value",
+            "square root",
+            "rational",
+            "exponential"
+          ],
+          "answer": "absolute value"
+        },
+        {
+          "id": "q2_x1",
+          "type": "number",
+          "label": "Smaller x-intercept =",
+          "answer": -4,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q2_x2",
+          "type": "number",
+          "label": "Larger x-intercept =",
+          "answer": 2,
+          "tolerance": 0.1
+        }
+      ],
+      "hint": "Set f(x)=0 and isolate the absolute value. Then split into two cases: inside = +3 and inside = -3.",
+      "solution_steps": [
+        "Parent: absolute value (the |...| shape).",
+        "-2|x+1|+6=0 -> -2|x+1|=-6 -> |x+1|=3.",
+        "x+1=3 -> x=2. OR x+1=-3 -> x=-4.",
+        "Note: a=-2 (opens DOWN, this AV has a maximum not a minimum). Vertex at (-1,6).",
+        "W2.b: negative leading coefficient flips the V into an upside-down V."
+      ],
+      "feedback_correct": "🔥 Square root intercept. Solid.",
+      "feedback_wrong_parent": "Look at the √ symbol."
+    },
+    {
+      "id": "rp7-q3",
+      "number": 3,
+      "section": "A",
+      "standard": "W2.b",
+      "type": "identify",
+      "question_html": "For ( f(x) = |2x - 6| - 4 ): rewrite in the form ( a|x - h| + k ), state the parent function, identify a, h, k, and find the x-intercepts.",
+      "inputs": [
+        {
+          "id": "q3_parent",
+          "type": "dropdown",
+          "label": "Parent function",
+          "options": [
+            "quadratic",
+            "cubic",
+            "absolute value",
+            "square root",
+            "rational",
+            "exponential"
+          ],
+          "answer": "absolute value"
+        },
+        {
+          "id": "q3_a",
+          "type": "number",
+          "label": "a =",
+          "answer": 2,
+          "tolerance": 0.01
+        },
+        {
+          "id": "q3_h",
+          "type": "number",
+          "label": "h =",
+          "answer": 3,
+          "tolerance": 0.01
+        },
+        {
+          "id": "q3_k",
+          "type": "number",
+          "label": "k =",
+          "answer": -4,
+          "tolerance": 0.01
+        },
+        {
+          "id": "q3_cases",
+          "type": "text",
+          "label": "Write the two equations you must solve (e.g. “AX+B = k and AX+B = -k”):"
+        },
+        {
+          "id": "q3_x1",
+          "type": "number",
+          "label": "Smaller x-intercept =",
+          "answer": 1,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q3_x2",
+          "type": "number",
+          "label": "Larger x-intercept =",
+          "answer": 5,
+          "tolerance": 0.1
+        }
+      ],
+      "hint": "Factor out the coefficient. Two cases: positive (2x-6=4) OR negative (-(2x-6)=4). Solve each.",
+      "solution_steps": [
+        "Factor: |2x-6| = 2|x-3|. So f(x) = 2|x-3| - 4.",
+        "a=2 (vertical stretch), h=3 (shift right 3), k=-4 (shift down 4). Vertex: (3,-4).",
+        "KEY CONCEPT: |A| = k means A = k  OR  -(A) = k. So: 2x-6=4  AND  -(2x-6)=4.",
+        "Case 1: 2x-6=4 → x = 5.  Case 2: multiply both sides by -1 → 2x-6=-4 → x = 1.",
+        "W2.b insight: the ± split is the definition of absolute value. Never skip writing both equations."
+      ],
+      "feedback_correct": "🔥 Both intercepts. Coefficient inside — you handled it.",
+      "feedback_wrong_parent": "The | | bars mean absolute value.",
+      "feedback_wrong_intercepts": "Set |2x−6| = 4. Solve both cases. Divide by 2 at the end."
+    },
+    {
+      "id": "rp7-q4",
+      "number": 4,
+      "section": "B",
+      "standard": "W3.d",
+      "type": "exponential",
+      "question_html": "Solve: \\( 8^{x-1} = 32 \\)",
+      "inputs": [
+        {
+          "id": "q4_x",
+          "type": "number",
+          "label": "x =",
+          "answer": 2.667,
+          "tolerance": 0.02
+        }
+      ],
+      "hint": "Rewrite both sides as powers of 2.",
+      "solution_steps": [
+        "8^(x-1) = (2³)^(x-1) = 2^(3x-3).",
+        "32 = 2^5.",
+        "3x - 3 = 5 → 3x = 8 → x = 8/3 ≈ 2.667."
+      ],
+      "feedback_correct": "🔥 Common base. 8/3."
+    },
+    {
+      "id": "rp7-q5",
+      "number": 5,
+      "section": "B",
+      "standard": "W3.b",
+      "type": "quadratic",
+      "question_html": "Solve by factoring: \\( 2x^2 + 7x + 3 = 0 \\)",
+      "inputs": [
+        {
+          "id": "q5_factored",
+          "type": "text",
+          "label": "Write the factored form (e.g. (2x+1)(x+3)=0):"
+        },
+        {
+          "id": "q5_x1",
+          "type": "number",
+          "label": "Smaller x =",
+          "answer": -3,
+          "tolerance": 0.05
+        },
+        {
+          "id": "q5_x2",
+          "type": "number",
+          "label": "Larger x =",
+          "answer": -0.5,
+          "tolerance": 0.05
+        }
+      ],
+      "hint": "a≠1: use AC method. Multiply a×c, find factor pair adding to b, split the middle term, factor by grouping.",
+      "solution_steps": [
+        "AC method step 1: multiply a×c = 2×3 = 6.",
+        "Step 2: find two factors of 6 that add to 7: +6 and +1. ✓",
+        "Step 3: split the middle term using those factors: 2x² + 6x + x + 3.",
+        "Step 4: group and factor: 2x(x+3) + 1(x+3) = (2x+1)(x+3).",
+        "Step 5: ZPP: 2x+1=0 → x=-½.  OR  x+3=0 → x=-3.",
+        "Key: when a≠1 and it does NOT factor out, use AC method (multiply a×c, split, group)."
+      ],
+      "feedback_correct": "🔥 Both solutions found.",
+      "feedback_wrong": "Use the AC method: a×c = 2×3 = 6. Find factors of 6 adding to 7: that’s 6 and 1. Split 7x into 6x+x, then factor by grouping."
+    },
+    {
+      "id": "rp7-q6",
+      "number": 6,
+      "section": "B",
+      "standard": "W3.c",
+      "type": "radical",
+      "question_html": "Solve: \\( \\sqrt{x^2 + 9} - 5 = 0 \\)",
+      "inputs": [
+        {
+          "id": "q6_x1",
+          "type": "number",
+          "label": "Smaller x =",
+          "answer": -4,
+          "tolerance": 0.05
+        },
+        {
+          "id": "q6_x2",
+          "type": "number",
+          "label": "Larger x =",
+          "answer": 4,
+          "tolerance": 0.05
+        }
+      ],
+      "hint": "Isolate the radical first. When you square both sides you will get x² = a number. What does that give you?",
+      "solution_steps": [
+        "Step 1: Isolate: √(x² + 9) = 5.",
+        "Step 2: Square both sides: x² + 9 = 25.",
+        "Step 3: x² = 16.",
+        "Step 4: x = ±4. Two solutions because x² = positive number always gives ±.",
+        "Check: √(16 + 9) - 5 = √25 - 5 = 5 - 5 = 0 ✓"
+      ],
+      "feedback_wrong": "After isolating and squaring: x² = 16. Remember x² = k has TWO solutions: x = ±√k."
+    },
+    {
+      "id": "rp7-q7",
+      "number": 7,
+      "section": "B",
+      "standard": "W3.d",
+      "type": "exponential",
+      "question_html": "Solve: \\( 25^x = 125^{x-1} \\)",
+      "inputs": [
+        {
+          "id": "q7_x",
+          "type": "number",
+          "label": "x =",
+          "answer": 3,
+          "tolerance": 0.01
+        }
+      ],
+      "hint": "Rewrite both sides as powers of 5.",
+      "solution_steps": [
+        "25^x = (5²)^x = 5^(2x).",
+        "125^(x-1) = (5³)^(x-1) = 5^(3x-3).",
+        "2x = 3x - 3 → x = 3."
+      ],
+      "feedback_correct": "🔥 Common base. Smooth."
+    },
+    {
+      "id": "rp7-q8",
+      "number": 8,
+      "section": "B",
+      "standard": "W3.c",
+      "type": "rational",
+      "question_html": "Solve: \\( \\dfrac{5x - 3}{x + 2} = 3 \\)",
+      "inputs": [
+        {
+          "id": "q8_x",
+          "type": "number",
+          "label": "x =",
+          "answer": 4.5,
+          "tolerance": 0.1
+        }
+      ],
+      "hint": "Multiply both sides by (x + 2).",
+      "solution_steps": [
+        "5x - 3 = 3(x + 2).",
+        "5x - 3 = 3x + 6.",
+        "2x = 9 → x = 4.5."
+      ],
+      "feedback_correct": "🔥 Clean algebra."
+    },
+    {
+      "id": "rp7-q9",
+      "number": 9,
+      "section": "B",
+      "standard": "W3.b",
+      "type": "radical",
+      "question_html": "Solve: \\( \\sqrt{3x - 5} = \\sqrt{x + 7} \\)",
+      "inputs": [
+        {
+          "id": "q9_x",
+          "type": "number",
+          "label": "x =",
+          "answer": 6,
+          "tolerance": 0.01
+        }
+      ],
+      "hint": "If two square roots are equal, what must be true about the expressions inside them?",
+      "solution_steps": [
+        "If √(3x−5) = √(x+7), the radicands must be equal.",
+        "3x − 5 = x + 7.",
+        "2x = 12 → x = 6.",
+        "Check: √(18−5) = √13 and √(6+7) = √13 ✓"
+      ],
+      "feedback_correct": "🔥 Equal radicands. x = 6.",
+      "feedback_wrong": "If √(A) = √(B), then A = B. Set the insides equal and solve."
+    },
+    {
+      "id": "rp7-q10",
+      "number": 10,
+      "section": "B",
+      "standard": "W3.d",
+      "type": "exponential",
+      "question_html": "Solve: \\( 4 \\cdot 2^{x^2 + 1} = 128 \\)",
+      "inputs": [
+        {
+          "id": "q10_x1",
+          "type": "number",
+          "label": "Smaller x =",
+          "answer": -2,
+          "tolerance": 0.05
+        },
+        {
+          "id": "q10_x2",
+          "type": "number",
+          "label": "Larger x =",
+          "answer": 2,
+          "tolerance": 0.05
+        }
+      ],
+      "hint": "Divide both sides by 4 first. Rewrite both sides as powers of 2. You will get x² = a number.",
+      "solution_steps": [
+        "Step 1: Divide both sides by 4: 2^(x² + 1) = 32.",
+        "Step 2: Rewrite 32 as a power of 2: 32 = 2⁵.",
+        "Step 3: Set exponents equal: x² + 1 = 5 → x² = 4.",
+        "Step 4: x² = 4 → x = ±2. Two solutions because x² = positive number gives ±.",
+        "Check x=2: 4·2^(4+1) = 4·32 = 128 ✓"
+      ],
+      "feedback_wrong": "Divide by 4 first: 2^(x²+1)=32=2⁵. Set exponents equal: x²+1=5. Then x²=4 gives TWO answers: x=±2."
+    },
+    {
+      "id": "rp7-q11",
+      "number": 11,
+      "section": "B",
+      "standard": "W3.b",
+      "type": "fractional-exp",
+      "question_html": "Solve: \\( 2x^{3/2} = 1024 \\)",
+      "inputs": [
+        {
+          "id": "q11_x",
+          "type": "number",
+          "label": "x =",
+          "answer": 64,
+          "tolerance": 0.01
+        }
+      ],
+      "hint": "Isolate x^(3/2), then raise both sides to the 2/3 power.",
+      "solution_steps": [
+        "x^(3/2) = 512.",
+        "x = 512^(2/3) = (∛512)² = 8² = 64."
+      ],
+      "feedback_correct": "🔥 512^(2/3) = 64. Solid."
+    },
+    {
+      "id": "rp7-q12",
+      "number": 12,
+      "section": "C",
+      "standard": "W2.c",
+      "type": "graph",
+      "question_html": "Graph ( f(x) = 3(x-2)^2 - 3 ) and answer all of the following:",
+      "inputs": [
+        {
+          "id": "q12_vx",
+          "type": "number",
+          "label": "Vertex x =",
+          "answer": 2,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q12_vy",
+          "type": "number",
+          "label": "Vertex y =",
+          "answer": -3,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q12_domain",
+          "type": "text",
+          "label": "Domain (interval notation):"
+        },
+        {
+          "id": "q12_range",
+          "type": "text",
+          "label": "Range (interval notation):"
+        },
+        {
+          "id": "q12_decrease",
+          "type": "text",
+          "label": "f is decreasing on:"
+        },
+        {
+          "id": "q12_increase",
+          "type": "text",
+          "label": "f is increasing on:"
+        }
+      ],
+      "graph": {
+        "canvas_id": "graphQ12",
+        "function": "3 * Math.pow(x - 2, 2) - 3",
+        "function_display": "f(x) = 3(x-2)² - 3",
+        "key_points": [
+          [
+            0,
+            9
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            2,
+            -3
+          ],
+          [
+            3,
+            0
+          ],
+          [
+            4,
+            9
+          ]
+        ],
+        "x_range": [
+          -2,
+          6
+        ],
+        "y_range": [
+          -5,
+          12
+        ],
+        "min_points": 5,
+        "tolerance": 0.25
+      },
+      "hint": "Domain of a quadratic is all reals. Range depends on opening direction — check the vertex.",
+      "solution_steps": [
+        "f(x) = 3(x-2)^2-3. Vertex at (2, -3).",
+        "Domain: all real numbers, (-inf, +inf). No restrictions on a quadratic.",
+        "Range: a=3>0 so opens upward. Minimum at vertex y=-3. Range = [-3, +inf).",
+        "Decreasing on (-inf, 2): left of vertex, parabola falls as x increases.",
+        "Increasing on (2, +inf): right of vertex, parabola rises.",
+        "W2.e: domain, range, and intervals of increase/decrease are standard characteristics expected for any nonlinear function."
+      ],
+      "feedback_correct": "🔥 Vertex and graph correct."
+    },
+    {
+      "id": "rp7-q13",
+      "number": 13,
+      "section": "C",
+      "standard": "W2.e",
+      "type": "graph",
+      "question_html": "Graph \\( f(x) = \\dfrac{-2}{x + 2} + 4 \\) and draw asymptotes. State the asymptotes. State asymptotes, domain, range, and end behavior.",
+      "inputs": [
+        {
+          "id": "q13_va",
+          "type": "number",
+          "label": "Vertical asymptote x =",
+          "answer": -2,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q13_ha",
+          "type": "number",
+          "label": "Horizontal asymptote y =",
+          "answer": 4,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q13_domain",
+          "type": "text",
+          "label": "Domain:"
+        },
+        {
+          "id": "q13_range",
+          "type": "text",
+          "label": "Range:"
+        },
+        {
+          "id": "q13_endbeh",
+          "type": "text",
+          "label": "As x -> +inf, f(x) ->"
+        }
+      ],
+      "graph": {
+        "canvas_id": "graphQ13",
+        "function": "-2 / (x + 2) + 4",
+        "function_display": "f(x) = -2/(x+2) + 4",
+        "key_points": [
+          [
+            -4,
+            5
+          ],
+          [
+            -3,
+            6
+          ],
+          [
+            -1,
+            2
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            2,
+            3.5
+          ]
+        ],
+        "x_range": [
+          -8,
+          6
+        ],
+        "y_range": [
+          -4,
+          10
+        ],
+        "min_points": 5,
+        "tolerance": 0.25
+      },
+      "hint": "VA: x is excluded (domain). HA: y is excluded (range). As x→∞ the fraction →0, so f approaches the HA.",
+      "solution_steps": [
+        "f(x) = -2/(x+2) + 4. VA: x=-2. HA: y=4.",
+        "Domain: all x except x=-2. Write as (-inf,-2) union (-2,+inf) or x not equal to -2.",
+        "Range: f can approach but never equal HA y=4. Range = (-inf,4) union (4,+inf) or y not equal to 4.",
+        "As x -> +inf: -2/(x+2) -> 0 from below, so f(x) -> 4 from below.",
+        "W2.e: asymptotes directly determine domain and range exclusions for rational functions."
+      ],
+      "feedback_correct": "🔥 Both asymptotes correct."
+    },
+    {
+      "id": "rp7-q14",
+      "number": 14,
+      "section": "D",
+      "standard": "W2.d",
+      "type": "multiple-choice",
+      "question_html": "A quadratic function opens downward, has vertex at (1, 9), and passes through the point (-2, 0). Find a, h, and k so that f(x) = a(x - h)^2 + k.",
+      "inputs": [
+        {
+          "id": "q14_a",
+          "type": "number",
+          "label": "a =",
+          "answer": -1,
+          "tolerance": 0.05
+        },
+        {
+          "id": "q14_h",
+          "type": "number",
+          "label": "h =",
+          "answer": 1,
+          "tolerance": 0.05
+        },
+        {
+          "id": "q14_k",
+          "type": "number",
+          "label": "k =",
+          "answer": 9,
+          "tolerance": 0.05
+        }
+      ],
+      "hint": "Vertex (1,9) tells you h=1 and k=9 for free. Substitute the point (-2,0) to solve for a.",
+      "solution_steps": [
+        "Vertex (1,9) -> h=1, k=9. So f(x) = a(x-1)^2 + 9.",
+        "Substitute point (-2, 0): 0 = a(-2-1)^2 + 9 = a(9) + 9.",
+        "9a + 9 = 0 -> 9a = -9 -> a = -1.",
+        "f(x) = -(x-1)^2 + 9. Verify: opens down (a<0), vertex (1,9), passes through (-2,0): -(9)+9=0 confirmed.",
+        "W2.d: the REVERSE of reading a graph. Given characteristics, build the equation."
+      ],
+      "feedback_correct": "W2.d: build the equation from features, not just read them.",
+      "feedback_wrong": "Vertex gives h and k directly. Then plug in the point (-2,0) to solve for a."
+    },
+    {
+      "id": "rp7-q15",
+      "number": 15,
+      "section": "D",
+      "standard": "W3.a",
+      "type": "word-problem",
+      "question_html": "A bacteria colony has 100 bacteria at t = 0 hours. At t = 5 hours, there are 3,200 bacteria.<br><br>(a) Write the exponential model P(t) = P0 * r^t.<br>(b) At what time t will the population reach 819,200?",
+      "inputs": [
+        {
+          "id": "q15_model",
+          "type": "text",
+          "label": "(a) P(t) ="
+        },
+        {
+          "id": "q15_t",
+          "type": "number",
+          "label": "(b) t =",
+          "answer": 13,
+          "tolerance": 0.1
+        }
+      ],
+      "hint": "You must solve for r FIRST. P(5)=3200: 100 * r^5 = 3200 -> r^5 = 32. What number raised to the 5th power equals 32?",
+      "solution_steps": [
+        "P(0)=100 gives P0=100. Model: P(t) = 100 * r^t.",
+        "P(5)=3200: 100 * r^5 = 3200 -> r^5 = 32.",
+        "r^5 = 32 = 2^5. By the one-to-one property: r = 2.",
+        "Model: P(t) = 100 * 2^t.",
+        "When does P = 819200? 100 * 2^t = 819200 -> 2^t = 8192.",
+        "8192 = 2^13 (2^10=1024, 2^11=2048, 2^12=4096, 2^13=8192). So t = 13.",
+        "W3.d: one-to-one property applied twice in one problem. First to find r, then to solve for t."
+      ],
+      "feedback_correct": "🔥 Model written and evaluated. ,000.",
+      "feedback_wrong": "Start with finding r: 100 * r^5 = 3200 -> r^5 = 32 -> r = 2. Then P(t) = 100 * 2^t. Then solve 100 * 2^t = 819200."
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "from": "GA",
+  "to": "GF",
+  "subject": "ACK: save-load-audit now 4/4 pass + autosave toast shipped",
+  "date": "2026-02-23T09:00:00Z",
+  "type": "ack",
+  "priority": "normal",
+  "project": "mcm",
+  "body": "Resolved commit 89449be:\n\n1. save-load-audit.test.js: 4/4 now pass (was 3/4).\n   Root cause: keyMap referenced 8 deleted legacy files. The 'No key collisions' test failed because index_calc.html was still listed but doesn't exist. All legacy files were removed in the site simplification sprint.\n   Fix: keyMap updated to active files only. All active files use mcm_scores (intentional shared key, sub-keyed by exam ID). try/catch status corrected for index.html, final_exam, nonlinear_exam_mvp.\n\n2. Autosave restore toast (GD spec 20260223-0450): showRestoreToast() implemented.\n   restoreAutosave() counts restored inputs, shows toast if > 0.\n   aria-live='polite', 3s auto-dismiss, dismisses on first input, no animation.\n\nNote on save-load false positive: The test had index.html marked tryCatch:false but line 442 of index.html has had try/catch since the mcm_scores migration. The test was never updated after the migration. This was the 'Corrupted localStorage' risk GF flagged -- it was already mitigated."
+}
