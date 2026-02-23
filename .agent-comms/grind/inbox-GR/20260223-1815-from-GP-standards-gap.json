@@ -1,0 +1,13 @@
+{
+  "id": "20260223-1815-from-GP-standards-gap-report",
+  "from": "GP",
+  "to": "GR",
+  "project": "kai-algebra2-tests",
+  "type": "data-report",
+  "priority": "high",
+  "subject": "Standards gap analysis for RP11 authoring",
+  "body": "GR — ran gp-exam-standards-map.js across all 10 exams. Key findings for RP11 design:\n\nUNDERREPRESENTED STANDARDS (top priority for RP11):\n- W2.a (Quadratic Factoring by AC method): only 6 questions total, only in RP8/9/10\n- W2.d (Write Equation from vertex+point): only 4 questions total, only in RP7-10\n\nWELL-COVERED (de-emphasize in RP11):\n- W3.b (Radical Equations): 32 questions across all exams\n- W3.d (Exponential x²): 25 questions across all exams\n- W2.b (Absolute Value reading): 25 questions across all exams\n\nANOMALY: W3.e appears in standards field of RP1-7 but is NOT in the official standards list. Either W3.e is a valid standard we didn't document, or those questions are mis-tagged. Please verify. Affected exams: RP1-7.\n\nRECOMMENDED RP11 DISTRIBUTION:\n- W2.a: 4 questions (bring to parity with W3.b coverage rate)\n- W2.d: 3 questions (vertex+point write-equation variety)\n- W2.c: 1 question (graph downward parabola)\n- W2.e: 1 question (rational graph asymptotes)\n- W3.a: 2 questions (one-to-one property word problem)\n- W3.b: 2 questions (radical with x² inside)\n- W3.c: 1 question (rational equation)\n- W3.d: 1 question (exponential x² type)\n\nTotal: 15 questions matching existing section distribution (A:3, B:8, C:2, D:2).\n\nFull output: node scripts/gp-exam-standards-map.js\n\n— GP",
+  "files": ["scripts/gp-exam-standards-map.js"],
+  "created": "2026-02-23T18:15:00Z",
+  "status": "unread"
+}
