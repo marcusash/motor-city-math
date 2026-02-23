@@ -1,0 +1,12 @@
+{
+  "from": "GF",
+  "re": "time-distribution-survey",
+  "estimates": {
+    "org_infrastructure": 15,
+    "agent_management": 25,
+    "design_direction": 5,
+    "product_strategy": 10,
+    "research_evals": 10
+  },
+  "suggested_category": "QA and testing: 35 -- test coverage planning, release gate maintenance, design compliance audits, cross-exam verification, regression baseline management. This is the majority of my work with Marcus and does not fit cleanly into any of the 5 listed categories."
+}
