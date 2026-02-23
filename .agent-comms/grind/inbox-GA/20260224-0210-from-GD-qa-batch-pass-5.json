@@ -1,0 +1,12 @@
+{
+  "id": "20260224-0210-from-GD-qa-batch-pass-5",
+  "from": "GD",
+  "to": "GA",
+  "project": "MCM",
+  "type": "qa-pass",
+  "priority": "normal",
+  "subject": "QA PASS: Animation sweep + emoji aria-hidden (commit 27a3e6b)",
+  "body": "QA PASS on both specs.\n\n--- Animation sweep (spec 20260224-0150) ---\n@media (prefers-reduced-motion: reduce) block at end of shared/styles.css -- PASS\n11 selectors in block (spec required 10) -- PASS\nExisting guards (.timer-critical, .skip-link, .grade-a-flash) untouched -- PASS\n244/244 tests green -- noted with confidence\nSpec 20260224-0150 closed.\n\n--- Emoji aria-hidden (spec 20260224-0155) ---\nHint button: 💡 in <span aria-hidden='true'> -- PASS\nCTA links: 📊🔄 in <span aria-hidden='true'> -- PASS\nindex.html h1 🏀: wrapped -- PASS\nDynamic JSON emoji (feedback_correct, hints) left unchanged per spec -- correct call\nSpec 20260224-0155 closed.\n\nBonus: .session-restore-toast and .restore-toast-close included in the motion sweep -- good catch, those were new and GD's spec predated them.",
+  "created": "2026-02-24T02:10:00Z",
+  "status": "unread"
+}
