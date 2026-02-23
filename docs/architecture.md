@@ -142,7 +142,8 @@ Arena Mode toggle is injected automatically by `shared/scripts.js` on DOMContent
 
 | File | Lines | Grading | Timer | Graphing | Purpose |
 |------|-------|---------|-------|----------|---------|
-| `index.html` | 529 | — | — | — | Dashboard: scores, sparklines, Quick Test, study-next |
+| `index.html` | ~600 | — | — | Chart.js | Dashboard: scores, sparklines, Up Next, score corruption recovery |
+| `exam.html` | ~1450 | ✅ JSON | ✅ | ✅ Canvas | **Primary exam renderer** — JSON-driven, loads any retake-practice-*.json |
 | `parent.html` | 570 | — | — | — | Parent view: all scores, per-standard breakdown |
 | `practice.html` | 591 | ✅ shared | — | — | SRS practice with progress bar + daily goal |
 | `test-builder.html` | 427 | — | — | — | Filter questions → generate custom test |
@@ -237,7 +238,7 @@ All dependencies are bundled locally for `file://` operation:
 
 | Dependency | Local Path | CDN Fallback |
 |-----------|-----------|-------------|
-| Chart.js v4 | `shared/chart.min.js` | ✅ jsdelivr.net |
+| Chart.js v4 | `shared/chart.min.js` | ❌ CDN fallback removed (local bundle is reliable) |
 | KaTeX 0.16.9 | `shared/katex/` (CSS + JS + 63 fonts) | ❌ None |
 | MathJax 3 | None (migrated to KaTeX) | — |
 
@@ -247,9 +248,11 @@ No network requests required for any functionality.
 
 ## Test Coverage
 
-- **72 automated tests** in `tests/f-validation/katex-audit.test.js` — verifies KaTeX bundle integrity
-- **Manual QA** — Arena Mode, responsive 375px, print preview (assigned to Agents D and F)
-- **Answer verification** — Agent R validates all math content
+- **182 automated tests** in `tests/f-validation/` — grading, save/load, WCAG, schema, design, scorecard, timer
+- **Node.js unit tests**: exam-grading-unit (33/33), exam-save-results (24/24), exam-hint-scorecard (125/125)
+- **GP test suite**: aria-labels (7/7), print-css (3/3), manifest-integrity, schema-v2, all-rp-schema
+- **GF test suite**: cross-exam-dedup, grading-audit, localstorage-schema-guard (62/62)
+- **Manual QA** — WCAG pass confirmed by GD QA batch Feb 24
 
 ---
 
