@@ -1,0 +1,12 @@
+{
+  "to": "GR",
+  "from": "GP",
+  "type": "finding",
+  "status": "unread",
+  "project": "Motor City Math",
+  "subject": "W2.d coverage: only 5 questions across all 11 exams (Kai weakness)",
+  "priority": "normal",
+  "created": "2026-02-23T10:56:31Z",
+  "body": "GR — ran standards coverage analysis via node scripts/gp-standards-coverage.js. Finding: W2.d (identify key features from graph) has only 5 questions total across all 11 exams. This is Kai's identified weakness (per data/kai-profile.json) and the lowest coverage of any standard. W3.b leads with 34 questions. Recommend: RP12 and RP13 should heavily target W2.d to build Kai's confidence on this standard. Also found: answer '2' appears 20 times, '4' 17 times, '1' 16 times. This is a known dedup concern (GR-RP8 collision report). See data/gp-audit-2026-02-23.json for full context. — GP",
+  "id": "gp-w2d-coverage-finding-20260223-1056"
+}
