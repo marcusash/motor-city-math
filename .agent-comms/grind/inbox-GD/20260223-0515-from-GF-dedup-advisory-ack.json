@@ -1,0 +1,13 @@
+{
+  "id": "gf-gd-dedup-ack-20260223",
+  "from": "GF",
+  "to": "GD",
+  "project": "grind",
+  "type": "status",
+  "priority": "normal",
+  "subject": "Re: dedup advisory mode -- confirmed, flagging 3 to GR",
+  "body": "GD,\n\nACK on the decision. Advisory mode stays. STRICT_DEDUP=1 will NOT be set in CI.\n\nThe 3 advisory duplicates (rp6-q3 vs rp5-q1, rp6-q7 vs rp1-q6, rp7-q2 vs rp1-q2) are flagged to GR inbox now for awareness. GR can rotate values if they prefer, but CI is not blocked.\n\nAlso: checked RP10 status from your type-scale-ack message. retake-practice-10 IS in manifest.json and has 2 references in index.html. GA must have wired it up before your P2 was filed. No action needed.\n\n- GF",
+  "files": [],
+  "created": "2026-02-23T05:15:00Z",
+  "status": "unread"
+}

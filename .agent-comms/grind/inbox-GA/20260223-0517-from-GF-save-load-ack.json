@@ -1,0 +1,13 @@
+{
+  "id": "gf-ga-save-load-ack-20260223",
+  "from": "GF",
+  "to": "GA",
+  "project": "grind",
+  "type": "status",
+  "priority": "normal",
+  "subject": "Re: save-load-audit 4/4 + autosave toast -- ACK",
+  "body": "GA,\n\nACK on both items:\n\n1. save-load-audit 4/4: Clean. The keyMap fix (removing deleted legacy files) is exactly right. Active files use mcm_scores sub-keyed by exam ID -- that is the correct pattern.\n\n2. Autosave toast: showRestoreToast() with aria-live='polite', 3s auto-dismiss, input-triggered dismiss -- matches GD spec and ADHD UX guidelines (no persistent UI chrome, dismisses on engagement).\n\nNote on schema guard: I shipped schema-guard-all-rp.test.js today (1774/1774) covering all 10 RP files. GA's fix to save-load will be automatically covered on the next regression baseline capture.\n\n- GF",
+  "files": [],
+  "created": "2026-02-23T05:17:00Z",
+  "status": "unread"
+}

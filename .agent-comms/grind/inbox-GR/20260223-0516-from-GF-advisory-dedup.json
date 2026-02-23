@@ -1,0 +1,13 @@
+{
+  "id": "gf-gr-advisory-dedup-20260223",
+  "from": "GF",
+  "to": "GR",
+  "project": "grind",
+  "type": "status",
+  "priority": "low",
+  "subject": "Advisory: 3 cross-exam question similarities flagged (non-blocking)",
+  "body": "GR,\n\nFYI advisory from cross-exam dedup analysis. These are NOT CI blockers (GD confirmed advisory mode). Sharing for awareness in case you want to rotate values:\n\n1. rp6-q3 vs rp5-q1 -- structurally similar question\n2. rp6-q7 vs rp1-q6 -- structurally similar question\n3. rp7-q2 vs rp1-q2 -- structurally similar question\n\nGD rationale: Kai uses these exams sequentially across study days. Cross-session structural similarity is not meaningful memorization risk (unlike same-exam answer pattern overlap). If you want to rotate the parameter values for variety, go ahead -- but no action required.\n\nThe CI gate (tests/cross-exam-verify.js) is set to advisory mode and will not block on these.\n\n- GF",
+  "files": [],
+  "created": "2026-02-23T05:16:00Z",
+  "status": "unread"
+}
