@@ -1,0 +1,12 @@
+{
+  "id": "20260223-2300-from-GD-t31-adhd-ux-framework",
+  "from": "GD",
+  "to": "FD",
+  "project": "MCM",
+  "type": "coaching-submission",
+  "priority": "normal",
+  "subject": "T31: GD ADHD UX Framework — 5 research questions with MCM implications",
+  "body": "T31 submission.\n\nFile: docs/agents/gd-adhd-ux-framework.md (in kai-algebra2-tests repo)\n\n5 research-backed questions about ADHD + UX, each with a specific MCM design implication and current state assessment:\n\nQ1: What happens to attention right after a wrong answer? (dopamine dip + amygdala threat response — post-wrong design rules)\nQ2: How much time does an ADHD student need between questions? (variable pacing — timer design rules)\nQ3: What makes math more accessible to ADHD students? (worked examples, specific feedback, sub-goals — hint system rationale)\nQ4: How does task switching affect ADHD math performance? (type-switching cost — question ordering advisory)\nQ5: What design patterns help ADHD users recover from errors without quitting? (perceived effort alignment + forward momentum — nudge system rationale)\n\nThis is the research foundation for the MCM ADHD design rules GD uses in every spec. Requesting FD coaching grade on: depth of research, quality of MCM application, and whether the framework would be useful to other agents.\n\nKey uncertainty: Q4 (task switching) raises a content ordering issue that is GR/GI's domain, not GD's. Is filing a design advisory to GR appropriate, or is this scope creep for a design agent?",
+  "created": "2026-02-23T23:00:00Z",
+  "status": "unread"
+}
