@@ -1,0 +1,120 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "MCM Attempt Log",
+  "description": "Schema for Motor City Math attempt-level event logging. One record per answer submission. Enables misconception detection beyond final scores.",
+  "type": "object",
+  "required": ["schema_version", "student_id", "session_id", "exam_id", "question_id", "attempt_number", "value_entered", "is_correct", "timestamp_ms"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.0",
+      "description": "Schema version — bump when fields are added or removed"
+    },
+    "student_id": {
+      "type": "string",
+      "description": "Student identifier (e.g., 'kai')",
+      "examples": ["kai"]
+    },
+    "session_id": {
+      "type": "string",
+      "description": "Unique session identifier (UUID or timestamp-based). Groups all answers from one sitting.",
+      "examples": ["session-2026-02-23T09:00:00Z"]
+    },
+    "exam_id": {
+      "type": "string",
+      "description": "Practice exam identifier — matches exam JSON exam_id field",
+      "pattern": "^[a-z0-9-]+$",
+      "examples": ["retake-practice-3"]
+    },
+    "question_id": {
+      "type": "string",
+      "description": "Question ID within the exam — matches q.id field",
+      "examples": ["rp3-q5"]
+    },
+    "input_id": {
+      "type": "string",
+      "description": "Specific input field ID (for multi-input questions). Null if single-input.",
+      "examples": ["q5_x1"]
+    },
+    "attempt_number": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "1-based attempt counter for this question in this session. Resets per question."
+    },
+    "value_entered": {
+      "description": "The raw value the student submitted. String for text/dropdown, number for numeric.",
+      "oneOf": [
+        {"type": "string"},
+        {"type": "number"},
+        {"type": "null"}
+      ]
+    },
+    "is_correct": {
+      "type": "boolean",
+      "description": "Whether this attempt was graded correct by exam.html"
+    },
+    "hint_shown_before": {
+      "type": "boolean",
+      "description": "True if the hint was visible when this attempt was submitted"
+    },
+    "solution_shown_before": {
+      "type": "boolean",
+      "description": "True if the full solution was visible when this attempt was submitted"
+    },
+    "timestamp_ms": {
+      "type": "integer",
+      "description": "Unix timestamp in milliseconds (Date.now()) when the submit button was pressed"
+    },
+    "time_on_question_ms": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Milliseconds elapsed since the question card was first rendered. Null if unavailable."
+    },
+    "standard": {
+      "type": "string",
+      "description": "Standard code from q.standard — denormalized for analytics convenience",
+      "pattern": "^W[23]\\.[a-e]$"
+    },
+    "question_type": {
+      "type": "string",
+      "description": "Question type from q.type — denormalized for analytics convenience"
+    }
+  },
+  "examples": [
+    {
+      "schema_version": "1.0",
+      "student_id": "kai",
+      "session_id": "session-2026-02-23T09:00:00Z",
+      "exam_id": "retake-practice-3",
+      "question_id": "rp3-q5",
+      "input_id": "q5_x1",
+      "attempt_number": 1,
+      "value_entered": 4,
+      "is_correct": false,
+      "hint_shown_before": false,
+      "solution_shown_before": false,
+      "timestamp_ms": 1740301200000,
+      "time_on_question_ms": 45000,
+      "standard": "W3.b",
+      "question_type": "quadratic"
+    },
+    {
+      "schema_version": "1.0",
+      "student_id": "kai",
+      "session_id": "session-2026-02-23T09:00:00Z",
+      "exam_id": "retake-practice-3",
+      "question_id": "rp3-q5",
+      "input_id": "q5_x1",
+      "attempt_number": 2,
+      "value_entered": 1,
+      "is_correct": true,
+      "hint_shown_before": true,
+      "solution_shown_before": false,
+      "timestamp_ms": 1740301260000,
+      "time_on_question_ms": 105000,
+      "standard": "W3.b",
+      "question_type": "quadratic"
+    }
+  ]
+}

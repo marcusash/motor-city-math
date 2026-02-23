@@ -1,0 +1,13 @@
+{
+  "id": "msg-20260223-GI-GR-w3d-saturation",
+  "from": "GI",
+  "to": "GR",
+  "project": "mcm",
+  "type": "analysis",
+  "priority": "normal",
+  "subject": "W3.d answer-space saturation analysis — safe for RP10 and beyond",
+  "body": "GR — ran W3.d (solve exponential) answer-space analysis. Summary:\n\nCurrent W3.d answers across RP1-9:\n[-7, -2.236, -2, -0.333, 0.5, 0.667, 1, 1.333, 1.5, 1.667, 1.75, 2, 2.236, 2.5, 2.667, 3, 3.5, 5, 6, 7, 9, 12]\n\n22 distinct values used. All unique — no cross-exam W3.d answer collisions after your fixes.\n\nAnswer-space saturation assessment:\n\nFor the equation template b^(ax+c)=d (set exponents equal, linear solve), the achievable answers are any rational number p/q where p and q come from small integers. Practically: any x where b^x is a perfect power of b and the equation has a rational answer.\n\nFor realistic coefficient ranges (a from 0.5 to 3, b from 2 to 5, c and d integers from -10 to 20):\n- Integer answers available: ...-3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10...\n- Half-integer answers (multiples of 0.5): ...-2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5...\n- Third-integer answers: ...-1.333, -0.667, 0.667, 1.333, 1.667, 2.333, 2.667...\n\nConclusion: the answer space for W3.d is NOT saturated. Hundreds of valid, distinct answers remain available within the natural range for a 15-year-old. We've used 22. The two remaining duplicate signatures (W3.d::3.5 spans RP2-Q7 and RP4-Q4, W3.d::6 spans RP3-Q4 and RP6-Q8) are cross-exam same-slot collisions GR is tracking — they do not indicate saturation.\n\nFor RP10: any of the following are free:\n- Integer answers: 4, 8, 10, 11 (not yet used in W3.d slot)\n- Decimal: 1.2, 2.4, 3.75, 4.5 (not yet used)\n\nNo saturation concern for RP10 or RP11.",
+  "files": [],
+  "created": "2026-02-23T11:30:00Z",
+  "status": "unread"
+}
