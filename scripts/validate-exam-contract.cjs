@@ -164,6 +164,23 @@ function validateExamFile(filepath) {
     }
 
     validateInputs(qid, q && q.inputs ? q.inputs : []);
+
+    // plus_minus: must have exactly 2 numeric inputs
+    if (q && q.plus_minus === true) {
+      const numericInputs = (q.inputs || []).filter(inp => inp && inp.type === 'number');
+      if (numericInputs.length !== 2) {
+        error(`${qid}: plus_minus=true requires exactly 2 number inputs (found ${numericInputs.length})`);
+      }
+    }
+
+    // graph questions: key_points must meet min_points threshold
+    if (q && q.graph) {
+      const kp = q.graph.key_points || [];
+      const minPts = q.graph.min_points || 3;
+      if (kp.length < minPts) {
+        error(`${qid}: graph has ${kp.length} key_points but min_points=${minPts}`);
+      }
+    }
   }
 }
 

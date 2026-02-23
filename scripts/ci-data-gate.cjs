@@ -46,13 +46,18 @@ const tasks = singleExam
   : allTasks;
 
 let failed = false;
+const timings = [];
 
 for (const task of tasks) {
   console.log(`\n=== ${task.name} ===`);
   const env = singleExam && task.singleExamEnv
     ? Object.assign({}, process.env, task.singleExamEnv)
     : process.env;
+  const start = Date.now();
   const result = spawnSync(process.execPath, task.args, { stdio: 'inherit', env });
+  const elapsed = Date.now() - start;
+  timings.push({ name: task.name, elapsed });
+  console.log(`[${elapsed}ms]`);
   if (result.error) {
     console.error(`Failed to run ${task.name}: ${result.error.message}`);
     failed = true;
@@ -61,6 +66,12 @@ for (const task of tasks) {
   if (result.status !== 0) {
     failed = true;
   }
+}
+
+const totalMs = timings.reduce((s, t) => s + t.elapsed, 0);
+console.log(`\n--- Timing --- Total: ${totalMs}ms`);
+for (const t of timings) {
+  console.log(`  ${t.name.padEnd(30)} ${t.elapsed}ms`);
 }
 
 // Pre-exit: warn on exams missing schema_version (advisory, not blocking)
