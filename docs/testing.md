@@ -41,6 +41,9 @@ Located in `tests/f-validation/`.
 | `timer-nan-guard.test.js` | initTimer() NaN guard: missing time_minutes early exit, formatTime isFinite, exam.html truthy check | 10/10 |
 | `buildsparkline-scoping.test.js` | buildSparkline() local var scoping fix: tkCorrect/tkRed/tkBlue declared inside fn, SVG output | 12/12 |
 | `hint-message-copy.test.js` | scheduleRescue transitional message: no em dash, <=12 words (ADHD), aria-live=polite | 12/12 |
+| `gradeexam-section-comments.test.js` | gradeExam() 5-section comment structure guard + pure helper delegation | 12/12 |
+| `exam-autosave-sessionstorage.test.js` | Autosave uses sessionStorage key exam-autosave-{examId}, not localStorage, cleared on submit | 9/9 |
+| `exam-landmark-main.test.js` | WCAG landmarks: exam.html role=main, index.html main, bypass blocks | 7/7 |
 
 Run all at once:
 ```powershell
