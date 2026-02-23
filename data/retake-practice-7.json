@@ -279,7 +279,7 @@
         "Step 4: x = ±4. Two solutions because x² = positive number always gives ±.",
         "Check: √(16 + 9) - 5 = √25 - 5 = 5 - 5 = 0 ✓"
       ],
-      "feedback_wrong": "Isolate, square: x^2=16. Both ±4 — check both.",
+      "feedback_wrong": "Isolate, square: x^2=16. Both ±4 : check both.",
       "feedback_correct": "🔥 Squared both sides. Both roots: ±4."
     },
     {

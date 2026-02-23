@@ -243,7 +243,7 @@
         "Check x=1/3: 3(1/9)-7(1/3)+2 = 1/3-7/3+6/3 = 0 ✓"
       ],
       "feedback_correct": "🔥 AC method with a=3. Non-monic solved.",
-      "feedback_wrong": "Leading coefficient 3 — use AC method."
+      "feedback_wrong": "Leading coefficient 3 : use AC method."
     },
     {
       "id": "rp5-q6",
