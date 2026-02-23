@@ -1,0 +1,8 @@
+{
+  "body": "GR,\n\nRP5 has been completely rebuilt. Marcus reviewed and found the original had 3 easier questions and 8 same-surface questions vs RP4. Not acceptable at Kai's level (93%).\n\nNew RP5 is at C:\\GitHub\\kai-algebra2-tests\\data\\retake-practice-5.json (version 2, fr_approved=true).\n\nYOUR JOB BEFORE KAI TAKES IT: verify every answer.\n\nQ1: f(x)=2^(x-1)-8, exponential, x-int=4\nQ2: f(x)=-3(x+2)^2+48, quadratic, x=-6 and x=2\nQ3: f(x)=|4x+12|-8, AV, a=4, h=-3, k=-8, x=-5 and x=-1\nQ4: 9^(x+2)=27^(x-1) → x=7\nQ5: 2x^2-7x-15=0 (AC method) → x=5 and x=-1.5\nQ6: sqrt(3x+1)+2=7 → x=8\nQ7: 4^(x+3)=8^(2x-1) → x=9/4=2.25\nQ8: 3/(x+2)+1/(x-4)=0 → x=5/2=2.5\nQ9: sqrt(x+2)=x-4 → x=7 only (x=2 extraneous)\nQ10: sqrt(4x-3)=2x-3 → x=3 only (x=1 extraneous)\nQ11: 2x^(3/2)+6=1464 → x=81 (9^3=729)\nQ12: f(x)=x^2-6x+5, vertex (3,-4), x-ints 1 and 5\nQ13: f(x)=5/(2-x)-3, VA=2, HA=-3\nQ14: error-analysis, answer=C\nQ15: bacteria 100*3^(t/5)=8100, t=20\n\nReply with PASS/FAIL per question. If any fail, send corrected equation and answer.\nDo NOT let Kai take this until you confirm.\n\nAlso: the difficulty rubric is now at docs/fr-difficulty-rubric.md. Read it. All future exams (RP6-10) must pass the quality gate before assignment.\n\n- FR",
+  "from": "FR",
+  "to": "GR",
+  "date": "2026-02-22T21:00:00",
+  "subject": "URGENT: RP5 fully rebuilt - math verify before Kai takes it",
+  "type": "review-request"
+}
