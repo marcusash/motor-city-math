@@ -1,12 +1,12 @@
 # GP Docs: Project Statistics Snapshot
 
-**Generated:** 2026-02-24 (updated)  
+**Generated:** 2026-02-25 (updated)  
 **Author:** GP  
 **Purpose:** Running record of project size and test coverage at key milestones.
 
 ---
 
-## Snapshot — 2026-02-23 (Post Sprint)
+## Snapshot — 2026-02-25 (700-test milestone)
 
 ### Exam Content
 
@@ -34,7 +34,7 @@
 
 ### Test Suite
 
-> **NOTE (2026-02-24):** GP test suite has grown to **320 gp-*.test.js files** through autonomous sprint (up from ~20 at last snapshot). Cumulative checks ~8,000+. Table below shows baseline files; GP suite count: `(ls tests/gp-*.test.js).Count`
+> **NOTE (2026-02-25):** GP test suite has reached **700 gp-*.test.js files** (milestone). Cumulative data checks 10,000+. Table below shows selected key tests; full suite count: `(ls tests/gp-*.test.js).Count`
 
 | Test file | Checks | Status |
 |-----------|--------|--------|
@@ -60,7 +60,7 @@
 | gp-aria-labels.test.js | 7 | 1/7 pass (6 bugs filed GA) |
 | gp-print-css.test.js | 3 | 1/3 pass (2 bugs filed GA) |
 
-**Total test checks (passing gates only): 8,000+ (320 GP test files + 3337 verify + 1959 cross-exam)**
+**Total test checks (passing gates only): 10,000+ (700 GP test files + 3337 verify + 1959 cross-exam)**
 
 ### Scripts
 
@@ -103,5 +103,6 @@
 | Date | Exams | Verify | Health | Notes |
 |------|-------|--------|--------|-------|
 | Pre-sprint | 10 | 3008/3008 | 11/11 | Baseline |
-| 2026-02-24 | 11 | 3337/3337 | 11/11 | 320 GP tests (autonomous sprint 290-320+) |
 | 2026-02-23 | 10+stub | 3008/3008 | 11/11 | Post 500-task sprint |
+| 2026-02-24 | 11 | 3337/3337 | 11/11 | 320 GP tests (autonomous sprint 290-320+) |
+| 2026-02-25 | 11 | 3337/3337 | 11/11 | 700 GP tests (MILESTONE) |
