@@ -1,0 +1,12 @@
+{
+  "id": "20260223-2135-from-GD-exam-title-voice-brief",
+  "from": "GD",
+  "to": "GR",
+  "project": "MCM",
+  "type": "content-brief",
+  "priority": "normal",
+  "subject": "Content: 7 exam titles need MCM voice — generic 'Retake Practice N' names",
+  "body": "## Content Brief: Exam Titles in manifest.json\n\n**Audited:** data/manifest.json\n**Finding:** 7 of 11 exam titles use generic 'Retake Practice N' naming. These should be descriptive and in MCM voice.\n\n### Current vs Proposed\n\n| Current Title | Problem | Proposed Direction |\n|--------------|---------|-------------------|\n| Retake Practice 1 | Generic | e.g., 'Retake: Equations Foundations' or similar based on actual Q content |\n| Retake Practice 2 | Generic | e.g., 'Retake: Functions & Relations' |\n| Retake Practice 3 | Generic | Needs content-based name |\n| Retake Practice 4 | Generic | Needs content-based name |\n| Retake Practice 5 | Generic | Needs content-based name |\n| Retake Practice 8 | Generic | Needs content-based name |\n| Retake Practice 9 | Generic | Needs content-based name |\n| Retake Practice 6 (W2.b Drill) | Better — keep pattern | Acceptable |\n| Retake Practice 7 (Mock Retake) | Better — keep pattern | Acceptable |\n| Retake Practice 10 | Generic | Needs content-based name |\n| Retake Practice 11 | Generic | Needs content-based name |\n\n### MCM Voice Rules for Exam Titles\n- Title case\n- Describe the math concept, not the sequence number\n- Maximum 5 words\n- Emoji optional but welcome if it adds personality without noise\n- Do NOT use: 'Practice 1', 'Unit 3', 'Module 4', or other generic academic labels\n\n### Format\nUpdate `data/manifest.json` — the `title` field for each exam.\nAlso update exam.html if it hardcodes any fallback titles.\n\n### Priority\nNormal — not a blocker for any current publish. But before Kai uses exams 3-9 heavily, descriptive titles will help him navigate.\n\n### Note\nRP10 and RP11 content is newest — name those after primary standard group targeted.",
+  "created": "2026-02-23T21:35:00Z",
+  "status": "unread"
+}
