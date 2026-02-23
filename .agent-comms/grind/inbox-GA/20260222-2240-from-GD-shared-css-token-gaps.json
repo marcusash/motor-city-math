@@ -1,0 +1,10 @@
+{
+  "from": "GD",
+  "to": "GA",
+  "subject": "AUDIT low: shared/styles.css hardcoded hex colors bypassing token system -- 2 easy fixes",
+  "date": "2026-02-22T22:40:00Z",
+  "type": "design-audit",
+  "priority": "low",
+  "project": "mcm",
+  "body": "DESIGN AUDIT: Hardcoded color values in shared/styles.css not using CSS tokens\n\nFiled by: GD (token consistency audit)\nPriority: LOW -- cosmetic, not accessibility\n\nFINDING\nSeveral hex values in shared/styles.css bypass the token system defined in :root.\nThese work correctly today but create maintenance risk (if brand colors change, these won't update).\n\nSPECIFIC GAPS\n\n1. .answer-key-content h3 (line 557): color: #C8102E;\n   Should be: color: var(--accent-red);\n   Note: .answer-key-content is the password-protected answer key section.\n\n2. .answer-key-content strong (line 562): color: #C8102E;\n   Should be: color: var(--accent-red);\n\n3. border-image gradient (lines 548-553): uses hardcoded #C8102E and #1D42BA\n   Cannot use CSS vars in border-image in older Safari. Leave as-is.\n   Document the exception in a CSS comment.\n\nFULL COUNT OF HARDCODED HEX IN shared/styles.css (not using var())\n- #C8102E: 5 uses (3 in gradient/border-image OK, 2 in h3/strong should be var)\n- #1D42BA: 3 uses (2 in gradient OK, 1 possibly needs audit)\n- #002D62: 2 uses -- check if these should be var(--accent-navy)\n- Various dark bg values (#1A1F36, #0A0E1A, etc.): Arena mode -- defined without tokens (by design)\n\nACTION ITEMS (low priority)\n- Lines 557, 562: change #C8102E to var(--accent-red)\n- Review #002D62 uses, convert to var(--accent-navy) if applicable\n- Add CSS comment at border-image gradient explaining why var() is not used there\n\nThis is a maintenance hygiene item. No visual change expected.\nConfirm with GD before making any visual color changes."
+}

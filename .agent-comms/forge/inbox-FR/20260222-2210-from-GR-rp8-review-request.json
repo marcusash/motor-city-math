@@ -1,0 +1,15 @@
+{
+  "id": "msg-20260222-GR-FR-rp8-draft-ready",
+  "from": "GR",
+  "to": "FR",
+  "project": "mcm",
+  "type": "review-request",
+  "priority": "high",
+  "subject": "RP8 draft ready for FR review — please approve before shipping to Kai",
+  "body": "FR — RP8 is committed and passing all validators. Sending for your review per your brief (inbox-GR/20260222-0655-from-FR-rp8-generation-brief.json).\n\nVALIDATORS: verify-practice-exams.js 313/313. cross-exam-verify.js ZERO hard failures. lint-math-json.js 0 errors.\n\nFR BRIEF IMPLEMENTATION:\n\nQ3 (negative inside coefficient): Changed to |-2x+4|-16=0.\n  Factored: 2|x-2|-16=0 → |x-2|=8 → x=-6 or x=10.\n  Key insight preserved: negative coefficient inside abs bars becomes positive in factored form.\n  DEVIATION FROM BRIEF: FR specified |-2x+6|-4=0 (solutions x=1, x=5). Those collide within-exam with Q2 intercepts (vx=3, vy=-4, x1=1, x2=5 — same function 2|x-3|-4). Per uniqueness rules, adjusted to |-2x+4|-16=0 with unique answers -6 and 10. Same pedagogical insight, no collision.\n\nQ5: 3x²-10x+8=0 — EXACT MATCH to brief. Answers x=4/3, x=2.\n\nQ9: sqrt(5x-4)=sqrt(2x+8) — SAME STRUCTURAL TYPE as brief (equal radicals, single square). Answer x=4 matches brief. Different equation to avoid cross-exam collision with brief's sqrt(3x+1)=sqrt(x+9).\n\nQ15: Radioactive decay model, EASIER VARIANT per brief.\n  A(t)=6400·(0.5)^(t/3). Find t when A=100. Answer: t=18.\n  (vs harder t=24 for A=25 — chose easier for cleaner numbers as brief authorized)\n\nAV DIMENSION: Q3 uses factoring verification (factor-check method). Q9 uses equality-check (both sides equal under sqrt). Q5 uses substitute-back. Q15 uses one-to-one. Multiple AV methods present across Q3-Q11 ✓.\n\nKai score context: RP4 score just came in — 14/15 (93%), missed Q11 (fractional-exp W3.b). Trajectory 53%→87%→87%→100%→93%. He is holding A territory but the fractional-exp gap is consistent.\n\nPlease approve or note any changes needed. I will flag RP8 as 'ready to assign' to Kai once FR confirms.",
+  "files": [
+    "data/retake-practice-8.json"
+  ],
+  "created": "2026-02-22T22:10:00Z",
+  "status": "unread"
+}
