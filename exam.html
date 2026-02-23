@@ -221,6 +221,7 @@
         }, 800);
     }
 
+    /** Restores autosaved input values from sessionStorage to the exam form. Shows restore toast if answers found. */
     function restoreAutosave() {
         try {
             var saved = sessionStorage.getItem('exam-autosave-' + examId);
@@ -571,6 +572,11 @@
     }
 
     /* --- Graph Engine --- */
+    /**
+     * Initializes a canvas graph for a question.
+     * @param {string} canvasId - The canvas element ID
+     * @param {Object} graphConfig - Graph configuration (xRange, yRange, fn, expectedPoints, asymptotes)
+     */
     function initGraph(canvasId, graphConfig) {
         var canvas = document.getElementById(canvasId);
         if (!canvas) return;
@@ -877,7 +883,12 @@
         updateGraphCounter(canvasId);
         redrawGraph(canvasId);
     }
-
+
+    /**
+     * Checks plotted graph points and asymptotes against the expected function.
+     * @param {string} canvasId - The canvas element ID to evaluate
+     * @returns {Object} { correct: number, total: number, asymptoteCorrect: boolean }
+     */
     function checkGraphAnswer(canvasId) {
         var d = graphData[canvasId];
         var cfg = d.config;
@@ -1052,7 +1063,12 @@
         hints.scrollIntoView({ behavior: prefersReduced ? 'instant' : 'smooth', block: 'nearest' });
     }
 
-    // Accept decimals, integers, fractions (4/3), and sqrt expressions (sqrt(2), 1+sqrt(3), (1+sqrt(5))/2)
+    /**
+     * Parses a student's raw text answer to a numeric float.
+     * Accepts: integers, decimals, fractions (4/3), sqrt expressions (sqrt(5), 1+sqrt(3)).
+     * @param {string} raw - Raw student input string
+     * @returns {number} Parsed numeric value, or NaN if unparseable
+     */
     function parseStudentAnswer(raw) {
         if (!raw || !raw.trim()) return NaN;
         var s = raw.trim().replace(/\s/g, '');

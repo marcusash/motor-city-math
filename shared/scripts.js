@@ -350,6 +350,13 @@ function gradeTest(config) {
  * @param {number} [opts.minutes] - Override time in minutes
  * @param {Function} [opts.onTimeUp] - Callback when timer reaches 0
  */
+/**
+ * Initializes the countdown timer for an exam session.
+ * Reads time_minutes from [data-time-minutes] attribute or opts.minutes.
+ * State progression: normal -> warning (<=5min) -> urgent (<=1min) -> timer-warning (<=30s) -> timer-critical (<=10s) -> timer-expired.
+ * @param {Object} opts - Options: { minutes: number, onTimeUp: function }
+ * @returns {{ getRemaining: function }} Timer control object, or null if no time configured
+ */
 function initTimer(opts) {
     opts = opts || {};
     var header = document.querySelector('[data-time-minutes]');
