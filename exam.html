@@ -183,7 +183,7 @@
         <div style="text-align:center; margin: 16px 0;">
             <a href="index.html" class="nav-btn ghost" style="text-decoration:none;">← Back to Dashboard</a>
         </div>
-        <div class="footer" style="text-align:center; color:var(--text-secondary); font-size:var(--text-sm); padding:10px 0;">Built with 💪🏾 by Dad · Motor City Math</div>
+        <div class="footer" style="text-align:center; color:var(--text-secondary); font-size:var(--text-sm); padding:10px 0;">Built with <span aria-hidden="true">💪🏾</span> by Dad · Motor City Math</div>
     </div>
 
     <script src="shared/scripts.js"></script>
@@ -1389,7 +1389,7 @@
                 var sPct = s.total > 0 ? Math.round((s.correct / s.total) * 100) : 0;
                 var icon = sPct >= 85 ? '✅' : sPct >= 60 ? '🏀' : sPct > 0 ? '🎯' : '⬜';
                 html += '<div class="std-card">';
-                html += '<div class="std-name">' + icon + ' ' + std + '</div>';
+                html += '<div class="std-name"><span aria-hidden="true">' + icon + '</span> ' + std + '</div>';
                 html += '<div class="std-score">' + s.correct + '/' + s.total + ' (' + sPct + '%)</div>';
                 html += '</div>';
             });

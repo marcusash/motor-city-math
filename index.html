@@ -435,7 +435,7 @@
         
 
         <details class="dash-section" id="gamePlanSection">
-            <summary class="section-title">Your Game Plan 🎯</summary>
+            <summary class="section-title">Your Game Plan <span aria-hidden="true">🎯</span></summary>
             <div class="standards-grid" id="standardsGrid" role="list"></div>
             <ul class="study-list" id="studyList"></ul>
         </details>
@@ -457,7 +457,7 @@
             </div>
         </details>
 
-        <div class="footer">Built with 💪🏾 by Dad · Motor City Math</div>
+        <div class="footer">Built with <span aria-hidden="true">💪🏾</span> by Dad · Motor City Math</div>
     </div>
 
     <script>
@@ -710,7 +710,7 @@
     function buildStudyNext(stdResult) {
         var list = document.getElementById('studyList');
         if (!stdResult || !stdResult.keys || stdResult.keys.length === 0) {
-            list.innerHTML = '<li class="study-item"><span class="emoji">💪</span> Your highlights reel starts with test #1.</li>';
+            list.innerHTML = '<li class="study-item"><span class="emoji" aria-hidden="true">💪</span> Your highlights reel starts with test #1.</li>';
             return;
         }
 
@@ -724,10 +724,10 @@
             var emoji = pct < 70 ? '🏀' : pct < 90 ? '📈' : '✅';
             var action = pct < 70 ? 'Start here.' : pct < 90 ? 'Almost there.' : 'Review only.';
             var name = s.name || id;
-            html += '<li class="study-item"><span class="emoji">' + emoji + '</span> <strong>' + id + '</strong> (' + name + ') — ' + pct + '%. ' + action + '</li>';
+            html += '<li class="study-item"><span class="emoji" aria-hidden="true">' + emoji + '</span> <strong>' + id + '</strong> (' + name + ') — ' + pct + '%. ' + action + '</li>';
             count++;
         });
-        list.innerHTML = html || '<li class="study-item"><span class="emoji">✅</span> All standards looking strong!</li>';
+        list.innerHTML = html || '<li class="study-item"><span class="emoji" aria-hidden="true">✅</span> All standards looking strong!</li>';
     }
 
     /* ========== TEST INDEX ========== */
