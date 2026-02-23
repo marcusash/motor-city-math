@@ -42,35 +42,87 @@ Each `data/retake-practice-N.json` follows this structure:
 
 ## Field Reference
 
-| Field | Type | Required | Rules |
+> **Authoritative schema:** `data/schemas/practice-exam.schema.json` (owned by GI). When in doubt, the schema wins over this doc.
+
+### Top-Level Fields
+
+| Field | Type | Required | Notes |
 |-------|------|---------|-------|
 | `exam_id` | string | yes | Must match filename (without .json) |
 | `title` | string | yes | Human-readable exam name |
-| `version` | string | yes | Current: "2.0" |
+| `subtitle` | string | yes | Standards covered, question count, estimated time |
+| `time_minutes` | integer | yes | 10-180. Estimated completion time in minutes |
+| `created` | string | yes | ISO 8601 date YYYY-MM-DD |
+| `created_by` | string | yes | Agent or person who created the exam |
+| `version` | string | no | Optional. Current practice: string (e.g. "1.0"). Schema defines as integer but files use string. |
+| `schema_version` | string | no | Schema version targeted. Pattern: N.N (e.g. "1.0", "2.0") |
 | `questions` | array | yes | Exactly 15 questions |
-| `questions[].id` | string | yes | Format: `rpN-qM` |
-| `questions[].question_html` | string | yes | LaTeX wrapped in `\( \)` |
-| `questions[].inputs` | array | yes | 1+ input objects |
-| `questions[].inputs[].id` | string | yes | Unique within exam |
-| `questions[].inputs[].type` | string | yes | `number`, `text` |
-| `questions[].inputs[].label` | string | yes | Display label |
-| `questions[].inputs[].answer` | number/string | yes | Correct answer |
-| `questions[].inputs[].tolerance` | number | yes (numeric) | Acceptable error range |
-| `questions[].hint` | string | yes | One sentence. Under 20 words. |
-| `questions[].solution_steps` | array | yes | >= 3 string steps |
-| `questions[].feedback_correct` | string | yes | Under 12 words (ADHD rule) |
-| `questions[].feedback_wrong` | string | yes | Under 12 words (ADHD rule) |
-| `questions[].graph` | object | conditional | Required for graphing questions |
-| `questions[].graph.canvas_id` | string | yes | Unique canvas element ID |
-| `questions[].graph.function` | string | yes | JS-evaluable function string |
-| `questions[].graph.key_points` | array | yes | `[[x,y], ...]` verified coordinates |
-| `questions[].graph.tolerance` | number | yes | Max 0.3 |
-| `questions[].graph.asymptotes` | object | yes | `{vertical: [], horizontal: []}` |
+
+### Optional Top-Level Fields
+
+| Field | Type | Notes |
+|-------|------|-------|
+| `purpose` | string | Exam purpose description |
+| `fr_approved` | boolean | Whether FR (research) has approved content |
+| `fr_approved_date` | string | ISO 8601 date of FR approval |
+| `fr_approval_notes` | string | FR approval notes |
+
+### Question Fields
+
+| Field | Type | Required | Notes |
+|-------|------|---------|-------|
+| `id` | string | yes | Format: `rpN-qM` |
+| `number` | integer | yes | Display question number |
+| `section` | string | yes | Enum: A, B, C, D |
+| `standard` | string | yes | Pattern: W[23].[a-e] |
+| `type` | string | yes | See question types below |
+| `question_html` | string | yes | LaTeX wrapped in `\( \)` |
+| `inputs` | array | yes | 1+ input objects |
+| `hint` | string | yes | One sentence. Under 20 words. No em dashes. |
+| `hint_2` | string | no | Second hint if needed |
+| `solution_steps` | array | yes | >= 3 string steps |
+| `feedback_correct` | string | yes | Under 12 words (ADHD rule). No em dashes. |
+| `feedback_wrong` | string | yes | Under 12 words (ADHD rule). No em dashes. |
+| `plus_minus` | boolean | no | True if x1/x2 are interchangeable |
+| `feedback_wrong_parent` | string | no | Used in identify questions (RP1-7 format) |
+| `feedback_wrong_intercepts` | string | no | Used in identify questions (RP1-7 format) |
+| `graph` | object | conditional | Required for graphing question types |
+
+### Input Fields
+
+| Field | Type | Required | Notes |
+|-------|------|---------|-------|
+| `id` | string | yes | Unique within exam |
+| `type` | string | yes | `number`, `text`, `dropdown`, `radio` |
+| `label` | string | yes | Display label |
+| `answer` | number/string | yes | Correct answer |
+| `tolerance` | number | no | Recommended for number type. Acceptable error range. |
+
+### Graph Fields
+
+| Field | Type | Required | Notes |
+|-------|------|---------|-------|
+| `canvas_id` | string | yes | Unique canvas element ID |
+| `function` | string | yes | JS-evaluable function string |
+| `function_display` | string | yes | Human-readable function for display |
+| `key_points` | array | yes | `[[x,y], ...]` verified coordinates |
+| `min_points` | integer | yes | Minimum points required (>= 3) |
+| `tolerance` | number | yes | Max 0.3 |
+| `x_range` | array | no | `[min, max]` viewport x bounds (used in RP6+) |
+| `y_range` | array | no | `[min, max]` viewport y bounds (used in RP6+) |
+| `asymptotes` | object | no | `{vertical: [], horizontal: []}`. Optional; null is valid. Used in RP1-7 format. |
+
+### Question Types
+
+Valid values for `questions[].type` (14 types):
+`identify`, `graph`, `multiple-choice`, `word-problem`, `write-equation`,
+`exponential`, `quadratic`, `radical`, `rational`, `absolute-value`,
+`extraneous`, `fractional-exp`, `error-analysis`, `construct`
 
 ## Verify Requirements
 
 Before any exam ships to Kai:
-1. `node tests/verify-practice-exams.js` — N/N pass
+1. `node tests/verify-practice-exams.js` — 3337/3337 pass
 2. `node tests/cross-exam-verify.js` — 0 hard failures
-3. `npm run test:gp` — all 5 GP tests pass
-4. `node scripts/gp-exam-health.js` — 8/8 checks pass
+3. `node scripts/gp-exam-health.js` — 11/11 checks pass
+4. `npm run test:gp:all` — all GP tests pass
