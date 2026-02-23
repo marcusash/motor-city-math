@@ -183,27 +183,36 @@
 
     <script src="shared/scripts.js"></script>
     <script>
-    /* ========== EXAM RENDERER ========== */
+    /* ========== EXAM RENDERER ==========
+     * Data model: docs/data-model.md (RP JSON schema, all fields, input contracts)
+     * Architecture: docs/architecture.md (system overview, agent file ownership)
+     * localStorage: 'mcm_scores'[mcm-{exam_id}] = { attempts[], best{} }
+     * sessionStorage: 'exam-autosave-{examId}' (tab-scoped, cleared on submit)
+     * ===================================== */
     var examData = null;
     var examId = new URLSearchParams(window.location.search).get('file') || 'unknown';
 
+    var _autosaveTimer = null;
     function autosave() {
-        if (!examData) return;
-        var state = {};
-        try {
-            examData.questions.forEach(function(q) {
-                q.inputs.forEach(function(inp) {
-                    if (inp.type === 'radio') {
-                        var el = document.querySelector('input[name="' + inp.id + '"]:checked');
-                        state[inp.id] = el ? el.value : '';
-                    } else {
-                        var el = document.getElementById(inp.id);
-                        state[inp.id] = el ? el.value : '';
-                    }
+        clearTimeout(_autosaveTimer);
+        _autosaveTimer = setTimeout(function() {
+            if (!examData) return;
+            var state = {};
+            try {
+                examData.questions.forEach(function(q) {
+                    (q.inputs || []).forEach(function(inp) {
+                        if (inp.type === 'radio') {
+                            var el = document.querySelector('input[name="' + inp.id + '"]:checked');
+                            state[inp.id] = el ? el.value : '';
+                        } else {
+                            var el = document.getElementById(inp.id);
+                            state[inp.id] = el ? el.value : '';
+                        }
+                    });
                 });
-            });
-            sessionStorage.setItem('exam-autosave-' + examId, JSON.stringify(state));
-        } catch(e) { /* sessionStorage full or unavailable */ }
+                sessionStorage.setItem('exam-autosave-' + examId, JSON.stringify(state));
+            } catch(e) { /* sessionStorage full or unavailable */ }
+        }, 800);
     }
 
     function restoreAutosave() {
@@ -529,11 +538,11 @@
         html += '<div class="graph-counter" id="counter-' + g.canvas_id + '">Click to plot points on the graph</div>';
         html += '<div class="graph-controls">';
         if (g.asymptotes) {
-            html += '<button class="graph-btn" id="vaBtn-' + g.canvas_id + '" onclick="setAsymptoteMode(\'' + g.canvas_id + '\',\'vertical\')">ADD VERTICAL ASYMPTOTE</button>';
-            html += '<button class="graph-btn" id="haBtn-' + g.canvas_id + '" onclick="setAsymptoteMode(\'' + g.canvas_id + '\',\'horizontal\')">ADD HORIZONTAL ASYMPTOTE</button>';
+            html += '<button class="graph-btn" id="vaBtn-' + g.canvas_id + '" aria-label="Add vertical asymptote: click then click on graph" onclick="setAsymptoteMode(\'' + g.canvas_id + '\',\'vertical\')">ADD VERTICAL ASYMPTOTE</button>';
+            html += '<button class="graph-btn" id="haBtn-' + g.canvas_id + '" aria-label="Add horizontal asymptote: click then click on graph" onclick="setAsymptoteMode(\'' + g.canvas_id + '\',\'horizontal\')">ADD HORIZONTAL ASYMPTOTE</button>';
         }
-        html += '<button class="graph-btn check-graph" id="checkBtn-' + g.canvas_id + '" disabled onclick="checkGraphAnswer(\'' + g.canvas_id + '\')">CHECK GRAPH</button>';
-        html += '<button class="graph-btn" onclick="clearGraph(\'' + g.canvas_id + '\')">CLEAR</button>';
+        html += '<button class="graph-btn check-graph" id="checkBtn-' + g.canvas_id + '" disabled aria-label="Check graph answer" onclick="checkGraphAnswer(\'' + g.canvas_id + '\')">CHECK GRAPH</button>';
+        html += '<button class="graph-btn" aria-label="Clear all points and asymptotes" onclick="clearGraph(\'' + g.canvas_id + '\')">CLEAR</button>';
         html += '</div>';
         html += '<div class="graph-result" id="result-' + g.canvas_id + '"></div>';
         return html;

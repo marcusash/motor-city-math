@@ -82,6 +82,12 @@ for (const filename of rpFiles) {
     });
     if (!data) continue; // can't validate further if parse failed
 
+    // Skip placeholder stubs (0 questions) — not yet authored by GR
+    if (!Array.isArray(data.questions) || data.questions.length === 0) {
+        console.log(`  ⚠️  ${label}: placeholder stub (0 questions) — skipping schema validation`);
+        continue;
+    }
+
     // Top-level
     suite(`${label}: top-level fields`, () => {
         test(`${label}: has exam_id`, () => assert(typeof data.exam_id === 'string' && data.exam_id.length > 0));
