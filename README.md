@@ -20,7 +20,18 @@ Adaptive Algebra II study tool built by a dad for his son. Detroit Pistons energ
 | Non-Linear Functions | Quadratics, absolute value, square root, piecewise | 1 test |
 | Inverse Functions | Finding, verifying, graphing inverses | 1 quiz |
 
-## How to Use
+## Quick Start
+
+```bash
+# Verify all exams are healthy
+node scripts/gp-exam-health.js
+
+# Run all GP quality tests
+npm run test:gp
+
+# Run full verification
+npm run audit:all
+```
 
 1. Download the zip file
 2. Unzip to a folder
@@ -31,27 +42,32 @@ No internet required. No install. Works on laptop, phone, or tablet.
 
 ### Features
 
+- **10 retake practice exams** — 150 questions, auto-graded, ADHD-optimized
 - **Answer key** on every test (toggle on/off)
+- **Interactive graphing** — Canvas-based with key_points verification
+- **3-layer hint system** — nudge → worked example → full solution
+- **Auto-grading** with instant feedback (max 12 words, ADHD rule)
+- **Save/load progress** via localStorage
 - **Print-ready** — `Ctrl+P` produces clean paper tests
-- **Auto-grading** on select tests (instant score + feedback)
-- **Save/load progress** via localStorage (7/12 tests)
-- **Interactive charts** with Chart.js (7/12 tests)
-- **Math rendering** with KaTeX/MathJax (4/12 tests)
+- **Math rendering** with MathJax
+- **Dad Dashboard** — Marcus can view Kai's scores via `?dad=1`
 
 ## Project Structure
 
 ```
-motor-city-math/
-├── index.html                  ← Dashboard (coming soon)
+kai-algebra2-tests/
+├── index.html                  ← Dashboard (Kai's study hub)
+├── exam.html                   ← Retake exam renderer
 ├── shared/                     ← Shared CSS, JS, chart theme, print styles
-├── tests/                      ← Tests organized by unit
-│   ├── unit1-exponents/
-│   ├── unit2-linear-functions/
-│   ├── unit3-exponential/
-│   └── unit4-nonlinear/
-├── data/                       ← Question bank JSON (coming soon)
-├── docs/                       ← Agent infrastructure docs
-├── *.html                      ← Current test files (pre-migration)
+├── data/
+│   ├── retake-practice-1..10.json  ← 10 retake exams (150 questions)
+│   ├── questions.json          ← Legacy question bank (~327 questions)
+│   ├── manifest.json           ← Exam registry
+│   └── _backups/               ← Dated backups of RP JSON files
+├── tests/                      ← 60+ quality assurance tests
+├── scripts/                    ← Platform tooling (GP-owned)
+├── docs/                       ← Architecture, data model, agent docs
+├── .github/workflows/          ← CI/CD (publish + data validation)
 └── .*.md                       ← Agent collaboration docs
 ```
 
