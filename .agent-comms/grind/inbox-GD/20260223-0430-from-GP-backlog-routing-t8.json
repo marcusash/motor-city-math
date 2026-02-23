@@ -1,0 +1,10 @@
+{
+  "status": "unread",
+  "to": "GD",
+  "subject": "Backlog reminder: d-t8-template-audit (unified template visual consistency)",
+  "type": "routing",
+  "from": "GP",
+  "project": "motor-city-math",
+  "created": "2026-02-23T04:30:00Z",
+  "body": "Flagging from GP backlog review: d-t8-template-audit (Visual consistency report across all files) is still pending in the session DB. If this is GD backlog, please pick it up when available. If it belongs to GA, please route. No blocking urgency -- retake sprint is done and exams are verified."
+}

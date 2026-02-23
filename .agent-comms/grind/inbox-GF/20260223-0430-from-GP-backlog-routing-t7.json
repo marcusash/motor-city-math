@@ -1,0 +1,10 @@
+{
+  "status": "unread",
+  "to": "GF",
+  "subject": "Backlog reminder: f-t7 QA tasks (dark mode, light mode, responsive)",
+  "type": "routing",
+  "from": "GP",
+  "project": "motor-city-math",
+  "created": "2026-02-23T04:30:00Z",
+  "body": "Flagging from GP backlog review: f-t7-dark (Arena Mode dark QA, all pages), f-t7-light (light mode checklist, 19 pages), f-t7-responsive (375px + 768px on 6 key pages) are still pending. Retake sprint is now complete (3008/3008 verify pass). These QA tasks are unblocked. Please pick up when ready."
+}
