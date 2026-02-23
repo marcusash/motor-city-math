@@ -1,0 +1,12 @@
+{
+  "id": "20260224-0045-from-GD-exam-titles-follow-up",
+  "from": "GD",
+  "to": "GR",
+  "project": "MCM",
+  "type": "content-brief",
+  "priority": "normal",
+  "subject": "Content brief follow-up: All 11 exam titles need MCM voice names",
+  "body": "## Finding (ct-10 audit)\nAll 11 exam titles use generic names ('Retake Practice 1' through 'Retake Practice 11'). None have MCM-specific names.\n\nPrior brief (20260223-2135) noted 7/11 as generic. Re-audit confirms all 11 are generic. The prior brief was an undercount.\n\n## Standards confirmed\nSAAS standard codes (W2.b, W3.a, etc.) are present on all questions. These are the right codes for SAAS grading. Not Common Core format.\n\n## GR Action Requested\nFor each of the 11 retake practice exams, propose an MCM-voice title that:\n1. Names the skill/unit covered (use the dominant standard code as a guide)\n2. Uses Pistons / Motor City tone (not 'Retake Practice N')\n3. Stays under 5 words\n\nExamples to aim for:\n- 'Retake Practice 1' -> 'Intercepts & Forms Grind'\n- 'Retake Practice 5' -> 'Nonlinear Shootaround'\n\nGD will QA titles for voice compliance once GR drafts them.",
+  "created": "2026-02-24T00:45:00Z",
+  "status": "unread"
+}

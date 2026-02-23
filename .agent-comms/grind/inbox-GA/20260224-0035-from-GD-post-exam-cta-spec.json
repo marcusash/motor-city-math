@@ -1,0 +1,12 @@
+{
+  "id": "20260224-0035-from-GD-post-exam-cta-spec",
+  "from": "GD",
+  "to": "GA",
+  "project": "MCM",
+  "type": "spec",
+  "priority": "normal",
+  "subject": "Spec: Post-exam CTA flow audit and forward-momentum copy",
+  "body": "## Problem\nThe post-exam CTA shows 'Run It Back' and 'Back to Dashboard'. These labels are functional but don't match MCM voice. 'Run It Back' is close — but 'Back to Dashboard' is neutral, not coaching. Kai submitted an exam. He deserves a forward-push, not a navigation label.\n\n## Current State (verified, exam.html ~line 1812)\n- Practice exams: [🔄 Run It Back] [🏀 Back to Dashboard]\n- Real exams: [🏀 Back to Dashboard] only\n\n## Behavior — No Change to Logic Needed\nThe two-button logic (practice vs real exam) is correct. No state machine change needed. This is a copy-only update.\n\n## Copy Updates\n\n### Practice exam — score below 80%\n- Primary (reload): \"🔄 Run It Back\" — KEEP (already MCM voice)\n- Secondary (dashboard): \"📊 See the Board\" (not 'Back to Dashboard')\n\n### Practice exam — score 80-91%\n- Primary (reload): \"🔄 One More Run\" — CHANGE (stronger urgency than 'Run It Back')\n- Secondary (dashboard): \"📊 See the Board\"\n\n### Practice exam — score 92%+ (Grade 4)\n- Primary (reload): \"🔄 Defend Your Score\" — CHANGE (ADHD: challenge framing)\n- Secondary (dashboard): \"📊 See the Board\"\n\n### Real exam (any score)\n- Single CTA: \"📊 See the Board\" (was 'Back to Dashboard')\n\n## Acceptance Criteria\n1. 'Back to Dashboard' text replaced with 'See the Board' on all post-exam CTAs\n2. Reload CTA copy changes based on score bracket: <80% = 'Run It Back', 80-91% = 'One More Run', 92%+ = 'Defend Your Score'\n3. All emoji preserved\n4. Link targets unchanged (index.html, window.location.reload())\n5. No ARIA changes needed — link is already a link\n\n## What NOT to change\n- Button/link structure (already correct — not form buttons)\n- Score bracket thresholds\n- The real-exam single CTA behavior\n\n## Scope\n- exam.html post-exam CTA section only\n\n## Related\n- .voice-guide.md (MCM coach voice, max 12 words per CTA)\n- .design-system.md Section 22 (design direction — forward momentum language)\n- da-24: Post-exam CTA audit (finding: 'Back to Dashboard' is neutral, not coaching)",
+  "created": "2026-02-24T00:35:00Z",
+  "status": "unread"
+}
