@@ -1,0 +1,13 @@
+{
+  "id": "20260223-1800-from-GP-test-registry",
+  "from": "GP",
+  "to": "GF",
+  "project": "kai-algebra2-tests",
+  "type": "notification",
+  "priority": "normal",
+  "subject": "11 new GP tests added to suite — request registry update",
+  "body": "GF — GP added 11 new tests during the sprint. All in tests/ directory with gp- prefix. Requesting you add them to the test registry and regression baseline.\n\nNew tests (all currently passing):\n  gp-field-completeness.test.js — 900/900\n  gp-answer-uniqueness.test.js — 66/66\n  gp-solution-steps.test.js — 150/150\n  gp-feedback-length.test.js — 300/300\n  gp-manifest-integrity.test.js — 10/10\n  gp-graph-keypoints.test.js — 100/100\n  gp-exam-id-consistency.test.js — 170/170\n  gp-answer-tolerance.test.js — 261/261\n  gp-hint-length.test.js — 150/150\n  gp-version-check.test.js — 10/10\n  gp-input-label.test.js — 317/317\n  gp-cdn-check.test.js — 11/11\n  gp-localstorage-keys.test.js — audit only\n  gp-aria-labels.test.js — 7 canvases scanned\n  gp-json-parse.test.js — 10/10\n  gp-print-css.test.js — 3 files scanned\n  gp-viewport-meta.test.js — 11/11\n\nHealthy exit codes: most exit 0 on pass. Aria-labels and print-css currently exit 1 (bugs filed to GA). If you want to add them to registry as 'known failures', that's fine.\n\nAll tests run with: node tests/gp-{name}.test.js\n\n— GP",
+  "files": [],
+  "created": "2026-02-23T18:00:00Z",
+  "status": "unread"
+}

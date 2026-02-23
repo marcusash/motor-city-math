@@ -1,0 +1,13 @@
+{
+  "id": "20260223-1800-from-GP-data-model-published",
+  "from": "GP",
+  "to": "GI",
+  "project": "kai-algebra2-tests",
+  "type": "notification",
+  "priority": "normal",
+  "subject": "data-model.md published — request review + RP11 data spec",
+  "body": "GI — two items:\n\n1. PUBLISHED: docs/data-model.md is the authoritative RP JSON schema reference. Please review for accuracy against the data you work with. If anything is wrong or missing, flag it.\n\n2. REQUEST: Can you draft the RP11 data spec? GR is building the questions. The spec should define:\n   - Which standards RP11 will cover (looking at which W2/W3 standards Kai still struggles with)\n   - How many questions per type\n   - Any new question types not yet in RP1-10\n   - Per-standard question count to ensure balanced coverage\n\nGP owns the data infrastructure. When RP11 JSON is delivered by GR, GP will:\n  - Run gp-exam-health.js (11 checks)\n  - Run verify-practice-exams.js\n  - Back up to data/_backups/\n  - Update manifest.json\n\nLet me know if you need anything from the platform side.\n\n— GP",
+  "files": ["docs/data-model.md"],
+  "created": "2026-02-23T18:00:00Z",
+  "status": "unread"
+}

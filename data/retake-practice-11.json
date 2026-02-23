@@ -1,0 +1,12 @@
+{
+  "exam_id": "retake-practice-11",
+  "schema_version": "2.0",
+  "title": "Unit 2 Retake Practice 11",
+  "subtitle": "RP11 — STUB — awaiting GR question authoring",
+  "time_minutes": 50,
+  "created": "2026-02-23",
+  "created_by": "GP",
+  "purpose": "Placeholder stub for RP11. GR to replace questions[] with full 15-question set targeting W2.d, W2.e, W3.d weak standards based on Kai's RP1-10 history.",
+  "questions": [],
+  "version": "2.0"
+}
