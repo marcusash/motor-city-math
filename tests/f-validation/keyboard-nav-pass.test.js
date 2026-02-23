@@ -27,7 +27,7 @@ function test(name, ok, detail = '') {
 
 console.log('\n🏀 keyboard-nav-pass.test.js\n');
 
-test('focus-visible outline rule exists', sharedCss.includes(':focus-visible') && sharedCss.includes('outline: 3px solid var(--accent-blue);'));
+test('focus-visible outline rule exists', sharedCss.includes(':focus-visible') && sharedCss.includes('outline: 3px solid var(--accent-blue-on-dark);'));
 test('focus fallback suppression exists', sharedCss.includes(':focus:not(:focus-visible)'));
 test('arena toggle has aria-label', sharedJs.includes("btn.setAttribute('aria-label', 'Toggle dark mode');"));
 test('shared back link has aria-label', sharedJs.includes("back.setAttribute('aria-label', 'Back to Dashboard');"));

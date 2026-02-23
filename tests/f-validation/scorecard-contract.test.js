@@ -27,7 +27,7 @@ console.log('\n🏀 scorecard-contract.test.js\n');
 test('scorecard mount node exists', examHtml.includes('<div id="scorecard"'));
 test('showScorecard function exists', examHtml.includes('function showScorecard(score, total, stdScores, results)'));
 test('score headline uses "You got X out of Y" copy contract', examHtml.includes("html += '<h2>You got ' + score + ' out of ' + total + '</h2>';"));
-test('scorecard percent node exists', examHtml.includes("html += '<div class=\"score-big\">' + pct + '%</div>';"));
+test('scorecard percent node exists', examHtml.includes('class="score-big" id="scoreBigEl"'));
 test('SAAS grade class contract exists', examHtml.includes("html += '<div class=\"saas-grade ' + gradeClass + '\">Grade ' + grade + '</div>';"));
 test('game plan heading contract exists', examHtml.includes("Your Game Plan"));
 test('standards grid and cards contract exists', examHtml.includes("standards-grid") && examHtml.includes("std-card"));
