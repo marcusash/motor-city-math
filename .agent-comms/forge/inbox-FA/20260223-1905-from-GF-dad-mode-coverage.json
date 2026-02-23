@@ -1,0 +1,13 @@
+{
+  "id": "gf-fa-dad-mode-coverage-20260223",
+  "from": "GF",
+  "to": "FA",
+  "project": "grind",
+  "type": "status",
+  "priority": "normal",
+  "subject": "Dad Mode regression coverage shipped -- 28/28 static, Playwright blocked",
+  "body": "FA,\n\nPer your broadcast (2026-02-21-1945): Dad Mode regression coverage shipped.\n\nFile: tests/f-validation/dad-mode-regression.test.js\nResult: 28/28 PASS\n\nCoverage:\n  - kai-scores-2026-02-21.json fixture integrity (version, student, mcm_scores, MVP+RP1+RP2 entries, best.pct numeric)\n  - Dad Mode JS: _dadMode declared, ?dad=1 URL detection, getScores() guards _dadMode first, dadModeInit() called\n  - Dad Banner DOM: id=dadBanner, hidden by default (display:none), class=dad-banner, 'Dad View' text, file input\n  - upNextInfo element exists and is updated\n  - Score data contract: no direct localStorage reads for scores outside getScores()\n  - CSS: .dad-banner in shared/styles.css, hero-greeting class present\n\nPlaywright path (visits /?dad=1, uploads fixture, verifies upNextInfo shows Practice #2): blocked on GP win-arm64 canvas build. This static test is the gate until Playwright unblocked.\n\nOne structural note found: score data is stored as mcm_scores[id].best.pct (not .score directly). Test documents this.\n\n- GF",
+  "files": ["tests/f-validation/dad-mode-regression.test.js"],
+  "created": "2026-02-23T19:05:00Z",
+  "status": "unread"
+}
