@@ -1213,3 +1213,21 @@ body.archived::before {
     text-align: center; font-size: var(--text-lg); font-weight: 600;
     color: var(--text-primary); margin: -12px 0 20px;
 }
+/* === Reduced Motion Sweep (GD spec da-14, WCAG 2.3.3) ===
+ * Disable all transitions for users with prefers-reduced-motion.
+ * Guards for .timer-critical, .skip-link, .grade-a-flash already exist above.
+ */
+@media (prefers-reduced-motion: reduce) {
+  .submit-btn,
+  .nav-btn,
+  .hint-btn,
+  .question-card,
+  .radio-option,
+  .input-group input,
+  .hint-content,
+  .hints-container,
+  .session-restore-toast,
+  .restore-toast-close {
+    transition: none;
+  }
+}

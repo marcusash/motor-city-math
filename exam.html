@@ -484,11 +484,11 @@
 
             // Hint layers
             html += '<div class="hint-layers" id="hints-' + q.id + '" style="display:none;">';
-            html += '<button class="hint-btn" id="hintBtn-' + q.id + '-1" aria-expanded="false" onclick="showHint(\'' + q.id + '\', 1)">💡 HINT</button>';
+            html += '<button class="hint-btn" id="hintBtn-' + q.id + '-1" aria-expanded="false" onclick="showHint(\'' + q.id + '\', 1)"><span aria-hidden="true">💡</span> HINT</button>';
             html += '<div class="hint-layer" id="hint-' + q.id + '-1">' + (q.hint || '') + '</div>';
-            html += '<button class="hint-btn" id="hintBtn-' + q.id + '-2" style="display:none;" onclick="showHint(\'' + q.id + '\', 2)">📖 SHOW ANSWER</button>';
+            html += '<button class="hint-btn" id="hintBtn-' + q.id + '-2" style="display:none;" onclick="showHint(\'' + q.id + '\', 2)"><span aria-hidden="true">📖</span> SHOW ANSWER</button>';
             html += '<div class="hint-layer" id="hint-' + q.id + '-2"></div>';
-            html += '<button class="hint-btn" id="hintBtn-' + q.id + '-3" style="display:none;" onclick="showHint(\'' + q.id + '\', 3)">📝 SOLUTION STEPS</button>';
+            html += '<button class="hint-btn" id="hintBtn-' + q.id + '-3" style="display:none;" onclick="showHint(\'' + q.id + '\', 3)"><span aria-hidden="true">📝</span> SOLUTION STEPS</button>';
             html += '<div class="hint-layer" id="hint-' + q.id + '-3"></div>';
             html += '</div>';
 
@@ -1108,7 +1108,7 @@
         var expanded = btn.getAttribute('aria-expanded') === 'true';
         if (expanded) {
             section.style.display = 'none';
-            btn.textContent = '📋 See Your Game Plan';
+            btn.innerHTML = '<span aria-hidden="true">📋</span> See Your Game Plan';
             btn.setAttribute('aria-expanded', 'false');
         } else {
             section.style.display = '';
@@ -1368,7 +1368,7 @@
         html += '<p style="margin-top:12px; color:var(--text-secondary); font-size:var(--text-sm);">' + coachMsg + '</p>';
 
         // Phase 1 CTA: See Your Game Plan (progressive disclosure)
-        html += '<button id="gameplanBtn" class="btn-secondary" aria-expanded="false" onclick="revealGamePlan()">📋 See Your Game Plan</button>';
+        html += '<button id="gameplanBtn" class="btn-secondary" aria-expanded="false" onclick="revealGamePlan()"><span aria-hidden="true">📋</span> See Your Game Plan</button>';
 
         // Phase 2: hidden until button pressed
         html += '<div id="gamePlanSection" style="display:none;">';
@@ -1394,15 +1394,15 @@
         var isRetake = examData && examData.exam_id && examData.exam_id.indexOf('retake') !== -1;
         if (!isRetake) {
             // Real exam: single forward-momentum CTA
-            html += '<div style="margin-top:16px;"><a href="index.html" class="nav-btn primary" style="text-decoration:none;">📊 See the Board</a></div>';
+            html += '<div style="margin-top:16px;"><a href="index.html" class="nav-btn primary" style="text-decoration:none;"><span aria-hidden="true">📊</span> See the Board</a></div>';
             if (grade < 3) {
                 html += '<p style="margin-top:10px; color:var(--text-secondary); font-size:var(--text-sm);">Score locked. Study the hints above, then hit the practice tests. 💪</p>';
             }
         } else {
             // Practice exam: reload CTA copy based on score bracket
-            var reloadLabel = pct >= 92 ? '🔄 Defend Your Score' : pct >= 80 ? '🔄 One More Run' : '🔄 Run It Back';
+            var reloadLabel = pct >= 92 ? '<span aria-hidden="true">🔄</span> Defend Your Score' : pct >= 80 ? '<span aria-hidden="true">🔄</span> One More Run' : '<span aria-hidden="true">🔄</span> Run It Back';
             html += '<div style="margin-top:16px;"><a href="javascript:location.reload()" class="nav-btn primary" style="text-decoration:none;">' + reloadLabel + '</a>';
-            html += ' <a href="index.html" class="nav-btn ghost" style="text-decoration:none; margin-left:8px;">📊 See the Board</a></div>';
+            html += ' <a href="index.html" class="nav-btn ghost" style="text-decoration:none; margin-left:8px;"><span aria-hidden="true">📊</span> See the Board</a></div>';
         }
         html += '</div>'; // end gamePlanSection
         html += '</div>';
