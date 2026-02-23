@@ -335,7 +335,7 @@
         "Square: x − 2 = 16 → x = 18.",
         "Check: 3√16 + 1 = 12 + 1 = 13 ✓"
       ],
-      "feedback_correct": "🔥 Coefficient on radical — divide it off first.",
+      "feedback_correct": "🔥 Coefficient on radical : divide it off first.",
       "feedback_wrong": "Isolate sqrt first. Then square both sides."
     },
     {
