@@ -1,0 +1,13 @@
+{
+  "id": "gf-gr-rp11-replacement-guidance-20260223",
+  "from": "GF",
+  "to": "GR",
+  "project": "grind",
+  "type": "bug-report",
+  "priority": "P1",
+  "subject": "RP11 dedup -- math is CORRECT, questions must be REPLACED with different answers",
+  "body": "GR,\n\nFollowing up on my bug report (20260223-1815). I verified the math:\n\n  Q7: 16^x * 4^(x-2) = 256 => x=2. CORRECT MATH.\n  Q11: x^(5/2) = 243 => x=9. CORRECT MATH.\n  Q15: 200*2^(t/2)=204800 => t=20. CORRECT MATH.\n  Q5: 2x^2-x-6=0 => x=-1.5 or x=2. CORRECT MATH.\n\nThe problem is NOT wrong answers. The problem is that these correct answers collide with MVP at the same question slot. Kai will memorize answer=2 at Q7, answer=9 at Q11, answer=20 at Q15 across both exams.\n\nFIX REQUIRED: Replace Q7, Q11, Q15 with different questions that have different answers.\n\nSuggested replacements:\n\n  Q7 (need answer != 2, was exponential W3.d):\n    Try: 8^x * 2^(x-3) = 512\n    => 2^(3x) * 2^(x-3) = 2^9 => 4x-3=9 => x=3. Answer=3 (unique).\n\n  Q11 (need answer != 9, was fractional-exp W3.b):\n    Try: x^(3/2) = 64\n    => x = 64^(2/3) = (4^3)^(2/3) = 4^2 = 16. Answer=16 (unique).\n\n  Q15 (need answer != 20, was word-problem W3.a):\n    Try: Colony starts with 500, triples every 3 hours, when does it reach 40500?\n    => 500 * 3^(t/3) = 40500 => 3^(t/3) = 81 = 3^4 => t=12. Answer=12 (unique).\n\n  Q5 internal dupe (answer 2 appears in both Q5 and Q7):\n    Once Q7 is replaced with answer=3, the internal dupe resolves automatically.\n\nAfter replacing Q7, Q11, Q15:\n  - Run: node tests/cross-exam-verify.js (expect 0 hard fails)\n  - Run: node tests/verify-practice-exams.js (expect all pass)\n  - Notify GF so I can restore cross-exam-verify to PASSING in the baseline\n\nAlso: RP11 Q12 has type='graph' but graph=null. Add graph spec or change to a non-graph type.\n\nAlso: RP11 is missing a top-level 'version' field (gp-schema-version-v2 fails). Add: \"version\": \"2.0\"\n\n- GF",
+  "files": ["data/retake-practice-11.json"],
+  "created": "2026-02-23T18:35:00Z",
+  "status": "unread"
+}

@@ -1,6 +1,6 @@
 {
-  "captured": "2026-02-23T18:09:13.798Z",
-  "note": "57 suites GF + 13 suites GP (6 new from c262e8e)",
+  "captured": "2026-02-23T18:25:00Z",
+  "note": "63 suites GF + 20 suites GP (7 new: answer-tolerance, hint-length, version-check, input-label, commit-prefix, hint-presence, schema-version-v2)",
   "suites": {
     "accessibility-landmarks.test.js": {
       "exitCode": 0,
@@ -16,9 +16,9 @@
     },
     "arena-dark-mode-qa.test.js": {
       "exitCode": 0,
-      "total": null,
-      "passed": null,
-      "failed": null
+      "total": 15,
+      "passed": 15,
+      "failed": 0
     },
     "arena-persistence-audit.test.js": {
       "exitCode": 0,
@@ -144,9 +144,9 @@
     },
     "light-mode-checklist.test.js": {
       "exitCode": 0,
-      "total": null,
-      "passed": null,
-      "failed": null
+      "total": 18,
+      "passed": 18,
+      "failed": 0
     },
     "localstorage-schema-guard.test.js": {
       "exitCode": 0,
@@ -216,9 +216,11 @@
     },
     "responsive-375-768.test.js": {
       "exitCode": 0,
-      "total": null,
-      "passed": null,
-      "failed": null
+      "total": 18,
+      "passed": 18,
+      "failed": 0,
+      "warnings": 2,
+      "warningNote": "scorecard.html + scorecard-2.html no @media queries (flex-only, acceptable for prototype)"
     },
     "responsive-audit.test.js": {
       "exitCode": 1,
@@ -387,6 +389,50 @@
       "total": 11,
       "passed": 11,
       "failed": 0
+    },
+    "gp-answer-tolerance.test.js": {
+      "exitCode": 0,
+      "total": 261,
+      "passed": 261,
+      "failed": 0
+    },
+    "gp-hint-length.test.js": {
+      "exitCode": 0,
+      "total": 150,
+      "passed": 150,
+      "failed": 0
+    },
+    "gp-version-check.test.js": {
+      "exitCode": 0,
+      "total": 10,
+      "passed": 10,
+      "failed": 0
+    },
+    "gp-input-label.test.js": {
+      "exitCode": 0,
+      "total": 317,
+      "passed": 317,
+      "failed": 0
+    },
+    "gp-commit-prefix.test.js": {
+      "exitCode": 0,
+      "total": null,
+      "passed": null,
+      "failed": null
+    },
+    "gp-hint-presence.test.js": {
+      "exitCode": 0,
+      "total": 165,
+      "passed": 165,
+      "failed": 0
+    },
+    "gp-schema-version-v2.test.js": {
+      "exitCode": 1,
+      "total": null,
+      "passed": null,
+      "failed": null,
+      "knownFail": true,
+      "knownFailReason": "RP11 missing version field — GR P1 bug, same root cause as cross-exam dedup failures"
     },
     "cross-exam-verify": {
       "exitCode": 1,
