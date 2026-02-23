@@ -1,0 +1,12 @@
+{
+  "id": "20260224-0130-from-GD-answer-explanation-spec",
+  "from": "GD",
+  "to": "GA",
+  "project": "MCM",
+  "type": "spec",
+  "priority": "low",
+  "subject": "Spec: Scorecard per-question answer explanation (design spec, deferred)",
+  "body": "## Problem\nScorecard currently shows per-standard aggregates (X/Y correct per standard). Kai can see he got 2/5 on W2.b but can't see which specific questions he missed or what the right answers were. After exam submission, Kai has no way to study his mistakes.\n\n## Proposal: Post-Exam Review Mode\n\nAfter scorecard Stage 1 (score/grade/coach), Stage 2 now has two sections:\n\n### Section A: Per-Standard Summary (existing)\nX/Y correct per standard -- keep as-is.\n\n### Section B: Review My Missed Questions (new)\n'Review Missed' accordion -- lists questions Kai answered wrong.\n\nFor each missed question:\n- Question text (from the exam)\n- Kai's answer (highlighted in red, crossed out)\n- Correct answer (highlighted in green)\n- feedback_wrong text from the JSON (reused -- already written by GR)\n\nAnatomy:\n```\n┌──────────────────────────────────────────┐\n│  Q3: What is the vertex form of...       │\n│  Your answer: y = 2(x+3)^2 - 1 ✗       │\n│  Correct: y = 2(x-3)^2 - 1 ✓            │\n│  Vertex gives h,k. Plug in point...      │\n└──────────────────────────────────────────┘\n```\n\n## Priority: LOW (deferred)\nThis is a significant feature addition. Not filing as a GA spec yet.\n\nBlocking questions before spec goes live:\n1. Is there concern about Kai memorizing answers if he sees them post-exam? (Marcus/GR input needed)\n2. Do we want to show ALL questions or just missed ones?\n3. Does this affect the localStorage score storage format?\n\nFiling this as a design idea only. Not actionable until blocking questions resolved.\n\n## For Marcus at Next 1:1\nPost-exam review mode: does Marcus want Kai to be able to see his wrong answers after submission? This shapes the feature scope significantly.\n\n## Priority: LOW / DEFERRED\n\n## Related\n- sw-13: Answer explanation field in scorecard\n- data/*.json: feedback_wrong field (already present on all questions)",
+  "created": "2026-02-24T01:30:00Z",
+  "status": "unread"
+}

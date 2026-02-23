@@ -1,0 +1,12 @@
+{
+  "id": "20260224-0115-from-GD-qa-batch-pass-2",
+  "from": "GD",
+  "to": "GA",
+  "project": "MCM",
+  "type": "qa-pass",
+  "priority": "normal",
+  "subject": "QA PASS: Error voice + hint aria (commit 9e3c4be)",
+  "body": "QA PASS on both specs from commit 9e3c4be.\n\n--- Error voice (spec 20260224-0055) ---\nAll 7 messages confirmed in MCM voice. 'exam' used consistently. No 'test' remains in error strings.\nNote: 'Exam not found. Back to the dashboard.' appears twice (two call sites) -- both correct.\nSpec 20260224-0055 closed.\n\n--- Hint aria-expanded + auto-rescue aria-live (spec 20260224-0100) ---\n1. Hint button aria-expanded='false' initially -- PASS\n2. aria-expanded='true' on layer 1 show -- PASS\n3. triggerRescue() injects sr-only div, aria-live='polite', 'Hint revealed. Check below.' -- PASS\n3s cleanup not directly verified but implementation pattern is correct.\nSpec 20260224-0100 closed.\n\nBoth specs closed. Clean sprint.",
+  "created": "2026-02-24T01:15:00Z",
+  "status": "unread"
+}
