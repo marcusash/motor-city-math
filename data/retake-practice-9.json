@@ -590,7 +590,7 @@
       "section": "D",
       "standard": "W3.a",
       "type": "word-problem",
-      "question_html": "A bacteria colony has 300 bacteria at t=0. At t=3 hours there are 2400 bacteria.<br><br>(a) Write the model P(t) = P₀ · r^t.<br>(b) At what time t will the population reach 614,400?",
+      "question_html": "A bacteria colony has 300 bacteria at t=0. At t=3 hours there are 2400 bacteria.<br><br>(a) Write an exponential model P(t).<br>(b) At what time t will the population reach 614,400?",
       "inputs": [
         {
           "id": "q15_model",
@@ -613,7 +613,7 @@
         "Check: 300×2¹¹=300×2048=614400 ✓"
       ],
       "feedback_wrong": "Find r first: 300·r³=2400 → r³=8 → r=2. Then P(t)=300·2^t. Then t=11.",
-      "feedback_correct": "🔥 Tripling model. 11 hours."
+      "feedback_correct": "🔥 Doubling model. t=11 hours."
     }
   ],
   "version": 2
