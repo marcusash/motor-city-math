@@ -46,6 +46,17 @@ function validateInputs(qid, inputs) {
     return;
   }
 
+  // Check for duplicate input IDs within the question
+  const inputIds = new Set();
+  for (const inp of inputs) {
+    if (inp && inp.id) {
+      if (inputIds.has(inp.id)) {
+        error(`${qid}: duplicate input id "${inp.id}"`);
+      }
+      inputIds.add(inp.id);
+    }
+  }
+
   for (const inp of inputs) {
     if (!inp || inp.id === undefined || inp.type === undefined || inp.label === undefined) {
       error(`${qid}: input missing id/type/label`);
@@ -65,17 +76,28 @@ function validateInputs(qid, inputs) {
     if (inp.type === 'number') {
       if (typeof inp.answer !== 'number') {
         error(`${qid}: input ${inp.id} answer must be number`);
+      } else if (!isFinite(inp.answer) || isNaN(inp.answer)) {
+        error(`${qid}: input ${inp.id} answer is NaN or Infinity (${inp.answer})`);
       }
       if (typeof inp.tolerance !== 'number') {
         error(`${qid}: input ${inp.id} missing numeric tolerance`);
+      } else if (inp.tolerance <= 0) {
+        error(`${qid}: input ${inp.id} tolerance must be > 0 (got ${inp.tolerance})`);
       }
     }
 
     if (inp.type === 'dropdown') {
       if (!Array.isArray(inp.options) || inp.options.length === 0) {
         error(`${qid}: input ${inp.id} dropdown options missing`);
-      } else if (!inp.options.includes(inp.answer)) {
-        error(`${qid}: input ${inp.id} answer not in dropdown options`);
+      } else {
+        // Check unique options
+        const optSet = new Set(inp.options);
+        if (optSet.size !== inp.options.length) {
+          error(`${qid}: input ${inp.id} dropdown has duplicate options`);
+        }
+        if (!inp.options.includes(inp.answer)) {
+          error(`${qid}: input ${inp.id} answer not in dropdown options`);
+        }
       }
     }
 
@@ -84,6 +106,11 @@ function validateInputs(qid, inputs) {
         error(`${qid}: input ${inp.id} radio options missing`);
       } else {
         const values = inp.options.map((opt) => (opt && opt.value !== undefined ? opt.value : opt));
+        // Check unique radio values
+        const valSet = new Set(values);
+        if (valSet.size !== values.length) {
+          error(`${qid}: input ${inp.id} radio has duplicate option values`);
+        }
         if (!values.includes(inp.answer)) {
           error(`${qid}: input ${inp.id} answer not in radio options`);
         }
