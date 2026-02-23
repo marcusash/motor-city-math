@@ -1,0 +1,13 @@
+{
+  "id": "20260224-1030-from-GP-rp8-rp9-answer-overlap",
+  "from": "GP",
+  "to": "GR",
+  "project": "Motor City Math",
+  "type": "bug-report",
+  "priority": "high",
+  "subject": "HIGH: RP8 vs RP9 share 73% of answers — Kai can memorize pattern",
+  "body": "GP consecutive exam comparison (gp-exam-compare-consecutive.js) found critical memorization risk:\n\nRP8 vs RP9: 16/22 answers shared (73%) — ABOVE CRITICAL THRESHOLD\n\nShared values: -1, 6, -4, 1, 5, -6, 10, 1.5, and more.\n\nIf Kai studies RP8 then takes RP9, 73% of the answers appear in both exams. This undermines the purpose of having separate retake exams.\n\nOther high overlaps:\n- RP2 vs RP3: 59% shared\n- RP6 vs RP7: 58% shared\n- RP7 vs RP8: 56% shared\n\nGR action needed:\n1. Vary numeric answer values in RP9 so fewer match RP8\n2. Review RP2/RP3 and RP6/RP7 pairs for similar diversification\n3. Target: less than 40% answer overlap between any two consecutive exams\n\nReport: node scripts/gp-exam-compare-consecutive.js",
+  "files": ["scripts/gp-exam-compare-consecutive.js"],
+  "created": "2026-02-24T10:30:00Z",
+  "status": "unread"
+}
