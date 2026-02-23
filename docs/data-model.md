@@ -194,3 +194,46 @@ Written by `exam.html autosave()` every 800ms while exam is in progress. Read by
 ```
 
 Key format: `exam-autosave-{examId}`. Cleared when user submits exam.
+
+---
+
+## Progress Story Card Data Flow (sw-11)
+
+uildProgressStory() in index.html reads from mcm_scores (via getScores()) and the 	ests registry.
+
+### Input
+
+- 	ests[] — ordered registry array in index.html. Contains { id, name } for all exams.
+- getScores() — reads localStorage.mcm_scores, returns { [examId]: ScoreEntry }.
+
+### Score Entry Shape
+
+`json
+{
+  "best": 93,
+  "attempts": [
+    { "pct": 87, "date": "2026-02-19" },
+    { "pct": 93, "date": "2026-02-20" }
+  ]
+}
+`
+
+### Data Flow
+
+1. Filter 	ests[] to entries that have scores[t.id] with at least 1 attempt.
+2. Map to { label, pct } using ttempts[attempts.length - 1].pct (most recent score).
+3. Take last 5 results (slice(-5)).
+4. Compute diff = last.pct - first.pct across the 5-result window.
+5. Render narrative: diff > +3 = improved, diff < -3 = dipped, else flat.
+6. Show card if results >= 3. Hide if < 3 (not enough data for a story).
+
+### Short Label Mapping
+
+	.name.replace('Retake Practice #', 'RP').replace(/ \(.*\)$/, '')
+
+Examples: "Retake Practice #1" -> "RP1", "Final Exam (Nov 23)" -> "Final Exam".
+
+### Graceful Degradation
+
+Full 	ry/catch around all logic. Any exception hides the card (card.style.display = 'none').
+No localStorage writes -- read-only data consumer.

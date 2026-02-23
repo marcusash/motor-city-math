@@ -429,11 +429,11 @@ function initTimer(opts) {
     var toastsFired = {};
 
     function formatTime(s) {
+        if (!isFinite(s) || s < 0) return '0:00';
         var m = Math.floor(s / 60);
         var sec = s % 60;
         return m + ':' + (sec < 10 ? '0' : '') + sec;
     }
-
     function showToast(msg) {
         var toast = document.createElement('div');
         toast.className = 'timer-toast';
@@ -616,6 +616,7 @@ function initTimer(opts) {
         }
 
         function formatTime(s) {
+            if (!isFinite(s) || s < 0) return '0:00';
             var m = Math.floor(s / 60);
             var sec = s % 60;
             return m + ':' + (sec < 10 ? '0' : '') + sec;
