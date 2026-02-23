@@ -125,6 +125,9 @@
             text-align: right; border-bottom: 1px solid var(--border-subtle); display: none;
         }
         @media (max-width: 480px) { #questionTracker { padding: 4px 12px; } }
+        @keyframes tracker-all-done { 0% { background: var(--bg-page); } 50% { background: var(--color-correct, #3FB950); color: white; } 100% { background: var(--bg-page); } }
+        .tracker-all-done { animation: tracker-all-done 200ms ease-out; }
+        @media (prefers-reduced-motion: reduce) { .tracker-all-done { animation: none; } }
         /* Post-wrong nudge */
         .wrong-nudge {
             font-size: var(--text-sm); color: var(--text-secondary);
@@ -336,10 +339,10 @@
                 return r.json();
             }).then(loadExam).catch(function(e) {
                 var msg = e && e.message === '404'
-                    ? 'Test not found. Pick a different one.'
+                    ? 'Exam not found. Back to the dashboard.'
                     : e && e.message && e.message.indexOf('status:') === 0
-                        ? 'Server error. Refresh or pick a different test.'
-                        : "Can't reach this test. Check your wifi and try again.";
+                        ? "Server's down. Refresh or try a different exam."
+                        : "Connection dropped. Refresh and try again.";
                 showLoadError(msg);
             });
         } else {
@@ -348,16 +351,16 @@
             xhr.onload = function() {
                 if (xhr.status === 200 || xhr.status === 0) {
                     try { loadExam(JSON.parse(xhr.responseText)); } catch(e) {
-                        showLoadError("Something's off with this file. Try a different test.", true);
+                        showLoadError('This exam has a data error. Try a different one or reload.', true);
                     }
                 } else if (xhr.status === 404) {
-                    showLoadError('Test not found. Pick a different one.', true);
+                    showLoadError('Exam not found. Back to the dashboard.', true);
                 } else {
-                    showLoadError('Server error (' + xhr.status + '). Refresh or pick a different test.');
+                    showLoadError('Server error (' + xhr.status + '). Refresh or pick a different exam.');
                 }
             };
             xhr.onerror = function() {
-                showLoadError("Can't connect right now. Refresh and try again.");
+                showLoadError("Connection dropped. Refresh and try again.");
             };
             xhr.send();
         }
@@ -392,7 +395,7 @@
 
         // State 5: empty questions guard
         if (!data.questions || data.questions.length === 0) {
-            showLoadError('This test has no questions yet. Pick a different one.', true);
+            showLoadError('No questions loaded yet. Pick a different exam.', true);
             return;
         }
 
@@ -423,13 +426,24 @@
             var tracker = document.getElementById('questionTracker');
             var qEls = document.getElementById('questionsContainer').querySelectorAll('.question-card');
             if (tracker && qEls.length > 1) {
-                tracker.textContent = 'Q1 of ' + qEls.length;
+                window.mcmAnsweredCount = window.mcmAnsweredCount || 0;
+                var total = qEls.length;
+                function updateTrackerDisplay(idx) {
+                    var done = window.mcmAnsweredCount;
+                    var doneStr = done >= total ? ' \u2022 All done!' : (done > 0 ? ' \u2022 ' + done + ' done' : '');
+                    tracker.textContent = 'Q' + idx + ' of ' + total + doneStr;
+                    tracker.setAttribute('aria-label', 'Question ' + idx + ' of ' + total + '. ' + done + ' questions answered.');
+                }
+                window.mcmUpdateTrackerDisplay = updateTrackerDisplay;
+                window.mcmTrackerCurrentQ = 1;
+                updateTrackerDisplay(1);
                 tracker.style.display = '';
                 var io = new IntersectionObserver(function(entries) {
                     entries.forEach(function(e) {
                         if (e.isIntersecting) {
                             var idx = Array.prototype.indexOf.call(qEls, e.target) + 1;
-                            tracker.textContent = 'Q' + idx + ' of ' + qEls.length;
+                            window.mcmTrackerCurrentQ = idx;
+                            updateTrackerDisplay(idx);
                         }
                     });
                 }, { rootMargin: '-20% 0px -60% 0px', threshold: 0 });
@@ -480,7 +494,7 @@
 
             // Hint layers
             html += '<div class="hint-layers" id="hints-' + q.id + '" style="display:none;">';
-            html += '<button class="hint-btn" onclick="showHint(\'' + q.id + '\', 1)">💡 HINT</button>';
+            html += '<button class="hint-btn" id="hintBtn-' + q.id + '-1" aria-expanded="false" onclick="showHint(\'' + q.id + '\', 1)">💡 HINT</button>';
             html += '<div class="hint-layer" id="hint-' + q.id + '-1">' + (q.hint || '') + '</div>';
             html += '<button class="hint-btn" id="hintBtn-' + q.id + '-2" style="display:none;" onclick="showHint(\'' + q.id + '\', 2)">📖 SHOW ANSWER</button>';
             html += '<div class="hint-layer" id="hint-' + q.id + '-2"></div>';
@@ -928,6 +942,8 @@
         if (layer === 1) {
             el.classList.add('show');
             document.getElementById('hintBtn-' + qId + '-2').style.display = 'inline-block';
+            var btn1 = document.getElementById('hintBtn-' + qId + '-1');
+            if (btn1) btn1.setAttribute('aria-expanded', 'true');
         } else if (layer === 2) {
             // Show answer
             var answerText = '';
@@ -1025,6 +1041,13 @@
         var hintBtn3 = document.getElementById('hintBtn-' + qId + '-3');
         if (hintBtn3) hintBtn3.style.display = '';
         if (fbEl) fbEl.textContent = 'Off target. Check the hint below.';
+        // Announce auto-rescue to screen readers (GD spec: aria-live polite on rescue)
+        var liveEl = document.createElement('div');
+        liveEl.setAttribute('aria-live', 'polite');
+        liveEl.setAttribute('class', 'sr-only');
+        liveEl.textContent = 'Hint revealed. Check below.';
+        document.body.appendChild(liveEl);
+        setTimeout(function() { if (liveEl.parentNode) liveEl.parentNode.removeChild(liveEl); }, 3000);
         var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         hints.scrollIntoView({ behavior: prefersReduced ? 'instant' : 'smooth', block: 'nearest' });
     }
@@ -1178,13 +1201,27 @@
             if (qCorrect) {
                 score++;
                 stdScores[std].correct++;
+                // Update answered count for position tracker (GD spec: show answered count)
+                if (!window.answeredQuestions) window.answeredQuestions = {};
+                if (!window.answeredQuestions[q.id]) {
+                    window.answeredQuestions[q.id] = true;
+                    window.mcmAnsweredCount = Object.keys(window.answeredQuestions).length;
+                    if (typeof window.mcmUpdateTrackerDisplay === 'function') {
+                        window.mcmUpdateTrackerDisplay(window.mcmTrackerCurrentQ || 1);
+                        // All-done flash (Enhancement 2: reduced-motion guard is in CSS)
+                        if (examData && window.mcmAnsweredCount >= examData.questions.length) {
+                            var tr = document.getElementById('questionTracker');
+                            if (tr) { tr.classList.add('tracker-all-done'); setTimeout(function() { tr.classList.remove('tracker-all-done'); }, 300); }
+                        }
+                    }
+                }
             }
             results.push(qCorrect);
 
             // Show feedback
             var fb = document.getElementById('feedback-' + q.id);
             if (fb) {
-                var msg = qCorrect ? (q.feedback_correct || '🔥 Correct!') : (q.feedback_wrong || 'Review the hint.');
+                var msg = qCorrect ? (q.feedback_correct || '🔥 Correct!') : (q.feedback_wrong || "Check the hint -- it's there for a reason.");
                 // Graph+vertex split: if graph failed but all number inputs were correct, say so
                 if (!qCorrect && q.graph && numberInputs.length > 0) {
                     var allInputsCorrect = numberInputs.every(function(n) {
