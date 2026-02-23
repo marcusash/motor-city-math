@@ -173,6 +173,16 @@
 
         .footer { text-align: center; color: var(--text-secondary); font-size: var(--text-sm); padding: 20px 0 10px; }
 
+        /* Score corruption recovery banner */
+        .score-error-banner { display: flex; flex-direction: column; gap: 8px; padding: 12px 16px; background: rgba(200,16,46,0.08); border: 1px solid var(--accent-red); border-radius: 8px; margin-bottom: 16px; }
+        .score-error-icon { font-size: 1.1em; }
+        .score-error-msg { font-size: var(--text-sm); color: var(--text-primary); line-height: 1.4; }
+        .score-error-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+        .score-error-clear { background: none; border: 1px solid var(--accent-red); color: var(--accent-red); padding: 6px 12px; border-radius: 6px; font-size: var(--text-sm); font-weight: 600; cursor: pointer; }
+        .score-error-clear:hover { background: rgba(200,16,46,0.1); }
+        .score-error-dismiss { background: none; border: 1px solid var(--text-secondary); color: var(--text-secondary); padding: 6px 12px; border-radius: 6px; font-size: var(--text-sm); cursor: pointer; }
+        .score-error-dismiss:hover { background: rgba(0,0,0,0.06); }
+
         @media (max-width: 768px) {
             .standards-grid { grid-template-columns: 1fr; }
             .test-grid { grid-template-columns: 1fr; }
@@ -940,6 +950,21 @@
     }
 
     /* ========== INIT ========== */
+    function showScoreErrorBanner() {
+        var banner = document.getElementById('scoreErrorBanner');
+        if (banner) banner.style.display = '';
+    }
+    function dismissScoreError() {
+        var banner = document.getElementById('scoreErrorBanner');
+        if (banner) banner.style.display = 'none';
+    }
+    function clearCorruptedScores() {
+        if (!confirm('Clear score history? This cannot be undone.')) return;
+        localStorage.removeItem('mcm_scores');
+        _scoreParseError = null;
+        dismissScoreError();
+        rerenderAll();
+    }
     function rerenderAll() {
         buildChart();
         var stdResult = buildStandards();
@@ -1017,6 +1042,7 @@
         }
         dadModeInit();
         rerenderAll();
+        if (_scoreParseError) showScoreErrorBanner();
 
         // Auto-seed: if localStorage has no scores, fetch latest from server
         var _localScores = getScores();
