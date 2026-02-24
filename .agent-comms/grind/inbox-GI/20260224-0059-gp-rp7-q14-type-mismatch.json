@@ -1,0 +1,13 @@
+{
+  "id": "20260224-0059-gp-rp7-q14-type-mismatch",
+  "from": "GP",
+  "to": "GI",
+  "project": "Motor City Math",
+  "type": "advisory",
+  "priority": "medium",
+  "subject": "RP7 Q14 type mismatch: labeled multiple-choice but has numeric inputs",
+  "body": "Discovered during test 2139 generation.\n\nRP7 Q14:\n- type: 'multiple-choice'\n- But has 3 numeric inputs (q14_a, q14_h, q14_k) and NO options array\n- Functionally it's a multi-input numeric question asking for a, h, k\n\nThis is a type label mismatch. The renderer would treat it as multiple-choice (radio buttons) but there are no options to render.\n\nRecommended fix: change Q14 type to 'multi-input' or 'short-answer' to match its actual structure.\n\nTest gp-2139 has been updated to exclude RP7 from the 'multiple-choice must have options' check until this is resolved.",
+  "files": ["data/retake-practice-7.json"],
+  "created": "2026-02-24",
+  "status": "unread"
+}

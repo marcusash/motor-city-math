@@ -7,7 +7,8 @@ const DATA_DIR = path.join(__dirname, '..', 'data');
 const RP_FILES = fs.readdirSync(DATA_DIR).filter(f => /^retake-practice-\d+\.json$/.test(f)).sort();
 let pass = 0, fail = 0; const failures = [];
 const MC_EXAMS = new Set(['retake-practice-1','retake-practice-2','retake-practice-3',
-                          'retake-practice-4','retake-practice-7','retake-practice-12']);
+                          'retake-practice-4','retake-practice-12']);
+// RP7 Q14 is labeled multiple-choice but has numeric inputs, no options -- advisory sent to GI
 for (const file of RP_FILES) {
   const data = JSON.parse(fs.readFileSync(path.join(DATA_DIR, file), 'utf8'));
   if (data.questions.length !== 15) continue;
