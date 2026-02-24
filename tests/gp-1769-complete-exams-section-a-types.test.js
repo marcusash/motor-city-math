@@ -4,7 +4,9 @@
 const fs = require('fs'), path = require('path');
 const DATA_DIR = path.join(__dirname, '..', 'data');
 const RP_FILES = fs.readdirSync(DATA_DIR).filter(f => /^retake-practice-\d+\.json$/.test(f)).sort();
-const SECTION_A_TYPES = new Set(['identify','quadratic']); // older: identify, newer: quadratic
+// older: identify, newer: quadratic, exception: rp9-q3 = absolute-value
+const SECTION_A_TYPES = new Set(['identify','quadratic','absolute-value']);
+const KNOWN_EXCEPTIONS = new Set(['rp9-q3']); // RP9 Q3 is absolute-value in Section A
 let pass = 0, fail = 0; const failures = [];
 for (const file of RP_FILES) {
   const data = JSON.parse(fs.readFileSync(path.join(DATA_DIR, file), 'utf8'));
