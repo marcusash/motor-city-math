@@ -1,18 +1,20 @@
-// gp-2186-complete-exams-time-limit-numeric.test.js
-// All exams must have numeric positive time_limit.
-// EXCEPTION: RP9 has no time_limit field (advisory to GI).
+// gp-2186-complete-exams-time-minutes-snapshot.test.js
+// Snapshot lock on time_minutes field. OLDER exams (RP1-7, RP12) = 60. NEWER (RP8-11) = 50.
 
 const fs = require('fs'), path = require('path');
 const DATA_DIR = path.join(__dirname, '..', 'data');
-const RP_FILES = fs.readdirSync(DATA_DIR).filter(f => /^retake-practice-\d+\.json$/.test(f)).sort();
+const EXPECTED = {
+  'retake-practice-1': 60, 'retake-practice-2': 60, 'retake-practice-3': 60,
+  'retake-practice-4': 60, 'retake-practice-5': 60, 'retake-practice-6': 60,
+  'retake-practice-7': 60, 'retake-practice-8': 50, 'retake-practice-9': 50,
+  'retake-practice-10': 50, 'retake-practice-11': 50, 'retake-practice-12': 60
+};
 let pass = 0, fail = 0; const failures = [];
-for (const file of RP_FILES) {
-  const data = JSON.parse(fs.readFileSync(path.join(DATA_DIR, file), 'utf8'));
-  if (data.questions.length !== 15) continue;
-  if (data.exam_id === 'retake-practice-9') { pass++; continue; } // no time_limit, advisory to GI
-  if (typeof data.time_limit === 'number' && data.time_limit > 0) pass++;
-  else { fail++; failures.push(file + ' time_limit=' + data.time_limit); }
+for (const [exam_id, expected] of Object.entries(EXPECTED)) {
+  const data = JSON.parse(fs.readFileSync(path.join(DATA_DIR, exam_id + '.json'), 'utf8'));
+  if (data.time_minutes === expected) pass++;
+  else { fail++; failures.push(exam_id + ': expected ' + expected + ' got ' + data.time_minutes); }
 }
-console.log('gp-2186-time-limit-numeric: ' + pass + ' pass, ' + fail + ' fail');
+console.log('gp-2186-time-minutes-snapshot: ' + pass + ' pass, ' + fail + ' fail');
 if (fail > 0) { failures.forEach(f => console.log('  FAIL:', f)); process.exit(1); }
-console.log('OK -- All exams have numeric positive time_limit (RP9 exception documented)');
+console.log('OK -- All exams time_minutes snapshot locked (OLDER=60, NEWER=50)');
