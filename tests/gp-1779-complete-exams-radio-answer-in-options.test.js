@@ -12,7 +12,8 @@ for (const file of RP_FILES) {
     for (const inp of (q.inputs||[])) {
       if (inp.type !== 'radio') continue;
       if (!Array.isArray(inp.options)) continue;
-      if (inp.options.includes(inp.answer)) pass++;
+      const optVals = inp.options.map(o => typeof o === 'object' ? o.value : o);
+      if (optVals.includes(inp.answer)) pass++;
       else { fail++; failures.push(data.exam_id + ':' + q.id + ':' + inp.id + ' answer=' + inp.answer + ' not in options'); }
     }
   }
