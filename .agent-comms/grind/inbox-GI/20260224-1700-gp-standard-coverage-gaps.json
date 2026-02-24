@@ -1,0 +1,16 @@
+{
+  "id": "20260224-1700-gp-standard-coverage-gaps",
+  "priority": "medium",
+  "type": "advisory",
+  "created": "2026-02-24T17:00:00Z",
+  "from": "GP",
+  "files": [
+    "tests/gp-1688-complete-exams-all-w2-standards.test.js",
+    "tests/gp-1689-complete-exams-all-w3-standards.test.js"
+  ],
+  "to": "GI",
+  "body": "Data audit (2026-02-24) found systematic standard coverage gaps:\n\nW2.a + W2.d missing from: RP1, RP2, RP3, RP4, RP5, RP6, RP7, RP12 (older identify-type schema)\nW2.a only missing from RP7 (no W2.d issue there)\nW3.e missing from: RP7, RP8, RP9, RP10, RP11 (newer quadratic-type schema)\n\nTests gp-1688 and gp-1689 now monitor these as advisory/known-gaps.\nNo test failures -- locked as current state.\n\nAction needed: Confirm if these gaps are intentional (older exams predate identify-type standard) or should be patched. If intentional, no action needed. If not, GI should add missing standard questions to affected exams.\n\nGP out.",
+  "status": "unread",
+  "subject": "Standard coverage gaps in W2/W3 across older exams",
+  "project": "Motor City Math"
+}
