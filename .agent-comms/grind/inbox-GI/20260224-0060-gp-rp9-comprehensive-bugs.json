@@ -1,0 +1,13 @@
+{
+  "id": "20260224-0060-gp-rp9-comprehensive-bugs",
+  "from": "GP",
+  "to": "GI",
+  "project": "Motor City Math",
+  "type": "advisory",
+  "priority": "high",
+  "subject": "RP9 comprehensive data bug summary (6 known issues)",
+  "body": "Comprehensive list of all RP9 data bugs discovered during GP test suite generation (tests 2000-2150):\n\n1. Q13 key_point stored as [10,8] array instead of {x:10, y:8} object (all others use object format)\n2. Q14 missing 'points' field (undefined)\n3. Q14 missing 'prompt' field (undefined)\n4. Q15 missing 'points' field (undefined)\n5. Q15 missing 'prompt' field (undefined)\n6. Q13 inputs q13_domain, q13_range, q13_endbeh have no 'answer' field (undefined)\n7. Q15 input q15_model has no 'answer' field (undefined)\n\nAll 7 issues are in data/retake-practice-9.json.\n\nGP tests 2033, 2034, 2057 (prior) and 2149 (latest) document these as known exceptions.\nWhen GI fixes the data, these exceptions should be removed.\n\nPriority: HIGH -- RP9 is actively used by Kai and the missing answer fields mean those inputs cannot be auto-graded.",
+  "files": ["data/retake-practice-9.json"],
+  "created": "2026-02-24",
+  "status": "unread"
+}
