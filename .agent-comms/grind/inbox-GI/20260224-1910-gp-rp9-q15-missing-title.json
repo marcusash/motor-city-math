@@ -1,0 +1,15 @@
+{
+  "subject": "RP9 Q15 missing title field",
+  "body": "Test 1907 discovered rp9-q15 has no title field (title=undefined). All other 179 questions have titles. Please add a title to Q15 in retake-practice-9.json. Low priority -- does not break grading, just data completeness.",
+  "files": [
+    "data/retake-practice-9.json"
+  ],
+  "created": "2026-02-24T19:10:00Z",
+  "from": "GP",
+  "status": "unread",
+  "type": "advisory",
+  "to": "GI",
+  "id": "20260224-1910-gp-rp9-q15-missing-title",
+  "project": "Motor City Math",
+  "priority": "low"
+}
