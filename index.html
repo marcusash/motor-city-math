@@ -358,11 +358,11 @@
     <a href="#main" class="sr-only">Skip to content</a>
     <div class="dashboard" role="main" id="main">
 
-        <!-- Dad Mode banner (hidden until ?dad=1) -->
+        <!-- Guest/Dad Mode banner (hidden until ?guest=1 or ?dad=1) -->
         <div class="dad-banner" id="dadBanner" style="display:none;">
-            <span class="dad-label">👨 Dad View</span>
+            <span class="dad-label" id="dadLabel">👤 Guest View</span>
             <span class="dad-status" id="dadStatus">Loading Kai's scores...</span>
-            <label class="dad-upload-label">
+            <label class="dad-upload-label" id="dadUploadLabel">
                 Update from Kai's device
                 <input type="file" accept=".json" id="dadFileInput" style="display:none;" onchange="loadDadFile(this)">
             </label>
@@ -482,12 +482,14 @@
 
     /* ========== DAD MODE ========== */
     var _dadMode = new URLSearchParams(window.location.search).get('dad') === '1';
+    var _guestMode = new URLSearchParams(window.location.search).get('guest') === '1';
+    var _anyViewMode = _dadMode || _guestMode;
     var _dadScores = null;
     var _chartInstance = null;
 
     /* ========== READ SCORES ========== */
     function getScores() {
-        if (_dadMode && _dadScores) return _dadScores;
+        if (_anyViewMode && _dadScores) return _dadScores;
         var raw = localStorage.getItem('mcm_scores') || '{}';
         try { return JSON.parse(raw); } catch(e) {
             _scoreParseError = e;
@@ -1078,8 +1080,15 @@
     }
 
     function dadModeInit() {
-        if (!_dadMode) return;
-        document.getElementById('dadBanner').style.display = 'flex';
+        if (!_anyViewMode) return;
+        var banner = document.getElementById('dadBanner');
+        banner.style.display = 'flex';
+        if (_guestMode) {
+            document.getElementById('dadLabel').textContent = '👤 Guest View';
+            document.getElementById('dadUploadLabel').style.display = 'none';
+        } else {
+            document.getElementById('dadLabel').textContent = '👨 Dad View';
+        }
         document.getElementById('dadStatus').textContent = 'Loading Kai\'s scores...';
         fetch('data/kai-scores-latest.json?v=' + Date.now())
             .then(function(r) { if (!r.ok) throw new Error(r.status); return r.json(); })
@@ -1148,7 +1157,7 @@
         // Auto-seed: if localStorage has no scores, fetch latest from server
         var _localScores = getScores();
         var _hasLocal = Object.keys(_localScores).length > 0;
-        if (!_hasLocal && !_dadMode) {
+        if (!_hasLocal && !_anyViewMode) {
             fetch('data/kai-scores-latest.json?v=' + Date.now())
                 .then(function(r) { if (!r.ok) throw new Error(r.status); return r.json(); })
                 .then(function(data) {
