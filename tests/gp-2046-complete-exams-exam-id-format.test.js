@@ -1,10 +1,10 @@
 // gp-2046-complete-exams-exam-id-format.test.js
-// All 12 complete exam_ids must match format rp{N} (e.g. rp1, rp12).
+// All 12 complete exam_ids must match format retake-practice-{N}.
 
 const fs = require('fs'), path = require('path');
 const DATA_DIR = path.join(__dirname, '..', 'data');
 const RP_FILES = fs.readdirSync(DATA_DIR).filter(f => /^retake-practice-\d+\.json$/.test(f)).sort();
-const PATTERN = /^rp\d+$/;
+const PATTERN = /^retake-practice-\d+$/;
 let pass = 0, fail = 0; const failures = [];
 for (const file of RP_FILES) {
   const data = JSON.parse(fs.readFileSync(path.join(DATA_DIR, file), 'utf8'));
@@ -14,4 +14,4 @@ for (const file of RP_FILES) {
 }
 console.log('gp-2046-exam-id-format: ' + pass + ' pass, ' + fail + ' fail');
 if (fail > 0) { failures.forEach(f => console.log('  FAIL:', f)); process.exit(1); }
-console.log('OK -- all 12 exam_ids match rp{N} format');
+console.log('OK -- all 12 exam_ids match retake-practice-{N} format');
