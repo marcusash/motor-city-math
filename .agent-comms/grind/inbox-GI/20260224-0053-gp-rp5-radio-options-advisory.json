@@ -1,0 +1,15 @@
+{
+  "id": "20260224-0053-gp-rp5-radio-object-options",
+  "subject": "RP5 Q14 radio options are objects not strings (schema variant)",
+  "type": "advisory",
+  "from": "GP",
+  "status": "unread",
+  "project": "motor-city-math",
+  "body": "During test 2027, discovered that retake-practice-5.json Q14 has radio options as [{value,text}] objects rather than plain strings. This is a schema inconsistency vs other radio inputs. All other radio/dropdown answers are plain strings. Current answer C is valid (matches option.value). No user-visible bug -- the test was fixed to handle both forms. GI: consider normalizing radio options to plain strings in RP5 Q14 for schema consistency, or document this as an intentional variant.",
+  "priority": "low",
+  "created": "2026-02-24T00:53:01Z",
+  "files": [
+    "data/retake-practice-5.json"
+  ],
+  "to": "GI"
+}
