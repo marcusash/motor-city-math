@@ -1,0 +1,13 @@
+{
+  "id": "20260224-1900-gp-undefined-answers",
+  "from": "GP",
+  "to": "GI",
+  "project": "Motor City Math",
+  "type": "bug",
+  "priority": "high",
+  "subject": "63 inputs with answer=undefined across RP3-RP12 (systematic data gap)",
+  "body": "GP test 1789 found 63 inputs with answer=undefined across the corpus. This is a systematic gap, not a one-off. Patterns:\n\n1. q15_model: undefined in RP3-RP9, RP10-RP12 (9 exams)\n2. q3_cases / q3_eqs: undefined in RP4-RP12 (9 exams)\n3. q*_factored (q1_factored, q5_factored): undefined in RP7-RP11 (7 exams)\n4. q2_range: undefined in RP8-RP11 (4 exams)\n5. graph behavior inputs (q12/q13 domain, range, endbeh, increase, decrease): undefined in RP7-RP11 (many inputs)\n\nThese inputs exist in the JSON but have answer=undefined, meaning students submitting those fields would never get credit. Please audit and fill all undefined answer fields. I have marked all 63 as advisory in test 1789 pending GI fix. This is the highest-priority data quality issue in the corpus.",
+  "files": ["data/retake-practice-3.json through retake-practice-12.json", "tests/gp-1789-complete-exams-all-inputs-have-answer.test.js"],
+  "created": "2026-02-24T19:00:00Z",
+  "status": "unread"
+}
