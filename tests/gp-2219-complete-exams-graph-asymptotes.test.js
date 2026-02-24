@@ -1,6 +1,8 @@
-// gp-2219: Graph asymptotes field schema split
-// RP1-5 and RP12: asymptotes field is present (null or array) -- HAS_ASYM group
-// RP6-11: asymptotes field is ABSENT (undefined) -- NO_ASYM group (schema difference, not a bug)
+// gp-2219: Graph asymptotes field schema split and type validation
+// HAS_ASYM group (RP1-5, RP12):
+//   Q12 (quadratic): asymptotes=null
+//   Q13 (rational): asymptotes={vertical:[n], horizontal:[n]} object
+// NO_ASYM group (RP6-11): asymptotes field is completely absent
 
 const fs=require('fs'),path=require('path');
 const DATA_DIR=path.join(__dirname,'../data');
@@ -12,8 +14,9 @@ for(const exam_id of HAS_ASYM){
   d.questions.forEach(q=>{
     if(!q.graph)return;
     const a=q.graph.asymptotes;
-    if(a===null||Array.isArray(a))pass++;
-    else{fail++;failures.push(exam_id+' Q'+q.number+' expected null/array, got '+JSON.stringify(a));}
+    if(a===null){pass++;} // Q12 quadratic: null is correct
+    else if(a&&typeof a==='object'&&!Array.isArray(a)&&Array.isArray(a.vertical)&&Array.isArray(a.horizontal)){pass++;} // Q13 rational: object with vertical/horizontal
+    else{fail++;failures.push(exam_id+' Q'+q.number+' unexpected asymptotes: '+JSON.stringify(a));}
   });
 }
 for(const exam_id of NO_ASYM){
@@ -26,4 +29,4 @@ for(const exam_id of NO_ASYM){
 }
 console.log('gp-2219-graph-asymptotes-schema: '+pass+' pass, '+fail+' fail');
 if(fail>0){failures.forEach(f=>console.log('  FAIL:',f));process.exit(1);}
-console.log('OK -- Graph asymptotes: RP1-5+RP12=null/array, RP6-11=absent (schema split documented)');
+console.log('OK -- Graph asymptotes: HAS_ASYM correct types, NO_ASYM absent (schema split documented)');
