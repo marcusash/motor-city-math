@@ -6,6 +6,23 @@
 
 ---
 
+## Snapshot — 2026-02-25 (2140-test milestone)
+
+| Metric | Value |
+|--------|-------|
+| Retake Practice exams | 12 (RP1-12 all complete, RP13 stub) |
+| Total questions | 180 (12 exams x 15) |
+| Total inputs locked | 388 (294 number, 63 text, 24 dropdown, 7 radio) |
+| Total solution steps locked | 822 |
+| Total key_points locked | 122 |
+| Total graphs | 24 (2 per exam Q12/Q13) |
+| GP test files | 2140 |
+| Health gate checks | 11/11 |
+| Schema discoveries | older=[identify x3] newer=[quadratic,abs,abs]; Q15=always word-problem; Q14 type varies |
+| Known data bugs (reported to GI) | RP9 Q14+Q15 missing fields, RP9 Q13 key_point array, RP7 Q14 type mismatch |
+
+---
+
 ## Snapshot — 2026-02-25 (1350-test milestone)
 
 | Metric | Value |
@@ -143,4 +160,5 @@ Key baselines locked:
 | 2026-02-25 | 11 | 3337/3337 | 11/11 | 1100 | MILESTONE 1100 |
 | 2026-02-25 | 11 | 3337/3337 | 11/11 | 1200 | MILESTONE 1200 |
 | 2026-02-25 | 11 | 3337/3337 | 11/11 | 1300 | MILESTONE 1300 |
-| 2026-02-25 | 11 | 3337/3337 | 11/11 | 1350 | MILESTONE 1350 (active session) |
+| 2026-02-25 | 12 | 3337/3337 | 11/11 | 2140 | MILESTONE 2140 (current session) |
+| 2026-02-25 | 11 | 3337/3337 | 11/11 | 1350 | MILESTONE 1350 |
