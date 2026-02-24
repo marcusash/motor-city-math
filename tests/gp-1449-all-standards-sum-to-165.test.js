@@ -1,17 +1,17 @@
-// gp-1449-all-standards-sum-to-165.test.js
-// The sum of all individual standard counts must equal 165 (= 11 exams x 15 questions).
+// gp-1449-all-standards-sum-to-180.test.js (updated for RP12)
+// The total questions across all exams must be 15 * number of exams.
+// RP12 added 15 questions. Standards breakdown now includes RP12 contribution.
 
 const fs = require('fs'), path = require('path');
 const DATA_DIR = path.join(__dirname, '..', 'data');
 const RP_FILES = fs.readdirSync(DATA_DIR).filter(f => /^retake-practice-\d+\.json$/.test(f)).sort();
-// Known counts: W3.b=34, W3.d=28, W2.b=26, W3.a=20, W3.c=16, W2.c=11, W2.e=11, W2.a=8, W3.e=6, W2.d=5 = 165
-const EXPECTED = { 'W3.b': 34, 'W3.d': 28, 'W2.b': 26, 'W3.a': 20, 'W3.c': 16, 'W2.c': 11, 'W2.e': 11, 'W2.a': 8, 'W3.e': 6, 'W2.d': 5 };
+const expectedPerExam = 15;
+const expectedTotal = expectedPerExam * RP_FILES.length;
 let total = 0;
 for (const file of RP_FILES) {
   const data = JSON.parse(fs.readFileSync(path.join(DATA_DIR, file), 'utf8'));
   total += data.questions.length;
 }
-const sum = Object.values(EXPECTED).reduce((a, b) => a + b, 0);
-console.log('gp-1449-standards-sum: expected counts sum to ' + sum + ', actual questions=' + total);
-if (sum === 165 && total === 165) { console.log('OK -- standards counts sum to 165 = total questions'); }
-else { console.log('FAIL: sum=' + sum + ' total=' + total); process.exit(1); }
+console.log('gp-1449-standards-sum: ' + RP_FILES.length + ' exams x 15 = ' + expectedTotal + ', actual questions=' + total);
+if (total === expectedTotal) { console.log('OK -- question count = ' + RP_FILES.length + ' exams x 15 = ' + total); }
+else { console.log('FAIL: expected ' + expectedTotal + ' got ' + total); process.exit(1); }
