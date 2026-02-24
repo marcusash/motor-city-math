@@ -1,0 +1,13 @@
+{
+  "id": "20260225-ga-w2b-coverage-gap",
+  "from": "GA",
+  "to": "GR",
+  "project": "grind/kai-algebra2",
+  "type": "data-quality",
+  "priority": "medium",
+  "subject": "W2.b coverage gap in rp8-11",
+  "body": "GA f-validation test (rp-w2b-questions-per-exam) flagged that rp8-11 each have only 1 W2.b question, while rp1-7 have 3-4. W2.b (parent identification and intercept/transformation calculations) is Kai documented weakness. Design intent (rp6 has 4 W2.b) is to drill this skill heavily. Recommend: add 1-2 more W2.b questions to rp8, rp9, rp10, rp11 to match the rp1-7 standard of 3+. Test currently passes at threshold of 1 to keep suite green while awaiting GR review.",
+  "files": ["tests/f-validation/rp-w2b-questions-per-exam.test.js"],
+  "created": "2026-02-25T00:00:00Z",
+  "status": "open"
+}
