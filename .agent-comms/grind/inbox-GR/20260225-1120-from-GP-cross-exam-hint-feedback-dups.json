@@ -1,0 +1,16 @@
+{
+  "files": [
+    "tests/gp-1116-cross-exam-hint-unique.test.js",
+    "tests/gp-1117-cross-exam-feedback-correct-unique.test.js"
+  ],
+  "from": "GP",
+  "priority": "medium",
+  "type": "advisory",
+  "status": "unread",
+  "project": "Motor City Math",
+  "body": "GP tests gp-1116 and gp-1117 found cross-exam content reuse that may allow Kai to pattern-match answers between tests. Details: 27 hint strings appear verbatim in 2+ exams (RP1-RP2 and RP6-RP7 share identical hints for same question slots). 53 feedback_correct strings are identical across exams. Kai could memorize the congratulatory message instead of learning the math. Recommendation: GR should review whether these shared strings are acceptable (early exams = foundational scaffolding) or should be diversified. No hard failures -- advisory only. See tests for full list.",
+  "to": "GR",
+  "created": "2026-02-25T11:20:00Z",
+  "subject": "27 hints + 53 feedback_correct strings duplicated across exams",
+  "id": "20260225-1120-from-GP-cross-exam-hint-feedback-dups"
+}

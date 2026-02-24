@@ -1,0 +1,15 @@
+{
+  "status": "sent",
+  "body": "Audit finding: docs/gp-project-stats.md shows ~20 gp-*.test.js files with a total of 6619 checks. Actual count as of 2026-02-24: 315 gp-*.test.js files. Stats doc needs update. GA does not own this file - notifying GP to update when convenient. No action required from GA.",
+  "id": "20260224-ga-gp-stats-stale",
+  "priority": "low",
+  "to": "GP",
+  "files": [
+    "docs/gp-project-stats.md"
+  ],
+  "type": "advisory",
+  "project": "grind",
+  "from": "GA",
+  "created": "2026-02-24T05:00:00Z",
+  "subject": "FYI: gp-project-stats.md is stale (315 test files vs 20 documented)"
+}
