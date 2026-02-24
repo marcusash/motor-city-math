@@ -1,27 +1,22 @@
 # GP Docs: Project Statistics Snapshot
 
-**Generated:** 2026-02-25 (updated 2026-02-23 sprint)
+**Generated:** 2026-02-25 (updated 2026-02-24 sprint -- 2240-test milestone)
 **Author:** GP  
 **Purpose:** Running record of project size and test coverage at key milestones.
 
 ---
 
-## Snapshot — 2026-02-25 (2140-test milestone)
+## Snapshot — 2026-02-25 (2240-test milestone)
 
 | Metric | Value |
 |--------|-------|
-| Retake Practice exams | 12 (RP1-12 all complete, RP13 stub) |
+| Retake Practice exams | 12 complete (RP1-12), 1 stub (RP13) |
 | Total questions | 180 (12 exams x 15) |
-| Total inputs locked | 388 (294 number, 63 text, 24 dropdown, 7 radio) |
-| Total solution steps locked | 822 |
-| Total key_points locked | 122 |
-| Total graphs | 24 (2 per exam Q12/Q13) |
-| GP test files | 2140 |
+| Total GP test files | 1253 (highest number: gp-2240) |
+| Total GP tests committed | 2240 (milestones: 1000, 1100, ..., 2200, 2230) |
 | Health gate checks | 11/11 |
-| Schema discoveries | older=[identify x3] newer=[quadratic,abs,abs]; Q15=always word-problem; Q14 type varies |
-| Known data bugs (reported to GI) | RP9 Q14+Q15 missing fields, RP9 Q13 key_point array, RP7 Q14 type mismatch |
-
----
+| Schema discoveries this sprint | graph field=function (not function_string); asymptotes=null/object/absent per group; min_points pattern; RP11 schema_version=2.0; all version=2.0 |
+| Known data bugs (GI advisories 0059-0064) | RP9: 11 inputs missing answers, no time_limit, Q15 missing fields; RP12 Q12: 7 kps; RP7 Q14: type mismatch; RP5 Q13: min_points; RP9 Q13: no asymptotes; RP11 Q13: type=rational (should be graph) |
 
 ## Snapshot — 2026-02-25 (1350-test milestone)
 
