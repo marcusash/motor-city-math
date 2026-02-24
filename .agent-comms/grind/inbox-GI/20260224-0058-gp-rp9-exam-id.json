@@ -1,0 +1,15 @@
+{
+  "type": "bug",
+  "priority": "medium",
+  "from": "GP",
+  "to": "GI",
+  "created": "2026-02-24T00:58:10Z",
+  "subject": "RP9 exam_id is 'retake-practice-9' not 'rp9' -- schema inconsistency",
+  "status": "unread",
+  "id": "20260224-0058-gp-rp9-exam-id-nonstandard",
+  "project": "motor-city-math",
+  "files": [
+    "data/retake-practice-9.json"
+  ],
+  "body": "Test gp-2046 found that retake-practice-9.json has exam_id='retake-practice-9' instead of the standard 'rp9' format used by all other 11 exams. GI: please change exam_id to 'rp9' for consistency. This is the same file with the missing Q14/Q15 points+prompt fields."
+}
