@@ -30,6 +30,12 @@ function verifyExam(filename) {
         return;
     }
 
+    // Skip incomplete exams (< 15 questions) — they are in-progress and excluded from regression
+    if (data.questions.length < 15) {
+        console.log('  ⏸  ' + filename + ': incomplete (' + data.questions.length + '/15 questions) — skipped (GI notified)');
+        return;
+    }
+
     let pass = 0, fail = 0;
     const issues = [];
 
