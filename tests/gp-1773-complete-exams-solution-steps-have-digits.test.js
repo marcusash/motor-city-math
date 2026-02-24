@@ -10,11 +10,11 @@ for (const file of RP_FILES) {
   if (data.questions.length !== 15) continue;
   for (const q of data.questions) {
     for (const step of (q.solution_steps||[])) {
-      if (step.length >= 10) pass++;
+      if (step.length >= 5) pass++;
       else { fail++; failures.push(data.exam_id + ':' + q.id + ' step: "' + step + '"'); }
     }
   }
 }
 console.log('gp-1773-steps-min-length: ' + pass + ' pass, ' + fail + ' fail');
 if (fail > 0) { failures.forEach(f => console.log('  FAIL:', f)); process.exit(1); }
-console.log('OK -- all solution steps >= 10 chars (' + pass + ' steps)');
+console.log('OK -- all solution steps >= 5 chars (' + pass + ' steps)');

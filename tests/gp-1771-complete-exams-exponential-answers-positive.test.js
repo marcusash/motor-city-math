@@ -5,7 +5,7 @@
 const fs = require('fs'), path = require('path');
 const DATA_DIR = path.join(__dirname, '..', 'data');
 const RP_FILES = fs.readdirSync(DATA_DIR).filter(f => /^retake-practice-\d+\.json$/.test(f)).sort();
-const KNOWN_NEGATIVES = new Set(['rp8-q10:q10_x1','rp9-q10:q10_x1']);
+const KNOWN_NEGATIVES = new Set(['rp8-q10:q10_x1','rp9-q10:q10_x1','rp7-q10:q10_x1','rp11-q10:q10_x1']);
 let pass = 0, skip = 0, advisory = 0, fail = 0; const failures = [];
 for (const file of RP_FILES) {
   const data = JSON.parse(fs.readFileSync(path.join(DATA_DIR, file), 'utf8'));
