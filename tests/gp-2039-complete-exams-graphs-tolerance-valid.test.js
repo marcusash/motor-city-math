@@ -9,9 +9,10 @@ let pass = 0, fail = 0; const failures = [];
 for (const file of RP_FILES) {
   const data = JSON.parse(fs.readFileSync(path.join(DATA_DIR, file), 'utf8'));
   if (data.questions.length !== 15) continue;
-  for (const g of (data.graphs || [])) {
-    if (VALID.has(g.tolerance)) pass++;
-    else { fail++; failures.push(data.exam_id + ' graph ' + g.canvas_id + ' tolerance=' + g.tolerance); }
+  for (const q of data.questions.filter(q => q.graph)) {
+    const tol = q.graph.tolerance;
+    if (VALID.has(tol)) pass++;
+    else { fail++; failures.push(data.exam_id + ' Q' + q.number + ' tolerance=' + tol); }
   }
 }
 console.log('gp-2039-graphs-tolerance: ' + pass + ' pass, ' + fail + ' fail');

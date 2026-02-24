@@ -9,9 +9,10 @@ let pass = 0, fail = 0; const failures = [];
 for (const file of RP_FILES) {
   const data = JSON.parse(fs.readFileSync(path.join(DATA_DIR, file), 'utf8'));
   if (data.questions.length !== 15) continue;
-  for (const g of (data.graphs || [])) {
-    if (PATTERN.test(g.canvas_id)) pass++;
-    else { fail++; failures.push(data.exam_id + ' canvas_id=' + g.canvas_id); }
+  for (const q of data.questions.filter(q => q.graph)) {
+    const cid = q.graph.canvas_id;
+    if (PATTERN.test(cid)) pass++;
+    else { fail++; failures.push(data.exam_id + ' Q' + q.number + ' canvas_id=' + cid); }
   }
 }
 console.log('gp-2038-canvas-id-format: ' + pass + ' pass, ' + fail + ' fail');
