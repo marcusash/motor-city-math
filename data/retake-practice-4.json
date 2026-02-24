@@ -144,7 +144,7 @@
         {
           "id": "q3_cases",
           "type": "text",
-          "label": "Write the two equations you must solve (e.g. “AX+B = k and AX+B = -k”):"
+          "label": "Write the two equations you must solve (e.g. \"AX+B = k and AX+B = -k\"):"
         },
         {
           "id": "q3_x1",
