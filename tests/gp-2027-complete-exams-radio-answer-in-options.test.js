@@ -1,5 +1,6 @@
 // gp-2027-complete-exams-radio-answer-in-options.test.js
 // All radio answers must be one of the listed options.
+// Options may be plain strings OR objects with {value, text} (schema variant).
 
 const fs = require('fs'), path = require('path');
 const DATA_DIR = path.join(__dirname, '..', 'data');
@@ -12,8 +13,10 @@ for (const file of RP_FILES) {
     for (const inp of (q.inputs || [])) {
       if (inp.type !== 'radio') continue;
       const opts = inp.options || [];
-      if (opts.includes(inp.answer)) pass++;
-      else { fail++; failures.push(data.exam_id+':'+q.id+'.'+inp.id+' answer="'+inp.answer+'" not in '+JSON.stringify(opts)); }
+      // Handle both string options and {value, text} object options
+      const validValues = opts.map(o => typeof o === 'object' ? o.value : o);
+      if (validValues.includes(inp.answer)) pass++;
+      else { fail++; failures.push(data.exam_id+':'+q.id+'.'+inp.id+' answer="'+inp.answer+'" not in '+JSON.stringify(validValues)); }
     }
   }
 }
