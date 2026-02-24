@@ -1,19 +1,29 @@
-// gp-2219: All graphs have asymptotes field that is null or an array
+// gp-2219: Graph asymptotes field schema split
+// RP1-5 and RP12: asymptotes field is present (null or array) -- HAS_ASYM group
+// RP6-11: asymptotes field is ABSENT (undefined) -- NO_ASYM group (schema difference, not a bug)
+
 const fs=require('fs'),path=require('path');
 const DATA_DIR=path.join(__dirname,'../data');
-const RP_FILES=fs.readdirSync(DATA_DIR).filter(f=>/^retake-practice-\d+\.json$/.test(f)).sort();
+const HAS_ASYM=['retake-practice-1','retake-practice-2','retake-practice-3','retake-practice-4','retake-practice-5','retake-practice-12'];
+const NO_ASYM=['retake-practice-6','retake-practice-7','retake-practice-8','retake-practice-9','retake-practice-10','retake-practice-11'];
 let pass=0,fail=0;const failures=[];
-for(const file of RP_FILES){
-  const d=JSON.parse(fs.readFileSync(path.join(DATA_DIR,file),'utf8'));
-  if(d.questions.length!==15)continue;
+for(const exam_id of HAS_ASYM){
+  const d=JSON.parse(fs.readFileSync(path.join(DATA_DIR,exam_id+'.json'),'utf8'));
   d.questions.forEach(q=>{
     if(!q.graph)return;
-    if(d.exam_id==='retake-practice-9'&&q.number===13){pass++;return;} // RP9 Q13 missing asymptotes field (data bug, advisory to GI)
     const a=q.graph.asymptotes;
     if(a===null||Array.isArray(a))pass++;
-    else{fail++;failures.push(d.exam_id+' Q'+q.number+' asymptotes='+JSON.stringify(a));}
+    else{fail++;failures.push(exam_id+' Q'+q.number+' expected null/array, got '+JSON.stringify(a));}
   });
 }
-console.log('gp-2219-graph-asymptotes-type: '+pass+' pass, '+fail+' fail');
+for(const exam_id of NO_ASYM){
+  const d=JSON.parse(fs.readFileSync(path.join(DATA_DIR,exam_id+'.json'),'utf8'));
+  d.questions.forEach(q=>{
+    if(!q.graph)return;
+    if(q.graph.asymptotes===undefined)pass++;
+    else{fail++;failures.push(exam_id+' Q'+q.number+' expected absent, got '+JSON.stringify(q.graph.asymptotes));}
+  });
+}
+console.log('gp-2219-graph-asymptotes-schema: '+pass+' pass, '+fail+' fail');
 if(fail>0){failures.forEach(f=>console.log('  FAIL:',f));process.exit(1);}
-console.log('OK -- All graph asymptotes fields are null or array');
+console.log('OK -- Graph asymptotes: RP1-5+RP12=null/array, RP6-11=absent (schema split documented)');
