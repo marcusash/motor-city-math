@@ -6,6 +6,20 @@
 
 ---
 
+## Snapshot — 2026-02-24 (1295-test milestone)
+
+| Metric | Value |
+|--------|-------|
+| Retake Practice exams | 11 (RP1-11 all complete) |
+| Total questions (RP1-11) | 165 |
+| Total verify checks | 3337/3337 |
+| Health gate checks | 11/11 |
+| GP test files | 1295 |
+| Total inputs locked | 359 (272 number, 61 text, 21 dropdown, 5 radio) |
+| Total solution steps locked | 748 |
+| Total key_points locked | 110 (22 graphs x 5) |
+| Key discoveries | RP7-Q14 missing emoji, 27 cross-exam hint dups, 53 feedback_correct dups, 13 questions exceed 6 steps, RP11 Q13 rational anomaly |
+
 ## Snapshot — 2026-02-25 (1190-test milestone)
 
 | Metric | Value |
