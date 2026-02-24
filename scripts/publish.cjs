@@ -53,7 +53,7 @@ if (fs.existsSync(MCM_DIR)) {
 run(`git clone https://x-access-token:${token}@github.com/marcusash/motor-city-math.git ${MCM_DIR}`);
 
 // 2. Copy public files
-const files = ['index.html','exam.html','final_exam_251123.html','final_exam_251123_mini.html','nonlinear_exam_mvp.html','_gen.js','package.json','README.md'];
+const files = ['index.html','guest.html','exam.html','final_exam_251123.html','final_exam_251123_mini.html','nonlinear_exam_mvp.html','_gen.js','package.json','README.md'];
 const dirs  = ['shared','data','docs','scripts'];
 
 let synced = [];
