@@ -1,0 +1,39 @@
+// rp-input-label-not-too-long test
+// Input labels should be concise (max 80 chars) for ADHD-friendly display
+// Very long labels create visual noise that's hard to scan
+
+const fs = require('fs');
+const path = require('path');
+
+let pass = 0, fail = 0;
+function test(name, result) {
+    if (result) { console.log('  \u2705 ' + name); pass++; }
+    else        { console.log('  \u274c ' + name); fail++; }
+}
+
+console.log('\u{1F3C0} rp-input-label-not-too-long.test.js\n');
+
+var dataDir = path.join(__dirname, '../../data');
+var violations = [];
+var MAX = 80;
+
+for (var i = 1; i <= 11; i++) {
+    var f = path.join(dataDir, 'retake-practice-' + i + '.json');
+    if (!fs.existsSync(f)) continue;
+    var rp = JSON.parse(fs.readFileSync(f, 'utf-8'));
+    (rp.questions || []).forEach(function(q) {
+        (q.inputs || []).forEach(function(inp) {
+            if (inp.label && inp.label.length > MAX) {
+                violations.push(q.id + '/' + inp.id + ': label is ' + inp.label.length + ' chars (max ' + MAX + ')');
+            }
+        });
+    });
+}
+
+test('All input labels are <= ' + MAX + ' chars (' + violations.length + ' violations)', violations.length === 0);
+if (violations.length) violations.slice(0, 5).forEach(function(v) { console.log('    ! ' + v); });
+
+console.log('\n' + '='.repeat(50));
+console.log('rp-input-label-not-too-long: ' + (pass+fail) + ' checks, ' + pass + ' pass, ' + fail + ' fail');
+if (fail === 0) { console.log('PASS'); process.exit(0); }
+else            { console.log('FAIL'); process.exit(1); }
