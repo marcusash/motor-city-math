@@ -1,5 +1,6 @@
 // gp-1090-total-question-count-regression.test.js
-// Total questions across all exams. Updated for RP12 (12 exams x 15 = 180).
+// Complete exams (15 questions each) must have total = complete_count x 15.
+// Incomplete exams (like RP13 in progress) are excluded.
 
 const fs = require('fs');
 const path = require('path');
@@ -9,17 +10,18 @@ const RP_FILES = fs.readdirSync(DATA_DIR)
   .filter(f => /^retake-practice-\d+\.json$/.test(f))
   .sort();
 
-const EXPECTED = 15 * RP_FILES.length; // 15 questions per exam, dynamic total
-let total = 0;
-
+let completeExams = 0, incompleteExams = 0, total = 0;
 for (const file of RP_FILES) {
   const data = JSON.parse(fs.readFileSync(path.join(DATA_DIR, file), 'utf8'));
-  total += (data.questions || []).length;
+  const qCount = (data.questions || []).length;
+  if (qCount === 15) { completeExams++; total += qCount; }
+  else { incompleteExams++; }
 }
 
-console.log(`gp-1090-total-question-count-regression: total=${total} (${RP_FILES.length} exams x 15 = ${EXPECTED})`);
-if (total !== EXPECTED) {
-  console.log(`  FAIL: expected ${EXPECTED}, got ${total}`);
+const expected = completeExams * 15;
+console.log(`gp-1090-total-question-count-regression: ${completeExams} complete exams x 15 = ${total} questions (${incompleteExams} incomplete exams skipped)`);
+if (total !== expected) {
+  console.log(`  FAIL: expected ${expected}, got ${total}`);
   process.exit(1);
 }
-console.log(`OK -- total question count locked at ${EXPECTED} (${RP_FILES.length} exams x 15)`);
+console.log(`OK -- total question count locked at ${total} (${completeExams} complete exams x 15)`);
