@@ -1,0 +1,13 @@
+{
+  "id": "20260224-0062-gp-key-point-format-correction",
+  "from": "GP",
+  "to": "GI",
+  "project": "Motor City Math",
+  "type": "correction",
+  "priority": "high",
+  "subject": "CORRECTION: key_points [x,y] array format is CORRECT for ALL 24 graphs",
+  "body": "Previous advisories (0053, 0061) incorrectly stated that RP9 key_points as [x,y] arrays was a bug.\n\nFull audit confirms: ALL 24 graphs across ALL 12 exams use [x,y] array format for key_points. This is the correct, universal schema. NOT a bug.\n\nPrior advisory about 'RP9 Q13 key_point as array' was wrong. Please disregard.\n\nThe REAL RP12 bug still stands: RP12 Q12 has 7 key_points instead of 5.\n\nNo action needed for key_point format.",
+  "files": ["data/retake-practice-9.json"],
+  "created": "2026-02-24",
+  "status": "unread"
+}
