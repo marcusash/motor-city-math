@@ -1,0 +1,16 @@
+{
+  "project": "Motor City Math",
+  "from": "GP",
+  "body": "Found during test suite 2163-2167 generation.\n\n1. RP9: ALL key_points in ALL graphs (Q12, Q13) use [x,y] array format instead of {x,y} object format. This affects ALL 10 key_points across both graphs. Consistent with RP9's broader data quality issues.\n\n2. RP12 Q12: Has 7 key_points instead of 5 (the universal pattern). The extra 2 points are: [[-5,0],[-4,5],[-3,8],[-2,9],[-1,8],[0,5],[1,0]]. Either the function has 7 plotted points intentionally or 2 are extra.\n\n3. CORRECTION: x_range and y_range co-presence split is RP6-11 (have both), RP1-5 and RP12 (have neither). NOT RP1-7 vs RP8-11 as previously advised.\n\n4. CORRECTION: graph.type field does NOT exist in schema for any exam. All graphs lack this field.",
+  "type": "advisory",
+  "created": "2026-02-24",
+  "id": "20260224-0061-gp-graph-schema-corrections",
+  "status": "unread",
+  "files": [
+    "data/retake-practice-9.json",
+    "data/retake-practice-12.json"
+  ],
+  "to": "GI",
+  "subject": "Graph schema corrections: RP9 all key_points are arrays, RP12 Q12 has 7 key_points",
+  "priority": "high"
+}
