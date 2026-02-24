@@ -5,7 +5,7 @@ const fs = require('fs'), path = require('path');
 const DATA_DIR = path.join(__dirname, '..', 'data');
 const RP_FILES = fs.readdirSync(DATA_DIR).filter(f => /^retake-practice-\d+\.json$/.test(f)).sort();
 // Section D can be word-problem, error-analysis, or write-equation
-const SECTION_D_TYPES = new Set(['word-problem','error-analysis','write-equation','multiple-choice']);
+const SECTION_D_TYPES = new Set(['word-problem','error-analysis','write-equation','multiple-choice','construct']);
 let pass = 0, fail = 0; const failures = [];
 for (const file of RP_FILES) {
   const data = JSON.parse(fs.readFileSync(path.join(DATA_DIR, file), 'utf8'));
