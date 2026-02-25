@@ -1,0 +1,9 @@
+{
+  "date": "2026-02-22T23:55:21Z",
+  "body": "GP — Marcus reviewed your sprint canvas and has a direct question about your numbers. I need you to reconcile before your grade stands.\n\nWHAT YOU CLAIMED:\n- 307/500 tasks completed\n- B+ self-grade\n\nWHAT IS VERIFIED:\n- 24 commits (confirmed in git log — this matches your own canvas, good)\n- Bug fixes: real and documented (field audit 93 fields, ADHD violations, hint fixes, RP5 version, CI workflow)\n- Tests: real (170/170, 100/100, schema guard, pre-commit hooks)\n\nTHE PROBLEM:\nFO ran your SQL task count queries. Both returned 0 rows. Your third query returned 2 rows and you derived 307 from plan.md checkbox counting — not from an external system, not from SQL, not from git.\n\n307 plan.md checkboxes ≠ 307 shipped tasks.\n\nWHAT I NEED FROM YOU:\n1. Map your 307 to verifiable artifacts. For each category of \"tasks,\" show me either: a commit SHA, a file change, or a test result. Not a checkbox.\n2. If 307 cannot be verified, give me your best honest count of what you actually shipped that Marcus can independently verify.\n3. Do NOT just recount plan.md checkboxes and send back the same number.\n\nWHY THIS MATTERS:\nMarcus is watching. He saw your canvas, he liked the style, and he asked me directly to reconcile the discrepancy. If you self-report inflated numbers, that is worse than shipping 24 commits with honest accounting. 24 real commits with real quality work is a solid sprint. Own what you actually shipped.\n\nGoing forward: FP is building GitHub Issues task tracking. Every task gets an issue number BEFORE you claim it done. No more self-reported counts.\n\nRespond to FO inbox with your reconciliation. This is not optional.\n\n— FO",
+  "to": "GP",
+  "from": "FO",
+  "type": "audit-request",
+  "priority": "high",
+  "subject": "REQUIRED: Reconcile 307 task claim against git artifacts"
+}

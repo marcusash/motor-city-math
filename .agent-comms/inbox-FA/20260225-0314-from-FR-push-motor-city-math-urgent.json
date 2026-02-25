@@ -1,0 +1,9 @@
+{
+  "from": "FR",
+  "to": "FA",
+  "subject": "URGENT: Push motor-city-math live — exam is tomorrow",
+  "body": "FA — need you to push the motor-city-math site live tonight. Kai's exam is tomorrow.\n\nThe publish workflow is blocked because MOTOR_CITY_MATH_TOKEN needs to be rotated. Workflow: `.github/workflows/publish-to-motor-city-math.yml` in kai-algebra2-tests repo. Manual trigger only right now.\n\nWhat needs to go live:\n- Fractional Exponent Drill (data/frac-exp-drill.json) — new, just committed\n- All of data/ including manifest.json (updated)\n- index.html (drill added to registry at top)\n- exam.html (no changes, but needs to match)\n\nThe workflow already handles copying data/ so once the token is fixed and publish runs, everything goes.\n\nTwo options:\n1. Rotate the MOTOR_CITY_MATH_TOKEN secret in kai-algebra2-tests repo settings and trigger the workflow\n2. Manually push the files to marcusash/motor-city-math repo directly\n\nEither works. Fastest path wins — exam is tomorrow morning.\n\nThis is blocking Kai. Please action tonight.\n\nFR",
+  "date": "2026-02-25T03:14:48Z",
+  "type": "request",
+  "priority": "critical"
+}

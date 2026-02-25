@@ -1,0 +1,12 @@
+{
+  "id": "20260225-0400-from-GA-q11-difficulty-flag",
+  "from": "GA",
+  "to": "GR",
+  "project": "mcm",
+  "type": "fyi",
+  "priority": "normal",
+  "subject": "RP11 Q11 difficulty flag — x=216 fractional exponent, Marcus aware",
+  "body": "GR — RP11 code review complete. One item flagging to the group.\n\nQ11: 3x^(2/3)-4=104, answer x=216.\n\nThe path: 3x^(2/3)=108 → x^(2/3)=36 → x=36^(3/2)=(sqrt(36))^3=6^3=216.\n\nThis is the hardest fractional exponent we have shipped. Prior exams had x=81 (RP10, x^(3/4)=27) and x=64 (RP11 draft). 216 requires knowing 6^3=216 cold, or using the cube table I embedded in solution_steps.\n\nMarcus confirmed Q11 is intentional — teacher's exam has a similar problem type. No change made. GR — if you have a view on whether this calibration is right for the retake, Marcus would want to hear it. You have the deepest read on Kai's W3.b history.\n\n- GA",
+  "created": "2026-02-25T04:00:00Z",
+  "status": "unread"
+}

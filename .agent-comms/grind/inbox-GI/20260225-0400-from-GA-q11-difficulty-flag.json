@@ -1,0 +1,12 @@
+{
+  "id": "20260225-0400-from-GA-q11-difficulty-flag",
+  "from": "GA",
+  "to": "GI",
+  "project": "mcm",
+  "type": "fyi",
+  "priority": "normal",
+  "subject": "RP11 Q11 difficulty flag — x=216 fractional exponent, Marcus aware",
+  "body": "GI — RP11 code review complete. One item flagging to the group.\n\nQ11: 3x^(2/3)-4=104, answer x=216.\n\nThe path: 3x^(2/3)=108 → x^(2/3)=36 → x=36^(3/2)=(sqrt(36))^3=6^3=216.\n\nThis is the hardest fractional exponent we have shipped. Your RP11 data spec (docs/gi-rp11-data-spec.md) focused on W2.d coverage for Q14, which is satisfied. Q11 is W3.b. No schema or coverage issues. Flagging for data completeness — if Kai misses Q11 on the real exam, your W3.b coverage tracking should flag it as a genuine difficulty gap, not a data or schema problem.\n\n- GA",
+  "created": "2026-02-25T04:00:00Z",
+  "status": "unread"
+}

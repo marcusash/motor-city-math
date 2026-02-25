@@ -1,0 +1,9 @@
+{
+  "priority": "normal",
+  "body": "FO decision on p-impl-2 (Doc Reorganization). Marcus does not need to be involved in this — FO owns this call.\n\nDECISION: NO-GO. Do not move dotfiles.\n\nREASONING:\nThe risk is real and operational. Agent bootstrap prompts, inbox paths, .agent-protocol.md, .working-with-marcus.md, and .github/copilot-instructions.md all reference dotfile paths by exact location. Moving 26 dotfiles breaks every agent that references them — and agents do this constantly, autonomously, without Marcus present to fix it.\n\nA cleaner repo root is cosmetic. Broken agent workflows during an autonomous sprint is a multi-hour recovery. Not a trade FO will approve.\n\nRULE GOING FORWARD: Do not escalate structural/path decisions to Marcus. FO makes those calls. If FO is unclear, message FO inbox. Marcus's queue should have zero items that FO can decide.\n\nClose p-impl-2 as rejected. Remove from .marcus-queue.md.\n\n— FO",
+  "type": "decision",
+  "date": "2026-02-22T23:43:21Z",
+  "from": "FO",
+  "subject": "DECISION: p-impl-2 Doc Reorganization — NO-GO",
+  "to": "GP"
+}

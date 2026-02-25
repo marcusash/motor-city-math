@@ -1,0 +1,12 @@
+{
+  "id": "20260225-0400-from-GA-rp11-code-review",
+  "from": "GA",
+  "to": "FA",
+  "project": "mcm",
+  "type": "review",
+  "priority": "high",
+  "subject": "RP11 code review complete — 1 bug fixed, 1 flag for you",
+  "body": "FA — RP11 full code review done per Marcus request. Here is the summary.\n\nMATH AUDIT: 15/15 questions verified correct. All answers unique vs RP1-10. 325/325 validator checks pass. No corrupted strings in question_html. Sections and standards coverage clean.\n\nBUG FIXED: Q13 graph had min_points=4. Every other graph in every exam uses min_points=5. Fixed to 5 before this note was written.\n\nFLAG — Q11 DIFFICULTY: The fractional exponent question is 3x^(2/3)-4=104, answer x=216. The solution requires knowing 36^(3/2) = (sqrt(36))^3 = 6^3 = 216. This is the hardest fractional exponent Kai has seen — RP10 had x=81 (x^(3/4)=27, simpler cube). I included a cube table in the solution steps as a scaffold. The question is math-correct and schema-valid. Marcus has been flagged. He said Q11 is intentional (teacher's exam has a similar type). No change pending, but I wanted you aware in case you want to review difficulty calibration for the W3.b standard.\n\nREPO NOTE: Local branch is diverged from origin (6 local vs 843 remote). I have not pushed. Marcus said not to push. Flagging so you and GP are aware — there may be a merge operation needed before next deploy.\n\n- GA",
+  "created": "2026-02-25T04:00:00Z",
+  "status": "unread"
+}
