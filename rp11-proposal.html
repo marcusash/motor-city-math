@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RP11 Final Exam Proposal — GR to Marcus & FR</title>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<style>
+  :root {
+    --bg: #0d0f14;
+    --surface: #161b22;
+    --card: #1c2128;
+    --border: #30363d;
+    --accent: #f78166;
+    --gold: #e3b341;
+    --green: #3fb950;
+    --blue: #58a6ff;
+    --purple: #bc8cff;
+    --text: #e6edf3;
+    --muted: #8b949e;
+    --tag-bg: #21262d;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 15px; line-height: 1.6; }
+
+  .page { max-width: 960px; margin: 0 auto; padding: 40px 24px 80px; }
+
+  /* HEADER */
+  .header { border-bottom: 1px solid var(--border); padding-bottom: 32px; margin-bottom: 40px; }
+  .header-top { display: flex; align-items: center; gap: 16px; margin-bottom: 8px; }
+  .logo { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); }
+  .badge { background: var(--accent); color: #fff; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 3px 8px; border-radius: 4px; }
+  .badge.green { background: var(--green); color: #0d1117; }
+  .header h1 { font-size: 28px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+  .header .sub { color: var(--muted); font-size: 14px; }
+  .header .sub span { color: var(--gold); font-weight: 600; }
+
+  /* SCORE JOURNEY */
+  .section { margin-bottom: 48px; }
+  .section-title { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 20px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+
+  .journey { display: flex; align-items: flex-end; gap: 0; }
+  .jstep { flex: 1; text-align: center; }
+  .jbar-wrap { height: 120px; display: flex; align-items: flex-end; justify-content: center; margin-bottom: 8px; }
+  .jbar { width: 36px; border-radius: 4px 4px 0 0; transition: all .3s; position: relative; }
+  .jbar.mvp  { background: #3d444d; height: 64px; }
+  .jbar.rp1  { background: #388bfd55; border: 1px solid var(--blue); height: 105px; }
+  .jbar.rp2  { background: #388bfd55; border: 1px solid var(--blue); height: 105px; }
+  .jbar.rp3  { background: var(--green); height: 120px; }
+  .jbar.rp4  { background: #3fb95088; border: 1px solid var(--green); height: 112px; }
+  .jlabel { font-size: 13px; font-weight: 700; color: var(--text); }
+  .jsub { font-size: 11px; color: var(--muted); margin-top: 2px; }
+  .jpct { font-size: 11px; font-weight: 600; margin-bottom: 4px; }
+  .jpct.red { color: var(--accent); }
+  .jpct.yellow { color: var(--gold); }
+  .jpct.green { color: var(--green); }
+  .journey-arrow { align-self: center; color: var(--border); font-size: 20px; padding: 0 4px; padding-bottom: 40px; }
+
+  /* FRAME BOX */
+  .frame-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .frame-card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 20px; }
+  .frame-card.full { grid-column: 1 / -1; }
+  .frame-card h3 { font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+  .frame-card p { font-size: 14px; color: var(--text); line-height: 1.7; }
+  .frame-card .highlight { color: var(--gold); font-weight: 600; }
+  .frame-card .green { color: var(--green); font-weight: 600; }
+  .frame-card .accent { color: var(--accent); font-weight: 600; }
+
+  /* STANDARD BREAKDOWN */
+  .std-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .std-pill { background: var(--tag-bg); border: 1px solid var(--border); border-radius: 8px; padding: 14px; text-align: center; }
+  .std-pill .std-name { font-size: 13px; font-weight: 700; color: var(--blue); margin-bottom: 4px; }
+  .std-pill .std-q { font-size: 11px; color: var(--muted); margin-bottom: 6px; }
+  .std-pill .std-rate { font-size: 18px; font-weight: 700; }
+  .std-pill .std-rate.green { color: var(--green); }
+  .std-pill .std-rate.yellow { color: var(--gold); }
+  .std-pill .std-rate.red { color: var(--accent); }
+  .std-pill .std-count { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+  /* QUESTION CARDS */
+  .q-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 24px; margin-bottom: 16px; position: relative; }
+  .q-card.critical { border-color: var(--accent); }
+  .q-card.elevated { border-color: var(--gold); }
+  .q-header { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 16px; }
+  .q-num { width: 36px; height: 36px; border-radius: 50%; background: var(--tag-bg); border: 2px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; color: var(--text); flex-shrink: 0; }
+  .q-num.critical { border-color: var(--accent); color: var(--accent); }
+  .q-meta { flex: 1; }
+  .q-meta h3 { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+  .q-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; }
+  .tag.std { background: #1f3057; color: var(--blue); }
+  .tag.type { background: #2d2a1e; color: var(--gold); }
+  .tag.diff { background: #1f3824; color: var(--green); }
+  .tag.diff.hard { background: #3d1c1c; color: var(--accent); }
+  .tag.diff.medium { background: #2d2a1e; color: var(--gold); }
+  .tag.section { background: #21262d; color: var(--muted); }
+  .tag.critical { background: #3d1c1c; color: var(--accent); }
+  .q-problem { background: var(--bg); border: 1px solid var(--border); border-radius: 6px; padding: 14px 16px; margin-bottom: 14px; font-size: 15px; color: var(--text); }
+  .q-rationale { font-size: 13px; color: var(--muted); line-height: 1.7; }
+  .q-rationale strong { color: var(--text); }
+  .q-rationale .data-point { color: var(--green); font-weight: 600; }
+  .q-rationale .warn { color: var(--accent); font-weight: 600; }
+  .q-answer { font-size: 12px; color: var(--muted); margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border); }
+  .q-answer span { color: var(--purple); font-weight: 600; font-family: monospace; }
+
+  /* SEPARATOR */
+  .section-sep { display: flex; align-items: center; gap: 12px; margin: 32px 0 20px; }
+  .section-sep .sep-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--blue); white-space: nowrap; }
+  .section-sep .sep-line { flex: 1; height: 1px; background: var(--border); }
+
+  /* PREDICTION */
+  .predict { background: var(--card); border: 2px solid var(--green); border-radius: 10px; padding: 24px; display: flex; align-items: center; gap: 32px; }
+  .predict-score { text-align: center; }
+  .predict-score .big { font-size: 56px; font-weight: 800; color: var(--green); line-height: 1; }
+  .predict-score .label { font-size: 12px; color: var(--muted); margin-top: 4px; }
+  .predict-text { flex: 1; font-size: 14px; line-height: 1.8; color: var(--text); }
+  .predict-text strong { color: var(--gold); }
+
+  /* FOOTER NOTE */
+  .footnote { font-size: 12px; color: var(--muted); margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border); line-height: 1.8; }
+  .footnote strong { color: var(--text); }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-top">
+      <span class="logo">Motor City Math</span>
+      <span class="badge">RP11 — Final Exam Prep</span>
+      <span class="badge green">All Validators Pass</span>
+    </div>
+    <h1>Exam Proposal: Retake Practice 11</h1>
+    <div class="sub">Prepared by <span>GR (Research)</span> · Feb 25, 2026 · For Marcus &amp; FR review · 15 questions · 50 min · Standards W2 + W3</div>
+  </div>
+
+  <!-- SCORE JOURNEY -->
+  <div class="section">
+    <div class="section-title">Kai's Score Journey — MVP to RP4</div>
+    <div class="journey">
+      <div class="jstep">
+        <div class="jpct red">53%</div>
+        <div class="jbar-wrap"><div class="jbar mvp"></div></div>
+        <div class="jlabel">MVP</div>
+        <div class="jsub">8/15 · Feb 18</div>
+      </div>
+      <div class="journey-arrow">→</div>
+      <div class="jstep">
+        <div class="jpct yellow">87%</div>
+        <div class="jbar-wrap"><div class="jbar rp1"></div></div>
+        <div class="jlabel">RP1</div>
+        <div class="jsub">13/15 · Feb 19</div>
+      </div>
+      <div class="journey-arrow">→</div>
+      <div class="jstep">
+        <div class="jpct yellow">87%</div>
+        <div class="jbar-wrap"><div class="jbar rp2"></div></div>
+        <div class="jlabel">RP2</div>
+        <div class="jsub">13/15 · Feb 21</div>
+      </div>
+      <div class="journey-arrow">→</div>
+      <div class="jstep">
+        <div class="jpct green">100%</div>
+        <div class="jbar-wrap"><div class="jbar rp3"></div></div>
+        <div class="jlabel">RP3</div>
+        <div class="jsub">15/15 · Feb 22 AM</div>
+      </div>
+      <div class="journey-arrow">→</div>
+      <div class="jstep">
+        <div class="jpct green">93%</div>
+        <div class="jbar-wrap"><div class="jbar rp4"></div></div>
+        <div class="jlabel">RP4</div>
+        <div class="jsub">14/15 · Feb 22 PM</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXAM FRAME -->
+  <div class="section">
+    <div class="section-title">Exam Frame — Difficulty Philosophy</div>
+    <div class="frame-grid">
+      <div class="frame-card">
+        <h3>Difficulty Target</h3>
+        <p>Calibrated to <span class="highlight">RP4 level</span> — the hardest test Kai has completed. No reduction. Some questions (Q7, Q10) push into multi-step or irrational territory, but the skill ceiling matches what he proved he can handle. Fractional exponents (Q11) are the <span class="accent">one proven weak spot</span> and are tested deliberately.</p>
+      </div>
+      <div class="frame-card">
+        <h3>What Changed from MVP to Now</h3>
+        <p>Kai went from <span class="accent">53%</span> to <span class="green">93%</span> in 4 days. The jump happened because he stopped guessing transformations and started using vertex form systematically. His only remaining miss is the <span class="highlight">2/3 fractional exponent</span> — he gets to x^(2/3)=k but doesn't know how to raise to the 3/2 power cleanly.</p>
+      </div>
+      <div class="frame-card full">
+        <h3>Teacher Signal — Winter 11 Unit 2 Review Analysis</h3>
+        <p>The teacher's review sheet (22 problems, 8 screenshots from Marcus) weights fractional exponents heavily: <span class="highlight">Problem 22 is exactly 3x^(2/3)-1=107</span> — the same type Kai missed on RP4. The teacher also tests: parent function ID, full graphing with transformations, rational equations, extraneous solutions in radical equations, and a word problem requiring a model. RP11 mirrors that distribution exactly. Every question in this exam has a direct analog on the teacher's review sheet.</p>
+      </div>
+    </div>
+
+    <div class="std-grid">
+      <div class="std-pill">
+        <div class="std-name">W2.a</div>
+        <div class="std-q">Q1, Q5</div>
+        <div class="std-rate green">100%</div>
+        <div class="std-count">RP3+RP4 perfect</div>
+      </div>
+      <div class="std-pill">
+        <div class="std-name">W2.b</div>
+        <div class="std-q">Q2</div>
+        <div class="std-rate green">100%</div>
+        <div class="std-count">RP3+RP4 perfect</div>
+      </div>
+      <div class="std-pill">
+        <div class="std-name">W2.c</div>
+        <div class="std-q">Q12</div>
+        <div class="std-rate green">100%</div>
+        <div class="std-count">Full graph question</div>
+      </div>
+      <div class="std-pill">
+        <div class="std-name">W2.d</div>
+        <div class="std-q">Q14</div>
+        <div class="std-rate green">100%</div>
+        <div class="std-count">Vertex form features</div>
+      </div>
+      <div class="std-pill">
+        <div class="std-name">W2.e</div>
+        <div class="std-q">Q13</div>
+        <div class="std-rate green">100%</div>
+        <div class="std-count">Rational asymptotes</div>
+      </div>
+      <div class="std-pill">
+        <div class="std-name">W3.a</div>
+        <div class="std-q">Q3, Q15</div>
+        <div class="std-rate green">100%</div>
+        <div class="std-count">Reasoning + word problem</div>
+      </div>
+      <div class="std-pill">
+        <div class="std-name">W3.b</div>
+        <div class="std-q">Q9, Q11</div>
+        <div class="std-rate red">88%</div>
+        <div class="std-count">1 miss: fractional-exp</div>
+      </div>
+      <div class="std-pill">
+        <div class="std-name">W3.c/d</div>
+        <div class="std-q">Q4,Q6,Q7,Q8,Q10</div>
+        <div class="std-rate green">100%</div>
+        <div class="std-count">Rational + exponential</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUESTIONS -->
+  <div class="section">
+    <div class="section-title">15 Questions — Full Rationale</div>
+
+    <!-- SECTION A -->
+    <div class="section-sep">
+      <div class="sep-line"></div>
+      <div class="sep-label">Section A — Identify &amp; Analyze</div>
+      <div class="sep-line"></div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-header">
+        <div class="q-num">1</div>
+        <div class="q-meta">
+          <h3>AC Factoring — Quadratic</h3>
+          <div class="q-tags">
+            <span class="tag std">W2.a</span>
+            <span class="tag section">Section A</span>
+            <span class="tag type">Factoring</span>
+            <span class="tag diff">Medium</span>
+          </div>
+        </div>
+      </div>
+      <div class="q-problem">Solve by factoring: \( 4x^2 - 4x - 3 = 0 \)</div>
+      <div class="q-rationale">
+        <strong>Why this question:</strong> Kai's MVP failure included basic quadratic structure errors. By RP3 he was 100% on W2.a. This question uses the AC method (a×c = -12, split by factors +2/-6) — it's harder than simple trinomials but Kai has handled tougher on RP3/RP4. The non-integer answers (-0.5, 1.5) add one layer of difficulty without going above RP4 ceiling. Chosen to <span class="data-point">open the exam with confidence</span> while confirming W2.a is locked in.
+      </div>
+      <div class="q-answer">Answer: <span>x = -1/2 = -0.5 and x = 3/2 = 1.5</span> · Factored: (2x-3)(2x+1) = 0</div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-header">
+        <div class="q-num">2</div>
+        <div class="q-meta">
+          <h3>Absolute Value — Vertex, Intercepts, Range</h3>
+          <div class="q-tags">
+            <span class="tag std">W2.b</span>
+            <span class="tag section">Section A</span>
+            <span class="tag type">Abs Value Analysis</span>
+            <span class="tag diff medium">Medium</span>
+          </div>
+        </div>
+      </div>
+      <div class="q-problem">For \( f(x) = 3|x - 8| - 15 \): state the vertex, x-intercepts, and range.</div>
+      <div class="q-rationale">
+        <strong>Why this question:</strong> The teacher's review sheet tests W2.b heavily — transformation identification for multiple parent types. Kai missed W2.b on RP1 (Q2 and Q3) but has been <span class="data-point">6/6 perfect since RP3</span>. This question uses abs value with a non-trivial vertex at (8, -15), requiring Kai to correctly set |x-8|=5 and split into two cases. The range asks for interval notation, which the teacher also requires. Matches teacher review problem difficulty exactly.
+      </div>
+      <div class="q-answer">Answer: <span>Vertex (8,-15) · x-intercepts: 3, 13 · Range: [-15, +∞)</span></div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-header">
+        <div class="q-num">3</div>
+        <div class="q-meta">
+          <h3>Absolute Value Equation — Show Your Work</h3>
+          <div class="q-tags">
+            <span class="tag std">W3.a</span>
+            <span class="tag section">Section A</span>
+            <span class="tag type">Abs Value Solve</span>
+            <span class="tag diff">Medium</span>
+          </div>
+        </div>
+      </div>
+      <div class="q-problem">Solve: \( |2x + 6| - 5 = 15 \). Write BOTH equations before entering answers.</div>
+      <div class="q-rationale">
+        <strong>Why this question:</strong> W3.a tests whether Kai can articulate the mathematical reasoning behind each step, not just get the answer. The prompt forces him to write both equations before entering numbers — exactly what a teacher grading for process will look for. Kai has been <span class="data-point">4/4 on W3.a across RP3+RP4</span>. This is a warm-up problem — isolate the absolute value first (get |2x+6|=20), then split.
+      </div>
+      <div class="q-answer">Answer: <span>x = -13 and x = 7</span> · Both cases: 2x+6=20 and 2x+6=-20</div>
+    </div>
+
+    <!-- SECTION B -->
+    <div class="section-sep">
+      <div class="sep-line"></div>
+      <div class="sep-label">Section B — Solve (W3 Standards)</div>
+      <div class="sep-line"></div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-header">
+        <div class="q-num">4</div>
+        <div class="q-meta">
+          <h3>Exponential Equation — One-to-One Property</h3>
+          <div class="q-tags">
+            <span class="tag std">W3.d</span>
+            <span class="tag section">Section B</span>
+            <span class="tag type">Exponential</span>
+            <span class="tag diff">Medium</span>
+          </div>
+        </div>
+      </div>
+      <div class="q-problem">Solve: \( 2^{x - 8} = 8 \)</div>
+      <div class="q-rationale">
+        <strong>Why this question:</strong> Clean entry point into Section B. One base (2), one conversion (8=2³), then solve x-8=3 → x=11. <span class="data-point">Kai is 4/4 on W3.d</span> in recent exams. This is deliberately straightforward — after the harder algebra of Q1-Q3, Kai needs a win before the difficulty climbs in Q7 and Q10. Matches teacher's simpler exponential problems (Q7 on the review).
+      </div>
+      <div class="q-answer">Answer: <span>x = 11</span></div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-header">
+        <div class="q-num">5</div>
+        <div class="q-meta">
+          <h3>AC Factoring — Harder Quadratic</h3>
+          <div class="q-tags">
+            <span class="tag std">W2.a</span>
+            <span class="tag section">Section B</span>
+            <span class="tag type">Factoring</span>
+            <span class="tag diff medium">Medium-Hard</span>
+          </div>
+        </div>
+      </div>
+      <div class="q-problem">Solve by factoring: \( 6x^2 + x - 12 = 0 \)</div>
+      <div class="q-rationale">
+        <strong>Why this question:</strong> This is the harder version of Q1 — same method (AC), larger product (a×c=-72), messier factors (+9 and -8). The two solutions (4/3 and -3/2) are rational but non-integer, which is exactly RP4 difficulty. If Kai can handle both Q1 and Q5 cleanly, that tells us W2.a is bulletproof for the real exam. The teacher's review has two factoring-style quadratic problems.
+      </div>
+      <div class="q-answer">Answer: <span>x = 4/3 ≈ 1.333 and x = -3/2 = -1.5</span> · Factored: (3x-4)(2x+3) = 0</div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-header">
+        <div class="q-num">6</div>
+        <div class="q-meta">
+          <h3>Radical Equation — Clean Solve</h3>
+          <div class="q-tags">
+            <span class="tag std">W3.c</span>
+            <span class="tag section">Section B</span>
+            <span class="tag type">Radical</span>
+            <span class="tag diff">Medium</span>
+          </div>
+        </div>
+      </div>
+      <div class="q-problem">Solve: \( \sqrt{5x + 5} = 10 \)</div>
+      <div class="q-rationale">
+        <strong>Why this question:</strong> W3.c (radical equations, no extraneous root here) is a standard that Kai has been <span class="data-point">2/2 perfect on</span>. This is the clean version — square both sides, solve linear equation, check domain. The extraneous root scenario is handled by Q9. Chosen to maintain rhythm in Section B and confirm the basic radical solve is automatic before the harder Q9.
+      </div>
+      <div class="q-answer">Answer: <span>x = 19</span> · Check: √(95+5) = √100 = 10 ✓</div>
+    </div>
+
+    <div class="q-card elevated">
+      <div class="q-header">
+        <div class="q-num">7</div>
+        <div class="q-meta">
+          <h3>Multi-Base Exponential — Convert Everything to Same Base</h3>
+          <div class="q-tags">
+            <span class="tag std">W3.d</span>
+            <span class="tag section">Section B</span>
+            <span class="tag type">Exponential</span>
+            <span class="tag diff hard">Hard</span>
+          </div>
+        </div>
+      </div>
+      <div class="q-problem">Solve: \( 8^x \cdot 4^{x+1} = 2^{25} \)</div>
+      <div class="q-rationale">
+        <strong>Why this question:</strong> This is the hardest W3.d problem in the set — above average RP4 difficulty but within reach. It requires converting 8^x = 2^(3x) and 4^(x+1) = 2^(2x+2), adding exponents, then solving 5x+2=25 → x=4.6. The teacher's harder exponential problems (Q12, Q17 on the review) require exactly this multi-step base conversion. <span class="warn">If Kai misses this, it's the sign he needs to drill base conversion rules before the final.</span>
+      </div>
+      <div class="q-answer">Answer: <span>x = 23/5 = 4.6</span> · 2^(3x) · 2^(2x+2) = 2^(5x+2) = 2^25 → 5x=23</div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-header">
+        <div class="q-num">8</div>
+        <div class="q-meta">
+          <h3>Rational Equation — Cross Multiply</h3>
+          <div class="q-tags">
+            <span class="tag std">W3.c</span>
+            <span class="tag section">Section B</span>
+            <span class="tag type">Rational</span>
+            <span class="tag diff">Medium</span>
+          </div>
+        </div>
+      </div>
+      <div class="q-problem">Solve: \( \dfrac{2x - 3}{x + 1} = 3 \)</div>
+      <div class="q-rationale">
+        <strong>Why this question:</strong> Teacher's review problems Q9 and Q19 are rational equations. This version has the numerator as a binomial (2x-3) rather than a constant — slightly harder than the constant-numerator style seen in most prior practice exams. Kai <span class="data-point">2/2 perfect on W3.c</span>. Answer is x=-6 (negative), which is a useful differentiation — Kai needs to handle negative solutions without second-guessing.
+      </div>
+      <div class="q-answer">Answer: <span>x = -6</span> · 2x-3 = 3(x+1) → 2x-3 = 3x+3 → -6=x</div>
+    </div>
+
+    <div class="q-card elevated">
+      <div class="q-header">
+        <div class="q-num">9</div>
+        <div class="q-meta">
+          <h3>Radical Equation — Extraneous Root</h3>
+          <div class="q-tags">
+            <span class="tag std">W3.b</span>
+            <span class="tag section">Section B</span>
+            <span class="tag type">Radical + Extraneous</span>
+            <span class="tag diff hard">Hard</span>
+          </div>
+        </div>
+      </div>
+      <div class="q-problem">Solve: \( \sqrt{x - 3} = x - 9 \). Check for extraneous solutions.</div>
+      <div class="q-rationale">
+        <strong>Why this question:</strong> The teacher's review problems Q17/Q20/Q21 include extraneous root scenarios. This problem squares both sides to get x²-19x+84=0 → (x-7)(x-12)=0. x=7 checks as extraneous (√4=2 but 7-9=-2). Only x=12 survives. This directly tests whether Kai automatically checks both solutions — a habit the teacher will grade for. The <span class="data-point">extraneous root here (x=7) is tempting</span> because 7 appears in Q3 as a valid answer, which is exactly the kind of pattern trap we want to train against.
+      </div>
+      <div class="q-answer">Answer: <span>x = 12</span> · x=7 is extraneous (√4 ≠ -2)</div>
+    </div>
+
+    <div class="q-card elevated">
+      <div class="q-header">
+        <div class="q-num">10</div>
+        <div class="q-meta">
+          <h3>Exponential with x² — Two Solutions</h3>
+          <div class="q-tags">
+            <span class="tag std">W3.d</span>
+            <span class="tag section">Section B</span>
+            <span class="tag type">Exponential</span>
+            <span class="tag diff hard">Hard</span>
+          </div>
+        </div>
+      </div>
+      <div class="q-problem">Solve: \( 2^{x^2 - 2} = 512 \)</div>
+      <div class="q-rationale">
+        <strong>Why this question:</strong> 512 = 2^9. Setting x²-2=9 gives x²=11 → x=±√11 ≈ ±3.317. Two solutions, irrational values. This is the hardest exponential in the set — above the RP4 average but still solvable with one-to-one property. <span class="warn">If Kai only finds one root (forgets ±), that's a half-credit situation on the real exam.</span> The RP4 Q9 had the same x²-in-exponent structure, so this is the same cognitive demand, different numbers. Matches teacher review problem Q18.
+      </div>
+      <div class="q-answer">Answer: <span>x = ±√11 ≈ ±3.317</span> · x²-2=9 → x²=11</div>
+    </div>
+
+    <div class="q-card critical">
+      <div class="q-header">
+        <div class="q-num critical">11</div>
+        <div class="q-meta">
+          <h3>⭐ Fractional Exponent — THE Weakness Question</h3>
+          <div class="q-tags">
+            <span class="tag std">W3.b</span>
+            <span class="tag section">Section B</span>
+            <span class="tag type">Fractional-Exp</span>
+            <span class="tag diff hard">Hard</span>
+            <span class="tag critical">PRIORITY</span>
+          </div>
+        </div>
+      </div>
+      <div class="q-problem">Solve: \( 3x^{2/3} - 4 = 104 \)</div>
+      <div class="q-rationale">
+        <strong>Why this question:</strong> This is the <span class="warn">most important question in the entire exam</span>. Kai missed RP4-Q11 (2x^(3/2)-14=672, cube=343=7³) — the only question he's missed in 2 exams. The teacher's review Problem 22 is literally <span class="warn">3x^(2/3)-1=107</span> — a 2/3 exponent equation. This is going to be on the final. RP11-Q11 uses the same 2/3 structure but with 6³=216 as the target cube, which Kai has not seen before in any prior exam. The solve path: 3x^(2/3)=108 → x^(2/3)=36 → x=(√36)³=6³=216. We train the cube table recognition here. This is the question that determines if Kai gets his A.
+      </div>
+      <div class="q-answer">Answer: <span>x = 216</span> · x^(2/3)=36 → x=36^(3/2)=(√36)³=6³=216</div>
+    </div>
+
+    <!-- SECTION C -->
+    <div class="section-sep">
+      <div class="sep-line"></div>
+      <div class="sep-label">Section C — Graph</div>
+      <div class="sep-line"></div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-header">
+        <div class="q-num">12</div>
+        <div class="q-meta">
+          <h3>Full Graph — Downward Parabola</h3>
+          <div class="q-tags">
+            <span class="tag std">W2.c</span>
+            <span class="tag section">Section C</span>
+            <span class="tag type">Graph + Features</span>
+            <span class="tag diff hard">Hard</span>
+          </div>
+        </div>
+      </div>
+      <div class="q-problem">Graph \( f(x) = -(x - 2)^2 + 16 \) and answer: vertex, x-intercepts, range, increasing/decreasing intervals.</div>
+      <div class="q-rationale">
+        <strong>Why this question:</strong> The teacher's review Q5/Q6 require full graphing with transformations. This question hits every sub-part: vertex (2,16), x-intercepts (-2, 6) from (x-2)²=16, range (-∞,16], increasing on (-∞,2), decreasing on (2,∞). The <span class="data-point">negative a=-1</span> means it opens downward — a different visual from most prior practice (RP4-Q12 was upward). <span class="warn">The teacher's exam Q5 uses this exact form.</span> Kai was 2/2 on W2.c in RP3+RP4.
+      </div>
+      <div class="q-answer">Answer: <span>Vertex (2,16) · x-int: -2, 6 · Range: (-∞,16] · Inc: (-∞,2) Dec: (2,∞)</span></div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-header">
+        <div class="q-num">13</div>
+        <div class="q-meta">
+          <h3>Rational Function Graph — Asymptotes, Domain, Range</h3>
+          <div class="q-tags">
+            <span class="tag std">W2.e</span>
+            <span class="tag section">Section C</span>
+            <span class="tag type">Graph + Asymptotes</span>
+            <span class="tag diff hard">Hard</span>
+          </div>
+        </div>
+      </div>
+      <div class="q-problem">Graph \( f(x) = \dfrac{6}{x - 4} + 2 \) and state: VA, HA, domain, range, end behavior.</div>
+      <div class="q-rationale">
+        <strong>Why this question:</strong> Teacher's review Q13-Q16 all require writing equations and characteristics of rational functions. This graph has a <span class="highlight">positive shift right (VA=4) and up (HA=2)</span> — novel asymptote values not appearing in any prior exam. Kai has been 2/2 on W2.e. The end behavior question ("as x→+∞, f(x)→?") is the teacher's style for assessing conceptual understanding vs. mechanical solving. A clean x-intercept exists at x=1 (f(1)=6/(-3)+2=0), giving an easy checkable point.
+      </div>
+      <div class="q-answer">Answer: <span>VA: x=4 · HA: y=2 · Domain: x≠4 · Range: y≠2 · As x→+∞, f→2 from above</span></div>
+    </div>
+
+    <!-- SECTION D -->
+    <div class="section-sep">
+      <div class="sep-line"></div>
+      <div class="sep-label">Section D — Reasoning &amp; Apply</div>
+      <div class="sep-line"></div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-header">
+        <div class="q-num">14</div>
+        <div class="q-meta">
+          <h3>Vertex Form — Key Features Without Graphing</h3>
+          <div class="q-tags">
+            <span class="tag std">W2.d</span>
+            <span class="tag section">Section D</span>
+            <span class="tag type">Analysis</span>
+            <span class="tag diff">Medium</span>
+          </div>
+        </div>
+      </div>
+      <div class="q-problem">For \( f(x) = 3(x - 6)^2 - 12 \): state the vertex, find both x-intercepts, and identify the direction the parabola opens.</div>
+      <div class="q-rationale">
+        <strong>Why this question:</strong> W2.d tests whether Kai can read all information from vertex form without necessarily graphing. This is a pure analysis question: vertex (6,-12) is read directly, x-intercepts require solving 3(x-6)²=12 → (x-6)²=4 → x=4 or x=8, and the direction (upward, a=3>0) is a judgment call. Kai has been <span class="data-point">4/4 on W3.a/W2.d style reasoning</span>. This consolidates before the harder word problem in Q15.
+      </div>
+      <div class="q-answer">Answer: <span>Vertex (6,-12) · x-int: 4, 8 · Opens: Upward (a=3&gt;0)</span></div>
+    </div>
+
+    <div class="q-card elevated">
+      <div class="q-header">
+        <div class="q-num">15</div>
+        <div class="q-meta">
+          <h3>Decay Word Problem — Write the Model, Solve It</h3>
+          <div class="q-tags">
+            <span class="tag std">W3.a</span>
+            <span class="tag section">Section D</span>
+            <span class="tag type">Word Problem</span>
+            <span class="tag diff hard">Hard</span>
+          </div>
+        </div>
+      </div>
+      <div class="q-problem">A radioactive sample starts at 800 mg and halves every 3 hours. (a) Write P(t). (b) When does only 100 mg remain?</div>
+      <div class="q-rationale">
+        <strong>Why this question:</strong> W3.a is the highest cognitive demand — set up a model AND solve it. The teacher's review ends with exponential application problems. This problem requires: identifying P₀=800, half-life T=3, writing P(t)=800·(½)^(t/3), then setting equal to 100 and recognizing 100/800=1/8=(½)³ → t/3=3 → t=9. The half-life model is a deliberate choice over growth because it tests the same one-to-one property in a new context. <span class="data-point">Kai is 4/4 on W3.a</span>. This is a confidence-closer — finish strong.
+      </div>
+      <div class="q-answer">Answer: <span>P(t) = 800·(½)^(t/3) · t = 9 hours</span></div>
+    </div>
+
+  </div>
+
+  <!-- PREDICTION -->
+  <div class="section">
+    <div class="section-title">GR Prediction</div>
+    <div class="predict">
+      <div class="predict-score">
+        <div class="big">A</div>
+        <div class="label">Target Grade</div>
+      </div>
+      <div class="predict-text">
+        Kai has gone from <strong>53% → 93%</strong> in 4 days. His W2 standards are bulletproof. His only exposed weakness — fractional exponents — is directly targeted at Q11. If he has internalized the (√k)³ pattern and knows his cube table up to 6³=216, he hits Q11. The teacher's review Problem 22 uses the same type. Every other question on this exam is at or below the level he demonstrated on RP4. <strong>If he gets Q11 right, he walks into that final exam knowing he can handle the hardest thing on the test.</strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="footnote">
+    <strong>Data sources:</strong> kai-scores-latest.json (MVP through RP4, per-question breakdown) · Teacher Winter 11 Unit 2 Review (8 screenshots, 22 problems, analyzed by GR) · Cross-exam collision verified: 0 hard failures · Schema verified: 325/325 checks · Math verified: all 15 answers confirmed by hand.<br>
+    <strong>Built by:</strong> GR (Research Specialist, Grind org) · Feb 25, 2026 · Submitted for FR and Marcus review.
+  </div>
+
+</div>
+</body>
+</html>

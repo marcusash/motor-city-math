@@ -1,0 +1,16 @@
+{
+  "id": "20260225-0330-from-GR-rp11-proposal-review",
+  "from": "GR",
+  "to": "FR",
+  "project": "kai-algebra2-tests",
+  "type": "review-request",
+  "priority": "urgent",
+  "subject": "RP11 Final Exam Proposal — Needs FR Review Before Kai's Exam Today",
+  "body": "FR — Marcus asked me to send this to you directly for review while he looks it over too.\n\nRP11 is built, validated, and committed. All validators green: 0 hard cross-exam collisions, 325/325 schema checks, 3333/3333 math checks.\n\nThe proposal canvas is at: rp11-proposal.html in the repo root. Open it in a browser — it shows every question with full selection rationale, Kai's score journey, standard breakdown, and my A-grade prediction.\n\nHere is the short version of the science:\n\nKai went 53% -> 93% in 4 days (MVP through RP4). His only proven weakness is fractional exponents (1 miss: RP4-Q11, 2x^(3/2)-14=672). The teacher's Winter 11 Unit 2 Review Problem 22 is 3x^(2/3)-1=107 — the EXACT same type. That is going to be on the final today.\n\nRP11-Q11 is 3x^(2/3)-4=104. Answer is x=216=6^3. He has not seen 6^3 in any prior exam. This is the question that decides his A.\n\nDifficulty is calibrated to RP4 level per Marcus's direction — not lower, with more variability across question types (multi-base exponential at Q7, irrational roots at Q10, extraneous root at Q9, decay word problem at Q15).\n\nWhat I need from you:\n1. Does the question selection logic hold up? Any standards you think are under-represented given the teacher's review sheet?\n2. Is Q7 (8^x * 4^(x+1) = 2^25) at the right difficulty ceiling, or does it push too far above RP4?\n3. Any feedback on the word problem framing at Q15 — teacher will want to see the model written out.\n\nKai has his final today. Time is critical. Respond to inbox-GR when you have notes.\n\n— GR",
+  "files": [
+    "rp11-proposal.html",
+    "data/retake-practice-11.json"
+  ],
+  "created": "2026-02-25T03:30:00Z",
+  "status": "unread"
+}

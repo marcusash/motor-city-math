@@ -1,0 +1,603 @@
+{
+  "exam_id": "retake-practice-11",
+  "schema_version": "1.0",
+  "title": "Unit 2 Retake Practice 11",
+  "subtitle": "Final prep — all Unit 2 standards, fresh problems",
+  "time_minutes": 50,
+  "created": "2026-02-25",
+  "created_by": "GA",
+  "purpose": "Kai's final practice before today's Unit 2 retake. All answers unique vs RP1-10. W2.d Q14 uses vertex-form key features per GI spec. Standards: Q1,5=W2.a; Q2=W2.b; Q3,15=W3.a; Q4,7,10=W3.d; Q6,8=W3.c; Q9,11=W3.b; Q12=W2.c; Q13=W2.e; Q14=W2.d.",
+  "questions": [
+    {
+      "id": "rp11-q1",
+      "number": 1,
+      "section": "A",
+      "standard": "W2.a",
+      "type": "quadratic",
+      "question_html": "Solve by factoring: \\( 4x^2 - 4x - 3 = 0 \\)",
+      "inputs": [
+        {
+          "id": "q1_factored",
+          "type": "text",
+          "label": "Factored form:"
+        },
+        {
+          "id": "q1_x1",
+          "type": "number",
+          "label": "Smaller x =",
+          "answer": -0.5,
+          "tolerance": 0.05
+        },
+        {
+          "id": "q1_x2",
+          "type": "number",
+          "label": "Larger x =",
+          "answer": 1.5,
+          "tolerance": 0.05
+        }
+      ],
+      "hint": "AC method: a×c = 4×(-3) = -12. Find factors of -12 that add to -4.",
+      "solution_steps": [
+        "a×c = -12. Factors of -12 adding to -4: +2 and -6.",
+        "Split: 4x² + 2x - 6x - 3.",
+        "Group: 2x(2x+1) - 3(2x+1) = (2x-3)(2x+1) = 0.",
+        "x = 3/2 = 1.5 or x = -1/2 = -0.5.",
+        "Check: 4(2.25)-6-3=9-9=0 ✓, 4(0.25)+2-3=1-1=0 ✓"
+      ],
+      "feedback_wrong": "AC: a×c=-12. Factors adding to -4: +2 and -6. Group: (2x-3)(2x+1)=0 →.",
+      "feedback_correct": "🔥 Correct! Keep that momentum."
+    },
+    {
+      "id": "rp11-q2",
+      "number": 2,
+      "section": "A",
+      "standard": "W2.b",
+      "type": "absolute-value",
+      "question_html": "For \\( f(x) = 3|x - 8| - 15 \\): state the vertex, x-intercepts, and range.",
+      "inputs": [
+        {
+          "id": "q2_vx",
+          "type": "number",
+          "label": "Vertex x =",
+          "answer": 8,
+          "tolerance": 0.05
+        },
+        {
+          "id": "q2_vy",
+          "type": "number",
+          "label": "Vertex y =",
+          "answer": -15,
+          "tolerance": 0.05
+        },
+        {
+          "id": "q2_x1",
+          "type": "number",
+          "label": "Smaller x-intercept =",
+          "answer": 3,
+          "tolerance": 0.05
+        },
+        {
+          "id": "q2_x2",
+          "type": "number",
+          "label": "Larger x-intercept =",
+          "answer": 13,
+          "tolerance": 0.05
+        },
+        {
+          "id": "q2_range",
+          "type": "text",
+          "label": "Range (interval notation):"
+        }
+      ],
+      "hint": "a|x-h|+k form. h=8, k=-15. Set f(x)=0: 3|x-8|=15 → |x-8|=5.",
+      "solution_steps": [
+        "Vertex: h=8, k=-15 → (8, -15). a=3>0 opens upward.",
+        "x-intercepts: 3|x-8|=15 → |x-8|=5 → x-8=5 or x-8=-5.",
+        "x=13 or x=3.",
+        "Range: minimum at y=-15. Range = [-15, +∞).",
+        "Check: f(3)=3|3-8|-15=3(5)-15=0 ✓, f(13)=3(5)-15=0 ✓"
+      ],
+      "feedback_wrong": "Vertex (8,-15). Set f=0: |x-8|=5 gives x=3 and x=13. Range: [-15,+∞).",
+      "feedback_correct": "🔥 Correct! Keep that momentum."
+    },
+    {
+      "id": "rp11-q3",
+      "number": 3,
+      "section": "A",
+      "standard": "W3.a",
+      "type": "absolute-value",
+      "question_html": "Solve: \\( |2x + 6| - 5 = 15 \\). Write BOTH equations before entering answers.",
+      "inputs": [
+        {
+          "id": "q3_cases",
+          "type": "text",
+          "label": "Both cases (write them out):"
+        },
+        {
+          "id": "q3_x1",
+          "type": "number",
+          "label": "Smaller x =",
+          "answer": -13,
+          "tolerance": 0.05
+        },
+        {
+          "id": "q3_x2",
+          "type": "number",
+          "label": "Larger x =",
+          "answer": 7,
+          "tolerance": 0.05
+        }
+      ],
+      "hint": "Isolate: |2x+6|=20. Then write both cases: 2x+6=20 and 2x+6=-20.",
+      "solution_steps": [
+        "Isolate: |2x+6| = 15+5 = 20.",
+        "Case 1: 2x+6=20 → 2x=14 → x=7.",
+        "Case 2: 2x+6=-20 → 2x=-26 → x=-13.",
+        "Check: |2(7)+6|-5=|20|-5=15 ✓, |2(-13)+6|-5=|-20|-5=20-5=15 ✓"
+      ],
+      "feedback_wrong": "Isolate: |2x+6|=20. Case 1: x=7. Case 2: 2x=-26 → x=-13.",
+      "feedback_correct": "🔥 Correct! Keep that momentum."
+    },
+    {
+      "id": "rp11-q4",
+      "number": 4,
+      "section": "B",
+      "standard": "W3.d",
+      "type": "exponential",
+      "question_html": "Solve: \\( 2^{x - 8} = 8 \\)",
+      "inputs": [
+        {
+          "id": "q4_x",
+          "type": "number",
+          "label": "x =",
+          "answer": 11,
+          "tolerance": 0.05
+        }
+      ],
+      "hint": "Rewrite 8 as a power of 2. Then set exponents equal.",
+      "solution_steps": [
+        "8 = 2^3.",
+        "2^(x-8) = 2^3 → x-8=3 → x=11.",
+        "Check: 2^(11-8)=2^3=8 ✓"
+      ],
+      "feedback_wrong": "Rewrite 8=2^3. Then x-8=3 → x=11.",
+      "feedback_correct": "🔥 Correct! Keep that momentum."
+    },
+    {
+      "id": "rp11-q5",
+      "number": 5,
+      "section": "B",
+      "standard": "W2.a",
+      "type": "quadratic",
+      "question_html": "Solve by factoring: \\( 6x^2 + x - 12 = 0 \\)",
+      "inputs": [
+        {
+          "id": "q5_factored",
+          "type": "text",
+          "label": "Factored form:"
+        },
+        {
+          "id": "q5_x1",
+          "type": "number",
+          "label": "Smaller x =",
+          "answer": -1.5,
+          "tolerance": 0.05
+        },
+        {
+          "id": "q5_x2",
+          "type": "number",
+          "label": "Larger x =",
+          "answer": 1.333,
+          "tolerance": 0.05
+        }
+      ],
+      "hint": "AC method: a×c = 6×(-12) = -72. Find factors of -72 that add to +1.",
+      "solution_steps": [
+        "a×c = -72. Factors of -72 adding to +1: +9 and -8.",
+        "Split: 6x² + 9x - 8x - 12.",
+        "Group: 3x(2x+3) - 4(2x+3) = (3x-4)(2x+3) = 0.",
+        "x = 4/3 ≈ 1.333 or x = -3/2 = -1.5.",
+        "Check: 6(16/9)+4/3-12=32/3+4/3-36/3=0 ✓, 6(9/4)-3/2-12=27/2-3/2-24/2=0 ✓"
+      ],
+      "feedback_wrong": "AC: a×c=-72. Factors adding to +1: +9 and -8. Group: (3x-4)(2x+3)=0 →.",
+      "feedback_correct": "🔥 Correct! Keep that momentum."
+    },
+    {
+      "id": "rp11-q6",
+      "number": 6,
+      "section": "B",
+      "standard": "W3.c",
+      "type": "radical",
+      "question_html": "Solve: \\( \\sqrt{5x + 5} = 10 \\)",
+      "inputs": [
+        {
+          "id": "q6_x",
+          "type": "number",
+          "label": "x =",
+          "answer": 19,
+          "tolerance": 0.05
+        }
+      ],
+      "hint": "Square both sides. Then solve the resulting linear equation. Check domain.",
+      "solution_steps": [
+        "Square both sides: 5x+5 = 100.",
+        "5x = 95 → x = 19.",
+        "Domain check: 5(19)+5=100 ≥ 0 ✓.",
+        "Check: √(95+5)=√100=10 ✓"
+      ],
+      "feedback_wrong": "Square both sides: 5x+5=100 → 5x=95 → x=19. Check: √100=10 ✓.",
+      "feedback_correct": "🔥 Correct! Keep that momentum."
+    },
+    {
+      "id": "rp11-q7",
+      "number": 7,
+      "section": "B",
+      "standard": "W3.d",
+      "type": "exponential",
+      "question_html": "Solve: \\( 8^x \\cdot 4^{x+1} = 2^{25} \\)",
+      "inputs": [
+        {
+          "id": "q7_x",
+          "type": "number",
+          "label": "x =",
+          "answer": 4.6,
+          "tolerance": 0.05
+        }
+      ],
+      "hint": "Rewrite 8^x and 4^(x+1) as powers of 2. Add exponents and set equal to 25.",
+      "solution_steps": [
+        "8^x = (2^3)^x = 2^(3x). 4^(x+1) = (2^2)^(x+1) = 2^(2x+2).",
+        "2^(3x) · 2^(2x+2) = 2^(5x+2) = 2^25.",
+        "5x+2=25 → 5x=23 → x=23/5=4.6.",
+        "Check: 2^(13.8)·2^(11.2)=2^25 ✓"
+      ],
+      "feedback_wrong": "8^x=2^(3x), 4^(x+1)=2^(2x+2). Then 2^(5x+2)=2^25 → 5x=23 → x=4.6.",
+      "feedback_correct": "🔥 Correct! Keep that momentum."
+    },
+    {
+      "id": "rp11-q8",
+      "number": 8,
+      "section": "B",
+      "standard": "W3.c",
+      "type": "rational",
+      "question_html": "Solve: \\( \\dfrac{2x - 3}{x + 1} = 3 \\)",
+      "inputs": [
+        {
+          "id": "q8_x",
+          "type": "number",
+          "label": "x =",
+          "answer": -6,
+          "tolerance": 0.05
+        }
+      ],
+      "hint": "Multiply both sides by (x+1). Collect x terms on one side.",
+      "solution_steps": [
+        "2x-3 = 3(x+1) = 3x+3.",
+        "-3-3 = 3x-2x → -6 = x.",
+        "Check: (2(-6)-3)/((-6)+1)=(-15)/(-5)=3 ✓",
+        "Domain: x≠-1. x=-6 is valid ✓"
+      ],
+      "feedback_wrong": "Multiply by (x+1): 2x-3=3x+3 → -6=x. Check: (-15)/(-5)=3 ✓.",
+      "feedback_correct": "🔥 Correct! Keep that momentum."
+    },
+    {
+      "id": "rp11-q9",
+      "number": 9,
+      "section": "B",
+      "standard": "W3.b",
+      "type": "radical",
+      "question_html": "Solve: \\( \\sqrt{x - 3} = x - 9 \\). Check for extraneous solutions.",
+      "inputs": [
+        {
+          "id": "q9_x",
+          "type": "number",
+          "label": "x =",
+          "answer": 12,
+          "tolerance": 0.05
+        }
+      ],
+      "hint": "Square both sides. You get a quadratic. Solve and check BOTH roots in the ORIGINAL.",
+      "solution_steps": [
+        "Square both sides: x-3 = (x-9)² = x²-18x+81.",
+        "Rearrange: x²-19x+84=0 → (x-7)(x-12)=0.",
+        "x=7 or x=12. Check both:",
+        "x=12: √(12-3)=√9=3 and 12-9=3 ✓.",
+        "x=7: √(7-3)=√4=2 and 7-9=-2. 2≠-2, so x=7 is extraneous.",
+        "Answer: x=12."
+      ],
+      "feedback_wrong": "Square: x²-19x+84=0 → (x-7)(x-12)=0. Check: x=7 extraneous (√4=2≠-2). Answer: x=12.",
+      "feedback_correct": "🔥 Correct! Keep that momentum."
+    },
+    {
+      "id": "rp11-q10",
+      "number": 10,
+      "section": "B",
+      "standard": "W3.d",
+      "type": "exponential",
+      "question_html": "Solve: \\( 2^{x^2 - 2} = 512 \\)",
+      "inputs": [
+        {
+          "id": "q10_x1",
+          "type": "number",
+          "label": "Smaller x =",
+          "answer": -3.317,
+          "tolerance": 0.05
+        },
+        {
+          "id": "q10_x2",
+          "type": "number",
+          "label": "Larger x =",
+          "answer": 3.317,
+          "tolerance": 0.05
+        }
+      ],
+      "hint": "Rewrite 512 as a power of 2. Then solve x²-2 = that exponent. Two solutions.",
+      "solution_steps": [
+        "512 = 2^9.",
+        "x²-2=9 → x²=11.",
+        "x=±√11≈±3.317. Two solutions.",
+        "Check: 2^(11-2)=2^9=512 ✓"
+      ],
+      "feedback_wrong": "512=2^9. So x²-2=9 → x²=11 → x=±√11≈±3.317.",
+      "feedback_correct": "🔥 Correct! Keep that momentum."
+    },
+    {
+      "id": "rp11-q11",
+      "number": 11,
+      "section": "B",
+      "standard": "W3.b",
+      "type": "fractional-exp",
+      "question_html": "Solve: \\( 3x^{2/3} - 4 = 104 \\)",
+      "inputs": [
+        {
+          "id": "q11_x",
+          "type": "number",
+          "label": "x =",
+          "answer": 216,
+          "tolerance": 0.05
+        }
+      ],
+      "hint": "Add 4, divide by 3. Then raise both sides to the 3/2 power: x = 36^(3/2) = (√36)³.",
+      "solution_steps": [
+        "3x^(2/3) = 108 → x^(2/3) = 36.",
+        "Raise to 3/2: x = 36^(3/2).",
+        "36^(3/2) = (√36)³ = 6³ = 216.",
+        "Check: 3(216)^(2/3)-4 = 3(36)-4 = 108-4 = 104 ✓",
+        "CUBE TABLE: 1³=1, 2³=8, 3³=27, 4³=64, 5³=125, 6³=216 ← this one, 7³=343"
+      ],
+      "feedback_wrong": "3x^(2/3)=108 → x^(2/3)=36. Raise to 3/2: x=36^(3/2)=(√36)³=6³=216.",
+      "feedback_correct": "🔥 Correct! Keep that momentum."
+    },
+    {
+      "id": "rp11-q12",
+      "number": 12,
+      "section": "C",
+      "standard": "W2.c",
+      "type": "graph",
+      "question_html": "Graph \\( f(x) = -(x - 2)^2 + 16 \\) and answer all of the following:",
+      "inputs": [
+        {
+          "id": "q12_vx",
+          "type": "number",
+          "label": "Vertex x =",
+          "answer": 2,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q12_vy",
+          "type": "number",
+          "label": "Vertex y =",
+          "answer": 16,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q12_xi1",
+          "type": "number",
+          "label": "Smaller x-intercept =",
+          "answer": -2,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q12_xi2",
+          "type": "number",
+          "label": "Larger x-intercept =",
+          "answer": 6,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q12_range",
+          "type": "text",
+          "label": "Range (interval notation):"
+        },
+        {
+          "id": "q12_increase",
+          "type": "text",
+          "label": "f is increasing on:"
+        },
+        {
+          "id": "q12_decrease",
+          "type": "text",
+          "label": "f is decreasing on:"
+        }
+      ],
+      "graph": {
+        "canvas_id": "graphQ12",
+        "function": "-Math.pow(x-2,2)+16",
+        "function_display": "f(x) = −(x−2)² + 16",
+        "key_points": [
+          [-2, 0],
+          [0, 12],
+          [2, 16],
+          [4, 12],
+          [6, 0]
+        ],
+        "x_range": [-4, 8],
+        "y_range": [-4, 18],
+        "min_points": 5,
+        "tolerance": 0.25
+      },
+      "hint": "a=-1<0: opens DOWNWARD, maximum at vertex. x-intercepts: (x-2)²=16.",
+      "solution_steps": [
+        "Vertex: h=2, k=16 → (2,16). a=-1<0 opens DOWNWARD.",
+        "x-intercepts: -(x-2)²+16=0 → (x-2)²=16 → x-2=±4 → x=6 or x=-2.",
+        "Range: maximum at y=16. Range = (-∞, 16].",
+        "Increasing on (-∞, 2). Decreasing on (2, +∞).",
+        "Check: f(-2)=-(16)+16=0 ✓, f(6)=-(16)+16=0 ✓"
+      ],
+      "feedback_wrong": "Vertex (2,16), opens down (a=-1). x-intercepts: (x-2)²=16 → x=-2 or x=6. Range:.",
+      "feedback_correct": "🔥 Correct! Keep that momentum."
+    },
+    {
+      "id": "rp11-q13",
+      "number": 13,
+      "section": "C",
+      "standard": "W2.e",
+      "type": "graph",
+      "question_html": "Graph \\( f(x) = \\dfrac{6}{x - 4} + 2 \\) and state asymptotes, domain, range, and end behavior.",
+      "inputs": [
+        {
+          "id": "q13_va",
+          "type": "number",
+          "label": "Vertical asymptote x =",
+          "answer": 4,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q13_ha",
+          "type": "number",
+          "label": "Horizontal asymptote y =",
+          "answer": 2,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q13_domain",
+          "type": "text",
+          "label": "Domain:"
+        },
+        {
+          "id": "q13_range",
+          "type": "text",
+          "label": "Range:"
+        },
+        {
+          "id": "q13_endbeh",
+          "type": "text",
+          "label": "As x → +∞, f(x) →"
+        }
+      ],
+      "graph": {
+        "canvas_id": "graphQ13",
+        "function": "6/(x-4)+2",
+        "function_display": "f(x) = 6/(x−4) + 2",
+        "key_points": [
+          [1, 0],
+          [0, 0.5],
+          [7, 4],
+          [10, 3],
+          [-2, 1]
+        ],
+        "x_range": [-4, 12],
+        "y_range": [-4, 6],
+        "min_points": 4,
+        "tolerance": 0.25
+      },
+      "hint": "VA: x-4=0 → x=4. HA: as x→∞ the fraction→0, so f→2.",
+      "solution_steps": [
+        "VA: x-4=0 → x=4. HA: y=2.",
+        "Domain: x≠4. Range: y≠2.",
+        "Right branch (x>4): 6/(x-4) is positive → f > 2.",
+        "As x→+∞: 6/(x-4)→0 from above, so f(x)→2 from above.",
+        "f(1)=6/(-3)+2=0 ✓, f(7)=6/3+2=4 ✓, f(0)=6/(-4)+2=0.5 ✓"
+      ],
+      "feedback_wrong": "VA: x=4. HA: y=2. Domain: x≠4. Range: y≠2. As x→+∞, f→2.",
+      "feedback_correct": "🔥 Correct! Keep that momentum."
+    },
+    {
+      "id": "rp11-q14",
+      "number": 14,
+      "section": "D",
+      "standard": "W2.d",
+      "type": "write-equation",
+      "question_html": "For \\( f(x) = 3(x - 6)^2 - 12 \\):<br><br>(a) State the vertex.<br>(b) Find both x-intercepts (roots).<br>(c) Does the parabola open upward or downward?",
+      "inputs": [
+        {
+          "id": "q14_vx",
+          "type": "number",
+          "label": "Vertex x =",
+          "answer": 6,
+          "tolerance": 0.05
+        },
+        {
+          "id": "q14_vy",
+          "type": "number",
+          "label": "Vertex y =",
+          "answer": -12,
+          "tolerance": 0.05
+        },
+        {
+          "id": "q14_xi1",
+          "type": "number",
+          "label": "Smaller x-intercept =",
+          "answer": 4,
+          "tolerance": 0.05
+        },
+        {
+          "id": "q14_xi2",
+          "type": "number",
+          "label": "Larger x-intercept =",
+          "answer": 8,
+          "tolerance": 0.05
+        },
+        {
+          "id": "q14_dir",
+          "type": "radio",
+          "label": "Parabola opens:",
+          "options": ["Upward", "Downward"],
+          "answer": "Upward"
+        }
+      ],
+      "hint": "Vertex form f(x)=a(x-h)²+k. Vertex is (h,k). Set f(x)=0 to find x-intercepts.",
+      "solution_steps": [
+        "f(x) = 3(x-6)² - 12. Vertex form: h=6, k=-12 → vertex (6,-12).",
+        "a=3>0 → opens UPWARD.",
+        "x-intercepts: 3(x-6)²=12 → (x-6)²=4 → x-6=±2.",
+        "x=8 or x=4.",
+        "Check: f(4)=3(4-6)²-12=3(4)-12=0 ✓, f(8)=3(8-6)²-12=3(4)-12=0 ✓"
+      ],
+      "feedback_wrong": "Vertex (6,-12). Set f=0: (x-6)²=4 → x=8 or x=4. a=3>0 opens upward.",
+      "feedback_correct": "🔥 Correct! Keep that momentum."
+    },
+    {
+      "id": "rp11-q15",
+      "number": 15,
+      "section": "D",
+      "standard": "W3.a",
+      "type": "word-problem",
+      "question_html": "A radioactive sample starts at <strong>800 mg</strong> and <strong>halves every 3 hours</strong>.<br><br>(a) Write the model \\( P(t) = P_0 \\cdot \\left(\\frac{1}{2}\\right)^{t/T} \\).<br>(b) How many hours until only <strong>100 mg</strong> remain?",
+      "inputs": [
+        {
+          "id": "q15_model",
+          "type": "text",
+          "label": "(a) P(t) ="
+        },
+        {
+          "id": "q15_t",
+          "type": "number",
+          "label": "(b) t (hours) =",
+          "answer": 9,
+          "tolerance": 0.1
+        }
+      ],
+      "hint": "Model: P(t)=800·(1/2)^(t/3). Set equal to 100. 800/100=8=(1/2)^? → think powers of 2.",
+      "solution_steps": [
+        "P₀=800, T=3 (half-life). Model: P(t) = 800·(1/2)^(t/3).",
+        "When P=100? 800·(1/2)^(t/3)=100 → (1/2)^(t/3)=1/8.",
+        "1/8 = (1/2)^3, so t/3=3 → t=9 hours.",
+        "Check: 800·(1/2)^(9/3)=800·(1/2)^3=800/8=100 ✓"
+      ],
+      "feedback_wrong": "Model: P(t)=800·(1/2)^(t/3). Then (1/2)^(t/3)=1/8=(1/2)^3 → t/3=3 → t=9.",
+      "feedback_correct": "🔥 Correct! Keep that momentum."
+    }
+  ],
+  "version": "2.0"
+}
