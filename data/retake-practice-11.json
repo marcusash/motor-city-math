@@ -498,7 +498,7 @@
         ],
         "x_range": [-4, 12],
         "y_range": [-4, 6],
-        "min_points": 4,
+        "min_points": 5,
         "tolerance": 0.25
       },
       "hint": "VA: x-4=0 → x=4. HA: as x→∞ the fraction→0, so f→2.",
