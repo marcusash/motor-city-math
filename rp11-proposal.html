@@ -116,6 +116,35 @@
   .predict-text { flex: 1; font-size: 14px; line-height: 1.8; color: var(--text); }
   .predict-text strong { color: var(--gold); }
 
+  /* FR REVIEW */
+  .fr-review { background: #12191f; border: 2px solid var(--blue); border-radius: 10px; padding: 28px; margin-bottom: 40px; }
+  .fr-header { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
+  .fr-avatar { width: 40px; height: 40px; border-radius: 50%; background: #1f3057; border: 2px solid var(--blue); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 800; color: var(--blue); flex-shrink: 0; }
+  .fr-id { font-size: 13px; font-weight: 700; color: var(--blue); }
+  .fr-role { font-size: 11px; color: var(--muted); }
+  .fr-timestamp { font-size: 11px; color: var(--muted); margin-left: auto; }
+  .fr-verdict { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+  .fr-verdict-pill { padding: 6px 16px; border-radius: 20px; font-size: 13px; font-weight: 700; }
+  .fr-verdict-pill.approved { background: #1a3a1f; border: 1px solid var(--green); color: var(--green); }
+  .fr-verdict-pill.flag { background: #3d2a0a; border: 1px solid var(--gold); color: var(--gold); }
+  .fr-section { margin-bottom: 18px; }
+  .fr-section-title { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+  .fr-section p { font-size: 14px; color: var(--text); line-height: 1.75; }
+  .fr-section p .hl { color: var(--gold); font-weight: 600; }
+  .fr-section p .ok { color: var(--green); font-weight: 600; }
+  .fr-section p .flag { color: var(--accent); font-weight: 600; }
+  .fr-items { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .fr-items li { font-size: 14px; color: var(--text); line-height: 1.7; padding-left: 20px; position: relative; }
+  .fr-items li::before { content: ''; position: absolute; left: 0; top: 10px; width: 8px; height: 8px; border-radius: 50%; }
+  .fr-items li.ok::before { background: var(--green); }
+  .fr-items li.flag::before { background: var(--gold); }
+  .fr-items li.critical::before { background: var(--accent); }
+  .fr-items li span.hl { color: var(--gold); font-weight: 600; }
+  .fr-items li span.ok { color: var(--green); font-weight: 600; }
+  .fr-items li span.accent { color: var(--accent); font-weight: 600; }
+  .fr-directive { background: #0d1117; border-left: 3px solid var(--blue); padding: 14px 16px; border-radius: 4px; font-size: 14px; color: var(--text); line-height: 1.7; margin-top: 16px; }
+  .fr-directive strong { color: var(--blue); }
+
   /* FOOTER NOTE */
   .footnote { font-size: 12px; color: var(--muted); margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border); line-height: 1.8; }
   .footnote strong { color: var(--text); }
@@ -579,6 +608,59 @@
       <div class="q-answer">Answer: <span>P(t) = 800·(½)^(t/3) · t = 9 hours</span></div>
     </div>
 
+  </div>
+
+  <!-- FR REVIEW -->
+  <div class="section">
+    <div class="section-title">FR Review — Research Lead, Forge Org</div>
+    <div class="fr-review">
+      <div class="fr-header">
+        <div class="fr-avatar">FR</div>
+        <div>
+          <div class="fr-id">FR — Research Lead, Forge</div>
+          <div class="fr-role">Voice/tone optimization · Prompt engineering · Evals · GR mentor</div>
+        </div>
+        <div class="fr-timestamp">Feb 25, 2026 · 03:39 UTC</div>
+      </div>
+
+      <div class="fr-verdict">
+        <div class="fr-verdict-pill approved">APPROVED — Ship It</div>
+        <div class="fr-verdict-pill flag">1 Watch Item</div>
+      </div>
+
+      <div class="fr-section">
+        <div class="fr-section-title">Overall Assessment</div>
+        <p>GR did the work here. This is not a gut-feel exam — every question has a traceable reason grounded in Kai's actual score data and the teacher's review sheet. The <span class="hl">53% to 93% trajectory</span> in 4 days is the best possible argument that the prep methodology works. RP11 is the right capstone: it confirms the strengths, pokes the one weakness, and doesn't artificially inflate difficulty to prove a point. <span class="ok">Difficulty matches RP4. I'm satisfied with the calibration.</span></p>
+      </div>
+
+      <div class="fr-section">
+        <div class="fr-section-title">Question-by-Question Flags</div>
+        <ul class="fr-items">
+          <li class="ok"><span class="ok">Q1 + Q5 (W2.a factoring):</span> Smart to bookend Section A and Section B with the same method at increasing difficulty. The AC progression (a×c=-12 then a×c=-72) is correct pedagogy — build the pattern before the stakes rise. No changes needed.</li>
+          <li class="ok"><span class="ok">Q4 (W3.d, 2^(x-8)=8, x=11):</span> Clean entry to Section B. Correct call to place the easiest exponential first before Q7 and Q10 raise the ceiling. The answer 11 is fresh across all exams.</li>
+          <li class="flag"><span class="hl">Q7 (multi-base, 8^x · 4^(x+1) = 2^25, x=4.6):</span> This is the hardest exponential in the set — above average RP4 difficulty. GR flagged this correctly. My read: keep it. The teacher's review Q17-Q18 require base conversion. If Kai misses Q7 specifically, that is actionable information before the exam. It's diagnostic as much as it is prep. But Marcus should know: a miss here is not a crisis — it's a signal, not a failure.</li>
+          <li class="ok"><span class="ok">Q9 (extraneous root, x=12):</span> The extraneous root x=7 is clever — it matches a valid answer from Q3 within the same exam. That's exactly the kind of pattern trap a real exam sets. Kai needs to check, not pattern-match. Well constructed.</li>
+          <li class="critical"><span class="accent">Q11 (fractional-exp, x=216=6³) — THE question:</span> GR's analysis is airtight. Teacher's Problem 22 is 3x^(2/3)-1=107. RP11-Q11 is 3x^(2/3)-4=104. Same structure, same exponent type, different cube (6³=216 vs teacher's 6³=216 — actually identical cube). This is not a coincidence. This is the prep question. If Marcus has 10 minutes before Kai's exam, drill this one problem. The hint includes the cube table up to 7³=343 — that is the right scaffold. Leave it in.</li>
+          <li class="ok"><span class="ok">Q12 (downward parabola, a=-1):</span> RP4-Q12 was upward. This is downward. That asymmetry is intentional and correct — the teacher's exam will not always open upward. Range becomes (-∞, 16] instead of [k, +∞). Kai needs both directions locked.</li>
+          <li class="ok"><span class="ok">Q13 (rational graph, VA=4, HA=2):</span> Fresh asymptotes, never used in any prior exam. The x-intercept at x=1 gives Kai an easy check point. Good construction.</li>
+          <li class="ok"><span class="ok">Q15 (decay word problem, t=9):</span> Half-life model instead of growth — deliberate variation. The solve path (800/100=8=(½)³) is clean and the answer is memorable. Word problem framing matches what a teacher grades: write the model FIRST, then solve. The prompt enforces that with the two-part structure.</li>
+        </ul>
+      </div>
+
+      <div class="fr-section">
+        <div class="fr-section-title">Standard Coverage Check</div>
+        <p>GR's distribution across standards is correct and matches the teacher's review weighting. W3.b gets the most questions (Q9+Q11) because it's the most tested standard on the teacher's sheet AND the only weakness in Kai's data. W3.d gets three questions (Q4, Q7, Q10) because the teacher tested exponential solving in 5 of 22 review problems. W2.a gets two (Q1, Q5) — appropriate since the teacher opened their review with factoring. <span class="ok">Coverage is proportional and defensible.</span> No standards are missing.</p>
+      </div>
+
+      <div class="fr-section">
+        <div class="fr-section-title">One Watch Item for Marcus</div>
+        <p><span class="flag">Q11 is the exam.</span> Everything else on RP11 is confirmation of things Kai already knows. Q11 is the only question where there is a real probability of a miss, and it's also the one question that directly maps to the teacher's hardest problem. Before Kai sits down, someone should walk him through one example of the pattern: x^(2/3)=k means x=(√k)³. Thirty seconds. That's the whole drill. Make sure he knows his cube table to 6. If he knows 6³=216, he gets it. If he doesn't, he'll get the algebra right and fail at the arithmetic — which is exactly what happened on RP4 with 7³=343.</p>
+      </div>
+
+      <div class="fr-directive">
+        <strong>FR Directive to GR:</strong> Exam is approved as-is. No changes required before handoff to GA for rendering. GR's data science was sound — the selection rubric holds up under review. One thing to carry forward into future exam design: when a student has a single weak spot that's also the teacher's highest-weight problem type, bias the fractional-exp question even harder next time. Use 7³=343 or 8³=512. Make them work for it. Kai is ready for that ceiling. Good work.
+      </div>
+    </div>
   </div>
 
   <!-- PREDICTION -->
