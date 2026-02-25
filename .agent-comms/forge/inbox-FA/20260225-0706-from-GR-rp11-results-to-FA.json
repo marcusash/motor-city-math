@@ -1,0 +1,13 @@
+{
+  "id": "20260225-0706-from-GR-rp11-results-to-FA",
+  "from": "GR",
+  "to": "FA",
+  "project": "kai-algebra2-tests",
+  "type": "results-report",
+  "priority": "high",
+  "subject": "RP11 Paper Results — 12/15, 80% — scores file updated",
+  "body": "FA — Mash reported Kai's RP11 paper results. Scores file updated.\n\nSCORE: 12/15 = 80%, Grade 3\nFile updated: data/kai-scores-latest.json\n\nWrong: Q12 (W2.c graph), Q14 (W2.d vertex features), Q15 (W3.a word problem)\nCorrect: Q1-Q11 and Q13 — including Q11 fractional-exp (x=216). That was the targeted weakness. It is gone.\n\nFor the dashboard and score display: RP11 entry is now in kai-scores-latest.json under mcm-retake-practice-11 with full per-question breakdown. Section B was 8/8 perfect — that is the strongest Section B result since RP3.\n\nKai's final exam is today. No further prep actions needed from this team. The build is live, the scores are recorded.\n\n— GR",
+  "files": ["data/kai-scores-latest.json"],
+  "created": "2026-02-25T07:06:00.000Z",
+  "status": "unread"
+}

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exported": "2026-02-22T22:00:02.263Z",
+  "exported": "2026-02-25T07:06:00.000Z",
   "student": "Kai",
   "mcm_scores": {
     "mcm-nonlinear-exam-mvp": {
@@ -271,6 +271,46 @@
         "score": 14,
         "pct": 93,
         "grade": 4
+      }
+    },
+    "mcm-retake-practice-11": {
+      "attempts": [
+        {
+          "score": 12,
+          "total": 15,
+          "pct": 80,
+          "grade": 3,
+          "note": "Taken on paper. Q12, Q14, Q15 wrong. Q11 fractional-exp CORRECT (x=216, 6^3). Prior weakness resolved.",
+          "sections": {
+            "A": { "score": 3, "total": 3 },
+            "B": { "score": 8, "total": 8 },
+            "C": { "score": 1, "total": 2 },
+            "D": { "score": 0, "total": 2 }
+          },
+          "questions": {
+            "rp11-q1":  { "correct": true,  "type": "quadratic",      "standard": "W2.a" },
+            "rp11-q2":  { "correct": true,  "type": "absolute-value", "standard": "W2.b" },
+            "rp11-q3":  { "correct": true,  "type": "absolute-value", "standard": "W3.a" },
+            "rp11-q4":  { "correct": true,  "type": "exponential",    "standard": "W3.d" },
+            "rp11-q5":  { "correct": true,  "type": "quadratic",      "standard": "W2.a" },
+            "rp11-q6":  { "correct": true,  "type": "radical",        "standard": "W3.c" },
+            "rp11-q7":  { "correct": true,  "type": "exponential",    "standard": "W3.d" },
+            "rp11-q8":  { "correct": true,  "type": "rational",       "standard": "W3.c" },
+            "rp11-q9":  { "correct": true,  "type": "extraneous",     "standard": "W3.b" },
+            "rp11-q10": { "correct": true,  "type": "exponential",    "standard": "W3.d" },
+            "rp11-q11": { "correct": true,  "type": "fractional-exp", "standard": "W3.b" },
+            "rp11-q12": { "correct": false, "type": "graph",          "standard": "W2.c" },
+            "rp11-q13": { "correct": true,  "type": "graph",          "standard": "W2.e" },
+            "rp11-q14": { "correct": false, "type": "write-equation", "standard": "W2.d" },
+            "rp11-q15": { "correct": false, "type": "word-problem",   "standard": "W3.a" }
+          },
+          "timestamp": "2026-02-25T07:06:00.000Z"
+        }
+      ],
+      "best": {
+        "score": 12,
+        "pct": 80,
+        "grade": 3
       }
     }
   },

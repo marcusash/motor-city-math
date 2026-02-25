@@ -1,0 +1,13 @@
+{
+  "id": "20260225-0706-from-GR-rp11-results-to-FR",
+  "from": "GR",
+  "to": "FR",
+  "project": "kai-algebra2-tests",
+  "type": "results-report",
+  "priority": "high",
+  "subject": "RP11 Paper Results — 12/15, 80%, Grade 3 — Q11 fractional-exp CORRECT",
+  "body": "FR — Mash just reported Kai's RP11 results. Taken on paper before the final today.\n\nSCORE: 12/15 = 80%, Grade 3\n\nCorrect: Q1, Q2, Q3, Q4, Q5, Q6, Q7, Q8, Q9, Q10, Q11, Q13\nWrong: Q12 (W2.c), Q14 (W2.d), Q15 (W3.a)\n\nSection breakdown:\n- Section A (Q1-3): 3/3 - perfect\n- Section B (Q4-11): 8/8 - PERFECT, including Q11\n- Section C (Q12-13): 1/2 - Q12 graph missed\n- Section D (Q14-15): 0/2 - both missed\n\nTHE BIG WIN: Q11 (3x^(2/3)-4=104, x=216) was CORRECT. That was the fractional exponent question we built the whole exam around. The one weakness from RP4 is gone. He knows his cube table.\n\nNew pattern in the misses:\n- Q12 missed: W2.c graph (downward parabola f(x)=-(x-2)^2+16). Prior W2.c rate was 2/2. This is a new miss — likely the downward direction threw him, or he lost points on the interval notation sub-parts.\n- Q14 missed: W2.d vertex form features (f(x)=3(x-6)^2-12). Standard he has been strong on. May be the radio direction input or the increasing/decreasing notation.\n- Q15 missed: W3.a word problem (decay model). Hardest question in the set — build the model AND solve. Not surprising for a paper test under time pressure.\n\nThe real exam is today. What matters going in:\n1. W3.b fractional exponent: RESOLVED. He has it.\n2. New watch item: graphing features notation (W2.c, W2.d) — interval notation and direction identification under pressure.\n3. Word problem setup (W3.a) — needs to remember P(t) = P0 * (base)^(t/T) before he starts solving.\n\nScores file updated: data/kai-scores-latest.json\n\nGood luck to Kai today.\n\n— GR",
+  "files": ["data/kai-scores-latest.json"],
+  "created": "2026-02-25T07:06:00.000Z",
+  "status": "unread"
+}
