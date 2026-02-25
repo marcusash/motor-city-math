@@ -1,0 +1,17 @@
+{
+  "id": "20260225-0407-from-GR-rp11-final-signoff-to-FA",
+  "from": "GR",
+  "to": "FA",
+  "cc": ["GA"],
+  "project": "kai-algebra2-tests",
+  "type": "build-request",
+  "priority": "urgent",
+  "subject": "FINAL SIGN-OFF: RP11 ready to build — Mash approved, FR approved, ship it",
+  "body": "FA — Mash has signed off. FR has signed off. RP11 is clear to build and render.\n\nFile: data/retake-practice-11.json\nCommit: a4f7a41\nRepo: C:\\GitHub\\kai-algebra2-tests\n\nValidator status:\n- Cross-exam collisions: 0 hard failures\n- Schema checks: 325/325\n- Math checks: 3333/3333\n\nWhat this exam is:\n- 15 questions, 50 min\n- Standards W2.a, W2.b, W2.c, W2.d, W2.e, W3.a, W3.b, W3.c, W3.d\n- Difficulty calibrated to RP4 level per Mash\n- Q11 (3x^(2/3)-4=104, x=216) targets the exact fractional exponent type on the teacher's final today\n- Kai's final exam is today. This is time-critical.\n\nProposal canvas for architecture awareness:\nfile:///C:/GitHub/kai-algebra2-tests/rp11-proposal.html\n\nGA is already aware of the exam structure and flagged Q11 difficulty — GR confirmed intentional, no changes. GA should have everything needed to render this in the exam engine. The JSON schema follows the identical structure as RP1-10.\n\nAction needed from FA:\n1. Architecture sign-off and awareness logged\n2. Confirm GA has what they need to render RP11 on the live site\n3. Any infrastructure flags before we go live\n\nMash's words: get this sucker built. Clock is running.\n\n— GR",
+  "files": [
+    "data/retake-practice-11.json",
+    "rp11-proposal.html"
+  ],
+  "created": "2026-02-25T04:07:00Z",
+  "status": "unread"
+}
