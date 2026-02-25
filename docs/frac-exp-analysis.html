@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kai — Fractional Exponent Analysis</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0f1117; color: #e8eaf0; font-family: 'Segoe UI', system-ui, sans-serif; padding: 40px 32px; }
+
+  .page-header { margin-bottom: 40px; border-bottom: 2px solid #F97316; padding-bottom: 20px; }
+  .page-header h1 { font-size: 26px; font-weight: 700; color: #fff; letter-spacing: -0.3px; }
+  .page-header p { font-size: 14px; color: #94a3b8; margin-top: 6px; }
+  .badge { display: inline-block; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 4px; margin-left: 10px; vertical-align: middle; }
+  .badge-fr { background: #F97316; color: #000; }
+
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; margin-bottom: 32px; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 32px; }
+
+  .section-label { font-size: 11px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: #F97316; margin-bottom: 16px; }
+
+  .card { background: #1a1f2e; border: 1px solid #2a3044; border-radius: 10px; padding: 20px; }
+  .card-title { font-size: 13px; font-weight: 700; color: #cbd5e1; margin-bottom: 14px; letter-spacing: 0.2px; }
+
+  /* Question rows */
+  .q-row { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid #232838; }
+  .q-row:last-child { border-bottom: none; }
+  .q-num { font-size: 11px; font-weight: 700; color: #64748b; min-width: 28px; padding-top: 2px; }
+  .q-body { flex: 1; }
+  .q-eq { font-size: 15px; font-family: 'Courier New', monospace; color: #e2e8f0; font-weight: 600; }
+  .q-meta { font-size: 11px; color: #64748b; margin-top: 4px; }
+  .q-answer { font-size: 12px; color: #94a3b8; margin-top: 3px; }
+  .q-result { min-width: 60px; text-align: right; padding-top: 2px; }
+
+  .result-pass { color: #22c55e; font-size: 13px; font-weight: 700; }
+  .result-fail { color: #ef4444; font-size: 13px; font-weight: 700; }
+  .result-unknown { color: #64748b; font-size: 12px; }
+
+  /* Difficulty bars */
+  .diff-row { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid #232838; }
+  .diff-row:last-child { border-bottom: none; }
+  .diff-label { font-size: 12px; color: #94a3b8; min-width: 160px; font-family: 'Courier New', monospace; }
+  .diff-bar-wrap { flex: 1; background: #232838; border-radius: 4px; height: 8px; overflow: hidden; }
+  .diff-bar { height: 100%; border-radius: 4px; transition: width 0.3s; }
+  .diff-score { font-size: 12px; font-weight: 700; min-width: 30px; text-align: right; }
+
+  .bar-1 { background: #22c55e; width: 20%; }
+  .bar-2 { background: #84cc16; width: 40%; }
+  .bar-3 { background: #f59e0b; width: 60%; }
+  .bar-4 { background: #f97316; width: 80%; }
+  .bar-5 { background: #ef4444; width: 100%; }
+
+  .score-1 { color: #22c55e; }
+  .score-2 { color: #84cc16; }
+  .score-3 { color: #f59e0b; }
+  .score-4 { color: #f97316; }
+  .score-5 { color: #ef4444; }
+
+  /* Pattern analysis */
+  .pattern-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .pattern-box { background: #232838; border-radius: 8px; padding: 16px; }
+  .pattern-box h4 { font-size: 12px; font-weight: 700; color: #94a3b8; letter-spacing: 0.5px; margin-bottom: 10px; text-transform: uppercase; }
+  .pattern-box ul { list-style: none; }
+  .pattern-box li { font-size: 13px; color: #cbd5e1; padding: 4px 0; padding-left: 14px; position: relative; }
+  .pattern-box li::before { content: '→'; position: absolute; left: 0; color: #F97316; font-size: 11px; }
+
+  /* Insight box */
+  .insight { background: #1e2a1e; border: 1px solid #22c55e33; border-left: 3px solid #22c55e; border-radius: 8px; padding: 16px 20px; margin-bottom: 24px; }
+  .insight h4 { font-size: 12px; font-weight: 700; color: #22c55e; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 8px; }
+  .insight p { font-size: 13px; color: #cbd5e1; line-height: 1.6; }
+
+  .warn { background: #2a1e1e; border: 1px solid #ef444433; border-left: 3px solid #ef4444; border-radius: 8px; padding: 16px 20px; margin-bottom: 24px; }
+  .warn h4 { font-size: 12px; font-weight: 700; color: #ef4444; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 8px; }
+  .warn p { font-size: 13px; color: #cbd5e1; line-height: 1.6; }
+
+  .stat-row { display: flex; gap: 20px; margin-bottom: 28px; }
+  .stat { background: #1a1f2e; border: 1px solid #2a3044; border-radius: 8px; padding: 16px 20px; flex: 1; text-align: center; }
+  .stat-val { font-size: 28px; font-weight: 700; color: #fff; }
+  .stat-lbl { font-size: 11px; color: #64748b; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.8px; }
+
+  .tag { display: inline-block; font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 3px; margin-left: 6px; vertical-align: middle; }
+  .tag-new { background: #1e3a5f; color: #60a5fa; }
+  .tag-old { background: #2a2a1e; color: #a3a37a; }
+  .tag-miss { background: #3a1e1e; color: #f87171; }
+
+  .move-box { background: #1a2535; border: 1px solid #334155; border-radius: 8px; padding: 14px 18px; margin-bottom: 12px; }
+  .move-box h4 { font-size: 12px; font-weight: 700; color: #60a5fa; margin-bottom: 8px; }
+  .move-box p { font-size: 13px; color: #94a3b8; font-family: 'Courier New', monospace; line-height: 1.8; }
+
+  footer { margin-top: 48px; padding-top: 20px; border-top: 1px solid #2a3044; font-size: 11px; color: #475569; }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>Kai — Fractional Exponent Analysis <span class="badge badge-fr">FR</span></h1>
+  <p>W3.b · All prior fractional-exp questions vs. new drill · Exam tomorrow · Generated 2026-02-25</p>
+</div>
+
+<!-- Summary stats -->
+<div class="stat-row">
+  <div class="stat">
+    <div class="stat-val">4</div>
+    <div class="stat-lbl">Prior Questions</div>
+  </div>
+  <div class="stat">
+    <div class="stat-val" style="color:#ef4444">1</div>
+    <div class="stat-lbl">Confirmed Miss</div>
+  </div>
+  <div class="stat">
+    <div class="stat-val" style="color:#F97316">6</div>
+    <div class="stat-lbl">New Drill Questions</div>
+  </div>
+  <div class="stat">
+    <div class="stat-val" style="color:#22c55e">2</div>
+    <div class="stat-lbl">New Patterns Introduced</div>
+  </div>
+</div>
+
+<!-- Warning -->
+<div class="warn">
+  <h4>The Problem</h4>
+  <p>All 4 prior exams used the same template: <strong>ax^(3/2) + b = c</strong>. Kai got it on RP1, RP2, RP3 — then dropped it on RP4 when the cube root was 343 (7³, less obvious than 8, 64, 125). The skill is intermittent, not mastered. The drill fixes both issues: harder cube roots AND the reverse form x^(2/3).</p>
+</div>
+
+<div class="grid-2">
+
+  <!-- Prior questions -->
+  <div>
+    <div class="section-label">Prior Questions — What Kai Has Seen</div>
+    <div class="card">
+      <div class="card-title">All 4 prior fractional-exp questions (always Q11, Section B)</div>
+
+      <div class="q-row">
+        <div class="q-num">RP1</div>
+        <div class="q-body">
+          <div class="q-eq">5x^(3/2) - 10 = 30</div>
+          <div class="q-meta">x^(3/2) form · x^(3/2) = 8 → 8^(2/3) = 4</div>
+          <div class="q-answer">Answer: x = 4 &nbsp;·&nbsp; cube root: 8 = 2³</div>
+        </div>
+        <div class="q-result"><span class="result-unknown">No detail</span></div>
+      </div>
+
+      <div class="q-row">
+        <div class="q-num">RP2</div>
+        <div class="q-body">
+          <div class="q-eq">2x^(3/2) - 6 = 122</div>
+          <div class="q-meta">x^(3/2) form · x^(3/2) = 64 → 64^(2/3) = 16</div>
+          <div class="q-answer">Answer: x = 16 &nbsp;·&nbsp; cube root: 64 = 4³</div>
+        </div>
+        <div class="q-result"><span class="result-unknown">No detail</span></div>
+      </div>
+
+      <div class="q-row">
+        <div class="q-num">RP3</div>
+        <div class="q-body">
+          <div class="q-eq">2x^(3/2) - 10 = 240</div>
+          <div class="q-meta">x^(3/2) form · x^(3/2) = 125 → 125^(2/3) = 25</div>
+          <div class="q-answer">Answer: x = 25 &nbsp;·&nbsp; cube root: 125 = 5³</div>
+        </div>
+        <div class="q-result"><span class="result-pass">✓ PASS</span></div>
+      </div>
+
+      <div class="q-row">
+        <div class="q-num">RP4</div>
+        <div class="q-body">
+          <div class="q-eq">2x^(3/2) - 14 = 672</div>
+          <div class="q-meta">x^(3/2) form · x^(3/2) = 343 → 343^(2/3) = 49</div>
+          <div class="q-answer">Answer: x = 49 &nbsp;·&nbsp; cube root: <strong style="color:#ef4444">343 = 7³ (tricky)</strong></div>
+        </div>
+        <div class="q-result"><span class="result-fail">✗ MISS</span></div>
+      </div>
+
+    </div>
+
+    <!-- The move -->
+    <div style="margin-top: 20px;">
+      <div class="section-label">The Two Moves Kai Needs</div>
+      <div class="move-box">
+        <h4>Move A — x^(3/2) form (all 4 prior exams)</h4>
+        <p>ax^(3/2) + b = c<br>→ isolate x^(3/2)<br>→ raise to 2/3<br>→ cube root FIRST, then square</p>
+      </div>
+      <div class="move-box">
+        <h4>Move B — x^(2/3) form (NEW in drill)</h4>
+        <p>ax^(2/3) + b = c<br>→ isolate x^(2/3)<br>→ raise to 3/2<br>→ square root FIRST, then cube</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- New drill questions -->
+  <div>
+    <div class="section-label">New Drill — 6 Questions</div>
+    <div class="card">
+      <div class="card-title">Escalating difficulty · Both forms · All verified</div>
+
+      <div class="q-row">
+        <div class="q-num">D1</div>
+        <div class="q-body">
+          <div class="q-eq">x^(2/3) = 9 <span class="tag tag-new">NEW FORM</span></div>
+          <div class="q-meta">Pure move B · raise to 3/2 · √9 = 3, 3³ = 27</div>
+          <div class="q-answer">Answer: x = 27</div>
+        </div>
+      </div>
+
+      <div class="q-row">
+        <div class="q-num">D2</div>
+        <div class="q-body">
+          <div class="q-eq">4x^(3/2) = 32 <span class="tag tag-old">FAMILIAR</span></div>
+          <div class="q-meta">Move A · isolate first · cube root 8 = 2³</div>
+          <div class="q-answer">Answer: x = 4</div>
+        </div>
+      </div>
+
+      <div class="q-row">
+        <div class="q-num">D3</div>
+        <div class="q-body">
+          <div class="q-eq">3x^(2/3) - 5 = 22 <span class="tag tag-new">NEW FORM</span></div>
+          <div class="q-meta">Move B with two-step isolation · x^(2/3) = 9 → x = 27</div>
+          <div class="q-answer">Answer: x = 27</div>
+        </div>
+      </div>
+
+      <div class="q-row">
+        <div class="q-num">D4</div>
+        <div class="q-body">
+          <div class="q-eq">2x^(3/2) - 14 = 236 <span class="tag tag-miss">RP4 PATTERN</span></div>
+          <div class="q-meta">Exact same template as the miss · new numbers · 5³ = 125</div>
+          <div class="q-answer">Answer: x = 25</div>
+        </div>
+      </div>
+
+      <div class="q-row">
+        <div class="q-num">D5</div>
+        <div class="q-body">
+          <div class="q-eq">5x^(2/3) + 3 = 83 <span class="tag tag-new">NEW FORM</span></div>
+          <div class="q-meta">Move B harder · x^(2/3) = 16 → √16 = 4, 4³ = 64</div>
+          <div class="q-answer">Answer: x = 64</div>
+        </div>
+      </div>
+
+      <div class="q-row">
+        <div class="q-num">D6</div>
+        <div class="q-body">
+          <div class="q-eq">x^(3/2) = 216 <span class="tag tag-old">FAMILIAR</span></div>
+          <div class="q-meta">Pure move A · 216 = 6³ · ∛216 = 6, 6² = 36</div>
+          <div class="q-answer">Answer: x = 36</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- Difficulty comparison -->
+<div class="section-label">Difficulty Comparison</div>
+<div class="card" style="margin-bottom: 28px;">
+  <div class="card-title">All questions ranked by difficulty — prior + drill</div>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px;">
+    <div>
+      <div style="font-size: 11px; color: #64748b; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.8px;">Prior Exams</div>
+
+      <div class="diff-row">
+        <div class="diff-label">RP1: 5x^(3/2)-10=30</div>
+        <div class="diff-bar-wrap"><div class="diff-bar bar-2"></div></div>
+        <div class="diff-score score-2">2/5</div>
+      </div>
+      <div class="diff-row">
+        <div class="diff-label">RP2: 2x^(3/2)-6=122</div>
+        <div class="diff-bar-wrap"><div class="diff-bar bar-2"></div></div>
+        <div class="diff-score score-2">2/5</div>
+      </div>
+      <div class="diff-row">
+        <div class="diff-label">RP3: 2x^(3/2)-10=240</div>
+        <div class="diff-bar-wrap"><div class="diff-bar bar-3"></div></div>
+        <div class="diff-score score-3">3/5</div>
+      </div>
+      <div class="diff-row">
+        <div class="diff-label">RP4: 2x^(3/2)-14=672 ✗</div>
+        <div class="diff-bar-wrap"><div class="diff-bar bar-4"></div></div>
+        <div class="diff-score score-4">4/5</div>
+      </div>
+
+      <div style="margin-top: 14px; font-size: 11px; color: #64748b; line-height: 1.6;">
+        Why RP4 was harder: 343 = 7³ is not an obvious cube root.<br>
+        8, 64, 125 are instinctive. 343 requires recall of 7³.
+      </div>
+    </div>
+
+    <div>
+      <div style="font-size: 11px; color: #64748b; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.8px;">New Drill</div>
+
+      <div class="diff-row">
+        <div class="diff-label">D1: x^(2/3)=9</div>
+        <div class="diff-bar-wrap"><div class="diff-bar bar-1"></div></div>
+        <div class="diff-score score-1">1/5</div>
+      </div>
+      <div class="diff-row">
+        <div class="diff-label">D2: 4x^(3/2)=32</div>
+        <div class="diff-bar-wrap"><div class="diff-bar bar-2"></div></div>
+        <div class="diff-score score-2">2/5</div>
+      </div>
+      <div class="diff-row">
+        <div class="diff-label">D3: 3x^(2/3)-5=22</div>
+        <div class="diff-bar-wrap"><div class="diff-bar bar-2"></div></div>
+        <div class="diff-score score-2">2/5</div>
+      </div>
+      <div class="diff-row">
+        <div class="diff-label">D4: 2x^(3/2)-14=236</div>
+        <div class="diff-bar-wrap"><div class="diff-bar bar-3"></div></div>
+        <div class="diff-score score-3">3/5</div>
+      </div>
+      <div class="diff-row">
+        <div class="diff-label">D5: 5x^(2/3)+3=83</div>
+        <div class="diff-bar-wrap"><div class="diff-bar bar-3"></div></div>
+        <div class="diff-score score-3">3/5</div>
+      </div>
+      <div class="diff-row">
+        <div class="diff-label">D6: x^(3/2)=216</div>
+        <div class="diff-bar-wrap"><div class="diff-bar bar-2"></div></div>
+        <div class="diff-score score-2">2/5</div>
+      </div>
+
+      <div style="margin-top: 14px; font-size: 11px; color: #64748b; line-height: 1.6;">
+        D4 is intentionally one step easier than RP4 — same<br>
+        template, but 125 = 5³ instead of 343 = 7³. Rebuild confidence.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Pattern insight -->
+<div class="insight">
+  <h4>What the Drill Adds That the Exams Didn't Cover</h4>
+  <p>Every prior exam used <strong>only x^(3/2)</strong>. The drill introduces <strong>x^(2/3)</strong> for the first time (D1, D3, D5). These require the opposite sequence: square root first, then cube. If the real exam uses x^(2/3), Kai has never practiced it. The drill closes that gap tonight.</p>
+</div>
+
+<!-- Cube roots cheat sheet -->
+<div class="section-label">Cube Root Reference — The Numbers Kai Needs Cold</div>
+<div class="card">
+  <div class="card-title">Perfect cubes that appear in these problems</div>
+  <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 12px; text-align: center;">
+    <div style="background:#232838; border-radius:6px; padding:12px 8px;">
+      <div style="font-size:20px; font-weight:700; color:#22c55e;">8</div>
+      <div style="font-size:11px; color:#64748b; margin-top:4px;">= 2³</div>
+      <div style="font-size:11px; color:#94a3b8;">∛8 = 2</div>
+    </div>
+    <div style="background:#232838; border-radius:6px; padding:12px 8px;">
+      <div style="font-size:20px; font-weight:700; color:#22c55e;">27</div>
+      <div style="font-size:11px; color:#64748b; margin-top:4px;">= 3³</div>
+      <div style="font-size:11px; color:#94a3b8;">∛27 = 3</div>
+    </div>
+    <div style="background:#232838; border-radius:6px; padding:12px 8px;">
+      <div style="font-size:20px; font-weight:700; color:#22c55e;">64</div>
+      <div style="font-size:11px; color:#64748b; margin-top:4px;">= 4³</div>
+      <div style="font-size:11px; color:#94a3b8;">∛64 = 4</div>
+    </div>
+    <div style="background:#232838; border-radius:6px; padding:12px 8px;">
+      <div style="font-size:20px; font-weight:700; color:#22c55e;">125</div>
+      <div style="font-size:11px; color:#64748b; margin-top:4px;">= 5³</div>
+      <div style="font-size:11px; color:#94a3b8;">∛125 = 5</div>
+    </div>
+    <div style="background:#232838; border-radius:6px; padding:12px 8px;">
+      <div style="font-size:20px; font-weight:700; color:#22c55e;">216</div>
+      <div style="font-size:11px; color:#64748b; margin-top:4px;">= 6³</div>
+      <div style="font-size:11px; color:#94a3b8;">∛216 = 6</div>
+    </div>
+    <div style="background:#232838; border-radius:6px; padding:12px 8px;">
+      <div style="font-size:20px; font-weight:700; color:#f59e0b;">343</div>
+      <div style="font-size:11px; color:#64748b; margin-top:4px;">= 7³</div>
+      <div style="font-size:11px; color:#f59e0b;">∛343 = 7 ← MISSED</div>
+    </div>
+    <div style="background:#232838; border-radius:6px; padding:12px 8px;">
+      <div style="font-size:20px; font-weight:700; color:#94a3b8;">512</div>
+      <div style="font-size:11px; color:#64748b; margin-top:4px;">= 8³</div>
+      <div style="font-size:11px; color:#94a3b8;">∛512 = 8</div>
+    </div>
+  </div>
+</div>
+
+<footer>FR · Research Lead · Generated 2026-02-25 · kai-algebra2-tests/docs/frac-exp-analysis.html</footer>
+
+</body>
+</html>
