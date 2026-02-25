@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Algebra 2 — Unit 2 Final Practice (W2 &amp; W3)</title>
+<script>
+MathJax = { tex: { inlineMath: [['\\(','\\)'],['$','$']] }, options: { skipHtmlTags: ['script','noscript','style','textarea'] } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+<style>
+:root {
+  --ink: #1a1a2e;
+  --bg: #fff;
+  --accent: #c0392b;
+  --grid: #ccc;
+  --axis: #555;
+  --curve: #c0392b;
+  --curve2: #2980b9;
+  --weak: #e67e22;
+  --green: #27ae60;
+  font-size: 15px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Georgia', serif; color: var(--ink); background: #f5f5f5; padding: 20px; }
+.sheet { background: var(--bg); max-width: 900px; margin: 0 auto; padding: 40px; box-shadow: 0 2px 12px rgba(0,0,0,.15); }
+h1 { font-size: 2rem; }
+.subtitle { color: #555; font-size: 1.1rem; margin-top: 4px; }
+.name-block { display: flex; gap: 40px; margin: 18px 0 4px; }
+.name-block label { flex: 1; border-bottom: 1px solid #333; padding-bottom: 2px; font-size: .95rem; color: #444; }
+.standards-box { border: 2px solid var(--accent); border-radius: 6px; padding: 14px 18px; margin: 18px 0; background: #fff8f8; }
+.standards-box h3 { color: var(--accent); font-size: .95rem; letter-spacing: .04em; margin-bottom: 8px; }
+.std-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 30px; font-size: .88rem; }
+.std-grid li { list-style: none; padding: 2px 0; }
+.weak-flag { background: #fff3cd; border: 1px solid var(--weak); border-radius: 4px; padding: 8px 12px; margin: 10px 0; font-size: .88rem; color: #6d4c00; }
+hr.section { border: none; border-top: 2px solid #ddd; margin: 28px 0 18px; }
+.section-title { font-size: 1.15rem; font-weight: bold; color: var(--accent); margin-bottom: 4px; }
+.section-note { font-size: .88rem; color: #555; margin-bottom: 14px; font-style: italic; }
+.parent-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin: 16px 0; }
+.parent-cell { text-align: center; }
+.parent-cell p { font-size: .95rem; margin-bottom: 6px; }
+.parent-cell canvas { border: 1px solid #bbb; display: block; margin: 0 auto; }
+.prob-block { margin-bottom: 22px; page-break-inside: avoid; }
+.prob-num { font-weight: bold; color: var(--accent); margin-bottom: 4px; font-size: .92rem; }
+.prob-q { margin-bottom: 10px; line-height: 1.6; }
+.answer-lines { margin-top: 6px; }
+.answer-lines p { color: #555; font-size: .85rem; margin-bottom: 4px; }
+.line { border-bottom: 1px solid #aaa; min-height: 22px; margin-bottom: 8px; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.graph-prob { page-break-inside: avoid; }
+.graph-prob canvas { border: 1px solid #bbb; display: block; margin: 8px 0; }
+.key-flag { background: #eafaf1; border: 1px solid #27ae60; border-radius: 4px; padding: 2px 8px; font-size: .82rem; color: #1a6e3a; margin-left: 8px; }
+/* Answer Key */
+#key-section { margin-top: 36px; border-top: 3px solid var(--ink); padding-top: 20px; display: none; }
+#key-section h2 { margin-bottom: 16px; }
+.key-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 40px; }
+.key-item { font-size: .88rem; padding: 6px 0; border-bottom: 1px solid #eee; }
+.key-item strong { color: var(--accent); min-width: 28px; display: inline-block; }
+.key-item .ka { color: #1a6e3a; font-weight: bold; }
+.key-item .kstep { color: #555; font-size: .82rem; display: block; margin-top: 2px; }
+#key-unlock { text-align: center; margin-top: 24px; }
+#key-unlock input { padding: 8px 14px; font-size: 1rem; border: 2px solid var(--grid); border-radius: 4px; width: 140px; text-align: center; }
+#key-unlock button { padding: 8px 18px; font-size: 1rem; background: var(--accent); color: #fff; border: none; border-radius: 4px; cursor: pointer; margin-left: 10px; }
+.no-print { }
+@media print {
+  body { background: #fff; padding: 0; }
+  .sheet { box-shadow: none; padding: 20px; max-width: 100%; }
+  .no-print { display: none !important; }
+  #key-section { display: none !important; }
+  .parent-cell canvas, .graph-prob canvas { max-width: 100%; }
+}
+</style>
+</head>
+<body>
+<div class="sheet">
+
+<h1>Algebra 2</h1>
+<p class="subtitle">(Winter 11) Unit 2 Final Practice &mdash; W2 &amp; W3</p>
+<div class="name-block">
+  <label>Name: ____________________________________________</label>
+  <label>Block: __________</label>
+  <label>Date: Feb 25, 2026</label>
+</div>
+
+<div class="standards-box">
+  <h3>STANDARDS COVERED ON THIS EXAM</h3>
+  <ul class="std-grid">
+    <li><strong>W2.a</strong> Sketch graphs of parent functions from memory</li>
+    <li><strong>W3.a</strong> Explain reasoning for each solving step</li>
+    <li><strong>W2.b</strong> Identify parent function and transformations</li>
+    <li><strong>W3.b</strong> Solve nonlinear equations (radical, quadratic, power)</li>
+    <li><strong>W2.c</strong> Graph a function using transformations</li>
+    <li><strong>W3.c</strong> Solve rational equations</li>
+    <li><strong>W2.d</strong> Write an equation for a function given a graph</li>
+    <li><strong>W3.d</strong> Solve exponential equations (one-to-one property)</li>
+    <li><strong>W2.e</strong> Domain, range, asymptotes, end behavior</li>
+    <li><strong>W3.e</strong> Identify extraneous solutions</li>
+  </ul>
+</div>
+
+<div class="weak-flag">
+  <strong>&#9733; Tonight&rsquo;s Focus:</strong> Cube numbers &mdash; memorize: 1&sup3;=1, 2&sup3;=8, 3&sup3;=27, 4&sup3;=64, 5&sup3;=125, 6&sup3;=216, 7&sup3;=343.
+  For fractional exponents: \(x^{2/3} = k\) means \(x = k^{3/2} = (\sqrt{k})^3\).
+</div>
+
+<!-- ================================================ -->
+<hr class="section">
+<p class="section-title">W2.a &mdash; Parent Functions</p>
+<p class="section-note">Sketch all nine parent functions from memory. Label at least one key point on each.</p>
+<div class="parent-grid" id="parent-grid">
+  <div class="parent-cell"><p>\(y = x^2\)</p><canvas id="c_x2" width="200" height="160"></canvas></div>
+  <div class="parent-cell"><p>\(y = x^3\)</p><canvas id="c_x3" width="200" height="160"></canvas></div>
+  <div class="parent-cell"><p>\(y = |x|\)</p><canvas id="c_abs" width="200" height="160"></canvas></div>
+  <div class="parent-cell"><p>\(y = \sqrt{x}\)</p><canvas id="c_sqrt" width="200" height="160"></canvas></div>
+  <div class="parent-cell"><p>\(y = \sqrt[3]{x}\)</p><canvas id="c_cbrt" width="200" height="160"></canvas></div>
+  <div class="parent-cell"><p>\(y = \dfrac{1}{x}\)</p><canvas id="c_1x" width="200" height="160"></canvas></div>
+  <div class="parent-cell"><p>\(y = \dfrac{1}{x^2}\)</p><canvas id="c_1x2" width="200" height="160"></canvas></div>
+  <div class="parent-cell"><p>\(y = b^x\) where \(b &gt; 1\)</p><canvas id="c_bx" width="200" height="160"></canvas></div>
+  <div class="parent-cell"><p>\(y = b^x\) where \(0 &lt; b &lt; 1\)</p><canvas id="c_bxd" width="200" height="160"></canvas></div>
+</div>
+<p style="font-size:.8rem;color:#777;margin-top:-8px;">(Graphs above are blank grids &mdash; sketch your curves on paper or use the grids as reference.)</p>
+
+<!-- ================================================ -->
+<hr class="section">
+<p class="section-title">W2.b &mdash; Identify Parent Function &amp; Transformations (Quick)</p>
+<p class="section-note">For each function, identify the parent function and list the transformations. No graph required.</p>
+<div class="two-col">
+
+<div class="prob-block">
+  <p class="prob-num">1.</p>
+  <p class="prob-q">\(f(x) = (x - 3)^3 + 2\)</p>
+  <div class="answer-lines">
+    <p>Parent function: <span class="line" style="display:inline-block;width:200px;"></span></p>
+    <p>Transformations:</p>
+    <div class="line"></div>
+    <div class="line"></div>
+  </div>
+</div>
+
+<div class="prob-block">
+  <p class="prob-num">2.</p>
+  <p class="prob-q">\(f(x) = 2^x + 3\)</p>
+  <div class="answer-lines">
+    <p>Parent function: <span class="line" style="display:inline-block;width:200px;"></span></p>
+    <p>Transformations:</p>
+    <div class="line"></div>
+    <div class="line"></div>
+  </div>
+</div>
+
+<div class="prob-block">
+  <p class="prob-num">3.</p>
+  <p class="prob-q">\(\displaystyle f(x) = \frac{1}{x + 2} - 3\)</p>
+  <div class="answer-lines">
+    <p>Parent function: <span class="line" style="display:inline-block;width:200px;"></span></p>
+    <p>Transformations:</p>
+    <div class="line"></div>
+    <div class="line"></div>
+  </div>
+</div>
+
+<div class="prob-block">
+  <p class="prob-num">4.</p>
+  <p class="prob-q">\(f(x) = \sqrt{-(x - 4)}\)</p>
+  <div class="answer-lines">
+    <p>Parent function: <span class="line" style="display:inline-block;width:200px;"></span></p>
+    <p>Transformations:</p>
+    <div class="line"></div>
+    <div class="line"></div>
+  </div>
+</div>
+
+</div>
+
+<!-- ================================================ -->
+<hr class="section">
+<p class="section-title">W2.b / W2.c / W2.e &mdash; Graph Using Transformations</p>
+<p class="section-note">Identify the parent function and transformations. Draw an accurate graph, label at least 3 points. Find domain, range, and intercepts.</p>
+
+<div class="prob-block graph-prob">
+  <p class="prob-num">5. &nbsp; \(f(x) = 2|x + 3| - 1\)</p>
+  <div style="display:flex;gap:30px;flex-wrap:wrap;align-items:flex-start;">
+    <div style="min-width:200px;">
+      <p>Parent function: <div class="line"></div></p>
+      <p>Transformations:</p>
+      <div class="line"></div><div class="line"></div><div class="line"></div>
+      <p style="margin-top:10px;">Domain: <div class="line"></div></p>
+      <p>Range: <div class="line"></div></p>
+      <p style="margin-top:10px;font-size:.88rem;">Table of values:</p>
+      <table style="border-collapse:collapse;font-size:.88rem;margin-top:4px;">
+        <tr><th style="border:1px solid #999;padding:4px 12px;">x</th><th style="border:1px solid #999;padding:4px 12px;">y</th></tr>
+        <tr><td style="border:1px solid #999;padding:8px 12px;"></td><td style="border:1px solid #999;padding:8px 12px;"></td></tr>
+        <tr><td style="border:1px solid #999;padding:8px 12px;"></td><td style="border:1px solid #999;padding:8px 12px;"></td></tr>
+        <tr><td style="border:1px solid #999;padding:8px 12px;"></td><td style="border:1px solid #999;padding:8px 12px;"></td></tr>
+        <tr><td style="border:1px solid #999;padding:8px 12px;"></td><td style="border:1px solid #999;padding:8px 12px;"></td></tr>
+      </table>
+    </div>
+    <canvas id="grid5" width="260" height="260" style="border:1px solid #bbb;"></canvas>
+  </div>
+  <p style="margin-top:10px;font-size:.9rem;">Find the x-intercepts. Show your work.</p>
+  <div class="line"></div><div class="line"></div>
+</div>
+
+<div class="prob-block graph-prob" style="margin-top:28px;">
+  <p class="prob-num">6. &nbsp; \(f(x) = -(x - 1)^2 + 4\)</p>
+  <div style="display:flex;gap:30px;flex-wrap:wrap;align-items:flex-start;">
+    <div style="min-width:200px;">
+      <p>Parent function: <div class="line"></div></p>
+      <p>Transformations:</p>
+      <div class="line"></div><div class="line"></div><div class="line"></div>
+      <p style="margin-top:10px;">Domain: <div class="line"></div></p>
+      <p>Range: <div class="line"></div></p>
+      <p style="margin-top:10px;font-size:.88rem;">Table of values:</p>
+      <table style="border-collapse:collapse;font-size:.88rem;margin-top:4px;">
+        <tr><th style="border:1px solid #999;padding:4px 12px;">x</th><th style="border:1px solid #999;padding:4px 12px;">y</th></tr>
+        <tr><td style="border:1px solid #999;padding:8px 12px;"></td><td style="border:1px solid #999;padding:8px 12px;"></td></tr>
+        <tr><td style="border:1px solid #999;padding:8px 12px;"></td><td style="border:1px solid #999;padding:8px 12px;"></td></tr>
+        <tr><td style="border:1px solid #999;padding:8px 12px;"></td><td style="border:1px solid #999;padding:8px 12px;"></td></tr>
+        <tr><td style="border:1px solid #999;padding:8px 12px;"></td><td style="border:1px solid #999;padding:8px 12px;"></td></tr>
+      </table>
+    </div>
+    <canvas id="grid6" width="260" height="260" style="border:1px solid #bbb;"></canvas>
+  </div>
+  <p style="margin-top:10px;font-size:.9rem;">Find the x-intercepts. Show your work.</p>
+  <div class="line"></div><div class="line"></div>
+  <p style="margin-top:8px;font-size:.9rem;">Find the point(s) where \(f(x) = 3\). Show your work.</p>
+  <div class="line"></div><div class="line"></div>
+</div>
+
+<!-- ================================================ -->
+<hr class="section">
+<p class="section-title">W3 &mdash; Solving Equations</p>
+<p class="section-note">Solve each equation. Show all steps. For W3.e problems, check for extraneous solutions.</p>
+<div class="two-col">
+
+<div class="prob-block">
+  <p class="prob-num">7. [W3.d] &nbsp; \(2^{3x-1} = 64\)</p>
+  <div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div>
+  <p>Answer: <span class="line" style="display:inline-block;width:120px;"></span></p>
+</div>
+
+<div class="prob-block">
+  <p class="prob-num">8. [W3.b] &nbsp; \(3(2x + 3)^2 - 5 = 22\)</p>
+  <div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div>
+  <p>Answer: <span class="line" style="display:inline-block;width:120px;"></span></p>
+</div>
+
+<div class="prob-block">
+  <p class="prob-num">9. [W3.c] &nbsp; \(\displaystyle\frac{5}{3x + 2} = 4\)</p>
+  <div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div>
+  <p>Answer: <span class="line" style="display:inline-block;width:120px;"></span></p>
+</div>
+
+<div class="prob-block">
+  <p class="prob-num">10. [W3.b] &nbsp; \(\sqrt{3 + x^2} - 1 = 3\)</p>
+  <div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div>
+  <p>Answer: <span class="line" style="display:inline-block;width:120px;"></span></p>
+</div>
+
+<div class="prob-block">
+  <p class="prob-num">11. [W3.b] &nbsp; \(4 + 2(x - 2)^3 = -12\)</p>
+  <div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div>
+  <p>Answer: <span class="line" style="display:inline-block;width:120px;"></span></p>
+</div>
+
+<div class="prob-block">
+  <p class="prob-num">12. [W3.d] &nbsp; \(3 \cdot 4^{x^2 - 1} = 192\)</p>
+  <div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div>
+  <p>Answer: <span class="line" style="display:inline-block;width:120px;"></span></p>
+</div>
+
+</div>
+
+<!-- ================================================ -->
+<hr class="section">
+<p class="section-title">W2.d &mdash; Write Equation from Graph</p>
+<p class="section-note">For each graph, identify the parent function, describe the transformations, and write the equation of the function.</p>
+
+<div class="two-col">
+
+<div class="prob-block graph-prob">
+  <p class="prob-num">13.</p>
+  <canvas id="g13" width="260" height="220"></canvas>
+  <p>Parent function: <div class="line"></div></p>
+  <p>Transformations: <div class="line"></div></p>
+  <p>Equation: \(f(x) =\) <span class="line" style="display:inline-block;width:160px;"></span></p>
+</div>
+
+<div class="prob-block graph-prob">
+  <p class="prob-num">14.</p>
+  <canvas id="g14" width="260" height="220"></canvas>
+  <p>Parent function: <div class="line"></div></p>
+  <p>Transformations: <div class="line"></div></p>
+  <p>Equation: \(f(x) =\) <span class="line" style="display:inline-block;width:160px;"></span></p>
+</div>
+
+<div class="prob-block graph-prob">
+  <p class="prob-num">15.</p>
+  <canvas id="g15" width="260" height="220"></canvas>
+  <p>Parent function: <div class="line"></div></p>
+  <p>Transformations: <div class="line"></div></p>
+  <p>Equation: \(f(x) =\) <span class="line" style="display:inline-block;width:160px;"></span></p>
+</div>
+
+<div class="prob-block graph-prob">
+  <p class="prob-num">16.</p>
+  <canvas id="g16" width="260" height="220"></canvas>
+  <p>Parent function: <div class="line"></div></p>
+  <p>Transformations: <div class="line"></div></p>
+  <p>Equation: \(f(x) =\) <span class="line" style="display:inline-block;width:160px;"></span></p>
+</div>
+
+</div>
+
+<!-- ================================================ -->
+<hr class="section">
+<p class="section-title">W3 &mdash; More Solving (including extraneous solutions)</p>
+<p class="section-note">Show all work. Always check your answer back in the original equation for problems marked [W3.e].</p>
+<div class="two-col">
+
+<div class="prob-block">
+  <p class="prob-num">17. [W3.d] &nbsp; \(4^{2 - \sqrt{x}} = 8\)</p>
+  <div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div>
+  <p>Answer: <span class="line" style="display:inline-block;width:120px;"></span></p>
+</div>
+
+<div class="prob-block">
+  <p class="prob-num">18. [W3.b] &nbsp; \(\sqrt{5 - 2x} = 3\)</p>
+  <div class="line"></div><div class="line"></div><div class="line"></div>
+  <p>Answer: <span class="line" style="display:inline-block;width:120px;"></span></p>
+</div>
+
+<div class="prob-block">
+  <p class="prob-num">19. [W3.c] &nbsp; \(\displaystyle\frac{4x + 1}{x - 2} = 6\)</p>
+  <div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div>
+  <p>Answer: <span class="line" style="display:inline-block;width:120px;"></span></p>
+</div>
+
+<div class="prob-block">
+  <p class="prob-num">20. [W3.b / W3.e] &nbsp; \(\sqrt[3]{\dfrac{3}{x + 2}} = -3\)</p>
+  <div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div>
+  <p>Extraneous check: <div class="line"></div></p>
+  <p>Answer: <span class="line" style="display:inline-block;width:120px;"></span></p>
+</div>
+
+<div class="prob-block">
+  <p class="prob-num">21. [W3.e] &nbsp; \(\sqrt{3x - 2} = \sqrt{x + 6}\)</p>
+  <div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div>
+  <p>Extraneous check: <div class="line"></div></p>
+  <p>Answer: <span class="line" style="display:inline-block;width:120px;"></span></p>
+</div>
+
+<div class="prob-block" style="border:2px solid var(--weak);border-radius:6px;padding:12px;">
+  <p class="prob-num">22. [W3.b] &#9733; KEY PROBLEM &nbsp; \(2x^{2/3} + 1 = 51\)</p>
+  <p style="font-size:.82rem;color:#6d4c00;margin-bottom:8px;">Fractional exponent: \(x^{2/3}=k\) means \(x=k^{3/2}=(\sqrt{k})^3\). Remember cube numbers!</p>
+  <div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div>
+  <p>Answer: <span class="line" style="display:inline-block;width:120px;"></span></p>
+</div>
+
+</div>
+
+<!-- ================================================ -->
+<div id="key-unlock" class="no-print" style="margin-top:36px;padding:20px;background:#f9f9f9;border-radius:8px;border:1px solid #ddd;">
+  <p style="margin-bottom:12px;font-weight:bold;">Answer Key &mdash; Enter password to unlock:</p>
+  <input type="password" id="key-pass" placeholder="Password" />
+  <button onclick="unlockKey()">Unlock</button>
+  <p id="key-error" style="color:red;margin-top:8px;display:none;">Incorrect password.</p>
+</div>
+
+<div id="key-section">
+  <h2>&#128273; Answer Key</h2>
+
+  <p class="section-title" style="margin-top:16px;">W2.b &mdash; Transformations (1&ndash;4)</p>
+  <div class="key-grid">
+    <div class="key-item"><strong>1.</strong> <span class="ka">Parent: \(y=x^3\)</span><span class="kstep">Shift right 3, shift up 2</span></div>
+    <div class="key-item"><strong>2.</strong> <span class="ka">Parent: \(y=b^x\) (b=2)</span><span class="kstep">Shift up 3. Horizontal asymptote: \(y=3\)</span></div>
+    <div class="key-item"><strong>3.</strong> <span class="ka">Parent: \(y=\tfrac{1}{x}\)</span><span class="kstep">Shift left 2, shift down 3. V.A.: x=&minus;2, H.A.: y=&minus;3</span></div>
+    <div class="key-item"><strong>4.</strong> <span class="ka">Parent: \(y=\sqrt{x}\)</span><span class="kstep">Reflect over y-axis, shift right 4. Domain: \(x \le 4\)</span></div>
+  </div>
+
+  <p class="section-title" style="margin-top:20px;">W2.c / W2.e &mdash; Graphing (5&ndash;6)</p>
+  <div class="key-grid">
+    <div class="key-item"><strong>5.</strong> <span class="ka">Parent: \(|x|\). Stretch &times;2, left 3, down 1.</span>
+      <span class="kstep">Domain: all reals. Range: \(y \ge -1\).</span>
+      <span class="kstep">Vertex: (\(-3, -1\)). x-intercepts: \(2|x+3|=1 \Rightarrow |x+3|=\tfrac{1}{2} \Rightarrow x=-2.5\) or \(x=-3.5\)</span></div>
+    <div class="key-item"><strong>6.</strong> <span class="ka">Parent: \(x^2\). Reflect, right 1, up 4.</span>
+      <span class="kstep">Domain: all reals. Range: \(y \le 4\). Vertex: (1, 4).</span>
+      <span class="kstep">x-intercepts: \(-(x-1)^2+4=0 \Rightarrow (x-1)^2=4 \Rightarrow x=3\) or \(x=-1\)</span>
+      <span class="kstep">f(x)=3: \((x-1)^2=1 \Rightarrow x=2\) or \(x=0\) &rarr; points (2,3) and (0,3)</span></div>
+  </div>
+
+  <p class="section-title" style="margin-top:20px;">W3 &mdash; Solving (7&ndash;12)</p>
+  <div class="key-grid">
+    <div class="key-item"><strong>7.</strong> <span class="ka">\(x = \tfrac{7}{3}\)</span>
+      <span class="kstep">\(2^{3x-1}=2^6 \Rightarrow 3x-1=6 \Rightarrow 3x=7\)</span></div>
+    <div class="key-item"><strong>8.</strong> <span class="ka">\(x = 0\) or \(x = -3\)</span>
+      <span class="kstep">\(3(2x+3)^2=27 \Rightarrow (2x+3)^2=9 \Rightarrow 2x+3=\pm3\)</span></div>
+    <div class="key-item"><strong>9.</strong> <span class="ka">\(x = -\tfrac{1}{4}\)</span>
+      <span class="kstep">\(5=4(3x+2)=12x+8 \Rightarrow 12x=-3\)</span></div>
+    <div class="key-item"><strong>10.</strong> <span class="ka">\(x = \pm\sqrt{13}\)</span>
+      <span class="kstep">\(\sqrt{3+x^2}=4 \Rightarrow 3+x^2=16 \Rightarrow x^2=13\)</span></div>
+    <div class="key-item"><strong>11.</strong> <span class="ka">\(x = 0\)</span>
+      <span class="kstep">\(2(x-2)^3=-16 \Rightarrow (x-2)^3=-8 \Rightarrow x-2=-2\)</span></div>
+    <div class="key-item"><strong>12.</strong> <span class="ka">\(x = \pm 2\)</span>
+      <span class="kstep">\(4^{x^2-1}=64=4^3 \Rightarrow x^2-1=3 \Rightarrow x^2=4\)</span></div>
+  </div>
+
+  <p class="section-title" style="margin-top:20px;">W2.d &mdash; Graph Equations (13&ndash;16)</p>
+  <div class="key-grid">
+    <div class="key-item"><strong>13.</strong> <span class="ka">\(f(x) = -\dfrac{1}{x-2}+1\)</span>
+      <span class="kstep">Parent: \(\tfrac{1}{x}\). Reflect, right 2, up 1. V.A.: x=2, H.A.: y=1</span></div>
+    <div class="key-item"><strong>14.</strong> <span class="ka">\(f(x) = -\sqrt{x+3}\)</span>
+      <span class="kstep">Parent: \(\sqrt{x}\). Reflect over x-axis, left 3. Domain: \(x\ge-3\)</span></div>
+    <div class="key-item"><strong>15.</strong> <span class="ka">\(f(x) = \sqrt[3]{x-1}+2\)</span>
+      <span class="kstep">Parent: \(\sqrt[3]{x}\). Right 1, up 2. Inflection at (1,2)</span></div>
+    <div class="key-item"><strong>16.</strong> <span class="ka">\(f(x) = |x-2|-3\)</span>
+      <span class="kstep">Parent: \(|x|\). Right 2, down 3. Vertex: (2,&minus;3)</span></div>
+  </div>
+
+  <p class="section-title" style="margin-top:20px;">W3 &mdash; More Solving (17&ndash;22)</p>
+  <div class="key-grid">
+    <div class="key-item"><strong>17.</strong> <span class="ka">\(x = \tfrac{1}{4}\)</span>
+      <span class="kstep">\(4^{2-\sqrt{x}}=2^{2(2-\sqrt{x})}=2^3 \Rightarrow 4-2\sqrt{x}=3 \Rightarrow \sqrt{x}=\tfrac{1}{2} \Rightarrow x=\tfrac{1}{4}\)</span>
+      <span class="kstep">Check: \(4^{2-1/2}=4^{3/2}=8\) &#10003;</span></div>
+    <div class="key-item"><strong>18.</strong> <span class="ka">\(x = -2\)</span>
+      <span class="kstep">\(5-2x=9 \Rightarrow -2x=4\). Check: \(\sqrt{5+4}=\sqrt{9}=3\) &#10003;</span></div>
+    <div class="key-item"><strong>19.</strong> <span class="ka">\(x = \tfrac{13}{2}\)</span>
+      <span class="kstep">\(4x+1=6(x-2)=6x-12 \Rightarrow -2x=-13\). Check: \(\tfrac{26+1}{6.5-2}=\tfrac{27}{4.5}=6\) &#10003;</span></div>
+    <div class="key-item"><strong>20.</strong> <span class="ka">\(x = -\tfrac{19}{9}\)</span>
+      <span class="kstep">\(\tfrac{3}{x+2}=-27 \Rightarrow 3=-27x-54 \Rightarrow 27x=-57\). Check: &#10003; (no extraneous)</span></div>
+    <div class="key-item"><strong>21.</strong> <span class="ka">\(x = 4\)</span>
+      <span class="kstep">\(3x-2=x+6 \Rightarrow 2x=8\). Check: \(\sqrt{10}=\sqrt{10}\) &#10003; (no extraneous)</span></div>
+    <div class="key-item" style="border:2px solid var(--weak);border-radius:4px;padding:8px;">
+      <strong>22.</strong> <span class="ka">&#9733; \(x = \pm125\)</span>
+      <span class="kstep">\(2x^{2/3}=50 \Rightarrow x^{2/3}=25 \Rightarrow x=25^{3/2}=(\sqrt{25})^3=5^3=125\)</span>
+      <span class="kstep">Also \(x=-125\): \((-125)^{2/3}=(\sqrt[3]{-125})^2=(-5)^2=25\) &#10003;</span>
+      <span class="kstep" style="color:var(--weak);">CUBE CHECK: 5&sup3;=125. Know your cubes!</span></div>
+  </div>
+</div>
+
+</div><!-- /sheet -->
+
+<script>
+// ---- Grid drawing helpers ----
+function drawGrid(ctx, W, H, xmin, xmax, ymin, ymax) {
+  const px = x => (x - xmin) / (xmax - xmin) * W;
+  const py = y => H - (y - ymin) / (ymax - ymin) * H;
+  ctx.clearRect(0, 0, W, H);
+
+  // Grid lines
+  ctx.strokeStyle = '#e0e0e0'; ctx.lineWidth = 0.5;
+  for (let x = Math.ceil(xmin); x <= xmax; x++) {
+    ctx.beginPath(); ctx.moveTo(px(x),0); ctx.lineTo(px(x),H); ctx.stroke();
+  }
+  for (let y = Math.ceil(ymin); y <= ymax; y++) {
+    ctx.beginPath(); ctx.moveTo(0,py(y)); ctx.lineTo(W,py(y)); ctx.stroke();
+  }
+
+  // Axes
+  ctx.strokeStyle = '#333'; ctx.lineWidth = 1.5;
+  if (ymin <= 0 && ymax >= 0) {
+    ctx.beginPath(); ctx.moveTo(0,py(0)); ctx.lineTo(W,py(0)); ctx.stroke();
+  }
+  if (xmin <= 0 && xmax >= 0) {
+    ctx.beginPath(); ctx.moveTo(px(0),0); ctx.lineTo(px(0),H); ctx.stroke();
+  }
+
+  // Tick labels
+  ctx.fillStyle = '#555'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  for (let x = Math.ceil(xmin); x <= xmax; x++) {
+    if (x !== 0) ctx.fillText(x, px(x), py(0)+10);
+  }
+  ctx.textAlign = 'right';
+  for (let y = Math.ceil(ymin); y <= ymax; y++) {
+    if (y !== 0) ctx.fillText(y, px(0)-3, py(y)+4);
+  }
+}
+
+function plotFn(ctx, fn, xmin, xmax, ymin, ymax, W, H, color, lineWidth) {
+  const px = x => (x - xmin) / (xmax - xmin) * W;
+  const py = y => H - (y - ymin) / (ymax - ymin) * H;
+  ctx.strokeStyle = color || '#c0392b'; ctx.lineWidth = lineWidth || 2;
+  ctx.beginPath();
+  let started = false;
+  const steps = 400;
+  for (let i = 0; i <= steps; i++) {
+    const x = xmin + (xmax - xmin) * i / steps;
+    const y = fn(x);
+    if (!isFinite(y) || y < ymin - 0.5 || y > ymax + 0.5) { started = false; continue; }
+    if (!started) { ctx.moveTo(px(x), py(y)); started = true; }
+    else ctx.lineTo(px(x), py(y));
+  }
+  ctx.stroke();
+}
+
+function dot(ctx, x, y, xmin, xmax, ymin, ymax, W, H, label) {
+  const px = v => (v - xmin) / (xmax - xmin) * W;
+  const py = v => H - (v - ymin) / (ymax - ymin) * H;
+  ctx.fillStyle = '#333';
+  ctx.beginPath(); ctx.arc(px(x), py(y), 3, 0, Math.PI*2); ctx.fill();
+  if (label) {
+    ctx.font = 'bold 9px sans-serif'; ctx.fillStyle = '#111'; ctx.textAlign = 'left';
+    ctx.fillText(label, px(x)+5, py(y)-4);
+  }
+}
+
+// Parent function grids (blank - just axes)
+['c_x2','c_x3','c_abs','c_sqrt','c_cbrt','c_1x','c_1x2','c_bx','c_bxd'].forEach(id => {
+  const c = document.getElementById(id); if (!c) return;
+  const ctx = c.getContext('2d');
+  drawGrid(ctx, 200, 160, -4, 4, -3, 3);
+});
+
+// Grid for prob 5
+(function(){
+  const c = document.getElementById('grid5'); if(!c) return;
+  const ctx = c.getContext('2d');
+  drawGrid(ctx, 260, 260, -8, 2, -3, 7);
+})();
+
+// Grid for prob 6
+(function(){
+  const c = document.getElementById('grid6'); if(!c) return;
+  const ctx = c.getContext('2d');
+  drawGrid(ctx, 260, 260, -4, 4, -1, 5);
+})();
+
+// Graph 13: f(x) = -1/(x-2) + 1  [rational]
+(function(){
+  const c = document.getElementById('g13'); if(!c) return;
+  const ctx = c.getContext('2d');
+  const W=260,H=220,xmin=-4,xmax=6,ymin=-4,ymax=6;
+  drawGrid(ctx,W,H,xmin,xmax,ymin,ymax);
+  // Left branch (x < 2)
+  plotFn(ctx, x => -1/(x-2)+1, xmin, 1.85, ymin, ymax, W, H, '#c0392b', 2.5);
+  // Right branch (x > 2)
+  plotFn(ctx, x => -1/(x-2)+1, 2.15, xmax, ymin, ymax, W, H, '#c0392b', 2.5);
+  // Asymptotes dashed
+  const px = x => (x-xmin)/(xmax-xmin)*W;
+  const py = y => H-(y-ymin)/(ymax-ymin)*H;
+  ctx.setLineDash([4,4]); ctx.strokeStyle='#888'; ctx.lineWidth=1;
+  ctx.beginPath(); ctx.moveTo(px(2),0); ctx.lineTo(px(2),H); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(0,py(1)); ctx.lineTo(W,py(1)); ctx.stroke();
+  ctx.setLineDash([]);
+  dot(ctx,3,0,xmin,xmax,ymin,ymax,W,H,'(3,0)');
+  dot(ctx,4,0.5,xmin,xmax,ymin,ymax,W,H,'');
+})();
+
+// Graph 14: f(x) = -sqrt(x+3)  [radical reflected]
+(function(){
+  const c = document.getElementById('g14'); if(!c) return;
+  const ctx = c.getContext('2d');
+  const W=260,H=220,xmin=-4,xmax=6,ymin=-5,ymax=2;
+  drawGrid(ctx,W,H,xmin,xmax,ymin,ymax);
+  plotFn(ctx, x => x >= -3 ? -Math.sqrt(x+3) : NaN, xmin, xmax, ymin, ymax, W, H, '#2980b9', 2.5);
+  dot(ctx,-3,0,xmin,xmax,ymin,ymax,W,H,'(-3,0)');
+  dot(ctx,1,-2,xmin,xmax,ymin,ymax,W,H,'(1,-2)');
+})();
+
+// Graph 15: f(x) = cbrt(x-1) + 2  [cube root shifted]
+(function(){
+  const c = document.getElementById('g15'); if(!c) return;
+  const ctx = c.getContext('2d');
+  const W=260,H=220,xmin=-6,xmax=6,ymin=-2,ymax=5;
+  drawGrid(ctx,W,H,xmin,xmax,ymin,ymax);
+  plotFn(ctx, x => Math.cbrt(x-1)+2, xmin, xmax, ymin, ymax, W, H, '#2980b9', 2.5);
+  dot(ctx,1,2,xmin,xmax,ymin,ymax,W,H,'(1,2)');
+  dot(ctx,-7,0,xmin,xmax,ymin,ymax,W,H,'(-7,0)');
+})();
+
+// Graph 16: f(x) = |x-2| - 3  [absolute value]
+(function(){
+  const c = document.getElementById('g16'); if(!c) return;
+  const ctx = c.getContext('2d');
+  const W=260,H=220,xmin=-3,xmax=7,ymin=-4,ymax=4;
+  drawGrid(ctx,W,H,xmin,xmax,ymin,ymax);
+  plotFn(ctx, x => Math.abs(x-2)-3, xmin, xmax, ymin, ymax, W, H, '#8e44ad', 2.5);
+  dot(ctx,2,-3,xmin,xmax,ymin,ymax,W,H,'(2,-3)');
+  dot(ctx,5,0,xmin,xmax,ymin,ymax,W,H,'(5,0)');
+  dot(ctx,-1,0,xmin,xmax,ymin,ymax,W,H,'(-1,0)');
+})();
+
+// Answer key unlock
+function unlockKey() {
+  const pass = document.getElementById('key-pass').value;
+  if (pass === '121274') {
+    document.getElementById('key-section').style.display = 'block';
+    document.getElementById('key-unlock').style.display = 'none';
+    if (window.MathJax) MathJax.typesetPromise();
+  } else {
+    document.getElementById('key-error').style.display = 'block';
+  }
+}
+document.getElementById('key-pass').addEventListener('keydown', e => {
+  if (e.key === 'Enter') unlockKey();
+});
+</script>
+</body>
+</html>
