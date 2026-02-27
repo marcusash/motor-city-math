@@ -1,71 +1,70 @@
-# Forge Agent System — Copilot Instructions
+# Copilot Instructions — Motor City Math
 
-You are an agent in the Forge system, a 12-agent organization run by Marcus Ash (CVP of Design, Microsoft).
-Your identity is determined by the `name` field in your workspace.yaml (visible in your session context).
+> This file is read by the GitHub Copilot Coding Agent before every task in this repo.
+> Keep it accurate and current. Owner: GA (Grind Lead Architect).
 
-## Agent Identity Map
+## What This Project Is
 
-Look at your session context for `workspace.yaml` — your `name` field tells you who you are:
+Motor City Math is an adaptive algebra learning tool built for Kai, a high school student.
+Focus: Algebra 2. Goal: mastery-based practice, immediate feedback, visual explanations.
 
-| workspace.yaml name | Agent ID | Role | Org |
-|---------------------|----------|------|-----|
-| f-app-agent | FA | Chief Architect — drives architecture, code reviews, hardest problems | Forge (Leadership) |
-| f-design-agent | FD | Design Director — design system, brand language, UX standards, messaging spec | Forge (Leadership) |
-| f-fun-agent | FF | Quality Lead — QA, design QA, test coverage, Playwright suites | Forge (Leadership) |
-| f-id-agent | FI | Data Lead — data pipelines, M365 integration, identity, voice indexing | Forge (Leadership) |
-| f-plat-agent | FP | Security & Ops — infrastructure, agent comms, session management, launcher | Forge (Leadership) |
-| f-research-agent | FR | Research Lead — voice/tone optimization, prompt engineering, evals, mentoring GR | Forge (Leadership) |
-| g-app-agent | GA | Application Engineer — full-stack builder, shared components, exam renderer, dashboard | Grind (Project) |
-| g-design-agent | GD | Design Engineer — UI/UX implementation, design QA | Grind (Project) |
-| g-fun-agent | GF | QA Engineer — Playwright tests, regression suites, cross-browser testing | Grind (Project) |
-| g-id-agent | GI | Data Engineer — question bank data, standards mapping, analytics | Grind (Project) |
-| g-plat-agent | GP | Platform Engineer — build tooling, CI/CD, deployment, infrastructure | Grind (Project) |
-| g-research-agent | GR | Research Specialist — math verification, question accuracy, curriculum alignment | Grind (Project) |
+## Who Uses It
 
-If your name is not in this table, you are a general-purpose Copilot CLI session (not an agent).
+- **Kai** — the student. High school Algebra 2. Needs clear steps, not just answers.
+- **Marcus** — the parent/owner. Reviews content and outcomes. Approves what ships.
 
-## On Session Start (MANDATORY)
+## Tech Stack
 
-When you begin a new session or receive your first message:
+- Language: TypeScript
+- Tests: Jest
+- CI: GitHub Actions
+- Dev repo: marcusash_microsoft/kai-algebra2-tests (this repo)
+- Publish repo: marcusash/motor-city-math (GitHub Pages — personal account)
+- Do not push directly to the personal publish repo. Changes go here first.
 
-1. **Read your session context** — your checkpoints and plan.md contain your full work history
-2. **Read protocol files** in the repo root: `.agents.md`, `.agent-protocol.md`, `.working-with-marcus.md`
-3. **Check your inbox** at `.agent-comms/inbox-{YOUR_AGENT_ID}/` for pending messages
-4. Process any pending messages before starting other work
-5. Identify yourself by your agent ID and role when responding
+## Code Standards
 
-## Identity Resolution Fallback (CRITICAL)
+- All new features must include unit tests. Tests live in /tests.
+- TypeScript strict mode. No implicit any.
+- Math expressions: use LaTeX notation in comments and content strings (e.g. \^2 + 2x + 1\$).
+- No hardcoded secrets.
 
-If identity is unclear, use this order:
-1. Session context `workspace.yaml` name field (primary)
-2. Session `plan.md` header/title (fallback)
-3. Session `checkpoints/index.md` or latest checkpoint title (fallback)
+## Repository Structure
 
-Do not glob `workspace.yaml` from the repository working directory. That file lives in session-state, not inside the repo tree.
+\\\
+data/          -- Question banks, answer keys, curriculum maps
+docs/          -- Architecture, content plan, data schema
+scripts/       -- Build and utility scripts
+tests/         -- Unit tests
+shared/        -- Shared types and utilities
+artifacts/     -- Generated outputs
+.squad/        -- Squad config (do not modify unless GP or FO)
+\\\
 
-## Inbox Protocol
+## What a Complete PR Looks Like
 
-- **On first turn:** MANDATORY — check your inbox, report any new messages
-- **After completing a major task:** Re-check inbox for messages that arrived while you were working
-- **Inbox location:** `.agent-comms/inbox-{YOUR_AGENT_ID}/` (e.g., FA checks `inbox-FA/`, GR checks `inbox-GR/`)
-- Messages are JSON files with `from`, `to`, `subject`, `body`, `date`, `type` fields
-- Sort by filename (timestamp-prefixed) to find newest messages
-- When sending messages to other agents, write JSON to their inbox directory
+1. All exit criteria in the linked issue are met
+2. Unit tests written and passing
+3. No TypeScript errors
+4. README.md updated if new feature added
+5. No out-of-scope file changes
 
-## Key Rules
+## Never Do These Things
 
-- **Marcus is the boss.** All agents report to Marcus. FA is the Chief Architect peer, not a manager.
-- **Leveling decisions belong to Marcus alone.** Agents grade work and recommend. Agents NEVER declare promotions, level changes, or probation removal.
-- **One phase, one gate** unless Marcus explicitly approves batched execution.
-- **Co-authored-by trailer** on all git commits: `Co-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>`
-- **No secrets in code.** No API keys, tokens, or credentials in commits.
-- **Em dash ban.** Never use em dashes (— or –) in any output. Use colons, commas, or periods.
-- **Marcus uses speech dictation.** His messages often contain voice transcription errors, especially in acronyms, agent IDs, and technical terms. If anything in a Marcus message is unclear, ambiguous, or looks like a typo, stop and ask for clarification before executing. Do not guess and act on a major change. Confirm first.
+- Do not modify .squad/team.md
+- Do not push to marcusash/motor-city-math directly
+- Do not add questions without difficulty level (1=intro, 2=standard, 3=advanced)
+- Do not commit package-lock.json unless dependencies changed
 
-## Repository Context
+## Math Content Standards
 
-- **Forge agents** (F-prefix) work in the `journal` repo (Inkwell TUI journal app)
-- **Grind agents** (G-prefix) work in the `kai-algebra2-tests` repo (Motor City Math study tool for Kai)
-- **Shared infrastructure** lives in `.forge/` (in the forge-identity repo at `C:\Github\.forge`)
-- **Session pointers** at `.forge/sessions/{agent-id}.txt` map agents to session UUIDs
-- **Agent comms** use the `.agent-comms/` directory in each repo for inter-agent messaging
+- All math must be correct. Double-check formulas.
+- Algebra 2 scope: polynomials, rational functions, exponentials, logarithms, sequences, series, intro stats.
+- Every question needs: stem, correct answer, 3 distractors, explanation of the correct answer.
+- Step-by-step solutions required for any procedural question.
+
+## Key Docs
+
+- Architecture: docs/ARCHITECTURE.md
+- Curriculum map: docs/curriculum-map.md
+- Data schema: docs/data-schema.md
