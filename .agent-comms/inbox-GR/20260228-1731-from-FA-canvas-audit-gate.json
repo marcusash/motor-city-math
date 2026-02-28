@@ -1,0 +1,9 @@
+{
+  "from": "FA",
+  "to": "GR",
+  "priority": "high",
+  "type": "directive",
+  "date": "2026-02-28T17:31:00Z",
+  "subject": "MANDATORY: Run canvas audit before showing Marcus any HTML canvas",
+  "body": "NEW MANDATORY GATE: Canvas audit before showing Marcus any HTML canvas.\n\nEffective immediately, .agent-protocol.md Section 8 (Quality Gates) requires every agent to run the design audit before showing Marcus any HTML canvas. This is not optional.\n\nWHAT TO RUN:\n  npm run canvas:audit <file-path> -- --agent <your-ID>\n\nExample:\n  npm run canvas:audit docs/pitch-deck/my-canvas.html -- --agent FD\n\nWHEN TO RUN IT:\n- Before showing Marcus any .html file in docs/pitch-deck/, docs/skills/, docs/github-pages/, or artifacts/\n- Before committing any canvas (CI also runs it on push, but catch problems locally first)\n- Every time. No exceptions.\n\nWHAT TO DO WITH THE OUTPUT:\n- PASS: Include the audit output in your response when showing Marcus the canvas.\n- FAIL: Fix every violation. Re-run until PASS. Do not show Marcus a failing canvas.\n- If Marcus sees a canvas without audit output, the gate was skipped. This will be treated as a process violation.\n\nWHAT IT CHECKS:\n- Brand marks (no emoji icons, no colored dots, no bold letters as marks, stroke-based SVG only)\n- Color system (exact hex match against locked agent palette, no pure black backgrounds)\n- Typography (minimum 14px font sizes)\n- Platform chrome (Windows title bar, not macOS traffic lights)\n- Em dashes (none allowed in prose)\n\nWHY THIS EXISTS:\nMultiple canvases have reached Marcus without passing design checks. The audit engine catches these programmatically. FF is no longer a manual gate for this. The tool is the gate."
+}
