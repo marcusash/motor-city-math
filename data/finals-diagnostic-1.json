@@ -240,31 +240,30 @@
       "section": "B",
       "standard": "W3.c",
       "type": "multiple-choice",
-      "question_html": "Solve for \\( r \\): \\( I = \\dfrac{P}{4\\pi r^2} \\). <br><em>Key skill: the variable is SQUARED. Isolate r\\(^2\\), then take square root.</em>",
+      "question_html": "Solve for \\( h \\): \\( V = \\dfrac{1}{3}\\pi r^2 h \\)",
       "inputs": [
         {
           "id": "q8",
           "type": "radio",
           "label": "",
           "options": [
-            { "value": "A", "text": "\\( r = \\dfrac{P}{4\\pi I} \\)" },
-            { "value": "B", "text": "\\( r = \\sqrt{\\dfrac{P}{4\\pi I}} \\)" },
-            { "value": "C", "text": "\\( r = \\dfrac{\\sqrt{P}}{4\\pi I} \\)" },
-            { "value": "D", "text": "\\( r = \\sqrt{\\dfrac{4\\pi I}{P}} \\)" }
+            { "value": "A", "text": "\\( h = \\dfrac{3V}{\\pi r^2} \\)" },
+            { "value": "B", "text": "\\( h = \\dfrac{V}{3\\pi r^2} \\)" },
+            { "value": "C", "text": "\\( h = \\dfrac{\\pi r^2}{3V} \\)" },
+            { "value": "D", "text": "\\( h = 3V\\pi r^2 \\)" }
           ],
-          "answer": "B"
+          "answer": "A"
         }
       ],
-      "hint": "Multiply both sides by 4*pi*r^2 to clear the fraction. Isolate r^2. Then take square root.",
+      "hint": "Multiply both sides by 3 to clear the fraction. Then divide by pi*r^2.",
       "solution_steps": [
-        "I = P / (4 pi r^2)",
-        "4 pi I r^2 = P            [multiply both sides by 4 pi r^2]",
-        "r^2 = P / (4 pi I)        [divide both sides by 4 pi I]",
-        "r = sqrt(P / (4 pi I))    [take square root, positive only]",
-        "Answer: B"
+        "V = (1/3) pi r^2 h",
+        "3V = pi r^2 h              [multiply both sides by 3]",
+        "h = 3V / (pi r^2)          [divide both sides by pi r^2]",
+        "Answer: A"
       ],
-      "feedback_correct": "🔥 Formula isolation. Variable was squared, so you take square root.",
-      "feedback_wrong": "Isolate r^2 first: r^2 = P/(4*pi*I). Then take the square root: r = sqrt(P/(4*pi*I))."
+      "feedback_correct": "🔥 Formula isolation. Clean.",
+      "feedback_wrong": "Multiply by 3: 3V = pi*r^2*h. Divide by pi*r^2: h = 3V/(pi*r^2)."
     },
     {
       "id": "fd1-q9",
@@ -272,31 +271,31 @@
       "section": "B",
       "standard": "W3.c",
       "type": "multiple-choice",
-      "question_html": "Solve for \\( L \\): \\( T = 2\\pi\\sqrt{\\dfrac{L}{g}} \\). <br><em>Key skill: the variable is UNDER a radical. Isolate the radical, then square both sides.</em>",
+      "question_html": "Solve for \\( t \\): \\( d = \\dfrac{1}{2}gt^2 \\)",
       "inputs": [
         {
           "id": "q9",
           "type": "radio",
           "label": "",
           "options": [
-            { "value": "A", "text": "\\( L = \\dfrac{T^2 g}{2\\pi} \\)" },
-            { "value": "B", "text": "\\( L = \\dfrac{g T^2}{4\\pi^2} \\)" },
-            { "value": "C", "text": "\\( L = 2\\pi g T^2 \\)" },
-            { "value": "D", "text": "\\( L = \\dfrac{g}{4\\pi^2 T^2} \\)" }
+            { "value": "A", "text": "\\( t = \\sqrt{\\dfrac{2d}{g}} \\)" },
+            { "value": "B", "text": "\\( t = \\dfrac{2d}{g} \\)" },
+            { "value": "C", "text": "\\( t = \\sqrt{\\dfrac{d}{2g}} \\)" },
+            { "value": "D", "text": "\\( t = \\dfrac{\\sqrt{2d}}{g} \\)" }
           ],
-          "answer": "B"
+          "answer": "A"
         }
       ],
-      "hint": "Divide by 2*pi first to isolate the square root. Then square both sides.",
+      "hint": "Multiply both sides by 2 to clear the fraction. Divide by g. Then take square root.",
       "solution_steps": [
-        "T = 2 pi sqrt(L/g)",
-        "T / (2 pi) = sqrt(L/g)    [divide both sides by 2 pi]",
-        "T^2 / (4 pi^2) = L/g      [square both sides]",
-        "L = g T^2 / (4 pi^2)      [multiply both sides by g]",
-        "Answer: B"
+        "d = (1/2) g t^2",
+        "2d = g t^2                 [multiply both sides by 2]",
+        "t^2 = 2d / g              [divide both sides by g]",
+        "t = sqrt(2d / g)          [take square root, positive only]",
+        "Answer: A"
       ],
-      "feedback_correct": "🔥 Isolate radical, square. Compare with Q8: opposite operations.",
-      "feedback_wrong": "Divide by 2pi, then square both sides: T^2/(4pi^2) = L/g. Multiply by g: L = gT^2/(4pi^2)."
+      "feedback_correct": "🔥 Formula isolation with squared variable.",
+      "feedback_wrong": "Multiply by 2: 2d = gt^2. Divide by g: t^2 = 2d/g. Square root: t = sqrt(2d/g)."
     },
     {
       "id": "fd1-q10",
