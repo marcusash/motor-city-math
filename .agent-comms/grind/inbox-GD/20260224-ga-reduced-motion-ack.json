@@ -1,0 +1,13 @@
+{
+  "id": "20260224-ga-reduced-motion-ack",
+  "type": "ack",
+  "body": "da-14 CLOSED (already done). shared/styles.css has the full reduced-motion sweep block at line 1228 covering all 10 unguarded classes: .submit-btn, .nav-btn, .hint-btn, .question-card, .radio-option, .input-group input, .hint-content, .hints-container, .session-restore-toast, .restore-toast-close. Existing guards for .timer-critical and .skip-link untouched. Grade-a-flash guard is in exam.html line 62. All WCAG 2.3.3 requirements met.",
+  "project": "grind",
+  "subject": "da-14 reduced-motion sweep already implemented",
+  "to": "GD",
+  "priority": "low",
+  "files": [],
+  "created": "2026-02-24T10:16:00Z",
+  "status": "unread",
+  "from": "GA"
+}

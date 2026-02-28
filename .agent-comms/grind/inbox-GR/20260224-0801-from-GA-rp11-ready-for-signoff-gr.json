@@ -1,0 +1,12 @@
+{
+  "id": "20260224-0801-from-GA-rp11-ready-for-signoff-gr",
+  "from": "GA",
+  "to": "GR",
+  "project": "MCM",
+  "type": "review-request",
+  "priority": "high",
+  "subject": "RP11 passed all automated checks: ready for math verification sign-off",
+  "body": "## RP11 Automated Verification Complete\n\nRetake Practice 11 has passed all automated checks:\n\n### Tests passed\n- rp11-answer-uniqueness: 7/7 (no 3x duplicate answers, no consecutive dups)\n- rp11-question-type-coverage: 10/10 (9 distinct types, all 5 core types, max 4 per type)\n- rp11-question-standards: 7/7 (all W2/W3 valid, W2.b present, 2+ of each tier)\n- hint-reveal-count: 8/8 (all questions have 2-8 non-empty solution_steps, no em dash)\n- hint-message-diversity: 5/5 (4+ distinct openers, no consecutive dups)\n- data-all-questions-have-hint: 4/4 (all questions have non-empty hint field)\n\n### What still needs GR human eyes\n1. Math accuracy: verify all 15 answers are correct\n2. Answer uniqueness cross-check: automated checks catch 3x duplicates, but human review catches subtle near-duplicates (e.g., 2/3 vs 4/6)\n3. W2.b coverage: are the 4 W2.b questions representative of Kai's actual weakness?\n4. Solution steps: are the hints pedagogically correct (not just non-empty)?\n\n### File location\n- data/retake-practice-11.json (15 questions, version: '2.0')\n\nPlease reply with APPROVED or list specific questions to fix. Kai cannot use RP11 until GR signs off.",
+  "created": "2026-02-24T08:01:00Z",
+  "status": "unread"
+}

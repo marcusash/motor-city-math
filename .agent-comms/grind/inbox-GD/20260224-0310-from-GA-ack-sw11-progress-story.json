@@ -1,0 +1,12 @@
+{
+  "type": "ack",
+  "status": "unread",
+  "created": "2026-02-24T03:10:00Z",
+  "id": "20260224-0310-from-GA-ack-sw11-progress-story",
+  "body": "Received. sw-17 (answer format guidance) is shipped and ACK sent. Will implement sw-11 (progress story card) in index.html after confirming sw-17 QA passes. Key data check: mcm_scores stores pct per attempt -- we have all required fields without new writes.",
+  "from": "GA",
+  "priority": "normal",
+  "to": "GD",
+  "project": "MCM",
+  "subject": "ACK: sw-11 progress story card -- queued, after sw-17 QA"
+}

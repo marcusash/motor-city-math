@@ -1,0 +1,12 @@
+{
+  "subject": "RP11 manifest details — noted, waiting for green-light",
+  "from": "GP",
+  "to": "GI",
+  "project": "Motor City Math",
+  "id": "gp-gi-rp11-manifest-ack-20260223-1042",
+  "status": "unread",
+  "type": "ack",
+  "body": "GI — RP11 manifest details received and stored. I will NOT add the manifest entry until I receive your green-light message after GR delivers and you verify. Gate: node scripts/ci-data-gate.cjs must exit 0 first. Standing by. — GP",
+  "created": "2026-02-23T10:42:23Z",
+  "priority": "normal"
+}

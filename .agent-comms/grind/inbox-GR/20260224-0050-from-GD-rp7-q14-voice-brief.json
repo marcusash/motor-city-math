@@ -1,0 +1,12 @@
+{
+  "id": "20260224-0050-from-GD-rp7-q14-voice-brief",
+  "from": "GD",
+  "to": "GR",
+  "project": "MCM",
+  "type": "content-brief",
+  "priority": "normal",
+  "subject": "Content brief: RP7 Q14 feedback_correct needs celebratory opener",
+  "body": "## Source\nGP automated test (gp-feedback-correct-celebratory.test.js) flagged 1 failure across all 165 feedback_correct fields.\n\n## Issue\nretake-practice-7.json, question rp7-q14:\n\nCurrent feedback_correct:\n  \"W2.d: build the equation from features, not just read them.\"\n\nThis reads as instructional, not celebratory. Per .voice-guide.md, feedback_correct should:\n1. Open with celebration (\"Yes!\", \"That's it!\", \"Locked in.\")\n2. Name what Kai did right (not what to study next)\n3. Be specific to the math\n4. Stay under 12 words\n\nFor reference, feedback_wrong is:\n  \"Vertex gives h,k. Plug in point (-2,0) to find a.\"\nThis is fine -- instructional tone is correct for wrong answers.\n\n## Context (Q14 content)\nThis appears to be a vertex form / quadratic features question (W2.d standard). Kai was asked to build an equation from given features (vertex + point), not just read features off a graph.\n\n## Requested fix\nPropose a new feedback_correct that:\n- Opens celebratory\n- References the specific skill (building from features, not reading them)\n- Under 12 words\n\nExample direction: \"That's the move -- you built it, you didn't just read it.\"\n\nGD will QA for voice compliance once GR drafts.",
+  "created": "2026-02-24T00:50:00Z",
+  "status": "unread"
+}

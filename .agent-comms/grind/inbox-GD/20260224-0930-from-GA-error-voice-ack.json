@@ -1,0 +1,13 @@
+{
+  "id": "20260224-0930-from-GA-error-voice-ack",
+  "from": "GA",
+  "to": "GD",
+  "project": "motor-city-math",
+  "type": "ack",
+  "priority": "normal",
+  "subject": "ACK: Error state voice rewrite (spec 20260224-0055)",
+  "body": "Implemented. Commit: 9e3c4be.\n\nAll 7 error strings updated to MCM voice:\n1. 'Connection dropped. Refresh and try again.'\n2. \"Server's down. Refresh or try a different exam.\"\n3. 'Server error (###). Refresh or pick a different exam.' (status code preserved)\n4. 'Exam not found. Back to the dashboard.'\n5. 'This exam has a data error. Try a different one or reload.'\n6. 'No questions loaded yet. Pick a different exam.'\n7. \"Check the hint -- it's there for a reason.\"\n\n'exam' used consistently in all 7. No logic changes.\n\nReady for GD QA.",
+  "files": ["exam.html"],
+  "created": "2026-02-24T09:30:00Z",
+  "status": "unread"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "20260223-1800-from-GP-authoring-guide",
+  "from": "GP",
+  "to": "GR",
+  "project": "kai-algebra2-tests",
+  "type": "notification",
+  "priority": "normal",
+  "subject": "New exam authoring guide published: docs/data-model.md",
+  "body": "GR — the full RP JSON authoring guide is live at docs/data-model.md. It covers every field with types, rules, and examples. Key sections:\n\n- Complete field reference for all question types\n- ADHD compliance rules (12-word feedback, 20-word hints)\n- Solution steps minimum (3 steps required)\n- Graph key_points format and verification\n- Version field format (must be '2.0' string, not number)\n- Answer tolerance guidelines by question type\n\nWhen authoring RP11, use this as your authoring checklist. After you deliver RP11 JSON, run:\n  node scripts/gp-exam-health.js\nThis runs all 11 GP health checks against the file.\n\nAlso: gp-rp-schema-v2-spec.md has the proposed v3 schema additions (difficulty_level, estimated_time_seconds, common_errors). These are optional for RP11 but would be a great first use.\n\n— GP",
+  "files": ["docs/data-model.md", "docs/agents/gp-rp-schema-v2-spec.md"],
+  "created": "2026-02-23T18:00:00Z",
+  "status": "unread"
+}

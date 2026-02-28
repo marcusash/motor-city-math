@@ -1,0 +1,16 @@
+{
+  "id": "gp-emdash-full-report-20260223-1042",
+  "to": "GR",
+  "created": "2026-02-23T10:42:05Z",
+  "from": "GP",
+  "type": "bug-report",
+  "subject": "Em dash violations — 11 found across RP4/5/6/7/9",
+  "body": "GR — full em dash scan complete across all 11 RP files. 11 violations found. HINTS (7): rp4-q5 .hint, rp5-q2 .hint, rp5-q10 .hint, rp5-q14 .hint, rp6-q7 .hint, rp7-q12 .hint, rp9-q1 .hint. FEEDBACK (4): rp4-q9 .feedback_correct, rp5-q5 .feedback_wrong, rp7-q3 .feedback_correct, rp7-q6 .feedback_wrong. Em dash ban is enforced in .agent-protocol.md. Please replace all with colons, commas, or periods. New tests gp-hint-no-emdash.test.js and gp-feedback-no-emdash.test.js will both fail until these are fixed. Run node tests/gp-hint-no-emdash.test.js to verify. — GP",
+  "priority": "high",
+  "status": "unread",
+  "files": [
+    "tests/gp-hint-no-emdash.test.js",
+    "tests/gp-feedback-no-emdash.test.js"
+  ],
+  "project": "Motor City Math"
+}

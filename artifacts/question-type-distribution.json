@@ -1,0 +1,420 @@
+{
+  "generated": "2026-02-23T18:36:29.878Z",
+  "per_exam": [
+    {
+      "exam": "rp1",
+      "by_type": {
+        "identify": 3,
+        "solve": 0,
+        "graph": 2,
+        "apply": 0,
+        "exponential": 2,
+        "quadratic": 1,
+        "radical": 2,
+        "rational": 1,
+        "extraneous": 1,
+        "fractional-exp": 1,
+        "multiple-choice": 1,
+        "word-problem": 1
+      },
+      "by_section": {
+        "A": 3,
+        "B": 8,
+        "C": 2,
+        "D": 2
+      },
+      "by_standard": {
+        "W2.b": 3,
+        "W3.d": 2,
+        "W3.b": 4,
+        "W3.c": 1,
+        "W3.e": 1,
+        "W2.c": 1,
+        "W2.e": 1,
+        "W3.a": 2
+      },
+      "total": 15
+    },
+    {
+      "exam": "rp2",
+      "by_type": {
+        "identify": 3,
+        "solve": 0,
+        "graph": 2,
+        "apply": 0,
+        "exponential": 2,
+        "quadratic": 1,
+        "radical": 2,
+        "rational": 1,
+        "extraneous": 1,
+        "fractional-exp": 1,
+        "multiple-choice": 1,
+        "word-problem": 1
+      },
+      "by_section": {
+        "A": 3,
+        "B": 8,
+        "C": 2,
+        "D": 2
+      },
+      "by_standard": {
+        "W2.b": 3,
+        "W3.d": 2,
+        "W3.b": 4,
+        "W3.c": 1,
+        "W3.e": 1,
+        "W2.c": 1,
+        "W2.e": 1,
+        "W3.a": 2
+      },
+      "total": 15
+    },
+    {
+      "exam": "rp3",
+      "by_type": {
+        "identify": 3,
+        "solve": 0,
+        "graph": 2,
+        "apply": 0,
+        "exponential": 2,
+        "quadratic": 1,
+        "radical": 2,
+        "rational": 1,
+        "extraneous": 1,
+        "fractional-exp": 1,
+        "multiple-choice": 1,
+        "word-problem": 1
+      },
+      "by_section": {
+        "A": 3,
+        "B": 8,
+        "C": 2,
+        "D": 2
+      },
+      "by_standard": {
+        "W2.b": 3,
+        "W3.d": 2,
+        "W3.b": 4,
+        "W3.c": 1,
+        "W3.e": 1,
+        "W2.c": 1,
+        "W2.e": 1,
+        "W3.a": 2
+      },
+      "total": 15
+    },
+    {
+      "exam": "rp4",
+      "by_type": {
+        "identify": 3,
+        "solve": 0,
+        "graph": 2,
+        "apply": 0,
+        "exponential": 2,
+        "quadratic": 1,
+        "radical": 2,
+        "rational": 1,
+        "extraneous": 1,
+        "fractional-exp": 1,
+        "multiple-choice": 1,
+        "word-problem": 1
+      },
+      "by_section": {
+        "A": 3,
+        "B": 8,
+        "C": 2,
+        "D": 2
+      },
+      "by_standard": {
+        "W2.b": 3,
+        "W3.d": 2,
+        "W3.b": 4,
+        "W3.c": 1,
+        "W3.e": 1,
+        "W2.c": 1,
+        "W2.e": 1,
+        "W3.a": 2
+      },
+      "total": 15
+    },
+    {
+      "exam": "rp5",
+      "by_type": {
+        "identify": 3,
+        "solve": 0,
+        "graph": 2,
+        "apply": 0,
+        "exponential": 2,
+        "quadratic": 1,
+        "radical": 2,
+        "rational": 1,
+        "extraneous": 1,
+        "fractional-exp": 1,
+        "error-analysis": 1,
+        "word-problem": 1
+      },
+      "by_section": {
+        "A": 3,
+        "B": 8,
+        "C": 2,
+        "D": 2
+      },
+      "by_standard": {
+        "W2.b": 3,
+        "W3.d": 2,
+        "W3.b": 4,
+        "W3.c": 1,
+        "W3.e": 1,
+        "W2.c": 1,
+        "W2.e": 1,
+        "W3.a": 2
+      },
+      "total": 15
+    },
+    {
+      "exam": "rp6",
+      "by_type": {
+        "identify": 3,
+        "solve": 0,
+        "graph": 2,
+        "apply": 0,
+        "exponential": 3,
+        "quadratic": 1,
+        "radical": 1,
+        "rational": 1,
+        "extraneous": 1,
+        "fractional-exp": 1,
+        "construct": 1,
+        "word-problem": 1
+      },
+      "by_section": {
+        "A": 3,
+        "B": 8,
+        "C": 2,
+        "D": 2
+      },
+      "by_standard": {
+        "W2.b": 4,
+        "W3.d": 3,
+        "W3.b": 3,
+        "W3.c": 1,
+        "W3.e": 1,
+        "W2.c": 1,
+        "W2.e": 1,
+        "W3.a": 1
+      },
+      "total": 15
+    },
+    {
+      "exam": "rp7",
+      "by_type": {
+        "identify": 3,
+        "solve": 0,
+        "graph": 2,
+        "apply": 0,
+        "exponential": 3,
+        "quadratic": 1,
+        "radical": 2,
+        "rational": 1,
+        "fractional-exp": 1,
+        "multiple-choice": 1,
+        "word-problem": 1
+      },
+      "by_section": {
+        "A": 3,
+        "B": 8,
+        "C": 2,
+        "D": 2
+      },
+      "by_standard": {
+        "W2.b": 3,
+        "W3.d": 3,
+        "W3.b": 3,
+        "W3.c": 2,
+        "W2.c": 1,
+        "W2.e": 1,
+        "W2.d": 1,
+        "W3.a": 1
+      },
+      "total": 15
+    },
+    {
+      "exam": "rp8",
+      "by_type": {
+        "identify": 0,
+        "solve": 0,
+        "graph": 2,
+        "apply": 0,
+        "quadratic": 2,
+        "absolute-value": 2,
+        "exponential": 3,
+        "radical": 2,
+        "rational": 1,
+        "fractional-exp": 1,
+        "write-equation": 1,
+        "word-problem": 1
+      },
+      "by_section": {
+        "A": 3,
+        "B": 8,
+        "C": 2,
+        "D": 2
+      },
+      "by_standard": {
+        "W2.a": 2,
+        "W2.b": 1,
+        "W3.a": 2,
+        "W3.d": 3,
+        "W3.c": 2,
+        "W3.b": 2,
+        "W2.c": 1,
+        "W2.e": 1,
+        "W2.d": 1
+      },
+      "total": 15
+    },
+    {
+      "exam": "rp9",
+      "by_type": {
+        "identify": 0,
+        "solve": 0,
+        "graph": 2,
+        "apply": 0,
+        "quadratic": 2,
+        "absolute-value": 2,
+        "exponential": 3,
+        "radical": 2,
+        "rational": 1,
+        "fractional-exp": 1,
+        "write-equation": 1,
+        "word-problem": 1
+      },
+      "by_section": {
+        "A": 3,
+        "B": 8,
+        "C": 2,
+        "D": 2
+      },
+      "by_standard": {
+        "W2.a": 2,
+        "W2.b": 1,
+        "W3.a": 2,
+        "W3.d": 3,
+        "W3.c": 2,
+        "W3.b": 2,
+        "W2.c": 1,
+        "W2.e": 1,
+        "W2.d": 1
+      },
+      "total": 15
+    },
+    {
+      "exam": "rp10",
+      "by_type": {
+        "identify": 0,
+        "solve": 0,
+        "graph": 2,
+        "apply": 0,
+        "quadratic": 2,
+        "absolute-value": 2,
+        "exponential": 3,
+        "radical": 2,
+        "rational": 1,
+        "fractional-exp": 1,
+        "write-equation": 1,
+        "word-problem": 1
+      },
+      "by_section": {
+        "A": 3,
+        "B": 8,
+        "C": 2,
+        "D": 2
+      },
+      "by_standard": {
+        "W2.a": 2,
+        "W2.b": 1,
+        "W3.a": 2,
+        "W3.d": 3,
+        "W3.c": 2,
+        "W3.b": 2,
+        "W2.c": 1,
+        "W2.e": 1,
+        "W2.d": 1
+      },
+      "total": 15
+    },
+    {
+      "exam": "rp11",
+      "by_type": {
+        "identify": 0,
+        "solve": 0,
+        "graph": 1,
+        "apply": 0,
+        "quadratic": 2,
+        "absolute-value": 2,
+        "exponential": 3,
+        "radical": 2,
+        "rational": 2,
+        "fractional-exp": 1,
+        "write-equation": 1,
+        "word-problem": 1
+      },
+      "by_section": {
+        "A": 3,
+        "B": 8,
+        "C": 2,
+        "D": 2
+      },
+      "by_standard": {
+        "W2.a": 2,
+        "W2.b": 1,
+        "W3.a": 2,
+        "W3.d": 3,
+        "W3.c": 2,
+        "W3.b": 2,
+        "W2.c": 1,
+        "W2.e": 1,
+        "W2.d": 1
+      },
+      "total": 15
+    }
+  ],
+  "totals": {
+    "by_type": {
+      "identify": 21,
+      "solve": 0,
+      "graph": 21,
+      "apply": 0,
+      "exponential": 28,
+      "quadratic": 15,
+      "radical": 21,
+      "rational": 12,
+      "extraneous": 6,
+      "fractional-exp": 11,
+      "multiple-choice": 5,
+      "word-problem": 11,
+      "error-analysis": 1,
+      "construct": 1,
+      "absolute-value": 8,
+      "write-equation": 4
+    },
+    "by_section": {
+      "A": 33,
+      "B": 88,
+      "C": 22,
+      "D": 22
+    },
+    "by_standard": {
+      "W2.b": 26,
+      "W3.d": 28,
+      "W3.b": 34,
+      "W3.c": 16,
+      "W3.e": 6,
+      "W2.c": 11,
+      "W2.e": 11,
+      "W3.a": 20,
+      "W2.d": 5,
+      "W2.a": 8
+    }
+  }
+}

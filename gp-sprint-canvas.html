@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GP Sprint Canvas — 2026-02-23</title>
+<style>
+  :root {
+    --red: #C8102E;
+    --blue: #1D42BA;
+    --navy: #002D62;
+    --chrome: #BEC0C2;
+    --white: #FFFFFF;
+    --bg: #F4F5F7;
+    --card: #FFFFFF;
+    --border: #E2E4E9;
+    --green: #1A7F5A;
+    --green-light: #E6F4EF;
+    --yellow: #B45309;
+    --yellow-light: #FEF3C7;
+    --text: #111827;
+    --muted: #6B7280;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 0;
+  }
+
+  /* HEADER */
+  .header {
+    background: var(--navy);
+    color: white;
+    padding: 32px 48px 24px;
+    border-bottom: 4px solid var(--red);
+  }
+  .header-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .header h1 {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    color: white;
+  }
+  .header h1 span { color: var(--red); }
+  .header .subtitle {
+    font-size: 14px;
+    color: var(--chrome);
+    margin-top: 4px;
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--green);
+    color: white;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+  }
+  .badge-warn {
+    background: #92400E;
+  }
+
+  /* MAIN */
+  .main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 32px 24px 64px;
+  }
+
+  /* HERO STATS */
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .stat-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .stat-card.accent {
+    background: var(--navy);
+    border-color: var(--navy);
+    color: white;
+  }
+  .stat-card.accent .stat-label { color: var(--chrome); }
+  .stat-card.green { border-left: 4px solid var(--green); }
+  .stat-card.red { border-left: 4px solid var(--red); }
+  .stat-card.blue { border-left: 4px solid var(--blue); }
+  .stat-num {
+    font-size: 36px;
+    font-weight: 800;
+    line-height: 1;
+    color: inherit;
+  }
+  .stat-card:not(.accent) .stat-num { color: var(--navy); }
+  .stat-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .stat-sub {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  /* SECTION HEADERS */
+  h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  h2 .pill {
+    font-size: 11px;
+    font-weight: 700;
+    background: var(--blue);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 10px;
+    letter-spacing: 0.3px;
+  }
+  h2 .pill.green { background: var(--green); }
+  h2 .pill.red { background: var(--red); }
+
+  .section { margin-bottom: 36px; }
+
+  /* GRID LAYOUT */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+
+  /* CARD */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 24px;
+  }
+
+  /* HEALTH CHECK TABLE */
+  .health-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .health-table tr { border-bottom: 1px solid var(--border); }
+  .health-table tr:last-child { border-bottom: none; }
+  .health-table td {
+    padding: 10px 4px;
+    font-size: 14px;
+  }
+  .health-table td:first-child { width: 28px; font-size: 16px; }
+  .health-table td:last-child {
+    text-align: right;
+    font-weight: 700;
+    font-size: 12px;
+    color: var(--green);
+    font-variant-numeric: tabular-nums;
+  }
+  .check-name { font-weight: 600; color: var(--navy); display: block; }
+  .check-desc { font-size: 11px; color: var(--muted); }
+
+  /* COMMIT LIST */
+  .commit-list { display: flex; flex-direction: column; gap: 6px; }
+  .commit-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 12px;
+    background: var(--bg);
+    border-radius: 8px;
+    font-size: 13px;
+  }
+  .commit-sha {
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 11px;
+    color: var(--blue);
+    background: #EEF2FF;
+    padding: 2px 6px;
+    border-radius: 4px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    font-weight: 600;
+  }
+  .commit-msg { color: var(--text); line-height: 1.4; }
+
+  /* PROGRESS BARS */
+  .progress-section { display: flex; flex-direction: column; gap: 12px; }
+  .progress-row { display: flex; flex-direction: column; gap: 4px; }
+  .progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+  }
+  .progress-label span:first-child { font-weight: 600; color: var(--navy); }
+  .progress-label span:last-child { color: var(--muted); font-size: 12px; }
+  .progress-bar {
+    height: 8px;
+    background: var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    border-radius: 4px;
+    background: var(--blue);
+  }
+  .progress-fill.green { background: var(--green); }
+  .progress-fill.red { background: var(--red); }
+
+  /* FIX ITEMS */
+  .fix-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .fix-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+  .fix-item.pass { background: var(--green-light); border-color: #A7F3D0; }
+  .fix-item.warn { background: var(--yellow-light); border-color: #FDE68A; }
+  .fix-icon { font-size: 18px; flex-shrink: 0; }
+  .fix-title { font-size: 13px; font-weight: 700; color: var(--navy); }
+  .fix-detail { font-size: 12px; color: var(--muted); margin-top: 1px; }
+
+  /* TAG LIST */
+  .tag-list { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 12px;
+    background: #EEF2FF;
+    color: var(--blue);
+  }
+  .tag.green { background: var(--green-light); color: var(--green); }
+  .tag.red { background: #FEF2F2; color: var(--red); }
+  .tag.navy { background: var(--navy); color: white; }
+
+  /* GRADE BOX */
+  .grade-box {
+    display: flex;
+    gap: 20px;
+    align-items: stretch;
+  }
+  .grade-letter {
+    font-size: 72px;
+    font-weight: 900;
+    color: var(--blue);
+    line-height: 1;
+    flex-shrink: 0;
+    width: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #EEF2FF;
+    border-radius: 12px;
+  }
+  .grade-detail { flex: 1; }
+  .grade-detail h3 { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+  .grade-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+  .grade-list li { font-size: 13px; color: var(--text); display: flex; gap: 8px; }
+  .grade-list li span:first-child { flex-shrink: 0; }
+
+  /* FEEDBACK SECTION */
+  .feedback-box {
+    border: 2px dashed var(--chrome);
+    border-radius: 12px;
+    padding: 24px;
+    background: white;
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
+    color: var(--muted);
+    text-align: center;
+  }
+  .feedback-box .fb-icon { font-size: 32px; }
+  .feedback-box p { font-size: 14px; }
+
+  /* DIVIDER */
+  .divider { height: 1px; background: var(--border); margin: 8px 0 24px; }
+
+  /* FOUND / FIXED RIBBON */
+  .ribbon {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 6px;
+  }
+  .ribbon.found { background: #FEF2F2; color: var(--red); }
+  .ribbon.fixed { background: var(--green-light); color: var(--green); }
+
+  .timestamp {
+    font-size: 11px;
+    color: var(--muted);
+    text-align: right;
+    padding-top: 8px;
+  }
+
+  @media (max-width: 700px) {
+    .hero-stats { grid-template-columns: 1fr 1fr; }
+    .two-col, .three-col, .fix-grid { grid-template-columns: 1fr; }
+    .header { padding: 24px 20px 20px; }
+    .main { padding: 20px 16px 48px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <h1>GP Sprint Canvas <span>🏀</span></h1>
+      <div class="subtitle">Motor City Math · Platform Agent · 2026-02-23 · 1-Hour Autonomous Sprint</div>
+    </div>
+    <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+      <span class="badge">✅ 11/11 HEALTH CHECKS PASS</span>
+      <span class="badge">📦 24 COMMITS</span>
+    </div>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- HERO STATS -->
+  <div class="hero-stats">
+    <div class="stat-card accent">
+      <div class="stat-num">24</div>
+      <div class="stat-label">GP: Commits Pushed</div>
+      <div class="stat-sub" style="color:var(--chrome)">All FO-attributed (GP: prefix)</div>
+    </div>
+    <div class="stat-card green">
+      <div class="stat-num">3008<span style="font-size:18px;font-weight:400">/3008</span></div>
+      <div class="stat-label">Verify Checks</div>
+      <div class="stat-sub">Never dropped during sprint</div>
+    </div>
+    <div class="stat-card blue">
+      <div class="stat-num">307<span style="font-size:18px;font-weight:400">/500</span></div>
+      <div class="stat-label">Sprint Tasks Done</div>
+      <div class="stat-sub">61% of 500-task queue</div>
+    </div>
+    <div class="stat-card red">
+      <div class="stat-num">11</div>
+      <div class="stat-label">New GP Tests</div>
+      <div class="stat-sub">All passing. 0 failures.</div>
+    </div>
+  </div>
+
+  <!-- HEALTH GATE -->
+  <div class="section">
+    <h2>Health Gate <span class="pill green">11/11 PASS</span></h2>
+    <div class="card">
+      <table class="health-table">
+        <tr>
+          <td>✅</td>
+          <td><span class="check-name">verify-practice-exams</span><span class="check-desc">Full schema + math verification across all 10 exams</span></td>
+          <td>3008/3008</td>
+        </tr>
+        <tr>
+          <td>✅</td>
+          <td><span class="check-name">cross-exam-verify</span><span class="check-desc">Dedup answers across all exams (Kai can't memorize patterns)</span></td>
+          <td>0 failures</td>
+        </tr>
+        <tr>
+          <td>✅</td>
+          <td><span class="check-name">field-completeness</span><span class="check-desc">Every question has all required fields</span></td>
+          <td>900/900</td>
+        </tr>
+        <tr>
+          <td>✅</td>
+          <td><span class="check-name">answer-uniqueness</span><span class="check-desc">Single-input questions have unique answers per exam</span></td>
+          <td>66/66</td>
+        </tr>
+        <tr>
+          <td>✅</td>
+          <td><span class="check-name">solution-steps</span><span class="check-desc">Every question has ≥ 3 worked solution steps</span></td>
+          <td>150/150</td>
+        </tr>
+        <tr>
+          <td>✅</td>
+          <td><span class="check-name">feedback-length</span><span class="check-desc">Feedback ≤ 12 words (ADHD rule)</span></td>
+          <td>300/300</td>
+        </tr>
+        <tr>
+          <td>✅</td>
+          <td><span class="check-name">manifest-integrity</span><span class="check-desc">manifest.json entries match actual data/ files</span></td>
+          <td>10/10</td>
+        </tr>
+        <tr>
+          <td>✅</td>
+          <td><span class="check-name">field-audit</span><span class="check-desc">No missing fields detected</span></td>
+          <td>0 issues</td>
+        </tr>
+        <tr>
+          <td>✅</td>
+          <td><span class="check-name">graph-keypoints</span><span class="check-desc">All graph key_points mathematically verified vs function</span></td>
+          <td>100/100</td>
+        </tr>
+        <tr>
+          <td>✅</td>
+          <td><span class="check-name">hint-length</span><span class="check-desc">Hints ≤ 20 words (ADHD rule)</span></td>
+          <td>150/150</td>
+        </tr>
+        <tr>
+          <td>✅</td>
+          <td><span class="check-name">answer-tolerance</span><span class="check-desc">Numeric tolerances valid (0 &lt; t ≤ 0.5)</span></td>
+          <td>261/261</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- BUGS FOUND + FIXED -->
+  <div class="section">
+    <h2>Bugs Found and Fixed</h2>
+    <div class="fix-grid">
+      <div class="fix-item pass">
+        <div class="fix-icon">🔧</div>
+        <div>
+          <div class="fix-title">RP5 Q4 Answer Collision</div>
+          <div class="fix-detail">Q4 and Q9 both had x=7. Changed Q4 to 4^(x-3)=8^(x-5), answer x=9.</div>
+        </div>
+      </div>
+      <div class="fix-item pass">
+        <div class="fix-icon">📍</div>
+        <div>
+          <div class="fix-title">RP5 Q13 Key Point Error</div>
+          <div class="fix-detail">key_point (-2, -4.25) was wrong. Corrected to (-2, -1.75).</div>
+        </div>
+      </div>
+      <div class="fix-item pass">
+        <div class="fix-icon">📋</div>
+        <div>
+          <div class="fix-title">93 Missing Fields</div>
+          <div class="fix-detail">feedback_correct, feedback_wrong, and version fields missing across all 10 RPs. Patched by gp-field-fixer.js.</div>
+        </div>
+      </div>
+      <div class="fix-item pass">
+        <div class="fix-icon">✂️</div>
+        <div>
+          <div class="fix-title">34 ADHD Feedback Violations</div>
+          <div class="fix-detail">feedback_wrong strings over 12 words (RP4–RP10). Trimmed by gp-feedback-trimmer.js.</div>
+        </div>
+      </div>
+      <div class="fix-item pass">
+        <div class="fix-icon">💡</div>
+        <div>
+          <div class="fix-title">9 ADHD Hint Violations</div>
+          <div class="fix-detail">Hints over 20 words in RP5, RP6, RP7, RP9. Fixed manually to preserve meaning.</div>
+        </div>
+      </div>
+      <div class="fix-item pass">
+        <div class="fix-icon">🏷️</div>
+        <div>
+          <div class="fix-title">RP5 Version Field</div>
+          <div class="fix-detail">version was "2" instead of "2.0". Caught by new gp-version-check.test.js.</div>
+        </div>
+      </div>
+      <div class="fix-item pass">
+        <div class="fix-icon">🔑</div>
+        <div>
+          <div class="fix-title">FO Attribution Gap (3 Sprints)</div>
+          <div class="fix-detail">FO parser reads GP: prefix, not fix(GP): conventional format. All commits now use GP: prefix.</div>
+        </div>
+      </div>
+      <div class="fix-item warn">
+        <div class="fix-icon">⚠️</div>
+        <div>
+          <div class="fix-title">Solution Steps: Needs GR Review</div>
+          <div class="fix-detail">Some steps may be thin. gp-placeholder-steps.js found 0 generics — but GR should verify step quality.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMMITS -->
+  <div class="section two-col">
+    <div>
+      <h2>All 24 Commits <span class="pill">GP: prefix</span></h2>
+      <div class="commit-list">
+        <div class="commit-item"><span class="commit-sha">cb78817</span><span class="commit-msg">Self-audit sprint contribution gap doc</span></div>
+        <div class="commit-item"><span class="commit-sha">ba65e66</span><span class="commit-msg">Field audit + bulk fix — 93 missing fields across all 10 RPs</span></div>
+        <div class="commit-item"><span class="commit-sha">c77fb45</span><span class="commit-msg">5 new tests + ADHD feedback compliance fix</span></div>
+        <div class="commit-item"><span class="commit-sha">6498e3e</span><span class="commit-msg">Pre-commit hook (5 checks) + npm scripts + utility scripts</span></div>
+        <div class="commit-item"><span class="commit-sha">f8aa0be</span><span class="commit-msg">CHANGELOG, CONTRIBUTING, architecture docs, tools index, data model</span></div>
+        <div class="commit-item"><span class="commit-sha">1633f23</span><span class="commit-msg">CI workflow: auto-validate exam JSON on push/PR</span></div>
+        <div class="commit-item"><span class="commit-sha">4f92b00</span><span class="commit-msg">.editorconfig + sprint log (attribution fix documented)</span></div>
+        <div class="commit-item"><span class="commit-sha">ab3b988</span><span class="commit-msg">4 agent comms (FP attribution, FA sprint, GF schema, GR steps)</span></div>
+        <div class="commit-item"><span class="commit-sha">edde9b9</span><span class="commit-msg">Expanded pre-commit hook (8 checks) + install script</span></div>
+        <div class="commit-item"><span class="commit-sha">31246b4</span><span class="commit-msg">Update agent-status.md with sprint output</span></div>
+        <div class="commit-item"><span class="commit-sha">26dc022</span><span class="commit-msg">Publish spec + incident response runbook</span></div>
+        <div class="commit-item"><span class="commit-sha">14b91f6</span><span class="commit-msg">GitHub templates (issue, PR) and CODEOWNERS</span></div>
+        <div class="commit-item"><span class="commit-sha">0fb758b</span><span class="commit-msg">Placeholder steps scanner for GR review</span></div>
+        <div class="commit-item"><span class="commit-sha">b649d1d</span><span class="commit-msg">Exam coverage report script (graphs, hints, inputs)</span></div>
+        <div class="commit-item"><span class="commit-sha">76cb5e6</span><span class="commit-msg">Exam audit report — all 10 checks clean</span></div>
+        <div class="commit-item"><span class="commit-sha">070b7a8</span><span class="commit-msg">Graph key_points math verification test (100/100)</span></div>
+        <div class="commit-item"><span class="commit-sha">716c900</span><span class="commit-msg">Exam ID consistency test — 170/170</span></div>
+        <div class="commit-item"><span class="commit-sha">85a952d</span><span class="commit-msg">Sprint progress update to Marcus</span></div>
+        <div class="commit-item"><span class="commit-sha">ccfc31c</span><span class="commit-msg">Docs batch + comms batch + CI inbox validator + backups</span></div>
+        <div class="commit-item"><span class="commit-sha">e82c822</span><span class="commit-msg">Risk register + DORA metrics notes + Kelsey reading list</span></div>
+        <div class="commit-item"><span class="commit-sha">dc9feda</span><span class="commit-msg">2 new ADHD tests + 9 hint fixes (3008/3008)</span></div>
+        <div class="commit-item"><span class="commit-sha">18986ad</span><span class="commit-msg">4 new tests, RP5 version fix, health gate → 11 checks</span></div>
+        <div class="commit-item"><span class="commit-sha">e33c7eb</span><span class="commit-msg">README update + exam diff script</span></div>
+        <div class="commit-item"><span class="commit-sha">de4cc77</span><span class="commit-msg">Final sprint log (23 commits, 11/11) + FO evidence</span></div>
+      </div>
+    </div>
+    <div>
+      <h2>Sprint Task Breakdown</h2>
+      <div class="card" style="margin-bottom:20px;">
+        <div class="progress-section">
+          <div class="progress-row">
+            <div class="progress-label"><span>rp-audit</span><span>83/83 ✅</span></div>
+            <div class="progress-bar"><div class="progress-fill green" style="width:100%"></div></div>
+          </div>
+          <div class="progress-row">
+            <div class="progress-label"><span>rp-fix</span><span>66/66 ✅</span></div>
+            <div class="progress-bar"><div class="progress-fill green" style="width:100%"></div></div>
+          </div>
+          <div class="progress-row">
+            <div class="progress-label"><span>audit</span><span>35/35 ✅</span></div>
+            <div class="progress-bar"><div class="progress-fill green" style="width:100%"></div></div>
+          </div>
+          <div class="progress-row">
+            <div class="progress-label"><span>verify</span><span>7/7 ✅</span></div>
+            <div class="progress-bar"><div class="progress-fill green" style="width:100%"></div></div>
+          </div>
+          <div class="progress-row">
+            <div class="progress-label"><span>ci</span><span>10/11</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:91%"></div></div>
+          </div>
+          <div class="progress-row">
+            <div class="progress-label"><span>comms</span><span>21/33</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:64%"></div></div>
+          </div>
+          <div class="progress-row">
+            <div class="progress-label"><span>data</span><span>14/19</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:74%"></div></div>
+          </div>
+          <div class="progress-row">
+            <div class="progress-label"><span>doc</span><span>37/107</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:35%"></div></div>
+          </div>
+          <div class="progress-row">
+            <div class="progress-label"><span>infra</span><span>12/36</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:33%"></div></div>
+          </div>
+          <div class="progress-row">
+            <div class="progress-label"><span>script</span><span>11/39</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:28%"></div></div>
+          </div>
+          <div class="progress-row">
+            <div class="progress-label"><span>test</span><span>4/34</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:12%"></div></div>
+          </div>
+          <div class="progress-row">
+            <div class="progress-label"><span>log</span><span>5/9</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:56%"></div></div>
+          </div>
+          <div class="progress-row">
+            <div class="progress-label"><span>security</span><span>2/6</span></div>
+            <div class="progress-bar"><div class="progress-fill red" style="width:33%"></div></div>
+          </div>
+          <div class="progress-row">
+            <div class="progress-label"><span>spec</span><span>0/15 🕐</span></div>
+            <div class="progress-bar"><div class="progress-fill red" style="width:2%"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <h2>New Infrastructure</h2>
+      <div class="card">
+        <div class="tag-list">
+          <span class="tag navy">validate-data.yml CI</span>
+          <span class="tag navy">validate-inbox.yml CI</span>
+          <span class="tag green">pre-commit 8 checks</span>
+          <span class="tag green">install-hooks.sh</span>
+          <span class="tag">CODEOWNERS</span>
+          <span class="tag">PR template</span>
+          <span class="tag">Issue template</span>
+          <span class="tag">.editorconfig</span>
+          <span class="tag">6 npm scripts</span>
+          <span class="tag">data/_backups/</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEW TESTS -->
+  <div class="section">
+    <h2>New GP Tests <span class="pill green">11 new · all passing</span></h2>
+    <div class="three-col">
+      <div class="card">
+        <div style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:10px;">Existing (sprint start)</div>
+        <div class="tag-list">
+          <span class="tag green">field-completeness 900/900</span>
+          <span class="tag green">answer-uniqueness 66/66</span>
+          <span class="tag green">solution-steps 150/150</span>
+          <span class="tag green">feedback-length 300/300</span>
+          <span class="tag green">manifest-integrity 10/10</span>
+        </div>
+      </div>
+      <div class="card">
+        <div style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:10px;">Added mid-sprint</div>
+        <div class="tag-list">
+          <span class="tag green">graph-keypoints 100/100</span>
+          <span class="tag green">exam-id-consistency 170/170</span>
+          <span class="tag green">answer-tolerance 261/261</span>
+          <span class="tag green">hint-length 150/150</span>
+        </div>
+      </div>
+      <div class="card">
+        <div style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:10px;">Added late sprint</div>
+        <div class="tag-list">
+          <span class="tag green">version-check 10/10</span>
+          <span class="tag green">input-label 317/317</span>
+        </div>
+        <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border);">
+          <div style="font-size:12px;color:var(--muted);">Health gate: <strong>8 → 11 checks</strong></div>
+          <div style="font-size:12px;color:var(--muted);">Pre-commit: <strong>5 → 8 checks</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEW SCRIPTS -->
+  <div class="section">
+    <h2>New Scripts <span class="pill">12 added</span></h2>
+    <div class="card">
+      <div class="tag-list">
+        <span class="tag">gp-rp-field-audit.js</span>
+        <span class="tag">gp-field-fixer.js</span>
+        <span class="tag">gp-feedback-trimmer.js</span>
+        <span class="tag">gp-exam-health.js</span>
+        <span class="tag">gp-missing-fields.js</span>
+        <span class="tag">gp-word-count.js</span>
+        <span class="tag">gp-exam-coverage.js</span>
+        <span class="tag">gp-placeholder-steps.js</span>
+        <span class="tag">gp-exam-diff.js</span>
+        <span class="tag">gp-pre-commit-hook.js</span>
+        <span class="tag">install-hooks.sh</span>
+        <span class="tag">gp-retake-smoke.ps1</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- DOCS -->
+  <div class="section">
+    <h2>New Documentation <span class="pill">15+ files</span></h2>
+    <div class="two-col">
+      <div class="card">
+        <div style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:10px;">Project docs</div>
+        <div class="tag-list">
+          <span class="tag">CHANGELOG.md</span>
+          <span class="tag">CONTRIBUTING.md</span>
+          <span class="tag">README.md (updated)</span>
+          <span class="tag">docs/architecture.md</span>
+          <span class="tag">docs/data-model.md</span>
+          <span class="tag">docs/agent-index.md</span>
+        </div>
+      </div>
+      <div class="card">
+        <div style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:10px;">GP agent docs</div>
+        <div class="tag-list">
+          <span class="tag">gp-tools-index.md</span>
+          <span class="tag">gp-sprint-log.md</span>
+          <span class="tag">gp-metrics-baseline.md</span>
+          <span class="tag">gp-risk-register.md</span>
+          <span class="tag">gp-health-dashboard.md</span>
+          <span class="tag">gp-publish-spec.md</span>
+          <span class="tag">gp-incident-response.md</span>
+          <span class="tag">gp-hour-sprint-postmortem.md</span>
+          <span class="tag">gp-commit-conventions.md</span>
+          <span class="tag">gp-post-push-checklist.md</span>
+          <span class="tag">gp-autonomous-trigger-proposal.md</span>
+          <span class="tag">gp-dora-metrics-notes.md</span>
+          <span class="tag">gp-kelsey-reading-list.md</span>
+          <span class="tag">gp-daily-digest-template.md</span>
+          <span class="tag">gp-exam-audit-20260223.md</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GRADE + SELF ASSESSMENT -->
+  <div class="section">
+    <h2>Self Grade</h2>
+    <div class="card">
+      <div class="grade-box">
+        <div class="grade-letter">B+</div>
+        <div class="grade-detail">
+          <h3>What earned the B+</h3>
+          <ul class="grade-list">
+            <li><span>✅</span><span>Kept moving without stopping. 24 commits in one session.</span></li>
+            <li><span>✅</span><span>Baseline never dropped. 3008/3008 start to finish.</span></li>
+            <li><span>✅</span><span>Found and fixed real bugs (Q4 collision, Q13 key_point, 93 missing fields, 43 ADHD violations).</span></li>
+            <li><span>✅</span><span>Attribution root cause identified and corrected.</span></li>
+            <li><span>✅</span><span>Tests caught real bugs (version-check found RP5 "2" vs "2.0").</span></li>
+          </ul>
+          <div style="margin-top:14px;">
+            <h3>Why not an A</h3>
+          </div>
+          <ul class="grade-list" style="margin-top:8px;">
+            <li><span>⚠️</span><span>Still session-reactive. No autonomous operation between Marcus sessions.</span></li>
+            <li><span>⚠️</span><span>doc and spec categories underserved — 37/107 doc tasks done.</span></li>
+            <li><span>⚠️</span><span>spec category: 0/15 completed.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PENDING DECISIONS -->
+  <div class="section">
+    <h2>Pending for Marcus <span class="pill red">1 decision needed</span></h2>
+    <div class="card">
+      <div style="display:flex;align-items:flex-start;gap:14px;padding:4px 0;">
+        <div style="font-size:24px;">🤔</div>
+        <div>
+          <div style="font-weight:700;color:var(--navy);font-size:15px;">p-impl-2: Doc Reorganization</div>
+          <div style="font-size:13px;color:var(--muted);margin-top:4px;">26 dotfiles (.agent-onboarding.md, .design-system.md, etc.) would move to docs/ subfolders. Makes the repo root cleaner. Risk: could break agent workflows that reference dotfile paths.</div>
+          <div style="margin-top:10px;display:flex;gap:8px;">
+            <span class="ribbon found">Awaiting Marcus go / no-go</span>
+            <span style="font-size:12px;color:var(--muted);line-height:28px;">Filed in .marcus-queue.md</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEEDBACK AREA -->
+  <div class="section">
+    <h2>Marcus Feedback</h2>
+    <div class="feedback-box">
+      <div class="fb-icon">💬</div>
+      <p style="font-weight:600;color:var(--navy);">This is where your feedback goes.</p>
+      <p>Grade GP on this sprint. What was strong, what to improve, and what's next.</p>
+    </div>
+  </div>
+
+  <div class="timestamp">
+    GP (grind-platform) · Motor City Math · Sprint: 2026-02-23 · canvas generated at session end
+  </div>
+
+</div>
+</body>
+</html>

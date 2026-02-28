@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="shared/favicon.svg">
+    <title>Retake Practice 12 — Final Paper Exam</title>
+    <link rel="stylesheet" href="shared/katex/katex.min.css">
+    <script src="shared/katex/katex.min.js"></script>
+    <script src="shared/katex/auto-render.min.js"></script>
+    <link rel="stylesheet" href="shared/styles.css">
+    <style>
+        /* ===== SCREEN LAYOUT ===== */
+        .rp12-container { max-width: 800px; margin: 0 auto; padding: 20px 16px 40px; }
+        .rp12-title { text-align: center; margin-bottom: 4px; color: var(--accent-navy); font-size: 1.5rem; }
+        .rp12-subtitle { text-align: center; color: var(--text-secondary); font-size: 0.875rem; margin: 0 0 20px; }
+
+        /* Section dividers */
+        .section-header {
+            background: var(--accent-navy); color: white;
+            padding: 6px 16px; border-radius: 6px; font-weight: 700; font-size: 0.875rem;
+            letter-spacing: 0.06em; margin: 20px 0 10px; text-transform: uppercase;
+        }
+
+        /* Question cards */
+        .q-card {
+            background: var(--bg-card); border: 1px solid var(--border-default);
+            border-left: 4px solid var(--accent-blue); border-radius: 8px;
+            padding: 18px 20px; margin-bottom: 14px;
+            box-shadow: 0 1px 4px rgba(0,45,98,0.06);
+            page-break-inside: avoid; break-inside: avoid;
+        }
+        .q-num { font-weight: 800; color: var(--accent-navy); font-size: 0.9rem;
+                 letter-spacing: 0.05em; margin-bottom: 8px; }
+        .q-text { font-size: 0.95rem; line-height: 1.6; margin-bottom: 12px; color: var(--text-primary); }
+        .q-inputs { display: flex; flex-wrap: wrap; gap: 14px; align-items: flex-start; }
+        .input-row { display: flex; align-items: center; gap: 8px; }
+        .input-row label { font-weight: 600; font-size: 0.875rem; color: var(--text-primary); white-space: nowrap; }
+        .input-row input[type="text"], .input-row input[type="number"] {
+            border: none; border-bottom: 1.5px solid var(--border-default);
+            border-radius: 0; background: transparent; padding: 4px 2px;
+            font-size: 0.95rem; width: 120px; color: var(--text-primary);
+        }
+        .input-row input:focus { outline: 2px solid var(--accent-blue); border-radius: 2px; }
+        .input-row select {
+            border: 1px solid var(--border-default); border-radius: 6px; padding: 4px 8px;
+            font-size: 0.875rem; background: var(--bg-input); color: var(--text-primary); max-width: 180px;
+        }
+        .radio-options { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; margin: 4px 0; }
+        .radio-options label { display: flex; align-items: center; gap: 5px;
+                               font-size: 0.875rem; cursor: pointer; color: var(--text-primary); }
+
+        /* Work area */
+        .work-area { margin-top: 10px; }
+        .work-area label { font-size: 0.8rem; color: var(--text-secondary); font-weight: 600; display: block; margin-bottom: 4px; }
+        .work-lines { border: 1px solid var(--border-subtle); border-radius: 4px; height: 56px;
+                      background: repeating-linear-gradient(to bottom,
+                        transparent, transparent 19px,
+                        var(--border-subtle) 19px, var(--border-subtle) 20px); }
+
+        /* Q11 hint box */
+        .print-hint {
+            background: #FFF9E6; border: 2px solid #E8A317; border-radius: 6px;
+            padding: 10px 14px; margin-top: 10px; font-size: 0.875rem;
+            color: #7A5000; font-weight: 600;
+        }
+        .print-hint::before { content: "Hint: "; font-weight: 700; }
+
+        /* Coordinate grid */
+        .grid-container {
+            margin: 14px 0; text-align: center;
+        }
+        .grid-container svg { max-width: 320px; width: 100%; border: 1px solid var(--border-default); border-radius: 4px; }
+        .grid-label { font-size: 0.8rem; color: var(--text-secondary); margin-top: 4px; }
+
+        /* Answer key page — screen */
+        .answer-key-page {
+            display: none;
+            border: 3px solid var(--accent-red); border-radius: 10px;
+            padding: 24px; margin-top: 32px; background: var(--bg-highlight);
+        }
+        .answer-key-page.visible { display: block; }
+        .answer-key-page h2 {
+            color: var(--accent-red); font-size: 1.2rem; font-weight: 900;
+            letter-spacing: 0.08em; text-align: center; margin: 0 0 16px;
+        }
+        .ak-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+        .ak-table th, .ak-table td { padding: 6px 10px; border: 1px solid var(--border-default); text-align: left; }
+        .ak-table th { background: var(--accent-navy); color: white; font-weight: 700; }
+        .ak-table tr:nth-child(even) td { background: var(--bg-input); }
+
+        /* Toolbar */
+        .toolbar { display: flex; gap: 12px; align-items: center; flex-wrap: wrap;
+                   padding: 12px 0 20px; border-bottom: 1px solid var(--border-subtle); margin-bottom: 20px; }
+        .toolbar-btn {
+            padding: 8px 18px; border-radius: 6px; border: 1px solid var(--border-default);
+            background: var(--bg-input); color: var(--text-primary); cursor: pointer;
+            font-size: 0.875rem; font-weight: 600; transition: background 0.15s;
+        }
+        .toolbar-btn:hover { background: var(--accent-blue); color: white; border-color: var(--accent-blue); }
+        .toolbar-btn.danger { border-color: var(--accent-red); color: var(--accent-red); }
+        .toolbar-btn.danger:hover { background: var(--accent-red); color: white; }
+
+        /* Print header — screen hidden */
+        .print-header { display: none; }
+
+        /* ===== PRINT STYLES ===== */
+        @media print {
+            * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+
+            body { background: white !important; margin: 0; padding: 0; font-size: 11pt; color: #000; }
+            .rp12-container { max-width: 100%; padding: 0 14px; }
+
+            .toolbar { display: none !important; }
+            .rp12-title { font-size: 14pt; color: #000 !important; margin-bottom: 2px; }
+            .rp12-subtitle { font-size: 9pt; color: #555 !important; margin-bottom: 6px; }
+
+            /* Print header — shown on print */
+            .print-header {
+                display: block !important;
+                padding-bottom: 10px;
+                border-bottom: 2px solid #000;
+                margin-bottom: 14px;
+            }
+            .print-header .ph-title { font-size: 13pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+            .print-header .ph-brand { font-size: 9pt; font-style: italic; color: #666; margin-bottom: 8px; }
+            .print-header .ph-field { font-size: 10pt; display: flex; gap: 32px; flex-wrap: wrap; margin-top: 6px; }
+            .ph-line { display: inline-block; border-bottom: 1px solid #000; margin-left: 4px; }
+            .ph-line-lg { width: 240px; }
+            .ph-line-sm { width: 100px; }
+            .ph-line-xs { width: 50px; }
+
+            .section-header {
+                background: #000 !important; color: #fff !important;
+                padding: 4px 12px; font-size: 9pt; border-radius: 0;
+                margin: 14px 0 8px; -webkit-print-color-adjust: exact;
+            }
+
+            .q-card {
+                border: 1px solid #888; border-left: 3px solid #000;
+                box-shadow: none; padding: 12px 14px; margin-bottom: 10px;
+                page-break-inside: avoid; break-inside: avoid;
+                border-radius: 0;
+            }
+            .q-num { font-size: 9pt; color: #000 !important; }
+            .q-text { font-size: 10.5pt; }
+
+            .input-row input[type="text"],
+            .input-row input[type="number"] {
+                border-top: none !important; border-left: none !important; border-right: none !important;
+                border-bottom: 1px solid #000 !important; width: 160px !important;
+                font-size: 10pt; background: transparent !important;
+            }
+            .input-row select { border: 1px solid #888; font-size: 9pt; }
+
+            .work-lines { height: 52px; border: 1px solid #888; }
+
+            /* Keep hint box visible on print */
+            .print-hint { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+            /* Grid SVG */
+            .grid-container svg { max-width: 280px; border: 1px solid #000; }
+
+            /* Answer key page — only print if visible */
+            .answer-key-page { display: none !important; border: none; padding: 0; }
+            .answer-key-page.visible {
+                display: block !important;
+                page-break-before: always;
+                border: none !important;
+                background: white !important;
+                padding: 16px 0;
+            }
+            .answer-key-page.visible h2 { color: #C8102E !important; font-size: 16pt; }
+            .ak-table th { background: #000 !important; color: white !important; }
+
+            /* Screen-only elements */
+            nav, .footer, a[href]:not([class]) { display: none !important; }
+        }
+    </style>
+</head>
+<body>
+    <div class="rp12-container" role="main">
+
+        <!-- Print header (hidden on screen, shown on print) -->
+        <div class="print-header">
+            <div class="ph-title">Algebra II: Nonlinear Functions — Unit 2 Retake Prep</div>
+            <div class="ph-brand">Motor City Math</div>
+            <div class="ph-field">
+                <span>Name: <span class="ph-line ph-line-lg"></span></span>
+                <span>Date: <span class="ph-line ph-line-sm"></span></span>
+                <span>Period: <span class="ph-line ph-line-xs"></span></span>
+            </div>
+        </div>
+
+        <h1 class="rp12-title">Retake Practice 12 — Final Paper Exam</h1>
+        <p class="rp12-subtitle">Standards W2 &amp; W3 &nbsp;·&nbsp; 15 Questions &nbsp;·&nbsp; ~60 min &nbsp;·&nbsp; Print &amp; Write</p>
+
+        <!-- Screen toolbar -->
+        <div class="toolbar" aria-label="Exam controls">
+            <button class="toolbar-btn" onclick="window.print()">🖨 Print Exam</button>
+            <button class="toolbar-btn danger" onclick="showAnswerKey()">🔑 Show Answer Key</button>
+            <a href="index.html" class="toolbar-btn" style="text-decoration:none;">← Dashboard</a>
+        </div>
+
+        <!-- ===== SECTION A ===== -->
+        <div class="section-header" aria-label="Section A — Identify the Function">Section A — Identify the Function</div>
+
+        <!-- Q1 -->
+        <div class="q-card">
+            <div class="q-num">Question 1 &nbsp;·&nbsp; W2.b — Identify &amp; Intercepts</div>
+            <div class="q-text">Identify the parent function and find the x-intercepts: \( f(x) = 3(x - 4)^2 - 75 \)</div>
+            <div class="q-inputs">
+                <div class="input-row">
+                    <label for="q1_parent">Parent function:</label>
+                    <select id="q1_parent">
+                        <option value="">— select —</option>
+                        <option value="quadratic">Quadratic</option>
+                        <option value="absolute value">Absolute Value</option>
+                        <option value="square root">Square Root</option>
+                        <option value="rational">Rational</option>
+                        <option value="exponential">Exponential</option>
+                    </select>
+                </div>
+                <div class="input-row">
+                    <label for="q1_x1">x&#x2081; =</label>
+                    <input type="number" id="q1_x1" step="any" aria-label="First x-intercept">
+                </div>
+                <div class="input-row">
+                    <label for="q1_x2">x&#x2082; =</label>
+                    <input type="number" id="q1_x2" step="any" aria-label="Second x-intercept">
+                </div>
+            </div>
+            <div class="work-area"><label>Show work:</label><div class="work-lines" aria-hidden="true"></div></div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="q-card">
+            <div class="q-num">Question 2 &nbsp;·&nbsp; W2.b — Identify &amp; Intercept</div>
+            <div class="q-text">Identify the parent function and find the x-intercept: \( f(x) = \sqrt{x - 11} - 6 \)</div>
+            <div class="q-inputs">
+                <div class="input-row">
+                    <label for="q2_parent">Parent function:</label>
+                    <select id="q2_parent">
+                        <option value="">— select —</option>
+                        <option value="quadratic">Quadratic</option>
+                        <option value="absolute value">Absolute Value</option>
+                        <option value="square root">Square Root</option>
+                        <option value="rational">Rational</option>
+                        <option value="exponential">Exponential</option>
+                    </select>
+                </div>
+                <div class="input-row">
+                    <label for="q2_x1">x-intercept =</label>
+                    <input type="number" id="q2_x1" step="any">
+                </div>
+            </div>
+            <div class="work-area"><label>Show work:</label><div class="work-lines" aria-hidden="true"></div></div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="q-card">
+            <div class="q-num">Question 3 &nbsp;·&nbsp; W2.b — Identify, Parameters, &amp; Intercepts</div>
+            <div class="q-text">For \( f(x) = |4x - 12| - 8 \): rewrite in the form \( a|x - h| + k \), state the parent function, identify <em>a</em>, <em>h</em>, <em>k</em>, and find the x-intercepts.</div>
+            <div class="q-inputs">
+                <div class="input-row">
+                    <label for="q3_parent">Parent function:</label>
+                    <select id="q3_parent">
+                        <option value="">— select —</option>
+                        <option value="quadratic">Quadratic</option>
+                        <option value="absolute value">Absolute Value</option>
+                        <option value="square root">Square Root</option>
+                        <option value="rational">Rational</option>
+                        <option value="exponential">Exponential</option>
+                    </select>
+                </div>
+                <div class="input-row"><label for="q3_a">a =</label><input type="number" id="q3_a" step="any"></div>
+                <div class="input-row"><label for="q3_h">h =</label><input type="number" id="q3_h" step="any"></div>
+                <div class="input-row"><label for="q3_k">k =</label><input type="number" id="q3_k" step="any"></div>
+            </div>
+            <div style="margin:10px 0 0;">
+                <label style="font-size:0.8rem;color:var(--text-secondary);font-weight:600;">Write the two equations to solve:</label>
+                <input type="text" id="q3_cases" style="width:100%;border:none;border-bottom:1.5px solid var(--border-default);padding:4px 2px;font-size:0.9rem;background:transparent;margin-top:4px;" placeholder="4x − 12 = 8  and  4x − 12 = −8">
+            </div>
+            <div class="q-inputs" style="margin-top:10px;">
+                <div class="input-row"><label for="q3_x1">Smaller x =</label><input type="number" id="q3_x1" step="any"></div>
+                <div class="input-row"><label for="q3_x2">Larger x =</label><input type="number" id="q3_x2" step="any"></div>
+            </div>
+            <div class="work-area"><label>Show work:</label><div class="work-lines" aria-hidden="true"></div></div>
+        </div>
+
+        <!-- ===== SECTION B ===== -->
+        <div class="section-header" aria-label="Section B — Solve the Equation">Section B — Solve the Equation</div>
+
+        <!-- Q4 -->
+        <div class="q-card">
+            <div class="q-num">Question 4 &nbsp;·&nbsp; W3.d — Exponential</div>
+            <div class="q-text">Solve: \( 4^{2x + 1} = 256 \)</div>
+            <div class="q-inputs">
+                <div class="input-row"><label for="q4_x">x =</label><input type="number" id="q4_x" step="any"></div>
+            </div>
+            <div class="work-area"><label>Show work:</label><div class="work-lines" aria-hidden="true"></div></div>
+        </div>
+
+        <!-- Q5 -->
+        <div class="q-card">
+            <div class="q-num">Question 5 &nbsp;·&nbsp; W3.b — Quadratic (Factor)</div>
+            <div class="q-text">Solve: \( x^2 + 2x - 35 = 0 \)</div>
+            <div class="q-inputs">
+                <div class="input-row"><label for="q5_x1">x&#x2081; =</label><input type="number" id="q5_x1" step="any"></div>
+                <div class="input-row"><label for="q5_x2">x&#x2082; =</label><input type="number" id="q5_x2" step="any"></div>
+            </div>
+            <div class="work-area"><label>Show work:</label><div class="work-lines" aria-hidden="true"></div></div>
+        </div>
+
+        <!-- Q6 -->
+        <div class="q-card">
+            <div class="q-num">Question 6 &nbsp;·&nbsp; W3.b — Radical</div>
+            <div class="q-text">Solve: \( \sqrt{3x - 5} + 4 = 11 \)</div>
+            <div class="q-inputs">
+                <div class="input-row"><label for="q6_x">x =</label><input type="number" id="q6_x" step="any"></div>
+            </div>
+            <div class="work-area"><label>Show work:</label><div class="work-lines" aria-hidden="true"></div></div>
+        </div>
+
+        <!-- Q7 -->
+        <div class="q-card">
+            <div class="q-num">Question 7 &nbsp;·&nbsp; W3.d — Exponential (Mixed Base)</div>
+            <div class="q-text">Solve: \( 4^{x + 2} = 32 \)</div>
+            <div class="q-inputs">
+                <div class="input-row"><label for="q7_x">x =</label><input type="number" id="q7_x" step="any"></div>
+            </div>
+            <div class="work-area"><label>Show work:</label><div class="work-lines" aria-hidden="true"></div></div>
+        </div>
+
+        <!-- Q8 -->
+        <div class="q-card">
+            <div class="q-num">Question 8 &nbsp;·&nbsp; W3.c — Rational</div>
+            <div class="q-text">Solve: \( \dfrac{5x - 2}{x + 3} = 4 \)</div>
+            <div class="q-inputs">
+                <div class="input-row"><label for="q8_x">x =</label><input type="number" id="q8_x" step="any"></div>
+            </div>
+            <div class="work-area"><label>Show work:</label><div class="work-lines" aria-hidden="true"></div></div>
+        </div>
+
+        <!-- Q9 -->
+        <div class="q-card">
+            <div class="q-num">Question 9 &nbsp;·&nbsp; W3.b — Radical (with coefficient)</div>
+            <div class="q-text">Solve: \( 4\sqrt{x - 1} + 2 = 18 \)</div>
+            <div class="q-inputs">
+                <div class="input-row"><label for="q9_x">x =</label><input type="number" id="q9_x" step="any"></div>
+            </div>
+            <div class="work-area"><label>Show work:</label><div class="work-lines" aria-hidden="true"></div></div>
+        </div>
+
+        <!-- Q10 -->
+        <div class="q-card">
+            <div class="q-num">Question 10 &nbsp;·&nbsp; W3.e — Extraneous Solutions</div>
+            <div class="q-text">Solve: \( \sqrt{3x + 4} = x - 2 \)<br><em>Note: check for <strong>extraneous solutions</strong> — verify BOTH answers in the original equation.</em></div>
+            <div class="q-inputs">
+                <div class="input-row"><label for="q10_x">Valid x =</label><input type="number" id="q10_x" step="any"></div>
+            </div>
+            <div class="work-area"><label>Show work &amp; check both solutions:</label><div class="work-lines" style="height:72px;" aria-hidden="true"></div></div>
+        </div>
+
+        <!-- Q11 — CRITICAL: fractional exponent with print hint -->
+        <div class="q-card">
+            <div class="q-num">Question 11 &nbsp;·&nbsp; W3.b — Fractional Exponent</div>
+            <div class="q-text">Solve: \( 2x^{3/2} + 4 = 254 \)</div>
+            <div class="q-inputs">
+                <div class="input-row"><label for="q11_x">x =</label><input type="number" id="q11_x" step="any"></div>
+            </div>
+            <!-- Hint box visible on BOTH screen and print -->
+            <div class="print-hint" role="note">What number cubed = 125? Then square it.</div>
+            <div class="work-area"><label>Show work:</label><div class="work-lines" style="height:72px;" aria-hidden="true"></div></div>
+        </div>
+
+        <!-- ===== SECTION C ===== -->
+        <div class="section-header" aria-label="Section C — Graph the Function">Section C — Graph the Function</div>
+
+        <!-- Q12 — parabola with coordinate grid -->
+        <div class="q-card">
+            <div class="q-num">Question 12 &nbsp;·&nbsp; W2.c — Graph (Downward Parabola)</div>
+            <div class="q-text">Graph \( f(x) = -(x + 2)^2 + 9 \). State the vertex and direction the parabola opens. Plot at least 5 points on the grid.</div>
+            <div class="q-inputs">
+                <div class="input-row"><label for="q12_vx">Vertex x =</label><input type="number" id="q12_vx" step="any"></div>
+                <div class="input-row"><label for="q12_vy">Vertex y =</label><input type="number" id="q12_vy" step="any"></div>
+                <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+                    <span style="font-weight:600;font-size:0.875rem;">Opens:</span>
+                    <div class="radio-options">
+                        <label><input type="radio" name="q12_dir" value="up"> Up</label>
+                        <label><input type="radio" name="q12_dir" value="down"> Down</label>
+                    </div>
+                </div>
+            </div>
+            <!-- Coordinate grid for Q12: x from -8 to 4, y from -4 to 12 -->
+            <div class="grid-container" aria-label="Coordinate grid for Q12 — graph f(x) = -(x+2)²+9 here">
+                <svg viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Blank coordinate grid, x from -8 to 4, y from -4 to 12">
+                    <title>Coordinate grid for Q12</title>
+                    <!-- minor grid lines: every 20px = 1 unit -->
+                    <!-- origin at (160, 160): x_pixel = 160 + x*20, y_pixel = 160 - y*20 -->
+                    <!-- x range: -8 to 8 (origin centered at 160), y range: -8 to 8 -->
+                    <defs>
+                        <pattern id="minorGrid12" width="20" height="20" patternUnits="userSpaceOnUse">
+                            <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#D8DCE8" stroke-width="0.5"/>
+                        </pattern>
+                        <pattern id="majorGrid12" width="20" height="20" patternUnits="userSpaceOnUse">
+                            <rect width="20" height="20" fill="url(#minorGrid12)"/>
+                            <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#B0B8C8" stroke-width="1"/>
+                        </pattern>
+                        <clipPath id="gridClip12"><rect x="0" y="0" width="320" height="320"/></clipPath>
+                    </defs>
+                    <!-- Grid background -->
+                    <rect width="320" height="320" fill="#FAFBFD"/>
+                    <rect width="320" height="320" fill="url(#minorGrid12)"/>
+                    <!-- Axes -->
+                    <line x1="0" y1="160" x2="320" y2="160" stroke="#002D62" stroke-width="2"/>
+                    <line x1="160" y1="0" x2="160" y2="320" stroke="#002D62" stroke-width="2"/>
+                    <!-- X-axis labels: -8 to 8 -->
+                    <text x="20"  y="173" text-anchor="middle" font-size="8" fill="#002D62">-7</text>
+                    <text x="40"  y="173" text-anchor="middle" font-size="8" fill="#002D62">-6</text>
+                    <text x="60"  y="173" text-anchor="middle" font-size="8" fill="#002D62">-5</text>
+                    <text x="80"  y="173" text-anchor="middle" font-size="8" fill="#002D62">-4</text>
+                    <text x="100" y="173" text-anchor="middle" font-size="8" fill="#002D62">-3</text>
+                    <text x="120" y="173" text-anchor="middle" font-size="8" fill="#002D62">-2</text>
+                    <text x="140" y="173" text-anchor="middle" font-size="8" fill="#002D62">-1</text>
+                    <text x="180" y="173" text-anchor="middle" font-size="8" fill="#002D62">1</text>
+                    <text x="200" y="173" text-anchor="middle" font-size="8" fill="#002D62">2</text>
+                    <text x="220" y="173" text-anchor="middle" font-size="8" fill="#002D62">3</text>
+                    <text x="240" y="173" text-anchor="middle" font-size="8" fill="#002D62">4</text>
+                    <text x="260" y="173" text-anchor="middle" font-size="8" fill="#002D62">5</text>
+                    <text x="280" y="173" text-anchor="middle" font-size="8" fill="#002D62">6</text>
+                    <text x="300" y="173" text-anchor="middle" font-size="8" fill="#002D62">7</text>
+                    <!-- Y-axis labels: -8 to 8 -->
+                    <text x="153" y="22"  text-anchor="end" font-size="8" fill="#002D62">7</text>
+                    <text x="153" y="42"  text-anchor="end" font-size="8" fill="#002D62">6</text>
+                    <text x="153" y="62"  text-anchor="end" font-size="8" fill="#002D62">5</text>
+                    <text x="153" y="82"  text-anchor="end" font-size="8" fill="#002D62">4</text>
+                    <text x="153" y="102" text-anchor="end" font-size="8" fill="#002D62">3</text>
+                    <text x="153" y="122" text-anchor="end" font-size="8" fill="#002D62">2</text>
+                    <text x="153" y="142" text-anchor="end" font-size="8" fill="#002D62">1</text>
+                    <text x="153" y="182" text-anchor="end" font-size="8" fill="#002D62">-1</text>
+                    <text x="153" y="202" text-anchor="end" font-size="8" fill="#002D62">-2</text>
+                    <text x="153" y="222" text-anchor="end" font-size="8" fill="#002D62">-3</text>
+                    <text x="153" y="242" text-anchor="end" font-size="8" fill="#002D62">-4</text>
+                    <text x="153" y="262" text-anchor="end" font-size="8" fill="#002D62">-5</text>
+                    <text x="153" y="282" text-anchor="end" font-size="8" fill="#002D62">-6</text>
+                    <text x="153" y="302" text-anchor="end" font-size="8" fill="#002D62">-7</text>
+                    <!-- Axis arrowheads -->
+                    <polygon points="320,160 312,156 312,164" fill="#002D62"/>
+                    <polygon points="160,0 156,8 164,8" fill="#002D62"/>
+                    <!-- Axis letter labels -->
+                    <text x="314" y="156" font-size="9" fill="#002D62" font-weight="bold">x</text>
+                    <text x="164" y="10"  font-size="9" fill="#002D62" font-weight="bold">y</text>
+                    <!-- Origin label -->
+                    <text x="153" y="173" text-anchor="end" font-size="8" fill="#002D62">0</text>
+                </svg>
+                <div class="grid-label">Plot at least 5 points including the vertex (−2, 9) and x-intercepts.</div>
+            </div>
+        </div>
+
+        <!-- Q13 — rational function with coordinate grid -->
+        <div class="q-card">
+            <div class="q-num">Question 13 &nbsp;·&nbsp; W2.e — Graph (Rational Function &amp; Asymptotes)</div>
+            <div class="q-text">Graph \( f(x) = \dfrac{4}{x - 3} - 2 \) and draw dashed asymptote lines. State the asymptotes.</div>
+            <div class="q-inputs">
+                <div class="input-row"><label for="q13_va">Vertical asymptote x =</label><input type="number" id="q13_va" step="any"></div>
+                <div class="input-row"><label for="q13_ha">Horizontal asymptote y =</label><input type="number" id="q13_ha" step="any"></div>
+            </div>
+            <!-- Coordinate grid for Q13: centered at origin, 10x10 labeled -->
+            <div class="grid-container" aria-label="Coordinate grid for Q13 — graph f(x) = 4/(x-3)-2 here">
+                <svg viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Blank coordinate grid for rational function">
+                    <title>Coordinate grid for Q13</title>
+                    <defs>
+                        <pattern id="minorGrid13" width="20" height="20" patternUnits="userSpaceOnUse">
+                            <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#D8DCE8" stroke-width="0.5"/>
+                        </pattern>
+                    </defs>
+                    <rect width="320" height="320" fill="#FAFBFD"/>
+                    <rect width="320" height="320" fill="url(#minorGrid13)"/>
+                    <!-- Axes -->
+                    <line x1="0" y1="160" x2="320" y2="160" stroke="#002D62" stroke-width="2"/>
+                    <line x1="160" y1="0" x2="160" y2="320" stroke="#002D62" stroke-width="2"/>
+                    <!-- X-axis labels -->
+                    <text x="20"  y="173" text-anchor="middle" font-size="8" fill="#002D62">-7</text>
+                    <text x="40"  y="173" text-anchor="middle" font-size="8" fill="#002D62">-6</text>
+                    <text x="60"  y="173" text-anchor="middle" font-size="8" fill="#002D62">-5</text>
+                    <text x="80"  y="173" text-anchor="middle" font-size="8" fill="#002D62">-4</text>
+                    <text x="100" y="173" text-anchor="middle" font-size="8" fill="#002D62">-3</text>
+                    <text x="120" y="173" text-anchor="middle" font-size="8" fill="#002D62">-2</text>
+                    <text x="140" y="173" text-anchor="middle" font-size="8" fill="#002D62">-1</text>
+                    <text x="180" y="173" text-anchor="middle" font-size="8" fill="#002D62">1</text>
+                    <text x="200" y="173" text-anchor="middle" font-size="8" fill="#002D62">2</text>
+                    <text x="220" y="173" text-anchor="middle" font-size="8" fill="#002D62">3</text>
+                    <text x="240" y="173" text-anchor="middle" font-size="8" fill="#002D62">4</text>
+                    <text x="260" y="173" text-anchor="middle" font-size="8" fill="#002D62">5</text>
+                    <text x="280" y="173" text-anchor="middle" font-size="8" fill="#002D62">6</text>
+                    <text x="300" y="173" text-anchor="middle" font-size="8" fill="#002D62">7</text>
+                    <!-- Y-axis labels -->
+                    <text x="153" y="22"  text-anchor="end" font-size="8" fill="#002D62">7</text>
+                    <text x="153" y="42"  text-anchor="end" font-size="8" fill="#002D62">6</text>
+                    <text x="153" y="62"  text-anchor="end" font-size="8" fill="#002D62">5</text>
+                    <text x="153" y="82"  text-anchor="end" font-size="8" fill="#002D62">4</text>
+                    <text x="153" y="102" text-anchor="end" font-size="8" fill="#002D62">3</text>
+                    <text x="153" y="122" text-anchor="end" font-size="8" fill="#002D62">2</text>
+                    <text x="153" y="142" text-anchor="end" font-size="8" fill="#002D62">1</text>
+                    <text x="153" y="182" text-anchor="end" font-size="8" fill="#002D62">-1</text>
+                    <text x="153" y="202" text-anchor="end" font-size="8" fill="#002D62">-2</text>
+                    <text x="153" y="222" text-anchor="end" font-size="8" fill="#002D62">-3</text>
+                    <text x="153" y="242" text-anchor="end" font-size="8" fill="#002D62">-4</text>
+                    <text x="153" y="262" text-anchor="end" font-size="8" fill="#002D62">-5</text>
+                    <text x="153" y="282" text-anchor="end" font-size="8" fill="#002D62">-6</text>
+                    <text x="153" y="302" text-anchor="end" font-size="8" fill="#002D62">-7</text>
+                    <!-- Axis arrowheads -->
+                    <polygon points="320,160 312,156 312,164" fill="#002D62"/>
+                    <polygon points="160,0 156,8 164,8" fill="#002D62"/>
+                    <text x="314" y="156" font-size="9" fill="#002D62" font-weight="bold">x</text>
+                    <text x="164" y="10"  font-size="9" fill="#002D62" font-weight="bold">y</text>
+                    <text x="153" y="173" text-anchor="end" font-size="8" fill="#002D62">0</text>
+                    <!-- Hint: dashed vertical asymptote at x=3 (pixel 220) -->
+                    <line x1="220" y1="0" x2="220" y2="320" stroke="#C8102E" stroke-width="1" stroke-dasharray="6,4" opacity="0.35"/>
+                    <!-- Hint: dashed horizontal asymptote at y=-2 (pixel 200) -->
+                    <line x1="0" y1="200" x2="320" y2="200" stroke="#C8102E" stroke-width="1" stroke-dasharray="6,4" opacity="0.35"/>
+                    <!-- Small hint labels -->
+                    <text x="222" y="15" font-size="7" fill="#C8102E" opacity="0.5">VA</text>
+                    <text x="2"   y="198" font-size="7" fill="#C8102E" opacity="0.5">HA</text>
+                </svg>
+                <div class="grid-label">Draw the VA at x=3 and HA at y=−2 as dashed lines. Plot at least 4 points.</div>
+            </div>
+        </div>
+
+        <!-- ===== SECTION D ===== -->
+        <div class="section-header" aria-label="Section D — Applications">Section D — Applications</div>
+
+        <!-- Q14 -->
+        <div class="q-card">
+            <div class="q-num">Question 14 &nbsp;·&nbsp; W3.a — Formula Rearrangement</div>
+            <div class="q-text">The area of a circle is \( A = \pi r^2 \). Which correctly solves for \( r \)?</div>
+            <div class="q-inputs">
+                <div class="radio-options" style="flex-direction:column;gap:8px;">
+                    <label><input type="radio" name="q14" value="A"> A. &nbsp; \( r = \sqrt{\dfrac{A}{\pi}} \)</label>
+                    <label><input type="radio" name="q14" value="B"> B. &nbsp; \( r = \dfrac{A}{\pi} \)</label>
+                    <label><input type="radio" name="q14" value="C"> C. &nbsp; \( r = \dfrac{A}{\pi^2} \)</label>
+                    <label><input type="radio" name="q14" value="D"> D. &nbsp; \( r = \dfrac{\sqrt{A}}{\pi} \)</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q15 -->
+        <div class="q-card">
+            <div class="q-num">Question 15 &nbsp;·&nbsp; W3.a — Exponential Decay Word Problem</div>
+            <div class="q-text">A smartphone originally costs $800 and loses 25% of its value each year.<br><strong>(a)</strong> Write an exponential model \( V(t) \) for its value after \( t \) years.<br><strong>(b)</strong> After how many years is the phone worth $337.50?</div>
+            <div class="q-inputs">
+                <div class="input-row">
+                    <label for="q15_model">V(t) =</label>
+                    <input type="text" id="q15_model" placeholder="800 · (  )^t" style="width:200px;">
+                </div>
+                <div class="input-row">
+                    <label for="q15_t">t =</label>
+                    <input type="number" id="q15_t" step="any">
+                    <span style="font-size:0.875rem;color:var(--text-secondary);margin-left:4px;">years</span>
+                </div>
+            </div>
+            <div class="work-area"><label>Show work:</label><div class="work-lines" style="height:72px;" aria-hidden="true"></div></div>
+        </div>
+
+        <!-- ===== ANSWER KEY PAGE (hidden on screen, revealed by password) ===== -->
+        <div class="answer-key-page" id="answerKeyPage" aria-label="Answer Key — Do Not Show Kai">
+            <h2>&#x1F512; ANSWER KEY — DO NOT SHOW KAI &#x1F512;</h2>
+            <table class="ak-table">
+                <thead>
+                    <tr><th>Q</th><th>Answer</th><th>Key Step</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>1</td><td>Quadratic; x = 9 and x = −1</td><td>(x−4)² = 25 → x−4 = ±5</td></tr>
+                    <tr><td>2</td><td>Square root; x = 47</td><td>√(x−11) = 6 → x−11 = 36</td></tr>
+                    <tr><td>3</td><td>Absolute value; a=4, h=3, k=−8; x = 1 and x = 5</td><td>4|x−3|−8; |x−3|=2 → x=5 or x=1</td></tr>
+                    <tr><td>4</td><td>x = 1.5</td><td>256=4⁴; 2x+1=4 → x=1.5</td></tr>
+                    <tr><td>5</td><td>x = 5 and x = −7</td><td>(x+7)(x−5)=0</td></tr>
+                    <tr><td>6</td><td>x = 18</td><td>√(3x−5)=7 → 3x−5=49</td></tr>
+                    <tr><td>7</td><td>x = 0.5</td><td>4=2², 32=2⁵; 2x+4=5</td></tr>
+                    <tr><td>8</td><td>x = 14</td><td>5x−2=4(x+3) → x=14</td></tr>
+                    <tr><td>9</td><td>x = 17</td><td>√(x−1)=4 → x−1=16</td></tr>
+                    <tr><td>10</td><td>x = 7 (x=0 is extraneous)</td><td>x²−7x=0; check: x=0 → √4≠−2 ✗</td></tr>
+                    <tr><td>11</td><td>x = 25 ⬅ THE KEY QUESTION</td><td>x^(3/2)=125; 125^(2/3)=5²=25</td></tr>
+                    <tr><td>12</td><td>Vertex (−2, 9); opens DOWN</td><td>a=−1 (negative) → inverted parabola</td></tr>
+                    <tr><td>13</td><td>VA: x=3 &nbsp; HA: y=−2</td><td>Denominator=0; outside constant</td></tr>
+                    <tr><td>14</td><td>A — r = √(A/π)</td><td>Divide by π first, then √</td></tr>
+                    <tr><td>15</td><td>V(t)=800·(0.75)^t; t=3 years</td><td>(0.75)³=0.421875; 800×0.421875=337.50</td></tr>
+                </tbody>
+            </table>
+            <p style="margin-top:16px;font-size:0.8rem;color:var(--text-secondary);text-align:center;">
+                Created by FR · Motor City Math · RP12 Final Paper Exam
+            </p>
+        </div>
+
+        <div style="text-align:center;margin:24px 0 8px;">
+            <div class="print-footer" style="display:none;">Motor City Math &nbsp;·&nbsp; Algebra II &nbsp;·&nbsp; Seattle Academy</div>
+        </div>
+
+    </div>
+
+    <script src="shared/scripts.js"></script>
+    <script>
+    // KaTeX auto-render
+    document.addEventListener('DOMContentLoaded', function() {
+        if (typeof renderMathInElement === 'function') {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: '\\(', right: '\\)', display: false},
+                    {left: '\\[', right: '\\]', display: true}
+                ],
+                throwOnError: false
+            });
+        }
+    });
+
+    // Answer key password reveal
+    function showAnswerKey() {
+        var pw = prompt('Enter answer key password:');
+        if (pw === '121274') {
+            var page = document.getElementById('answerKeyPage');
+            page.classList.add('visible');
+            page.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else if (pw !== null) {
+            alert('Incorrect password.');
+        }
+    }
+    </script>
+</body>
+</html>

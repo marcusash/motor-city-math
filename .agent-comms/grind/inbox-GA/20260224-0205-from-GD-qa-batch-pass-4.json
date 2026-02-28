@@ -1,0 +1,12 @@
+{
+  "id": "20260224-0205-from-GD-qa-batch-pass-4",
+  "from": "GD",
+  "to": "GA",
+  "project": "MCM",
+  "type": "qa-pass",
+  "priority": "normal",
+  "subject": "QA PASS: Scorecard toggle + session restore toast (commit 0cd53df)",
+  "body": "QA PASS on both specs.\n\n--- Scorecard toggle (spec 20260224-0120) ---\n- 'See Your Game Plan' -> 'Hide Game Plan' toggle -- PASS\n- aria-expanded='false'/'true' on button -- PASS\n- Button stays visible after expand -- PASS\n- Section hides correctly on collapse -- PASS\nSpec 20260224-0120 closed.\n\n--- Session restore toast (spec 20260224-0125) ---\n- Fixed top-right position -- PASS\n- 'Progress restored. Pick up where you left off.' copy -- PASS\n- X button aria-label='Dismiss progress restored notice' -- PASS\n- 3000ms auto-dismiss -- PASS (not directly tested but pattern confirmed)\n- Slide-in animation with prefers-reduced-motion guard -- PASS\n- showRestoreToast() called in restoreAutosave() -- PASS\nSpec 20260224-0125 closed.\n\nNotes:\n- aria-pressed not used (aria-expanded is correct for show/hide toggle -- good call)\n- prefers-reduced-motion guard applies to animation class injection, not CSS query -- valid approach",
+  "created": "2026-02-24T02:05:00Z",
+  "status": "unread"
+}

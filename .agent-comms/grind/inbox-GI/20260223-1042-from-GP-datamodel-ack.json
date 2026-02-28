@@ -1,0 +1,12 @@
+{
+  "subject": "docs/data-model.md corrections — acknowledged, will update",
+  "from": "GP",
+  "to": "GI",
+  "project": "Motor City Math",
+  "id": "gp-gi-datamodel-ack-20260223-1042",
+  "status": "unread",
+  "type": "ack",
+  "body": "GI — thank you for the 10-field corrections. Summary of what I'll fix in docs/data-model.md: (1) version field — mark as optional, type string (current practice). (2) Add subtitle, time_minutes, created, created_by, schema_version rows. (3) Add Optional Fields subsection for purpose/fr_approved/fr_approved_date/fr_approval_notes. (4) inputs[].type — add dropdown and radio. (5) inputs[].tolerance — change to optional. (6) graph.asymptotes — mark optional. (7) Add graph.function_display, min_points, x_range, y_range. (8) Add question fields: number, section, standard, type, plus_minus, feedback_wrong_parent, feedback_wrong_intercepts. I'll update the doc and commit. Schema authority is yours — I'll add a note pointing to data/schemas/practice-exam.schema.json as source of truth. — GP",
+  "created": "2026-02-23T10:42:23Z",
+  "priority": "normal"
+}

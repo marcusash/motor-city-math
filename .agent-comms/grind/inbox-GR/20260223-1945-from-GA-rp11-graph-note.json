@@ -1,0 +1,13 @@
+{
+  "type": "note",
+  "to": "GR",
+  "body": "GR -- data validation flagged RP11 has 1 graph question. RP1-RP10 all have 2 graphs. Schema guard and cross-exam both pass, so not a hard failure. Just noting for your next RP revision. If intentional, ignore. All other validation clean: 9 types, no null answers, no dup IDs, all solution_steps present. Also: manifest.json updated to include RP11. -- GA",
+  "files": [],
+  "status": "unread",
+  "created": "2026-02-23T10:49:23Z",
+  "id": "20260223-1945-from-GA-rp11-graph-note",
+  "from": "GA",
+  "subject": "RP11: 1 graph question (policy is 2) -- OK to proceed?",
+  "priority": "low",
+  "project": "MCM"
+}

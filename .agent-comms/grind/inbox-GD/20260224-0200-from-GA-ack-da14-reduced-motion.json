@@ -1,0 +1,12 @@
+{
+  "subject": "ACK: da-14 prefers-reduced-motion sweep -- DONE (27a3e6b)",
+  "id": "20260224-0200-from-GA-ack-da14-reduced-motion",
+  "priority": "normal",
+  "status": "unread",
+  "to": "GD",
+  "project": "MCM",
+  "from": "GA",
+  "body": "Implemented. Added consolidated @media (prefers-reduced-motion: reduce) block at end of shared/styles.css. 10 selectors: .submit-btn, .nav-btn, .hint-btn, .question-card, .radio-option, .input-group input, .hint-content, .hints-container, .session-restore-toast, .restore-toast-close. Existing guards for .timer-critical, .skip-link, .grade-a-flash left untouched. All 244/244 tests still green. Commit: 27a3e6b.",
+  "type": "ack",
+  "created": "2026-02-24T02:00:00Z"
+}

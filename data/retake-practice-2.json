@@ -48,7 +48,7 @@
       "plus_minus": true,
       "hint": "Set f(x)=0. Isolate the squared term.",
       "solution_steps": [
-        "Parent: y = x² (quadratic — highest power is 2).",
+        "Parent: y = x² (quadratic : highest power is 2).",
         "Set 0 = 3(x+2)² - 27.",
         "3(x+2)² = 27 → (x+2)² = 9.",
         "x + 2 = ±3 → x = 1 or x = -5."
@@ -56,7 +56,7 @@
       "feedback_correct": "🔥 Parent and intercepts nailed.",
       "feedback_wrong_parent": "Check the exponent for parent type.",
       "feedback_wrong_intercepts": "Parent right. Set f(x)=0 and solve.",
-      "feedback_wrong": "Check your setup. Re-read the question and try again."
+      "feedback_wrong": "Parent: quadratic. Set 3(x+2)^2=27 → x+2=±3."
     },
     {
       "id": "rp2-q2",
@@ -96,7 +96,7 @@
       ],
       "feedback_correct": "🔥 Square root identified. Clean.",
       "feedback_wrong_parent": "Look at the √ symbol.",
-      "feedback_wrong": "Check your setup. Re-read the question and try again."
+      "feedback_wrong": "Parent: square root. Set sqrt(x-2)=4 → x-2=16 → x=18."
     },
     {
       "id": "rp2-q3",
@@ -138,14 +138,14 @@
       "plus_minus": true,
       "hint": "Set f(x)=0. |x+3| = 5 gives two answers.",
       "solution_steps": [
-        "Parent: y = |x| (absolute value — V shape).",
+        "Parent: y = |x| (absolute value : V shape).",
         "Transformations: left 3, stretch ×2, reflect over x-axis, up 10.",
         "x-intercepts: 0 = -2|x+3| + 10 → |x+3| = 5.",
         "x + 3 = 5 → x = 2, or x + 3 = -5 → x = -8."
       ],
       "feedback_correct": "🔥 Absolute value. Both intercepts.",
       "feedback_wrong_parent": "The | | symbols mean absolute value.",
-      "feedback_wrong": "Check your setup. Re-read the question and try again."
+      "feedback_wrong": "Parent: abs value. Set -2|x+3|=-10 → |x+3|=5."
     },
     {
       "id": "rp2-q4",
@@ -346,7 +346,7 @@
         "Only x = 6 is valid."
       ],
       "feedback_correct": "🔥 Caught the extraneous one.",
-      "feedback_wrong": "Square both sides, then check BOTH answers back in the original."
+      "feedback_wrong": "Square both sides. Check both answers in the original."
     },
     {
       "id": "rp2-q11",
@@ -439,7 +439,7 @@
         "Draw U-shaped parabola, narrower than normal."
       ],
       "feedback_correct": "🔥 Clean graph. Vertex locked at (3, -6).",
-      "feedback_wrong": "Vertex is (h, k) from a(x-h)² + k. Here h=3, k=-6."
+      "feedback_wrong": "Vertex x=-b/(2a). Then substitute to find y."
     },
     {
       "id": "rp2-q13",

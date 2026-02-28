@@ -46,13 +46,18 @@ const tasks = singleExam
   : allTasks;
 
 let failed = false;
+const timings = [];
 
 for (const task of tasks) {
   console.log(`\n=== ${task.name} ===`);
   const env = singleExam && task.singleExamEnv
     ? Object.assign({}, process.env, task.singleExamEnv)
     : process.env;
+  const start = Date.now();
   const result = spawnSync(process.execPath, task.args, { stdio: 'inherit', env });
+  const elapsed = Date.now() - start;
+  timings.push({ name: task.name, elapsed });
+  console.log(`[${elapsed}ms]`);
   if (result.error) {
     console.error(`Failed to run ${task.name}: ${result.error.message}`);
     failed = true;
@@ -62,6 +67,30 @@ for (const task of tasks) {
     failed = true;
   }
 }
+
+const totalMs = timings.reduce((s, t) => s + t.elapsed, 0);
+console.log(`\n--- Timing --- Total: ${totalMs}ms`);
+for (const t of timings) {
+  console.log(`  ${t.name.padEnd(30)} ${t.elapsed}ms`);
+}
+
+// Pre-exit: warn on exams missing schema_version (advisory, not blocking)
+(function checkSchemaVersionPresence() {
+  const fs = require('fs');
+  const dataDir = path.join(root, 'data');
+  const files = fs.readdirSync(dataDir).filter(f => f.startsWith('retake-practice-') && f.endsWith('.json'));
+  const missing = [];
+  for (const f of files) {
+    try {
+      const exam = JSON.parse(fs.readFileSync(path.join(dataDir, f), 'utf8'));
+      if (!exam.schema_version) missing.push(f);
+    } catch (_) { /* json errors caught by validator above */ }
+  }
+  if (missing.length > 0) {
+    console.warn(`\n[WARN] schema_version missing from: ${missing.join(', ')}`);
+    console.warn('       Run: node scripts/add-schema-version.cjs to fix\n');
+  }
+})();
 
 if (failed) {
   console.error('\nCI data gate failed.');

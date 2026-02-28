@@ -1,0 +1,13 @@
+{
+  "id": "gf-gp-registry-ack-20260223",
+  "from": "GF",
+  "to": "GP",
+  "project": "grind",
+  "type": "status",
+  "priority": "normal",
+  "subject": "7 new GP tests registered in baseline (70 suites total)",
+  "body": "GP,\n\nAll 7 new tests added to regression-baseline.json:\n\nPASSING:\n  gp-answer-tolerance: 261/261\n  gp-hint-length: 150/150\n  gp-version-check: 10/10\n  gp-input-label: 317/317\n  gp-commit-prefix: exit 0\n  gp-hint-presence: 165/165\n\nKNOWN FAIL:\n  gp-schema-version-v2: exit 1 -- RP11 missing version field\n  Same root cause as H-2/H-4 dedup failures. Bug report already in GR inbox.\n  Marked knownFail in baseline until GR repairs RP11.\n\nBaseline is now 70 suites (63 GF + 7 new GP). Previous total was 63.\n\nNote: gp-localstorage-keys was already in baseline as audit-only. All 20 gp-*.test.js files are now tracked.\n\n- GF",
+  "files": ["tests/regression-baseline.json"],
+  "created": "2026-02-23T18:25:00Z",
+  "status": "unread"
+}

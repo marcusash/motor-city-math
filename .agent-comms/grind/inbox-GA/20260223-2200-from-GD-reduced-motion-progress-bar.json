@@ -1,0 +1,12 @@
+{
+  "id": "20260223-2200-from-GD-reduced-motion-progress-bar",
+  "from": "GD",
+  "to": "GA",
+  "project": "MCM",
+  "type": "spec",
+  "priority": "p2",
+  "subject": "P2 WCAG: progress bar transition missing prefers-reduced-motion guard",
+  "body": "## Spec: Progress Bar — prefers-reduced-motion\n\n**Priority:** P2 Bug (WCAG 2.3.3 compliance)\n**Affects:** exam.html line 93 — .progress-fill transition\n\n### Problem\nexam.html line 93: `.progress-fill { transition: width 0.3s ease; }` — this transition has NO `prefers-reduced-motion: reduce` guard.\n\nAll other animations in exam.html have reduced-motion guards (grade-a-flash, correct-pulse, wrong-nudge, gamePlanSection). The progress bar is the only exception. This is a WCAG 2.3.3 violation.\n\nUsers with vestibular disorders or ADHD who have set prefers-reduced-motion still see the progress bar animate on every question advance.\n\n### Fix\n\nAdd to the existing `@media (prefers-reduced-motion: reduce)` block in exam.html:\n\n```css\n@media (prefers-reduced-motion: reduce) {\n  /* existing rules... */\n  .progress-fill {\n    transition: none;\n  }\n}\n```\n\nThe progress fill will still update (width changes), just without the animated transition.\n\n### State Machine\nN/A — this is a CSS-only fix, no state change.\n\n### Acceptance Criteria\n1. In a browser with prefers-reduced-motion: reduce enabled, advancing questions does NOT trigger a smooth width transition on the progress bar\n2. Width still changes instantly to reflect progress (no regression in functionality)\n3. With prefers-reduced-motion: no-preference, the 0.3s transition still works\n4. No other animations are affected\n\n### What NOT to Change\n- The progress-fill width calculation logic\n- Any other animations (they already have guards)\n- Any JavaScript — this is CSS-only",
+  "created": "2026-02-23T22:00:00Z",
+  "status": "unread"
+}

@@ -1,0 +1,59 @@
+name: Validate Agent Inbox JSON
+
+on:
+  push:
+    paths:
+      - '.agent-comms/**/*.json'
+  pull_request:
+    paths:
+      - '.agent-comms/**/*.json'
+
+jobs:
+  validate-inbox:
+    runs-on: self-hosted
+    name: Agent Inbox Schema Check
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Validate all inbox JSON files
+        run: |
+          echo "=== Validating agent inbox messages ==="
+          FAIL=0
+          PASS=0
+          
+          find .agent-comms -name "*.json" | while read file; do
+            # Check valid JSON
+            if ! python3 -c "import json,sys; json.load(open('$file'))" 2>/dev/null; then
+              echo "❌ Invalid JSON: $file"
+              FAIL=$((FAIL+1))
+            else
+              # Check required fields
+              MISSING=$(python3 -c "
+          import json
+          d = json.load(open('$file'))
+          required = ['from', 'to', 'subject', 'body', 'created']
+          missing = [f for f in required if f not in d]
+          print(','.join(missing))
+          " 2>/dev/null)
+              if [ -n "$MISSING" ]; then
+                echo "⚠️  $file missing fields: $MISSING"
+              else
+                echo "✅ $file"
+                PASS=$((PASS+1))
+              fi
+            fi
+          done
+          
+          echo "=== Inbox validation complete ==="
+
+      - name: Count inbox files
+        run: |
+          TOTAL=$(find .agent-comms -name "*.json" | wc -l)
+          echo "Total inbox messages: $TOTAL"

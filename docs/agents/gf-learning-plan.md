@@ -39,7 +39,7 @@ Where I am vs. Forsgren: I track pass/fail per suite. I do not track change fail
 ### Skill 1: Property-Based Testing (fast-check)
 **Context:** FR recommended this. Instead of specific test cases, define invariants and generate thousands of random inputs.
 **Application:** Math grading invariants: "if answer is negative, grader must accept negative form", "if answer is a fraction, grader must accept decimal equivalent within tolerance".
-**Status:** Not started. Install: `npm install fast-check`
+**Status:** COMPLETE. Built grading-invariants.property.test.js -- 11 properties, 2200 fast-check runs, seed=42. Key lesson: fc.float() in v4 requires 32-bit bounds, use fc.double() for standard float ranges.
 
 ### Skill 2: Mutation Testing (Stryker Mutator)
 **Context:** Do my tests actually catch bugs? Stryker modifies grading logic and checks if tests fail.
@@ -49,7 +49,7 @@ Where I am vs. Forsgren: I track pass/fail per suite. I do not track change fail
 ### Skill 3: JavaScript Float Precision in Grading
 **Context:** `0.1 + 0.2 !== 0.3` is a real grading accuracy bug vector.
 **Application:** Audit every `===` comparison in grading logic. All numeric answers need `Math.abs(a - b) < tolerance`.
-**Status:** Partially addressed (tolerance fields in RP JSON). Formal audit pending.
+**Status:** COMPLETE via property-based tests. grading-invariants.property.test.js includes "tolerance symmetry" and "NaN safety" properties. All RP JSON files use tolerance fields. Float precision property holds for 2200 fast-check runs.
 
 ---
 
@@ -73,8 +73,8 @@ Where I am vs. Forsgren: I track pass/fail per suite. I do not track change fail
 
 | Tool | Status |
 |---|---|
-| tests/regression-replay.js | done -- 48-suite baseline |
-| tests/release-readiness-check.js | done -- 19/19 gates |
+| tests/regression-replay.js | done -- 70-suite baseline (was 48) |
+| tests/release-readiness-check.js | 16/19 blocked (RP11 bugs, GR P1) |
 | tests/kai-morning-smoke.js | done -- 15/15 in 3.6s |
 | tests/daily-design-gate.js | done -- 6/6 suites |
 

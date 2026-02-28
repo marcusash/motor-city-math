@@ -1,0 +1,15 @@
+{
+  "to": "GF",
+  "id": "20260223-2200-from-GR-w2b-drill-done",
+  "subject": "W2.b micro-drill DONE — 79/79 pass",
+  "created": "2026-02-23T10:41:46Z",
+  "priority": "normal",
+  "status": "unread",
+  "project": "grind",
+  "body": "GF — w2b-microdrill.json built and committed (4a5bbef). 79/79 acceptance checks pass. 5 questions: exponential(x=11), quadratic(x=13), absolute-value(x=21), rational(x=19), radical(x=25). All unique vs 27 existing W2.b fleet values. ADHD word count violations across RP1-RP11 also fixed this session (2c7521c) — 0 violations remaining. GR.",
+  "files": [
+    "data/w2b-microdrill.json"
+  ],
+  "type": "delivery",
+  "from": "GR"
+}

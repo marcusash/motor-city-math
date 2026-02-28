@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Motor City Math: Algebra 2 retake practice exams for Kai. Standards-aligned, auto-graded, 15 questions each.">
     <link rel="icon" type="image/svg+xml" href="shared/favicon.svg">
-    <title>Motor City Math — Dashboard</title>
+    <title>Motor City Math: Dashboard</title>
     <link rel="stylesheet" href="shared/styles.css">
     <link rel="stylesheet" href="shared/print.css">
     <script src="shared/chart.min.js"></script>
-    <script>if(typeof Chart==="undefined"){var s=document.createElement("script");s.src="https://cdn.jsdelivr.net/npm/chart.js";document.head.appendChild(s);}</script>
     <script src="shared/chart-theme.js"></script>
     <style>
         body { background: var(--bg-page); }
@@ -169,8 +169,23 @@
         .test-link .test-score { font-weight: 700; color: var(--color-correct); float: right; }
         .test-link .test-score.low { color: var(--accent-red); }
         .sparkline { display: block; margin-top: 6px; }
+        .sparkline-zero { display: inline-block; width: 40px; height: 20px; border-bottom: 2px dashed var(--text-secondary); opacity: 0.5; margin-top: 6px; }
 
         .footer { text-align: center; color: var(--text-secondary); font-size: var(--text-sm); padding: 20px 0 10px; }
+
+        /* Score corruption recovery banner */
+        .score-error-banner { display: flex; flex-direction: column; gap: 8px; padding: 12px 16px; background: rgba(200,16,46,0.08); border: 1px solid var(--accent-red); border-radius: 8px; margin-bottom: 16px; }
+        .score-error-icon { font-size: 1.1em; }
+        .score-error-msg { font-size: var(--text-sm); color: var(--text-primary); line-height: 1.4; }
+        .score-error-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+        .score-error-confirm { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; opacity: 0; animation: fadeIn 0.15s ease forwards; }
+        @media (prefers-reduced-motion: reduce) { .score-error-confirm { animation: none; opacity: 1; } }
+        .score-error-confirm-msg { font-size: var(--text-sm); color: var(--text-secondary); }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .score-error-clear { background: none; border: 1px solid var(--accent-red); color: var(--accent-red); padding: 6px 12px; border-radius: 6px; font-size: var(--text-sm); font-weight: 600; cursor: pointer; }
+        .score-error-clear:hover { background: rgba(200,16,46,0.1); }
+        .score-error-dismiss { background: none; border: 1px solid var(--text-secondary); color: var(--text-secondary); padding: 6px 12px; border-radius: 6px; font-size: var(--text-sm); cursor: pointer; }
+        .score-error-dismiss:hover { background: rgba(0,0,0,0.06); }
 
         @media (max-width: 768px) {
             .standards-grid { grid-template-columns: 1fr; }
@@ -193,9 +208,9 @@
             --fd-green:   #3FB950;   /* reserved: scores ≥ 93% only */
             --fd-text-1:  #E6EDF3;
             --fd-text-2:  #8B949E;
-            --fd-text-3:  #6E7681;
+            --fd-text-3:  #8B949E;  /* bumped from #6E7681 to pass WCAG 2.1 AA (da-02) */
             --fd-r:       10px;
-            --accent-blue-on-dark: #4A90D9; /* 5.18:1 on #161b22 — WCAG 2.4.11 */
+            --accent-blue-on-dark: #4A90D9; /* 5.18:1 on #161b22 - WCAG 2.4.11 */
         }
 
         /* ── Hero (FD redesign) ───────────────────────────────────────── */
@@ -233,6 +248,20 @@
             display: block;
         }
         .cards-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
+        .progress-story-card {
+            background: var(--bg-card, var(--fd-card)); border: 1px solid var(--fd-border);
+            border-radius: var(--fd-r); padding: 18px 18px 14px; margin-bottom: 24px;
+        }
+        .progress-story-card h3 { font-size: var(--text-sm, 0.813rem); font-weight: 600; color: var(--text-primary); margin: 0 0 12px; }
+        .progress-story-row { display: flex; align-items: flex-start; gap: 0; flex-wrap: nowrap; overflow-x: auto; }
+        .progress-story-exam { text-align: center; min-width: 52px; }
+        .progress-story-exam .ps-label { font-size: 0.7rem; color: var(--text-secondary); white-space: nowrap; }
+        .progress-story-exam .ps-pct { font-size: var(--text-sm, 0.813rem); font-weight: 700; color: var(--text-primary); }
+        .progress-story-delta { font-size: 0.7rem; font-weight: 600; padding: 0 6px; align-self: center; white-space: nowrap; }
+        .ps-delta-pos { color: var(--color-correct, #3fb950); }
+        .ps-delta-neg { color: var(--color-incorrect, #f85149); }
+        .ps-delta-flat { color: var(--text-secondary); }
+        .progress-story-narrative { font-size: var(--text-sm, 0.813rem); color: var(--text-secondary); margin: 12px 0 0; }
         .test-card {
             background: var(--fd-card); border: 1px solid var(--fd-border);
             border-radius: var(--fd-r); padding: 18px 18px 14px;
@@ -282,7 +311,7 @@
         .app-hd { text-align: center; margin-bottom: 24px; }
         .app-hd h1 { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.025em; color: var(--fd-text-1); margin: 0; }
         .app-hd p  { color: var(--fd-text-2); font-size: 0.82rem; margin-top: 4px; }
-        /* Hide arena toggle — FD design is always dark */
+        /* Hide arena toggle - FD design is always dark */
         #arenaToggle { display: none !important; }
         .trend-card {
             background: var(--fd-card); border: 1px solid var(--fd-border);
@@ -329,29 +358,45 @@
     <a href="#main" class="sr-only">Skip to content</a>
     <div class="dashboard" role="main" id="main">
 
-        <!-- Dad Mode banner (hidden until ?dad=1) -->
+        <!-- Guest/Dad Mode banner (hidden until ?guest=1 or ?dad=1) -->
         <div class="dad-banner" id="dadBanner" style="display:none;">
-            <span class="dad-label">👨 Dad View</span>
+            <span class="dad-label" id="dadLabel">👤 Guest View</span>
             <span class="dad-status" id="dadStatus">Loading Kai's scores...</span>
-            <label class="dad-upload-label">
+            <label class="dad-upload-label" id="dadUploadLabel">
                 Update from Kai's device
                 <input type="file" accept=".json" id="dadFileInput" style="display:none;" onchange="loadDadFile(this)">
             </label>
         </div>
 
+        <!-- Corrupted score data recovery banner (shown only if JSON.parse fails) -->
+        <div class="score-error-banner" id="scoreErrorBanner" style="display:none;" role="alert" aria-live="polite">
+            <span class="score-error-icon">⚠️</span>
+            <span class="score-error-msg">Score history couldn't load. Something went wrong with your saved data.</span>
+            <div class="score-error-actions" id="scoreErrorActions">
+                <button class="score-error-clear" id="scoreErrorClear" onclick="startClearConfirm()">Clear and start fresh</button>
+                <button class="score-error-dismiss" id="scoreErrorDismiss" onclick="dismissScoreError()">Dismiss</button>
+            </div>
+            <div class="score-error-confirm" id="scoreErrorConfirm" style="display:none;">
+                <span class="score-error-confirm-msg">Are you sure? This cannot be undone.</span>
+                <button class="score-error-clear" onclick="confirmClearScores()">Yes, clear it</button>
+                <button class="score-error-dismiss" onclick="cancelClearConfirm()">No, keep it</button>
+            </div>
+        </div>
+
         <div class="print-header">
-            <strong>Motor City Math — Dashboard</strong><br>
+            <strong>Motor City Math: Dashboard</strong><br>
             Name: _____________________ Date: ___________
         </div>
         <header class="app-hd">
-            <h1>Motor City Math 🏀</h1>
+            <h1>Motor City Math <span aria-hidden="true">🏀</span></h1>
             <p>Algebra II &middot; Kai</p>
         </header>
 
+        <main>
         <!-- UP NEXT hero (FD redesign) -->
         <div class="hero">
             <div class="hero-eye">Up Next</div>
-            <div class="hero-name" id="upNextInfo">Retake Practice — Nonlinear Functions</div>
+            <div class="hero-name" id="upNextInfo">Retake Practice: Nonlinear Functions</div>
             <a href="exam.html?file=retake-practice-1" class="nav-btn primary">Start Practice</a>
             <div class="hero-last" id="statsBar"></div>
         </div>
@@ -372,6 +417,9 @@
         <!-- Last 2 Tests -->
         <span class="slabel" id="last2Label" style="display:none;">Last 2 Tests</span>
         <div class="cards-2" id="last2Grid" style="display:none;"></div>
+
+        <!-- Progress Story (sw-11: shows when 3+ results) -->
+        <div id="progressStoryCard" style="display:none;"></div>
 
         <!-- Bottom Nav -->
         <div class="bottom-nav">
@@ -425,7 +473,8 @@
             </div>
         </details>
 
-        <div class="footer">Built with 💪🏾 by Dad · Motor City Math</div>
+        <footer class="footer">Built with <span aria-hidden="true">💪🏾</span> by Dad · Motor City Math</footer>
+        </main>
     </div>
 
     <script>
@@ -450,14 +499,21 @@
 
     /* ========== DAD MODE ========== */
     var _dadMode = new URLSearchParams(window.location.search).get('dad') === '1';
+    var _guestMode = new URLSearchParams(window.location.search).get('guest') === '1';
+    var _anyViewMode = _dadMode || _guestMode;
     var _dadScores = null;
     var _chartInstance = null;
 
     /* ========== READ SCORES ========== */
     function getScores() {
-        if (_dadMode && _dadScores) return _dadScores;
-        try { return JSON.parse(localStorage.getItem('mcm_scores') || '{}'); } catch(e) { return {}; }
+        if (_anyViewMode && _dadScores) return _dadScores;
+        var raw = localStorage.getItem('mcm_scores') || '{}';
+        try { return JSON.parse(raw); } catch(e) {
+            _scoreParseError = e;
+            return {};
+        }
     }
+    var _scoreParseError = null;
 
     /* ========== SCORE CHART (FD SVG design) ========== */
     function buildChart() {
@@ -473,7 +529,10 @@
             if (att[0]) {
                 var fa = att[0].pct || Math.round(att[0].score / att[0].total * 100);
                 var rib = att[1] ? (att[1].pct || Math.round(att[1].score / att[1].total * 100)) : null;
-                pts.push({ label: '1st Test', fa: fa, rib: rib });
+                var examDate = att[0].timestamp
+                    ? new Date(att[0].timestamp).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
+                    : null;
+                pts.push({ label: 'Exam #1', sublabel: examDate, fa: fa, rib: rib });
             }
         }
         var retakes = tests.filter(function(t) { return t.retake; });
@@ -486,7 +545,10 @@
             practiceNum++;
             var fa = att[0].pct || Math.round(att[0].score / att[0].total * 100);
             var rib = att[1] ? (att[1].pct || Math.round(att[1].score / att[1].total * 100)) : null;
-            pts.push({ label: 'Practice ' + practiceNum, fa: fa, rib: rib });
+            var pDate = att[0].timestamp
+                ? new Date(att[0].timestamp).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
+                : null;
+            pts.push({ label: 'Practice ' + practiceNum, sublabel: pDate, fa: fa, rib: rib });
         });
 
         if (pts.length === 0) {
@@ -573,9 +635,11 @@
             rightLabels = '<text x="'+(labelX+4)+'" y="'+(lastFaY+4)+'" font-size="12" font-weight="700" fill="'+faColor+'" font-family="var(--font-body)">'+lastFaPct+'%</text>';
         }
 
-        // X-axis labels
+        // X-axis labels (two lines: label + date sublabel)
         var xLabels = pts.map(function(p, i) {
-            return '<text x="'+xs[i]+'" y="116" font-size="10" fill="rgba(255,255,255,0.35)" text-anchor="middle" font-family="var(--font-body)">'+p.label+'</text>';
+            var main = '<text x="'+xs[i]+'" y="116" font-size="10" font-weight="600" fill="rgba(255,255,255,0.5)" text-anchor="middle" font-family="var(--font-body)">'+p.label+'</text>';
+            var sub = p.sublabel ? '<text x="'+xs[i]+'" y="128" font-size="9" fill="rgba(255,255,255,0.28)" text-anchor="middle" font-family="var(--font-body)">'+p.sublabel+'</text>' : '';
+            return main + sub;
         }).join('');
 
         var gid = 'fdg' + Date.now();
@@ -585,7 +649,7 @@
             '<span><svg width="16" height="10" style="vertical-align:middle;margin-right:4px"><line x1="0" y1="5" x2="16" y2="5" stroke="rgba(63,185,80,0.65)" stroke-width="1.5" stroke-dasharray="5 4"/><circle cx="8" cy="5" r="2" fill="#161b22" stroke="rgba(255,255,255,0.28)" stroke-width="1.5"/></svg>Run It Back</span>' +
             '</div>' : '';
         container.innerHTML =
-            '<svg role="img" aria-label="Score progress chart showing ' + n + ' test' + (n !== 1 ? 's' : '') + '" viewBox="0 0 560 120" height="120" style="display:block;width:100%;overflow:visible">' +
+            '<svg role="img" aria-label="Score progress chart showing ' + n + ' test' + (n !== 1 ? 's' : '') + '" viewBox="0 0 560 132" height="132" style="display:block;width:100%;overflow:visible">' +
             '<defs><linearGradient id="'+gid+'" x1="'+xs[0]+'" y1="108" x2="'+lastX+'" y2="'+lastFaY+'" gradientUnits="userSpaceOnUse">' +
             '<stop offset="0%" stop-color="rgba(255,255,255,0.01)"/>' +
             '<stop offset="55%" stop-color="rgba(255,255,255,0.08)"/>' +
@@ -659,7 +723,7 @@
             html += '<div class="std-card tier-' + tier + '" role="listitem">' +
                 '<div class="std-id">' + id + '</div>' +
                 '<div class="std-name">' + name + '</div>' +
-                '<div class="std-pct">' + (s.total ? pct + '%' : '—') + '</div>' +
+                '<div class="std-pct">' + (s.total ? pct + '%' : '-') + '</div>' +
                 '<div class="std-bar" role="progressbar" aria-label="' + id + ' ' + pct + '%" aria-valuenow="' + pct + '" aria-valuemin="0" aria-valuemax="100">' +
                 '<div class="std-fill" style="width:' + pct + '%"></div></div>' +
                 '<div class="std-copy">' + copy + '</div>' +
@@ -674,7 +738,7 @@
     function buildStudyNext(stdResult) {
         var list = document.getElementById('studyList');
         if (!stdResult || !stdResult.keys || stdResult.keys.length === 0) {
-            list.innerHTML = '<li class="study-item"><span class="emoji">💪</span> Your highlights reel starts with test #1.</li>';
+            list.innerHTML = '<li class="study-item"><span class="emoji" aria-hidden="true">💪</span> Your highlights reel starts with test #1.</li>';
             return;
         }
 
@@ -688,10 +752,10 @@
             var emoji = pct < 70 ? '🏀' : pct < 90 ? '📈' : '✅';
             var action = pct < 70 ? 'Start here.' : pct < 90 ? 'Almost there.' : 'Review only.';
             var name = s.name || id;
-            html += '<li class="study-item"><span class="emoji">' + emoji + '</span> <strong>' + id + '</strong> (' + name + ') — ' + pct + '%. ' + action + '</li>';
+            html += '<li class="study-item"><span class="emoji" aria-hidden="true">' + emoji + '</span> <strong>' + id + '</strong> (' + name + '): ' + pct + '%. ' + action + '</li>';
             count++;
         });
-        list.innerHTML = html || '<li class="study-item"><span class="emoji">✅</span> All standards looking strong!</li>';
+        list.innerHTML = html || '<li class="study-item"><span class="emoji" aria-hidden="true">✅</span> All standards looking strong!</li>';
     }
 
     /* ========== TEST INDEX ========== */
@@ -713,6 +777,8 @@
                     var atts = s.attempts.slice(-5);
                     if (atts.length >= 2) {
                         sparkHtml = buildSparkline(atts.map(function(a) { return a.pct; }));
+                    } else {
+                        sparkHtml = '<span class="sparkline-zero" aria-label="Not yet attempted"></span>';
                     }
                 } else {
                     pct = s.pct || (s.score && s.total ? Math.round(s.score / s.total * 100) : null);
@@ -720,6 +786,8 @@
                 if (pct !== null) {
                     scoreHtml = '<span class="test-score' + (pct < 70 ? ' low' : '') + '">' + pct + '%</span>';
                 }
+            } else {
+                sparkHtml = '<span class="sparkline-zero" aria-label="Not yet attempted"></span>';
             }
             html += '<a href="' + t.file + '" class="test-link">' +
                 t.name + scoreHtml +
@@ -731,6 +799,7 @@
     }
 
     function buildSparkline(values) {
+        if (!values || values.length < 2) return '<span class="sparkline-zero"></span>';
         var cs = getComputedStyle(document.documentElement);
         var tkBlue = cs.getPropertyValue('--accent-blue').trim() || '#1D42BA';
         var tkCorrect = cs.getPropertyValue('--color-correct').trim() || '#1B7D3A';
@@ -845,7 +914,7 @@
         if (testCount === 0) {
             bar.textContent = 'Your highlights reel starts with test #1. 💪';
         } else {
-            var dateStr = lastTest ? new Date(lastTest).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) : '—';
+            var dateStr = lastTest ? new Date(lastTest).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) : '-';
             bar.textContent = 'Last test: ' + dateStr + (lastPct !== null ? ' · ' + lastPct + '%' : '') + ' · ' + testCount + ' test' + (testCount !== 1 ? 's' : '') + ' completed';
         }
     }
@@ -912,7 +981,7 @@
             if (lowest && lowestPct < 92) next = lowest;
         }
 
-        // Priority 3: all ≥92% — celebrate
+        // Priority 3: all >=92% - celebrate
         if (!next) {
             document.getElementById('upNextInfo').textContent = 'All practice exams at Grade 4. You crushed it. 💪';
             var btn = document.querySelector('.nav-btn.primary');
@@ -926,7 +995,7 @@
         if (s && s.attempts && s.attempts.length > 0) {
             var lastPct = s.attempts[s.attempts.length - 1].pct ||
                 Math.round((s.attempts[s.attempts.length - 1].score / s.attempts[s.attempts.length - 1].total) * 100);
-            info += ' · Last: ' + lastPct + '% — beat it.';
+            info += ' · Last: ' + lastPct + '%. Beat it.';
         }
         document.getElementById('upNextInfo').textContent = info;
         var btn = document.querySelector('.nav-btn.primary');
@@ -934,6 +1003,36 @@
     }
 
     /* ========== INIT ========== */
+    function showScoreErrorBanner() {
+        var banner = document.getElementById('scoreErrorBanner');
+        if (banner) banner.style.display = '';
+        document.addEventListener('keydown', _scoreErrorEscHandler);
+    }
+    function dismissScoreError() {
+        var banner = document.getElementById('scoreErrorBanner');
+        if (banner) banner.style.display = 'none';
+        document.removeEventListener('keydown', _scoreErrorEscHandler);
+    }
+    function startClearConfirm() {
+        document.getElementById('scoreErrorActions').style.display = 'none';
+        var confirm = document.getElementById('scoreErrorConfirm');
+        confirm.style.display = '';
+        confirm.querySelector('button').focus();
+    }
+    function cancelClearConfirm() {
+        document.getElementById('scoreErrorConfirm').style.display = 'none';
+        document.getElementById('scoreErrorActions').style.display = '';
+    }
+    function confirmClearScores() {
+        localStorage.removeItem('mcm_scores');
+        _scoreParseError = null;
+        dismissScoreError();
+        rerenderAll();
+    }
+    function clearCorruptedScores() { startClearConfirm(); } // legacy alias
+    function _scoreErrorEscHandler(e) {
+        if (e.key === 'Escape') cancelClearConfirm();
+    }
     function rerenderAll() {
         buildChart();
         var stdResult = buildStandards();
@@ -942,12 +1041,79 @@
         buildTestGrid();
         buildStats();
         buildLast2Tests();
+        buildProgressStory();
         updateUpNext();
     }
 
+    /* ========== PROGRESS STORY (sw-11) ========== */
+    function buildProgressStory() {
+        var card = document.getElementById('progressStoryCard');
+        if (!card) return;
+        try {
+            var scores = getScores();
+            // Collect results in tests-array order (insertion order proxy)
+            var results = [];
+            tests.forEach(function(t) {
+                var s = scores[t.key];
+                if (!s || !s.attempts || !s.attempts.length) return;
+                var last = s.attempts[s.attempts.length - 1];
+                var pct = last.pct != null ? last.pct : Math.round((last.score / last.total) * 100);
+                // Short label: RP1..RP11 for retakes, 'MVP' for original exam, 'Final' for finals
+                var label = t.name.replace('Retake Practice #', 'RP').replace(/ \(.*\)$/, '');
+                if (label.indexOf('MVP') !== -1) label = 'MVP';
+                if (label.indexOf('Final') !== -1) label = 'Final';
+                results.push({ label: label, pct: pct });
+            });
+
+            if (results.length < 3) {
+                card.style.display = 'none';
+                return;
+            }
+
+            var shown = results.slice(-5);
+            var first = shown[0].pct;
+            var last2 = shown[shown.length - 1].pct;
+            var diff = last2 - first;
+            var narrative;
+            if (diff > 3) {
+                narrative = 'You have improved ' + diff + ' points since ' + shown[0].label + '. Keep it up.';
+            } else if (diff < -3) {
+                narrative = 'Scores dipped lately. Review your weakest standard and hit it again.';
+            } else {
+                narrative = 'Consistent scores across your last ' + shown.length + ' exams. Push for the next level.';
+            }
+
+            var rowHtml = '';
+            shown.forEach(function(r, i) {
+                if (i > 0) {
+                    var d = r.pct - shown[i - 1].pct;
+                    var cls = d > 0 ? 'ps-delta-pos' : (d < 0 ? 'ps-delta-neg' : 'ps-delta-flat');
+                    rowHtml += '<span class="progress-story-delta ' + cls + '">' + (d > 0 ? '+' : '') + d + '</span>';
+                }
+                rowHtml += '<div class="progress-story-exam"><div class="ps-label">' + r.label + '</div><div class="ps-pct">' + r.pct + '%</div></div>';
+            });
+
+            card.className = 'progress-story-card';
+            card.innerHTML = '<h3>Your Algebra II journey</h3>' +
+                '<div class="progress-story-row">' + rowHtml + '</div>' +
+                '<p class="progress-story-narrative">' + narrative + '</p>';
+            card.style.display = '';
+        } catch(e) {
+            // Degrade gracefully on any data error
+            card.style.display = 'none';
+        }
+    }
+
     function dadModeInit() {
-        if (!_dadMode) return;
-        document.getElementById('dadBanner').style.display = 'flex';
+        if (!_anyViewMode) return;
+        var banner = document.getElementById('dadBanner');
+        banner.style.display = 'flex';
+        if (_guestMode) {
+            document.getElementById('dadLabel').textContent = '👤 Guest View';
+            document.getElementById('dadUploadLabel').style.display = 'none';
+        } else {
+            document.getElementById('dadLabel').textContent = '👨 Dad View';
+        }
         document.getElementById('dadStatus').textContent = 'Loading Kai\'s scores...';
         fetch('data/kai-scores-latest.json?v=' + Date.now())
             .then(function(r) { if (!r.ok) throw new Error(r.status); return r.json(); })
@@ -993,7 +1159,7 @@
     }
 
     window.addEventListener('DOMContentLoaded', function() {
-        // ?restore=1 — auto-seeds localStorage from server JSON, no file needed
+        // ?restore=1 - auto-seeds localStorage from server JSON, no file needed
         // Dad can text Kai: https://marcusash.github.io/motor-city-math/?restore=1
         var _restoreMode = new URLSearchParams(window.location.search).get('restore') === '1';
         if (_restoreMode) {
@@ -1011,11 +1177,12 @@
         }
         dadModeInit();
         rerenderAll();
+        if (_scoreParseError) showScoreErrorBanner();
 
         // Auto-seed: if localStorage has no scores, fetch latest from server
         var _localScores = getScores();
         var _hasLocal = Object.keys(_localScores).length > 0;
-        if (!_hasLocal && !_dadMode) {
+        if (!_hasLocal && !_anyViewMode) {
             fetch('data/kai-scores-latest.json?v=' + Date.now())
                 .then(function(r) { if (!r.ok) throw new Error(r.status); return r.json(); })
                 .then(function(data) {

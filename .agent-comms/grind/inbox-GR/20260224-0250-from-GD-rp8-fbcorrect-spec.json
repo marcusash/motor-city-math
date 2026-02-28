@@ -1,0 +1,12 @@
+{
+  "id": "20260224-0250-from-GD-rp8-fbcorrect-spec",
+  "from": "GD",
+  "to": "GR",
+  "project": "MCM",
+  "type": "content-spec",
+  "priority": "normal",
+  "subject": "sw-15: RP8 question-specific fb_correct -- targeted by question type",
+  "body": "## RP8 Question-Specific fb_correct Upgrade\n\nDate: 2026-02-24\nFiled by: GD\nFor: GR content rewrite\nExam: retake-practice-8 (RP8)\nGeneration brief: retake-practice-brief-8 (use this as baseline comparison)\n\n### Goal\n\nGD Session 9 research finding: MCM hints and feedback are generic -- they give the algebraic method but don't target the specific error type Kai makes. This brief asks GR to write question-specific fb_correct strings that vary based on the question's algebraic concept.\n\n### Requirements\n\nFor each of the 15 RP8 questions:\n1. Identify the primary algebraic concept (from the question and solution_steps)\n2. Write fb_correct that names that specific concept in 10-15 words\n3. Vary the sentence structure across questions (no repeated templates)\n4. Match MCM voice: confident, direct, coach-like\n5. No em dashes, no generic praise\n\n### Question Type Targeting\n\n| If question type is... | fb_correct should reference... |\n|---|---|\n| Linear equation solving | The specific operation applied (factoring, distributing, combining like terms) |\n| Slope/rate | The rise-over-run calculation or unit interpretation |\n| Systems of equations | Which method was used (substitution, elimination) |\n| Function evaluation | The substitution step |\n| Exponential | The base, exponent rule applied |\n| Quadratic | Factoring method or discriminant check |\n\n### Acceptance Criteria\n\n- 15 unique fb_correct strings, one per question\n- No two strings use the same opening structure\n- Each string names the specific concept tested in that question\n- Output: updated retake-practice-8.json, fb_correct field only\n- Do NOT change any other fields\n\n### Priority\n\nNormal. Bundle with next GR content batch.",
+  "created": "2026-02-24T02:50:00Z",
+  "status": "unread"
+}

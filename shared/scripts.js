@@ -3,6 +3,45 @@
  * Answer key modal, save/load progress, print, textarea resize.
  */
 
+/* === Answer Parser === */
+
+/**
+ * Parse a student's text input into a numeric value.
+ * Accepts: integers, decimals, fractions (4/3), sqrt expressions (sqrt(5), 1+sqrt(3)).
+ * Safe: only allows a whitelisted character set before calling Function().
+ * @param {string} raw - Raw student input string
+ * @returns {number} Parsed numeric value, or NaN if unparseable
+ */
+function parseStudentAnswer(raw) {
+    if (!raw || !raw.trim()) return NaN;
+    var s = raw.trim().replace(/\s/g, '');
+
+    // Plain fraction: 4/3 or -5/2
+    var fracMatch = s.match(/^(-?\d+)\/(-?\d+)$/);
+    if (fracMatch) {
+        var num = parseInt(fracMatch[1], 10);
+        var den = parseInt(fracMatch[2], 10);
+        return den === 0 ? NaN : num / den;
+    }
+
+    // Plain decimal/integer
+    var plain = parseFloat(s);
+    if (!isNaN(plain) && s.match(/^-?\d*\.?\d+$/)) return plain;
+
+    // sqrt() expressions -- safe evaluator
+    // Only allow digits, . + - * / ( ) and letters s,q,r,t (only valid as "sqrt")
+    if (/^[0-9.\+\-\*\/\(\)sqrt]+$/.test(s)) {
+        try {
+            // Handle implicit multiplication: 2sqrt(3) -> 2*sqrt(3)
+            var expr = s.replace(/(\d)\s*sqrt/g, '$1*sqrt').replace(/sqrt/g, 'Math.sqrt');
+            var result = Function('"use strict"; return (' + expr + ')')();
+            if (typeof result === 'number' && isFinite(result)) return result;
+        } catch(e) { /* invalid expression -- fall through */ }
+    }
+
+    return NaN;
+}
+
 /* === Answer Key Modal === */
 
 /**
@@ -350,6 +389,13 @@ function gradeTest(config) {
  * @param {number} [opts.minutes] - Override time in minutes
  * @param {Function} [opts.onTimeUp] - Callback when timer reaches 0
  */
+/**
+ * Initializes the countdown timer for an exam session.
+ * Reads time_minutes from [data-time-minutes] attribute or opts.minutes.
+ * State progression: normal -> warning (<=5min) -> urgent (<=1min) -> timer-warning (<=30s) -> timer-critical (<=10s) -> timer-expired.
+ * @param {Object} opts - Options: { minutes: number, onTimeUp: function }
+ * @returns {{ getRemaining: function }} Timer control object, or null if no time configured
+ */
 function initTimer(opts) {
     opts = opts || {};
     var header = document.querySelector('[data-time-minutes]');
@@ -370,7 +416,7 @@ function initTimer(opts) {
             timer.setAttribute('role', 'timer');
             timer.setAttribute('aria-live', 'off');
             timer.setAttribute('aria-label', 'Time remaining');
-            timer.innerHTML = '<span class="timer-icon">⏱</span> <span class="timer-value" id="timer-value"></span>';
+            timer.innerHTML = '<span class="timer-icon" aria-hidden="true">⏱</span> <span class="timer-value" id="timer-value"></span>';
             subtitle.style.display = 'flex';
             subtitle.style.justifyContent = 'space-between';
             subtitle.style.alignItems = 'center';
@@ -383,11 +429,11 @@ function initTimer(opts) {
     var toastsFired = {};
 
     function formatTime(s) {
+        if (!isFinite(s) || s < 0) return '0:00';
         var m = Math.floor(s / 60);
         var sec = s % 60;
         return m + ':' + (sec < 10 ? '0' : '') + sec;
     }
-
     function showToast(msg) {
         var toast = document.createElement('div');
         toast.className = 'timer-toast';
@@ -400,27 +446,29 @@ function initTimer(opts) {
 
     function tick() {
         if (remaining <= 0) {
-            valueEl.textContent = 'TIME';
-            timerEl.className = 'timer times-up urgent';
-            showToast("Time. Let's see where you are.");
-            if (opts.onTimeUp) opts.onTimeUp();
+            valueEl.textContent = '0:00';
+            timerEl.className = 'timer timer-expired';
+            if (!toastsFired['expired']) {
+                toastsFired['expired'] = true;
+                showToast("Time's up! Let's see your score.");
+                setTimeout(function() { if (opts.onTimeUp) opts.onTimeUp(); }, 1500);
+            }
             return;
         }
 
         remaining--;
         valueEl.textContent = formatTime(remaining);
 
-        // State classes
-        var mins = remaining / 60;
-        if (mins <= 1) {
+        // State classes per GD spec: <=30s WARNING, <=10s CRITICAL
+        if (remaining <= 10) {
+            timerEl.className = 'timer timer-critical';
+            if (!toastsFired[10]) { toastsFired[10] = true; timerEl.setAttribute('aria-live', 'assertive'); timerEl.setAttribute('aria-label', '10 seconds remaining'); }
+        } else if (remaining <= 30) {
+            timerEl.className = 'timer timer-warning';
+            if (!toastsFired[30]) { toastsFired[30] = true; timerEl.setAttribute('aria-live', 'polite'); timerEl.setAttribute('aria-label', '30 seconds remaining'); }
+        } else if (remaining <= 60) {
             timerEl.className = 'timer urgent';
-            if (remaining % 15 === 0) timerEl.classList.add('pulse');
-            else timerEl.classList.remove('pulse');
-        } else if (mins <= 5) {
-            timerEl.className = 'timer urgent';
-            if (remaining % 60 === 0) timerEl.classList.add('pulse');
-            else timerEl.classList.remove('pulse');
-        } else if (mins <= 10) {
+        } else if (remaining <= 300) {
             timerEl.className = 'timer warning';
         } else {
             timerEl.className = 'timer';
@@ -516,7 +564,7 @@ function initTimer(opts) {
         timerEl.setAttribute('role', 'timer');
         timerEl.setAttribute('aria-live', 'off');
         timerEl.setAttribute('aria-label', 'Time remaining');
-        timerEl.innerHTML = '<span class="timer-icon">⏱</span><span class="timer-value" id="timer-value">' + formatTime(remaining) + '</span>';
+        timerEl.innerHTML = '<span class="timer-icon" aria-hidden="true">⏱</span><span class="timer-value" id="timer-value">' + formatTime(remaining) + '</span>';
 
         // Insert into header subtitle line or after header
         var subtitle = header.querySelector('.subtitle');
@@ -568,6 +616,7 @@ function initTimer(opts) {
         }
 
         function formatTime(s) {
+            if (!isFinite(s) || s < 0) return '0:00';
             var m = Math.floor(s / 60);
             var sec = s % 60;
             return m + ':' + (sec < 10 ? '0' : '') + sec;

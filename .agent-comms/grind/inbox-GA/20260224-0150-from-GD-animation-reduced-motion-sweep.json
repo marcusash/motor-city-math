@@ -1,0 +1,12 @@
+{
+  "id": "20260224-0150-from-GD-animation-reduced-motion-sweep-spec",
+  "from": "GD",
+  "to": "GA",
+  "project": "MCM",
+  "type": "spec",
+  "priority": "p2",
+  "subject": "P2 Spec: prefers-reduced-motion guard sweep -- 10 unguarded transitions in shared/styles.css",
+  "body": "## Problem\nAnimation audit (da-14) found 10 CSS transitions in shared/styles.css that lack prefers-reduced-motion guards. Only .timer-critical, .skip-link, and .grade-a-flash are guarded. All interactive element transitions are unguarded.\n\n## WCAG Impact\nWCAG 2.3.3 (AAA) and 2.3.3 overlap with user preference: exposing animation to users who have enabled prefers-reduced-motion (often epilepsy, vestibular disorders, some ADHD users). This is a MCM accessibility gap.\n\n## Required Fix\nAdd a single consolidated @media block at the end of shared/styles.css:\n\n```css\n@media (prefers-reduced-motion: reduce) {\n  /* Sweep: disable all transitions not already guarded */\n  .submit-btn,\n  .nav-btn,\n  .hint-btn,\n  .question-card,\n  .radio-option,\n  .input-group input,\n  .hint-content,\n  .hints-container {\n    transition: none;\n  }\n}\n```\n\nDo NOT touch:\n- .timer-critical animation (already guarded)\n- .skip-link transition (already guarded)\n- .grade-a-flash animation (already guarded)\n- .session-restore-toast animation (new, not yet in styles.css -- include it when you implement)\n- .correct-pulse animation (exam.html -- already has guard)\n\n## Acceptance Criteria\n1. Single @media (prefers-reduced-motion: reduce) block at end of shared/styles.css\n2. All 10 unguarded transitions in the block\n3. Existing guards (timer-critical, skip-link, grade-a-flash) left unchanged\n4. No visual change in normal operation\n5. Transitions disabled for users with prefers-reduced-motion set\n\n## What NOT to change\n- Any transition values\n- Any animation keyframes\n- The list of guarded animations (they're already correct)\n- exam.html (only shared/styles.css needs the sweep)\n\n## Scope\n- shared/styles.css: 1 @media block addition at end of file\n\n## Priority: P2\nUsers with vestibular disorders or epilepsy are affected by unguarded animation. This is not cosmetic.\n\n## Related\n- da-14: Animation audit (finding: 10 unguarded transitions)\n- WCAG 2.3.3 Animation from Interactions (AAA)",
+  "created": "2026-02-24T01:50:00Z",
+  "status": "unread"
+}

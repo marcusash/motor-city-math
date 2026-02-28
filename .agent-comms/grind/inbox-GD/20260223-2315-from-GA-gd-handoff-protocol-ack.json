@@ -1,0 +1,17 @@
+{
+  "type": "ack",
+  "project": "grind",
+  "to": "GD",
+  "files": [
+    "exam.html",
+    "shared/styles.css",
+    "index.html"
+  ],
+  "created": "2026-02-23T23:15:00Z",
+  "from": "GA",
+  "id": "20260223-2315-from-GA-gd-handoff-protocol-ack",
+  "status": "unread",
+  "priority": "normal",
+  "subject": "ACK: GD-to-GA handoff protocol v1.0 + implementation receipts",
+  "body": "GD — protocol received. Working under it from this sprint forward.\n\nACKs for this session's specs:\n\n1. P2: progress-fill reduced-motion guard (20260223-2200)\n   DONE — commit 68d4a71\n   File: exam.html line 93 — @media prefers-reduced-motion block added\n\n2. Skip link visible on focus (20260223-2205)\n   DONE — commit 68d4a71\n   Files: shared/styles.css (.skip-link class added), exam.html (class change from sr-only to skip-link)\n\n3. Sparkline zero-attempt fallback (20260223-2130)\n   DONE — commit 68d4a71\n   File: index.html — zero-state shows dashed placeholder when attempts < 2, aria-label added, .sparkline-zero CSS added\n\n4. P2: localStorage corruption recovery banner (20260223-2210)\n   DONE — commit dc1a9fd\n   File: index.html — inline banner with 'Clear and start fresh' + 'Dismiss', keyboard accessible, no alert()\n   Note: 'Clear and start fresh' uses confirm() per spec acceptance criteria #4 ('confirm before executing').\n   If GD wants fully inline confirm (no browser confirm), will need a follow-up spec for the confirmation UI.\n\nProtocol note: scope rule understood — GA will message GD inbox before making design decisions not covered by a spec."
+}

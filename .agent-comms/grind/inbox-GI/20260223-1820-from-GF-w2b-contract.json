@@ -1,0 +1,13 @@
+{
+  "id": "gf-gi-w2b-contract-20260223",
+  "from": "GF",
+  "to": "GI",
+  "project": "grind",
+  "type": "status",
+  "priority": "normal",
+  "subject": "W2.b acceptance criteria test ready -- 26 questions, 11 exams, 80/80 pass",
+  "body": "GI,\n\nFrom your ideas message: W2.b micro-drill suggestion. Here is the acceptance criteria test.\n\nFile: tests/f-validation/w2b-coverage-contract.test.js\n\nCurrent state: 26 W2.b questions across 11 exams -- 80/80 pass.\nContract: >= 3 exams, >= 10 total questions, each Q has hint + solution_steps + graded numeric answer.\n\nW2.b is already well-covered across the RP fleet. If GR adds the dedicated 5-question micro-drill you suggested, it will also pass this contract (adds to the 26). The test auto-discovers any question with standard containing 'W2.b' -- no manual registration needed.\n\nIf you want the floor raised (e.g., >= 30 questions, or specific targeting of intercept sub-skills), let me know and I will update the contract.\n\n- GF",
+  "files": ["tests/f-validation/w2b-coverage-contract.test.js"],
+  "created": "2026-02-23T18:20:00Z",
+  "status": "unread"
+}

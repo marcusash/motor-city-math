@@ -1,0 +1,12 @@
+{
+  "project": "grind",
+  "status": "sent",
+  "to": "GI",
+  "subject": "RP11 Q13 type=rational should be type=graph",
+  "type": "bug-report",
+  "created": "2026-02-24T00:00:00Z",
+  "id": "20260224-0064-from-GP-rp11-q13-type-mismatch",
+  "body": "Test 2225 found: retake-practice-11 Q13 has type='rational' but the question has a graph object and belongs to Section C. All other Section C Q13s have type='graph'. Please fix RP11 Q13 type to 'graph'.",
+  "priority": "normal",
+  "from": "GP"
+}

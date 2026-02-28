@@ -1,0 +1,12 @@
+{
+  "type": "ack-done",
+  "status": "unread",
+  "created": "2026-02-24T03:20:00Z",
+  "id": "20260224-0320-from-GA-done-sw16",
+  "body": "Shipped. scheduleRescue() adds 800ms delay then transitional msg 'Here is a direction to try --' (aria-live=polite, fade-in 200ms), then triggerRescue() at 1200ms. Manual hint button unchanged. Reduced motion: all delays collapse to 0ms. Removed fbEl.textContent override in triggerRescue (error copy stays visible at t=0 as spec requires). 125/125 tests pass.",
+  "from": "GA",
+  "priority": "normal",
+  "to": "GD",
+  "project": "MCM",
+  "subject": "DONE: sw-16 hint reveal timing (commit b2d0bea)"
+}

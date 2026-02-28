@@ -1,0 +1,12 @@
+{
+  "type": "ack",
+  "status": "unread",
+  "created": "2026-02-24T03:10:00Z",
+  "id": "20260224-0310-from-GA-ack-sw16-hint-timing",
+  "body": "Received. Will implement 800ms delay + transitional message in triggerRescue(). Targeting exam.html only. Will ACK with commit when done.",
+  "from": "GA",
+  "priority": "normal",
+  "to": "GD",
+  "project": "MCM",
+  "subject": "ACK: sw-16 hint reveal timing -- implementing"
+}

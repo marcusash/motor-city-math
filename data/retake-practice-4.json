@@ -48,7 +48,7 @@
       "plus_minus": true,
       "hint": "Set f(x)=0. Isolate the squared term.",
       "solution_steps": [
-        "Parent: y = x² (quadratic — highest power is 2).",
+        "Parent: y = x² (quadratic : highest power is 2).",
         "Set 0 = 5(x+1)² - 80.",
         "5(x+1)² = 80 → (x+1)² = 16.",
         "x + 1 = ±4 → x = 3 or x = -5."
@@ -56,7 +56,7 @@
       "feedback_correct": "🔥 Parent and intercepts nailed.",
       "feedback_wrong_parent": "Check the exponent for parent type.",
       "feedback_wrong_intercepts": "Parent right. Set f(x)=0 and solve.",
-      "feedback_wrong": "Check your setup. Re-read the question and try again."
+      "feedback_wrong": "Parent: quadratic. Set 5(x+1)^2=80 → (x+1)^2=16 → x+1=±4."
     },
     {
       "id": "rp4-q2",
@@ -96,7 +96,7 @@
       ],
       "feedback_correct": "🔥 Square root identified. Clean.",
       "feedback_wrong_parent": "Look at the √ symbol.",
-      "feedback_wrong": "Check your setup. Re-read the question and try again."
+      "feedback_wrong": "Parent: square root. Set sqrt(x-7)=5 → x-7=25 → x=32."
     },
     {
       "id": "rp4-q3",
@@ -144,7 +144,7 @@
         {
           "id": "q3_cases",
           "type": "text",
-          "label": "Write the two equations you must solve (e.g. “AX+B = k and AX+B = -k”):"
+          "label": "Write the two equations you must solve (e.g. \"AX+B = k and AX+B = -k\"):"
         },
         {
           "id": "q3_x1",
@@ -171,7 +171,7 @@
       ],
       "feedback_correct": "🔥 Absolute value. Both intercepts.",
       "feedback_wrong_parent": "The | | symbols mean absolute value.",
-      "feedback_wrong": "Factor first: |2x−8| = 2|x−4|. Do not try to read a, h,."
+      "feedback_wrong": "Isolate: |2x-8|=2|x-4|. Then |x-4|=4 → x=8 or x=0."
     },
     {
       "id": "rp4-q4",
@@ -197,7 +197,7 @@
         "Check: 5^(2×3.5-3) = 5^4 = 625 ✓"
       ],
       "feedback_correct": "🔥 Exponent match. Clean.",
-      "feedback_wrong": "Rewrite 625 as a power of 5 (5⁴). Then set exponents equal."
+      "feedback_wrong": "625=5^4. Set exponents equal: x=4."
     },
     {
       "id": "rp4-q5",
@@ -223,7 +223,7 @@
         }
       ],
       "plus_minus": true,
-      "hint": "Standard form — not vertex form. Find two numbers that multiply to −6 and add to −5. Factor.",
+      "hint": "Standard form : not vertex form. Find two numbers that multiply to −6 and add to −5. Factor.",
       "solution_steps": [
         "Standard form ax²+bx+c=0. Vertex form (±√) does NOT work here.",
         "Need two numbers: product = −6, sum = −5. Those are: −6 and +1.",
@@ -232,7 +232,7 @@
         "Check: 36−30−6=0 ✓ and 1+5−6=0 ✓"
       ],
       "feedback_correct": "🔥 Factored standard form. Both roots.",
-      "feedback_wrong": "This is NOT vertex form — you cannot take ±√ directly. Find."
+      "feedback_wrong": "Not vertex form. Use AC method or quadratic formula."
     },
     {
       "id": "rp4-q6",
@@ -331,12 +331,12 @@
       ],
       "hint": "There is a coefficient 3 in front of the √. You must divide it off before squaring.",
       "solution_steps": [
-        "3√(x−2) = 12 → √(x−2) = 4. (Divide by 3 FIRST — cannot square yet.)",
+        "3√(x−2) = 12 → √(x−2) = 4. (Divide by 3 FIRST : cannot square yet.)",
         "Square: x − 2 = 16 → x = 18.",
         "Check: 3√16 + 1 = 12 + 1 = 13 ✓"
       ],
-      "feedback_correct": "🔥 Coefficient on radical — divide it off first.",
-      "feedback_wrong": "Do NOT square immediately. Subtract 1, then divide by 3, THEN square."
+      "feedback_correct": "🔥 Coefficient on radical : divide it off first.",
+      "feedback_wrong": "Isolate sqrt first. Then square both sides."
     },
     {
       "id": "rp4-q10",
@@ -344,7 +344,7 @@
       "section": "B",
       "standard": "W3.e",
       "type": "extraneous",
-      "question_html": "Solve: \\( \\sqrt{x + 7} = x + 5 \\)<br><em>Note: check for <strong>extraneous solutions</strong> — answers that come from the algebra but don't actually work when you plug them back in.</em>",
+      "question_html": "Solve: \\( \\sqrt{x + 7} = x + 5 \\)<br><em>Note: check for <strong>extraneous solutions</strong> : answers that come from the algebra but don't actually work when you plug them back in.</em>",
       "inputs": [
         {
           "id": "q10_x",
@@ -364,7 +364,7 @@
         "Only x = -3 is valid."
       ],
       "feedback_correct": "🔥 Caught the extraneous one.",
-      "feedback_wrong": "Check your setup. Re-read the question and try again."
+      "feedback_wrong": "Square both sides: x^2+9x+18=0. Factor: (x+3)(x+6)=0."
     },
     {
       "id": "rp4-q11",
@@ -581,7 +581,7 @@
       "section": "D",
       "standard": "W3.a",
       "type": "word-problem",
-      "question_html": "A town’s population starts at 5,000 and grows by 50% every 10 years.<br>(a) Write an exponential model <em>P</em>(<em>t</em>) for the population after <em>t</em> years.<br>(b) Using your model, how many years until the population reaches 16,875?",
+      "question_html": "A town's population starts at 5,000 and grows by 50% every 10 years.<br>(a) Write an exponential model <em>P</em>(<em>t</em>) for the population after <em>t</em> years.<br>(b) Using your model, how many years until the population reaches 16,875?",
       "inputs": [
         {
           "id": "q15_model",

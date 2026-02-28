@@ -1,0 +1,12 @@
+{
+  "id": "20260224-0215-from-GD-answer-format-guidance-spec",
+  "from": "GD",
+  "to": "GA",
+  "project": "MCM",
+  "type": "spec",
+  "priority": "normal",
+  "subject": "Spec: Answer format guidance per question type",
+  "body": "## Problem\nMCM accepts free-text answers with no format guidance. Kai may type '0.67', '.67', or '0.670' for a decimal answer -- only one is graded correct. He may type '6/8' instead of '3/4' for a fraction answer -- wrong by grader, but mathematically equivalent. No hint that format matters.\n\n## Behavior\n\nFor each question where format matters, show a small format hint below the input:\n\n### Decimal questions\n```\n[Input field]\nRound to nearest hundredth (e.g. 0.67)\n```\n\n### Fraction questions\n```\n[Input field]\nSimplify your fraction (e.g. 3/4 not 6/8)\n```\n\n### Coordinate pair questions\n```\n[Input field]\nFormat: (x, y) with a comma and parentheses\n```\n\n### Equation questions (slope-intercept)\n```\n[Input field]\nFormat: y = mx + b\n```\n\n## How to Detect Question Type\n\nUse the question.type field in JSON (\"decimal\", \"fraction\", \"coordinate\", \"equation\"). If type is blank or \"text\", no format hint shown.\n\n## Visual Spec\n\nFormat hint:\n- Position: Below input, same width\n- Color: var(--text-muted)\n- Font: var(--text-xs)\n- No icon needed\n- Only shown when question.type matches a known format\n\n## Copy\n- decimal: 'Round to nearest hundredth (e.g. 0.67)'\n- fraction: 'Simplify your fraction (e.g. 3/4 not 6/8)'\n- coordinate: 'Format: (x, y)'\n- equation: 'Use y = mx + b format'\n\n## Acceptance Criteria\n1. Format hint appears below input for known question types\n2. No format hint for type=text or missing type\n3. Format hint uses var(--text-muted) and var(--text-xs)\n4. Format hint does not affect input width or height\n5. Format hint is not a placeholder (placeholder disappears on input; format hint stays visible)\n\n## What NOT to change\n- Grading logic (this is a display-only change)\n- Input field styling\n- Answer key validation rules\n\n## Scope\n- exam.html: renderInput() function (add format hint element after input)\n- shared/styles.css: .format-hint class (muted, xs text)\n\n## Priority: Normal (medium)\n\n## Related\n- sw-17: Answer format guidance per question type (this spec)\n- data/*.json: question.type field",
+  "created": "2026-02-24T02:15:00Z",
+  "status": "unread"
+}

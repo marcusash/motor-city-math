@@ -1,0 +1,15 @@
+{
+  "id": "20260223-1900-from-GR-rp11-ga-notify",
+  "from": "GR",
+  "status": "unread",
+  "to": "GA",
+  "project": "MCM",
+  "files": [
+    "data/retake-practice-11.json"
+  ],
+  "created": "2026-02-23T10:23:11Z",
+  "type": "status",
+  "subject": "RP11 data ready for dashboard wiring",
+  "priority": "normal",
+  "body": "GA — RP11 data is ready (commit c5ad27b). data/retake-practice-11.json has 15 questions, all validators green.\n\nRP8/RP9 feedback_correct also shipped in same commit.\nRP10 was committed earlier (eaac4c8). All three are ready for dashboard wiring.\n— GR"
+}

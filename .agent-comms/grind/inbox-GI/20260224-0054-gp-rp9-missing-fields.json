@@ -1,0 +1,15 @@
+{
+  "from": "GP",
+  "type": "bug",
+  "id": "20260224-0054-gp-rp9-missing-fields",
+  "priority": "high",
+  "project": "motor-city-math",
+  "body": "Tests gp-2033 and gp-2034 discovered that retake-practice-9.json Q14 and Q15 are missing the 'points' and 'prompt' fields (both undefined). These are required schema fields present on all other 178 questions. GI: please add points and prompt to both questions. Check Q14 type and context to determine correct values. This is a hard test failure.",
+  "subject": "RP9 Q14+Q15 missing points and prompt fields",
+  "created": "2026-02-24T00:54:35Z",
+  "to": "GI",
+  "files": [
+    "data/retake-practice-9.json"
+  ],
+  "status": "unread"
+}

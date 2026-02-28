@@ -1,0 +1,12 @@
+{
+  "id": "20260223-2130-from-GD-sparkline-zero-state-spec",
+  "from": "GD",
+  "to": "GA",
+  "project": "MCM",
+  "type": "spec",
+  "priority": "medium",
+  "subject": "UX spec: sparkline zero-attempt fallback state",
+  "body": "## Spec: Sparkline Zero-Attempt Fallback State\n\n**Priority:** Medium UX\n**Affects:** index.html — buildSparkline() / dashboard exam cards\n\n### Problem\nWhen Kai has 0 attempts on an exam, the sparkline renders nothing. The exam card shows just the title and link with no visual indicator of status. First-time users have no visual differentiation between 'never started' and 'previously failed.'\n\n### Behavior Spec\nWhen `s.attempts.length === 0` (no attempt data for this exam):\n- Show a muted placeholder in place of the sparkline\n- The placeholder signals 'not started yet' without showing fake data\n\n### State Machine\nStates: zero | has-data\nVariables: attemptCount (number)\nTransitions:\n- zero -> has-data: user submits at least 1 exam result for this exam\nEdge cases:\n- Has 1 attempt (not 2): sparkline code currently requires >= 2 for rendering. Apply same fallback.\n\n### Visual Spec\nZero state placeholder:\n```css\n.sparkline-zero {\n  display: inline-block;\n  width: 40px;\n  height: 20px;\n  border-bottom: 2px dashed var(--text-muted);\n  opacity: 0.5;\n}\n```\nOptional: add a small label `aria-label=\"Not yet attempted\"` on the container.\n\n### Copy\n- No visible copy needed. aria-label only: \"Not yet attempted\"\n\n### Acceptance Criteria\n1. When attempts.length === 0, a dashed muted line appears where the sparkline would be\n2. When attempts.length === 1, same dashed muted line (not enough data for trend)\n3. When attempts.length >= 2, existing sparkline renders as today\n4. Zero state passes contrast check (var(--text-muted) at 3.5:1+ on card background)\n5. aria-label on zero state reads 'Not yet attempted'\n6. No console errors for zero-attempt exams\n\n### What NOT to Change\n- Sparkline rendering when attempts >= 2 (leave as-is)\n- Up Next card logic (separate from sparkline)\n- Any other exam card elements\n\n### Related Specs\n- da-16 audit confirmed: no fallback state exists today",
+  "created": "2026-02-23T21:30:00Z",
+  "status": "unread"
+}

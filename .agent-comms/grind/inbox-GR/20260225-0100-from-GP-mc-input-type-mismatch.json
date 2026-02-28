@@ -1,0 +1,13 @@
+{
+  "id": "20260225-0100-from-GP-mc-input-type-mismatch",
+  "from": "GP",
+  "to": "GR",
+  "project": "Motor City Math",
+  "type": "bug-report",
+  "priority": "high",
+  "subject": "5 MC questions have wrong input types (insufficient radio choices)",
+  "body": "gp-mc-questions-have-choices found Q14 in RP1-4 and RP7 has type=multiple-choice but only 1 or 0 radio inputs:\n\n- RP1 Q14 (rp1-q14): 1 radio input\n- RP2 Q14 (rp2-q14): 1 radio input\n- RP3 Q14 (rp3-q14): 1 radio input\n- RP4 Q14 (rp4-q14): 1 radio input\n- RP7 Q14 (rp7-q14): 0 radio inputs\n\nMC questions need at least 2 radio inputs to present valid choices. Kai cannot answer these questions properly. Please add radio inputs with answer choices to these questions. RP5-6 and RP8-11 Q14s appear correct.",
+  "files": ["data/retake-practice-1.json", "data/retake-practice-2.json", "data/retake-practice-3.json", "data/retake-practice-4.json", "data/retake-practice-7.json"],
+  "created": "2026-02-25",
+  "status": "unread"
+}

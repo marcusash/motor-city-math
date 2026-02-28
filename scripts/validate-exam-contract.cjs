@@ -46,6 +46,17 @@ function validateInputs(qid, inputs) {
     return;
   }
 
+  // Check for duplicate input IDs within the question
+  const inputIds = new Set();
+  for (const inp of inputs) {
+    if (inp && inp.id) {
+      if (inputIds.has(inp.id)) {
+        error(`${qid}: duplicate input id "${inp.id}"`);
+      }
+      inputIds.add(inp.id);
+    }
+  }
+
   for (const inp of inputs) {
     if (!inp || inp.id === undefined || inp.type === undefined || inp.label === undefined) {
       error(`${qid}: input missing id/type/label`);
@@ -65,17 +76,28 @@ function validateInputs(qid, inputs) {
     if (inp.type === 'number') {
       if (typeof inp.answer !== 'number') {
         error(`${qid}: input ${inp.id} answer must be number`);
+      } else if (!isFinite(inp.answer) || isNaN(inp.answer)) {
+        error(`${qid}: input ${inp.id} answer is NaN or Infinity (${inp.answer})`);
       }
       if (typeof inp.tolerance !== 'number') {
         error(`${qid}: input ${inp.id} missing numeric tolerance`);
+      } else if (inp.tolerance <= 0) {
+        error(`${qid}: input ${inp.id} tolerance must be > 0 (got ${inp.tolerance})`);
       }
     }
 
     if (inp.type === 'dropdown') {
       if (!Array.isArray(inp.options) || inp.options.length === 0) {
         error(`${qid}: input ${inp.id} dropdown options missing`);
-      } else if (!inp.options.includes(inp.answer)) {
-        error(`${qid}: input ${inp.id} answer not in dropdown options`);
+      } else {
+        // Check unique options
+        const optSet = new Set(inp.options);
+        if (optSet.size !== inp.options.length) {
+          error(`${qid}: input ${inp.id} dropdown has duplicate options`);
+        }
+        if (!inp.options.includes(inp.answer)) {
+          error(`${qid}: input ${inp.id} answer not in dropdown options`);
+        }
       }
     }
 
@@ -84,6 +106,11 @@ function validateInputs(qid, inputs) {
         error(`${qid}: input ${inp.id} radio options missing`);
       } else {
         const values = inp.options.map((opt) => (opt && opt.value !== undefined ? opt.value : opt));
+        // Check unique radio values
+        const valSet = new Set(values);
+        if (valSet.size !== values.length) {
+          error(`${qid}: input ${inp.id} radio has duplicate option values`);
+        }
         if (!values.includes(inp.answer)) {
           error(`${qid}: input ${inp.id} answer not in radio options`);
         }
@@ -137,6 +164,46 @@ function validateExamFile(filepath) {
     }
 
     validateInputs(qid, q && q.inputs ? q.inputs : []);
+
+    // plus_minus: must have exactly 2 numeric inputs
+    if (q && q.plus_minus === true) {
+      const numericInputs = (q.inputs || []).filter(inp => inp && inp.type === 'number');
+      if (numericInputs.length !== 2) {
+        error(`${qid}: plus_minus=true requires exactly 2 number inputs (found ${numericInputs.length})`);
+      }
+    }
+
+    // graph questions: key_points must meet min_points threshold
+    if (q && q.graph) {
+      const kp = q.graph.key_points || [];
+      const minPts = q.graph.min_points || 3;
+      if (kp.length < minPts) {
+        error(`${qid}: graph has ${kp.length} key_points but min_points=${minPts}`);
+      }
+      // Advisory: verify key_points are on the function (soft check)
+      if (q.graph.function && kp.length > 0) {
+        let evalFn;
+        try {
+          // eslint-disable-next-line no-new-func
+          evalFn = new Function('x', `with(Math) { return (${q.graph.function}); }`);
+        } catch (_) {
+          warn(`${qid}: graph.function failed to compile: "${q.graph.function}"`);
+          evalFn = null;
+        }
+        if (evalFn) {
+          const tol = q.graph.tolerance || 0.25;
+          for (const pt of kp) {
+            const [x, expectedY] = pt;
+            let actualY;
+            try { actualY = evalFn(x); } catch (_) { continue; }
+            if (typeof actualY !== 'number' || !isFinite(actualY)) continue;
+            if (Math.abs(actualY - expectedY) > tol) {
+              warn(`${qid}: key_point [${x},${expectedY}] — f(${x})=${actualY.toFixed(4)}, diff=${Math.abs(actualY-expectedY).toFixed(4)} > tol=${tol}`);
+            }
+          }
+        }
+      }
+    }
   }
 }
 

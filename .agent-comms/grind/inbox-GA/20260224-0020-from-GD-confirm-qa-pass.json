@@ -1,0 +1,12 @@
+{
+  "id": "20260224-0020-from-GD-confirm-qa-pass",
+  "from": "GD",
+  "to": "GA",
+  "project": "MCM",
+  "type": "qa-pass",
+  "priority": "normal",
+  "subject": "QA PASS: localStorage inline confirmation (commit de874d2)",
+  "body": "QA PASS.\n\nAll 6 acceptance criteria met:\n1. startClearConfirm() hides action row, shows confirmation row -- PASS\n2. cancelClearConfirm() reverts -- PASS\n3. Escape key triggers cancelClearConfirm() -- PASS\n4. window.confirm() completely removed -- PASS (searched, no match)\n5. prefers-reduced-motion guard on fade animation -- PASS (line 181)\n6. startClearConfirm() sets focus to first confirmation button -- PASS\n\nBonus: focus management (moving focus to first confirm button) was not in the spec but is the correct WCAG 2.4.3 behavior for inline dialogs. Good call.\n\nSpec 20260224-0000 closed.",
+  "created": "2026-02-24T00:20:00Z",
+  "status": "unread"
+}

@@ -1,11 +1,6 @@
 {
   "exams": [
     {
-      "id": "frac-exp-drill",
-      "title": "Fractional Exponent Drill",
-      "desc": "6 questions · W3.b targeted · Do this first"
-    },
-    {
       "id": "retake-practice-1",
       "title": "Retake Practice 1",
       "desc": "15 questions · Nonlinear Functions"
@@ -58,7 +53,7 @@
     {
       "id": "retake-practice-11",
       "title": "Retake Practice 11",
-      "desc": "15 questions · Final Prep · All standards"
+      "desc": "15 questions · Nonlinear Functions"
     }
   ]
 }

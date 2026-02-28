@@ -1,0 +1,39 @@
+// rp-w2b-has-identify-type test
+// W2.b questions in Section A must use an "identify" type
+// (quadratic, absolute-value, exponential, etc. -- the parent family identification task)
+
+const fs = require('fs');
+const path = require('path');
+
+let pass = 0, fail = 0;
+function test(name, result) {
+    if (result) { console.log('  \u2705 ' + name); pass++; }
+    else        { console.log('  \u274c ' + name); fail++; }
+}
+
+console.log('\u{1F3C0} rp-w2b-has-identify-type.test.js\n');
+
+var dataDir = path.join(__dirname, '../../data');
+var violations = [];
+var IDENTIFY_TYPES = ['quadratic','absolute-value','exponential','radical','logarithmic','linear','rational','square-root','cube-root','cubic','identify','parent'];
+
+for (var i = 1; i <= 11; i++) {
+    var f = path.join(dataDir, 'retake-practice-' + i + '.json');
+    if (!fs.existsSync(f)) continue;
+    var rp = JSON.parse(fs.readFileSync(f, 'utf-8'));
+    var sectionAW2b = (rp.questions || []).filter(function(q) { return q.section === 'A' && q.standard === 'W2.b'; });
+    sectionAW2b.forEach(function(q) {
+        var typeOk = IDENTIFY_TYPES.some(function(t) { return q.type && q.type.indexOf(t) !== -1; });
+        if (!typeOk) {
+            violations.push(q.id + ': section A W2.b has unexpected type="' + q.type + '"');
+        }
+    });
+}
+
+test('Section A W2.b questions have function family types (' + violations.length + ' violations)', violations.length === 0);
+if (violations.length) violations.slice(0, 5).forEach(function(v) { console.log('    ! ' + v); });
+
+console.log('\n' + '='.repeat(50));
+console.log('rp-w2b-has-identify-type: ' + (pass+fail) + ' checks, ' + pass + ' pass, ' + fail + ' fail');
+if (fail === 0) { console.log('PASS'); process.exit(0); }
+else            { console.log('FAIL'); process.exit(1); }

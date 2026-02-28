@@ -10,6 +10,10 @@
     <script src="shared/chart-theme.js"></script>
     <link rel="stylesheet" href="shared/styles.css">
     <link rel="stylesheet" href="shared/print.css">
+    <style>@media print { button, .submit-btn, .nav-btn, .hint-btn, .calc-toggle-btn { display: none !important; } }
+    /* sw-18: focus ring for read-only Chart.js canvases */
+    canvas[role="img"]:focus { outline: 2px solid #4A90D9; outline-offset: 2px; }
+    </style>
 </head>
 <body class="archived" data-completed="2025-11-23" data-score="14/20">
 <script>if(localStorage.getItem('mcm-arena-mode')==='on')document.body.classList.add('arena-mode');</script>
@@ -369,7 +373,7 @@
                 </div>
                 <div style="text-align: center;">
                     <div style="display: inline-block; border: 2px solid var(--text-primary); background: white; padding: 15px;">
-                        <canvas id="chart9" width="700" height="700" style="display: block; cursor: crosshair;"></canvas>
+                        <canvas id="chart9" width="700" height="700" style="display: block; cursor: crosshair;" aria-label="Graph for question 9"></canvas>
                     </div>
                 </div>
                 <div class="work-area">
@@ -415,7 +419,7 @@
                     A car's value over time is shown on the graph below.
                 </div>
                 <div class="chart-container">
-                    <canvas id="chart13"></canvas>
+                    <canvas id="chart13" role="img" tabindex="0" aria-label="Line graph: car value in thousands of dollars over 4 years, starting at $20,000 and decreasing linearly to $0 (depreciation of $5,000 per year)"></canvas>
                 </div>
                 <div class="input-group">
                     <label>a) What was the car's initial value?</label>
@@ -502,7 +506,7 @@
                 </div>
                 <div style="clear: both;"></div>
                 <div class="chart-container">
-                    <canvas id="chart15"></canvas>
+                    <canvas id="chart15" role="img" tabindex="0" aria-label="Graph of g(x): a piecewise or curved function used in composition questions f(g(x)) and g(f(x)). Key values: g(-3)=-3, g(0)=2, g(7)=2."></canvas>
                 </div>
                 <div class="work-area">
                     <span class="work-label">Show Your Work:</span>
@@ -549,7 +553,7 @@
                     <strong>d)</strong> Using your equation, predict the quiz score for a student who studies 11 hours per week.
                 </div>
                 <div class="chart-container">
-                    <canvas id="chart19"></canvas>
+                    <canvas id="chart19" role="img" tabindex="0" aria-label="Scatterplot: quiz scores (y-axis, 50-110) vs study hours per week (x-axis, 0-12). Data shows positive trend from about 65 at 2 hours to 94 at 9 hours. A line of best fit is drawn through the data."></canvas>
                 </div>
                 <div class="work-area">
                     <span class="work-label">Show Your Work:</span>
@@ -687,7 +691,7 @@
     </div>
 
     <!-- Answer Key Modal -->
-    <div id="answerKeyModal" class="answer-key-modal">
+    <div id="answerKeyModal" class="answer-key-modal" role="dialog" aria-modal="true" aria-label="Answer Key">
         <div class="answer-key-content">
             <button class="close-modal" onclick="closeAnswerKey()">×</button>
             <h2 class="answer-key-title">Answer Key</h2>
@@ -1009,7 +1013,25 @@
             });
         });
 
-        function showFinalExamAnswerKey() {
+        // sw-18: keyboard announce for read-only Chart.js canvases
+        (function() {
+            var liveEl = document.createElement('div');
+            liveEl.setAttribute('aria-live', 'assertive');
+            liveEl.setAttribute('aria-atomic', 'true');
+            liveEl.className = 'sr-only';
+            document.body.appendChild(liveEl);
+            ['chart13', 'chart15', 'chart19'].forEach(function(id) {
+                var c = document.getElementById(id);
+                if (!c) return;
+                c.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        liveEl.textContent = '';
+                        setTimeout(function() { liveEl.textContent = c.getAttribute('aria-label') || 'Chart'; }, 50);
+                    }
+                });
+            });
+        })();
             const answerKeyHTML = `
                 <div class="answer-item"><strong>Q1:</strong> 210 (Work: 3pq - q²(4p - 2q) + p²q with p=-4, q=3: 3(-4)(3) - (9)(-16-6) + (16)(3) = -36 - 9(-22) + 48 = -36 + 198 + 48 = 210)</div>
                 <div class="answer-item"><strong>Q2:</strong> 5.4 meters (Work: h = 1 + 12(2) - 4.9(2)² = 1 + 24 - 4.9(4) = 1 + 24 - 19.6 = 5.4)</div>

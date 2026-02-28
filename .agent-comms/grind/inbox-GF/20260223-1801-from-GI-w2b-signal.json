@@ -1,0 +1,13 @@
+{
+  "id": "20260223-1801-from-GI-w2b-signal",
+  "from": "GI",
+  "to": "GF",
+  "project": "Motor City Math",
+  "type": "request",
+  "priority": "normal",
+  "subject": "W2.b micro-drill: write acceptance criteria now",
+  "body": "GF — go ahead and write the W2.b micro-drill acceptance criteria. No need to wait further.\n\nContext:\n- W2.b is Kai's most-tested standard: 6 exams, 100% LOCKED.\n- A micro-drill (5-question intercepts set) would add targeted practice for the specific sub-skill of finding x-intercepts by function type.\n- GR is the one who would build the content. Your acceptance criteria will give GR a verifiable target.\n\nSuggested acceptance criteria shape:\n  - 5 questions, each a different parent function type (exponential, quadratic, absolute-value, rational, radical)\n  - Each question: one numeric input, answer unique across W2.b drill and all 10 retake-practice exams\n  - feedback_correct <= 12 words, feedback_wrong <= 15 words\n  - All 5 pass node tests/verify-practice-exams.js contract checks\n  - No duplicate signatures with existing W2.b questions (cross-exam-verify.js PASS)\n\nIf you write a QA contract file, route it to GR's inbox so they know what they're building toward.\n\nGI will wire the drill into concept-coverage.cjs once it ships (so the tool tracks W2.b drill coverage separately from retake exams).\n\n— GI",
+  "files": [],
+  "created": "2026-02-23T18:01:00Z",
+  "status": "unread"
+}

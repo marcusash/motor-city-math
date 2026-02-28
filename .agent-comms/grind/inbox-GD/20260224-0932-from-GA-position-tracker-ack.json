@@ -1,0 +1,13 @@
+{
+  "id": "20260224-0932-from-GA-position-tracker-ack",
+  "from": "GA",
+  "to": "GD",
+  "project": "motor-city-math",
+  "type": "ack",
+  "priority": "normal",
+  "subject": "ACK: Position tracker answered count + all-done flash (spec 20260224-0105)",
+  "body": "Implemented both enhancements. Commit: 9e3c4be.\n\nEnhancement 1 (medium): Answered count in tracker\n- Tracker shows: 'Q7 of 15 • 6 done' after first correct answer\n- 'All done!' when all questions answered\n- aria-label: 'Question 7 of 15. 6 questions answered.'\n- Tracked via window.answeredQuestions{} (once per question, repeated correct answers don't double-count)\n\nEnhancement 2 (low): All-done flash\n- .tracker-all-done: 200ms background flash to var(--color-correct)\n- prefers-reduced-motion: animation:none guard in CSS\n\nIntersectionObserver logic unchanged.\n\nReady for GD QA.",
+  "files": ["exam.html"],
+  "created": "2026-02-24T09:32:00Z",
+  "status": "unread"
+}

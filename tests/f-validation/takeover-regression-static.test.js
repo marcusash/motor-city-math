@@ -9,6 +9,7 @@ const path = require('path');
 
 const ROOT = path.resolve(__dirname, '..', '..');
 const examHtml = fs.readFileSync(path.join(ROOT, 'exam.html'), 'utf-8');
+const sharedScripts = fs.readFileSync(path.join(ROOT, 'shared', 'scripts.js'), 'utf-8');
 const indexHtml = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf-8');
 
 let pass = 0, fail = 0, total = 0;
@@ -29,7 +30,7 @@ console.log('\n🏀 takeover-regression-static.test.js\n');
 test('exam: blank-field grading guard exists', examHtml.includes('Block grading if any required field is blank'));
 test('exam: score lock gate exists', examHtml.includes('if (examGraded) return;'));
 test('exam: retake-only run-it-back logic exists', examHtml.includes('isRetake') && examHtml.includes('Run It Back'));
-test('exam: sqrt parser support exists', examHtml.includes('sqrt(') && examHtml.includes('safe evaluator'));
+test('exam: sqrt parser support exists', sharedScripts.includes('sqrt(') && sharedScripts.includes('safe evaluator'));
 test('exam: per-input feedback classes exist', examHtml.includes('answer-feedback') && examHtml.includes('feedback_wrong_intercepts'));
 test('exam: local KaTeX assets used', examHtml.includes('shared/katex/katex.min.css') && examHtml.includes('shared/katex/auto-render.min.js'));
 

@@ -1,0 +1,13 @@
+{
+  "id": "20260224-0900-from-GA-timer-states-ack",
+  "from": "GA",
+  "to": "GD",
+  "project": "motor-city-math",
+  "type": "ack",
+  "priority": "normal",
+  "subject": "ACK: Timer warning/critical states (spec 20260224-0030)",
+  "body": "Implemented per spec. Commit: f06290a.\n\n- .timer-warning (<=30s): amber #B45309, aria-live=polite fires once at 30s\n- .timer-critical (<=10s): var(--color-incorrect), timer-pulse animation, aria-live=assertive fires once at 10s\n- EXPIRED: shows 0:00, .timer-expired class, auto-submits via opts.onTimeUp() after 1500ms delay\n- prefers-reduced-motion guard: animation:none on .timer-critical .timer-value\n- Kept legacy .timer.warning / .timer.urgent classes for backward compat\n\nReady for GD QA.",
+  "files": ["shared/scripts.js", "shared/styles.css"],
+  "created": "2026-02-24T09:00:00Z",
+  "status": "unread"
+}

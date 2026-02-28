@@ -9,7 +9,7 @@
 
 | ID | Risk | Probability | Impact | Mitigation | Status |
 |----|------|-------------|--------|-----------|--------|
-| R-01 | Session-dependency: GP only executes when Marcus opens session | High | High | Autonomous trigger proposal filed | Open |
+| R-01 | Session-dependency: GP only executes when Marcus opens session | High | High | Autonomous trigger proposal filed (docs/agents/gp-autonomous-trigger-proposal.md). Morning-readiness runbook covers manual alternative. | Open |
 | R-02 | MOTOR_CITY_MATH_TOKEN expires silently | Medium | High | Check token before each publish; GP monitors Actions tab | Open |
 | R-03 | RP JSON edit breaks verify baseline | Medium | High | Pre-commit hook + CI validate-data.yml + 9/9 health gate | Mitigated |
 | R-04 | Math error in answer key goes undetected | Low | Critical | GR verifies all math; gp-graph-keypoints.test.js auto-checks graphs | Mitigated |

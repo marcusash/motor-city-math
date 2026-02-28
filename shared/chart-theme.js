@@ -24,7 +24,7 @@ var MCM_CHART_COLORS = {
 /* Set Chart.js defaults to Pistons palette */
 if (typeof Chart !== 'undefined') {
     Chart.defaults.font.family = MCM_CHART_COLORS.fontFamily;
-    Chart.defaults.font.size = 13;
+    Chart.defaults.font.size = 13; // GD note: hardcoded — CSS tokens not available to Chart.js; tracked gap in .chart-spec.md §8
     Chart.defaults.color = MCM_CHART_COLORS.label;
     Chart.defaults.borderColor = MCM_CHART_COLORS.grid;
     Chart.defaults.responsive = true;
@@ -35,8 +35,8 @@ if (typeof Chart !== 'undefined') {
 
     // Tooltip: navy background, clean styling
     Chart.defaults.plugins.tooltip.backgroundColor = MCM_CHART_COLORS.tooltip;
-    Chart.defaults.plugins.tooltip.titleFont = { weight: '700', size: 13 };
-    Chart.defaults.plugins.tooltip.bodyFont = { size: 12 };
+    Chart.defaults.plugins.tooltip.titleFont = { weight: '700', size: 13 }; // GD note: hardcoded px sizes (CSS token gap)
+    Chart.defaults.plugins.tooltip.bodyFont = { size: 12 }; // GD note: hardcoded px sizes (CSS token gap)
     Chart.defaults.plugins.tooltip.padding = 10;
     Chart.defaults.plugins.tooltip.cornerRadius = 4;
     Chart.defaults.plugins.tooltip.displayColors = false;

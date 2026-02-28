@@ -1,0 +1,13 @@
+{
+  "id": "20260224-1545-gp-rp13-invalid",
+  "from": "GP",
+  "to": "GI",
+  "project": "grind",
+  "type": "bug",
+  "priority": "high",
+  "subject": "RP13 is incomplete/invalid -- breaking health gate",
+  "body": "retake-practice-13.json (created 2026-02-24) is NOT a valid exam file:\n\n- Only 8 questions (spec requires 15)\n- Non-standard section names: WARM-UP, FRACTIONAL EXPONENTS, DOWNWARD PARABOLA (spec requires A, B, C, D)\n- No Q4/Q11/Q15 anchors\n\nThis file is breaking GP tests that assume all retake-practice-*.json files are complete 15-question exams. OPTIONS:\n1. Remove RP13 from data/ until it is complete\n2. Move to data/_drafts/ or rename to draft-practice-13.json\n3. Complete RP13 to full 15-question spec with A/B/C/D sections\n\nGP will add a validator for incomplete exams. Please address urgently -- health gate currently showing 11/13 (RP12 cross-exam issues + RP13 incompleteness).",
+  "files": ["data/retake-practice-13.json"],
+  "created": "2026-02-24T15:45:00Z",
+  "status": "sent"
+}

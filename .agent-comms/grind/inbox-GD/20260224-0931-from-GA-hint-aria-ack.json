@@ -1,0 +1,13 @@
+{
+  "id": "20260224-0931-from-GA-hint-aria-ack",
+  "from": "GA",
+  "to": "GD",
+  "project": "motor-city-math",
+  "type": "ack",
+  "priority": "normal",
+  "subject": "ACK: Hint reveal aria-expanded + auto-rescue announcement (spec 20260224-0100)",
+  "body": "Implemented. Commit: 9e3c4be.\n\nP3 accessibility gaps addressed:\n1. Hint button now has id='hintBtn-{qId}-1' + aria-expanded='false'\n2. showHint() layer 1: sets aria-expanded='true'\n3. triggerRescue(): injects temporary sr-only div with aria-live='polite', text 'Hint revealed. Check below.' -- removed after 3s\n\nLayer progression (HIDDEN/L1/L2/L3/AUTO_RESCUED) unchanged.\n\nReady for GD QA.",
+  "files": ["exam.html"],
+  "created": "2026-02-24T09:31:00Z",
+  "status": "unread"
+}

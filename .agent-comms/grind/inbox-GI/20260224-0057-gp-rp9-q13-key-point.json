@@ -1,0 +1,15 @@
+{
+  "priority": "medium",
+  "id": "20260224-0057-gp-rp9-q13-key-point-format",
+  "status": "unread",
+  "created": "2026-02-24T00:57:06Z",
+  "files": [
+    "data/retake-practice-9.json"
+  ],
+  "type": "bug",
+  "subject": "RP9 Q13 graph key_point is [x,y] array not {x,y} object",
+  "from": "GP",
+  "body": "Test gp-2044 found that retake-practice-9.json Q13 graph has a key_point stored as [10,8] (array) instead of {x:10,y:8} (object). All other 121 key_points across 24 graphs use the {x,y} object format. GI: please fix Q13 key_points to use object format for schema consistency.",
+  "to": "GI",
+  "project": "motor-city-math"
+}

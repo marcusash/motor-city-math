@@ -1,0 +1,41 @@
+// rp-question-order-matches-number test
+// Questions should appear in the JSON array in order 1-15
+// Out-of-order questions could confuse rendering logic that assumes array order
+
+const fs = require('fs');
+const path = require('path');
+
+let pass = 0, fail = 0;
+function test(name, result) {
+    if (result) { console.log('  \u2705 ' + name); pass++; }
+    else        { console.log('  \u274c ' + name); fail++; }
+}
+
+console.log('\u{1F3C0} rp-question-order-matches-number.test.js\n');
+
+var dataDir = path.join(__dirname, '../../data');
+var outOfOrder = [], examsChecked = 0;
+
+for (var i = 1; i <= 11; i++) {
+    var f = path.join(dataDir, 'retake-practice-' + i + '.json');
+    if (!fs.existsSync(f)) continue;
+    var rp = JSON.parse(fs.readFileSync(f, 'utf-8'));
+    examsChecked++;
+    var questions = rp.questions || [];
+    for (var n = 0; n < questions.length; n++) {
+        if (questions[n].number !== n + 1) {
+            outOfOrder.push('rp' + i + ': index ' + n + ' has number ' + questions[n].number + ' (expected ' + (n+1) + ')');
+        }
+    }
+}
+
+console.log('\u2500\u2500 Question order checks \u2500\u2500\n');
+if (outOfOrder.length) outOfOrder.slice(0, 5).forEach(function(v) { console.log('  ! ' + v); });
+
+test('All exams checked (' + examsChecked + '/11)', examsChecked === 11);
+test('Question array order matches question numbers', outOfOrder.length === 0);
+
+console.log('\n' + '='.repeat(50));
+console.log('rp-question-order-matches-number: ' + (pass+fail) + ' checks, ' + pass + ' pass, ' + fail + ' fail');
+if (fail === 0) { console.log('PASS'); process.exit(0); }
+else            { console.log('FAIL'); process.exit(1); }

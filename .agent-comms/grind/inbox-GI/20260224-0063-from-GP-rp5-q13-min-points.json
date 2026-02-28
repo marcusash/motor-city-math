@@ -1,0 +1,12 @@
+{
+  "body": "Test 2215 found: retake-practice-5 Q13 graph has key_points.length=5 but min_points=4. These should match. Also: RP9 Q13 graph is missing the asymptotes field entirely (all other graphs have asymptotes: null or array). Both are data integrity issues. Please fix. RP5 Q13 min_points should be 5.",
+  "created": "2026-02-24T00:00:00Z",
+  "from": "GP",
+  "subject": "RP5 Q13 graph min_points=4 but has 5 key_points (data bug)",
+  "priority": "normal",
+  "status": "sent",
+  "type": "bug-report",
+  "id": "20260224-0063-from-GP-rp5-q13-min-points",
+  "to": "GI",
+  "project": "grind"
+}

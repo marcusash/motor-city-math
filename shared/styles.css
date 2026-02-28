@@ -136,6 +136,12 @@ body.arena-mode .saas-grade.g4 { color: var(--color-correct-bg); }
 }
 .timer.warning .timer-value { color: var(--color-warning); }
 .timer.urgent .timer-value { color: var(--color-incorrect); }
+/* GD spec: timer-warning (<=30s amber) and timer-critical (<=10s red + pulse) */
+.timer-warning .timer-value { color: #B45309; }
+.timer-critical .timer-value { color: var(--color-incorrect); animation: timer-pulse 1s ease-in-out infinite; }
+.timer-expired .timer-value { font-weight: 700; letter-spacing: 1px; color: var(--color-incorrect); }
+@keyframes timer-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
+@media (prefers-reduced-motion: reduce) { .timer-critical .timer-value { animation: none; } }
 @keyframes timerPulse {
     0% { transform: scale(1); }
     50% { transform: scale(1.05); }
@@ -166,6 +172,22 @@ body.arena-mode .saas-grade.g4 { color: var(--color-correct-bg); }
 @media (max-width: 768px) { .timer-value { font-size: var(--text-base); } }
 @media print { .timer, .timer-toast, .arena-toggle { display: none !important; } }
 
+/* === Session Restore Toast (GD spec sw-10) === */
+.session-restore-toast {
+    position: fixed; top: 16px; right: 16px; z-index: 200;
+    background: var(--bg-surface, #fff); border: 1px solid var(--border-default, #ccc);
+    border-radius: 8px; padding: 10px 36px 10px 14px;
+    font-size: var(--text-sm); color: var(--text-secondary);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12); max-width: 280px;
+}
+.session-restore-toast--slide { animation: restoreSlideIn 0.2s ease-out; }
+@keyframes restoreSlideIn { from { transform: translateX(110%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+.restore-toast-close {
+    position: absolute; top: 6px; right: 8px;
+    background: none; border: none; cursor: pointer; font-size: var(--text-lg);
+    color: var(--text-secondary); line-height: 1; padding: 2px 4px;
+}
+
 /* === Reset === */
 * {
     margin: 0;
@@ -185,6 +207,25 @@ body.arena-mode .saas-grade.g4 { color: var(--color-correct-bg); }
     white-space: nowrap;
     border: 0;
 }
+
+/* Skip link — hidden by default, visible on keyboard focus */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    padding: 8px 16px;
+    background: var(--accent-blue);
+    color: #FFFFFF;
+    font-size: var(--text-sm);
+    font-weight: 600;
+    text-decoration: none;
+    z-index: 9999;
+    transition: top 0.15s ease;
+}
+.skip-link:focus-visible {
+    top: 0;
+}
+@media (prefers-reduced-motion: reduce) { .skip-link { transition: none; } }
 
 :focus-visible {
     outline: 3px solid var(--accent-blue-on-dark);
@@ -374,6 +415,14 @@ header .date {
 .input-group input.incorrect {
     border-color: var(--accent-red);
     background: var(--color-incorrect-bg);
+}
+
+/* Format hint: per-question type guidance below number/text inputs (GD sw-17) */
+.format-hint {
+    display: block;
+    margin-top: 4px;
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
 }
 
 input, textarea, select {
@@ -1171,4 +1220,22 @@ body.archived::before {
 .hero-greeting {
     text-align: center; font-size: var(--text-lg); font-weight: 600;
     color: var(--text-primary); margin: -12px 0 20px;
+}
+/* === Reduced Motion Sweep (GD spec da-14, WCAG 2.3.3) ===
+ * Disable all transitions for users with prefers-reduced-motion.
+ * Guards for .timer-critical, .skip-link, .grade-a-flash already exist above.
+ */
+@media (prefers-reduced-motion: reduce) {
+  .submit-btn,
+  .nav-btn,
+  .hint-btn,
+  .question-card,
+  .radio-option,
+  .input-group input,
+  .hint-content,
+  .hints-container,
+  .session-restore-toast,
+  .restore-toast-close {
+    transition: none;
+  }
 }

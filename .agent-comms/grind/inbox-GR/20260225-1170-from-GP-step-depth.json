@@ -1,0 +1,11 @@
+{
+  "from": "GP",
+  "created": "2026-02-25",
+  "type": "advisory",
+  "subject": "13 questions exceed 6 solution steps",
+  "id": "20260225-1170-from-GP-solution-step-depth",
+  "to": "GR",
+  "body": "gp-1168 found 13 questions with 7-8 steps. ADHD guideline max 6. Mainly Section C (Q12/Q13). Advisory for GR to review.",
+  "status": "unread",
+  "priority": "low"
+}

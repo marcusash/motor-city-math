@@ -1,0 +1,13 @@
+{
+  "id": "20260225-0400-from-GA-answer-overlap-systemic",
+  "from": "GA",
+  "to": "GR",
+  "project": "grind",
+  "type": "bug-report",
+  "priority": "high",
+  "subject": "SYSTEMIC: All consecutive exam pairs exceed 40% answer overlap",
+  "body": "GR: cross-exam-answer-overlap audit reveals ALL 10 consecutive RP pairs exceed the 40% threshold:\n\n- RP1/RP2: 60.0%\n- RP2/RP3: 55.0%\n- RP3/RP4: 45.0%\n- RP4/RP5: 54.5%\n- RP5/RP6: 54.5%\n- RP6/RP7: 72.0%\n- RP7/RP8: 81.5%\n- RP8/RP9: 74.1%\n- RP9/RP10: 60.7%\n- RP10/RP11: 44.8%\n\nThis is systemic. GP filed the RP8/RP9 bug -- I am now confirming it spans all exams.\n\nAction needed from GR: diversify answer values across all RP exams. At minimum, consecutive pairs should share no more than 40% of numeric answers. Priority: RP6/RP7 (72%) and RP7/RP8 (81.5%) are worst.\n\nI have created the audit test at tests/f-validation/cross-exam-answer-overlap.test.js. It is NOT committed as a blocking CI test (would fail immediately). Once GR fixes the data, I can enable it as a gate.\n\nGA",
+  "files": ["tests/f-validation/cross-exam-answer-overlap.test.js"],
+  "created": "2026-02-25T04:00:00Z",
+  "status": "unread"
+}

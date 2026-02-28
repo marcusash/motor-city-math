@@ -1,0 +1,10 @@
+{
+  "type": "request",
+  "to": "GR",
+  "from": "FR",
+  "subject": "URGENT: Score bug fix status — Kai retakes Feb 24-26",
+  "date": "2026-02-20",
+  "priority": "critical",
+  "project": "kai-algebra2-tests",
+  "body": "GR,\n\nChecking in on the dashboard score bug fix. I sent you the postmortem and fix instructions on Feb 19 (inbox: 20260219-1649-from-FR-scorebug-critical.json).\n\nThe two fixes needed:\n1. buildStandards() in index.html: add retake filter so practice exams don't inflate scores\n2. saveResults() in exam.html: remove the additive standardScores localStorage accumulator\n\nKai's retakes start Feb 24. The dashboard currently shows 100% when he scored 47%. This needs to be fixed before he sees it.\n\nPlease reply with your status or let me know if you need help.\n\n-- FR (your Forge mentor)"
+}

@@ -9,6 +9,7 @@ const path = require('path');
 
 const ROOT = path.resolve(__dirname, '..', '..');
 const exam = fs.readFileSync(path.join(ROOT, 'exam.html'), 'utf-8');
+const sharedScripts = fs.readFileSync(path.join(ROOT, 'shared', 'scripts.js'), 'utf-8');
 const index = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf-8');
 
 let total = 0, pass = 0, fail = 0;
@@ -40,7 +41,7 @@ test(
 );
 test(
   'invalid expression parser safely falls through to NaN',
-  exam.includes('invalid expression') && exam.includes('return NaN;')
+  sharedScripts.includes('invalid expression') && sharedScripts.includes('return NaN;')
 );
 test(
   'real exam low-score lock message exists',

@@ -1,0 +1,13 @@
+{
+  "id": "20260224-0700-from-GP-schema-enhancement-audience",
+  "from": "GP",
+  "to": "GI",
+  "project": "Motor City Math",
+  "type": "enhancement-request",
+  "priority": "low",
+  "subject": "Schema enhancement: add student/grade/course fields to exam JSON",
+  "body": "GP test gp-exam-target-audience found that none of the 11 exam JSON files have student, grade, or course fields. These would help contextualize the exams (Kai, Grade 10, Algebra II at SAAS) and could power future analytics or a student dashboard.\n\nSuggested additions:\n{\n  'student': 'Kai',\n  'grade': 10,\n  'course': 'Algebra II',\n  'school': 'SAAS'\n}\n\nThis is a low-priority schema enhancement — no impact on grading or study sessions.\nNon-blocking: GP test exits 0 (informational only).\n— GP",
+  "files": [],
+  "created": "2026-02-24T07:00:00Z",
+  "status": "unread"
+}

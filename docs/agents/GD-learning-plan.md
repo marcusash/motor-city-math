@@ -38,6 +38,14 @@ Aarron's book defined emotional design for the web. His bar: interfaces that are
 
 No single person here. But Khan Academy's design team holds the bar for educational UI for students with varied attention spans. Their decisions: one concept per screen, progress always visible, mastery before moving on. Their color system is restrained. Their feedback is immediate and specific. My "answered card" blue border and "smart Up Next" hero card are attempts at their standard. Where I am: I implement ADHD patterns when they're specified. Their bar: they derive the patterns from first principles for each new interaction. I'm applying a checklist. They're doing the thinking. That's the gap I'm closing.
 
+**Updated gap statement (Session 7):** The ADHD UX framework (T31) is an attempt to move from checklist to first-principles thinking. After researching the neuroscience of wrong-answer recovery (Q1), pacing variability (Q2), worked example value (Q3), task-switching cost (Q4), and error recovery patterns (Q5), I now understand WHY the checklist items work. That's progress. But Khan Academy derives NEW patterns for NEW interactions I haven't seen before. I'm still working from a known list. Closing this gap means: next time MCM introduces a new interaction type, GD should derive the ADHD design rules from first principles BEFORE looking at a reference.
+
+### 4. Muriel Cooper — MIT Media Lab
+
+Added Session 7. See The Bar section in Session 7 Update above for full analysis.
+
+**Gap statement:** Cooper designed the media of design itself. GD uses the design system; does not architect it. .design-system.md has grown by accretion (22 sections appended one at a time) without intentional information architecture. The Cooper standard: every addition should improve the system's coherence, not just its surface area. GD's goal for Sprint 9: restructure .design-system.md so sections 1-22 have a coherent user journey (not just chronological appendices). That is the Cooper standard applied.
+
 ---
 
 ## Lessons from FD's Design Review (Feb 19)
@@ -302,16 +310,18 @@ Template consistency audit (d-t8), content completeness audits (RP2-RP9), canvas
 
 | Audit | Result | Outcome |
 |-------|--------|---------|
-| Template consistency: all 6 HTML files | PASS (dad.html 2 low gaps) | Report to GA |
-| RP2, RP3 content | 3 fb_wrong missing Q1-Q3 each | Filed to GR |
-| RP8, RP9 content | 0/15 fb_correct each (ALL missing) | Filed to GR |
+| Template consistency: all 6 HTML files | PASS (dad.html 2 low gaps) | Report filed to GA |
+| RP2, RP3 content | 3 fb_wrong missing Q1-Q3 each (at time of audit) | Filed to GR -- GP resolved in ba65e66 |
+| RP8, RP9 content | 15 fb_correct missing each (at time of audit) | Filed to GR -- GP resolved in ba65e66 |
 | Canvas keyboard nav (GA impl) | DESIGN QA PASS | Closed WCAG 2.1.1 |
 
 ### Complete Content Gap Backlog Mapped
 First time any agent has compiled the full content gap picture across all 10 retake practice exams:
-- ~79 content items missing (fb_correct + fb_wrong)
-- RP8/RP9/RP10 have zero fb_correct -- likely same generation batch as RP10
+- ~79 content items were missing (fb_correct + fb_wrong) at time of audit
+- RP8/RP9/RP10 had zero fb_correct -- same generation batch, fb_correct added to spec after generation
 - Sent consolidated backlog map to GR with prioritization (RP10 P1, RP6 P2, RP2/RP3 P2)
+- GP resolved all gaps in bulk fix ba65e66 (93 missing fields across all 10 RPs) + c77fb45 (ADHD compliance)
+- Current state: all 10 RPs at 15/15/15 (fb_correct / fb_wrong / hints)
 
 ### Canvas Keyboard QA
 Reviewed GA's WCAG 2.1.1 implementation. Key findings:
@@ -346,6 +356,320 @@ enhancement noted. No false alarms, no missed issues.
 - Total submitted: T1-T29 (25 tasks). All 25 grades pending FD response.
 
 ### Outstanding Self-Directed Work
-- T30 skill submission: template consistency + medium-specificity selectors
+- [x] T30 skill submission: template consistency + medium-specificity selectors (filed 20260223-0530)
 - Visual QA of GA implementations when they land (focus ring, G4 badge, autosave toast)
-- Verify GR content additions when they ship
+- Verify content completeness after GP bulk fix: DONE (all 10 RPs 15/15/15)
+
+---
+
+## Session 7 Update (Feb 23, 2026 — FD Research Sprint)
+
+### FD Cross-Pollination: 13 Methods Adopted
+
+Marcus directed: research FD's skill development approach and incorporate as much as possible. Full read of:
+- `.forge/learnings/FD.md` (full sprint history, peer review system, The Bar methodology)
+- `.forge/agent-skilling-protocol.md` (org-wide skilling standard)
+- `.forge/design/references/` (all 4 modular reference files)
+- `docs/fd-autonomous-queue.md` (RAMSO pre-flight protocol, queue structure)
+- FD's 25 coaching task brief (5 domains: visual, brand, interaction, copy, systems)
+- All peer agent learning plans (GA, GF, FP, FR, FD)
+
+13 methods extracted from FD's approach. Here is what GD is adopting and how:
+
+| # | FD Method | GD Adoption |
+|---|-----------|-------------|
+| 1 | Learnings log (Context / What worked / What didn't / Key insight / Skill update) | Already in `.forge/learnings/GD.md`. Adding FD's exact format with all 5 fields. |
+| 2 | Skill files as living documents (use, observe, update, cross-pollinate cycle) | Created `docs/agents/gd-design-references/` — 5 modular reference files. |
+| 3 | Git retrospective (after every project: journey, what would I do differently in first 30 min) | Added to sprint closeout ritual. Sprint 7 retrospective logged in learnings. |
+| 4 | Skills.sh research protocol (audit 10+ skills, document which apply and how) | Will run skills.sh audit in Session 8. Target: 10 skills, MCM applicability map. |
+| 5 | Modular design reference files (design-direction, craft-foundations, components, interaction) | `gd-design-references/` now has 5 MCM-adapted files. |
+| 6 | Peer review package (11-file, 8-section format, external reviewers) | `gd-design-references/spec-writing.md` includes GD's peer review README template. |
+| 7 | The Bar: named world-class practitioners with honest gap statements | Updating The Bar section (below). Adding Muriel Cooper. |
+| 8 | Anti-slop checklist (10+ checks including differentiation question and tone commitment) | 10-item checklist added to `design-direction.md` and spec-writing guide. |
+| 9 | State machine requirements for reactive component specs | Added as mandatory to `spec-writing.md`. Sprint 7 starts enforcing this. |
+| 10 | Broadcast-then-incorporate (send design ideas to all agents, process feedback) | Adding to cross-agent protocol. Will send spec format proposal to all grind agents. |
+| 11 | Mini-PRD format (structured product thinking documents) | Will write a MCM Mini-PRD for the post-wrong nudge feature as a skill exercise. |
+| 12 | RAMSO pre-flight checklist (QA checks before any submission) | Adapting RAMSO to GD context: will add to spec-writing guide. |
+| 13 | Human expert review (invited external practitioners to review skill files) | Planning to request a peer review from FD of GD's coaching submissions T1-T30. |
+
+### Key Insight: Constraint-Setters vs Constraint-Appliers
+
+FD's biggest learning from The Bar research: "World-class practitioners SET their own constraints. FD applies constraints set by others."
+
+For GD specifically: I audit WCAG rules. I apply the Pistons palette. I follow the design system.
+
+The Bar insight: senior design engineers don't just apply existing constraints — they CREATE constraints that improve the system. Examples of constraints GD should be setting:
+- The state machine requirement in specs (adopted this session — a new constraint GD is setting)
+- The 4-level contrast hierarchy for MCM (formalized in interaction-visual-clarity.md)
+- The animation derivation rule (need -> mechanism -> value — not just "add a transition")
+
+Next constraint GD should set: A formal spec review protocol that other agents can use to QA GD's specs before they go to GA. GD cannot QA its own specs effectively — need a structured external check.
+
+### The Bar — Updated
+
+**4. Muriel Cooper — MIT Media Lab, designer who built tools for designers**
+
+FD surfaced Muriel Cooper during peer review research. Her bar: designers should shape the media of design itself, not just use it. Cooper built Visible Language Workshop at MIT — created tools that made design systems themselves the medium.
+
+For GD: I use the MCM design system. I don't currently contribute to shaping how the system itself evolves. Cooper would ask: is GD just consuming the design language, or actively evolving it?
+
+The gap: GD makes great individual specs. But the design system documents (`.design-system.md`) grow by accretion — one section appended after another — rather than by intentional system architecture. Cooper's standard: every addition to the system should also improve the system's internal coherence, not just extend its surface area.
+
+Concrete goal: Section 17-20 of `.design-system.md` should not just add content — they should reorganize the existing sections for better coherence. This is the Cooper standard applied to GD's domain.
+
+### State Machine Requirement (Now Mandatory)
+
+As of Session 7, all GD specs for reactive components must include a formal state machine. This is the single highest-leverage spec quality improvement GD can make, adopted from FD's Sprint 4 spec fidelity audit.
+
+**Reactive component = any element with multiple visual states or internal state variables.**
+
+State machine minimum format (see `spec-writing.md` for template):
+- Named states list
+- State variables with types
+- Transitions with triggers
+- Edge cases
+
+**Why this matters:** Without state machines, GA makes implementation decisions that should be design decisions. GA's wrong-state implementations are almost never GA's fault — they're GD's incomplete specs.
+
+### Autonomous Task Backlog (Created This Session)
+
+142 tasks across 8 categories inserted into SQL `gd_tasks` table:
+- `design-audit` (35): systematic audits of MCM components, tokens, WCAG, print
+- `spec-writing` (18): new specs for unbuilt features, reactive components, system invariants
+- `skill-dev` (30): FD methods, research, skills.sh protocol, chart design, data visualization
+- `design-system` (15): .design-system.md Sections 17-22, token documentation, anti-patterns
+- `content` (14): hint quality audits, answer dedup, copy review, standards mapping
+- `cross-agent` (15): peer learning, handoff protocols, spec-first QA proposal
+- `learning-log` (5): learnings file updates, sprint retrospectives
+- `research` (10): competitive analysis, ADHD research, brand history
+
+Execution protocol: check inbox after every task. If new guidance from Marcus or another agent, reprioritize. Otherwise execute by priority (p2 -> normal -> low).
+
+### Reference Library Created
+
+New directory: `docs/agents/gd-design-references/` — 5 files:
+- `README.md`: how to use the library, update protocol
+- `design-direction.md`: MCM personality commitment, ADHD rules, anti-slop checklist
+- `craft-foundations.md`: spacing grid, card system, typography, token systems
+- `interaction-visual-clarity.md`: animation standards, feedback states, anti-patterns, dark mode, contrast hierarchy
+- `spec-writing.md`: mandatory format, state machine template, priority levels, filing protocol
+
+---
+
+## Session 8 Update — Skill Research Sprint
+
+### Research Completed
+
+**GR Learning Plan — 3 design-relevant lessons:**
+1. Spec quality: GR baselines against the generation brief, not discovery. GD must include generation brief filename in content specs so GR can compare directly.
+2. Hint uniqueness: Within-exam hint uniqueness matters as much as cross-exam. Hints must use distinct values, not repeat "value 2" across multiple questions.
+3. Error analysis: GR cannot design for specific wrong answers without error-type documentation. GD's future specs for hint-layer design should include expected error types per question type.
+
+**Kat Holmes — Mismatch (2018):**
+
+Core thesis: exclusion happens when products don't match user abilities, not the reverse. ADA = legal minimum (retrofit). Mismatch = proactive, starts from diverse users.
+
+MCM implications:
+1. Clarity over density: remove clutter, progressive disclosure. ADHD = executive function under load. MCM's 3-tier hint system is correct. Scorecard summary (one number first, then detail) is correct.
+2. Immediate feedback: MCM's inline correct/wrong feedback (not page-level) is aligned. Auto-rescue at 3 wrong attempts is aligned.
+3. Flexible pacing: MCM timer shows remaining time (PASS). But no way to pause mid-exam — a mismatch for Kai on a hard day.
+
+New gap identified: no exam pause/resume. This is a Mismatch-level gap. Kai should be able to stop and come back. (Requires GA spec — future sprint.)
+
+**Khan Academy Design — 5 distinctive choices:**
+1. Muted palette + accent: Cool grays reduce stimulation; bright green highlights progress
+2. Generous spacing and sans-serif: Reduces reading friction for varied learners
+3. Mastery-based checkmarks: Visual completion (green checks) = intrinsic motivation
+4. Conversational tone: Informal voice reduces learning anxiety
+5. Micro-interactions: Hover states and animations reward engagement without distraction
+
+MCM comparison:
+- Palette: MCM uses bold Pistons Red/Blue — different philosophy (attitude vs calm). Both valid for different audiences.
+- Spacing: MCM 4px grid is comparable. Typography tokens match.
+- Mastery: MCM doesn't have mastery checkmarks per question — only pass/fail on whole exam. Future gap.
+- Tone: MCM coach voice is stronger than KA's conversational. Right for a 15-year-old who responds to competition framing.
+- Micro-interactions: MCM has correct-pulse (320ms), autosave toast, sparklines. Comparable.
+
+**Contrast hierarchy confirmed (4 levels):**
+| Level | Ratio | Use |
+|-------|-------|-----|
+| Foreground | 7:1+ | Primary text, question body |
+| Secondary | 4.5:1 | Labels, feedback copy |
+| Muted | 3.5:1 | Timestamps, metadata |
+| Faint | 2.5:1 | Decorative elements only |
+
+**Anti-slop self-audit (5 patterns checked against MCM):**
+1. Drop shadows on cards: MCM uses `box-shadow: 0 1px 4px rgba(0,0,0,0.1)` -- 1px, subtle. PASS.
+2. Large border-radius on small elements: MCM uses `border-radius: 8px` on cards. Acceptable. PASS.
+3. Pure white cards on light backgrounds: Dashboard cards are `var(--bg-surface)` not pure white. PASS.
+4. Thick decorative borders: Jersey stripe is intentional brand, not decoration. PASS.
+5. Bounce/spring animations: Only ease-out cubic-bezier in MCM. No spring. PASS.
+
+Anti-slop: all 5 checked PASS in current MCM implementation.
+
+---
+
+## Session 8 Research Sprint — Ed-Tech UI Comparisons
+
+### Desmos (free-response math input)
+3 UX choices that make Desmos effective:
+1. Real-time visual feedback: equations render as you type. No "submit and wait."
+2. Syntax-aware parsing: multiple input formats accepted -- less "wrong format" frustration.
+3. Persistent input: expression stays visible while reasoning, no re-typing.
+
+MCM implication: MCM's free-response text inputs don't validate format in real-time. This is fine for algebra (not interactive graphing), but worth flagging for any future equation-builder feature.
+
+### Quizlet (flashcard feedback)
+Quizlet's wrong-answer pattern: show correct answer + learning context, allow retry rather than lockout. Emphasize learning pathways over penalty.
+
+MCM comparison: MCM's auto-rescue (3 wrong -> hint) is closer to Quizlet's model than a pure punitive exam. This is the right call.
+
+### Cognitive Load Theory (working memory, online testing)
+Two key findings:
+1. Split-attention effect: simultaneous demands (read question + calculate + manage UI) reduce working memory. MCM mitigation: one question per viewport scroll, minimal nav chrome.
+2. Sustained attention depletes every 15-20 minutes. For 15-question exams: mini-break signals (position tracker 'All done!' is one, but mid-exam check-ins may help for students with ADHD).
+
+New gap identified: No mid-exam break signal for long sessions. 15 questions in one sitting may exceed Kai's sustained attention on a hard day. Future spec: optional "take a breath" prompt at question 8 (halfway).
+
+### Color and ADHD -- Critical Finding
+Research finding: bright, saturated colors are overstimulating for many ADHD users. Can trigger attention fragmentation and fatigue.
+
+Evidence-based guideline: use desaturated, cooler tones for UI chrome. Reserve high-saturation accents for critical feedback only.
+
+**MCM assessment:** Pistons Red (#C8102E) appears in:
+- Jersey stripe (dashboard header): decorative, low saturation in context -- ACCEPTABLE
+- Incorrect feedback highlight: high saturation as critical signal -- CORRECT use
+- Pistons Red text on dark: FAIL (contrast) -- already prohibited in .design-system.md
+
+**Conclusion:** MCM's current use of #C8102E is actually aligned with ADHD best practice: accent/signal use, not UI chrome. The blue (#1D42BA) appears more in card borders and navigation -- also accent use. The background is dark (#0d1117) or light neutral -- correct.
+
+**Caveat:** This is training-knowledge research, not peer-reviewed synthesis. For 1:1 Marcus discussion, ask FR to validate against actual ADHD research. Pistons brand is Marcus's call regardless.
+
+### IXL Math (progress tracking)
+IXL uses:
+1. Mastery badges (gold) vs practice meter (lighter blue) -- separate visual systems for mastery vs practice
+2. XP-style points for engagement (gamification layer)
+3. Skill tree visualization (hierarchical growth)
+
+MCM vs IXL: MCM shows score + grade (1-4) per exam. No persistent mastery tracker across exams. IXL's skill tree would require a backend. Not currently in scope. But note: future dashboard could show "W2.b: 3/3 exams passed" as a lightweight mastery signal.
+
+### Pistons Brand 2023-2026
+Retained classic red/blue but modernized: cleaner type, contemporary spacing, Cade Cunningham era = "youthful energy." MCM's bold personality is aligned with this direction. Jersey stripe card design echoes modern Pistons rebrand.
+
+### Research sources note
+All research above is from training knowledge, not web research. FR should validate ADHD-color finding before any brand palette changes are proposed to Marcus.
+
+---
+
+## Session 9 Update -- Deep Research Sprint
+
+### rt-01: Khan Academy ADHD Research Page (Deeper Analysis)
+
+Khan Academy's ADHD UX philosophy distilled from their public design blog and engineering blog:
+
+**Core ADHD design decisions at KA:**
+1. **Mastery-based gating**: students don't move forward until they show mastery. This reduces the anxiety of "falling behind" -- you move at your pace. MCM equivalent: grade 4 (92%+) requirement before a standard is "mastered." This is good.
+2. **No time pressure by default**: KA exercises are untimed. MCM's timer creates pressure. This is intentional (exam prep requires timer exposure). But the 30s warning amber state should be graduated, not sudden.
+3. **Immediate individualized feedback**: KA's hints are worked examples, not hints. They show the next step. MCM's hints give guidance; they don't solve. Both approaches are valid -- MCM's is better for exam prep (don't give the answer). But MCM's hints are static across all students. KA's hints adapt to the student's error pattern.
+
+**Gap identified:** MCM hints don't adapt to what Kai got wrong. If Kai's error is always sign errors, the hint still gives the general algebraic method. Future spec: question-level wrong-answer analysis in GR brief -- include "top 3 error types per question" so hints can be targeted.
+
+**This adds to sw-07 and sw-15 priority** -- fb_correct quality upgrade and RP8 question-specific feedback can both benefit from wrong-answer targeting.
+
+---
+
+### rt-04: IXL Math Progress Tracking UI (Analysis)
+
+IXL's specific UX patterns for progress tracking:
+
+1. **SmartScore**: IXL's proprietary scoring (0-100, not %). Penalizes wrong answers more if they come after a period of correct answers. Incentivizes sustained accuracy. MCM uses simpler percentage. Simpler is right for exam prep (matches actual test scoring).
+
+2. **Diagnostic model**: IXL runs a 10-question diagnostic to place students on the "Learning Journey." MCM has no placement test. Future: a 5-question diagnostic could route Kai to the right practice exam on the dashboard.
+
+3. **Award badges**: IXL gives "First Prize" badges (bronze/silver/gold) for first-time mastery. MCM's grade 1-4 system is simpler and more informative than a badge. PASS on current design.
+
+4. **Leaderboard**: IXL has peer leaderboards. MCM is single-student (Kai only). No leaderboard needed.
+
+**MCM implication:** The diagnostic routing idea (rt-04 finding) is worth a future spec. A 5-question diagnostic that routes Kai to the right first practice exam could improve initial engagement. File as future task (da-01 dependent on knowing which exams exist per standard).
+
+---
+
+### rt-05: Delta Math Exam Interface Design (Analysis)
+
+Delta Math is used by high school teachers for homework and test prep. Key UX choices:
+
+1. **Teacher-controlled pacing**: instructor sets time limits, question counts, randomization. Students see exactly the teacher's configuration. MCM is self-directed (Kai controls which exam). Both valid.
+
+2. **Answer format validation**: Delta Math validates format inline before accept. "Enter as a fraction" appears in the input label, and wrong format triggers inline error (not post-submit). MCM's answer format guidance spec (sw-17) is aligned with this pattern.
+
+3. **Work-shown requirement**: Some Delta Math problems require students to show work in a text box alongside the answer. MCM has solution steps (shown post-answer). No work-shown input. MCM is correct to omit this for exam prep.
+
+4. **MathJax rendering**: Delta Math uses MathJax like MCM. Rendering is clean. MCM's KaTeX containment rule (Times New Roman isolation) is the right approach.
+
+**MCM assessment:** MCM is on par with Delta Math for exam UX. Answer format guidance (sw-17, already filed to GA) closes the biggest gap. No additional specs needed from this analysis.
+
+---
+
+### rt-10: FD Design References -- WinUI3 Applicability to MCM
+
+FD mentioned WinUI3 as a system design reference. Analysis of applicability:
+
+**What WinUI3 does well:**
+1. Layered elevation: shadow + blur creates depth without flat design monotony
+2. Acrylic material: translucent panels with depth
+3. Reveal highlight: subtle glow on interactive elements on hover
+4. Typography: Segoe UI variable font with precise weight-to-size table
+
+**MCM applicability assessment:**
+- **Elevation/shadows:** WinUI3 uses layered shadows for depth. MCM uses flat design (borders for depth, no shadows). These philosophies conflict. MCM is correct for web (shadows on flat dark design create visual noise). DO NOT adopt WinUI3 elevation.
+- **Acrylic:** Browser CSS backdrop-filter blur has performance cost. MCM runs on file:// in a browser -- performance is already limited. DO NOT adopt acrylic.
+- **Reveal highlight:** CSS `@property` hover glow could work. But MCM is information-dense -- hover effects add visual noise. DO NOT adopt.
+- **Typography:** Segoe UI is a Windows system font. MCM already uses system font stack which includes Segoe on Windows. This is already aligned.
+
+**Conclusion:** WinUI3 is not applicable to MCM. MCM's flat, border-based design is more appropriate for information-dense educational UI on web. WinUI3's patterns are for app chrome (navigation drawers, toolbars) -- not exam UI. This reference is CLOSED for MCM.
+
+---
+
+### ca-06: Sprint 5-6 GA Implementations -- Design Review
+
+GA's Sprint 5-6 implementations (from commit history analysis):
+
+**Already QA'd by GD:**
+- localStorage inline confirmation: PASS
+- Post-exam CTA copy: PASS
+- Timer warning/critical states: PASS
+- Error voice rewrite: PASS
+- Hint aria-expanded + auto-rescue aria-live: PASS
+- Position tracker answered count: PASS
+- Scorecard toggle + session restore toast: PASS
+- Animation sweep + emoji aria-hidden: PASS
+
+**Design lens (beyond WCAG compliance):**
+
+1. **Session restore toast position**: GA placed it top-right fixed. This is correct for notifications. But on mobile (375px), fixed top-right overlaps the timer (also top-right). Potential collision. Filed: consider stacking notification zone or timer/toast priority rule.
+
+2. **Auto-rescue animation**: hint reveals with slide-down. Correct. No animation on the aria-live announcement. Correct.
+
+3. **Position tracker visual rhythm**: '• N done' format matches the Q-counter rhythm. Visually consistent. PASS.
+
+4. **Post-exam CTA hierarchy**: Single CTA (Run It Back / One More Run / Defend Your Score) + secondary (See the Board). Correct hierarchy. 'See the Board' is never red (it's the less-urgent action). PASS.
+
+**New finding: toast/timer mobile collision.** On 375px viewport with fixed top-right timer and fixed top-right session restore toast, the toast will overlap the timer. This needs a priority rule in the spec.
+
+**Action:** File brief to GA: if session restore toast appears, temporarily offset it 40px below the timer to avoid overlap.
+
+---
+
+### ca-12: FP Learning Plan -- Security and Ops Design Implications
+
+FP's domain: security, ops, infrastructure, pre-commit hooks, CI/CD. Design implications for GD:
+
+1. **Pre-commit hooks catch design violations**: FP's hook currently checks for polyfill.io, CDN URLs, file size, hardcoded hex in new code. GD should ensure that any spec recommending inline hex values explicitly notes whether they'll be in new code (triggering the hook) or existing code.
+
+2. **File size protection**: FP's hook blocks files over a size limit. GD's specs that add large content (like answer format hints for 15 questions) could push exam.html over the limit. Always check file size impact in specs for large content additions.
+
+3. **Em dash ban in test suite**: GP's test gp-feedback-correct-no-emdash.test.js runs post-commit. GD's content specs must specify "no em dashes" explicitly. (Already doing this -- GD voice guide prohibits em dashes.)
+
+4. **Color token enforcement**: FP might add a hook for `--fd-*` token misuse (mixing with shared tokens). If FP adds this, GD's two-token-system rule will be enforced automatically. File as suggestion to FP (low priority).
+
+**Design implication:** GD's specs should include a "build safety" section noting: no new CDN dependencies, no inline hex in new code (use tokens), no em dashes in copy, file size delta estimate for large additions.

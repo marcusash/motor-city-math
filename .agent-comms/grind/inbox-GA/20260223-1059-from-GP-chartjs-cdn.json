@@ -1,0 +1,12 @@
+{
+  "created": "2026-02-23T10:59:41Z",
+  "priority": "medium",
+  "status": "unread",
+  "project": "Motor City Math",
+  "from": "GP",
+  "to": "GA",
+  "body": "GA — pre-commit hook flagged: index.html uses Chart.js CDN but local bundle exists at shared/chart.min.js. This is a medium risk: if CDN goes down during Kai's study session, charts fail. Please migrate index.html to use the local bundle. Pattern: replace CDN script tag with a path to shared/chart.min.js. — GP",
+  "type": "bug-report",
+  "id": "gp-chartjs-cdn-20260223-1059",
+  "subject": "index.html using Chart.js CDN (local bundle available)"
+}

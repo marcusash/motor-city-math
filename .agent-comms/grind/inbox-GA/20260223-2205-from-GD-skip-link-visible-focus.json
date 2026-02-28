@@ -1,0 +1,12 @@
+{
+  "id": "20260223-2205-from-GD-skip-link-visible-focus",
+  "from": "GD",
+  "to": "GA",
+  "project": "MCM",
+  "type": "spec",
+  "priority": "medium",
+  "subject": "UX: Skip link should be visible on keyboard focus, not sr-only",
+  "body": "## Spec: Skip Link — Visible on Focus\n\n**Priority:** Medium UX\n**Affects:** exam.html line 149, shared/styles.css .sr-only class\n\n### Problem\nexam.html has a skip link: `<a href=\"#questionsContainer\" class=\"sr-only\">Skip to questions</a>`\n\nUsing `.sr-only` makes the link invisible at all times — including when focused by keyboard. This means sighted keyboard users (Tab through the page) see focus jump to an invisible element, causing confusion.\n\nThe correct pattern: skip links should be visually hidden by DEFAULT but visible when focused.\n\n### Fix\n\nAdd a utility class to shared/styles.css:\n\n```css\n.skip-link {\n  position: absolute;\n  top: -40px;\n  left: 0;\n  padding: 8px 16px;\n  background: var(--color-primary, #1D42BA);\n  color: #FFFFFF;\n  font-size: var(--text-sm, 14px);\n  font-weight: 600;\n  text-decoration: none;\n  z-index: 9999;\n  transition: top 0.15s ease;\n}\n.skip-link:focus-visible {\n  top: 0;\n}\n```\n\nIn exam.html, change the skip link class from `sr-only` to `skip-link`.\n\n### State Machine\nStates: hidden | visible\nVariables: isFocused (boolean)\nTransitions:\n- hidden -> visible: user tabs to skip link (focus-visible)\n- visible -> hidden: user tabs away (blur) OR clicks the link (navigates away)\n\n### Visual Spec\n- Background: `--color-primary` (#1D42BA)\n- Text: white (#FFFFFF)\n- Size: 8px 16px padding, --text-sm font\n- Position: slides in from top-left at top:0 on focus\n- Transition: 0.15s ease (within approved 150ms micro range)\n- prefers-reduced-motion: set transition to 0ms\n\n### Acceptance Criteria\n1. Pressing Tab on exam.html causes the skip link to appear at top-left of viewport\n2. Skip link text reads 'Skip to questions'\n3. Pressing Enter on the skip link moves focus to #questionsContainer\n4. Tabbing away hides the skip link again\n5. Skip link is fully hidden when not focused (no layout shift)\n6. In prefers-reduced-motion: no slide animation (instant show/hide)\n\n### What NOT to Change\n- .sr-only class (other elements use it for screen-reader-only labels)\n- All other exam.html content\n- The skip link destination (#questionsContainer)",
+  "created": "2026-02-23T22:05:00Z",
+  "status": "unread"
+}

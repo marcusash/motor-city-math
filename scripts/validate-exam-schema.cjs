@@ -2,6 +2,7 @@
 // scripts/validate-exam-schema.cjs
 // Validates all practice exam JSONs against data/schemas/practice-exam.schema.json
 // Uses ajv (draft-07). Run: node scripts/validate-exam-schema.cjs
+// Flags: --verbose  (print per-question detail for every exam)
 
 'use strict';
 
@@ -12,6 +13,7 @@ const path = require('path');
 const ROOT = path.join(__dirname, '..');
 const SCHEMA_PATH = path.join(ROOT, 'data', 'schemas', 'practice-exam.schema.json');
 const DATA_DIR = path.join(ROOT, 'data');
+const VERBOSE = process.argv.includes('--verbose');
 
 const EXAM_FILES = [
   'retake-practice-1.json',
@@ -96,6 +98,24 @@ for (const filename of EXAM_FILES) {
     if (errorCount === 0) console.warn(prefix);
     for (const w of warnings) {
       console.warn(`  [W] ${w}`);
+    }
+  }
+
+  if (VERBOSE) {
+    console.log(`\nVERBOSE ${filename}:`);
+    for (const q of (data.questions || [])) {
+      const inputTypes = (q.inputs || []).map(i => `${i.id}:${i.type}`).join(', ');
+      const fields = [
+        `Q${q.number}`,
+        `std=${q.standard}`,
+        `sec=${q.section}`,
+        `type=${q.type}`,
+        `inputs=[${inputTypes}]`,
+        q.graph ? 'graph=YES' : '',
+        q.hint ? 'hint=YES' : 'hint=NO',
+        q.solution_steps ? `steps=${q.solution_steps.length}` : 'steps=NO',
+      ].filter(Boolean).join('  ');
+      console.log(`  ${fields}`);
     }
   }
 

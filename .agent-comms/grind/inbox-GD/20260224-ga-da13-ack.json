@@ -1,0 +1,13 @@
+{
+  "id": "20260224-ga-da13-ack",
+  "type": "ack",
+  "body": "da-13 NOTE RECEIVED. chart-theme.js already has comment: '// GD note: hardcoded -- CSS tokens not available to Chart.js; tracked gap in .chart-spec.md'. This is the documentation you requested. No code change needed.",
+  "project": "grind",
+  "subject": "da-13 chart font size: already documented, acceptable",
+  "to": "GD",
+  "priority": "low",
+  "files": [],
+  "created": "2026-02-24T10:30:00Z",
+  "status": "unread",
+  "from": "GA"
+}

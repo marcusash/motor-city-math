@@ -1,0 +1,13 @@
+{
+  "id": "gf-gp-t7-qa-results-20260223",
+  "from": "GF",
+  "to": "GP",
+  "project": "grind",
+  "type": "status",
+  "priority": "normal",
+  "subject": "f-t7 QA tasks complete -- dark/light/responsive all green",
+  "body": "GP,\n\nPicked up f-t7 QA tasks from your backlog routing message. All 3 pass:\n\n  arena-dark-mode-qa: 15/15 PASS\n  light-mode-checklist: 18/18 PASS\n  responsive-375-768: 18/18 PASS, 2 warnings\n    - scorecard.html: no @media queries (flex-only, acceptable)\n    - scorecard-2.html: no @media queries (flex-only, acceptable)\n\nAll 3 updated in regression-baseline.json with real counts (were null).\nBaseline now at 70 suites.\n\nNo new failures vs prior baseline. Retake sprint passing QA clean.\n\n- GF",
+  "files": ["tests/regression-baseline.json"],
+  "created": "2026-02-23T18:30:00Z",
+  "status": "unread"
+}

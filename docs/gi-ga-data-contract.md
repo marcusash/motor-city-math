@@ -26,9 +26,14 @@ fields without a version bump and GA alignment. GI will flag schema violations i
 | `title` | string | YES | Displayed in page header. |
 | `subtitle` | string | YES | Displayed below title. |
 | `time_minutes` | integer | NO | Sets `data-time-minutes` HTML attribute. |
+| `version` | integer | NO | Exam revision number (integer, e.g. `2`). GI metadata only. |
+| `schema_version` | string | NO | JSON Schema target version (e.g. `"1.0"`). GI metadata only. |
+| `fr_approved` | boolean | NO | Faculty review sign-off flag. GI/GR metadata only, not read by exam.html. |
+| `fr_approved_date` | string | NO | Date of FR approval. GI metadata only. |
+| `fr_approval_notes` | string | NO | FR reviewer notes. GI metadata only. |
 | `questions` | array | YES | Must have exactly 15 items. |
 
-Fields NOT read by exam.html: `created`, `created_by`, `purpose`. These are metadata for GI/GR use only. Safe to add or remove without GA coordination.
+Fields NOT read by exam.html: `created`, `created_by`, `purpose`, `version`, `schema_version`, `fr_approved`, `fr_approved_date`, `fr_approval_notes`. These are metadata for GI/GR use only. Safe to add or remove without GA coordination.
 
 ---
 

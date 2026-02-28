@@ -50,7 +50,7 @@
       "feedback_correct": "🔥 Exponential parent. Same-base method for the intercept.",
       "feedback_wrong_parent": "Is the variable in the base or the exponent? Exponent = exponential parent.",
       "feedback_wrong_intercepts": "Set f(x)=0. Rewrite 8 as a power of 2.",
-      "feedback_wrong": "Check your setup. Re-read the question and try again."
+      "feedback_wrong": "Parent: exponential. Set 2^(x-1)=8=2^3 → x-1=3 → x=4."
     },
     {
       "id": "rp5-q2",
@@ -90,7 +90,7 @@
         }
       ],
       "plus_minus": true,
-      "hint": "Set f(x)=0. Isolate the squared term — watch the sign when you divide by -3.",
+      "hint": "Set f(x)=0. Isolate the squared term : watch the sign when you divide by -3.",
       "solution_steps": [
         "Parent: highest power is 2 → quadratic.",
         "Set 0 = -3(x+2)² + 48 → -3(x+2)² = -48.",
@@ -102,7 +102,7 @@
       "feedback_correct": "🔥 Quadratic. Dividing by -3 correctly and applying ±√.",
       "feedback_wrong_parent": "Highest power is 2 → quadratic.",
       "feedback_wrong_intercepts": "Divide both sides by -3 first. Then take ±√4 = ±2.",
-      "feedback_wrong": "Check your setup. Re-read the question and try again."
+      "feedback_wrong": "Opens down. Set -3(x+2)^2=-48 → (x+2)^2=16 → x+2=±4."
     },
     {
       "id": "rp5-q3",
@@ -174,12 +174,12 @@
         "Set |4x+12| = 8. Two cases:",
         "Case 1: 4x+12 = 8 → 4x = -4 → x = -1.",
         "Case 2: 4x+12 = -8 → 4x = -20 → x = -5.",
-        "Both intercepts are negative — both branches land left of the y-axis.",
+        "Both intercepts are negative : both branches land left of the y-axis.",
         "Check: |4(-1)+12|-8 = |8|-8 = 0 ✓.  |4(-5)+12|-8 = |-8|-8 = 0 ✓"
       ],
-      "feedback_correct": "🔥 a=4 and both intercepts. The two-case split is the core skill.",
+      "feedback_correct": "🔥 Both intercepts from two-case split.",
       "feedback_wrong_parent": "The | | symbols define absolute value.",
-      "feedback_wrong": "After two cases, divide by 4 in each. x = -1 and."
+      "feedback_wrong": "Two cases, then divide by 4. x=-1 and x=7."
     },
     {
       "id": "rp5-q4",
@@ -243,7 +243,7 @@
         "Check x=1/3: 3(1/9)-7(1/3)+2 = 1/3-7/3+6/3 = 0 ✓"
       ],
       "feedback_correct": "🔥 AC method with a=3. Non-monic solved.",
-      "feedback_wrong": "Leading coefficient is 3 — can't factor like a monic. Use AC:."
+      "feedback_wrong": "Leading coefficient 3 : use AC method."
     },
     {
       "id": "rp5-q6",
@@ -297,7 +297,7 @@
         "Check: 4^(5.25) = 2^(10.5).  8^(3.5) = 2^(10.5). ✓"
       ],
       "feedback_correct": "🔥 Both sides to base 2. x=9/4.",
-      "feedback_wrong": "Both 4 and 8 are powers of 2. Convert both, then set."
+      "feedback_wrong": "4=2^2, 8=2^3. Convert to base 2 and set exponents equal."
     },
     {
       "id": "rp5-q8",
@@ -350,11 +350,11 @@
         "Rearrange: x² - 9x + 14 = 0.",
         "Factor: (x-7)(x-2) = 0 → x = 7 or x = 2.",
         "Check x=7: √9 = 3, and 7-4 = 3 ✓",
-        "Check x=2: √4 = 2, and 2-4 = -2 ✗ — left side is positive, right is negative. Extraneous.",
+        "Check x=2: √4 = 2, and 2-4 = -2 ✗ : left side is positive, right is negative. Extraneous.",
         "Answer: x = 7 only."
       ],
       "feedback_correct": "🔥 Quadratic from squaring, extraneous caught.",
-      "feedback_wrong": "Square the ENTIRE right side: (x-4)² = x²-8x+16. Then factor the quadratic."
+      "feedback_wrong": "Square the ENTIRE right side: (x-4)^2=x^2-8x+16. Factor."
     },
     {
       "id": "rp5-q10",
@@ -372,17 +372,17 @@
           "tolerance": 0.01
         }
       ],
-      "hint": "Square both sides — right side is (2x-3)². You get a factorable quadratic. Check both roots.",
+      "hint": "Square both sides : right side is (2x-3)². You get a factorable quadratic. Check both roots.",
       "solution_steps": [
         "Square: 4x - 3 = (2x-3)² = 4x² - 12x + 9.",
         "Rearrange: 4x² - 16x + 12 = 0 → x² - 4x + 3 = 0.",
         "Factor: (x-3)(x-1) = 0 → x = 3 or x = 1.",
         "Check x=3: √9 = 3, and 2(3)-3 = 3 ✓",
-        "Check x=1: √1 = 1, and 2(1)-3 = -1 ✗ — √ is positive, right side is negative. Extraneous.",
+        "Check x=1: √1 = 1, and 2(1)-3 = -1 ✗ : √ is positive, right side is negative. Extraneous.",
         "Answer: x = 3 only."
       ],
       "feedback_correct": "🔥 Coefficient inside the radical handled. Extraneous caught.",
-      "feedback_wrong": "Square both sides: (2x-3)² = 4x²-12x+9. Factor the quadratic, then check both."
+      "feedback_wrong": "Square both sides. Factor the resulting quadratic."
     },
     {
       "id": "rp5-q11",
@@ -408,7 +408,7 @@
         "216 = 6³, so x = 6² = 36"
       ],
       "feedback_correct": "🔥 125^(1/3)=5, 5²=25. Cube recognition working.",
-      "feedback_wrong": "Isolate x^(3/2)=125. Then: cube root of 125 first (5×5×5=125, so answer=5), then."
+      "feedback_wrong": "Isolate x^(3/2)=125. Cube root then square: 5^2=25."
     },
     {
       "id": "rp5-q12",
@@ -474,7 +474,7 @@
         "Plot and draw upward parabola with vertex at (3,-4)."
       ],
       "feedback_correct": "🔥 Vertex from standard form. Both intercepts.",
-      "feedback_wrong": "Not vertex form — use x = -b/(2a) to find vertex x,."
+      "feedback_wrong": "Use x=-b/(2a) for vertex x. Then find y."
     },
     {
       "id": "rp5-q13",
@@ -547,7 +547,7 @@
         "Left branch is in upper-left; right branch is in lower-right. Opposite of standard 1/x."
       ],
       "feedback_correct": "🔥 VA=2, HA=-3. And you handled the reflected (2-x) form.",
-      "feedback_wrong": "Set 2-x=0 for VA → x=2. HA is the -3 outside. The."
+      "feedback_wrong": "VA: 2-x=0 → x=2. HA: the -3 outside."
     },
     {
       "id": "rp5-q14",
@@ -582,17 +582,17 @@
           "answer": "C"
         }
       ],
-      "hint": "Before doing ANY algebra — is there an x that makes √(something) equal to a negative number?",
+      "hint": "Before doing ANY algebra : is there an x that makes √(something) equal to a negative number?",
       "solution_steps": [
         "Square root output is always ≥ 0. There is no real number where √(x-4) = -3.",
         "The student should have stopped immediately: no solution exists.",
-        "Steps 1-2 are algebraically valid but solve the wrong equation — they solved √(x-4)=3 (positive), not -3.",
+        "Steps 1-2 are algebraically valid but solve the wrong equation : they solved √(x-4)=3 (positive), not -3.",
         "x=13 appears to work until you check: √(13-4) = √9 = 3 ≠ -3. It fails.",
         "This is a hidden extraneous solution created by squaring away the sign.",
         "Rule: before squaring a radical equation, verify the right side is ≥ 0."
       ],
-      "feedback_correct": "🔥 W3.a: you recognized the domain violation before touching the algebra.",
-      "feedback_wrong": "Try x=13 in the original: √(13-4) = √9 = 3, not -3.."
+      "feedback_correct": "🔥 Domain violation caught before solving.",
+      "feedback_wrong": "x=13: sqrt(13-4)=3, not -3. Extraneous."
     },
     {
       "id": "rp5-q15",
@@ -625,7 +625,7 @@
         "Note: 27=3³ requires knowing your powers of 3: 3,9,27,81,243..."
       ],
       "feedback_correct": "🔥 Tripling model. 27=3³ recognized. t=15.",
-      "feedback_wrong": "Divide both sides by 100 first. Then: 3^? = 27. Build your."
+      "feedback_wrong": "Divide both sides by 100. Then 3^?=27 → t=3."
     }
   ],
   "fr_approved": true,

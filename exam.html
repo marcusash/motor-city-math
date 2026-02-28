@@ -91,6 +91,7 @@
         .progress-strip.active { display: flex; }
         .progress-bar { flex: 1; height: 6px; background: var(--border-subtle); border-radius: 3px; overflow: hidden; }
         .progress-fill { height: 100%; background: var(--accent-blue); border-radius: 3px; transition: width 0.3s ease; }
+        @media (prefers-reduced-motion: reduce) { .progress-fill { transition: none; } }
         .progress-text { font-weight: 600; white-space: nowrap; }
         .exam-picker { text-align: center; padding: 24px 0; }
         .exam-picker p { color: var(--text-secondary); font-size: var(--text-base); margin-bottom: 20px; }
@@ -124,6 +125,9 @@
             text-align: right; border-bottom: 1px solid var(--border-subtle); display: none;
         }
         @media (max-width: 480px) { #questionTracker { padding: 4px 12px; } }
+        @keyframes tracker-all-done { 0% { background: var(--bg-page); } 50% { background: var(--color-correct, #3FB950); color: white; } 100% { background: var(--bg-page); } }
+        .tracker-all-done { animation: tracker-all-done 200ms ease-out; }
+        @media (prefers-reduced-motion: reduce) { .tracker-all-done { animation: none; } }
         /* Post-wrong nudge */
         .wrong-nudge {
             font-size: var(--text-sm); color: var(--text-secondary);
@@ -141,11 +145,12 @@
         @media (prefers-reduced-motion: reduce) { #gamePlanSection { animation: none; } }
         #gameplanBtn { margin-top: 16px; font-size: var(--text-sm); }
         #gameplanBtn[disabled] { cursor: default; }
+        @media print { .hint-btn, .graph-controls, .submit-area, .nav-bar, .header-back { display: none !important; } }
     </style>
 </head>
 <body>
     <script>if(localStorage.getItem('mcm-arena-mode')==='on')document.body.classList.add('arena-mode');</script>
-    <a href="#questionsContainer" class="sr-only">Skip to questions</a>
+    <a href="#questionsContainer" class="skip-link">Skip to questions</a>
     <div class="exam-container" role="main">
         <div class="print-header">
             <strong>Motor City Math — Practice Test</strong><br>
@@ -162,7 +167,7 @@
 
         <div class="progress-strip" id="progressStrip">
             <div class="progress-text" id="progressText">0 / 15</div>
-            <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+            <div class="progress-bar" role="progressbar" aria-label="Exam progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
         </div>
 
         <div id="questionTracker" aria-live="polite" aria-label="Question position"></div>
@@ -178,34 +183,57 @@
         <div style="text-align:center; margin: 16px 0;">
             <a href="index.html" class="nav-btn ghost" style="text-decoration:none;">← Back to Dashboard</a>
         </div>
-        <div class="footer" style="text-align:center; color:var(--text-secondary); font-size:var(--text-sm); padding:10px 0;">Built with 💪🏾 by Dad · Motor City Math</div>
+        <div class="footer" style="text-align:center; color:var(--text-secondary); font-size:var(--text-sm); padding:10px 0;">Built with <span aria-hidden="true">💪🏾</span> by Dad · Motor City Math</div>
     </div>
 
     <script src="shared/scripts.js"></script>
     <script>
-    /* ========== EXAM RENDERER ========== */
+    /* ========== EXAM RENDERER ==========
+     * Data model: docs/data-model.md (RP JSON schema, all fields, input contracts)
+     * Architecture: docs/architecture.md (system overview, agent file ownership)
+     * localStorage: 'mcm_scores'[mcm-{exam_id}] = { attempts[], best{} }
+     * sessionStorage: 'exam-autosave-{examId}' (tab-scoped, cleared on submit)
+     * ===================================== */
     var examData = null;
     var examId = new URLSearchParams(window.location.search).get('file') || 'unknown';
 
-    function autosave() {
-        if (!examData) return;
-        var state = {};
-        try {
-            examData.questions.forEach(function(q) {
-                q.inputs.forEach(function(inp) {
-                    if (inp.type === 'radio') {
-                        var el = document.querySelector('input[name="' + inp.id + '"]:checked');
-                        state[inp.id] = el ? el.value : '';
-                    } else {
-                        var el = document.getElementById(inp.id);
-                        state[inp.id] = el ? el.value : '';
-                    }
-                });
-            });
-            sessionStorage.setItem('exam-autosave-' + examId, JSON.stringify(state));
-        } catch(e) { /* sessionStorage full or unavailable */ }
+    /**
+     * Pure grade computation. Grade thresholds: 92+=4, 82+=3, 70+=2, <70=1.
+     * Single source of truth -- used by showScorecard() and saveResults().
+     * Verified exhaustively by exam-hint-scorecard.test.js (101-point coverage).
+     * @param {number} pct - Integer percentage 0-100
+     * @returns {number} Grade 1-4
+     */
+    function getGrade(pct) {
+        return pct >= 92 ? 4 : pct >= 82 ? 3 : pct >= 70 ? 2 : 1;
     }
 
+    var _autosaveTimer = null;
+    /** Debounce-saves all current input values to sessionStorage (800ms delay). */
+    function autosave() {
+        clearTimeout(_autosaveTimer);
+        // 800ms debounce: balances data safety with not hammering sessionStorage on each keystroke
+        _autosaveTimer = setTimeout(function() {
+            if (!examData) return;
+            var state = {};
+            try {
+                examData.questions.forEach(function(q) {
+                    (q.inputs || []).forEach(function(inp) {
+                        if (inp.type === 'radio') {
+                            var el = document.querySelector('input[name="' + inp.id + '"]:checked');
+                            state[inp.id] = el ? el.value : '';
+                        } else {
+                            var el = document.getElementById(inp.id);
+                            state[inp.id] = el ? el.value : '';
+                        }
+                    });
+                });
+                sessionStorage.setItem('exam-autosave-' + examId, JSON.stringify(state));
+            } catch(e) { /* sessionStorage full or unavailable */ }
+        }, 800);
+    }
+
+    /** Restores autosaved input values from sessionStorage to the exam form. Shows restore toast if answers found. */
     function restoreAutosave() {
         try {
             var saved = sessionStorage.getItem('exam-autosave-' + examId);
@@ -229,31 +257,19 @@
         } catch(e) { /* parse error */ }
     }
 
+    /** Shows session restore toast per GD spec sw-10: fixed top-right, slide-in, 3000ms auto-dismiss. */
     function showRestoreToast(count) {
         var el = document.createElement('div');
         el.id = 'restore-toast';
         el.setAttribute('role', 'status');
         el.setAttribute('aria-live', 'polite');
-        el.style.cssText = [
-            'background:var(--bg-highlight)',
-            'border:1px solid var(--border-default)',
-            'border-radius:8px',
-            'padding:10px 16px',
-            'margin-bottom:12px',
-            'font-size:var(--text-sm)',
-            'color:var(--text-secondary)',
-            'text-align:center'
-        ].join(';');
-        el.textContent = count + ' answer' + (count > 1 ? 's' : '') + ' restored. Keep going. \uD83D\uDCBE';
-        var container = document.getElementById('questionsContainer');
-        if (container && container.firstChild) {
-            container.insertBefore(el, container.firstChild);
-        }
+        el.className = 'session-restore-toast';
+        el.innerHTML = '\uD83D\uDD04 Progress restored. Pick up where you left off.' +
+            '<button class="restore-toast-close" aria-label="Dismiss progress restored notice" onclick="(function(e){var t=document.getElementById(\'restore-toast\');if(t)t.remove();})()">\u00D7</button>';
+        document.body.appendChild(el);
+        var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (!prefersReduced) el.classList.add('session-restore-toast--slide');
         setTimeout(function() { if (el.parentNode) el.parentNode.removeChild(el); }, 3000);
-        container.addEventListener('input', function onInput() {
-            if (el.parentNode) el.parentNode.removeChild(el);
-            container.removeEventListener('input', onInput);
-        }, { once: true });
     }
     var graphData = {};
     var examGraded = false;
@@ -283,8 +299,7 @@
                 { id: 'retake-practice-7', title: 'Retake Practice 7 (Mock Retake)', desc: '15 questions · Full Mock' },
                 { id: 'retake-practice-8', title: 'Retake Practice 8', desc: '15 questions · Nonlinear Functions' },
                 { id: 'retake-practice-9', title: 'Retake Practice 9', desc: '15 questions · Nonlinear Functions' },
-                { id: 'retake-practice-10', title: 'Retake Practice 10', desc: '15 questions · Nonlinear Functions' },
-                { id: 'retake-practice-11', title: 'Retake Practice 11', desc: '15 questions · Final Prep · All standards' }
+                { id: 'retake-practice-10', title: 'Retake Practice 10', desc: '15 questions · Nonlinear Functions' }
             ];
             function renderPicker(exams) {
                 var cards = exams.map(function(e) {
@@ -325,10 +340,10 @@
                 return r.json();
             }).then(loadExam).catch(function(e) {
                 var msg = e && e.message === '404'
-                    ? 'Test not found. Pick a different one.'
+                    ? 'Exam not found. Back to the dashboard.'
                     : e && e.message && e.message.indexOf('status:') === 0
-                        ? 'Server error. Refresh or pick a different test.'
-                        : "Can't reach this test. Check your wifi and try again.";
+                        ? "Server's down. Refresh or try a different exam."
+                        : "Can't reach this test. Connection dropped. Refresh and try again.";
                 showLoadError(msg);
             });
         } else {
@@ -337,16 +352,16 @@
             xhr.onload = function() {
                 if (xhr.status === 200 || xhr.status === 0) {
                     try { loadExam(JSON.parse(xhr.responseText)); } catch(e) {
-                        showLoadError("Something's off with this file. Try a different test.", true);
+                        showLoadError('This exam has a data error. Try a different one or reload.', true);
                     }
                 } else if (xhr.status === 404) {
-                    showLoadError('Test not found. Pick a different one.', true);
+                    showLoadError('Exam not found. Back to the dashboard.', true);
                 } else {
-                    showLoadError('Server error (' + xhr.status + '). Refresh or pick a different test.');
+                    showLoadError('Server error (' + xhr.status + '). Refresh or pick a different exam.');
                 }
             };
             xhr.onerror = function() {
-                showLoadError("Can't connect right now. Refresh and try again.");
+                showLoadError("Connection dropped. Refresh and try again.");
             };
             xhr.send();
         }
@@ -367,6 +382,10 @@
         return title;
     }
 
+    /**
+     * Initialise the exam from parsed JSON data.
+     * @param {Object} data - Parsed exam JSON (exam_id, title, questions, time_minutes, etc.)
+     */
     function loadExam(data) {
         examData = data;
         // Curriculum-based title: "Unit X: Topic — Standards" (Task 12)
@@ -377,7 +396,7 @@
 
         // State 5: empty questions guard
         if (!data.questions || data.questions.length === 0) {
-            showLoadError('This test has no questions yet. Pick a different one.', true);
+            showLoadError('No questions loaded yet. Pick a different exam.', true);
             return;
         }
 
@@ -408,13 +427,24 @@
             var tracker = document.getElementById('questionTracker');
             var qEls = document.getElementById('questionsContainer').querySelectorAll('.question-card');
             if (tracker && qEls.length > 1) {
-                tracker.textContent = 'Q1 of ' + qEls.length;
+                window.mcmAnsweredCount = window.mcmAnsweredCount || 0;
+                var total = qEls.length;
+                function updateTrackerDisplay(idx) {
+                    var done = window.mcmAnsweredCount;
+                    var doneStr = done >= total ? ' \u2022 All done!' : (done > 0 ? ' \u2022 ' + done + ' done' : '');
+                    tracker.textContent = 'Q' + idx + ' of ' + total + doneStr;
+                    tracker.setAttribute('aria-label', 'Question ' + idx + ' of ' + total + '. ' + done + ' questions answered.');
+                }
+                window.mcmUpdateTrackerDisplay = updateTrackerDisplay;
+                window.mcmTrackerCurrentQ = 1;
+                updateTrackerDisplay(1);
                 tracker.style.display = '';
                 var io = new IntersectionObserver(function(entries) {
                     entries.forEach(function(e) {
                         if (e.isIntersecting) {
                             var idx = Array.prototype.indexOf.call(qEls, e.target) + 1;
-                            tracker.textContent = 'Q' + idx + ' of ' + qEls.length;
+                            window.mcmTrackerCurrentQ = idx;
+                            updateTrackerDisplay(idx);
                         }
                     });
                 }, { rootMargin: '-20% 0px -60% 0px', threshold: 0 });
@@ -437,6 +467,7 @@
     }
 
     /* --- Question Renderer --- */
+    /** Render all question cards into #questionsContainer. @param {Array} questions */
     function renderQuestions(questions) {
         var container = document.getElementById('questionsContainer');
         var html = '';
@@ -447,7 +478,7 @@
             html += '<span class="question-number">Question ' + q.number + '</span>';
             html += '<span class="standard-badge">' + q.standard + '</span>';
             html += '</div>';
-            html += '<div class="question-text">' + q.question_html + '</div>';
+            html += '<div class="question-text">' + (q.question_html || '') + '</div>';
 
             // Graph canvas (if present)
             if (q.graph) {
@@ -455,20 +486,20 @@
             }
 
             // Input fields
-            q.inputs.forEach(function(inp) {
+            (q.inputs || []).forEach(function(inp) {
                 html += renderInput(inp, q);
             });
 
             // Feedback area
-            html += '<div class="answer-feedback" id="feedback-' + q.id + '"></div>';
+            html += '<div class="answer-feedback" id="feedback-' + q.id + '" role="alert" aria-live="assertive" aria-atomic="true"></div>';
 
             // Hint layers
             html += '<div class="hint-layers" id="hints-' + q.id + '" style="display:none;">';
-            html += '<button class="hint-btn" onclick="showHint(\'' + q.id + '\', 1)">💡 HINT</button>';
+            html += '<button class="hint-btn" id="hintBtn-' + q.id + '-1" aria-expanded="false" onclick="showHint(\'' + q.id + '\', 1)"><span aria-hidden="true">💡</span> HINT</button>';
             html += '<div class="hint-layer" id="hint-' + q.id + '-1">' + (q.hint || '') + '</div>';
-            html += '<button class="hint-btn" id="hintBtn-' + q.id + '-2" style="display:none;" onclick="showHint(\'' + q.id + '\', 2)">📖 SHOW ANSWER</button>';
+            html += '<button class="hint-btn" id="hintBtn-' + q.id + '-2" style="display:none;" onclick="showHint(\'' + q.id + '\', 2)"><span aria-hidden="true">📖</span> SHOW ANSWER</button>';
             html += '<div class="hint-layer" id="hint-' + q.id + '-2"></div>';
-            html += '<button class="hint-btn" id="hintBtn-' + q.id + '-3" style="display:none;" onclick="showHint(\'' + q.id + '\', 3)">📝 SOLUTION STEPS</button>';
+            html += '<button class="hint-btn" id="hintBtn-' + q.id + '-3" style="display:none;" onclick="showHint(\'' + q.id + '\', 3)"><span aria-hidden="true">📝</span> SOLUTION STEPS</button>';
             html += '<div class="hint-layer" id="hint-' + q.id + '-3"></div>';
             html += '</div>';
 
@@ -483,14 +514,28 @@
         });
     }
 
+    /**
+     * Renders an HTML input element for a question input descriptor.
+     * Dispatches on inp.type: 'dropdown', 'number', 'radio'.
+     * @param {Object} inp - Input descriptor (id, type, label, options, answer, tolerance)
+     * @param {Object} q - Parent question object
+     * @returns {string} HTML string for the input element
+     */
     function renderInput(inp, q) {
+        var FORMAT_HINTS = {
+            'decimal':    'Round to nearest hundredth (e.g. 0.67)',
+            'fraction':   'Simplify your fraction (e.g. 3/4 not 6/8)',
+            'coordinate': 'Format: (x, y)',
+            'equation':   'Use y = mx + b format'
+        };
+        var formatHint = (q && FORMAT_HINTS[q.type]) ? '<span class="format-hint">' + FORMAT_HINTS[q.type] + '</span>' : '';
         var html = '';
         if (inp.type === 'dropdown') {
             html += '<div class="input-group">';
             if (inp.label) html += '<label for="' + inp.id + '">' + inp.label + '</label>';
             html += '<select id="' + inp.id + '">';
             html += '<option value="">— Select —</option>';
-            inp.options.forEach(function(opt) {
+            (inp.options || []).forEach(function(opt) {
                 html += '<option value="' + opt + '">' + opt + '</option>';
             });
             html += '</select></div>';
@@ -498,14 +543,15 @@
             html += '<div class="input-group">';
             if (inp.label) html += '<label for="' + inp.id + '">' + inp.label + '</label>';
             html += '<div class="input-with-hint">';
-            html += '<input type="text" inputmode="decimal" id="' + inp.id + '" autocomplete="off" placeholder="e.g. 3/2 or sqrt(2)">';
+            html += '<input type="text" inputmode="decimal" id="' + inp.id + '" aria-describedby="feedback-' + (q ? q.id : inp.id) + '" autocomplete="off" placeholder="e.g. 3/2 or sqrt(2)">';
             html += '<span class="input-hint">decimal · fraction (3/2) · sqrt(2) · 1+sqrt(3)</span>';
             html += '</div>';
+            if (formatHint) html += formatHint;
             html += '</div>';
         } else if (inp.type === 'radio') {
             html += '<div class="radio-group">';
             if (inp.label) html += '<div style="font-weight:600; margin-bottom:6px; color:var(--text-primary);">' + inp.label + '</div>';
-            inp.options.forEach(function(opt) {
+            (inp.options || []).forEach(function(opt) {
                 html += '<div class="radio-option">';
                 html += '<input type="radio" name="' + inp.id + '" id="' + inp.id + '_' + opt.value + '" value="' + opt.value + '">';
                 html += '<label for="' + inp.id + '_' + opt.value + '">' + opt.value + '. ' + opt.text + '</label>';
@@ -515,7 +561,8 @@
         } else if (inp.type === 'text') {
             html += '<div class="input-group">';
             if (inp.label) html += '<label for="' + inp.id + '">' + inp.label + '</label>';
-            html += '<input type="text" id="' + inp.id + '" style="width:200px;" autocomplete="off">';
+            html += '<input type="text" id="' + inp.id + '" aria-describedby="feedback-' + (q ? q.id : inp.id) + '" style="width:200px;" autocomplete="off">';
+            if (formatHint) html += formatHint;
             html += '</div>';
         }
         return html;
@@ -530,17 +577,22 @@
         html += '<div class="graph-counter" id="counter-' + g.canvas_id + '">Click to plot points on the graph</div>';
         html += '<div class="graph-controls">';
         if (g.asymptotes) {
-            html += '<button class="graph-btn" id="vaBtn-' + g.canvas_id + '" onclick="setAsymptoteMode(\'' + g.canvas_id + '\',\'vertical\')">ADD VERTICAL ASYMPTOTE</button>';
-            html += '<button class="graph-btn" id="haBtn-' + g.canvas_id + '" onclick="setAsymptoteMode(\'' + g.canvas_id + '\',\'horizontal\')">ADD HORIZONTAL ASYMPTOTE</button>';
+            html += '<button class="graph-btn" id="vaBtn-' + g.canvas_id + '" aria-label="Add vertical asymptote: click then click on graph" onclick="setAsymptoteMode(\'' + g.canvas_id + '\',\'vertical\')">ADD VERTICAL ASYMPTOTE</button>';
+            html += '<button class="graph-btn" id="haBtn-' + g.canvas_id + '" aria-label="Add horizontal asymptote: click then click on graph" onclick="setAsymptoteMode(\'' + g.canvas_id + '\',\'horizontal\')">ADD HORIZONTAL ASYMPTOTE</button>';
         }
-        html += '<button class="graph-btn check-graph" id="checkBtn-' + g.canvas_id + '" disabled onclick="checkGraphAnswer(\'' + g.canvas_id + '\')">CHECK GRAPH</button>';
-        html += '<button class="graph-btn" onclick="clearGraph(\'' + g.canvas_id + '\')">CLEAR</button>';
+        html += '<button class="graph-btn check-graph" id="checkBtn-' + g.canvas_id + '" disabled aria-label="Check graph answer" onclick="checkGraphAnswer(\'' + g.canvas_id + '\')">CHECK GRAPH</button>';
+        html += '<button class="graph-btn" aria-label="Clear all points and asymptotes" onclick="clearGraph(\'' + g.canvas_id + '\')">CLEAR</button>';
         html += '</div>';
         html += '<div class="graph-result" id="result-' + g.canvas_id + '"></div>';
         return html;
     }
 
     /* --- Graph Engine --- */
+    /**
+     * Initializes a canvas graph for a question.
+     * @param {string} canvasId - The canvas element ID
+     * @param {Object} graphConfig - Graph configuration (xRange, yRange, fn, expectedPoints, asymptotes)
+     */
     function initGraph(canvasId, graphConfig) {
         var canvas = document.getElementById(canvasId);
         if (!canvas) return;
@@ -559,9 +611,11 @@
 
         // Keyboard accessibility (WCAG 2.1.1)
         canvas.addEventListener('focus', function() {
-            graphData[canvasId].kbFocused = true;
+            var d = graphData[canvasId];
+            d.kbFocused = true;
             redrawGraph(canvasId);
             updateGraphCounter(canvasId);
+            announceGraph(canvasId, 'Graph focused. Cursor at (' + d.kbCursor.x + ', ' + d.kbCursor.y + '). Arrow keys to move, Enter to place point.');
         });
         canvas.addEventListener('blur', function() {
             graphData[canvasId].kbFocused = false;
@@ -789,6 +843,11 @@
         }
     }
 
+    /**
+     * Announces a message to screen readers via a polite aria-live region for the graph canvas.
+     * @param {string} canvasId - Canvas ID (for disambiguation)
+     * @param {string} msg - Text to announce
+     */
     function announceGraph(canvasId, msg) {
         var lr = document.getElementById('graphLiveRegion');
         if (!lr) {
@@ -845,7 +904,12 @@
         updateGraphCounter(canvasId);
         redrawGraph(canvasId);
     }
-
+
+    /**
+     * Checks plotted graph points and asymptotes against the expected function.
+     * @param {string} canvasId - The canvas element ID to evaluate
+     * @returns {Object} { correct: number, total: number, asymptoteCorrect: boolean }
+     */
     function checkGraphAnswer(canvasId) {
         var d = graphData[canvasId];
         var cfg = d.config;
@@ -895,6 +959,11 @@
     }
 
     /* --- Hint System --- */
+    /**
+     * Show a hint layer for a question. Layers: 1=nudge, 2=answer key, 3=solution steps.
+     * @param {string} qId - Question ID
+     * @param {number} layer - Hint layer (1|2|3)
+     */
     function showHint(qId, layer) {
         var q = examData.questions.find(function(q) { return q.id === qId; });
         if (!q) return;
@@ -905,6 +974,8 @@
         if (layer === 1) {
             el.classList.add('show');
             document.getElementById('hintBtn-' + qId + '-2').style.display = 'inline-block';
+            var btn1 = document.getElementById('hintBtn-' + qId + '-1');
+            if (btn1) btn1.setAttribute('aria-expanded', 'true');
         } else if (layer === 2) {
             // Show answer
             var answerText = '';
@@ -979,6 +1050,7 @@
         var fill = document.getElementById('progressFill');
         var text = document.getElementById('progressText');
         if (fill) fill.style.width = pct + '%';
+        if (fill) fill.parentElement && fill.parentElement.setAttribute('aria-valuenow', pct);
         if (text) text.textContent = answered + ' / ' + total;
 
         // Color shift at milestones
@@ -1001,72 +1073,127 @@
         if (hintBtn2) hintBtn2.style.display = '';
         var hintBtn3 = document.getElementById('hintBtn-' + qId + '-3');
         if (hintBtn3) hintBtn3.style.display = '';
-        if (fbEl) fbEl.textContent = 'Off target. Check the hint below.';
+        // Announce auto-rescue to screen readers (GD spec: aria-live polite on rescue)
+        var liveEl = document.createElement('div');
+        liveEl.setAttribute('aria-live', 'polite');
+        liveEl.setAttribute('class', 'sr-only');
+        liveEl.textContent = 'Hint revealed. Check below.';
+        document.body.appendChild(liveEl);
+        setTimeout(function() { if (liveEl.parentNode) liveEl.parentNode.removeChild(liveEl); }, 3000);
         var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         hints.scrollIntoView({ behavior: prefersReduced ? 'instant' : 'smooth', block: 'nearest' });
     }
 
-    // Accept decimals, integers, fractions (4/3), and sqrt expressions (sqrt(2), 1+sqrt(3), (1+sqrt(5))/2)
-    function parseStudentAnswer(raw) {
-        if (!raw || !raw.trim()) return NaN;
-        var s = raw.trim().replace(/\s/g, '');
-
-        // Plain fraction: 4/3 or -5/2
-        var fracMatch = s.match(/^(-?\d+)\/(-?\d+)$/);
-        if (fracMatch) {
-            var num = parseInt(fracMatch[1], 10);
-            var den = parseInt(fracMatch[2], 10);
-            return den === 0 ? NaN : num / den;
-        }
-
-        // Plain decimal/integer
-        var plain = parseFloat(s);
-        if (!isNaN(plain) && s.match(/^-?\d*\.?\d+$/)) return plain;
-
-        // sqrt() expressions — safe evaluator
-        // Only allow digits, . + - * / ( ) and letters s,q,r,t (only valid as "sqrt")
-        if (/^[0-9.\+\-\*\/\(\)sqrt]+$/.test(s)) {
-            try {
-                // Handle implicit multiplication: 2sqrt(3) -> 2*sqrt(3)
-                var expr = s.replace(/(\d)\s*sqrt/g, '$1*sqrt').replace(/sqrt/g, 'Math.sqrt');
-                var result = Function('"use strict"; return (' + expr + ')')();
-                if (typeof result === 'number' && isFinite(result)) return result;
-            } catch(e) { /* invalid expression — fall through */ }
-        }
-
-        return NaN;
+    // sw-16: auto-rescue with delay. Inserts transitional message at t=800ms, reveals hint at t=1200ms.
+    // Manual hint clicks bypass this delay entirely.
+    function scheduleRescue(qId, fbEl) {
+        var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var delay1 = prefersReduced ? 0 : 800;
+        var delay2 = prefersReduced ? 0 : 1200;
+        var hints = document.getElementById('hints-' + qId);
+        if (!hints) return;
+        var msgEl = document.createElement('p');
+        msgEl.id = 'rescue-msg-' + qId;
+        msgEl.setAttribute('aria-live', 'polite');
+        msgEl.style.cssText = 'font-size:var(--text-sm,0.813rem);color:var(--text-secondary,#6E7681);margin:0 0 4px;opacity:0;transition:opacity 200ms';
+        msgEl.textContent = 'Here is a direction to try --';
+        setTimeout(function() {
+            if (document.getElementById('rescue-msg-' + qId)) return; // already added
+            hints.parentNode.insertBefore(msgEl, hints);
+            // Trigger fade-in
+            requestAnimationFrame(function() { requestAnimationFrame(function() { msgEl.style.opacity = '1'; }); });
+        }, delay1);
+        setTimeout(function() { triggerRescue(qId, fbEl); }, delay2);
     }
 
+    // parseStudentAnswer() is a pure function defined in shared/scripts.js
+    // Accepts: integers, decimals, fractions (4/3), sqrt expressions. Returns NaN if unparseable.
+
+    /** Toggle the Game Plan section(progressive disclosure). aria-expanded reflects state. */
     function revealGamePlan() {
         var section = document.getElementById('gamePlanSection');
         var btn = document.getElementById('gameplanBtn');
-        if (section) section.style.display = '';
-        if (btn) { btn.textContent = '📋 Game Plan ✓'; btn.disabled = true; btn.style.opacity = '0.5'; btn.setAttribute('aria-pressed', 'true'); }
+        if (!section || !btn) return;
+        var expanded = btn.getAttribute('aria-expanded') === 'true';
+        if (expanded) {
+            section.style.display = 'none';
+            btn.innerHTML = '<span aria-hidden="true">📋</span> See Your Game Plan';
+            btn.setAttribute('aria-expanded', 'false');
+        } else {
+            section.style.display = '';
+            btn.innerHTML = '<span aria-hidden="true">📋</span> Hide Game Plan';
+            btn.setAttribute('aria-expanded', 'true');
+        }
     }
 
+    /**
+     * Pure helper: check whether a set of parsed number inputs is correct.
+     * Supports both ordered and plus-minus (either-order) grading.
+     * @param {Array} numberInputs - [{val, answer, tolerance}]
+     * @param {boolean} plusMinus - accept either ordering of two inputs
+     * @returns {boolean} true if all inputs are within tolerance
+     */
+    function evaluateNumberInputs(numberInputs, plusMinus) {
+        if (plusMinus && numberInputs.length === 2) {
+            var a = numberInputs[0], b = numberInputs[1];
+            var order1 = Math.abs(a.val - a.answer) <= a.tolerance && Math.abs(b.val - b.answer) <= b.tolerance;
+            var order2 = Math.abs(a.val - b.answer) <= a.tolerance && Math.abs(b.val - a.answer) <= b.tolerance;
+            return order1 || order2;
+        }
+        return numberInputs.every(function(n) {
+            return !isNaN(n.val) && Math.abs(n.val - n.answer) <= n.tolerance;
+        });
+    }
+
+    /**
+     * Returns an array of human-readable labels for blank required inputs.
+     * Checks dropdown (no value), number (empty string), radio (no selection).
+     * Text inputs are self-graded — not validated here.
+     * @param {Array} questions - exam question objects with inputs[]
+     * @returns {string[]} missing labels, e.g. ['Q1 — Parent function', 'Q3 — answer choice']
+     */
+    function findMissingInputLabels(questions) {
+        var missing = [];
+        (questions || []).forEach(function(q, qi) {
+            var qLabel = 'Q' + (qi + 1);
+            (q.inputs || []).forEach(function(inp) {
+                if (inp.type === 'dropdown') {
+                    var el = document.getElementById(inp.id);
+                    if (!el || !el.value) missing.push(qLabel + ' \u2014 ' + (inp.label || 'Parent function'));
+                } else if (inp.type === 'number') {
+                    var el2 = document.getElementById(inp.id);
+                    if (!el2 || el2.value.trim() === '') missing.push(qLabel + ' \u2014 ' + (inp.label || inp.id));
+                } else if (inp.type === 'radio') {
+                    var sel = document.querySelector('input[name="' + inp.id + '"]:checked');
+                    if (!sel) missing.push(qLabel + ' \u2014 answer choice');
+                }
+            });
+        });
+        return missing;
+    }
+
+    /**
+     * Grade all auto-gradable inputs, compute score, show scorecard, save results.
+     * Idempotent: no-op if already graded (examGraded flag).
+     *
+     * Concerns (in order):
+     *   1. Guard       — skip if already graded, hide tracker UI
+     *   2. Validation  — block if any required field is blank
+     *   3. Grading     — evaluate each question's inputs, compute scores
+     *   4. Feedback    — display per-question correct/wrong feedback and hints
+     *   5. Scorecard   — render final scorecard, persist score to mcm_scores
+     */
     function gradeExam() {
         if (examGraded) return;
+
+        // == SECTION 1: Guard ==
         // Hide position tracker during graded state
         var tracker = document.getElementById('questionTracker');
         if (tracker) tracker.style.display = 'none';
 
+        // == SECTION 2: Validation ==
         // Block grading if any required field is blank
-        var missing = [];
-        examData.questions.forEach(function(q, qi) {
-            var qLabel = 'Q' + (qi + 1);
-            q.inputs.forEach(function(inp) {
-                if (inp.type === 'dropdown') {
-                    var el = document.getElementById(inp.id);
-                    if (!el || !el.value) missing.push(qLabel + ' — ' + (inp.label || 'Parent function'));
-                } else if (inp.type === 'number') {
-                    var el2 = document.getElementById(inp.id);
-                    if (!el2 || el2.value.trim() === '') missing.push(qLabel + ' — ' + (inp.label || inp.id));
-                } else if (inp.type === 'radio') {
-                    var sel = document.querySelector('input[name="' + inp.id + '"]:checked');
-                    if (!sel) missing.push(qLabel + ' — answer choice');
-                }
-            });
-        });
+        var missing = findMissingInputLabels(examData.questions);
         if (missing.length > 0) {
             var warnEl = document.getElementById('submitWarning');
             if (!warnEl) {
@@ -1088,6 +1215,7 @@
         var strip = document.getElementById('progressStrip');
         if (strip) strip.classList.remove('active');
 
+        // == SECTION 3: Grading ==
         var questions = examData.questions;
         var score = 0, total = questions.length;
         var results = [];
@@ -1114,7 +1242,7 @@
 
             // Check all inputs
             var numberInputs = [];
-            q.inputs.forEach(function(inp) {
+            (q.inputs || []).forEach(function(inp) {
                 if (inp.type === 'dropdown') {
                     var el = document.getElementById(inp.id);
                     if (!el || el.value !== inp.answer) qCorrect = false;
@@ -1131,15 +1259,13 @@
             });
 
             // Handle plus_minus: accept either ordering of number inputs
-            if (q.plus_minus && numberInputs.length === 2) {
-                var a = numberInputs[0], b = numberInputs[1];
-                var order1 = Math.abs(a.val - a.answer) <= a.tolerance && Math.abs(b.val - b.answer) <= b.tolerance;
-                var order2 = Math.abs(a.val - b.answer) <= a.tolerance && Math.abs(b.val - a.answer) <= b.tolerance;
-                if (!order1 && !order2) qCorrect = false;
-            } else {
+            var numberInputsCorrect = evaluateNumberInputs(numberInputs, q.plus_minus);
+            if (!numberInputsCorrect) qCorrect = false;
+
+            // Color number input borders based on individual correctness
+            if (!q.plus_minus) {
                 numberInputs.forEach(function(n) {
                     var ok = !isNaN(n.val) && Math.abs(n.val - n.answer) <= n.tolerance;
-                    if (!ok) qCorrect = false;
                     if (n.el) {
                         n.el.style.borderColor = ok ? 'var(--color-correct, #3FB950)' : 'var(--color-incorrect, #F85149)';
                         n.el.style.borderWidth = '2px';
@@ -1151,13 +1277,28 @@
             if (qCorrect) {
                 score++;
                 stdScores[std].correct++;
+                // Update answered count for position tracker (GD spec: show answered count)
+                if (!window.answeredQuestions) window.answeredQuestions = {};
+                if (!window.answeredQuestions[q.id]) {
+                    window.answeredQuestions[q.id] = true;
+                    window.mcmAnsweredCount = Object.keys(window.answeredQuestions).length;
+                    if (typeof window.mcmUpdateTrackerDisplay === 'function') {
+                        window.mcmUpdateTrackerDisplay(window.mcmTrackerCurrentQ || 1);
+                        // All-done flash (Enhancement 2: reduced-motion guard is in CSS)
+                        if (examData && window.mcmAnsweredCount >= examData.questions.length) {
+                            var tr = document.getElementById('questionTracker');
+                            if (tr) { tr.classList.add('tracker-all-done'); setTimeout(function() { tr.classList.remove('tracker-all-done'); }, 300); }
+                        }
+                    }
+                }
             }
             results.push(qCorrect);
 
+            // == SECTION 4: Feedback (per-question) ==
             // Show feedback
             var fb = document.getElementById('feedback-' + q.id);
             if (fb) {
-                var msg = qCorrect ? (q.feedback_correct || '🔥 Correct!') : (q.feedback_wrong || 'Review the hint.');
+                var msg = qCorrect ? (q.feedback_correct || '🔥 Correct!') : (q.feedback_wrong || "Check the hint -- it's there for a reason.");
                 // Graph+vertex split: if graph failed but all number inputs were correct, say so
                 if (!qCorrect && q.graph && numberInputs.length > 0) {
                     var allInputsCorrect = numberInputs.every(function(n) {
@@ -1170,7 +1311,7 @@
                 // Check for specific wrong feedback variants
                 if (!qCorrect) {
                     if (q.feedback_wrong_parent || q.feedback_wrong_intercepts) {
-                        var parentInp = q.inputs.find(function(i) { return i.id.indexOf('_parent') !== -1; });
+                        var parentInp = (q.inputs || []).find(function(i) { return i.id.indexOf('_parent') !== -1; });
                         var parentEl = parentInp ? document.getElementById(parentInp.id) : null;
                         if (parentEl && parentInp) {
                             if (parentEl.value === parentInp.answer && q.feedback_wrong_intercepts) {
@@ -1182,6 +1323,11 @@
                     }
                 }
                 fb.className = 'answer-feedback show ' + (qCorrect ? 'correct' : 'incorrect');
+                // Set aria-invalid on all inputs for this question
+                (q.inputs || []).forEach(function(inp) {
+                    var el = document.getElementById(inp.id);
+                    if (el) el.setAttribute('aria-invalid', qCorrect ? 'false' : 'true');
+                });
                 // Append format hint if any number input has a non-integer answer
                 if (!qCorrect) {
                     var hasNonIntAnswer = numberInputs.some(function(n) {
@@ -1197,7 +1343,7 @@
                 var hints = document.getElementById('hints-' + q.id);
                 if (hints) hints.style.display = '';
                 attemptCounts[q.id] = (attemptCounts[q.id] || 0) + 1;
-                if (attemptCounts[q.id] >= 3) triggerRescue(q.id, fb);
+                if (attemptCounts[q.id] >= 3) scheduleRescue(q.id, fb);
                 // Post-wrong nudge: "Next up: Q[N+1]" after 2s (not on last question, not duplicate)
                 var qIdx = examData.questions.indexOf(q);
                 if (qIdx < examData.questions.length - 1) {
@@ -1237,6 +1383,7 @@
             }
         });
 
+        // == SECTION 5: Scorecard + Storage ==
         // Show scorecard
         showScorecard(score, total, stdScores, results);
 
@@ -1250,10 +1397,16 @@
         document.getElementById('scorecard').scrollIntoView({ behavior: 'smooth' });
     }
 
+    /**
+     * Render the scorecard UI after grading.
+     * @param {number} score - Number of correct answers
+     * @param {number} total - Total questions graded
+     * @param {Object} stdScores - Per-standard score aggregates
+     * @param {Array} results - Per-question result objects
+     */
     function showScorecard(score, total, stdScores, results) {
-        var pct = Math.round((score / total) * 100);
-        var grade = pct >= 92 ? 4 : pct >= 82 ? 3 : pct >= 70 ? 2 : 1;
-        var gradeClass = 'g' + grade;
+        var pct = total > 0 ? Math.round((score / total) * 100) : 0;
+        var grade = getGrade(pct);
 
         // Coach voice message based on grade
         var coachMsg = '';
@@ -1269,7 +1422,7 @@
         html += '<p style="margin-top:12px; color:var(--text-secondary); font-size:var(--text-sm);">' + coachMsg + '</p>';
 
         // Phase 1 CTA: See Your Game Plan (progressive disclosure)
-        html += '<button id="gameplanBtn" class="btn-secondary" aria-pressed="false" onclick="revealGamePlan()">📋 See Your Game Plan</button>';
+        html += '<button id="gameplanBtn" class="btn-secondary" aria-expanded="false" onclick="revealGamePlan()"><span aria-hidden="true">📋</span> See Your Game Plan</button>';
 
         // Phase 2: hidden until button pressed
         html += '<div id="gamePlanSection" style="display:none;">';
@@ -1284,23 +1437,26 @@
                 var sPct = s.total > 0 ? Math.round((s.correct / s.total) * 100) : 0;
                 var icon = sPct >= 85 ? '✅' : sPct >= 60 ? '🏀' : sPct > 0 ? '🎯' : '⬜';
                 html += '<div class="std-card">';
-                html += '<div class="std-name">' + icon + ' ' + std + '</div>';
+                html += '<div class="std-name"><span aria-hidden="true">' + icon + '</span> ' + std + '</div>';
                 html += '<div class="std-score">' + s.correct + '/' + s.total + ' (' + sPct + '%)</div>';
                 html += '</div>';
             });
         }
         html += '</div>';
 
-        // CTA: practice exams get "Run It Back"; real exams lock after grading
+        // CTA: practice exams get score-based copy; real exams lock after grading
         var isRetake = examData && examData.exam_id && examData.exam_id.indexOf('retake') !== -1;
-        if (grade >= 3 || !isRetake) {
-            html += '<div style="margin-top:16px;"><a href="index.html" class="nav-btn primary" style="text-decoration:none;">🏀 Back to Dashboard</a></div>';
-            if (!isRetake && grade < 3) {
+        if (!isRetake) {
+            // Real exam: single forward-momentum CTA
+            html += '<div style="margin-top:16px;"><a href="index.html" class="nav-btn primary" style="text-decoration:none;"><span aria-hidden="true">📊</span> See the Board</a></div>';
+            if (grade < 3) {
                 html += '<p style="margin-top:10px; color:var(--text-secondary); font-size:var(--text-sm);">Score locked. Study the hints above, then hit the practice tests. 💪</p>';
             }
         } else {
-            html += '<div style="margin-top:16px;"><a href="javascript:location.reload()" class="nav-btn primary" style="text-decoration:none;">🔄 Run It Back</a>';
-            html += ' <a href="index.html" class="nav-btn ghost" style="text-decoration:none; margin-left:8px;">← Dashboard</a></div>';
+            // Practice exam: reload CTA copy based on score bracket
+            var reloadLabel = pct >= 92 ? '<span aria-hidden="true">🔄</span> Defend Your Score' : pct >= 80 ? '<span aria-hidden="true">🔄</span> One More Run' : '<span aria-hidden="true">🔄</span> Run It Back';
+            html += '<div style="margin-top:16px;"><a href="javascript:location.reload()" class="nav-btn primary" style="text-decoration:none;">' + reloadLabel + '</a>';
+            html += ' <a href="index.html" class="nav-btn ghost" style="text-decoration:none; margin-left:8px;"><span aria-hidden="true">📊</span> See the Board</a></div>';
         }
         html += '</div>'; // end gamePlanSection
         html += '</div>';
@@ -1338,10 +1494,15 @@
         document.getElementById('scorecard').style.display = '';
     }
 
+    /**
+     * Save exam results to localStorage under 'mcm_scores'.
+     * Schema: mcm_scores[mcm-{exam_id}] = { attempts: [...], best: {score,pct,grade} }
+     * Each attempt: { score, total, pct, grade, sections, questions, timestamp }
+     */
     function saveResults(score, total, results, stdScores) {
-        var pct = Math.round((score / total) * 100);
-        var grade = pct >= 92 ? 4 : pct >= 82 ? 3 : pct >= 70 ? 2 : 1;
-        var storageKey = 'mcm-' + examData.exam_id;
+        var pct = total > 0 ? Math.round((score / total) * 100) : 0;
+        var grade = getGrade(pct);
+        var storageKey = 'mcm-' + (examData.exam_id || 'unknown');
 
         // Build per-question results
         var qResults = {};

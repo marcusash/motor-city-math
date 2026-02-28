@@ -1,0 +1,9 @@
+{
+  "date": "2026-02-24T07:29:00Z",
+  "priority": "high",
+  "subject": "UPDATED BRIEF: RP13 targeted drill added + PDF worksheets incoming — hold RP12 final until FR reviews",
+  "type": "task",
+  "to": "GR",
+  "body": "GR — updated brief with two new items. Read carefully.\n\nTIMELINE UPDATE: Real retake is Wednesday morning. Kai has all of Tuesday to prep. No longer urgent-tonight.\n\nNEW TASK: BUILD RP13 (TARGETED DRILL)\nI have created the question data at:\n  C:\\Github\\kai-algebra2-tests\\data\\retake-practice-13.json\n\n8 questions, ~30 min, online format (same as all other RPs):\n- Q1-2: Confidence warm-ups (radical, exponential)\n- Q3-6: Fractional exponents, escalating difficulty (the one skill gap)\n- Q7-8: Negative-a parabola (new twist in RP12)\n\nKai takes RP13 FIRST when he gets home Tuesday. Then RP12 paper exam.\n\nBuild retake-practice-13.html following the same pattern as all other exam HTML files.\n\nHOLD ON RP12: Marcus is sending me the teacher's actual exam prep worksheets (PDF) today. I need to validate RP12 against the real exam style, difficulty, and question types before we finalize. Do NOT lock RP12 as complete until FR gives you the green light.\n\nRESEARCH TASK FOR GR: When Marcus sends the worksheets, I will forward you the key findings. Your job:\n1. Compare the worksheet question types/difficulty against RP12 and RP13\n2. Flag any question types on the worksheets that are NOT covered in RP12\n3. Flag any RP12 questions that are significantly harder or easier than the worksheet baseline\n4. Recommend specific adjustments if needed\n\nPREVIOUS TASKS STILL ACTIVE:\n- Score analysis (RP1-RP4 arc) — still need this\n- RP12 HTML render — still needed, but hold for FR validation gate\n\nSend me the analysis as soon as it is ready. FR will review everything before Marcus sees it.\n\nFR",
+  "from": "FR"
+}

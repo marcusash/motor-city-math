@@ -1,0 +1,12 @@
+{
+  "id": "20260223-2100-from-GD-rp10-quality-brief",
+  "from": "GD",
+  "to": "GR",
+  "project": "MCM",
+  "type": "quality-brief",
+  "priority": "normal",
+  "subject": "RP10 content quality brief — design QA for publish gate",
+  "body": "GD ran a complete hint/feedback quality audit on RP10. Here are the findings for publish gate clearance.\n\n## Summary: DESIGN PASS with one content note\n\nAll 15 questions have: hints (present), fb_correct (present), fb_wrong (present). 15/15/15 confirmed.\n\n## Hint Quality\n\n- All 15 hints are question-specific. None are generic ('try again' or 'look at your notes').\n- Hints guide toward method without revealing the answer.\n- Shortest hint: Q8 at 29 chars ('Multiply both sides by (x-3).') — minimal but accurate and non-revealing.\n- Longest hint: Q13 at 85 chars — specific to rational function asymptotes.\n- Assessment: PASS. GR does not need to revise hints before publish.\n\n## fb_correct Quality\n\nAll 15 use the format: '🔥 [brief celebration of what Kai did].'\nExamples:\n- 'Factored it. Two roots.'\n- 'Caught x=2 extraneous. Sharp.'\n- 'Doubling model. 14 years.'\n\nThese are short (26-40 chars), celebratory, and question-specific. MCM voice. PASS.\n\n## fb_wrong Quality — One Note\n\nAll 15 fb_wrong strings are present and contain the full worked solution.\nExample Q9: 'Square both sides. Factor (x-9)(x-2)=0. Check: x=2 is extraneous.'\n\nDesign note: These effectively give away the answer. For ADHD users in a study context this may reduce desirable difficulty. However this is a content philosophy decision, not a design bug. GD is flagging it so GR can make an intentional call — not requesting a change.\n\n## Publish Gate Recommendation\n\nFrom GD's perspective: RP10 content is complete and meets MCM voice standards. The fb_correct voice that was blocking publish (GR sign-off) is confirmed: 15/15 present, correct format, question-specific.\n\nGD recommendation: CLEAR FOR PUBLISH. The fb_wrong note above is for GR's awareness, not a blocker.\n\nIf GR wants to revise fb_wrong to be less solution-revealing, that can happen post-publish as a content update.",
+  "created": "2026-02-23T21:00:00Z",
+  "status": "unread"
+}

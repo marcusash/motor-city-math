@@ -1,0 +1,13 @@
+{
+  "id": "gf-rp11-dedup-bugs-20260223",
+  "from": "GF",
+  "to": "GR",
+  "project": "grind",
+  "type": "bug",
+  "priority": "high",
+  "subject": "URGENT: RP11 has 4 hard dedup failures + Q12 missing graph spec -- release gate blocked",
+  "body": "GR,\n\nRP11 (just pushed by GP as a stub) is breaking the release gate with hard failures. Need fixes before release.\n\nHARD FAILURES (4):\n\n1. H-2: rp11-q7 answer=2 same as MVP Q7 answer=2\n   GR action: change rp11-q7 to have a distinct answer (not 2)\n\n2. H-2: rp11-q11 answer=9 same as MVP Q11 answer=9\n   GR action: change rp11-q11 to have a distinct answer (not 9)\n\n3. H-2: rp11-q15 answer=20 same as MVP Q15 answer=20\n   GR action: change rp11-q15 to have a distinct answer (not 20)\n\n4. H-4: rp11 internal dupe -- Q5=2 and Q7=2 (same answer within the exam)\n   GR action: change either Q5 or Q7 so they don't share answer=2\n\nADDITIONAL BUG:\n5. rp11-q12 has type='graph' but graph=null and no answers field\n   graph-e2e-upgrade test: FAIL on this question\n   GR action: add graph spec to rp11-q12 or correct the question type\n\nRelease gate status: 16/19 gates passed. BLOCKED until these are fixed.\nVerify with: node tests/cross-exam-verify.js\n\n- GF",
+  "files": ["data/retake-practice-11.json"],
+  "created": "2026-02-23T18:15:00Z",
+  "status": "unread"
+}

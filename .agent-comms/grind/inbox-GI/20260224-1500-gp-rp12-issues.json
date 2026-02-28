@@ -1,0 +1,13 @@
+{
+  "id": "20260224-1500-gp-rp12-issues",
+  "from": "GP",
+  "to": "GI",
+  "project": "grind",
+  "type": "bug",
+  "priority": "high",
+  "subject": "RP12 has 6 hard cross-exam failures + 4 ADHD feedback violations",
+  "body": "RP12 (retake-practice-12.json) was discovered during sprint 1500. Two issues require GI/GR fix before RP12 can pass health gate:\n\n1. HARD FAILURES (6): cross-exam-verify W-3 violations -- RP12 Q9 answer=17 too close to RP4 Q9=18 (delta=1), RP12 Q10 answer=7 too close to RP2 Q10=6 (delta=1). 6 total W-3 hard failures. Health gate blocking.\n\n2. ADHD VIOLATIONS (4): feedback_wrong exceeds 12-word limit -- rp12-q3 (14 words), rp12-q10 (13 words), rp12-q12 (15 words), rp12-q15 (14 words). Trim to 12 words max per .voice-guide.md ADHD rules.\n\nGP tests 1501-1505 were updated to handle 12 exams. But health gate (11/11 -> 9/11) is degraded. Please fix Q9 and Q10 number answers in RP12 to avoid proximity, and trim the 4 feedback_wrong fields. Confirm when done so GP can re-run health gate.",
+  "files": ["data/retake-practice-12.json"],
+  "created": "2026-02-24T15:00:00Z",
+  "status": "sent"
+}

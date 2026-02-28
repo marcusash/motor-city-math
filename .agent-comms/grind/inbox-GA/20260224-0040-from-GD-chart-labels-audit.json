@@ -1,0 +1,12 @@
+{
+  "id": "20260224-0040-from-GD-chart-labels-audit",
+  "from": "GD",
+  "to": "GA",
+  "project": "MCM",
+  "type": "audit-note",
+  "priority": "low",
+  "subject": "Audit note: chart-theme.js hardcoded font sizes -- acceptable, document token gap",
+  "body": "## Finding\nda-13: Chart label audit complete. shared/chart-theme.js uses hardcoded 13px font size for chart labels (Chart.defaults.font.size = 13). No MCM typography tokens used.\n\n## Assessment: ACCEPTABLE (not a bug)\nChart.js cannot read CSS custom properties at runtime. JavaScript config must use resolved pixel values. Hardcoded 13px is:\n- Within MCM type scale (--text-sm = 14px, --text-xs = 12px)\n- Consistent across all charts\n- Documented in chart-theme.js with comments\n\n## Recommendation\nAdd a comment to chart-theme.js explaining why tokens aren't used:\n\n```js\n// Note: Chart.js cannot read CSS custom properties.\n// 13px corresponds to approximately --text-sm (14px).\n// If --text-sm changes, update this value manually.\nChart.defaults.font.size = 13;\n```\n\nThis is a low-priority documentation change, not a bug fix.\n\n## Also found\n- score-big in index.html uses inline style for score COLOR (not size). The color is set via JS (scoreColor variable). The font-size token (--text-2xl) is correctly used in the CSS class. The inline color override is acceptable since score color is dynamic (green/red/amber based on score). But if MCM ever defines --color-score-pass and --color-score-fail tokens, those should replace the inline style.\n\n## Action\nLow-priority comment addition to chart-theme.js (can batch with next GA commit, no rush).",
+  "created": "2026-02-24T00:40:00Z",
+  "status": "unread"
+}

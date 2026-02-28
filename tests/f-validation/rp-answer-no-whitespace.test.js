@@ -1,0 +1,44 @@
+// rp-answer-no-whitespace test
+// All answer values in RP exams must not have leading/trailing whitespace
+// "42 " (with trailing space) would cause parseFloat to succeed but string match to fail
+
+const fs = require('fs');
+const path = require('path');
+
+let pass = 0, fail = 0;
+function test(name, result) {
+    if (result) { console.log('  \u2705 ' + name); pass++; }
+    else        { console.log('  \u274c ' + name); fail++; }
+}
+
+console.log('\u{1F3C0} rp-answer-no-whitespace.test.js\n');
+
+var dataDir = path.join(__dirname, '../../data');
+var violations = [], totalAnswers = 0;
+
+for (var i = 1; i <= 11; i++) {
+    var f = path.join(dataDir, 'retake-practice-' + i + '.json');
+    if (!fs.existsSync(f)) continue;
+    var rp = JSON.parse(fs.readFileSync(f, 'utf-8'));
+    (rp.questions || []).forEach(function(q) {
+        (q.inputs || []).forEach(function(inp) {
+            if (inp.answer === undefined || inp.answer === null) return;
+            var ans = String(inp.answer);
+            totalAnswers++;
+            if (ans !== ans.trim()) {
+                violations.push('rp' + i + ' ' + q.id + ' ' + inp.id + ': "' + ans + '"');
+            }
+        });
+    });
+}
+
+console.log('\u2500\u2500 Answer whitespace checks \u2500\u2500\n');
+if (violations.length) violations.forEach(function(v) { console.log('  ! ' + v); });
+
+test('Total answers checked: ' + totalAnswers, totalAnswers >= 165);
+test('No answers with leading/trailing whitespace', violations.length === 0);
+
+console.log('\n' + '='.repeat(50));
+console.log('rp-answer-no-whitespace: ' + (pass+fail) + ' checks, ' + pass + ' pass, ' + fail + ' fail');
+if (fail === 0) { console.log('PASS'); process.exit(0); }
+else            { console.log('FAIL'); process.exit(1); }

@@ -30,7 +30,10 @@ function loadAttemptedExams() {
   }
   return attempted;
 }
-const thresholdDays = Number.parseInt(process.env.MCM_FRESHNESS_DAYS || '14', 10);
+const staleDaysArg = process.argv.find(a => a.startsWith('--stale-days='));
+const thresholdDays = staleDaysArg
+  ? Number.parseInt(staleDaysArg.split('=')[1], 10)
+  : Number.parseInt(process.env.MCM_FRESHNESS_DAYS || '14', 10);
 const strictMode = process.env.MCM_FRESHNESS_STRICT === '1';
 
 function parseDate(value) {

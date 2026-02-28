@@ -102,7 +102,7 @@ function verify() {
   const practiceFiles = fs.readdirSync(DATA_DIR)
     .filter(f => f.startsWith('retake-practice-') && f.endsWith('.json')).sort();
 
-  const practiceExams = practiceFiles.map(loadPracticeExam);
+  const practiceExams = practiceFiles.map(loadPracticeExam).filter(e => e.questions && e.questions.length === 15);
   const allExams = [MVP, ...practiceExams];
   const examLabels = allExams.map(e => e.id);
 

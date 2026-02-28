@@ -63,6 +63,26 @@ function buildMarkdown(exams, generatedAt) {
     );
   });
   lines.push('');
+
+  // Hardest/Easiest exams by completeness (most/fewest missing fields)
+  const withTotals = exams.map(e => ({
+    id: e.exam_id,
+    total: e.missing_hint.length + e.missing_solution_steps.length + e.missing_feedback.length +
+      e.missing_inputs.length + e.missing_standard.length + e.missing_question_html.length
+  })).sort((a, b) => b.total - a.total);
+
+  lines.push('## Completeness Ranking');
+  lines.push('');
+  lines.push('Exams with the most missing fields need QA attention first.');
+  lines.push('');
+  lines.push('| Rank | Exam | Missing fields total |');
+  lines.push('|------|------|----------------------|');
+  withTotals.forEach((e, i) => {
+    const flag = e.total === 0 ? ' CLEAN' : e.total > 5 ? ' NEEDS ATTENTION' : '';
+    lines.push(`| ${i + 1} | ${e.id} | ${e.total}${flag} |`);
+  });
+  lines.push('');
+
   exams.forEach((exam) => {
     const sections = [
       ['Missing hints', exam.missing_hint],

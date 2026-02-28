@@ -1,0 +1,572 @@
+{
+  "exam_id": "retake-practice-12",
+  "schema_version": "1.0",
+  "title": "Unit 2 Final Paper Exam — Nonlinear Functions",
+  "subtitle": "Standards W2 & W3 · 15 Questions · ~60 min · Print & Write",
+  "time_minutes": 60,
+  "created": "2026-02-24",
+  "created_by": "FR",
+  "purpose": "Final paper exam before Wednesday retake. All new numbers. Matches baseline exam structure exactly. Paper-administered: Kai writes answers by hand. Special focus on Q11 (fractional exponents — the one miss from RP4).",
+  "print": true,
+  "questions": [
+    {
+      "id": "rp12-q1",
+      "number": 1,
+      "section": "A",
+      "standard": "W2.b",
+      "type": "identify",
+      "rationale": "Confidence builder. Kai is 3/3 on quadratic identify across RP3 and RP4. New coefficient and numbers. Locks in the pattern before harder questions.",
+      "question_html": "Identify the parent function and find the x-intercepts: \\( f(x) = 3(x - 4)^2 - 75 \\)",
+      "inputs": [
+        {
+          "id": "q1_parent",
+          "type": "dropdown",
+          "label": "Parent function",
+          "options": ["quadratic","cubic","absolute value","square root","rational","exponential"],
+          "answer": "quadratic"
+        },
+        {
+          "id": "q1_x1",
+          "type": "number",
+          "label": "x₁ =",
+          "answer": 9,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q1_x2",
+          "type": "number",
+          "label": "x₂ =",
+          "answer": -1,
+          "tolerance": 0.1
+        }
+      ],
+      "plus_minus": true,
+      "hint": "Set f(x)=0. Isolate the squared term. Then take ±√.",
+      "solution_steps": [
+        "Parent: y = x² (quadratic — highest power is 2).",
+        "Set 0 = 3(x−4)² − 75.",
+        "3(x−4)² = 75 → (x−4)² = 25.",
+        "x − 4 = ±5 → x = 9 or x = −1.",
+        "Check: 3(9−4)²−75 = 3(25)−75 = 0 ✓ and 3(−1−4)²−75 = 0 ✓"
+      ],
+      "feedback_correct": "Parent and both intercepts correct.",
+      "feedback_wrong": "Parent: quadratic. Set 3(x−4)^2=75 → (x−4)^2=25 → x−4=±5."
+    },
+    {
+      "id": "rp12-q2",
+      "number": 2,
+      "section": "A",
+      "standard": "W2.b",
+      "type": "identify",
+      "rationale": "Kai is 2/2 on square root identify. New shift values. Keeps the pattern: isolate the radical, square, solve.",
+      "question_html": "Identify the parent function and find the x-intercept: \\( f(x) = \\sqrt{x - 11} - 6 \\)",
+      "inputs": [
+        {
+          "id": "q2_parent",
+          "type": "dropdown",
+          "label": "Parent function",
+          "options": ["quadratic","cubic","absolute value","square root","rational","exponential"],
+          "answer": "square root"
+        },
+        {
+          "id": "q2_x1",
+          "type": "number",
+          "label": "x-intercept =",
+          "answer": 47,
+          "tolerance": 0.1
+        }
+      ],
+      "hint": "Set f(x)=0. Isolate the √. Square both sides.",
+      "solution_steps": [
+        "Parent: y = √x (square root function).",
+        "Set 0 = √(x−11) − 6 → √(x−11) = 6.",
+        "Square: x − 11 = 36 → x = 47.",
+        "Check: √(47−11) − 6 = √36 − 6 = 6 − 6 = 0 ✓"
+      ],
+      "feedback_correct": "Square root identified and intercept correct.",
+      "feedback_wrong": "Parent: square root. Isolate the √: √(x−11)=6 → x−11=36 → x=47."
+    },
+    {
+      "id": "rp12-q3",
+      "number": 3,
+      "section": "A",
+      "standard": "W2.b",
+      "type": "identify",
+      "rationale": "Absolute value with factor-out step. Kai is 2/2 on this type. New values for a, h, k. Requires the two-case split — reinforcing the most conceptually important step in W2.b.",
+      "question_html": "For \\( f(x) = |4x - 12| - 8 \\): rewrite in the form \\( a|x - h| + k \\), state the parent function, identify <em>a</em>, <em>h</em>, <em>k</em>, and find the x-intercepts.",
+      "inputs": [
+        {
+          "id": "q3_parent",
+          "type": "dropdown",
+          "label": "Parent function",
+          "options": ["quadratic","cubic","absolute value","square root","rational","exponential"],
+          "answer": "absolute value"
+        },
+        {
+          "id": "q3_a",
+          "type": "number",
+          "label": "a =",
+          "answer": 4,
+          "tolerance": 0.01
+        },
+        {
+          "id": "q3_h",
+          "type": "number",
+          "label": "h =",
+          "answer": 3,
+          "tolerance": 0.01
+        },
+        {
+          "id": "q3_k",
+          "type": "number",
+          "label": "k =",
+          "answer": -8,
+          "tolerance": 0.01
+        },
+        {
+          "id": "q3_cases",
+          "type": "text",
+          "label": "Write the two equations you must solve (e.g. \"AX+B = k and AX+B = -k\"):"
+        },
+        {
+          "id": "q3_x1",
+          "type": "number",
+          "label": "Smaller x-intercept =",
+          "answer": 1,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q3_x2",
+          "type": "number",
+          "label": "Larger x-intercept =",
+          "answer": 5,
+          "tolerance": 0.1
+        }
+      ],
+      "hint": "Factor out the coefficient first. Then two cases: 4x−12=8 OR −(4x−12)=8.",
+      "solution_steps": [
+        "Factor: |4x−12| = 4|x−3|. So f(x) = 4|x−3| − 8.",
+        "a = 4 (vertical stretch ×4), h = 3 (shift right 3), k = −8 (shift down 8).",
+        "KEY: |A| = k means A = k OR −A = k. So: 4x−12 = 8 AND −(4x−12) = 8.",
+        "Case 1: 4x−12 = 8 → 4x = 20 → x = 5.",
+        "Case 2: −(4x−12) = 8 → 4x−12 = −8 → 4x = 4 → x = 1.",
+        "Intercepts: x = 1 and x = 5."
+      ],
+      "feedback_correct": "Absolute value factored, both intercepts found.",
+      "feedback_wrong": "Factor out 4: 4|x−3|−8. Set |x−3|=2. Two cases: x−3=2 → x=5, x−3=−2 → x=1."
+    },
+    {
+      "id": "rp12-q4",
+      "number": 4,
+      "section": "B",
+      "standard": "W3.d",
+      "type": "exponential",
+      "rationale": "Kai is 2/2 on exponential same-base equations. New base (4), new target (256=4^4). Reinforces the pattern: convert, match bases, set exponents equal.",
+      "question_html": "Solve: \\( 4^{2x + 1} = 256 \\)",
+      "inputs": [
+        {
+          "id": "q4_x",
+          "type": "number",
+          "label": "x =",
+          "answer": 1.5,
+          "tolerance": 0.01
+        }
+      ],
+      "hint": "Rewrite 256 as 4^?. Then set exponents equal.",
+      "solution_steps": [
+        "Rewrite: 256 = 4⁴.",
+        "So 4^(2x+1) = 4⁴ → 2x + 1 = 4.",
+        "2x = 3 → x = 3/2 = 1.5.",
+        "Check: 4^(2·1.5+1) = 4^4 = 256 ✓"
+      ],
+      "feedback_correct": "Exponents matched. Clean.",
+      "feedback_wrong": "256 = 4^4. Set 2x+1=4 → x=1.5."
+    },
+    {
+      "id": "rp12-q5",
+      "number": 5,
+      "section": "B",
+      "standard": "W3.b",
+      "type": "quadratic",
+      "rationale": "Kai is 2/2 on standard-form quadratic factoring. New values (product=−35, sum=+2). Keeps the same factoring technique, different sign combination.",
+      "question_html": "Solve: \\( x^2 + 2x - 35 = 0 \\)",
+      "inputs": [
+        {
+          "id": "q5_x1",
+          "type": "number",
+          "label": "x₁ =",
+          "answer": 5,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q5_x2",
+          "type": "number",
+          "label": "x₂ =",
+          "answer": -7,
+          "tolerance": 0.1
+        }
+      ],
+      "plus_minus": true,
+      "hint": "Standard form. Find two numbers: product = −35, sum = +2. Factor.",
+      "solution_steps": [
+        "Need two numbers: product = −35, sum = +2. Those are: +7 and −5.",
+        "Factor: (x + 7)(x − 5) = 0.",
+        "x = −7 or x = 5.",
+        "Check: 25 + 10 − 35 = 0 ✓ and 49 − 14 − 35 = 0 ✓"
+      ],
+      "feedback_correct": "Factored correctly. Both roots.",
+      "feedback_wrong": "Standard form: (x+7)(x−5)=0. Roots: x=−7 and x=5."
+    },
+    {
+      "id": "rp12-q6",
+      "number": 6,
+      "section": "B",
+      "standard": "W3.b",
+      "type": "radical",
+      "rationale": "Kai is 4/4 on radical equations. New values. Same pattern: isolate √, square, solve, check.",
+      "question_html": "Solve: \\( \\sqrt{3x - 5} + 4 = 11 \\)",
+      "inputs": [
+        {
+          "id": "q6_x",
+          "type": "number",
+          "label": "x =",
+          "answer": 18,
+          "tolerance": 0.01
+        }
+      ],
+      "hint": "Isolate the √ first. Then square both sides.",
+      "solution_steps": [
+        "√(3x−5) = 7.",
+        "Square both sides: 3x − 5 = 49.",
+        "3x = 54 → x = 18.",
+        "Check: √(54−5) + 4 = √49 + 4 = 7 + 4 = 11 ✓"
+      ],
+      "feedback_correct": "Radical isolated and solved.",
+      "feedback_wrong": "Subtract 4 first: √(3x−5)=7. Square: 3x−5=49."
+    },
+    {
+      "id": "rp12-q7",
+      "number": 7,
+      "section": "B",
+      "standard": "W3.d",
+      "type": "exponential",
+      "rationale": "Kai is 2/2 on mixed-base exponential (common base conversion). New bases: 4 and 32 (both powers of 2). Slightly harder because 32=2^5 and 4=2^2 require an extra conversion step.",
+      "question_html": "Solve: \\( 4^{x + 2} = 32 \\)",
+      "inputs": [
+        {
+          "id": "q7_x",
+          "type": "number",
+          "label": "x =",
+          "answer": 0.5,
+          "tolerance": 0.01
+        }
+      ],
+      "hint": "Rewrite both sides as powers of 2. 4 = 2² and 32 = 2⁵.",
+      "solution_steps": [
+        "Rewrite: 4 = 2² → 4^(x+2) = 2^(2x+4).",
+        "Rewrite: 32 = 2⁵.",
+        "2^(2x+4) = 2⁵ → 2x + 4 = 5.",
+        "2x = 1 → x = 1/2 = 0.5.",
+        "Check: 4^(0.5+2) = 4^2.5 = (2²)^2.5 = 2⁵ = 32 ✓"
+      ],
+      "feedback_correct": "Common base found. Both sides converted to base 2.",
+      "feedback_wrong": "Both 4 and 32 are powers of 2. Rewrite: 4=2^2 and 32=2^5."
+    },
+    {
+      "id": "rp12-q8",
+      "number": 8,
+      "section": "B",
+      "standard": "W3.c",
+      "type": "rational",
+      "rationale": "Kai is 2/2 on rational equations. New numerator and denominator. Same technique: multiply both sides by the denominator.",
+      "question_html": "Solve: \\( \\dfrac{5x - 2}{x + 3} = 4 \\)",
+      "inputs": [
+        {
+          "id": "q8_x",
+          "type": "number",
+          "label": "x =",
+          "answer": 14,
+          "tolerance": 0.01
+        }
+      ],
+      "hint": "Multiply both sides by (x + 3).",
+      "solution_steps": [
+        "Multiply: 5x − 2 = 4(x + 3).",
+        "5x − 2 = 4x + 12.",
+        "x = 14.",
+        "Check: (5·14−2)/(14+3) = 68/17 = 4 ✓"
+      ],
+      "feedback_correct": "Cross-multiplied and solved clean.",
+      "feedback_wrong": "Multiply both sides by (x+3): 5x−2=4(x+3)."
+    },
+    {
+      "id": "rp12-q9",
+      "number": 9,
+      "section": "B",
+      "standard": "W3.b",
+      "type": "radical",
+      "rationale": "Radical with coefficient in front of the square root. Kai is 2/2 on this type. New values. Critical step: divide the coefficient BEFORE squaring.",
+      "question_html": "Solve: \\( 4\\sqrt{x - 1} + 2 = 18 \\)",
+      "inputs": [
+        {
+          "id": "q9_x",
+          "type": "number",
+          "label": "x =",
+          "answer": 17,
+          "tolerance": 0.01
+        }
+      ],
+      "hint": "There is a coefficient 4 in front of the √. Subtract 2, then divide by 4, THEN square.",
+      "solution_steps": [
+        "4√(x−1) = 16 → √(x−1) = 4. (Divide by 4 first — cannot square yet.)",
+        "Square: x − 1 = 16 → x = 17.",
+        "Check: 4√(17−1) + 2 = 4√16 + 2 = 4(4) + 2 = 18 ✓"
+      ],
+      "feedback_correct": "Coefficient divided before squaring.",
+      "feedback_wrong": "Subtract 2 first, then divide by 4 to isolate √, THEN square."
+    },
+    {
+      "id": "rp12-q10",
+      "number": 10,
+      "section": "B",
+      "standard": "W3.e",
+      "type": "extraneous",
+      "rationale": "Extraneous solutions — Kai is 2/2 but this is always the hardest conceptual question. New equation, same structure: radical = linear. One root will fail the check. Must check both.",
+      "question_html": "Solve: \\( \\sqrt{3x + 4} = x - 2 \\)<br><em>Note: check for <strong>extraneous solutions</strong>.</em>",
+      "inputs": [
+        {
+          "id": "q10_x",
+          "type": "number",
+          "label": "Valid x =",
+          "answer": 7,
+          "tolerance": 0.1
+        }
+      ],
+      "hint": "Square both sides. You will get a quadratic. Factor it. Check BOTH answers in the original equation.",
+      "solution_steps": [
+        "Square: 3x + 4 = (x−2)² = x² − 4x + 4.",
+        "x² − 7x = 0 → x(x − 7) = 0.",
+        "x = 0 or x = 7.",
+        "Check x=0: √4 = 2 and 0−2 = −2. √4 ≠ −2. ✗ Extraneous.",
+        "Check x=7: √25 = 5 and 7−2 = 5. ✓",
+        "Only x = 7 is valid."
+      ],
+      "feedback_correct": "Caught the extraneous solution. x=7 is the only valid answer.",
+      "feedback_wrong": "Square both sides: x^2−7x=0 → x=0 or x=7. Check both: x=0 fails (√4≠−2)."
+    },
+    {
+      "id": "rp12-q11",
+      "number": 11,
+      "section": "B",
+      "standard": "W3.b",
+      "type": "fractional-exp",
+      "rationale": "THE CRITICAL QUESTION. Kai missed this in RP4 (2x^(3/2)−14=672). Same type, new numbers designed for a clean answer: x^(3/2)=125 → x=25. The cube root of 125 is a recognizable number (5). This gives Kai a stepping stone rather than a blind calculation. Rationale: if Kai sees 125 and thinks of 5^3, the path to x=25 is clear.",
+      "question_html": "Solve: \\( 2x^{3/2} + 4 = 254 \\)",
+      "inputs": [
+        {
+          "id": "q11_x",
+          "type": "number",
+          "label": "x =",
+          "answer": 25,
+          "tolerance": 0.01
+        }
+      ],
+      "hint": "Step 1: Get x^(3/2) alone. Step 2: Raise BOTH SIDES to the 2/3 power (flip the fraction). Step 3: ∛125 = 5, then 5² = 25.",
+      "solution_steps": [
+        "2x^(3/2) = 250 → x^(3/2) = 125.",
+        "Raise both sides to the 2/3 power: x = 125^(2/3).",
+        "Step 1: Cube root of 125 = 5. (Because 5³ = 125.)",
+        "Step 2: Square the result: 5² = 25.",
+        "x = 25.",
+        "Check: 2(25)^(3/2) + 4 = 2(125) + 4 = 254 ✓"
+      ],
+      "feedback_correct": "Fractional exponent mastered. 125^(2/3) = 25.",
+      "feedback_wrong": "Isolate x^(3/2)=125. Then apply 2/3 power: first ∛125=5, then 5²=25."
+    },
+    {
+      "id": "rp12-q12",
+      "number": 12,
+      "section": "C",
+      "standard": "W2.c",
+      "type": "graph",
+      "rationale": "Kai is 2/2 on vertex graphing. NEW TWIST: negative leading coefficient (parabola opens DOWN). This is a deliberate difficulty bump — Kai must notice the negative sign and flip the parabola.",
+      "question_html": "Graph \\( f(x) = -(x + 2)^2 + 9 \\). State the vertex and the direction the parabola opens.",
+      "inputs": [
+        {
+          "id": "q12_vx",
+          "type": "number",
+          "label": "Vertex x =",
+          "answer": -2,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q12_vy",
+          "type": "number",
+          "label": "Vertex y =",
+          "answer": 9,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q12_dir",
+          "type": "radio",
+          "label": "Opens:",
+          "options": [
+            {"value": "up", "text": "Up"},
+            {"value": "down", "text": "Down"}
+          ],
+          "answer": "down"
+        }
+      ],
+      "graph": {
+        "canvas_id": "graphQ12",
+        "function": "-(Math.pow(x + 2, 2)) + 9",
+        "function_display": "f(x) = -(x+2)² + 9",
+        "key_points": [
+          [-5, 0],
+          [-4, 5],
+          [-3, 8],
+          [-2, 9],
+          [-1, 8],
+          [0, 5],
+          [1, 0]
+        ],
+        "min_points": 5,
+        "tolerance": 0.25,
+        "asymptotes": null
+      },
+      "hint": "Vertex form: a(x−h)²+k. Vertex is (h, k). Negative a means opens DOWN.",
+      "solution_steps": [
+        "Vertex form: −(x+2)²+9 → vertex at (−2, 9). a = −1 (negative → opens DOWN).",
+        "x-intercepts: −(x+2)²+9=0 → (x+2)²=9 → x+2=±3 → x=1 or x=−5.",
+        "y-intercept: f(0) = −(4)+9 = 5 → (0, 5).",
+        "Plot vertex (−2, 9), intercepts (1,0) and (−5,0), y-intercept (0,5).",
+        "Draw inverted U-shape (opens down)."
+      ],
+      "feedback_correct": "Vertex, direction, and graph all correct.",
+      "feedback_wrong": "Vertex is (h, k) = (−2, 9). Negative a means OPENS DOWN — inverted parabola."
+    },
+    {
+      "id": "rp12-q13",
+      "number": 13,
+      "section": "C",
+      "standard": "W2.e",
+      "type": "graph",
+      "rationale": "Kai is 2/2 on rational function graphing. New shifts (right 3, down 2) with a positive multiplier. Same technique: VA from denominator, HA from shift outside.",
+      "question_html": "Graph \\( f(x) = \\dfrac{4}{x - 3} - 2 \\) and draw asymptotes. State the asymptotes.",
+      "inputs": [
+        {
+          "id": "q13_va",
+          "type": "number",
+          "label": "Vertical asymptote x =",
+          "answer": 3,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q13_ha",
+          "type": "number",
+          "label": "Horizontal asymptote y =",
+          "answer": -2,
+          "tolerance": 0.1
+        }
+      ],
+      "graph": {
+        "canvas_id": "graphQ13",
+        "function": "4 / (x - 3) - 2",
+        "function_display": "f(x) = 4/(x-3) − 2",
+        "key_points": [
+          [1, -4],
+          [2, -6],
+          [4, 2],
+          [5, 0],
+          [7, -1]
+        ],
+        "min_points": 4,
+        "tolerance": 0.25,
+        "asymptotes": {
+          "vertical": [3],
+          "horizontal": [-2]
+        }
+      },
+      "hint": "VA: set denominator = 0. HA: the −2 outside the fraction.",
+      "solution_steps": [
+        "VA: x − 3 = 0 → x = 3.",
+        "HA: y = −2 (the constant outside).",
+        "f(1) = 4/(−2) − 2 = −2 − 2 = −4 → (1, −4).",
+        "f(2) = 4/(−1) − 2 = −4 − 2 = −6 → (2, −6).",
+        "f(4) = 4/1 − 2 = 4 − 2 = 2 → (4, 2).",
+        "f(5) = 4/2 − 2 = 2 − 2 = 0 → (5, 0).",
+        "f(7) = 4/4 − 2 = 1 − 2 = −1 → (7, −1).",
+        "Draw dashed asymptote lines at x=3 and y=−2. Sketch two hyperbola branches."
+      ],
+      "feedback_correct": "Both asymptotes and graph correct.",
+      "feedback_wrong": "VA: set denominator=0 → x=3. HA: the outside constant → y=−2."
+    },
+    {
+      "id": "rp12-q14",
+      "number": 14,
+      "section": "D",
+      "standard": "W3.a",
+      "type": "multiple-choice",
+      "rationale": "Formula rearrangement. Kai is 2/2 on this type. New formula: area of circle. One step: divide by π and take √. The distractors test the most common errors.",
+      "question_html": "The area of a circle is \\( A = \\pi r^2 \\). Which correctly solves for \\( r \\)?",
+      "inputs": [
+        {
+          "id": "q14",
+          "type": "radio",
+          "label": "",
+          "options": [
+            {"value": "A", "text": "\\( r = \\sqrt{\\dfrac{A}{\\pi}} \\)"},
+            {"value": "B", "text": "\\( r = \\dfrac{A}{\\pi} \\)"},
+            {"value": "C", "text": "\\( r = \\dfrac{A}{\\pi^2} \\)"},
+            {"value": "D", "text": "\\( r = \\dfrac{\\sqrt{A}}{\\pi} \\)"}
+          ],
+          "answer": "A"
+        }
+      ],
+      "hint": "Isolate r: divide both sides by π, then take the square root.",
+      "solution_steps": [
+        "A = πr².",
+        "Divide by π: A/π = r².",
+        "Take √: r = √(A/π).",
+        "Answer: A."
+      ],
+      "feedback_correct": "Formula rearrangement correct.",
+      "feedback_wrong": "Divide by π first (r²=A/π), THEN take √. Answer: A."
+    },
+    {
+      "id": "rp12-q15",
+      "number": 15,
+      "section": "D",
+      "standard": "W3.a",
+      "type": "word-problem",
+      "rationale": "Exponential DECAY word problem (vs growth in RP4). New context: phone depreciation. Clean answer: t=3 years. Keeps all the same modeling skills (P0, rate factor, period) but tests decay direction. Deliberate switch from RP4 growth scenario to avoid pattern matching.",
+      "question_html": "A smartphone originally costs \\$800 and loses 25% of its value each year.<br>(a) Write an exponential model \\( V(t) \\) for its value after \\( t \\) years.<br>(b) After how many years is the phone worth \\$337.50?",
+      "inputs": [
+        {
+          "id": "q15_model",
+          "type": "text",
+          "label": "V(t) ="
+        },
+        {
+          "id": "q15_t",
+          "type": "number",
+          "label": "t =",
+          "answer": 3,
+          "tolerance": 0.5
+        }
+      ],
+      "hint": "Decay: V(t) = V₀ · (1 − r)^t. Loses 25% → keeps 75% → decay factor is 0.75.",
+      "solution_steps": [
+        "V₀ = 800 (starting value). Decay factor = 1 − 0.25 = 0.75.",
+        "Model: V(t) = 800 · (0.75)^t.",
+        "Set 800 · (0.75)^t = 337.50 → (0.75)^t = 0.421875.",
+        "(0.75)^1 = 0.75, (0.75)^2 = 0.5625, (0.75)^3 = 0.421875.",
+        "t = 3 years.",
+        "Check: 800 · (0.75)^3 = 800 · 0.421875 = 337.50 ✓"
+      ],
+      "feedback_correct": "Decay model and t=3 years both correct.",
+      "feedback_wrong": "Decay factor = 0.75 (keeps 75%). Model: V(t)=800·(0.75)^t. Set equal to 337.50 → t=3."
+    }
+  ],
+  "version": "2.0"
+}

@@ -1,0 +1,42 @@
+{
+  "profile_id": "kai-2026",
+  "name": "Kai",
+  "age": 15,
+  "school": "Seattle Academy (SAAS)",
+  "course": "Algebra II",
+  "learning_style": {
+    "adhd": true,
+    "prefers": "short feedback, clear hierarchy, one action at a time",
+    "timer_preference": "show remaining not elapsed",
+    "max_feedback_words": 12,
+    "max_hint_words": 20,
+    "max_cta_at_once": 1
+  },
+  "progress": {
+    "current_grade": "A",
+    "exams_completed": 10,
+    "exam_history": [
+      { "id": "retake-practice-1", "completed": true },
+      { "id": "retake-practice-2", "completed": true },
+      { "id": "retake-practice-3", "completed": true },
+      { "id": "retake-practice-4", "completed": true },
+      { "id": "retake-practice-5", "completed": true },
+      { "id": "retake-practice-6", "completed": true },
+      { "id": "retake-practice-7", "score": "6/15", "completed": true, "note": "worst score, triggered RP8 design changes" },
+      { "id": "retake-practice-8", "completed": true },
+      { "id": "retake-practice-9", "completed": true },
+      { "id": "retake-practice-10", "completed": true },
+      { "id": "retake-practice-11", "completed": false, "status": "pending GR fixes" }
+    ]
+  },
+  "known_weaknesses": [
+    "W2.a (quadratic factoring by AC method) — only seen in RP8-10",
+    "W2.d (write-equation from vertex+point) — only seen in RP7-10",
+    "RP7: 6/15 suggests AV two-case, rational, write-equation all weak"
+  ],
+  "strengths": [
+    "W3.b (radical equations) — 32 questions seen, consistent improvement",
+    "W3.d (exponential x²) — 25 questions, solid foundation"
+  ],
+  "notes": "Motor City Math raised Kai's grade from below passing to A. ADHD design rules are non-negotiable. Marcus reviews all exams before Kai uses them."
+}

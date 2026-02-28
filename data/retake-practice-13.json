@@ -1,0 +1,320 @@
+{
+  "exam_id": "retake-practice-13",
+  "schema_version": "1.0",
+  "title": "Targeted Prep: Fractional Exponents + Downward Parabolas",
+  "subtitle": "8 Questions · ~30 min · Tuesday Warm-Up",
+  "time_minutes": 30,
+  "created": "2026-02-24",
+  "created_by": "FR",
+  "purpose": "Targeted Tuesday drill before Wednesday retake. Starts with two confidence questions (proven mastery areas) then drills the two skills RP12 will test harder: fractional exponents (Q3-Q6, escalating) and negative-a parabolas (Q7-Q8). Not a full exam — a focused primer.",
+  "questions": [
+    {
+      "id": "rp13-q1",
+      "number": 1,
+      "section": "WARM-UP",
+      "standard": "W3.b",
+      "type": "radical",
+      "rationale": "Confidence opener. Kai is 4/4 on radical equations. Same technique, new numbers. Gets him in the zone before harder material.",
+      "question_html": "Solve: \\( \\sqrt{6x + 10} + 3 = 13 \\)",
+      "inputs": [
+        {
+          "id": "q1_x",
+          "type": "number",
+          "label": "x =",
+          "answer": 15,
+          "tolerance": 0.01
+        }
+      ],
+      "hint": "Isolate the √ first. Then square both sides.",
+      "solution_steps": [
+        "√(6x+10) = 10.",
+        "Square: 6x + 10 = 100.",
+        "6x = 90 → x = 15.",
+        "Check: √(90+10) + 3 = √100 + 3 = 10 + 3 = 13 ✓"
+      ],
+      "feedback_correct": "Warm-up locked. Radical technique is solid.",
+      "feedback_wrong": "Subtract 3 first: √(6x+10)=10. Then square both sides."
+    },
+    {
+      "id": "rp13-q2",
+      "number": 2,
+      "section": "WARM-UP",
+      "standard": "W3.d",
+      "type": "exponential",
+      "rationale": "Second confidence opener. Kai is 4/4 on exponential same-base equations. Easy win before the targeted drill begins.",
+      "question_html": "Solve: \\( 3^{2x - 1} = 81 \\)",
+      "inputs": [
+        {
+          "id": "q2_x",
+          "type": "number",
+          "label": "x =",
+          "answer": 2.5,
+          "tolerance": 0.01
+        }
+      ],
+      "hint": "Rewrite 81 as 3^?. Set exponents equal.",
+      "solution_steps": [
+        "81 = 3⁴.",
+        "3^(2x−1) = 3⁴ → 2x − 1 = 4.",
+        "2x = 5 → x = 5/2 = 2.5.",
+        "Check: 3^(5−1) = 3⁴ = 81 ✓"
+      ],
+      "feedback_correct": "Exponent match. Warm-up done.",
+      "feedback_wrong": "81=3^4. Set 2x−1=4 → x=2.5."
+    },
+    {
+      "id": "rp13-q3",
+      "number": 3,
+      "section": "FRACTIONAL EXPONENTS",
+      "standard": "W3.b",
+      "type": "fractional-exp",
+      "rationale": "Simplest fractional exponent. One step: x^(2/3)=4, apply the reciprocal power 3/2. Answer is 8 — recognizable. Goal: build the mechanical pattern before adding a coefficient wrapper.",
+      "question_html": "Solve: \\( x^{2/3} = 4 \\)<br><em>Hint: to undo x^(2/3), raise both sides to the <strong>3/2</strong> power (flip the fraction).</em>",
+      "inputs": [
+        {
+          "id": "q3_x",
+          "type": "number",
+          "label": "x =",
+          "answer": 8,
+          "tolerance": 0.01
+        }
+      ],
+      "hint": "The reciprocal of 2/3 is 3/2. Raise both sides to the 3/2 power. 4^(3/2) = (√4)³.",
+      "solution_steps": [
+        "x^(2/3) = 4.",
+        "Raise both sides to 3/2 power: x = 4^(3/2).",
+        "Step 1: √4 = 2. Step 2: 2³ = 8.",
+        "x = 8.",
+        "Check: 8^(2/3) = (∛8)² = 2² = 4 ✓"
+      ],
+      "feedback_correct": "4^(3/2) = 8. The reciprocal power technique works.",
+      "feedback_wrong": "Apply 3/2 power to both sides: x = 4^(3/2). First √4=2, then 2³=8."
+    },
+    {
+      "id": "rp13-q4",
+      "number": 4,
+      "section": "FRACTIONAL EXPONENTS",
+      "standard": "W3.b",
+      "type": "fractional-exp",
+      "rationale": "Adds a coefficient wrapper. Must isolate x^(2/3) first by dividing by 2. Then apply reciprocal power. Answer is 27 — recognizable (3^3). Same reciprocal power as Q3 but now with an extra step.",
+      "question_html": "Solve: \\( 2x^{2/3} = 18 \\)",
+      "inputs": [
+        {
+          "id": "q4_x",
+          "type": "number",
+          "label": "x =",
+          "answer": 27,
+          "tolerance": 0.01
+        }
+      ],
+      "hint": "Divide by 2 first to isolate x^(2/3). Then apply the 3/2 power.",
+      "solution_steps": [
+        "x^(2/3) = 9.",
+        "Raise to 3/2: x = 9^(3/2).",
+        "Step 1: √9 = 3. Step 2: 3³ = 27.",
+        "x = 27.",
+        "Check: 2(27)^(2/3) = 2(∛27)² = 2(3²) = 2(9) = 18 ✓"
+      ],
+      "feedback_correct": "9^(3/2) = 27. Coefficient handled correctly.",
+      "feedback_wrong": "Divide by 2: x^(2/3)=9. Then x=9^(3/2). √9=3, then 3³=27."
+    },
+    {
+      "id": "rp13-q5",
+      "number": 5,
+      "section": "FRACTIONAL EXPONENTS",
+      "standard": "W3.b",
+      "type": "fractional-exp",
+      "rationale": "Switches to 3/2 exponent (vs 2/3 in Q3-Q4). Reciprocal is now 2/3. Target: x^(3/2)=8 → x=4. Clean: ∛8=2, then 2²=4. Builds fluency with the other common fractional exponent.",
+      "question_html": "Solve: \\( 3x^{3/2} = 24 \\)",
+      "inputs": [
+        {
+          "id": "q5_x",
+          "type": "number",
+          "label": "x =",
+          "answer": 4,
+          "tolerance": 0.01
+        }
+      ],
+      "hint": "Divide by 3 first. Then apply the 2/3 power (flip 3/2). ∛8 = 2.",
+      "solution_steps": [
+        "x^(3/2) = 8.",
+        "Raise to 2/3: x = 8^(2/3).",
+        "Step 1: ∛8 = 2. Step 2: 2² = 4.",
+        "x = 4.",
+        "Check: 3(4)^(3/2) = 3(√4)³ = 3(2³) = 3(8) = 24 ✓"
+      ],
+      "feedback_correct": "8^(2/3) = 4. Flipped to 3/2 exponent cleanly.",
+      "feedback_wrong": "Divide by 3: x^(3/2)=8. Apply 2/3 power: ∛8=2, then 2²=4."
+    },
+    {
+      "id": "rp13-q6",
+      "number": 6,
+      "section": "FRACTIONAL EXPONENTS",
+      "standard": "W3.b",
+      "type": "fractional-exp",
+      "rationale": "Full RP-style wrapper: isolate, then apply 2/3 power. Answer x=9 via 27^(2/3). Most similar to the RP4 question Kai missed (2x^(3/2)-14=672). This is the confidence-clincher before the final exam.",
+      "question_html": "Solve: \\( 4x^{3/2} + 20 = 128 \\)",
+      "inputs": [
+        {
+          "id": "q6_x",
+          "type": "number",
+          "label": "x =",
+          "answer": 9,
+          "tolerance": 0.01
+        }
+      ],
+      "hint": "Step 1: Subtract 20. Step 2: Divide by 4. Step 3: Apply 2/3 power. ∛27 = 3.",
+      "solution_steps": [
+        "4x^(3/2) = 108 → x^(3/2) = 27.",
+        "Raise to 2/3: x = 27^(2/3).",
+        "Step 1: ∛27 = 3. Step 2: 3² = 9.",
+        "x = 9.",
+        "Check: 4(9)^(3/2) + 20 = 4(√9)³ + 20 = 4(27) + 20 = 108 + 20 = 128 ✓"
+      ],
+      "feedback_correct": "27^(2/3) = 9. Full fractional exponent sequence complete.",
+      "feedback_wrong": "Subtract 20, divide by 4: x^(3/2)=27. Apply 2/3: ∛27=3, then 3²=9."
+    },
+    {
+      "id": "rp13-q7",
+      "number": 7,
+      "section": "DOWNWARD PARABOLA",
+      "standard": "W2.b",
+      "type": "identify",
+      "rationale": "Introduces the negative leading coefficient. Kai has only graphed upward parabolas so far. This question asks him to identify that a<0 means opens DOWN and find both intercepts. Primes him for RP12-Q12.",
+      "question_html": "For \\( f(x) = -(x - 1)^2 + 4 \\): state the parent function, identify the vertex, state whether it opens UP or DOWN, and find the x-intercepts.",
+      "inputs": [
+        {
+          "id": "q7_parent",
+          "type": "dropdown",
+          "label": "Parent function",
+          "options": ["quadratic","cubic","absolute value","square root","rational","exponential"],
+          "answer": "quadratic"
+        },
+        {
+          "id": "q7_vx",
+          "type": "number",
+          "label": "Vertex x =",
+          "answer": 1,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q7_vy",
+          "type": "number",
+          "label": "Vertex y =",
+          "answer": 4,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q7_dir",
+          "type": "radio",
+          "label": "Opens:",
+          "options": [
+            {"value": "up", "text": "Up"},
+            {"value": "down", "text": "Down"}
+          ],
+          "answer": "down"
+        },
+        {
+          "id": "q7_x1",
+          "type": "number",
+          "label": "x-intercept 1 =",
+          "answer": -1,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q7_x2",
+          "type": "number",
+          "label": "x-intercept 2 =",
+          "answer": 3,
+          "tolerance": 0.1
+        }
+      ],
+      "hint": "Vertex form: a(x-h)²+k. Vertex is (h,k). Negative a → opens DOWN. Set f(x)=0 to find x-intercepts.",
+      "solution_steps": [
+        "Parent: quadratic. Vertex: (h,k) = (1, 4).",
+        "a = −1 (negative) → parabola opens DOWN.",
+        "Set 0 = −(x−1)² + 4 → (x−1)² = 4.",
+        "x − 1 = ±2 → x = 3 or x = −1.",
+        "The vertex (1,4) is a MAXIMUM since it opens down."
+      ],
+      "feedback_correct": "Negative a caught. Opens down. Both intercepts correct.",
+      "feedback_wrong": "a = −1 means OPENS DOWN. Vertex is (1,4). Set f(x)=0: (x−1)²=4 → x=3 or x=−1."
+    },
+    {
+      "id": "rp13-q8",
+      "number": 8,
+      "section": "DOWNWARD PARABOLA",
+      "standard": "W2.c",
+      "type": "graph",
+      "rationale": "Full graph of a downward parabola with a stretch factor. Vertex (-1,8), opens DOWN, x-intercepts at 1 and -3. This is the hardest question in the drill and the most direct rehearsal for RP12-Q12.",
+      "question_html": "Graph \\( f(x) = -2(x + 1)^2 + 8 \\). State the vertex, direction, and x-intercepts.",
+      "inputs": [
+        {
+          "id": "q8_vx",
+          "type": "number",
+          "label": "Vertex x =",
+          "answer": -1,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q8_vy",
+          "type": "number",
+          "label": "Vertex y =",
+          "answer": 8,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q8_dir",
+          "type": "radio",
+          "label": "Opens:",
+          "options": [
+            {"value": "up", "text": "Up"},
+            {"value": "down", "text": "Down"}
+          ],
+          "answer": "down"
+        },
+        {
+          "id": "q8_x1",
+          "type": "number",
+          "label": "x-intercept 1 =",
+          "answer": -3,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q8_x2",
+          "type": "number",
+          "label": "x-intercept 2 =",
+          "answer": 1,
+          "tolerance": 0.1
+        }
+      ],
+      "graph": {
+        "canvas_id": "graphQ8",
+        "function": "-2 * Math.pow(x + 1, 2) + 8",
+        "function_display": "f(x) = -2(x+1)² + 8",
+        "key_points": [
+          [-3, 0],
+          [-2, 6],
+          [-1, 8],
+          [0, 6],
+          [1, 0]
+        ],
+        "min_points": 5,
+        "tolerance": 0.25,
+        "asymptotes": null
+      },
+      "hint": "a = −2 → opens DOWN, narrower than normal. Vertex is (−1, 8). Set f(x)=0 for intercepts.",
+      "solution_steps": [
+        "Vertex form: −2(x+1)²+8 → vertex at (−1, 8). a = −2 → opens DOWN.",
+        "Set 0 = −2(x+1)²+8 → (x+1)² = 4.",
+        "x + 1 = ±2 → x = 1 or x = −3.",
+        "f(−2) = −2(1)+8 = 6 → (−2, 6).",
+        "f(0) = −2(1)+8 = 6 → (0, 6).",
+        "Draw inverted, narrower U from (−3,0) through vertex (−1,8) to (1,0)."
+      ],
+      "feedback_correct": "Vertex, direction, intercepts, and graph all correct. Downward parabola locked.",
+      "feedback_wrong": "a=−2 → opens DOWN. Vertex: (−1,8). Set f(x)=0: (x+1)²=4 → x=1 or x=−3."
+    }
+  ],
+  "version": "2.0"
+}

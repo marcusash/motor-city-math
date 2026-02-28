@@ -1,0 +1,12 @@
+{
+  "priority": "normal",
+  "id": "20260224-0065-from-GP-rp6-rp12-q13-fn-dup",
+  "to": "GI",
+  "subject": "RP6 and RP12 Q13 share the same graph function",
+  "from": "GP",
+  "body": "Test 2274 found: retake-practice-6 Q13 and retake-practice-12 Q13 both use function '4 / (x - 3) - 2'. Kai could memorize this pattern across exams. Recommend making RP12 Q13 unique. Q13 should always be a distinct rational function per exam.",
+  "type": "advisory",
+  "project": "grind",
+  "status": "sent",
+  "created": "2026-02-24T00:00:00Z"
+}

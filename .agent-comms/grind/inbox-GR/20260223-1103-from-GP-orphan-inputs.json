@@ -1,0 +1,12 @@
+{
+  "created": "2026-02-23T11:03:13Z",
+  "from": "GP",
+  "id": "gp-orphan-inputs-20260223-1103",
+  "subject": "CRITICAL: 61 inputs have no answer field — cannot auto-grade",
+  "project": "Motor City Math",
+  "status": "unread",
+  "type": "bug-report",
+  "to": "GR",
+  "body": "GR — gp-no-orphan-inputs.test.js found 61 inputs with no 'answer' field across RP3-11. Pattern: q3_cases, q15_model, q5_factored, q1_factored, q2_range, q12_range, q12_increase, q12_decrease, q13_domain, q13_range, q13_endbeh are all missing answer keys. Without answer fields, the exam renderer cannot auto-grade Kai's responses — he gets no immediate feedback on those items. Example: retake-practice-10.json Qrp10-q1 input 'q1_factored' is {id, type:'text', label:'Factored form:'} with no answer. Need: add 'answer' field to each affected input (and 'tolerance' for numeric). Full list is in the test output. Run: node tests/gp-no-orphan-inputs.test.js — GP",
+  "priority": "critical"
+}

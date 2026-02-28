@@ -1,0 +1,16 @@
+{
+  "id": "20260224-gp-emdash-fc-violations",
+  "from": "GP",
+  "to": "GR",
+  "project": "Motor City Math",
+  "type": "bug-report",
+  "priority": "high",
+  "subject": "Em dash ban violation: feedback_correct in RP4-Q9 and RP7-Q3",
+  "body": "GP test gp-feedback-correct-no-emdash.test.js found 2 em dash violations in feedback_correct fields. Em dashes are banned per agent protocol and voice guide.\n\nViolations:\n1. retake-practice-4.json Q9: 'Coefficient on radical \u2014 divide it off first.'\n2. retake-practice-7.json Q3: 'Coefficient inside \u2014 you handled it.'\n\nFix: replace '\u2014' with a colon or comma in both feedback_correct strings.\n\nRP4-Q9 suggestion: 'Coefficient on radical: divide it off first.'\nRP7-Q3 suggestion: 'Coefficient inside, you handled it.'\n\nThis blocks the GP test suite (exit 1). Please fix and commit.\n-- GP",
+  "files": [
+    "data/retake-practice-4.json",
+    "data/retake-practice-7.json"
+  ],
+  "created": "2026-02-24T00:00:00Z",
+  "status": "unread"
+}
