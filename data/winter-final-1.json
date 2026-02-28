@@ -1,0 +1,563 @@
+{
+  "exam_id": "winter-final-1",
+  "schema_version": "1.0",
+  "title": "Winter Final — Diagnostic Practice 1",
+  "subtitle": "Standards W1-W6 · 15 Questions · ~75 min",
+  "time_minutes": 75,
+  "created": "2026-02-28",
+  "created_by": "Agent R",
+  "purpose": "Diagnostic for Kai's winter final exam (March 3). Covers all 6 standards: exponents (W1), nonlinear function characteristics (W2), solving nonlinear equations (W3), quadratic characteristics (W4), factoring (W5), and manipulating quadratics (W6).",
+  "questions": [
+    {
+      "id": "wf1-q1",
+      "number": 1,
+      "section": "A",
+      "standard": "W1",
+      "type": "multiple-choice",
+      "question_html": "Simplify the expression. Rewrite with positive exponents only: \\( (4x^3)^2 \\cdot 2x^{-4} \\)",
+      "inputs": [
+        {
+          "id": "q1",
+          "type": "radio",
+          "label": "",
+          "options": [
+            { "value": "A", "text": "\\( 32x^2 \\)" },
+            { "value": "B", "text": "\\( 16x^6 \\)" },
+            { "value": "C", "text": "\\( 32x^6 \\)" },
+            { "value": "D", "text": "\\( 8x^2 \\)" }
+          ],
+          "answer": "A"
+        }
+      ],
+      "hint": "Power rule first: (ab)^n = a^n · b^n. Then multiply by adding exponents.",
+      "solution_steps": [
+        "(4x³)² · 2x⁻⁴",
+        "= 4² · x⁶ · 2x⁻⁴",
+        "= 16 · 2 · x^(6 + (-4))",
+        "= 32x²"
+      ],
+      "feedback_correct": "🔥 Exponent rules. Clean.",
+      "feedback_wrong": "Apply power rule: (4x³)² = 16x⁶. Then multiply: 16x⁶ · 2x⁻⁴ = 32x²."
+    },
+    {
+      "id": "wf1-q2",
+      "number": 2,
+      "section": "A",
+      "standard": "W1",
+      "type": "fractional-exp",
+      "question_html": "Rewrite as a radical expression, then evaluate without a calculator: \\( 27^{2/3} \\)",
+      "inputs": [
+        {
+          "id": "q2",
+          "type": "number",
+          "label": "27^(2/3) =",
+          "answer": 9,
+          "tolerance": 0.01
+        }
+      ],
+      "hint": "The denominator of the fractional exponent is the root, the numerator is the power. So a^(m/n) = (ⁿ√a)^m.",
+      "solution_steps": [
+        "27^(2/3) = (³√27)²",
+        "³√27 = 3",
+        "3² = 9"
+      ],
+      "feedback_correct": "🔥 Fractional exponent converted. Solid.",
+      "feedback_wrong": "27^(2/3) means cube root of 27 first (= 3), then square it (= 9)."
+    },
+    {
+      "id": "wf1-q3",
+      "number": 3,
+      "section": "B",
+      "standard": "W2.b",
+      "type": "identify",
+      "question_html": "For the function below, identify the parent function and describe ALL transformations. Then sketch the graph. Label at least two points. \\( f(x) = -(x - 3)^3 + 1 \\)",
+      "inputs": [
+        {
+          "id": "q3_parent",
+          "type": "dropdown",
+          "label": "Parent function",
+          "options": [
+            "quadratic",
+            "cubic",
+            "absolute value",
+            "square root",
+            "rational",
+            "exponential"
+          ],
+          "answer": "cubic"
+        }
+      ],
+      "graph": {
+        "canvas_id": "graphQ3",
+        "function": "-(Math.pow(x - 3, 3)) + 1",
+        "function_display": "f(x) = -(x-3)³ + 1",
+        "key_points": [
+          [2, 2],
+          [3, 1],
+          [4, 0],
+          [1, 9],
+          [5, -7]
+        ],
+        "min_points": 4,
+        "tolerance": 0.5,
+        "asymptotes": null
+      },
+      "hint": "Start with y = x³. The negative flips it, the -3 shifts right, the +1 shifts up.",
+      "solution_steps": [
+        "Parent: y = x³ (cubic).",
+        "Transformations: reflect over x-axis, shift right 3, shift up 1.",
+        "Inflection point: (3, 1).",
+        "f(2) = -(−1) + 1 = 2 → (2, 2).",
+        "f(4) = -(1) + 1 = 0 → (4, 0)."
+      ],
+      "feedback_correct": "🔥 Cubic transformations and graph. Nailed it.",
+      "feedback_wrong_parent": "Look at the exponent: x³ means cubic.",
+      "feedback_wrong": "Parent is y = x³. Reflect (negative), right 3, up 1."
+    },
+    {
+      "id": "wf1-q4",
+      "number": 4,
+      "section": "B",
+      "standard": "W2.b",
+      "type": "identify",
+      "question_html": "Use the function to answer all parts: \\( g(x) = \\sqrt{x + 4} - 2 \\). Identify the parent function, state the domain start, and sketch the graph.",
+      "inputs": [
+        {
+          "id": "q4_parent",
+          "type": "dropdown",
+          "label": "Parent function",
+          "options": [
+            "quadratic",
+            "cubic",
+            "absolute value",
+            "square root",
+            "rational",
+            "exponential"
+          ],
+          "answer": "square root"
+        },
+        {
+          "id": "q4_domain_start",
+          "type": "number",
+          "label": "Domain starts at x =",
+          "answer": -4,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q4_range_start",
+          "type": "number",
+          "label": "Range starts at y =",
+          "answer": -2,
+          "tolerance": 0.1
+        }
+      ],
+      "graph": {
+        "canvas_id": "graphQ4",
+        "function": "Math.sqrt(x + 4) - 2",
+        "function_display": "g(x) = √(x+4) - 2",
+        "key_points": [
+          [-4, -2],
+          [-3, -1],
+          [0, 0],
+          [5, 1]
+        ],
+        "min_points": 3,
+        "tolerance": 0.5,
+        "asymptotes": null
+      },
+      "hint": "Parent is y = √x. For domain: x + 4 ≥ 0. For range: √ gives ≥ 0, then subtract 2.",
+      "solution_steps": [
+        "Parent: y = √x (square root).",
+        "Transformations: shift left 4, shift down 2.",
+        "Domain: x + 4 ≥ 0, so x ≥ -4. Domain: [-4, ∞).",
+        "Range: √(x+4) ≥ 0, so g(x) ≥ -2. Range: [-2, ∞).",
+        "Starting point: (-4, -2). Also: (0, 0) since √4 - 2 = 0."
+      ],
+      "feedback_correct": "🔥 Square root. Domain, range, and graph.",
+      "feedback_wrong_parent": "Look at the √ symbol.",
+      "feedback_wrong": "Shift left 4, down 2. Domain starts at x = -4."
+    },
+    {
+      "id": "wf1-q5",
+      "number": 5,
+      "section": "C",
+      "standard": "W3.a",
+      "type": "radical",
+      "question_html": "Solve. Show all steps: \\( 4\\sqrt{x + 5} = 20 \\)",
+      "inputs": [
+        {
+          "id": "q5_x",
+          "type": "number",
+          "label": "x =",
+          "answer": 20,
+          "tolerance": 0.1
+        }
+      ],
+      "hint": "Isolate the radical by dividing both sides by 4. Then square both sides.",
+      "solution_steps": [
+        "4√(x + 5) = 20",
+        "√(x + 5) = 5  (divide by 4)",
+        "x + 5 = 25  (square both sides)",
+        "x = 20",
+        "Check: 4√(25) = 4(5) = 20 ✓"
+      ],
+      "feedback_correct": "🔥 Isolate, square, solve. Clean.",
+      "feedback_wrong": "Divide by 4 first: √(x+5) = 5. Then square: x+5 = 25."
+    },
+    {
+      "id": "wf1-q6",
+      "number": 6,
+      "section": "C",
+      "standard": "W3.a",
+      "type": "radical",
+      "question_html": "Solve. Show all steps: \\( \\sqrt[3]{2x - 1} = 3 \\)",
+      "inputs": [
+        {
+          "id": "q6_x",
+          "type": "number",
+          "label": "x =",
+          "answer": 14,
+          "tolerance": 0.1
+        }
+      ],
+      "hint": "To undo a cube root, cube both sides. The cube root is already isolated.",
+      "solution_steps": [
+        "∛(2x - 1) = 3",
+        "2x - 1 = 27  (cube both sides: 3³ = 27)",
+        "2x = 28",
+        "x = 14",
+        "Check: ∛(28-1) = ∛27 = 3 ✓"
+      ],
+      "feedback_correct": "🔥 Cube root undone. Solid.",
+      "feedback_wrong": "Cube both sides: (2x-1) = 27. Then solve for x."
+    },
+    {
+      "id": "wf1-q7",
+      "number": 7,
+      "section": "C",
+      "standard": "W3.b",
+      "type": "exponential",
+      "question_html": "Solve for the variable. Show all steps: \\( 2 \\cdot 3^{x+1} = 54 \\)",
+      "inputs": [
+        {
+          "id": "q7_x",
+          "type": "number",
+          "label": "x =",
+          "answer": 2,
+          "tolerance": 0.01
+        }
+      ],
+      "hint": "Divide by 2 first. Then figure out what power of 3 gives you the result.",
+      "solution_steps": [
+        "2 · 3^(x+1) = 54",
+        "3^(x+1) = 27  (divide by 2)",
+        "3^(x+1) = 3³  (since 27 = 3³)",
+        "x + 1 = 3  (set exponents equal)",
+        "x = 2",
+        "Check: 2 · 3³ = 2(27) = 54 ✓"
+      ],
+      "feedback_correct": "🔥 Common base. Exponent match.",
+      "feedback_wrong": "Divide by 2: 3^(x+1) = 27. Since 27 = 3³, x+1 = 3."
+    },
+    {
+      "id": "wf1-q8",
+      "number": 8,
+      "section": "C",
+      "standard": "W3.c",
+      "type": "multiple-choice",
+      "question_html": "The intensity of light from a point source is given by: \\( I = \\dfrac{P}{4\\pi r^2} \\). Solve this formula for \\( r \\) (the distance from the source).",
+      "inputs": [
+        {
+          "id": "q8",
+          "type": "radio",
+          "label": "",
+          "options": [
+            { "value": "A", "text": "\\( r = \\dfrac{P}{4\\pi I} \\)" },
+            { "value": "B", "text": "\\( r = \\sqrt{\\dfrac{P}{4\\pi I}} \\)" },
+            { "value": "C", "text": "\\( r = \\dfrac{\\sqrt{P}}{4\\pi I} \\)" },
+            { "value": "D", "text": "\\( r = \\sqrt{\\dfrac{4\\pi I}{P}} \\)" }
+          ],
+          "answer": "B"
+        }
+      ],
+      "hint": "Multiply both sides by 4πr² to clear the fraction. Isolate r², then take the square root.",
+      "solution_steps": [
+        "I = P/(4πr²)",
+        "4πIr² = P  (multiply both sides by 4πr²)",
+        "r² = P/(4πI)  (divide by 4πI)",
+        "r = √(P/(4πI))  (square root, positive only since r is distance)",
+        "Answer: B"
+      ],
+      "feedback_correct": "🔥 Formula isolation with squared variable.",
+      "feedback_wrong": "Isolate r² first: r² = P/(4πI). Then take the square root."
+    },
+    {
+      "id": "wf1-q9",
+      "number": 9,
+      "section": "C",
+      "standard": "W3.c",
+      "type": "multiple-choice",
+      "question_html": "The formula for the period of a pendulum is: \\( T = 2\\pi\\sqrt{\\dfrac{L}{g}} \\). Solve this formula for \\( L \\).",
+      "inputs": [
+        {
+          "id": "q9",
+          "type": "radio",
+          "label": "",
+          "options": [
+            { "value": "A", "text": "\\( L = \\dfrac{T^2 g}{2\\pi} \\)" },
+            { "value": "B", "text": "\\( L = \\dfrac{g T^2}{4\\pi^2} \\)" },
+            { "value": "C", "text": "\\( L = 2\\pi g T^2 \\)" },
+            { "value": "D", "text": "\\( L = \\dfrac{g}{4\\pi^2 T^2} \\)" }
+          ],
+          "answer": "B"
+        }
+      ],
+      "hint": "Divide by 2π first, then square both sides. The π stays as π.",
+      "solution_steps": [
+        "T = 2π√(L/g)",
+        "T/(2π) = √(L/g)  (divide by 2π)",
+        "[T/(2π)]² = L/g  (square both sides)",
+        "T²/(4π²) = L/g",
+        "L = gT²/(4π²)  (multiply by g)",
+        "Answer: B"
+      ],
+      "feedback_correct": "🔥 Isolate the radical, square, solve for L.",
+      "feedback_wrong": "Divide by 2π, then square both sides: T²/(4π²) = L/g. Multiply by g."
+    },
+    {
+      "id": "wf1-q10",
+      "number": 10,
+      "section": "D",
+      "standard": "W4",
+      "type": "identify",
+      "question_html": "Let \\( f(x) = -3(x - 1)^2 + 12 \\). Find the vertex, the line of symmetry, and the x-intercepts. Then sketch the graph.",
+      "inputs": [
+        {
+          "id": "q10_vx",
+          "type": "number",
+          "label": "Vertex x =",
+          "answer": 1,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q10_vy",
+          "type": "number",
+          "label": "Vertex y =",
+          "answer": 12,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q10_sym",
+          "type": "number",
+          "label": "Line of symmetry: x =",
+          "answer": 1,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q10_x1",
+          "type": "number",
+          "label": "x-intercept₁ =",
+          "answer": -1,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q10_x2",
+          "type": "number",
+          "label": "x-intercept₂ =",
+          "answer": 3,
+          "tolerance": 0.1
+        }
+      ],
+      "plus_minus": true,
+      "graph": {
+        "canvas_id": "graphQ10",
+        "function": "-3 * Math.pow(x - 1, 2) + 12",
+        "function_display": "f(x) = -3(x-1)² + 12",
+        "key_points": [
+          [-1, 0],
+          [0, 9],
+          [1, 12],
+          [2, 9],
+          [3, 0]
+        ],
+        "min_points": 5,
+        "tolerance": 0.5,
+        "asymptotes": null
+      },
+      "hint": "Vertex form: a(x-h)² + k. Vertex is (h, k). For x-intercepts, set f(x) = 0.",
+      "solution_steps": [
+        "Vertex: (1, 12) from vertex form.",
+        "Line of symmetry: x = 1.",
+        "x-intercepts: 0 = -3(x-1)² + 12 → (x-1)² = 4 → x-1 = ±2.",
+        "x = 3 or x = -1.",
+        "Opens down (a = -3 < 0). Domain: all reals. Range: (-∞, 12].",
+        "End behavior: as x → ±∞, y → -∞."
+      ],
+      "feedback_correct": "🔥 Vertex, symmetry, intercepts, and graph. Full marks.",
+      "feedback_wrong": "Vertex is (h, k) = (1, 12). Set f(x) = 0 for x-intercepts."
+    },
+    {
+      "id": "wf1-q11",
+      "number": 11,
+      "section": "D",
+      "standard": "W4.d",
+      "type": "multiple-choice",
+      "question_html": "A parabola has x-intercepts at \\( (-2, 0) \\) and \\( (6, 0) \\), and passes through the point \\( (2, -16) \\). Write the equation of this parabola.",
+      "inputs": [
+        {
+          "id": "q11",
+          "type": "radio",
+          "label": "",
+          "options": [
+            { "value": "A", "text": "\\( y = (x + 2)(x - 6) \\)" },
+            { "value": "B", "text": "\\( y = 2(x + 2)(x - 6) \\)" },
+            { "value": "C", "text": "\\( y = -(x + 2)(x - 6) \\)" },
+            { "value": "D", "text": "\\( y = (x - 2)(x + 6) \\)" }
+          ],
+          "answer": "A"
+        }
+      ],
+      "hint": "Start with factored form: y = a(x - r₁)(x - r₂). Plug in the point to find a.",
+      "solution_steps": [
+        "y = a(x + 2)(x - 6)  [using intercepts -2 and 6]",
+        "Plug in (2, -16): -16 = a(4)(-4)",
+        "-16 = -16a",
+        "a = 1",
+        "Answer: y = (x + 2)(x - 6)"
+      ],
+      "feedback_correct": "🔥 Factored form with correct a-value.",
+      "feedback_wrong": "Use factored form y = a(x+2)(x-6). Plug in (2, -16) to find a = 1."
+    },
+    {
+      "id": "wf1-q12",
+      "number": 12,
+      "section": "E",
+      "standard": "W5",
+      "type": "multiple-choice",
+      "question_html": "Factor completely: \\( x^2 - 5x - 24 \\)",
+      "inputs": [
+        {
+          "id": "q12",
+          "type": "radio",
+          "label": "",
+          "options": [
+            { "value": "A", "text": "\\( (x - 8)(x + 3) \\)" },
+            { "value": "B", "text": "\\( (x + 8)(x - 3) \\)" },
+            { "value": "C", "text": "\\( (x - 6)(x + 4) \\)" },
+            { "value": "D", "text": "\\( (x - 12)(x + 2) \\)" }
+          ],
+          "answer": "A"
+        }
+      ],
+      "hint": "Find two numbers that multiply to -24 and add to -5.",
+      "solution_steps": [
+        "Need: _ × _ = -24 and _ + _ = -5.",
+        "-8 × 3 = -24, and -8 + 3 = -5 ✓",
+        "Answer: (x - 8)(x + 3)"
+      ],
+      "feedback_correct": "🔥 Factored. -8 and 3.",
+      "feedback_wrong": "Two numbers: multiply to -24, add to -5. That's -8 and 3."
+    },
+    {
+      "id": "wf1-q13",
+      "number": 13,
+      "section": "E",
+      "standard": "W5",
+      "type": "multiple-choice",
+      "question_html": "Factor completely: \\( 3x^2 - 75 \\)",
+      "inputs": [
+        {
+          "id": "q13",
+          "type": "radio",
+          "label": "",
+          "options": [
+            { "value": "A", "text": "\\( 3(x^2 - 25) \\)" },
+            { "value": "B", "text": "\\( 3(x + 5)(x - 5) \\)" },
+            { "value": "C", "text": "\\( (3x + 15)(x - 5) \\)" },
+            { "value": "D", "text": "\\( 3(x - 5)^2 \\)" }
+          ],
+          "answer": "B"
+        }
+      ],
+      "hint": "GCF first. Then look for difference of squares: a² - b² = (a+b)(a-b).",
+      "solution_steps": [
+        "3x² - 75 = 3(x² - 25)  [GCF = 3]",
+        "= 3(x + 5)(x - 5)  [difference of squares]",
+        "Answer: 3(x + 5)(x - 5)"
+      ],
+      "feedback_correct": "🔥 GCF then difference of squares. Complete.",
+      "feedback_wrong": "Factor out 3 first: 3(x² - 25). Then x² - 25 = (x+5)(x-5)."
+    },
+    {
+      "id": "wf1-q14",
+      "number": 14,
+      "section": "F",
+      "standard": "W6",
+      "type": "quadratic",
+      "question_html": "Solve by completing the square. Show all steps: \\( x^2 + 6x - 2 = 0 \\)",
+      "inputs": [
+        {
+          "id": "q14_x1",
+          "type": "number",
+          "label": "x₁ ≈",
+          "answer": 0.317,
+          "tolerance": 0.05
+        },
+        {
+          "id": "q14_x2",
+          "type": "number",
+          "label": "x₂ ≈",
+          "answer": -6.317,
+          "tolerance": 0.05
+        }
+      ],
+      "plus_minus": true,
+      "hint": "Move the constant to the right side. Take half of 6, square it (= 9), add to both sides.",
+      "solution_steps": [
+        "x² + 6x = 2  (move -2 to right)",
+        "Half of 6 = 3. Square it: 9.",
+        "x² + 6x + 9 = 2 + 9",
+        "(x + 3)² = 11",
+        "x + 3 = ±√11",
+        "x = -3 ± √11",
+        "x ≈ 0.317 or x ≈ -6.317"
+      ],
+      "feedback_correct": "🔥 Completing the square. Both solutions.",
+      "feedback_wrong": "Complete the square: (x+3)² = 11. Then x = -3 ± √11."
+    },
+    {
+      "id": "wf1-q15",
+      "number": 15,
+      "section": "F",
+      "standard": "W6",
+      "type": "identify",
+      "question_html": "Convert to vertex form by completing the square. Then state the vertex: \\( f(x) = x^2 - 10x + 21 \\)",
+      "inputs": [
+        {
+          "id": "q15_vx",
+          "type": "number",
+          "label": "Vertex x =",
+          "answer": 5,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q15_vy",
+          "type": "number",
+          "label": "Vertex y =",
+          "answer": -4,
+          "tolerance": 0.1
+        }
+      ],
+      "hint": "Half of -10 = -5. (-5)² = 25. Add and subtract 25 inside the expression.",
+      "solution_steps": [
+        "f(x) = x² - 10x + 21",
+        "= (x² - 10x + 25) + 21 - 25",
+        "= (x - 5)² - 4",
+        "Vertex: (5, -4)"
+      ],
+      "feedback_correct": "🔥 Vertex form. (5, -4) locked.",
+      "feedback_wrong": "Complete the square: (x-5)² - 4. Vertex is (5, -4)."
+    }
+  ],
+  "version": "2.0"
+}
