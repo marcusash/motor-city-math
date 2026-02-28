@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="../../shared/favicon.svg">
+<title>Winter Final Diagnostic Test 1 — Motor City Math</title>
+<link rel="stylesheet" href="../../shared/styles.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: var(--font-body); background: var(--bg-page); color: var(--text-primary); padding: 24px 16px; max-width: 850px; margin: 0 auto; line-height: 1.5; }
+
+  .piston-stripe { height: 4px; background: linear-gradient(90deg, var(--accent-red) 0%, var(--accent-red) 40%, var(--accent-blue) 40%, var(--accent-blue) 60%, var(--accent-red) 60%, var(--accent-red) 100%); margin-bottom: 24px; }
+
+  .header { text-align: center; padding-bottom: 16px; margin-bottom: 24px; border-bottom: 2px solid var(--border-default); }
+  .header h1 { font-size: var(--text-xl); font-weight: 700; color: var(--accent-navy); margin-bottom: 4px; }
+  .header .subtitle { font-size: var(--text-sm); color: var(--text-secondary); }
+  .exam-badge { display: inline-block; font-size: var(--text-xs); font-weight: 700; color: #fff; background: var(--accent-red); padding: 2px 10px; border-radius: 4px; margin-top: 6px; }
+
+  .name-block { display: flex; gap: 32px; margin-bottom: 20px; font-size: var(--text-sm); }
+  .name-block .field { flex: 1; border-bottom: 1px solid var(--border-default); padding-bottom: 4px; }
+  .name-block .field label { font-weight: 600; }
+
+  .instructions { background: var(--bg-card); border-left: 4px solid var(--accent-blue); padding: 12px 16px; margin-bottom: 24px; font-size: var(--text-sm); border-radius: 0 6px 6px 0; box-shadow: var(--shadow-card); }
+  .instructions h3 { font-size: var(--text-base); margin-bottom: 6px; color: var(--accent-navy); }
+  .instructions li { margin-left: 16px; margin-bottom: 2px; }
+
+  .standard-tag { display: inline-block; font-size: var(--text-sm); font-weight: 600; padding: 2px 8px; border-radius: 10px; margin-left: 8px; vertical-align: middle; }
+  .tag-critical { background: var(--color-incorrect-bg); color: var(--color-incorrect); }
+  .tag-high { background: var(--color-warning-bg); color: var(--color-warning); }
+  .tag-low { background: var(--color-correct-bg); color: var(--color-correct); }
+
+  .section { margin-bottom: 32px; }
+  .section h2 { font-size: var(--text-base); font-weight: 700; color: var(--accent-navy); border-bottom: 2px solid var(--border-subtle); padding-bottom: 6px; margin-bottom: 16px; }
+
+  .question { margin-bottom: 24px; page-break-inside: avoid; }
+  .question .q-header { font-weight: 600; font-size: var(--text-sm); margin-bottom: 6px; }
+  .question .q-body { font-size: var(--text-sm); margin-bottom: 8px; }
+  .question .q-math { font-family: 'Cambria Math', 'Times New Roman', serif; font-size: 18px; display: block; margin: 8px 0; text-align: center; }
+  .question .sub-part { margin-left: 24px; margin-bottom: 6px; font-size: var(--text-sm); }
+
+  .work-space { border: 1px solid var(--border-default); border-radius: 6px; min-height: 100px; margin-top: 8px; position: relative; background: var(--bg-card); }
+  .work-space.tall { min-height: 160px; }
+  .work-space.graph { min-height: 220px; background: var(--bg-card); background-image: linear-gradient(var(--border-subtle) 1px, transparent 1px), linear-gradient(90deg, var(--border-subtle) 1px, transparent 1px); background-size: 20px 20px; background-position: center center; }
+  .work-space::after { content: 'Show your work'; position: absolute; top: 4px; right: 8px; font-size: var(--text-sm); color: var(--text-secondary); }
+
+  .answer-line { border-bottom: 1px solid var(--text-primary); display: inline-block; min-width: 200px; height: 20px; margin-left: 8px; }
+
+  .back-link { display: inline-block; margin-bottom: 16px; font-size: var(--text-sm); color: var(--accent-blue); text-decoration: none; font-weight: 600; }
+  .back-link:hover { text-decoration: underline; }
+
+  .footer { text-align: center; font-size: var(--text-sm); color: var(--text-secondary); margin-top: 32px; border-top: 1px solid var(--border-subtle); padding-top: 12px; }
+
+  @media print {
+    body { padding: 12px; background: #fff; color: #1a1a1a; }
+    .piston-stripe, .back-link, .arena-toggle { display: none; }
+    .question { page-break-inside: avoid; }
+    .work-space { border: 1px solid #999; background: #fff; }
+    .instructions { background: #f5f5f5 !important; border-left-color: #333; }
+  }
+</style>
+</head>
+<body>
+
+<a href="../../index.html" class="back-link">&#8592; Back to Dashboard</a>
+<div class="piston-stripe"></div>
+
+<div class="header">
+  <h1>Algebra 2 Winter Final: Diagnostic Test</h1>
+  <div class="subtitle">Standards W1 through W6 | 75 minutes | Four-function calculator only</div>
+  <div class="exam-badge">EXAM: TUESDAY, MARCH 3</div>
+</div>
+
+<div class="name-block">
+  <div class="field"><label>Name:</label> ________________________________</div>
+  <div class="field"><label>Date:</label> ________________________________</div>
+</div>
+
+<div class="instructions">
+  <h3>Instructions</h3>
+  <ul>
+    <li>No notes. Four-function calculator only (add, subtract, multiply, divide, square root).</li>
+    <li>Show your work to demonstrate understanding. Correct answers without work may not receive credit.</li>
+    <li>This test diagnoses where you need to focus your study time. Do your best on every question.</li>
+    <li>15 questions across all 6 standards. Budget about 5 minutes per question.</li>
+  </ul>
+</div>
+
+<div class="section">
+  <h2>Section A: Working with Exponents <span class="standard-tag tag-low">W1</span></h2>
+
+  <div class="question">
+    <div class="q-header">1. Simplify the expression. Rewrite with positive exponents only.</div>
+    <div class="q-math">(4x<sup>3</sup>)<sup>2</sup> &middot; 2x<sup>&minus;4</sup></div>
+    <div class="work-space"></div>
+  </div>
+
+  <div class="question">
+    <div class="q-header">2. Rewrite as a radical expression, then evaluate without a calculator.</div>
+    <div class="q-math">27<sup>2/3</sup></div>
+    <div class="work-space"></div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>Section B: Identifying Characteristics of Nonlinear Functions <span class="standard-tag tag-high">W2</span></h2>
+
+  <div class="question">
+    <div class="q-header">3. For the function below, identify the parent function, describe ALL transformations, then sketch the graph. Label at least two points with coordinates.</div>
+    <div class="q-math">f(x) = &minus;(x &minus; 3)<sup>3</sup> + 1</div>
+    <div class="sub-part">Parent function: <span class="answer-line"></span></div>
+    <div class="sub-part">Transformations: _______________________________________________________________</div>
+    <div class="work-space graph"></div>
+  </div>
+
+  <div class="question">
+    <div class="q-header">4. Use the function below to answer all parts.</div>
+    <div class="q-math">g(x) = &radic;(x + 4) &minus; 2</div>
+    <div class="sub-part">a) Parent function: <span class="answer-line"></span></div>
+    <div class="sub-part">b) Transformations: _______________________________________________________________</div>
+    <div class="sub-part">c) Domain: <span class="answer-line"></span> &nbsp;&nbsp; Range: <span class="answer-line"></span></div>
+    <div class="sub-part">d) Sketch the graph. Label the starting point and at least one other point.</div>
+    <div class="work-space graph"></div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>Section C: Solving Nonlinear Equations <span class="standard-tag tag-critical">W3 (FOCUS)</span></h2>
+
+  <div class="question">
+    <div class="q-header">5. Solve. Show all steps.</div>
+    <div class="q-math">4&radic;(x + 5) = 20</div>
+    <div class="work-space tall"></div>
+  </div>
+
+  <div class="question">
+    <div class="q-header">6. Solve. Show all steps.</div>
+    <div class="q-math"><sup>3</sup>&radic;(2x &minus; 1) = 3</div>
+    <div class="work-space tall"></div>
+  </div>
+
+  <div class="question">
+    <div class="q-header">7. Solve for the variable. Show all steps.</div>
+    <div class="q-math">2 &middot; 3<sup>x+1</sup> = 54</div>
+    <div class="work-space tall"></div>
+  </div>
+
+  <div class="question">
+    <div class="q-header">8. The intensity of light from a point source is given by:</div>
+    <div class="q-math">I = P / (4&pi;r<sup>2</sup>)</div>
+    <div class="q-body">Solve this formula for r (the distance from the source). Show every algebraic step.</div>
+    <div class="work-space tall"></div>
+  </div>
+
+  <div class="question">
+    <div class="q-header">9. The formula for the period of a pendulum is:</div>
+    <div class="q-math">T = 2&pi;&radic;(L / g)</div>
+    <div class="q-body">Solve this formula for L. Show every algebraic step.</div>
+    <div class="work-space tall"></div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>Section D: Identifying Characteristics of Quadratic Functions <span class="standard-tag tag-critical">W4 (FOCUS)</span></h2>
+
+  <div class="question">
+    <div class="q-header">10. Let f(x) = &minus;3(x &minus; 1)<sup>2</sup> + 12. Answer all parts.</div>
+    <div class="sub-part">a) Find the vertex: <span class="answer-line"></span></div>
+    <div class="sub-part">b) Write the equation of the line of symmetry: <span class="answer-line"></span></div>
+    <div class="sub-part">c) Rewrite f in standard form (expand):</div>
+    <div class="work-space"></div>
+    <div class="sub-part">d) Find the x-intercepts. Show your work.</div>
+    <div class="work-space"></div>
+    <div class="sub-part">e) Domain: <span class="answer-line"></span> &nbsp;&nbsp; Range: <span class="answer-line"></span></div>
+    <div class="sub-part">f) End Behavior: As x &rarr; &infin;, y &rarr; _____ &nbsp;&nbsp; As x &rarr; &minus;&infin;, y &rarr; _____</div>
+    <div class="sub-part">g) Sketch the graph. Label the vertex and x-intercepts.</div>
+    <div class="work-space graph"></div>
+  </div>
+
+  <div class="question">
+    <div class="q-header">11. A parabola has x-intercepts at (&minus;2, 0) and (6, 0), and passes through the point (2, &minus;16). Write the equation of this parabola.</div>
+    <div class="work-space tall"></div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>Section E: Factoring and Distributing <span class="standard-tag tag-low">W5</span></h2>
+
+  <div class="question">
+    <div class="q-header">12. Factor completely.</div>
+    <div class="sub-part">a) <span style="font-family: 'Cambria Math', serif; font-size: 16px;">x<sup>2</sup> &minus; 5x &minus; 24</span></div>
+    <div class="work-space"></div>
+    <div class="sub-part">b) <span style="font-family: 'Cambria Math', serif; font-size: 16px;">3x<sup>2</sup> &minus; 75</span></div>
+    <div class="work-space"></div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>Section F: Manipulating and Solving Quadratic Equations <span class="standard-tag tag-low">W6</span></h2>
+
+  <div class="question">
+    <div class="q-header">13. Solve by completing the square. Show all steps.</div>
+    <div class="q-math">x<sup>2</sup> + 6x &minus; 2 = 0</div>
+    <div class="work-space tall"></div>
+  </div>
+
+  <div class="question">
+    <div class="q-header">14. Solve using the quadratic formula. Show all steps.</div>
+    <div class="q-math">3x<sup>2</sup> &minus; 2x &minus; 4 = 0</div>
+    <div class="work-space tall"></div>
+  </div>
+
+  <div class="question">
+    <div class="q-header">15. Convert to vertex form by completing the square. Then state the vertex.</div>
+    <div class="q-math">f(x) = x<sup>2</sup> &minus; 10x + 21</div>
+    <div class="work-space tall"></div>
+  </div>
+</div>
+
+<div class="footer">
+  Algebra 2 Winter Final Diagnostic | Standards W1-W6 | Motor City Math<br>
+  Generated for Kai Ash | February 2026
+</div>
+
+<script>
+(function() {
+  var mode = localStorage.getItem('mcm-theme');
+  if (mode === 'arena') document.body.classList.add('arena-mode');
+})();
+</script>
+
+</body>
+</html>
