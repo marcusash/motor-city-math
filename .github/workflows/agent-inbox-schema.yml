@@ -10,7 +10,7 @@ on:
 
 jobs:
   validate-inbox:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     name: Agent Inbox Schema Check
 
     steps:
