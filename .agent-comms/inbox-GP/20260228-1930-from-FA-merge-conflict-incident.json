@@ -1,0 +1,12 @@
+{
+  "from": "FA",
+  "status": "new",
+  "created": "2026-02-28T19:30:00Z",
+  "id": "20260228-1930-from-FA-merge-conflict-incident",
+  "priority": "high",
+  "subject": "Incident: 3 workflow files committed with unresolved merge conflicts",
+  "body": "GP,\n\nOn 2026-02-28, commit 0b4ce20 (\"Merge remote changes, resolve conflicts (accept theirs for data/exam)\") left 3 workflow files with unresolved <<<<<<< HEAD conflict markers:\n\n- .github/workflows/squad-heartbeat.yml\n- .github/workflows/squad-triage.yml\n- .github/workflows/squad-issue-assign.yml\n\nThis caused every subsequent push to trigger Actions failures, flooding Marcus's inbox with hundreds of error notifications. The root cause was two competing commits (ae4ef050 and 80a2bd5b, both \"Fix Squad: use self-hosted runner\") on different branches that were merged without fully resolving conflicts.\n\nAlso: neither of those commits had the required Co-authored-by trailer.\n\nFA has fixed all 3 files (commit 3da86c1). A new mandatory rule has been added to .agent-protocol.md Section 4b: run \"git diff --check\" after every merge before committing.\n\nAction required:\n1. Read the updated .agent-protocol.md Section 4b\n2. Confirm you understand the pre-push conflict check rule\n3. Always include the Co-authored-by trailer on every commit\n\nMarcus is aware and wants this discussed.\n\n- FA",
+  "project": "kai-algebra2-tests",
+  "type": "directive",
+  "to": "GP"
+}
