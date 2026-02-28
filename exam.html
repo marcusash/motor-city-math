@@ -161,9 +161,7 @@
             <h1 id="examTitle"></h1>
         </header>
         <p class="subtitle exam-subtitle" id="examSubtitle"></p>
-        <div class="answer-format-guide" id="answerFormatGuide" style="display:none">
-            <strong>Answer formats:</strong> whole numbers (5 or -8) &nbsp;&middot;&nbsp; fractions (4/3) &nbsp;&middot;&nbsp; square roots (sqrt(5) or 2sqrt(3))
-        </div>
+
 
         <div class="progress-strip" id="progressStrip">
             <div class="progress-text" id="progressText">0 / 15</div>
@@ -542,11 +540,7 @@
         } else if (inp.type === 'number') {
             html += '<div class="input-group">';
             if (inp.label) html += '<label for="' + inp.id + '">' + inp.label + '</label>';
-            html += '<div class="input-with-hint">';
-            html += '<input type="text" inputmode="decimal" id="' + inp.id + '" aria-describedby="feedback-' + (q ? q.id : inp.id) + '" autocomplete="off" placeholder="e.g. 3/2 or sqrt(2)">';
-            html += '<span class="input-hint">decimal · fraction (3/2) · sqrt(2) · 1+sqrt(3)</span>';
-            html += '</div>';
-            if (formatHint) html += formatHint;
+            html += '<input type="text" inputmode="decimal" id="' + inp.id + '" aria-describedby="feedback-' + (q ? q.id : inp.id) + '" autocomplete="off">';
             html += '</div>';
         } else if (inp.type === 'radio') {
             html += '<div class="radio-group">';
