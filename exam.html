@@ -1380,6 +1380,35 @@
     }
 
     /**
+    /**
+     * Download current exam's localStorage scores as a JSON file for Dad.
+     * Same format as exportScores() in index.html so Dad's upload flow works.
+     */
+    function sendToDad() {
+        var scores = {};
+        try { scores = JSON.parse(localStorage.getItem('mcm_scores') || '{}'); } catch(e) {}
+        var srs = null;
+        try { srs = JSON.parse(localStorage.getItem('mcm_srs') || 'null'); } catch(e) {}
+        var payload = {
+            version: 1,
+            exported: new Date().toISOString(),
+            student: 'Kai',
+            mcm_scores: scores,
+            mcm_srs: srs
+        };
+        var blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        var dateStr = new Date().toISOString().slice(0, 10);
+        a.href = url;
+        a.download = 'kai-scores-' + dateStr + '.json';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    }
+
+    /**
      * Render the scorecard UI after grading.
      * @param {number} score - Number of correct answers
      * @param {number} total - Total questions graded
@@ -1431,6 +1460,10 @@
         if (!isRetake) {
             // Real exam: single forward-momentum CTA
             html += '<div style="margin-top:16px;"><a href="index.html" class="nav-btn primary" style="text-decoration:none;"><span aria-hidden="true">📊</span> See the Board</a></div>';
+            html += '<div style="margin-top:10px;">';
+            html += '<button class="nav-btn ghost" onclick="sendToDad()"><span aria-hidden="true">📤</span> Send to Dad</button>';
+            html += ' <button class="nav-btn ghost" onclick="window.print()" style="margin-left:8px;"><span aria-hidden="true">🖨️</span> Print Results</button>';
+            html += '</div>';
             if (grade < 3) {
                 html += '<p style="margin-top:10px; color:var(--text-secondary); font-size:var(--text-sm);">Score locked. Study the hints above, then hit the practice tests. 💪</p>';
             }

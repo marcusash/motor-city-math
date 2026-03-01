@@ -1,8 +1,119 @@
 {
   "version": 1,
-  "exported": "2026-02-24T05:48:42.886Z",
+  "exported": "2026-03-01T22:56:00.000Z",
   "student": "Kai",
   "mcm_scores": {
+    "mcm-finals-diagnostic-1": {
+      "attempts": [
+        {
+          "score": 14,
+          "total": 15,
+          "pct": 93,
+          "grade": 4,
+          "sections": {
+            "A": {
+              "score": 4,
+              "total": 4
+            },
+            "B": {
+              "score": 5,
+              "total": 5
+            },
+            "C": {
+              "score": 1,
+              "total": 2
+            },
+            "D": {
+              "score": 4,
+              "total": 4
+            }
+          },
+          "questions": {
+            "fd1-q1": {
+              "correct": true,
+              "type": "identify",
+              "standard": "W1.a"
+            },
+            "fd1-q2": {
+              "correct": true,
+              "type": "identify",
+              "standard": "W1.b"
+            },
+            "fd1-q3": {
+              "correct": true,
+              "type": "identify",
+              "standard": "W2.b"
+            },
+            "fd1-q4": {
+              "correct": true,
+              "type": "graph",
+              "standard": "W2.c"
+            },
+            "fd1-q5": {
+              "correct": true,
+              "type": "quadratic",
+              "standard": "W3.a"
+            },
+            "fd1-q6": {
+              "correct": true,
+              "type": "quadratic",
+              "standard": "W3.a"
+            },
+            "fd1-q7": {
+              "correct": true,
+              "type": "exponential",
+              "standard": "W3.d"
+            },
+            "fd1-q8": {
+              "correct": true,
+              "type": "rational",
+              "standard": "W3.c"
+            },
+            "fd1-q9": {
+              "correct": true,
+              "type": "radical",
+              "standard": "W3.c"
+            },
+            "fd1-q10": {
+              "correct": false,
+              "type": "graph",
+              "standard": "W4.a"
+            },
+            "fd1-q11": {
+              "correct": true,
+              "type": "quadratic",
+              "standard": "W4.h"
+            },
+            "fd1-q12a": {
+              "correct": true,
+              "type": "quadratic",
+              "standard": "W5.a"
+            },
+            "fd1-q12b": {
+              "correct": true,
+              "type": "quadratic",
+              "standard": "W5.b"
+            },
+            "fd1-q14": {
+              "correct": true,
+              "type": "quadratic",
+              "standard": "W6.b"
+            },
+            "fd1-q15": {
+              "correct": true,
+              "type": "word-problem",
+              "standard": "W6.c"
+            }
+          },
+          "timestamp": "2026-03-01T22:30:00.000Z"
+        }
+      ],
+      "best": {
+        "score": 14,
+        "pct": 93,
+        "grade": 4
+      }
+    },
     "mcm-nonlinear-exam-mvp": {
       "attempts": [
         {
@@ -264,7 +375,7 @@
               "standard": "W3.a"
             }
           },
-          "timestamp": "2026-02-22T21:59:26.161Z"
+          "timestamp": "2026-02-22T21:59:26.461Z"
         }
       ],
       "best": {
