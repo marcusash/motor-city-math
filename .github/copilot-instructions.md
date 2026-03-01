@@ -22,6 +22,12 @@ Focus: Algebra 2. Goal: mastery-based practice, immediate feedback, visual expla
 - Publish repo: marcusash/motor-city-math (GitHub Pages — personal account)
 - Do not push directly to the personal publish repo. Changes go here first.
 
+## Agent Output Rules (Mandatory for all Forge + Grind agents)
+
+- **Em dash ban.** Never use em dashes (— or –) in any output. Use colons, commas, or periods.
+- **Fully qualified paths. ALWAYS.** Every file path must be a full absolute Windows path (e.g., `C:\Github\kai-algebra2-tests\data\kai-scores-latest.json`). Never use relative paths. No exceptions.
+- **Response lint gate. MANDATORY before every reply to Marcus.** Before finalizing any console response, run: `node C:\Github\journal\scripts\response-lint.cjs --text "your draft response text"`. Fix every violation and re-run until PASS. Do not post without a PASS.
+
 ## Code Standards
 
 - All new features must include unit tests. Tests live in /tests.
