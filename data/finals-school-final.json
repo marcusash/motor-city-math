@@ -1,0 +1,566 @@
+{
+  "exam_id": "finals-school-final",
+  "schema_version": "1.0",
+  "title": "Winter Final — School Final Simulation",
+  "subtitle": "All Winter Standards · 15 Questions · Free Response · ~75 min",
+  "time_minutes": 75,
+  "created": "2026-03-02",
+  "created_by": "Agent FR",
+  "purpose": "School final simulation for Tuesday. All free response — no multiple choice. Every question escalates D3: harder variants, negative coefficients, non-trivial simplification, additional steps.",
+  "questions": [
+    {
+      "id": "fsf-q1",
+      "number": 1,
+      "section": "A",
+      "standard": "W1.a",
+      "type": "solve",
+      "question_html": "Simplify completely. Write with positive exponents only: \\( \\dfrac{(2x^2y^3)^3}{4x^5y^{-1}} \\)",
+      "inputs": [
+        {
+          "id": "q1_coeff",
+          "type": "number",
+          "label": "Coefficient =",
+          "answer": 2,
+          "tolerance": 0.05
+        },
+        {
+          "id": "q1_exp_x",
+          "type": "number",
+          "label": "Exponent on x =",
+          "answer": 1,
+          "tolerance": 0.05
+        },
+        {
+          "id": "q1_exp_y",
+          "type": "number",
+          "label": "Exponent on y =",
+          "answer": 10,
+          "tolerance": 0.05
+        }
+      ],
+      "hint": "Expand the numerator: raise each factor inside to the 3rd power. Then divide term by term. For y: subtracting a negative exponent adds to the exponent.",
+      "solution_steps": [
+        "Numerator: (2x^2y^3)^3 = 2^3 * x^(2*3) * y^(3*3) = 8x^6y^9",
+        "Denominator: 4x^5y^(-1)",
+        "Coefficient: 8/4 = 2",
+        "x: x^(6-5) = x^1 = x",
+        "y: y^(9-(-1)) = y^10   [subtracting -1 adds 1]",
+        "Answer: 2xy^10"
+      ],
+      "feedback_correct": "2xy^10. Key step: dividing by y^(-1) adds 1 to the exponent.",
+      "feedback_wrong": "Numerator: 8x^6y^9. Divide: 8/4=2, x^(6-5)=x, y^(9-(-1))=y^10. Answer: 2xy^10."
+    },
+    {
+      "id": "fsf-q2",
+      "number": 2,
+      "section": "A",
+      "standard": "W1.b",
+      "type": "solve",
+      "question_html": "Evaluate without a calculator: \\( 8^{4/3} \\)",
+      "inputs": [
+        {
+          "id": "q2_val",
+          "type": "number",
+          "label": "Value =",
+          "answer": 16,
+          "tolerance": 0.1
+        }
+      ],
+      "hint": "Denominator = cube root, numerator = power. Find the cube root of 8 first, then raise to the 4th power.",
+      "solution_steps": [
+        "8^(4/3) = (cbrt(8))^4   [denominator 3 = cube root]",
+        "= 2^4                   [cbrt(8) = 2]",
+        "= 16"
+      ],
+      "feedback_correct": "Cube root of 8 = 2. Then 2^4 = 16.",
+      "feedback_wrong": "Denominator is the root: cbrt(8) = 2. Numerator is the power: 2^4 = 16."
+    },
+    {
+      "id": "fsf-q3",
+      "number": 3,
+      "section": "A",
+      "standard": "W2.b",
+      "type": "identify",
+      "question_html": "For \\( f(x) = -4|x - 3| + 7 \\): identify the parent function, vertex, and whether it opens up or down.",
+      "inputs": [
+        {
+          "id": "q3_parent",
+          "type": "dropdown",
+          "label": "Parent function",
+          "options": [
+            "quadratic",
+            "cubic",
+            "absolute value",
+            "square root",
+            "exponential"
+          ],
+          "answer": "absolute value"
+        },
+        {
+          "id": "q3_vertex_x",
+          "type": "number",
+          "label": "Vertex x =",
+          "answer": 3,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q3_vertex_y",
+          "type": "number",
+          "label": "Vertex y =",
+          "answer": 7,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q3_direction",
+          "type": "dropdown",
+          "label": "Opens",
+          "options": [
+            "up",
+            "down"
+          ],
+          "answer": "down"
+        }
+      ],
+      "hint": "Parent is y = |x|. Vertex form is a|x - h| + k. The sign of a tells you the direction.",
+      "solution_steps": [
+        "Parent: y = |x|  (absolute value).",
+        "Form: a=-4, h=3, k=7. Vertex is (h, k) = (3, 7).",
+        "a=-4 < 0, opens DOWN. Vertex is a maximum."
+      ],
+      "feedback_correct": "Absolute value. Vertex (3, 7). Opens down.",
+      "feedback_wrong": "Parent is |x|. The -3 inside flips to h=+3 (opposite sign). k=7. a=-4 < 0 opens down."
+    },
+    {
+      "id": "fsf-q4",
+      "number": 4,
+      "section": "A",
+      "standard": "W2.c",
+      "type": "identify",
+      "question_html": "For \\( h(x) = -5\\sqrt{x - 2} + 8 \\): identify the parent function, domain start, and range bound.",
+      "inputs": [
+        {
+          "id": "q4_parent",
+          "type": "dropdown",
+          "label": "Parent function",
+          "options": [
+            "quadratic",
+            "cubic",
+            "absolute value",
+            "square root",
+            "exponential"
+          ],
+          "answer": "square root"
+        },
+        {
+          "id": "q4_domain_start",
+          "type": "number",
+          "label": "Domain: x >= ",
+          "answer": 2,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q4_range_bound",
+          "type": "number",
+          "label": "Range: y <= ",
+          "answer": 8,
+          "tolerance": 0.1
+        }
+      ],
+      "hint": "Domain: set x-2 >= 0. For range: plug in the domain start. Coefficient is NEGATIVE — the function goes DOWN, so the bound is a maximum (y <=), not a minimum.",
+      "solution_steps": [
+        "Parent: y = sqrt(x).",
+        "Domain: x - 2 >= 0, so x >= 2.",
+        "Range: plug in x=2: h(2) = -5*0 + 8 = 8.",
+        "Coefficient -5 is negative — function decreases from 8. Range: y <= 8."
+      ],
+      "feedback_correct": "Domain x >= 2, range y <= 8. Negative coefficient gives a maximum, not minimum.",
+      "feedback_wrong": "Domain: x-2>=0, x>=2. Plug in x=2: -5*0+8=8. Negative coefficient means function goes DOWN from 8. Range: y<=8."
+    },
+    {
+      "id": "fsf-q5",
+      "number": 5,
+      "section": "B",
+      "standard": "W3.a",
+      "type": "solve",
+      "question_html": "Solve for x: \\( 2\\sqrt{3x + 1} - 4 = 6 \\)",
+      "inputs": [
+        {
+          "id": "q5_x",
+          "type": "number",
+          "label": "x =",
+          "answer": 8,
+          "tolerance": 0.1
+        }
+      ],
+      "hint": "Two steps before squaring: add 4, then divide by 2 to isolate the radical completely.",
+      "solution_steps": [
+        "2*sqrt(3x+1) - 4 = 6",
+        "2*sqrt(3x+1) = 10     [add 4]",
+        "sqrt(3x+1) = 5        [divide by 2]",
+        "3x+1 = 25             [square both sides]",
+        "3x = 24",
+        "x = 8"
+      ],
+      "feedback_correct": "Two isolation steps, then square. x = 8.",
+      "feedback_wrong": "Add 4: 2*sqrt(3x+1)=10. Divide by 2: sqrt(3x+1)=5. Square: 3x+1=25. x=8."
+    },
+    {
+      "id": "fsf-q6",
+      "number": 6,
+      "section": "B",
+      "standard": "W3.a",
+      "type": "solve",
+      "question_html": "Solve for x: \\( 2\\sqrt[3]{x + 4} - 3 = 5 \\)",
+      "inputs": [
+        {
+          "id": "q6_x",
+          "type": "number",
+          "label": "x =",
+          "answer": 60,
+          "tolerance": 0.1
+        }
+      ],
+      "hint": "Three isolation steps before cubing: add 3, divide by 2, then cube both sides.",
+      "solution_steps": [
+        "2*cbrt(x+4) - 3 = 5",
+        "2*cbrt(x+4) = 8      [add 3]",
+        "cbrt(x+4) = 4        [divide by 2]",
+        "x+4 = 64             [cube both sides: 4^3=64]",
+        "x = 60"
+      ],
+      "feedback_correct": "Three steps to isolate, then cube. x = 60.",
+      "feedback_wrong": "Add 3: 2*cbrt(x+4)=8. Divide by 2: cbrt(x+4)=4. Cube: x+4=64. x=60."
+    },
+    {
+      "id": "fsf-q7",
+      "number": 7,
+      "section": "B",
+      "standard": "W3.d",
+      "type": "solve",
+      "question_html": "Solve for x. Show your work by rewriting both sides as powers of the same base: \\( 2^{x+3} = 4^{2x-1} \\)",
+      "inputs": [
+        {
+          "id": "q7_x",
+          "type": "number",
+          "label": "x =",
+          "answer": 1.6667,
+          "tolerance": 0.01
+        }
+      ],
+      "hint": "Rewrite 4 as 2^2. Then use the power rule on the right side. You get a linear equation with x on both sides.",
+      "solution_steps": [
+        "2^(x+3) = 4^(2x-1)",
+        "2^(x+3) = (2^2)^(2x-1)   [rewrite 4 = 2^2]",
+        "2^(x+3) = 2^(4x-2)        [power rule]",
+        "x+3 = 4x-2                [same base: set exponents equal]",
+        "5 = 3x                    [variables on both sides]",
+        "x = 5/3"
+      ],
+      "feedback_correct": "x = 5/3. Variables on both sides after setting exponents equal.",
+      "feedback_wrong": "Rewrite 4=2^2: 2^(x+3) = 2^(4x-2). Set exponents equal: x+3=4x-2. Subtract x: 3=3x-2. Add 2: 5=3x. x=5/3."
+    },
+    {
+      "id": "fsf-q8",
+      "number": 8,
+      "section": "B",
+      "standard": "W3.c",
+      "type": "solve",
+      "question_html": "In a right triangle, one leg is 5 cm and the hypotenuse is 13 cm. Use the Pythagorean theorem \\( a^2 + b^2 = c^2 \\) to find the length of the other leg.",
+      "inputs": [
+        {
+          "id": "q8_b",
+          "type": "number",
+          "label": "b =",
+          "answer": 12,
+          "tolerance": 0.1
+        }
+      ],
+      "hint": "Substitute a=5 and c=13. Solve for b by subtracting, then taking the square root.",
+      "solution_steps": [
+        "5^2 + b^2 = 13^2    [substitute]",
+        "25 + b^2 = 169",
+        "b^2 = 144           [subtract 25]",
+        "b = 12 cm           [square root]"
+      ],
+      "feedback_correct": "Subtract, then square root. b = 12 cm.",
+      "feedback_wrong": "25 + b^2 = 169. Subtract: b^2 = 144. Take sqrt: b = 12."
+    },
+    {
+      "id": "fsf-q9",
+      "number": 9,
+      "section": "B",
+      "standard": "W3.c",
+      "type": "solve",
+      "question_html": "The area of a trapezoid is given by \\( A = \\dfrac{1}{2}(b_1 + b_2)h \\). A trapezoid has area 60 cm², bases \\( b_1 = 8 \\) cm and \\( b_2 = 7 \\) cm. Find the height h.",
+      "inputs": [
+        {
+          "id": "q9_h",
+          "type": "number",
+          "label": "h =",
+          "answer": 8,
+          "tolerance": 0.1
+        }
+      ],
+      "hint": "Add the bases first, then substitute into the formula. Solve for h by dividing.",
+      "solution_steps": [
+        "60 = (1/2)(8 + 7)h   [substitute]",
+        "60 = 7.5h",
+        "h = 8 cm             [divide by 7.5]"
+      ],
+      "feedback_correct": "Add bases, substitute, divide. h = 8 cm.",
+      "feedback_wrong": "8+7=15. 60=(1/2)(15)h=7.5h. h=8."
+    },
+    {
+      "id": "fsf-q10",
+      "number": 10,
+      "section": "C",
+      "standard": "W4.a",
+      "type": "identify",
+      "question_html": "For \\( f(x) = 2(x + 3)^2 - 8 \\): state the direction it opens, the vertex, and both x-intercepts.",
+      "inputs": [
+        {
+          "id": "q10_direction",
+          "type": "dropdown",
+          "label": "Opens",
+          "options": [
+            "up",
+            "down"
+          ],
+          "answer": "up"
+        },
+        {
+          "id": "q10_vertex_x",
+          "type": "number",
+          "label": "Vertex x =",
+          "answer": -3,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q10_vertex_y",
+          "type": "number",
+          "label": "Vertex y =",
+          "answer": -8,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q10_x1",
+          "type": "number",
+          "label": "x-intercept 1 =",
+          "answer": -5,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q10_x2",
+          "type": "number",
+          "label": "x-intercept 2 =",
+          "answer": -1,
+          "tolerance": 0.1
+        }
+      ],
+      "hint": "a=2 positive means opens up. Vertex is (h,k) — watch the sign: x+3 means h=-3. For intercepts set f(x)=0.",
+      "solution_steps": [
+        "a=2 > 0, opens UP.",
+        "Vertex: h=-3, k=-8. Vertex is (-3, -8).",
+        "Intercepts: 0 = 2(x+3)^2 - 8",
+        "(x+3)^2 = 4",
+        "x+3 = +-2",
+        "x = -1  or  x = -5."
+      ],
+      "feedback_correct": "Opens up. Vertex (-3,-8). Intercepts at x=-5 and x=-1.",
+      "feedback_wrong": "a=2 opens UP. Vertex (-3,-8). For intercepts: (x+3)^2=4, x+3=+-2, x=-1 or x=-5."
+    },
+    {
+      "id": "fsf-q11",
+      "number": 11,
+      "section": "C",
+      "standard": "W4.h",
+      "type": "identify",
+      "question_html": "Convert to vertex form by completing the square: \\( f(x) = 2x^2 - 12x + 7 \\). Write in the form \\( a(x-h)^2 + k \\).",
+      "inputs": [
+        {
+          "id": "q11_a",
+          "type": "number",
+          "label": "a =",
+          "answer": 2,
+          "tolerance": 0.05
+        },
+        {
+          "id": "q11_h",
+          "type": "number",
+          "label": "h =",
+          "answer": 3,
+          "tolerance": 0.05
+        },
+        {
+          "id": "q11_k",
+          "type": "number",
+          "label": "k =",
+          "answer": -11,
+          "tolerance": 0.05
+        }
+      ],
+      "hint": "Factor out 'a' from the x-terms first. Then complete the square inside. Remember to balance: whatever you add inside, multiply by 'a' and subtract outside.",
+      "solution_steps": [
+        "f(x) = 2x^2 - 12x + 7",
+        "= 2(x^2 - 6x) + 7        [factor out 2 from x-terms]",
+        "= 2(x^2 - 6x + 9 - 9) + 7  [complete the square: (6/2)^2 = 9]",
+        "= 2(x-3)^2 - 18 + 7      [distribute the -9: 2*(-9) = -18]",
+        "= 2(x-3)^2 - 11",
+        "a=2, h=3, k=-11"
+      ],
+      "feedback_correct": "a=2, h=3, k=-11. Vertex at (3, -11). Equation: 2(x-3)^2 - 11.",
+      "feedback_wrong": "Factor out 2: 2(x^2-6x)+7. Complete square: 2(x-3)^2-18+7 = 2(x-3)^2-11. The -9 inside becomes -18 outside because of the factor of 2."
+    },
+    {
+      "id": "fsf-q12",
+      "number": 12,
+      "section": "D",
+      "standard": "W5.a",
+      "type": "solve",
+      "question_html": "Simplify completely. Factor both the numerator and denominator, then cancel common factors: \\( \\dfrac{x^2 - 4x - 12}{x^2 - 2x - 24} \\)",
+      "inputs": [
+        {
+          "id": "q12_num",
+          "type": "number",
+          "label": "Numerator zero (number in x + ?) =",
+          "answer": 2,
+          "tolerance": 0.05
+        },
+        {
+          "id": "q12_den",
+          "type": "number",
+          "label": "Denominator remaining factor (number in x + ?) =",
+          "answer": 4,
+          "tolerance": 0.05
+        }
+      ],
+      "hint": "Factor x^2-4x-12: find two numbers that multiply to -12 and add to -4. Factor x^2-2x-24: find two numbers that multiply to -24 and add to -2. Then cancel the shared factor.",
+      "solution_steps": [
+        "Numerator: x^2-4x-12. Need: multiply to -12, add to -4. → -6 and +2.",
+        "= (x-6)(x+2)",
+        "Denominator: x^2-2x-24. Need: multiply to -24, add to -2. → -6 and +4.",
+        "= (x-6)(x+4)",
+        "Cancel (x-6): result = (x+2)/(x+4),  x ≠ 6."
+      ],
+      "feedback_correct": "(x+2)/(x+4). Common factor (x-6) cancels from both.",
+      "feedback_wrong": "Num: (x-6)(x+2). Den: (x-6)(x+4). Cancel (x-6). Simplified: (x+2)/(x+4)."
+    },
+    {
+      "id": "fsf-q13",
+      "number": 13,
+      "section": "D",
+      "standard": "W4.a",
+      "type": "identify",
+      "question_html": "Find the vertex of \\( f(x) = x^2 + 6x - 7 \\) using the vertex formula \\( h = -\\dfrac{b}{2a} \\), then calculate k.",
+      "inputs": [
+        {
+          "id": "q13_h",
+          "type": "number",
+          "label": "Vertex x (h) =",
+          "answer": -3,
+          "tolerance": 0.05
+        },
+        {
+          "id": "q13_k",
+          "type": "number",
+          "label": "Vertex y (k) =",
+          "answer": -16,
+          "tolerance": 0.05
+        }
+      ],
+      "hint": "h = -b / (2a). Then plug h back into f(x) to find k. This is a different technique from completing the square.",
+      "solution_steps": [
+        "a=1, b=6, c=-7.",
+        "h = -6 / (2*1) = -3.",
+        "k = f(-3) = (-3)^2 + 6(-3) - 7 = 9 - 18 - 7 = -16.",
+        "Vertex: (-3, -16)."
+      ],
+      "feedback_correct": "h=-3, k=-16. Vertex at (-3, -16).",
+      "feedback_wrong": "h = -b/2a = -6/2 = -3. Then k = f(-3) = 9-18-7 = -16. Vertex is (-3, -16)."
+    },
+    {
+      "id": "fsf-q14",
+      "number": 14,
+      "section": "D",
+      "standard": "W6.b",
+      "type": "solve",
+      "question_html": "Solve by completing the square: \\( x^2 - 6x - 7 = 0 \\). Show all steps.",
+      "inputs": [
+        {
+          "id": "q14_x1",
+          "type": "number",
+          "label": "Larger solution: x =",
+          "answer": 7,
+          "tolerance": 0.05
+        },
+        {
+          "id": "q14_x2",
+          "type": "number",
+          "label": "Smaller solution: x =",
+          "answer": -1,
+          "tolerance": 0.05
+        }
+      ],
+      "hint": "Move the constant. Half of -6 is -3, squared is 9. Add 9 to both sides. You get (x-3)^2 = something.",
+      "solution_steps": [
+        "x^2 - 6x - 7 = 0",
+        "x^2 - 6x = 7             [move constant]",
+        "x^2 - 6x + 9 = 7 + 9    [half of -6 = -3, (-3)^2 = 9]",
+        "(x - 3)^2 = 16",
+        "x - 3 = +-4",
+        "x = 7  or  x = -1"
+      ],
+      "feedback_correct": "Completed the square. x = 7 or x = -1.",
+      "feedback_wrong": "Move 7: x^2-6x=7. Add 9: (x-3)^2=16. Take sqrt: x-3=+-4. x=7 or x=-1."
+    },
+    {
+      "id": "fsf-q15",
+      "number": 15,
+      "section": "D",
+      "standard": "W6.c",
+      "type": "solve",
+      "question_html": "Use the quadratic formula. Simplify your answer completely — you must simplify the radical: \\( 3x^2 - 4x - 2 = 0 \\)",
+      "inputs": [
+        {
+          "id": "q15_disc",
+          "type": "number",
+          "label": "Discriminant (b^2 - 4ac) =",
+          "answer": 40,
+          "tolerance": 0.5
+        },
+        {
+          "id": "q15_radical",
+          "type": "number",
+          "label": "Simplified: number under radical =",
+          "answer": 10,
+          "tolerance": 0.5
+        },
+        {
+          "id": "q15_num",
+          "type": "number",
+          "label": "Simplified: integer in numerator =",
+          "answer": 2,
+          "tolerance": 0.5
+        },
+        {
+          "id": "q15_denom",
+          "type": "number",
+          "label": "Simplified: denominator =",
+          "answer": 3,
+          "tolerance": 0.5
+        }
+      ],
+      "hint": "a=3, b=-4, c=-2. Discriminant = b^2-4ac. Then simplify sqrt(disc): look for perfect square factors. Divide numerator and denominator by 2.",
+      "solution_steps": [
+        "a=3, b=-4, c=-2.",
+        "Discriminant: (-4)^2 - 4(3)(-2) = 16 + 24 = 40.",
+        "x = (4 +- sqrt(40)) / 6",
+        "Simplify: sqrt(40) = sqrt(4*10) = 2*sqrt(10).",
+        "x = (4 +- 2*sqrt(10)) / 6 = (2 +- sqrt(10)) / 3   [divide by 2]",
+        "Final answer: x = (2 +- sqrt(10)) / 3"
+      ],
+      "feedback_correct": "Discriminant 40. sqrt(40)=2sqrt(10). Final: (2+-sqrt(10))/3.",
+      "feedback_wrong": "Disc=40. (4+-sqrt(40))/6. sqrt(40)=2sqrt(10). Divide all by 2: (2+-sqrt(10))/3. Denominator is 3, not 6."
+    }
+  ]
+}

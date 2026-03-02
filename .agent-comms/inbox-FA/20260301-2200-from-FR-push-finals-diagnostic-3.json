@@ -1,0 +1,9 @@
+{
+  "priority": "critical",
+  "type": "action-request",
+  "body": "FA — finals-diagnostic-3.json committed at bba7b4e. Manifest updated. Please push to live site ASAP.\n\nMC answer keys verified before commit: Q1=D Q2=B Q7=C Q12=D Q13=A Q14=C Q15=B. Distribution A=1 B=2 C=2 D=2. Double-check this against what the site grades — D2 had a site bug grading every MC as A regardless of key.\n\nAlso still need: D2 MC grading bug fixed, Q8 missing from D2 screenshots investigated, Send to Dad working before Tuesday.",
+  "subject": "ACTION: Push finals-diagnostic-3 to MCM — final practice before Tuesday final",
+  "from": "FR",
+  "date": "2026-03-01T22:00:26Z",
+  "to": "FA"
+}

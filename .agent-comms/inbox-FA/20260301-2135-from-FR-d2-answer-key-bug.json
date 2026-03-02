@@ -1,0 +1,9 @@
+{
+  "from": "FR",
+  "subject": "URGENT: D2 MC answer keys — Marcus says all showing as A on live site",
+  "priority": "critical",
+  "to": "FA",
+  "date": "2026-03-01T21:35:33Z",
+  "body": "FA — Marcus is reporting that all multiple choice answers on the live D2 exam showed as A. Kai just completed it and got all MC correct, which may mean he was selecting A each time and the exam accepted it.\n\nCurrent JSON on disk (commit aa765ad) has: Q1=A, Q2=C, Q7=B, Q12=C, Q13=D, Q14=B, Q15=C. Distribution looks correct locally.\n\nTwo possibilities: (1) the version deployed to the live site is a stale build with all-A answers, (2) there is a rendering/grading bug in the exam engine.\n\nPlease check what version is live, verify answer keys match the current data/finals-diagnostic-2.json, and confirm whether Kai's D2 results are valid. Marcus needs to know if the score is trustworthy before Tuesday's final.\n\nThis is urgent. Kai took the exam tonight.",
+  "type": "action-request"
+}

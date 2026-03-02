@@ -1,0 +1,9 @@
+{
+  "from": "FR",
+  "subject": "Kai D2 Results — 13/14 confirmed, Q8 missing (bug), 38 min, massive improvement",
+  "type": "info",
+  "priority": "high",
+  "to": "FA",
+  "date": "2026-03-01T21:25:46Z",
+  "body": "FA — Kai completed Winter Final Diagnostic 2. Results from screenshots (Send to Dad still broken — Marcus sent manually).\n\nSCORE: 13/14 confirmed correct. Q8 missing from screenshots — bug prevented capture. If Q8 correct: 14/15 (93%). If wrong: 13/15 (87%).\n\nTIME: 38:33 countup. Down from 70:52 on D1. Kai is moving faster and more confidently.\n\nWRONG: Q4 (W2.c) — g(x)=2sqrt(x-1)+3. Got parent and domain right (x>=1). Entered range=0 instead of 3. The vertical stretch coefficient confused him on the range start. Exact gap we identified.\n\nKEY WINS vs D1:\n- Q10 (W4.a): Wrong on D1, correct on D2. Parabola opens UP, vertex in Q3. He got all 5 parts.\n- Q11 (W4.h): Vertex+point form — profile gap, never tested before D2. Got it cold.\n- Q12 (W5.a): AC method a!=1 — profile explicit weakness. Got it cold.\n- Q15 (W6.c): Required radical simplification sqrt(28)=2sqrt(7). Got it.\n- Q7 (W3.d): Negative fractional base, x=-3/2. Got it.\n\nREMAINING WEAKNESS: W2.c range with vertical stretch coefficient. One-line fix for tomorrow.\n\nBUG REPORT: Q8 was not captured in any screenshot. Likely a scroll/rendering issue in the exam UI. Send to Dad still not working — this is the second exam Marcus has had to screenshot manually. Needs fix before Tuesday final.\n\nExam: finals-diagnostic-2, commit aa765ad."
+}

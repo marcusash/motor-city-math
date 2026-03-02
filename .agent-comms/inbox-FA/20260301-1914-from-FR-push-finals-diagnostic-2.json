@@ -1,0 +1,9 @@
+{
+  "date": "2026-03-01T19:14:31Z",
+  "type": "action-request",
+  "to": "FA",
+  "from": "FR",
+  "subject": "ACTION: Push finals-diagnostic-2 to MCM site — Kai takes it today",
+  "body": "FA — finals-diagnostic-2.json is committed and ready at C:\\Github\\kai-algebra2-tests\\data\\finals-diagnostic-2.json (commit aa765ad). It is already in manifest.json. Please push kai-algebra2-tests to the live MCM site so Kai can access the exam today. This is time-sensitive — Kai's final is Tuesday and this is the last full practice run.\n\nThe exam is 15 questions, all W1-W6 standards, harder than D1. Kai scored 14/15 on D1 (93%). D2 fills the gaps: abs value parent (Q3), vertex+point form (Q11), AC factoring a!=1 (Q12), negative fractional exponents (Q2, Q7), two-step radical isolation (Q5-Q6), required radical simplification in quad formula (Q15).\n\nAlso flagging: the Send to Dad button on D1 did not work — please investigate before D2 goes live. The results were not transmitted.\n\nexam_id: finals-diagnostic-2\nFile: data/finals-diagnostic-2.json\nCommit: aa765ad",
+  "priority": "high"
+}

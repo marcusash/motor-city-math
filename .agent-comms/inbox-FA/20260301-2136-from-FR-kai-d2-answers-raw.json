@@ -1,0 +1,164 @@
+{
+  "exam_id": "finals-diagnostic-2",
+  "send_to_dad_status": "FAILED",
+  "site_score": "14/14 visible (Q8 missing)",
+  "source": "manual-screenshot-capture",
+  "submitted": "2026-03-01T21:19:04Z",
+  "timer_display": "38:33",
+  "non_mc_confirmed_correct": [
+    3,
+    5,
+    6,
+    9,
+    10,
+    11
+  ],
+  "non_mc_confirmed_wrong": [
+    4
+  ],
+  "actual_score_note": "MC answers unverifiable. All 6 MC questions graded by site as correct but Kai selected A for every one. Correct answers in JSON are A,C,B,C,D,B,C. Site bug: grading A as correct for all MC regardless of key.",
+  "non_mc_unknown": [
+    8
+  ],
+  "student": "Kai",
+  "questions": [
+    {
+      "kai_answer": "A",
+      "type": "radio",
+      "actual": "correct",
+      "standard": "W1.a",
+      "correct_answer_json": "A",
+      "site_graded": "correct",
+      "q": 1
+    },
+    {
+      "kai_answer": "A",
+      "type": "radio",
+      "actual": "WRONG — site accepted A, correct is C (1/8)",
+      "standard": "W1.b",
+      "correct_answer_json": "C",
+      "site_graded": "correct",
+      "q": 2
+    },
+    {
+      "q": 3,
+      "kai_vertex_x": 3,
+      "site_graded": "correct",
+      "kai_vertex_y": 4,
+      "kai_parent": "absolute value",
+      "actual": "correct",
+      "type": "identify",
+      "standard": "W2.b"
+    },
+    {
+      "q": 4,
+      "kai_domain_start": 1,
+      "kai_parent": "square root",
+      "site_graded": "wrong",
+      "actual": "wrong — range should be 3",
+      "type": "identify",
+      "kai_range_start": 0,
+      "standard": "W2.c"
+    },
+    {
+      "kai_answer": 9,
+      "type": "solve",
+      "actual": "correct",
+      "standard": "W3.a",
+      "site_graded": "correct",
+      "q": 5
+    },
+    {
+      "kai_answer": 26,
+      "type": "solve",
+      "actual": "correct",
+      "standard": "W3.a",
+      "site_graded": "correct",
+      "q": 6
+    },
+    {
+      "kai_answer": "A",
+      "type": "radio",
+      "actual": "WRONG — site accepted A, correct is B (x=-3/2)",
+      "standard": "W3.d",
+      "correct_answer_json": "B",
+      "site_graded": "correct",
+      "q": 7
+    },
+    {
+      "kai_answer": "NOT CAPTURED",
+      "type": "solve",
+      "actual": "unknown — UI bug, question missing from screenshots",
+      "standard": "W3.c",
+      "site_graded": "unknown",
+      "q": 8
+    },
+    {
+      "kai_answer": 60,
+      "type": "solve",
+      "actual": "correct",
+      "standard": "W3.c",
+      "site_graded": "correct",
+      "q": 9
+    },
+    {
+      "standard": "W4.a",
+      "kai_direction": "up",
+      "type": "identify",
+      "kai_vertex_x": -2,
+      "kai_x2": 0,
+      "actual": "correct",
+      "site_graded": "correct",
+      "kai_vertex_y": -8,
+      "q": 10,
+      "kai_x1": -4
+    },
+    {
+      "q": 11,
+      "kai_a": 1,
+      "site_graded": "correct",
+      "kai_h": 2,
+      "actual": "correct",
+      "type": "identify",
+      "kai_k": -3,
+      "standard": "W4.h"
+    },
+    {
+      "kai_answer": "A",
+      "type": "radio",
+      "actual": "WRONG — site accepted A, correct is C ((2x+1)(x+3))",
+      "standard": "W5.a",
+      "correct_answer_json": "C",
+      "site_graded": "correct",
+      "q": 12
+    },
+    {
+      "kai_answer": "A",
+      "type": "radio",
+      "actual": "WRONG — site accepted A, correct is D (3(x-2)^2)",
+      "standard": "W5.b",
+      "correct_answer_json": "D",
+      "site_graded": "correct",
+      "q": 13
+    },
+    {
+      "kai_answer": "A",
+      "type": "radio",
+      "actual": "WRONG — site accepted A, correct is B (x=3+-sqrt(7))",
+      "standard": "W6.b",
+      "correct_answer_json": "B",
+      "site_graded": "correct",
+      "q": 14
+    },
+    {
+      "kai_answer": "A",
+      "type": "radio",
+      "actual": "WRONG — site accepted A, correct is C (x=(-2+-sqrt(7))/3)",
+      "standard": "W6.c",
+      "correct_answer_json": "C",
+      "site_graded": "correct",
+      "q": 15
+    }
+  ],
+  "timer_countup_seconds": 2313
+}
