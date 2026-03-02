@@ -520,14 +520,14 @@
             var dateStr = att[0].timestamp
                 ? new Date(att[0].timestamp).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
                 : null;
-            // Short label for x-axis: keeps chart readable with many points
+            // Short label for x-axis: UT# = unit tests, RP# = retake practice, F# = finals
             var short = t.name.replace(/^[\u{1F000}-\u{1FFFF}\u{2600}-\u{27FF}\uFE0F\s]+/u, '').trim()
                 .replace('Retake Practice #', 'RP').replace(/ \(.*\)$/, '');
-            if (short.indexOf('Nonlinear') !== -1) short = 'MVP';
-            if (short.indexOf('Diagnostic 1') !== -1) short = 'Diag 1';
-            if (short.indexOf('Diagnostic 2') !== -1) short = 'Diag 2';
-            if (short.indexOf('Drill') !== -1) short = 'Drill';
-            if (short.indexOf('Final Exam') !== -1) short = 'Final';
+            if (short.indexOf('Nonlinear') !== -1) short = 'UT1';
+            if (short.indexOf('Diagnostic 1') !== -1) short = 'F1';
+            if (short.indexOf('Diagnostic 2') !== -1) short = 'F2';
+            if (short.indexOf('Drill') !== -1) short = 'UT2';
+            if (short.indexOf('Final Exam') !== -1) short = 'F1';
             raw.push({ label: short, sublabel: dateStr, fa: fa, rib: rib, ts: ts });
         });
         // Sort by timestamp ascending (chronological left-to-right)
@@ -1042,12 +1042,12 @@
                 var last = s.attempts[s.attempts.length - 1];
                 var pct = last.pct != null ? last.pct : Math.round((last.score / last.total) * 100);
                 var ts = s.attempts[0].timestamp ? new Date(s.attempts[0].timestamp).getTime() : 0;
-                // Short label: RP1..RP11 for retakes, 'MVP' for original exam, 'Diag 1' for finals
+                // Short label: UT# = unit tests, RP# = retake practice, F# = finals
                 var label = t.name.replace('Retake Practice #', 'RP').replace(/ \(.*\)$/, '');
-                if (label.indexOf('MVP') !== -1 || label.indexOf('Nonlinear') !== -1) label = 'MVP';
-                if (label.indexOf('Diagnostic 1') !== -1) label = 'Diag 1';
-                if (label.indexOf('Diagnostic 2') !== -1) label = 'Diag 2';
-                if (label.indexOf('Drill') !== -1) label = 'Drill';
+                if (label.indexOf('MVP') !== -1 || label.indexOf('Nonlinear') !== -1) label = 'UT1';
+                if (label.indexOf('Diagnostic 1') !== -1) label = 'F1';
+                if (label.indexOf('Diagnostic 2') !== -1) label = 'F2';
+                if (label.indexOf('Drill') !== -1) label = 'UT2';
                 results.push({ label: label, pct: pct, ts: ts });
             });
             // Sort chronologically so journey reads left-to-right oldest to newest
