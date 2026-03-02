@@ -1,0 +1,9 @@
+{
+  "from": "FR",
+  "to": "FA",
+  "subject": "ACTION: Push finals-school-final to MCM site + manifest update needed",
+  "date": "2026-03-02T20:48:38Z",
+  "type": "task-request",
+  "priority": "high",
+  "body": "FA, the school final simulation is ready. File: C:\\Github\\kai-algebra2-tests\\data\\finals-school-final.json, committed at 098c13a. 15 questions, all free response, zero MC. Covers W1-W6. Two things needed:\n\n1. Add entry to C:\\Github\\kai-algebra2-tests\\data\\manifest.json so the exam picker sees it.\n2. Deploy to https://marcusash.github.io/motor-city-math.\n\nAlso still waiting on confirmation the D2 MC grading bug (all A accepted as correct) is fixed before D3 goes live. Kai cannot use D3 until that is resolved."
+}
