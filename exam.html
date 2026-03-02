@@ -1399,14 +1399,12 @@
             var isMultiChoice = q.inputs.some(function(i){ return i.type === 'radio'; });
             var inputHtml = q.inputs.map(function(inp) {
                 if (inp.type === 'radio') {
-                    return '<div class="opts">' + (inp.options||[]).map(function(o){
-                        return '<div class="opt"><span class="bubble"></span><b>' + o.value + '.</b> ' + tex(o.text) + '</div>';
-                    }).join('') + '</div>';
+                    return '<div class="blank-row"><span class="blank-lbl">Answer</span><span class="blank-line"></span></div>';
                 }
                 if (inp.type === 'dropdown') {
-                    return '<div class="blank-row"><span class="blank-lbl">' + tex(inp.label||'Answer') + ':</span><span class="blank-line"></span></div>';
+                    return '<div class="blank-row"><span class="blank-lbl">' + tex(inp.label||'Answer') + '</span><span class="blank-line"></span></div>';
                 }
-                return '<div class="blank-row"><span class="blank-lbl">' + tex(inp.label||'Answer') + ':</span><span class="blank-line"></span></div>';
+                return '<div class="blank-row"><span class="blank-lbl">' + tex(inp.label||'Answer') + '</span><span class="blank-line"></span></div>';
             }).join('');
 
             var workH = isMultiChoice ? '70px' : '140px';
@@ -1443,13 +1441,13 @@
                 '.opts{margin:6px 0;}',
                 '.opt{display:flex;align-items:baseline;gap:8px;padding:8px 10px;border:1px solid #ddd;border-radius:3px;margin:5px 0;line-height:1.8;}',
                 '.bubble{display:inline-block;width:14px;height:14px;border:1.5px solid #000;border-radius:50%;flex-shrink:0;margin-top:2px;}',
-                '.blank-row{display:flex;align-items:center;gap:8px;margin:8px 0;}',
+                '.blank-row{display:flex;align-items:baseline;gap:8px;margin:8px 0;}',
                 '.blank-lbl{white-space:nowrap;font-size:.9em;}',
                 '.blank-line{flex:1;border-bottom:1.5px solid #000;min-width:120px;}',
                 '.choices{font-size:.85em;color:#333;margin:2px 0 8px 8px;}',
                 '.work-area{border:1px dashed #bbb;border-radius:3px;margin-top:10px;padding:6px 8px;}',
                 '.work-lbl{font-size:.78em;color:#666;display:block;margin-bottom:4px;}',
-                '.katex{color:#000!important;}',
+                '.katex{color:#000!important;display:inline-block!important;}',
                 '.katex *{color:#000!important;background:transparent!important;}',
                 '@page{margin:1.8cm;}',
                 '@media print{.qcard{page-break-inside:avoid;}}',
