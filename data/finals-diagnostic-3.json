@@ -1,0 +1,529 @@
+{
+  "exam_id": "finals-diagnostic-3",
+  "schema_version": "1.0",
+  "title": "Winter Final Diagnostic 3 — Standards W1-W6",
+  "subtitle": "All Winter Standards · 15 Questions · ~75 min",
+  "time_minutes": 75,
+  "created": "2026-03-02",
+  "created_by": "Agent FR",
+  "purpose": "Final practice before Tuesday exam. Re-tests all 6 MC standards with fresh questions — D2 MC results invalidated by site grading bug. Also re-tests W2.c range (confirmed wrong on D2). MC answer keys pre-verified: Q1=D, Q2=B, Q7=C, Q12=D, Q13=A, Q14=C, Q15=B. Distribution A=1 B=2 C=2 D=2.",
+  "questions": [
+    {
+      "id": "fd3-q1",
+      "number": 1,
+      "section": "A",
+      "standard": "W1.a",
+      "type": "multiple-choice",
+      "question_html": "Simplify completely. Write with positive exponents only: \\( \\dfrac{x^{-2} \\cdot (2x^3)^2}{4x^4} \\)",
+      "inputs": [
+        {
+          "id": "q1",
+          "type": "radio",
+          "label": "",
+          "options": [
+            { "value": "A", "text": "\\( 4x^2 \\)" },
+            { "value": "B", "text": "\\( x^2 \\)" },
+            { "value": "C", "text": "\\( 4 \\)" },
+            { "value": "D", "text": "\\( 1 \\)" }
+          ],
+          "answer": "D"
+        }
+      ],
+      "hint": "Expand (2x^3)^2 first. Then multiply, then divide using exponent rules. Watch what happens when the exponents cancel.",
+      "solution_steps": [
+        "Numerator: x^(-2) * (2x^3)^2 = x^(-2) * 4x^6 = 4x^4",
+        "Divide: 4x^4 / 4x^4 = x^(4-4) = x^0 = 1",
+        "Answer: 1"
+      ],
+      "feedback_correct": "Exponents cancelled to zero. x^0 = 1.",
+      "feedback_wrong": "Expand (2x^3)^2 = 4x^6. Then x^(-2) * 4x^6 = 4x^4. Divide by 4x^4: you get x^0 = 1."
+    },
+    {
+      "id": "fd3-q2",
+      "number": 2,
+      "section": "A",
+      "standard": "W1.b",
+      "type": "multiple-choice",
+      "question_html": "Evaluate without a calculator: \\( 27^{-2/3} \\)",
+      "inputs": [
+        {
+          "id": "q2",
+          "type": "radio",
+          "label": "",
+          "options": [
+            { "value": "A", "text": "\\( 9 \\)" },
+            { "value": "B", "text": "\\( \\dfrac{1}{9} \\)" },
+            { "value": "C", "text": "\\( 3 \\)" },
+            { "value": "D", "text": "\\( -9 \\)" }
+          ],
+          "answer": "B"
+        }
+      ],
+      "hint": "Negative exponent means reciprocal first. Then denominator = root, numerator = power.",
+      "solution_steps": [
+        "27^(-2/3) = 1 / 27^(2/3)     [negative exponent: flip]",
+        "= 1 / (cbrt(27))^2           [denominator 3 = cube root]",
+        "= 1 / 3^2                    [cbrt(27) = 3]",
+        "= 1/9"
+      ],
+      "feedback_correct": "Reciprocal, cube root, then square. 1/9.",
+      "feedback_wrong": "Flip first: 1/27^(2/3). Cube root of 27 = 3. Then 3^2 = 9. Answer: 1/9."
+    },
+    {
+      "id": "fd3-q3",
+      "number": 3,
+      "section": "A",
+      "standard": "W2.b",
+      "type": "identify",
+      "question_html": "For \\( f(x) = 3|x + 2| - 6 \\): identify the parent function and vertex.",
+      "inputs": [
+        {
+          "id": "q3_parent",
+          "type": "dropdown",
+          "label": "Parent function",
+          "options": [
+            "quadratic",
+            "cubic",
+            "absolute value",
+            "square root",
+            "exponential"
+          ],
+          "answer": "absolute value"
+        },
+        {
+          "id": "q3_vertex_x",
+          "type": "number",
+          "label": "Vertex x =",
+          "answer": -2,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q3_vertex_y",
+          "type": "number",
+          "label": "Vertex y =",
+          "answer": -6,
+          "tolerance": 0.1
+        }
+      ],
+      "hint": "Parent is y = |x|. Vertex of y = a|x - h| + k is at (h, k). Watch the sign inside.",
+      "solution_steps": [
+        "Parent: y = |x|  (absolute value).",
+        "Form: a=3, x+2 means h=-2 (opposite sign), k=-6.",
+        "Vertex: (-2, -6).",
+        "a=3 > 0 so the V opens upward. Vertex is a minimum."
+      ],
+      "feedback_correct": "Absolute value. Vertex (-2, -6). Opens up.",
+      "feedback_wrong": "Parent is |x|. The +2 inside flips to h=-2. The -6 outside gives k=-6. Vertex: (-2, -6)."
+    },
+    {
+      "id": "fd3-q4",
+      "number": 4,
+      "section": "A",
+      "standard": "W2.c",
+      "type": "identify",
+      "question_html": "For \\( g(x) = 4\\sqrt{x - 3} + 5 \\): identify the parent function, domain start, and range start.",
+      "inputs": [
+        {
+          "id": "q4_parent",
+          "type": "dropdown",
+          "label": "Parent function",
+          "options": [
+            "quadratic",
+            "cubic",
+            "absolute value",
+            "square root",
+            "exponential"
+          ],
+          "answer": "square root"
+        },
+        {
+          "id": "q4_domain_start",
+          "type": "number",
+          "label": "Domain: x >= ",
+          "answer": 3,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q4_range_start",
+          "type": "number",
+          "label": "Range: y >= ",
+          "answer": 5,
+          "tolerance": 0.1
+        }
+      ],
+      "hint": "Domain: set the radicand >= 0 and solve. Range: plug the domain start into the function. The coefficient 4 is a stretch — it does NOT shift where the range begins.",
+      "solution_steps": [
+        "Parent: y = sqrt(x).",
+        "Domain: x - 3 >= 0, so x >= 3.",
+        "Range: plug in domain start: g(3) = 4*sqrt(0) + 5 = 5.",
+        "So range is y >= 5.",
+        "The coefficient 4 stretches the graph but does NOT change the range start."
+      ],
+      "feedback_correct": "Domain x >= 3, range y >= 5. The stretch coefficient does not shift the starting point.",
+      "feedback_wrong": "Domain: x-3 >= 0 gives x >= 3. Range: plug in x=3: 4*sqrt(0)+5 = 5. Range is y >= 5. The 4 is a stretch, not a shift."
+    },
+    {
+      "id": "fd3-q5",
+      "number": 5,
+      "section": "B",
+      "standard": "W3.a",
+      "type": "solve",
+      "question_html": "Solve for x: \\( 3\\sqrt{2x - 5} + 6 = 15 \\)",
+      "inputs": [
+        {
+          "id": "q5_x",
+          "type": "number",
+          "label": "x =",
+          "answer": 7,
+          "tolerance": 0.1
+        }
+      ],
+      "hint": "Two steps before squaring: subtract 6, then divide by 3 to isolate the radical completely.",
+      "solution_steps": [
+        "3*sqrt(2x-5) + 6 = 15",
+        "3*sqrt(2x-5) = 9      [subtract 6]",
+        "sqrt(2x-5) = 3        [divide by 3]",
+        "2x-5 = 9              [square both sides]",
+        "2x = 14",
+        "x = 7"
+      ],
+      "feedback_correct": "Two isolation steps, then square. x = 7.",
+      "feedback_wrong": "Subtract 6: 3*sqrt(2x-5)=9. Divide by 3: sqrt(2x-5)=3. Square: 2x-5=9. x=7."
+    },
+    {
+      "id": "fd3-q6",
+      "number": 6,
+      "section": "B",
+      "standard": "W3.a",
+      "type": "solve",
+      "question_html": "Solve for x: \\( \\sqrt[3]{x - 7} + 3 = 6 \\)",
+      "inputs": [
+        {
+          "id": "q6_x",
+          "type": "number",
+          "label": "x =",
+          "answer": 34,
+          "tolerance": 0.1
+        }
+      ],
+      "hint": "Isolate the cube root first by subtracting 3. Then cube both sides.",
+      "solution_steps": [
+        "cbrt(x-7) + 3 = 6",
+        "cbrt(x-7) = 3       [subtract 3]",
+        "x-7 = 27            [cube both sides: 3^3=27]",
+        "x = 34"
+      ],
+      "feedback_correct": "Isolate cube root, then cube. x = 34.",
+      "feedback_wrong": "Subtract 3: cbrt(x-7)=3. Cube both sides: x-7=27. x=34."
+    },
+    {
+      "id": "fd3-q7",
+      "number": 7,
+      "section": "B",
+      "standard": "W3.d",
+      "type": "multiple-choice",
+      "question_html": "Solve for x: \\( 4^{x+1} = 32 \\)",
+      "inputs": [
+        {
+          "id": "q7",
+          "type": "radio",
+          "label": "",
+          "options": [
+            { "value": "A", "text": "\\( x = 2 \\)" },
+            { "value": "B", "text": "\\( x = \\dfrac{5}{2} \\)" },
+            { "value": "C", "text": "\\( x = \\dfrac{3}{2} \\)" },
+            { "value": "D", "text": "\\( x = 1 \\)" }
+          ],
+          "answer": "C"
+        }
+      ],
+      "hint": "Rewrite both sides as powers of 2. Remember 4 = 2^2 and 32 = 2^5.",
+      "solution_steps": [
+        "4^(x+1) = 32",
+        "(2^2)^(x+1) = 2^5     [rewrite: 4=2^2, 32=2^5]",
+        "2^(2x+2) = 2^5        [power rule]",
+        "2x+2 = 5              [same base: set exponents equal]",
+        "2x = 3",
+        "x = 3/2"
+      ],
+      "feedback_correct": "Same base strategy. x = 3/2.",
+      "feedback_wrong": "Rewrite: (2^2)^(x+1) = 2^5. Power rule: 2(x+1) = 5, so 2x+2=5, 2x=3, x=3/2."
+    },
+    {
+      "id": "fd3-q8",
+      "number": 8,
+      "section": "B",
+      "standard": "W3.c",
+      "type": "solve",
+      "question_html": "The area of a circle is given by \\( A = \\pi r^2 \\). A circular fountain has area \\( 144\\pi \\) square feet. Find the radius r.",
+      "inputs": [
+        {
+          "id": "q8_r",
+          "type": "number",
+          "label": "r =",
+          "answer": 12,
+          "tolerance": 0.1
+        }
+      ],
+      "hint": "Substitute A = 144*pi, then divide both sides by pi, then take the square root.",
+      "solution_steps": [
+        "144*pi = pi * r^2    [substitute A = 144*pi]",
+        "144 = r^2            [divide both sides by pi]",
+        "r = 12 ft            [square root, positive only]"
+      ],
+      "feedback_correct": "Cancel pi, take square root. r = 12 ft.",
+      "feedback_wrong": "Plug in: 144*pi = pi*r^2. Cancel pi: r^2=144. Take sqrt: r=12."
+    },
+    {
+      "id": "fd3-q9",
+      "number": 9,
+      "section": "B",
+      "standard": "W3.c",
+      "type": "solve",
+      "question_html": "Kinetic energy is given by \\( KE = \\dfrac{1}{2}mv^2 \\). If an object has KE = 200 joules and mass m = 4 kg, find the speed v.",
+      "inputs": [
+        {
+          "id": "q9_v",
+          "type": "number",
+          "label": "v =",
+          "answer": 10,
+          "tolerance": 0.1
+        }
+      ],
+      "hint": "Substitute KE=200 and m=4. Isolate v^2, then take the square root.",
+      "solution_steps": [
+        "200 = (1/2)(4)v^2    [substitute]",
+        "200 = 2v^2           [simplify]",
+        "v^2 = 100            [divide by 2]",
+        "v = 10 m/s           [square root]"
+      ],
+      "feedback_correct": "Substitute, simplify, isolate v^2, square root. v = 10 m/s.",
+      "feedback_wrong": "Plug in: 200 = (1/2)(4)v^2 = 2v^2. Divide: v^2=100. sqrt: v=10."
+    },
+    {
+      "id": "fd3-q10",
+      "number": 10,
+      "section": "C",
+      "standard": "W4.a",
+      "type": "identify",
+      "question_html": "For \\( f(x) = -3(x - 1)^2 + 12 \\): state the direction it opens, the vertex, and both x-intercepts.",
+      "inputs": [
+        {
+          "id": "q10_direction",
+          "type": "dropdown",
+          "label": "Opens",
+          "options": ["up", "down"],
+          "answer": "down"
+        },
+        {
+          "id": "q10_vertex_x",
+          "type": "number",
+          "label": "Vertex x =",
+          "answer": 1,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q10_vertex_y",
+          "type": "number",
+          "label": "Vertex y =",
+          "answer": 12,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q10_x1",
+          "type": "number",
+          "label": "x-intercept 1 =",
+          "answer": -1,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q10_x2",
+          "type": "number",
+          "label": "x-intercept 2 =",
+          "answer": 3,
+          "tolerance": 0.1
+        }
+      ],
+      "hint": "a=-3 (negative) means opens down. Vertex is (h,k). For intercepts set f(x)=0 and solve.",
+      "solution_steps": [
+        "a=-3 < 0, opens DOWN.",
+        "Vertex: (h,k) = (1, 12).",
+        "Intercepts: 0 = -3(x-1)^2 + 12",
+        "(x-1)^2 = 4",
+        "x-1 = +-2",
+        "x = 3  or  x = -1."
+      ],
+      "feedback_correct": "Opens down. Vertex (1,12). Intercepts at x=-1 and x=3.",
+      "feedback_wrong": "a=-3 opens DOWN. Vertex (1,12). For intercepts: -3(x-1)^2=-12, (x-1)^2=4, x-1=+-2, x=3 or x=-1."
+    },
+    {
+      "id": "fd3-q11",
+      "number": 11,
+      "section": "C",
+      "standard": "W4.h",
+      "type": "identify",
+      "question_html": "A parabola has vertex \\( (-4, 5) \\) and passes through the point \\( (-2, -3) \\). Find a, then write the equation in vertex form.",
+      "inputs": [
+        {
+          "id": "q11_a",
+          "type": "number",
+          "label": "a =",
+          "answer": -2,
+          "tolerance": 0.05
+        },
+        {
+          "id": "q11_h",
+          "type": "number",
+          "label": "h =",
+          "answer": -4,
+          "tolerance": 0.05
+        },
+        {
+          "id": "q11_k",
+          "type": "number",
+          "label": "k =",
+          "answer": 5,
+          "tolerance": 0.05
+        }
+      ],
+      "hint": "Write y = a(x-h)^2 + k using the vertex. Then plug in the point to solve for a.",
+      "solution_steps": [
+        "Vertex form: y = a(x - (-4))^2 + 5 = a(x+4)^2 + 5",
+        "Plug in point (-2, -3):",
+        "-3 = a(-2+4)^2 + 5",
+        "-3 = 4a + 5",
+        "4a = -8",
+        "a = -2",
+        "Equation: y = -2(x+4)^2 + 5"
+      ],
+      "feedback_correct": "a = -2. Equation: y = -2(x+4)^2 + 5. Opens down.",
+      "feedback_wrong": "Write y = a(x+4)^2 + 5. Plug in (-2,-3): -3 = a(4)+5, 4a=-8, a=-2."
+    },
+    {
+      "id": "fd3-q12",
+      "number": 12,
+      "section": "D",
+      "standard": "W5.a",
+      "type": "multiple-choice",
+      "question_html": "Factor completely: \\( 3x^2 - 10x - 8 \\)",
+      "inputs": [
+        {
+          "id": "q12",
+          "type": "radio",
+          "label": "",
+          "options": [
+            { "value": "A", "text": "\\( (3x - 4)(x + 2) \\)" },
+            { "value": "B", "text": "\\( (x - 4)(3x - 2) \\)" },
+            { "value": "C", "text": "\\( (3x + 4)(x - 2) \\)" },
+            { "value": "D", "text": "\\( (3x + 2)(x - 4) \\)" }
+          ],
+          "answer": "D"
+        }
+      ],
+      "hint": "AC method: a*c = 3*(-8) = -24. Find two numbers that multiply to -24 and add to -10.",
+      "solution_steps": [
+        "a=3, b=-10, c=-8. AC = 3*(-8) = -24.",
+        "Find: multiply to -24, add to -10: -12 and 2.",
+        "3x^2 - 12x + 2x - 8",
+        "= 3x(x-4) + 2(x-4)    [factor by grouping]",
+        "= (3x+2)(x-4)"
+      ],
+      "feedback_correct": "AC method: -12 and 2. Factor by grouping: (3x+2)(x-4).",
+      "feedback_wrong": "AC = -24. Numbers: -12 and 2 (multiply to -24, add to -10). Split: 3x^2-12x+2x-8 = 3x(x-4)+2(x-4) = (3x+2)(x-4)."
+    },
+    {
+      "id": "fd3-q13",
+      "number": 13,
+      "section": "D",
+      "standard": "W5.b",
+      "type": "multiple-choice",
+      "question_html": "Factor completely: \\( 4x^2 - 25 \\)",
+      "inputs": [
+        {
+          "id": "q13",
+          "type": "radio",
+          "label": "",
+          "options": [
+            { "value": "A", "text": "\\( (2x + 5)(2x - 5) \\)" },
+            { "value": "B", "text": "\\( (4x + 5)(x - 5) \\)" },
+            { "value": "C", "text": "\\( (2x - 5)^2 \\)" },
+            { "value": "D", "text": "\\( 4(x^2 - 25) \\)" }
+          ],
+          "answer": "A"
+        }
+      ],
+      "hint": "This is a difference of two perfect squares. Pattern: a^2 - b^2 = (a+b)(a-b).",
+      "solution_steps": [
+        "4x^2 - 25 = (2x)^2 - 5^2",
+        "= (2x+5)(2x-5)    [difference of squares: a^2-b^2=(a+b)(a-b)]"
+      ],
+      "feedback_correct": "Difference of squares. (2x+5)(2x-5).",
+      "feedback_wrong": "Recognize 4x^2 = (2x)^2 and 25 = 5^2. Difference of squares: (2x+5)(2x-5). Option C would be a perfect square, which gives 4x^2-20x+25, not 4x^2-25."
+    },
+    {
+      "id": "fd3-q14",
+      "number": 14,
+      "section": "D",
+      "standard": "W6.b",
+      "type": "multiple-choice",
+      "question_html": "Solve by completing the square: \\( x^2 + 8x + 7 = 0 \\)",
+      "inputs": [
+        {
+          "id": "q14",
+          "type": "radio",
+          "label": "",
+          "options": [
+            { "value": "A", "text": "\\( x = 1 \\text{ or } x = 7 \\)" },
+            { "value": "B", "text": "\\( x = -4 \\pm 9 \\)" },
+            { "value": "C", "text": "\\( x = -1 \\text{ or } x = -7 \\)" },
+            { "value": "D", "text": "\\( x = -3 \\pm \\sqrt{7} \\)" }
+          ],
+          "answer": "C"
+        }
+      ],
+      "hint": "Move the constant. Half of 8 is 4, squared is 16. Add 16 to both sides.",
+      "solution_steps": [
+        "x^2 + 8x + 7 = 0",
+        "x^2 + 8x = -7             [move constant]",
+        "x^2 + 8x + 16 = -7 + 16  [half of 8=4, 4^2=16]",
+        "(x+4)^2 = 9",
+        "x+4 = +-3",
+        "x = -1  or  x = -7"
+      ],
+      "feedback_correct": "Completed the square. x = -1 or x = -7.",
+      "feedback_wrong": "Move 7: x^2+8x=-7. Add 16: (x+4)^2=9. Take sqrt: x+4=+-3. x=-1 or x=-7. Option A has wrong signs."
+    },
+    {
+      "id": "fd3-q15",
+      "number": 15,
+      "section": "D",
+      "standard": "W6.c",
+      "type": "multiple-choice",
+      "question_html": "Use the quadratic formula. Simplify completely: \\( 2x^2 - 5x + 1 = 0 \\)",
+      "inputs": [
+        {
+          "id": "q15",
+          "type": "radio",
+          "label": "",
+          "options": [
+            { "value": "A", "text": "\\( x = \\dfrac{5 \\pm \\sqrt{17}}{2} \\)" },
+            { "value": "B", "text": "\\( x = \\dfrac{5 \\pm \\sqrt{17}}{4} \\)" },
+            { "value": "C", "text": "\\( x = \\dfrac{-5 \\pm \\sqrt{17}}{4} \\)" },
+            { "value": "D", "text": "\\( x = \\dfrac{5 \\pm \\sqrt{33}}{4} \\)" }
+          ],
+          "answer": "B"
+        }
+      ],
+      "hint": "a=2, b=-5, c=1. Discriminant = b^2 - 4ac. Watch: -b means -(negative number).",
+      "solution_steps": [
+        "a=2, b=-5, c=1.",
+        "Discriminant: (-5)^2 - 4(2)(1) = 25 - 8 = 17.",
+        "x = (-(-5) +- sqrt(17)) / (2*2)",
+        "= (5 +- sqrt(17)) / 4",
+        "sqrt(17) does not simplify — 17 is prime."
+      ],
+      "feedback_correct": "Discriminant = 17. x = (5 +- sqrt(17))/4.",
+      "feedback_wrong": "b=-5 so -b=+5. Discriminant: 25-8=17. Formula: (5+-sqrt(17))/(2*2) = (5+-sqrt(17))/4. Option A has wrong denominator (2 not 4). Option D has wrong discriminant."
+    }
+  ]
+}
