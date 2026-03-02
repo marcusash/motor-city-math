@@ -1,7 +1,7 @@
 {
   "exam_id": "finals-diagnostic-2",
   "schema_version": "1.0",
-  "title": "Winter Final Diagnostic 2 — Standards W1-W6",
+  "title": "Winter Final Diagnostic 2: Standards W1-W6",
   "subtitle": "All Winter Standards · 15 Questions · ~75 min",
   "time_minutes": 75,
   "created": "2026-03-02",
@@ -67,19 +67,19 @@
           "options": [
             {
               "value": "A",
-              "text": "\\\\( 8 \\\\)"
+              "text": "\\( 8 \\)"
             },
             {
               "value": "B",
-              "text": "\\\\( \\\\dfrac{1}{12} \\\\)"
+              "text": "\\( \\dfrac{1}{12} \\)"
             },
             {
               "value": "C",
-              "text": "\\\\( \\\\dfrac{1}{8} \\\\)"
+              "text": "\\( \\dfrac{1}{8} \\)"
             },
             {
               "value": "D",
-              "text": "\\\\( -8 \\\\)"
+              "text": "\\( -8 \\)"
             }
           ],
           "answer": "C"
@@ -255,19 +255,19 @@
           "options": [
             {
               "value": "A",
-              "text": "\\\\( x = \\\\dfrac{3}{2} \\\\)"
+              "text": "\\( x = \\dfrac{3}{2} \\)"
             },
             {
               "value": "B",
-              "text": "\\\\( x = -\\\\dfrac{3}{2} \\\\)"
+              "text": "\\( x = -\\dfrac{3}{2} \\)"
             },
             {
               "value": "C",
-              "text": "\\\\( x = -2 \\\\)"
+              "text": "\\( x = -2 \\)"
             },
             {
               "value": "D",
-              "text": "\\\\( x = 2 \\\\)"
+              "text": "\\( x = 2 \\)"
             }
           ],
           "answer": "B"
@@ -455,19 +455,19 @@
           "options": [
             {
               "value": "A",
-              "text": "\\\\( (2x - 1)(x - 3) \\\\)"
+              "text": "\\( (2x - 1)(x - 3) \\)"
             },
             {
               "value": "B",
-              "text": "\\\\( (x + 1)(2x + 3) \\\\)"
+              "text": "\\( (x + 1)(2x + 3) \\)"
             },
             {
               "value": "C",
-              "text": "\\\\( (2x + 1)(x + 3) \\\\)"
+              "text": "\\( (2x + 1)(x + 3) \\)"
             },
             {
               "value": "D",
-              "text": "\\\\( (x + 7)(2x + 1) \\\\)"
+              "text": "\\( (x + 7)(2x + 1) \\)"
             }
           ],
           "answer": "C"
@@ -499,19 +499,19 @@
           "options": [
             {
               "value": "A",
-              "text": "\\\\( 3(x + 2)(x - 2) \\\\)"
+              "text": "\\( 3(x + 2)(x - 2) \\)"
             },
             {
               "value": "B",
-              "text": "\\\\( (3x - 6)^2 \\\\)"
+              "text": "\\( (3x - 6)^2 \\)"
             },
             {
               "value": "C",
-              "text": "\\\\( 3(x - 4)(x - 3) \\\\)"
+              "text": "\\( 3(x - 4)(x - 3) \\)"
             },
             {
               "value": "D",
-              "text": "\\\\( 3(x - 2)^2 \\\\)"
+              "text": "\\( 3(x - 2)^2 \\)"
             }
           ],
           "answer": "D"
@@ -542,19 +542,19 @@
           "options": [
             {
               "value": "A",
-              "text": "\\\\( x = -3 \\\\pm \\\\sqrt{7} \\\\)"
+              "text": "\\( x = -3 \\pm \\sqrt{7} \\)"
             },
             {
               "value": "B",
-              "text": "\\\\( x = 3 \\\\pm \\\\sqrt{7} \\\\)"
+              "text": "\\( x = 3 \\pm \\sqrt{7} \\)"
             },
             {
               "value": "C",
-              "text": "\\\\( x = 3 \\\\pm \\\\sqrt{11} \\\\)"
+              "text": "\\( x = 3 \\pm \\sqrt{11} \\)"
             },
             {
               "value": "D",
-              "text": "\\\\( x = 6 \\\\pm \\\\sqrt{7} \\\\)"
+              "text": "\\( x = 6 \\pm \\sqrt{7} \\)"
             }
           ],
           "answer": "B"
@@ -587,19 +587,19 @@
           "options": [
             {
               "value": "A",
-              "text": "\\\\( x = \\\\dfrac{2 \\\\pm \\\\sqrt{7}}{3} \\\\)"
+              "text": "\\( x = \\dfrac{2 \\pm \\sqrt{7}}{3} \\)"
             },
             {
               "value": "B",
-              "text": "\\\\( x = \\\\dfrac{-4 \\\\pm \\\\sqrt{52}}{6} \\\\)"
+              "text": "\\( x = \\dfrac{-4 \\pm \\sqrt{52}}{6} \\)"
             },
             {
               "value": "C",
-              "text": "\\\\( x = \\\\dfrac{-2 \\\\pm \\\\sqrt{7}}{3} \\\\)"
+              "text": "\\( x = \\dfrac{-2 \\pm \\sqrt{7}}{3} \\)"
             },
             {
               "value": "D",
-              "text": "\\\\( x = \\\\dfrac{-4 \\\\pm \\\\sqrt{28}}{6} \\\\)"
+              "text": "\\( x = \\dfrac{-4 \\pm \\sqrt{28}}{6} \\)"
             }
           ],
           "answer": "C"
