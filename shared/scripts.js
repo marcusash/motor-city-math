@@ -517,7 +517,8 @@ function initTimer(opts) {
             var isArena = document.body.classList.contains('arena-mode');
             localStorage.setItem('mcm-arena-mode', isArena ? 'on' : 'off');
         };
-        header.appendChild(btn);
+        var actions = header.querySelector('.header-actions');
+        (actions || header).appendChild(btn);
     });
 })();
 

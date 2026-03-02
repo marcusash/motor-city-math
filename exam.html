@@ -155,7 +155,9 @@
         <header class="test-header">
             <a href="index.html" class="header-back" aria-label="Back to dashboard">←</a>
             <h1 id="examTitle"></h1>
-            <button onclick="printExam()" style="position:absolute;top:16px;right:70px;padding:6px 14px;border:1px solid var(--border-default);border-radius:6px;background:var(--bg-card);color:var(--text-primary);cursor:pointer;font-size:var(--text-sm);">🖨️ Print</button>
+            <div class="header-actions">
+                <button onclick="printExam()" class="print-btn">🖨️ Print</button>
+            </div>
         </header>
         <p class="subtitle exam-subtitle" id="examSubtitle"></p>
 

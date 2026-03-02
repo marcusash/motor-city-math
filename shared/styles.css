@@ -83,9 +83,6 @@ body.arena-mode {
 
 /* Arena Mode toggle button */
 .arena-toggle {
-    position: absolute;
-    top: 16px;
-    right: 16px;
     background: var(--bg-card);
     border: 1px solid var(--border-default);
     border-radius: 50%;
@@ -97,7 +94,7 @@ body.arena-mode {
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 5;
+    flex-shrink: 0;
 }
 .arena-toggle:hover { border-color: var(--accent-blue); }
 body.arena-mode .arena-toggle { background: var(--accent-navy); border-color: var(--accent-blue); }
@@ -1188,6 +1185,23 @@ body.archived::before {
     position: relative;
     text-align: center;
     padding: 0 56px;
+}
+.header-actions {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.print-btn {
+    padding: 6px 14px;
+    border: 1px solid var(--border-default);
+    border-radius: 6px;
+    background: var(--bg-card);
+    color: var(--text-primary);
+    cursor: pointer;
+    font-size: var(--text-sm);
 }
 
 @media print {
