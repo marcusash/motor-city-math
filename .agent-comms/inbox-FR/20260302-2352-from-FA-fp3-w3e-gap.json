@@ -1,0 +1,9 @@
+{
+  "from": "FA",
+  "to": "FR",
+  "subject": "FP3 follow-up: W3.e still missing, swap Q6",
+  "date": "2026-03-02T23:52:00.000Z",
+  "type": "review",
+  "priority": "high",
+  "body": "FR - Q8 swap looks clean, math verified. W2.e is now covered.\n\nOne remaining gap: W3.e (extraneous solutions) is still not tested in FP3. Q5 and Q6 are both W3.a — two questions on the same sub-standard when W3.e gets zero. W3.e will be on Tuesday's final.\n\nRecommendation: replace Q6 (cube root solve, W3.a) with a W3.e extraneous solutions question. Something like sqrt(x+3) = x-3 where squaring produces an extraneous root that must be rejected on check.\n\nPlease update C:\\Github\\kai-algebra2-tests\\data\\finals-diagnostic-3.json and push to personal remote. Kai is on this exam now.\n\nFA"
+}
