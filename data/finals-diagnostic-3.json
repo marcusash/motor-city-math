@@ -194,27 +194,39 @@
       "id": "fd3-q6",
       "number": 6,
       "section": "B",
-      "standard": "W3.a",
+      "standard": "W3.e",
       "type": "solve",
-      "question_html": "Solve for x: \\( \\sqrt[3]{x - 7} + 3 = 6 \\)",
+      "question_html": "Solve for x and check for extraneous solutions: \\( \\sqrt{x + 3} = x - 3 \\). Enter the valid solution and the extraneous solution.",
       "inputs": [
         {
-          "id": "q6_x",
+          "id": "q6_valid",
           "type": "number",
-          "label": "x =",
-          "answer": 34,
+          "label": "Valid solution x =",
+          "answer": 6,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q6_extraneous",
+          "type": "number",
+          "label": "Extraneous solution x =",
+          "answer": 1,
           "tolerance": 0.1
         }
       ],
-      "hint": "Isolate the cube root first by subtracting 3. Then cube both sides.",
+      "hint": "Square both sides to remove the radical. You will get a quadratic. Solve it, then CHECK both answers back in the original equation. One will not work.",
       "solution_steps": [
-        "cbrt(x-7) + 3 = 6",
-        "cbrt(x-7) = 3       [subtract 3]",
-        "x-7 = 27            [cube both sides: 3^3=27]",
-        "x = 34"
+        "sqrt(x+3) = x-3",
+        "x+3 = (x-3)^2        [square both sides]",
+        "x+3 = x^2 - 6x + 9",
+        "0 = x^2 - 7x + 6     [rearrange]",
+        "0 = (x-6)(x-1)       [factor]",
+        "x = 6  or  x = 1",
+        "Check x=6: sqrt(9) = 3 = 6-3 = 3  VALID",
+        "Check x=1: sqrt(4) = 2, but 1-3 = -2.  2 ≠ -2  EXTRANEOUS",
+        "Answer: x = 6 (valid),  x = 1 (extraneous)"
       ],
-      "feedback_correct": "Isolate cube root, then cube. x = 34.",
-      "feedback_wrong": "Subtract 3: cbrt(x-7)=3. Cube both sides: x-7=27. x=34."
+      "feedback_correct": "x = 6 is valid. x = 1 is extraneous — it makes the right side negative, which a square root cannot equal.",
+      "feedback_wrong": "Square both sides, factor the quadratic, get x=6 and x=1. Check both: sqrt(9)=3=6-3 works; sqrt(4)=2 but 1-3=-2 fails. x=1 is extraneous."
     },
     {
       "id": "fd3-q7",
