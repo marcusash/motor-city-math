@@ -1386,13 +1386,41 @@
      * KaTeX already rendered in DOM — just clone it into a minimal white page.
      */
     function printExam() {
-        var title = (document.getElementById('examTitle') || {}).textContent || 'Motor City Math Exam';
-        var subtitle = (document.getElementById('examSubtitle') || {}).textContent || '';
-        var questions = (document.getElementById('questionsContainer') || {}).innerHTML || '';
+        if (!examData) return;
         var base = window.location.href.replace(/\/[^\/]*(\?.*)?$/, '/');
-        var katexUrl = base + 'shared/katex/katex.min.css';
 
-        // Fetch KaTeX CSS first so the print window never has a network timing race
+        // Normalize double-escaped LaTeX delimiters from JSON (\\( → \()
+        function tex(s) {
+            if (!s) return '';
+            return s.replace(/\\\\\(/g,'\\(').replace(/\\\\\)/g,'\\)').replace(/\\\\\[/g,'\\[').replace(/\\\\\]/g,'\\]');
+        }
+
+        var qHtml = examData.questions.map(function(q) {
+            var isMultiChoice = q.inputs.some(function(i){ return i.type === 'radio'; });
+            var inputHtml = q.inputs.map(function(inp) {
+                if (inp.type === 'radio') {
+                    return '<div class="opts">' + (inp.options||[]).map(function(o){
+                        return '<div class="opt"><span class="bubble"></span><b>' + o.value + '.</b> ' + tex(o.text) + '</div>';
+                    }).join('') + '</div>';
+                }
+                if (inp.type === 'dropdown' && inp.options && inp.options.length) {
+                    var choices = inp.options.map(function(o){ return tex(o.text||o.value); }).join(' &nbsp;&nbsp; ');
+                    return '<div class="blank-row"><span class="blank-lbl">' + tex(inp.label||'Answer') + ':</span><span class="blank-line"></span></div>' +
+                           '<div class="choices">Options: ' + choices + '</div>';
+                }
+                return '<div class="blank-row"><span class="blank-lbl">' + tex(inp.label||'Answer') + ':</span><span class="blank-line"></span></div>';
+            }).join('');
+
+            var workH = isMultiChoice ? '70px' : '140px';
+            return '<div class="qcard">' +
+                '<div class="qhdr"><span class="qnum">Question ' + q.number + '</span><span class="qstd">' + q.standard + '</span></div>' +
+                '<div class="qtext">' + tex(q.question_html) + '</div>' +
+                inputHtml +
+                '<div class="work-area" style="min-height:' + workH + '"><span class="work-lbl">Show your work:</span></div>' +
+                '</div>';
+        }).join('');
+
+        var katexUrl = base + 'shared/katex/katex.min.css';
         var xhr = new XMLHttpRequest();
         xhr.open('GET', katexUrl, true);
         xhr.onload = function() { _openPrint(xhr.status === 200 ? xhr.responseText : ''); };
@@ -1401,46 +1429,52 @@
 
         function _openPrint(katexCss) {
             var html = [
-                '<!DOCTYPE html><html><head>',
-                '<meta charset="UTF-8">',
-                '<title>' + title + '</title>',
+                '<!DOCTYPE html><html><head><meta charset="UTF-8">',
+                '<title>' + examData.title + '</title>',
+                '<style>' + katexCss + '</style>',
                 '<style>',
-                katexCss,
-                'body{font-family:Arial,sans-serif;max-width:720px;margin:0 auto;padding:24px;background:#fff;color:#000;}',
-                '.print-hd{text-align:center;border-bottom:2px solid #000;padding-bottom:12px;margin-bottom:20px;}',
-                'h1{text-align:center;font-size:1.3em;margin:12px 0 4px;}',
-                '.sub{text-align:center;font-size:.9em;color:#444;margin-bottom:20px;}',
-                '.question-card{border:1px solid #000;border-left:5px solid #000;padding:16px 20px;margin-bottom:20px;page-break-inside:avoid;background:#fff;box-shadow:none;border-radius:0;}',
-                '.question-header{display:flex;align-items:center;gap:10px;border-bottom:1px solid #000;padding-bottom:8px;margin-bottom:12px;}',
-                '.question-number{font-weight:800;color:#000;}',
-                '.standard-badge{border:1px solid #000;padding:2px 8px;border-radius:4px;font-size:.8em;background:#eee;color:#000;}',
-                '.radio-option{border:1px solid #ccc;padding:14px 12px;margin:6px 0;border-radius:4px;display:flex;align-items:center;gap:8px;background:#fff;overflow:visible;}',
-                '.radio-option label{color:#000;line-height:2.2;overflow:visible;}',
-                '.hint-layers,.hint-btn,.answer-feedback,.graph-controls,.graph-counter,.submit-area,.nav-btn,.progress-strip,.progress-bar,.header-back,.timer,.timer-toast,.streak-counter,.streak-badge{display:none!important;}',
-                '.katex{font-size:1.1em;line-height:1;overflow:visible!important;}',
+                'body{font-family:Arial,sans-serif;max-width:720px;margin:0 auto;padding:28px;background:#fff;color:#000;font-size:11pt;}',
+                '.print-hd{text-align:center;border-bottom:2px solid #000;padding-bottom:10px;margin-bottom:6px;}',
+                '.name-row{display:flex;gap:40px;margin:10px 0 20px;font-size:10pt;}',
+                '.name-row span{flex:1;border-bottom:1px solid #000;padding-bottom:2px;}',
+                '.qcard{border:1px solid #999;border-left:4px solid #000;padding:14px 16px;margin-bottom:18px;page-break-inside:avoid;}',
+                '.qhdr{display:flex;align-items:center;gap:10px;border-bottom:1px solid #ccc;padding-bottom:6px;margin-bottom:10px;}',
+                '.qnum{font-weight:800;font-size:1em;}',
+                '.qstd{border:1px solid #999;border-radius:3px;padding:1px 6px;font-size:.78em;background:#f5f5f5;}',
+                '.qtext{margin-bottom:10px;line-height:1.8;}',
+                '.opts{margin:6px 0;}',
+                '.opt{display:flex;align-items:baseline;gap:8px;padding:8px 10px;border:1px solid #ddd;border-radius:3px;margin:5px 0;line-height:1.8;}',
+                '.bubble{display:inline-block;width:14px;height:14px;border:1.5px solid #000;border-radius:50%;flex-shrink:0;margin-top:2px;}',
+                '.blank-row{display:flex;align-items:center;gap:8px;margin:8px 0;}',
+                '.blank-lbl{white-space:nowrap;font-size:.9em;}',
+                '.blank-line{flex:1;border-bottom:1.5px solid #000;min-width:120px;}',
+                '.choices{font-size:.85em;color:#333;margin:2px 0 8px 8px;}',
+                '.work-area{border:1px dashed #bbb;border-radius:3px;margin-top:10px;padding:6px 8px;}',
+                '.work-lbl{font-size:.78em;color:#666;display:block;margin-bottom:4px;}',
+                '.katex{overflow:visible!important;color:#000!important;}',
                 '.katex *{overflow:visible!important;color:#000!important;background:transparent!important;}',
-                '.katex .vlist-t,.katex .vlist-t2,.katex .vlist-r,.katex .vlist{overflow:visible!important;position:relative;}',
-                '.question-text,.radio-option label,p{line-height:2.2;overflow:visible!important;}',
-                'input[type=text],input[type=number]{border:1px solid #000;padding:6px;min-width:120px;background:#fff;color:#000;}',
-                '.graph-container canvas{border:1px solid #000;max-width:100%;}',
-                '@page{margin:2cm;}',
+                '.katex .vlist-t,.katex .vlist-t2{overflow:visible!important;}',
+                '@page{margin:1.8cm;}',
+                '@media print{.qcard{page-break-inside:avoid;}}',
                 '</style>',
                 '</head><body>',
-                '<div class="print-hd"><strong>Motor City Math &mdash; Practice Test</strong><br>',
-                'Name: _____________________&nbsp;&nbsp;Date: ___________</div>',
-                '<h1>' + title + '</h1>',
-                '<p class="sub">' + subtitle + '</p>',
-                '<div>' + questions + '</div>',
+                '<div class="print-hd"><strong>Motor City Math</strong><br>' + examData.title + '</div>',
+                '<div class="name-row"><span>Name: &nbsp;</span><span>Date: &nbsp;</span><span>Period: &nbsp;</span></div>',
+                qHtml,
+                '<script src="' + base + 'shared/katex/katex.min.js"><\/script>',
+                '<script src="' + base + 'shared/katex/auto-render.min.js"><\/script>',
                 '<script>',
-                'document.querySelectorAll(".hint-btn,.answer-feedback,.graph-controls,.graph-counter,.submit-area,.nav-btn,.progress-strip,.progress-bar,.timer,.timer-toast,.streak-counter,.streak-badge").forEach(function(el){el.style.display="none";});',
+                'renderMathInElement(document.body,{delimiters:[',
+                '{left:"\\\\(",right:"\\\\)",display:false},',
+                '{left:"\\\\[",right:"\\\\]",display:true}',
+                '],throwOnError:false});',
+                'setTimeout(function(){window.print();},800);',
                 '<\/script>',
                 '</body></html>'
             ].join('');
             var w = window.open('', '_blank', 'width=820,height=1000');
             w.document.write(html);
             w.document.close();
-            // CSS is already inline — just give DOM 400ms to settle then print
-            setTimeout(function() { w.print(); }, 400);
         }
     }
 
