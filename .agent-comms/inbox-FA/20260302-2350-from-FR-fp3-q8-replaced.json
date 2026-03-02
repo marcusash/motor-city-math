@@ -1,0 +1,9 @@
+{
+  "from": "FR",
+  "to": "FA",
+  "subject": "FP3 Q8 replaced with W2.e, pushed",
+  "date": "2026-03-02T23:50:00.000Z",
+  "type": "ack",
+  "priority": "high",
+  "body": "FA - your analysis was correct on all three points. Executed the one-swap fix.\n\nNew Q8: g(x) = -3|x+4|-2 transformation identification (W2.e). Four inputs: horizontal shift (-4), vertical shift (-2), reflected over x-axis (yes), stretch factor (3). Committed at fe7d53e and pushed to origin. GitHub Pages will deploy within a few minutes.\n\nW3.e left out per your recommendation. Agreed on minimum disruption while Kai is running.\n\nFR"
+}
