@@ -253,26 +253,49 @@
       "id": "fd3-q8",
       "number": 8,
       "section": "B",
-      "standard": "W3.c",
-      "type": "solve",
-      "question_html": "The area of a circle is given by \\( A = \\pi r^2 \\). A circular fountain has area \\( 144\\pi \\) square feet. Find the radius r.",
+      "standard": "W2.e",
+      "type": "identify",
+      "question_html": "The function \\( g(x) = -3|x + 4| - 2 \\) is a transformation of the parent \\( f(x) = |x| \\). State: the horizontal shift (number of units and direction), the vertical shift (number of units and direction), whether the graph is reflected over the x-axis, and the vertical stretch factor.",
       "inputs": [
         {
-          "id": "q8_r",
+          "id": "q8_hshift",
           "type": "number",
-          "label": "r =",
-          "answer": 12,
+          "label": "Horizontal shift (positive = right, negative = left) =",
+          "answer": -4,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q8_vshift",
+          "type": "number",
+          "label": "Vertical shift (positive = up, negative = down) =",
+          "answer": -2,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q8_reflected",
+          "type": "dropdown",
+          "label": "Reflected over x-axis?",
+          "options": ["yes", "no"],
+          "answer": "yes"
+        },
+        {
+          "id": "q8_stretch",
+          "type": "number",
+          "label": "Vertical stretch factor =",
+          "answer": 3,
           "tolerance": 0.1
         }
       ],
-      "hint": "Substitute A = 144*pi, then divide both sides by pi, then take the square root.",
+      "hint": "Use the form a*|x - h| + k. The h inside shifts opposite to its sign. The k outside shifts directly. If a is negative, there is a reflection. |a| is the stretch.",
       "solution_steps": [
-        "144*pi = pi * r^2    [substitute A = 144*pi]",
-        "144 = r^2            [divide both sides by pi]",
-        "r = 12 ft            [square root, positive only]"
+        "g(x) = -3|x + 4| - 2",
+        "Rewrite as -3|x - (-4)| + (-2)   [match form a|x-h|+k]",
+        "h = -4: horizontal shift LEFT 4   [opposite sign of +4 inside]",
+        "k = -2: vertical shift DOWN 2",
+        "a = -3: negative so reflection over x-axis; |a| = 3 is vertical stretch"
       ],
-      "feedback_correct": "Cancel pi, take square root. r = 12 ft.",
-      "feedback_wrong": "Plug in: 144*pi = pi*r^2. Cancel pi: r^2=144. Take sqrt: r=12."
+      "feedback_correct": "Left 4, down 2, reflected, stretch 3.",
+      "feedback_wrong": "h is opposite the sign inside: +4 inside means left 4. k=-2 means down 2. a=-3 means reflection; stretch is |a|=3."
     },
     {
       "id": "fd3-q9",
