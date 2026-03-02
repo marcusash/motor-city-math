@@ -1389,10 +1389,10 @@
         if (!examData) return;
         var base = window.location.href.replace(/\/[^\/]*(\?.*)?$/, '/');
 
-        // Normalize double-escaped LaTeX delimiters from JSON (\\( → \()
+        // Unescape double-backslashes from JSON double-encoding (\\dfrac → \dfrac, \\( → \(, etc.)
         function tex(s) {
             if (!s) return '';
-            return s.replace(/\\\\\(/g,'\\(').replace(/\\\\\)/g,'\\)').replace(/\\\\\[/g,'\\[').replace(/\\\\\]/g,'\\]');
+            return s.replace(/\\\\/g, '\\');
         }
 
         var qHtml = examData.questions.map(function(q) {
@@ -1404,7 +1404,7 @@
                     }).join('') + '</div>';
                 }
                 if (inp.type === 'dropdown' && inp.options && inp.options.length) {
-                    var choices = inp.options.map(function(o){ return tex(o.text||o.value); }).join(' &nbsp;&nbsp; ');
+                    var choices = inp.options.map(function(o){ return tex(typeof o === 'string' ? o : (o.text||o.value)); }).join(' &nbsp;&nbsp; ');
                     return '<div class="blank-row"><span class="blank-lbl">' + tex(inp.label||'Answer') + ':</span><span class="blank-line"></span></div>' +
                            '<div class="choices">Options: ' + choices + '</div>';
                 }
