@@ -466,7 +466,7 @@
     /* ========== TEST REGISTRY ========== */
     var tests = [
         { file: 'exam.html?file=finals-diagnostic-1', name: '📚 Winter Final: Diagnostic 1', unit: 'winter-final', key: 'mcm-finals-diagnostic-1', questions: 15, retake: true },
-        { file: 'exam.html?file=frac-exp-drill', name: '⚡ Fractional Exponent Drill', unit: 'nonlinear', key: 'mcm-frac-exp-drill', questions: 6, retake: true },
+        { file: 'exam.html?file=finals-diagnostic-2', name: '📚 Winter Final: Diagnostic 2', unit: 'winter-final', key: 'mcm-finals-diagnostic-2', questions: 15, retake: true },
         { file: 'exam.html?file=retake-practice-1',name: 'Retake Practice #1', unit: 'nonlinear', key: 'mcm-retake-practice-1', questions: 15, retake: true },
         { file: 'exam.html?file=retake-practice-2', name: 'Retake Practice #2', unit: 'nonlinear', key: 'mcm-retake-practice-2', questions: 15, retake: true },
         { file: 'exam.html?file=retake-practice-3', name: 'Retake Practice #3', unit: 'nonlinear', key: 'mcm-retake-practice-3', questions: 15, retake: true },
@@ -526,8 +526,6 @@
             if (short.indexOf('Nonlinear') !== -1) short = 'UT1';
             if (short.indexOf('Diagnostic 1') !== -1) short = 'F1';
             if (short.indexOf('Diagnostic 2') !== -1) short = 'F2';
-            if (short.indexOf('Drill') !== -1) short = 'UT2';
-            if (short.indexOf('Final Exam') !== -1) short = 'F1';
             raw.push({ label: short, sublabel: dateStr, fa: fa, rib: rib, ts: ts });
         });
         // Sort by timestamp ascending (chronological left-to-right)
@@ -1047,7 +1045,6 @@
                 if (label.indexOf('MVP') !== -1 || label.indexOf('Nonlinear') !== -1) label = 'UT1';
                 if (label.indexOf('Diagnostic 1') !== -1) label = 'F1';
                 if (label.indexOf('Diagnostic 2') !== -1) label = 'F2';
-                if (label.indexOf('Drill') !== -1) label = 'UT2';
                 results.push({ label: label, pct: pct, ts: ts });
             });
             // Sort chronologically so journey reads left-to-right oldest to newest
