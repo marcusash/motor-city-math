@@ -11,11 +11,39 @@
 
 @media print {
     * {
-        -webkit-print-color-adjust: exact !important;
-        print-color-adjust: exact !important;
+        /* economy = let browser convert to grayscale, no color ink */
+        -webkit-print-color-adjust: economy !important;
+        print-color-adjust: economy !important;
         color: #000 !important;
         background: white !important;
         border-color: #000 !important;
+    }
+
+    /* Hide progress bar — always suppress on print */
+    .progress-strip,
+    .progress-bar,
+    .progress-fill,
+    .progress-text { display: none !important; }
+
+    /* KaTeX fractions clip in print — force visible overflow */
+    .katex,
+    .katex-display,
+    .katex-html,
+    .katex .vlist-t,
+    .katex .vlist-t2 { overflow: visible !important; }
+
+    /* Answered state blue border — force black */
+    .question-card,
+    .question-card.answered {
+        border-color: #000 !important;
+        border-left: 5px solid #000 !important;
+    }
+
+    /* Standard badge — strip color */
+    .standard-badge {
+        background: #eee !important;
+        color: #000 !important;
+        border: 1px solid #000 !important;
     }
 
     body {
