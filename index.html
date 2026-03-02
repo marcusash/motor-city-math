@@ -396,8 +396,8 @@
         <!-- UP NEXT hero (FD redesign) -->
         <div class="hero">
             <div class="hero-eye">Up Next</div>
-            <div class="hero-name" id="upNextInfo">Winter Final: Diagnostic 1</div>
-            <a href="exam.html?file=finals-diagnostic-1" class="nav-btn primary">Start Practice</a>
+            <div class="hero-name" id="upNextInfo">Finals Prep 3</div>
+            <a href="exam.html?file=finals-diagnostic-3" class="nav-btn primary">Start Practice</a>
             <div class="hero-last" id="statsBar"></div>
         </div>
 
@@ -465,8 +465,9 @@
     <script>
     /* ========== TEST REGISTRY ========== */
     var tests = [
-        { file: 'exam.html?file=finals-diagnostic-1', name: '📚 Winter Final: Diagnostic 1', unit: 'winter-final', key: 'mcm-finals-diagnostic-1', questions: 15, retake: true },
-        { file: 'exam.html?file=finals-diagnostic-2', name: '📚 Winter Final: Diagnostic 2', unit: 'winter-final', key: 'mcm-finals-diagnostic-2', questions: 15, retake: true },
+        { file: 'exam.html?file=finals-diagnostic-1', name: '📚 Finals Prep 1', unit: 'winter-final', key: 'mcm-finals-diagnostic-1', questions: 15, retake: true },
+        { file: 'exam.html?file=finals-diagnostic-2', name: '📚 Finals Prep 2', unit: 'winter-final', key: 'mcm-finals-diagnostic-2', questions: 15, retake: true },
+        { file: 'exam.html?file=finals-diagnostic-3', name: '📚 Finals Prep 3', unit: 'winter-final', key: 'mcm-finals-diagnostic-3', questions: 15, retake: true },
         { file: 'exam.html?file=retake-practice-1',name: 'Retake Practice #1', unit: 'nonlinear', key: 'mcm-retake-practice-1', questions: 15, retake: true },
         { file: 'exam.html?file=retake-practice-2', name: 'Retake Practice #2', unit: 'nonlinear', key: 'mcm-retake-practice-2', questions: 15, retake: true },
         { file: 'exam.html?file=retake-practice-3', name: 'Retake Practice #3', unit: 'nonlinear', key: 'mcm-retake-practice-3', questions: 15, retake: true },
@@ -524,8 +525,9 @@
             var short = t.name.replace(/^[\u{1F000}-\u{1FFFF}\u{2600}-\u{27FF}\uFE0F\s]+/u, '').trim()
                 .replace('Retake Practice #', 'RP').replace(/ \(.*\)$/, '');
             if (short.indexOf('Nonlinear') !== -1) short = 'UT1';
-            if (short.indexOf('Diagnostic 1') !== -1) short = 'F1';
-            if (short.indexOf('Diagnostic 2') !== -1) short = 'F2';
+            if (short.indexOf('Finals Prep 1') !== -1) short = 'FP1';
+            if (short.indexOf('Finals Prep 2') !== -1) short = 'FP2';
+            if (short.indexOf('Finals Prep 3') !== -1) short = 'FP3';
             raw.push({ label: short, sublabel: dateStr, fa: fa, rib: rib, ts: ts });
         });
         // Sort by timestamp ascending (chronological left-to-right)
@@ -1043,8 +1045,9 @@
                 // Short label: UT# = unit tests, RP# = retake practice, F# = finals
                 var label = t.name.replace('Retake Practice #', 'RP').replace(/ \(.*\)$/, '');
                 if (label.indexOf('MVP') !== -1 || label.indexOf('Nonlinear') !== -1) label = 'UT1';
-                if (label.indexOf('Diagnostic 1') !== -1) label = 'F1';
-                if (label.indexOf('Diagnostic 2') !== -1) label = 'F2';
+                if (label.indexOf('Finals Prep 1') !== -1) label = 'FP1';
+                if (label.indexOf('Finals Prep 2') !== -1) label = 'FP2';
+                if (label.indexOf('Finals Prep 3') !== -1) label = 'FP3';
                 results.push({ label: label, pct: pct, ts: ts });
             });
             // Sort chronologically so journey reads left-to-right oldest to newest
