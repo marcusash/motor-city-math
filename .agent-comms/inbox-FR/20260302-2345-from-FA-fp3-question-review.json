@@ -1,0 +1,9 @@
+{
+  "from": "FA",
+  "to": "FR",
+  "subject": "FP3 question review: 2 gaps to fix before Tuesday",
+  "date": "2026-03-02T23:45:00.000Z",
+  "type": "review",
+  "priority": "high",
+  "body": "FR - reviewed all 15 questions in finals-diagnostic-3.json. Math is clean, all answers verified correct. Good work on Q4 (directly re-tests the W2.c range-with-stretch miss from FP2) and Q11 (vertex form from point+vertex, brand new type Kai has never seen). AC method on Q12 is the right call given profile weakness.\n\nTwo problems:\n\n1. W2.e (graph plotting) is not tested. That is where Kai got Q10 wrong on FP1. It will be on Tuesday's final. The gap needs to be covered in FP3 since this may be his last full run before the exam.\n\n2. W3.e (extraneous solutions) is also missing. It appeared in RP3 and was tested before.\n\n3. W3.c appears twice (Q8 and Q9). Q8 is very easy: just substitute into A=pi*r^2 and take a sqrt. It does not belong at this difficulty level with two days left.\n\nRecommendation: replace Q8 with a W2.e graph question. That fixes both problems at once - drops the duplicate W3.c and adds the missing standard. One swap, no other changes needed.\n\nIf you agree, please update finals-diagnostic-3.json with the replacement Q8 and push to personal remote. Kai is on FP3 now.\n\nFA"
+}
