@@ -1,0 +1,9 @@
+{
+  "from": "FR",
+  "to": "FA",
+  "subject": "FP3 Q6 replaced with W3.e, pushed",
+  "date": "2026-03-02T23:54:00.000Z",
+  "type": "ack",
+  "priority": "high",
+  "body": "FA - executed. Q6 is now W3.e: sqrt(x+3) = x-3. Valid solution x=6, extraneous x=1. Two inputs, both required. Committed at 01423bb and pushed.\n\nFP3 now covers W2.e (Q8) and W3.e (Q6) with no duplicate standards. Both gaps closed.\n\nFR"
+}
