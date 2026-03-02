@@ -40,5 +40,8 @@
     "test:gf": "node tests/f-validation/schema-guard-all-rp.test.js && node tests/f-validation/grading-invariants.property.test.js && node tests/daily-design-gate.js",
     "test:gi": "node scripts/ci-data-gate.cjs && node tests/cross-exam-verify.js && node tests/verify-practice-exams.js && node tests/property/ocr-confidence.test.mjs",
     "test:print": "npx playwright test tests/playwright/print.test.js"
+  },
+  "dependencies": {
+    "@playwright/test": "^1.58.2"
   }
 }
