@@ -1424,10 +1424,14 @@
             '<p class="sub">' + subtitle + '</p>',
             '<div>' + questions + '</div>',
             '<script>',
-            'window.onload=function(){',
-            '  document.querySelectorAll(".hint-btn,.answer-feedback,.graph-controls,.graph-counter,.submit-area,.nav-btn,.progress-strip,.progress-bar").forEach(function(el){el.style.display="none";});',
-            '  setTimeout(function(){window.print();},600);',
-            '};',
+            'var _done=false;',
+            'function _hide(){document.querySelectorAll(".hint-btn,.answer-feedback,.graph-controls,.graph-counter,.submit-area,.nav-btn,.progress-strip,.progress-bar,.timer,.timer-toast,.streak-counter,.streak-badge").forEach(function(el){el.style.display="none";});}',
+            'function _print(){if(_done)return;_done=true;_hide();window.print();}',
+            /* Fire print after KaTeX CSS loads — not on a fixed timer */
+            'var _link=document.querySelector("link[rel=stylesheet]");',
+            'if(_link){_link.addEventListener("load",function(){_print();});_link.addEventListener("error",function(){_print();});}',
+            /* Fallback: if CSS was already cached and load event already fired, print after 300ms */
+            'setTimeout(function(){_print();},3000);',
             '<\/script>',
             '</body></html>'
         ].join('');
