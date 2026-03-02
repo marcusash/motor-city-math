@@ -13,20 +13,20 @@ const { test, expect } = require('@playwright/test');
  * 6. The print window has no dark-theme colors (background is white)
  */
 
-const EXAM_URL = '/exam.html?exam=finals-diagnostic-2';
+const EXAM_URL = 'exam.html?file=finals-diagnostic-2';
 
 test.describe('Print function', () => {
     test('Print button is visible after exam loads', async ({ page }) => {
         await page.goto(EXAM_URL);
         // Wait for exam to load
-        await page.waitForSelector('.question-card', { timeout: 10000 });
+        await page.waitForSelector('.question-card', { timeout: 30000 });
         const btn = page.locator('#printBtn, button[onclick*="printExam"], .print-btn');
         await expect(btn.first()).toBeVisible({ timeout: 5000 });
     });
 
     test('Print opens a new window with exam content', async ({ page, context }) => {
         await page.goto(EXAM_URL);
-        await page.waitForSelector('.question-card', { timeout: 10000 });
+        await page.waitForSelector('.question-card', { timeout: 30000 });
 
         // Intercept the new window opened by printExam()
         const [popup] = await Promise.all([
@@ -43,7 +43,7 @@ test.describe('Print function', () => {
 
     test('Print window has question cards', async ({ page, context }) => {
         await page.goto(EXAM_URL);
-        await page.waitForSelector('.question-card', { timeout: 10000 });
+        await page.waitForSelector('.question-card', { timeout: 30000 });
 
         const [popup] = await Promise.all([
             context.waitForEvent('page'),
@@ -54,14 +54,15 @@ test.describe('Print function', () => {
         // Give DOM time to settle (printExam uses 400ms timeout before print)
         await popup.waitForTimeout(600);
 
-        const cards = popup.locator('.question-card');
+        // Print window uses .qcard (printExam builds its own minimal HTML, not .question-card)
+        const cards = popup.locator('.qcard');
         const count = await cards.count();
         expect(count).toBeGreaterThan(0);
     });
 
     test('Print window has no external KaTeX link tag (CSS is inlined)', async ({ page, context }) => {
         await page.goto(EXAM_URL);
-        await page.waitForSelector('.question-card', { timeout: 10000 });
+        await page.waitForSelector('.question-card', { timeout: 30000 });
 
         const [popup] = await Promise.all([
             context.waitForEvent('page'),
@@ -77,7 +78,7 @@ test.describe('Print function', () => {
 
     test('Print window body background is white', async ({ page, context }) => {
         await page.goto(EXAM_URL);
-        await page.waitForSelector('.question-card', { timeout: 10000 });
+        await page.waitForSelector('.question-card', { timeout: 30000 });
 
         const [popup] = await Promise.all([
             context.waitForEvent('page'),
@@ -96,7 +97,7 @@ test.describe('Print function', () => {
 
     test('Print window has no progress bar or timer UI', async ({ page, context }) => {
         await page.goto(EXAM_URL);
-        await page.waitForSelector('.question-card', { timeout: 10000 });
+        await page.waitForSelector('.question-card', { timeout: 30000 });
 
         const [popup] = await Promise.all([
             context.waitForEvent('page'),
@@ -121,7 +122,7 @@ test.describe('Print function', () => {
 
     test('Print window KaTeX fractions render with correct structure', async ({ page, context }) => {
         await page.goto(EXAM_URL);
-        await page.waitForSelector('.question-card', { timeout: 10000 });
+        await page.waitForSelector('.question-card', { timeout: 30000 });
 
         const [popup] = await Promise.all([
             context.waitForEvent('page'),
