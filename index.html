@@ -507,35 +507,26 @@
         if (!container) return;
         var scores = getScores();
 
-        // Collect ordered data points: original exam first, then retake practices
-        var pts = [];
-        var origScore = scores['mcm-nonlinear-exam-mvp'];
-        if (origScore) {
-            var att = origScore.attempts || (origScore.pct ? [origScore] : []);
-            if (att[0]) {
-                var fa = att[0].pct || Math.round(att[0].score / att[0].total * 100);
-                var rib = att[1] ? (att[1].pct || Math.round(att[1].score / att[1].total * 100)) : null;
-                var examDate = att[0].timestamp
-                    ? new Date(att[0].timestamp).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
-                    : null;
-                pts.push({ label: 'Exam #1', sublabel: examDate, fa: fa, rib: rib });
-            }
-        }
-        var retakes = tests.filter(function(t) { return t.retake; });
-        var practiceNum = 0;
-        retakes.forEach(function(t) {
+        // Collect all completed tests, sort chronologically by first attempt timestamp
+        var raw = [];
+        tests.forEach(function(t) {
             var s = scores[t.key];
             if (!s) return;
             var att = s.attempts || (s.pct ? [s] : []);
             if (!att[0]) return;
-            practiceNum++;
             var fa = att[0].pct || Math.round(att[0].score / att[0].total * 100);
             var rib = att[1] ? (att[1].pct || Math.round(att[1].score / att[1].total * 100)) : null;
-            var pDate = att[0].timestamp
-                ? new Date(att[0].timestamp).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
+            var ts = att[0].timestamp ? new Date(att[0].timestamp) : new Date(0);
+            var dateStr = att[0].timestamp
+                ? ts.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
                 : null;
-            pts.push({ label: 'Practice ' + practiceNum, sublabel: pDate, fa: fa, rib: rib });
+            // Short display name: strip emoji prefix, abbreviate long names
+            var shortName = t.name.replace(/^[\u{1F000}-\u{1FFFF}\u{2600}-\u{27FF}\uFE0F\s]+/u, '').trim();
+            raw.push({ label: shortName, sublabel: dateStr, fa: fa, rib: rib, ts: ts });
         });
+        // Sort by timestamp ascending
+        raw.sort(function(a, b) { return a.ts - b.ts; });
+        var pts = raw;
 
         if (pts.length === 0) {
             container.innerHTML = '<div class="trend-empty">🏀 Complete your first test to see your progress</div>';
