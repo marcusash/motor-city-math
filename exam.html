@@ -1391,53 +1391,57 @@
         var questions = (document.getElementById('questionsContainer') || {}).innerHTML || '';
         var base = window.location.href.replace(/\/[^\/]*(\?.*)?$/, '/');
         var katexUrl = base + 'shared/katex/katex.min.css';
-        var html = [
-            '<!DOCTYPE html><html><head>',
-            '<meta charset="UTF-8">',
-            '<title>' + title + '</title>',
-            '<link rel="stylesheet" href="' + katexUrl + '">',
-            '<style>',
-            'body{font-family:Arial,sans-serif;max-width:720px;margin:0 auto;padding:24px;background:#fff;color:#000;}',
-            '.print-hd{text-align:center;border-bottom:2px solid #000;padding-bottom:12px;margin-bottom:20px;}',
-            'h1{text-align:center;font-size:1.3em;margin:12px 0 4px;}',
-            '.sub{text-align:center;font-size:.9em;color:#444;margin-bottom:20px;}',
-            '.question-card{border:1px solid #000;border-left:5px solid #000;padding:16px 20px;margin-bottom:20px;page-break-inside:avoid;background:#fff;box-shadow:none;border-radius:0;}',
-            '.question-header{display:flex;align-items:center;gap:10px;border-bottom:1px solid #000;padding-bottom:8px;margin-bottom:12px;}',
-            '.question-number{font-weight:800;color:#000;}',
-            '.standard-badge{border:1px solid #000;padding:2px 8px;border-radius:4px;font-size:.8em;background:#eee;color:#000;}',
-            '.radio-option{border:1px solid #ccc;padding:14px 12px;margin:6px 0;border-radius:4px;display:flex;align-items:center;gap:8px;background:#fff;overflow:visible;}',
-            '.radio-option label{color:#000;line-height:2.2;overflow:visible;}',
-            '.hint-layers,.hint-btn,.answer-feedback,.graph-controls,.graph-counter,.submit-area,.nav-btn,.progress-strip,.progress-bar,.header-back,.timer,.timer-toast,.streak-counter,.streak-badge{display:none!important;}',
-            /* KaTeX fraction fix: vlist uses absolute positioning clipped by parent line-height */
-            '.katex{font-size:1.1em;line-height:1;overflow:visible!important;}',
-            '.katex *{overflow:visible!important;color:#000!important;background:transparent!important;}',
-            '.katex .vlist-t,.katex .vlist-t2,.katex .vlist-r,.katex .vlist{overflow:visible!important;position:relative;}',
-            '.question-text,.radio-option label,p{line-height:2.2;overflow:visible!important;}',
-            'input[type=text],input[type=number]{border:1px solid #000;padding:6px;min-width:120px;background:#fff;color:#000;}',
-            '.graph-container canvas{border:1px solid #000;max-width:100%;}',
-            '@page{margin:2cm;}',
-            '</style>',
-            '</head><body>',
-            '<div class="print-hd"><strong>Motor City Math &mdash; Practice Test</strong><br>',
-            'Name: _____________________&nbsp;&nbsp;Date: ___________</div>',
-            '<h1>' + title + '</h1>',
-            '<p class="sub">' + subtitle + '</p>',
-            '<div>' + questions + '</div>',
-            '<script>',
-            'var _done=false;',
-            'function _hide(){document.querySelectorAll(".hint-btn,.answer-feedback,.graph-controls,.graph-counter,.submit-area,.nav-btn,.progress-strip,.progress-bar,.timer,.timer-toast,.streak-counter,.streak-badge").forEach(function(el){el.style.display="none";});}',
-            'function _print(){if(_done)return;_done=true;_hide();window.print();}',
-            /* Fire print after KaTeX CSS loads — not on a fixed timer */
-            'var _link=document.querySelector("link[rel=stylesheet]");',
-            'if(_link){_link.addEventListener("load",function(){_print();});_link.addEventListener("error",function(){_print();});}',
-            /* Fallback: if CSS was already cached and load event already fired, print after 300ms */
-            'setTimeout(function(){_print();},3000);',
-            '<\/script>',
-            '</body></html>'
-        ].join('');
-        var w = window.open('', '_blank', 'width=820,height=1000');
-        w.document.write(html);
-        w.document.close();
+
+        // Fetch KaTeX CSS first so the print window never has a network timing race
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', katexUrl, true);
+        xhr.onload = function() { _openPrint(xhr.status === 200 ? xhr.responseText : ''); };
+        xhr.onerror = function() { _openPrint(''); };
+        xhr.send();
+
+        function _openPrint(katexCss) {
+            var html = [
+                '<!DOCTYPE html><html><head>',
+                '<meta charset="UTF-8">',
+                '<title>' + title + '</title>',
+                '<style>',
+                katexCss,
+                'body{font-family:Arial,sans-serif;max-width:720px;margin:0 auto;padding:24px;background:#fff;color:#000;}',
+                '.print-hd{text-align:center;border-bottom:2px solid #000;padding-bottom:12px;margin-bottom:20px;}',
+                'h1{text-align:center;font-size:1.3em;margin:12px 0 4px;}',
+                '.sub{text-align:center;font-size:.9em;color:#444;margin-bottom:20px;}',
+                '.question-card{border:1px solid #000;border-left:5px solid #000;padding:16px 20px;margin-bottom:20px;page-break-inside:avoid;background:#fff;box-shadow:none;border-radius:0;}',
+                '.question-header{display:flex;align-items:center;gap:10px;border-bottom:1px solid #000;padding-bottom:8px;margin-bottom:12px;}',
+                '.question-number{font-weight:800;color:#000;}',
+                '.standard-badge{border:1px solid #000;padding:2px 8px;border-radius:4px;font-size:.8em;background:#eee;color:#000;}',
+                '.radio-option{border:1px solid #ccc;padding:14px 12px;margin:6px 0;border-radius:4px;display:flex;align-items:center;gap:8px;background:#fff;overflow:visible;}',
+                '.radio-option label{color:#000;line-height:2.2;overflow:visible;}',
+                '.hint-layers,.hint-btn,.answer-feedback,.graph-controls,.graph-counter,.submit-area,.nav-btn,.progress-strip,.progress-bar,.header-back,.timer,.timer-toast,.streak-counter,.streak-badge{display:none!important;}',
+                '.katex{font-size:1.1em;line-height:1;overflow:visible!important;}',
+                '.katex *{overflow:visible!important;color:#000!important;background:transparent!important;}',
+                '.katex .vlist-t,.katex .vlist-t2,.katex .vlist-r,.katex .vlist{overflow:visible!important;position:relative;}',
+                '.question-text,.radio-option label,p{line-height:2.2;overflow:visible!important;}',
+                'input[type=text],input[type=number]{border:1px solid #000;padding:6px;min-width:120px;background:#fff;color:#000;}',
+                '.graph-container canvas{border:1px solid #000;max-width:100%;}',
+                '@page{margin:2cm;}',
+                '</style>',
+                '</head><body>',
+                '<div class="print-hd"><strong>Motor City Math &mdash; Practice Test</strong><br>',
+                'Name: _____________________&nbsp;&nbsp;Date: ___________</div>',
+                '<h1>' + title + '</h1>',
+                '<p class="sub">' + subtitle + '</p>',
+                '<div>' + questions + '</div>',
+                '<script>',
+                'document.querySelectorAll(".hint-btn,.answer-feedback,.graph-controls,.graph-counter,.submit-area,.nav-btn,.progress-strip,.progress-bar,.timer,.timer-toast,.streak-counter,.streak-badge").forEach(function(el){el.style.display="none";});',
+                '<\/script>',
+                '</body></html>'
+            ].join('');
+            var w = window.open('', '_blank', 'width=820,height=1000');
+            w.document.write(html);
+            w.document.close();
+            // CSS is already inline — just give DOM 400ms to settle then print
+            setTimeout(function() { w.print(); }, 400);
+        }
     }
 
     /**
