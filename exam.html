@@ -155,7 +155,7 @@
         <header class="test-header">
             <a href="index.html" class="header-back" aria-label="Back to dashboard">←</a>
             <h1 id="examTitle"></h1>
-            <button onclick="printExam()" style="margin-left:auto;padding:6px 14px;border:1px solid var(--border-default);border-radius:6px;background:var(--bg-card);color:var(--text-primary);cursor:pointer;font-size:var(--text-sm);">🖨️ Print</button>
+            <button onclick="printExam()" style="position:absolute;top:16px;right:70px;padding:6px 14px;border:1px solid var(--border-default);border-radius:6px;background:var(--bg-card);color:var(--text-primary);cursor:pointer;font-size:var(--text-sm);">🖨️ Print</button>
         </header>
         <p class="subtitle exam-subtitle" id="examSubtitle"></p>
 
@@ -1407,7 +1407,7 @@
                 return '<div class="blank-row"><span class="blank-lbl">' + tex(inp.label||'Answer') + '</span><span class="blank-line"></span></div>';
             }).join('');
 
-            var workH = isMultiChoice ? '70px' : '140px';
+            var workH = '140px';
             return '<div class="qcard">' +
                 '<div class="qhdr"><span class="qnum">Question ' + q.number + '</span><span class="qstd">' + q.standard + '</span></div>' +
                 '<div class="qtext">' + tex(q.question_html) + '</div>' +
