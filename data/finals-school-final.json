@@ -1,12 +1,12 @@
 {
   "exam_id": "finals-school-final",
   "schema_version": "1.0",
-  "title": "Winter Final — School Final Simulation",
+  "title": "Winter Final : School Final Simulation",
   "subtitle": "All Winter Standards · 15 Questions · Free Response · ~75 min",
   "time_minutes": 75,
   "created": "2026-03-02",
   "created_by": "Agent FR",
-  "purpose": "School final simulation for Tuesday. All free response — no multiple choice. Every question escalates D3: harder variants, negative coefficients, non-trivial simplification, additional steps.",
+  "purpose": "School final simulation for Tuesday. All free response : no multiple choice. Every question escalates D3: harder variants, negative coefficients, non-trivial simplification, additional steps.",
   "questions": [
     {
       "id": "fsf-q1",
@@ -166,12 +166,12 @@
           "tolerance": 0.1
         }
       ],
-      "hint": "Domain: set x-2 >= 0. For range: plug in the domain start. Coefficient is NEGATIVE — the function goes DOWN, so the bound is a maximum (y <=), not a minimum.",
+      "hint": "Domain: set x-2 >= 0. For range: plug in the domain start. Coefficient is NEGATIVE : the function goes DOWN, so the bound is a maximum (y <=), not a minimum.",
       "solution_steps": [
         "Parent: y = sqrt(x).",
         "Domain: x - 2 >= 0, so x >= 2.",
         "Range: plug in x=2: h(2) = -5*0 + 8 = 8.",
-        "Coefficient -5 is negative — function decreases from 8. Range: y <= 8."
+        "Coefficient -5 is negative : function decreases from 8. Range: y <= 8."
       ],
       "feedback_correct": "Domain x >= 2, range y <= 8. Negative coefficient gives a maximum, not minimum.",
       "feedback_wrong": "Domain: x-2>=0, x>=2. Plug in x=2: -5*0+8=8. Negative coefficient means function goes DOWN from 8. Range: y<=8."
@@ -357,7 +357,7 @@
           "tolerance": 0.1
         }
       ],
-      "hint": "a=2 positive means opens up. Vertex is (h,k) — watch the sign: x+3 means h=-3. For intercepts set f(x)=0.",
+      "hint": "a=2 positive means opens up. Vertex is (h,k) : watch the sign: x+3 means h=-3. For intercepts set f(x)=0.",
       "solution_steps": [
         "a=2 > 0, opens UP.",
         "Vertex: h=-3, k=-8. Vertex is (-3, -8).",
@@ -519,7 +519,7 @@
       "section": "D",
       "standard": "W6.c",
       "type": "solve",
-      "question_html": "Use the quadratic formula. Simplify your answer completely — you must simplify the radical: \\( 3x^2 - 4x - 2 = 0 \\)",
+      "question_html": "Use the quadratic formula. Simplify your answer completely : you must simplify the radical: \\( 3x^2 - 4x - 2 = 0 \\)",
       "inputs": [
         {
           "id": "q15_disc",

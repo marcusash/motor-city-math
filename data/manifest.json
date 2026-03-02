@@ -1,6 +1,11 @@
 {
   "exams": [
     {
+      "id": "finals-school-final",
+      "title": "Winter Final: School Final Simulation",
+      "desc": "15 questions · W1-W6 · Free response · No MC"
+    },
+    {
       "id": "finals-diagnostic-1",
       "title": "Winter Final: Diagnostic 1",
       "desc": "15 questions · W1-W6 · Exam Mar 3"
