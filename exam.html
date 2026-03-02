@@ -280,7 +280,7 @@
     /* --- URL Param + JSON Loader --- */
     (function() {
         var params = new URLSearchParams(window.location.search);
-        var file = params.get('file');
+        var file = params.get('file') || params.get('exam');
         if (!file) {
             document.getElementById('examTitle').textContent = 'Pick Your Challenge 🏀';
             document.getElementById('examSubtitle').textContent = 'Choose a test below to get started';
