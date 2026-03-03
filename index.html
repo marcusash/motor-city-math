@@ -395,12 +395,11 @@
         </header>
 
         <main>
-        <!-- UP NEXT hero (FD redesign) -->
+        <!-- Hero: finals complete -->
         <div class="hero">
-            <div class="hero-eye">Up Next</div>
-            <div class="hero-name" id="upNextInfo">FP3 Miss Drill</div>
-            <a href="exam.html?file=finals-miss-drill" class="nav-btn primary">Start Practice</a>
-            <div class="hero-last" id="statsBar"></div>
+            <div class="hero-eye">Finals Ready 🏆</div>
+            <div class="hero-name">Miss Drill &middot; 8/8 &middot; 100%</div>
+            <div class="hero-last">You put in the work, Kai. Go get that A on Tuesday. Let&rsquo;s go. 🏀</div>
         </div>
 
         <!-- Progress Chart (FD design) -->
@@ -425,19 +424,10 @@
                 <div><div class="bn-title">All Tests</div><div class="bn-sub">Every score over time</div></div>
                 <span class="bn-arrow">&#8594;</span>
             </div>
-            <div class="bn-tile" onclick="var s=document.getElementById('gamePlanSection');s.open=true;s.scrollIntoView({behavior:'smooth'});">
-                <div><div class="bn-title">Per Standard</div><div class="bn-sub">W2 &middot; W3 breakdown</div></div>
-                <span class="bn-arrow">&#8594;</span>
-            </div>
         </div>
 
         <!-- Collapsible sections below the fold -->
         
-        <details class="dash-section" id="gamePlanSection">
-            <summary class="section-title">Your Game Plan 🎯</summary>
-            <div class="standards-grid" id="standardsGrid" role="list"></div>
-            <ul class="study-list" id="studyList"></ul>
-        </details>
 
         <details class="dash-section" id="allTestsSection">
             <summary class="section-title">All Tests 🏆</summary>
@@ -974,14 +964,11 @@
     }
     function rerenderAll() {
         buildChart();
-        var stdResult = buildStandards();
-        buildStudyNext(stdResult);
         buildRetakeGrid();
         buildTestGrid();
         buildStats();
         buildLast2Tests();
         buildProgressStory();
-        updateUpNext();
     }
 
     /* ========== PROGRESS STORY (sw-11) ========== */
