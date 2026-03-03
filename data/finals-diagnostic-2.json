@@ -599,7 +599,7 @@
             },
             {
               "value": "D",
-              "text": "\\( x = \\dfrac{-4 \\pm \\sqrt{28}}{6} \\)"
+              "text": "\\( x = \\dfrac{-2 \\pm 2\\sqrt{7}}{3} \\)"
             }
           ],
           "answer": "C"
@@ -616,7 +616,7 @@
         "x = (-2 ± sqrt(7)) / 3"
       ],
       "feedback_correct": "Discriminant = 28. Simplified sqrt(28) = 2*sqrt(7). Reduced fraction. x = (-2 ± sqrt(7))/3.",
-      "feedback_wrong": "Discriminant = 16+12 = 28. sqrt(28) = 2*sqrt(7). Formula gives (-4 ± 2*sqrt(7))/6. Divide top and bottom by 2: (-2 ± sqrt(7))/3. Option C is unsimplified — always simplify."
+      "feedback_wrong": "Discriminant = 16+12 = 28. sqrt(28) = 2*sqrt(7). Formula gives (-4 ± 2*sqrt(7))/6. Divide both the integer and the radical term by 2: (-2 ± sqrt(7))/3. Answer C is fully simplified."
     }
   ]
 }
