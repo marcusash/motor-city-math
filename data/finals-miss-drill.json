@@ -259,6 +259,47 @@
       ],
       "feedback_correct": "4ac=-16. Discriminant=25. x=1/2 and x=-2.",
       "feedback_wrong": "c=-2 so 4ac=4(2)(-2)=-16. Discriminant: 9-(-16)=25. (-3+-5)/4 gives 1/2 and -2."
+    },
+    {
+      "id": "fmd-q8",
+      "number": 8,
+      "section": "F",
+      "standard": "W6.c",
+      "type": "solve",
+      "question_html": "A car is purchased for $25,000 and loses 20% of its value each year. The equation is \\( A = A_0 \\cdot b^t \\) where t is years. State the initial value \\( A_0 \\), the decay factor \\( b \\), and find the value after 2 years.",
+      "inputs": [
+        {
+          "id": "q8_a0",
+          "type": "number",
+          "label": "Initial value A\u2080 =",
+          "answer": 25000,
+          "tolerance": 1
+        },
+        {
+          "id": "q8_b",
+          "type": "number",
+          "label": "Decay factor b =",
+          "answer": 0.8,
+          "tolerance": 0.01
+        },
+        {
+          "id": "q8_val",
+          "type": "number",
+          "label": "Value after 2 years ($) =",
+          "answer": 16000,
+          "tolerance": 1
+        }
+      ],
+      "hint": "Loses 20% means it keeps 80%. Decay factor = 1 - 0.20 = 0.80. Substitute t=2.",
+      "solution_steps": [
+        "A0 = 25000  [starting value]",
+        "b = 1 - 0.20 = 0.80   [loses 20%, keeps 80%]",
+        "A = 25000 * (0.8)^2",
+        "= 25000 * 0.64",
+        "= $16,000"
+      ],
+      "feedback_correct": "A0=25000, b=0.8, value after 2 years = $16,000.",
+      "feedback_wrong": "Decay: b = 1 - rate = 1 - 0.20 = 0.80. A = 25000*(0.8)^2 = 25000*0.64 = 16000."
     }
   ]
 }
