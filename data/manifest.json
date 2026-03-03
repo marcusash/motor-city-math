@@ -11,7 +11,11 @@
       "desc": "12 questions · W4.h W2.c W4.a W2.b W3.d W5.a W6.c · Pre-final targeted drill"
     },
     {
-      "id": "finals-school-final",
+      "id": "finals-target-drill",
+      "title": "Finals Target Drill",
+      "desc": "12 questions · W3.e W3.d W4.h W6.b W6.c · Gap drill"
+    },
+    {
       "title": "Winter Final: School Final Simulation",
       "desc": "15 questions · W1-W6 · Free response · No MC"
     },
