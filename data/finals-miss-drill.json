@@ -1,0 +1,264 @@
+{
+  "exam_id": "finals-miss-drill",
+  "schema_version": "1.0",
+  "title": "FP3 Miss Drill",
+  "subtitle": "W3.d x2 · W3.e x1 · W4.h x1 · W6.b x1 · W6.c x2 · 7 Questions · ~35 min",
+  "time_minutes": 35,
+  "created": "2026-03-03",
+  "created_by": "Agent FR",
+  "purpose": "Targeted re-drill on all 5 FP3 miss areas. Two attempts each at W3.d (same-base rewrite) and W6.c (quadratic formula 4ac arithmetic). One problem each for W3.e (extraneous check), W4.h (find a from vertex plus point), and W6.b (complete the square all the way to x-values).",
+  "questions": [
+    {
+      "id": "fmd-q1",
+      "number": 1,
+      "section": "A",
+      "standard": "W3.d",
+      "type": "solve",
+      "question_html": "Solve for x. Rewrite both sides as powers of the same base: \\( 9^{x+2} = 27 \\)",
+      "inputs": [
+        {
+          "id": "q1_x",
+          "type": "number",
+          "label": "x =",
+          "answer": -0.5,
+          "tolerance": 0.05
+        }
+      ],
+      "hint": "Rewrite 9 = 3^2 and 27 = 3^3. Apply the power rule on the left side. Set the exponents equal and solve.",
+      "solution_steps": [
+        "9^(x+2) = 27",
+        "(3^2)^(x+2) = 3^3     [9 = 3^2, 27 = 3^3]",
+        "3^(2x+4) = 3^3        [power rule: multiply exponents]",
+        "2x + 4 = 3            [same base: set exponents equal]",
+        "2x = -1",
+        "x = -1/2"
+      ],
+      "feedback_correct": "x = -1/2. Rewrite both sides to base 3, then set exponents equal.",
+      "feedback_wrong": "9 = 3^2 and 27 = 3^3. Left side: (3^2)^(x+2) = 3^(2x+4). Set equal: 2x+4=3, x=-1/2."
+    },
+    {
+      "id": "fmd-q2",
+      "number": 2,
+      "section": "A",
+      "standard": "W3.d",
+      "type": "solve",
+      "question_html": "Solve for x. Both sides must share the same base: \\( 4^{2x-1} = 8^x \\)",
+      "inputs": [
+        {
+          "id": "q2_x",
+          "type": "number",
+          "label": "x =",
+          "answer": 2,
+          "tolerance": 0.05
+        }
+      ],
+      "hint": "Rewrite 4 = 2^2 and 8 = 2^3. Apply the power rule on BOTH sides. Set exponents equal.",
+      "solution_steps": [
+        "4^(2x-1) = 8^x",
+        "(2^2)^(2x-1) = (2^3)^x    [4 = 2^2, 8 = 2^3]",
+        "2^(4x-2) = 2^(3x)         [power rule on both sides]",
+        "4x - 2 = 3x               [same base: set exponents equal]",
+        "x = 2",
+        "Check: 4^3 = 64, 8^2 = 64. VALID."
+      ],
+      "feedback_correct": "x = 2. Key: rewrite BOTH sides to base 2 before setting exponents equal.",
+      "feedback_wrong": "4 = 2^2 and 8 = 2^3. Left: 2^(4x-2). Right: 2^(3x). Set equal: 4x-2=3x, x=2."
+    },
+    {
+      "id": "fmd-q3",
+      "number": 3,
+      "section": "B",
+      "standard": "W3.e",
+      "type": "solve",
+      "question_html": "Solve for x and check for extraneous solutions: \\( \\sqrt{2x + 3} = x \\). Enter the valid solution and the extraneous solution.",
+      "inputs": [
+        {
+          "id": "q3_valid",
+          "type": "number",
+          "label": "Valid solution x =",
+          "answer": 3,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q3_extraneous",
+          "type": "number",
+          "label": "Extraneous solution x =",
+          "answer": -1,
+          "tolerance": 0.1
+        }
+      ],
+      "hint": "Square both sides to get a quadratic. Factor it to find two candidates. Then CHECK both in the ORIGINAL equation. One will fail.",
+      "solution_steps": [
+        "sqrt(2x+3) = x",
+        "2x + 3 = x^2           [square both sides]",
+        "x^2 - 2x - 3 = 0      [rearrange]",
+        "(x-3)(x+1) = 0        [factor]",
+        "x = 3  or  x = -1",
+        "Check x=3:  sqrt(9) = 3 = 3.    VALID.",
+        "Check x=-1: sqrt(1) = 1, but -1 is not 1.  EXTRANEOUS."
+      ],
+      "feedback_correct": "x=3 valid, x=-1 extraneous. Checking back in the original catches the negative side.",
+      "feedback_wrong": "Square: x^2-2x-3=0, (x-3)(x+1)=0. Check x=-1 in original: sqrt(1)=1 but right side=-1. Fails. Extraneous."
+    },
+    {
+      "id": "fmd-q4",
+      "number": 4,
+      "section": "C",
+      "standard": "W4.h",
+      "type": "identify",
+      "question_html": "A parabola has vertex \\( (3, -4) \\) and passes through the point \\( (1, 4) \\). Find a, h, and k. Write in the form \\( a(x - h)^2 + k \\).",
+      "inputs": [
+        {
+          "id": "q4_a",
+          "type": "number",
+          "label": "a =",
+          "answer": 2,
+          "tolerance": 0.05
+        },
+        {
+          "id": "q4_h",
+          "type": "number",
+          "label": "h =",
+          "answer": 3,
+          "tolerance": 0.05
+        },
+        {
+          "id": "q4_k",
+          "type": "number",
+          "label": "k =",
+          "answer": -4,
+          "tolerance": 0.05
+        }
+      ],
+      "hint": "Start with y = a(x - 3)^2 - 4 using the vertex. Then substitute x=1, y=4. Solve for a.",
+      "solution_steps": [
+        "Vertex form: y = a(x - 3)^2 + (-4)",
+        "Plug in point (1, 4):",
+        "4 = a(1 - 3)^2 - 4",
+        "4 = a(4) - 4       [(1-3)^2 = 4]",
+        "4a = 8",
+        "a = 2",
+        "Equation: y = 2(x - 3)^2 - 4"
+      ],
+      "feedback_correct": "a=2, h=3, k=-4. Substitute the point into vertex form and solve for a.",
+      "feedback_wrong": "Write y=a(x-3)^2-4. Plug in (1,4): 4=a(4)-4, 4a=8, a=2."
+    },
+    {
+      "id": "fmd-q5",
+      "number": 5,
+      "section": "D",
+      "standard": "W6.b",
+      "type": "solve",
+      "question_html": "Solve by completing the square. Show all steps and find both values of x: \\( x^2 - 6x + 5 = 0 \\)",
+      "inputs": [
+        {
+          "id": "q5_x1",
+          "type": "number",
+          "label": "Larger solution x =",
+          "answer": 5,
+          "tolerance": 0.1
+        },
+        {
+          "id": "q5_x2",
+          "type": "number",
+          "label": "Smaller solution x =",
+          "answer": 1,
+          "tolerance": 0.1
+        }
+      ],
+      "hint": "Move the constant. Half of -6 is -3, squared is 9. Add 9 to both sides. Take the square root — remember PLUS and MINUS. Then solve for x.",
+      "solution_steps": [
+        "x^2 - 6x + 5 = 0",
+        "x^2 - 6x = -5             [move constant]",
+        "x^2 - 6x + 9 = -5 + 9    [(6/2)^2 = 9, add to both sides]",
+        "(x - 3)^2 = 4",
+        "x - 3 = +-2               [take square root of both sides]",
+        "x = 5   or   x = 1"
+      ],
+      "feedback_correct": "x=5 and x=1. The final step is taking the square root — do not stop at (x-3)^2=4.",
+      "feedback_wrong": "(x-3)^2=4. Take sqrt: x-3=+-2. x=5 or x=1. Do not stop at vertex form."
+    },
+    {
+      "id": "fmd-q6",
+      "number": 6,
+      "section": "E",
+      "standard": "W6.c",
+      "type": "solve",
+      "question_html": "Use the quadratic formula. Write down 4ac as its own step before computing the discriminant: \\( 3x^2 - 7x + 2 = 0 \\)",
+      "inputs": [
+        {
+          "id": "q6_4ac",
+          "type": "number",
+          "label": "4ac =",
+          "answer": 24,
+          "tolerance": 0.5
+        },
+        {
+          "id": "q6_x1",
+          "type": "number",
+          "label": "Larger solution x =",
+          "answer": 2,
+          "tolerance": 0.05
+        },
+        {
+          "id": "q6_x2",
+          "type": "number",
+          "label": "Smaller solution x =",
+          "answer": 0.333,
+          "tolerance": 0.01
+        }
+      ],
+      "hint": "a=3, b=-7, c=2. Compute 4ac = 4 x 3 x 2 first and write it down. Then b^2 - 4ac = 49 - 24 = 25.",
+      "solution_steps": [
+        "a=3, b=-7, c=2",
+        "Step 1: 4ac = 4(3)(2) = 24   [compute this first]",
+        "Step 2: discriminant = (-7)^2 - 24 = 49 - 24 = 25",
+        "x = (7 +- sqrt(25)) / (2 x 3) = (7 +- 5) / 6",
+        "x = 12/6 = 2   or   x = 2/6 = 1/3"
+      ],
+      "feedback_correct": "4ac=24. Discriminant=25. x=2 and x=1/3.",
+      "feedback_wrong": "4ac = 4(3)(2) = 24, NOT 4(3)=12 or other shortcuts. Discriminant: 49-24=25. (7+-5)/6 gives 2 and 1/3."
+    },
+    {
+      "id": "fmd-q7",
+      "number": 7,
+      "section": "E",
+      "standard": "W6.c",
+      "type": "solve",
+      "question_html": "Use the quadratic formula. Write down 4ac as its own step. Note that c is negative: \\( 2x^2 + 3x - 2 = 0 \\)",
+      "inputs": [
+        {
+          "id": "q7_4ac",
+          "type": "number",
+          "label": "4ac =",
+          "answer": -16,
+          "tolerance": 0.5
+        },
+        {
+          "id": "q7_x1",
+          "type": "number",
+          "label": "Larger solution x =",
+          "answer": 0.5,
+          "tolerance": 0.05
+        },
+        {
+          "id": "q7_x2",
+          "type": "number",
+          "label": "Smaller solution x =",
+          "answer": -2,
+          "tolerance": 0.05
+        }
+      ],
+      "hint": "a=2, b=3, c=-2. 4ac = 4(2)(-2) = -16. When you subtract a negative: b^2 - 4ac = 9 - (-16) = 9 + 16 = 25.",
+      "solution_steps": [
+        "a=2, b=3, c=-2",
+        "Step 1: 4ac = 4(2)(-2) = -16   [c is negative]",
+        "Step 2: discriminant = 3^2 - (-16) = 9 + 16 = 25   [subtracting a negative adds]",
+        "x = (-3 +- sqrt(25)) / (2 x 2) = (-3 +- 5) / 4",
+        "x = 2/4 = 1/2   or   x = -8/4 = -2"
+      ],
+      "feedback_correct": "4ac=-16. Discriminant=25. x=1/2 and x=-2.",
+      "feedback_wrong": "c=-2 so 4ac=4(2)(-2)=-16. Discriminant: 9-(-16)=25. (-3+-5)/4 gives 1/2 and -2."
+    }
+  ]
+}

@@ -1,6 +1,11 @@
 {
   "exams": [
     {
+      "id": "finals-miss-drill",
+      "title": "FP3 Miss Drill",
+      "desc": "7 questions · W3.d W3.e W4.h W6.b W6.c · Targeted re-drill on FP3 misses · ~35 min"
+    },
+    {
       "id": "finals-target-drill",
       "title": "Winter Final: Target Drill",
       "desc": "12 questions · W4.h W2.c W4.a W2.b W3.d W5.a W6.c · Pre-final targeted drill"
