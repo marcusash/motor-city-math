@@ -106,42 +106,42 @@
       "section": "C",
       "standard": "W4.h",
       "type": "identify",
-      "question_html": "A parabola has vertex \\( (3, -4) \\) and passes through the point \\( (1, 4) \\). Find a, h, and k. Write in the form \\( a(x - h)^2 + k \\).",
+      "question_html": "An absolute value function has vertex \\( (-3, 2) \\) and passes through the point \\( (-1, -6) \\). Find a, h, and k. Write in the form \\( a|x - h| + k \\).",
       "inputs": [
         {
           "id": "q4_a",
           "type": "number",
           "label": "a =",
-          "answer": 2,
+          "answer": -4,
           "tolerance": 0.05
         },
         {
           "id": "q4_h",
           "type": "number",
           "label": "h =",
-          "answer": 3,
+          "answer": -3,
           "tolerance": 0.05
         },
         {
           "id": "q4_k",
           "type": "number",
           "label": "k =",
-          "answer": -4,
+          "answer": 2,
           "tolerance": 0.05
         }
       ],
-      "hint": "Start with y = a(x - 3)^2 - 4 using the vertex. Then substitute x=1, y=4. Solve for a.",
+      "hint": "Start with f(x) = a|x + 3| + 2 using the vertex. Then substitute x=-1, y=-6. Solve for a.",
       "solution_steps": [
-        "Vertex form: y = a(x - 3)^2 + (-4)",
-        "Plug in point (1, 4):",
-        "4 = a(1 - 3)^2 - 4",
-        "4 = a(4) - 4       [(1-3)^2 = 4]",
-        "4a = 8",
-        "a = 2",
-        "Equation: y = 2(x - 3)^2 - 4"
+        "Vertex form: f(x) = a|x - (-3)| + 2 = a|x + 3| + 2",
+        "Plug in point (-1, -6):",
+        "-6 = a|-1 + 3| + 2",
+        "-6 = a(2) + 2       [|-1+3| = |2| = 2]",
+        "2a = -8",
+        "a = -4",
+        "Equation: f(x) = -4|x + 3| + 2"
       ],
-      "feedback_correct": "a=2, h=3, k=-4. Substitute the point into vertex form and solve for a.",
-      "feedback_wrong": "Write y=a(x-3)^2-4. Plug in (1,4): 4=a(4)-4, 4a=8, a=2."
+      "feedback_correct": "a=-4, h=-3, k=2. Same substitution process as a parabola — just with absolute value.",
+      "feedback_wrong": "Write f(x)=a|x+3|+2. Plug in (-1,-6): -6=a(2)+2, 2a=-8, a=-4."
     },
     {
       "id": "fmd-q5",
