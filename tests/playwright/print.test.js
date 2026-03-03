@@ -5,12 +5,12 @@ const { test, expect } = require('@playwright/test');
  * MCM Print Regression Suite — FF (Quality Lead)
  *
  * Coverage:
- * - All 3 diagnostic exams (D1, D2, D3) via parameterized tests
+ * - All 3 diagnostic exams (D1, D2, D3) + school final via parameterized tests
  * - FA's 6 print formatting changes (blank lines, radicals, label colon, button pos, work area, em dash)
  * - Structure: question count, sequential numbering, no form inputs, blank rows, work areas
  * - CSS: white background, no external KaTeX link, KaTeX renders, name/date/period header
  * - Layout: no progress bar/timer, no em dash in title
- * - D2-specific: multi-input question blank-row counts
+ * - D2-specific + school-final-specific: multi-input question blank-row counts
  */
 
 const EXAMS = [
@@ -25,6 +25,10 @@ const EXAMS = [
     {
         file: 'finals-diagnostic-3',
         data: require('../../data/finals-diagnostic-3.json'),
+    },
+    {
+        file: 'finals-school-final',
+        data: require('../../data/finals-school-final.json'),
     },
 ];
 
@@ -215,7 +219,39 @@ test.describe('Print regression: finals-diagnostic-2 multi-input questions', () 
             ]);
             await popup.waitForLoadState('domcontentloaded');
             await popup.waitForTimeout(800);
-            const card = popup.locator(`.qcard:has(.qnum:text("Question ${q.number}"))`);
+            const card = popup.locator(`.qcard:has(.qnum:text-is("Question ${q.number}"))`);
+            await expect(card.locator('.blank-row')).toHaveCount(q.expectedBlanks);
+        });
+    }
+});
+
+// ─── School final: multi-input question blank-row counts ─────────────────────
+
+test.describe('Print regression: finals-school-final multi-input questions', () => {
+
+    const SF_MULTI = [
+        { number: 1,  expectedBlanks: 3 },  // Coefficient=, Exponent on x=, Exponent on y=
+        { number: 3,  expectedBlanks: 4 },  // Parent function, transformations
+        { number: 4,  expectedBlanks: 3 },  // Parent function, Domain, Range
+        { number: 10, expectedBlanks: 5 },  // Opens, Vertex x=, Vertex y=, x-int 1, x-int 2
+        { number: 11, expectedBlanks: 3 },  // a=, h=, k=
+        { number: 12, expectedBlanks: 2 },
+        { number: 13, expectedBlanks: 2 },
+        { number: 14, expectedBlanks: 2 },
+        { number: 15, expectedBlanks: 4 },
+    ];
+
+    for (const q of SF_MULTI) {
+        test(`Q${q.number} has exactly ${q.expectedBlanks} blank-rows`, async ({ page, context }) => {
+            await page.goto('exam.html?file=finals-school-final');
+            await page.waitForSelector('.question-card', { timeout: 30000 });
+            const [popup] = await Promise.all([
+                context.waitForEvent('page'),
+                page.locator(BTN_SEL).first().click(),
+            ]);
+            await popup.waitForLoadState('domcontentloaded');
+            await popup.waitForTimeout(800);
+            const card = popup.locator(`.qcard:has(.qnum:text-is("Question ${q.number}"))`);
             await expect(card.locator('.blank-row')).toHaveCount(q.expectedBlanks);
         });
     }
