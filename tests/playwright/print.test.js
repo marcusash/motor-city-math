@@ -30,6 +30,18 @@ const EXAMS = [
         file: 'finals-school-final',
         data: require('../../data/finals-school-final.json'),
     },
+    {
+        file: 'finals-miss-drill',
+        data: require('../../data/finals-miss-drill.json'),
+    },
+    {
+        file: 'finals-target-drill',
+        data: require('../../data/finals-target-drill.json'),
+    },
+    {
+        file: 'frac-exp-drill',
+        data: require('../../data/frac-exp-drill.json'),
+    },
 ];
 
 const BTN_SEL = '#printBtn, button[onclick*="printExam"], .print-btn';
@@ -256,3 +268,33 @@ test.describe('Print regression: finals-school-final multi-input questions', () 
         });
     }
 });
+
+// ─── Miss drill + Target drill: multi-input blank-row counts ─────────────────
+
+const DRILL_MULTI = [
+    { number: 3, expectedBlanks: 2 },
+    { number: 4, expectedBlanks: 3 },
+    { number: 5, expectedBlanks: 2 },
+    { number: 6, expectedBlanks: 3 },
+    { number: 7, expectedBlanks: 3 },
+    { number: 8, expectedBlanks: 3 },
+];
+
+for (const drillFile of ['finals-miss-drill', 'finals-target-drill']) {
+    test.describe(`Print regression: ${drillFile} multi-input questions`, () => {
+        for (const q of DRILL_MULTI) {
+            test(`Q${q.number} has exactly ${q.expectedBlanks} blank-rows`, async ({ page, context }) => {
+                await page.goto(`exam.html?file=${drillFile}`);
+                await page.waitForSelector('.question-card', { timeout: 30000 });
+                const [popup] = await Promise.all([
+                    context.waitForEvent('page'),
+                    page.locator(BTN_SEL).first().click(),
+                ]);
+                await popup.waitForLoadState('domcontentloaded');
+                await popup.waitForTimeout(800);
+                const card = popup.locator(`.qcard:has(.qnum:text-is("Question ${q.number}"))`);
+                await expect(card.locator('.blank-row')).toHaveCount(q.expectedBlanks);
+            });
+        }
+    });
+}
