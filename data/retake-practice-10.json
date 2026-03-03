@@ -19,7 +19,7 @@
         {
           "id": "q1_factored",
           "type": "text",
-          "label": "Factored form:"
+          "label": "Factored form"
         },
         {
           "id": "q1_x1",
@@ -86,7 +86,7 @@
         {
           "id": "q2_range",
           "type": "text",
-          "label": "Range (interval notation):"
+          "label": "Range (interval notation)"
         }
       ],
       "hint": "a|x-h|+k form. h=6, k=-10. Set f(x)=0 to find x-intercepts.",
@@ -109,7 +109,7 @@
         {
           "id": "q3_cases",
           "type": "text",
-          "label": "Both cases (write them out):"
+          "label": "Both cases (write them out)"
         },
         {
           "id": "q3_x1",
@@ -172,7 +172,7 @@
         {
           "id": "q5_factored",
           "type": "text",
-          "label": "Factored form:"
+          "label": "Factored form"
         },
         {
           "id": "q5_x1",
@@ -409,17 +409,17 @@
         {
           "id": "q12_range",
           "type": "text",
-          "label": "Range (interval notation):"
+          "label": "Range (interval notation)"
         },
         {
           "id": "q12_increase",
           "type": "text",
-          "label": "f is increasing on:"
+          "label": "f is increasing on"
         },
         {
           "id": "q12_decrease",
           "type": "text",
-          "label": "f is decreasing on:"
+          "label": "f is decreasing on"
         }
       ],
       "graph": {
@@ -495,12 +495,12 @@
         {
           "id": "q13_domain",
           "type": "text",
-          "label": "Domain:"
+          "label": "Domain"
         },
         {
           "id": "q13_range",
           "type": "text",
-          "label": "Range:"
+          "label": "Range"
         },
         {
           "id": "q13_endbeh",

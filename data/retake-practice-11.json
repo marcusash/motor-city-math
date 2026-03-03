@@ -20,7 +20,7 @@
         {
           "id": "q1_factored",
           "type": "text",
-          "label": "Factored form:"
+          "label": "Factored form"
         },
         {
           "id": "q1_x1",
@@ -87,7 +87,7 @@
         {
           "id": "q2_range",
           "type": "text",
-          "label": "Range (interval notation):"
+          "label": "Range (interval notation)"
         }
       ],
       "hint": "Vertex is at (h, k) = (7, -10). Set f(x)=0 and solve |x-7|=1 for intercepts.",
@@ -111,7 +111,7 @@
         {
           "id": "q3_eqs",
           "type": "text",
-          "label": "Write both equations:"
+          "label": "Write both equations"
         },
         {
           "id": "q3_x1",
@@ -174,7 +174,7 @@
         {
           "id": "q5_factored",
           "type": "text",
-          "label": "Factored form:"
+          "label": "Factored form"
         },
         {
           "id": "q5_x1",
@@ -411,17 +411,17 @@
         {
           "id": "q12_range",
           "type": "text",
-          "label": "Range (interval notation):"
+          "label": "Range (interval notation)"
         },
         {
           "id": "q12_increase",
           "type": "text",
-          "label": "f is increasing on:"
+          "label": "f is increasing on"
         },
         {
           "id": "q12_decrease",
           "type": "text",
-          "label": "f is decreasing on:"
+          "label": "f is decreasing on"
         }
       ],
       "hint": "Vertex form: f(x) = a(x-h)² + k. Vertex is (-6,18). a=-2<0: opens downward. Set f(x)=0 for intercepts.",
@@ -497,12 +497,12 @@
         {
           "id": "q13_domain",
           "type": "text",
-          "label": "Domain:"
+          "label": "Domain"
         },
         {
           "id": "q13_range",
           "type": "text",
-          "label": "Range:"
+          "label": "Range"
         },
         {
           "id": "q13_endbeh",

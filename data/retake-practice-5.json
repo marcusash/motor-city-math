@@ -1,7 +1,7 @@
 {
   "exam_id": "retake-practice-5",
   "schema_version": "1.0",
-  "title": "Unit 2 Retake Practice #5 — Nonlinear Functions",
+  "title": "Unit 2 Retake Practice 5: Nonlinear Functions",
   "subtitle": "Standards W2 & W3 · 15 Questions · ~60 min",
   "time_minutes": 60,
   "created": "2026-02-22",
@@ -150,7 +150,7 @@
         {
           "id": "q3_cases",
           "type": "text",
-          "label": "Write the two equations you must solve (e.g. \"4x+12 = 8 and 4x+12 = -8\"):"
+          "label": "Write the two equations you must solve (e.g. \"4x+12 = 8 and 4x+12 = -8\")"
         },
         {
           "id": "q3_x1",

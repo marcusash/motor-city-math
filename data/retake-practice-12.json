@@ -1,7 +1,7 @@
 {
   "exam_id": "retake-practice-12",
   "schema_version": "1.0",
-  "title": "Unit 2 Final Paper Exam — Nonlinear Functions",
+  "title": "Unit 2 Final Paper Exam: Nonlinear Functions",
   "subtitle": "Standards W2 & W3 · 15 Questions · ~60 min · Print & Write",
   "time_minutes": 60,
   "created": "2026-02-24",
@@ -22,7 +22,14 @@
           "id": "q1_parent",
           "type": "dropdown",
           "label": "Parent function",
-          "options": ["quadratic","cubic","absolute value","square root","rational","exponential"],
+          "options": [
+            "quadratic",
+            "cubic",
+            "absolute value",
+            "square root",
+            "rational",
+            "exponential"
+          ],
           "answer": "quadratic"
         },
         {
@@ -65,7 +72,14 @@
           "id": "q2_parent",
           "type": "dropdown",
           "label": "Parent function",
-          "options": ["quadratic","cubic","absolute value","square root","rational","exponential"],
+          "options": [
+            "quadratic",
+            "cubic",
+            "absolute value",
+            "square root",
+            "rational",
+            "exponential"
+          ],
           "answer": "square root"
         },
         {
@@ -99,7 +113,14 @@
           "id": "q3_parent",
           "type": "dropdown",
           "label": "Parent function",
-          "options": ["quadratic","cubic","absolute value","square root","rational","exponential"],
+          "options": [
+            "quadratic",
+            "cubic",
+            "absolute value",
+            "square root",
+            "rational",
+            "exponential"
+          ],
           "answer": "absolute value"
         },
         {
@@ -126,7 +147,7 @@
         {
           "id": "q3_cases",
           "type": "text",
-          "label": "Write the two equations you must solve (e.g. \"AX+B = k and AX+B = -k\"):"
+          "label": "Write the two equations you must solve (e.g. \"AX+B = k and AX+B = -k\")"
         },
         {
           "id": "q3_x1",
@@ -409,10 +430,16 @@
         {
           "id": "q12_dir",
           "type": "radio",
-          "label": "Opens:",
+          "label": "Opens",
           "options": [
-            {"value": "up", "text": "Up"},
-            {"value": "down", "text": "Down"}
+            {
+              "value": "up",
+              "text": "Up"
+            },
+            {
+              "value": "down",
+              "text": "Down"
+            }
           ],
           "answer": "down"
         }
@@ -422,13 +449,34 @@
         "function": "-(Math.pow(x + 2, 2)) + 9",
         "function_display": "f(x) = -(x+2)² + 9",
         "key_points": [
-          [-5, 0],
-          [-4, 5],
-          [-3, 8],
-          [-2, 9],
-          [-1, 8],
-          [0, 5],
-          [1, 0]
+          [
+            -5,
+            0
+          ],
+          [
+            -4,
+            5
+          ],
+          [
+            -3,
+            8
+          ],
+          [
+            -2,
+            9
+          ],
+          [
+            -1,
+            8
+          ],
+          [
+            0,
+            5
+          ],
+          [
+            1,
+            0
+          ]
         ],
         "min_points": 5,
         "tolerance": 0.25,
@@ -474,17 +522,36 @@
         "function": "4 / (x - 3) - 2",
         "function_display": "f(x) = 4/(x-3) − 2",
         "key_points": [
-          [1, -4],
-          [2, -6],
-          [4, 2],
-          [5, 0],
-          [7, -1]
+          [
+            1,
+            -4
+          ],
+          [
+            2,
+            -6
+          ],
+          [
+            4,
+            2
+          ],
+          [
+            5,
+            0
+          ],
+          [
+            7,
+            -1
+          ]
         ],
         "min_points": 4,
         "tolerance": 0.25,
         "asymptotes": {
-          "vertical": [3],
-          "horizontal": [-2]
+          "vertical": [
+            3
+          ],
+          "horizontal": [
+            -2
+          ]
         }
       },
       "hint": "VA: set denominator = 0. HA: the −2 outside the fraction.",
@@ -515,10 +582,22 @@
           "type": "radio",
           "label": "",
           "options": [
-            {"value": "A", "text": "\\( r = \\sqrt{\\dfrac{A}{\\pi}} \\)"},
-            {"value": "B", "text": "\\( r = \\dfrac{A}{\\pi} \\)"},
-            {"value": "C", "text": "\\( r = \\dfrac{A}{\\pi^2} \\)"},
-            {"value": "D", "text": "\\( r = \\dfrac{\\sqrt{A}}{\\pi} \\)"}
+            {
+              "value": "A",
+              "text": "\\( r = \\sqrt{\\dfrac{A}{\\pi}} \\)"
+            },
+            {
+              "value": "B",
+              "text": "\\( r = \\dfrac{A}{\\pi} \\)"
+            },
+            {
+              "value": "C",
+              "text": "\\( r = \\dfrac{A}{\\pi^2} \\)"
+            },
+            {
+              "value": "D",
+              "text": "\\( r = \\dfrac{\\sqrt{A}}{\\pi} \\)"
+            }
           ],
           "answer": "A"
         }

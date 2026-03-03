@@ -1,7 +1,7 @@
 {
   "exam_id": "retake-practice-7",
   "schema_version": "1.0",
-  "title": "Unit 2 Retake Practice — Mock Retake",
+  "title": "Unit 2 Retake Practice: Mock Retake",
   "subtitle": "Standards W2 & W3 · 15 Questions · ~60 min · Dress rehearsal",
   "time_minutes": 60,
   "created": "2026-02-20",
@@ -153,7 +153,7 @@
         {
           "id": "q3_cases",
           "type": "text",
-          "label": "Write the two equations you must solve (e.g. \"AX+B = k and AX+B = -k\"):"
+          "label": "Write the two equations you must solve (e.g. \"AX+B = k and AX+B = -k\")"
         },
         {
           "id": "q3_x1",
@@ -219,7 +219,7 @@
         {
           "id": "q5_factored",
           "type": "text",
-          "label": "Write the factored form (e.g. (2x+1)(x+3)=0):"
+          "label": "Write the factored form (e.g. (2x+1)(x+3)=0)"
         },
         {
           "id": "q5_x1",
@@ -442,22 +442,22 @@
         {
           "id": "q12_domain",
           "type": "text",
-          "label": "Domain (interval notation):"
+          "label": "Domain (interval notation)"
         },
         {
           "id": "q12_range",
           "type": "text",
-          "label": "Range (interval notation):"
+          "label": "Range (interval notation)"
         },
         {
           "id": "q12_decrease",
           "type": "text",
-          "label": "f is decreasing on:"
+          "label": "f is decreasing on"
         },
         {
           "id": "q12_increase",
           "type": "text",
-          "label": "f is increasing on:"
+          "label": "f is increasing on"
         }
       ],
       "graph": {
@@ -534,12 +534,12 @@
         {
           "id": "q13_domain",
           "type": "text",
-          "label": "Domain:"
+          "label": "Domain"
         },
         {
           "id": "q13_range",
           "type": "text",
-          "label": "Range:"
+          "label": "Range"
         },
         {
           "id": "q13_endbeh",

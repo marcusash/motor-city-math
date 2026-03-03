@@ -1,7 +1,7 @@
 {
   "exam_id": "retake-practice-4",
   "schema_version": "1.0",
-  "title": "Unit 2 Retake Practice #4 — Nonlinear Functions",
+  "title": "Unit 2 Retake Practice 4: Nonlinear Functions",
   "subtitle": "Standards W2 & W3 · 15 Questions · ~60 min",
   "time_minutes": 60,
   "created": "2026-02-19",
@@ -144,7 +144,7 @@
         {
           "id": "q3_cases",
           "type": "text",
-          "label": "Write the two equations you must solve (e.g. \"AX+B = k and AX+B = -k\"):"
+          "label": "Write the two equations you must solve (e.g. \"AX+B = k and AX+B = -k\")"
         },
         {
           "id": "q3_x1",
