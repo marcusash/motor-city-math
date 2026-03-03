@@ -42,6 +42,10 @@ const EXAMS = [
         file: 'frac-exp-drill',
         data: require('../../data/frac-exp-drill.json'),
     },
+    ...Array.from({ length: 13 }, (_, i) => ({
+        file: `retake-practice-${i + 1}`,
+        data: require(`../../data/retake-practice-${i + 1}.json`),
+    })),
 ];
 
 const BTN_SEL = '#printBtn, button[onclick*="printExam"], .print-btn';
