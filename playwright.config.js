@@ -13,3 +13,7 @@ module.exports = defineConfig({
         { name: 'chromium', use: { ...devices['Desktop Chrome'] } },
     ],
 });
+
+// Named configs for targeted runs:
+//   test:print   — npx playwright test tests/playwright/print.test.js
+//   test:sites   — npx playwright test tests/playwright/site-health.test.js

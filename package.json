@@ -39,7 +39,15 @@
     "test:gp:all": "node tests/gp-field-completeness.test.js && node tests/gp-answer-uniqueness.test.js && node tests/gp-solution-steps.test.js && node tests/gp-feedback-length.test.js && node tests/gp-manifest-integrity.test.js && node tests/gp-graph-keypoints.test.js && node tests/gp-exam-id-consistency.test.js && node tests/gp-answer-tolerance.test.js && node tests/gp-hint-length.test.js && node tests/gp-version-check.test.js && node tests/gp-input-label.test.js && node tests/gp-json-parse.test.js && node tests/gp-hint-presence.test.js && node tests/gp-cdn-check.test.js && node tests/gp-commit-prefix.test.js",
     "test:gf": "node tests/f-validation/schema-guard-all-rp.test.js && node tests/f-validation/grading-invariants.property.test.js && node tests/daily-design-gate.js",
     "test:gi": "node scripts/ci-data-gate.cjs && node tests/cross-exam-verify.js && node tests/verify-practice-exams.js && node tests/property/ocr-confidence.test.mjs",
-    "test:print": "npx playwright test tests/playwright/print.test.js"
+    "test:print": "npx playwright test tests/playwright/print.test.js",
+    "check:links": "node scripts/check-dead-links.js",
+    "check:links:matrix": "node scripts/check-dead-links.js --site matrix",
+    "check:links:redpill": "node scripts/check-dead-links.js --site redpill",
+    "check:links:bluepill": "node scripts/check-dead-links.js --site bluepill",
+    "check:links:mcm": "node scripts/check-dead-links.js --site mcm",
+    "check:links:mcc": "node scripts/check-dead-links.js --site mcc",
+    "test:sites": "npx playwright test tests/playwright/site-health.test.js",
+    "test:all-public": "node scripts/check-dead-links.js && npx playwright test tests/playwright/site-health.test.js"
   },
   "dependencies": {
     "@playwright/test": "^1.58.2"
