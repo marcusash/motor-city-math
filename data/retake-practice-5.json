@@ -7,7 +7,7 @@
   "created": "2026-02-22",
   "created_by": "Agent FR",
   "version": "2.0",
-  "purpose": "Fifth practice exam — rebuilt for Kai's current level (93% on RP4). All questions at or above RP4 difficulty. Structural variation enforced. Q1 type rotated. Q11 teaching scaffolding for cube recognition gap.",
+  "purpose": "Fifth practice exam : rebuilt for Kai's current level (93% on RP4). All questions at or above RP4 difficulty. Structural variation enforced. Q1 type rotated. Q11 teaching scaffolding for cube recognition gap.",
   "questions": [
     {
       "id": "rp5-q1",
@@ -572,7 +572,7 @@
             },
             {
               "value": "C",
-              "text": "The student should not have started Step 1. √(x-4) ≥ 0 always — it can never equal -3. The correct answer is: no solution."
+              "text": "The student should not have started Step 1. √(x-4) ≥ 0 always : it can never equal -3. The correct answer is: no solution."
             },
             {
               "value": "D",

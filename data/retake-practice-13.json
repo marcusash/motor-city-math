@@ -6,7 +6,7 @@
   "time_minutes": 30,
   "created": "2026-02-24",
   "created_by": "FR",
-  "purpose": "Targeted Tuesday drill before Wednesday retake. Starts with two confidence questions (proven mastery areas) then drills the two skills RP12 will test harder: fractional exponents (Q3-Q6, escalating) and negative-a parabolas (Q7-Q8). Not a full exam — a focused primer.",
+  "purpose": "Targeted Tuesday drill before Wednesday retake. Starts with two confidence questions (proven mastery areas) then drills the two skills RP12 will test harder: fractional exponents (Q3-Q6, escalating) and negative-a parabolas (Q7-Q8). Not a full exam : a focused primer.",
   "questions": [
     {
       "id": "rp13-q1",
@@ -68,7 +68,7 @@
       "section": "FRACTIONAL EXPONENTS",
       "standard": "W3.b",
       "type": "fractional-exp",
-      "rationale": "Simplest fractional exponent. One step: x^(2/3)=4, apply the reciprocal power 3/2. Answer is 8 — recognizable. Goal: build the mechanical pattern before adding a coefficient wrapper.",
+      "rationale": "Simplest fractional exponent. One step: x^(2/3)=4, apply the reciprocal power 3/2. Answer is 8 : recognizable. Goal: build the mechanical pattern before adding a coefficient wrapper.",
       "question_html": "Solve: \\( x^{2/3} = 4 \\)<br><em>Hint: to undo x^(2/3), raise both sides to the <strong>3/2</strong> power (flip the fraction).</em>",
       "inputs": [
         {
@@ -96,7 +96,7 @@
       "section": "FRACTIONAL EXPONENTS",
       "standard": "W3.b",
       "type": "fractional-exp",
-      "rationale": "Adds a coefficient wrapper. Must isolate x^(2/3) first by dividing by 2. Then apply reciprocal power. Answer is 27 — recognizable (3^3). Same reciprocal power as Q3 but now with an extra step.",
+      "rationale": "Adds a coefficient wrapper. Must isolate x^(2/3) first by dividing by 2. Then apply reciprocal power. Answer is 27 : recognizable (3^3). Same reciprocal power as Q3 but now with an extra step.",
       "question_html": "Solve: \\( 2x^{2/3} = 18 \\)",
       "inputs": [
         {
