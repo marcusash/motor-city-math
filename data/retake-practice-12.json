@@ -6,7 +6,7 @@
   "time_minutes": 60,
   "created": "2026-02-24",
   "created_by": "FR",
-  "purpose": "Final paper exam before Wednesday retake. All new numbers. Matches baseline exam structure exactly. Paper-administered: Kai writes answers by hand. Special focus on Q11 (fractional exponents — the one miss from RP4).",
+  "purpose": "Final paper exam before Wednesday retake. All new numbers. Matches baseline exam structure exactly. Paper-administered: Kai writes answers by hand. Special focus on Q11 (fractional exponents : the one miss from RP4).",
   "print": true,
   "questions": [
     {
@@ -50,7 +50,7 @@
       "plus_minus": true,
       "hint": "Set f(x)=0. Isolate the squared term. Then take ±√.",
       "solution_steps": [
-        "Parent: y = x² (quadratic — highest power is 2).",
+        "Parent: y = x² (quadratic : highest power is 2).",
         "Set 0 = 3(x−4)² − 75.",
         "3(x−4)² = 75 → (x−4)² = 25.",
         "x − 4 = ±5 → x = 9 or x = −1.",
@@ -106,7 +106,7 @@
       "section": "A",
       "standard": "W2.b",
       "type": "identify",
-      "rationale": "Absolute value with factor-out step. Kai is 2/2 on this type. New values for a, h, k. Requires the two-case split — reinforcing the most conceptually important step in W2.b.",
+      "rationale": "Absolute value with factor-out step. Kai is 2/2 on this type. New values for a, h, k. Requires the two-case split : reinforcing the most conceptually important step in W2.b.",
       "question_html": "For \\( f(x) = |4x - 12| - 8 \\): rewrite in the form \\( a|x - h| + k \\), state the parent function, identify <em>a</em>, <em>h</em>, <em>k</em>, and find the x-intercepts.",
       "inputs": [
         {
@@ -339,7 +339,7 @@
       ],
       "hint": "There is a coefficient 4 in front of the √. Subtract 2, then divide by 4, THEN square.",
       "solution_steps": [
-        "4√(x−1) = 16 → √(x−1) = 4. (Divide by 4 first — cannot square yet.)",
+        "4√(x−1) = 16 → √(x−1) = 4. (Divide by 4 first : cannot square yet.)",
         "Square: x − 1 = 16 → x = 17.",
         "Check: 4√(17−1) + 2 = 4√16 + 2 = 4(4) + 2 = 18 ✓"
       ],
@@ -352,7 +352,7 @@
       "section": "B",
       "standard": "W3.e",
       "type": "extraneous",
-      "rationale": "Extraneous solutions — Kai is 2/2 but this is always the hardest conceptual question. New equation, same structure: radical = linear. One root will fail the check. Must check both.",
+      "rationale": "Extraneous solutions : Kai is 2/2 but this is always the hardest conceptual question. New equation, same structure: radical = linear. One root will fail the check. Must check both.",
       "question_html": "Solve: \\( \\sqrt{3x + 4} = x - 2 \\)<br><em>Note: check for <strong>extraneous solutions</strong>.</em>",
       "inputs": [
         {
@@ -410,7 +410,7 @@
       "section": "C",
       "standard": "W2.c",
       "type": "graph",
-      "rationale": "Kai is 2/2 on vertex graphing. NEW TWIST: negative leading coefficient (parabola opens DOWN). This is a deliberate difficulty bump — Kai must notice the negative sign and flip the parabola.",
+      "rationale": "Kai is 2/2 on vertex graphing. NEW TWIST: negative leading coefficient (parabola opens DOWN). This is a deliberate difficulty bump : Kai must notice the negative sign and flip the parabola.",
       "question_html": "Graph \\( f(x) = -(x + 2)^2 + 9 \\). State the vertex and the direction the parabola opens.",
       "inputs": [
         {
@@ -491,7 +491,7 @@
         "Draw inverted U-shape (opens down)."
       ],
       "feedback_correct": "Vertex, direction, and graph all correct.",
-      "feedback_wrong": "Vertex is (h, k) = (−2, 9). Negative a means OPENS DOWN — inverted parabola."
+      "feedback_wrong": "Vertex is (h, k) = (−2, 9). Negative a means OPENS DOWN : inverted parabola."
     },
     {
       "id": "rp12-q13",
