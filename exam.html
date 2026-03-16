@@ -1561,25 +1561,24 @@
         // renderTex: optional function(str) -> pre-rendered HTML for header labels
         function boxGrid(cols, rows, showHeaders, renderTex) {
             var nCols = cols.length;
-            var nRows = rows.length;
             var cellW = Math.max(72, Math.floor(400 / nCols));
             var cellH = 60;
             var css = 'border-collapse:collapse;margin:12px 0;';
-            var blankHeaderStyle = 'border:1.5px solid #000;min-width:' + cellW + 'px;height:' + cellH + 'px;background:#f0f0f0;';
+            var colHdrStyle = 'border:1.5px solid #000;min-width:' + cellW + 'px;height:' + cellH + 'px;background:#f0f0f0;text-align:center;vertical-align:middle;padding:4px;';
+            var rowHdrStyle = 'border:1.5px solid #000;min-width:80px;height:' + cellH + 'px;background:#f0f0f0;text-align:center;vertical-align:middle;padding:4px;';
             var tdStyle = 'border:1.5px solid #000;min-width:' + cellW + 'px;height:' + cellH + 'px;';
-            var cornerStyle = 'border:none;background:transparent;min-width:56px;height:' + cellH + 'px;';
+            // Zero-width corner: no space, no border, no artifacts
+            var cornerStyle = 'width:0;min-width:0;max-width:0;padding:0;border:none;overflow:hidden;';
             var html = '<table style="' + css + '"><thead><tr>';
             html += '<td style="' + cornerStyle + '"></td>';
-            cols.forEach(function(c, ci) {
+            cols.forEach(function(c) {
                 var label = (showHeaders && c != null && renderTex) ? renderTex(c) : '';
-                var extra = ci === 0 ? 'border-left:none;' : '';
-                html += '<th style="' + blankHeaderStyle + extra + '">' + label + '</th>';
+                html += '<th style="' + colHdrStyle + '">' + label + '</th>';
             });
             html += '</tr></thead><tbody>';
-            rows.forEach(function(r, ri) {
+            rows.forEach(function(r) {
                 var rowLabel = (showHeaders && renderTex) ? renderTex(r) : '';
-                var extra = ri === 0 ? 'border-top:none;' : '';
-                html += '<tr><th style="' + blankHeaderStyle + extra + '">' + rowLabel + '</th>';
+                html += '<tr><th style="' + rowHdrStyle + '">' + rowLabel + '</th>';
                 for (var c = 0; c < nCols; c++) {
                     html += '<td style="' + tdStyle + '"></td>';
                 }
