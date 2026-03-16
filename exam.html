@@ -592,24 +592,26 @@
         var html = '<div class="box-grid-wrap">';
         html += '<table class="box-grid" role="presentation">';
 
-        // Header row: empty corner + one th per col
+        // Header row: empty corner + one editable input per col
         html += '<tr><th class="box-corner"></th>';
-        cols.forEach(function(c) {
-            html += '<th class="box-header">\\(' + c + '\\)</th>';
+        cols.forEach(function(c, ci) {
+            var hId = q.id + '_col' + ci;
+            html += '<th class="box-header box-header-input"><input type="text" id="' + hId + '" class="box-input" autocomplete="off" placeholder="?" aria-label="Column ' + (ci + 1) + ' header"></th>';
         });
         html += '</tr>';
 
-        // Data rows
+        // Data rows: editable row header + editable interior cells
         rows.forEach(function(r, ri) {
             html += '<tr>';
-            html += '<th class="box-header">\\(' + r + '\\)</th>';
+            var rId = q.id + '_row' + ri;
+            html += '<th class="box-header box-header-input"><input type="text" id="' + rId + '" class="box-input" autocomplete="off" placeholder="?" aria-label="Row ' + (ri + 1) + ' header"></th>';
             cols.forEach(function(c, ci) {
                 var inputId = cellMap[ri + ',' + ci];
                 var inp = (q.inputs || []).find(function(i) { return i.id === inputId; });
                 html += '<td class="box-cell">';
                 if (inp) {
                     html += '<input type="text" id="' + inp.id + '" class="box-input" autocomplete="off" placeholder="?"' +
-                        ' aria-label="Row ' + r + ' Col ' + c + '">';
+                        ' aria-label="Row ' + (ri+1) + ' Col ' + (ci+1) + '">';
                 }
                 html += '</td>';
             });
