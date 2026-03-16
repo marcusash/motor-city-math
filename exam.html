@@ -1567,17 +1567,21 @@
             var css = 'border-collapse:collapse;margin:12px 0;';
             var blankHeaderStyle = 'border:1.5px solid #000;min-width:' + cellW + 'px;height:' + cellH + 'px;background:#f0f0f0;';
             var tdStyle = 'border:1.5px solid #000;min-width:' + cellW + 'px;height:' + cellH + 'px;';
-            var cornerStyle = 'min-width:56px;height:' + cellH + 'px;border:none;background:transparent;';
+            var cornerStyle = 'border:none;background:transparent;min-width:56px;height:' + cellH + 'px;';
             var html = '<table style="' + css + '"><thead><tr>';
             html += '<td style="' + cornerStyle + '"></td>';
-            cols.forEach(function(c) {
+            cols.forEach(function(c, ci) {
                 var label = (showHeaders && c != null) ? ('\\(' + c + '\\)') : '';
-                html += '<th style="' + blankHeaderStyle + '">' + label + '</th>';
+                // First col header: no left border (shares edge with invisible corner)
+                var extra = ci === 0 ? 'border-left:none;' : '';
+                html += '<th style="' + blankHeaderStyle + extra + '">' + label + '</th>';
             });
             html += '</tr></thead><tbody>';
-            rows.forEach(function(r) {
+            rows.forEach(function(r, ri) {
                 var rowLabel = showHeaders ? ('\\(' + r + '\\)') : '';
-                html += '<tr><th style="' + blankHeaderStyle + '">' + rowLabel + '</th>';
+                // First row header: no top border (shares edge with invisible corner)
+                var extra = ri === 0 ? 'border-top:none;' : '';
+                html += '<tr><th style="' + blankHeaderStyle + extra + '">' + rowLabel + '</th>';
                 for (var c = 0; c < nCols; c++) {
                     html += '<td style="' + tdStyle + '"></td>';
                 }
