@@ -74,8 +74,17 @@
       "section": "B",
       "standard": "S1.b",
       "difficulty": "easy",
-      "type": "simplify",
-      "question_html": "Multiply using the box method. Show your work by filling in each cell of the box.<br>\\( (x + 4)(x - 3) \\)",
+      "type": "box",
+      "box": {
+        "cols": ["x", "-3"],
+        "rows": ["x", "4"],
+        "cells": [
+          { "row": 0, "col": 0, "input_id": "s1q5_tl" },
+          { "row": 0, "col": 1, "input_id": "s1q5_tr" },
+          { "row": 1, "col": 0, "input_id": "s1q5_bl" },
+          { "row": 1, "col": 1, "input_id": "s1q5_br" }
+        ]
+      },
       "inputs": [
         {
           "id": "s1q5_tl",
@@ -122,8 +131,17 @@
       "section": "B",
       "standard": "S1.b",
       "difficulty": "easy",
-      "type": "simplify",
-      "question_html": "Multiply using the box method. Show your work by filling in each cell of the box.<br>\\( (2x - 5)(x + 3) \\)",
+      "type": "box",
+      "box": {
+        "cols": ["2x", "-5"],
+        "rows": ["x", "3"],
+        "cells": [
+          { "row": 0, "col": 0, "input_id": "s1q6_tl" },
+          { "row": 0, "col": 1, "input_id": "s1q6_tr" },
+          { "row": 1, "col": 0, "input_id": "s1q6_bl" },
+          { "row": 1, "col": 1, "input_id": "s1q6_br" }
+        ]
+      },
       "inputs": [
         {
           "id": "s1q6_tl",
@@ -230,8 +248,13 @@
       "section": "B",
       "standard": "S1.b",
       "difficulty": "hard",
-      "type": "simplify",
-      "question_html": "If you are given a factor and a final product, can you puzzle out what was multiplied?<br><br>\\( (x + 3)(\\,?\\,) = x^3 + 5x^2 + 3x - 9 \\)<br><br>Use the box method to find the missing factor.",
+      "type": "box-reverse",
+      "box": {
+        "known_factor": ["x", "+3"],
+        "product": "x^3 + 5x^2 + 3x - 9",
+        "solve_for": "missing_factor",
+        "missing_factor_degree": 2
+      },
       "inputs": [
         {
           "id": "s1q10_ans",
