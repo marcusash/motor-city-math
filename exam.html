@@ -547,7 +547,9 @@
         } else if (inp.type === 'text') {
             html += '<div class="input-group">';
             if (inp.label) html += '<label for="' + inp.id + '">' + inp.label + '</label>';
-            html += '<input type="text" id="' + inp.id + '" aria-describedby="feedback-' + (q ? q.id : inp.id) + '" style="width:200px;" autocomplete="off">';
+            var txtWidth = inp.normalize === 'poly' ? '260px' : '200px';
+            var txtPlaceholder = inp.normalize === 'poly' ? ' placeholder="e.g. 4x^2 + 2x - 3"' : '';
+            html += '<input type="text" id="' + inp.id + '" aria-describedby="feedback-' + (q ? q.id : inp.id) + '" style="width:' + txtWidth + ';" autocomplete="off"' + txtPlaceholder + '>';
             html += '</div>';
         }
         return html;
@@ -1168,6 +1170,18 @@
      *   4. Feedback    — display per-question correct/wrong feedback and hints
      *   5. Scorecard   — render final scorecard, persist score to mcm_scores
      */
+    /* Normalize a polynomial string for comparison.
+       Strips spaces, lowercases, converts unicode minus to ASCII,
+       so "4x^2 + 2x + 5" == "4x^2+2x+5" == "4x^2  +  2x + 5". */
+    function normalizePoly(s) {
+        if (!s) return '';
+        return s.toString()
+            .toLowerCase()
+            .replace(/\u2212/g, '-')   // unicode minus
+            .replace(/\s+/g, '')       // all whitespace
+            .replace(/\*\*/g, '^');    // ** -> ^
+    }
+
     function gradeExam() {
         if (examGraded) return;
 
@@ -1239,7 +1253,24 @@
                     var selected = document.querySelector('input[name="' + inp.id + '"]:checked');
                     if (!selected || selected.value !== inp.answer) qCorrect = false;
                 } else if (inp.type === 'text') {
-                    // Text is self-graded — skip auto-grade
+                    if (inp.normalize === 'poly' && inp.answer) {
+                        var elT = document.getElementById(inp.id);
+                        if (elT) {
+                            var userPoly = normalizePoly(elT.value);
+                            var ansPoly = normalizePoly(inp.answer);
+                            if (userPoly !== ansPoly) {
+                                qCorrect = false;
+                                elT.style.borderColor = 'var(--color-incorrect, #F85149)';
+                                elT.style.borderWidth = '2px';
+                                elT.style.borderStyle = 'solid';
+                            } else {
+                                elT.style.borderColor = 'var(--color-correct, #3FB950)';
+                                elT.style.borderWidth = '2px';
+                                elT.style.borderStyle = 'solid';
+                            }
+                        }
+                    }
+                    // Plain text (no normalize): self-graded, skip auto-grade
                 }
             });
 
