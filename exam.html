@@ -1628,7 +1628,7 @@
                 });
             }
 
-            return '<svg xmlns="http://www.w3.org/2000/svg" width="'+totalW+'" height="'+totalH+'" style="margin:12px 0;display:block;overflow:visible;">'+s+'</svg>';
+            return '<svg xmlns="http://www.w3.org/2000/svg" width="'+(totalW+4)+'" height="'+(totalH+4)+'" viewBox="-2 -2 '+(totalW+4)+' '+(totalH+4)+'" style="margin:12px 0;display:block;">'+s+'</svg>';
         }
 
         var qHtml = examData.questions.map(function(q) {
