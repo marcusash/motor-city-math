@@ -475,8 +475,7 @@
         <details class="dash-section" id="winterSection">
             <summary class="section-title" id="winterSummaryEl">🏆 Winter 2025-26</summary>
             <div id="winterChartContainer" style="margin: 4px 0 12px;"></div>
-            <div class="test-grid" id="retakeGrid"></div>
-            <div class="test-grid" id="testGrid" style="margin-top:12px;"></div>
+            <div class="test-grid" id="winterTestGrid"></div>
         </details>
 
         <footer class="footer">Built with <span aria-hidden="true">💪🏾</span> by Dad · Motor City Math</footer>
@@ -741,45 +740,7 @@
     }
 
     /* ========== TEST INDEX ========== */
-    function buildTestGrid() {
-        var scores = getScores();
-        // Merge winter archive scores so Winter test cards show their scores
-        if (_winterArchive && _winterArchive.mcm_scores) {
-            Object.keys(_winterArchive.mcm_scores).forEach(function(k) {
-                if (!scores[k]) scores[k] = _winterArchive.mcm_scores[k];
-            });
-        }
-        var grid = document.getElementById('testGrid');
-        var html = '';
-
-        tests.forEach(function(t) {
-            if (t.retake) return;
-            if (t.trimester === 'spring') return;
-            var s = scores[t.key];
-            var scoreHtml = '';
-            var borderColor = 'var(--accent-blue)';
-            if (s) {
-                var pct;
-                if (s.attempts && s.attempts.length > 0) {
-                    pct = s.attempts[s.attempts.length - 1].pct;
-                } else {
-                    pct = s.pct || (s.score && s.total ? Math.round(s.score / s.total * 100) : null);
-                }
-                if (pct !== null) {
-                    scoreHtml = '<span class="test-score' + (pct < 70 ? ' low' : '') + '">' + pct + '%</span>';
-                    if (pct >= 92) borderColor = 'var(--color-correct)';
-                    else if (pct >= 82) borderColor = 'var(--accent-blue)';
-                    else if (pct >= 70) borderColor = 'var(--color-warning)';
-                    else borderColor = 'var(--accent-red)';
-                }
-            }
-            html += '<a href="' + t.file + '" class="test-link" style="border-left-color:' + borderColor + ';">' +
-                t.name + scoreHtml +
-                '<div class="test-meta">' + t.questions + ' questions · ' + t.unit + '</div>' +
-                '</a>';
-        });
-        grid.innerHTML = html;
-    }
+    function buildTestGrid() { /* replaced by buildWinterTestGrid */ }
 
     function buildSparkline(values) {
         if (!values || values.length < 2) return '<span class="sparkline-zero"></span>';
@@ -935,43 +896,51 @@
         grid.innerHTML = html || '<div class="empty-state" style="padding:16px;color:var(--text-secondary);">No Spring tests yet.</div>';
     }
 
-    function buildRetakeGrid() {
-        var scores = getScores();
-        // Merge winter archive scores so retake cards show their scores
-        if (_winterArchive && _winterArchive.mcm_scores) {
-            Object.keys(_winterArchive.mcm_scores).forEach(function(k) {
-                if (!scores[k]) scores[k] = _winterArchive.mcm_scores[k];
-            });
-        }
-        var grid = document.getElementById('retakeGrid');
-        var retakeTests = tests.filter(function(t) { return t.retake; });
-        var html = '';
-        retakeTests.forEach(function(t, i) {
-            var scoreHtml = '';
-            var borderColor = 'var(--accent-blue)';
-            var s = scores[t.key];
-            if (s) {
-                var pct = null;
-                if (s.attempts && s.attempts.length > 0) {
-                    pct = s.attempts[s.attempts.length - 1].pct;
-                } else {
-                    pct = s.pct || (s.score && s.total ? Math.round(s.score / s.total * 100) : null);
-                }
-                if (pct !== null) {
-                    scoreHtml = '<span class="test-score' + (pct < 70 ? ' low' : '') + '">' + pct + '%</span>';
-                    // SAAS grade colors: ≥92% green, 82-91% blue, 70-81% warning, <70% red
-                    if (pct >= 92) borderColor = 'var(--color-correct)';
-                    else if (pct >= 82) borderColor = 'var(--accent-blue)';
-                    else if (pct >= 70) borderColor = 'var(--color-warning)';
-                    else borderColor = 'var(--accent-red)';
-                }
+    /* ========== WINTER TEST GRID (unified, reverse chronological) ========== */
+    function buildWinterTestGrid() {
+        var grid = document.getElementById('winterTestGrid');
+        if (!grid) return;
+
+        var archiveScores = (_winterArchive && _winterArchive.mcm_scores) || {};
+
+        // All winter tests, merged with archive scores, sorted newest-first
+        var winterTests = tests.filter(function(t) { return t.trimester === 'winter'; });
+        var items = winterTests.map(function(t) {
+            var s = archiveScores[t.key];
+            var pct = null;
+            var ts = 0;
+            if (s && s.attempts && s.attempts[0]) {
+                pct = s.attempts[s.attempts.length - 1].pct;
+                if (!pct && s.attempts[0].score) pct = Math.round(s.attempts[0].score / s.attempts[0].total * 100);
+                ts = s.attempts[0].timestamp ? new Date(s.attempts[0].timestamp).getTime() : 0;
             }
-            html += '<a href="' + t.file + '" class="test-link" style="border-left-color:' + borderColor + ';">' +
-                '📝 ' + t.name + scoreHtml +
-                '<div class="test-meta">' + t.questions + ' questions · 60 min · nonlinear</div></a>';
+            return { t: t, pct: pct, ts: ts };
         });
+
+        // Reverse chronological: most recent top-left, snakes right then down
+        items.sort(function(a, b) { return b.ts - a.ts; });
+
+        var html = items.map(function(item) {
+            var t = item.t;
+            var pct = item.pct;
+            var borderColor = 'var(--accent-blue)';
+            var scoreHtml = '';
+            if (pct !== null) {
+                scoreHtml = '<span class="test-score' + (pct < 70 ? ' low' : '') + '">' + pct + '%</span>';
+                if (pct >= 92) borderColor = 'var(--color-correct)';
+                else if (pct >= 82) borderColor = 'var(--accent-blue)';
+                else if (pct >= 70) borderColor = 'var(--color-warning)';
+                else borderColor = 'var(--accent-red)';
+            }
+            return '<a href="' + t.file + '" class="test-link" style="border-left-color:' + borderColor + ';">' +
+                t.name + scoreHtml +
+                '<div class="test-meta">' + t.questions + ' questions · ' + t.unit + '</div></a>';
+        }).join('');
+
         grid.innerHTML = html;
     }
+
+    function buildRetakeGrid() { /* replaced by buildWinterTestGrid */ }
 
     /* ========== UP NEXT (ADHD: one recommendation) ========== */
     function updateUpNext() {
@@ -1057,8 +1026,7 @@
     function rerenderAll() {
         buildChart();
         buildSpringGrid();
-        buildRetakeGrid();
-        buildTestGrid();
+        buildWinterTestGrid();
         buildStats();
         buildLast2Tests();
         buildProgressStory();
