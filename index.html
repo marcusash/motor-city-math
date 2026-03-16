@@ -366,7 +366,7 @@
 
     (function() {
         var ghBase = 'https://api.github.com/repos/marcusash/motor-city-math/contents/scores/';
-        var headers = { 'Accept': 'application/vnd.github.v3+json' };
+        var headers = { 'Accept': 'application/vnd.github.v3+json', 'Cache-Control': 'no-store' };
 
         function ghFetch(file) {
             return fetch(ghBase + file, { headers: headers })
@@ -395,6 +395,7 @@
             if (!data) return;
             _winterArchive = data;
             if (typeof buildWinterHistory === 'function') buildWinterHistory();
+            if (typeof buildWinterTestGrid === 'function') buildWinterTestGrid();
         });
     })();
     </script>
