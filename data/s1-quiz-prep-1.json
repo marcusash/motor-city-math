@@ -57,7 +57,7 @@
       "standard": "S1.b",
       "difficulty": "hard",
       "type": "box",
-      "question_html": "Multiply \\( (3x + 2)(x^2 - 2x + 1) \\). Fill in all cells of the box, then write your answer in standard form.",
+      "question_html": "Use the box method to multiply \\( (3x + 2)(x^2 - 2x + 1) \\). Write each factor along the top and side of the box, multiply to fill in all 6 cells, then collect like terms and write your answer in standard form.",
       "box": {
         "cols": [ "x^2", "-2x", "1" ],
         "rows": [ "3x", "2" ],
