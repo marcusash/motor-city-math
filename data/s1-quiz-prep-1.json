@@ -2,8 +2,8 @@
   "exam_id": "s1-quiz-prep-1",
   "schema_version": "1.0",
   "title": "Spring S1 Quiz Prep: Polynomial Operations",
-  "subtitle": "Standards S1.a & S1.b · 9 Questions · ~40 min",
-  "time_minutes": 40,
+  "subtitle": "Standards S1.a & S1.b · 8 Questions · ~35 min",
+  "time_minutes": 35,
   "created": "2026-03-16",
   "created_by": "FR",
   "purpose": "Tuesday quiz prep for Kai. S1.a: add and subtract polynomials using function notation (Q1-Q4). S1.b: multiply polynomials using box method (Q5-Q9). Q5 and Q6 require showing box method work.",
@@ -49,28 +49,8 @@
       "solution_html": "\\( (3x^3 - x^3) + (2x^2 + 4x^2) + (-5x - 3x) + (1 + 6) = 2x^3 + 6x^2 - 8x + 7 \\)"
     },
     {
-      "id": "s1q3",
-      "number": 3,
-      "section": "A",
-      "standard": "S1.a",
-      "difficulty": "medium",
-      "type": "simplify",
-      "question_html": "Subtract the polynomials. Write your answer in standard form.<br>\\( (5x^2 - 3x + 1) - (2x^2 + x - 4) \\)",
-      "inputs": [
-        {
-          "id": "s1q3_ans",
-          "type": "text",
-          "label": "Answer =",
-          "answer": "3x^2 - 4x + 5",
-          "normalize": "poly"
-        }
-      ],
-      "hint": "Distribute the negative sign first: -(2x² + x - 4) = -2x² - x + 4. Then combine like terms.",
-      "solution_html": "\\( 5x^2 - 3x + 1 - 2x^2 - x + 4 = 3x^2 - 4x + 5 \\)"
-    },
-    {
       "id": "s1q4",
-      "number": 4,
+      "number": 3,
       "section": "A",
       "standard": "S1.a",
       "difficulty": "hard",
@@ -90,7 +70,7 @@
     },
     {
       "id": "s1q5",
-      "number": 5,
+      "number": 4,
       "section": "B",
       "standard": "S1.b",
       "difficulty": "easy",
@@ -138,7 +118,7 @@
     },
     {
       "id": "s1q6",
-      "number": 6,
+      "number": 5,
       "section": "B",
       "standard": "S1.b",
       "difficulty": "easy",
@@ -186,7 +166,7 @@
     },
     {
       "id": "s1q7",
-      "number": 7,
+      "number": 6,
       "section": "B",
       "standard": "S1.b",
       "difficulty": "medium",
@@ -206,7 +186,7 @@
     },
     {
       "id": "s1q8",
-      "number": 8,
+      "number": 7,
       "section": "B",
       "standard": "S1.b",
       "difficulty": "medium",
@@ -226,7 +206,7 @@
     },
     {
       "id": "s1q9",
-      "number": 9,
+      "number": 8,
       "section": "B",
       "standard": "S1.b",
       "difficulty": "hard",
