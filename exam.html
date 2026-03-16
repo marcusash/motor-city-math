@@ -1379,6 +1379,30 @@
                 }
             });
 
+            // Grade box col/row headers
+            if (q.type === 'box' && q.box) {
+                (q.box.cols || []).forEach(function(ans, ci) {
+                    var el = document.getElementById(q.id + '_col' + ci);
+                    if (el) {
+                        var ok = normalizePoly(el.value) === normalizePoly(ans);
+                        if (!ok) qCorrect = false;
+                        el.style.borderColor = ok ? 'var(--color-correct, #3FB950)' : 'var(--color-incorrect, #F85149)';
+                        el.style.borderWidth = '2px';
+                        el.style.borderStyle = 'solid';
+                    }
+                });
+                (q.box.rows || []).forEach(function(ans, ri) {
+                    var el = document.getElementById(q.id + '_row' + ri);
+                    if (el) {
+                        var ok = normalizePoly(el.value) === normalizePoly(ans);
+                        if (!ok) qCorrect = false;
+                        el.style.borderColor = ok ? 'var(--color-correct, #3FB950)' : 'var(--color-incorrect, #F85149)';
+                        el.style.borderWidth = '2px';
+                        el.style.borderStyle = 'solid';
+                    }
+                });
+            }
+
             // Handle plus_minus: accept either ordering of number inputs
             var numberInputsCorrect = evaluateNumberInputs(numberInputs, q.plus_minus);
             if (!numberInputsCorrect) qCorrect = false;
