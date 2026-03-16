@@ -1563,18 +1563,15 @@
             var nCols = cols.length;
             var cellW = Math.max(72, Math.floor(360 / nCols));
             var cellH = 60;
-            // border-separate + border-spacing:0 — each cell owns its own borders,
-            // so corner:none never bleeds into adjacent cells
-            var css = 'border-collapse:separate;border-spacing:0;margin:12px 0;';
-            var hdrStyle = 'border:1.5px solid #000;width:80px;height:' + cellH + 'px;background:#f0f0f0;text-align:center;vertical-align:middle;padding:4px;font-weight:normal;box-sizing:border-box;';
-            var colStyle = 'border:1.5px solid #000;width:' + cellW + 'px;height:' + cellH + 'px;background:#f0f0f0;text-align:center;vertical-align:middle;padding:4px;font-weight:normal;box-sizing:border-box;';
-            var tdStyle  = 'border:1.5px solid #000;width:' + cellW + 'px;height:' + cellH + 'px;box-sizing:border-box;';
-            var cornerStyle = 'width:80px;height:' + cellH + 'px;border:none;background:transparent;';
+            var css = 'border-collapse:collapse;margin:12px 0;';
+            var hdrStyle = 'border:1.5px solid #000;width:80px;height:' + cellH + 'px;background:#fff;text-align:center;vertical-align:middle;padding:4px;font-weight:normal;';
+            var colStyle = 'border:1.5px solid #000;width:' + cellW + 'px;height:' + cellH + 'px;background:#fff;text-align:center;vertical-align:middle;padding:4px;font-weight:normal;';
+            var tdStyle  = 'border:1.5px solid #000;width:' + cellW + 'px;height:' + cellH + 'px;';
 
             var html = '<table style="' + css + '"><tbody>';
 
-            // Top row: invisible corner + col headers
-            html += '<tr><td style="' + cornerStyle + '"></td>';
+            // Top row: blank corner + col headers
+            html += '<tr><td style="' + hdrStyle + '"></td>';
             cols.forEach(function(c) {
                 var label = (showHeaders && c != null && renderTex) ? renderTex(c) : '';
                 html += '<td style="' + colStyle + '">' + label + '</td>';
