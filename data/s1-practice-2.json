@@ -1,0 +1,110 @@
+{
+  "exam_id": "s1-practice-2",
+  "schema_version": "1.0",
+  "title": "S1 Practice Quiz 2: Full Mixed — Hard",
+  "subtitle": "Standards S1.a & S1.b · 7 Questions · ~35 min",
+  "time_minutes": 35,
+  "created": "2026-03-16",
+  "created_by": "FR",
+  "purpose": "Hard mixed S1 practice. S1.a with degree-4 terms and function notation. S1.b with binomial x trinomial and one box-reverse. All hard difficulty.",
+  "questions": [
+    {
+      "id": "p2q1",
+      "number": 1,
+      "section": "A",
+      "standard": "S1.a",
+      "difficulty": "hard",
+      "type": "simplify",
+      "question_html": "Let \\( f(x) = 2x^4 - 3x^3 + x^2 - 5 \\) and \\( g(x) = x^4 + 4x^3 - 2x^2 + 3x + 1 \\). Find \\( f(x) + g(x) \\). Write your answer in standard form.",
+      "inputs": [
+        { "id": "p2q1_ans", "type": "text", "label": "Answer =", "answer": "3x^4 + x^3 - x^2 + 3x - 4", "normalize": "poly" }
+      ],
+      "hint": "Line up like terms by degree: x^4, x^3, x^2, x, and constants. Add each column.",
+      "solution_html": "\\( (2+1)x^4 + (-3+4)x^3 + (1-2)x^2 + (0+3)x + (-5+1) = 3x^4 + x^3 - x^2 + 3x - 4 \\)"
+    },
+    {
+      "id": "p2q2",
+      "number": 2,
+      "section": "A",
+      "standard": "S1.a",
+      "difficulty": "hard",
+      "type": "simplify",
+      "question_html": "Let \\( f(x) = 3x^4 - 2x^3 + 5x - 8 \\) and \\( g(x) = x^4 + 3x^3 - 4x^2 + 2x - 3 \\). Find \\( f(x) - g(x) \\). Write your answer in standard form.",
+      "inputs": [
+        { "id": "p2q2_ans", "type": "text", "label": "Answer =", "answer": "2x^4 - 5x^3 + 4x^2 + 3x - 5", "normalize": "poly" }
+      ],
+      "hint": "Distribute the negative to every term of g(x). Note g(x) has no x^3 term in f(x) -- that column is just -3x^3.",
+      "solution_html": "\\( 3x^4 - 2x^3 + 5x - 8 - x^4 - 3x^3 + 4x^2 - 2x + 3 = 2x^4 - 5x^3 + 4x^2 + 3x - 5 \\)"
+    },
+    {
+      "id": "p2q3",
+      "number": 3,
+      "section": "A",
+      "standard": "S1.a",
+      "difficulty": "hard",
+      "type": "simplify",
+      "question_html": "Simplify. Write your answer in standard form.<br>\\( (5x^3 - 2x^2 + 3x - 1) - (2x^3 + x^2 - 4x + 5) + (x^3 - 3x^2 + 2) \\)",
+      "inputs": [
+        { "id": "p2q3_ans", "type": "text", "label": "Answer =", "answer": "4x^3 - 6x^2 + 7x - 4", "normalize": "poly" }
+      ],
+      "hint": "Subtract the second group first (flip all signs), then add the third. Collect by degree.",
+      "solution_html": "\\( 5x^3 - 2x^2 + 3x - 1 - 2x^3 - x^2 + 4x - 5 + x^3 - 3x^2 + 2 \\)<br>\\( = (5-2+1)x^3 + (-2-1-3)x^2 + (3+4)x + (-1-5+2) = 4x^3 - 6x^2 + 7x - 4 \\)"
+    },
+    {
+      "id": "p2q4",
+      "number": 4,
+      "section": "B",
+      "standard": "S1.b",
+      "difficulty": "hard",
+      "type": "simplify",
+      "question_html": "Multiply. Write your answer in standard form.<br>\\( (3x^2 - 2x + 1)(x + 4) \\)",
+      "inputs": [
+        { "id": "p2q4_ans", "type": "text", "label": "Answer =", "answer": "3x^3 + 10x^2 - 7x + 4", "normalize": "poly" }
+      ],
+      "hint": "Distribute x across the trinomial, then distribute 4. Combine the x^2 terms.",
+      "solution_html": "\\( 3x^3 - 2x^2 + x + 12x^2 - 8x + 4 = 3x^3 + 10x^2 - 7x + 4 \\)"
+    },
+    {
+      "id": "p2q5",
+      "number": 5,
+      "section": "B",
+      "standard": "S1.b",
+      "difficulty": "hard",
+      "type": "simplify",
+      "question_html": "Multiply. Write your answer in standard form.<br>\\( (2x^2 + x - 3)(x - 2) \\)",
+      "inputs": [
+        { "id": "p2q5_ans", "type": "text", "label": "Answer =", "answer": "2x^3 - 3x^2 - 5x + 6", "normalize": "poly" }
+      ],
+      "hint": "Distribute x across the trinomial, then distribute -2. Watch the signs.",
+      "solution_html": "\\( 2x^3 + x^2 - 3x - 4x^2 - 2x + 6 = 2x^3 - 3x^2 - 5x + 6 \\)"
+    },
+    {
+      "id": "p2q6",
+      "number": 6,
+      "section": "B",
+      "standard": "S1.b",
+      "difficulty": "hard",
+      "type": "simplify",
+      "question_html": "Multiply. Write your answer in standard form.<br>\\( (x^2 - 3x + 2)(2x + 1) \\)",
+      "inputs": [
+        { "id": "p2q6_ans", "type": "text", "label": "Answer =", "answer": "2x^3 - 5x^2 + x + 2", "normalize": "poly" }
+      ],
+      "hint": "Distribute 2x across the trinomial, then distribute 1. Combine the x^2 terms.",
+      "solution_html": "\\( 2x^3 - 6x^2 + 4x + x^2 - 3x + 2 = 2x^3 - 5x^2 + x + 2 \\)"
+    },
+    {
+      "id": "p2q7",
+      "number": 7,
+      "section": "B",
+      "standard": "S1.b",
+      "difficulty": "hard",
+      "type": "simplify",
+      "question_html": "If you are given a factor and a final product, can you puzzle out what was multiplied?<br><br>\\( (x + 4)(\\,?\\,) = x^3 + 7x^2 + 14x + 8 \\)<br><br>Find the missing factor. Write your answer in standard form.",
+      "inputs": [
+        { "id": "p2q7_ans", "type": "text", "label": "Missing factor =", "answer": "x^2 + 3x + 2", "normalize": "poly" }
+      ],
+      "hint": "Start with the x^3 term: what times x gives x^3? That is your leading term. Work down by degree.",
+      "solution_html": "\\( (x+4)(x^2+3x+2) = x^3+3x^2+2x+4x^2+12x+8 = x^3+7x^2+14x+8 \\checkmark \\)"
+    }
+  ]
+}
