@@ -1630,54 +1630,42 @@
                 '</div>';
         }).join('');
 
-        var katexUrl = base + 'shared/katex/katex.min.css';
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', katexUrl, true);
-        xhr.onload = function() { _openPrint(xhr.status === 200 ? xhr.responseText : ''); };
-        xhr.onerror = function() { _openPrint(''); };
-        xhr.send();
-
-        function _openPrint(katexCss) {
-            var html = [
-                '<!DOCTYPE html><html><head><meta charset="UTF-8">',
-                '<title>' + examData.title + '</title>',
-                '<style>' + katexCss + '</style>',
-                '<style>',
-                'body{font-family:Arial,sans-serif;max-width:720px;margin:0 auto;padding:28px;background:#fff;color:#000;font-size:11pt;}',
-                '.print-hd{text-align:center;border-bottom:2px solid #000;padding-bottom:10px;margin-bottom:6px;}',
-                '.name-row{display:flex;gap:40px;margin:10px 0 20px;font-size:10pt;}',
-                '.name-row span{flex:1;border-bottom:1px solid #000;padding-bottom:2px;}',
-                '.qcard{border:1px solid #999;border-left:4px solid #000;padding:14px 16px;margin-bottom:18px;page-break-inside:avoid;}',
-                '.qhdr{display:flex;align-items:center;gap:10px;border-bottom:1px solid #ccc;padding-bottom:6px;margin-bottom:10px;}',
-                '.qnum{font-weight:800;font-size:1em;}',
-                '.qstd{border:1px solid #999;border-radius:3px;padding:1px 6px;font-size:.78em;background:#f5f5f5;}',
-                '.qtext{margin-bottom:10px;line-height:1.8;}',
-                '.opts{margin:6px 0;}',
-                '.opt{display:flex;align-items:baseline;gap:8px;padding:8px 10px;border:1px solid #ddd;border-radius:3px;margin:5px 0;line-height:1.8;}',
-                '.bubble{display:inline-block;width:14px;height:14px;border:1.5px solid #000;border-radius:50%;flex-shrink:0;margin-top:2px;}',
-                '.blank-row{display:flex;align-items:baseline;gap:8px;margin:8px 0;}',
-                '.blank-lbl{white-space:nowrap;font-size:.9em;}',
-                '.blank-line{flex:1;border-bottom:1.5px solid #000;min-width:120px;}',
-                '.choices{font-size:.85em;color:#333;margin:2px 0 8px 8px;}',
-                '.work-area{border:1px dashed #bbb;border-radius:3px;margin-top:10px;padding:6px 8px;}',
-                '.work-lbl{font-size:.78em;color:#666;display:block;margin-bottom:4px;}',
-                '.katex{color:#000!important;display:inline-block!important;}',
-                '.katex *{color:#000!important;background:transparent!important;}',
-                '@page{margin:1.8cm;}',
-                '@media print{.qcard{page-break-inside:avoid;}}',
-                '</style>',
-                '</head><body>',
-                '<div class="print-hd"><strong>Motor City Math</strong><br>' + examData.title + '</div>',
-                '<div class="name-row"><span>Name: &nbsp;</span><span>Date: &nbsp;</span><span>Period: &nbsp;</span></div>',
-                qHtml,
-                '</body></html>'
-            ].join('');
-            var w = window.open('', '_blank', 'width=820,height=1000');
-            w.document.write(html);
-            w.document.close();
-            // Short delay for layout only — KaTeX is already pre-rendered, no JS needed
-            setTimeout(function(){ w.print(); }, 200);
-        }
+        // Open print window directly — base href makes KaTeX font paths resolve correctly
+        var w = window.open('', '_blank', 'width=820,height=1000');
+        var html = [
+            '<!DOCTYPE html><html><head><meta charset="UTF-8">',
+            '<base href="' + base + '">',
+            '<title>' + examData.title + '</title>',
+            '<link rel="stylesheet" href="shared/katex/katex.min.css">',
+            '<style>',
+            'body{font-family:Arial,sans-serif;max-width:720px;margin:0 auto;padding:28px;background:#fff;color:#000;font-size:11pt;}',
+            '.print-hd{text-align:center;border-bottom:2px solid #000;padding-bottom:10px;margin-bottom:6px;}',
+            '.name-row{display:flex;gap:40px;margin:10px 0 20px;font-size:10pt;}',
+            '.name-row span{flex:1;border-bottom:1px solid #000;padding-bottom:2px;}',
+            '.qcard{border:1px solid #999;border-left:4px solid #000;padding:14px 16px;margin-bottom:18px;page-break-inside:avoid;}',
+            '.qhdr{display:flex;align-items:center;gap:10px;border-bottom:1px solid #ccc;padding-bottom:6px;margin-bottom:10px;}',
+            '.qnum{font-weight:800;font-size:1em;}',
+            '.qstd{border:1px solid #999;border-radius:3px;padding:1px 6px;font-size:.78em;background:#f5f5f5;}',
+            '.qtext{margin-bottom:10px;line-height:1.8;}',
+            '.blank-row{display:flex;align-items:baseline;gap:8px;margin:8px 0;}',
+            '.blank-lbl{white-space:nowrap;font-size:.9em;}',
+            '.blank-line{flex:1;border-bottom:1.5px solid #000;min-width:120px;}',
+            '.work-area{border:1px dashed #bbb;border-radius:3px;margin-top:10px;padding:6px 8px;}',
+            '.work-lbl{font-size:.78em;color:#666;display:block;margin-bottom:4px;}',
+            '* {color:#000!important;background:transparent!important;}',
+            'body,p,div,span,td,th{background:#fff!important;}',
+            '@page{margin:1.8cm;}',
+            '@media print{.qcard{page-break-inside:avoid;}}',
+            '</style>',
+            '</head><body>',
+            '<div class="print-hd"><strong>Motor City Math</strong><br>' + examData.title + '</div>',
+            '<div class="name-row"><span>Name: &nbsp;</span><span>Date: &nbsp;</span><span>Period: &nbsp;</span></div>',
+            qHtml,
+            '<script>setTimeout(function(){window.print();},400);<\/script>',
+            '</body></html>'
+        ].join('');
+        w.document.write(html);
+        w.document.close();
     }
 
     /**
