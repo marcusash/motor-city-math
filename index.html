@@ -743,6 +743,12 @@
     /* ========== TEST INDEX ========== */
     function buildTestGrid() {
         var scores = getScores();
+        // Merge winter archive scores so Winter test cards show their scores
+        if (_winterArchive && _winterArchive.mcm_scores) {
+            Object.keys(_winterArchive.mcm_scores).forEach(function(k) {
+                if (!scores[k]) scores[k] = _winterArchive.mcm_scores[k];
+            });
+        }
         var grid = document.getElementById('testGrid');
         var html = '';
 
@@ -751,31 +757,25 @@
             if (t.trimester === 'spring') return;
             var s = scores[t.key];
             var scoreHtml = '';
-            var sparkHtml = '';
+            var borderColor = 'var(--accent-blue)';
             if (s) {
                 var pct;
                 if (s.attempts && s.attempts.length > 0) {
                     pct = s.attempts[s.attempts.length - 1].pct;
-                    // Build sparkline from last 5 attempts
-                    var atts = s.attempts.slice(-5);
-                    if (atts.length >= 2) {
-                        sparkHtml = buildSparkline(atts.map(function(a) { return a.pct; }));
-                    } else {
-                        sparkHtml = '<span class="sparkline-zero" aria-label="Not yet attempted"></span>';
-                    }
                 } else {
                     pct = s.pct || (s.score && s.total ? Math.round(s.score / s.total * 100) : null);
                 }
                 if (pct !== null) {
                     scoreHtml = '<span class="test-score' + (pct < 70 ? ' low' : '') + '">' + pct + '%</span>';
+                    if (pct >= 92) borderColor = 'var(--color-correct)';
+                    else if (pct >= 82) borderColor = 'var(--accent-blue)';
+                    else if (pct >= 70) borderColor = 'var(--color-warning)';
+                    else borderColor = 'var(--accent-red)';
                 }
-            } else {
-                sparkHtml = '<span class="sparkline-zero" aria-label="Not yet attempted"></span>';
             }
-            html += '<a href="' + t.file + '" class="test-link">' +
+            html += '<a href="' + t.file + '" class="test-link" style="border-left-color:' + borderColor + ';">' +
                 t.name + scoreHtml +
                 '<div class="test-meta">' + t.questions + ' questions · ' + t.unit + '</div>' +
-                sparkHtml +
                 '</a>';
         });
         grid.innerHTML = html;
@@ -937,6 +937,12 @@
 
     function buildRetakeGrid() {
         var scores = getScores();
+        // Merge winter archive scores so retake cards show their scores
+        if (_winterArchive && _winterArchive.mcm_scores) {
+            Object.keys(_winterArchive.mcm_scores).forEach(function(k) {
+                if (!scores[k]) scores[k] = _winterArchive.mcm_scores[k];
+            });
+        }
         var grid = document.getElementById('retakeGrid');
         var retakeTests = tests.filter(function(t) { return t.retake; });
         var html = '';
