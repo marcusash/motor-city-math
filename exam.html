@@ -1557,78 +1557,49 @@
             return s.replace(/\\\\/g, '\\');
         }
 
-        // Build a printable box grid as SVG with explicit lines.
-        // Draws exactly the lines needed — corner area has no lines at all.
+        // Build a printable box grid as an HTML table.
+        // HTML tables in print are well-supported — no SVG clipping edge cases.
+        // Corner cell is dark (#444). Label cells gray (#e8e8e8). Data cells white.
         // renderTex: optional function(str) -> pre-rendered KaTeX HTML for labels
         function boxGrid(cols, rows, showHeaders, renderTex) {
             var nCols = cols.length;
-            var nRows = rows.length;
             var cellW = Math.max(80, Math.floor(360 / nCols));
             var cellH = 60;
             var hdrW = 80;
-            var totalW = hdrW + nCols * cellW;
-            var totalH = (1 + nRows) * cellH;
-            var sw = '1.5'; var clr = '#000';
+            var border = '2px solid #000';
+            var cellStyle = 'width:'+cellW+'px;height:'+cellH+'px;border:'+border+';padding:4px;text-align:center;vertical-align:middle;';
+            var hdrStyle = 'width:'+hdrW+'px;height:'+cellH+'px;border:'+border+';padding:4px;text-align:center;vertical-align:middle;';
 
-            function ln(x1,y1,x2,y2){
-                return '<line x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+'" stroke="'+clr+'" stroke-width="'+sw+'"/>';
-            }
+            var html = '<table style="border-collapse:collapse;margin:12px 0;">';
 
-            var s = '';
-            // Fills drawn FIRST so border lines render on top
-            // Dark filled corner — signals "not a fillable cell" to Kai
-            s += '<rect x="0" y="0" width="'+hdrW+'" height="'+cellH+'" fill="#444" stroke="#000" stroke-width="1.5"/>';
-            // Gray label cells with explicit borders — each cell owns its stroke
-            if (showHeaders) {
-                rows.forEach(function(r, ri) {
-                    var y = cellH + ri * cellH;
-                    s += '<rect x="0" y="'+y+'" width="'+hdrW+'" height="'+cellH+'" fill="#e8e8e8" stroke="#000" stroke-width="1.5"/>';
-                });
-                cols.forEach(function(c, ci) {
-                    if (c == null) return;
-                    var x = hdrW + ci * cellW;
-                    s += '<rect x="'+x+'" y="0" width="'+cellW+'" height="'+cellH+'" fill="#e8e8e8" stroke="#000" stroke-width="1.5"/>';
-                });
-            }
-            // Top border — col header area only (NOT over the corner)
-            s += ln(hdrW, 0, totalW, 0);
-            // Left border — row header area only (NOT over the corner)
-            s += ln(0, cellH, 0, totalH);
-            // Right border — full height
-            s += ln(totalW, 0, totalW, totalH);
-            // Bottom border — full width
-            s += ln(0, totalH, totalW, totalH);
-            // Vertical separator: row-header col | data cols (full height from y=0)
-            s += ln(hdrW, 0, hdrW, totalH);
-            // Horizontal separator: col-header row | data rows (full width from x=0)
-            s += ln(0, cellH, totalW, cellH);
-            // Internal vertical separators between data columns
-            for (var c = 1; c < nCols; c++) {
-                s += ln(hdrW + c*cellW, 0, hdrW + c*cellW, totalH);
-            }
-            // Internal horizontal separators between data rows
-            for (var r = 1; r < nRows; r++) {
-                s += ln(0, cellH + r*cellH, totalW, cellH + r*cellH);
-            }
+            // Header row: corner + col headers
+            html += '<tr>';
+            html += '<td style="'+hdrStyle+'background:#444;border:'+border+';"></td>';
+            cols.forEach(function(c, ci) {
+                if (showHeaders && renderTex && c != null) {
+                    html += '<td style="'+cellStyle+'background:#e8e8e8;">'+renderTex(c)+'</td>';
+                } else {
+                    html += '<td style="'+cellStyle+'"></td>';
+                }
+            });
+            html += '</tr>';
 
-            // Labels via foreignObject (only when showHeaders)
-            if (showHeaders && renderTex) {
-                cols.forEach(function(c, ci) {
-                    if (c == null) return;
-                    var x = hdrW + ci * cellW;
-                    s += '<foreignObject x="'+x+'" y="0" width="'+cellW+'" height="'+cellH+'">';
-                    s += '<div xmlns="http://www.w3.org/1999/xhtml" style="width:100%;height:'+cellH+'px;display:flex;align-items:center;justify-content:center;">'+renderTex(c)+'</div>';
-                    s += '</foreignObject>';
+            // Data rows: row header + empty data cells
+            rows.forEach(function(r, ri) {
+                html += '<tr>';
+                if (showHeaders && renderTex) {
+                    html += '<td style="'+hdrStyle+'background:#e8e8e8;">'+renderTex(r)+'</td>';
+                } else {
+                    html += '<td style="'+hdrStyle+'"></td>';
+                }
+                cols.forEach(function() {
+                    html += '<td style="'+cellStyle+'"></td>';
                 });
-                rows.forEach(function(r, ri) {
-                    var y = cellH + ri * cellH;
-                    s += '<foreignObject x="0" y="'+y+'" width="'+hdrW+'" height="'+cellH+'">';
-                    s += '<div xmlns="http://www.w3.org/1999/xhtml" style="width:100%;height:'+cellH+'px;display:flex;align-items:center;justify-content:center;">'+renderTex(r)+'</div>';
-                    s += '</foreignObject>';
-                });
-            }
+                html += '</tr>';
+            });
 
-            return '<svg xmlns="http://www.w3.org/2000/svg" width="'+(totalW+4)+'" height="'+(totalH+4)+'" viewBox="-2 -2 '+(totalW+4)+' '+(totalH+4)+'" style="margin:12px 0;display:block;">'+s+'</svg>';
+            html += '</table>';
+            return html;
         }
 
         var qHtml = examData.questions.map(function(q) {
