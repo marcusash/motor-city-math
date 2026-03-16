@@ -40,6 +40,19 @@
         .hint-layer.show { display: block; }
         /* Graph */
         .graph-container { text-align: center; margin: 12px 0; position: relative; }
+        /* Box Method Grid */
+        .box-grid-wrap { margin: 14px 0 8px; overflow-x: auto; }
+        .box-grid { border-collapse: collapse; margin: 0 auto; }
+        .box-grid th, .box-grid td { border: 2px solid var(--accent-navy); min-width: 64px; min-height: 52px; text-align: center; padding: 6px 8px; }
+        .box-corner { background: var(--bg-page); border: none !important; }
+        .box-header { background: var(--bg-highlight); font-weight: 700; color: var(--accent-navy); font-size: var(--text-base); }
+        .box-header-unknown { color: var(--text-secondary); font-weight: 400; font-style: italic; }
+        .box-cell { background: var(--bg-card); vertical-align: middle; }
+        .box-cell-scratch { background: var(--bg-card); }
+        .box-input { width: 80px; border: 1px solid var(--border-default); border-radius: 4px; padding: 4px 6px; font-size: var(--text-sm); background: var(--bg-input); color: var(--text-primary); text-align: center; }
+        .box-input:focus { outline: 2px solid var(--accent-blue); border-color: var(--accent-blue); }
+        .box-reverse-stmt { text-align: center; font-size: var(--text-base); margin-bottom: 10px; color: var(--text-primary); }
+
         .graph-container canvas { border: 1px solid var(--border-default); border-radius: 4px; max-width: 100%; cursor: crosshair; }
         .graph-controls { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin: 8px 0; }
         .graph-btn { padding: 6px 14px; border: 1px solid var(--border-default); border-radius: 6px; background: var(--bg-input); color: var(--text-primary); cursor: pointer; font-size: var(--text-sm); font-weight: 600; }
@@ -482,8 +495,20 @@
                 html += renderGraph(q);
             }
 
-            // Input fields
+            // Box method grid (if present)
+            if (q.type === 'box' && q.box) {
+                html += renderBoxGrid(q);
+            } else if (q.type === 'box-reverse' && q.box) {
+                html += renderBoxReverse(q);
+            }
+
+            // Input fields — skip cell inputs for box questions (already rendered in grid)
+            var skipIds = {};
+            if ((q.type === 'box' || q.type === 'box-reverse') && q.box && q.box.cells) {
+                (q.box.cells || []).forEach(function(c) { skipIds[c.input_id] = true; });
+            }
             (q.inputs || []).forEach(function(inp) {
+                if (skipIds[inp.id]) return;
                 html += renderInput(inp, q);
             });
 
@@ -552,6 +577,79 @@
             html += '<input type="text" id="' + inp.id + '" aria-describedby="feedback-' + (q ? q.id : inp.id) + '" style="width:' + txtWidth + ';" autocomplete="off"' + txtPlaceholder + '>';
             html += '</div>';
         }
+        return html;
+    }
+
+    /* --- Box Method Renderer --- */
+    function renderBoxGrid(q) {
+        var b = q.box;
+        var cols = b.cols, rows = b.rows;
+        var cellMap = {};
+        (b.cells || []).forEach(function(c) { cellMap[c.row + ',' + c.col] = c.input_id; });
+
+        var html = '<div class="box-grid-wrap">';
+        html += '<table class="box-grid" role="presentation">';
+
+        // Header row: empty corner + one th per col
+        html += '<tr><th class="box-corner"></th>';
+        cols.forEach(function(c) {
+            html += '<th class="box-header">\\(' + c + '\\)</th>';
+        });
+        html += '</tr>';
+
+        // Data rows
+        rows.forEach(function(r, ri) {
+            html += '<tr>';
+            html += '<th class="box-header">\\(' + r + '\\)</th>';
+            cols.forEach(function(c, ci) {
+                var inputId = cellMap[ri + ',' + ci];
+                var inp = (q.inputs || []).find(function(i) { return i.id === inputId; });
+                html += '<td class="box-cell">';
+                if (inp) {
+                    html += '<input type="text" id="' + inp.id + '" class="box-input" autocomplete="off" placeholder="?"' +
+                        ' aria-label="Row ' + r + ' Col ' + c + '">';
+                }
+                html += '</td>';
+            });
+            html += '</tr>';
+        });
+
+        html += '</table></div>';
+        return html;
+    }
+
+    function renderBoxReverse(q) {
+        var b = q.box;
+        var knownFactor = b.known_factor || [];
+        var degree = b.missing_factor_degree || 1;
+        var numCols = degree + 1;
+
+        var html = '<div class="box-grid-wrap">';
+        // Show the problem: (known)(?) = product
+        html += '<div class="box-reverse-stmt">';
+        html += '\\((' + knownFactor.join('') + ')\\) &times; <strong>(?)</strong> = \\(' + b.product + '\\)';
+        html += '</div>';
+
+        html += '<table class="box-grid" role="presentation">';
+
+        // Header row: empty corner + blank cells (student figures out top headers)
+        html += '<tr><th class="box-corner"></th>';
+        for (var ci = 0; ci < numCols; ci++) {
+            html += '<th class="box-header box-header-unknown">?</th>';
+        }
+        html += '</tr>';
+
+        // Known factor rows (pre-filled, not editable)
+        knownFactor.forEach(function(term) {
+            html += '<tr>';
+            html += '<th class="box-header">\\(' + term + '\\)</th>';
+            for (var ci2 = 0; ci2 < numCols; ci2++) {
+                html += '<td class="box-cell box-cell-scratch"></td>';
+            }
+            html += '</tr>';
+        });
+
+        html += '</table></div>';
         return html;
     }
 
