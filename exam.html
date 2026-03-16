@@ -1557,9 +1557,9 @@
             return s.replace(/\\\\/g, '\\');
         }
 
-        // Build a printable box grid table
-        // showHeaders: if true, render factor terms in headers; if false, all header cells are blank
-        function boxGrid(cols, rows, showHeaders) {
+        // Build a printable box grid table.
+        // renderTex: optional function(str) -> pre-rendered HTML for header labels
+        function boxGrid(cols, rows, showHeaders, renderTex) {
             var nCols = cols.length;
             var nRows = rows.length;
             var cellW = Math.max(72, Math.floor(400 / nCols));
@@ -1571,15 +1571,13 @@
             var html = '<table style="' + css + '"><thead><tr>';
             html += '<td style="' + cornerStyle + '"></td>';
             cols.forEach(function(c, ci) {
-                var label = (showHeaders && c != null) ? ('\\(' + c + '\\)') : '';
-                // First col header: no left border (shares edge with invisible corner)
+                var label = (showHeaders && c != null && renderTex) ? renderTex(c) : '';
                 var extra = ci === 0 ? 'border-left:none;' : '';
                 html += '<th style="' + blankHeaderStyle + extra + '">' + label + '</th>';
             });
             html += '</tr></thead><tbody>';
             rows.forEach(function(r, ri) {
-                var rowLabel = showHeaders ? ('\\(' + r + '\\)') : '';
-                // First row header: no top border (shares edge with invisible corner)
+                var rowLabel = (showHeaders && renderTex) ? renderTex(r) : '';
                 var extra = ri === 0 ? 'border-top:none;' : '';
                 html += '<tr><th style="' + blankHeaderStyle + extra + '">' + rowLabel + '</th>';
                 for (var c = 0; c < nCols; c++) {
@@ -1594,27 +1592,39 @@
         var qHtml = examData.questions.map(function(q) {
             var inputHtml = '';
 
+            // Grab already-rendered question text from the live DOM (KaTeX already ran here)
+            var card = document.getElementById('card-' + q.id);
+            var qtextEl = card ? card.querySelector('.question-text') : null;
+            var renderedQText = qtextEl ? qtextEl.innerHTML : (q.question_html || '');
+
+            // Helper: render a LaTeX string using the already-loaded katex instance
+            function renderTex(s) {
+                if (!s) return '';
+                try { return katex.renderToString(s, { throwOnError: false, displayMode: false }); }
+                catch(e) { return s; }
+            }
+
             if (q.type === 'box' && q.box) {
                 // All headers blank: Kai writes in the factor terms himself, then fills cells
-                inputHtml = boxGrid(q.box.cols, q.box.rows, false);
+                inputHtml = boxGrid(q.box.cols, q.box.rows, false, renderTex);
                 inputHtml += '<div class="blank-row" style="margin-top:10px;"><span class="blank-lbl">Final Answer =</span><span class="blank-line"></span></div>';
             } else if (q.type === 'box-reverse' && q.box) {
                 // Known factor shown on left; top headers blank (find the missing factor)
                 var topCols = (q.box.partial_top || []).map(function(c) { return c || null; });
-                inputHtml = boxGrid(topCols, q.box.known_factor, true);
+                inputHtml = boxGrid(topCols, q.box.known_factor, true, renderTex);
                 inputHtml += '<div class="blank-row" style="margin-top:10px;"><span class="blank-lbl">Missing factor =</span><span class="blank-line"></span></div>';
             } else {
                 inputHtml = q.inputs.map(function(inp) {
                     if (inp.type === 'radio') {
                         return '<div class="blank-row"><span class="blank-lbl">Answer</span><span class="blank-line"></span></div>';
                     }
-                    return '<div class="blank-row"><span class="blank-lbl">' + tex(inp.label || 'Answer') + '</span><span class="blank-line"></span></div>';
+                    return '<div class="blank-row"><span class="blank-lbl">' + (inp.label || 'Answer') + '</span><span class="blank-line"></span></div>';
                 }).join('');
             }
 
             return '<div class="qcard">' +
                 '<div class="qhdr"><span class="qnum">Question ' + q.number + '</span><span class="qstd">' + q.standard + '</span></div>' +
-                '<div class="qtext">' + tex(q.question_html) + '</div>' +
+                '<div class="qtext">' + renderedQText + '</div>' +
                 inputHtml +
                 '<div class="work-area" style="min-height:120px;"><span class="work-lbl">Show your work:</span></div>' +
                 '</div>';
@@ -1660,20 +1670,13 @@
                 '<div class="print-hd"><strong>Motor City Math</strong><br>' + examData.title + '</div>',
                 '<div class="name-row"><span>Name: &nbsp;</span><span>Date: &nbsp;</span><span>Period: &nbsp;</span></div>',
                 qHtml,
-                '<script src="' + base + 'shared/katex/katex.min.js"><\/script>',
-                '<script src="' + base + 'shared/katex/auto-render.min.js"><\/script>',
-                '<script>',
-                'renderMathInElement(document.body,{delimiters:[',
-                '{left:"\\\\(",right:"\\\\)",display:false},',
-                '{left:"\\\\[",right:"\\\\]",display:true}',
-                '],throwOnError:false});',
-                'setTimeout(function(){window.print();},800);',
-                '<\/script>',
                 '</body></html>'
             ].join('');
             var w = window.open('', '_blank', 'width=820,height=1000');
             w.document.write(html);
             w.document.close();
+            // Short delay for layout only — KaTeX is already pre-rendered, no JS needed
+            setTimeout(function(){ w.print(); }, 200);
         }
     }
 
