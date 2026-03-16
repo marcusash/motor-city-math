@@ -48,6 +48,8 @@
         .box-header { background: var(--bg-highlight); font-weight: 700; color: var(--accent-navy); font-size: var(--text-base); }
         .box-header-unknown { color: var(--text-secondary); font-weight: 400; font-style: italic; }
         .box-cell { background: var(--bg-card); vertical-align: middle; }
+        .box-header-input { background: var(--bg-highlight); padding: 4px; }
+        .box-header-input .box-input { width: 70px; text-align: center; }
         .box-cell-scratch { background: var(--bg-card); }
         .box-input { width: 80px; border: 1px solid var(--border-default); border-radius: 4px; padding: 4px 6px; font-size: var(--text-sm); background: var(--bg-input); color: var(--text-primary); text-align: center; }
         .box-input:focus { outline: 2px solid var(--accent-blue); border-color: var(--accent-blue); }
@@ -626,26 +628,28 @@
         var partialTop = b.partial_top || [];
 
         var html = '<div class="box-grid-wrap">';
-
         html += '<table class="box-grid" role="presentation">';
 
-        // Header row: empty corner + top headers (pre-filled or blank)
+        // Header row: empty corner + top header cells
+        // partial_top[i] = pre-filled static label; null = editable input
         html += '<tr><th class="box-corner"></th>';
         for (var ci = 0; ci < numCols; ci++) {
             if (partialTop[ci]) {
                 html += '<th class="box-header">\\(' + partialTop[ci] + '\\)</th>';
             } else {
-                html += '<th class="box-header box-header-unknown">?</th>';
+                var hId = q.id + '_top' + ci;
+                html += '<th class="box-header box-header-input"><input type="text" id="' + hId + '" class="box-input" autocomplete="off" placeholder="?" aria-label="Top header ' + (ci + 1) + '"></th>';
             }
         }
         html += '</tr>';
 
-        // Known factor rows (pre-filled, not editable)
-        knownFactor.forEach(function(term) {
+        // Known factor rows: pre-filled left headers + editable interior cells
+        knownFactor.forEach(function(term, ri) {
             html += '<tr>';
             html += '<th class="box-header">\\(' + term + '\\)</th>';
             for (var ci2 = 0; ci2 < numCols; ci2++) {
-                html += '<td class="box-cell box-cell-scratch"></td>';
+                var cellId = q.id + '_r' + ri + 'c' + ci2;
+                html += '<td class="box-cell"><input type="text" id="' + cellId + '" class="box-input" autocomplete="off" placeholder="?" aria-label="Row ' + term + ' col ' + (ci2 + 1) + '"></td>';
             }
             html += '</tr>';
         });
