@@ -623,19 +623,20 @@
         var knownFactor = b.known_factor || [];
         var degree = b.missing_factor_degree || 1;
         var numCols = degree + 1;
+        var partialTop = b.partial_top || [];
 
         var html = '<div class="box-grid-wrap">';
-        // Show the problem: (known)(?) = product
-        html += '<div class="box-reverse-stmt">';
-        html += '\\((' + knownFactor.join('') + ')\\) &times; <strong>(?)</strong> = \\(' + b.product + '\\)';
-        html += '</div>';
 
         html += '<table class="box-grid" role="presentation">';
 
-        // Header row: empty corner + blank cells (student figures out top headers)
+        // Header row: empty corner + top headers (pre-filled or blank)
         html += '<tr><th class="box-corner"></th>';
         for (var ci = 0; ci < numCols; ci++) {
-            html += '<th class="box-header box-header-unknown">?</th>';
+            if (partialTop[ci]) {
+                html += '<th class="box-header">\\(' + partialTop[ci] + '\\)</th>';
+            } else {
+                html += '<th class="box-header box-header-unknown">?</th>';
+            }
         }
         html += '</tr>';
 
