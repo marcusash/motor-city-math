@@ -27,14 +27,14 @@
       "number": 2,
       "section": "A",
       "standard": "S1.a",
-      "difficulty": "medium",
+      "difficulty": "hard",
       "type": "simplify",
-      "question_html": "Let \\( f(x) = 5x^2 + 2x - 4 \\) and \\( g(x) = -3x^2 + 4x + 1 \\). Find \\( f(x) - g(x) \\). Write your answer in standard form.",
+      "question_html": "Subtract. Write your answer in standard form.<br>\\( (2x^3 - x^2 + 4) - (x^3 + 3x^2 - 2x + 1) \\)",
       "inputs": [
-        { "id": "p1q2_ans", "type": "text", "label": "Answer =", "answer": "8x^2 - 2x - 5", "normalize": "poly" }
+        { "id": "p1q2_ans", "type": "text", "label": "Answer =", "answer": "x^3 - 4x^2 + 2x + 3", "normalize": "poly" }
       ],
-      "hint": "Distribute the negative to every term of g(x). Watch the double negative: -(-3x^2) = +3x^2.",
-      "solution_html": "\\( 5x^2 + 2x - 4 - (-3x^2 + 4x + 1) = 5x^2 + 2x - 4 + 3x^2 - 4x - 1 = 8x^2 - 2x - 5 \\)"
+      "hint": "Flip the sign on every term being subtracted: -(x^3 + 3x^2 - 2x + 1) = -x^3 - 3x^2 + 2x - 1.",
+      "solution_html": "\\( 2x^3 - x^2 + 4 - x^3 - 3x^2 + 2x - 1 = x^3 - 4x^2 + 2x + 3 \\)"
     },
     {
       "id": "p1q3",
@@ -43,12 +43,12 @@
       "standard": "S1.a",
       "difficulty": "hard",
       "type": "simplify",
-      "question_html": "Subtract. Write your answer in standard form.<br>\\( (2x^3 - x^2 + 4) - (x^3 + 3x^2 - 2x + 1) \\)",
+      "question_html": "Let \\( f(x) = 5x^2 + 2x - 4 \\), \\( g(x) = -3x^2 + 4x + 1 \\), and \\( h(x) = x^2 - x + 6 \\).<br>Find \\( f(x) - (g(x) + h(x)) \\). Write your answer in standard form.",
       "inputs": [
-        { "id": "p1q3_ans", "type": "text", "label": "Answer =", "answer": "x^3 - 4x^2 + 2x + 3", "normalize": "poly" }
+        { "id": "p1q3_ans", "type": "text", "label": "Answer =", "answer": "7x^2 - x - 11", "normalize": "poly" }
       ],
-      "hint": "Flip the sign on every term being subtracted: -(x^3 + 3x^2 - 2x + 1) = -x^3 - 3x^2 + 2x - 1.",
-      "solution_html": "\\( 2x^3 - x^2 + 4 - x^3 - 3x^2 + 2x - 1 = x^3 - 4x^2 + 2x + 3 \\)"
+      "hint": "First find g(x) + h(x), then subtract the whole result from f(x). The parentheses mean every term of (g+h) gets negated.",
+      "solution_html": "\\( g(x) + h(x) = -2x^2 + 3x + 7 \\)<br>\\( f(x) - (-2x^2 + 3x + 7) = 5x^2 + 2x - 4 + 2x^2 - 3x - 7 = 7x^2 - x - 11 \\)"
     },
     {
       "id": "p1q4",
