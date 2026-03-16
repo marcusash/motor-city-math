@@ -1558,42 +1558,45 @@
         }
 
         // Build a printable box grid as an HTML table.
-        // HTML tables in print are well-supported — no SVG clipping edge cases.
-        // Corner cell is dark (#444). Label cells gray (#e8e8e8). Data cells white.
-        // renderTex: optional function(str) -> pre-rendered KaTeX HTML for labels
+        // Corner is truly invisible: border:none on corner, border-left:none on first col header,
+        // border-top:none on first row label. With border-collapse, those shared edges vanish.
         function boxGrid(cols, rows, showHeaders, renderTex) {
             var nCols = cols.length;
             var cellW = Math.max(80, Math.floor(360 / nCols));
             var cellH = 60;
             var hdrW = 80;
-            var border = '2px solid #000';
-            var cellStyle = 'width:'+cellW+'px;height:'+cellH+'px;border:'+border+';padding:4px;text-align:center;vertical-align:middle;';
-            var hdrStyle = 'width:'+hdrW+'px;height:'+cellH+'px;border:'+border+';padding:4px;text-align:center;vertical-align:middle;';
+            var B = '2px solid #000';
+
+            function td(w, h, bStyle, bg, content) {
+                return '<td style="width:'+w+'px;height:'+h+'px;padding:4px;text-align:center;vertical-align:middle;'+bStyle+(bg?'background:'+bg+';':'')+'">'+content+'</td>';
+            }
 
             var html = '<table style="border-collapse:collapse;margin:12px 0;">';
 
-            // Header row: corner + col headers
+            // Header row: invisible corner + col headers
             html += '<tr>';
-            html += '<td style="width:'+hdrW+'px;height:'+cellH+'px;border:none;background:#444;"></td>';
+            html += td(hdrW, cellH, 'border:none;', null, ''); // corner — invisible
             cols.forEach(function(c, ci) {
-                if (showHeaders && renderTex && c != null) {
-                    html += '<td style="'+cellStyle+'background:#e8e8e8;">'+renderTex(c)+'</td>';
-                } else {
-                    html += '<td style="'+cellStyle+'"></td>';
-                }
+                // First col header: no left border (shared edge with invisible corner)
+                var bl = (ci === 0) ? 'none' : B;
+                var bs = 'border-top:'+B+';border-right:'+B+';border-bottom:'+B+';border-left:'+bl+';';
+                var label = (showHeaders && renderTex && c != null) ? renderTex(c) : '';
+                var bg = (showHeaders && c != null) ? '#e8e8e8' : null;
+                html += td(cellW, cellH, bs, bg, label);
             });
             html += '</tr>';
 
-            // Data rows: row header + empty data cells
+            // Data rows
             rows.forEach(function(r, ri) {
                 html += '<tr>';
-                if (showHeaders && renderTex) {
-                    html += '<td style="'+hdrStyle+'background:#e8e8e8;">'+renderTex(r)+'</td>';
-                } else {
-                    html += '<td style="'+hdrStyle+'"></td>';
-                }
+                // First row label: no top border on ri=0 (shared edge with invisible corner)
+                var bt = (ri === 0) ? 'none' : B;
+                var bs = 'border-top:'+bt+';border-right:'+B+';border-bottom:'+B+';border-left:'+B+';';
+                var label = (showHeaders && renderTex) ? renderTex(r) : '';
+                var bg = showHeaders ? '#e8e8e8' : null;
+                html += td(hdrW, cellH, bs, bg, label);
                 cols.forEach(function() {
-                    html += '<td style="'+cellStyle+'"></td>';
+                    html += td(cellW, cellH, 'border:'+B+';', null, '');
                 });
                 html += '</tr>';
             });
