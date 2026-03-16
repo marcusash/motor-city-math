@@ -1567,7 +1567,7 @@
             var css = 'border-collapse:collapse;margin:12px 0;';
             var blankHeaderStyle = 'border:1.5px solid #000;min-width:' + cellW + 'px;height:' + cellH + 'px;background:#f0f0f0;';
             var tdStyle = 'border:1.5px solid #000;min-width:' + cellW + 'px;height:' + cellH + 'px;';
-            var cornerStyle = 'border:1.5px solid #000;min-width:56px;height:' + cellH + 'px;background:#e0e0e0;';
+            var cornerStyle = 'min-width:56px;height:' + cellH + 'px;border:none;background:transparent;';
             var html = '<table style="' + css + '"><thead><tr>';
             html += '<td style="' + cornerStyle + '"></td>';
             cols.forEach(function(c) {
