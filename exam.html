@@ -1745,6 +1745,11 @@
         html += '<div class="saas-grade ' + gradeClass + '">Grade ' + grade + '</div>';
         html += '<p style="margin-top:12px; color:var(--text-secondary); font-size:var(--text-sm);">' + coachMsg + '</p>';
 
+        // Always-visible: Send to Dad button right on scorecard
+        html += '<div style="margin-top:14px;">';
+        html += '<button class="nav-btn primary" onclick="sendToDad()" style="font-size:1em;padding:12px 28px;"><span aria-hidden="true">📧</span> Send to Dad</button>';
+        html += '</div>';
+
         // Phase 1 CTA: See Your Game Plan (progressive disclosure)
         html += '<button id="gameplanBtn" class="btn-secondary" aria-expanded="false" onclick="revealGamePlan()"><span aria-hidden="true">📋</span> See Your Game Plan</button>';
 
@@ -1774,8 +1779,7 @@
             // Real exam: single forward-momentum CTA
             html += '<div style="margin-top:16px;"><a href="index.html" class="nav-btn primary" style="text-decoration:none;"><span aria-hidden="true">📊</span> See the Board</a></div>';
             html += '<div style="margin-top:10px;">';
-            html += '<button class="nav-btn ghost" onclick="sendToDad()"><span aria-hidden="true">📤</span> Send to Dad</button>';
-            html += ' <button class="nav-btn ghost" onclick="window.print()" style="margin-left:8px;"><span aria-hidden="true">🖨️</span> Print Results</button>';
+            html += '<button class="nav-btn ghost" onclick="window.print()" style="margin-left:8px;"><span aria-hidden="true">🖨️</span> Print Results</button>';
             html += '</div>';
             if (grade < 3) {
                 html += '<p style="margin-top:10px; color:var(--text-secondary); font-size:var(--text-sm);">Score locked. Study the hints above, then hit the practice tests. 💪</p>';
