@@ -453,7 +453,6 @@
         </div>
 
         <!-- Winter History (collapsed, loaded from GitHub) -->
-        <div id="winterHistoryContainer"></div>
 
         <!-- Last 2 Tests -->
         <span class="slabel" id="last2Label" style="display:none;">Last 2 Tests</span>
@@ -472,9 +471,10 @@
             <div class="test-grid" id="springGrid"></div>
         </details>
 
-        <!-- Winter 2025-26 (collapsed) -->
+        <!-- Winter 2025-26 (collapsed, chart injected by buildWinterHistory) -->
         <details class="dash-section" id="winterSection">
-            <summary class="section-title">🏆 Winter 2025-26</summary>
+            <summary class="section-title" id="winterSummaryEl">🏆 Winter 2025-26</summary>
+            <div id="winterChartContainer" style="margin: 4px 0 12px;"></div>
             <div class="test-grid" id="retakeGrid"></div>
             <div class="test-grid" id="testGrid" style="margin-top:12px;"></div>
         </details>
@@ -516,48 +516,18 @@
     var _scoreParseError = null;
 
     /* ========== SCORE CHART (FD SVG design) ========== */
-    function buildChart() {
-        var container = document.getElementById('trendChartContainer');
+    function renderTrendChart(container, pts) {
         if (!container) return;
-        var scores = getScores();
-
-        // Only show Spring tests on the active chart
-        var raw = [];
-        tests.filter(function(t) { return t.trimester === 'spring'; }).forEach(function(t) {
-            var s = scores[t.key];
-            if (!s) return;
-            var att = s.attempts || (s.pct ? [s] : []);
-            if (!att[0]) return;
-            var fa = att[0].pct || Math.round(att[0].score / att[0].total * 100);
-            var rib = att[1] ? (att[1].pct || Math.round(att[1].score / att[1].total * 100)) : null;
-            var ts = att[0].timestamp ? new Date(att[0].timestamp).getTime() : 0;
-            var dateStr = att[0].timestamp
-                ? new Date(att[0].timestamp).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
-                : null;
-            // Short label for x-axis: UT# = unit tests, RP# = retake practice, F# = finals
-            var short = t.name.replace(/^[\u{1F000}-\u{1FFFF}\u{2600}-\u{27FF}\uFE0F\s]+/u, '').trim()
-                .replace('Retake Practice #', 'RP').replace(/ \(.*\)$/, '');
-            if (short.indexOf('Nonlinear') !== -1) short = 'UT1';
-            if (short.indexOf('Finals Prep 1') !== -1) short = 'FP1';
-            if (short.indexOf('Finals Prep 2') !== -1) short = 'FP2';
-            if (short.indexOf('Finals Prep 3') !== -1) short = 'FP3';
-            if (short.indexOf('Miss Drill') !== -1) short = 'MD';
-            raw.push({ label: short, sublabel: dateStr, fa: fa, rib: rib, ts: ts });
-        });
-        // Sort by timestamp ascending (chronological left-to-right)
-        raw.sort(function(a, b) { return a.ts - b.ts; });
-        var pts = raw;
-
         if (pts.length === 0) {
             container.innerHTML = '<div class="trend-empty">🏀 Complete your first test to see your progress</div>';
             return;
         }
 
-        // Coordinate math
+        // Coordinate math — single point goes far LEFT, not center
         var n = pts.length;
         var xL = 50, xR = 490;
         var xs = pts.map(function(_, i) {
-            return n === 1 ? (xL + xR) / 2 : xL + i * (xR - xL) / (n - 1);
+            return n === 1 ? xL : xL + i * (xR - xL) / (n - 1);
         });
         function yPt(s) {
             var clamped = Math.min(100, Math.max(40, s));
@@ -633,7 +603,56 @@
             faDots + rightLabels + xLabels +
             '</svg>';
     }
-    /* ========== STANDARDS ========== */
+
+    function buildChart() {
+        var scores = getScores();
+        var raw = [];
+        tests.filter(function(t) { return t.trimester === 'spring'; }).forEach(function(t) {
+            var s = scores[t.key];
+            if (!s) return;
+            var att = s.attempts || (s.pct ? [s] : []);
+            if (!att[0]) return;
+            var fa = att[0].pct || Math.round(att[0].score / att[0].total * 100);
+            var ts = att[0].timestamp ? new Date(att[0].timestamp).getTime() : 0;
+            var dateStr = att[0].timestamp
+                ? new Date(att[0].timestamp).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
+                : null;
+            var short = t.name.replace(/^[\u{1F000}-\u{1FFFF}\u{2600}-\u{27FF}\uFE0F\s]+/u, '').trim()
+                .replace('Retake Practice #', 'RP').replace(/ \(.*\)$/, '');
+            if (short.indexOf('Quiz Prep') !== -1) short = short.replace('Quiz Prep', 'QP');
+            raw.push({ label: short, sublabel: dateStr, fa: fa, ts: ts });
+        });
+        raw.sort(function(a, b) { return a.ts - b.ts; });
+        renderTrendChart(document.getElementById('trendChartContainer'), raw);
+    }
+
+    function buildWinterHistory() {
+        if (!_winterArchive) return;
+        var scores = _winterArchive.mcm_scores || {};
+        var winterTests = tests.filter(function(t) { return t.trimester === 'winter'; });
+        var raw = [];
+        winterTests.forEach(function(t) {
+            var s = scores[t.key];
+            if (!s) return;
+            var att = s.attempts && s.attempts[0];
+            if (!att) return;
+            var fa = att.pct || Math.round(att.score / att.total * 100);
+            var ts = att.timestamp ? new Date(att.timestamp).getTime() : 0;
+            var dateStr = att.timestamp
+                ? new Date(att.timestamp).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
+                : null;
+            var short = t.name.replace(/^[\u{1F000}-\u{1FFFF}\u{2600}-\u{27FF}\uFE0F\s]+/u, '').trim()
+                .replace('Retake Practice #', 'RP').replace(/ \(.*\)$/, '');
+            if (short.indexOf('Nonlinear') !== -1) short = 'UT1';
+            if (short.indexOf('Finals Prep 1') !== -1) short = 'FP1';
+            if (short.indexOf('Finals Prep 2') !== -1) short = 'FP2';
+            if (short.indexOf('Finals Prep 3') !== -1) short = 'FP3';
+            if (short.indexOf('Miss Drill') !== -1) short = 'MD';
+            raw.push({ label: short, sublabel: dateStr, fa: fa, ts: ts });
+        });
+        raw.sort(function(a, b) { return a.ts - b.ts; });
+        renderTrendChart(document.getElementById('winterChartContainer'), raw);
+    }
     function buildStandards() {
         var scores = getScores();
         var stdData = {};
@@ -1038,45 +1057,6 @@
         buildLast2Tests();
         buildProgressStory();
         buildWinterHistory();
-    }
-
-    function buildWinterHistory() {
-        var container = document.getElementById('winterHistoryContainer');
-        if (!container) return;
-        if (!_winterArchive) { container.innerHTML = ''; return; }
-
-        var s = _winterArchive.summary || {};
-        var label = _winterArchive.unit || 'Winter 2025-26';
-        var avg = s.avg_pct != null ? s.avg_pct + '%' : '--';
-        var best = s.best_pct != null ? s.best_pct + '%' : '--';
-        var exams = s.exams != null ? s.exams + ' exams' : '';
-
-        // Build mini score rows from mcm_scores
-        var scores = _winterArchive.mcm_scores || {};
-        var rows = Object.keys(scores).map(function(k) {
-            var entry = scores[k];
-            var att = entry.attempts && entry.attempts[0];
-            if (!att) return null;
-            var short = k.replace('mcm-', '').replace(/-/g, ' ');
-            return { label: short, pct: att.pct, grade: att.grade, ts: att.timestamp ? new Date(att.timestamp).getTime() : 0 };
-        }).filter(Boolean).sort(function(a, b) { return a.ts - b.ts; });
-
-        var rowsHtml = rows.map(function(r) {
-            var color = r.pct >= 92 ? '#3FB950' : r.pct >= 80 ? '#d29922' : '#F85149';
-            return '<div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid rgba(255,255,255,.05);font-size:.8em;">' +
-                '<span style="color:#94a3b8;text-transform:capitalize;">' + r.label + '</span>' +
-                '<span style="color:' + color + ';font-weight:700;">' + r.pct + '%</span></div>';
-        }).join('');
-
-        container.innerHTML =
-            '<details class="winter-history-details">' +
-            '<summary>' +
-            '<span class="wh-arrow">▶</span>' +
-            '<span class="wh-title">🏆 ' + label + '</span>' +
-            '<span class="wh-stats">Avg ' + avg + ' &nbsp;·&nbsp; Best ' + best + ' &nbsp;·&nbsp; ' + exams + '</span>' +
-            '</summary>' +
-            '<div class="winter-history-inner">' + rowsHtml + '</div>' +
-            '</details>';
     }
 
     /* ========== PROGRESS STORY (sw-11) ========== */
