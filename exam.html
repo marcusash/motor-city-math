@@ -1577,17 +1577,17 @@
             var s = '';
             // Fills drawn FIRST so border lines render on top
             // Dark filled corner — signals "not a fillable cell" to Kai
-            s += '<rect x="0" y="0" width="'+hdrW+'" height="'+cellH+'" fill="#444"/>';
-            // Gray label fills (box-reverse only — built before lines so borders show)
+            s += '<rect x="0" y="0" width="'+hdrW+'" height="'+cellH+'" fill="#444" stroke="#000" stroke-width="1.5"/>';
+            // Gray label cells with explicit borders — each cell owns its stroke
             if (showHeaders) {
                 rows.forEach(function(r, ri) {
                     var y = cellH + ri * cellH;
-                    s += '<rect x="0" y="'+y+'" width="'+hdrW+'" height="'+cellH+'" fill="#e8e8e8"/>';
+                    s += '<rect x="0" y="'+y+'" width="'+hdrW+'" height="'+cellH+'" fill="#e8e8e8" stroke="#000" stroke-width="1.5"/>';
                 });
                 cols.forEach(function(c, ci) {
                     if (c == null) return;
                     var x = hdrW + ci * cellW;
-                    s += '<rect x="'+x+'" y="0" width="'+cellW+'" height="'+cellH+'" fill="#e8e8e8"/>';
+                    s += '<rect x="'+x+'" y="0" width="'+cellW+'" height="'+cellH+'" fill="#e8e8e8" stroke="#000" stroke-width="1.5"/>';
                 });
             }
             // Top border — col header area only (NOT over the corner)
