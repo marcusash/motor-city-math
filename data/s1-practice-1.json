@@ -2,25 +2,25 @@
   "exam_id": "s1-practice-1",
   "schema_version": "1.0",
   "title": "S1 Practice Quiz 1: Add & Subtract Focus",
-  "subtitle": "Standards S1.a & S1.b · 7 Questions · ~30 min",
-  "time_minutes": 30,
+  "subtitle": "Standards S1.a & S1.b · 8 Questions · ~35 min",
+  "time_minutes": 35,
   "created": "2026-03-16",
   "created_by": "FR",
-  "purpose": "Practice quiz targeting Kai's weakness: negative sign distribution in polynomial subtraction. 5 S1.a questions (2 targeting the Q3 pattern), 2 S1.b to keep multiply sharp.",
+  "purpose": "Practice quiz targeting Kai's weakness: negative sign distribution in polynomial subtraction. 4 S1.a hard questions, 2 S1.b simplify, 1 S1.b box, 1 S1.b box-reverse.",
   "questions": [
     {
       "id": "p1q1",
       "number": 1,
       "section": "A",
       "standard": "S1.a",
-      "difficulty": "medium",
+      "difficulty": "hard",
       "type": "simplify",
-      "question_html": "Subtract the polynomials. Write your answer in standard form.<br>\\( (4x^2 - 3x + 7) - (2x^2 - 5x + 3) \\)",
+      "question_html": "Subtract. Write your answer in standard form.<br>\\( (2x^3 - x^2 + 4) - (x^3 + 3x^2 - 2x + 1) \\)",
       "inputs": [
-        { "id": "p1q1_ans", "type": "text", "label": "Answer =", "answer": "2x^2 + 2x + 4", "normalize": "poly" }
+        { "id": "p1q1_ans", "type": "text", "label": "Answer =", "answer": "x^3 - 4x^2 + 2x + 3", "normalize": "poly" }
       ],
-      "hint": "Distribute the negative to every term in the second polynomial: -(2x^2 - 5x + 3) = -2x^2 + 5x - 3.",
-      "solution_html": "\\( 4x^2 - 3x + 7 - 2x^2 + 5x - 3 = 2x^2 + 2x + 4 \\)"
+      "hint": "Flip the sign on every term being subtracted: -(x^3 + 3x^2 - 2x + 1) = -x^3 - 3x^2 + 2x - 1.",
+      "solution_html": "\\( 2x^3 - x^2 + 4 - x^3 - 3x^2 + 2x - 1 = x^3 - 4x^2 + 2x + 3 \\)"
     },
     {
       "id": "p1q2",
@@ -29,12 +29,12 @@
       "standard": "S1.a",
       "difficulty": "hard",
       "type": "simplify",
-      "question_html": "Subtract. Write your answer in standard form.<br>\\( (2x^3 - x^2 + 4) - (x^3 + 3x^2 - 2x + 1) \\)",
+      "question_html": "Let \\( f(x) = 5x^2 + 2x - 4 \\), \\( g(x) = -3x^2 + 4x + 1 \\), and \\( h(x) = x^2 - x + 6 \\).<br>Find \\( f(x) - (g(x) + h(x)) \\). Write your answer in standard form.",
       "inputs": [
-        { "id": "p1q2_ans", "type": "text", "label": "Answer =", "answer": "x^3 - 4x^2 + 2x + 3", "normalize": "poly" }
+        { "id": "p1q2_ans", "type": "text", "label": "Answer =", "answer": "7x^2 - x - 11", "normalize": "poly" }
       ],
-      "hint": "Flip the sign on every term being subtracted: -(x^3 + 3x^2 - 2x + 1) = -x^3 - 3x^2 + 2x - 1.",
-      "solution_html": "\\( 2x^3 - x^2 + 4 - x^3 - 3x^2 + 2x - 1 = x^3 - 4x^2 + 2x + 3 \\)"
+      "hint": "First find g(x) + h(x), then subtract the whole result from f(x). The parentheses mean every term of (g+h) gets negated.",
+      "solution_html": "\\( g(x) + h(x) = -2x^2 + 3x + 7 \\)<br>\\( f(x) - (-2x^2 + 3x + 7) = 5x^2 + 2x - 4 + 2x^2 - 3x - 7 = 7x^2 - x - 11 \\)"
     },
     {
       "id": "p1q3",
@@ -43,12 +43,12 @@
       "standard": "S1.a",
       "difficulty": "hard",
       "type": "simplify",
-      "question_html": "Let \\( f(x) = 5x^2 + 2x - 4 \\), \\( g(x) = -3x^2 + 4x + 1 \\), and \\( h(x) = x^2 - x + 6 \\).<br>Find \\( f(x) - (g(x) + h(x)) \\). Write your answer in standard form.",
+      "question_html": "Simplify. Write your answer in standard form.<br>\\( (4x^3 + 2x - 5) - (x^3 - 3x^2 + x + 2) + (2x^2 - x + 1) \\)",
       "inputs": [
-        { "id": "p1q3_ans", "type": "text", "label": "Answer =", "answer": "7x^2 - x - 11", "normalize": "poly" }
+        { "id": "p1q3_ans", "type": "text", "label": "Answer =", "answer": "3x^3 + 5x^2 - 6", "normalize": "poly" }
       ],
-      "hint": "First find g(x) + h(x), then subtract the whole result from f(x). The parentheses mean every term of (g+h) gets negated.",
-      "solution_html": "\\( g(x) + h(x) = -2x^2 + 3x + 7 \\)<br>\\( f(x) - (-2x^2 + 3x + 7) = 5x^2 + 2x - 4 + 2x^2 - 3x - 7 = 7x^2 - x - 11 \\)"
+      "hint": "Handle the subtraction first: distribute the negative to every term in the second group. Then add the third group. Collect like terms.",
+      "solution_html": "\\( 4x^3 + 2x - 5 - x^3 + 3x^2 - x - 2 + 2x^2 - x + 1 \\)<br>\\( = 3x^3 + 5x^2 + (2-1-1)x + (-5-2+1) = 3x^3 + 5x^2 - 6 \\)"
     },
     {
       "id": "p1q4",
@@ -57,26 +57,26 @@
       "standard": "S1.a",
       "difficulty": "hard",
       "type": "simplify",
-      "question_html": "Simplify. Write your answer in standard form.<br>\\( (4x^3 + 2x - 5) - (x^3 - 3x^2 + x + 2) + (2x^2 - x + 1) \\)",
+      "question_html": "Let \\( f(x) = 3x^3 - 5x^2 + 2x - 7 \\) and \\( g(x) = -x^3 + 4x^2 - x + 3 \\). Find \\( f(x) - g(x) \\). Write your answer in standard form.",
       "inputs": [
-        { "id": "p1q4_ans", "type": "text", "label": "Answer =", "answer": "3x^3 + 5x^2 - 6", "normalize": "poly" }
+        { "id": "p1q4_ans", "type": "text", "label": "Answer =", "answer": "4x^3 - 9x^2 + 3x - 10", "normalize": "poly" }
       ],
-      "hint": "Handle the subtraction first: distribute the negative to every term in the second group. Then add the third group. Collect like terms.",
-      "solution_html": "\\( 4x^3 + 2x - 5 - x^3 + 3x^2 - x - 2 + 2x^2 - x + 1 \\)<br>\\( = 3x^3 + 5x^2 + (2-1-1)x + (-5-2+1) = 3x^3 + 5x^2 - 6 \\)"
+      "hint": "Subtract every term of g(x). Watch: -(-x^3) = +x^3 and -(4x^2) = -4x^2.",
+      "solution_html": "\\( 3x^3 - 5x^2 + 2x - 7 + x^3 - 4x^2 + x - 3 = 4x^3 - 9x^2 + 3x - 10 \\)"
     },
     {
       "id": "p1q5",
       "number": 5,
-      "section": "A",
-      "standard": "S1.a",
-      "difficulty": "hard",
+      "section": "B",
+      "standard": "S1.b",
+      "difficulty": "medium",
       "type": "simplify",
-      "question_html": "Let \\( f(x) = 3x^3 - 5x^2 + 2x - 7 \\) and \\( g(x) = -x^3 + 4x^2 - x + 3 \\). Find \\( f(x) - g(x) \\). Write your answer in standard form.",
+      "question_html": "Multiply. Write your answer in standard form.<br>\\( (2x + 3)(x - 4) \\)",
       "inputs": [
-        { "id": "p1q5_ans", "type": "text", "label": "Answer =", "answer": "4x^3 - 9x^2 + 3x - 10", "normalize": "poly" }
+        { "id": "p1q5_ans", "type": "text", "label": "Answer =", "answer": "2x^2 - 5x - 12", "normalize": "poly" }
       ],
-      "hint": "Subtract every term of g(x). Watch: -(-x^3) = +x^3 and -(4x^2) = -4x^2.",
-      "solution_html": "\\( 3x^3 - 5x^2 + 2x - 7 + x^3 - 4x^2 + x - 3 = 4x^3 - 9x^2 + 3x - 10 \\)"
+      "hint": "Use the box method. Top headers: 2x and 3. Left headers: x and -4.",
+      "solution_html": "\\( 2x^2 - 8x + 3x - 12 = 2x^2 - 5x - 12 \\)"
     },
     {
       "id": "p1q6",
@@ -85,26 +85,65 @@
       "standard": "S1.b",
       "difficulty": "medium",
       "type": "simplify",
-      "question_html": "Multiply. Write your answer in standard form.<br>\\( (2x + 3)(x - 4) \\)",
+      "question_html": "Multiply. Write your answer in standard form.<br>\\( (x + 5)(x^2 - 2x + 3) \\)",
       "inputs": [
-        { "id": "p1q6_ans", "type": "text", "label": "Answer =", "answer": "2x^2 - 5x - 12", "normalize": "poly" }
+        { "id": "p1q6_ans", "type": "text", "label": "Answer =", "answer": "x^3 + 3x^2 - 7x + 15", "normalize": "poly" }
       ],
-      "hint": "Use the box method. Top headers: 2x and 3. Left headers: x and -4.",
-      "solution_html": "\\( 2x^2 - 8x + 3x - 12 = 2x^2 - 5x - 12 \\)"
+      "hint": "Distribute x across the trinomial, then distribute 5. Combine the x^2 terms.",
+      "solution_html": "\\( x^3 - 2x^2 + 3x + 5x^2 - 10x + 15 = x^3 + 3x^2 - 7x + 15 \\)"
     },
     {
       "id": "p1q7",
       "number": 7,
       "section": "B",
       "standard": "S1.b",
-      "difficulty": "medium",
-      "type": "simplify",
-      "question_html": "Multiply. Write your answer in standard form.<br>\\( (x + 5)(x^2 - 2x + 3) \\)",
+      "difficulty": "hard",
+      "type": "box",
+      "question_html": "Use the box method to multiply \\( (2x + 3)(x^2 - x + 4) \\). Fill in all 6 cells, then write your final answer in standard form.",
+      "box": {
+        "cols": [ "x^2", "-x", "4" ],
+        "rows": [ "2x", "3" ],
+        "cells": [
+          { "row": 0, "col": 0, "input_id": "p1q7_r0c0" },
+          { "row": 0, "col": 1, "input_id": "p1q7_r0c1" },
+          { "row": 0, "col": 2, "input_id": "p1q7_r0c2" },
+          { "row": 1, "col": 0, "input_id": "p1q7_r1c0" },
+          { "row": 1, "col": 1, "input_id": "p1q7_r1c1" },
+          { "row": 1, "col": 2, "input_id": "p1q7_r1c2" }
+        ]
+      },
       "inputs": [
-        { "id": "p1q7_ans", "type": "text", "label": "Answer =", "answer": "x^3 + 3x^2 - 7x + 15", "normalize": "poly" }
+        { "id": "p1q7_r0c0", "type": "text", "label": "", "answer": "2x^3", "normalize": "poly" },
+        { "id": "p1q7_r0c1", "type": "text", "label": "", "answer": "-2x^2", "normalize": "poly" },
+        { "id": "p1q7_r0c2", "type": "text", "label": "", "answer": "8x", "normalize": "poly" },
+        { "id": "p1q7_r1c0", "type": "text", "label": "", "answer": "3x^2", "normalize": "poly" },
+        { "id": "p1q7_r1c1", "type": "text", "label": "", "answer": "-3x", "normalize": "poly" },
+        { "id": "p1q7_r1c2", "type": "text", "label": "", "answer": "12", "normalize": "poly" },
+        { "id": "p1q7_ans", "type": "text", "label": "Final Answer =", "answer": "2x^3 + x^2 + 5x + 12", "normalize": "poly" }
       ],
-      "hint": "Distribute x across the trinomial, then distribute 5. Combine the x^2 terms.",
-      "solution_html": "\\( x^3 - 2x^2 + 3x + 5x^2 - 10x + 15 = x^3 + 3x^2 - 7x + 15 \\)"
+      "hint": "Set up a 2x3 box. Top: x^2, -x, 4. Side: 2x, 3. Multiply each row header by each column header to fill the cell.",
+      "solution_html": "\\( 2x \\cdot x^2 = 2x^3,\\; 2x \\cdot (-x) = -2x^2,\\; 2x \\cdot 4 = 8x \\)<br>\\( 3 \\cdot x^2 = 3x^2,\\; 3 \\cdot (-x) = -3x,\\; 3 \\cdot 4 = 12 \\)<br>\\( 2x^3 + (-2+3)x^2 + (8-3)x + 12 = 2x^3 + x^2 + 5x + 12 \\)"
+    },
+    {
+      "id": "p1q8",
+      "number": 8,
+      "section": "B",
+      "standard": "S1.b",
+      "difficulty": "hard",
+      "type": "box-reverse",
+      "question_html": "One factor is \\( (x - 3) \\) and the product is \\( x^3 - x^2 - 10x + 12 \\). Find the missing factor. The leading term \\( x^2 \\) is given.",
+      "box": {
+        "known_factor": [ "x", "-3" ],
+        "product": "x^3 - x^2 - 10x + 12",
+        "solve_for": "missing_factor",
+        "missing_factor_degree": 2,
+        "partial_top": [ "x^2", null, null ]
+      },
+      "inputs": [
+        { "id": "p1q8_ans", "type": "text", "label": "Missing factor =", "answer": "x^2 + 2x - 4", "normalize": "poly" }
+      ],
+      "hint": "Set up the box with x and -3 as your left column headers. Use the product to figure out what goes across the top. Start with the x^3 term to find the first header.",
+      "solution_html": "\\( (x - 3)(x^2 + 2x - 4) \\)<br>\\( x \\cdot x^2 = x^3,\\; x \\cdot 2x = 2x^2,\\; x \\cdot (-4) = -4x \\)<br>\\( -3 \\cdot x^2 = -3x^2,\\; -3 \\cdot 2x = -6x,\\; -3 \\cdot (-4) = 12 \\)<br>\\( = x^3 + (2-3)x^2 + (-4-6)x + 12 = x^3 - x^2 - 10x + 12 \\checkmark \\)"
     }
   ]
 }
