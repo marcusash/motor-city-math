@@ -1574,7 +1574,7 @@
 
             // Header row: corner + col headers
             html += '<tr>';
-            html += '<td style="'+hdrStyle+'background:#444;border:'+border+';"></td>';
+            html += '<td style="width:'+hdrW+'px;height:'+cellH+'px;border:none;background:#444;"></td>';
             cols.forEach(function(c, ci) {
                 if (showHeaders && renderTex && c != null) {
                     html += '<td style="'+cellStyle+'background:#e8e8e8;">'+renderTex(c)+'</td>';
@@ -1619,7 +1619,7 @@
 
             if (q.type === 'box' && q.box) {
                 // All headers blank: Kai writes in the factor terms himself, then fills cells
-                inputHtml = boxGrid(q.box.cols, q.box.rows, true, renderTex);
+                inputHtml = boxGrid(q.box.cols, q.box.rows, false, renderTex);
                 inputHtml += '<div class="blank-row" style="margin-top:10px;"><span class="blank-lbl">Final Answer =</span><span class="blank-line"></span></div>';
             } else if (q.type === 'box-reverse' && q.box) {
                 // Known factor shown on left; top headers blank (find the missing factor)
