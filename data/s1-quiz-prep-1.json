@@ -2,11 +2,11 @@
   "exam_id": "s1-quiz-prep-1",
   "schema_version": "1.0",
   "title": "Spring S1 Quiz Prep: Polynomial Operations",
-  "subtitle": "Standards S1.a & S1.b · 9 Questions · ~40 min",
-  "time_minutes": 40,
+  "subtitle": "Standards S1.a & S1.b · 8 Questions · ~35 min",
+  "time_minutes": 35,
   "created": "2026-03-16",
   "created_by": "FR",
-  "purpose": "Tuesday quiz prep for Kai. S1.a: add and subtract polynomials using function notation (Q1-Q4). S1.b: multiply polynomials using box method (Q5-Q9). Q5 and Q6 require showing box method work.",
+  "purpose": "Tuesday quiz prep for Kai. S1.a: add/subtract using function notation (Q1-Q2). S1.b: multiply using box method (Q3-Q8). Q3 and Q4 require filling in all box cells including headers.",
   "questions": [
     {
       "id": "s1q1",
@@ -15,18 +15,12 @@
       "standard": "S1.a",
       "difficulty": "medium",
       "type": "simplify",
-      "question_html": "Let \\( f(x) = 2x^3 - 4x^2 + 3x - 1 \\) and \\( g(x) = x^3 + 5x^2 - 2x + 4 \\).<br>Find \\( f(x) + g(x) \\). Write your answer in standard form.",
+      "question_html": "Let \\( f(x) = 2x^3 - 4x^2 + 3x - 1 \\) and \\( g(x) = x^3 + 5x^2 - 2x + 4 \\). Find \\( f(x) + g(x) \\). Write your answer in standard form.",
       "inputs": [
-        {
-          "id": "s1q1_ans",
-          "type": "text",
-          "label": "Answer =",
-          "answer": "3x^3 + x^2 + x + 3",
-          "normalize": "poly"
-        }
+        { "id": "s1q1_ans", "type": "text", "label": "Answer =", "answer": "3x^3 + x^2 + x + 3", "normalize": "poly" }
       ],
-      "hint": "Add like terms for each degree: x³ terms, x² terms, x terms, and constants separately.",
-      "solution_html": "\\( (2x^3 + x^3) + (-4x^2 + 5x^2) + (3x - 2x) + (-1 + 4) = 3x^3 + x^2 + x + 3 \\)"
+      "hint": "Add like terms for each degree: x^3, x^2, x, and constants separately.",
+      "solution_html": "\\( (2+1)x^3 + (-4+5)x^2 + (3-2)x + (-1+4) = 3x^3 + x^2 + x + 3 \\)"
     },
     {
       "id": "s1q2",
@@ -35,292 +29,138 @@
       "standard": "S1.a",
       "difficulty": "medium",
       "type": "simplify",
-      "question_html": "Let \\( f(x) = 3x^3 + 2x^2 - 5x + 1 \\) and \\( g(x) = x^3 - 4x^2 + 3x - 6 \\).<br>Find \\( f(x) - g(x) \\). Write your answer in standard form.",
+      "question_html": "Let \\( f(x) = 3x^3 + 2x^2 - 5x + 1 \\) and \\( g(x) = x^3 - 4x^2 + 3x - 6 \\). Find \\( f(x) - g(x) \\). Write your answer in standard form.",
       "inputs": [
-        {
-          "id": "s1q2_ans",
-          "type": "text",
-          "label": "Answer =",
-          "answer": "2x^3 + 6x^2 - 8x + 7",
-          "normalize": "poly"
-        }
+        { "id": "s1q2_ans", "type": "text", "label": "Answer =", "answer": "2x^3 + 6x^2 - 8x + 7", "normalize": "poly" }
       ],
-      "hint": "Distribute the negative sign to every term of g(x) first, then combine like terms.",
-      "solution_html": "\\( (3x^3 - x^3) + (2x^2 + 4x^2) + (-5x - 3x) + (1 + 6) = 2x^3 + 6x^2 - 8x + 7 \\)"
+      "hint": "Distribute the negative to every term of g(x) first, then combine like terms.",
+      "solution_html": "\\( (3-1)x^3 + (2+4)x^2 + (-5-3)x + (1+6) = 2x^3 + 6x^2 - 8x + 7 \\)"
+    },
+    {
+      "id": "s1q3",
+      "number": 3,
+      "section": "B",
+      "standard": "S1.b",
+      "difficulty": "medium",
+      "type": "box",
+      "box": {
+        "cols": ["s1q3_col0", "s1q3_col1"],
+        "rows": ["s1q3_row0", "s1q3_row1"],
+        "cells": [
+          { "row": 0, "col": 0, "input_id": "s1q3_tl" },
+          { "row": 0, "col": 1, "input_id": "s1q3_tr" },
+          { "row": 1, "col": 0, "input_id": "s1q3_bl" },
+          { "row": 1, "col": 1, "input_id": "s1q3_br" }
+        ]
+      },
+      "question_html": "Multiply \\( (3x + 5)(2x - 7) \\). Break the factors into terms, fill in the box, then write your answer in standard form.",
+      "inputs": [
+        { "id": "s1q3_col0", "type": "text", "label": "Top-left header =", "answer": "3x", "normalize": "poly" },
+        { "id": "s1q3_col1", "type": "text", "label": "Top-right header =", "answer": "5", "normalize": "poly" },
+        { "id": "s1q3_row0", "type": "text", "label": "Left-top header =", "answer": "2x", "normalize": "poly" },
+        { "id": "s1q3_row1", "type": "text", "label": "Left-bottom header =", "answer": "-7", "normalize": "poly" },
+        { "id": "s1q3_tl", "type": "text", "label": "Cell (row 1, col 1) =", "answer": "6x^2", "normalize": "poly" },
+        { "id": "s1q3_tr", "type": "text", "label": "Cell (row 1, col 2) =", "answer": "10x", "normalize": "poly" },
+        { "id": "s1q3_bl", "type": "text", "label": "Cell (row 2, col 1) =", "answer": "-21x", "normalize": "poly" },
+        { "id": "s1q3_br", "type": "text", "label": "Cell (row 2, col 2) =", "answer": "-35", "normalize": "poly" },
+        { "id": "s1q3_ans", "type": "text", "label": "Final Answer =", "answer": "6x^2 - 11x - 35", "normalize": "poly" }
+      ],
+      "hint": "Split the first factor into 3x and 5 (top headers). Split the second into 2x and -7 (left headers). Multiply each pair to fill the cells.",
+      "solution_html": "\\( 3x \\cdot 2x = 6x^2,\\; 5 \\cdot 2x = 10x,\\; 3x \\cdot (-7) = -21x,\\; 5 \\cdot (-7) = -35 \\)<br>\\( 6x^2 + (10x - 21x) - 35 = 6x^2 - 11x - 35 \\)"
     },
     {
       "id": "s1q4",
-      "number": 3,
-      "section": "A",
-      "standard": "S1.a",
-      "difficulty": "hard",
-      "type": "simplify",
-      "question_html": "Simplify. Write your answer in standard form.<br>\\( (3x^3 - 2x^2 + x) + (x^3 + 4x^2 - 5) - (2x^3 - x^2 + 3x - 1) \\)",
-      "inputs": [
-        {
-          "id": "s1q4_ans",
-          "type": "text",
-          "label": "Answer =",
-          "answer": "2x^3 + 3x^2 - 2x - 4",
-          "normalize": "poly"
-        }
-      ],
-      "hint": "Handle one operation at a time. Add the first two, then subtract the third. Distribute the negative carefully.",
-      "solution_html": "\\( 3x^3 - 2x^2 + x + x^3 + 4x^2 - 5 - 2x^3 + x^2 - 3x + 1 \\)<br>\\( = (3+1-2)x^3 + (-2+4+1)x^2 + (1-3)x + (-5+1) = 2x^3 + 3x^2 - 2x - 4 \\)"
-    },
-    {
-      "id": "s1q5",
       "number": 4,
       "section": "B",
       "standard": "S1.b",
       "difficulty": "easy",
       "type": "box",
       "box": {
-        "cols": [
-          "x",
-          "-3"
-        ],
-        "rows": [
-          "x",
-          "4"
-        ],
+        "cols": ["s1q4_col0", "s1q4_col1"],
+        "rows": ["s1q4_row0", "s1q4_row1"],
         "cells": [
-          {
-            "row": 0,
-            "col": 0,
-            "input_id": "s1q5_tl"
-          },
-          {
-            "row": 0,
-            "col": 1,
-            "input_id": "s1q5_tr"
-          },
-          {
-            "row": 1,
-            "col": 0,
-            "input_id": "s1q5_bl"
-          },
-          {
-            "row": 1,
-            "col": 1,
-            "input_id": "s1q5_br"
-          }
+          { "row": 0, "col": 0, "input_id": "s1q4_tl" },
+          { "row": 0, "col": 1, "input_id": "s1q4_tr" },
+          { "row": 1, "col": 0, "input_id": "s1q4_bl" },
+          { "row": 1, "col": 1, "input_id": "s1q4_br" }
         ]
       },
+      "question_html": "Multiply \\( (2x - 5)(x + 3) \\). Break the factors into terms, fill in the box, then write your answer in standard form.",
       "inputs": [
-        {
-          "id": "s1q5_tl",
-          "type": "text",
-          "label": "Box top-left =",
-          "answer": "x^2",
-          "normalize": "poly"
-        },
-        {
-          "id": "s1q5_tr",
-          "type": "text",
-          "label": "Box top-right =",
-          "answer": "-3x",
-          "normalize": "poly"
-        },
-        {
-          "id": "s1q5_bl",
-          "type": "text",
-          "label": "Box bottom-left =",
-          "answer": "4x",
-          "normalize": "poly"
-        },
-        {
-          "id": "s1q5_br",
-          "type": "text",
-          "label": "Box bottom-right =",
-          "answer": "-12",
-          "normalize": "poly"
-        },
-        {
-          "id": "s1q5_ans",
-          "type": "text",
-          "label": "Final Answer =",
-          "answer": "x^2 + x - 12",
-          "normalize": "poly"
-        }
+        { "id": "s1q4_col0", "type": "text", "label": "Top-left header =", "answer": "2x", "normalize": "poly" },
+        { "id": "s1q4_col1", "type": "text", "label": "Top-right header =", "answer": "-5", "normalize": "poly" },
+        { "id": "s1q4_row0", "type": "text", "label": "Left-top header =", "answer": "x", "normalize": "poly" },
+        { "id": "s1q4_row1", "type": "text", "label": "Left-bottom header =", "answer": "3", "normalize": "poly" },
+        { "id": "s1q4_tl", "type": "text", "label": "Cell (row 1, col 1) =", "answer": "2x^2", "normalize": "poly" },
+        { "id": "s1q4_tr", "type": "text", "label": "Cell (row 1, col 2) =", "answer": "-5x", "normalize": "poly" },
+        { "id": "s1q4_bl", "type": "text", "label": "Cell (row 2, col 1) =", "answer": "6x", "normalize": "poly" },
+        { "id": "s1q4_br", "type": "text", "label": "Cell (row 2, col 2) =", "answer": "-15", "normalize": "poly" },
+        { "id": "s1q4_ans", "type": "text", "label": "Final Answer =", "answer": "2x^2 + x - 15", "normalize": "poly" }
       ],
-      "hint": "Set up a 2x2 box. Top row headers: x and -3. Left column headers: x and 4. Fill each cell by multiplying the row and column headers.",
-      "solution_html": "\\( x \\cdot x = x^2,\\; x \\cdot (-3) = -3x,\\; 4 \\cdot x = 4x,\\; 4 \\cdot (-3) = -12 \\)<br>\\( x^2 + (-3x + 4x) - 12 = x^2 + x - 12 \\)",
-      "question_html": "Multiply \\\\( (x + 4)(x - 3) \\\\). Fill in the box, then write your answer in standard form."
+      "hint": "Split the first factor into 2x and -5 (top headers). Split the second into x and 3 (left headers). Multiply each pair.",
+      "solution_html": "\\( 2x \\cdot x = 2x^2,\\; (-5) \\cdot x = -5x,\\; 2x \\cdot 3 = 6x,\\; (-5) \\cdot 3 = -15 \\)<br>\\( 2x^2 + (-5x + 6x) - 15 = 2x^2 + x - 15 \\)"
     },
     {
-      "id": "s1q6",
+      "id": "s1q5",
       "number": 5,
-      "section": "B",
-      "standard": "S1.b",
-      "difficulty": "easy",
-      "type": "box",
-      "box": {
-        "cols": [
-          "2x",
-          "-5"
-        ],
-        "rows": [
-          "x",
-          "3"
-        ],
-        "cells": [
-          {
-            "row": 0,
-            "col": 0,
-            "input_id": "s1q6_tl"
-          },
-          {
-            "row": 0,
-            "col": 1,
-            "input_id": "s1q6_tr"
-          },
-          {
-            "row": 1,
-            "col": 0,
-            "input_id": "s1q6_bl"
-          },
-          {
-            "row": 1,
-            "col": 1,
-            "input_id": "s1q6_br"
-          }
-        ]
-      },
-      "inputs": [
-        {
-          "id": "s1q6_tl",
-          "type": "text",
-          "label": "Box top-left =",
-          "answer": "2x^2",
-          "normalize": "poly"
-        },
-        {
-          "id": "s1q6_tr",
-          "type": "text",
-          "label": "Box top-right =",
-          "answer": "6x",
-          "normalize": "poly"
-        },
-        {
-          "id": "s1q6_bl",
-          "type": "text",
-          "label": "Box bottom-left =",
-          "answer": "-5x",
-          "normalize": "poly"
-        },
-        {
-          "id": "s1q6_br",
-          "type": "text",
-          "label": "Box bottom-right =",
-          "answer": "-15",
-          "normalize": "poly"
-        },
-        {
-          "id": "s1q6_ans",
-          "type": "text",
-          "label": "Final Answer =",
-          "answer": "2x^2 + x - 15",
-          "normalize": "poly"
-        }
-      ],
-      "hint": "Set up a 2x2 box. Top row headers: 2x and -5. Left column headers: x and 3. Multiply each pair.",
-      "solution_html": "\\( 2x \\cdot x = 2x^2,\\; 2x \\cdot 3 = 6x,\\; (-5) \\cdot x = -5x,\\; (-5) \\cdot 3 = -15 \\)<br>\\( 2x^2 + (6x - 5x) - 15 = 2x^2 + x - 15 \\)",
-      "question_html": "Multiply \\\\( (x + 3)(2x - 5) \\\\). Fill in the box, then write your answer in standard form."
-    },
-    {
-      "id": "s1q7",
-      "number": 6,
       "section": "B",
       "standard": "S1.b",
       "difficulty": "medium",
       "type": "simplify",
       "question_html": "Multiply using the box method. Write your answer in standard form.<br>\\( (3x - 2)(4x + 1) \\)",
       "inputs": [
-        {
-          "id": "s1q7_ans",
-          "type": "text",
-          "label": "Answer =",
-          "answer": "12x^2 - 5x - 2",
-          "normalize": "poly"
-        }
+        { "id": "s1q5_ans", "type": "text", "label": "Answer =", "answer": "12x^2 - 5x - 2", "normalize": "poly" }
       ],
-      "hint": "Set up a 2x2 box. Top headers: 3x and -2. Side headers: 4x and 1. Combine the middle terms.",
+      "hint": "Set up a 2x2 box. Top headers: 3x and -2. Left headers: 4x and 1. Combine the middle terms.",
       "solution_html": "\\( 12x^2 + 3x - 8x - 2 = 12x^2 - 5x - 2 \\)"
     },
     {
-      "id": "s1q8",
-      "number": 7,
+      "id": "s1q6",
+      "number": 6,
       "section": "B",
       "standard": "S1.b",
       "difficulty": "medium",
       "type": "simplify",
       "question_html": "Multiply. Write your answer in standard form.<br>\\( (x + 2)(x^2 - 3x + 5) \\)",
       "inputs": [
-        {
-          "id": "s1q8_ans",
-          "type": "text",
-          "label": "Answer =",
-          "answer": "x^3 - x^2 - x + 10",
-          "normalize": "poly"
-        }
+        { "id": "s1q6_ans", "type": "text", "label": "Answer =", "answer": "x^3 - x^2 - x + 10", "normalize": "poly" }
       ],
-      "hint": "Distribute x across (x² - 3x + 5), then distribute 2 across (x² - 3x + 5). Combine like terms.",
+      "hint": "Distribute x across the trinomial, then distribute 2. Combine like terms.",
       "solution_html": "\\( x^3 - 3x^2 + 5x + 2x^2 - 6x + 10 = x^3 - x^2 - x + 10 \\)"
     },
     {
-      "id": "s1q9",
-      "number": 8,
+      "id": "s1q7",
+      "number": 7,
       "section": "B",
       "standard": "S1.b",
       "difficulty": "hard",
       "type": "simplify",
       "question_html": "Multiply. Write your answer in standard form.<br>\\( (2x - 3)(x^2 + 4x - 1) \\)",
       "inputs": [
-        {
-          "id": "s1q9_ans",
-          "type": "text",
-          "label": "Answer =",
-          "answer": "2x^3 + 5x^2 - 14x + 3",
-          "normalize": "poly"
-        }
+        { "id": "s1q7_ans", "type": "text", "label": "Answer =", "answer": "2x^3 + 5x^2 - 14x + 3", "normalize": "poly" }
       ],
-      "hint": "Distribute 2x and then -3 across the trinomial. You get 6 partial products — combine the x² terms and the x terms.",
+      "hint": "Distribute 2x and then -3 across the trinomial. Combine the x^2 and x terms.",
       "solution_html": "\\( 2x^3 + 8x^2 - 2x - 3x^2 - 12x + 3 = 2x^3 + 5x^2 - 14x + 3 \\)"
     },
     {
-      "id": "s1q10",
-      "number": 9,
+      "id": "s1q8",
+      "number": 8,
       "section": "B",
       "standard": "S1.b",
       "difficulty": "hard",
       "type": "box-reverse",
       "box": {
-        "known_factor": [
-          "x",
-          "+3"
-        ],
+        "known_factor": ["x", "+3"],
         "product": "x^3 + 5x^2 + 3x - 9",
         "solve_for": "missing_factor",
-        "missing_factor_degree": 2,
-        "partial_top": [
-          "x^2",
-          null,
-          null
-        ]
+        "missing_factor_degree": 2
       },
+      "question_html": "If you are given a factor and a final product, can you puzzle out what was multiplied?<br><br>\\( (x + 3)(\\,?\\,) = x^3 + 5x^2 + 3x - 9 \\)<br><br>Use the box method to find the missing factor.",
       "inputs": [
-        {
-          "id": "s1q10_ans",
-          "type": "text",
-          "label": "Missing factor =",
-          "answer": "x^2 + 2x - 3",
-          "normalize": "poly"
-        }
+        { "id": "s1q8_ans", "type": "text", "label": "Missing factor =", "answer": "x^2 + 2x - 3", "normalize": "poly" }
       ],
-      "hint": "Set up the box with x and +3 as your left column headers. Use the product to figure out what goes across the top. Start with the x³ term — what times x gives x³?",
-      "solution_html": "\\( (x + 3)(x^2 + 2x - 3) \\)<br>\\( x \\cdot x^2 = x^3,\\; x \\cdot 2x = 2x^2,\\; x \\cdot (-3) = -3x \\)<br>\\( 3 \\cdot x^2 = 3x^2,\\; 3 \\cdot 2x = 6x,\\; 3 \\cdot (-3) = -9 \\)<br>\\( = x^3 + (2+3)x^2 + (-3+6)x - 9 = x^3 + 5x^2 + 3x - 9 \\checkmark \\)",
-      "question_html": "One factor is \\\\( (x + 3) \\\\) and the product is \\\\( x^3 + 5x^2 + 3x - 9 \\\\). Find the missing factor. The leading term \\\\( x^2 \\\\) is given."
+      "hint": "Set up the box with x and +3 as your left column. Start with the x^3 term -- what times x gives x^3?",
+      "solution_html": "\\( (x+3)(x^2+2x-3) \\)<br>\\( x^3+2x^2-3x+3x^2+6x-9 = x^3+5x^2+3x-9 \\checkmark \\)"
     }
   ]
 }
