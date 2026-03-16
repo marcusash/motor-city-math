@@ -317,6 +317,22 @@
             background: var(--fd-card); border: 1px solid var(--fd-border);
             border-radius: var(--fd-r); padding: 18px 18px 14px; margin-bottom: 14px;
         }
+        .winter-history-details {
+            margin-bottom: 14px; border-radius: var(--fd-r);
+            border: 1px solid var(--fd-border); overflow: hidden;
+        }
+        .winter-history-details summary {
+            padding: 12px 16px; cursor: pointer; list-style: none;
+            display: flex; align-items: center; gap: 10px;
+            background: var(--fd-card); color: var(--fd-text-secondary, #94a3b8);
+            font-size: .85em; user-select: none;
+        }
+        .winter-history-details summary::-webkit-details-marker { display: none; }
+        .winter-history-details summary .wh-arrow { transition: transform .2s; display: inline-block; }
+        .winter-history-details[open] summary .wh-arrow { transform: rotate(90deg); }
+        .winter-history-details summary .wh-title { font-weight: 600; color: var(--fd-text-secondary, #94a3b8); }
+        .winter-history-details summary .wh-stats { margin-left: auto; opacity: .7; font-size: .9em; }
+        .winter-history-inner { padding: 14px 16px 10px; background: var(--fd-card); }
         .trend-hd {
             display: flex; justify-content: space-between; align-items: center;
             margin-bottom: 14px;
@@ -345,36 +361,41 @@
 <body>
     <script>localStorage.removeItem('mcm-arena-mode');</script>
     <script>
-    // Archive Winter 2025-26 scores and load live Spring scores from GitHub
+    // Load all scores from GitHub repo (public reads, no auth needed)
+    var _winterArchive = null; // set by fetch below, used by buildWinterHistory()
+
     (function() {
-        // Winter scores archived — removed from active chart, stored for rehydration
-        var _winterScores = {"mcm-nonlinear-exam-mvp":{"attempts":[{"score":8,"total":15,"pct":53,"grade":1,"timestamp":"2026-02-18T03:38:11.220Z"}],"best":{"score":8,"pct":53,"grade":1}},"mcm-retake-practice-1":{"attempts":[{"score":13,"total":15,"pct":87,"grade":3,"timestamp":"2026-02-19T20:23:53.052Z"}],"best":{"score":13,"pct":87,"grade":3}},"mcm-retake-practice-2":{"attempts":[{"score":13,"total":15,"pct":87,"grade":3,"timestamp":"2026-02-21T22:42:49.547Z"}],"best":{"score":13,"pct":87,"grade":3}},"mcm-retake-practice-3":{"attempts":[{"score":15,"total":15,"pct":100,"grade":4,"timestamp":"2026-02-22T06:13:51.610Z"}],"best":{"score":15,"pct":100,"grade":4}},"mcm-finals-diagnostic-1":{"attempts":[{"score":14,"total":15,"pct":93,"grade":4,"timestamp":"2026-03-01T22:00:00.000Z"}],"best":{"score":14,"pct":93,"grade":4}},"mcm-finals-diagnostic-2":{"attempts":[{"score":13,"total":15,"pct":87,"grade":3,"timestamp":"2026-03-02T22:00:00.000Z"}],"best":{"score":13,"pct":87,"grade":3}},"mcm-finals-diagnostic-3":{"attempts":[{"score":23,"total":29,"pct":79,"grade":3,"timestamp":"2026-03-03T04:05:00.000Z"}],"best":{"score":23,"pct":79,"grade":3}},"mcm-finals-miss-drill":{"attempts":[{"score":8,"total":8,"pct":100,"grade":4,"timestamp":"2026-03-03T05:24:00.000Z"}],"best":{"score":8,"pct":100,"grade":4}}};
-        try { if (!localStorage.getItem('mcm_archive_winter_2025')) localStorage.setItem('mcm_archive_winter_2025', JSON.stringify(_winterScores)); } catch(e) {}
+        var ghBase = 'https://api.github.com/repos/marcusash/motor-city-math/contents/scores/';
+        var headers = { 'Accept': 'application/vnd.github.v3+json' };
 
-        // Remove winter keys from active mcm_scores so chart shows Spring only
-        try {
-            var active = JSON.parse(localStorage.getItem('mcm_scores') || '{}');
-            var changed = false;
-            Object.keys(_winterScores).forEach(function(k) { if (active[k]) { delete active[k]; changed = true; } });
-            if (changed) localStorage.setItem('mcm_scores', JSON.stringify(active));
-        } catch(e) {}
+        function ghFetch(file) {
+            return fetch(ghBase + file, { headers: headers })
+                .then(function(r) { return r.ok ? r.json() : null; })
+                .then(function(d) { return d && d.content ? JSON.parse(atob(d.content.replace(/\n/g,''))) : null; })
+                .catch(function() { return null; });
+        }
 
-        // Fetch live Spring scores from GitHub (public repo, no auth needed)
-        fetch('https://api.github.com/repos/marcusash/motor-city-math/contents/scores/kai.json', {
-            headers: { 'Accept': 'application/vnd.github.v3+json' }
-        }).then(function(r) { return r.ok ? r.json() : null; })
-        .then(function(data) {
-            if (!data || !data.content) return;
-            var payload = JSON.parse(atob(data.content.replace(/\n/g, '')));
+        // Fetch Spring scores (kai.json) and merge into localStorage for chart
+        ghFetch('kai.json').then(function(payload) {
             if (!payload || !payload.mcm_scores) return;
             try {
                 var cur = JSON.parse(localStorage.getItem('mcm_scores') || '{}');
+                // Strip any winter keys that may linger from old sessions
+                var winterKeys = ['mcm-nonlinear-exam-mvp','mcm-retake-practice-1','mcm-retake-practice-2','mcm-retake-practice-3','mcm-finals-diagnostic-1','mcm-finals-diagnostic-2','mcm-finals-diagnostic-3','mcm-finals-miss-drill'];
+                winterKeys.forEach(function(k) { delete cur[k]; });
                 var merged = Object.assign({}, cur, payload.mcm_scores);
                 localStorage.setItem('mcm_scores', JSON.stringify(merged));
                 if (typeof buildChart === 'function') buildChart();
                 if (typeof buildSpringGrid === 'function') buildSpringGrid();
             } catch(e) {}
-        }).catch(function() {});
+        });
+
+        // Fetch Winter archive (winter-2025-26.json) for collapsed history block
+        ghFetch('winter-2025-26.json').then(function(data) {
+            if (!data) return;
+            _winterArchive = data;
+            if (typeof buildWinterHistory === 'function') buildWinterHistory();
+        });
     })();
     </script>
     <a href="#main" class="sr-only">Skip to content</a>
@@ -430,6 +451,9 @@
             </div>
             <div id="trendChartContainer"></div>
         </div>
+
+        <!-- Winter History (collapsed, loaded from GitHub) -->
+        <div id="winterHistoryContainer"></div>
 
         <!-- Last 2 Tests -->
         <span class="slabel" id="last2Label" style="display:none;">Last 2 Tests</span>
@@ -1024,6 +1048,46 @@
         buildStats();
         buildLast2Tests();
         buildProgressStory();
+        buildWinterHistory();
+    }
+
+    function buildWinterHistory() {
+        var container = document.getElementById('winterHistoryContainer');
+        if (!container) return;
+        if (!_winterArchive) { container.innerHTML = ''; return; }
+
+        var s = _winterArchive.summary || {};
+        var label = _winterArchive.unit || 'Winter 2025-26';
+        var avg = s.avg_pct != null ? s.avg_pct + '%' : '--';
+        var best = s.best_pct != null ? s.best_pct + '%' : '--';
+        var exams = s.exams != null ? s.exams + ' exams' : '';
+
+        // Build mini score rows from mcm_scores
+        var scores = _winterArchive.mcm_scores || {};
+        var rows = Object.keys(scores).map(function(k) {
+            var entry = scores[k];
+            var att = entry.attempts && entry.attempts[0];
+            if (!att) return null;
+            var short = k.replace('mcm-', '').replace(/-/g, ' ');
+            return { label: short, pct: att.pct, grade: att.grade, ts: att.timestamp ? new Date(att.timestamp).getTime() : 0 };
+        }).filter(Boolean).sort(function(a, b) { return a.ts - b.ts; });
+
+        var rowsHtml = rows.map(function(r) {
+            var color = r.pct >= 92 ? '#3FB950' : r.pct >= 80 ? '#d29922' : '#F85149';
+            return '<div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid rgba(255,255,255,.05);font-size:.8em;">' +
+                '<span style="color:#94a3b8;text-transform:capitalize;">' + r.label + '</span>' +
+                '<span style="color:' + color + ';font-weight:700;">' + r.pct + '%</span></div>';
+        }).join('');
+
+        container.innerHTML =
+            '<details class="winter-history-details">' +
+            '<summary>' +
+            '<span class="wh-arrow">▶</span>' +
+            '<span class="wh-title">🏆 ' + label + '</span>' +
+            '<span class="wh-stats">Avg ' + avg + ' &nbsp;·&nbsp; Best ' + best + ' &nbsp;·&nbsp; ' + exams + '</span>' +
+            '</summary>' +
+            '<div class="winter-history-inner">' + rowsHtml + '</div>' +
+            '</details>';
     }
 
     /* ========== PROGRESS STORY (sw-11) ========== */
