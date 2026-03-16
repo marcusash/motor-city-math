@@ -479,17 +479,6 @@
             <div class="test-grid" id="testGrid" style="margin-top:12px;"></div>
         </details>
 
-        <details class="dash-section">
-            <summary class="section-title">Send to Dad 📱</summary>
-            <div style="text-align:center; margin: 16px 0 8px;">
-                <button class="nav-btn ghost" onclick="exportScores()">📤 Send Scores to Dad</button>
-                <label class="nav-btn ghost" style="cursor:pointer; display:inline-block; margin-top:8px;">
-                    📥 Load Corrected Scores
-                    <input type="file" accept=".json" style="display:none;" onchange="restoreScores(this)">
-                </label>
-            </div>
-        </details>
-
         <footer class="footer">Built with <span aria-hidden="true">💪🏾</span> by Dad · Motor City Math</footer>
         </main>
     </div>
@@ -497,7 +486,7 @@
     <script>
     /* ========== TEST REGISTRY ========== */
     var tests = [
-        { file: 'exam.html?file=s1-quiz-prep-1', name: '📝 S1 Quiz Prep', unit: 'spring-s1', trimester: 'spring', key: 'mcm-s1-quiz-prep-1', questions: 12 },
+        { file: 'exam.html?file=s1-quiz-prep-1', name: '📝 S1 Quiz Prep', unit: 'spring-s1', trimester: 'spring', key: 'mcm-s1-quiz-prep-1', questions: 8 },
         { file: 'exam.html?file=finals-miss-drill', name: '🎯 FP3 Miss Drill', unit: 'winter-final', trimester: 'winter', key: 'mcm-finals-miss-drill', questions: 8, retake: true },
         { file: 'exam.html?file=finals-diagnostic-1', name: '📚 Finals Prep 1', unit: 'winter-final', trimester: 'winter', key: 'mcm-finals-diagnostic-1', questions: 15, retake: true },
         { file: 'exam.html?file=finals-diagnostic-2', name: '📚 Finals Prep 2', unit: 'winter-final', trimester: 'winter', key: 'mcm-finals-diagnostic-2', questions: 15, retake: true },
