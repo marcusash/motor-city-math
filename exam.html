@@ -1551,30 +1551,69 @@
         if (!examData) return;
         var base = window.location.href.replace(/\/[^\/]*(\?.*)?$/, '/');
 
-        // Unescape double-backslashes from JSON double-encoding (\\dfrac → \dfrac, \\( → \(, etc.)
+        // Unescape double-backslashes from JSON double-encoding
         function tex(s) {
             if (!s) return '';
             return s.replace(/\\\\/g, '\\');
         }
 
-        var qHtml = examData.questions.map(function(q) {
-            var isMultiChoice = q.inputs.some(function(i){ return i.type === 'radio'; });
-            var inputHtml = q.inputs.map(function(inp) {
-                if (inp.type === 'radio') {
-                    return '<div class="blank-row"><span class="blank-lbl">Answer</span><span class="blank-line"></span></div>';
+        // Build a printable box grid table
+        function boxGrid(cols, rows, topPartial) {
+            // cols: array of header strings for top; rows: array of header strings for left
+            // topPartial: if set, some cols may be null (blank to fill in)
+            var nCols = cols.length;
+            var nRows = rows.length;
+            var cellW = Math.max(60, Math.floor(360 / nCols));
+            var cellH = 52;
+            var css = 'border-collapse:collapse;margin:12px 0;';
+            var thStyle = 'border:1.5px solid #000;padding:6px 8px;min-width:' + cellW + 'px;height:' + cellH + 'px;text-align:center;font-weight:700;background:#f0f0f0;font-size:.9em;';
+            var tdStyle = 'border:1.5px solid #000;min-width:' + cellW + 'px;height:' + cellH + 'px;';
+            var cornerStyle = 'border:1.5px solid #000;min-width:48px;height:' + cellH + 'px;background:#e0e0e0;';
+            var html = '<table style="' + css + '"><thead><tr>';
+            html += '<td style="' + cornerStyle + '"></td>';
+            cols.forEach(function(c) {
+                var label = (c != null) ? ('\\(' + c + '\\)') : '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+                html += '<th style="' + thStyle + '">' + label + '</th>';
+            });
+            html += '</tr></thead><tbody>';
+            rows.forEach(function(r) {
+                html += '<tr><th style="' + thStyle + '">\\(' + r + '\\)</th>';
+                for (var c = 0; c < nCols; c++) {
+                    html += '<td style="' + tdStyle + '"></td>';
                 }
-                if (inp.type === 'dropdown') {
-                    return '<div class="blank-row"><span class="blank-lbl">' + tex(inp.label||'Answer') + '</span><span class="blank-line"></span></div>';
-                }
-                return '<div class="blank-row"><span class="blank-lbl">' + tex(inp.label||'Answer') + '</span><span class="blank-line"></span></div>';
-            }).join('');
+                html += '</tr>';
+            });
+            html += '</tbody></table>';
+            return html;
+        }
 
-            var workH = '140px';
+        var qHtml = examData.questions.map(function(q) {
+            var inputHtml = '';
+
+            if (q.type === 'box' && q.box) {
+                // Printable 2D box grid with col/row headers, blank interior cells
+                inputHtml = boxGrid(q.box.cols, q.box.rows, null);
+                // Final answer blank
+                inputHtml += '<div class="blank-row" style="margin-top:10px;"><span class="blank-lbl">Final Answer =</span><span class="blank-line"></span></div>';
+            } else if (q.type === 'box-reverse' && q.box) {
+                // Known factor down left, partial top across (null entries = blank)
+                var topCols = (q.box.partial_top || []).map(function(c) { return c || null; });
+                inputHtml = boxGrid(topCols, q.box.known_factor, true);
+                inputHtml += '<div class="blank-row" style="margin-top:10px;"><span class="blank-lbl">Missing factor =</span><span class="blank-line"></span></div>';
+            } else {
+                inputHtml = q.inputs.map(function(inp) {
+                    if (inp.type === 'radio') {
+                        return '<div class="blank-row"><span class="blank-lbl">Answer</span><span class="blank-line"></span></div>';
+                    }
+                    return '<div class="blank-row"><span class="blank-lbl">' + tex(inp.label || 'Answer') + '</span><span class="blank-line"></span></div>';
+                }).join('');
+            }
+
             return '<div class="qcard">' +
                 '<div class="qhdr"><span class="qnum">Question ' + q.number + '</span><span class="qstd">' + q.standard + '</span></div>' +
                 '<div class="qtext">' + tex(q.question_html) + '</div>' +
                 inputHtml +
-                '<div class="work-area" style="min-height:' + workH + '"><span class="work-lbl">Show your work:</span></div>' +
+                '<div class="work-area" style="min-height:120px;"><span class="work-lbl">Show your work:</span></div>' +
                 '</div>';
         }).join('');
 
