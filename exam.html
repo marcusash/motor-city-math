@@ -1575,6 +1575,8 @@
             }
 
             var s = '';
+            // Dark filled corner — signals "not a fillable cell" to Kai
+            s += '<rect x="0" y="0" width="'+hdrW+'" height="'+cellH+'" fill="#444"/>';
             // Top border — col header area only (NOT over the corner)
             s += ln(hdrW, 0, totalW, 0);
             // Left border — row header area only (NOT over the corner)
