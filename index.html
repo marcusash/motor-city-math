@@ -149,7 +149,7 @@
             margin-bottom: 20px;
         }
         .test-link {
-            display: block;
+            display: flex; flex-direction: column; justify-content: space-between;
             background: var(--bg-card);
             border: 1px solid var(--border-default);
             border-left: 4px solid var(--accent-blue);
@@ -160,16 +160,19 @@
             font-weight: 600;
             font-size: var(--text-sm);
             transition: border-color 0.15s, box-shadow 0.15s;
+            min-height: 72px;
         }
         .test-link:hover {
             border-color: var(--accent-blue);
             box-shadow: 0 2px 8px rgba(29,66,186,0.12);
         }
+        .test-link .test-name-row { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
         .test-link .test-meta { color: var(--text-secondary); font-weight: 400; font-size: var(--text-sm); margin-top: 4px; }
-        .test-link .test-score { font-weight: 700; color: var(--color-correct); float: right; }
+        .test-link .test-score { font-weight: 800; font-size: 1rem; color: var(--color-correct); white-space: nowrap; }
         .test-link .test-score.low { color: var(--accent-red); }
+        .test-link .test-score.mid { color: var(--color-warning, #d29922); }
         .sparkline { display: block; margin-top: 6px; }
-        .sparkline-zero { display: inline-block; width: 40px; height: 20px; border-bottom: 2px dashed var(--text-secondary); opacity: 0.5; margin-top: 6px; }
+        .sparkline-zero { display: none; }
 
         .footer { text-align: center; color: var(--text-secondary); font-size: var(--text-sm); padding: 20px 0 10px; }
 
@@ -926,15 +929,16 @@
             var pct = item.pct;
             var borderColor = 'var(--accent-blue)';
             var scoreHtml = '';
+            var scoreClass = 'test-score';
             if (pct !== null) {
-                scoreHtml = '<span class="test-score' + (pct < 70 ? ' low' : '') + '">' + pct + '%</span>';
-                if (pct >= 92) borderColor = 'var(--color-correct)';
-                else if (pct >= 82) borderColor = 'var(--accent-blue)';
-                else if (pct >= 70) borderColor = 'var(--color-warning)';
-                else borderColor = 'var(--accent-red)';
+                if (pct >= 92) { borderColor = 'var(--color-correct)'; }
+                else if (pct >= 80) { borderColor = 'var(--accent-blue)'; scoreClass = 'test-score mid'; }
+                else if (pct >= 70) { borderColor = 'var(--color-warning, #d29922)'; scoreClass = 'test-score mid'; }
+                else { borderColor = 'var(--accent-red)'; scoreClass = 'test-score low'; }
+                scoreHtml = '<span class="' + scoreClass + '">' + pct + '%</span>';
             }
             return '<a href="' + t.file + '" class="test-link" style="border-left-color:' + borderColor + ';">' +
-                t.name + scoreHtml +
+                '<div class="test-name-row">' + t.name + scoreHtml + '</div>' +
                 '<div class="test-meta">' + t.questions + ' questions · ' + t.unit + '</div></a>';
         }).join('');
 
