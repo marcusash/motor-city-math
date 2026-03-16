@@ -1558,26 +1558,26 @@
         }
 
         // Build a printable box grid table
-        function boxGrid(cols, rows, topPartial) {
-            // cols: array of header strings for top; rows: array of header strings for left
-            // topPartial: if set, some cols may be null (blank to fill in)
+        // showHeaders: if true, render factor terms in headers; if false, all header cells are blank
+        function boxGrid(cols, rows, showHeaders) {
             var nCols = cols.length;
             var nRows = rows.length;
-            var cellW = Math.max(60, Math.floor(360 / nCols));
-            var cellH = 52;
+            var cellW = Math.max(72, Math.floor(400 / nCols));
+            var cellH = 60;
             var css = 'border-collapse:collapse;margin:12px 0;';
-            var thStyle = 'border:1.5px solid #000;padding:6px 8px;min-width:' + cellW + 'px;height:' + cellH + 'px;text-align:center;font-weight:700;background:#f0f0f0;font-size:.9em;';
+            var blankHeaderStyle = 'border:1.5px solid #000;min-width:' + cellW + 'px;height:' + cellH + 'px;background:#f0f0f0;';
             var tdStyle = 'border:1.5px solid #000;min-width:' + cellW + 'px;height:' + cellH + 'px;';
-            var cornerStyle = 'border:1.5px solid #000;min-width:48px;height:' + cellH + 'px;background:#e0e0e0;';
+            var cornerStyle = 'border:1.5px solid #000;min-width:56px;height:' + cellH + 'px;background:#e0e0e0;';
             var html = '<table style="' + css + '"><thead><tr>';
             html += '<td style="' + cornerStyle + '"></td>';
             cols.forEach(function(c) {
-                var label = (c != null) ? ('\\(' + c + '\\)') : '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
-                html += '<th style="' + thStyle + '">' + label + '</th>';
+                var label = (showHeaders && c != null) ? ('\\(' + c + '\\)') : '';
+                html += '<th style="' + blankHeaderStyle + '">' + label + '</th>';
             });
             html += '</tr></thead><tbody>';
             rows.forEach(function(r) {
-                html += '<tr><th style="' + thStyle + '">\\(' + r + '\\)</th>';
+                var rowLabel = showHeaders ? ('\\(' + r + '\\)') : '';
+                html += '<tr><th style="' + blankHeaderStyle + '">' + rowLabel + '</th>';
                 for (var c = 0; c < nCols; c++) {
                     html += '<td style="' + tdStyle + '"></td>';
                 }
@@ -1591,12 +1591,11 @@
             var inputHtml = '';
 
             if (q.type === 'box' && q.box) {
-                // Printable 2D box grid with col/row headers, blank interior cells
-                inputHtml = boxGrid(q.box.cols, q.box.rows, null);
-                // Final answer blank
+                // All headers blank: Kai writes in the factor terms himself, then fills cells
+                inputHtml = boxGrid(q.box.cols, q.box.rows, false);
                 inputHtml += '<div class="blank-row" style="margin-top:10px;"><span class="blank-lbl">Final Answer =</span><span class="blank-line"></span></div>';
             } else if (q.type === 'box-reverse' && q.box) {
-                // Known factor down left, partial top across (null entries = blank)
+                // Known factor shown on left; top headers blank (find the missing factor)
                 var topCols = (q.box.partial_top || []).map(function(c) { return c || null; });
                 inputHtml = boxGrid(topCols, q.box.known_factor, true);
                 inputHtml += '<div class="blank-row" style="margin-top:10px;"><span class="blank-lbl">Missing factor =</span><span class="blank-line"></span></div>';
