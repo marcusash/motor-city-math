@@ -322,6 +322,79 @@
         }
       ]
     }
+  ,{
+      "id": "spring-unit1",
+      "name": "Polynomial Functions",
+      "trimester": "spring",
+      "standards": [
+        {
+          "id": "S1.a",
+          "name": "Add and subtract polynomials",
+          "description": "Add and subtract polynomial expressions by combining like terms. Write answers in standard form (descending degree).",
+          "question_count": 0
+        },
+        {
+          "id": "S1.b",
+          "name": "Multiply polynomials",
+          "description": "Multiply polynomials using the distributive property, FOIL, or the box method. Write answers in standard form.",
+          "question_count": 0
+        },
+        {
+          "id": "S2.a",
+          "name": "Polynomial long division",
+          "description": "Divide polynomials using long division. Express results with quotient and remainder.",
+          "question_count": 0
+        },
+        {
+          "id": "S2.b",
+          "name": "Factor theorem",
+          "description": "Apply the factor theorem to connect factors and zeros. Determine if (x - c) is a factor given f(c) = 0.",
+          "question_count": 0
+        },
+        {
+          "id": "S2.c",
+          "name": "Factor polynomial expressions",
+          "description": "Factor polynomials using GCF, grouping, difference of squares, and trinomial factoring.",
+          "question_count": 0
+        },
+        {
+          "id": "S2.d",
+          "name": "Solve polynomial equations by factoring",
+          "description": "Solve polynomial equations by factoring and applying the zero product property.",
+          "question_count": 0
+        },
+        {
+          "id": "S3.a",
+          "name": "Graph polynomials in factored form",
+          "description": "Graph polynomial functions written in factored form. Identify zeros and sketch the curve.",
+          "question_count": 0
+        },
+        {
+          "id": "S3.b",
+          "name": "Polynomial characteristics",
+          "description": "Identify relative extrema and intervals of increasing and decreasing from a polynomial graph.",
+          "question_count": 0
+        },
+        {
+          "id": "S3.c",
+          "name": "End behavior",
+          "description": "Determine end behavior from the degree and leading coefficient, or from a graph.",
+          "question_count": 0
+        },
+        {
+          "id": "S3.d",
+          "name": "Repeated roots",
+          "description": "Identify repeated roots (multiplicity) and describe their effect on the graph (bounce vs cross).",
+          "question_count": 0
+        },
+        {
+          "id": "S3.e",
+          "name": "Equation from graph",
+          "description": "Write a polynomial equation given a graph, using zeros and a point to determine the leading coefficient.",
+          "question_count": 0
+        }
+      ]
+    }
   ],
   "difficulty_rubric": {
     "easy": {
