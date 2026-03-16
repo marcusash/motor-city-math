@@ -1,6 +1,13 @@
 {
   "exams": [
     {
+      "id": "spring01-polynomials-s1",
+      "title": "Spring S1 Quiz Prep",
+      "desc": "12 questions · S1.a S1.b · Add, subtract & multiply polynomials · ~45 min",
+      "trimester": "spring",
+      "unit": "S1"
+    },
+    {
       "id": "finals-miss-drill",
       "title": "FP3 Miss Drill",
       "desc": "7 questions · W3.d W3.e W4.h W6.b W6.c · Targeted re-drill on FP3 misses · ~35 min"
