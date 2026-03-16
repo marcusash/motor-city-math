@@ -1600,6 +1600,17 @@
 
             // Labels via foreignObject (only when showHeaders)
             if (showHeaders && renderTex) {
+                // Shade row label cells light gray — clearly "given/read-only"
+                rows.forEach(function(r, ri) {
+                    var y = cellH + ri * cellH;
+                    s += '<rect x="1" y="'+(y+1)+'" width="'+(hdrW-1)+'" height="'+(cellH-1)+'" fill="#e8e8e8"/>';
+                });
+                // Shade given col header cells light gray; blank top-header cells stay white
+                cols.forEach(function(c, ci) {
+                    if (c == null) return;
+                    var x = hdrW + ci * cellW;
+                    s += '<rect x="'+(x+1)+'" y="1" width="'+(cellW-1)+'" height="'+(cellH-1)+'" fill="#e8e8e8"/>';
+                });
                 cols.forEach(function(c, ci) {
                     if (c == null) return;
                     var x = hdrW + ci * cellW;
