@@ -427,7 +427,7 @@
 
         <!-- Guest/Dad Mode banner (hidden until ?guest=1 or ?dad=1) -->
         <div class="dad-banner" id="dadBanner" style="display:none;">
-            <span class="dad-label" id="dadLabel">👤 Guest View</span>
+            <span class="dad-label" id="dadLabel">Guest View</span>
             <span class="dad-status" id="dadStatus">Loading Kai's scores...</span>
             <label class="dad-upload-label" id="dadUploadLabel">
                 Update from Kai's device
@@ -437,7 +437,7 @@
 
         <!-- Corrupted score data recovery banner (shown only if JSON.parse fails) -->
         <div class="score-error-banner" id="scoreErrorBanner" style="display:none;" role="alert" aria-live="polite">
-            <span class="score-error-icon">⚠️</span>
+            <span class="score-error-icon">!</span>
             <span class="score-error-msg">Score history couldn't load. Something went wrong with your saved data.</span>
             <div class="score-error-actions" id="scoreErrorActions">
                 <button class="score-error-clear" id="scoreErrorClear" onclick="startClearConfirm()">Clear and start fresh</button>
@@ -455,16 +455,16 @@
             Name: _____________________ Date: ___________
         </div>
         <header class="app-hd">
-            <h1>Motor City Math <span aria-hidden="true">🏀</span></h1>
+            <h1>Motor City Math</h1>
             <p>Algebra II &middot; Kai</p>
         </header>
 
         <main>
         <!-- Hero: Spring S1 -->
         <a href="exam.html?file=s1-practice-1" class="hero hero-link" style="display:block;text-decoration:none;cursor:pointer;">
-            <div class="hero-eye">Spring S1 &middot; Quiz Prep 2 &middot; Quiz Tuesday 📝</div>
+            <div class="hero-eye">Spring S1 &middot; Quiz Prep 2 &middot; Quiz Tuesday</div>
             <div class="hero-name">Unit 1: Polynomial Functions</div>
-            <div class="hero-last">Add, subtract &amp; multiply polynomials. Box method. Quiz Tuesday. Let&rsquo;s get the reps in. 🏀</div>
+            <div class="hero-last">Add, subtract &amp; multiply polynomials. Box method. Quiz Tuesday. Let&rsquo;s get the reps in.</div>
         </a>
 
         <!-- Progress Chart (FD design) -->
@@ -491,18 +491,18 @@
 
         <!-- Spring 2026 (open by default) -->
         <details class="dash-section" id="springSection" open>
-            <summary class="section-title">🌱 Spring 2026 &middot; Unit 1: Polynomials</summary>
+            <summary class="section-title">Spring 2026 · Unit 1: Polynomials</summary>
             <div class="test-grid" id="springGrid"></div>
         </details>
 
-        <!-- Winter 2025-26 (collapsed, chart injected by buildWinterHistory) -->
-        <details class="dash-section" id="winterSection">
-            <summary class="section-title" id="winterSummaryEl">🏆 Winter 2025-26</summary>
+        <!-- Winter 2025-26 (open by default, chart injected by buildWinterHistory) -->
+        <details class="dash-section" id="winterSection" open>
+            <summary class="section-title" id="winterSummaryEl">Winter 2025-26</summary>
             <div id="winterChartContainer" style="margin: 4px 0 12px;"></div>
             <div class="test-grid" id="winterTestGrid"></div>
         </details>
 
-        <footer class="footer">Built with <span aria-hidden="true">💪🏾</span> by Dad · Motor City Math</footer>
+        <footer class="footer">Built with care by Dad · Motor City Math</footer>
         </main>
     </div>
 
@@ -512,10 +512,10 @@
         { file: 'exam.html?file=s1-quiz-prep-1', name: 'S1 Quiz Prep 1', unit: 'spring-s1', trimester: 'spring', key: 'mcm-s1-quiz-prep-1', questions: 8 },
         { file: 'exam.html?file=s1-practice-1', name: 'S1 Quiz Prep 2', unit: 'spring-s1', trimester: 'spring', key: 'mcm-s1-practice-1', questions: 8 },
         { file: 'exam.html?file=s1-practice-2', name: 'S1 Quiz Prep 3', unit: 'spring-s1', trimester: 'spring', key: 'mcm-s1-practice-2', questions: 7 },
-        { file: 'exam.html?file=finals-miss-drill', name: '🎯 FP3 Miss Drill', unit: 'winter-final', trimester: 'winter', key: 'mcm-finals-miss-drill', questions: 8, retake: true },
-        { file: 'exam.html?file=finals-diagnostic-1', name: '📚 Finals Prep 1', unit: 'winter-final', trimester: 'winter', key: 'mcm-finals-diagnostic-1', questions: 15, retake: true },
-        { file: 'exam.html?file=finals-diagnostic-2', name: '📚 Finals Prep 2', unit: 'winter-final', trimester: 'winter', key: 'mcm-finals-diagnostic-2', questions: 15, retake: true },
-        { file: 'exam.html?file=finals-diagnostic-3', name: '📚 Finals Prep 3', unit: 'winter-final', trimester: 'winter', key: 'mcm-finals-diagnostic-3', questions: 15, retake: true },
+        { file: 'exam.html?file=finals-miss-drill', name: 'FP3 Miss Drill', unit: 'winter-final', trimester: 'winter', key: 'mcm-finals-miss-drill', questions: 8, retake: true },
+        { file: 'exam.html?file=finals-diagnostic-1', name: 'Finals Prep 1', unit: 'winter-final', trimester: 'winter', key: 'mcm-finals-diagnostic-1', questions: 15, retake: true },
+        { file: 'exam.html?file=finals-diagnostic-2', name: 'Finals Prep 2', unit: 'winter-final', trimester: 'winter', key: 'mcm-finals-diagnostic-2', questions: 15, retake: true },
+        { file: 'exam.html?file=finals-diagnostic-3', name: 'Finals Prep 3', unit: 'winter-final', trimester: 'winter', key: 'mcm-finals-diagnostic-3', questions: 15, retake: true },
         { file: 'exam.html?file=retake-practice-1', name: 'Retake Practice #1', unit: 'nonlinear', trimester: 'winter', key: 'mcm-retake-practice-1', questions: 15, retake: true },
         { file: 'exam.html?file=retake-practice-2', name: 'Retake Practice #2', unit: 'nonlinear', trimester: 'winter', key: 'mcm-retake-practice-2', questions: 15, retake: true },
         { file: 'exam.html?file=retake-practice-3', name: 'Retake Practice #3', unit: 'nonlinear', trimester: 'winter', key: 'mcm-retake-practice-3', questions: 15, retake: true },
@@ -544,7 +544,7 @@
     function renderTrendChart(container, pts) {
         if (!container) return;
         if (pts.length === 0) {
-            container.innerHTML = '<div class="trend-empty">🏀 Complete your first test to see your progress</div>';
+            container.innerHTML = '<div class="trend-empty">Complete your first test to see your progress</div>';
             return;
         }
 
@@ -711,7 +711,7 @@
         var keys = Object.keys(stdData);
 
         if (keys.length === 0) {
-            grid.innerHTML = '<div class="empty-state" style="grid-column:1/-1;padding:20px;"><p>Take a test and we\'ll break down your game. 📊</p></div>';
+            grid.innerHTML = '<div class="empty-state" style="grid-column:1/-1;padding:20px;"><p>Take a test and we\'ll break down your game.</p></div>';
             return;
         }
 
@@ -727,7 +727,7 @@
             var s = stdData[id];
             var pct = s.total ? Math.round((s.correct / s.total) * 100) : 0;
             var tier = pct >= 90 ? 'high' : pct >= 70 ? 'mid' : pct >= 50 ? 'warn' : s.total === 0 ? 'none' : 'low';
-            var copy = pct >= 90 ? 'Locked in. ✅' : pct >= 70 ? 'Solid.' : pct >= 50 ? 'Getting there.' : s.total === 0 ? 'Not tested yet.' : '⚠️ Needs work.';
+            var copy = pct >= 90 ? 'Locked in.' : pct >= 70 ? 'Solid.' : pct >= 50 ? 'Getting there.' : s.total === 0 ? 'Not tested yet.' : 'Needs work.';
             var name = s.name || id;
             html += '<div class="std-card tier-' + tier + '" role="listitem">' +
                 '<div class="std-id">' + id + '</div>' +
@@ -747,7 +747,7 @@
     function buildStudyNext(stdResult) {
         var list = document.getElementById('studyList');
         if (!stdResult || !stdResult.keys || stdResult.keys.length === 0) {
-            list.innerHTML = '<li class="study-item"><span class="emoji" aria-hidden="true">💪</span> Your highlights reel starts with test #1.</li>';
+            list.innerHTML = '<li class="study-item">Your highlights reel starts with test #1.</li>';
             return;
         }
 
@@ -758,13 +758,12 @@
             var s = stdResult.data[id];
             if (s.total === 0) return;
             var pct = Math.round((s.correct / s.total) * 100);
-            var emoji = pct < 70 ? '🏀' : pct < 90 ? '📈' : '✅';
             var action = pct < 70 ? 'Start here.' : pct < 90 ? 'Almost there.' : 'Review only.';
             var name = s.name || id;
-            html += '<li class="study-item"><span class="emoji" aria-hidden="true">' + emoji + '</span> <strong>' + id + '</strong> (' + name + '): ' + pct + '%. ' + action + '</li>';
+            html += '<li class="study-item"><strong>' + id + '</strong> (' + name + '): ' + pct + '%. ' + action + '</li>';
             count++;
         });
-        list.innerHTML = html || '<li class="study-item"><span class="emoji" aria-hidden="true">✅</span> All standards looking strong!</li>';
+        list.innerHTML = html || '<li class="study-item">All standards looking strong.</li>';
     }
 
     /* ========== TEST INDEX ========== */
@@ -884,7 +883,7 @@
 
         var bar = document.getElementById('statsBar');
         if (testCount === 0) {
-            bar.textContent = 'Your highlights reel starts with test #1. 💪';
+            bar.textContent = 'Your highlights reel starts with test #1.';
         } else {
             var dateStr = lastTest ? new Date(lastTest).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) : '-';
             bar.textContent = 'Last test: ' + dateStr + (lastPct !== null ? ' · ' + lastPct + '%' : '') + ' · ' + testCount + ' test' + (testCount !== 1 ? 's' : '') + ' completed';
@@ -1004,7 +1003,7 @@
 
         // Priority 3: all >=92% - celebrate
         if (!next) {
-            document.getElementById('upNextInfo').textContent = 'All practice exams at Grade 4. You crushed it. 💪';
+            document.getElementById('upNextInfo').textContent = 'All practice exams at Grade 4. You crushed it.';
             var btn = document.querySelector('.nav-btn.primary');
             if (btn) { btn.textContent = 'Run It Back'; btn.href = 'exam.html?file=retake-practice-7'; }
             return;
@@ -1133,10 +1132,10 @@
         var banner = document.getElementById('dadBanner');
         banner.style.display = 'flex';
         if (_guestMode) {
-            document.getElementById('dadLabel').textContent = '👤 Guest View';
+            document.getElementById('dadLabel').textContent = 'Guest View';
             document.getElementById('dadUploadLabel').style.display = 'none';
         } else {
-            document.getElementById('dadLabel').textContent = '👨 Dad View';
+            document.getElementById('dadLabel').textContent = 'Dad View';
         }
         document.getElementById('dadStatus').textContent = 'Loading Kai\'s scores...';
         fetch('data/kai-scores-latest.json?v=' + Date.now())
@@ -1192,7 +1191,7 @@
                 .then(function(data) {
                     if (data && data.mcm_scores) {
                         localStorage.setItem('mcm_scores', JSON.stringify(data.mcm_scores));
-                        alert('✅ Scores restored! Original exam, Practice 1 & Practice 2 are all back.');
+                        alert('Scores restored. Original exam, Practice 1 & Practice 2 are all back.');
                         window.location.href = window.location.pathname;
                     }
                 })
@@ -1253,7 +1252,7 @@
         try { data.standardScores = JSON.parse(localStorage.getItem('standardScores') || 'null'); } catch(e) {}
 
         if (!data.mcm_scores && !data.mcm_srs) {
-            alert('Take a test first, then we\'ll send your scores! 🏀');
+            alert('Take a test first, then we\'ll send your scores.');
             return;
         }
 
