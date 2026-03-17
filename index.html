@@ -1061,13 +1061,8 @@
         if (e.key === 'Escape') cancelClearConfirm();
     }
     function rerenderAll() {
-        buildChart();
-        buildSpringGrid();
-        buildWinterTestGrid();
-        buildStats();
-        buildLast2Tests();
-        buildProgressStory();
-        buildWinterHistory();
+        var fns = [buildChart, buildSpringGrid, buildWinterTestGrid, buildStats, buildLast2Tests, buildProgressStory, buildWinterHistory];
+        fns.forEach(function(fn) { try { fn(); } catch(e) { console.error(fn.name, e); } });
     }
 
     /* ========== PROGRESS STORY (sw-11) ========== */
