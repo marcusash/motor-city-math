@@ -581,7 +581,7 @@
 
         var faYs = pts.map(function(p) { return yPt(p.fa); });
         var faPath = makePath(xs, faYs);
-        var fillPath = faPath + ' V 108 H ' + xs[0] + ' Z';
+        var fillPath = faPath + ' V 98 H ' + xs[0] + ' Z';
 
         // Last scores for right-edge labels
         var lastX = xs[n-1], lastFaY = faYs[n-1], lastFaPct = pts[n-1].fa;
@@ -607,15 +607,15 @@
 
         // X-axis labels (two lines: label + date sublabel)
         var xLabels = pts.map(function(p, i) {
-            var main = '<text x="'+xs[i]+'" y="116" font-size="10" font-weight="600" fill="rgba(255,255,255,0.5)" text-anchor="middle" font-family="var(--font-body)">'+p.label+'</text>';
-            var sub = p.sublabel ? '<text x="'+xs[i]+'" y="128" font-size="9" fill="rgba(255,255,255,0.28)" text-anchor="middle" font-family="var(--font-body)">'+p.sublabel+'</text>' : '';
+            var main = '<text x="'+xs[i]+'" y="124" font-size="10" font-weight="600" fill="rgba(255,255,255,0.5)" text-anchor="middle" font-family="var(--font-body)">'+p.label+'</text>';
+            var sub = p.sublabel ? '<text x="'+xs[i]+'" y="136" font-size="9" fill="rgba(255,255,255,0.28)" text-anchor="middle" font-family="var(--font-body)">'+p.sublabel+'</text>' : '';
             return main + sub;
         }).join('');
 
         var gid = 'fdg' + Date.now();
         container.innerHTML =
-            '<svg role="img" aria-label="Score progress chart showing ' + n + ' test' + (n !== 1 ? 's' : '') + '" viewBox="0 0 560 132" height="132" style="display:block;width:100%;overflow:visible">' +
-            '<defs><linearGradient id="'+gid+'" x1="'+xs[0]+'" y1="108" x2="'+lastX+'" y2="'+lastFaY+'" gradientUnits="userSpaceOnUse">' +
+            '<svg role="img" aria-label="Score progress chart showing ' + n + ' test' + (n !== 1 ? 's' : '') + '" viewBox="0 0 560 144" height="144" style="display:block;width:100%;overflow:visible">' +
+            '<defs><linearGradient id="'+gid+'" x1="'+xs[0]+'" y1="98" x2="'+lastX+'" y2="'+lastFaY+'" gradientUnits="userSpaceOnUse">' +
             '<stop offset="0%" stop-color="rgba(255,255,255,0.01)"/>' +
             '<stop offset="55%" stop-color="rgba(255,255,255,0.08)"/>' +
             '<stop offset="100%" stop-color="rgba(255,255,255,0.17)"/>' +
