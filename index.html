@@ -366,7 +366,19 @@
     <script>
     // Load all scores from GitHub repo (public reads, no auth needed)
     var _winterArchive = null; // set by fetch below, used by buildWinterHistory()
-    var _ghSpringScores = null; // set by fetch below, used by buildSpringGrid() -- GitHub is source of truth
+
+    // Spring scores pre-seeded from kai.json -- renders immediately, no fetch race
+    // UPDATE this object whenever kai.json changes
+    var _ghSpringScores = {
+        "mcm-s1-quiz-prep-1": {
+            "attempts": [{ "score": 7, "total": 8, "pct": 88, "grade": 3, "timestamp": "2026-03-16T03:55:00Z" }],
+            "best": { "score": 7, "pct": 88, "grade": 3 }
+        },
+        "mcm-s1-practice-2": {
+            "attempts": [{ "score": 6, "total": 7, "pct": 86, "grade": 3, "timestamp": "2026-03-17T04:13:00Z" }],
+            "best": { "score": 6, "pct": 86, "grade": 3 }
+        }
+    };
 
     (function() {
         var ghBase = 'https://api.github.com/repos/marcusash/motor-city-math/contents/scores/';
