@@ -366,6 +366,7 @@
     <script>
     // Load all scores from GitHub repo (public reads, no auth needed)
     var _winterArchive = null; // set by fetch below, used by buildWinterHistory()
+    var _ghSpringScores = null; // set by fetch below, used by buildSpringGrid() -- GitHub is source of truth
 
     (function() {
         var ghBase = 'https://api.github.com/repos/marcusash/motor-city-math/contents/scores/';
@@ -378,19 +379,12 @@
                 .catch(function() { return null; });
         }
 
-        // Fetch Spring scores (kai.json) and merge into localStorage for chart
+        // Fetch Spring scores (kai.json) -- GitHub is the source of truth, no localStorage dependency
         ghFetch('kai.json').then(function(payload) {
             if (!payload || !payload.mcm_scores) return;
-            try {
-                var cur = JSON.parse(localStorage.getItem('mcm_scores') || '{}');
-                // Strip any winter keys that may linger from old sessions
-                var winterKeys = ['mcm-nonlinear-exam-mvp','mcm-retake-practice-1','mcm-retake-practice-2','mcm-retake-practice-3','mcm-finals-diagnostic-1','mcm-finals-diagnostic-2','mcm-finals-diagnostic-3','mcm-finals-miss-drill'];
-                winterKeys.forEach(function(k) { delete cur[k]; });
-                var merged = Object.assign({}, cur, payload.mcm_scores);
-                localStorage.setItem('mcm_scores', JSON.stringify(merged));
-                if (typeof buildChart === 'function') buildChart();
-                if (typeof buildSpringGrid === 'function') buildSpringGrid();
-            } catch(e) {}
+            _ghSpringScores = payload.mcm_scores;
+            if (typeof buildChart === 'function') buildChart();
+            if (typeof buildSpringGrid === 'function') buildSpringGrid();
         });
 
         // Fetch Winter archive (winter-2025-26.json) for collapsed history block
@@ -610,7 +604,9 @@
     }
 
     function buildChart() {
-        var scores = getScores();
+        var ghScores = _ghSpringScores || {};
+        var localScores = getScores();
+        var scores = Object.assign({}, localScores, ghScores);
         var raw = [];
         tests.filter(function(t) { return t.trimester === 'spring'; }).forEach(function(t) {
             var s = scores[t.key];
@@ -871,7 +867,10 @@
 
     /* ========== RETAKE GRID ========== */
     function buildSpringGrid() {
-        var scores = getScores();
+        var ghScores = _ghSpringScores || {};
+        var localScores = getScores();
+        // GitHub is source of truth; local fills any gap for in-progress sessions
+        var scores = Object.assign({}, localScores, ghScores);
         var grid = document.getElementById('springGrid');
         if (!grid) return;
         var springTests = tests.filter(function(t) { return t.trimester === 'spring'; });
