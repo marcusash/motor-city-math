@@ -904,7 +904,7 @@
         springTests.forEach(function(t) {
             var s = scores[t.key];
             var scoreHtml = '';
-            var borderColor = 'var(--accent-blue)';
+            var borderColor = 'var(--border-default)';
             if (s) {
                 var pct = null;
                 if (s.attempts && s.attempts.length > 0) {
@@ -913,9 +913,9 @@
                     pct = s.pct || (s.score && s.total ? Math.round(s.score / s.total * 100) : null);
                 }
                 if (pct !== null) {
-                    scoreHtml = '<span class="test-score' + (pct < 70 ? ' low' : '') + '">' + pct + '%</span>';
+                    var scoreClass = pct >= 92 ? '' : (pct >= 70 ? ' mid' : ' low');
+                    scoreHtml = '<span class="test-score' + scoreClass + '">' + pct + '%</span>';
                     if (pct >= 92) borderColor = 'var(--color-correct)';
-                    else if (pct >= 82) borderColor = 'var(--accent-blue)';
                     else if (pct >= 70) borderColor = 'var(--color-warning)';
                     else borderColor = 'var(--accent-red)';
                 }
@@ -954,12 +954,11 @@
         var html = items.map(function(item) {
             var t = item.t;
             var pct = item.pct;
-            var borderColor = 'var(--accent-blue)';
+            var borderColor = 'var(--border-default)';
             var scoreHtml = '';
             var scoreClass = 'test-score';
             if (pct !== null) {
                 if (pct >= 92) { borderColor = 'var(--color-correct)'; }
-                else if (pct >= 80) { borderColor = 'var(--accent-blue)'; scoreClass = 'test-score mid'; }
                 else if (pct >= 70) { borderColor = 'var(--color-warning, #d29922)'; scoreClass = 'test-score mid'; }
                 else { borderColor = 'var(--accent-red)'; scoreClass = 'test-score low'; }
                 scoreHtml = '<span class="' + scoreClass + '">' + pct + '%</span>';
