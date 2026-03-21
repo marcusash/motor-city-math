@@ -384,6 +384,14 @@
     // Spring scores pre-seeded from kai.json -- renders immediately, no fetch race
     // UPDATE this object whenever kai.json changes
     var _ghSpringScores = {
+        "s1-quiz-1-2026-03-21": {
+            "attempts": [{ "score": 5, "total": 8, "pct": 63, "grade": 3, "teacher_grade": "B", "teacher_rating": "3/4", "timestamp": "2026-03-21T22:00:00Z" }],
+            "best": { "score": 5, "pct": 63, "grade": 3, "teacher_grade": "B" }
+        },
+        "s1-poly-division-2026-03-21": {
+            "attempts": [{ "score": 12, "total": 12, "pct": 100, "grade": 4, "timestamp": "2026-03-21T15:19:00Z" }],
+            "best": { "score": 12, "pct": 100, "grade": 4 }
+        },
         "mcm-s1-quiz-prep-1": {
             "attempts": [{ "score": 7, "total": 8, "pct": 88, "grade": 3, "timestamp": "2026-03-16T03:55:00Z" }],
             "best": { "score": 7, "pct": 88, "grade": 3 }
@@ -506,9 +514,11 @@
     <script>
     /* ========== TEST REGISTRY ========== */
     var tests = [
+        { file: 'reviews/kai-quiz1-2026-03-21.html', name: 'S1 Quiz 1', unit: 'spring-s1', trimester: 'spring', key: 's1-quiz-1-2026-03-21', questions: 8, benchmark: true, teacherGrade: 'B', teacherRating: '3/4' },
         { file: 'exam.html?file=s1-quiz-prep-1', name: 'S1 Quiz Prep 1', unit: 'spring-s1', trimester: 'spring', key: 'mcm-s1-quiz-prep-1', questions: 8 },
         { file: 'exam.html?file=s1-practice-2', name: 'S1 Quiz Prep 2', unit: 'spring-s1', trimester: 'spring', key: 'mcm-s1-practice-2', questions: 7 },
         { file: 'exam.html?file=s1-practice-1', name: 'S1 Quiz Prep 3', unit: 'spring-s1', trimester: 'spring', key: 'mcm-s1-practice-1', questions: 8 },
+        { file: 'data/20260321-polynomial-long-division.json', name: 'Poly Long Division', unit: 'spring-s1', trimester: 'spring', key: 's1-poly-division-2026-03-21', questions: 12, homework: true },
         { file: 'exam.html?file=finals-miss-drill', name: 'FP3 Miss Drill', unit: 'winter-final', trimester: 'winter', key: 'mcm-finals-miss-drill', questions: 8, retake: true },
         { file: 'exam.html?file=finals-diagnostic-1', name: 'Finals Prep 1', unit: 'winter-final', trimester: 'winter', key: 'mcm-finals-diagnostic-1', questions: 15, retake: true },
         { file: 'exam.html?file=finals-diagnostic-2', name: 'Finals Prep 2', unit: 'winter-final', trimester: 'winter', key: 'mcm-finals-diagnostic-2', questions: 15, retake: true },
@@ -644,6 +654,8 @@
             var short = t.name.replace(/^[\u{1F000}-\u{1FFFF}\u{2600}-\u{27FF}\uFE0F\s]+/u, '').trim()
                 .replace('Retake Practice #', 'RP').replace(/ \(.*\)$/, '');
             if (short.indexOf('Quiz Prep') !== -1) short = short.replace('Quiz Prep', 'QP');
+            if (short.indexOf('Quiz 1') !== -1) short = short.replace('Quiz 1', 'Q1');
+            if (short.indexOf('Poly Long Division') !== -1) short = 'PLD';
             raw.push({ label: short, sublabel: dateStr, fa: fa, ts: ts });
         });
         raw.sort(function(a, b) { return a.ts - b.ts; });
@@ -902,24 +914,42 @@
             var s = scores[t.key];
             var scoreHtml = '';
             var borderColor = 'var(--border-default)';
+            var metaLabel = t.questions + ' questions';
             if (s) {
                 var pct = null;
-                if (s.attempts && s.attempts.length > 0) {
-                    pct = s.attempts[s.attempts.length - 1].pct;
+                var att = (s.attempts && s.attempts.length > 0) ? s.attempts[s.attempts.length - 1] : null;
+                if (att) {
+                    pct = att.pct;
                 } else {
                     pct = s.pct || (s.score && s.total ? Math.round(s.score / s.total * 100) : null);
                 }
                 if (pct !== null) {
-                    var scoreClass = pct >= 92 ? '' : (pct >= 70 ? ' mid' : ' low');
-                    scoreHtml = '<span class="test-score' + scoreClass + '">' + pct + '%</span>';
-                    if (pct >= 92) borderColor = 'var(--color-correct)';
-                    else if (pct >= 70) borderColor = 'var(--color-warning)';
-                    else borderColor = 'var(--accent-red)';
+                    if (t.benchmark) {
+                        // Teacher quiz: amber border, show raw score + teacher grade
+                        borderColor = '#d29922';
+                        var rawScore = att ? (att.score + '/' + att.total) : '';
+                        var tg = (att && att.teacher_grade) || t.teacherGrade || '';
+                        scoreHtml = '<span class="test-score mid">' + pct + '%</span>' +
+                            (tg ? '<span style="font-size:12px;color:#d29922;font-weight:700;margin-left:6px;">Grade: ' + tg + '</span>' : '');
+                        metaLabel = 'Teacher Quiz · ' + rawScore;
+                    } else if (t.homework) {
+                        // Homework: green border for 100%, show raw score
+                        var scoreClass = pct >= 92 ? '' : (pct >= 70 ? ' mid' : ' low');
+                        scoreHtml = '<span class="test-score' + scoreClass + '">' + pct + '%</span>';
+                        borderColor = pct >= 92 ? 'var(--color-correct)' : (pct >= 70 ? 'var(--color-warning)' : 'var(--accent-red)');
+                        metaLabel = 'Homework · ' + (att ? att.score + '/' + att.total : t.questions + ' questions');
+                    } else {
+                        var scoreClass = pct >= 92 ? '' : (pct >= 70 ? ' mid' : ' low');
+                        scoreHtml = '<span class="test-score' + scoreClass + '">' + pct + '%</span>';
+                        if (pct >= 92) borderColor = 'var(--color-correct)';
+                        else if (pct >= 70) borderColor = 'var(--color-warning)';
+                        else borderColor = 'var(--accent-red)';
+                    }
                 }
             }
             html += '<a href="' + t.file + '" class="test-link" style="border-left-color:' + borderColor + ';">' +
                 t.name + scoreHtml +
-                '<div class="test-meta">' + t.questions + ' questions · S1.a &amp; S1.b · Polynomials</div></a>';
+                '<div class="test-meta">' + metaLabel + ' · S1.a &amp; S1.b · Polynomials</div></a>';
         });
         grid.innerHTML = html || '<div class="empty-state" style="padding:16px;color:var(--text-secondary);">No Spring tests yet.</div>';
     }
