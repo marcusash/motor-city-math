@@ -1,0 +1,114 @@
+{
+  "topic": "Polynomial Long Division",
+  "date": "2026-03-21",
+  "questions": [
+    {
+      "id": 1,
+      "prompt": "(7a² - 69a - 10) ÷ (a - 10)",
+      "siennaAnswer": null,
+      "kaiAnswer": "7a + 1",
+      "correctAnswer": "7a + 1",
+      "correct": true,
+      "note": ""
+    },
+    {
+      "id": 2,
+      "prompt": "(8x² + 67x + 24) ÷ (x + 8)",
+      "siennaAnswer": null,
+      "kaiAnswer": "8x + 3",
+      "correctAnswer": "8x + 3",
+      "correct": true,
+      "note": ""
+    },
+    {
+      "id": 3,
+      "prompt": "(5m² - 45m + 70) ÷ (m - 7)",
+      "siennaAnswer": null,
+      "kaiAnswer": "5m - 10",
+      "correctAnswer": "5m - 10",
+      "correct": true,
+      "note": ""
+    },
+    {
+      "id": 4,
+      "prompt": "(n³ + n² - 10n + 8) ÷ (n + 4)",
+      "siennaAnswer": null,
+      "kaiAnswer": "n² - 3n + 2",
+      "correctAnswer": "n² - 3n + 2",
+      "correct": true,
+      "note": ""
+    },
+    {
+      "id": 5,
+      "prompt": "(b³ - 8b² + 9b + 26) ÷ (b - 5)",
+      "siennaAnswer": null,
+      "kaiAnswer": "b² - 3b - 6 V: -4/(b-5)",
+      "correctAnswer": "b² - 3b - 6 + (-4)/(b-5)",
+      "correct": true,
+      "note": ""
+    },
+    {
+      "id": 6,
+      "prompt": "(6m² - 45m - 86) ÷ (m - 9)",
+      "siennaAnswer": null,
+      "kaiAnswer": "6m + 9 V: -5/(m-9)",
+      "correctAnswer": "6m + 9 + (-5)/(m-9)",
+      "correct": true,
+      "note": ""
+    },
+    {
+      "id": 7,
+      "prompt": "(8n³ - 35n² - 31n + 31) ÷ (n - 5)",
+      "siennaAnswer": null,
+      "kaiAnswer": "8n² + 5n - 6 V: 1/(n-5)",
+      "correctAnswer": "8n² + 5n - 6 + 1/(n-5)",
+      "correct": true,
+      "note": ""
+    },
+    {
+      "id": 8,
+      "prompt": "(2r² - 7r - 48) ÷ (r - 7)",
+      "siennaAnswer": null,
+      "kaiAnswer": "2r + 7 V: 1/(r-7)",
+      "correctAnswer": "2r + 7 + 1/(r-7)",
+      "correct": true,
+      "note": ""
+    },
+    {
+      "id": 9,
+      "prompt": "(9p² + 10p + 8) ÷ (p + 1)",
+      "siennaAnswer": null,
+      "kaiAnswer": "9p + 1 V: 7/(p+1)",
+      "correctAnswer": "9p + 1 + 7/(p+1)",
+      "correct": true,
+      "note": ""
+    },
+    {
+      "id": 10,
+      "prompt": "(7x² + 9x + 3) ÷ (x + 1)",
+      "siennaAnswer": null,
+      "kaiAnswer": "7x + 2 V: 1/(x+1)",
+      "correctAnswer": "7x + 2 + 1/(x+1)",
+      "correct": true,
+      "note": ""
+    },
+    {
+      "id": 11,
+      "prompt": "(9n² - 37n + 23) ÷ (n - 3)",
+      "siennaAnswer": null,
+      "kaiAnswer": "9n - 10 V: -7/(n-3)",
+      "correctAnswer": "9n - 10 + (-7)/(n-3)",
+      "correct": true,
+      "note": ""
+    },
+    {
+      "id": 12,
+      "prompt": "(n³ - 4n² - 10n + 30) ÷ (n - 5)",
+      "siennaAnswer": null,
+      "kaiAnswer": "n² + n - 5 V: 5/(n-5)",
+      "correctAnswer": "n² + n - 5 + 5/(n-5)",
+      "correct": true,
+      "note": ""
+    }
+  ]
+}
