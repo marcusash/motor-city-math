@@ -469,10 +469,10 @@
 
         <main>
         <!-- Hero: Spring S1 -->
-        <a href="reviews/kai-quiz1-2026-03-21.html" class="hero hero-link" style="display:block;text-decoration:none;cursor:pointer;">
-            <div class="hero-eye">Spring S1 &middot; Quiz 1 Complete &middot; Grade: B</div>
-            <div class="hero-name">Unit 1: Polynomial Functions</div>
-            <div class="hero-last">Quiz 1 done (5/8, teacher grade B). Polynomial long division mastered (12/12). Next: S1 Quiz 2 prep.</div>
+        <a href="exam.html?file=s1-division-practice-1" class="hero hero-link" style="display:block;text-decoration:none;cursor:pointer;">
+            <div class="hero-eye">Spring S1 &middot; Division Practice &middot; 8 Questions</div>
+            <div class="hero-name">S1 Division Practice: Polynomial Long Division</div>
+            <div class="hero-last">Long division, remainders, word problems. Based on Quiz 1 gaps. Let's get the reps in.</div>
         </a>
 
         <!-- Progress Chart (FD design) -->
@@ -514,6 +514,7 @@
     <script>
     /* ========== TEST REGISTRY ========== */
     var tests = [
+        { file: 'exam.html?file=s1-division-practice-1', name: 'S1 Division Practice', unit: 'spring-s1', trimester: 'spring', key: 'mcm-s1-division-practice-1', questions: 8 },
         { file: 'reviews/kai-quiz1-2026-03-21.html', name: 'S1 Quiz 1', unit: 'spring-s1', trimester: 'spring', key: 's1-quiz-1-2026-03-21', questions: 8, benchmark: true, teacherGrade: 'B', teacherRating: '3/4' },
         { file: 'exam.html?file=s1-quiz-prep-1', name: 'S1 Quiz Prep 1', unit: 'spring-s1', trimester: 'spring', key: 'mcm-s1-quiz-prep-1', questions: 8 },
         { file: 'exam.html?file=s1-practice-2', name: 'S1 Quiz Prep 2', unit: 'spring-s1', trimester: 'spring', key: 'mcm-s1-practice-2', questions: 7 },
@@ -655,6 +656,7 @@
             if (short.indexOf('Quiz Prep') !== -1) short = short.replace('Quiz Prep', 'QP');
             if (short.indexOf('Quiz 1') !== -1) short = short.replace('Quiz 1', 'Q1');
             if (short.indexOf('Poly Long Division') !== -1) short = 'PLD';
+            if (short.indexOf('Division Practice') !== -1) short = 'DP';
             raw.push({ label: short, sublabel: dateStr, fa: fa, ts: ts });
         });
         raw.sort(function(a, b) { return a.ts - b.ts; });
@@ -924,12 +926,14 @@
                 }
                 if (pct !== null) {
                     if (t.benchmark) {
-                        // Teacher quiz: amber border, show raw score + teacher grade
+                        // Teacher quiz: amber border, raw pct + teacher grade pill on right
                         borderColor = '#d29922';
                         var rawScore = att ? (att.score + '/' + att.total) : '';
                         var tg = (att && att.teacher_grade) || t.teacherGrade || '';
-                        scoreHtml = '<span class="test-score mid">' + pct + '%</span>' +
-                            (tg ? '<span style="font-size:12px;color:#d29922;font-weight:700;margin-left:6px;">Grade: ' + tg + '</span>' : '');
+                        scoreHtml = '<span class="test-score mid">' + pct + '%</span>';
+                        if (tg) {
+                            scoreHtml += '<span style="position:absolute;top:12px;right:14px;background:#d29922;color:#0A0E1A;font-size:13px;font-weight:800;padding:4px 12px;border-radius:16px;letter-spacing:0.5px;">Grade: ' + tg + '</span>';
+                        }
                         metaLabel = 'Teacher Quiz · ' + rawScore;
                     } else if (t.homework) {
                         // Homework: green border for 100%, show raw score
@@ -946,7 +950,7 @@
                     }
                 }
             }
-            html += '<a href="' + t.file + '" class="test-link" style="border-left-color:' + borderColor + ';">' +
+            html += '<a href="' + t.file + '" class="test-link" style="border-left-color:' + borderColor + ';position:relative;">' +
                 t.name + scoreHtml +
                 '<div class="test-meta">' + metaLabel + ' · S1.a &amp; S1.b · Polynomials</div></a>';
         });
