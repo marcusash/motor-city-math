@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="../shared/favicon.svg">
+  <title>Kai: Polynomial Long Division Review (2026-03-21)</title>
+  <link rel="stylesheet" href="../shared/katex/katex.min.css">
+  <script src="../shared/katex/katex.min.js"></script>
+  <script src="../shared/katex/auto-render.min.js"></script>
+  <link rel="stylesheet" href="../shared/styles.css">
+  <style>
+    .review-container { max-width: 860px; margin: 0 auto; padding: 24px 16px; }
+    .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: var(--text-sm); font-weight: 600; color: var(--accent-blue); text-decoration: none; margin-bottom: 16px; }
+    .back-link:hover { text-decoration: underline; }
+    .review-header { text-align: center; margin-bottom: 32px; }
+    .review-header h1 { font-size: 1.6rem; font-weight: 800; color: var(--accent-navy); margin: 0 0 4px; }
+    .review-header .meta { color: var(--text-secondary); font-size: var(--text-sm); margin: 0 0 20px; }
+    .score-banner { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 32px; }
+    .score-pill { background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 12px; padding: 14px 24px; text-align: center; min-width: 130px; box-shadow: var(--shadow-card); }
+    .score-pill .label { font-size: var(--text-xs); font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+    .score-pill .value { font-size: 2rem; font-weight: 800; color: var(--color-correct); line-height: 1; }
+    .score-pill .sub { font-size: var(--text-xs); color: var(--text-secondary); margin-top: 2px; }
+    .q-card { background: var(--bg-card); border: 1px solid var(--border-default); border-left: 4px solid var(--color-correct); border-radius: 8px; padding: 18px 20px; margin-bottom: 14px; box-shadow: var(--shadow-card); }
+    .q-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+    .q-num { font-weight: 800; color: var(--accent-navy); font-size: 1rem; }
+    .q-badge { font-size: var(--text-xs); font-weight: 700; padding: 2px 8px; border-radius: 10px; background: var(--bg-highlight); color: var(--accent-blue); }
+    .badge-score { margin-left: auto; font-size: 0.95rem; font-weight: 800; color: var(--color-correct); }
+    .q-problem { font-size: var(--text-base); color: var(--text-primary); margin-bottom: 12px; }
+    .answer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .answer-box { padding: 10px 14px; border-radius: 6px; font-size: var(--text-sm); }
+    .answer-box .alabel { font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+    .answer-box.kai-box { background: rgba(29,66,186,0.06); border: 1px solid rgba(29,66,186,0.2); }
+    .answer-box.kai-box .alabel { color: var(--accent-blue); }
+    .answer-box.correct-box { background: rgba(27,125,58,0.06); border: 1px solid rgba(27,125,58,0.2); }
+    .answer-box.correct-box .alabel { color: var(--color-correct); }
+    .remainder-note { font-size: var(--text-xs); color: var(--text-secondary); font-style: italic; margin-top: 6px; }
+    h2.section-label { font-size: var(--text-sm); font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.08em; margin: 32px 0 12px; padding-bottom: 8px; border-bottom: 2px solid var(--border-subtle); }
+    .footer-note { text-align: center; font-size: var(--text-xs); color: var(--text-secondary); margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--border-subtle); }
+    .blank-note { background: var(--bg-highlight); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 14px 20px; margin-top: 24px; font-size: var(--text-sm); color: var(--text-secondary); }
+  </style>
+</head>
+<body>
+<div class="review-container">
+
+  <a href="../index.html" class="back-link">&larr; Back to Dashboard</a>
+
+  <div class="review-header">
+    <h1>Polynomial Long Division: Review</h1>
+    <p class="meta">Kai Ash &bull; Homework Worksheet &bull; 2026-03-21</p>
+  </div>
+
+  <div class="score-banner">
+    <div class="score-pill">
+      <div class="label">Score</div>
+      <div class="value">12/12</div>
+      <div class="sub">100%</div>
+    </div>
+    <div class="score-pill">
+      <div class="label">Status</div>
+      <div class="value" style="font-size:1.4rem">Mastered</div>
+      <div class="sub">All correct, including cubics</div>
+    </div>
+  </div>
+
+  <h2 class="section-label">Quadratic Dividends (Q1-Q3)</h2>
+
+  <div class="q-card">
+    <div class="q-header">
+      <span class="q-num">Q1</span>
+      <span class="q-badge">Long Division</span>
+      <span class="badge-score">1 / 1</span>
+    </div>
+    <div class="q-problem">\((7a^2 - 69a - 10) \div (a - 10)\)</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box"><div class="alabel">Kai's Answer</div>\(7a + 1\)</div>
+      <div class="answer-box correct-box"><div class="alabel">Correct Answer</div>\(7a + 1\)</div>
+    </div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-header">
+      <span class="q-num">Q2</span>
+      <span class="q-badge">Long Division</span>
+      <span class="badge-score">1 / 1</span>
+    </div>
+    <div class="q-problem">\((8x^2 + 67x + 24) \div (x + 8)\)</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box"><div class="alabel">Kai's Answer</div>\(8x + 3\)</div>
+      <div class="answer-box correct-box"><div class="alabel">Correct Answer</div>\(8x + 3\)</div>
+    </div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-header">
+      <span class="q-num">Q3</span>
+      <span class="q-badge">Long Division</span>
+      <span class="badge-score">1 / 1</span>
+    </div>
+    <div class="q-problem">\((5m^2 - 45m + 70) \div (m - 7)\)</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box"><div class="alabel">Kai's Answer</div>\(5m - 10\)</div>
+      <div class="answer-box correct-box"><div class="alabel">Correct Answer</div>\(5m - 10\)</div>
+    </div>
+  </div>
+
+  <h2 class="section-label">Cubic Dividends (Q4-Q5, Q7, Q12)</h2>
+
+  <div class="q-card">
+    <div class="q-header">
+      <span class="q-num">Q4</span>
+      <span class="q-badge">Cubic</span>
+      <span class="badge-score">1 / 1</span>
+    </div>
+    <div class="q-problem">\((n^3 + n^2 - 10n + 8) \div (n + 4)\)</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box"><div class="alabel">Kai's Answer</div>\(n^2 - 3n + 2\)</div>
+      <div class="answer-box correct-box"><div class="alabel">Correct Answer</div>\(n^2 - 3n + 2\)</div>
+    </div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-header">
+      <span class="q-num">Q5</span>
+      <span class="q-badge">Cubic + Remainder</span>
+      <span class="badge-score">1 / 1</span>
+    </div>
+    <div class="q-problem">\((b^3 - 8b^2 + 9b + 26) \div (b - 5)\)</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box"><div class="alabel">Kai's Answer</div>\(b^2 - 3b - 6 + \frac{-4}{b - 5}\)</div>
+      <div class="answer-box correct-box"><div class="alabel">Correct Answer</div>\(b^2 - 3b - 6 + \frac{-4}{b - 5}\)</div>
+    </div>
+    <div class="remainder-note">Remainder: V = -4/(b - 5)</div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-header">
+      <span class="q-num">Q7</span>
+      <span class="q-badge">Cubic + Remainder</span>
+      <span class="badge-score">1 / 1</span>
+    </div>
+    <div class="q-problem">\((8n^3 - 35n^2 - 31n + 31) \div (n - 5)\)</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box"><div class="alabel">Kai's Answer</div>\(8n^2 + 5n - 6 + \frac{1}{n - 5}\)</div>
+      <div class="answer-box correct-box"><div class="alabel">Correct Answer</div>\(8n^2 + 5n - 6 + \frac{1}{n - 5}\)</div>
+    </div>
+    <div class="remainder-note">Remainder: V = 1/(n - 5)</div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-header">
+      <span class="q-num">Q12</span>
+      <span class="q-badge">Cubic + Remainder</span>
+      <span class="badge-score">1 / 1</span>
+    </div>
+    <div class="q-problem">\((n^3 - 4n^2 - 10n + 30) \div (n - 5)\)</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box"><div class="alabel">Kai's Answer</div>\(n^2 + n - 5 + \frac{5}{n - 5}\)</div>
+      <div class="answer-box correct-box"><div class="alabel">Correct Answer</div>\(n^2 + n - 5 + \frac{5}{n - 5}\)</div>
+    </div>
+    <div class="remainder-note">Remainder: V = 5/(n - 5)</div>
+  </div>
+
+  <h2 class="section-label">Quadratic with Remainders (Q6, Q8-Q11)</h2>
+
+  <div class="q-card">
+    <div class="q-header">
+      <span class="q-num">Q6</span>
+      <span class="q-badge">Remainder</span>
+      <span class="badge-score">1 / 1</span>
+    </div>
+    <div class="q-problem">\((6m^2 - 45m - 86) \div (m - 9)\)</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box"><div class="alabel">Kai's Answer</div>\(6m + 9 + \frac{-5}{m - 9}\)</div>
+      <div class="answer-box correct-box"><div class="alabel">Correct Answer</div>\(6m + 9 + \frac{-5}{m - 9}\)</div>
+    </div>
+    <div class="remainder-note">Remainder: V = -5/(m - 9)</div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-header">
+      <span class="q-num">Q8</span>
+      <span class="q-badge">Remainder</span>
+      <span class="badge-score">1 / 1</span>
+    </div>
+    <div class="q-problem">\((2r^2 - 7r - 48) \div (r - 7)\)</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box"><div class="alabel">Kai's Answer</div>\(2r + 7 + \frac{1}{r - 7}\)</div>
+      <div class="answer-box correct-box"><div class="alabel">Correct Answer</div>\(2r + 7 + \frac{1}{r - 7}\)</div>
+    </div>
+    <div class="remainder-note">Remainder: V = 1/(r - 7)</div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-header">
+      <span class="q-num">Q9</span>
+      <span class="q-badge">Remainder</span>
+      <span class="badge-score">1 / 1</span>
+    </div>
+    <div class="q-problem">\((9p^2 + 10p + 8) \div (p + 1)\)</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box"><div class="alabel">Kai's Answer</div>\(9p + 1 + \frac{7}{p + 1}\)</div>
+      <div class="answer-box correct-box"><div class="alabel">Correct Answer</div>\(9p + 1 + \frac{7}{p + 1}\)</div>
+    </div>
+    <div class="remainder-note">Remainder: V = 7/(p + 1)</div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-header">
+      <span class="q-num">Q10</span>
+      <span class="q-badge">Remainder</span>
+      <span class="badge-score">1 / 1</span>
+    </div>
+    <div class="q-problem">\((7x^2 + 9x + 3) \div (x + 1)\)</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box"><div class="alabel">Kai's Answer</div>\(7x + 2 + \frac{1}{x + 1}\)</div>
+      <div class="answer-box correct-box"><div class="alabel">Correct Answer</div>\(7x + 2 + \frac{1}{x + 1}\)</div>
+    </div>
+    <div class="remainder-note">Remainder: V = 1/(x + 1)</div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-header">
+      <span class="q-num">Q11</span>
+      <span class="q-badge">Remainder</span>
+      <span class="badge-score">1 / 1</span>
+    </div>
+    <div class="q-problem">\((9n^2 - 37n + 23) \div (n - 3)\)</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box"><div class="alabel">Kai's Answer</div>\(9n - 10 + \frac{-7}{n - 3}\)</div>
+      <div class="answer-box correct-box"><div class="alabel">Correct Answer</div>\(9n - 10 + \frac{-7}{n - 3}\)</div>
+    </div>
+    <div class="remainder-note">Remainder: V = -7/(n - 3)</div>
+  </div>
+
+  <div class="blank-note">
+    Q13-Q20 were blank (not yet attempted). Per Mash's instruction, these were not graded.
+  </div>
+
+  <div class="footer-note">
+    Graded 2026-03-21 by FR from scanned worksheet. Source: scores/kai.json key s1-poly-division-2026-03-21.
+  </div>
+
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "\\(", right: "\\)", display: false },
+        { left: "\\[", right: "\\]", display: true }
+      ],
+      throwOnError: false
+    });
+  });
+</script>
+</body>
+</html>

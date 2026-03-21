@@ -4,13 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/svg+xml" href="../shared/favicon.svg">
-  <title>Kai — Algebra 2 Quiz 1 Review (2026-03-21)</title>
+  <title>Kai: Algebra 2 Quiz 1 Review (2026-03-21)</title>
   <link rel="stylesheet" href="../shared/katex/katex.min.css">
   <script src="../shared/katex/katex.min.js"></script>
   <script src="../shared/katex/auto-render.min.js"></script>
   <link rel="stylesheet" href="../shared/styles.css">
   <style>
     .review-container { max-width: 860px; margin: 0 auto; padding: 24px 16px; }
+    .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: var(--text-sm); font-weight: 600; color: var(--accent-blue); text-decoration: none; margin-bottom: 16px; }
+    .back-link:hover { text-decoration: underline; }
     .review-header { text-align: center; margin-bottom: 32px; }
     .review-header h1 { font-size: 1.6rem; font-weight: 800; color: var(--accent-navy); margin: 0 0 4px; }
     .review-header .meta { color: var(--text-secondary); font-size: var(--text-sm); margin: 0 0 20px; }
@@ -19,39 +21,38 @@
     .score-pill .label { font-size: var(--text-xs); font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
     .score-pill .value { font-size: 2rem; font-weight: 800; color: var(--accent-navy); line-height: 1; }
     .score-pill .sub { font-size: var(--text-xs); color: var(--text-secondary); margin-top: 2px; }
-    .score-pill.grade-b .value { color: #1b7d3a; }
+    .score-pill.grade-b .value { color: var(--color-correct); }
     .section-row { display: flex; gap: 16px; margin-bottom: 32px; }
     .section-card { flex: 1; background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 8px; padding: 16px 20px; box-shadow: var(--shadow-card); }
     .section-card h3 { margin: 0 0 4px; font-size: var(--text-sm); font-weight: 700; color: var(--accent-navy); text-transform: uppercase; letter-spacing: 0.05em; }
-    .section-card .section-score { font-size: 1.4rem; font-weight: 800; color: var(--accent-navy); }
-    .section-card p { font-size: var(--text-xs); color: var(--text-secondary); margin: 2px 0 0; }
+    .section-card .section-score { font-size: 1.4rem; font-weight: 800; color: var(--accent-navy); }    .section-card p { font-size: var(--text-xs); color: var(--text-secondary); margin: 2px 0 0; }
     .bar { height: 6px; border-radius: 3px; background: var(--border-subtle); margin-top: 8px; overflow: hidden; }
     .bar-fill { height: 100%; border-radius: 3px; background: var(--accent-blue); }
-    .bar-fill.good { background: #1b7d3a; }
-    .bar-fill.warn { background: #c8102e; }
+    .bar-fill.good { background: var(--color-correct); }
+    .bar-fill.warn { background: var(--color-incorrect); }
     h2.section-label { font-size: var(--text-sm); font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.08em; margin: 32px 0 12px; padding-bottom: 8px; border-bottom: 2px solid var(--border-subtle); }
     .q-card { background: var(--bg-card); border: 1px solid var(--border-default); border-left: 4px solid var(--border-default); border-radius: 8px; padding: 18px 20px; margin-bottom: 14px; box-shadow: var(--shadow-card); }
-    .q-card.correct { border-left-color: #1b7d3a; }
-    .q-card.partial { border-left-color: #f59e0b; }
-    .q-card.incorrect { border-left-color: #c8102e; }
+    .q-card.correct { border-left-color: var(--color-correct); }
+    .q-card.partial { border-left-color: var(--color-warning); }
+    .q-card.incorrect { border-left-color: var(--color-incorrect); }
     .q-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
     .q-num { font-weight: 800; color: var(--accent-navy); font-size: 1rem; }
     .q-badge { font-size: var(--text-xs); font-weight: 700; padding: 2px 8px; border-radius: 10px; }
     .badge-standard { background: var(--bg-highlight); color: var(--accent-blue); }
     .badge-score { margin-left: auto; font-size: 0.95rem; font-weight: 800; }
-    .badge-score.s-full { color: #1b7d3a; }
-    .badge-score.s-partial { color: #d97706; }
-    .badge-score.s-zero { color: #c8102e; }
+    .badge-score.s-full { color: var(--color-correct); }
+    .badge-score.s-partial { color: var(--color-warning); }
+    .badge-score.s-zero { color: var(--color-incorrect); }
     .q-problem { font-size: var(--text-base); color: var(--text-primary); margin-bottom: 12px; }
     .answer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
     .answer-box { padding: 10px 14px; border-radius: 6px; font-size: var(--text-sm); }
     .answer-box .alabel { font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
-    .answer-box.kai-box { background: rgba(74,144,217,0.08); border: 1px solid rgba(74,144,217,0.25); }
+    .answer-box.kai-box { background: rgba(29,66,186,0.06); border: 1px solid rgba(29,66,186,0.2); }
     .answer-box.kai-box .alabel { color: var(--accent-blue); }
-    .answer-box.correct-box { background: rgba(27,125,58,0.08); border: 1px solid rgba(27,125,58,0.25); }
-    .answer-box.correct-box .alabel { color: #1b7d3a; }
-    .error-note { background: rgba(200,16,46,0.06); border: 1px solid rgba(200,16,46,0.2); border-radius: 6px; padding: 10px 14px; font-size: var(--text-sm); color: var(--text-primary); }
-    .error-note .elabel { font-size: var(--text-xs); font-weight: 700; color: #c8102e; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+    .answer-box.correct-box { background: var(--color-correct-bg); border: 1px solid rgba(27,125,58,0.2); }
+    .answer-box.correct-box .alabel { color: var(--color-correct); }
+    .error-note { background: var(--color-incorrect-bg); border: 1px solid rgba(200,16,46,0.2); border-radius: 6px; padding: 10px 14px; font-size: var(--text-sm); color: var(--text-primary); }
+    .error-note .elabel { font-size: var(--text-xs); font-weight: 700; color: var(--color-incorrect); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
     .drill-block { background: var(--bg-highlight); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 16px 20px; margin-top: 32px; }
     .drill-block h3 { margin: 0 0 10px; font-size: var(--text-sm); font-weight: 700; color: var(--accent-navy); text-transform: uppercase; letter-spacing: 0.05em; }
     .drill-block ul { margin: 0; padding-left: 20px; }
@@ -63,8 +64,10 @@
 <body>
 <div class="review-container">
 
+  <a href="../index.html" class="back-link">&larr; Back to Dashboard</a>
+
   <div class="review-header">
-    <h1>Algebra 2 — Quiz 1 Review</h1>
+    <h1>Algebra 2: Quiz 1 Review</h1>
     <p class="meta">Kai Ash &bull; Block 7 &bull; Standard S1: Manipulating Polynomial Expressions &bull; 2026-03-21</p>
   </div>
 
@@ -93,21 +96,21 @@
 
   <div class="section-row">
     <div class="section-card">
-      <h3>S1.a &mdash; Add/Subtract Polynomials</h3>
+      <h3>S1.a: Add/Subtract Polynomials</h3>
       <div class="section-score">4/5</div>
-      <p>80% &mdash; Strong on function operations. Gap: subtraction order framing.</p>
+      <p>80% &bull; Strong on function operations. Gap: subtraction order framing.</p>
       <div class="bar"><div class="bar-fill good" style="width:80%"></div></div>
     </div>
     <div class="section-card">
-      <h3>S1.b &mdash; Multiply Polynomials</h3>
+      <h3>S1.b: Multiply Polynomials</h3>
       <div class="section-score">1/3</div>
-      <p>33% &mdash; f(x)*g(x) solid. Gaps: 3-factor FOIL, like-terms after multiply.</p>
+      <p>33% &bull; f(x)*g(x) solid. Gaps: 3-factor FOIL, like-terms after multiply.</p>
       <div class="bar"><div class="bar-fill warn" style="width:33%"></div></div>
     </div>
   </div>
 
   <span class="page-total">Page 1 Questions (Q1a-d)</span>
-  <h2 class="section-label" style="margin-top:8px">Question 1 — S1: Polynomial Operations</h2>
+  <h2 class="section-label" style="margin-top:8px">Question 1: S1 Polynomial Operations</h2>
 
   <!-- Q1a -->
   <div class="q-card partial">
@@ -129,7 +132,7 @@
       </div>
     </div>
     <div class="error-note">
-      <div class="elabel">Error — Subtraction Order Reversal (Partial Credit)</div>
+      <div class="elabel">Error: Subtraction Order Reversal (Partial Credit)</div>
       Kai set up \((x + 4x^3) - (25 - 9x^2)\) instead of \((25 - 9x^2) - (x + 4x^3)\). The final answer is correct because Kai then negated the result, but the work shows the minuend/subtrahend were swapped. Teacher gave 0.5 partial credit.
     </div>
   </div>
@@ -154,7 +157,7 @@
       </div>
     </div>
     <div class="error-note">
-      <div class="elabel">Error — Like-Terms Combining After Multiply</div>
+      <div class="elabel">Error: Like-Terms Combining After Multiply</div>
       Kai correctly computed \((-8x^4y^3)(2x^5y^2) = -16x^9y^5\) but then failed to combine \(-16x^9y^5 + 7x^9y^5 = -9x^9y^5\). Treated the two terms as unlike despite matching exponents.
     </div>
   </div>
@@ -200,13 +203,13 @@
       </div>
     </div>
     <div class="error-note">
-      <div class="elabel">Error — FOIL with 3 Factors (Process Order)</div>
+      <div class="elabel">Error: FOIL with 3 Factors (Process Order)</div>
       Teacher note: "FOIL, then distribute 3x OR Distribute 3x then FOIL." Kai's final answer appears numerically correct but an arithmetic error in the intermediate expansion step caused the 0. Kai must show FOIL of two binomials first, then multiply by 3x -- or distribute 3x into one binomial, then FOIL. Process must be explicit.
     </div>
   </div>
 
   <span class="page-total" style="margin-top:24px; display:inline-block">Page 2 Questions (Q2 and Q3)</span>
-  <h2 class="section-label" style="margin-top:8px">Question 2 — Function Operations</h2>
+  <h2 class="section-label" style="margin-top:8px">Question 2: Function Operations</h2>
   <p style="font-size:var(--text-sm); color:var(--text-secondary); margin:-8px 0 16px">
     Given \(f(x) = x^3 - 3x^2 + 2x\) and \(g(x) = 2x^2 - 5\)
   </p>
@@ -274,7 +277,7 @@
     </div>
   </div>
 
-  <h2 class="section-label">Question 3 — Area of Shaded Region</h2>
+  <h2 class="section-label">Question 3: Area of Shaded Region</h2>
 
   <!-- Q3 -->
   <div class="q-card partial">
@@ -298,7 +301,7 @@
       </div>
     </div>
     <div class="error-note">
-      <div class="elabel">Error — Missing Step / Standard Form (Partial Credit)</div>
+      <div class="elabel">Error: Missing Step, Standard Form (Partial Credit)</div>
       Kai wrote \((x+7)^2 - x^2 = (x^2 + 14x + 49) - x^2 = 14x + 49\). The answer is correct but the teacher circled a step, likely requiring the expanded intermediate form to be shown explicitly before canceling \(x^2\). Partial credit 0.5/1.
     </div>
   </div>
