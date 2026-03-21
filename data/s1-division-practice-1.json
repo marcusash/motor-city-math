@@ -1,0 +1,124 @@
+{
+  "exam_id": "s1-division-practice-1",
+  "schema_version": "1.0",
+  "title": "S1 Division Practice: Polynomial Long Division Focus",
+  "subtitle": "S1.a recall · S1.c Division · Word Problems · 8 Questions · ~45 min",
+  "time_minutes": 45,
+  "created": "2026-03-21",
+  "created_by": "FR",
+  "purpose": "Division-focused practice for Kai. S1.a recall targets his subtraction-framing gap (subtract A from B = B-A). S1.c is 5 division questions escalating from monomial to cubic with remainder. Closes with 2 word problems showing real-world division: area (find missing side) and rate (find unit rate).",
+  "questions": [
+    {
+      "id": "d1q1",
+      "number": 1,
+      "section": "A",
+      "standard": "S1.a",
+      "difficulty": "medium",
+      "type": "simplify",
+      "question_html": "<strong>Recall Check.</strong> Subtract \\( (4x^2 - 3x + 5) \\) from \\( (9x^2 + x - 2) \\). Write your answer in standard form.",
+      "inputs": [
+        { "id": "d1q1_ans", "type": "text", "label": "Answer =", "answer": "5x^2 + 4x - 7", "normalize": "poly" }
+      ],
+      "hint": "\"Subtract A from B\" always means B minus A. Write it as (9x^2 + x - 2) - (4x^2 - 3x + 5) FIRST, then distribute the negative before combining.",
+      "solution_html": "\\( (9x^2 + x - 2) - (4x^2 - 3x + 5) \\)<br>\\( = 9x^2 + x - 2 - 4x^2 + 3x - 5 \\)<br>\\( = 5x^2 + 4x - 7 \\)"
+    },
+    {
+      "id": "d1q2",
+      "number": 2,
+      "section": "B",
+      "standard": "S1.c",
+      "difficulty": "easy",
+      "type": "simplify",
+      "question_html": "<strong>Warm-Up.</strong> Divide each term by the monomial.<br>\\( (8x^3 + 12x^2 - 4x) \\div (4x) \\)",
+      "inputs": [
+        { "id": "d1q2_ans", "type": "text", "label": "Answer =", "answer": "2x^2 + 3x - 1", "normalize": "poly" }
+      ],
+      "hint": "Divide each term separately: 8x^3 / 4x, then 12x^2 / 4x, then -4x / 4x. Subtract exponents when dividing powers with the same base.",
+      "solution_html": "\\( \\frac{8x^3}{4x} + \\frac{12x^2}{4x} + \\frac{-4x}{4x} = 2x^2 + 3x - 1 \\)"
+    },
+    {
+      "id": "d1q3",
+      "number": 3,
+      "section": "B",
+      "standard": "S1.c",
+      "difficulty": "medium",
+      "type": "simplify",
+      "question_html": "Divide using long division. No remainder.<br>\\( (x^2 + 9x + 20) \\div (x + 4) \\)",
+      "inputs": [
+        { "id": "d1q3_ans", "type": "text", "label": "Answer =", "answer": "x + 5", "normalize": "poly" }
+      ],
+      "hint": "Step 1: x^2 / x = x. Multiply x(x+4) = x^2+4x. Subtract to get 5x+20. Step 2: 5x / x = 5. Multiply 5(x+4) = 5x+20. Remainder is 0.",
+      "solution_html": "\\( x^2 + 9x + 20 \\div (x+4) \\)<br>x^2 / x = x &rarr; x(x+4) = x^2+4x &rarr; subtract: 5x+20<br>5x / x = 5 &rarr; 5(x+4) = 5x+20 &rarr; remainder 0<br>\\( \\text{Answer: } x + 5 \\)"
+    },
+    {
+      "id": "d1q4",
+      "number": 4,
+      "section": "B",
+      "standard": "S1.c",
+      "difficulty": "medium",
+      "type": "simplify",
+      "question_html": "Divide using long division. There is a remainder — include it in your answer as a fraction.<br>\\( (3x^2 + 5x - 4) \\div (x + 2) \\)",
+      "inputs": [
+        { "id": "d1q4_ans", "type": "text", "label": "Answer =", "answer": "3x - 1 + (-2)/(x + 2)", "normalize": "none" }
+      ],
+      "hint": "3x^2 / x = 3x. Multiply 3x(x+2)=3x^2+6x. Subtract to get -x-4. Then -x/x = -1. Multiply -1(x+2)=-x-2. Subtract: remainder is -2. Write remainder as -2/(x+2).",
+      "solution_html": "\\( 3x^2 + 5x - 4 \\div (x+2) \\)<br>3x^2 / x = 3x &rarr; 3x(x+2) = 3x^2+6x &rarr; subtract: -x-4<br>-x / x = -1 &rarr; -1(x+2) = -x-2 &rarr; subtract: -2<br>\\( \\text{Answer: } 3x - 1 + \\dfrac{-2}{x+2} \\)"
+    },
+    {
+      "id": "d1q5",
+      "number": 5,
+      "section": "B",
+      "standard": "S1.c",
+      "difficulty": "hard",
+      "type": "simplify",
+      "question_html": "Divide using long division. No remainder.<br>\\( (x^3 + 3x^2 - 4x - 12) \\div (x + 3) \\)",
+      "inputs": [
+        { "id": "d1q5_ans", "type": "text", "label": "Answer =", "answer": "x^2 - 4", "normalize": "poly" }
+      ],
+      "hint": "This is a cubic. x^3 / x = x^2. After the first subtraction you get -4x-12. There is no x term left — that means the x coefficient in the quotient is 0. Keep going: -4x / x = -4.",
+      "solution_html": "\\( x^3 / x = x^2 \\) &rarr; \\( x^2(x+3) = x^3+3x^2 \\) &rarr; subtract: \\( -4x - 12 \\)<br>\\( -4x / x = -4 \\) &rarr; \\( -4(x+3) = -4x - 12 \\) &rarr; remainder 0<br>\\( \\text{Answer: } x^2 - 4 \\)"
+    },
+    {
+      "id": "d1q6",
+      "number": 6,
+      "section": "B",
+      "standard": "S1.c",
+      "difficulty": "hard",
+      "type": "simplify",
+      "question_html": "Divide using long division. There is a remainder.<br>\\( (2x^3 + x^2 - 5x + 1) \\div (x - 1) \\)",
+      "inputs": [
+        { "id": "d1q6_ans", "type": "text", "label": "Answer =", "answer": "2x^2 + 3x - 2 + (-1)/(x - 1)", "normalize": "none" }
+      ],
+      "hint": "Start: 2x^3 / x = 2x^2. After each step, bring down the next term. Keep track of signs carefully — subtracting a negative is addition. Remainder will be -1.",
+      "solution_html": "\\( 2x^2(x-1) = 2x^3-2x^2 \\) &rarr; subtract: \\( 3x^2-5x+1 \\)<br>\\( 3x(x-1) = 3x^2-3x \\) &rarr; subtract: \\( -2x+1 \\)<br>\\( -2(x-1) = -2x+2 \\) &rarr; subtract: \\( -1 \\)<br>\\( \\text{Answer: } 2x^2 + 3x - 2 + \\dfrac{-1}{x-1} \\)"
+    },
+    {
+      "id": "d1q7",
+      "number": 7,
+      "section": "C",
+      "standard": "S1.c",
+      "difficulty": "medium",
+      "type": "word-problem",
+      "question_html": "<strong>Word Problem.</strong> A rectangular patio has an area of \\( (x^2 + 8x + 15) \\) square feet. The length of the patio is \\( (x + 5) \\) feet.<br><br>Write an expression for the <strong>width</strong> of the patio. Show your division work.",
+      "inputs": [
+        { "id": "d1q7_ans", "type": "text", "label": "Width =", "answer": "x + 3", "normalize": "poly" }
+      ],
+      "hint": "Area = length times width, so width = area divided by length. Divide (x^2 + 8x + 15) by (x + 5) using long division.",
+      "solution_html": "\\( \\text{Width} = (x^2 + 8x + 15) \\div (x + 5) \\)<br>\\( x^2 / x = x \\) &rarr; \\( x(x+5) = x^2+5x \\) &rarr; subtract: \\( 3x+15 \\)<br>\\( 3(x+5) = 3x+15 \\) &rarr; remainder 0<br>\\( \\text{Width} = x + 3 \\text{ feet} \\)"
+    },
+    {
+      "id": "d1q8",
+      "number": 8,
+      "section": "C",
+      "standard": "S1.c",
+      "difficulty": "medium",
+      "type": "word-problem",
+      "question_html": "<strong>Word Problem.</strong> A school printer prints a total of \\( (3x^2 + 11x - 4) \\) pages over \\( (x + 4) \\) minutes. It prints at a constant rate.<br><br>Write an expression for how many pages it prints <strong>per minute</strong>. Show your division work.",
+      "inputs": [
+        { "id": "d1q8_ans", "type": "text", "label": "Pages per minute =", "answer": "3x - 1", "normalize": "poly" }
+      ],
+      "hint": "Rate = total divided by time. Divide (3x^2 + 11x - 4) by (x + 4) using long division. The answer should have no remainder.",
+      "solution_html": "\\( \\text{Rate} = (3x^2 + 11x - 4) \\div (x + 4) \\)<br>\\( 3x^2 / x = 3x \\) &rarr; \\( 3x(x+4) = 3x^2+12x \\) &rarr; subtract: \\( -x-4 \\)<br>\\( -1(x+4) = -x-4 \\) &rarr; remainder 0<br>\\( \\text{Rate} = 3x - 1 \\text{ pages per minute} \\)"
+    }
+  ]
+}
