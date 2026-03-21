@@ -199,6 +199,7 @@
     </div>
 
     <script src="shared/scripts.js"></script>
+    <script src="config.js"></script>
     <script>
     /* ========== EXAM RENDERER ==========
      * Data model: docs/data-model.md (RP JSON schema, all fields, input contracts)
@@ -1696,13 +1697,9 @@
      * Marcus sets this once on Kai's device via the setup prompt.
      */
     function publishScoresToGitHub(payload) {
-        var pat = localStorage.getItem('mcm_gh_pat');
-        if (!pat) {
-            pat = prompt('One-time setup: paste the GitHub token Dad gave you, then tap OK.');
-            if (!pat || !pat.trim()) return;
-            localStorage.setItem('mcm_gh_pat', pat.trim());
-            pat = pat.trim();
-        }
+        var pat = window.MCM_PAT || localStorage.getItem('mcm_gh_pat');
+        if (!pat) return;
+        if (!window.MCM_PAT) localStorage.setItem('mcm_gh_pat', pat.trim());
         var owner = 'marcusash', repo = 'motor-city-math', path = 'scores/kai.json';
         var apiBase = 'https://api.github.com/repos/' + owner + '/' + repo + '/contents/' + path;
         var headers = { 'Authorization': 'token ' + pat, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' };
