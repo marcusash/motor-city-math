@@ -3,7 +3,7 @@ const { getDocument } = pkg;
 import { createCanvas } from 'canvas';
 import { readFileSync, writeFileSync, mkdirSync } from 'fs';
 
-const pdfPath = "C:\\Users\\marcusash\\OneDrive\\.OneDrive Share\\Scan from 2026-03-21 02_27_35 PM.pdf";
+const pdfPath = "C:\\Users\\marcusash\\OneDrive\\.OneDrive Share\\Scan from 2026-03-21 05_53_49 PM.pdf";
 const outDir = "C:\\Github\\kai-algebra2-tests\\import\\ocr-output";
 mkdirSync(outDir, { recursive: true });
 
@@ -24,7 +24,7 @@ for (let i = 1; i <= doc.numPages; i++) {
       destroy(){}
     }
   }).promise;
-  const out = `${outDir}\\kai-test-2026-03-21-page-${i}.png`;
+  const out = `${outDir}\\kai-poly-division-page-${i}.png`;
   writeFileSync(out, canvas.toBuffer('image/png'));
   console.log('Wrote:', out);
 }

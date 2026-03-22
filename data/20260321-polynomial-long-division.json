@@ -109,6 +109,78 @@
       "correctAnswer": "n² + n - 5 + 5/(n-5)",
       "correct": true,
       "note": ""
+    },
+    {
+      "id": 13,
+      "prompt": "(7x³ - 21x² + 7x + 15) ÷ (x - 2)",
+      "siennaAnswer": null,
+      "kaiAnswer": "No",
+      "correctAnswer": "No",
+      "correct": true,
+      "note": "Factor check: remainder = 1, so (x-2) is NOT a factor"
+    },
+    {
+      "id": 14,
+      "prompt": "(x³ - 14x² + 35x + 95) ÷ (x - 9)",
+      "siennaAnswer": null,
+      "kaiAnswer": "No",
+      "correctAnswer": "No",
+      "correct": true,
+      "note": "Factor check: remainder = 5, so (x-9) is NOT a factor"
+    },
+    {
+      "id": 15,
+      "prompt": "(x³ + x² - x + 15) ÷ (x + 3)",
+      "siennaAnswer": null,
+      "kaiAnswer": "Yes",
+      "correctAnswer": "Yes",
+      "correct": true,
+      "note": "Factor check: remainder = 0, so (x+3) IS a factor"
+    },
+    {
+      "id": 16,
+      "prompt": "(9x³ - 37x² - 46x + 26) ÷ (x - 5)",
+      "siennaAnswer": null,
+      "kaiAnswer": "No",
+      "correctAnswer": "No",
+      "correct": true,
+      "note": "Factor check: remainder = -4, so (x-5) is NOT a factor"
+    },
+    {
+      "id": 17,
+      "prompt": "(4n⁴ + 3n³ + 4n²) ÷ 8n",
+      "siennaAnswer": null,
+      "kaiAnswer": "½n³ + ⅜n² + ½n",
+      "correctAnswer": "(1/2)n³ + (3/8)n² + (1/2)n",
+      "correct": true,
+      "note": "Monomial division: each term divided by 8n"
+    },
+    {
+      "id": 18,
+      "prompt": "(10m⁶ + 40m⁵ + m⁴) ÷ 10m³",
+      "siennaAnswer": null,
+      "kaiAnswer": "m³ + 4m² + m/10",
+      "correctAnswer": "m³ + 4m² + (1/10)m",
+      "correct": true,
+      "note": "Monomial division: each term divided by 10m³"
+    },
+    {
+      "id": 19,
+      "prompt": "(6v³ + 30v² + 3v) ÷ 6v",
+      "siennaAnswer": null,
+      "kaiAnswer": "v² + 5v + ½",
+      "correctAnswer": "v² + 5v + 1/2",
+      "correct": true,
+      "note": "Monomial division: each term divided by 6v"
+    },
+    {
+      "id": 20,
+      "prompt": "(45x³ + x² + 18x) ÷ 9x³",
+      "siennaAnswer": null,
+      "kaiAnswer": "5 + 1/(9x) + 2/x²",
+      "correctAnswer": "5 + (1/9)x⁻¹ + 2x⁻²",
+      "correct": true,
+      "note": "Monomial division: each term divided by 9x³, yields negative exponents"
     }
   ]
 }
