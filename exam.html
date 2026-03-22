@@ -1703,14 +1703,27 @@
         var owner = 'marcusash', repo = 'motor-city-math', path = 'scores/kai.json';
         var apiBase = 'https://api.github.com/repos/' + owner + '/' + repo + '/contents/' + path;
         var headers = { 'Authorization': 'token ' + pat, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' };
-        var content = btoa(unescape(encodeURIComponent(JSON.stringify(payload, null, 2))));
 
-        // GET current file SHA (needed for update; 404 means first write)
+        // GET current file to merge (never overwrite existing scores)
         fetch(apiBase, { headers: headers })
             .then(function(r) { return r.status === 404 ? null : r.json(); })
             .then(function(existing) {
+                var merged = payload;
+                var sha = null;
+                if (existing && existing.content) {
+                    sha = existing.sha;
+                    try {
+                        var current = JSON.parse(atob(existing.content.replace(/\n/g, '')));
+                        // Merge: start with existing scores, layer new ones on top
+                        var mergedScores = Object.assign({}, current.mcm_scores || {}, payload.mcm_scores || {});
+                        merged = Object.assign({}, current, { mcm_scores: mergedScores, exported: payload.exported });
+                    } catch(e) { /* parse fail: fall through with payload as-is */ }
+                } else if (existing && existing.sha) {
+                    sha = existing.sha;
+                }
+                var content = btoa(unescape(encodeURIComponent(JSON.stringify(merged, null, 2))));
                 var body = { message: 'Kai scores: ' + new Date().toISOString().slice(0,10), content: content };
-                if (existing && existing.sha) body.sha = existing.sha;
+                if (sha) body.sha = sha;
                 return fetch(apiBase, { method: 'PUT', headers: headers, body: JSON.stringify(body) });
             })
             .then(function(r) {
