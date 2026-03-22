@@ -1,0 +1,71 @@
+{
+  "key": "mcm-s1-practice-2",
+  "attempts": [
+    {
+      "score": 6,
+      "total": 7,
+      "pct": 86,
+      "grade": 3,
+      "type": "practice",
+      "graded_by": "FR",
+      "date": "2026-03-16",
+      "source_pdf": "Kai-Practice-2026-03-16 08_48_36 PM.pdf",
+      "sections": {
+        "A": {
+          "score": 2,
+          "total": 3
+        },
+        "B": {
+          "score": 4,
+          "total": 4
+        }
+      },
+      "questions": {
+        "q1": {
+          "correct": true,
+          "type": "simplify",
+          "standard": "S1.a"
+        },
+        "q2": {
+          "correct": false,
+          "type": "simplify",
+          "standard": "S1.a",
+          "error": "sign-flip: treated f(x)-g(x) as addition on x^3 term"
+        },
+        "q3": {
+          "correct": true,
+          "type": "simplify",
+          "standard": "S1.a"
+        },
+        "q4": {
+          "correct": true,
+          "type": "multiply",
+          "standard": "S1.b"
+        },
+        "q5": {
+          "correct": true,
+          "type": "multiply",
+          "standard": "S1.b"
+        },
+        "q6": {
+          "correct": true,
+          "type": "multiply",
+          "standard": "S1.b"
+        },
+        "q7": {
+          "correct": true,
+          "type": "box-reverse",
+          "standard": "S1.b"
+        }
+      },
+      "error_analysis": "S1.b 4/4 solid. S1.a gap: minus sign outside f(x)-g(x) function notation. Kai computes -2+3 instead of -2-3 when g(x) terms are not rewritten. Same pattern as main quiz Q3.",
+      "next_drill": "Rewrite f(x)-g(x) as f(x)+[-(g(x))] and physically flip every sign in g before combining.",
+      "timestamp": "2026-03-17T04:13:00Z"
+    }
+  ],
+  "best": {
+    "score": 6,
+    "pct": 86,
+    "grade": 3
+  }
+}

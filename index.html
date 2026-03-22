@@ -405,6 +405,7 @@
     (function() {
         var ghBase = 'https://api.github.com/repos/marcusash/motor-city-math/contents/scores/';
         var headers = { 'Accept': 'application/vnd.github.v3+json', 'Cache-Control': 'no-store' };
+        if (window.MCM_PAT) headers['Authorization'] = 'token ' + window.MCM_PAT;
 
         function ghFetch(file) {
             return fetch(ghBase + file, { headers: headers })
@@ -413,13 +414,25 @@
                 .catch(function() { return null; });
         }
 
-        // Fetch Spring scores (kai.json) -- GitHub is the source of truth, no localStorage dependency
-        ghFetch('kai.json').then(function(payload) {
-            if (!payload || !payload.mcm_scores) return;
-            _ghSpringScores = payload.mcm_scores;
-            if (typeof buildChart === 'function') buildChart();
-            if (typeof buildSpringGrid === 'function') buildSpringGrid();
-        });
+        // Auto-discover per-file scores from scores/ directory (like batman-math)
+        fetch(ghBase, { headers: headers })
+            .then(function(r) { return r.ok ? r.json() : []; })
+            .then(function(items) {
+                var scoreFiles = items.filter(function(f) {
+                    return f.name.endsWith('.json') && f.type === 'file'
+                        && f.name !== 'kai.json' && f.name !== 'winter-2025-26.json';
+                });
+                return Promise.all(scoreFiles.map(function(f) { return ghFetch(f.name); }));
+            })
+            .then(function(results) {
+                results.forEach(function(data) {
+                    if (!data || !data.key) return;
+                    _ghSpringScores[data.key] = { attempts: data.attempts, best: data.best };
+                });
+                if (typeof buildChart === 'function') buildChart();
+                if (typeof buildSpringGrid === 'function') buildSpringGrid();
+            })
+            .catch(function() { /* pre-seed already loaded, dashboard still works */ });
 
         // Fetch Winter archive (winter-2025-26.json) for collapsed history block
         ghFetch('winter-2025-26.json').then(function(data) {

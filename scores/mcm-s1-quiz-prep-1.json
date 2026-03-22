@@ -1,0 +1,69 @@
+{
+  "key": "mcm-s1-quiz-prep-1",
+  "attempts": [
+    {
+      "score": 7,
+      "total": 8,
+      "pct": 88,
+      "grade": 3,
+      "sections": {
+        "A": {
+          "score": 2,
+          "total": 3
+        },
+        "B": {
+          "score": 5,
+          "total": 5
+        }
+      },
+      "questions": {
+        "s1q1": {
+          "correct": true,
+          "type": "simplify",
+          "standard": "S1.a"
+        },
+        "s1q2": {
+          "correct": true,
+          "type": "simplify",
+          "standard": "S1.a"
+        },
+        "s1q4": {
+          "correct": false,
+          "type": "simplify",
+          "standard": "S1.a"
+        },
+        "s1q6": {
+          "correct": true,
+          "type": "box",
+          "standard": "S1.b"
+        },
+        "s1q7": {
+          "correct": true,
+          "type": "simplify",
+          "standard": "S1.b"
+        },
+        "s1q8": {
+          "correct": true,
+          "type": "simplify",
+          "standard": "S1.b"
+        },
+        "s1q9": {
+          "correct": true,
+          "type": "simplify",
+          "standard": "S1.b"
+        },
+        "s1q10": {
+          "correct": true,
+          "type": "box-reverse",
+          "standard": "S1.b"
+        }
+      },
+      "timestamp": "2026-03-16T03:55:00Z"
+    }
+  ],
+  "best": {
+    "score": 7,
+    "pct": 88,
+    "grade": 3
+  }
+}
