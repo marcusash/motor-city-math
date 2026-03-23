@@ -195,6 +195,131 @@
         "timestamp": "2026-03-16T03:55:00Z"
       }],
       "best": {"score": 7, "pct": 88, "grade": 3}
+    },
+    "s1-division-practice-2026-03-22": {
+      "attempts": [{
+        "score": 6,
+        "total": 8,
+        "total_gradeable": 6,
+        "pct": 75,
+        "grade": 2,
+        "provisional": true,
+        "note": "Q6 and Q7 unreadable from scan (hand/shadow obstruction on page 3). Score based on 6 of 8 questions. Re-scan required for final grade.",
+        "type": "practice",
+        "graded_by": "FA",
+        "date": "2026-03-22",
+        "source_pdf": "Scan from 2026-03-22 09_09_40 PM.pdf",
+        "source_images": [
+          "import/ocr-output/2026-03-22/page-1.png",
+          "import/ocr-output/2026-03-22/page-2.png",
+          "import/ocr-output/2026-03-22/page-3.png",
+          "import/ocr-output/2026-03-22/page-4.png"
+        ],
+        "sections": {
+          "S1.a": {"score": 1, "total": 1, "description": "Add/subtract polynomials"},
+          "S1.b": {"score": 3, "total": 3, "description": "Polynomial long division (Q3-Q5 gradeable; Q6+Q7 unreadable)"},
+          "S1.c": {"score": 2, "total": 2, "description": "Monomial division warm-up (Q2) + long division (Q8)"},
+          "unreadable": {"score": 0, "total": 2, "description": "Q6+Q7: page 3 scan obscured by hand/shadow, re-scan required"}
+        },
+        "questions": {
+          "q1": {
+            "correct": true,
+            "partial": 1,
+            "points": 1,
+            "total": 1,
+            "type": "subtract-polynomials",
+            "standard": "S1.a",
+            "problem": "Subtract (4x^2 - 3x + 5) from (9x^2 + x - 2)",
+            "kai_answer": "5x^2 + 4x - 7",
+            "correct_answer": "5x^2 + 4x - 7"
+          },
+          "q2": {
+            "correct": true,
+            "partial": 1,
+            "points": 1,
+            "total": 1,
+            "type": "monomial-division",
+            "standard": "S1.c",
+            "problem": "(8x^3 + 12x^2 - 4x) / (4x)",
+            "kai_answer": "2x^2 + 3x - 1",
+            "correct_answer": "2x^2 + 3x - 1",
+            "note": "Warm-up problem labeled S1.c on test. Monomial division, not polynomial long division."
+          },
+          "q3": {
+            "correct": true,
+            "partial": 1,
+            "points": 1,
+            "total": 1,
+            "type": "polynomial-long-division",
+            "standard": "S1.b",
+            "problem": "(x^2 + 9x + 20) / (x + 4)",
+            "kai_answer": "x + 5",
+            "correct_answer": "x + 5",
+            "remainder": 0
+          },
+          "q4": {
+            "correct": true,
+            "partial": 1,
+            "points": 1,
+            "total": 1,
+            "type": "polynomial-long-division",
+            "standard": "S1.b",
+            "problem": "(3x^2 + 5x - 4) / (x + 2)",
+            "kai_answer": "3x - 1",
+            "correct_answer": "3x - 1",
+            "remainder": -2,
+            "remainder_notation": "R:-2"
+          },
+          "q5": {
+            "correct": true,
+            "partial": 1,
+            "points": 1,
+            "total": 1,
+            "type": "polynomial-long-division",
+            "standard": "S1.b",
+            "problem": "(x^3 + 3x^2 - 4x - 12) / (x + 3)",
+            "kai_answer": "x^2 - 4",
+            "correct_answer": "x^2 - 4",
+            "remainder": 0
+          },
+          "q6": {
+            "correct": null,
+            "partial": null,
+            "points": null,
+            "total": 1,
+            "type": "polynomial-long-division",
+            "standard": "S1.b",
+            "status": "scan_unreadable",
+            "error": "Page 3 of scan is obscured by hand/shadow. Q6 content and Kai's answer are not visible. Re-scan required."
+          },
+          "q7": {
+            "correct": null,
+            "partial": null,
+            "points": null,
+            "total": 1,
+            "type": "polynomial-long-division",
+            "standard": "S1.b",
+            "status": "scan_unreadable",
+            "error": "Page 3 of scan is obscured by hand/shadow. Q7 content and Kai's answer are not visible. Re-scan required."
+          },
+          "q8": {
+            "correct": true,
+            "partial": 1,
+            "points": 1,
+            "total": 1,
+            "type": "polynomial-long-division",
+            "standard": "S1.c",
+            "problem": "(3x^2 + 11x - 4) / (x + 4)",
+            "kai_answer": "3x - 1",
+            "correct_answer": "3x - 1",
+            "remainder": 0
+          }
+        },
+        "error_analysis": "Strong across all 6 gradeable questions. Q1 (S1.a): correctly set up (9x^2+x-2)-(4x^2-3x+5) and computed 5x^2+4x-7 -- no subtraction-order errors (contrast with prior quiz Q1a). Q2 (S1.c warm-up): clean monomial division, 2x^2+3x-1 correct. Q3-Q5 (S1.b long division): all three perfect, remainder notation correct (Q4 shows R:-2 explicitly). Q8 (S1.c long division): full algorithm shown, remainder 0, quotient 3x-1 correct. Zero errors in 6 gradeable questions. Q6+Q7 on page 3 unreadable from scan -- re-scan required.",
+        "next_drill": "Re-scan page 3 to grade Q6+Q7. If Q6+Q7 are correct, Kai has mastered S1 polynomial long division (8/8 would be 100%). Consider advancing to S2 synthetic division or factoring after re-scan confirms mastery.",
+        "timestamp": "2026-03-22T21:30:00Z"
+      }],
+      "best": {"score": 6, "pct": 75, "grade": 2, "provisional": true, "note": "Provisional -- Q6+Q7 unreadable, re-scan required"}
     }
   }
 }
