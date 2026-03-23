@@ -198,13 +198,10 @@
     },
     "s1-division-practice-2026-03-22": {
       "attempts": [{
-        "score": 6,
+        "score": 8,
         "total": 8,
-        "total_gradeable": 6,
-        "pct": 75,
-        "grade": 2,
-        "provisional": true,
-        "note": "Q6 and Q7 unreadable from scan (hand/shadow obstruction on page 3). Score based on 6 of 8 questions. Re-scan required for final grade.",
+        "pct": 100,
+        "grade": 4,
         "type": "practice",
         "graded_by": "FA",
         "date": "2026-03-22",
@@ -217,9 +214,8 @@
         ],
         "sections": {
           "S1.a": {"score": 1, "total": 1, "description": "Add/subtract polynomials"},
-          "S1.b": {"score": 3, "total": 3, "description": "Polynomial long division (Q3-Q5 gradeable; Q6+Q7 unreadable)"},
-          "S1.c": {"score": 2, "total": 2, "description": "Monomial division warm-up (Q2) + long division (Q8)"},
-          "unreadable": {"score": 0, "total": 2, "description": "Q6+Q7: page 3 scan obscured by hand/shadow, re-scan required"}
+          "S1.b": {"score": 5, "total": 5, "description": "Polynomial long division (Q3-Q7)"},
+          "S1.c": {"score": 2, "total": 2, "description": "Monomial division warm-up (Q2) + long division (Q8)"}
         },
         "questions": {
           "q1": {
@@ -283,24 +279,29 @@
             "remainder": 0
           },
           "q6": {
-            "correct": null,
-            "partial": null,
-            "points": null,
+            "correct": true,
+            "partial": 1,
+            "points": 1,
             "total": 1,
             "type": "polynomial-long-division",
             "standard": "S1.b",
-            "status": "scan_unreadable",
-            "error": "Page 3 of scan is obscured by hand/shadow. Q6 content and Kai's answer are not visible. Re-scan required."
+            "problem": "polynomial / (x - 1) [problem text unreadable from scan, answer confirmed by Mash from physical test]",
+            "kai_answer": "2x^2 - x - 6 R:-5/(x-1)",
+            "correct_answer": "2x^2 - x - 6 R:-5/(x-1)",
+            "remainder": -5,
+            "remainder_notation": "R:-5/(x-1)"
           },
           "q7": {
-            "correct": null,
-            "partial": null,
-            "points": null,
+            "correct": true,
+            "partial": 1,
+            "points": 1,
             "total": 1,
             "type": "polynomial-long-division",
             "standard": "S1.b",
-            "status": "scan_unreadable",
-            "error": "Page 3 of scan is obscured by hand/shadow. Q7 content and Kai's answer are not visible. Re-scan required."
+            "problem": "polynomial / (divisor) [problem text unreadable from scan, answer confirmed by Mash from physical test]",
+            "kai_answer": "x + 3",
+            "correct_answer": "x + 3",
+            "remainder": 0
           },
           "q8": {
             "correct": true,
@@ -315,11 +316,11 @@
             "remainder": 0
           }
         },
-        "error_analysis": "Strong across all 6 gradeable questions. Q1 (S1.a): correctly set up (9x^2+x-2)-(4x^2-3x+5) and computed 5x^2+4x-7 -- no subtraction-order errors (contrast with prior quiz Q1a). Q2 (S1.c warm-up): clean monomial division, 2x^2+3x-1 correct. Q3-Q5 (S1.b long division): all three perfect, remainder notation correct (Q4 shows R:-2 explicitly). Q8 (S1.c long division): full algorithm shown, remainder 0, quotient 3x-1 correct. Zero errors in 6 gradeable questions. Q6+Q7 on page 3 unreadable from scan -- re-scan required.",
-        "next_drill": "Re-scan page 3 to grade Q6+Q7. If Q6+Q7 are correct, Kai has mastered S1 polynomial long division (8/8 would be 100%). Consider advancing to S2 synthetic division or factoring after re-scan confirms mastery.",
+        "error_analysis": "Perfect score. Q1 (S1.a): subtraction set up correctly, 5x^2+4x-7. Q2 (S1.c warm-up): clean monomial division, 2x^2+3x-1. Q3-Q7 (S1.b long division): all five correct, Q4 shows R:-2 explicitly, Q6 shows 2x^2-x-6 R:-5/(x-1) correctly formatted. Q8 (S1.c): 3x-1, remainder 0. Zero errors across all 8 questions.",
+        "next_drill": "S1 polynomial long division mastered (8/8 perfect). Advance to S2: synthetic division or factoring. Consider introducing the Remainder Theorem and Factor Theorem as natural extensions of what Kai demonstrated today.",
         "timestamp": "2026-03-22T21:30:00Z"
       }],
-      "best": {"score": 6, "pct": 75, "grade": 2, "provisional": true, "note": "Provisional -- Q6+Q7 unreadable, re-scan required"}
+      "best": {"score": 8, "pct": 100, "grade": 4}
     }
   }
 }
