@@ -575,8 +575,9 @@
         } else if (inp.type === 'text') {
             html += '<div class="input-group">';
             if (inp.label) html += '<label for="' + inp.id + '">' + inp.label + '</label>';
-            var txtWidth = inp.normalize === 'poly' ? '260px' : '200px';
-            var txtPlaceholder = inp.normalize === 'poly' ? ' placeholder="e.g. 4x^2 + 2x - 3"' : '';
+            var txtWidth = inp.normalize === 'poly' ? '260px' : '320px';
+            var defaultPh = inp.normalize === 'poly' ? 'e.g. 4x^2 + 2x - 3' : 'e.g. quotient + R/(divisor)';
+            var txtPlaceholder = ' placeholder="' + (inp.placeholder || defaultPh) + '"';
             html += '<input type="text" id="' + inp.id + '" aria-describedby="feedback-' + (q ? q.id : inp.id) + '" style="width:' + txtWidth + ';" autocomplete="off"' + txtPlaceholder + '>';
             html += '</div>';
         }
@@ -1375,8 +1376,23 @@
                                 elT.style.borderStyle = 'solid';
                             }
                         }
+                    } else if (inp.normalize === 'none' && inp.answer) {
+                        var elN = document.getElementById(inp.id);
+                        if (elN) {
+                            var okN = normalizePoly(elN.value) === normalizePoly(inp.answer);
+                            if (!okN) {
+                                qCorrect = false;
+                                elN.style.borderColor = 'var(--color-incorrect, #F85149)';
+                                elN.style.borderWidth = '2px';
+                                elN.style.borderStyle = 'solid';
+                            } else {
+                                elN.style.borderColor = 'var(--color-correct, #3FB950)';
+                                elN.style.borderWidth = '2px';
+                                elN.style.borderStyle = 'solid';
+                            }
+                        }
                     }
-                    // Plain text (no normalize): self-graded, skip auto-grade
+                    // normalize:none without answer: true self-graded, skip auto-grade
                 }
             });
 
