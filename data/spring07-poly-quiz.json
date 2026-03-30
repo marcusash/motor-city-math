@@ -52,12 +52,30 @@
         "function": "x * (x - 3) * (x + 2)",
         "function_display": "f(x) = x(x-3)(x+2)",
         "key_points": [
-          [-2, 0],
-          [-1, 4],
-          [0, 0],
-          [1, -6],
-          [2, -8],
-          [3, 0]
+          [
+            -2,
+            0
+          ],
+          [
+            -1,
+            4
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            -6
+          ],
+          [
+            2,
+            -8
+          ],
+          [
+            3,
+            0
+          ]
         ],
         "min_points": 5,
         "tolerance": 0.5,
@@ -109,14 +127,20 @@
           "id": "sp7q2_eb_right",
           "type": "dropdown",
           "label": "As x → +∞, f(x) →",
-          "options": ["+∞", "-∞"],
+          "options": [
+            "+∞",
+            "-∞"
+          ],
           "answer": "-∞"
         },
         {
           "id": "sp7q2_eb_left",
           "type": "dropdown",
           "label": "As x → -∞, f(x) →",
-          "options": ["+∞", "-∞"],
+          "options": [
+            "+∞",
+            "-∞"
+          ],
           "answer": "+∞"
         }
       ],
@@ -125,12 +149,30 @@
         "function": "-x * (x + 1) * (x - 4)",
         "function_display": "f(x) = -x(x+1)(x-4)",
         "key_points": [
-          [-1, 0],
-          [0, 0],
-          [1, 6],
-          [2, 12],
-          [3, 12],
-          [4, 0]
+          [
+            -1,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            6
+          ],
+          [
+            2,
+            12
+          ],
+          [
+            3,
+            12
+          ],
+          [
+            4,
+            0
+          ]
         ],
         "min_points": 5,
         "tolerance": 0.5,
@@ -191,11 +233,26 @@
         "function": "Math.pow(x - 2, 2) * (x + 1)",
         "function_display": "f(x) = (x-2)²(x+1)",
         "key_points": [
-          [-1, 0],
-          [0, 4],
-          [1, 2],
-          [2, 0],
-          [3, 4]
+          [
+            -1,
+            0
+          ],
+          [
+            0,
+            4
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            3,
+            4
+          ]
         ],
         "min_points": 5,
         "tolerance": 0.5,
@@ -242,12 +299,30 @@
         "function": "(x - 1) * (x + 3) * (x + 1)",
         "function_display": "f(x) = (x-1)(x+3)(x+1)",
         "key_points": [
-          [-3, 0],
-          [-2, 3],
-          [-1, 0],
-          [0, -3],
-          [1, 0],
-          [2, 15]
+          [
+            -3,
+            0
+          ],
+          [
+            -2,
+            3
+          ],
+          [
+            -1,
+            0
+          ],
+          [
+            0,
+            -3
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            2,
+            15
+          ]
         ],
         "min_points": 5,
         "tolerance": 0.5,
@@ -278,7 +353,8 @@
           "id": "sp7q5_eq",
           "type": "text",
           "label": "f(x) =",
-          "answer": "-(x+2)(x-1)(x-3)"
+          "answer": "-(x+2)(x-1)(x-3)",
+          "placeholder": "e.g. -(x+2)(x-1)(x-3)"
         }
       ],
       "graph": {
@@ -286,16 +362,36 @@
         "function": "-(x + 2) * (x - 1) * (x - 3)",
         "function_display": "f(x)",
         "key_points": [
-          [-2, 0],
-          [-1, -8],
-          [0, -6],
-          [1, 0],
-          [2, 4],
-          [3, 0]
+          [
+            -2,
+            0
+          ],
+          [
+            -1,
+            -8
+          ],
+          [
+            0,
+            -6
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            3,
+            0
+          ]
         ],
         "min_points": 5,
         "tolerance": 0.5,
-        "asymptotes": null
+        "asymptotes": null,
+        "pre_draw": true,
+        "read_only": true
       },
       "hint": "Read the x-intercepts: those are your zeros and give you the factors. Then check end behavior: does the graph rise right or fall right? That tells you the sign of the leading coefficient.",
       "solution_steps": [
@@ -321,14 +417,20 @@
           "id": "sp7q6_deg",
           "type": "dropdown",
           "label": "Degree is",
-          "options": ["odd", "even"],
+          "options": [
+            "odd",
+            "even"
+          ],
           "answer": "even"
         },
         {
           "id": "sp7q6_lc",
           "type": "dropdown",
           "label": "Leading coefficient is",
-          "options": ["positive", "negative"],
+          "options": [
+            "positive",
+            "negative"
+          ],
           "answer": "positive"
         }
       ],
@@ -337,17 +439,40 @@
         "function": "Math.pow(x, 4) - 5 * Math.pow(x, 2) + 4",
         "function_display": "f(x)",
         "key_points": [
-          [-2, 0],
-          [-1.5, -2.19],
-          [-1, 0],
-          [0, 4],
-          [1, 0],
-          [1.5, -2.19],
-          [2, 0]
+          [
+            -2,
+            0
+          ],
+          [
+            -1.5,
+            -2.19
+          ],
+          [
+            -1,
+            0
+          ],
+          [
+            0,
+            4
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1.5,
+            -2.19
+          ],
+          [
+            2,
+            0
+          ]
         ],
         "min_points": 5,
         "tolerance": 0.5,
-        "asymptotes": null
+        "asymptotes": null,
+        "pre_draw": true,
+        "read_only": true
       },
       "hint": "Look at both ends of the graph. Same direction on both sides = even degree. Both ends go UP = positive leading coefficient.",
       "solution_steps": [
@@ -389,11 +514,26 @@
         "function": "Math.pow(x, 2) - x - 2",
         "function_display": "f(x) = x² - (x+2)",
         "key_points": [
-          [-2, 4],
-          [-1, 0],
-          [0, -2],
-          [1, -2],
-          [2, 0]
+          [
+            -2,
+            4
+          ],
+          [
+            -1,
+            0
+          ],
+          [
+            0,
+            -2
+          ],
+          [
+            1,
+            -2
+          ],
+          [
+            2,
+            0
+          ]
         ],
         "min_points": 5,
         "tolerance": 0.5,
@@ -423,14 +563,20 @@
           "id": "sp7q8_eb_right",
           "type": "dropdown",
           "label": "As x → +∞, f(x) →",
-          "options": ["+∞", "-∞"],
+          "options": [
+            "+∞",
+            "-∞"
+          ],
           "answer": "+∞"
         },
         {
           "id": "sp7q8_eb_left",
           "type": "dropdown",
           "label": "As x → -∞, f(x) →",
-          "options": ["+∞", "-∞"],
+          "options": [
+            "+∞",
+            "-∞"
+          ],
           "answer": "-∞"
         }
       ],

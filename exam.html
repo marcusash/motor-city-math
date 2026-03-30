@@ -576,7 +576,7 @@
             html += '<div class="input-group">';
             if (inp.label) html += '<label for="' + inp.id + '">' + inp.label + '</label>';
             var txtWidth = inp.normalize === 'poly' ? '260px' : '320px';
-            var defaultPh = inp.normalize === 'poly' ? 'e.g. 4x^2 + 2x - 3' : 'e.g. quotient + R/(divisor)';
+            var defaultPh = inp.normalize === 'poly' ? 'e.g. 4x^2 + 2x - 3' : inp.normalize === 'none' ? 'e.g. quotient + R/(divisor)' : 'Enter your answer';
             var txtPlaceholder = ' placeholder="' + (inp.placeholder || defaultPh) + '"';
             html += '<input type="text" id="' + inp.id + '" aria-describedby="feedback-' + (q ? q.id : inp.id) + '" style="width:' + txtWidth + ';" autocomplete="off"' + txtPlaceholder + '>';
             html += '</div>';
@@ -664,19 +664,22 @@
 
     function renderGraph(q) {
         var g = q.graph;
+        var readOnly = !!g.read_only;
         var html = '<div class="graph-container">';
-        html += '<canvas id="' + g.canvas_id + '" width="500" height="500" role="application" tabindex="0" aria-label="Interactive graph for ' + (g.function_display || g.canvas_id) + '. Arrow keys move cursor. Enter to place point. Delete to remove."></canvas>';
+        html += '<canvas id="' + g.canvas_id + '" width="500" height="500" role="application" tabindex="0" aria-label="' + (readOnly ? 'Graph of polynomial function. Read the graph to answer the questions below.' : 'Interactive graph for ' + (g.function_display || g.canvas_id) + '. Arrow keys move cursor. Enter to place point. Delete to remove.') + '"></canvas>';
         html += '<div class="graph-tooltip" id="tooltip-' + g.canvas_id + '"></div>';
         html += '</div>';
-        html += '<div class="graph-counter" id="counter-' + g.canvas_id + '">Click to plot points on the graph</div>';
-        html += '<div class="graph-controls">';
-        if (g.asymptotes) {
-            html += '<button class="graph-btn" id="vaBtn-' + g.canvas_id + '" aria-label="Add vertical asymptote: click then click on graph" onclick="setAsymptoteMode(\'' + g.canvas_id + '\',\'vertical\')">ADD VERTICAL ASYMPTOTE</button>';
-            html += '<button class="graph-btn" id="haBtn-' + g.canvas_id + '" aria-label="Add horizontal asymptote: click then click on graph" onclick="setAsymptoteMode(\'' + g.canvas_id + '\',\'horizontal\')">ADD HORIZONTAL ASYMPTOTE</button>';
+        if (!readOnly) {
+            html += '<div class="graph-counter" id="counter-' + g.canvas_id + '">Click to plot points on the graph</div>';
+            html += '<div class="graph-controls">';
+            if (g.asymptotes) {
+                html += '<button class="graph-btn" id="vaBtn-' + g.canvas_id + '" aria-label="Add vertical asymptote: click then click on graph" onclick="setAsymptoteMode(\'' + g.canvas_id + '\',\'vertical\')">ADD VERTICAL ASYMPTOTE</button>';
+                html += '<button class="graph-btn" id="haBtn-' + g.canvas_id + '" aria-label="Add horizontal asymptote: click then click on graph" onclick="setAsymptoteMode(\'' + g.canvas_id + '\',\'horizontal\')">ADD HORIZONTAL ASYMPTOTE</button>';
+            }
+            html += '<button class="graph-btn check-graph" id="checkBtn-' + g.canvas_id + '" disabled aria-label="Check graph answer" onclick="checkGraphAnswer(\'' + g.canvas_id + '\')">CHECK GRAPH</button>';
+            html += '<button class="graph-btn" aria-label="Clear all points and asymptotes" onclick="clearGraph(\'' + g.canvas_id + '\')">CLEAR</button>';
+            html += '</div>';
         }
-        html += '<button class="graph-btn check-graph" id="checkBtn-' + g.canvas_id + '" disabled aria-label="Check graph answer" onclick="checkGraphAnswer(\'' + g.canvas_id + '\')">CHECK GRAPH</button>';
-        html += '<button class="graph-btn" aria-label="Clear all points and asymptotes" onclick="clearGraph(\'' + g.canvas_id + '\')">CLEAR</button>';
-        html += '</div>';
         html += '<div class="graph-result" id="result-' + g.canvas_id + '"></div>';
         return html;
     }
@@ -823,7 +826,13 @@
             redrawGraph(canvasId);
         });
 
-        drawGrid(canvasId);
+        // pre_draw: show function curve immediately (read-graph questions where Kai reads, not plots)
+        if (graphConfig.pre_draw) {
+            graphData[canvasId].answerOverlay = true;
+            redrawGraph(canvasId);
+        } else {
+            drawGrid(canvasId);
+        }
     }
 
     function drawGrid(canvasId) {
@@ -1333,8 +1342,8 @@
             if (!stdScores[std]) stdScores[std] = { correct: 0, total: 0 };
             stdScores[std].total++;
 
-            // Check graph questions
-            if (q.graph) {
+            // Check graph questions (skip point validation for read_only graphs -- Kai reads, not plots)
+            if (q.graph && !q.graph.read_only) {
                 var gd = graphData[q.graph.canvas_id];
                 if (!gd || !gd.gradeResult) {
                     // Auto-check graph if not checked yet
