@@ -1,0 +1,533 @@
+{
+  "exam_id": "spring07-poly-quiz",
+  "schema_version": "1.0",
+  "title": "Spring 07: Polynomial Functions",
+  "subtitle": "Standard S3 · 10 Questions · Identifying Characteristics of Polynomials",
+  "time_minutes": 45,
+  "created": "2026-03-30",
+  "created_by": "FR",
+  "purpose": "S3 quiz covering end behavior, zeros, repeated roots, graphing, writing equations from graphs, and intersections.",
+  "version": "1.0",
+  "questions": [
+    {
+      "id": "sp7-q1",
+      "number": 1,
+      "section": "B",
+      "standard": "S3.a",
+      "difficulty": "medium",
+      "type": "graph",
+      "question_html": "Graph \\( f(x) = x(x - 3)(x + 2) \\). Plot at least 5 key points. Then enter all three zeros and the y-intercept.",
+      "inputs": [
+        {
+          "id": "sp7q1_z1",
+          "type": "number",
+          "label": "Smallest zero =",
+          "answer": -2,
+          "tolerance": 0.1
+        },
+        {
+          "id": "sp7q1_z2",
+          "type": "number",
+          "label": "Middle zero =",
+          "answer": 0,
+          "tolerance": 0.1
+        },
+        {
+          "id": "sp7q1_z3",
+          "type": "number",
+          "label": "Largest zero =",
+          "answer": 3,
+          "tolerance": 0.1
+        },
+        {
+          "id": "sp7q1_yint",
+          "type": "number",
+          "label": "y-intercept =",
+          "answer": 0,
+          "tolerance": 0.1
+        }
+      ],
+      "graph": {
+        "canvas_id": "graphQ1",
+        "function": "x * (x - 3) * (x + 2)",
+        "function_display": "f(x) = x(x-3)(x+2)",
+        "key_points": [
+          [-2, 0],
+          [-1, 4],
+          [0, 0],
+          [1, -6],
+          [2, -8],
+          [3, 0]
+        ],
+        "min_points": 5,
+        "tolerance": 0.5,
+        "asymptotes": null
+      },
+      "hint": "Zeros come directly from the factors: set each factor = 0. The y-intercept is f(0). End behavior: degree 3 with positive LC rises right and falls left.",
+      "solution_steps": [
+        "Zeros: x=0, x=3, x=-2 (set each factor to zero).",
+        "y-intercept: f(0) = 0(0-3)(0+2) = 0.",
+        "f(-1) = -1(-4)(1) = 4 → (-1, 4).",
+        "f(1) = 1(-2)(3) = -6 → (1, -6).",
+        "f(2) = 2(-1)(4) = -8 → (2, -8).",
+        "Degree 3, LC = +1: falls left, rises right."
+      ],
+      "feedback_correct": "🔥 All zeros and y-intercept locked. Clean graph.",
+      "feedback_wrong": "Zero each factor: x=0 from x, x=3 from (x-3), x=-2 from (x+2). y-int = f(0) = 0."
+    },
+    {
+      "id": "sp7-q2",
+      "number": 2,
+      "section": "B",
+      "standard": "S3.a",
+      "difficulty": "medium",
+      "type": "graph",
+      "question_html": "Graph \\( f(x) = -x(x + 1)(x - 4) \\). Plot at least 5 key points. Enter all three zeros, then state the end behavior.",
+      "inputs": [
+        {
+          "id": "sp7q2_z1",
+          "type": "number",
+          "label": "Smallest zero =",
+          "answer": -1,
+          "tolerance": 0.1
+        },
+        {
+          "id": "sp7q2_z2",
+          "type": "number",
+          "label": "Middle zero =",
+          "answer": 0,
+          "tolerance": 0.1
+        },
+        {
+          "id": "sp7q2_z3",
+          "type": "number",
+          "label": "Largest zero =",
+          "answer": 4,
+          "tolerance": 0.1
+        },
+        {
+          "id": "sp7q2_eb_right",
+          "type": "dropdown",
+          "label": "As x → +∞, f(x) →",
+          "options": ["+∞", "-∞"],
+          "answer": "-∞"
+        },
+        {
+          "id": "sp7q2_eb_left",
+          "type": "dropdown",
+          "label": "As x → -∞, f(x) →",
+          "options": ["+∞", "-∞"],
+          "answer": "+∞"
+        }
+      ],
+      "graph": {
+        "canvas_id": "graphQ2",
+        "function": "-x * (x + 1) * (x - 4)",
+        "function_display": "f(x) = -x(x+1)(x-4)",
+        "key_points": [
+          [-1, 0],
+          [0, 0],
+          [1, 6],
+          [2, 12],
+          [3, 12],
+          [4, 0]
+        ],
+        "min_points": 5,
+        "tolerance": 0.5,
+        "asymptotes": null
+      },
+      "hint": "The negative out front flips the graph. Degree 3, negative LC: rises left, falls right. The hump between x=0 and x=4 goes UP because of the negative.",
+      "solution_steps": [
+        "Zeros: x=-1, x=0, x=4.",
+        "Leading term: -x·x·x = -x³. Odd degree, negative LC.",
+        "End behavior: falls right (-∞), rises left (+∞).",
+        "f(1) = -1(2)(-3) = 6 → (1, 6).",
+        "f(2) = -2(3)(-2) = 12 → (2, 12).",
+        "f(3) = -3(4)(-1) = 12 → (3, 12)."
+      ],
+      "feedback_correct": "🔥 Zeros and end behavior correct. The negative LC flips the typical odd-degree shape.",
+      "feedback_wrong": "Leading term is -x³. Odd degree + negative LC = falls right, rises left."
+    },
+    {
+      "id": "sp7-q3",
+      "number": 3,
+      "section": "B",
+      "standard": "S3.d",
+      "difficulty": "hard",
+      "type": "graph",
+      "question_html": "Graph \\( f(x) = (x - 2)^2(x + 1) \\). Plot at least 5 key points. Enter both zeros, then identify the repeated root and its multiplicity.",
+      "inputs": [
+        {
+          "id": "sp7q3_z1",
+          "type": "number",
+          "label": "Smaller zero =",
+          "answer": -1,
+          "tolerance": 0.1
+        },
+        {
+          "id": "sp7q3_z2",
+          "type": "number",
+          "label": "Larger zero =",
+          "answer": 2,
+          "tolerance": 0.1
+        },
+        {
+          "id": "sp7q3_rep",
+          "type": "number",
+          "label": "Repeated root x =",
+          "answer": 2,
+          "tolerance": 0.1
+        },
+        {
+          "id": "sp7q3_mult",
+          "type": "number",
+          "label": "Its multiplicity =",
+          "answer": 2,
+          "tolerance": 0.1
+        }
+      ],
+      "graph": {
+        "canvas_id": "graphQ3",
+        "function": "Math.pow(x - 2, 2) * (x + 1)",
+        "function_display": "f(x) = (x-2)²(x+1)",
+        "key_points": [
+          [-1, 0],
+          [0, 4],
+          [1, 2],
+          [2, 0],
+          [3, 4]
+        ],
+        "min_points": 5,
+        "tolerance": 0.5,
+        "asymptotes": null
+      },
+      "hint": "A repeated root means the graph TOUCHES the x-axis but does not cross. At x=2, (x-2)² is always ≥ 0, so the graph bounces. At x=-1, the graph crosses normally.",
+      "solution_steps": [
+        "Zeros: (x-2)²=0 → x=2 (double root); (x+1)=0 → x=-1.",
+        "f(0) = (0-2)²(0+1) = 4·1 = 4 → (0, 4).",
+        "f(1) = (1-2)²(1+1) = 1·2 = 2 → (1, 2).",
+        "f(3) = (3-2)²(3+1) = 1·4 = 4 → (3, 4).",
+        "At x=2: graph touches, bounces back up (even multiplicity).",
+        "At x=-1: graph crosses (odd multiplicity = 1)."
+      ],
+      "feedback_correct": "🔥 Both zeros, repeated root, and multiplicity. The bounce at x=2 shows even multiplicity.",
+      "feedback_wrong": "The exponent on (x-2)² tells you multiplicity = 2. Even multiplicity = bounces at that zero."
+    },
+    {
+      "id": "sp7-q4",
+      "number": 4,
+      "section": "B",
+      "standard": "S3.b",
+      "difficulty": "medium",
+      "type": "graph",
+      "question_html": "Graph \\( f(x) = (x - 1)(x + 3)(x + 1) \\). Plot at least 5 key points. Enter the y-intercept, then count the relative extrema (local max + local min combined).",
+      "inputs": [
+        {
+          "id": "sp7q4_yint",
+          "type": "number",
+          "label": "y-intercept =",
+          "answer": -3,
+          "tolerance": 0.1
+        },
+        {
+          "id": "sp7q4_ext",
+          "type": "number",
+          "label": "Number of relative extrema =",
+          "answer": 2,
+          "tolerance": 0.1
+        }
+      ],
+      "graph": {
+        "canvas_id": "graphQ4",
+        "function": "(x - 1) * (x + 3) * (x + 1)",
+        "function_display": "f(x) = (x-1)(x+3)(x+1)",
+        "key_points": [
+          [-3, 0],
+          [-2, 3],
+          [-1, 0],
+          [0, -3],
+          [1, 0],
+          [2, 15]
+        ],
+        "min_points": 5,
+        "tolerance": 0.5,
+        "asymptotes": null
+      },
+      "hint": "y-intercept = f(0). Relative extrema: a degree 3 polynomial has at most 2 (one local max, one local min). Look at where the graph changes direction.",
+      "solution_steps": [
+        "Zeros: x=1, x=-3, x=-1.",
+        "y-intercept: f(0) = (-1)(3)(1) = -3 → (0, -3).",
+        "f(-2) = (-3)(1)(-1) = 3 → (-2, 3). This is a local max.",
+        "f(0) = -3. This is a local min.",
+        "Degree 3 has at most 2 relative extrema.",
+        "End behavior: degree 3, positive LC — falls left, rises right."
+      ],
+      "feedback_correct": "🔥 y-intercept and extrema count correct. Degree 3 always has at most 2 turning points.",
+      "feedback_wrong": "f(0) = (-1)(3)(1) = -3. A degree 3 polynomial turns at most twice — one local max, one local min."
+    },
+    {
+      "id": "sp7-q5",
+      "number": 5,
+      "section": "C",
+      "standard": "S3.e",
+      "difficulty": "hard",
+      "type": "graph",
+      "question_html": "The graph of a polynomial function is shown below. Analyze the zeros and end behavior, then write an equation for this function in factored form.",
+      "inputs": [
+        {
+          "id": "sp7q5_eq",
+          "type": "text",
+          "label": "f(x) =",
+          "answer": "-(x+2)(x-1)(x-3)"
+        }
+      ],
+      "graph": {
+        "canvas_id": "graphQ5",
+        "function": "-(x + 2) * (x - 1) * (x - 3)",
+        "function_display": "f(x)",
+        "key_points": [
+          [-2, 0],
+          [-1, -8],
+          [0, -6],
+          [1, 0],
+          [2, 4],
+          [3, 0]
+        ],
+        "min_points": 5,
+        "tolerance": 0.5,
+        "asymptotes": null
+      },
+      "hint": "Read the x-intercepts: those are your zeros and give you the factors. Then check end behavior: does the graph rise right or fall right? That tells you the sign of the leading coefficient.",
+      "solution_steps": [
+        "Zeros from graph: x=-2, x=1, x=3.",
+        "Factors: (x+2)(x-1)(x-3).",
+        "End behavior: falls right (as x→+∞, y→-∞). That means odd degree, negative LC.",
+        "Leading coefficient is negative → f(x) = -(x+2)(x-1)(x-3).",
+        "Check: f(0) = -(2)(-1)(-3) = -(6) = -6. Graph confirms y-int is -6."
+      ],
+      "feedback_correct": "🔥 Correct equation from graph. Zeros → factors, end behavior → sign of LC.",
+      "feedback_wrong": "Step 1: read the zeros. Step 2: write factors (x - zero) for each. Step 3: check end behavior for the sign."
+    },
+    {
+      "id": "sp7-q6",
+      "number": 6,
+      "section": "C",
+      "standard": "S3.c",
+      "difficulty": "medium",
+      "type": "graph",
+      "question_html": "The graph of a polynomial function is shown below. It rises on both the left and right sides. Determine whether the degree is odd or even, and whether the leading coefficient is positive or negative.",
+      "inputs": [
+        {
+          "id": "sp7q6_deg",
+          "type": "dropdown",
+          "label": "Degree is",
+          "options": ["odd", "even"],
+          "answer": "even"
+        },
+        {
+          "id": "sp7q6_lc",
+          "type": "dropdown",
+          "label": "Leading coefficient is",
+          "options": ["positive", "negative"],
+          "answer": "positive"
+        }
+      ],
+      "graph": {
+        "canvas_id": "graphQ6",
+        "function": "Math.pow(x, 4) - 5 * Math.pow(x, 2) + 4",
+        "function_display": "f(x)",
+        "key_points": [
+          [-2, 0],
+          [-1.5, -2.19],
+          [-1, 0],
+          [0, 4],
+          [1, 0],
+          [1.5, -2.19],
+          [2, 0]
+        ],
+        "min_points": 5,
+        "tolerance": 0.5,
+        "asymptotes": null
+      },
+      "hint": "Look at both ends of the graph. Same direction on both sides = even degree. Both ends go UP = positive leading coefficient.",
+      "solution_steps": [
+        "Both ends rise → even degree (odd degree has opposite ends).",
+        "Both ends go to +∞ → positive leading coefficient.",
+        "Even degree + positive LC = rises on both sides.",
+        "This function is f(x) = x⁴ - 5x² + 4 = (x-2)(x+2)(x-1)(x+1).",
+        "Four zeros: x = -2, -1, 1, 2 — consistent with degree 4."
+      ],
+      "feedback_correct": "🔥 Even degree, positive LC. Both ends rising confirms this.",
+      "feedback_wrong": "Same end behavior on both sides = even degree. Ends go UP = positive LC."
+    },
+    {
+      "id": "sp7-q7",
+      "number": 7,
+      "section": "C",
+      "standard": "S3.f",
+      "difficulty": "hard",
+      "type": "graph",
+      "question_html": "To find where \\( y = x^2 \\) and \\( y = x + 2 \\) intersect, we graph the difference: \\( f(x) = x^2 - (x + 2) \\). The x-intercepts of this graph are the x-values where the two original functions meet. Find both intersection x-values.",
+      "inputs": [
+        {
+          "id": "sp7q7_x1",
+          "type": "number",
+          "label": "Smaller x-value =",
+          "answer": -1,
+          "tolerance": 0.1
+        },
+        {
+          "id": "sp7q7_x2",
+          "type": "number",
+          "label": "Larger x-value =",
+          "answer": 2,
+          "tolerance": 0.1
+        }
+      ],
+      "graph": {
+        "canvas_id": "graphQ7",
+        "function": "Math.pow(x, 2) - x - 2",
+        "function_display": "f(x) = x² - (x+2)",
+        "key_points": [
+          [-2, 4],
+          [-1, 0],
+          [0, -2],
+          [1, -2],
+          [2, 0]
+        ],
+        "min_points": 5,
+        "tolerance": 0.5,
+        "asymptotes": null
+      },
+      "hint": "The x-intercepts of f(x) = x² - x - 2 are where x² = x + 2. Factor it: x² - x - 2 = (x-2)(x+1). Set each factor to zero.",
+      "solution_steps": [
+        "Set x² = x + 2 → x² - x - 2 = 0.",
+        "Factor: (x - 2)(x + 1) = 0.",
+        "x = 2 or x = -1.",
+        "Check x=2: y = 4 on both curves (2² = 4, 2+2 = 4). ✓",
+        "Check x=-1: y = 1 on both curves ((-1)² = 1, -1+2 = 1). ✓"
+      ],
+      "feedback_correct": "🔥 Both intersection points found. Setting the functions equal and factoring is the algebraic path.",
+      "feedback_wrong": "The x-intercepts of f(x) = x²-x-2 are the intersections. Factor: (x-2)(x+1)=0 → x=-1 and x=2."
+    },
+    {
+      "id": "sp7-q8",
+      "number": 8,
+      "section": "A",
+      "standard": "S3.c",
+      "difficulty": "medium",
+      "type": "identify",
+      "question_html": "Given \\( f(x) = 9x^5 + 2x^4 - x^3 + 9x^2 - 2 \\), determine the end behavior using only the leading term.",
+      "inputs": [
+        {
+          "id": "sp7q8_eb_right",
+          "type": "dropdown",
+          "label": "As x → +∞, f(x) →",
+          "options": ["+∞", "-∞"],
+          "answer": "+∞"
+        },
+        {
+          "id": "sp7q8_eb_left",
+          "type": "dropdown",
+          "label": "As x → -∞, f(x) →",
+          "options": ["+∞", "-∞"],
+          "answer": "-∞"
+        }
+      ],
+      "hint": "Only the leading term matters for end behavior: 9x⁵. Degree 5 is odd. Leading coefficient 9 is positive. Odd + positive = rises right, falls left.",
+      "solution_steps": [
+        "Leading term: 9x⁵.",
+        "Degree 5 is odd → opposite end behaviors.",
+        "Leading coefficient 9 > 0 → rises right.",
+        "As x → +∞, f(x) → +∞.",
+        "As x → -∞, f(x) → -∞."
+      ],
+      "feedback_correct": "🔥 Correct. Odd degree, positive LC: rises right, falls left.",
+      "feedback_wrong": "Leading term is 9x⁵. Odd degree + positive LC: right end goes up (+∞), left end goes down (-∞)."
+    },
+    {
+      "id": "sp7-q9",
+      "number": 9,
+      "section": "A",
+      "standard": "S3.d",
+      "difficulty": "hard",
+      "type": "identify",
+      "question_html": "Given \\( f(x) = (x + 3)^2(x - 1)^3 \\), identify all zeros and their multiplicities.",
+      "inputs": [
+        {
+          "id": "sp7q9_r1",
+          "type": "number",
+          "label": "First zero x =",
+          "answer": -3,
+          "tolerance": 0.1
+        },
+        {
+          "id": "sp7q9_m1",
+          "type": "number",
+          "label": "Its multiplicity =",
+          "answer": 2,
+          "tolerance": 0.1
+        },
+        {
+          "id": "sp7q9_r2",
+          "type": "number",
+          "label": "Second zero x =",
+          "answer": 1,
+          "tolerance": 0.1
+        },
+        {
+          "id": "sp7q9_m2",
+          "type": "number",
+          "label": "Its multiplicity =",
+          "answer": 3,
+          "tolerance": 0.1
+        }
+      ],
+      "hint": "The exponent on each factor is the multiplicity. (x+3)² → zero at x=-3, multiplicity 2 (graph bounces). (x-1)³ → zero at x=1, multiplicity 3 (graph crosses with a flattened S-curve).",
+      "solution_steps": [
+        "(x+3)² = 0 → x = -3, multiplicity 2.",
+        "Even multiplicity: graph touches x-axis at x=-3 and bounces back.",
+        "(x-1)³ = 0 → x = 1, multiplicity 3.",
+        "Odd multiplicity (≥3): graph crosses but flattens at x=1 (inflection shape).",
+        "Total degree = 2 + 3 = 5."
+      ],
+      "feedback_correct": "🔥 Both zeros and multiplicities correct. Exponent = multiplicity.",
+      "feedback_wrong": "Exponent on each factor = multiplicity. (x+3)²: zero at -3, mult=2. (x-1)³: zero at 1, mult=3."
+    },
+    {
+      "id": "sp7-q10",
+      "number": 10,
+      "section": "A",
+      "standard": "S3.b",
+      "difficulty": "medium",
+      "type": "identify",
+      "question_html": "A polynomial of degree 4 can have at most how many relative extrema? A polynomial of degree 5 can have at most how many?",
+      "inputs": [
+        {
+          "id": "sp7q10_d4",
+          "type": "number",
+          "label": "Degree 4: max relative extrema =",
+          "answer": 3,
+          "tolerance": 0.1
+        },
+        {
+          "id": "sp7q10_d5",
+          "type": "number",
+          "label": "Degree 5: max relative extrema =",
+          "answer": 4,
+          "tolerance": 0.1
+        }
+      ],
+      "hint": "The rule: a degree n polynomial has at most (n - 1) relative extrema. Degree 4 → at most 3. Degree 5 → at most 4.",
+      "solution_steps": [
+        "Rule: max relative extrema = degree - 1.",
+        "Degree 4: 4 - 1 = 3 relative extrema max.",
+        "Degree 5: 5 - 1 = 4 relative extrema max.",
+        "This is because extrema occur between sign changes of the derivative.",
+        "The derivative of a degree n polynomial has degree n-1, so at most n-1 real roots."
+      ],
+      "feedback_correct": "🔥 Correct. Degree n → at most (n-1) relative extrema.",
+      "feedback_wrong": "Rule: max extrema = degree - 1. Degree 4 → 3 max. Degree 5 → 4 max."
+    }
+  ]
+}

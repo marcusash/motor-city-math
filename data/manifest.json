@@ -1,6 +1,13 @@
 {
   "exams": [
     {
+      "id": "spring07-poly-quiz",
+      "title": "Spring 07: Polynomial Functions",
+      "desc": "10 questions · S3.a S3.b S3.c S3.d S3.e S3.f · Graphing, end behavior, zeros, intersections · ~45 min",
+      "trimester": "spring",
+      "unit": "S3"
+    },
+    {
       "id": "s1-quiz-prep-1",
       "title": "Spring S1 Quiz Prep",
       "desc": "12 questions · S1.a S1.b · Add, subtract & multiply polynomials · ~45 min",
