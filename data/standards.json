@@ -340,6 +340,12 @@
           "question_count": 0
         },
         {
+          "id": "S1.c",
+          "name": "Divide polynomials using long division",
+          "description": "Divide polynomials using long division. Express results with quotient and remainder fraction when a remainder exists.",
+          "question_count": 0
+        },
+        {
           "id": "S2.a",
           "name": "Polynomial long division",
           "description": "Divide polynomials using long division. Express results with quotient and remainder.",
