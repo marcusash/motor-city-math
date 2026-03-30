@@ -1631,6 +1631,64 @@
             return html;
         }
 
+        // Build a printable coordinate grid SVG.
+        // withCurve=false: empty grid for Kai to plot points by hand.
+        // withCurve=true: pre-drawn function curve for read-graph questions.
+        function coordGrid(graphConfig, withCurve) {
+            var sz = 280, ml = 32, mr = 12, mt = 12, mb = 28;
+            var pw = sz - ml - mr, ph = sz - mt - mb;
+            var step = pw / 32;
+            var xAxisY = mt + ph / 2, yAxisX = ml + pw / 2;
+
+            var s = '<svg xmlns="http://www.w3.org/2000/svg" width="' + sz + '" height="' + sz + '" style="display:block;margin:10px auto;">';
+            s += '<rect width="' + sz + '" height="' + sz + '" fill="white" stroke="#999" stroke-width="1"/>';
+
+            // Minor grid lines
+            for (var i = 0; i <= 32; i++) {
+                var gx = ml + i * step, gy = mt + i * step;
+                s += '<line x1="' + gx.toFixed(1) + '" y1="' + mt + '" x2="' + gx.toFixed(1) + '" y2="' + (mt + ph) + '" stroke="#e0e0e0" stroke-width="0.5"/>';
+                s += '<line x1="' + ml + '" y1="' + gy.toFixed(1) + '" x2="' + (ml + pw) + '" y2="' + gy.toFixed(1) + '" stroke="#e0e0e0" stroke-width="0.5"/>';
+            }
+            // Major grid lines every 5 units
+            for (var n = -15; n <= 15; n += 5) {
+                if (n === 0) continue;
+                var mx = ml + (n + 16) * step, my = mt + (16 - n) * step;
+                s += '<line x1="' + mx.toFixed(1) + '" y1="' + mt + '" x2="' + mx.toFixed(1) + '" y2="' + (mt + ph) + '" stroke="#bbb" stroke-width="0.8"/>';
+                s += '<line x1="' + ml + '" y1="' + my.toFixed(1) + '" x2="' + (ml + pw) + '" y2="' + my.toFixed(1) + '" stroke="#bbb" stroke-width="0.8"/>';
+            }
+            // Axes
+            s += '<line x1="' + ml + '" y1="' + xAxisY.toFixed(1) + '" x2="' + (ml + pw) + '" y2="' + xAxisY.toFixed(1) + '" stroke="#000" stroke-width="2"/>';
+            s += '<line x1="' + yAxisX.toFixed(1) + '" y1="' + mt + '" x2="' + yAxisX.toFixed(1) + '" y2="' + (mt + ph) + '" stroke="#000" stroke-width="2"/>';
+            // Axis labels
+            for (var m = -15; m <= 15; m += 5) {
+                if (m === 0) continue;
+                var lx = ml + (m + 16) * step, ly = mt + (16 - m) * step;
+                s += '<text x="' + lx.toFixed(1) + '" y="' + (xAxisY + 13).toFixed(1) + '" text-anchor="middle" font-size="7" font-family="Arial" fill="#000">' + m + '</text>';
+                s += '<text x="' + (yAxisX - 5).toFixed(1) + '" y="' + (ly + 3).toFixed(1) + '" text-anchor="end" font-size="7" font-family="Arial" fill="#000">' + m + '</text>';
+            }
+            s += '<text x="' + (yAxisX + 4).toFixed(1) + '" y="' + (xAxisY + 13).toFixed(1) + '" font-size="7" font-family="Arial" fill="#000">0</text>';
+
+            // Pre-draw function curve for read-graph questions
+            if (withCurve && graphConfig && graphConfig.function) {
+                try {
+                    var fn = new Function('x', 'return ' + graphConfig.function);
+                    var d = '', inSeg = false;
+                    for (var gxi = -160; gxi <= 160; gxi++) {
+                        var gxv = gxi / 10;
+                        var fyv = fn(gxv);
+                        if (!isFinite(fyv) || fyv < -16 || fyv > 16) { inSeg = false; continue; }
+                        var px = (ml + ((gxv + 16) / 32) * pw).toFixed(1);
+                        var py = (mt + ((-fyv + 16) / 32) * ph).toFixed(1);
+                        if (!inSeg) { d += 'M ' + px + ' ' + py + ' '; inSeg = true; }
+                        else { d += 'L ' + px + ' ' + py + ' '; }
+                    }
+                    if (d) s += '<path d="' + d + '" stroke="#222" stroke-width="2" fill="none" stroke-linejoin="round"/>';
+                } catch(e) {}
+            }
+            s += '</svg>';
+            return s;
+        }
+
         var qHtml = examData.questions.map(function(q) {
             var inputHtml = '';
 
@@ -1656,7 +1714,12 @@
                 inputHtml = boxGrid(topCols, q.box.known_factor, true, renderTex);
                 inputHtml += '<div class="blank-row" style="margin-top:10px;"><span class="blank-lbl">Missing factor =</span><span class="blank-line"></span></div>';
             } else {
-                inputHtml = q.inputs.map(function(inp) {
+                // Graph questions: insert printable coordinate grid
+                if (q.graph) {
+                    var isReadOnly = !!q.graph.read_only;
+                    inputHtml += coordGrid(q.graph, isReadOnly);
+                }
+                inputHtml += (q.inputs || []).map(function(inp) {
                     if (inp.type === 'radio') {
                         return '<div class="blank-row"><span class="blank-lbl">Answer</span><span class="blank-line"></span></div>';
                     }
@@ -1664,11 +1727,12 @@
                 }).join('');
             }
 
+            var workHeight = q.graph ? '60px' : '120px';
             return '<div class="qcard">' +
                 '<div class="qhdr"><span class="qnum">Question ' + q.number + '</span><span class="qstd">' + q.standard + '</span></div>' +
                 '<div class="qtext">' + renderedQText + '</div>' +
                 inputHtml +
-                '<div class="work-area" style="min-height:120px;"><span class="work-lbl">Show your work:</span></div>' +
+                '<div class="work-area" style="min-height:' + workHeight + ';"><span class="work-lbl">Show your work:</span></div>' +
                 '</div>';
         }).join('');
 
