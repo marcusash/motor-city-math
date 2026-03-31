@@ -3,6 +3,50 @@
   "exported": "2026-03-17T04:13:00Z",
   "student": "Kai",
   "mcm_scores": {
+    "spring07-poly-quiz-2026-03-31": {
+      "attempts": [{
+        "score": 9,
+        "total": 10,
+        "pct": 90,
+        "grade": 4,
+        "type": "practice",
+        "graded_by": "Mash",
+        "date": "2026-03-31",
+        "sections": {
+          "S3.a": {"score": 2, "total": 2, "description": "Graph polynomial functions from factored form"},
+          "S3.b": {"score": 2, "total": 2, "description": "Key features from graph/equation"},
+          "S3.c": {"score": 1, "total": 2, "description": "End behavior and leading coefficient"},
+          "S3.d": {"score": 2, "total": 2, "description": "Repeated roots and multiplicity"},
+          "S3.e": {"score": 1, "total": 1, "description": "Read a function graph and write equation"},
+          "S3.f": {"score": 1, "total": 1, "description": "Identify zeros from graph"}
+        },
+        "questions": {
+          "sp7-q1":  {"correct": true,  "standard": "S3.a", "type": "graph-plot"},
+          "sp7-q2":  {"correct": true,  "standard": "S3.a", "type": "graph-plot"},
+          "sp7-q3":  {"correct": true,  "standard": "S3.d", "type": "graph-plot"},
+          "sp7-q4":  {"correct": true,  "standard": "S3.b", "type": "graph-plot"},
+          "sp7-q5":  {"correct": true,  "standard": "S3.e", "type": "read-graph"},
+          "sp7-q6":  {
+            "correct": false,
+            "standard": "S3.c",
+            "type": "read-graph",
+            "inputs": {
+              "sp7q6_deg": {"correct": true,  "answer": "even",     "kai_answer": "even"},
+              "sp7q6_lc":  {"correct": false, "answer": "positive", "kai_answer": "negative"}
+            },
+            "error": "leading-coefficient: f(x) = x^4 - 5x^2 + 4 has positive leading coefficient (+x^4). Kai identified degree (even) correctly but called leading coefficient negative. Even degree with rises on both sides = positive leading coefficient."
+          },
+          "sp7-q7":  {"correct": true,  "standard": "S3.f", "type": "graph-plot"},
+          "sp7-q8":  {"correct": true,  "standard": "S3.c", "type": "identify"},
+          "sp7-q9":  {"correct": true,  "standard": "S3.d", "type": "identify"},
+          "sp7-q10": {"correct": true,  "standard": "S3.b", "type": "identify"}
+        },
+        "error_analysis": "S3.c gap: Q6 read-graph -- Kai identified degree as even (correct) but called leading coefficient negative. The function x^4 - 5x^2 + 4 rises on both sides (even degree, positive LC). Kai may be confusing the W-shape dip with a negative leading coefficient. Note: Q8 (algebraic end behavior, same S3.c standard) was perfect -- the error is specific to reading LC from a graph, not from an equation.",
+        "next_drill": "Graph reading: given a graph, determine sign of LC from end behavior alone. Even+rises-both = positive. Even+falls-both = negative. Odd+rises-right = positive. Odd+falls-right = negative. 5 visual drills.",
+        "timestamp": "2026-03-31T13:52:00Z"
+      }],
+      "best": {"score": 9, "pct": 90, "grade": 4}
+    },
     "s1-quiz-1-2026-03-21": {
       "attempts": [{
         "score": 5,

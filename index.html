@@ -384,6 +384,10 @@
     // Spring scores pre-seeded from kai.json -- renders immediately, no fetch race
     // UPDATE this object whenever kai.json changes
     var _ghSpringScores = {
+        "mcm-spring07-poly-quiz": {
+            "attempts": [{ "score": 9, "total": 10, "pct": 90, "grade": 4, "timestamp": "2026-03-31T13:52:00Z" }],
+            "best": { "score": 9, "pct": 90, "grade": 4 }
+        },
         "mcm-s1-division-practice-1": {
             "attempts": [{ "score": 8, "total": 8, "pct": 100, "grade": 4, "timestamp": "2026-03-22T21:30:00Z" }],
             "best": { "score": 8, "pct": 100, "grade": 4 }
@@ -675,6 +679,7 @@
             if (short.indexOf('Quiz 1') !== -1) short = short.replace('Quiz 1', 'Q1');
             if (short.indexOf('Poly Long Division') !== -1) short = 'PLD';
             if (short.indexOf('Division Practice') !== -1) short = 'DP';
+            if (short.indexOf("'07 Poly") !== -1) short = 'S07';
             raw.push({ label: short, sublabel: dateStr, fa: fa, ts: ts });
         });
         raw.sort(function(a, b) { return a.ts - b.ts; });
