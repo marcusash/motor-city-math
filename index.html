@@ -152,7 +152,6 @@
             display: flex; flex-direction: column; justify-content: space-between;
             background: var(--bg-card);
             border: 1px solid var(--border-default);
-            border-left: 4px solid var(--accent-blue);
             border-radius: 4px;
             padding: 12px 16px;
             text-decoration: none;
@@ -597,24 +596,29 @@
         var xs = pts.map(function(_, i) {
             return n === 1 ? xL : xL + i * (xR - xL) / (n - 1);
         });
+
+        // Full 0-100 linear scale -- no clamping, generous vertical space
+        var chartTop = 14, chartBottom = 128;
         function yPt(s) {
-            var clamped = Math.min(100, Math.max(40, s));
-            return 14 + 95 * (1 - (clamped - 40) / 60);
+            var clamped = Math.min(100, Math.max(0, s));
+            return chartTop + (chartBottom - chartTop) * (1 - clamped / 100);
         }
-        var yA = 25.1, yB = 45.7, yC = 66.3;
+        var yA = yPt(93);   // ~22
+        var yB = yPt(80);   // ~37
+        var yC = yPt(67);   // ~52
 
         var faYs = pts.map(function(p) { return yPt(p.fa); });
-
-        // Last scores for right-edge labels
         var lastX = xs[n-1], lastFaY = faYs[n-1], lastFaPct = pts[n-1].fa;
 
-        // Check if ANY point is in foul trouble (below C = 67%)
-        var hasFoulTrouble = pts.some(function(p) { return p.fa < 67; });
+        // Foul trouble = any score below B (80% -- minimum target)
+        var hasFoulTrouble = pts.some(function(p) { return p.fa < 80; });
 
-        // ═══ FOUL TROUBLE ZONE ═══
+        // ═══ FOUL TROUBLE ZONE (B line down to chart bottom) ═══
         var foulZone = '';
         if (hasFoulTrouble) {
             var pid = 'court' + Date.now();
+            var zoneH = chartBottom - yB;
+            var midY = yB + zoneH * 0.5;
             foulZone =
                 '<defs>' +
                 '<pattern id="'+pid+'" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">' +
@@ -623,31 +627,24 @@
                 '<line x1="0" y1="15" x2="20" y2="15" stroke="rgba(196,98,45,0.4)" stroke-width="0.5"/>' +
                 '<line x1="0" y1="10" x2="20" y2="10" stroke="rgba(139,62,26,0.3)" stroke-width="0.5"/>' +
                 '</pattern></defs>' +
-                // Court floor
-                '<rect x="28" y="'+yC+'" width="480" height="'+(108-yC)+'" fill="url(#'+pid+')" opacity="0.6"/>' +
-                // Court lines
-                '<line x1="28" y1="'+yC+'" x2="508" y2="'+yC+'" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>' +
-                '<line x1="28" y1="108" x2="508" y2="108" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>' +
-                // Center circle
-                '<circle cx="268" cy="'+((+yC+108)/2)+'" r="14" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>' +
-                '<circle cx="268" cy="'+((+yC+108)/2)+'" r="2" fill="rgba(255,255,255,0.06)"/>' +
-                // Lane lines
-                '<line x1="150" y1="'+yC+'" x2="150" y2="108" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>' +
-                '<line x1="268" y1="'+yC+'" x2="268" y2="108" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>' +
-                '<line x1="386" y1="'+yC+'" x2="386" y2="108" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>' +
-                // "FOUL TROUBLE" text
-                '<text x="268" y="'+(+yC + (108-yC)*0.72)+'" font-size="14" font-weight="900" fill="rgba(255,255,255,0.12)" font-family="var(--font-body)" text-anchor="middle" letter-spacing="0.35em">FOUL TROUBLE</text>';
+                '<rect x="28" y="'+yB+'" width="480" height="'+zoneH+'" fill="url(#'+pid+')" opacity="0.6"/>' +
+                '<line x1="28" y1="'+yB+'" x2="508" y2="'+yB+'" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>' +
+                '<line x1="28" y1="'+chartBottom+'" x2="508" y2="'+chartBottom+'" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>' +
+                '<circle cx="268" cy="'+midY+'" r="18" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>' +
+                '<circle cx="268" cy="'+midY+'" r="2.5" fill="rgba(255,255,255,0.06)"/>' +
+                '<line x1="150" y1="'+yB+'" x2="150" y2="'+chartBottom+'" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>' +
+                '<line x1="268" y1="'+yB+'" x2="268" y2="'+chartBottom+'" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>' +
+                '<line x1="386" y1="'+yB+'" x2="386" y2="'+chartBottom+'" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>' +
+                '<text x="268" y="'+(yB + zoneH * 0.72)+'" font-size="14" font-weight="900" fill="rgba(255,255,255,0.12)" font-family="var(--font-body)" text-anchor="middle" letter-spacing="0.35em">FOUL TROUBLE</text>';
         }
 
-        // ═══ SEGMENTED SCORE LINE (colored dashes on descent into foul trouble) ═══
+        // ═══ SEGMENTED SCORE LINE ═══
         var segments = '';
         for (var i = 1; i < n; i++) {
             var x0 = xs[i-1], y0 = faYs[i-1], x1 = xs[i], y1 = faYs[i];
             var cx = (x0 + x1) / 2;
             var seg = 'M '+x0+','+y0+' C '+cx+','+y0+' '+cx+','+y1+' '+x1+','+y1;
-
-            // Dashed color only when DROPPING into foul trouble (next point below C AND going down)
-            var dropping = pts[i].fa < 67 && pts[i].fa < pts[i-1].fa;
+            var dropping = pts[i].fa < 80 && pts[i].fa < pts[i-1].fa;
             var strokeColor, dashArray;
             if (dropping) {
                 dashArray = '6 4';
@@ -660,7 +657,7 @@
                 (dashArray !== 'none' ? ' stroke-dasharray="'+dashArray+'"' : '') + '/>';
         }
 
-        // ═══ DOTS (colored when in foul trouble) ═══
+        // ═══ DOTS ═══
         var faDots = pts.map(function(p, i) {
             var x = xs[i], y = faYs[i];
             if (i === n-1 && p.fa >= 93) {
@@ -668,47 +665,43 @@
                        '<circle cx="'+x+'" cy="'+y+'" r="5" fill="rgba(63,185,80,0.15)" stroke="#3FB950" stroke-width="2"/>' +
                        '<circle cx="'+x+'" cy="'+y+'" r="2" fill="#3FB950"/>';
             }
-            if (p.fa < 67) {
+            if (p.fa < 80) {
                 var dotColor = p.fa < 50 ? '#f85149' : '#d29922';
-                return '<circle cx="'+x+'" cy="'+y+'" r="5" fill="rgba('+
-                    (p.fa < 50 ? '248,81,73' : '210,153,34')+',0.15)" stroke="'+dotColor+'" stroke-width="2"/>' +
+                return '<circle cx="'+x+'" cy="'+y+'" r="5" fill="rgba('+(p.fa < 50 ? '248,81,73' : '210,153,34')+',0.15)" stroke="'+dotColor+'" stroke-width="2"/>' +
                     '<circle cx="'+x+'" cy="'+y+'" r="2" fill="'+dotColor+'"/>';
             }
             return '<circle cx="'+x+'" cy="'+y+'" r="4" fill="#161b22" stroke="rgba(255,255,255,0.5)" stroke-width="2"/>';
         }).join('');
 
-        // Score label
-        var faColor = lastFaPct >= 93 ? '#3FB950' : (lastFaPct < 67 ? (lastFaPct < 50 ? '#f85149' : '#d29922') : '#8B949E');
+        // Score label (right edge)
+        var faColor = lastFaPct >= 93 ? '#3FB950' : (lastFaPct < 80 ? (lastFaPct < 50 ? '#f85149' : '#d29922') : '#8B949E');
         var rightLabels = '<text x="'+(lastX+14)+'" y="'+(lastFaY+4)+'" font-size="12" font-weight="700" fill="'+faColor+'" font-family="var(--font-body)">'+lastFaPct+'%</text>';
 
-        // ═══ X-AXIS LABELS (colored when in foul trouble) ═══
+        // ═══ X-AXIS LABELS ═══
         var xLabels = pts.map(function(p, i) {
             var labelColor = 'rgba(255,255,255,0.5)';
             var subColor = 'rgba(255,255,255,0.28)';
-            if (p.fa < 67) {
+            if (p.fa < 80) {
                 labelColor = p.fa < 50 ? 'rgba(248,81,73,0.85)' : 'rgba(210,153,34,0.85)';
                 subColor = p.fa < 50 ? 'rgba(248,81,73,0.5)' : 'rgba(210,153,34,0.5)';
             } else if (i === n-1 && p.fa >= 93) {
                 labelColor = 'rgba(63,185,80,0.8)';
                 subColor = 'rgba(63,185,80,0.5)';
             }
-            var main = '<text x="'+xs[i]+'" y="122" font-size="10" font-weight="600" fill="'+labelColor+'" text-anchor="middle" font-family="var(--font-body)">'+p.label+'</text>';
-            var sub = p.sublabel ? '<text x="'+xs[i]+'" y="134" font-size="9" fill="'+subColor+'" text-anchor="middle" font-family="var(--font-body)">'+p.sublabel+'</text>' : '';
+            var main = '<text x="'+xs[i]+'" y="142" font-size="10" font-weight="600" fill="'+labelColor+'" text-anchor="middle" font-family="var(--font-body)">'+p.label+'</text>';
+            var sub = p.sublabel ? '<text x="'+xs[i]+'" y="154" font-size="9" fill="'+subColor+'" text-anchor="middle" font-family="var(--font-body)">'+p.sublabel+'</text>' : '';
             return main + sub;
         }).join('');
 
         container.innerHTML =
-            '<svg role="img" aria-label="Score progress chart showing ' + n + ' test' + (n !== 1 ? 's' : '') + '" viewBox="0 0 560 142" height="142" style="display:block;width:100%;overflow:visible">' +
-            // Foul trouble zone (rendered first, behind everything)
+            '<svg role="img" aria-label="Score progress chart showing ' + n + ' test' + (n !== 1 ? 's' : '') + '" viewBox="0 0 560 162" height="162" style="display:block;width:100%;overflow:visible">' +
             foulZone +
-            // Grade reference lines (all neutral)
             '<line x1="28" y1="'+yC+'" x2="508" y2="'+yC+'" stroke="rgba(255,255,255,0.20)" stroke-width="1" stroke-dasharray="3 7"/>' +
             '<text x="16" y="'+(yC+3.5)+'" font-size="10" font-weight="700" fill="rgba(255,255,255,0.42)" font-family="var(--font-body)" text-anchor="middle">C</text>' +
             '<line x1="28" y1="'+yB+'" x2="508" y2="'+yB+'" stroke="rgba(255,255,255,0.20)" stroke-width="1" stroke-dasharray="3 7"/>' +
             '<text x="16" y="'+(yB+3.5)+'" font-size="10" font-weight="700" fill="rgba(255,255,255,0.55)" font-family="var(--font-body)" text-anchor="middle">B</text>' +
             '<line x1="28" y1="'+yA+'" x2="508" y2="'+yA+'" stroke="rgba(63,185,80,0.45)" stroke-width="1" stroke-dasharray="3 7"/>' +
             '<text x="16" y="'+(yA+3.5)+'" font-size="10" font-weight="700" fill="rgba(63,185,80,1)" font-family="var(--font-body)" text-anchor="middle">A</text>' +
-            // Score line segments + dots + labels
             segments + faDots + rightLabels + xLabels +
             '</svg>';
     }
@@ -1007,13 +1000,15 @@
                 }
                 if (pct !== null) {
                     if (t.benchmark) {
-                        // Teacher quiz: amber border, raw pct + teacher grade pill on right
-                        borderColor = '#d29922';
+                        // Teacher quiz: grade pill color by letter grade
                         var rawScore = att ? (att.score + '/' + att.total) : '';
                         var tg = (att && att.teacher_grade) || t.teacherGrade || '';
                         scoreHtml = '<span class="test-score mid">' + pct + '%</span>';
                         if (tg) {
-                            scoreHtml += '<span style="position:absolute;top:14px;right:14px;background:rgba(210,153,34,0.15);color:#d29922;font-size:11px;font-weight:700;padding:3px 10px;border-radius:12px;border:1px solid rgba(210,153,34,0.3);font-family:var(--font-body);letter-spacing:0.3px;">' + tg + '</span>';
+                            var pillColor = tg === 'A' ? '#3FB950' : (tg === 'B' ? '#d29922' : '#f85149');
+                            var pillBg = tg === 'A' ? 'rgba(63,185,80,0.15)' : (tg === 'B' ? 'rgba(210,153,34,0.15)' : 'rgba(248,81,73,0.15)');
+                            var pillBorder = tg === 'A' ? 'rgba(63,185,80,0.3)' : (tg === 'B' ? 'rgba(210,153,34,0.3)' : 'rgba(248,81,73,0.3)');
+                            scoreHtml += '<span style="position:absolute;top:14px;right:14px;background:'+pillBg+';color:'+pillColor+';font-size:11px;font-weight:700;padding:3px 10px;border-radius:12px;border:1px solid '+pillBorder+';font-family:var(--font-body);letter-spacing:0.3px;">' + tg + '</span>';
                         }
                         metaLabel = 'Teacher Quiz · ' + rawScore;
                     } else if (t.homework) {
@@ -1031,7 +1026,7 @@
                     }
                 }
             }
-            html += '<a href="' + t.file + '" class="test-link" style="border-left-color:' + borderColor + ';position:relative;">' +
+            html += '<a href="' + t.file + '" class="test-link" style="position:relative;">' +
                 t.name + scoreHtml +
                 '<div class="test-meta">' + metaLabel + ' · S1.a &amp; S1.b · Polynomials</div></a>';
         });
