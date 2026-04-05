@@ -400,6 +400,10 @@
             "attempts": [{ "score": 2.5, "total": 7, "pct": 36, "teacher_grade": "C", "timestamp": "2026-04-04T00:00:00.000Z" }],
             "best": { "score": 2.5, "pct": 36, "teacher_grade": "C" }
         },
+        "unit1-practice-exam-2026-04-05": {
+            "attempts": [{ "score": 17, "total": 22, "pct": 77, "teacher_grade": "C", "timestamp": "2026-04-05T17:00:00.000Z" }],
+            "best": { "score": 17, "pct": 77, "teacher_grade": "C" }
+        },
         "school-quiz2-retake-2026-04-05": {
             "attempts": [{ "score": 7, "total": 7, "pct": 100, "teacher_grade": "A", "timestamp": "2026-04-05T15:27:00.000Z" }],
             "best": { "score": 7, "pct": 100, "teacher_grade": "A" }
@@ -543,6 +547,7 @@
     <script>
     /* ========== TEST REGISTRY ========== */
     var tests = [
+        { file: '#', name: 'U1 Practice Exam', unit: 'spring-s1', trimester: 'spring', key: 'unit1-practice-exam-2026-04-05', questions: 22, benchmark: true, teacherGrade: 'C' },
         { file: '#', name: 'S1 Quiz 2 Retake', unit: 'spring-s1', trimester: 'spring', key: 'school-quiz2-retake-2026-04-05', questions: 7, benchmark: true, teacherGrade: 'A' },
         { file: '#', name: 'S1 Quiz 2', unit: 'spring-s1', trimester: 'spring', key: 'school-quiz2-2026-04-04', questions: 7, benchmark: true, teacherGrade: 'C' },
         { file: 'reviews/kai-quiz1-2026-03-21.html', name: 'S1 Quiz 1', unit: 'spring-s1', trimester: 'spring', key: 's1-quiz-1-2026-03-21', questions: 8, benchmark: true, teacherGrade: 'B', teacherRating: '3/4' },
@@ -587,7 +592,6 @@
             return;
         }
 
-        // Coordinate math: single point goes far LEFT, not center
         var n = pts.length;
         var xL = 50, xR = 490;
         var xs = pts.map(function(_, i) {
@@ -597,30 +601,66 @@
             var clamped = Math.min(100, Math.max(40, s));
             return 14 + 95 * (1 - (clamped - 40) / 60);
         }
-        // Grade reference y-values (A=93%, B=80%, C=67%)
         var yA = 25.1, yB = 45.7, yC = 66.3;
 
-        // Build smooth bezier path through points
-        function makePath(xArr, yArr) {
-            if (!xArr.length) return '';
-            if (xArr.length === 1) return 'M ' + xArr[0] + ',' + yArr[0];
-            var d = 'M ' + xArr[0] + ',' + yArr[0];
-            for (var i = 1; i < xArr.length; i++) {
-                var cx = (xArr[i-1] + xArr[i]) / 2;
-                d += ' C ' + cx + ',' + yArr[i-1] + ' ' + cx + ',' + yArr[i] + ' ' + xArr[i] + ',' + yArr[i];
-            }
-            return d;
-        }
-
         var faYs = pts.map(function(p) { return yPt(p.fa); });
-        var faPath = makePath(xs, faYs);
-        var fillPath = faPath + ' V 108 H ' + xs[0] + ' Z';
 
         // Last scores for right-edge labels
         var lastX = xs[n-1], lastFaY = faYs[n-1], lastFaPct = pts[n-1].fa;
-        var labelX = lastX;
 
-        // FA dots SVG
+        // Check if ANY point is in foul trouble (below C = 67%)
+        var hasFoulTrouble = pts.some(function(p) { return p.fa < 67; });
+
+        // ═══ FOUL TROUBLE ZONE ═══
+        var foulZone = '';
+        if (hasFoulTrouble) {
+            var pid = 'court' + Date.now();
+            foulZone =
+                '<defs>' +
+                '<pattern id="'+pid+'" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">' +
+                '<rect width="20" height="20" fill="#8b3e1a"/>' +
+                '<line x1="0" y1="5" x2="20" y2="5" stroke="rgba(196,98,45,0.4)" stroke-width="0.5"/>' +
+                '<line x1="0" y1="15" x2="20" y2="15" stroke="rgba(196,98,45,0.4)" stroke-width="0.5"/>' +
+                '<line x1="0" y1="10" x2="20" y2="10" stroke="rgba(139,62,26,0.3)" stroke-width="0.5"/>' +
+                '</pattern></defs>' +
+                // Court floor
+                '<rect x="28" y="'+yC+'" width="480" height="'+(108-yC)+'" fill="url(#'+pid+')" opacity="0.6"/>' +
+                // Court lines
+                '<line x1="28" y1="'+yC+'" x2="508" y2="'+yC+'" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>' +
+                '<line x1="28" y1="108" x2="508" y2="108" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>' +
+                // Center circle
+                '<circle cx="268" cy="'+((+yC+108)/2)+'" r="14" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>' +
+                '<circle cx="268" cy="'+((+yC+108)/2)+'" r="2" fill="rgba(255,255,255,0.06)"/>' +
+                // Lane lines
+                '<line x1="150" y1="'+yC+'" x2="150" y2="108" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>' +
+                '<line x1="268" y1="'+yC+'" x2="268" y2="108" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>' +
+                '<line x1="386" y1="'+yC+'" x2="386" y2="108" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>' +
+                // "FOUL TROUBLE" text
+                '<text x="268" y="'+(+yC + (108-yC)*0.72)+'" font-size="14" font-weight="900" fill="rgba(255,255,255,0.12)" font-family="var(--font-body)" text-anchor="middle" letter-spacing="0.35em">FOUL TROUBLE</text>';
+        }
+
+        // ═══ SEGMENTED SCORE LINE (colored dashes on descent into foul trouble) ═══
+        var segments = '';
+        for (var i = 1; i < n; i++) {
+            var x0 = xs[i-1], y0 = faYs[i-1], x1 = xs[i], y1 = faYs[i];
+            var cx = (x0 + x1) / 2;
+            var seg = 'M '+x0+','+y0+' C '+cx+','+y0+' '+cx+','+y1+' '+x1+','+y1;
+
+            // Dashed color only when DROPPING into foul trouble (next point below C AND going down)
+            var dropping = pts[i].fa < 67 && pts[i].fa < pts[i-1].fa;
+            var strokeColor, dashArray;
+            if (dropping) {
+                dashArray = '6 4';
+                strokeColor = pts[i].fa < 50 ? '#f85149' : '#d29922';
+            } else {
+                dashArray = 'none';
+                strokeColor = 'rgba(255,255,255,0.52)';
+            }
+            segments += '<path d="'+seg+'" fill="none" stroke="'+strokeColor+'" stroke-width="2.5" stroke-linecap="round"' +
+                (dashArray !== 'none' ? ' stroke-dasharray="'+dashArray+'"' : '') + '/>';
+        }
+
+        // ═══ DOTS (colored when in foul trouble) ═══
         var faDots = pts.map(function(p, i) {
             var x = xs[i], y = faYs[i];
             if (i === n-1 && p.fa >= 93) {
@@ -628,43 +668,48 @@
                        '<circle cx="'+x+'" cy="'+y+'" r="5" fill="rgba(63,185,80,0.15)" stroke="#3FB950" stroke-width="2"/>' +
                        '<circle cx="'+x+'" cy="'+y+'" r="2" fill="#3FB950"/>';
             }
+            if (p.fa < 67) {
+                var dotColor = p.fa < 50 ? '#f85149' : '#d29922';
+                return '<circle cx="'+x+'" cy="'+y+'" r="5" fill="rgba('+
+                    (p.fa < 50 ? '248,81,73' : '210,153,34')+',0.15)" stroke="'+dotColor+'" stroke-width="2"/>' +
+                    '<circle cx="'+x+'" cy="'+y+'" r="2" fill="'+dotColor+'"/>';
+            }
             return '<circle cx="'+x+'" cy="'+y+'" r="4" fill="#161b22" stroke="rgba(255,255,255,0.5)" stroke-width="2"/>';
         }).join('');
 
-        // RIB dots SVG (removed: new tests created instead of retakes)
-        var ribDots = '';
+        // Score label
+        var faColor = lastFaPct >= 93 ? '#3FB950' : (lastFaPct < 67 ? (lastFaPct < 50 ? '#f85149' : '#d29922') : '#8B949E');
+        var rightLabels = '<text x="'+(lastX+14)+'" y="'+(lastFaY+4)+'" font-size="12" font-weight="700" fill="'+faColor+'" font-family="var(--font-body)">'+lastFaPct+'%</text>';
 
-        // Score labels
-        var faColor = lastFaPct >= 93 ? '#3FB950' : '#8B949E';
-        var rightLabels = '<text x="'+(labelX+14)+'" y="'+(lastFaY+4)+'" font-size="12" font-weight="700" fill="'+faColor+'" font-family="var(--font-body)">'+lastFaPct+'%</text>';
-
-        // X-axis labels (two lines: label + date sublabel)
+        // ═══ X-AXIS LABELS (colored when in foul trouble) ═══
         var xLabels = pts.map(function(p, i) {
-            var main = '<text x="'+xs[i]+'" y="122" font-size="10" font-weight="600" fill="rgba(255,255,255,0.5)" text-anchor="middle" font-family="var(--font-body)">'+p.label+'</text>';
-            var sub = p.sublabel ? '<text x="'+xs[i]+'" y="134" font-size="9" fill="rgba(255,255,255,0.28)" text-anchor="middle" font-family="var(--font-body)">'+p.sublabel+'</text>' : '';
+            var labelColor = 'rgba(255,255,255,0.5)';
+            var subColor = 'rgba(255,255,255,0.28)';
+            if (p.fa < 67) {
+                labelColor = p.fa < 50 ? 'rgba(248,81,73,0.85)' : 'rgba(210,153,34,0.85)';
+                subColor = p.fa < 50 ? 'rgba(248,81,73,0.5)' : 'rgba(210,153,34,0.5)';
+            } else if (i === n-1 && p.fa >= 93) {
+                labelColor = 'rgba(63,185,80,0.8)';
+                subColor = 'rgba(63,185,80,0.5)';
+            }
+            var main = '<text x="'+xs[i]+'" y="122" font-size="10" font-weight="600" fill="'+labelColor+'" text-anchor="middle" font-family="var(--font-body)">'+p.label+'</text>';
+            var sub = p.sublabel ? '<text x="'+xs[i]+'" y="134" font-size="9" fill="'+subColor+'" text-anchor="middle" font-family="var(--font-body)">'+p.sublabel+'</text>' : '';
             return main + sub;
         }).join('');
 
-        var gid = 'fdg' + Date.now();
         container.innerHTML =
             '<svg role="img" aria-label="Score progress chart showing ' + n + ' test' + (n !== 1 ? 's' : '') + '" viewBox="0 0 560 142" height="142" style="display:block;width:100%;overflow:visible">' +
-            '<defs><linearGradient id="'+gid+'" x1="'+xs[0]+'" y1="108" x2="'+lastX+'" y2="'+lastFaY+'" gradientUnits="userSpaceOnUse">' +
-            '<stop offset="0%" stop-color="rgba(255,255,255,0.01)"/>' +
-            '<stop offset="55%" stop-color="rgba(255,255,255,0.08)"/>' +
-            '<stop offset="100%" stop-color="rgba(255,255,255,0.17)"/>' +
-            '</linearGradient></defs>' +
-            // Grade lines
+            // Foul trouble zone (rendered first, behind everything)
+            foulZone +
+            // Grade reference lines (all neutral)
             '<line x1="28" y1="'+yC+'" x2="508" y2="'+yC+'" stroke="rgba(255,255,255,0.20)" stroke-width="1" stroke-dasharray="3 7"/>' +
             '<text x="16" y="'+(yC+3.5)+'" font-size="10" font-weight="700" fill="rgba(255,255,255,0.42)" font-family="var(--font-body)" text-anchor="middle">C</text>' +
-            '<line x1="28" y1="'+yB+'" x2="508" y2="'+yB+'" stroke="rgba(255,255,255,0.25)" stroke-width="1" stroke-dasharray="3 7"/>' +
+            '<line x1="28" y1="'+yB+'" x2="508" y2="'+yB+'" stroke="rgba(255,255,255,0.20)" stroke-width="1" stroke-dasharray="3 7"/>' +
             '<text x="16" y="'+(yB+3.5)+'" font-size="10" font-weight="700" fill="rgba(255,255,255,0.55)" font-family="var(--font-body)" text-anchor="middle">B</text>' +
-            '<line x1="28" y1="'+yA+'" x2="508" y2="'+yA+'" stroke="rgba(63,185,80,0.65)" stroke-width="1" stroke-dasharray="3 7"/>' +
-            '<text x="14" y="'+(yA+3.5)+'" font-size="12" font-weight="700" fill="rgba(63,185,80,1)" font-family="var(--font-body)" text-anchor="middle">A</text>' +
-            // Fill + FA line
-            '<path d="'+fillPath+'" fill="url(#'+gid+')"/>' +
-            '<path d="'+faPath+'" fill="none" stroke="rgba(255,255,255,0.52)" stroke-width="2.5" stroke-linecap="round"/>' +
-            // RIB line removed
-            faDots + rightLabels + xLabels +
+            '<line x1="28" y1="'+yA+'" x2="508" y2="'+yA+'" stroke="rgba(63,185,80,0.45)" stroke-width="1" stroke-dasharray="3 7"/>' +
+            '<text x="16" y="'+(yA+3.5)+'" font-size="10" font-weight="700" fill="rgba(63,185,80,1)" font-family="var(--font-body)" text-anchor="middle">A</text>' +
+            // Score line segments + dots + labels
+            segments + faDots + rightLabels + xLabels +
             '</svg>';
     }
 
@@ -689,6 +734,7 @@
             if (short.indexOf('Quiz 1') !== -1) short = short.replace('Quiz 1', 'Q1');
             if (short.indexOf('Quiz 2 Retake') !== -1) short = 'Q2R';
             else if (short.indexOf('Quiz 2') !== -1) short = 'Q2';
+            if (short.indexOf('Practice Exam') !== -1) short = 'U1P';
             if (short.indexOf('Poly Long Division') !== -1) short = 'PLD';
             if (short.indexOf('Division Practice') !== -1) short = 'DP';
             if (short.indexOf("'07 Poly") !== -1) short = 'S07';
