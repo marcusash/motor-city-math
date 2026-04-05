@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="../shared/favicon.svg">
+  <title>Kai: Algebra 2 Quiz 2 Retake Review (2026-04-05)</title>
+  <link rel="stylesheet" href="../shared/katex/katex.min.css">
+  <script src="../shared/katex/katex.min.js"></script>
+  <script src="../shared/katex/auto-render.min.js"></script>
+  <link rel="stylesheet" href="../shared/styles.css">
+  <style>
+    .review-container { max-width: 860px; margin: 0 auto; padding: 24px 16px; }
+    .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: var(--text-sm); font-weight: 600; color: var(--accent-blue); text-decoration: none; margin-bottom: 16px; }
+    .back-link:hover { text-decoration: underline; }
+    .review-header { text-align: center; margin-bottom: 32px; }
+    .review-header h1 { font-size: 1.6rem; font-weight: 800; color: var(--accent-navy); margin: 0 0 4px; }
+    .review-header .meta { color: var(--text-secondary); font-size: var(--text-sm); margin: 0 0 20px; }
+    .perfect-banner { background: linear-gradient(135deg, rgba(27,125,58,0.12) 0%, rgba(27,125,58,0.06) 100%); border: 2px solid rgba(27,125,58,0.4); border-radius: 12px; padding: 18px 24px; text-align: center; margin-bottom: 28px; }
+    .perfect-banner .perfect-label { font-size: var(--text-xs); font-weight: 700; color: var(--color-correct); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px; }
+    .perfect-banner .perfect-title { font-size: 1.25rem; font-weight: 800; color: var(--color-correct); margin: 0 0 4px; }
+    .perfect-banner .perfect-sub { font-size: var(--text-sm); color: var(--text-secondary); margin: 0; }
+    .score-banner { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 32px; }
+    .score-pill { background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 12px; padding: 14px 24px; text-align: center; min-width: 130px; box-shadow: var(--shadow-card); }
+    .score-pill .label { font-size: var(--text-xs); font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+    .score-pill .value { font-size: 2rem; font-weight: 800; color: var(--accent-navy); line-height: 1; }
+    .score-pill .sub { font-size: var(--text-xs); color: var(--text-secondary); margin-top: 2px; }
+    .score-pill.grade-a .value { color: var(--color-correct); }
+    .score-pill.improvement .value { color: var(--color-correct); }
+    .section-row { display: flex; gap: 16px; margin-bottom: 32px; }
+    .section-card { flex: 1; background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 8px; padding: 16px 20px; box-shadow: var(--shadow-card); }
+    .section-card h3 { margin: 0 0 4px; font-size: var(--text-sm); font-weight: 700; color: var(--accent-navy); text-transform: uppercase; letter-spacing: 0.05em; }
+    .section-card .section-score { font-size: 1.4rem; font-weight: 800; color: var(--color-correct); }
+    .section-card p { font-size: var(--text-xs); color: var(--text-secondary); margin: 2px 0 0; }
+    .bar { height: 6px; border-radius: 3px; background: var(--border-subtle); margin-top: 8px; overflow: hidden; }
+    .bar-fill { height: 100%; border-radius: 3px; background: var(--accent-blue); }
+    .bar-fill.good { background: var(--color-correct); }
+    h2.section-label { font-size: var(--text-sm); font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.08em; margin: 32px 0 12px; padding-bottom: 8px; border-bottom: 2px solid var(--border-subtle); }
+    .q-card { background: var(--bg-card); border: 1px solid var(--border-default); border-left: 4px solid var(--border-default); border-radius: 8px; padding: 18px 20px; margin-bottom: 14px; box-shadow: var(--shadow-card); }
+    .q-card.correct { border-left-color: var(--color-correct); }
+    .q-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+    .q-num { font-weight: 800; color: var(--accent-navy); font-size: 1rem; }
+    .q-badge { font-size: var(--text-xs); font-weight: 700; padding: 2px 8px; border-radius: 10px; }
+    .badge-standard { background: var(--bg-highlight); color: var(--accent-blue); }
+    .badge-score { margin-left: auto; font-size: 0.95rem; font-weight: 800; }
+    .badge-score.s-full { color: var(--color-correct); }
+    .q-problem { font-size: var(--text-base); color: var(--text-primary); margin-bottom: 12px; }
+    .answer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .answer-box { padding: 10px 14px; border-radius: 6px; font-size: var(--text-sm); }
+    .answer-box .alabel { font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+    .answer-box.kai-box { background: rgba(27,125,58,0.06); border: 1px solid rgba(27,125,58,0.2); }
+    .answer-box.kai-box .alabel { color: var(--color-correct); }
+    .corrected-badge { display: inline-block; font-size: var(--text-xs); font-weight: 700; color: var(--color-correct); background: var(--color-correct-bg); border: 1px solid rgba(27,125,58,0.2); border-radius: 10px; padding: 2px 10px; margin-left: 8px; }
+    .all-correct-block { background: var(--color-correct-bg); border: 1px solid rgba(27,125,58,0.2); border-radius: 8px; padding: 16px 20px; margin-top: 32px; }
+    .all-correct-block h3 { margin: 0 0 10px; font-size: var(--text-sm); font-weight: 700; color: var(--color-correct); text-transform: uppercase; letter-spacing: 0.05em; }
+    .all-correct-block ul { margin: 0; padding-left: 20px; }
+    .all-correct-block li { font-size: var(--text-sm); color: var(--text-primary); margin-bottom: 6px; }
+    .footer-note { text-align: center; font-size: var(--text-xs); color: var(--text-secondary); margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--border-subtle); }
+  </style>
+</head>
+<body>
+<div class="review-container">
+
+  <a href="../index.html" class="back-link">&larr; Back to Dashboard</a>
+
+  <div class="review-header">
+    <h1>Algebra 2: Quiz 2 Retake Review</h1>
+    <p class="meta">Kai Ash &bull; Block 7 &bull; Standard S1: Manipulating Polynomial Expressions &bull; 2026-04-05</p>
+  </div>
+
+  <div class="perfect-banner">
+    <div class="perfect-label">Retake</div>
+    <div class="perfect-title">Perfect Score: 7 / 7</div>
+    <div class="perfect-sub">All 7 questions corrected from the original attempt (36% &rarr; 100%)</div>
+  </div>
+
+  <div class="score-banner">
+    <div class="score-pill grade-a">
+      <div class="label">Raw Score</div>
+      <div class="value">7/7</div>
+      <div class="sub">100%</div>
+    </div>
+    <div class="score-pill grade-a">
+      <div class="label">Teacher Grade</div>
+      <div class="value">A</div>
+      <div class="sub">Retake</div>
+    </div>
+    <div class="score-pill improvement">
+      <div class="label">Improvement</div>
+      <div class="value">+64%</div>
+      <div class="sub">36% &rarr; 100%</div>
+    </div>
+  </div>
+
+  <div class="section-row">
+    <div class="section-card">
+      <h3>S1.c: Polynomial Long Division</h3>
+      <div class="section-score">3/3</div>
+      <p>100% &bull; Q2 and Q3 both correct (held from original).</p>
+      <div class="bar"><div class="bar-fill good" style="width:100%"></div></div>
+    </div>
+    <div class="section-card">
+      <h3>S1.d: Factoring and Zeros</h3>
+      <div class="section-score">4/4</div>
+      <p>100% &bull; All four corrected: zero-product, GCF, factored form, full zeros.</p>
+      <div class="bar"><div class="bar-fill good" style="width:100%"></div></div>
+    </div>
+  </div>
+
+  <h2 class="section-label">S1.d: Zeros of Polynomials</h2>
+
+  <!-- Q1 -->
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q1</span>
+      <span class="q-badge badge-standard">S1.d</span>
+      <span class="q-badge badge-standard">zeros</span>
+      <span class="corrected-badge">Corrected</span>
+      <span class="badge-score s-full">1 / 1</span>
+    </div>
+    <div class="q-problem">Find all solutions to \(6x(x+2)^2(2x-3) = 0\)</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        \(x = 0,\; x = -2,\; x = \tfrac{3}{2}\)
+      </div>
+    </div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q4</span>
+      <span class="q-badge badge-standard">S1.d</span>
+      <span class="q-badge badge-standard">factoring</span>
+      <span class="corrected-badge">Corrected</span>
+      <span class="badge-score s-full">1 / 1</span>
+    </div>
+    <div class="q-problem">Factor completely: \(3x^3 + 6x^2 - 24x\)</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        \(3x(x+4)(x-2)\)
+      </div>
+    </div>
+  </div>
+
+  <h2 class="section-label">S1.c: Polynomial Long Division</h2>
+
+  <!-- Q2 -->
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q2</span>
+      <span class="q-badge badge-standard">S1.c</span>
+      <span class="q-badge badge-standard">poly-division</span>
+      <span class="badge-score s-full">1 / 1</span>
+    </div>
+    <div class="q-problem">\(\dfrac{12x^4 - 20x^3 + 28x^2 - 2}{4x^2}\)</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        \(3x^2 - 5x + 7 - \dfrac{1}{2x^2}\)
+      </div>
+    </div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q3</span>
+      <span class="q-badge badge-standard">S1.c</span>
+      <span class="q-badge badge-standard">poly-division</span>
+      <span class="badge-score s-full">1 / 1</span>
+    </div>
+    <div class="q-problem">\(\dfrac{6x^3 - 28x^2 + 31x - 8}{3x - 2}\)</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        \(2x^2 - 8x + 5 + \dfrac{2}{3x-2}\)
+      </div>
+    </div>
+  </div>
+
+  <h2 class="section-label">S1.d: Factored Form and Full Zeros</h2>
+
+  <!-- Q5 -->
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q5</span>
+      <span class="q-badge badge-standard">S1.d</span>
+      <span class="q-badge badge-standard">unknown-factor</span>
+      <span class="corrected-badge">Corrected</span>
+      <span class="badge-score s-full">1 / 1</span>
+    </div>
+    <div class="q-problem">\(2x^4 + 5x^3 - 12x^2 + 8x + 32 = (x+4)(\,?\,)\)</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        \(2x^3 - 3x^2 + 8\)
+      </div>
+    </div>
+  </div>
+
+  <!-- Q6 -->
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q6</span>
+      <span class="q-badge badge-standard">S1.d</span>
+      <span class="q-badge badge-standard">factored-form</span>
+      <span class="corrected-badge">Corrected</span>
+      <span class="badge-score s-full">1 / 1</span>
+    </div>
+    <div class="q-problem">
+      \(f(x) = 2x^4 + 8x^3 - 22x^2 - 60x\), given that \((x-3)\) is a factor. Write the complete factored form.
+    </div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        \(f(x) = 2x(x-3)(x+5)(x+2)\)
+      </div>
+    </div>
+  </div>
+
+  <!-- Q7 -->
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q7</span>
+      <span class="q-badge badge-standard">S1.d</span>
+      <span class="q-badge badge-standard">zeros</span>
+      <span class="corrected-badge">Corrected</span>
+      <span class="badge-score s-full">1 / 1</span>
+    </div>
+    <div class="q-problem">Find all zeros of \(f(x) = 2x^4 + 8x^3 - 22x^2 - 60x\)</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        \(x = 0,\; 3,\; -5,\; -2\)
+      </div>
+    </div>
+  </div>
+
+  <div class="all-correct-block">
+    <h3>All Corrected</h3>
+    <ul>
+      <li>Zero-product property (Q1): each factor set to zero individually.</li>
+      <li>GCF then trinomial factoring (Q4): factored out \(3x\) first, then \((x+4)(x-2)\).</li>
+      <li>Unknown factor via division (Q5): complete quotient \(2x^3 - 3x^2 + 8\) with no missing terms.</li>
+      <li>Full factored form with 4-term polynomial (Q6): chained long division to reach \(2x(x-3)(x+5)(x+2)\).</li>
+      <li>Full zero set (Q7): all four zeros correctly read from the factored form.</li>
+    </ul>
+  </div>
+
+  <div class="footer-note">Motor City Math &bull; Kai Ash &bull; Block 7</div>
+
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "\\(", right: "\\)", display: false },
+        { left: "\\[", right: "\\]", display: true }
+      ],
+      throwOnError: false
+    });
+  });
+</script>
+</body>
+</html>
