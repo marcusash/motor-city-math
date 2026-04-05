@@ -396,6 +396,14 @@
             "attempts": [{ "score": 5, "total": 8, "pct": 63, "grade": 3, "teacher_grade": "B", "teacher_rating": "3/4", "timestamp": "2026-03-21T10:00:00Z" }],
             "best": { "score": 5, "pct": 63, "grade": 3, "teacher_grade": "B" }
         },
+        "school-quiz2-2026-04-04": {
+            "attempts": [{ "score": 2.5, "total": 7, "pct": 36, "teacher_grade": "C", "timestamp": "2026-04-04T00:00:00.000Z" }],
+            "best": { "score": 2.5, "pct": 36, "teacher_grade": "C" }
+        },
+        "school-quiz2-retake-2026-04-05": {
+            "attempts": [{ "score": 7, "total": 7, "pct": 100, "teacher_grade": "A", "timestamp": "2026-04-05T15:27:00.000Z" }],
+            "best": { "score": 7, "pct": 100, "teacher_grade": "A" }
+        },
         "s1-poly-division-2026-03-21": {
             "attempts": [{ "score": 20, "total": 20, "pct": 100, "grade": 4, "timestamp": "2026-03-21T15:19:00Z" }],
             "best": { "score": 20, "pct": 100, "grade": 4 }
@@ -538,6 +546,8 @@
         { file: 'exam.html?file=spring07-poly-quiz', name: 'Spring \'07 Poly Quiz', unit: 'spring-s1', trimester: 'spring', key: 'mcm-spring07-poly-quiz', questions: 10 },
         { file: 'exam.html?file=s1-division-practice-1', name: 'S1 Division Practice', unit: 'spring-s1', trimester: 'spring', key: 'mcm-s1-division-practice-1', questions: 8 },
         { file: 'reviews/kai-quiz1-2026-03-21.html', name: 'S1 Quiz 1', unit: 'spring-s1', trimester: 'spring', key: 's1-quiz-1-2026-03-21', questions: 8, benchmark: true, teacherGrade: 'B', teacherRating: '3/4' },
+        { file: '#', name: 'S1 Quiz 2', unit: 'spring-s1', trimester: 'spring', key: 'school-quiz2-2026-04-04', questions: 7, benchmark: true, teacherGrade: 'C' },
+        { file: '#', name: 'S1 Quiz 2 Retake', unit: 'spring-s1', trimester: 'spring', key: 'school-quiz2-retake-2026-04-05', questions: 7, benchmark: true, teacherGrade: 'A' },
         { file: 'reviews/kai-poly-division-2026-03-21.html', name: 'Poly Long Division', unit: 'spring-s1', trimester: 'spring', key: 's1-poly-division-2026-03-21', questions: 20, homework: true },
         { file: 'exam.html?file=s1-practice-2', name: 'S1 Quiz Prep 2', unit: 'spring-s1', trimester: 'spring', key: 'mcm-s1-practice-2', questions: 7 },
         { file: 'exam.html?file=s1-quiz-prep-1', name: 'S1 Quiz Prep 1', unit: 'spring-s1', trimester: 'spring', key: 'mcm-s1-quiz-prep-1', questions: 8 },
@@ -677,6 +687,8 @@
                 .replace('Retake Practice #', 'RP').replace(/ \(.*\)$/, '');
             if (short.indexOf('Quiz Prep') !== -1) short = short.replace('Quiz Prep', 'QP');
             if (short.indexOf('Quiz 1') !== -1) short = short.replace('Quiz 1', 'Q1');
+            if (short.indexOf('Quiz 2 Retake') !== -1) short = 'Q2R';
+            else if (short.indexOf('Quiz 2') !== -1) short = 'Q2';
             if (short.indexOf('Poly Long Division') !== -1) short = 'PLD';
             if (short.indexOf('Division Practice') !== -1) short = 'DP';
             if (short.indexOf("'07 Poly") !== -1) short = 'S07';

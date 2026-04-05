@@ -1,0 +1,37 @@
+{
+  "key": "school-quiz2-retake-2026-04-05",
+  "attempts": [
+    {
+      "score": 7,
+      "total": 7,
+      "pct": 100,
+      "letter_grade": "A",
+      "teacher_grade": "A",
+      "type": "quiz-retake",
+      "graded_by": "FR",
+      "date": "2026-04-05",
+      "subject": "Dividing Polynomials / Factoring",
+      "sections": {
+        "S1.c": { "score": 2, "total": 2, "description": "Polynomial long division (Q2, Q3)" },
+        "S1.d": { "score": 5, "total": 5, "description": "Factoring and zeros (Q1, Q4, Q5, Q6, Q7)" }
+      },
+      "questions": {
+        "q1": { "correct": true, "score": 1, "total": 1, "type": "zeros",        "problem": "Find all solutions to 6x(x+2)^2(2x-3) = 0",                              "kai_answer": "x=0, x=-2, x=3/2" },
+        "q2": { "correct": true, "score": 1, "total": 1, "type": "poly-division", "problem": "(12x^4-20x^3+28x^2-2) / 4x^2",                                           "kai_answer": "3x^2-5x+7-1/(2x^2)" },
+        "q3": { "correct": true, "score": 1, "total": 1, "type": "poly-division", "problem": "(6x^3-28x^2+31x-8) / (3x-2)",                                             "kai_answer": "2x^2-8x+5 + 2/(3x-2)" },
+        "q4": { "correct": true, "score": 1, "total": 1, "type": "factoring",     "problem": "Factor completely: 3x^3+6x^2-24x",                                        "kai_answer": "3x(x+4)(x-2)" },
+        "q5": { "correct": true, "score": 1, "total": 1, "type": "unknown-factor","problem": "2x^4+5x^3-12x^2+8x+32 = (x+4)(?)",                                      "kai_answer": "2x^3-3x^2+8" },
+        "q6": { "correct": true, "score": 1, "total": 1, "type": "factored-form", "problem": "f(x)=2x^4+8x^3-22x^2-60x, (x-3) factor -- write factored form",           "kai_answer": "f(x) = 2x(x-3)(x+5)(x+2)" },
+        "q7": { "correct": true, "score": 1, "total": 1, "type": "zeros",         "problem": "Find all zeros of f(x)=2x^4+8x^3-22x^2-60x",                              "kai_answer": "x=0, 3, -5, -2" }
+      },
+      "error_analysis": "Perfect retake. All 7 questions corrected. Zeros, factoring, and factored-form chains all solid.",
+      "timestamp": "2026-04-05T15:27:00.000Z"
+    }
+  ],
+  "best": {
+    "score": 7,
+    "pct": 100,
+    "letter_grade": "A",
+    "teacher_grade": "A"
+  }
+}
