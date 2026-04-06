@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="../shared/favicon.svg">
+  <title>Kai: Unit 1 Practice Exam Review (2026-04-05)</title>
+  <link rel="stylesheet" href="../shared/katex/katex.min.css">
+  <script src="../shared/katex/katex.min.js"></script>
+  <script src="../shared/katex/auto-render.min.js"></script>
+  <link rel="stylesheet" href="../shared/styles.css">
+  <style>
+    .review-container { max-width: 860px; margin: 0 auto; padding: 24px 16px; }
+    .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: var(--text-sm); font-weight: 600; color: var(--accent-blue); text-decoration: none; margin-bottom: 16px; }
+    .back-link:hover { text-decoration: underline; }
+    .review-header { text-align: center; margin-bottom: 32px; }
+    .review-header h1 { font-size: 1.6rem; font-weight: 800; color: var(--accent-navy); margin: 0 0 4px; }
+    .review-header .meta { color: var(--text-secondary); font-size: var(--text-sm); margin: 0 0 20px; }
+    .score-banner { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 32px; }
+    .score-pill { background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 12px; padding: 14px 24px; text-align: center; min-width: 130px; box-shadow: var(--shadow-card); }
+    .score-pill .label { font-size: var(--text-xs); font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+    .score-pill .value { font-size: 2rem; font-weight: 800; color: var(--accent-navy); line-height: 1; }
+    .score-pill .sub { font-size: var(--text-xs); color: var(--text-secondary); margin-top: 2px; }
+    .score-pill.grade-c .value { color: var(--color-incorrect); }
+    .section-row { display: flex; gap: 16px; margin-bottom: 16px; flex-wrap: wrap; }
+    .section-card { flex: 1; min-width: 180px; background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 8px; padding: 16px 20px; box-shadow: var(--shadow-card); }
+    .section-card h3 { margin: 0 0 4px; font-size: var(--text-sm); font-weight: 700; color: var(--accent-navy); text-transform: uppercase; letter-spacing: 0.05em; }
+    .section-card .section-score { font-size: 1.4rem; font-weight: 800; color: var(--accent-navy); }
+    .section-card p { font-size: var(--text-xs); color: var(--text-secondary); margin: 2px 0 0; }
+    .bar { height: 6px; border-radius: 3px; background: var(--border-subtle); margin-top: 8px; overflow: hidden; }
+    .bar-fill { height: 100%; border-radius: 3px; background: var(--accent-blue); }
+    .bar-fill.good { background: var(--color-correct); }
+    .bar-fill.warn { background: var(--color-incorrect); }
+    .bar-fill.mid { background: var(--color-warning); }
+    h2.section-label { font-size: var(--text-sm); font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.08em; margin: 32px 0 12px; padding-bottom: 8px; border-bottom: 2px solid var(--border-subtle); }
+    .q-card { background: var(--bg-card); border: 1px solid var(--border-default); border-left: 4px solid var(--border-default); border-radius: 8px; padding: 18px 20px; margin-bottom: 14px; box-shadow: var(--shadow-card); }
+    .q-card.correct { border-left-color: var(--color-correct); }
+    .q-card.partial { border-left-color: var(--color-warning); }
+    .q-card.incorrect { border-left-color: var(--color-incorrect); }
+    .q-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+    .q-num { font-weight: 800; color: var(--accent-navy); font-size: 1rem; }
+    .q-badge { font-size: var(--text-xs); font-weight: 700; padding: 2px 8px; border-radius: 10px; }
+    .badge-standard { background: var(--bg-highlight); color: var(--accent-blue); }
+    .badge-score { margin-left: auto; font-size: 0.95rem; font-weight: 800; }
+    .badge-score.s-full { color: var(--color-correct); }
+    .badge-score.s-partial { color: var(--color-warning); }
+    .badge-score.s-zero { color: var(--color-incorrect); }
+    .q-problem { font-size: var(--text-base); color: var(--text-primary); margin-bottom: 12px; }
+    .answer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+    .answer-box { padding: 10px 14px; border-radius: 6px; font-size: var(--text-sm); }
+    .answer-box .alabel { font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+    .answer-box.kai-box { background: rgba(29,66,186,0.06); border: 1px solid rgba(29,66,186,0.2); }
+    .answer-box.kai-box .alabel { color: var(--accent-blue); }
+    .answer-box.correct-box { background: var(--color-correct-bg); border: 1px solid rgba(27,125,58,0.2); }
+    .answer-box.correct-box .alabel { color: var(--color-correct); }
+    .error-note { background: var(--color-incorrect-bg); border: 1px solid rgba(200,16,46,0.2); border-radius: 6px; padding: 10px 14px; font-size: var(--text-sm); color: var(--text-primary); margin-bottom: 8px; }
+    .error-note .elabel { font-size: var(--text-xs); font-weight: 700; color: var(--color-incorrect); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+    .teacher-note { background: rgba(255,203,5,0.12); border: 1px solid rgba(255,203,5,0.4); border-radius: 6px; padding: 8px 14px; font-size: var(--text-sm); color: var(--text-primary); margin-top: 8px; }
+    .teacher-note .tlabel { font-size: var(--text-xs); font-weight: 700; color: #b8860b; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2px; }
+    .parts-list { list-style: none; padding: 0; margin: 0 0 12px; }
+    .parts-list li { padding: 7px 0; border-top: 1px solid var(--border-subtle); font-size: var(--text-sm); color: var(--text-primary); display: flex; gap: 8px; align-items: baseline; }
+    .parts-list li:first-child { border-top: none; }
+    .part-label { font-weight: 700; color: var(--accent-navy); min-width: 24px; }
+    .drill-block { background: var(--bg-highlight); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 16px 20px; margin-top: 32px; }
+    .drill-block h3 { margin: 0 0 10px; font-size: var(--text-sm); font-weight: 700; color: var(--accent-navy); text-transform: uppercase; letter-spacing: 0.05em; }
+    .drill-block ul { margin: 0; padding-left: 20px; }
+    .drill-block li { font-size: var(--text-sm); color: var(--text-primary); margin-bottom: 6px; }
+    .footer-note { text-align: center; font-size: var(--text-xs); color: var(--text-secondary); margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--border-subtle); }
+  </style>
+</head>
+<body>
+<div class="review-container">
+
+  <a href="../index.html" class="back-link">&larr; Back to Dashboard</a>
+
+  <div class="review-header">
+    <h1>Algebra 2: Unit 1 Practice Exam Review</h1>
+    <p class="meta">Kai Ash &bull; Polynomial Functions &bull; 2026-04-05</p>
+  </div>
+
+  <div class="score-banner">
+    <div class="score-pill">
+      <div class="label">Raw Score</div>
+      <div class="value">17/22</div>
+      <div class="sub">77%</div>
+    </div>
+    <div class="score-pill grade-c">
+      <div class="label">Teacher Grade</div>
+      <div class="value">C</div>
+      <div class="sub">Practice Exam</div>
+    </div>
+    <div class="score-pill">
+      <div class="label">Questions</div>
+      <div class="value">12</div>
+      <div class="sub">10 correct / 2 incomplete</div>
+    </div>
+  </div>
+
+  <div class="section-row">
+    <div class="section-card">
+      <h3>Polynomial ID</h3>
+      <div class="section-score">1/4</div>
+      <p>25% &bull; Q2: Only 1 of 4 parts correct</p>
+      <div class="bar"><div class="bar-fill warn" style="width:25%"></div></div>
+    </div>
+    <div class="section-card">
+      <h3>Finding ALL Zeros</h3>
+      <div class="section-score">0/2</div>
+      <p>0% &bull; Q11 and Q12: stopped after first zero</p>
+      <div class="bar"><div class="bar-fill warn" style="width:0%"></div></div>
+    </div>
+    <div class="section-card">
+      <h3>Everything Else</h3>
+      <div class="section-score">16/16</div>
+      <p>100% &bull; Factoring, division, graphing all clean</p>
+      <div class="bar"><div class="bar-fill good" style="width:100%"></div></div>
+    </div>
+  </div>
+
+  <!-- SECTION: Polynomial ID -->
+  <h2 class="section-label">Polynomial Identification</h2>
+
+  <!-- Q2 -->
+  <div class="q-card partial">
+    <div class="q-header">
+      <span class="q-num">Q2</span>
+      <span class="q-badge badge-standard">S1.a</span>
+      <span class="q-badge badge-standard">poly-ID</span>
+      <span class="badge-score s-partial">1 / 4</span>
+    </div>
+    <div class="q-problem">For each expression, state whether it is a polynomial and give its degree.</div>
+    <ul class="parts-list">
+      <li><span class="part-label">A</span> No answer given. Expected: state it is a polynomial and give the degree.</li>
+      <li><span class="part-label">B</span> Kai said degree 4. Correct: \(\tfrac{1}{3}x^2 + \tfrac{2}{3}x\) is degree <strong>2</strong> (highest exponent on the variable is 2).</li>
+      <li><span class="part-label">C</span> \(-96x^0\) &mdash; Kai said degree 0. <strong>Correct.</strong></li>
+      <li><span class="part-label">D</span> Kai said degree 3. Correct: \(3^x\) is <strong>not a polynomial at all</strong> &mdash; the variable is in the exponent, making it exponential.</li>
+    </ul>
+    <div class="error-note">
+      <div class="elabel">Pattern: Degree and Polynomial Identification</div>
+      Degree = highest exponent on the <em>variable</em>. Fractional coefficients are fine (B is still a polynomial). Variable in the exponent means exponential, not polynomial (D). Missed A entirely.
+    </div>
+  </div>
+
+  <!-- SECTION: Finding ALL Zeros -->
+  <h2 class="section-label">Finding ALL Zeros</h2>
+
+  <!-- Q11 -->
+  <div class="q-card incorrect">
+    <div class="q-header">
+      <span class="q-num">Q11</span>
+      <span class="q-badge badge-standard">S1.c</span>
+      <span class="q-badge badge-standard">irrational zeros</span>
+      <span class="badge-score s-zero">0 / 1</span>
+    </div>
+    <div class="q-problem">Find ALL zeros of \(f(x) = x^3 - 9x^2 + 7x + 14\) using the table of values.</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        \(x = 2\) only
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        \(x = 2,\quad x = \sqrt{7},\quad x = -\sqrt{7}\)
+      </div>
+    </div>
+    <div class="error-note">
+      <div class="elabel">Stopped after the first zero</div>
+      The table gives \(x = 2\). That's one zero of a cubic &mdash; a cubic has <strong>3 zeros</strong>. After finding \(x=2\), divide out \((x-2)\): the quotient is \(x^2 - 7x + 0 \Rightarrow x^2 = 7 \Rightarrow x = \pm\sqrt{7}\). Irrational zeros will never appear in an integer table. You must divide and solve.
+    </div>
+  </div>
+
+  <!-- Q12 -->
+  <div class="q-card incorrect">
+    <div class="q-header">
+      <span class="q-num">Q12</span>
+      <span class="q-badge badge-standard">S1.c</span>
+      <span class="q-badge badge-standard">complex zeros</span>
+      <span class="badge-score s-zero">0 / 1</span>
+    </div>
+    <div class="q-problem">Find ALL zeros of \(y = x^3 + 8x^2 - 43x + 60\). Graph shows \((-12, 0)\) and \((0, 60)\).</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        \(x = -12\) only
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        \(x = -12,\quad x = 2+i,\quad x = 2-i\)
+      </div>
+    </div>
+    <div class="error-note">
+      <div class="elabel">Stopped after the first zero + missed imaginary zeros</div>
+      The graph gives \(x = -12\). Divide by \((x+12)\): quotient is \(x^2 - 4x + 5\). Quadratic formula: discriminant \(= 16 - 20 = -4 < 0\). So the remaining two zeros are complex: \(x = \dfrac{4 \pm \sqrt{-4}}{2} = 2 \pm i\). "Find all zeros" always includes imaginary zeros when the discriminant is negative.
+    </div>
+  </div>
+
+  <!-- SECTION: Correct Questions -->
+  <h2 class="section-label">Correct &mdash; 10 of 12 Questions</h2>
+
+  <!-- Q1 -->
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q1</span>
+      <span class="q-badge badge-standard">S1.d</span>
+      <span class="q-badge badge-standard">factoring + zeros</span>
+      <span class="badge-score s-full">2 / 2</span>
+    </div>
+    <div class="q-problem">Factor completely: \(f(x) = 8x^4 - 8x^3 - 70x^2 + 120x\). List all real zeros.</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box"><div class="alabel">Kai's Answer</div>\(4x(x-3)(2x+5)(x-4)\) &bull; zeros \(x=0,\,3,\,-\tfrac{5}{2},\,4\)</div>
+      <div class="answer-box correct-box"><div class="alabel">Correct Answer</div>\(4x(x-3)(2x+5)(x-4)\) &bull; zeros \(x=0,\,3,\,-\tfrac{5}{2},\,4\)</div>
+    </div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q3</span>
+      <span class="q-badge badge-standard">S1.b</span>
+      <span class="q-badge badge-standard">write equation</span>
+      <span class="badge-score s-full">1 / 1</span>
+    </div>
+    <div class="q-problem">Write the equation of the polynomial graphed: touches at \(x=1\), crosses at \(x=3\) and \(x=6\), passes through \((2, 36)\).</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box"><div class="alabel">Kai's Answer</div>\(y = 9(x-1)^2(x-3)(x-6)\)</div>
+      <div class="answer-box correct-box"><div class="alabel">Correct Answer</div>\(y = 9(x-1)^2(x-3)(x-6)\)</div>
+    </div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q4</span>
+      <span class="q-badge badge-standard">S1.b</span>
+      <span class="q-badge badge-standard">y-intercept</span>
+      <span class="badge-score s-full">1 / 1</span>
+    </div>
+    <div class="q-problem">Find \(r\) given \(y = (x+r)(x-2)^2\) has y-intercept \((0,\,12)\).</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box"><div class="alabel">Kai's Answer</div>\(r = 3\)</div>
+      <div class="answer-box correct-box"><div class="alabel">Correct Answer</div>\(r = 3\quad [12 = r \cdot 4 \Rightarrow r=3]\)</div>
+    </div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q5</span>
+      <span class="q-badge badge-standard">S1.a</span>
+      <span class="q-badge badge-standard">expand</span>
+      <span class="badge-score s-full">1 / 1</span>
+    </div>
+    <div class="q-problem">Expand and simplify to standard form: \(f(x) = (x-2)^2(5x-18)\).</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box"><div class="alabel">Kai's Answer</div>\(5x^3 + x^2 - 58x + 72\)</div>
+      <div class="answer-box correct-box"><div class="alabel">Correct Answer</div>\(5x^3 + x^2 - 58x + 72\)</div>
+    </div>
+  </div>
+
+  <!-- Q6 -->
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q6</span>
+      <span class="q-badge badge-standard">S1.c</span>
+      <span class="q-badge badge-standard">long division</span>
+      <span class="badge-score s-full">1 / 1</span>
+    </div>
+    <div class="q-problem">Divide: \(\dfrac{x^3 - x^2 - 21x - 9}{x - 5}\)</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box"><div class="alabel">Kai's Answer</div>\(x^2 + 4x + 4 + \dfrac{36}{x-5}\)</div>
+      <div class="answer-box correct-box"><div class="alabel">Correct Answer</div>\(x^2 + 4x + 4 + \dfrac{36}{x-5}\)</div>
+    </div>
+  </div>
+
+  <!-- Q7 -->
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q7</span>
+      <span class="q-badge badge-standard">S1.c</span>
+      <span class="q-badge badge-standard">factor theorem</span>
+      <span class="badge-score s-full">1 / 1</span>
+    </div>
+    <div class="q-problem">Is \((x+5)\) a factor of \(f(x)\)? Evaluate \(f(-5)\).</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box"><div class="alabel">Kai's Answer</div>\(f(-5) = -54\), not zero &rarr; NOT a factor</div>
+      <div class="answer-box correct-box"><div class="alabel">Correct Answer</div>\(f(-5) = -54 \neq 0\) &rarr; not a factor</div>
+    </div>
+  </div>
+
+  <!-- Q8 -->
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q8</span>
+      <span class="q-badge badge-standard">S1.b</span>
+      <span class="q-badge badge-standard">graph analysis</span>
+      <span class="badge-score s-full">5 / 5</span>
+    </div>
+    <div class="q-problem">From the graph of \(f(x)\): describe end behavior, odd/even degree, sign of leading coefficient, degree, and all real zeros.</div>
+    <ul class="parts-list">
+      <li><span class="part-label">(a)</span> As \(x \to -\infty,\; f \to +\infty\);&nbsp; as \(x \to +\infty,\; f \to -\infty\) &mdash; correct.</li>
+      <li><span class="part-label">(b)</span> Odd degree &mdash; correct.</li>
+      <li><span class="part-label">(c)</span> Negative leading coefficient &mdash; correct.</li>
+      <li><span class="part-label">(d)</span> Degree 5 &mdash; correct.</li>
+      <li><span class="part-label">(e)</span> Zeros: \(x = -4,\,-1,\,1,\,3\) &mdash; correct.</li>
+    </ul>
+  </div>
+
+  <!-- Q9 -->
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q9</span>
+      <span class="q-badge badge-standard">S1.d</span>
+      <span class="q-badge badge-standard">factoring + zeros</span>
+      <span class="badge-score s-full">3 / 3</span>
+    </div>
+    <div class="q-problem">Factor \(f(x) = 2x^3 - 8x^2 - 24x\) completely and find all zeros.</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box"><div class="alabel">Kai's Answer</div>\(2x(x-6)(x+2)\) &bull; zeros \(x=0,\,6,\,-2\)</div>
+      <div class="answer-box correct-box"><div class="alabel">Correct Answer</div>\(2x(x-6)(x+2)\) &bull; zeros \(x=0,\,6,\,-2\)</div>
+    </div>
+  </div>
+
+  <!-- Q10 -->
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q10</span>
+      <span class="q-badge badge-standard">S1.d</span>
+      <span class="q-badge badge-standard">multiplicities</span>
+      <span class="badge-score s-full">1 / 1</span>
+    </div>
+    <div class="q-problem">Find all zeros of \(y = 3x(x+3)^2(x-2)\) with multiplicities.</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box"><div class="alabel">Kai's Answer</div>\(x=0\;(m1),\; x=-3\;(m2),\; x=2\;(m1)\)</div>
+      <div class="answer-box correct-box"><div class="alabel">Correct Answer</div>\(x=0\;(m1),\; x=-3\;(m2),\; x=2\;(m1)\)</div>
+    </div>
+  </div>
+
+  <!-- Drill block -->
+  <div class="drill-block">
+    <h3>Focus Areas for Practice Test 2</h3>
+    <ul>
+      <li><strong>Q2 &mdash; Polynomial ID:</strong> Degree = highest exponent on the variable. Variable in exponent (\(3^x\)) = exponential, not polynomial. Always explain why.</li>
+      <li><strong>Q11 &mdash; Irrational zeros:</strong> One zero from the table is the start, not the finish. Divide out \((x - \text{zero})\) and solve the remaining factor. Irrational answers like \(\pm\sqrt{7}\) won't appear in the table.</li>
+      <li><strong>Q12 &mdash; Complex zeros:</strong> If the quadratic remainder gives a negative discriminant, the zeros are \(a \pm bi\). "Find ALL zeros" always includes them.</li>
+    </ul>
+  </div>
+
+  <div class="footer-note">Motor City Math &bull; Kai Ash &bull; Unit 1 Practice Exam Review &bull; 2026-04-05</div>
+
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    renderMathInElement(document.body, {
+      delimiters: [
+        {left: "\\(", right: "\\)", display: false},
+        {left: "\\[", right: "\\]", display: true}
+      ]
+    });
+  });
+</script>
+</body>
+</html>
