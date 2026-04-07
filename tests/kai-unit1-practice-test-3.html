@@ -100,7 +100,7 @@
         </li>
         <li>
           <div class="part-label">(b) Sketch the graph on the grid below. Mark each zero with a dot. Show bounces and crosses clearly.</div>
-          <div id="q1grid" style="width:100%;aspect-ratio:11/6;margin-top:12px;"></div>
+          <div id="q1grid" style="width:100%;max-width:600px;aspect-ratio:1/1;margin-top:12px;"></div>
         </li>
       </ol>
     </div>
@@ -361,9 +361,9 @@
     // zeros at -3, -1, 2, 4 — x range covers them with room to show end behavior
     (function() {
       Plotly.newPlot('q1grid', [], {
-        margin: { l: 50, r: 20, t: 20, b: 40 },
+        margin: { l: 30, r: 20, t: 20, b: 40 },
         paper_bgcolor: '#fff', plot_bgcolor: '#fff',
-        xaxis: { range: [-5, 6], dtick: 1, tickfont: { size: 12, color: '#5e6378' }, gridcolor: '#e2e5ef', zerolinecolor: '#9aa0b8', zerolinewidth: 1.5, fixedrange: true, scaleanchor: 'y', scaleratio: 1 },
+        xaxis: { range: [-6, 6], dtick: 1, tickfont: { size: 12, color: '#5e6378' }, gridcolor: '#e2e5ef', zerolinecolor: '#9aa0b8', zerolinewidth: 1.5, fixedrange: true },
         yaxis: { range: [-6, 6], dtick: 1, tickfont: { size: 11, color: '#5e6378' }, gridcolor: '#e2e5ef', zerolinecolor: '#9aa0b8', zerolinewidth: 1.5, fixedrange: true, showticklabels: false },
         dragmode: false
       }, plotlyConfig);
