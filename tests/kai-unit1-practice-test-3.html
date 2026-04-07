@@ -84,24 +84,23 @@
   <!-- SECTION A: Graph Analysis + Multiplicities (7 pts) -->
   <div class="section-label">Section A &mdash; Graph Analysis + Multiplicities &nbsp; <span style="font-weight:400;text-transform:none;">(7 pts)</span></div>
 
-  <!-- Q1: Graph analysis f(x) = -(x+2)^2(x-1)(x-4) -->
+  <!-- Q1: Sketch graph from equation, degree 5, negative LC -->
   <div class="q-card">
     <div class="q-header">
       <div class="q-num">1</div>
-      <div class="q-title">Graph Analysis</div>
+      <div class="q-title">Sketch the Graph</div>
       <div class="q-pts">2 pts</div>
     </div>
     <div class="q-body">
-      <p>The graph of a polynomial function \( f(x) \) is shown below.</p>
-      <div id="q1graph" style="width:100%;height:300px;margin-bottom:16px;"></div>
+      <p>Given \( f(x) = -(x + 3)(x + 1)^2(x - 2)(x - 4) \):</p>
       <ol class="parts">
         <li>
-          <div class="part-label">(a) End behavior:</div>
-          <span class="ans-blank"></span>
+          <div class="part-label">(a) List all zeros and their multiplicities. State the end behavior.</div>
+          <span class="ans-blank tall"></span>
         </li>
         <li>
-          <div class="part-label">(b) List ALL real zeros and state the multiplicity of each:</div>
-          <span class="ans-blank tall"></span>
+          <div class="part-label">(b) Sketch the graph on the grid below. Mark each zero with a dot. Show bounces and crosses clearly.</div>
+          <div id="q1grid" style="width:100%;height:340px;margin-top:12px;"></div>
         </li>
       </ol>
     </div>
@@ -343,18 +342,16 @@
     });
     const plotlyConfig = { staticPlot: true, responsive: true };
 
-    // Q1: f(x) = -(x+2)^2(x-1)(x-4), degree 4, negative LC
-    // zeros: x=-2 (bounce), x=1 (cross), x=4 (cross)
+    // Q1: Empty grid for student to sketch f(x) = -(x+3)(x+1)^2(x-2)(x-4)
+    // zeros at -3, -1, 2, 4 — x range covers them with room to show end behavior
     (function() {
-      const xs = [], ys = [];
-      for (let i = 0; i <= 1000; i++) {
-        const x = -4 + i * 10 / 1000;
-        xs.push(x);
-        ys.push(-Math.pow(x + 2, 2) * (x - 1) * (x - 4));
-      }
-      const curve = { x: xs, y: ys, type: 'scatter', mode: 'lines', line: { color: '#1D42BA', width: 2.5 }, hoverinfo: 'none', showlegend: false };
-      const dots  = { x: [-2, 1, 4], y: [0, 0, 0], type: 'scatter', mode: 'markers', marker: { color: '#1D42BA', size: 9, line: { color: '#fff', width: 2 } }, hoverinfo: 'none', showlegend: false };
-      Plotly.newPlot('q1graph', [curve, dots], plotlyLayout([-4.5, 6], [-40, 25], 10), plotlyConfig);
+      Plotly.newPlot('q1grid', [], {
+        margin: { l: 50, r: 20, t: 20, b: 40 },
+        paper_bgcolor: '#fff', plot_bgcolor: '#fff',
+        xaxis: { range: [-5, 6], dtick: 1, tickfont: { size: 12, color: '#5e6378' }, gridcolor: '#e2e5ef', zerolinecolor: '#9aa0b8', zerolinewidth: 1.5, fixedrange: true, title: { text: 'x', font: { size: 13, color: '#5e6378' } } },
+        yaxis: { range: [-6, 6], dtick: 2, tickfont: { size: 11, color: '#5e6378' }, gridcolor: '#e2e5ef', zerolinecolor: '#9aa0b8', zerolinewidth: 1.5, fixedrange: true, showticklabels: false },
+        dragmode: false
+      }, plotlyConfig);
     })();
 
     // Q12: f(x) = -x(x-2)^2, degree 3, negative LC
