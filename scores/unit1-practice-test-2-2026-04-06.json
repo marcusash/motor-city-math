@@ -1,5 +1,5 @@
 {
-  "key": "unit1-practice-test-2-2026-04-06",
+  "key": "unit1-practice-test-2",
   "attempts": [
     {
       "score": 19,
@@ -7,19 +7,51 @@
       "pct": 86,
       "teacher_grade": "B",
       "graded_by": "FR+Marcus",
-      "timestamp": "2026-04-06T18:25:00.000Z",
+      "timestamp": "2026-04-06T18:25:00Z",
       "sections": {
-        "A": { "label": "Zeros, Graphs, Poly ID", "score": 13, "max": 14, "pct": 93 },
-        "B": { "label": "Factoring + Zeros",      "score": 3,  "max": 4,  "pct": 75 },
-        "C": { "label": "Operations + Work",       "score": 3,  "max": 4,  "pct": 75 }
+        "A": {
+          "label": "Zeros, Graphs, Poly ID",
+          "score": 13,
+          "max": 14,
+          "pct": 93
+        },
+        "B": {
+          "label": "Factoring + Zeros",
+          "score": 3,
+          "max": 4,
+          "pct": 75
+        },
+        "C": {
+          "label": "Operations + Work",
+          "score": 3,
+          "max": 4,
+          "pct": 75
+        }
       },
       "errors": [
-        { "q": "q3e",  "pts_lost": 1, "note": "Misread graph zeros (-3,0,3 instead of -3,1,4), omitted multiplicities" },
-        { "q": "q6",   "pts_lost": 1, "note": "Sign error: solved (x-2)=0 as x=-2 instead of x=+2" },
-        { "q": "q10",  "pts_lost": 1, "note": "Exponent rules: x^2*x=x^5 instead of x^3" }
+        {
+          "q": "q3e",
+          "pts_lost": 1,
+          "note": "Misread graph zeros (-3,0,3 instead of -3,1,4), omitted multiplicities"
+        },
+        {
+          "q": "q6",
+          "pts_lost": 1,
+          "note": "Sign error: solved (x-2)=0 as x=-2 instead of x=+2"
+        },
+        {
+          "q": "q10",
+          "pts_lost": 1,
+          "note": "Exponent rules: x^2*x=x^5 instead of x^3"
+        }
       ],
       "review_url": "../reviews/kai-unit1-practice-test-2-2026-04-06.html"
     }
   ],
-  "best": { "score": 19, "total": 22, "pct": 86, "teacher_grade": "B" }
+  "best": {
+    "score": 19,
+    "total": 22,
+    "pct": 86,
+    "teacher_grade": "B"
+  }
 }
