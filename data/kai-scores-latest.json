@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exported": "2026-03-01T22:56:00.000Z",
+  "exported": "2026-04-06T17:20:40Z",
   "student": "Kai",
   "mcm_scores": {
     "mcm-finals-diagnostic-1": {
@@ -105,7 +105,7 @@
               "standard": "W6.c"
             }
           },
-          "timestamp": "2026-03-01T22:30:00.000Z"
+          "timestamp": "2026-03-01T22:30:00Z"
         }
       ],
       "best": {
@@ -121,7 +121,7 @@
           "total": 15,
           "pct": 53,
           "grade": 1,
-          "timestamp": "2026-02-18T03:38:11.220Z"
+          "timestamp": "2026-02-18T03:38:11.22Z"
         }
       ],
       "best": {
@@ -264,7 +264,7 @@
               "standard": "W3.a"
             }
           },
-          "timestamp": "2026-02-22T06:13:51.610Z"
+          "timestamp": "2026-02-22T06:13:51.61Z"
         }
       ],
       "best": {
@@ -386,5 +386,43 @@
     }
   },
   "mcm_srs": null,
-  "standardScores": null
+  "standardScores": null,
+  "unit1_scores": {
+    "unit1-practice-exam-2026-04-05": {
+      "attempts": [
+        {
+          "score": 15,
+          "total": 22,
+          "pct": 68,
+          "grade": "D",
+          "date": "2026-04-05",
+          "review_url": "../reviews/kai-unit1-practice-exam-2026-04-05.html"
+        }
+      ],
+      "best": {
+        "score": 15,
+        "total": 22,
+        "pct": 68,
+        "grade": "D"
+      }
+    },
+    "unit1-practice-test-2-2026-04-06": {
+      "attempts": [
+        {
+          "score": 19,
+          "total": 22,
+          "pct": 86,
+          "grade": "B",
+          "date": "2026-04-06",
+          "review_url": "../reviews/kai-unit1-practice-test-2-2026-04-06.html"
+        }
+      ],
+      "best": {
+        "score": 19,
+        "total": 22,
+        "pct": 86,
+        "grade": "B"
+      }
+    }
+  }
 }

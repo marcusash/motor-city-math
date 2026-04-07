@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="../shared/favicon.svg">
+  <title>Kai: Unit 1 Practice Test 2 Review (2026-04-06)</title>
+  <link rel="stylesheet" href="../shared/katex/katex.min.css">
+  <script src="../shared/katex/katex.min.js"></script>
+  <script src="../shared/katex/auto-render.min.js"></script>
+  <link rel="stylesheet" href="../shared/styles.css">
+  <style>
+    .review-container { max-width: 860px; margin: 0 auto; padding: 24px 16px; }
+    .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: var(--text-sm); font-weight: 600; color: var(--accent-blue); text-decoration: none; margin-bottom: 16px; }
+    .back-link:hover { text-decoration: underline; }
+    .review-header { text-align: center; margin-bottom: 32px; }
+    .review-header h1 { font-size: 1.6rem; font-weight: 800; color: var(--accent-navy); margin: 0 0 4px; }
+    .review-header .meta { color: var(--text-secondary); font-size: var(--text-sm); margin: 0 0 20px; }
+    .score-banner { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 32px; }
+    .score-pill { background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 12px; padding: 14px 24px; text-align: center; min-width: 130px; box-shadow: var(--shadow-card); }
+    .score-pill .label { font-size: var(--text-xs); font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+    .score-pill .value { font-size: 2rem; font-weight: 800; color: var(--accent-navy); line-height: 1; }
+    .score-pill .sub { font-size: var(--text-xs); color: var(--text-secondary); margin-top: 2px; }
+    .score-pill.grade-b .value { color: var(--accent-blue); }
+    .score-pill.improve .value { color: var(--color-correct); }
+    .section-row { display: flex; gap: 16px; margin-bottom: 16px; flex-wrap: wrap; }
+    .section-card { flex: 1; min-width: 180px; background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 8px; padding: 16px 20px; box-shadow: var(--shadow-card); }
+    .section-card h3 { margin: 0 0 4px; font-size: var(--text-sm); font-weight: 700; color: var(--accent-navy); text-transform: uppercase; letter-spacing: 0.05em; }
+    .section-card .section-score { font-size: 1.4rem; font-weight: 800; color: var(--accent-navy); }
+    .section-card p { font-size: var(--text-xs); color: var(--text-secondary); margin: 2px 0 0; }
+    .bar { height: 6px; border-radius: 3px; background: var(--border-subtle); margin-top: 8px; overflow: hidden; }
+    .bar-fill { height: 100%; border-radius: 3px; background: var(--accent-blue); }
+    .bar-fill.good { background: var(--color-correct); }
+    .bar-fill.warn { background: var(--color-incorrect); }
+    .bar-fill.mid { background: var(--color-warning); }
+    h2.section-label { font-size: var(--text-sm); font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.08em; margin: 32px 0 12px; padding-bottom: 8px; border-bottom: 2px solid var(--border-subtle); }
+    .q-card { background: var(--bg-card); border: 1px solid var(--border-default); border-left: 4px solid var(--border-default); border-radius: 8px; padding: 18px 20px; margin-bottom: 14px; box-shadow: var(--shadow-card); }
+    .q-card.correct { border-left-color: var(--color-correct); }
+    .q-card.partial { border-left-color: var(--color-warning); }
+    .q-card.incorrect { border-left-color: var(--color-incorrect); }
+    .q-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+    .q-num { font-weight: 800; color: var(--accent-navy); font-size: 1rem; }
+    .q-badge { font-size: var(--text-xs); font-weight: 700; padding: 2px 8px; border-radius: 10px; }
+    .badge-standard { background: var(--bg-highlight); color: var(--accent-blue); }
+    .badge-score { margin-left: auto; font-size: 0.95rem; font-weight: 800; }
+    .badge-score.s-full { color: var(--color-correct); }
+    .badge-score.s-partial { color: var(--color-warning); }
+    .badge-score.s-zero { color: var(--color-incorrect); }
+    .q-problem { font-size: var(--text-base); color: var(--text-primary); margin-bottom: 12px; }
+    .answer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+    .answer-box { padding: 10px 14px; border-radius: 6px; font-size: var(--text-sm); }
+    .answer-box .alabel { font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+    .answer-box.kai-box { background: rgba(29,66,186,0.06); border: 1px solid rgba(29,66,186,0.2); }
+    .answer-box.kai-box .alabel { color: var(--accent-blue); }
+    .answer-box.correct-box { background: var(--color-correct-bg); border: 1px solid rgba(27,125,58,0.2); }
+    .answer-box.correct-box .alabel { color: var(--color-correct); }
+    .error-note { background: var(--color-incorrect-bg); border: 1px solid rgba(200,16,46,0.2); border-radius: 6px; padding: 10px 14px; font-size: var(--text-sm); color: var(--text-primary); margin-bottom: 8px; }
+    .error-note .elabel { font-size: var(--text-xs); font-weight: 700; color: var(--color-incorrect); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+    .teacher-note { background: rgba(255,203,5,0.12); border: 1px solid rgba(255,203,5,0.4); border-radius: 6px; padding: 8px 14px; font-size: var(--text-sm); color: var(--text-primary); margin-top: 8px; }
+    .teacher-note .tlabel { font-size: var(--text-xs); font-weight: 700; color: #b8860b; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2px; }
+    .parts-list { list-style: none; padding: 0; margin: 0 0 12px; }
+    .parts-list li { padding: 7px 0; border-top: 1px solid var(--border-subtle); font-size: var(--text-sm); color: var(--text-primary); display: flex; gap: 8px; align-items: baseline; }
+    .parts-list li:first-child { border-top: none; }
+    .part-label { font-weight: 700; color: var(--accent-navy); min-width: 24px; }
+    .drill-block { background: var(--bg-highlight); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 16px 20px; margin-top: 32px; }
+    .drill-block h3 { margin: 0 0 10px; font-size: var(--text-sm); font-weight: 700; color: var(--accent-navy); text-transform: uppercase; letter-spacing: 0.05em; }
+    .drill-block ul { margin: 0; padding-left: 20px; }
+    .drill-block li { font-size: var(--text-sm); color: var(--text-primary); margin-bottom: 6px; }
+    .footer-note { text-align: center; font-size: var(--text-xs); color: var(--text-secondary); margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--border-subtle); }
+  </style>
+</head>
+<body>
+<div class="review-container">
+
+  <a href="../index.html" class="back-link">&larr; Back to Dashboard</a>
+
+  <div class="review-header">
+    <h1>Algebra 2: Unit 1 Practice Test 2 Review</h1>
+    <p class="meta">Kai Ash &bull; Polynomial Functions &bull; 2026-04-06</p>
+  </div>
+
+  <!-- Score Banner -->
+  <div class="score-banner">
+    <div class="score-pill">
+      <div class="label">Raw Score</div>
+      <div class="value">19/22</div>
+      <div class="sub">86%</div>
+    </div>
+    <div class="score-pill grade-b">
+      <div class="label">Grade</div>
+      <div class="value">B</div>
+      <div class="sub">Practice Test 2</div>
+    </div>
+    <div class="score-pill improve">
+      <div class="label">Improvement</div>
+      <div class="value">+18</div>
+      <div class="sub">from 68% D on Unit Exam</div>
+    </div>
+  </div>
+
+  <!-- Section Cards -->
+  <div class="section-row">
+    <div class="section-card">
+      <h3>Sec A: Zeros, Graphs, Poly ID</h3>
+      <div class="section-score">13/14</div>
+      <p>93% &bull; Q1-Q5</p>
+      <div class="bar"><div class="bar-fill good" style="width:93%"></div></div>
+    </div>
+    <div class="section-card">
+      <h3>Sec B: Factoring + Zeros</h3>
+      <div class="section-score">3/4</div>
+      <p>75% &bull; Q6-Q8</p>
+      <div class="bar"><div class="bar-fill mid" style="width:75%"></div></div>
+    </div>
+    <div class="section-card">
+      <h3>Sec C: Operations + Work</h3>
+      <div class="section-score">3/4</div>
+      <p>75% &bull; Q9-Q12</p>
+      <div class="bar"><div class="bar-fill mid" style="width:75%"></div></div>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- ERRORS -->
+  <!-- ============================================ -->
+  <h2 class="section-label">Errors -- 3 Points Lost</h2>
+
+  <!-- Q3 -->
+  <div class="q-card partial">
+    <div class="q-header">
+      <span class="q-num">Q3</span>
+      <span class="q-badge badge-standard">graph-analysis</span>
+      <span class="q-badge badge-standard">zeros + multiplicities</span>
+      <span class="badge-score s-partial">4 / 5</span>
+    </div>
+    <div class="q-problem">From the graph of \(f(x) = (x+3)(x-1)^2(x-4)\): describe end behavior, odd/even degree, sign of LC, degree, and all real zeros with multiplicities.</div>
+    <ul class="parts-list">
+      <li><span class="part-label">(a)</span> As \(x \to -\infty,\; f \to +\infty\); as \(x \to +\infty,\; f \to +\infty\). Both ends UP. <strong>Correct.</strong></li>
+      <li><span class="part-label">(b)</span> Even degree -- both ends go same direction. <strong>Correct.</strong></li>
+      <li><span class="part-label">(c)</span> Positive LC -- both ends UP. <strong>Correct.</strong></li>
+      <li><span class="part-label">(d)</span> Smallest degree is 4. <strong>Correct.</strong></li>
+      <li><span class="part-label">(e)</span> Kai wrote: \(x = -3,\; 0,\; 3\) with no multiplicities. Correct: \(x = -3\;(m1),\; x = 1\;(m2),\; x = 4\;(m1)\). <strong>Wrong.</strong></li>
+    </ul>
+    <div class="error-note">
+      <div class="elabel">Misread graph zeros + omitted multiplicities</div>
+      The graph has dots at \(x = -3\), \(x = 1\), and \(x = 4\). Kai read the bounce at \(x=1\) as \(x=0\) and the crossing at \(x=4\) as \(x=3\) -- off by one on both. Read the gridlines carefully: the dots sit <em>on</em> the integer gridlines, not between them.<br><br>
+      He also omitted all multiplicities. The curve <strong>bounces</strong> (touches and turns) at \(x=1\), which means multiplicity 2. The curve <strong>crosses</strong> at \(x=-3\) and \(x=4\), which means multiplicity 1 each. Bounce = even multiplicity. Cross = odd multiplicity. Always state them.
+    </div>
+  </div>
+
+  <!-- Q6 -->
+  <div class="q-card partial">
+    <div class="q-header">
+      <span class="q-num">Q6</span>
+      <span class="q-badge badge-standard">factoring</span>
+      <span class="q-badge badge-standard">sign error</span>
+      <span class="badge-score s-partial">1 / 2</span>
+    </div>
+    <div class="q-problem">Factor \(f(x) = 3x^3 + 3x^2 - 18x\) completely given \((x+3)\) is a factor, and find all zeros.</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        Factored: \(3x(x+3)(x-2)\)<br>Zeros: \(x = 0,\; -3,\; -2\)
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        Factored: \(3x(x+3)(x-2)\)<br>Zeros: \(x = 0,\; -3,\; 2\)
+      </div>
+    </div>
+    <div class="error-note">
+      <div class="elabel">Sign error: factor to zero</div>
+      The factored form \(3x(x+3)(x-2)\) is correct (1 pt). But when finding zeros, Kai wrote \(x = -2\) from the factor \((x-2)\). Setting \(x - 2 = 0\) gives \(x = +2\), not \(-2\). This contradicts his own correct factored form.<br><br>
+      <strong>Rule:</strong> The zero from \((x - a)\) is always \(x = +a\). The zero from \((x + a)\) is always \(x = -a\). Check each zero against its factor.
+    </div>
+  </div>
+
+  <!-- Q10 -->
+  <div class="q-card incorrect">
+    <div class="q-header">
+      <span class="q-num">Q10</span>
+      <span class="q-badge badge-standard">exponent rules</span>
+      <span class="q-badge badge-standard">like terms</span>
+      <span class="badge-score s-zero">0 / 1</span>
+    </div>
+    <div class="q-problem">Simplify: \((-3x^2y)(4xy^2) + (2x^3y^3) + (x^2y)(5xy^2)\)</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        \(2x^4y^2(-6x + 5)\)
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        \(-5x^3y^3\)
+      </div>
+    </div>
+    <div class="error-note">
+      <div class="elabel">Exponent rules + combining like terms</div>
+      Two errors here. First, the exponent rule: when multiplying, <strong>add</strong> exponents on the same base.<br>
+      \((-3x^2y)(4xy^2) = -12 \cdot x^{2+1} \cdot y^{1+2} = -12x^3y^3\)<br>
+      \((x^2y)(5xy^2) = 5 \cdot x^{2+1} \cdot y^{1+2} = 5x^3y^3\)<br><br>
+      All three terms are \(x^3y^3\), so they are like terms that combine:<br>
+      \(-12x^3y^3 + 2x^3y^3 + 5x^3y^3 = (-12 + 2 + 5)x^3y^3 = -5x^3y^3\)<br><br>
+      Kai got \(x^5y^2\) instead of \(x^3y^3\) (multiplied exponents instead of adding them), then tried to factor instead of combining like terms.
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- CORRECT QUESTIONS -->
+  <!-- ============================================ -->
+  <h2 class="section-label">Correct -- 9 of 12 Questions</h2>
+
+  <!-- Q1 -->
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q1</span>
+      <span class="q-badge badge-standard">complex zeros</span>
+      <span class="badge-score s-full">2 / 2</span>
+    </div>
+    <div class="q-problem">Find ALL zeros of \(f(x) = x^3 - 4x^2 + 9x - 36\).</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box"><div class="alabel">Kai's Answer</div>\(x = 4\) (real), \(x = 3i\), \(x = -3i\) (complex). Division by \((x-4)\) shown, quotient \(x^2+9\).</div>
+      <div class="answer-box correct-box"><div class="alabel">Correct Answer</div>\(x = 4,\quad x = 3i,\quad x = -3i\)</div>
+    </div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q2</span>
+      <span class="q-badge badge-standard">irrational zeros</span>
+      <span class="badge-score s-full">2 / 2</span>
+    </div>
+    <div class="q-problem">Find ALL zeros of \(f(x) = x^4 - 5x^3 + x^2 + 15x - 12\) using the table of values.</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box"><div class="alabel">Kai's Answer</div>\(x = 1,\; x = 4,\; x = \pm\sqrt{3}\). Two divisions shown.</div>
+      <div class="answer-box correct-box"><div class="alabel">Correct Answer</div>\(x = 1,\; x = 4,\; x = \sqrt{3},\; x = -\sqrt{3}\)</div>
+    </div>
+    <div class="teacher-note">
+      <div class="tlabel">Coaching Note</div>
+      All 4 zeros correct -- great improvement from the Unit Exam where Kai stopped after the first zero. However, Kai labeled \(\pm\sqrt{3}\) as "complex." They are <strong>irrational real</strong> numbers (\(\sqrt{3} \approx 1.732\)). Complex numbers involve \(i\).
+    </div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q4</span>
+      <span class="q-badge badge-standard">polynomial ID</span>
+      <span class="badge-score s-full">4 / 4</span>
+    </div>
+    <div class="q-problem">Classify each expression as a polynomial or not. If yes, state degree. If no, explain.</div>
+    <ul class="parts-list">
+      <li><span class="part-label">(a)</span> \(\tfrac{2}{3}x^3 - x + 5\): Kai said yes. <strong>Correct.</strong></li>
+      <li><span class="part-label">(b)</span> \(\sqrt{x} + 4x^2 - 1\): Kai said no, can't have fractional exponents. <strong>Correct.</strong></li>
+      <li><span class="part-label">(c)</span> \(5^x - 2x + 3\): Kai said \(5^x\) is exponential. <strong>Correct.</strong></li>
+      <li><span class="part-label">(d)</span> \(-7x^4 + 2x^3 - x + 9\): Kai said yes. <strong>Correct.</strong></li>
+    </ul>
+    <div class="teacher-note">
+      <div class="tlabel">Coaching Note</div>
+      All 4 classifications correct -- big improvement from Unit Exam Q2 (1/4). For (a) and (d), Kai wrote "yes" but did not state the degree (degree 3 and degree 4). The question asks to state degree when the answer is yes.
+    </div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q5</span>
+      <span class="q-badge badge-standard">evaluate</span>
+      <span class="badge-score s-full">1 / 1</span>
+    </div>
+    <div class="q-problem">Evaluate \(f(-2)\) for \(f(x) = -2x^3 + 5x^2 - 3x + 8\).</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box"><div class="alabel">Kai's Answer</div>\(f(-2) = 16 + 20 + 6 + 8 = 50\)</div>
+      <div class="answer-box correct-box"><div class="alabel">Correct Answer</div>\(50\)</div>
+    </div>
+  </div>
+
+  <!-- Q7 -->
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q7</span>
+      <span class="q-badge badge-standard">GCF + quadratic</span>
+      <span class="badge-score s-full">1 / 1</span>
+    </div>
+    <div class="q-problem">Factor completely: \(4x^3 - 12x^2 - 16x\).</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box"><div class="alabel">Kai's Answer</div>\(4x(x-4)(x+1)\), intermediate \(4x(x^2-3x-4)\)</div>
+      <div class="answer-box correct-box"><div class="alabel">Correct Answer</div>\(4x(x-4)(x+1)\)</div>
+    </div>
+  </div>
+
+  <!-- Q8 -->
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q8</span>
+      <span class="q-badge badge-standard">multiplicities</span>
+      <span class="badge-score s-full">1 / 1</span>
+    </div>
+    <div class="q-problem">Find all solutions with multiplicities: \(2x^2(x-5)(x+1)^3 = 0\).</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box"><div class="alabel">Kai's Answer</div>\(x=0\;(m2),\; x=5\;(m1),\; x=-1\;(m3)\)</div>
+      <div class="answer-box correct-box"><div class="alabel">Correct Answer</div>\(x=0\;(m2),\; x=5\;(m1),\; x=-1\;(m3)\)</div>
+    </div>
+  </div>
+
+  <!-- Q9 -->
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q9</span>
+      <span class="q-badge badge-standard">subtraction order</span>
+      <span class="badge-score s-full">1 / 1</span>
+    </div>
+    <div class="q-problem">Subtract \((3x^2-x+5)\) from \((7x^2+2x-1)\).</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box"><div class="alabel">Kai's Answer</div>\(4x^2 + 3x - 6\)</div>
+      <div class="answer-box correct-box"><div class="alabel">Correct Answer</div>\(4x^2 + 3x - 6\)</div>
+    </div>
+  </div>
+
+  <!-- Q11 -->
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q11</span>
+      <span class="q-badge badge-standard">3-factor multiply</span>
+      <span class="badge-score s-full">1 / 1</span>
+    </div>
+    <div class="q-problem">Multiply: \((x+2)(x-3)(2x+1)\). Show intermediate product.</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box"><div class="alabel">Kai's Answer</div>Step 1: \(x^2-x-6\). Step 2: \(2x^3-x^2-13x-6\)</div>
+      <div class="answer-box correct-box"><div class="alabel">Correct Answer</div>\(2x^3 - x^2 - 13x - 6\)</div>
+    </div>
+  </div>
+
+  <!-- Q12 -->
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q12</span>
+      <span class="q-badge badge-standard">area problem</span>
+      <span class="badge-score s-full">1 / 1</span>
+    </div>
+    <div class="q-problem">Garden \((2x+3)\) by \((x+4)\), square pond side \(x\). Find area without pond. Show expansion.</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box"><div class="alabel">Kai's Answer</div>Garden: \(2x^2+11x+12\). Without pond: \(x^2+11x+12\)</div>
+      <div class="answer-box correct-box"><div class="alabel">Correct Answer</div>\(x^2 + 11x + 12\)</div>
+    </div>
+  </div>
+
+  <!-- Drill block -->
+  <div class="drill-block">
+    <h3>Remaining Focus Areas</h3>
+    <ul>
+      <li><strong>Q3(e) -- Reading graph zeros:</strong> The dots on the graph sit on gridlines. Read the x-value from the gridline, not an estimate. Bounce (U-shape at axis) = multiplicity 2. Cross (passes through axis) = multiplicity 1. Always state multiplicities.</li>
+      <li><strong>Q6 -- Factor-to-zero sign:</strong> From factor \((x - a)\), the zero is \(x = +a\). From \((x + a)\), the zero is \(x = -a\). After listing zeros, plug each back into the factored form as a quick check.</li>
+      <li><strong>Q10 -- Exponent multiplication rule:</strong> When multiplying same bases, <em>add</em> exponents: \(x^a \cdot x^b = x^{a+b}\). Do NOT multiply them. After expanding all products, combine like terms by adding coefficients.</li>
+    </ul>
+  </div>
+
+  <div class="footer-note">Motor City Math &bull; Kai Ash &bull; Unit 1 Practice Test 2 Review &bull; 2026-04-06</div>
+
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    renderMathInElement(document.body, {
+      delimiters: [
+        {left: "\\(", right: "\\)", display: false},
+        {left: "\\[", right: "\\]", display: true}
+      ]
+    });
+  });
+</script>
+</body>
+</html>

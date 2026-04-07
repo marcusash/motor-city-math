@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="../shared/favicon.svg">
+  <title>Kai: Unit 1 Practice Test 3</title>
+  <link rel="stylesheet" href="../shared/katex/katex.min.css">
+  <script src="../shared/katex/katex.min.js"></script>
+  <script src="../shared/katex/auto-render.min.js"></script>
+  <link rel="stylesheet" href="../shared/styles.css">
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" charset="utf-8"></script>
+  <style>
+    body { background: var(--bg-page); }
+    .test-container { max-width: 860px; margin: 0 auto; padding: 24px 16px 60px; }
+    .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: var(--text-sm); font-weight: 600; color: var(--accent-blue); text-decoration: none; margin-bottom: 20px; }
+    .back-link:hover { text-decoration: underline; }
+    .test-header { background: var(--bg-card); border: 1px solid var(--border-default); border-top: 4px solid var(--accent-navy); border-radius: 8px; padding: 24px 28px; margin-bottom: 24px; box-shadow: var(--shadow-card); }
+    .test-header h1 { font-size: 1.6rem; font-weight: 800; color: var(--accent-navy); margin: 0 0 4px; }
+    .test-header .eyebrow { font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-secondary); margin-bottom: 8px; }
+    .test-meta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+    .test-meta span { font-size: var(--text-xs); font-weight: 700; color: var(--text-secondary); background: var(--bg-highlight); border-radius: 6px; padding: 3px 10px; }
+    .info-box { background: var(--bg-highlight); border: 1px solid var(--border-subtle); border-left: 3px solid var(--accent-blue); border-radius: 0 8px 8px 0; padding: 12px 16px; margin-bottom: 24px; font-size: var(--text-sm); color: var(--text-secondary); }
+    .info-box strong { color: var(--accent-navy); }
+    .section-label { font-size: var(--text-sm); font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.08em; margin: 32px 0 12px; padding-bottom: 8px; border-bottom: 2px solid var(--border-subtle); }
+    .q-card { background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 8px; margin-bottom: 14px; box-shadow: var(--shadow-card); overflow: hidden; }
+    .q-header { display: flex; align-items: center; gap: 12px; padding: 12px 16px; background: var(--bg-highlight); border-bottom: 1px solid var(--border-subtle); }
+    .q-num { background: var(--accent-navy); color: #fff; font-weight: 900; font-size: 1rem; min-width: 32px; height: 32px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .q-title { flex: 1; font-size: var(--text-sm); font-weight: 700; color: var(--accent-navy); }
+    .q-pts { font-size: var(--text-xs); font-weight: 700; color: var(--text-secondary); background: var(--bg-card); border: 1px solid var(--border-subtle); padding: 2px 8px; border-radius: 10px; white-space: nowrap; }
+    .q-body { padding: 18px 20px; }
+    .q-body p { font-size: var(--text-base); color: var(--text-primary); margin-bottom: 12px; line-height: 1.6; }
+    .q-body p:last-child { margin-bottom: 0; }
+    .parts { list-style: none; padding: 0; margin: 0; }
+    .parts li { padding: 10px 0; border-top: 1px solid var(--border-subtle); }
+    .parts li:first-child { border-top: none; padding-top: 0; }
+    .part-label { font-size: var(--text-sm); font-weight: 700; color: var(--accent-blue); margin-bottom: 6px; }
+    .ans-blank { display: block; border: 1px dashed var(--border-default); border-radius: 6px; padding: 12px; margin-top: 8px; min-height: 44px; background: var(--bg-input); }
+    .ans-blank.tall { min-height: 100px; }
+    .ans-blank.xtall { min-height: 160px; }
+    .drill-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 8px; }
+    .drill-item { border: 1px dashed var(--border-default); border-radius: 6px; padding: 8px 12px; background: var(--bg-input); font-size: var(--text-sm); }
+    .drill-item .factor { font-weight: 700; color: var(--accent-navy); margin-bottom: 4px; }
+    .footer-note { text-align: center; font-size: var(--text-xs); color: var(--text-secondary); margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--border-subtle); }
+    @media print {
+      :root {
+        --text-primary: #000; --text-secondary: #444; --accent-blue: #000; --accent-navy: #000; --accent-red: #000;
+        --bg-page: #fff; --bg-card: #fff; --bg-highlight: #f0f0f0; --bg-input: #fff;
+        --border-default: #bbb; --border-subtle: #ccc; --shadow-card: none;
+      }
+      body { background: #fff; }
+      .back-link { display: none; }
+      .q-card { break-inside: avoid; box-shadow: none; }
+      .q-num { background: #000 !important; }
+      .q-num * { color: #fff !important; }
+      .test-header { box-shadow: none; border-top-color: #000 !important; }
+      .ans-blank { border-style: solid; }
+      h1, h2, h3, h4, p, span, li, td, th, label, div, strong, em { color: #000 !important; }
+      .eyebrow, .test-meta span, .q-pts, .footer-note { color: #444 !important; }
+    }
+  </style>
+</head>
+<body>
+<div class="test-container">
+
+  <a class="back-link" href="../index.html">&#8592; Back to Dashboard</a>
+
+  <div class="test-header">
+    <div class="eyebrow">Motor City Math &bull; Algebra 2</div>
+    <h1>Unit 1 Practice Test 3</h1>
+    <p style="margin: 6px 0 0; font-size: var(--text-sm); color: var(--text-secondary);">Polynomial Functions</p>
+    <div class="test-meta">
+      <span>12 Questions</span>
+      <span>19 Points</span>
+      <span>45 Minutes</span>
+      <span>2026-04-07</span>
+    </div>
+  </div>
+
+  <div class="info-box">
+    <strong>No hints on any question.</strong> Show all work. For graph questions, label each zero and its multiplicity.
+  </div>
+
+  <!-- SECTION A: Graph Analysis + Multiplicities (7 pts) -->
+  <div class="section-label">Section A &mdash; Graph Analysis + Multiplicities &nbsp; <span style="font-weight:400;text-transform:none;">(7 pts)</span></div>
+
+  <!-- Q1: Graph analysis f(x) = -(x+2)^2(x-1)(x-4) -->
+  <div class="q-card">
+    <div class="q-header">
+      <div class="q-num">1</div>
+      <div class="q-title">Graph Analysis</div>
+      <div class="q-pts">2 pts</div>
+    </div>
+    <div class="q-body">
+      <p>The graph of a polynomial function \( f(x) \) is shown below.</p>
+      <div id="q1graph" style="width:100%;height:300px;margin-bottom:16px;"></div>
+      <ol class="parts">
+        <li>
+          <div class="part-label">(a) End behavior:</div>
+          <span class="ans-blank"></span>
+        </li>
+        <li>
+          <div class="part-label">(b) List ALL real zeros and state the multiplicity of each:</div>
+          <span class="ans-blank tall"></span>
+        </li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- Q2: Error analysis -->
+  <div class="q-card">
+    <div class="q-header">
+      <div class="q-num">2</div>
+      <div class="q-title">Error Analysis</div>
+      <div class="q-pts">2 pts</div>
+    </div>
+    <div class="q-body">
+      <p>A student analyzed a polynomial graph and wrote: <em>"Both ends go UP. The degree is odd. The leading coefficient is positive."</em></p>
+      <ol class="parts">
+        <li>
+          <div class="part-label">(a) What is wrong with the student's analysis?</div>
+          <span class="ans-blank tall"></span>
+        </li>
+        <li>
+          <div class="part-label">(b) If both ends go UP, what must the degree be (odd or even)? Explain.</div>
+          <span class="ans-blank tall"></span>
+        </li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- Q3: Write equation from zeros -->
+  <div class="q-card">
+    <div class="q-header">
+      <div class="q-num">3</div>
+      <div class="q-title">Write the Equation</div>
+      <div class="q-pts">1 pt</div>
+    </div>
+    <div class="q-body">
+      <p>Write the equation of a polynomial with zeros at \( x = -1 \) (multiplicity 2) and \( x = 3 \) (multiplicity 2) that passes through the point \( (0, 9) \).</p>
+      <p><strong>Show your substitution.</strong></p>
+      <span class="ans-blank xtall"></span>
+    </div>
+  </div>
+
+  <!-- SECTION B: Exponent Rules + Operations (3 pts) -->
+  <div class="section-label">Section B &mdash; Exponent Rules + Operations &nbsp; <span style="font-weight:400;text-transform:none;">(3 pts)</span></div>
+
+  <!-- Q4: Simplify monomials -->
+  <div class="q-card">
+    <div class="q-header">
+      <div class="q-num">4</div>
+      <div class="q-title">Simplify</div>
+      <div class="q-pts">2 pts</div>
+    </div>
+    <div class="q-body">
+      <p>Simplify each expression completely.</p>
+      <ol class="parts">
+        <li>
+          <div class="part-label">(a) \( (-5x^3y)(2x^2y^4) \)</div>
+          <span class="ans-blank"></span>
+        </li>
+        <li>
+          <div class="part-label">(b) \( (3a^2b^3)^2 \)</div>
+          <span class="ans-blank"></span>
+        </li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- Q5: Multiply then combine -->
+  <div class="q-card">
+    <div class="q-header">
+      <div class="q-num">5</div>
+      <div class="q-title">Simplify</div>
+      <div class="q-pts">1 pt</div>
+    </div>
+    <div class="q-body">
+      <p>Simplify completely. <strong>Expand all products first, then combine like terms.</strong></p>
+      <p>\[ (2x^2y)(3xy^3) - (4x^3y^4) + (-x^2y)(xy^3) \]</p>
+      <span class="ans-blank tall"></span>
+    </div>
+  </div>
+
+  <!-- SECTION C: Factoring + Sign Accuracy (3 pts) -->
+  <div class="section-label">Section C &mdash; Factoring + Sign Accuracy &nbsp; <span style="font-weight:400;text-transform:none;">(3 pts)</span></div>
+
+  <!-- Q6: Factor completely + find zeros -->
+  <div class="q-card">
+    <div class="q-header">
+      <div class="q-num">6</div>
+      <div class="q-title">Factor Completely + Find All Zeros</div>
+      <div class="q-pts">2 pts</div>
+    </div>
+    <div class="q-body">
+      <p>Factor \( f(x) = -3x^3 + 12x^2 + 15x \) completely. Then find <strong>all zeros</strong>.</p>
+      <span class="ans-blank xtall"></span>
+    </div>
+  </div>
+
+  <!-- Q7: Factor-to-zero drill -->
+  <div class="q-card">
+    <div class="q-header">
+      <div class="q-num">7</div>
+      <div class="q-title">Quick Drill: Zero from Factor</div>
+      <div class="q-pts">1 pt</div>
+    </div>
+    <div class="q-body">
+      <p>For each factor, state the zero.</p>
+      <div class="drill-grid">
+        <div class="drill-item">
+          <div class="factor">(a) \( (x - 7) \)</div>
+          <span class="ans-blank"></span>
+        </div>
+        <div class="drill-item">
+          <div class="factor">(b) \( (x + 4) \)</div>
+          <span class="ans-blank"></span>
+        </div>
+        <div class="drill-item">
+          <div class="factor">(c) \( (2x - 3) \)</div>
+          <span class="ans-blank"></span>
+        </div>
+        <div class="drill-item">
+          <div class="factor">(d) \( (3x + 8) \)</div>
+          <span class="ans-blank"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION D: Retention Checks (6 pts) -->
+  <div class="section-label">Section D &mdash; Retention Checks &nbsp; <span style="font-weight:400;text-transform:none;">(6 pts)</span></div>
+
+  <!-- Q8: Box volume word problem -->
+  <div class="q-card">
+    <div class="q-header">
+      <div class="q-num">8</div>
+      <div class="q-title">Word Problem</div>
+      <div class="q-pts">2 pts</div>
+    </div>
+    <div class="q-body">
+      <p>A rectangular box has volume \( V(x) = 2x^3 + 11x^2 + 18x + 9 \). The height is \( (x + 3) \) and the width is \( (2x + 1) \).</p>
+      <p>Find the length. <strong>Show all division work.</strong></p>
+      <span class="ans-blank xtall"></span>
+    </div>
+  </div>
+
+  <!-- Q9: Find all zeros with complex -->
+  <div class="q-card">
+    <div class="q-header">
+      <div class="q-num">9</div>
+      <div class="q-title">Find All Zeros</div>
+      <div class="q-pts">2 pts</div>
+    </div>
+    <div class="q-body">
+      <p>Find <strong>all zeros</strong> of \( f(x) = x^3 - 2x^2 + 4x - 8 \). The graph shows the function crosses the \( x \)-axis at \( x = 2 \).</p>
+      <p><strong>Show your division work.</strong></p>
+      <span class="ans-blank xtall"></span>
+    </div>
+  </div>
+
+  <!-- Q10: Classify polynomial -->
+  <div class="q-card">
+    <div class="q-header">
+      <div class="q-num">10</div>
+      <div class="q-title">Classify</div>
+      <div class="q-pts">1 pt</div>
+    </div>
+    <div class="q-body">
+      <p>State whether each is a polynomial. If yes, state the <strong>degree AND leading coefficient</strong>. If no, explain why.</p>
+      <ol class="parts">
+        <li>
+          <div class="part-label">(a) \( 4x^5 - \sqrt{3}\,x^2 + 1 \)</div>
+          <span class="ans-blank"></span>
+        </li>
+        <li>
+          <div class="part-label">(b) \( x^{-2} + 3x - 7 \)</div>
+          <span class="ans-blank"></span>
+        </li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- Q11: Factor with given factor -->
+  <div class="q-card">
+    <div class="q-header">
+      <div class="q-num">11</div>
+      <div class="q-title">Factor with Given Factor</div>
+      <div class="q-pts">1 pt</div>
+    </div>
+    <div class="q-body">
+      <p>\( f(x) = 2x^3 - 5x^2 - 4x + 3 \). Given that \( (2x - 1) \) is a factor, factor completely and find all zeros.</p>
+      <span class="ans-blank xtall"></span>
+    </div>
+  </div>
+
+  <!-- Q12: Graph analysis f(x) = -x(x-2)^2 -->
+  <div class="q-card" style="border-top: 3px solid var(--accent-navy);">
+    <div class="q-header">
+      <div class="q-num">12</div>
+      <div class="q-title">Graph Analysis</div>
+      <div class="q-pts">2 pts</div>
+    </div>
+    <div class="q-body">
+      <p>The graph of a polynomial function \( f(x) \) is shown below.</p>
+      <div id="q12graph" style="width:100%;height:280px;margin-bottom:16px;"></div>
+      <ol class="parts">
+        <li>
+          <div class="part-label">(a) Is the degree odd or even? Explain.</div>
+          <span class="ans-blank tall"></span>
+        </li>
+        <li>
+          <div class="part-label">(b) Is the leading coefficient positive or negative? Explain.</div>
+          <span class="ans-blank tall"></span>
+        </li>
+        <li>
+          <div class="part-label">(c) List ALL real zeros with multiplicities.</div>
+          <span class="ans-blank tall"></span>
+        </li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="footer-note">Motor City Math &bull; Kai Ash &bull; Unit 1 Practice Test 3 &bull; 2026-04-07</div>
+
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    renderMathInElement(document.body, {
+      delimiters: [
+        {left: "\\(", right: "\\)", display: false},
+        {left: "\\[", right: "\\]", display: true}
+      ]
+    });
+
+    const plotlyLayout = (xRange, yRange, dtickY) => ({
+      margin: { l: 50, r: 20, t: 20, b: 40 },
+      paper_bgcolor: '#fff', plot_bgcolor: '#fff',
+      xaxis: { range: xRange, dtick: 1, tickfont: { size: 12, color: '#5e6378' }, gridcolor: '#e2e5ef', zerolinecolor: '#9aa0b8', zerolinewidth: 1.5, fixedrange: true },
+      yaxis: { range: yRange, dtick: dtickY, tickfont: { size: 11, color: '#5e6378' }, gridcolor: '#e2e5ef', zerolinecolor: '#9aa0b8', zerolinewidth: 1.5, fixedrange: true },
+      dragmode: false
+    });
+    const plotlyConfig = { staticPlot: true, responsive: true };
+
+    // Q1: f(x) = -(x+2)^2(x-1)(x-4), degree 4, negative LC
+    // zeros: x=-2 (bounce), x=1 (cross), x=4 (cross)
+    (function() {
+      const xs = [], ys = [];
+      for (let i = 0; i <= 1000; i++) {
+        const x = -4 + i * 10 / 1000;
+        xs.push(x);
+        ys.push(-Math.pow(x + 2, 2) * (x - 1) * (x - 4));
+      }
+      const curve = { x: xs, y: ys, type: 'scatter', mode: 'lines', line: { color: '#1D42BA', width: 2.5 }, hoverinfo: 'none', showlegend: false };
+      const dots  = { x: [-2, 1, 4], y: [0, 0, 0], type: 'scatter', mode: 'markers', marker: { color: '#1D42BA', size: 9, line: { color: '#fff', width: 2 } }, hoverinfo: 'none', showlegend: false };
+      Plotly.newPlot('q1graph', [curve, dots], plotlyLayout([-4.5, 6], [-40, 25], 10), plotlyConfig);
+    })();
+
+    // Q12: f(x) = -x(x-2)^2, degree 3, negative LC
+    // zeros: x=0 (cross), x=2 (bounce)
+    (function() {
+      const xs = [], ys = [];
+      for (let i = 0; i <= 1000; i++) {
+        const x = -2 + i * 6 / 1000;
+        xs.push(x);
+        ys.push(-x * Math.pow(x - 2, 2));
+      }
+      const curve = { x: xs, y: ys, type: 'scatter', mode: 'lines', line: { color: '#1D42BA', width: 2.5 }, hoverinfo: 'none', showlegend: false };
+      const dots  = { x: [0, 2], y: [0, 0], type: 'scatter', mode: 'markers', marker: { color: '#1D42BA', size: 9, line: { color: '#fff', width: 2 } }, hoverinfo: 'none', showlegend: false };
+      Plotly.newPlot('q12graph', [curve, dots], plotlyLayout([-2.5, 4.5], [-5, 6], 2), plotlyConfig);
+    })();
+  });
+</script>
+</body>
+</html>
