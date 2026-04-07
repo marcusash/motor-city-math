@@ -70,8 +70,8 @@
     <h1>Unit 1 Practice Test 3</h1>
     <p style="margin: 6px 0 0; font-size: var(--text-sm); color: var(--text-secondary);">Polynomial Functions</p>
     <div class="test-meta">
-      <span>12 Questions</span>
-      <span>19 Points</span>
+      <span>13 Questions</span>
+      <span>21 Points</span>
       <span>45 Minutes</span>
       <span>2026-04-07</span>
     </div>
@@ -320,6 +320,21 @@
     </div>
   </div>
 
+  <!-- Q13: Find all zeros (real + imaginary) from graph + equation -->
+  <div class="q-card">
+    <div class="q-header">
+      <div class="q-num">13</div>
+      <div class="q-title">Find All Zeros</div>
+      <div class="q-pts">2 pts</div>
+    </div>
+    <div class="q-body">
+      <p>The equation \( y = x^3 + 2x^2 + 9x + 18 \) is shown on the graph.</p>
+      <div id="q13graph" style="width:100%;height:300px;margin-bottom:16px;"></div>
+      <p>Find <strong>all zeros</strong> (real and imaginary). Show your division work.</p>
+      <span class="ans-blank xtall"></span>
+    </div>
+  </div>
+
   <div class="footer-note">Motor City Math &bull; Kai Ash &bull; Unit 1 Practice Test 3 &bull; 2026-04-07</div>
 
 </div>
@@ -366,6 +381,22 @@
       const curve = { x: xs, y: ys, type: 'scatter', mode: 'lines', line: { color: '#1D42BA', width: 2.5 }, hoverinfo: 'none', showlegend: false };
       const dots  = { x: [0, 2], y: [0, 0], type: 'scatter', mode: 'markers', marker: { color: '#1D42BA', size: 9, line: { color: '#fff', width: 2 } }, hoverinfo: 'none', showlegend: false };
       Plotly.newPlot('q12graph', [curve, dots], plotlyLayout([-2.5, 4.5], [-5, 6], 2), plotlyConfig);
+    })();
+
+    // Q13: f(x) = x^3 + 2x^2 + 9x + 18, real zero at x=-2, imaginary +/-3i
+    // y-intercept at (0, 18), crosses x-axis only at (-2, 0)
+    (function() {
+      const xs = [], ys = [];
+      for (let i = 0; i <= 1000; i++) {
+        const x = -5 + i * 8 / 1000;
+        xs.push(x);
+        ys.push(Math.pow(x, 3) + 2 * x * x + 9 * x + 18);
+      }
+      const curve = { x: xs, y: ys, type: 'scatter', mode: 'lines', line: { color: '#1D42BA', width: 2.5 }, hoverinfo: 'none', showlegend: false };
+      const zeroDot = { x: [-2], y: [0], type: 'scatter', mode: 'markers', marker: { color: '#1D42BA', size: 9, line: { color: '#fff', width: 2 } }, hoverinfo: 'none', showlegend: false };
+      const yInt = { x: [0], y: [18], type: 'scatter', mode: 'markers+text', text: ['(0, 18)'], textposition: 'top right', textfont: { size: 11, color: '#5e6378' }, marker: { color: '#1D42BA', size: 7, line: { color: '#fff', width: 1.5 } }, hoverinfo: 'none', showlegend: false };
+      const xInt = { x: [-2], y: [0], type: 'scatter', mode: 'text', text: ['(-2, 0)'], textposition: 'bottom right', textfont: { size: 11, color: '#5e6378' }, hoverinfo: 'none', showlegend: false };
+      Plotly.newPlot('q13graph', [curve, zeroDot, yInt, xInt], plotlyLayout([-5, 3], [-40, 80], 20), plotlyConfig);
     })();
   });
 </script>
