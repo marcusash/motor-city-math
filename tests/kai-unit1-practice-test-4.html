@@ -101,7 +101,51 @@
         </li>
         <li>
           <div class="part-label">(c) Sketch the graph on the grid below. Label the zeros and show correct end behavior.</div>
-          <div id="q1grid" class="graph-wrap" style="width:100%;max-width:520px;aspect-ratio:1/1;margin-top:10px;"></div>
+          <svg viewBox="0 0 400 365" style="width:100%;max-width:400px;display:block;margin-top:10px;" aria-label="Blank coordinate grid x:-4 to 4 y:-4 to 4">
+            <!-- light grid lines -->
+            <line x1="35" y1="10" x2="35" y2="330" stroke="#e2e5ef" stroke-width="1"/>
+            <line x1="75" y1="10" x2="75" y2="330" stroke="#e2e5ef" stroke-width="1"/>
+            <line x1="115" y1="10" x2="115" y2="330" stroke="#e2e5ef" stroke-width="1"/>
+            <line x1="155" y1="10" x2="155" y2="330" stroke="#e2e5ef" stroke-width="1"/>
+            <line x1="195" y1="10" x2="195" y2="330" stroke="#e2e5ef" stroke-width="1"/>
+            <line x1="235" y1="10" x2="235" y2="330" stroke="#e2e5ef" stroke-width="1"/>
+            <line x1="275" y1="10" x2="275" y2="330" stroke="#e2e5ef" stroke-width="1"/>
+            <line x1="315" y1="10" x2="315" y2="330" stroke="#e2e5ef" stroke-width="1"/>
+            <line x1="355" y1="10" x2="355" y2="330" stroke="#e2e5ef" stroke-width="1"/>
+            <line x1="35" y1="10"  x2="355" y2="10"  stroke="#e2e5ef" stroke-width="1"/>
+            <line x1="35" y1="50"  x2="355" y2="50"  stroke="#e2e5ef" stroke-width="1"/>
+            <line x1="35" y1="90"  x2="355" y2="90"  stroke="#e2e5ef" stroke-width="1"/>
+            <line x1="35" y1="130" x2="355" y2="130" stroke="#e2e5ef" stroke-width="1"/>
+            <line x1="35" y1="170" x2="355" y2="170" stroke="#e2e5ef" stroke-width="1"/>
+            <line x1="35" y1="210" x2="355" y2="210" stroke="#e2e5ef" stroke-width="1"/>
+            <line x1="35" y1="250" x2="355" y2="250" stroke="#e2e5ef" stroke-width="1"/>
+            <line x1="35" y1="290" x2="355" y2="290" stroke="#e2e5ef" stroke-width="1"/>
+            <line x1="35" y1="330" x2="355" y2="330" stroke="#e2e5ef" stroke-width="1"/>
+            <!-- axes -->
+            <line x1="35" y1="170" x2="355" y2="170" stroke="#9aa0b8" stroke-width="1.8"/>
+            <line x1="195" y1="10" x2="195" y2="330" stroke="#9aa0b8" stroke-width="1.8"/>
+            <!-- arrowheads on axes -->
+            <polygon points="195,6 191,14 199,14" fill="#9aa0b8"/>
+            <polygon points="359,170 351,166 351,174" fill="#9aa0b8"/>
+            <!-- x-axis labels -->
+            <text x="35"  y="348" text-anchor="middle" font-size="12" fill="#5e6378">-4</text>
+            <text x="75"  y="348" text-anchor="middle" font-size="12" fill="#5e6378">-3</text>
+            <text x="115" y="348" text-anchor="middle" font-size="12" fill="#5e6378">-2</text>
+            <text x="155" y="348" text-anchor="middle" font-size="12" fill="#5e6378">-1</text>
+            <text x="235" y="348" text-anchor="middle" font-size="12" fill="#5e6378">1</text>
+            <text x="275" y="348" text-anchor="middle" font-size="12" fill="#5e6378">2</text>
+            <text x="315" y="348" text-anchor="middle" font-size="12" fill="#5e6378">3</text>
+            <text x="355" y="348" text-anchor="middle" font-size="12" fill="#5e6378">4</text>
+            <!-- y-axis labels -->
+            <text x="28" y="10"  text-anchor="end" dominant-baseline="middle" font-size="12" fill="#5e6378">4</text>
+            <text x="28" y="50"  text-anchor="end" dominant-baseline="middle" font-size="12" fill="#5e6378">3</text>
+            <text x="28" y="90"  text-anchor="end" dominant-baseline="middle" font-size="12" fill="#5e6378">2</text>
+            <text x="28" y="130" text-anchor="end" dominant-baseline="middle" font-size="12" fill="#5e6378">1</text>
+            <text x="28" y="210" text-anchor="end" dominant-baseline="middle" font-size="12" fill="#5e6378">-1</text>
+            <text x="28" y="250" text-anchor="end" dominant-baseline="middle" font-size="12" fill="#5e6378">-2</text>
+            <text x="28" y="290" text-anchor="end" dominant-baseline="middle" font-size="12" fill="#5e6378">-3</text>
+            <text x="28" y="330" text-anchor="end" dominant-baseline="middle" font-size="12" fill="#5e6378">-4</text>
+          </svg>
         </li>
       </ol>
     </div>
@@ -187,14 +231,6 @@
     });
     const plotlyConfig = { staticPlot: true, responsive: true };
 
-    // Q1: blank coordinate grid x:-4..4, y:-6..6 for student sketch
-    Plotly.newPlot('q1grid', [], {
-      margin: { l: 40, r: 20, t: 20, b: 40 },
-      paper_bgcolor: '#fff', plot_bgcolor: '#fff',
-      xaxis: { range: [-4.5, 4.5], dtick: 1, tickfont: { size: 12, color: '#5e6378' }, gridcolor: '#e2e5ef', zerolinecolor: '#9aa0b8', zerolinewidth: 1.5, fixedrange: true },
-      yaxis: { range: [-6.5, 6.5], dtick: 1, tickfont: { size: 11, color: '#5e6378' }, gridcolor: '#e2e5ef', zerolinecolor: '#9aa0b8', zerolinewidth: 1.5, fixedrange: true, showticklabels: false },
-      dragmode: false
-    }, plotlyConfig);
 
     // Q5: f(x) = (x+1)(x-2)(x^2+4), crosses at x=-1 and x=2
     (function() {
