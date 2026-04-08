@@ -9,7 +9,6 @@
   <script src="../shared/katex/katex.min.js"></script>
   <script src="../shared/katex/auto-render.min.js"></script>
   <link rel="stylesheet" href="../shared/styles.css">
-  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" charset="utf-8"></script>
   <style>
     body { background: var(--bg-page); }
     .test-container { max-width: 860px; margin: 0 auto; padding: 24px 16px 60px; }
@@ -70,8 +69,8 @@
     <h1>Unit 1 Practice Test 4</h1>
     <p style="margin: 6px 0 0; font-size: var(--text-sm); color: var(--text-secondary);">Polynomial Functions</p>
     <div class="test-meta">
-      <span>5 Questions</span>
-      <span>11 Points</span>
+      <span>4 Questions</span>
+      <span>9 Points</span>
       <span>~30 Minutes</span>
       <span>2026-04-08</span>
     </div>
@@ -155,23 +154,6 @@
   <div class="q-card">
     <div class="q-header">
       <div class="q-num">2</div>
-      <div class="q-title">Find ALL Zeros</div>
-      <div class="q-pts">2 pts</div>
-    </div>
-    <div class="q-body">
-      <p>Find <strong>ALL</strong> zeros of \( f(x) = x^3 - 3x^2 - 4x + 12 \). The table shows \( f(3) = 0 \). Show your division work.</p>
-      <table class="vtbl">
-        <tr><th>\( x \)</th><td>-2</td><td>-1</td><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr>
-        <tr><th>\( f(x) \)</th><td>0</td><td>12</td><td>12</td><td>6</td><td>0</td><td>0</td><td>12</td><td>42</td></tr>
-      </table>
-      <span class="ans-blank xtall"></span>
-    </div>
-  </div>
-
-  <!-- Q3 -->
-  <div class="q-card">
-    <div class="q-header">
-      <div class="q-num">3</div>
       <div class="q-title">Factor Completely and Find All Zeros</div>
       <div class="q-pts">2 pts</div>
     </div>
@@ -181,10 +163,10 @@
     </div>
   </div>
 
-  <!-- Q4 -->
+  <!-- Q3 -->
   <div class="q-card">
     <div class="q-header">
-      <div class="q-num">4</div>
+      <div class="q-num">3</div>
       <div class="q-title">Simplify</div>
       <div class="q-pts">2 pts</div>
     </div>
@@ -195,16 +177,18 @@
     </div>
   </div>
 
-  <!-- Q5 -->
+  <!-- Q4 -->
   <div class="q-card">
     <div class="q-header">
-      <div class="q-num">5</div>
-      <div class="q-title">Find ALL Zeros</div>
+      <div class="q-num">4</div>
       <div class="q-pts">2 pts</div>
     </div>
     <div class="q-body">
-      <p>Find <strong>ALL</strong> zeros of \( f(x) = x^4 - x^3 + 2x^2 - 4x - 8 \). The graph shows the function crosses the \( x \)-axis at \( x = -1 \) and \( x = 2 \). Show your division work.</p>
-      <div id="q5graph" class="graph-wrap" style="width:100%;height:280px;"></div>
+      <p>Find <strong>ALL</strong> zeros of \( f(x) = x^4 - x^3 + 2x^2 - 4x - 8 \). Include any complex zeros. Show your work.</p>
+      <table class="vtbl">
+        <tr><th>\( x \)</th><td>-2</td><td>-1</td><td>0</td><td>1</td><td>2</td><td>3</td></tr>
+        <tr><th>\( f(x) \)</th><td>32</td><td>0</td><td>-8</td><td>-10</td><td>0</td><td>52</td></tr>
+      </table>
       <span class="ans-blank xtall"></span>
     </div>
   </div>
@@ -229,29 +213,6 @@
       yaxis: { range: yRange, dtick: dtickY, tickfont: { size: 11, color: '#5e6378' }, gridcolor: '#e2e5ef', zerolinecolor: '#9aa0b8', zerolinewidth: 1.5, fixedrange: true },
       dragmode: false
     });
-    const plotlyConfig = { staticPlot: true, responsive: true };
-
-
-    // Q5: f(x) = (x+1)(x-2)(x^2+4), crosses at x=-1 and x=2
-    (function() {
-      const xs = [], ys = [];
-      for (let i = 0; i <= 700; i++) {
-        const x = -3 + i * 7 / 700;
-        xs.push(x);
-        ys.push((x + 1) * (x - 2) * (x * x + 4));
-      }
-      const curve = {
-        x: xs, y: ys, type: 'scatter', mode: 'lines',
-        line: { color: '#1D42BA', width: 2.5 },
-        hoverinfo: 'none', showlegend: false
-      };
-      const dots = {
-        x: [-1, 2], y: [0, 0], type: 'scatter', mode: 'markers',
-        marker: { color: '#1D42BA', size: 9, line: { color: '#fff', width: 2 } },
-        hoverinfo: 'none', showlegend: false
-      };
-      Plotly.newPlot('q5graph', [curve, dots], plotlyLayout([-3.5, 4.5], [-15, 55], 10), plotlyConfig);
-    })();
   });
 </script>
 </body>
