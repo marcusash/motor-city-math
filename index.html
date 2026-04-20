@@ -610,8 +610,8 @@
         //   Court zone (bottom 1/3): maps 0-80% proportionally at a different scale
         //   Dashed line signals the scale break when crossing the B threshold
         var chartTop = 14, chartBottom = 108;
-        var gradeH = (chartBottom - chartTop) * 0.50;     // 47px for 80-100%
-        var courtH = (chartBottom - chartTop) * 0.50;     // 47px for 0-80%
+        var gradeH = (chartBottom - chartTop) * 0.667;    // ~63px for 80-100%
+        var courtH = (chartBottom - chartTop) * 0.333;    // ~31px for 0-80%
         var yB_bound = chartTop + gradeH;                  // 61px -- B line = court ceiling
 
         function yPt(s) {
@@ -646,7 +646,7 @@
                 '</pattern></defs>' +
                 '<rect x="28" y="'+yB_bound+'" width="480" height="'+courtH+'" fill="url(#'+pid+')" opacity="0.6"/>' +
                 '<line x1="28" y1="'+chartBottom+'" x2="508" y2="'+chartBottom+'" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>' +
-                '<circle cx="268" cy="'+midY+'" r="7" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>' +
+                '<circle cx="268" cy="'+midY+'" r="5" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>' +
                 '<circle cx="268" cy="'+midY+'" r="1.5" fill="rgba(255,255,255,0.05)"/>' +
                 '<line x1="150" y1="'+yB_bound+'" x2="150" y2="'+chartBottom+'" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>' +
                 '<line x1="268" y1="'+yB_bound+'" x2="268" y2="'+chartBottom+'" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>' +
