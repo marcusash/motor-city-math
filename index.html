@@ -737,6 +737,7 @@
             if (short.indexOf('Quiz 2 Retake') !== -1) short = 'Q2R';
             else if (short.indexOf('Quiz 2') !== -1) short = 'Q2';
             if (short.indexOf('Practice Exam') !== -1) short = 'U1P';
+            short = short.replace(/^U1 Practice Test (\d+)$/, 'U1 PT$1');
             if (short.indexOf('Poly Long Division') !== -1) short = 'PLD';
             if (short.indexOf('Division Practice') !== -1) short = 'DP';
             if (short.indexOf("'07 Poly") !== -1) short = 'S07';
