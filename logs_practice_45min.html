@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Algebra 2 — Logarithms 45-Minute Practice Exam</title>
+<script>
+MathJax = { tex: { inlineMath: [['\\(','\\)'],['$','$']] }, options: { skipHtmlTags: ['script','noscript','style','textarea'] } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+<style>
+:root {
+  --ink: #000;
+  --bg: #fff;
+  --rule: #000;
+  --soft: #444;
+  font-size: 15px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; color: var(--ink); }
+body { font-family: 'Georgia', serif; background: var(--bg); padding: 20px; }
+.sheet { background: var(--bg); max-width: 900px; margin: 0 auto; padding: 40px; }
+h1 { font-size: 1.8rem; }
+.subtitle { font-size: 1.05rem; margin-top: 4px; }
+.name-block { display: flex; gap: 40px; margin: 18px 0 4px; flex-wrap: wrap; }
+.name-block label { flex: 1; border-bottom: 1px solid var(--rule); padding-bottom: 2px; font-size: .95rem; min-width: 200px; }
+.standards-box { border: 1.5px solid var(--rule); padding: 14px 18px; margin: 18px 0; }
+.standards-box h3 { font-size: .95rem; letter-spacing: .04em; margin-bottom: 8px; }
+.std-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 30px; font-size: .88rem; }
+.std-grid li { list-style: none; padding: 2px 0; }
+.note-flag { border: 1px solid var(--rule); padding: 8px 12px; margin: 10px 0; font-size: .88rem; }
+hr.section { border: none; border-top: 1.5px solid var(--rule); margin: 26px 0 16px; }
+.section-title { font-size: 1.1rem; font-weight: bold; margin-bottom: 4px; }
+.section-note { font-size: .88rem; margin-bottom: 14px; font-style: italic; color: var(--soft); }
+.prob-block { margin-bottom: 20px; page-break-inside: avoid; }
+.prob-num { font-weight: bold; margin-bottom: 4px; font-size: .92rem; }
+.prob-q { margin-bottom: 8px; line-height: 1.6; }
+.line { border-bottom: 1px solid #777; min-height: 22px; margin-bottom: 8px; }
+.work-box { border: 1px dashed #777; min-height: 80px; margin-top: 6px; padding: 6px 10px; }
+.work-box-tall { min-height: 120px; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.three-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.points { float: right; font-size: .82rem; font-weight: normal; color: var(--soft); }
+.fill { display: inline-block; border-bottom: 1px solid #777; min-width: 120px; }
+@media print {
+  body { padding: 0; }
+  .sheet { padding: 18px; max-width: 100%; }
+  .work-box { min-height: 80px; }
+}
+</style>
+</head>
+<body>
+<div class="sheet">
+
+<h1>Algebra 2</h1>
+<p class="subtitle">Logarithms &mdash; 45-Minute Practice Exam</p>
+<div class="name-block">
+  <label>Name: ____________________________________________</label>
+  <label>Block: __________</label>
+  <label>Date: __________</label>
+</div>
+
+<div class="standards-box">
+  <h3>STANDARDS COVERED ON THIS EXAM</h3>
+  <ul class="std-grid">
+    <li><strong>L.a</strong> Convert between exponential and logarithmic forms</li>
+    <li><strong>L.d</strong> Solve exponential equations using logarithms</li>
+    <li><strong>L.b</strong> Evaluate logarithms without a calculator</li>
+    <li><strong>L.e</strong> Solve power equations using inverse operations</li>
+    <li><strong>L.c</strong> Evaluate logarithms with a calculator (3 dp)</li>
+    <li><strong>L.f</strong> Model and solve exponential growth problems</li>
+  </ul>
+</div>
+
+<div class="note-flag">
+  <strong>45 minutes total.</strong> Suggested pacing: Part A &amp; B (~10 min), Part C (~5 min), Part D (~15 min), Part E (~10 min). Save 5 minutes to check your work.
+</div>
+
+<div class="note-flag">
+  <strong>Reminders:</strong> A logarithm is the inverse of an exponential: \(\log_b(a) = c \;\Leftrightarrow\; b^c = a\).
+  Change-of-base: \(\log_b(x) = \dfrac{\log(x)}{\log(b)}\). Calculator allowed only on questions marked &ldquo;with a calculator.&rdquo;
+</div>
+
+<!-- ================================================ -->
+<hr class="section">
+<p class="section-title">Part A &mdash; Convert Between Forms <span class="points">15 pts &middot; 5 pts each</span></p>
+<p class="section-note">Rewrite each expression in the requested form. No calculator.</p>
+
+<div class="three-col">
+  <div class="prob-block">
+    <p class="prob-num">1. &nbsp; Rewrite in logarithmic form:</p>
+    <p class="prob-q">\(5^3 = 125\)</p>
+    <div class="line"></div>
+  </div>
+
+  <div class="prob-block">
+    <p class="prob-num">2. &nbsp; Rewrite in logarithmic form:</p>
+    <p class="prob-q">\(2^x = 30\)</p>
+    <div class="line"></div>
+  </div>
+
+  <div class="prob-block">
+    <p class="prob-num">3. &nbsp; Rewrite in exponential form:</p>
+    <p class="prob-q">\(\log_4(64) = 3\)</p>
+    <div class="line"></div>
+  </div>
+</div>
+
+<!-- ================================================ -->
+<hr class="section">
+<p class="section-title">Part B &mdash; Evaluate Without a Calculator <span class="points">20 pts &middot; 5 pts each</span></p>
+<p class="section-note">Find the exact value. Show your reasoning (rewrite as an exponential if it helps).</p>
+
+<div class="two-col">
+  <div class="prob-block">
+    <p class="prob-num">4. &nbsp; \(\log_3(81) = \) <span class="fill" style="min-width:80px;">&nbsp;</span></p>
+    <div class="work-box"></div>
+  </div>
+
+  <div class="prob-block">
+    <p class="prob-num">5. &nbsp; \(\log_2\!\left(\dfrac{1}{8}\right) = \) <span class="fill" style="min-width:80px;">&nbsp;</span></p>
+    <div class="work-box"></div>
+  </div>
+
+  <div class="prob-block">
+    <p class="prob-num">6. &nbsp; \(\log_5(1) = \) <span class="fill" style="min-width:80px;">&nbsp;</span></p>
+    <div class="work-box"></div>
+  </div>
+
+  <div class="prob-block">
+    <p class="prob-num">7. &nbsp; \(\log_{10}(0.001) = \) <span class="fill" style="min-width:80px;">&nbsp;</span></p>
+    <div class="work-box"></div>
+  </div>
+</div>
+
+<!-- ================================================ -->
+<hr class="section">
+<p class="section-title">Part C &mdash; Evaluate <em>With</em> a Calculator <span class="points">10 pts &middot; 5 pts each</span></p>
+<p class="section-note">Use change-of-base. Round to 3 decimal places.</p>
+
+<div class="two-col">
+  <div class="prob-block">
+    <p class="prob-num">8. &nbsp; \(\log_2(45) \approx \) <span class="fill">&nbsp;</span></p>
+    <div class="work-box"></div>
+  </div>
+
+  <div class="prob-block">
+    <p class="prob-num">9. &nbsp; \(\log_7(0.6) \approx \) <span class="fill">&nbsp;</span></p>
+    <div class="work-box"></div>
+  </div>
+</div>
+
+<!-- ================================================ -->
+<hr class="section">
+<p class="section-title">Part D &mdash; Solve Each Equation for x <span class="points">35 pts &middot; 7 pts each</span></p>
+<p class="section-note">Show all steps. Use logarithms or exponential inverses where appropriate.
+For #12&ndash;14, give the exact form AND a decimal rounded to 3 places. For #10 and #13, leave the answer in exact form only.</p>
+
+<div class="prob-block">
+  <p class="prob-num">10. &nbsp; \(2(x-4)^3 = 54\)</p>
+  <div class="work-box"></div>
+  <p style="margin-top:6px;">\(x = \) <span class="fill" style="min-width:160px;">&nbsp;</span></p>
+</div>
+
+<div class="prob-block">
+  <p class="prob-num">11. &nbsp; \(5 \cdot 2^{x} = 320\)</p>
+  <div class="work-box"></div>
+  <p style="margin-top:6px;">Exact: \(x = \) <span class="fill" style="min-width:120px;">&nbsp;</span>
+  &nbsp;&nbsp; Decimal: \(x \approx \) <span class="fill">&nbsp;</span></p>
+</div>
+
+<div class="prob-block">
+  <p class="prob-num">12. &nbsp; \(4 \cdot 3^{x} = 16\)</p>
+  <div class="work-box"></div>
+  <p style="margin-top:6px;">Exact: \(x = \) <span class="fill" style="min-width:120px;">&nbsp;</span>
+  &nbsp;&nbsp; Decimal: \(x \approx \) <span class="fill">&nbsp;</span></p>
+</div>
+
+<div class="prob-block">
+  <p class="prob-num">13. &nbsp; \(\log_2(x + 3) = 5\)</p>
+  <div class="work-box"></div>
+  <p style="margin-top:6px;">\(x = \) <span class="fill" style="min-width:160px;">&nbsp;</span></p>
+</div>
+
+<div class="prob-block">
+  <p class="prob-num">14. &nbsp; \(3 \cdot 4^{x-5} = 28\)</p>
+  <div class="work-box work-box-tall"></div>
+  <p style="margin-top:6px;">Exact: \(x = \) <span class="fill" style="min-width:140px;">&nbsp;</span>
+  &nbsp;&nbsp; Decimal: \(x \approx \) <span class="fill">&nbsp;</span></p>
+</div>
+
+<!-- ================================================ -->
+<hr class="section">
+<p class="section-title">Part E &mdash; Application <span class="points">20 pts &middot; (10 + 10)</span></p>
+
+<div class="prob-block">
+  <p class="prob-num">15. &nbsp; (Tripling colony)</p>
+  <p class="prob-q">A biologist starts a bacteria culture with <strong>250</strong> cells. The colony <strong>triples every 4 hours.</strong></p>
+
+  <p style="margin-top:8px;"><strong>(a)</strong> Write a model for the number of bacteria \(B\) after \(t\) hours.</p>
+  <p style="margin-top:4px;">\(B(t) = \) <span class="fill" style="min-width:240px;">&nbsp;</span></p>
+
+  <p style="margin-top:10px;"><strong>(b)</strong> Use logarithms to find how many hours until the colony reaches <strong>20,000</strong> bacteria. Round to 3 decimal places.</p>
+  <div class="work-box work-box-tall"></div>
+  <p>\(t \approx \) <span class="fill" style="min-width:160px;">&nbsp;</span> hours</p>
+</div>
+
+<div class="prob-block">
+  <p class="prob-num">16. &nbsp; (Infectious-disease researcher)</p>
+  <p class="prob-q">An infectious-disease researcher is using petri dishes and heat lamps to grow a colony of bacteria as part of a test for a new antibacterial agent. She starts with a colony of <strong>400</strong> bacteria, and they <strong>double every 3 hours.</strong></p>
+
+  <p style="margin-top:8px;"><strong>(a)</strong> Write a model for the number of bacteria \(B\) after \(t\) hours.</p>
+  <p style="margin-top:4px;">\(B(t) = \) <span class="fill" style="min-width:240px;">&nbsp;</span></p>
+
+  <p style="margin-top:10px;"><strong>(b)</strong> To run the test, the researcher wants <strong>25,000</strong> bacteria. How long after starting the growth process should she begin her test? Round to 3 decimal places.</p>
+  <div class="work-box work-box-tall"></div>
+  <p>\(t \approx \) <span class="fill" style="min-width:160px;">&nbsp;</span> hours</p>
+</div>
+
+<hr class="section">
+<p style="text-align:center;font-style:italic;margin-top:18px;">End of exam &mdash; check your work.</p>
+
+</div>
+</body>
+</html>
