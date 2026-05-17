@@ -1,0 +1,229 @@
+{
+  "from": "FR",
+  "to": "FA",
+  "timestamp": "2026-05-16T23:27:00-07:00",
+  "action": "update-review-page",
+  "target_file": "reviews/kai-assessment2a-2026-05-16.html",
+  "format_reference": "reviews/kai-unit1-practice-test-2-2026-04-06.html",
+  "instructions": "Build Assessment 2A review page matching the FULL format of Practice Test 2 review. Every question gets a q-card with Kai's answer + correct answer side by side. Error items get error-note boxes. Use LaTeX in \\(...\\) delimiters for all math. Wire the review page link from the existing Assessment 2A dashboard card.",
+
+  "test_meta": {
+    "title": "Algebra 2: S4 Manipulating Rational Expressions (Assessment 2A)",
+    "student": "Kai Ash",
+    "date": "2026-05-16",
+    "raw_score": "7 / 16",
+    "pct": "44%",
+    "grade": "3/4",
+    "improvement": null,
+    "sections": [
+      { "label": "S4.a: Multiply / Divide", "score": "3 / 6", "items": "Q6a, Q6b, Q7, Q8, Q9, Q12" },
+      { "label": "S4.b: Add / Subtract", "score": "0 / 3", "items": "Q6c, Q10, Q11" },
+      { "label": "S5.d: Simplify", "score": "3 / 5", "items": "Q1, Q2, Q3, Q4, Q5" },
+      { "label": "Other", "score": "1 / 2", "items": "Q13, Q14" }
+    ]
+  },
+
+  "errors_header": "ERRORS — 9 POINTS LOST",
+
+  "questions": [
+    {
+      "id": "Q2",
+      "status": "incorrect",
+      "score": "0 / 1",
+      "standard": "S5.d",
+      "tags": ["factor-simplify", "difference of squares"],
+      "problem": "Simplify \\(\\dfrac{x^2+x}{x^2-1}\\).",
+      "kai_answer": "\\(\\dfrac{x+1}{x-1}\\)",
+      "correct_answer": "\\(\\dfrac{x}{x-1}\\)",
+      "error_label": "DIDN'T FACTOR DENOMINATOR AS DIFFERENCE OF SQUARES",
+      "error_note": "Kai factored the numerator as \\(x(x+1)\\) but dropped the \\(x\\), and didn't recognize \\(x^2-1\\) as a difference of squares \\((x+1)(x-1)\\). The pattern \\(a^2-b^2=(a+b)(a-b)\\) applies even when there's no middle \\(x\\) term — that's the hallmark of difference of squares. Factor both top and bottom completely, then cancel the common \\((x+1)\\) factor."
+    },
+    {
+      "id": "Q5",
+      "status": "incorrect",
+      "score": "0 / 1",
+      "standard": "S5.d",
+      "tags": ["expand-simplify", "factoring from numerator"],
+      "problem": "Simplify \\(\\dfrac{3(2x+1)^2 - 6x - 3}{(2x+1)^3}\\).",
+      "kai_answer": "\\(\\dfrac{6x}{2x+1}\\)",
+      "correct_answer": "\\(\\dfrac{6x}{(2x+1)^2}\\)",
+      "error_label": "DIDN'T PROPERLY FACTOR (2x+1) FROM NUMERATOR",
+      "error_note": "The numerator expands to \\(3(4x^2+4x+1)-6x-3 = 12x^2+12x+3-6x-3 = 12x^2+6x = 6x(2x+1)\\). That single \\((2x+1)\\) cancels one factor from \\((2x+1)^3\\), leaving \\((2x+1)^2\\) in the denominator. Kai got the numerator right but cancelled one too many \\((2x+1)\\) factors. Track the exponent: \\((2x+1)^3\\) minus one cancelled gives \\((2x+1)^2\\), not \\((2x+1)^1\\)."
+    },
+    {
+      "id": "Q6c",
+      "status": "incorrect",
+      "score": "0 / 1",
+      "standard": "S4.b",
+      "tags": ["add fractions", "illegal cancellation"],
+      "problem": "Let \\(f(x)=\\dfrac{3}{12x^4}\\) and \\(g(x)=\\dfrac{2x}{4x^3}\\). Find \\(f(x)+g(x)\\).",
+      "kai_answer": "\\(\\dfrac{3+6x^2}{12x^4}\\)",
+      "correct_answer": "\\(\\dfrac{2x^2+1}{4x^4}\\)",
+      "error_label": "ILLEGAL CANCELLATION — x² NOT A FACTOR OF EVERY TERM",
+      "error_note": "Kai correctly found the LCD and combined: \\(\\frac{3+6x^2}{12x^4}\\). That's a valid unsimplified form. But then tried to cancel \\(x^2\\) from the numerator and denominator. You can only cancel factors of the entire numerator, not individual terms. The correct simplification: factor 3 from the top: \\(\\frac{3(1+2x^2)}{12x^4} = \\frac{2x^2+1}{4x^4}\\).",
+      "teacher_note": "\"can't cancel x² here, not a factor of 3\""
+    },
+    {
+      "id": "Q7",
+      "status": "incorrect",
+      "score": "0 / 1",
+      "standard": "S4.a",
+      "tags": ["multiply-simplify", "illegal cancellation"],
+      "problem": "Multiply and simplify: \\(\\dfrac{3x^2-12x}{3x+5} \\cdot \\dfrac{x-2}{x^2-6x+8}\\).",
+      "kai_answer": "\\(\\dfrac{3x}{3x+5} = \\dfrac{3}{8}\\)",
+      "correct_answer": "\\(\\dfrac{3x}{3x+5}\\)",
+      "error_label": "ILLEGAL CANCEL — x IS NOT A FACTOR OF (3x+5)",
+      "error_note": "Kai correctly factored and simplified to \\(\\frac{3x}{3x+5}\\) — that IS the final answer. But then illegally cancelled \\(x\\) from \\(3x\\) and \\(3x+5\\) to get \\(\\frac{3}{3+5}=\\frac{3}{8}\\). You can only cancel factors of the entire expression. Since \\(3x+5\\) doesn't factor further and \\(x\\) is not a factor of it, no more cancellation is possible. Stop when nothing else factors.",
+      "teacher_note": "\"illegal cancel not a factor of everything\""
+    },
+    {
+      "id": "Q8",
+      "status": "incorrect",
+      "score": "0 / 1",
+      "standard": "S4.a",
+      "tags": ["divide-simplify", "illegal cancellation"],
+      "problem": "Divide and simplify: \\(\\dfrac{2x^2+4x}{(x+3)^2} \\div \\dfrac{x^2+4x+3}{x+3}\\).",
+      "kai_answer": "\\(\\dfrac{2(x+1)}{3}\\)",
+      "correct_answer": "\\(\\dfrac{2x(x+1)}{x+3}\\)",
+      "error_label": "ILLEGAL CANCEL — x IS NOT A FACTOR OF (x+3)",
+      "error_note": "Kai correctly simplified to \\(\\frac{2x(x+1)}{x+3}\\) — that's the final answer, fully reduced. But then illegally cancelled \\(x\\) from \\(2x\\) and \\((x+3)\\) to get \\(\\frac{2(x+1)}{3}\\). Same pattern as Q7: \\(x\\) is a factor of \\(2x\\) but not of \\((x+3)\\), so no cancellation is possible. The expression was already done — no final step needed.",
+      "teacher_note": "\"illegit!\""
+    },
+    {
+      "id": "Q10",
+      "status": "incorrect",
+      "score": "0 / 1",
+      "standard": "S4.b",
+      "tags": ["subtract-rational", "LCD"],
+      "problem": "Subtract and simplify by making the least common denominator: \\(\\dfrac{x}{x+1} - \\dfrac{x^2-3x-5}{x^2+5x+4}\\).",
+      "kai_answer": "Blank — no answer submitted.",
+      "correct_answer": "Factor denominator: \\(x^2+5x+4=(x+1)(x+4)\\). LCD is \\((x+1)(x+4)\\). Rewrite: \\(\\frac{x(x+4)}{(x+1)(x+4)} - \\frac{x^2-3x-5}{(x+1)(x+4)} = \\frac{x^2+4x-x^2+3x+5}{(x+1)(x+4)} = \\frac{7x+5}{(x+1)(x+4)}\\).",
+      "error_label": "NO ANSWER SUBMITTED",
+      "error_note": "Kai left this blank on the test. The key skill: factor the more complex denominator to find the LCD, rewrite each fraction, then combine. Watch the minus sign — distribute it across every term of the second numerator."
+    },
+    {
+      "id": "Q11",
+      "status": "incorrect",
+      "score": "0 / 1",
+      "standard": "S4.b",
+      "tags": ["add-rational", "multiple choice"],
+      "problem": "If \\(x > 3\\), which of the following is equivalent to \\(\\dfrac{1}{\\frac{1}{x+2}+\\frac{1}{x+3}}\\)?",
+      "kai_answer": "E) None of the above",
+      "correct_answer": "B) \\(\\dfrac{x^2+5x+6}{2x+5}\\)",
+      "error_label": "DIDN'T SIMPLIFY THE COMPLEX FRACTION",
+      "error_note": "This is a complex fraction. First add the fractions in the denominator: \\(\\frac{1}{x+2}+\\frac{1}{x+3}=\\frac{2x+5}{(x+2)(x+3)}\\). Then flip: \\(\\frac{1}{\\frac{2x+5}{(x+2)(x+3)}} = \\frac{(x+2)(x+3)}{2x+5} = \\frac{x^2+5x+6}{2x+5}\\). That's choice B."
+    },
+    {
+      "id": "Q13",
+      "status": "incorrect",
+      "score": "0 / 1",
+      "standard": "S5.d",
+      "tags": ["simplify-quotient", "term-by-term cancellation"],
+      "problem": "If \\(h(x) = x^3 - 9x\\) and \\(k(x) = x^2 - 2x - 3\\), write a simplified expression for \\(\\dfrac{h(x)}{k(x)}\\).",
+      "kai_answer": "\\(\\dfrac{-8x}{-2x-3}\\)",
+      "correct_answer": "\\(\\dfrac{x(x+3)}{x+1}\\)",
+      "error_label": "CRITICAL: TERM-BY-TERM CANCELLATION INSTEAD OF FACTORING",
+      "error_note": "Kai subtracted \\(x^2\\) from numerator and denominator as if cancelling: \\(x^3-9x \\to -8x\\) and \\(x^2-2x-3 \\to -2x-3\\). This is not how simplification works. You must FACTOR first, then cancel common factors. Correct: \\(\\frac{x(x+3)(x-3)}{(x-3)(x+1)}\\), cancel \\((x-3)\\), giving \\(\\frac{x(x+3)}{x+1}\\). Never subtract or remove terms from a fraction — only cancel factors.",
+      "coaching_note": "This is the same conceptual error tested in Q1 (Kyeung-min's mistake). Kai correctly identified the error in Q1 but made it himself in Q13, Q7, Q8, and Q6c."
+    },
+    {
+      "id": "Q14",
+      "status": "incorrect",
+      "score": "0 / 1",
+      "standard": "other",
+      "tags": ["difference quotient", "expansion error"],
+      "problem": "Simplify: \\(\\dfrac{2(x+h)^2 - 3(x+h) - (2x^2 - 3x)}{h}\\).",
+      "kai_answer": "\\(4x^2 - 2x + 2h - 3\\)",
+      "correct_answer": "\\(4x + 2h - 3\\)",
+      "error_label": "EXPANSION ERROR IN 2(x+h)²",
+      "error_note": "Expand step by step: \\((x+h)^2 = x^2+2xh+h^2\\), then \\(2(x+h)^2 = 2x^2+4xh+2h^2\\). Subtract \\(3(x+h) = 3x+3h\\). Subtract \\((2x^2-3x)\\). The \\(2x^2\\) and \\(-2x^2\\) cancel, the \\(-3x\\) and \\(+3x\\) cancel, leaving \\(4xh+2h^2-3h\\). Factor out \\(h\\): \\(h(4x+2h-3)\\). Divide by \\(h\\): \\(4x+2h-3\\). Kai's \\(x^2\\) and \\(x\\) terms should have cancelled but didn't — the expansion of \\(2(x+h)^2\\) went wrong."
+    },
+
+    {
+      "id": "Q1",
+      "status": "correct",
+      "score": "1 / 1",
+      "standard": "S5.d",
+      "tags": ["error analysis"],
+      "problem": "Kyeung-min simplifies \\(\\dfrac{x^2+x}{x+1} = \\dfrac{x}{-1} = -x\\). Explain her mistake(s).",
+      "kai_answer": "\"Can't cancel the x², and you can't divide x by −1 or any number\"",
+      "correct_answer": "Factor numerator: \\(x(x+1)\\). Cancel \\((x+1)\\): result is \\(x\\). Kyeung-min incorrectly subtracted terms instead of factoring and cancelling.",
+      "coaching_note": "Kai correctly identified the error here but made the same type of mistake himself on Q13, Q7, Q8, and Q6c."
+    },
+    {
+      "id": "Q3",
+      "status": "correct",
+      "score": "1 / 1",
+      "standard": "S5.d",
+      "tags": ["factor-simplify"],
+      "problem": "Simplify \\(\\dfrac{x^2+x-6}{x^2-6x+9}\\).",
+      "kai_answer": "\\(\\dfrac{(x+3)(x-2)}{(x-3)^2}\\)",
+      "correct_answer": "\\(\\dfrac{(x+3)(x-2)}{(x-3)^2}\\)"
+    },
+    {
+      "id": "Q4",
+      "status": "correct",
+      "score": "1 / 1",
+      "standard": "S5.d",
+      "tags": ["factor-simplify"],
+      "problem": "Simplify \\(\\dfrac{(x+3)^2}{2x^2+11x+15}\\).",
+      "kai_answer": "\\(\\dfrac{x+3}{2x+5}\\)",
+      "correct_answer": "\\(\\dfrac{x+3}{2x+5}\\)"
+    },
+    {
+      "id": "Q6a",
+      "status": "correct",
+      "score": "1 / 1",
+      "standard": "S4.a",
+      "tags": ["multiply rational"],
+      "problem": "Let \\(f(x)=\\dfrac{3}{12x^4}\\) and \\(g(x)=\\dfrac{2x}{4x^3}\\). Find \\(f(x) \\cdot g(x)\\).",
+      "kai_answer": "\\(\\dfrac{1}{8x^6}\\)",
+      "correct_answer": "\\(\\dfrac{1}{8x^6}\\)"
+    },
+    {
+      "id": "Q6b",
+      "status": "correct",
+      "score": "1 / 1",
+      "standard": "S4.a",
+      "tags": ["divide rational"],
+      "problem": "Find \\(\\dfrac{f(x)}{g(x)}\\) where \\(f(x)=\\dfrac{3}{12x^4}\\) and \\(g(x)=\\dfrac{2x}{4x^3}\\).",
+      "kai_answer": "\\(\\dfrac{1}{2x^2}\\)",
+      "correct_answer": "\\(\\dfrac{1}{2x^2}\\)"
+    },
+    {
+      "id": "Q9",
+      "status": "correct",
+      "score": "1 / 1",
+      "standard": "S4.a",
+      "tags": ["add and simplify"],
+      "problem": "Add and simplify.",
+      "kai_answer": "\\(\\dfrac{x^2+2x-10}{x^2+6x+8}\\)",
+      "correct_answer": "\\(\\dfrac{x^2+2x-10}{x^2+6x+8}\\)"
+    },
+    {
+      "id": "Q12",
+      "status": "correct",
+      "score": "1 / 1",
+      "standard": "S4.a",
+      "tags": ["solve rational equation"],
+      "problem": "The expression \\(\\dfrac{3x+4}{(x-3)^2} - \\dfrac{3}{x-3}\\) is equivalent to \\(\\dfrac{a}{(x-3)^2}\\). Find \\(a\\).",
+      "kai_answer": "\\(a = 13\\)",
+      "correct_answer": "\\(a = 13\\)"
+    }
+  ],
+
+  "correct_header": "CORRECT — 7 OF 16 POINTS",
+
+  "pattern_analysis": {
+    "dominant_error": "ILLEGAL TERM-BY-TERM CANCELLATION",
+    "affected_questions": ["Q6c", "Q7", "Q8", "Q13"],
+    "description": "Kai's #1 issue: cancelling individual terms (like x or x²) from numerator and denominator instead of factoring first, then cancelling common factors. Ironic because Q1 tests this exact concept and Kai answered it correctly — but repeated the mistake himself on 4 other questions.",
+    "secondary_errors": [
+      "Q2: Doesn't recognize difference of squares when no middle term",
+      "Q5: Lost track of exponent when cancelling (2x+1) factors",
+      "Q10: Blank — needs LCD practice with subtraction",
+      "Q11: Complex fraction simplification",
+      "Q14: Expansion error with 2(x+h)²"
+    ]
+  }
+}
