@@ -1,0 +1,184 @@
+{
+  "exam_id": "unit1-practice-test-4",
+  "schema_version": "1.0",
+  "title": "Unit 1 Practice Test 4: Polynomial Functions",
+  "subtitle": "5 Questions -- 11 Points",
+  "time_minutes": 30,
+  "created": "2026-04-08",
+  "created_by": "FR",
+  "purpose": "Short targeted drill built from cross-assessment weakness analysis across 3 unit tests (Unit Exam 68%D, PT2 86%B, PT3). Primary targets: divide-factor-graph synthesis, find ALL zeros including complex, sign accuracy on factoring, exponent rules with distribution and combining like terms.",
+  "source_assessments": [
+    { "name": "U1 Practice Exam", "score": "15/22", "percent": 68, "grade": "D", "key_losses": ["poly ID Q2", "graph analysis Q8", "find all zeros Q11/Q12"] },
+    { "name": "U1 Practice Test 2", "score": "19/22", "percent": 86, "grade": "B", "key_losses": ["graph zeros Q3(e)", "sign error Q6", "exponent rules Q10"] },
+    { "name": "U1 Practice Test 3", "score": "TBD", "percent": null, "grade": null, "key_losses": ["TBD -- not yet graded"] }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "number": 1,
+      "max_score": 3,
+      "type": "divide-factor-graph",
+      "targets": "Synthesis: divide with given factor, factor result, find zeros with multiplicities, sketch graph",
+      "question_html": "Given $f(x) = x^3 - 3x + 2$ and that $(x + 2)$ is a factor: (a) Divide out $(x + 2)$ and factor the result completely. (b) Find all zeros and state the multiplicity of each. (c) Sketch the graph. Label the zeros and show correct end behavior.",
+      "answer_key": {
+        "a": {
+          "division": "Divide x^3 - 3x + 2 by (x+2): quotient is x^2 - 2x + 1",
+          "factored_form": "(x+2)(x-1)^2"
+        },
+        "b": {
+          "zeros": [
+            { "x": -2, "multiplicity": 1, "behavior": "crosses" },
+            { "x": 1, "multiplicity": 2, "behavior": "bounces" }
+          ]
+        },
+        "c": {
+          "degree": 3,
+          "leading_coefficient_sign": "positive",
+          "end_behavior": { "left": "DOWN (-inf)", "right": "UP (+inf)" },
+          "key_visual": ["falls from bottom left", "crosses x-axis at x=-2 going up", "bounces at x=1 (touches and falls back)", "rises to right"],
+          "y_intercept": 2
+        },
+        "scoring_rubric": "1 pt: correct division and fully factored form. 1 pt: both zeros with correct multiplicities. 1 pt: sketch with correct end behavior and bounce vs cross at each zero."
+      },
+      "graph_spec": {
+        "function_latex": "f(x) = (x+2)(x-1)^2",
+        "x_range": [-4, 4],
+        "zeros_with_dots": [
+          { "x": -2, "label": "cross" },
+          { "x": 1, "label": "bounce" }
+        ],
+        "end_behavior": "left DOWN, right UP",
+        "render_instructions": "Student sketches on blank axes. Provide empty coordinate grid with x-axis from -4 to 4."
+      }
+    },
+    {
+      "id": "q2",
+      "number": 2,
+      "max_score": 2,
+      "type": "find-all-zeros",
+      "targets": "PERSISTENT: stop-after-first-zero pattern. Irrational remaining roots from dividing out one real zero.",
+      "question_html": "Find ALL zeros of $f(x) = x^3 - 3x^2 - 4x + 12$. The table shows $f(3) = 0$. Show your division work.",
+      "value_table": {
+        "x":    [-2, -1,  0,  1,  2,  3,  4,  5],
+        "f(x)": [-18, 12, 12,  6,  0,  0,  8, 42]
+      },
+      "note": "Table also shows f(2)=0 -- student may use either. Both (x-3) and (x-2) are factors. Third zero is x=-2.",
+      "answer_key": {
+        "correct_answer": "x = 3, x = 2, x = -2",
+        "worked_solution": [
+          "Divide x^3 - 3x^2 - 4x + 12 by (x-3): quotient x^2 - 4",
+          "x^2 - 4 = (x-2)(x+2)",
+          "All zeros: x = 3, x = 2, x = -2"
+        ],
+        "scoring_rubric": "1 pt: divide correctly and get x^2 - 4. 1 pt: all three zeros correct.",
+        "coaching_tip": "After finding one zero from the table, divide it out. The quotient is a quadratic you can factor. A cubic always has 3 zeros."
+      }
+    },
+    {
+      "id": "q3",
+      "number": 3,
+      "max_score": 2,
+      "type": "factor-and-zeros",
+      "targets": "RECURRING: sign error on factor-to-zero + negative GCF",
+      "question_html": "Factor $f(x) = -2x^3 + 8x^2 + 10x$ completely. Then find ALL zeros.",
+      "answer_key": {
+        "correct_answer": "-2x(x^2 - 4x - 5) = -2x(x-5)(x+1). Zeros: x = 0, x = 5, x = -1.",
+        "worked_solution": [
+          "GCF: -2x",
+          "Quotient: x^2 - 4x - 5",
+          "Factor: (x-5)(x+1)",
+          "Zeros: -2x=0 -> x=0, (x-5)=0 -> x=5, (x+1)=0 -> x=-1"
+        ],
+        "scoring_rubric": "1 pt: factored completely with -2x as GCF. 1 pt: all three zeros correct with correct signs.",
+        "coaching_tip": "(x-5)=0 means x=+5. (x+1)=0 means x=-1. The zero is always the opposite sign of what is in the parentheses."
+      }
+    },
+    {
+      "id": "q4",
+      "number": 4,
+      "max_score": 2,
+      "type": "simplify",
+      "targets": "NEW: exponent rules -- distribute into binomial, multiply monomials (add exponents), combine like terms",
+      "question_html": "Simplify completely: $3x^2(2x^3 + 4x) - (2x^3)(x^2) + 5x^5$",
+      "answer_key": {
+        "correct_answer": "9x^5 + 12x^3",
+        "worked_solution": [
+          "Distribute: 3x^2(2x^3) = 6x^5 and 3x^2(4x) = 12x^3",
+          "Multiply: (2x^3)(x^2) = 2x^5",
+          "Combine x^5 terms: 6x^5 - 2x^5 + 5x^5 = 9x^5",
+          "Final: 9x^5 + 12x^3"
+        ],
+        "scoring_rubric": "1 pt: correct distribution and monomial multiplication (exponents added correctly). 1 pt: correct final answer after combining like terms.",
+        "coaching_tip": "Step 1: distribute and multiply every product (add exponents). Step 2: collect all terms with the same degree and combine coefficients."
+      }
+    },
+    {
+      "id": "q5",
+      "number": 5,
+      "max_score": 2,
+      "type": "find-all-zeros-complex",
+      "targets": "PERSISTENT: stop-after-visible-zeros pattern. Degree 4 with 2 real + 2 complex zeros.",
+      "question_html": "Find ALL zeros of $f(x) = x^4 - x^3 + 2x^2 - 4x - 8$. The graph shows the function crosses the x-axis at $x = -1$ and $x = 2$. Show your division work.",
+      "graph_spec": {
+        "function_latex": "f(x) = (x+1)(x-2)(x^2+4)",
+        "x_range": [-3, 4],
+        "zeros_with_dots": [
+          { "x": -1, "label": "cross" },
+          { "x": 2, "label": "cross" }
+        ],
+        "end_behavior": "both UP (degree 4, positive LC)",
+        "y_intercept": -8,
+        "render_instructions": "Graph provided on test. Smooth curve, both ends up, crosses at x=-1 and x=2. No equation shown. Dots on both real zeros."
+      },
+      "answer_key": {
+        "correct_answer": "x = -1, x = 2, x = 2i, x = -2i",
+        "worked_solution": [
+          "x=-1 and x=2 given from graph",
+          "Divide by (x+1): quotient x^3 - 2x^2 + 4x - 8",
+          "Divide by (x-2): quotient x^2 + 4",
+          "x^2 + 4 = 0 -> x^2 = -4 -> x = +/-2i"
+        ],
+        "scoring_rubric": "1 pt: divide out both real zeros correctly and arrive at x^2+4. 1 pt: x=+/-2i with correct i notation.",
+        "coaching_tip": "Degree 4 means 4 total zeros. The graph only shows 2. Divide out both real zeros and solve what remains. x^2+4=0 has no real solutions -- the answer involves i."
+      }
+    }
+  ],
+  "total_points": 11,
+  "weakness_targets": {
+    "divide_factor_graph": { "questions": ["q1"], "points": 3, "status": "synthesis of persistent gaps" },
+    "find_all_zeros": { "questions": ["q2", "q5"], "points": 4, "status": "PERSISTENT -- stop-after-first-zero pattern" },
+    "sign_accuracy": { "questions": ["q3"], "points": 2, "status": "RECURRING" },
+    "exponent_rules": { "questions": ["q4"], "points": 2, "status": "NEW gap from PT2" }
+  },
+  "graphs_needed": [
+    {
+      "question": "q1",
+      "type": "blank_axes_for_sketch",
+      "x_range": [-4, 4],
+      "y_range": [-6, 6],
+      "note": "Empty coordinate grid. Student draws the curve."
+    },
+    {
+      "question": "q5",
+      "type": "provided_graph",
+      "function": "f(x) = (x+1)(x-2)(x^2+4)",
+      "x_range": [-3, 4],
+      "zeros_with_dots": [{"x": -1, "label": "cross"}, {"x": 2, "label": "cross"}],
+      "end_behavior": "both UP",
+      "y_intercept": -8,
+      "note": "Graph rendered and printed on test. No equation shown."
+    }
+  ],
+  "grade_template": {
+    "student": "Kai Ash",
+    "exam": "Unit 1 Practice Test 4",
+    "subject": "Algebra 2 - Polynomial Functions",
+    "graded_by": "",
+    "graded_date": "",
+    "questions": [],
+    "total_score": null,
+    "max_total": 11,
+    "percent": null,
+    "letter_grade": null
+  }
+}

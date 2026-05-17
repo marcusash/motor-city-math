@@ -1,0 +1,238 @@
+{
+  "exam_id": "unit1-practice-test-3",
+  "schema_version": "1.0",
+  "title": "Unit 1 Practice Test 3: Polynomial Functions",
+  "subtitle": "12 Questions -- 19 Points",
+  "time_minutes": 45,
+  "created": "2026-04-06",
+  "created_by": "FR",
+  "purpose": "Targeted practice test built from cross-assessment weakness analysis of 6 graded assessments. Primary targets: graph zeros + multiplicities (persistent, failed on 2 tests), exponent rules (new gap from PT2), sign errors factor-to-zero (recurring). Retention checks on recently fixed areas.",
+  "source_assessments": [
+    { "name": "U1 Practice Test 2", "score": "19/22", "percent": 86, "grade": "B", "key_losses": ["graph zeros Q3(e)", "sign error Q6", "exponent rules Q10"] },
+    { "name": "U1 Practice Exam", "score": "15/22", "percent": 68, "grade": "D", "key_losses": ["poly ID Q2", "graph analysis Q8", "find all zeros Q11/Q12"] },
+    { "name": "S1 Quiz 2", "score": "2.5/7", "percent": 36, "grade": "C", "key_losses": ["zeros from factored form", "GCF factoring", "factor with given factor"] },
+    { "name": "S1 Quiz 1", "score": "5/8", "percent": 63, "grade": "B", "key_losses": ["subtraction order", "like terms", "3-factor multiply"] },
+    { "name": "Spring 07 Poly Quiz", "score": "9/10", "percent": 90, "grade": "A", "key_losses": ["unknown -- no question-level data"] }
+  ],
+  "sections": [
+    { "id": "A", "title": "Graph Analysis + Multiplicities", "points": 7 },
+    { "id": "B", "title": "Exponent Rules + Operations", "points": 3 },
+    { "id": "C", "title": "Factoring + Sign Accuracy", "points": 3 },
+    { "id": "D", "title": "Retention Checks", "points": 6 }
+  ],
+  "questions": [
+    {
+      "id": "q1", "number": 1, "section": "A", "max_score": 2, "type": "graph-analysis",
+      "targets": "PERSISTENT: Unit Q8(e) + PT2 Q3(e) -- misread zeros, omitted multiplicities",
+      "question_html": "The graph of a polynomial function f(x) is shown. (a) Describe the end behavior. (b) List ALL real zeros and state the multiplicity of each.",
+      "graph_spec": {
+        "function_latex": "f(x) = -(x+2)^2(x-1)(x-4)",
+        "degree": 4,
+        "leading_coefficient_sign": "negative",
+        "zeros": [
+          { "x": -2, "multiplicity": 2, "behavior": "bounces" },
+          { "x": 1, "multiplicity": 1, "behavior": "crosses" },
+          { "x": 4, "multiplicity": 1, "behavior": "crosses" }
+        ],
+        "end_behavior": { "left": "DOWN (-inf)", "right": "DOWN (-inf)" },
+        "turning_points": 3,
+        "y_intercept": 16,
+        "key_visual": ["falls from left", "bounces at x=-2 (stays negative side)", "crosses up at x=1", "crosses down at x=4", "falls to right"],
+        "render_instructions": "Plotly.js or SVG. Smooth curve on coordinate grid, x-axis -4 to 6. Bounce at x=-2 clearly visible. Dots on all three zeros. No function equation shown.",
+        "svg_embedded": false
+      },
+      "answer_key": {
+        "correct_answer": {
+          "a": "As x -> -inf, y -> -inf. As x -> +inf, y -> -inf. Both ends DOWN.",
+          "b": "x = -2 (multiplicity 2), x = 1 (multiplicity 1), x = 4 (multiplicity 1)"
+        },
+        "scoring_rubric": "1 pt: end behavior correct. 1 pt: all three zeros with correct multiplicities. Zeros without multiplicities = 0.5.",
+        "coaching_tip": "Both ends DOWN = even degree + negative LC. Bounce = multiplicity 2 (even). Cross = multiplicity 1 (odd)."
+      }
+    },
+    {
+      "id": "q2", "number": 2, "section": "A", "max_score": 2, "type": "error-analysis",
+      "targets": "PERSISTENT: Unit Q8(c) contradiction pattern -- end behavior vs degree vs LC inconsistency",
+      "question_html": "A student analyzed a polynomial graph and wrote: 'Both ends go UP. The degree is odd. The leading coefficient is positive.' (a) What is wrong with the student's analysis? (b) If both ends go UP, what must the degree be (odd or even)? Explain.",
+      "answer_key": {
+        "correct_answer": {
+          "a": "Both ends going the same direction means the degree must be EVEN, not odd. Odd degree polynomials have ends going in opposite directions.",
+          "b": "Even. Same direction = even. Opposite directions = odd."
+        },
+        "scoring_rubric": "1 pt: identify the degree is wrong (should be even). 1 pt: explain the rule (same direction = even, opposite = odd).",
+        "coaching_tip": "Same direction (both UP or both DOWN) = even degree. Opposite directions (one UP, one DOWN) = odd degree. Always check: does my degree match my end behavior?"
+      }
+    },
+    {
+      "id": "q3", "number": 3, "section": "A", "max_score": 1, "type": "write-equation",
+      "targets": "Graph analysis reverse -- build equation from zeros + multiplicities + point",
+      "question_html": "Write the equation of a polynomial with zeros at x = -1 (multiplicity 2) and x = 3 (multiplicity 2) that passes through the point (0, 9).",
+      "answer_key": {
+        "correct_answer": "f(x) = (x+1)^2(x-3)^2",
+        "worked_solution": ["f(x) = a(x+1)^2(x-3)^2", "f(0) = a(1)^2(-3)^2 = 9a", "9a = 9, so a = 1", "f(x) = (x+1)^2(x-3)^2"],
+        "scoring_rubric": "1 pt: correct equation with a=1. Must show substitution.",
+        "coaching_tip": "Multiplicity 2 at x=-1 means factor (x+1)^2. Plug in the point to find a."
+      }
+    },
+    {
+      "id": "q4", "number": 4, "section": "B", "max_score": 2, "type": "simplify",
+      "targets": "NEW: PT2 Q10 -- exponent rules x^a * x^b = x^(a+b), power rule (x^a)^b = x^(ab)",
+      "question_html": "Simplify each expression completely. (a) (-5x^3y)(2x^2y^4) (b) (3a^2b^3)^2",
+      "answer_key": {
+        "correct_answer": {
+          "a": "-10x^5y^5",
+          "b": "9a^4b^6"
+        },
+        "scoring_rubric": "1 pt each. Must show correct exponents.",
+        "coaching_tip": "(a) Multiply coefficients, ADD exponents on same base: x^3 * x^2 = x^5, y^1 * y^4 = y^5. (b) Power rule: MULTIPLY exponents: (a^2)^2 = a^4, (b^3)^2 = b^6. Square the coefficient too: 3^2 = 9."
+      }
+    },
+    {
+      "id": "q5", "number": 5, "section": "B", "max_score": 1, "type": "simplify",
+      "targets": "NEW: PT2 Q10 exact pattern -- multiply monomials THEN combine like terms",
+      "question_html": "Simplify: (2x^2y)(3xy^3) - (4x^3y^4) + (-x^2y)(xy^3)",
+      "answer_key": {
+        "correct_answer": "x^3y^4",
+        "worked_solution": ["(2x^2y)(3xy^3) = 6x^3y^4", "(-x^2y)(xy^3) = -x^3y^4", "6x^3y^4 - 4x^3y^4 - x^3y^4 = (6-4-1)x^3y^4 = x^3y^4"],
+        "scoring_rubric": "1 pt: correct final answer. Must expand all products first, then combine.",
+        "coaching_tip": "Step 1: Multiply each monomial product (ADD exponents). Step 2: Check -- are all terms the same degree in x and y? If yes, combine coefficients."
+      }
+    },
+    {
+      "id": "q6", "number": 6, "section": "C", "max_score": 2, "type": "free-response",
+      "targets": "RECURRING: PT2 Q6 sign error + Quiz 2 Q4 GCF -- negative GCF trap",
+      "question_html": "Factor f(x) = -3x^3 + 12x^2 + 15x completely. Then find ALL zeros.",
+      "answer_key": {
+        "correct_answer": "-3x(x^2 - 4x - 5) = -3x(x-5)(x+1). Zeros: x = 0, x = 5, x = -1.",
+        "worked_solution": ["GCF: -3x", "Quotient: x^2 - 4x - 5", "Factor: (x-5)(x+1)", "Zeros: -3x=0 -> x=0, x-5=0 -> x=5, x+1=0 -> x=-1"],
+        "scoring_rubric": "1 pt: factored completely (must pull -3x as GCF). 1 pt: all three zeros correct with correct signs.",
+        "coaching_tip": "Pull out the negative with the GCF. Then factor the remaining quadratic. Check each zero: (x-5)=0 means x=+5, (x+1)=0 means x=-1."
+      }
+    },
+    {
+      "id": "q7", "number": 7, "section": "C", "max_score": 1, "type": "quick-drill",
+      "targets": "RECURRING: PT2 Q6 -- direct drill on solving factor = 0",
+      "question_html": "For each factor, state the zero. (a) (x - 7) (b) (x + 4) (c) (2x - 3) (d) (3x + 8)",
+      "answer_key": {
+        "correct_answer": {
+          "a": "x = 7",
+          "b": "x = -4",
+          "c": "x = 3/2",
+          "d": "x = -8/3"
+        },
+        "scoring_rubric": "1 pt: all four correct. One wrong = 0.5. Two or more wrong = 0.",
+        "coaching_tip": "Set each factor = 0 and solve. (x-7)=0 means x=+7. (2x-3)=0 means 2x=3, x=3/2. The sign FLIPS from what you see in the factor."
+      }
+    },
+    {
+      "id": "q8", "number": 8, "section": "D", "max_score": 2, "type": "word-problem",
+      "targets": "Division in context -- Kai is 20/20 on division but untested in word problems",
+      "question_html": "A rectangular box has volume V(x) = 2x^3 + 11x^2 + 18x + 9. The height is (x + 3) and the width is (2x + 1). Find the length.",
+      "answer_key": {
+        "correct_answer": "Length = (x + 3)",
+        "worked_solution": ["V = length * width * height", "length = V / (height * width)", "Divide V(x) by (x+3): 2x^3+11x^2+18x+9 / (x+3) = 2x^2+5x+3", "Divide 2x^2+5x+3 by (2x+1) = (x+3)", "OR: (x+3)(2x+1) = 2x^2+7x+3, then divide V by that"],
+        "scoring_rubric": "1 pt: set up division correctly (divide by one factor). 1 pt: correct length (x+3).",
+        "coaching_tip": "Volume = L * W * H. To find L, divide V by the other two dimensions. You can divide by one at a time."
+      }
+    },
+    {
+      "id": "q9", "number": 9, "section": "D", "max_score": 2, "type": "free-response",
+      "targets": "RETENTION: PT2 Q1 correct -- verify find-all-zeros with complex still solid",
+      "question_html": "Find ALL zeros of f(x) = x^3 - 2x^2 + 4x - 8. The graph shows the function crosses the x-axis at x = 2. Show your division work.",
+      "answer_key": {
+        "correct_answer": "x = 2, x = 2i, x = -2i",
+        "worked_solution": ["x=2 is a zero from graph", "Divide by (x-2): quotient x^2+4", "x^2+4=0: x^2=-4, x=+/-2i"],
+        "scoring_rubric": "1 pt: divide by (x-2) correctly. 1 pt: find x=+/-2i.",
+        "coaching_tip": "Cubic = 3 zeros. x^2+4=0 gives x^2=-4, so zeros are imaginary: +/-2i."
+      }
+    },
+    {
+      "id": "q10", "number": 10, "section": "D", "max_score": 1, "type": "classify",
+      "targets": "RETENTION: PT2 Q4 correct but missing degrees -- now requires degree AND LC",
+      "question_html": "State whether each is a polynomial. If yes, state the degree AND leading coefficient. If no, explain why. (a) 4x^5 - sqrt(3)*x^2 + 1 (b) x^(-2) + 3x - 7",
+      "answer_key": {
+        "correct_answer": {
+          "a": "Yes. Degree 5, leading coefficient 4. (sqrt(3) is an irrational coefficient, which is allowed.)",
+          "b": "No. x^(-2) is a negative exponent. Polynomial exponents must be whole numbers >= 0."
+        },
+        "scoring_rubric": "0.5 each. Must state degree+LC for (a) and explain for (b).",
+        "coaching_tip": "Irrational coefficients (like sqrt(3)) are fine. Negative exponents are NOT allowed. Always state degree and LC when identifying a polynomial."
+      }
+    },
+    {
+      "id": "q11", "number": 11, "section": "D", "max_score": 1, "type": "free-response",
+      "targets": "RETENTION: Quiz 2 Q6/Q7 -- factor with given factor + fractional zero trap",
+      "question_html": "f(x) = 2x^3 - 5x^2 - 4x + 3. Given that (2x - 1) is a factor, factor completely and find all zeros.",
+      "answer_key": {
+        "correct_answer": "(2x-1)(x-3)(x+1). Zeros: x = 1/2, x = 3, x = -1.",
+        "worked_solution": ["Divide 2x^3-5x^2-4x+3 by (2x-1): quotient x^2-2x-3", "Factor x^2-2x-3 = (x-3)(x+1)", "Zeros: 2x-1=0 -> x=1/2, x-3=0 -> x=3, x+1=0 -> x=-1"],
+        "scoring_rubric": "1 pt: fully factored with all three zeros. Must get x=1/2 (not x=-1/2).",
+        "coaching_tip": "(2x-1)=0 means 2x=1, x=+1/2. Watch the sign."
+      }
+    },
+    {
+      "id": "q12", "number": 12, "section": "A", "max_score": 2, "type": "graph-analysis",
+      "targets": "PERSISTENT: comprehensive graph analysis -- odd degree + bounce + cross",
+      "question_html": "The graph of a polynomial function f(x) is shown. (a) Is the degree odd or even? Explain. (b) Is the leading coefficient positive or negative? Explain. (c) List ALL real zeros with multiplicities.",
+      "graph_spec": {
+        "function_latex": "f(x) = -x(x-2)^2",
+        "degree": 3,
+        "leading_coefficient_sign": "negative",
+        "zeros": [
+          { "x": 0, "multiplicity": 1, "behavior": "crosses" },
+          { "x": 2, "multiplicity": 2, "behavior": "bounces" }
+        ],
+        "end_behavior": { "left": "UP (+inf)", "right": "DOWN (-inf)" },
+        "turning_points": 2,
+        "y_intercept": 0,
+        "key_visual": ["rises from left", "crosses at x=0 (goes positive)", "bounces at x=2 (turns back down)", "falls to right"],
+        "render_instructions": "Plotly.js or SVG. Smooth curve on coordinate grid, x-axis -2 to 4. Bounce at x=2 clearly visible. Cross at origin. Dots on both zeros. No function equation shown.",
+        "svg_embedded": false
+      },
+      "answer_key": {
+        "correct_answer": {
+          "a": "Odd. Ends go opposite directions (left UP, right DOWN).",
+          "b": "Negative. Left UP and right DOWN = odd + negative LC.",
+          "c": "x = 0 (multiplicity 1), x = 2 (multiplicity 2)"
+        },
+        "scoring_rubric": "1 pt: degree odd/even + LC sign both correct with reasoning. 1 pt: both zeros with correct multiplicities.",
+        "coaching_tip": "Opposite directions = odd. For odd degree: left UP + right DOWN = negative LC. Bounce at x=2 = even multiplicity (2). Cross at x=0 = odd multiplicity (1). Sum: 1+2=3 = degree 3."
+      }
+    }
+  ],
+  "total_points": 19,
+  "tier_distribution": {
+    "graph_multiplicities": { "questions": ["q1","q2","q3","q12"], "points": 7, "percent": 37, "status": "PERSISTENT -- failed on 2 tests" },
+    "exponent_rules": { "questions": ["q4","q5"], "points": 3, "percent": 16, "status": "NEW gap from PT2" },
+    "sign_accuracy": { "questions": ["q6","q7"], "points": 3, "percent": 16, "status": "RECURRING pattern" },
+    "retention_checks": { "questions": ["q8","q9","q10","q11"], "points": 6, "percent": 32, "status": "recently fixed -- verify" }
+  },
+  "graphs_needed": [
+    {
+      "question": "q1",
+      "function": "f(x) = -(x+2)^2(x-1)(x-4)",
+      "x_range": [-4, 6],
+      "zeros_with_dots": [{"x":-2,"label":"bounce"},{"x":1,"label":"cross"},{"x":4,"label":"cross"}],
+      "end_behavior": "both DOWN"
+    },
+    {
+      "question": "q12",
+      "function": "f(x) = -x(x-2)^2",
+      "x_range": [-2, 4],
+      "zeros_with_dots": [{"x":0,"label":"cross"},{"x":2,"label":"bounce"}],
+      "end_behavior": "left UP, right DOWN"
+    }
+  ],
+  "grade_template": {
+    "student": "Kai Ash",
+    "exam": "Unit 1 Practice Test 3",
+    "subject": "Algebra 2 - Polynomial Functions",
+    "graded_by": "",
+    "graded_date": "",
+    "questions": [],
+    "total_score": null,
+    "max_total": 19,
+    "percent": null,
+    "letter_grade": null
+  }
+}

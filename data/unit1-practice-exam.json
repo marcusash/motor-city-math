@@ -1,0 +1,172 @@
+{
+  "student": "Kai Ash",
+  "exam": "Unit 1 Practice Exam",
+  "subject": "Algebra 2 - Polynomial Functions",
+  "season": "Spring 2026",
+  "graded_by": "FR (OCR + math verification)",
+  "graded_date": "2026-04-05",
+  "coaching_doc": "https://marcusash_microsoft.github.io/journal/kai-unit1-practice-exam.html",
+  "questions": [
+    {
+      "number": 1,
+      "parts": ["a", "b"],
+      "description": "Factor f(x) = 8x^4 - 8x^3 - 70x^2 + 120x completely, then list all real zeros",
+      "parts_detail": {
+        "a": "Factor completely: f(x) = 4x(x-3)(2x+5)(x-4)",
+        "b": "All real zeros: x = 0, 3, -5/2, 4"
+      },
+      "kai_answer": "4x(x-3)(2x+5)(x-4); zeros x=0, 3, -5/2, 4",
+      "correct_answer": "4x(x-3)(2x+5)(x-4); zeros x=0, 3, -5/2, 4",
+      "score": 2,
+      "max_score": 2,
+      "result": "correct"
+    },
+    {
+      "number": 2,
+      "parts": ["A", "B", "C", "D"],
+      "description": "For each expression, state whether it is a polynomial and give its degree",
+      "parts_detail": {
+        "A": "Expression not identified by Kai — no explanation given",
+        "B": "(1/3)x^2 + (2/3)x — Kai said Degree 4 (wrong, correct degree is 2)",
+        "C": "-96x^0 — Kai said Degree 0 (correct)",
+        "D": "3^x — Kai said Degree 3 (wrong: 3^x is exponential, not a polynomial at all)"
+      },
+      "kai_answer": "A: no answer; B: degree 4; C: degree 0; D: degree 3",
+      "correct_answer": "A: polynomial, state degree; B: polynomial, degree 2; C: polynomial, degree 0; D: NOT a polynomial (variable in exponent)",
+      "score": 1,
+      "max_score": 4,
+      "result": "partial",
+      "notes": "Only C was correct. Kai missed that (1/3)x^2+(2/3)x is degree 2 (not 4), and that 3^x is exponential not polynomial."
+    },
+    {
+      "number": 3,
+      "parts": ["single"],
+      "description": "Write the equation of the polynomial graphed: touches x-axis at x=1, crosses at x=3 and x=6, passes through (2,36)",
+      "kai_answer": "y = 9(x-1)^2(x-3)(x-6)",
+      "correct_answer": "y = 9(x-1)^2(x-3)(x-6)",
+      "score": 1,
+      "max_score": 1,
+      "result": "correct"
+    },
+    {
+      "number": 4,
+      "parts": ["single"],
+      "description": "Find r given y = (x+r)(x-2)^2 has y-intercept (0,12)",
+      "kai_answer": "r = 3",
+      "correct_answer": "r = 3  [substituting (0,12): 12 = r·(-2)^2 = 4r → r=3]",
+      "score": 1,
+      "max_score": 1,
+      "result": "correct"
+    },
+    {
+      "number": 5,
+      "parts": ["single"],
+      "description": "Expand and simplify to standard form: f(x) = (x-2)^2(5x-18) + some given polynomial setup",
+      "kai_answer": "f(x) = 5x^3 + x^2 - 58x + 72",
+      "correct_answer": "f(x) = 5x^3 + x^2 - 58x + 72",
+      "score": 1,
+      "max_score": 1,
+      "result": "correct"
+    },
+    {
+      "number": 6,
+      "parts": ["single"],
+      "description": "Divide: (x^3 - x^2 - 21x - 9) / (x - 5) using long division",
+      "kai_answer": "x^2 + 4x + 4 + 36/(x-5)",
+      "correct_answer": "x^2 + 4x + 4 + 36/(x-5)",
+      "score": 1,
+      "max_score": 1,
+      "result": "correct"
+    },
+    {
+      "number": 7,
+      "parts": ["single"],
+      "description": "Use the Factor Theorem: is (x+5) a factor of f(x)? Evaluate f(-5).",
+      "kai_answer": "f(-5) = -54, not zero, so (x+5) is NOT a factor",
+      "correct_answer": "f(-5) = -54 ≠ 0, so (x+5) is not a factor",
+      "score": 1,
+      "max_score": 1,
+      "result": "correct"
+    },
+    {
+      "number": 8,
+      "parts": ["a", "b", "c", "d", "e"],
+      "description": "From graph of f(x): describe end behavior, state odd/even degree, positive/negative leading coefficient, state degree, list real zeros",
+      "parts_detail": {
+        "a": "End behavior: as x→-∞, f→+∞; as x→+∞, f→-∞",
+        "b": "Odd degree",
+        "c": "Negative leading coefficient",
+        "d": "Degree 5",
+        "e": "Zeros: x = -4, -1, 1, 3"
+      },
+      "kai_answer": "(a) x to +inf: y to -inf, x to -inf: y to +inf (correct); (b) odd (correct); (c) positive, left down right up (WRONG, should be negative); (d) degree 5 (correct); (e) x=-4,-1,1,3 no multiplicities (WRONG, correct is x=-4 mult 2, x=-1 mult 1, x=2 mult 2)",
+      "correct_answer": "End behavior up-left/down-right; odd; negative LC; degree 5; zeros x=-4 (mult 2), x=-1 (mult 1), x=2 (mult 2)",
+      "score": 3,
+      "max_score": 5,
+      "result": "partial",
+      "notes": "Kai wrote end behavior arrows correctly in (a) but contradicted himself in (c) by saying positive LC. Graph goes up-left/down-right = negative LC. For (e), Kai listed x=-4,-1,1,3 with no multiplicities. Correct zeros are x=-4 (mult 2), x=-1 (mult 1), x=2 (mult 2). He had wrong zeros and missing multiplicities."
+    },
+    {
+      "number": 9,
+      "parts": ["a", "b", "c"],
+      "description": "Factor f(x) = 2x^3 - 8x^2 - 24x completely, write in factored form, find all zeros",
+      "parts_detail": {
+        "a": "Factor: 2x(x-6)(x+2)",
+        "b": "Factored form: f(x) = 2x(x-6)(x+2)",
+        "c": "Zeros: x = 0, 6, -2"
+      },
+      "kai_answer": "2x(x-6)(x+2); zeros x=0, 6, -2",
+      "correct_answer": "2x(x-6)(x+2); zeros x=0, 6, -2",
+      "score": 3,
+      "max_score": 3,
+      "result": "correct"
+    },
+    {
+      "number": 10,
+      "parts": ["single"],
+      "description": "Find all zeros of y = 3x(x+3)^2(x-2)",
+      "kai_answer": "x = 0, -3 (multiplicity 2), 2",
+      "correct_answer": "x = 0, -3 (multiplicity 2), 2",
+      "score": 1,
+      "max_score": 1,
+      "result": "correct"
+    },
+    {
+      "number": 11,
+      "parts": ["single"],
+      "description": "Find all zeros of f(x) = x^3 - 9x^2 + 7x + 14 using the table of values provided",
+      "kai_answer": "x = 2 only",
+      "correct_answer": "x = 2, x = √7, x = -√7  [divide out (x-2), then x^2-7=0 gives x=±√7]",
+      "score": 0,
+      "max_score": 1,
+      "result": "incomplete",
+      "notes": "Kai found x=2 from the table but stopped. Must divide (x-2) out to get x^2-7=0, yielding x=±√7 (irrational real zeros that won't appear in an integer table)."
+    },
+    {
+      "number": 12,
+      "parts": ["single"],
+      "description": "Find ALL zeros of y = x^3 + 8x^2 - 43x + 60 given the graph shows (-12,0) and (0,60)",
+      "kai_answer": "x = -12 only",
+      "correct_answer": "x = -12 (real); x = 2+i, x = 2-i (complex conjugates)  [divide by (x+12), then x^2-4x+5=0 → discriminant -4 → x=2±i]",
+      "score": 0,
+      "max_score": 1,
+      "result": "incomplete",
+      "notes": "Kai found x=-12 from the graph but stopped. Must divide by (x+12) to get x^2-4x+5=0. Discriminant=16-20=-4 (negative), so two complex zeros x=2±i. 'Find all zeros' includes imaginary zeros."
+    }
+  ],
+  "total_score": 15,
+  "max_total": 22,
+  "percent": 68,
+  "letter_grade": "D",
+  "standards_summary": {
+    "S1_polynomial_expressions": "Strong — long division clean, factoring multi-step problems solid",
+    "S2_solving": "Strong — Factor Theorem mastered, factored form reliable",
+    "S3_graphing": "Strong — end behavior, degree, leading coefficient all correct",
+    "S4_polynomial_identification": "Needs work — Q2 shows gaps in explaining WHY something is/isn't a polynomial",
+    "finding_all_zeros": "Incomplete — Q11 and Q12 both show pattern of stopping after first zero instead of continuing to divide and factor"
+  },
+  "focus_areas": [
+    "Q2: Polynomial identification — must explain reasoning, know 3^x is exponential not polynomial, know degree = highest exponent on variable",
+    "Q11 and Q12: Finding ALL zeros — after finding one zero from a table or graph, always divide it out and solve the remaining factor (irrational or complex zeros won't show in tables)"
+  ]
+}

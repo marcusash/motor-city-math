@@ -1,0 +1,114 @@
+{
+  "student": "Kai Ash",
+  "exam": "Unit 1 Practice Test 2",
+  "exam_id": "unit1-practice-test-2",
+  "subject": "Algebra 2 - Polynomial Functions",
+  "graded_by": "FR (OCR pipeline, Marcus confirmed 3 handwriting reads)",
+  "graded_date": "2026-04-06",
+  "questions": [
+    {
+      "id": "q1", "number": 1, "section": "A", "max_score": 2, "score": 2,
+      "student_answer": "x=4 (real), x=3i (complex), x=-3i (complex). Long division by (x-4), quotient x^2+9, solved x^2+9=0.",
+      "notes": "All zeros correct. Division work clean."
+    },
+    {
+      "id": "q2", "number": 2, "section": "A", "max_score": 2, "score": 2,
+      "student_answer": "x=1 (real), x=4 (real), x=+/-sqrt(3) (labeled 'complex'). Division work shown.",
+      "notes": "All 4 zeros found. COACHING: +/-sqrt(3) are irrational REAL numbers, not complex. Complex means it involves i."
+    },
+    {
+      "id": "q3", "number": 3, "section": "A", "max_score": 5, "score": 4,
+      "parts": {
+        "a": { "score": 1, "max": 1, "answer": "x->-inf y->inf, x->inf y->inf", "correct": true },
+        "b": { "score": 1, "max": 1, "answer": "Even - both ends are up", "correct": true },
+        "c": { "score": 1, "max": 1, "answer": "Positive bc even", "correct": true },
+        "d": { "score": 1, "max": 1, "answer": "Smallest degree is 4", "correct": true },
+        "e": { "score": 0, "max": 1, "answer": "x = -3, 0, 3 (no multiplicities)", "correct": false }
+      },
+      "notes": "LOST POINT on (e): Wrote x=-3,0,3 instead of x=-3(m1),x=1(m2),x=4(m1). Misread bounce at x=1 as x=0. Misread crossing at x=4 as x=3. No multiplicities stated."
+    },
+    {
+      "id": "q4", "number": 4, "section": "A", "max_score": 4, "score": 4,
+      "parts": {
+        "a": { "score": 1, "max": 1, "answer": "yes", "correct": true },
+        "b": { "score": 1, "max": 1, "answer": "No, can't have fractional exponents", "correct": true },
+        "c": { "score": 1, "max": 1, "answer": "5^x is an exponential", "correct": true },
+        "d": { "score": 1, "max": 1, "answer": "yes", "correct": true }
+      },
+      "notes": "All 4 correct. COACHING: state degree when answering yes (degree 3 for a, degree 4 for d)."
+    },
+    {
+      "id": "q5", "number": 5, "section": "A", "max_score": 1, "score": 1,
+      "student_answer": "f(-2) = 16+20+6+8 = 50",
+      "notes": "Correct. No sign error this time."
+    },
+    {
+      "id": "q6", "number": 6, "section": "B", "max_score": 2, "score": 1,
+      "student_answer": "Factored: 3x(x+3)(x-2). Zeros: x=0, -3, -2.",
+      "notes": "LOST POINT: Factored form correct (1pt). Zeros wrong (0pt): wrote -2 instead of +2. (x-2)=0 means x=+2. Sign error contradicts own factored form."
+    },
+    {
+      "id": "q7", "number": 7, "section": "B", "max_score": 1, "score": 1,
+      "student_answer": "4x(x-4)(x+1), intermediate 4x(x^2-3x-4)",
+      "notes": "Correct. GCF + quadratic factored."
+    },
+    {
+      "id": "q8", "number": 8, "section": "B", "max_score": 1, "score": 1,
+      "student_answer": "x=0 mult 2, x=5 mult 1, x=-1 mult 3",
+      "notes": "All zeros and multiplicities correct."
+    },
+    {
+      "id": "q9", "number": 9, "section": "C", "max_score": 1, "score": 1,
+      "student_answer": "4x^2 + 3x - 6",
+      "notes": "Correct subtraction order."
+    },
+    {
+      "id": "q10", "number": 10, "section": "C", "max_score": 1, "score": 0,
+      "student_answer": "2x^4y^2(-6x + 5)",
+      "notes": "LOST POINT: Exponent errors in monomial multiplication. (-3x^2y)(4xy^2) = -12x^3y^3, not -12x^5y^2. All terms should be x^3y^3 and combine to -5x^3y^3. Tried factoring instead of combining like terms."
+    },
+    {
+      "id": "q11", "number": 11, "section": "C", "max_score": 1, "score": 1,
+      "student_answer": "Step 1: x^2-x-6. Step 2: 2x^3-x^2-13x-6",
+      "notes": "Correct with intermediate shown."
+    },
+    {
+      "id": "q12", "number": 12, "section": "C", "max_score": 1, "score": 1,
+      "student_answer": "Garden: 2x^2+11x+12. Minus pond: x^2+11x+12. Expansion shown.",
+      "notes": "Correct with expansion."
+    }
+  ],
+  "section_scores": {
+    "A": { "score": 13, "max": 14, "percent": 93, "title": "Zeros, Graphs, Polynomial ID" },
+    "B": { "score": 3, "max": 4, "percent": 75, "title": "Factoring + Finding Zeros" },
+    "C": { "score": 3, "max": 4, "percent": 75, "title": "Operations + Showing Work" }
+  },
+  "total_score": 19,
+  "max_total": 22,
+  "percent": 86,
+  "letter_grade": "B",
+  "improvement": {
+    "unit1_practice_exam": { "score": "15/22", "percent": 68, "grade": "D" },
+    "quiz2_original": { "score": "2.5/7", "percent": 36, "grade": "C" },
+    "quiz1": { "score": "5/8", "percent": 63, "grade": "B" },
+    "this_test": { "score": "19/22", "percent": 86, "grade": "B" },
+    "delta_from_unit_exam": "+18 pts (D -> B)"
+  },
+  "errors_remaining": [
+    {
+      "question": "Q3(e)", "category": "Reading zeros from graphs",
+      "detail": "Misread x-intercepts (0 instead of 1, 3 instead of 4). Omitted multiplicities entirely. Bounce vs cross not applied.",
+      "severity": "high"
+    },
+    {
+      "question": "Q6", "category": "Sign errors (factor to zero)",
+      "detail": "(x-2)=0 solved as x=-2 instead of x=+2. Contradicts own correct factored form. Persistent pattern.",
+      "severity": "medium"
+    },
+    {
+      "question": "Q10", "category": "Exponent rules in monomial multiplication",
+      "detail": "x^2 * x^1 should be x^3 (add exponents). Got x^5. Also factored instead of combining like terms.",
+      "severity": "high"
+    }
+  ]
+}
