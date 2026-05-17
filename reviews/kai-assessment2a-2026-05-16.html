@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="../shared/favicon.svg">
+  <title>Kai: S4 Rational Expressions Assessment 2A Review (2026-05-16)</title>
+  <link rel="stylesheet" href="../shared/katex/katex.min.css">
+  <script src="../shared/katex/katex.min.js"></script>
+  <script src="../shared/katex/auto-render.min.js"></script>
+  <link rel="stylesheet" href="../shared/styles.css">
+  <style>
+    .review-container { max-width: 860px; margin: 0 auto; padding: 24px 16px; }
+    .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: var(--text-sm); font-weight: 600; color: var(--accent-blue); text-decoration: none; margin-bottom: 16px; }
+    .back-link:hover { text-decoration: underline; }
+    .review-header { text-align: center; margin-bottom: 32px; }
+    .review-header h1 { font-size: 1.6rem; font-weight: 800; color: var(--accent-navy); margin: 0 0 4px; }
+    .review-header .meta { color: var(--text-secondary); font-size: var(--text-sm); margin: 0 0 20px; }
+    .score-banner { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 32px; }
+    .score-pill { background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 12px; padding: 14px 24px; text-align: center; min-width: 130px; box-shadow: var(--shadow-card); }
+    .score-pill .label { font-size: var(--text-xs); font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+    .score-pill .value { font-size: 2rem; font-weight: 800; color: var(--accent-navy); line-height: 1; }
+    .score-pill .sub { font-size: var(--text-xs); color: var(--text-secondary); margin-top: 2px; }
+    .score-pill.grade-warn .value { color: var(--color-warning); }
+    .score-pill.grade-bad .value { color: var(--color-incorrect); }
+    .section-row { display: flex; gap: 16px; margin-bottom: 16px; flex-wrap: wrap; }
+    .section-card { flex: 1; min-width: 180px; background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 8px; padding: 16px 20px; box-shadow: var(--shadow-card); }
+    .section-card h3 { margin: 0 0 4px; font-size: var(--text-sm); font-weight: 700; color: var(--accent-navy); text-transform: uppercase; letter-spacing: 0.05em; }
+    .section-card .section-score { font-size: 1.4rem; font-weight: 800; color: var(--accent-navy); }
+    .section-card p { font-size: var(--text-xs); color: var(--text-secondary); margin: 2px 0 0; }
+    .bar { height: 6px; border-radius: 3px; background: var(--border-subtle); margin-top: 8px; overflow: hidden; }
+    .bar-fill { height: 100%; border-radius: 3px; background: var(--accent-blue); }
+    .bar-fill.good { background: var(--color-correct); }
+    .bar-fill.warn { background: var(--color-incorrect); }
+    .bar-fill.mid { background: var(--color-warning); }
+    .pattern-callout { background: var(--color-incorrect-bg); border: 2px solid var(--color-incorrect); border-radius: 10px; padding: 16px 20px; margin: 24px 0 8px; box-shadow: var(--shadow-card); }
+    .pattern-callout .ptitle { font-size: var(--text-xs); font-weight: 800; color: var(--color-incorrect); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
+    .pattern-callout .pname { font-size: 1.05rem; font-weight: 800; color: var(--accent-navy); margin-bottom: 8px; }
+    .pattern-callout .paffected { font-size: var(--text-sm); color: var(--text-secondary); margin-bottom: 8px; }
+    .pattern-callout .paffected strong { color: var(--color-incorrect); }
+    .pattern-callout p { font-size: var(--text-sm); color: var(--text-primary); margin: 0; }
+    h2.section-label { font-size: var(--text-sm); font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.08em; margin: 32px 0 12px; padding-bottom: 8px; border-bottom: 2px solid var(--border-subtle); }
+    .q-card { background: var(--bg-card); border: 1px solid var(--border-default); border-left: 4px solid var(--border-default); border-radius: 8px; padding: 18px 20px; margin-bottom: 14px; box-shadow: var(--shadow-card); }
+    .q-card.correct { border-left-color: var(--color-correct); }
+    .q-card.partial { border-left-color: var(--color-warning); }
+    .q-card.incorrect { border-left-color: var(--color-incorrect); }
+    .q-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; flex-wrap: wrap; }
+    .q-num { font-weight: 800; color: var(--accent-navy); font-size: 1rem; }
+    .q-badge { font-size: var(--text-xs); font-weight: 700; padding: 2px 8px; border-radius: 10px; }
+    .badge-standard { background: var(--bg-highlight); color: var(--accent-blue); }
+    .badge-score { margin-left: auto; font-size: 0.95rem; font-weight: 800; }
+    .badge-score.s-full { color: var(--color-correct); }
+    .badge-score.s-partial { color: var(--color-warning); }
+    .badge-score.s-zero { color: var(--color-incorrect); }
+    .q-problem { font-size: var(--text-base); color: var(--text-primary); margin-bottom: 12px; }
+    .answer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+    @media (max-width: 600px) { .answer-grid { grid-template-columns: 1fr; } }
+    .answer-box { padding: 10px 14px; border-radius: 6px; font-size: var(--text-sm); }
+    .answer-box .alabel { font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+    .answer-box.kai-box { background: rgba(29,66,186,0.06); border: 1px solid rgba(29,66,186,0.2); }
+    .answer-box.kai-box .alabel { color: var(--accent-blue); }
+    .answer-box.correct-box { background: var(--color-correct-bg); border: 1px solid rgba(27,125,58,0.2); }
+    .answer-box.correct-box .alabel { color: var(--color-correct); }
+    .error-note { background: var(--color-incorrect-bg); border: 1px solid rgba(200,16,46,0.2); border-radius: 6px; padding: 10px 14px; font-size: var(--text-sm); color: var(--text-primary); margin-bottom: 8px; }
+    .error-note .elabel { font-size: var(--text-xs); font-weight: 700; color: var(--color-incorrect); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+    .teacher-note { background: rgba(255,203,5,0.12); border: 1px solid rgba(255,203,5,0.4); border-radius: 6px; padding: 8px 14px; font-size: var(--text-sm); color: var(--text-primary); margin-top: 8px; }
+    .teacher-note .tlabel { font-size: var(--text-xs); font-weight: 700; color: #b8860b; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2px; }
+    .coaching-note { background: rgba(29,66,186,0.06); border: 1px solid rgba(29,66,186,0.2); border-radius: 6px; padding: 8px 14px; font-size: var(--text-sm); color: var(--text-primary); margin-top: 8px; }
+    .coaching-note .clabel { font-size: var(--text-xs); font-weight: 700; color: var(--accent-blue); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2px; }
+    .footer-note { text-align: center; font-size: var(--text-xs); color: var(--text-secondary); margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--border-subtle); }
+  </style>
+</head>
+<body>
+<div class="review-container">
+
+  <a href="../index.html" class="back-link">&larr; Back to Dashboard</a>
+
+  <div class="review-header">
+    <h1>Algebra 2: S4 Manipulating Rational Expressions</h1>
+    <p class="meta">Kai Ash &bull; Assessment 2A &bull; 2026-05-16</p>
+  </div>
+
+  <!-- Score Banner -->
+  <div class="score-banner">
+    <div class="score-pill">
+      <div class="label">Raw Score</div>
+      <div class="value">7/16</div>
+      <div class="sub">44%</div>
+    </div>
+    <div class="score-pill grade-warn">
+      <div class="label">Teacher Grade</div>
+      <div class="value">3/4</div>
+      <div class="sub">Approaching</div>
+    </div>
+    <div class="score-pill grade-bad">
+      <div class="label">Points Lost</div>
+      <div class="value">9</div>
+      <div class="sub">across 9 questions</div>
+    </div>
+  </div>
+
+  <!-- Section Cards -->
+  <div class="section-row">
+    <div class="section-card">
+      <h3>S4.a: Multiply / Divide</h3>
+      <div class="section-score">3 / 6</div>
+      <p>50% &bull; Q6a, Q6b, Q7, Q8, Q9, Q12</p>
+      <div class="bar"><div class="bar-fill warn" style="width:50%"></div></div>
+    </div>
+    <div class="section-card">
+      <h3>S4.b: Add / Subtract</h3>
+      <div class="section-score">0 / 3</div>
+      <p>0% &bull; Q6c, Q10, Q11</p>
+      <div class="bar"><div class="bar-fill warn" style="width:4%"></div></div>
+    </div>
+    <div class="section-card">
+      <h3>S5.d: Simplify</h3>
+      <div class="section-score">3 / 5</div>
+      <p>60% &bull; Q1, Q2, Q3, Q4, Q5</p>
+      <div class="bar"><div class="bar-fill mid" style="width:60%"></div></div>
+    </div>
+    <div class="section-card">
+      <h3>Other</h3>
+      <div class="section-score">1 / 2</div>
+      <p>50% &bull; Q13, Q14</p>
+      <div class="bar"><div class="bar-fill warn" style="width:50%"></div></div>
+    </div>
+  </div>
+
+  <!-- Pattern Callout -->
+  <div class="pattern-callout">
+    <div class="ptitle">Dominant Error Pattern &mdash; Study This First</div>
+    <div class="pname">Illegal Term-by-Term Cancellation</div>
+    <div class="paffected">Affected questions: <strong>Q6c, Q7, Q8, Q13</strong> &mdash; 4 of the 9 points lost.</div>
+    <p>Cancelling individual terms (like \(x\) or \(x^2\)) from numerator and denominator instead of factoring first, then cancelling common factors. Ironic: Q1 tests this exact concept and Kai answered it correctly &mdash; but repeated the mistake himself on 4 other questions. <strong>Rule: only cancel factors of the entire expression, never individual terms.</strong></p>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- ERRORS -->
+  <!-- ============================================ -->
+  <h2 class="section-label">Errors &mdash; 9 Points Lost</h2>
+
+  <!-- Q2 -->
+  <div class="q-card incorrect">
+    <div class="q-header">
+      <span class="q-num">Q2</span>
+      <span class="q-badge badge-standard">S5.d</span>
+      <span class="q-badge badge-standard">factor-simplify</span>
+      <span class="q-badge badge-standard">difference of squares</span>
+      <span class="badge-score s-zero">0 / 1</span>
+    </div>
+    <div class="q-problem">Simplify \(\dfrac{x^2+x}{x^2-1}\).</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        \(\dfrac{x+1}{x-1}\)
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        \(\dfrac{x}{x-1}\)
+      </div>
+    </div>
+    <div class="error-note">
+      <div class="elabel">Didn't factor denominator as difference of squares</div>
+      Kai factored the numerator as \(x(x+1)\) but dropped the \(x\), and didn't recognize \(x^2-1\) as a difference of squares \((x+1)(x-1)\). The pattern \(a^2-b^2=(a+b)(a-b)\) applies even when there's no middle \(x\) term &mdash; that's the hallmark of difference of squares. Factor both top and bottom completely, then cancel the common \((x+1)\) factor.
+    </div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="q-card incorrect">
+    <div class="q-header">
+      <span class="q-num">Q5</span>
+      <span class="q-badge badge-standard">S5.d</span>
+      <span class="q-badge badge-standard">expand-simplify</span>
+      <span class="q-badge badge-standard">factoring from numerator</span>
+      <span class="badge-score s-zero">0 / 1</span>
+    </div>
+    <div class="q-problem">Simplify \(\dfrac{3(2x+1)^2 - 6x - 3}{(2x+1)^3}\).</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        \(\dfrac{6x}{2x+1}\)
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        \(\dfrac{6x}{(2x+1)^2}\)
+      </div>
+    </div>
+    <div class="error-note">
+      <div class="elabel">Didn't properly factor (2x+1) from numerator</div>
+      The numerator expands to \(3(4x^2+4x+1)-6x-3 = 12x^2+12x+3-6x-3 = 12x^2+6x = 6x(2x+1)\). That single \((2x+1)\) cancels one factor from \((2x+1)^3\), leaving \((2x+1)^2\) in the denominator. Kai got the numerator right but cancelled one too many \((2x+1)\) factors. Track the exponent: \((2x+1)^3\) minus one cancelled gives \((2x+1)^2\), not \((2x+1)^1\).
+    </div>
+  </div>
+
+  <!-- Q6c -->
+  <div class="q-card incorrect">
+    <div class="q-header">
+      <span class="q-num">Q6c</span>
+      <span class="q-badge badge-standard">S4.b</span>
+      <span class="q-badge badge-standard">add fractions</span>
+      <span class="q-badge badge-standard">illegal cancellation</span>
+      <span class="badge-score s-zero">0 / 1</span>
+    </div>
+    <div class="q-problem">Let \(f(x)=\dfrac{3}{12x^4}\) and \(g(x)=\dfrac{2x}{4x^3}\). Find \(f(x)+g(x)\).</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        \(\dfrac{3+6x^2}{12x^4}\)
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        \(\dfrac{2x^2+1}{4x^4}\)
+      </div>
+    </div>
+    <div class="error-note">
+      <div class="elabel">Illegal cancellation &mdash; x&sup2; not a factor of every term</div>
+      Kai correctly found the LCD and combined: \(\frac{3+6x^2}{12x^4}\). That's a valid unsimplified form. But then tried to cancel \(x^2\) from the numerator and denominator. You can only cancel factors of the entire numerator, not individual terms. The correct simplification: factor 3 from the top: \(\frac{3(1+2x^2)}{12x^4} = \frac{2x^2+1}{4x^4}\).
+    </div>
+    <div class="teacher-note">
+      <div class="tlabel">Teacher Note</div>
+      &ldquo;can't cancel x&sup2; here, not a factor of 3&rdquo;
+    </div>
+  </div>
+
+  <!-- Q7 -->
+  <div class="q-card incorrect">
+    <div class="q-header">
+      <span class="q-num">Q7</span>
+      <span class="q-badge badge-standard">S4.a</span>
+      <span class="q-badge badge-standard">multiply-simplify</span>
+      <span class="q-badge badge-standard">illegal cancellation</span>
+      <span class="badge-score s-zero">0 / 1</span>
+    </div>
+    <div class="q-problem">Multiply and simplify: \(\dfrac{3x^2-12x}{3x+5} \cdot \dfrac{x-2}{x^2-6x+8}\).</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        \(\dfrac{3x}{3x+5} = \dfrac{3}{8}\)
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        \(\dfrac{3x}{3x+5}\)
+      </div>
+    </div>
+    <div class="error-note">
+      <div class="elabel">Illegal cancel &mdash; x is not a factor of (3x+5)</div>
+      Kai correctly factored and simplified to \(\frac{3x}{3x+5}\) &mdash; that IS the final answer. But then illegally cancelled \(x\) from \(3x\) and \(3x+5\) to get \(\frac{3}{3+5}=\frac{3}{8}\). You can only cancel factors of the entire expression. Since \(3x+5\) doesn't factor further and \(x\) is not a factor of it, no more cancellation is possible. Stop when nothing else factors.
+    </div>
+    <div class="teacher-note">
+      <div class="tlabel">Teacher Note</div>
+      &ldquo;illegal cancel not a factor of everything&rdquo;
+    </div>
+  </div>
+
+  <!-- Q8 -->
+  <div class="q-card incorrect">
+    <div class="q-header">
+      <span class="q-num">Q8</span>
+      <span class="q-badge badge-standard">S4.a</span>
+      <span class="q-badge badge-standard">divide-simplify</span>
+      <span class="q-badge badge-standard">illegal cancellation</span>
+      <span class="badge-score s-zero">0 / 1</span>
+    </div>
+    <div class="q-problem">Divide and simplify: \(\dfrac{2x^2+4x}{(x+3)^2} \div \dfrac{x^2+4x+3}{x+3}\).</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        \(\dfrac{2(x+1)}{3}\)
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        \(\dfrac{2x(x+1)}{x+3}\)
+      </div>
+    </div>
+    <div class="error-note">
+      <div class="elabel">Illegal cancel &mdash; x is not a factor of (x+3)</div>
+      Kai correctly simplified to \(\frac{2x(x+1)}{x+3}\) &mdash; that's the final answer, fully reduced. But then illegally cancelled \(x\) from \(2x\) and \((x+3)\) to get \(\frac{2(x+1)}{3}\). Same pattern as Q7: \(x\) is a factor of \(2x\) but not of \((x+3)\), so no cancellation is possible. The expression was already done &mdash; no final step needed.
+    </div>
+    <div class="teacher-note">
+      <div class="tlabel">Teacher Note</div>
+      &ldquo;illegit!&rdquo;
+    </div>
+  </div>
+
+  <!-- Q10 -->
+  <div class="q-card incorrect">
+    <div class="q-header">
+      <span class="q-num">Q10</span>
+      <span class="q-badge badge-standard">S4.b</span>
+      <span class="q-badge badge-standard">subtract-rational</span>
+      <span class="q-badge badge-standard">LCD</span>
+      <span class="badge-score s-zero">0 / 1</span>
+    </div>
+    <div class="q-problem">Subtract and simplify by making the least common denominator: \(\dfrac{x}{x+1} - \dfrac{x^2-3x-5}{x^2+5x+4}\).</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        Blank &mdash; no answer submitted.
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        \(\dfrac{7x+5}{(x+1)(x+4)}\)
+      </div>
+    </div>
+    <div class="error-note">
+      <div class="elabel">No answer submitted</div>
+      Kai left this blank on the test. The key skill: factor the more complex denominator to find the LCD, rewrite each fraction, then combine. Step by step: factor \(x^2+5x+4=(x+1)(x+4)\), so the LCD is \((x+1)(x+4)\). Rewrite: \(\frac{x(x+4)}{(x+1)(x+4)} - \frac{x^2-3x-5}{(x+1)(x+4)} = \frac{x^2+4x-x^2+3x+5}{(x+1)(x+4)} = \frac{7x+5}{(x+1)(x+4)}\). Watch the minus sign &mdash; distribute it across every term of the second numerator.
+    </div>
+  </div>
+
+  <!-- Q11 -->
+  <div class="q-card incorrect">
+    <div class="q-header">
+      <span class="q-num">Q11</span>
+      <span class="q-badge badge-standard">S4.b</span>
+      <span class="q-badge badge-standard">add-rational</span>
+      <span class="q-badge badge-standard">complex fraction</span>
+      <span class="badge-score s-zero">0 / 1</span>
+    </div>
+    <div class="q-problem">If \(x > 3\), which of the following is equivalent to \(\dfrac{1}{\frac{1}{x+2}+\frac{1}{x+3}}\)?</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        E) None of the above
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        B) \(\dfrac{x^2+5x+6}{2x+5}\)
+      </div>
+    </div>
+    <div class="error-note">
+      <div class="elabel">Didn't simplify the complex fraction</div>
+      This is a complex fraction. First add the fractions in the denominator: \(\frac{1}{x+2}+\frac{1}{x+3}=\frac{2x+5}{(x+2)(x+3)}\). Then flip: \(\frac{1}{\frac{2x+5}{(x+2)(x+3)}} = \frac{(x+2)(x+3)}{2x+5} = \frac{x^2+5x+6}{2x+5}\). That's choice B.
+    </div>
+  </div>
+
+  <!-- Q13 -->
+  <div class="q-card incorrect">
+    <div class="q-header">
+      <span class="q-num">Q13</span>
+      <span class="q-badge badge-standard">S5.d</span>
+      <span class="q-badge badge-standard">simplify-quotient</span>
+      <span class="q-badge badge-standard">term-by-term cancellation</span>
+      <span class="badge-score s-zero">0 / 1</span>
+    </div>
+    <div class="q-problem">If \(h(x) = x^3 - 9x\) and \(k(x) = x^2 - 2x - 3\), write a simplified expression for \(\dfrac{h(x)}{k(x)}\).</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        \(\dfrac{-8x}{-2x-3}\)
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        \(\dfrac{x(x+3)}{x+1}\)
+      </div>
+    </div>
+    <div class="error-note">
+      <div class="elabel">Critical: term-by-term cancellation instead of factoring</div>
+      Kai subtracted \(x^2\) from numerator and denominator as if cancelling: \(x^3-9x \to -8x\) and \(x^2-2x-3 \to -2x-3\). This is not how simplification works. You must FACTOR first, then cancel common factors. Correct: \(\frac{x(x+3)(x-3)}{(x-3)(x+1)}\), cancel \((x-3)\), giving \(\frac{x(x+3)}{x+1}\). Never subtract or remove terms from a fraction &mdash; only cancel factors.
+    </div>
+    <div class="coaching-note">
+      <div class="clabel">Coaching Note</div>
+      This is the same conceptual error tested in Q1 (Kyeung-min's mistake). Kai correctly identified the error in Q1 but made it himself in Q13, Q7, Q8, and Q6c.
+    </div>
+  </div>
+
+  <!-- Q14 -->
+  <div class="q-card incorrect">
+    <div class="q-header">
+      <span class="q-num">Q14</span>
+      <span class="q-badge badge-standard">other</span>
+      <span class="q-badge badge-standard">difference quotient</span>
+      <span class="q-badge badge-standard">expansion error</span>
+      <span class="badge-score s-zero">0 / 1</span>
+    </div>
+    <div class="q-problem">Simplify: \(\dfrac{2(x+h)^2 - 3(x+h) - (2x^2 - 3x)}{h}\).</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        \(4x^2 - 2x + 2h - 3\)
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        \(4x + 2h - 3\)
+      </div>
+    </div>
+    <div class="error-note">
+      <div class="elabel">Expansion error in 2(x+h)&sup2;</div>
+      Expand step by step: \((x+h)^2 = x^2+2xh+h^2\), then \(2(x+h)^2 = 2x^2+4xh+2h^2\). Subtract \(3(x+h) = 3x+3h\). Subtract \((2x^2-3x)\). The \(2x^2\) and \(-2x^2\) cancel, the \(-3x\) and \(+3x\) cancel, leaving \(4xh+2h^2-3h\). Factor out \(h\): \(h(4x+2h-3)\). Divide by \(h\): \(4x+2h-3\). Kai's \(x^2\) and \(x\) terms should have cancelled but didn't &mdash; the expansion of \(2(x+h)^2\) went wrong.
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- CORRECT -->
+  <!-- ============================================ -->
+  <h2 class="section-label">Correct &mdash; 7 of 16 Points</h2>
+
+  <!-- Q1 -->
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q1</span>
+      <span class="q-badge badge-standard">S5.d</span>
+      <span class="q-badge badge-standard">error analysis</span>
+      <span class="badge-score s-full">1 / 1</span>
+    </div>
+    <div class="q-problem">Kyeung-min simplifies \(\dfrac{x^2+x}{x+1} = \dfrac{x}{-1} = -x\). Explain her mistake(s).</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        &ldquo;Can't cancel the x&sup2;, and you can't divide x by &minus;1 or any number&rdquo;
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        Factor numerator: \(x(x+1)\). Cancel \((x+1)\): result is \(x\). Kyeung-min incorrectly subtracted terms instead of factoring and cancelling.
+      </div>
+    </div>
+    <div class="coaching-note">
+      <div class="clabel">Coaching Note</div>
+      Kai correctly identified the error here but made the same type of mistake himself on Q13, Q7, Q8, and Q6c.
+    </div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q3</span>
+      <span class="q-badge badge-standard">S5.d</span>
+      <span class="q-badge badge-standard">factor-simplify</span>
+      <span class="badge-score s-full">1 / 1</span>
+    </div>
+    <div class="q-problem">Simplify \(\dfrac{x^2+x-6}{x^2-6x+9}\).</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        \(\dfrac{(x+3)(x-2)}{(x-3)^2}\)
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        \(\dfrac{(x+3)(x-2)}{(x-3)^2}\)
+      </div>
+    </div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q4</span>
+      <span class="q-badge badge-standard">S5.d</span>
+      <span class="q-badge badge-standard">factor-simplify</span>
+      <span class="badge-score s-full">1 / 1</span>
+    </div>
+    <div class="q-problem">Simplify \(\dfrac{(x+3)^2}{2x^2+11x+15}\).</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        \(\dfrac{x+3}{2x+5}\)
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        \(\dfrac{x+3}{2x+5}\)
+      </div>
+    </div>
+  </div>
+
+  <!-- Q6a -->
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q6a</span>
+      <span class="q-badge badge-standard">S4.a</span>
+      <span class="q-badge badge-standard">multiply rational</span>
+      <span class="badge-score s-full">1 / 1</span>
+    </div>
+    <div class="q-problem">Let \(f(x)=\dfrac{3}{12x^4}\) and \(g(x)=\dfrac{2x}{4x^3}\). Find \(f(x) \cdot g(x)\).</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        \(\dfrac{1}{8x^6}\)
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        \(\dfrac{1}{8x^6}\)
+      </div>
+    </div>
+  </div>
+
+  <!-- Q6b -->
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q6b</span>
+      <span class="q-badge badge-standard">S4.a</span>
+      <span class="q-badge badge-standard">divide rational</span>
+      <span class="badge-score s-full">1 / 1</span>
+    </div>
+    <div class="q-problem">Find \(\dfrac{f(x)}{g(x)}\) where \(f(x)=\dfrac{3}{12x^4}\) and \(g(x)=\dfrac{2x}{4x^3}\).</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        \(\dfrac{1}{2x^2}\)
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        \(\dfrac{1}{2x^2}\)
+      </div>
+    </div>
+  </div>
+
+  <!-- Q9 -->
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q9</span>
+      <span class="q-badge badge-standard">S4.a</span>
+      <span class="q-badge badge-standard">add and simplify</span>
+      <span class="badge-score s-full">1 / 1</span>
+    </div>
+    <div class="q-problem">Add and simplify rational expressions.</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        \(\dfrac{x^2+2x-10}{x^2+6x+8}\)
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        \(\dfrac{x^2+2x-10}{x^2+6x+8}\)
+      </div>
+    </div>
+  </div>
+
+  <!-- Q12 -->
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q12</span>
+      <span class="q-badge badge-standard">S4.a</span>
+      <span class="q-badge badge-standard">solve for constant</span>
+      <span class="badge-score s-full">1 / 1</span>
+    </div>
+    <div class="q-problem">The expression \(\dfrac{3x+4}{(x-3)^2} - \dfrac{3}{x-3}\) is equivalent to \(\dfrac{a}{(x-3)^2}\). Find \(a\).</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        \(a = 13\)
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        \(a = 13\)
+      </div>
+    </div>
+  </div>
+
+  <p class="footer-note">Graded by FR from test photos and Marcus confirmation. Score data: <code>scores/school-assessment2a-2026-05-16.json</code>.</p>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: '$$', right: '$$', display: true },
+        { left: '\\(', right: '\\)', display: false }
+      ],
+      throwOnError: false
+    });
+  });
+</script>
+</body>
+</html>
