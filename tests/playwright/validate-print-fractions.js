@@ -126,6 +126,21 @@ function normalizeText(s) {
     console.log('Screenshotting print view...');
     await popup.screenshot({ path: path.join(ARTIFACTS, '01-full-print-view.png'), fullPage: true });
 
+    // ── Step 3b: Emulate PRINT MEDIA and screenshot + PDF ──
+    console.log('Emulating @media print and re-screenshotting...');
+    await popup.emulateMedia({ media: 'print' });
+    await popup.waitForTimeout(500);
+    await popup.screenshot({ path: path.join(ARTIFACTS, '02-print-media-emulated.png'), fullPage: true });
+
+    // Generate actual PDF (what user sees when they hit Print)
+    console.log('Generating PDF (actual print output)...');
+    await popup.pdf({
+        path: path.join(ARTIFACTS, '03-actual-print.pdf'),
+        format: 'Letter',
+        printBackground: true,
+        margin: { top: '1.8cm', bottom: '1.8cm', left: '1.8cm', right: '1.8cm' },
+    });
+
     // ── Step 4: Validate each question's fractions ──
     console.log('\n=== VALIDATING FRACTIONS ===');
     let totalChecks = 0;
