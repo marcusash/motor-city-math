@@ -422,6 +422,10 @@
         "mcm-s1-practice-2": {
             "attempts": [{ "score": 6, "total": 7, "pct": 86, "grade": 3, "timestamp": "2026-03-17T04:13:00Z" }],
             "best": { "score": 6, "pct": 86, "grade": 3 }
+        },
+        "school-assessment2a-2026-05-16": {
+            "attempts": [{ "score": 7, "total": 16, "pct": 44, "grade": 1, "teacher_grade": "3/4", "timestamp": "2026-05-16T22:00:00Z" }],
+            "best": { "score": 7, "pct": 44, "grade": 1, "teacher_grade": "3/4" }
         }
     };
 
@@ -550,6 +554,8 @@
     <script>
     /* ========== TEST REGISTRY ========== */
     var tests = [
+        { file: null, name: 'S4 Assessment 2A', unit: 'spring-s4', trimester: 'spring', key: 'school-assessment2a-2026-05-16', questions: 16, benchmark: true, teacherGrade: '3/4', teacherRating: '3/4' },
+        { file: 'exam.html?file=s4-assessment-drill-1', name: 'S4 Gap Drill', unit: 'spring-s4', trimester: 'spring', key: 'mcm-s4-assessment-drill-1', questions: 12 },
         { file: 'reviews/kai-unit1-practice-test-2-2026-04-06.html', name: 'U1 Practice Test 2', unit: 'spring-s1', trimester: 'spring', key: 'unit1-practice-test-2', questions: 12, benchmark: true, teacherGrade: 'B' },
         { file: 'tests/kai-unit1-practice-test-4.html', name: 'U1 Practice Test 4', unit: 'spring-s1', trimester: 'spring', key: 'unit1-practice-test-4', questions: 4 },
         { file: 'tests/kai-unit1-practice-test-3.html', name: 'U1 Practice Test 3', unit: 'spring-s1', trimester: 'spring', key: 'unit1-practice-test-3', questions: 12 },
@@ -741,6 +747,8 @@
             if (short.indexOf('Poly Long Division') !== -1) short = 'PLD';
             if (short.indexOf('Division Practice') !== -1) short = 'DP';
             if (short.indexOf("'07 Poly") !== -1) short = 'S07';
+            if (short.indexOf('Assessment 2A') !== -1) short = 'A2';
+            if (short.indexOf('Gap Drill') !== -1) short = 'GD';
             raw.push({ label: short, sublabel: dateStr, fa: fa, ts: ts });
         });
         raw.sort(function(a, b) { return a.ts - b.ts; });
@@ -1010,17 +1018,22 @@
                 }
                 if (pct !== null) {
                     if (t.benchmark) {
-                        // Teacher quiz: grade pill color by letter grade
+                        // Teacher quiz/assessment: grade pill color by letter or numeric grade
                         var rawScore = att ? (att.score + '/' + att.total) : '';
                         var tg = (att && att.teacher_grade) || t.teacherGrade || '';
                         scoreHtml = '<span class="test-score mid">' + pct + '%</span>';
                         if (tg) {
-                            var pillColor = tg === 'A' ? '#3FB950' : (tg === 'B' ? '#d29922' : '#f85149');
-                            var pillBg = tg === 'A' ? 'rgba(63,185,80,0.15)' : (tg === 'B' ? 'rgba(210,153,34,0.15)' : 'rgba(248,81,73,0.15)');
-                            var pillBorder = tg === 'A' ? 'rgba(63,185,80,0.3)' : (tg === 'B' ? 'rgba(210,153,34,0.3)' : 'rgba(248,81,73,0.3)');
+                            // Map numeric ratings to colors: 4/4=green, 3/4=amber, else red
+                            var isGreen = tg === 'A' || tg === '4/4';
+                            var isAmber = tg === 'B' || tg === '3/4';
+                            var pillColor = isGreen ? '#3FB950' : (isAmber ? '#d29922' : '#f85149');
+                            var pillBg = isGreen ? 'rgba(63,185,80,0.15)' : (isAmber ? 'rgba(210,153,34,0.15)' : 'rgba(248,81,73,0.15)');
+                            var pillBorder = isGreen ? 'rgba(63,185,80,0.3)' : (isAmber ? 'rgba(210,153,34,0.3)' : 'rgba(248,81,73,0.3)');
                             scoreHtml += '<span style="position:absolute;top:14px;right:14px;background:'+pillBg+';color:'+pillColor+';font-size:11px;font-weight:700;padding:3px 10px;border-radius:12px;border:1px solid '+pillBorder+';font-family:var(--font-body);letter-spacing:0.3px;">' + tg + '</span>';
+                            borderColor = isGreen ? 'var(--color-correct)' : (isAmber ? '#d29922' : 'var(--accent-red)');
                         }
-                        metaLabel = 'Teacher Quiz · ' + rawScore;
+                        var benchLabel = (t.name && t.name.indexOf('Assessment') !== -1) ? 'Teacher Assessment' : 'Teacher Quiz';
+                        metaLabel = benchLabel + ' · ' + rawScore;
                     } else if (t.homework) {
                         // Homework: green border for 100%, show raw score
                         var scoreClass = pct >= 92 ? '' : (pct >= 70 ? ' mid' : ' low');
@@ -1036,9 +1049,11 @@
                     }
                 }
             }
-            html += '<a href="' + t.file + '" class="test-link" style="position:relative;">' +
+            var href = t.file ? (' href="' + t.file + '"') : '';
+            var unitLabel = t.unit === 'spring-s4' ? 'S4.a &amp; S4.b · Rational Expressions' : 'S1.a &amp; S1.b · Polynomials';
+            html += '<a' + href + ' class="test-link" style="position:relative;border-left:4px solid ' + borderColor + ';">' +
                 t.name + scoreHtml +
-                '<div class="test-meta">' + metaLabel + ' · S1.a &amp; S1.b · Polynomials</div></a>';
+                '<div class="test-meta">' + metaLabel + ' · ' + unitLabel + '</div></a>';
         });
         grid.innerHTML = html || '<div class="empty-state" style="padding:16px;color:var(--text-secondary);">No Spring tests yet.</div>';
     }

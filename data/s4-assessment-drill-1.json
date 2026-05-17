@@ -1,0 +1,283 @@
+{
+  "exam_id": "s4-assessment-drill-1",
+  "schema_version": "1.0",
+  "title": "S4 Rational Expressions: Gap Drill",
+  "subtitle": "Factor-First · LCD · Sign Distribution · 12 Questions · ~45 min",
+  "time_minutes": 45,
+  "created": "2026-05-16",
+  "created_by": "FR",
+  "purpose": "Targeted drill built from Assessment 2A misses (7/16, 44%). Three gap areas: (1) factor-first simplification — Kai tried term-by-term cancellation on Q13, fundamental misconception; (2) LCD addition/subtraction — 25% on S4.b; (3) sign distribution errors on subtraction/expansion. Weighted 5-4-3 toward factoring since it's foundational.",
+  "questions": [
+    {
+      "id": "s4d-q1",
+      "number": 1,
+      "section": "A",
+      "standard": "S4.a",
+      "difficulty": "medium",
+      "type": "factor-then-simplify",
+      "question_html": "Simplify by factoring first:<br>\\( \\dfrac{x^2 - 4}{x^2 + 5x + 6} \\)",
+      "inputs": [
+        { "id": "s4d-q1_ans", "type": "text", "label": "Answer =", "answer": "(x-2)/(x+3)", "normalize": "rational" }
+      ],
+      "hint": "Factor BOTH the numerator and denominator completely before canceling anything. Top is a difference of squares. Bottom is a trinomial.",
+      "solution_steps": [
+        "Numerator: x^2 - 4 = (x+2)(x-2)         [difference of squares]",
+        "Denominator: x^2 + 5x + 6 = (x+2)(x+3)   [factor trinomial]",
+        "(x+2)(x-2) / (x+2)(x+3)",
+        "Cancel (x+2):",
+        "= (x-2)/(x+3)"
+      ],
+      "feedback_correct": "Factor first, cancel second. Never cancel individual terms.",
+      "feedback_wrong": "Factor top: (x+2)(x-2). Factor bottom: (x+2)(x+3). Cancel the (x+2). Answer: (x-2)/(x+3)."
+    },
+    {
+      "id": "s4d-q2",
+      "number": 2,
+      "section": "A",
+      "standard": "S5.d",
+      "difficulty": "hard",
+      "type": "factor-then-simplify",
+      "question_html": "Simplify by factoring first:<br>\\( \\dfrac{x^3 - 4x}{x^2 - x - 2} \\)",
+      "inputs": [
+        { "id": "s4d-q2_ans", "type": "text", "label": "Answer =", "answer": "x(x+2)/(x+1)", "normalize": "rational" }
+      ],
+      "hint": "Top: pull out x first, then factor what's left. Bottom: factor the trinomial. Do NOT cancel x^3 → x or x^2 → 1. That's not how fractions work.",
+      "solution_steps": [
+        "Numerator: x^3 - 4x = x(x^2 - 4) = x(x-2)(x+2)    [GCF then diff of squares]",
+        "Denominator: x^2 - x - 2 = (x-2)(x+1)                [factor trinomial]",
+        "x(x-2)(x+2) / (x-2)(x+1)",
+        "Cancel (x-2):",
+        "= x(x+2)/(x+1)"
+      ],
+      "feedback_correct": "GCF first, then difference of squares. Cancel common FACTORS only.",
+      "feedback_wrong": "Top: x(x^2-4) = x(x-2)(x+2). Bottom: (x-2)(x+1). Cancel (x-2). Answer: x(x+2)/(x+1). You CANNOT cancel individual terms like x^3→x."
+    },
+    {
+      "id": "s4d-q3",
+      "number": 3,
+      "section": "A",
+      "standard": "S5.d",
+      "difficulty": "hard",
+      "type": "factor-then-simplify",
+      "question_html": "Simplify by factoring first:<br>\\( \\dfrac{x^2 + x}{x^2 - 1} \\)<br><em>Reminder: Factor completely before canceling.</em>",
+      "inputs": [
+        { "id": "s4d-q3_ans", "type": "text", "label": "Answer =", "answer": "x/(x-1)", "normalize": "rational" }
+      ],
+      "hint": "Top: factor out x. Bottom: difference of squares. Then cancel the common factor.",
+      "solution_steps": [
+        "Numerator: x^2 + x = x(x+1)           [GCF]",
+        "Denominator: x^2 - 1 = (x+1)(x-1)     [difference of squares]",
+        "x(x+1) / (x+1)(x-1)",
+        "Cancel (x+1):",
+        "= x/(x-1)"
+      ],
+      "feedback_correct": "This is similar to Assessment Q1. Factor both, cancel (x+1).",
+      "feedback_wrong": "Top: x(x+1). Bottom: (x+1)(x-1). Cancel (x+1). Answer: x/(x-1). NOT x/(x-1) = -1."
+    },
+    {
+      "id": "s4d-q4",
+      "number": 4,
+      "section": "A",
+      "standard": "S4.a",
+      "difficulty": "hard",
+      "type": "factor-then-simplify",
+      "question_html": "Simplify by factoring first:<br>\\( \\dfrac{2x^2 - 8}{x^2 - 6x + 8} \\)",
+      "inputs": [
+        { "id": "s4d-q4_ans", "type": "text", "label": "Answer =", "answer": "2(x+2)/(x-2) or (2x+4)/(x-2)", "normalize": "rational" }
+      ],
+      "hint": "Top: GCF of 2, then difference of squares. Bottom: factor the trinomial — what two numbers multiply to 8 and add to -6?",
+      "solution_steps": [
+        "Numerator: 2x^2 - 8 = 2(x^2 - 4) = 2(x+2)(x-2)     [GCF then diff of squares]",
+        "Denominator: x^2 - 6x + 8 = (x-4)(x-2)                [factor: -4 x -2 = 8, -4 + -2 = -6]",
+        "2(x+2)(x-2) / (x-4)(x-2)",
+        "Cancel (x-2):",
+        "= 2(x+2)/(x-4)"
+      ],
+      "feedback_correct": "GCF first! 2(x+2)(x-2) over (x-4)(x-2). Cancel (x-2).",
+      "feedback_wrong": "Top: 2(x^2-4) = 2(x+2)(x-2). Bottom: (x-4)(x-2). Cancel (x-2). Answer: 2(x+2)/(x-4). Assessment Q7 had the same factoring in the denominator."
+    },
+    {
+      "id": "s4d-q5",
+      "number": 5,
+      "section": "A",
+      "standard": "S5.d",
+      "difficulty": "hard",
+      "type": "factor-then-simplify",
+      "question_html": "Simplify by factoring first:<br>\\( \\dfrac{x^3 + 2x^2 - 3x}{x^2 + 4x + 3} \\)<br><em>Warning: If you try to cancel individual terms without factoring, you WILL get the wrong answer.</em>",
+      "inputs": [
+        { "id": "s4d-q5_ans", "type": "text", "label": "Answer =", "answer": "x(x-1)/(x+1)", "normalize": "rational" }
+      ],
+      "hint": "Top: pull out x first to get x(x^2+2x-3), then factor the quadratic. Bottom: factor the trinomial. Then cancel.",
+      "solution_steps": [
+        "Numerator: x^3 + 2x^2 - 3x = x(x^2 + 2x - 3) = x(x+3)(x-1)   [GCF then factor]",
+        "Denominator: x^2 + 4x + 3 = (x+3)(x+1)                           [factor trinomial]",
+        "x(x+3)(x-1) / (x+3)(x+1)",
+        "Cancel (x+3):",
+        "= x(x-1)/(x+1)"
+      ],
+      "feedback_correct": "Same pattern as Assessment Q13. GCF → factor → cancel FACTORS.",
+      "feedback_wrong": "Top: x(x+3)(x-1). Bottom: (x+3)(x+1). Cancel (x+3). Answer: x(x-1)/(x+1). You cannot cancel x^3→x or x^2→1 — those are TERMS, not FACTORS."
+    },
+    {
+      "id": "s4d-q6",
+      "number": 6,
+      "section": "B",
+      "standard": "S4.b",
+      "difficulty": "medium",
+      "type": "add-rational",
+      "question_html": "Add. Write your answer as a single fraction in simplest form:<br>\\( \\dfrac{3}{x+2} + \\dfrac{5}{x-1} \\)",
+      "inputs": [
+        { "id": "s4d-q6_ans", "type": "text", "label": "Answer =", "answer": "(8x+7)/((x+2)(x-1))", "normalize": "rational" }
+      ],
+      "hint": "LCD = (x+2)(x-1). Multiply first fraction top and bottom by (x-1). Multiply second by (x+2). Combine numerators.",
+      "solution_steps": [
+        "LCD = (x+2)(x-1)",
+        "3(x-1)/((x+2)(x-1)) + 5(x+2)/((x+2)(x-1))",
+        "Numerator: 3(x-1) + 5(x+2)",
+        "= 3x - 3 + 5x + 10",
+        "= 8x + 7",
+        "Answer: (8x+7)/((x+2)(x-1))"
+      ],
+      "feedback_correct": "LCD, multiply, combine, simplify. Watch signs when distributing.",
+      "feedback_wrong": "LCD = (x+2)(x-1). Top: 3(x-1) + 5(x+2) = 3x-3+5x+10 = 8x+7."
+    },
+    {
+      "id": "s4d-q7",
+      "number": 7,
+      "section": "B",
+      "standard": "S4.b",
+      "difficulty": "hard",
+      "type": "subtract-rational",
+      "question_html": "Subtract. Write your answer as a single fraction in simplest form:<br>\\( \\dfrac{4x}{x+1} - \\dfrac{3}{x+4} \\)",
+      "inputs": [
+        { "id": "s4d-q7_ans", "type": "text", "label": "Answer =", "answer": "(4x^2+13x-3)/((x+1)(x+4))", "normalize": "rational" }
+      ],
+      "hint": "LCD = (x+1)(x+4). After multiplying, the SUBTRACTION means you negate ALL terms from the second numerator: -(3)(x+1) = -3x - 3, not -3x + 3.",
+      "solution_steps": [
+        "LCD = (x+1)(x+4)",
+        "4x(x+4)/LCD - 3(x+1)/LCD",
+        "Numerator: 4x(x+4) - 3(x+1)",
+        "= 4x^2 + 16x - 3x - 3",
+        "= 4x^2 + 13x - 3",
+        "Answer: (4x^2+13x-3)/((x+1)(x+4))"
+      ],
+      "feedback_correct": "Key step: distribute the negative to ALL terms. -3(x+1) = -3x - 3.",
+      "feedback_wrong": "LCD = (x+1)(x+4). Top: 4x(x+4) - 3(x+1) = 4x^2+16x-3x-3 = 4x^2+13x-3. The minus sign hits BOTH terms."
+    },
+    {
+      "id": "s4d-q8",
+      "number": 8,
+      "section": "B",
+      "standard": "S4.b",
+      "difficulty": "hard",
+      "type": "add-rational",
+      "question_html": "Add. Simplify your answer completely:<br>\\( \\dfrac{1}{2x^2} + \\dfrac{3}{4x^3} \\)",
+      "inputs": [
+        { "id": "s4d-q8_ans", "type": "text", "label": "Answer =", "answer": "(2x+3)/(4x^3)", "normalize": "rational" }
+      ],
+      "hint": "LCD of 2x^2 and 4x^3 is 4x^3. Multiply the first fraction by 2x/2x.",
+      "solution_steps": [
+        "LCD = 4x^3",
+        "1/(2x^2) * (2x)/(2x) = 2x/(4x^3)",
+        "3/(4x^3) stays as is",
+        "Numerator: 2x + 3",
+        "Answer: (2x+3)/(4x^3)"
+      ],
+      "feedback_correct": "Same idea as Assessment Q6c. LCD with monomials — match the highest power of each factor.",
+      "feedback_wrong": "LCD = 4x^3. First fraction becomes 2x/(4x^3). Add: (2x+3)/(4x^3)."
+    },
+    {
+      "id": "s4d-q9",
+      "number": 9,
+      "section": "B",
+      "standard": "S4.b",
+      "difficulty": "hard",
+      "type": "subtract-rational",
+      "question_html": "Subtract. Factor and simplify completely:<br>\\( \\dfrac{x}{x-3} - \\dfrac{2}{x+1} \\)",
+      "inputs": [
+        { "id": "s4d-q9_ans", "type": "text", "label": "Answer =", "answer": "(x^2-x+6)/((x-3)(x+1))", "normalize": "rational" }
+      ],
+      "hint": "LCD = (x-3)(x+1). Distribute carefully: the second numerator becomes -2(x-3) = -2x + 6, NOT -2x - 6.",
+      "solution_steps": [
+        "LCD = (x-3)(x+1)",
+        "x(x+1)/LCD - 2(x-3)/LCD",
+        "Numerator: x(x+1) - 2(x-3)",
+        "= x^2 + x - 2x + 6",
+        "= x^2 - x + 6",
+        "Answer: (x^2-x+6)/((x-3)(x+1))"
+      ],
+      "feedback_correct": "The trap: -2(x-3) = -2x + 6, not -2x - 6. Distribute the negative to BOTH terms.",
+      "feedback_wrong": "-2(x-3) = -2x+6. The minus flips the -3 to +6. Full numerator: x^2+x-2x+6 = x^2-x+6."
+    },
+    {
+      "id": "s4d-q10",
+      "number": 10,
+      "section": "C",
+      "standard": "S4.a",
+      "difficulty": "medium",
+      "type": "expand-simplify",
+      "question_html": "Expand and simplify:<br>\\( 3(2x+1)^2 \\)",
+      "inputs": [
+        { "id": "s4d-q10_ans", "type": "text", "label": "Answer =", "answer": "12x^2+12x+3", "normalize": "poly" }
+      ],
+      "hint": "FOIL (2x+1)(2x+1) FIRST. Then multiply the entire result by 3. Do not distribute the 3 into the parentheses before squaring.",
+      "solution_steps": [
+        "(2x+1)^2 = (2x+1)(2x+1)",
+        "= 4x^2 + 2x + 2x + 1",
+        "= 4x^2 + 4x + 1",
+        "Multiply by 3:",
+        "= 12x^2 + 12x + 3"
+      ],
+      "feedback_correct": "Square first, then multiply. This is what Assessment Q5 tested.",
+      "feedback_wrong": "(2x+1)^2 = 4x^2+4x+1, NOT 4x^2+1. The middle term 2(2x)(1)=4x. Then 3(4x^2+4x+1) = 12x^2+12x+3."
+    },
+    {
+      "id": "s4d-q11",
+      "number": 11,
+      "section": "C",
+      "standard": "other",
+      "difficulty": "hard",
+      "type": "difference-quotient",
+      "question_html": "Simplify the difference quotient:<br>\\( \\dfrac{f(x+h) - f(x)}{h} \\) where \\( f(x) = 3x^2 - 2x + 1 \\)<br><em>Show all expansion steps. Watch your coefficients.</em>",
+      "inputs": [
+        { "id": "s4d-q11_ans", "type": "text", "label": "Answer =", "answer": "6x+3h-2", "normalize": "poly" }
+      ],
+      "hint": "f(x+h) = 3(x+h)^2 - 2(x+h) + 1. Expand (x+h)^2 = x^2+2xh+h^2 first. Then multiply by 3 — the 3 hits ALL three terms. Subtract f(x). Cancel. Divide by h.",
+      "solution_steps": [
+        "f(x+h) = 3(x+h)^2 - 2(x+h) + 1",
+        "= 3(x^2 + 2xh + h^2) - 2x - 2h + 1",
+        "= 3x^2 + 6xh + 3h^2 - 2x - 2h + 1     [3 hits ALL three terms]",
+        "f(x+h) - f(x) = (3x^2 + 6xh + 3h^2 - 2x - 2h + 1) - (3x^2 - 2x + 1)",
+        "= 6xh + 3h^2 - 2h                         [3x^2, -2x, +1 all cancel]",
+        "Divide by h: (6xh + 3h^2 - 2h)/h = 6x + 3h - 2"
+      ],
+      "feedback_correct": "The key: 3(x^2+2xh+h^2) = 3x^2+6xh+3h^2. Don't drop the 3.",
+      "feedback_wrong": "3(x+h)^2 = 3x^2+6xh+3h^2, NOT 3x^2+2xh+h^2. The 3 multiplies EVERY term. Then subtract f(x), divide by h."
+    },
+    {
+      "id": "s4d-q12",
+      "number": 12,
+      "section": "C",
+      "standard": "S4.b",
+      "difficulty": "hard",
+      "type": "subtract-rational",
+      "question_html": "Subtract and simplify completely:<br>\\( \\dfrac{2x+3}{x+1} - \\dfrac{x-2}{x+4} \\)",
+      "inputs": [
+        { "id": "s4d-q12_ans", "type": "text", "label": "Answer =", "answer": "(x^2+12x+14)/((x+1)(x+4))", "normalize": "rational" }
+      ],
+      "hint": "LCD = (x+1)(x+4). Multiply each numerator by the other denominator. When subtracting, distribute the negative to EVERY term in the second numerator.",
+      "solution_steps": [
+        "LCD = (x+1)(x+4)",
+        "(2x+3)(x+4)/LCD - (x-2)(x+1)/LCD",
+        "First numerator: (2x+3)(x+4) = 2x^2 + 8x + 3x + 12 = 2x^2 + 11x + 12",
+        "Second numerator: (x-2)(x+1) = x^2 + x - 2x - 2 = x^2 - x - 2",
+        "Subtract: (2x^2 + 11x + 12) - (x^2 - x - 2)",
+        "= 2x^2 + 11x + 12 - x^2 + x + 2     [negate ALL three terms]",
+        "= x^2 + 12x + 14",
+        "Answer: (x^2+12x+14)/((x+1)(x+4))"
+      ],
+      "feedback_correct": "The subtraction flips ALL signs: -(x^2-x-2) = -x^2+x+2.",
+      "feedback_wrong": "-(x^2-x-2) = -x^2+x+2. The -(-2) becomes +2. Full: 2x^2+11x+12-x^2+x+2 = x^2+12x+14."
+    }
+  ]
+}
