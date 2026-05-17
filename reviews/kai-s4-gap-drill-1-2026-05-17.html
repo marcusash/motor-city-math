@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="../shared/favicon.svg">
+  <title>Kai: S4 Gap Drill Review (2026-05-17)</title>
+  <link rel="stylesheet" href="../shared/katex/katex.min.css">
+  <script src="../shared/katex/katex.min.js"></script>
+  <script src="../shared/katex/auto-render.min.js"></script>
+  <link rel="stylesheet" href="../shared/styles.css">
+  <style>
+    .review-container { max-width: 860px; margin: 0 auto; padding: 24px 16px; }
+    .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: var(--text-sm); font-weight: 600; color: var(--accent-blue); text-decoration: none; margin-bottom: 16px; }
+    .back-link:hover { text-decoration: underline; }
+    .review-header { text-align: center; margin-bottom: 32px; }
+    .review-header h1 { font-size: 1.6rem; font-weight: 800; color: var(--accent-navy); margin: 0 0 4px; }
+    .review-header .meta { color: var(--text-secondary); font-size: var(--text-sm); margin: 0 0 20px; }
+    .score-banner { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px; }
+    .score-pill { background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 12px; padding: 14px 24px; text-align: center; min-width: 130px; box-shadow: var(--shadow-card); }
+    .score-pill .label { font-size: var(--text-xs); font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+    .score-pill .value { font-size: 2rem; font-weight: 800; color: var(--accent-navy); line-height: 1; }
+    .score-pill .sub { font-size: var(--text-xs); color: var(--text-secondary); margin-top: 2px; }
+    .score-pill.grade-a .value { color: var(--color-correct); }
+    .score-pill.improve { border-color: var(--color-correct); }
+    .score-pill.improve .value { color: var(--color-correct); }
+
+    .improvement-banner { background: linear-gradient(135deg, rgba(27,125,58,0.12), rgba(63,185,80,0.06)); border: 2px solid var(--color-correct); border-radius: 12px; padding: 18px 24px; margin: 0 0 32px; box-shadow: var(--shadow-card); text-align: center; }
+    .improvement-banner .ihead { font-size: var(--text-xs); font-weight: 800; color: var(--color-correct); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; }
+    .improvement-banner .imain { font-size: 1.4rem; font-weight: 800; color: var(--accent-navy); margin-bottom: 6px; }
+    .improvement-banner .isub { font-size: var(--text-sm); color: var(--text-primary); margin: 0; }
+
+    .section-row { display: flex; gap: 16px; margin-bottom: 16px; flex-wrap: wrap; }
+    .section-card { flex: 1; min-width: 180px; background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 8px; padding: 16px 20px; box-shadow: var(--shadow-card); }
+    .section-card h3 { margin: 0 0 4px; font-size: var(--text-sm); font-weight: 700; color: var(--accent-navy); text-transform: uppercase; letter-spacing: 0.05em; }
+    .section-card .section-score { font-size: 1.4rem; font-weight: 800; color: var(--accent-navy); }
+    .section-card p { font-size: var(--text-xs); color: var(--text-secondary); margin: 2px 0 0; }
+    .bar { height: 6px; border-radius: 3px; background: var(--border-subtle); margin-top: 8px; overflow: hidden; }
+    .bar-fill { height: 100%; border-radius: 3px; background: var(--accent-blue); }
+    .bar-fill.good { background: var(--color-correct); }
+    .bar-fill.warn { background: var(--color-incorrect); }
+    .bar-fill.mid { background: var(--color-warning); }
+    h2.section-label { font-size: var(--text-sm); font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.08em; margin: 32px 0 12px; padding-bottom: 8px; border-bottom: 2px solid var(--border-subtle); }
+    .q-card { background: var(--bg-card); border: 1px solid var(--border-default); border-left: 4px solid var(--border-default); border-radius: 8px; padding: 18px 20px; margin-bottom: 14px; box-shadow: var(--shadow-card); }
+    .q-card.correct { border-left-color: var(--color-correct); }
+    .q-card.partial { border-left-color: var(--color-warning); }
+    .q-card.incorrect { border-left-color: var(--color-incorrect); }
+    .q-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; flex-wrap: wrap; }
+    .q-num { font-weight: 800; color: var(--accent-navy); font-size: 1rem; }
+    .q-badge { font-size: var(--text-xs); font-weight: 700; padding: 2px 8px; border-radius: 10px; }
+    .badge-standard { background: var(--bg-highlight); color: var(--accent-blue); }
+    .badge-score { margin-left: auto; font-size: 0.95rem; font-weight: 800; }
+    .badge-score.s-full { color: var(--color-correct); }
+    .badge-score.s-partial { color: var(--color-warning); }
+    .badge-score.s-zero { color: var(--color-incorrect); }
+    .q-problem { font-size: var(--text-base); color: var(--text-primary); margin-bottom: 12px; }
+    .answer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+    @media (max-width: 600px) { .answer-grid { grid-template-columns: 1fr; } }
+    .answer-box { padding: 10px 14px; border-radius: 6px; font-size: var(--text-sm); }
+    .answer-box .alabel { font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+    .answer-box.kai-box { background: rgba(29,66,186,0.06); border: 1px solid rgba(29,66,186,0.2); }
+    .answer-box.kai-box .alabel { color: var(--accent-blue); }
+    .answer-box.correct-box { background: var(--color-correct-bg); border: 1px solid rgba(27,125,58,0.2); }
+    .answer-box.correct-box .alabel { color: var(--color-correct); }
+    .error-note { background: var(--color-incorrect-bg); border: 1px solid rgba(200,16,46,0.2); border-radius: 6px; padding: 10px 14px; font-size: var(--text-sm); color: var(--text-primary); margin-bottom: 8px; }
+    .error-note .elabel { font-size: var(--text-xs); font-weight: 700; color: var(--color-incorrect); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+    .coaching-note { background: rgba(29,66,186,0.06); border: 1px solid rgba(29,66,186,0.2); border-radius: 6px; padding: 8px 14px; font-size: var(--text-sm); color: var(--text-primary); margin-top: 8px; }
+    .coaching-note .clabel { font-size: var(--text-xs); font-weight: 700; color: var(--accent-blue); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2px; }
+
+    .progress-wrap { background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 10px; padding: 18px 22px; margin: 28px 0 8px; box-shadow: var(--shadow-card); }
+    .progress-wrap h3 { margin: 0 0 6px; font-size: 1.05rem; font-weight: 800; color: var(--accent-navy); }
+    .progress-wrap .sub { font-size: var(--text-sm); color: var(--text-secondary); margin: 0 0 12px; }
+    .progress-wrap ul { margin: 6px 0 0; padding-left: 22px; font-size: var(--text-sm); color: var(--text-primary); }
+    .progress-wrap ul li { margin-bottom: 6px; }
+    .progress-wrap .wins-header, .progress-wrap .gaps-header { font-size: var(--text-xs); font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 12px; }
+    .progress-wrap .wins-header { color: var(--color-correct); }
+    .progress-wrap .gaps-header { color: var(--color-warning); }
+    .footer-note { text-align: center; font-size: var(--text-xs); color: var(--text-secondary); margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--border-subtle); }
+  </style>
+</head>
+<body>
+<div class="review-container">
+
+  <a href="../index.html" class="back-link">&larr; Back to Dashboard</a>
+
+  <div class="review-header">
+    <h1>S4 Rational Expressions: Gap Drill</h1>
+    <p class="meta">Kai Ash &bull; Targeted Drill from Assessment 2A Misses &bull; 2026-05-17</p>
+  </div>
+
+  <!-- Score Banner -->
+  <div class="score-banner">
+    <div class="score-pill grade-a">
+      <div class="label">Raw Score</div>
+      <div class="value">10/12</div>
+      <div class="sub">83%</div>
+    </div>
+    <div class="score-pill improve">
+      <div class="label">Improvement</div>
+      <div class="value">+39</div>
+      <div class="sub">from Assessment 2A (44%)</div>
+    </div>
+    <div class="score-pill">
+      <div class="label">Sections Perfect</div>
+      <div class="value">1 / 3</div>
+      <div class="sub">A: Factor-First 5/5</div>
+    </div>
+  </div>
+
+  <!-- Improvement Banner -->
+  <div class="improvement-banner">
+    <div class="ihead">44% &rarr; 83% &mdash; Massive Improvement</div>
+    <div class="imain">Term-by-term cancellation issue fully resolved.</div>
+    <p class="isub">Section A perfect. Q3 is the same problem as Assessment 2A Q2 &mdash; previously wrong, now correct. Q2, Q5, Q8 all mirror Assessment 2A errors Kai used to make and now handles cleanly.</p>
+  </div>
+
+  <!-- Section Cards -->
+  <div class="section-row">
+    <div class="section-card">
+      <h3>A: Factor-First</h3>
+      <div class="section-score">5 / 5</div>
+      <p>100% &bull; Q1&ndash;Q5</p>
+      <div class="bar"><div class="bar-fill good" style="width:100%"></div></div>
+    </div>
+    <div class="section-card">
+      <h3>B: LCD Add / Subtract</h3>
+      <div class="section-score">3 / 4</div>
+      <p>75% &bull; Q6&ndash;Q9</p>
+      <div class="bar"><div class="bar-fill mid" style="width:75%"></div></div>
+    </div>
+    <div class="section-card">
+      <h3>C: Expansion</h3>
+      <div class="section-score">2 / 3</div>
+      <p>67% &bull; Q10&ndash;Q12</p>
+      <div class="bar"><div class="bar-fill mid" style="width:67%"></div></div>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- ERRORS -->
+  <!-- ============================================ -->
+  <h2 class="section-label">Errors &mdash; 2 Points Lost</h2>
+
+  <!-- Q6 -->
+  <div class="q-card incorrect">
+    <div class="q-header">
+      <span class="q-num">Q6</span>
+      <span class="q-badge badge-standard">S4.b</span>
+      <span class="q-badge badge-standard">add fractions</span>
+      <span class="q-badge badge-standard">arithmetic error</span>
+      <span class="badge-score s-zero">0 / 1</span>
+    </div>
+    <div class="q-problem">Add: \(\dfrac{3}{x+2} + \dfrac{5}{x-1}\). Write as a single fraction.</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        \(\dfrac{7x+7}{(x-1)(x+2)}\)
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        \(\dfrac{8x+7}{(x+2)(x-1)}\)
+      </div>
+    </div>
+    <div class="error-note">
+      <div class="elabel">Arithmetic error combining like terms</div>
+      Kai set up the LCD correctly and distributed properly: \(3(x-1)+5(x+2) = 3x-3+5x+10\). But combined \(3x+5x\) as \(7x\) instead of \(8x\). The setup and distribution were perfect &mdash; just a mental math slip at the finish. Double-check coefficient addition on the final combine step.
+    </div>
+  </div>
+
+  <!-- Q11 -->
+  <div class="q-card incorrect">
+    <div class="q-header">
+      <span class="q-num">Q11</span>
+      <span class="q-badge badge-standard">other</span>
+      <span class="q-badge badge-standard">difference quotient</span>
+      <span class="q-badge badge-standard">function substitution</span>
+      <span class="badge-score s-zero">0 / 1</span>
+    </div>
+    <div class="q-problem">Simplify the difference quotient \(\dfrac{f(x+h)-f(x)}{h}\) where \(f(x)=3x^2-2x+1\).</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        \(1\)
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        \(6x+3h-2\)
+      </div>
+    </div>
+    <div class="error-note">
+      <div class="elabel">Didn't expand f(x+h) &mdash; treated it as f(x)+h</div>
+      Kai computed \(f(x+h)\) as \(f(x)+h = 3x^2-2x+1+h\), then subtracted \(f(x)\) to get \(h\), divided by \(h\) to get \(1\). But \(f(x+h)\) means substitute \((x+h)\) for every \(x\): \(f(x+h)=3(x+h)^2-2(x+h)+1\). Expand: \(3(x^2+2xh+h^2)-2x-2h+1 = 3x^2+6xh+3h^2-2x-2h+1\). Subtract \(f(x)\): \(6xh+3h^2-2h\). Factor out \(h\): \(h(6x+3h-2)\). Divide by \(h\): \(6x+3h-2\).
+    </div>
+    <div class="coaching-note">
+      <div class="clabel">Coaching Note</div>
+      Same concept as Assessment 2A Q14. \(f(x+h) \neq f(x)+h\). Every \(x\) in the formula gets replaced by \((x+h)\).
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- CORRECT -->
+  <!-- ============================================ -->
+  <h2 class="section-label">Correct &mdash; 10 of 12 Questions</h2>
+
+  <!-- Q1 -->
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q1</span>
+      <span class="q-badge badge-standard">S4.a</span>
+      <span class="q-badge badge-standard">factor-simplify</span>
+      <span class="q-badge badge-standard">difference of squares</span>
+      <span class="badge-score s-full">1 / 1</span>
+    </div>
+    <div class="q-problem">Simplify by factoring first: \(\dfrac{x^2-4}{x^2+5x+6}\).</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        \(\dfrac{x-2}{x+3}\)
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        \(\dfrac{x-2}{x+3}\)
+      </div>
+    </div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q2</span>
+      <span class="q-badge badge-standard">S5.d</span>
+      <span class="q-badge badge-standard">factor-simplify</span>
+      <span class="q-badge badge-standard">GCF + difference of squares</span>
+      <span class="badge-score s-full">1 / 1</span>
+    </div>
+    <div class="q-problem">Simplify by factoring first: \(\dfrac{x^3-4x}{x^2-x-2}\).</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        \(\dfrac{x^2+2x}{x+1}\)
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        \(\dfrac{x(x+2)}{x+1}\)
+      </div>
+    </div>
+    <div class="coaching-note">
+      <div class="clabel">Coaching Note &mdash; Fixed from Assessment 2A</div>
+      Same structure as Assessment 2A Q13 where Kai did term-by-term cancellation. This time: factored correctly as \(x(x+2)(x-2)/((x-2)(x+1))\), cancelled \((x-2)\). Huge improvement.
+    </div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q3</span>
+      <span class="q-badge badge-standard">S5.d</span>
+      <span class="q-badge badge-standard">factor-simplify</span>
+      <span class="q-badge badge-standard">difference of squares</span>
+      <span class="badge-score s-full">1 / 1</span>
+    </div>
+    <div class="q-problem">Simplify by factoring first: \(\dfrac{x^2+x}{x^2-1}\). <em>Reminder: factor completely before canceling.</em></div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        \(\dfrac{x}{x-1}\)
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        \(\dfrac{x}{x-1}\)
+      </div>
+    </div>
+    <div class="coaching-note">
+      <div class="clabel">Coaching Note &mdash; Fixed from Assessment 2A</div>
+      EXACT same problem as Assessment 2A Q2 &mdash; previously wrong (got \((x+1)/(x-1)\)). Now correctly factored \(x(x+1)/((x+1)(x-1))\) and cancelled \((x+1)\).
+    </div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q4</span>
+      <span class="q-badge badge-standard">S4.a</span>
+      <span class="q-badge badge-standard">factor-simplify</span>
+      <span class="q-badge badge-standard">GCF + difference of squares</span>
+      <span class="badge-score s-full">1 / 1</span>
+    </div>
+    <div class="q-problem">Simplify by factoring first: \(\dfrac{2x^2-8}{x^2-6x+8}\).</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        \(\dfrac{2(x+2)}{x-4}\)
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        \(\dfrac{2(x+2)}{x-4}\)
+      </div>
+    </div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q5</span>
+      <span class="q-badge badge-standard">S5.d</span>
+      <span class="q-badge badge-standard">factor-simplify</span>
+      <span class="q-badge badge-standard">GCF + trinomial</span>
+      <span class="badge-score s-full">1 / 1</span>
+    </div>
+    <div class="q-problem">Simplify by factoring first: \(\dfrac{x^3+2x^2-3x}{x^2+4x+3}\). <em>Warning: canceling individual terms will get the wrong answer.</em></div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        \(\dfrac{x(x-1)}{x+1}\)
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        \(\dfrac{x(x-1)}{x+1}\)
+      </div>
+    </div>
+    <div class="coaching-note">
+      <div class="clabel">Coaching Note &mdash; Fixed from Assessment 2A</div>
+      Same pattern as Assessment 2A Q13. Factored correctly: \(x(x+3)(x-1)/((x+3)(x+1))\), cancelled \((x+3)\).
+    </div>
+  </div>
+
+  <!-- Q7 -->
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q7</span>
+      <span class="q-badge badge-standard">S4.b</span>
+      <span class="q-badge badge-standard">subtract fractions</span>
+      <span class="q-badge badge-standard">sign distribution</span>
+      <span class="badge-score s-full">1 / 1</span>
+    </div>
+    <div class="q-problem">Subtract: \(\dfrac{4x}{x+1} - \dfrac{3}{x+4}\). Write as a single fraction.</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        \(\dfrac{4x^2+13x-3}{(x+1)(x+4)}\)
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        \(\dfrac{4x^2+13x-3}{(x+1)(x+4)}\)
+      </div>
+    </div>
+  </div>
+
+  <!-- Q8 -->
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q8</span>
+      <span class="q-badge badge-standard">S4.b</span>
+      <span class="q-badge badge-standard">add fractions</span>
+      <span class="q-badge badge-standard">monomial LCD</span>
+      <span class="badge-score s-full">1 / 1</span>
+    </div>
+    <div class="q-problem">Add and simplify completely: \(\dfrac{1}{2x^2} + \dfrac{3}{4x^3}\).</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        \(\dfrac{2x+3}{4x^3}\)
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        \(\dfrac{2x+3}{4x^3}\)
+      </div>
+    </div>
+    <div class="coaching-note">
+      <div class="clabel">Coaching Note &mdash; Fixed from Assessment 2A</div>
+      Same structure as Assessment 2A Q6c where Kai tried illegal \(x^2\) cancellation. This time: correct LCD, proper combination, no illegal cancel.
+    </div>
+  </div>
+
+  <!-- Q9 -->
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q9</span>
+      <span class="q-badge badge-standard">S4.b</span>
+      <span class="q-badge badge-standard">subtract fractions</span>
+      <span class="q-badge badge-standard">sign distribution</span>
+      <span class="badge-score s-full">1 / 1</span>
+    </div>
+    <div class="q-problem">Subtract and simplify: \(\dfrac{x}{x-3} - \dfrac{2}{x+1}\).</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        \(\dfrac{x^2-x+6}{(x-3)(x+1)}\)
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        \(\dfrac{x^2-x+6}{(x-3)(x+1)}\)
+      </div>
+    </div>
+  </div>
+
+  <!-- Q10 -->
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q10</span>
+      <span class="q-badge badge-standard">S4.a</span>
+      <span class="q-badge badge-standard">expand squared binomial</span>
+      <span class="badge-score s-full">1 / 1</span>
+    </div>
+    <div class="q-problem">Expand and simplify: \(3(2x+1)^2\).</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        \(12x^2+12x+3\)
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        \(12x^2+12x+3\)
+      </div>
+    </div>
+    <div class="coaching-note">
+      <div class="clabel">Coaching Note &mdash; Fixed from Assessment 2A</div>
+      Assessment 2A Q5 tested this same expansion and Kai got it wrong. Now correct: squared first, then multiplied by 3.
+    </div>
+  </div>
+
+  <!-- Q12 -->
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q12</span>
+      <span class="q-badge badge-standard">S4.b</span>
+      <span class="q-badge badge-standard">subtract fractions</span>
+      <span class="q-badge badge-standard">sign distribution</span>
+      <span class="badge-score s-full">1 / 1</span>
+    </div>
+    <div class="q-problem">Subtract and simplify completely: \(\dfrac{2x+3}{x+1} - \dfrac{x-2}{x+4}\).</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        \(\dfrac{x^2+12x+14}{(x+1)(x+4)}\)
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        \(\dfrac{x^2+12x+14}{(x+1)(x+4)}\)
+      </div>
+    </div>
+  </div>
+
+  <!-- Progress Summary -->
+  <div class="progress-wrap">
+    <h3>Progress Analysis &mdash; Assessment 2A &rarr; Gap Drill</h3>
+    <p class="sub">44% &rarr; 83%. Targeted drill achieved its goal: the dominant Assessment 2A error pattern is resolved.</p>
+    <div class="wins-header">Key Wins</div>
+    <ul>
+      <li>Section A 5/5: Term-by-term cancellation fully resolved. Q3 is the exact same problem as Assessment 2A Q2 &mdash; now correct.</li>
+      <li>Q2 same structure as Assessment 2A Q13 (the worst error) &mdash; now factored properly.</li>
+      <li>Q8 same structure as Assessment 2A Q6c (illegal \(x^2\) cancel) &mdash; now correct.</li>
+      <li>Q10 same expansion as Assessment 2A Q5 &mdash; now correct.</li>
+      <li>LCD subtraction with sign distribution: Q7, Q9, Q12 all correct (Assessment 2A had 0/3 on S4.b).</li>
+    </ul>
+    <div class="gaps-header">Remaining Gaps</div>
+    <ul>
+      <li>Q6: Arithmetic slip combining like terms (\(3+5=7\)). Setup was perfect.</li>
+      <li>Q11: \(f(x+h) \neq f(x)+h\) &mdash; same conceptual gap as Assessment 2A Q14. Needs explicit practice on function substitution before expanding.</li>
+    </ul>
+  </div>
+
+  <p class="footer-note">Drill score data: <code>scores/s4-assessment-drill-1-2026-05-17.json</code> &bull; Source drill: <a href="../exam.html?file=s4-assessment-drill-1" style="color:var(--accent-blue);">retake the drill</a>.</p>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: '$$', right: '$$', display: true },
+        { left: '\\(', right: '\\)', display: false }
+      ],
+      throwOnError: false
+    });
+  });
+</script>
+</body>
+</html>

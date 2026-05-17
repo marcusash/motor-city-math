@@ -430,6 +430,10 @@
         "school-assessment1a-2026-05-16": {
             "attempts": [{ "score": 18.5, "total": 22, "pct": 84, "grade": 4, "teacher_grade": "A/A/A", "teacher_standards": { "S1": "A", "S2": "A", "S3": "A" }, "timestamp": "2026-04-08T15:00:00Z" }],
             "best": { "score": 18.5, "pct": 84, "grade": 4, "teacher_grade": "A/A/A" }
+        },
+        "mcm-s4-assessment-drill-1": {
+            "attempts": [{ "score": 10, "total": 12, "pct": 83, "grade": 3, "timestamp": "2026-05-17T14:30:00Z" }],
+            "best": { "score": 10, "pct": 83, "grade": 3 }
         }
     };
 
@@ -513,10 +517,10 @@
 
         <main>
         <!-- Hero: S4 Gap Drill -->
-        <a href="exam.html?file=s4-assessment-drill-1" class="hero hero-link" style="display:block;text-decoration:none;cursor:pointer;">
-            <div class="hero-eye">Spring S4 &middot; Rational Expressions &middot; 12 Questions &middot; ~45 min</div>
-            <div class="hero-name">S4 Gap Drill</div>
-            <div class="hero-last">Targeted drill from Assessment 2A misses (7/16). Factor-first simplification, LCD addition/subtraction, sign distribution. Take this before the final unit test.</div>
+        <a href="reviews/kai-s4-gap-drill-1-2026-05-17.html" class="hero hero-link" style="display:block;text-decoration:none;cursor:pointer;">
+            <div class="hero-eye">Spring S4 &middot; Rational Expressions &middot; 12 Questions &middot; Scored 10/12 (83%)</div>
+            <div class="hero-name">S4 Gap Drill &mdash; Review</div>
+            <div class="hero-last">Targeted drill from Assessment 2A misses. 44% &rarr; 83% (+39). Term-by-term cancellation issue resolved. Open the review for per-question breakdown and progress analysis.</div>
         </a>
 
         <!-- Progress Chart (FD design) -->
@@ -559,9 +563,8 @@
     /* ========== TEST REGISTRY ========== */
     var tests = [
         { file: 'reviews/kai-assessment2a-2026-05-16.html', name: 'S4 Assessment 2A', unit: 'spring-s4', trimester: 'spring', key: 'school-assessment2a-2026-05-16', questions: 16, benchmark: true, teacherGrade: '3/4', teacherRating: '3/4' },
-        { file: 'exam.html?file=s4-assessment-drill-1', name: 'S4 Gap Drill', unit: 'spring-s4', trimester: 'spring', key: 'mcm-s4-assessment-drill-1', questions: 12 },
+        { file: 'reviews/kai-s4-gap-drill-1-2026-05-17.html', name: 'S4 Gap Drill', unit: 'spring-s4', trimester: 'spring', key: 'mcm-s4-assessment-drill-1', questions: 12 },
         { file: 'reviews/kai-assessment1a-2026-04-08.html', name: 'S1-S3 Unit Test', unit: 'spring-s1s2s3', trimester: 'spring', key: 'school-assessment1a-2026-05-16', questions: 22, benchmark: true, teacherGrade: 'A/A/A', teacherRating: '4/4' },
-        { file: 'exam.html?file=s4-assessment-drill-1', name: 'S4 Gap Drill', unit: 'spring-s4', trimester: 'spring', key: 'mcm-s4-assessment-drill-1', questions: 12 },
         { file: 'reviews/kai-unit1-practice-test-2-2026-04-06.html', name: 'U1 Practice Test 2', unit: 'spring-s1', trimester: 'spring', key: 'unit1-practice-test-2', questions: 12, benchmark: true, teacherGrade: 'B' },
         { file: 'tests/kai-unit1-practice-test-4.html', name: 'U1 Practice Test 4', unit: 'spring-s1', trimester: 'spring', key: 'unit1-practice-test-4', questions: 4 },
         { file: 'tests/kai-unit1-practice-test-3.html', name: 'U1 Practice Test 3', unit: 'spring-s1', trimester: 'spring', key: 'unit1-practice-test-3', questions: 12 },
