@@ -2,7 +2,7 @@
   "key": "school-assessment1a-2026-05-16",
   "title": "Algebra 2 Assessment 1 [A] — Spring Polynomials",
   "standards": ["S1", "S2", "S3"],
-  "date": "2026-05-16",
+  "date": "2026-04-08",
   "type": "school-assessment",
   "graded_by": "FR (from test photos + Marcus confirmation)",
   "attempts": [
@@ -41,7 +41,7 @@
         "q7e": { "correct": false, "score": 0.5, "total": 1, "standard": "S1", "type": "expand-standard-form",   "problem": "Write f in standard form",                  "note": "Partial credit." }
       },
       "error_analysis": "18.5/22 (84%). Teacher grade: A/A/A across S1, S2, S3. Three partial credit items (Q1b multiplication distribution, Q5 equation from graph, Q7e standard form expansion) and two incorrect (Q3 part 4 relative min at x=-3, Q6d relative extrema). Pattern: Kai's polynomial algebra and analysis are strong but he has minor expansion/distribution errors and struggles with identifying exact extrema points. Overall excellent performance.",
-      "timestamp": "2026-05-16T22:00:00Z"
+      "timestamp": "2026-04-08T15:00:00Z"
     }
   ],
   "best": {
