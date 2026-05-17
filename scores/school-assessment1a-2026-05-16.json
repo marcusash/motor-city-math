@@ -1,0 +1,52 @@
+{
+  "key": "school-assessment1a-2026-05-16",
+  "title": "Algebra 2 Assessment 1 [A] — Spring Polynomials",
+  "standards": ["S1", "S2", "S3"],
+  "date": "2026-05-16",
+  "type": "school-assessment",
+  "graded_by": "FR (from test photos + Marcus confirmation)",
+  "attempts": [
+    {
+      "score": 18.5,
+      "total": 22,
+      "pct": 84,
+      "letter_grade": "A/A/A",
+      "teacher_grade": "A/A/A",
+      "teacher_standards": {
+        "S1": { "grade": "A", "description": "Manipulating Polynomial Expressions" },
+        "S2": { "grade": "A", "description": "Divide, Factor, and Solve Polynomials" },
+        "S3": { "grade": "A", "description": "Identifying Characteristics of Polynomial Functions" }
+      },
+      "questions": {
+        "q1a": { "correct": true,  "score": 1, "total": 1, "standard": "S1", "type": "subtract-polynomials",    "problem": "f(x) - x²g(x), standard form",          "note": "Full credit." },
+        "q1b": { "correct": false, "score": 0.5, "total": 1, "standard": "S1", "type": "multiply-polynomials",   "problem": "f(x)·g(x), standard form",                "note": "Partial credit. Teacher noted 'distribute all terms'." },
+        "q1c": { "correct": true,  "score": 1, "total": 1, "standard": "S1", "type": "divide-polynomial",        "problem": "f(x)/(2x²)",                               "note": "Full credit." },
+        "q2":  { "correct": true,  "score": 1, "total": 1, "standard": "S2", "type": "polynomial-long-division", "problem": "Divide 6x⁴-9x³-10x²+19x-3 by 2x-3",      "note": "Full credit." },
+        "q3p1":{ "correct": true,  "score": 1, "total": 1, "standard": "S3", "type": "sketch-polynomial",        "problem": "Sketch polynomial: degree 5",               "note": "Full credit." },
+        "q3p2":{ "correct": true,  "score": 1, "total": 1, "standard": "S3", "type": "sketch-polynomial",        "problem": "Sketch polynomial: end behavior",           "note": "Full credit." },
+        "q3p3":{ "correct": true,  "score": 1, "total": 1, "standard": "S3", "type": "sketch-polynomial",        "problem": "Sketch polynomial: divisible by (x-2)",     "note": "Full credit." },
+        "q3p4":{ "correct": false, "score": 0, "total": 1, "standard": "S3", "type": "sketch-polynomial",        "problem": "Sketch polynomial: relative min at x=-3",   "note": "Incorrect." },
+        "q3p5":{ "correct": true,  "score": 1, "total": 1, "standard": "S3", "type": "sketch-polynomial",        "problem": "Sketch polynomial: exactly three x-intercepts", "note": "Full credit." },
+        "q3p6":{ "correct": true,  "score": 1, "total": 1, "standard": "S3", "type": "sketch-polynomial",        "problem": "Sketch polynomial: positive y-intercept",   "note": "Full credit." },
+        "q4":  { "correct": true,  "score": 1, "total": 1, "standard": "S2", "type": "factor-polynomial",        "problem": "Factor f(x)=2x³-x²-22x-24 given (x+2) is a factor, sketch graph", "note": "Full credit." },
+        "q5":  { "correct": false, "score": 0.5, "total": 1, "standard": "S2", "type": "write-equation",         "problem": "Write polynomial equation from x-intercepts and points", "note": "Partial credit." },
+        "q6a": { "correct": true,  "score": 1, "total": 1, "standard": "S3", "type": "identify-degree",          "problem": "Degree of R from graph",                    "note": "Full credit." },
+        "q6b": { "correct": true,  "score": 1, "total": 1, "standard": "S3", "type": "domain-range",             "problem": "Domain and range of R",                     "note": "Full credit." },
+        "q6c": { "correct": true,  "score": 1, "total": 1, "standard": "S3", "type": "increasing-intervals",     "problem": "When is R increasing",                      "note": "Full credit." },
+        "q6d": { "correct": false, "score": 0, "total": 1, "standard": "S3", "type": "extrema",                  "problem": "Relative min/max points",                   "note": "Incorrect." },
+        "q7a": { "correct": true,  "score": 1, "total": 1, "standard": "S3", "type": "identify-degree",          "problem": "Degree of f(x)=3x(x+2)(x-3)²",             "note": "Full credit." },
+        "q7b": { "correct": true,  "score": 1, "total": 1, "standard": "S3", "type": "find-intercepts",          "problem": "Find all intercepts",                       "note": "Full credit." },
+        "q7c": { "correct": true,  "score": 1, "total": 1, "standard": "S3", "type": "end-behavior",             "problem": "Describe end behavior",                     "note": "Full credit." },
+        "q7d": { "correct": true,  "score": 1, "total": 1, "standard": "S3", "type": "sketch-graph",             "problem": "Sketch graph of f",                         "note": "Full credit." },
+        "q7e": { "correct": false, "score": 0.5, "total": 1, "standard": "S1", "type": "expand-standard-form",   "problem": "Write f in standard form",                  "note": "Partial credit." }
+      },
+      "error_analysis": "18.5/22 (84%). Teacher grade: A/A/A across S1, S2, S3. Three partial credit items (Q1b multiplication distribution, Q5 equation from graph, Q7e standard form expansion) and two incorrect (Q3 part 4 relative min at x=-3, Q6d relative extrema). Pattern: Kai's polynomial algebra and analysis are strong but he has minor expansion/distribution errors and struggles with identifying exact extrema points. Overall excellent performance.",
+      "timestamp": "2026-05-16T22:00:00Z"
+    }
+  ],
+  "best": {
+    "score": 18.5,
+    "pct": 84,
+    "letter_grade": "A/A/A"
+  }
+}
