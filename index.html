@@ -1005,6 +1005,7 @@
         var html = '';
         springTests.forEach(function(t) {
             var s = scores[t.key];
+            if (!s) return; // hide tests with no scores
             var scoreHtml = '';
             var borderColor = 'var(--border-default)';
             var metaLabel = t.questions + ' questions';
