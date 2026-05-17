@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="../shared/favicon.svg">
+  <title>Kai: S1-S3 Polynomials Unit Test Review (2026-04-08)</title>
+  <link rel="stylesheet" href="../shared/katex/katex.min.css">
+  <script src="../shared/katex/katex.min.js"></script>
+  <script src="../shared/katex/auto-render.min.js"></script>
+  <link rel="stylesheet" href="../shared/styles.css">
+  <style>
+    .review-container { max-width: 860px; margin: 0 auto; padding: 24px 16px; }
+    .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: var(--text-sm); font-weight: 600; color: var(--accent-blue); text-decoration: none; margin-bottom: 16px; }
+    .back-link:hover { text-decoration: underline; }
+    .review-header { text-align: center; margin-bottom: 32px; }
+    .review-header h1 { font-size: 1.6rem; font-weight: 800; color: var(--accent-navy); margin: 0 0 4px; }
+    .review-header .meta { color: var(--text-secondary); font-size: var(--text-sm); margin: 0 0 20px; }
+    .score-banner { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 32px; }
+    .score-pill { background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 12px; padding: 14px 24px; text-align: center; min-width: 130px; box-shadow: var(--shadow-card); }
+    .score-pill .label { font-size: var(--text-xs); font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+    .score-pill .value { font-size: 2rem; font-weight: 800; color: var(--accent-navy); line-height: 1; }
+    .score-pill .sub { font-size: var(--text-xs); color: var(--text-secondary); margin-top: 2px; }
+    .score-pill.grade-a .value { color: var(--color-correct); }
+    .score-pill.improve .value { color: var(--color-correct); }
+    .section-row { display: flex; gap: 16px; margin-bottom: 16px; flex-wrap: wrap; }
+    .section-card { flex: 1; min-width: 180px; background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 8px; padding: 16px 20px; box-shadow: var(--shadow-card); }
+    .section-card h3 { margin: 0 0 4px; font-size: var(--text-sm); font-weight: 700; color: var(--accent-navy); text-transform: uppercase; letter-spacing: 0.05em; }
+    .section-card .section-score { font-size: 1.4rem; font-weight: 800; color: var(--accent-navy); }
+    .section-card p { font-size: var(--text-xs); color: var(--text-secondary); margin: 2px 0 0; }
+    .bar { height: 6px; border-radius: 3px; background: var(--border-subtle); margin-top: 8px; overflow: hidden; }
+    .bar-fill { height: 100%; border-radius: 3px; background: var(--accent-blue); }
+    .bar-fill.good { background: var(--color-correct); }
+    .bar-fill.warn { background: var(--color-incorrect); }
+    .bar-fill.mid { background: var(--color-warning); }
+    h2.section-label { font-size: var(--text-sm); font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.08em; margin: 32px 0 12px; padding-bottom: 8px; border-bottom: 2px solid var(--border-subtle); }
+    .q-card { background: var(--bg-card); border: 1px solid var(--border-default); border-left: 4px solid var(--border-default); border-radius: 8px; padding: 18px 20px; margin-bottom: 14px; box-shadow: var(--shadow-card); }
+    .q-card.correct { border-left-color: var(--color-correct); }
+    .q-card.partial { border-left-color: var(--color-warning); }
+    .q-card.incorrect { border-left-color: var(--color-incorrect); }
+    .q-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; flex-wrap: wrap; }
+    .q-num { font-weight: 800; color: var(--accent-navy); font-size: 1rem; }
+    .q-badge { font-size: var(--text-xs); font-weight: 700; padding: 2px 8px; border-radius: 10px; }
+    .badge-standard { background: var(--bg-highlight); color: var(--accent-blue); }
+    .badge-score { margin-left: auto; font-size: 0.95rem; font-weight: 800; }
+    .badge-score.s-full { color: var(--color-correct); }
+    .badge-score.s-partial { color: var(--color-warning); }
+    .badge-score.s-zero { color: var(--color-incorrect); }
+    .q-problem { font-size: var(--text-base); color: var(--text-primary); margin-bottom: 12px; }
+    .answer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+    @media (max-width: 600px) { .answer-grid { grid-template-columns: 1fr; } }
+    .answer-box { padding: 10px 14px; border-radius: 6px; font-size: var(--text-sm); }
+    .answer-box .alabel { font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+    .answer-box.kai-box { background: rgba(29,66,186,0.06); border: 1px solid rgba(29,66,186,0.2); }
+    .answer-box.kai-box .alabel { color: var(--accent-blue); }
+    .answer-box.correct-box { background: var(--color-correct-bg); border: 1px solid rgba(27,125,58,0.2); }
+    .answer-box.correct-box .alabel { color: var(--color-correct); }
+    .error-note { background: var(--color-incorrect-bg); border: 1px solid rgba(200,16,46,0.2); border-radius: 6px; padding: 10px 14px; font-size: var(--text-sm); color: var(--text-primary); margin-bottom: 8px; }
+    .error-note .elabel { font-size: var(--text-xs); font-weight: 700; color: var(--color-incorrect); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+    .teacher-note { background: rgba(255,203,5,0.12); border: 1px solid rgba(255,203,5,0.4); border-radius: 6px; padding: 8px 14px; font-size: var(--text-sm); color: var(--text-primary); margin-top: 8px; }
+    .teacher-note .tlabel { font-size: var(--text-xs); font-weight: 700; color: #b8860b; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2px; }
+    .coaching-note { background: rgba(29,66,186,0.06); border: 1px solid rgba(29,66,186,0.2); border-radius: 6px; padding: 8px 14px; font-size: var(--text-sm); color: var(--text-primary); margin-top: 8px; }
+    .coaching-note .clabel { font-size: var(--text-xs); font-weight: 700; color: var(--accent-blue); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2px; }
+    .footer-note { text-align: center; font-size: var(--text-xs); color: var(--text-secondary); margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--border-subtle); }
+  </style>
+</head>
+<body>
+<div class="review-container">
+
+  <a href="../index.html" class="back-link">&larr; Back to Dashboard</a>
+
+  <div class="review-header">
+    <h1>Algebra 2: S1&ndash;S3 Polynomials Unit Test</h1>
+    <p class="meta">Kai Ash &bull; Assessment 1A &bull; Taken 2026-04-08 &bull; Graded 2026-05-16</p>
+  </div>
+
+  <!-- Score Banner -->
+  <div class="score-banner">
+    <div class="score-pill">
+      <div class="label">Raw Score</div>
+      <div class="value">18.5/22</div>
+      <div class="sub">84%</div>
+    </div>
+    <div class="score-pill grade-a">
+      <div class="label">Teacher Grade</div>
+      <div class="value">A/A/A</div>
+      <div class="sub">S1 &middot; S2 &middot; S3</div>
+    </div>
+    <div class="score-pill improve">
+      <div class="label">Standards Met</div>
+      <div class="value">3/3</div>
+      <div class="sub">Mastery on all</div>
+    </div>
+  </div>
+
+  <!-- Section Cards -->
+  <div class="section-row">
+    <div class="section-card">
+      <h3>S1: Operations</h3>
+      <div class="section-score">4.5 / 5</div>
+      <p>90% &bull; Q1a, Q1b, Q1c, Q7e</p>
+      <div class="bar"><div class="bar-fill good" style="width:90%"></div></div>
+    </div>
+    <div class="section-card">
+      <h3>S2: Factoring + Zeros</h3>
+      <div class="section-score">4.5 / 5</div>
+      <p>90% &bull; Q2, Q4, Q5</p>
+      <div class="bar"><div class="bar-fill good" style="width:90%"></div></div>
+    </div>
+    <div class="section-card">
+      <h3>S3: Graph Analysis</h3>
+      <div class="section-score">9.5 / 12</div>
+      <p>79% &bull; Q3 (6 pts), Q6a&ndash;d, Q7a&ndash;d</p>
+      <div class="bar"><div class="bar-fill mid" style="width:79%"></div></div>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- ERRORS -->
+  <!-- ============================================ -->
+  <h2 class="section-label">Errors &mdash; 3.5 Points Lost</h2>
+
+  <!-- Q1b -->
+  <div class="q-card partial">
+    <div class="q-header">
+      <span class="q-num">Q1b</span>
+      <span class="q-badge badge-standard">S1</span>
+      <span class="q-badge badge-standard">polynomial multiplication</span>
+      <span class="badge-score s-partial">0.5 / 1</span>
+    </div>
+    <div class="q-problem">Given \(f(x)=6x^3-16x^2+2\) and \(g(x)=x^2-3x+1\), compute \(f(x)\cdot g(x)\) and write in standard form.</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        \(6x^5 - 34x^4 + 54x^3 - 16x^2\)
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        \(6x^5 - 34x^4 + 54x^3 - 14x^2 - 6x + 2\)
+      </div>
+    </div>
+    <div class="error-note">
+      <div class="elabel">Forgot to distribute the constant term</div>
+      Kai distributed \(6x^3\) and \(-16x^2\) through \(g(x)\) but completely skipped the \(+2\) term. The missing piece: \(2(x^2-3x+1)=2x^2-6x+2\). That accounts for the three missing terms. When multiplying polynomials, every term of the first must hit every term of the second &mdash; easy to lose a constant at the end.
+    </div>
+    <div class="teacher-note">
+      <div class="tlabel">Teacher Note</div>
+      &ldquo;distribute all terms&rdquo;
+    </div>
+  </div>
+
+  <!-- Q3 part 4 -->
+  <div class="q-card incorrect">
+    <div class="q-header">
+      <span class="q-num">Q3 part 4</span>
+      <span class="q-badge badge-standard">S3</span>
+      <span class="q-badge badge-standard">sketch polynomial</span>
+      <span class="q-badge badge-standard">relative extrema</span>
+      <span class="badge-score s-zero">0 / 1</span>
+    </div>
+    <div class="q-problem">Sketch a degree-5 polynomial satisfying six conditions. Part 4: the sketch must show a relative minimum at \(x=-3\).</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Sketch</div>
+        Curve goes UP through \(x=-3\) with no valley &mdash; no relative min present.
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Sketch</div>
+        The sketch should dip DOWN to form a valley (local minimum) at \(x=-3\), then rise again.
+      </div>
+    </div>
+    <div class="error-note">
+      <div class="elabel">Missed relative minimum condition</div>
+      Kai's curve passes through the \(x=-3\) region going upward with no dip at all. A relative minimum means the curve must come down, reach a low point at \(x=-3\), and then go back up &mdash; forming a valley. When sketching from a checklist of conditions, tick off each one on the finished sketch to make sure none were missed.
+    </div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="q-card partial">
+    <div class="q-header">
+      <span class="q-num">Q5</span>
+      <span class="q-badge badge-standard">S2</span>
+      <span class="q-badge badge-standard">write polynomial from zeros</span>
+      <span class="badge-score s-partial">0.5 / 1</span>
+    </div>
+    <div class="q-problem">Write a polynomial with x-intercepts \(-3,\; 1,\; 5\) that passes through \((-1,-3)\) and \((3,3)\).</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        \((x-3)(x+1)(x-5)\)
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        \(f(x) = -\tfrac{1}{8}(x+3)(x-1)(x-5)\)
+      </div>
+    </div>
+    <div class="error-note">
+      <div class="elabel">Sign errors on two factors + missing leading coefficient</div>
+      Two problems here. First, Kai reversed the signs: wrote \((x-3)\) for the root \(x=-3\) and \((x+1)\) for the root \(x=1\). Remember: root \(r\) &rarr; factor \((x - r)\), so root \(-3\) &rarr; \((x-(-3))=(x+3)\), and root \(1\) &rarr; \((x-1)\). Second, Kai never found the leading coefficient \(c\). Plug a known point like \((-1,-3)\) into \(c(x+3)(x-1)(x-5)\) and solve: \(c(2)(-2)(-6)=24c=-3\), so \(c=-\tfrac{1}{8}\).
+    </div>
+    <div class="coaching-note">
+      <div class="clabel">Coaching Note</div>
+      The \(c=-\tfrac{1}{8}\) work visible on the paper was done during post-test corrections with Marcus, not during the original test.
+    </div>
+  </div>
+
+  <!-- Q6d -->
+  <div class="q-card incorrect">
+    <div class="q-header">
+      <span class="q-num">Q6d</span>
+      <span class="q-badge badge-standard">S3</span>
+      <span class="q-badge badge-standard">relative extrema from graph</span>
+      <span class="badge-score s-zero">0 / 1</span>
+    </div>
+    <div class="q-problem">From the graph of \(R\) (a W-shaped degree-4 polynomial with positive leading coefficient), identify all relative extrema.</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        &ldquo;&minus;5 min &minus;5. &minus;3, 0&rdquo;
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        Relative min at \((-4,\,-3)\), relative max at \((-2,\,0)\), relative min at \((1,\,-5)\)
+      </div>
+    </div>
+    <div class="error-note">
+      <div class="elabel">Extrema not written as coordinate points</div>
+      Kai listed raw numbers instead of \((x, y)\) coordinate pairs. The y-values \(-5\), \(-3\), \(0\) are the right magnitudes but jumbled up, and the x-coordinates are missing entirely. Relative extrema are points on the graph &mdash; always write them as \((x, y)\) pairs. Read the x-coordinate and y-coordinate separately from the graph for each peak or valley.
+    </div>
+  </div>
+
+  <!-- Q7e -->
+  <div class="q-card partial">
+    <div class="q-header">
+      <span class="q-num">Q7e</span>
+      <span class="q-badge badge-standard">S1</span>
+      <span class="q-badge badge-standard">expand to standard form</span>
+      <span class="badge-score s-partial">0.5 / 1</span>
+    </div>
+    <div class="q-problem">Write \(f(x) = 3x(x+2)(x-3)^2\) in standard form.</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        \(3x^4 - 12x^3 - 441x^2 - 54x\)
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        \(3x^4 - 12x^3 - 9x^2 + 54x\)
+      </div>
+    </div>
+    <div class="error-note">
+      <div class="elabel">Sign error squaring \((x-3)^2\)</div>
+      Kai expanded \((x-3)^2\) with \((-3)(-3)=-9\) instead of \(+9\). The correct expansion: \((x-3)^2 = x^2 - 6x + 9\). This sign error cascaded through the rest of the multiplication, flipping signs on every subsequent term. When squaring a binomial, always use \((a-b)^2 = a^2 - 2ab + b^2\) &mdash; the last term is always positive.
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- CORRECT -->
+  <!-- ============================================ -->
+  <h2 class="section-label">Correct &mdash; 16 of 22 Points</h2>
+
+  <!-- Q1a -->
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q1a</span>
+      <span class="q-badge badge-standard">S1</span>
+      <span class="q-badge badge-standard">polynomial subtraction</span>
+      <span class="badge-score s-full">1 / 1</span>
+    </div>
+    <div class="q-problem">Given \(f(x)=6x^3-16x^2+2\) and \(g(x)=x^2-3x+1\), compute \(f(x) - x^2 g(x)\) and write in standard form.</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        \(-x^4 + 9x^3 - 17x^2 + 2\)
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        \(-x^4 + 9x^3 - 17x^2 + 2\)
+      </div>
+    </div>
+  </div>
+
+  <!-- Q1c -->
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q1c</span>
+      <span class="q-badge badge-standard">S1</span>
+      <span class="q-badge badge-standard">polynomial division by monomial</span>
+      <span class="badge-score s-full">1 / 1</span>
+    </div>
+    <div class="q-problem">Compute \(\dfrac{f(x)}{2x^2}\) where \(f(x)=6x^3-16x^2+2\).</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        \(3x - 8 + \dfrac{1}{x^2}\)
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        \(3x - 8 + \dfrac{1}{x^2}\)
+      </div>
+    </div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q2</span>
+      <span class="q-badge badge-standard">S2</span>
+      <span class="q-badge badge-standard">polynomial long division</span>
+      <span class="badge-score s-full">1 / 1</span>
+    </div>
+    <div class="q-problem">Divide \(6x^4 - 9x^3 - 10x^2 + 19x - 3\) by \((2x-3)\).</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        \(3x^3 - 5x + 2 + \dfrac{3}{2x-3}\)
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        \(3x^3 - 5x + 2 + \dfrac{3}{2x-3}\)
+      </div>
+    </div>
+  </div>
+
+  <!-- Q3 (parts 1-3, 5-6) -->
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q3 (parts 1&ndash;3, 5&ndash;6)</span>
+      <span class="q-badge badge-standard">S3</span>
+      <span class="q-badge badge-standard">sketch polynomial</span>
+      <span class="badge-score s-full">5 / 6</span>
+    </div>
+    <div class="q-problem">Sketch a polynomial satisfying: degree 5, correct end behavior, divisible by \((x-2)\), exactly three x-intercepts, and positive y-intercept. (Only the relative-min-at-\(x=-3\) condition was missed &mdash; see error card above.)</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Sketch</div>
+        Sketch satisfied 5 of 6 conditions.
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Goal</div>
+        All 6 conditions satisfied.
+      </div>
+    </div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q4</span>
+      <span class="q-badge badge-standard">S2</span>
+      <span class="q-badge badge-standard">factor polynomial</span>
+      <span class="q-badge badge-standard">synthetic division</span>
+      <span class="badge-score s-full">1 / 1</span>
+    </div>
+    <div class="q-problem">Factor \(f(x)=2x^3-x^2-22x-24\) completely given that \((x+2)\) is a factor, then sketch.</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        \((x+2)(2x+3)(x-4)\)
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        \((x+2)(2x+3)(x-4)\)
+      </div>
+    </div>
+    <div class="coaching-note">
+      <div class="clabel">Coaching Note</div>
+      Kai also tried to expand the factored form back out &mdash; teacher put a &lsquo;?&rsquo; on that extra work. Not wrong, just unnecessary. On timed tests, move on once you have the answer.
+    </div>
+  </div>
+
+  <!-- Q6a -->
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q6a</span>
+      <span class="q-badge badge-standard">S3</span>
+      <span class="q-badge badge-standard">degree from graph</span>
+      <span class="badge-score s-full">1 / 1</span>
+    </div>
+    <div class="q-problem">Identify the degree of \(R\) from its graph.</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        4, or any even number
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        4 (even degree)
+      </div>
+    </div>
+  </div>
+
+  <!-- Q6b -->
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q6b</span>
+      <span class="q-badge badge-standard">S3</span>
+      <span class="q-badge badge-standard">domain and range</span>
+      <span class="badge-score s-full">1 / 1</span>
+    </div>
+    <div class="q-problem">State the domain and range of \(R\).</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        Domain: \((-\infty, \infty)\), Range: \([-5, \infty)\)
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        Domain: \((-\infty, \infty)\), Range: \([-5, \infty)\)
+      </div>
+    </div>
+  </div>
+
+  <!-- Q6c -->
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q6c</span>
+      <span class="q-badge badge-standard">S3</span>
+      <span class="q-badge badge-standard">increasing intervals</span>
+      <span class="badge-score s-full">1 / 1</span>
+    </div>
+    <div class="q-problem">State the intervals where \(R\) is increasing.</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        \((-4,-2) \cup (1, \infty)\)
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        \((-4,-2) \cup (1, \infty)\)
+      </div>
+    </div>
+  </div>
+
+  <!-- Q7a -->
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q7a</span>
+      <span class="q-badge badge-standard">S3</span>
+      <span class="q-badge badge-standard">degree of polynomial</span>
+      <span class="badge-score s-full">1 / 1</span>
+    </div>
+    <div class="q-problem">State the degree of \(f(x)=3x(x+2)(x-3)^2\).</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        4
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        4
+      </div>
+    </div>
+  </div>
+
+  <!-- Q7b -->
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q7b</span>
+      <span class="q-badge badge-standard">S3</span>
+      <span class="q-badge badge-standard">intercepts</span>
+      <span class="badge-score s-full">1 / 1</span>
+    </div>
+    <div class="q-problem">Find all intercepts of \(f(x)=3x(x+2)(x-3)^2\).</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        x-intercepts: \(-2, 0, 3\); y-intercept: \(0\)
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        x-intercepts: \(-2, 0, 3\); y-intercept: \(0\)
+      </div>
+    </div>
+  </div>
+
+  <!-- Q7c -->
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q7c</span>
+      <span class="q-badge badge-standard">S3</span>
+      <span class="q-badge badge-standard">end behavior</span>
+      <span class="badge-score s-full">1 / 1</span>
+    </div>
+    <div class="q-problem">Describe the end behavior of \(f(x)=3x(x+2)(x-3)^2\).</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        Both ends go up (\(+\infty\))
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        As \(x \to -\infty,\; f(x) \to +\infty\); as \(x \to +\infty,\; f(x) \to +\infty\)
+      </div>
+    </div>
+  </div>
+
+  <!-- Q7d -->
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q7d</span>
+      <span class="q-badge badge-standard">S3</span>
+      <span class="q-badge badge-standard">sketch graph</span>
+      <span class="badge-score s-full">1 / 1</span>
+    </div>
+    <div class="q-problem">Sketch the graph of \(f(x)=3x(x+2)(x-3)^2\).</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Sketch</div>
+        Correct sketch showing intercepts at \(-2, 0, 3\) with bounce at \(x=3\), both ends up.
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Goal</div>
+        Graph touches x-axis at \(x=3\) (even multiplicity), crosses at \(-2\) and \(0\), both ends up.
+      </div>
+    </div>
+  </div>
+
+  <p class="footer-note">Graded by FR from test photos and Marcus confirmation. Score data: <code>scores/school-assessment1a-2026-05-16.json</code>.</p>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: '$$', right: '$$', display: true },
+        { left: '\\(', right: '\\)', display: false }
+      ],
+      throwOnError: false
+    });
+  });
+</script>
+</body>
+</html>

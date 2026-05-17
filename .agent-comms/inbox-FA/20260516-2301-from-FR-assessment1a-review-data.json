@@ -1,0 +1,215 @@
+{
+  "from": "FR",
+  "to": "FA",
+  "timestamp": "2026-05-16T23:01:00-07:00",
+  "action": "update-review-page",
+  "target_file": "reviews/kai-assessment1a-2026-04-08.html",
+  "format_reference": "reviews/kai-unit1-practice-test-2-2026-04-06.html",
+  "instructions": "Update the lean Assessment 1A review page to match the FULL format of Practice Test 2 review. Every question gets a q-card with Kai's answer + correct answer side by side. Error items get error-note boxes. Coaching notes where noted. Use LaTeX in \\(...\\) delimiters for all math.",
+
+  "test_meta": {
+    "title": "Algebra 2: S1–S3 Polynomials Unit Test (Assessment 1A)",
+    "student": "Kai Ash",
+    "date": "2026-04-08",
+    "raw_score": "18.5 / 22",
+    "pct": "84%",
+    "grade": "A / A / A",
+    "improvement": null,
+    "sections": [
+      { "label": "S1: Operations", "score": "4.5 / 5", "items": "Q1a, Q1b, Q1c, Q7e" },
+      { "label": "S2: Factoring + Zeros", "score": "4.5 / 5", "items": "Q2, Q4, Q5" },
+      { "label": "S3: Graph Analysis", "score": "9.5 / 12", "items": "Q3(6pts), Q6a-d, Q7a-d" }
+    ]
+  },
+
+  "errors_header": "ERRORS — 3.5 POINTS LOST",
+
+  "questions": [
+    {
+      "id": "Q1b",
+      "status": "partial",
+      "score": "0.5 / 1",
+      "standard": "S1",
+      "tags": ["polynomial multiplication"],
+      "problem": "Given \\(f(x)=6x^3-16x^2+2\\) and \\(g(x)=x^2-3x+1\\), compute \\(f(x)\\cdot g(x)\\) and write in standard form.",
+      "kai_answer": "\\(6x^5 - 34x^4 + 54x^3 - 16x^2\\)",
+      "correct_answer": "\\(6x^5 - 34x^4 + 54x^3 - 14x^2 - 6x + 2\\)",
+      "error_label": "FORGOT TO DISTRIBUTE THE CONSTANT TERM",
+      "error_note": "Kai distributed \\(6x^3\\) and \\(-16x^2\\) through \\(g(x)\\) but completely skipped the \\(+2\\) term. The missing piece: \\(2(x^2-3x+1)=2x^2-6x+2\\). That accounts for the three missing terms. When multiplying polynomials, every term of the first must hit every term of the second — easy to lose a constant at the end.",
+      "teacher_note": "\"distribute all terms\""
+    },
+    {
+      "id": "Q3 part 4",
+      "status": "incorrect",
+      "score": "0 / 1",
+      "standard": "S3",
+      "tags": ["sketch polynomial", "relative extrema"],
+      "problem": "Sketch a degree-5 polynomial satisfying six conditions. Part 4: the sketch must show a relative minimum at \\(x=-3\\).",
+      "kai_answer": "Curve goes UP through \\(x=-3\\) with no valley — no relative min present.",
+      "correct_answer": "The sketch should dip DOWN to form a valley (local minimum) at \\(x=-3\\), then rise again.",
+      "error_label": "MISSED RELATIVE MINIMUM CONDITION",
+      "error_note": "Kai's curve passes through the \\(x=-3\\) region going upward with no dip at all. A relative minimum means the curve must come down, reach a low point at \\(x=-3\\), and then go back up — forming a valley. When sketching from a checklist of conditions, tick off each one on the finished sketch to make sure none were missed."
+    },
+    {
+      "id": "Q5",
+      "status": "partial",
+      "score": "0.5 / 1",
+      "standard": "S2",
+      "tags": ["write polynomial from zeros"],
+      "problem": "Write a polynomial with x-intercepts \\(-3,\\; 1,\\; 5\\) that passes through \\((-1,-3)\\) and \\((3,3)\\).",
+      "kai_answer": "\\((x-3)(x+1)(x-5)\\)",
+      "correct_answer": "\\(f(x) = -\\tfrac{1}{8}(x+3)(x-1)(x-5)\\)",
+      "error_label": "SIGN ERRORS ON TWO FACTORS + MISSING LEADING COEFFICIENT",
+      "error_note": "Two problems here. First, Kai reversed the signs: wrote \\((x-3)\\) for the root \\(x=-3\\) and \\((x+1)\\) for the root \\(x=1\\). Remember: root \\(r\\) → factor \\((x - r)\\), so root \\(-3\\) → \\((x-(-3))=(x+3)\\), and root \\(1\\) → \\((x-1)\\). Second, Kai never found the leading coefficient \\(c\\). Plug a known point like \\((-1,-3)\\) into \\(c(x+3)(x-1)(x-5)\\) and solve: \\(c(2)(-2)(-6)=24c=-3\\), so \\(c=-\\tfrac{1}{8}\\).",
+      "coaching_note": "The \\(c=-\\tfrac{1}{8}\\) work visible on the paper was done during post-test corrections with Marcus, not during the original test."
+    },
+    {
+      "id": "Q6d",
+      "status": "incorrect",
+      "score": "0 / 1",
+      "standard": "S3",
+      "tags": ["relative extrema from graph"],
+      "problem": "From the graph of \\(R\\) (a W-shaped degree-4 polynomial with positive leading coefficient), identify all relative extrema.",
+      "kai_answer": "\"−5 min −5. −3, 0\"",
+      "correct_answer": "Relative min at \\((-4,\\,-3)\\), relative max at \\((-2,\\,0)\\), relative min at \\((1,\\,-5)\\)",
+      "error_label": "EXTREMA NOT WRITTEN AS COORDINATE POINTS",
+      "error_note": "Kai listed raw numbers instead of \\((x, y)\\) coordinate pairs. The y-values \\(-5\\), \\(-3\\), \\(0\\) are the right magnitudes but jumbled up, and the x-coordinates are missing entirely. Relative extrema are points on the graph — always write them as \\((x, y)\\) pairs. Read the x-coordinate and y-coordinate separately from the graph for each peak or valley."
+    },
+    {
+      "id": "Q7e",
+      "status": "partial",
+      "score": "0.5 / 1",
+      "standard": "S1",
+      "tags": ["expand to standard form"],
+      "problem": "Write \\(f(x) = 3x(x+2)(x-3)^2\\) in standard form.",
+      "kai_answer": "\\(3x^4 - 12x^3 - 441x^2 - 54x\\)",
+      "correct_answer": "\\(3x^4 - 12x^3 - 9x^2 + 54x\\)",
+      "error_label": "SIGN ERROR SQUARING \\((x-3)^2\\)",
+      "error_note": "Kai expanded \\((x-3)^2\\) with \\((-3)(-3)=-9\\) instead of \\(+9\\). The correct expansion: \\((x-3)^2 = x^2 - 6x + 9\\). This sign error cascaded through the rest of the multiplication, flipping signs on every subsequent term. When squaring a binomial, always use \\((a-b)^2 = a^2 - 2ab + b^2\\) — the last term is always positive."
+    },
+
+    {
+      "id": "Q1a",
+      "status": "correct",
+      "score": "1 / 1",
+      "standard": "S1",
+      "tags": ["polynomial subtraction"],
+      "problem": "Given \\(f(x)=6x^3-16x^2+2\\) and \\(g(x)=x^2-3x+1\\), compute \\(f(x) - x^2 g(x)\\) and write in standard form.",
+      "kai_answer": "\\(-x^4 + 9x^3 - 17x^2 + 2\\)",
+      "correct_answer": "\\(-x^4 + 9x^3 - 17x^2 + 2\\)"
+    },
+    {
+      "id": "Q1c",
+      "status": "correct",
+      "score": "1 / 1",
+      "standard": "S1",
+      "tags": ["polynomial division by monomial"],
+      "problem": "Compute \\(\\dfrac{f(x)}{2x^2}\\) where \\(f(x)=6x^3-16x^2+2\\).",
+      "kai_answer": "\\(3x - 8 + \\frac{1}{x^2}\\)",
+      "correct_answer": "\\(3x - 8 + \\frac{1}{x^2}\\)"
+    },
+    {
+      "id": "Q2",
+      "status": "correct",
+      "score": "1 / 1",
+      "standard": "S2",
+      "tags": ["polynomial long division"],
+      "problem": "Divide \\(6x^4 - 9x^3 - 10x^2 + 19x - 3\\) by \\((2x-3)\\).",
+      "kai_answer": "\\(3x^3 - 5x + 2 + \\frac{3}{2x-3}\\)",
+      "correct_answer": "\\(3x^3 - 5x + 2 + \\frac{3}{2x-3}\\)"
+    },
+    {
+      "id": "Q3 (parts 1–3, 5–6)",
+      "status": "correct",
+      "score": "5 / 6",
+      "standard": "S3",
+      "tags": ["sketch polynomial"],
+      "problem": "Sketch a polynomial satisfying: degree 5, correct end behavior, divisible by \\((x-2)\\), exactly three x-intercepts, and positive y-intercept. (Only the relative-min-at-\\(x=-3\\) condition was missed — see error card above.)",
+      "kai_answer": "Sketch satisfied 5 of 6 conditions.",
+      "correct_answer": "All 6 conditions satisfied."
+    },
+    {
+      "id": "Q4",
+      "status": "correct",
+      "score": "1 / 1",
+      "standard": "S2",
+      "tags": ["factor polynomial", "synthetic division"],
+      "problem": "Factor \\(f(x)=2x^3-x^2-22x-24\\) completely given that \\((x+2)\\) is a factor, then sketch.",
+      "kai_answer": "\\((x+2)(2x+3)(x-4)\\)",
+      "correct_answer": "\\((x+2)(2x+3)(x-4)\\)",
+      "coaching_note": "Kai also tried to expand the factored form back out — teacher put a '?' on that extra work. Not wrong, just unnecessary. On timed tests, move on once you have the answer."
+    },
+    {
+      "id": "Q6a",
+      "status": "correct",
+      "score": "1 / 1",
+      "standard": "S3",
+      "tags": ["degree from graph"],
+      "problem": "Identify the degree of \\(R\\) from its graph.",
+      "kai_answer": "4, or any even number",
+      "correct_answer": "4 (even degree)"
+    },
+    {
+      "id": "Q6b",
+      "status": "correct",
+      "score": "1 / 1",
+      "standard": "S3",
+      "tags": ["domain and range"],
+      "problem": "State the domain and range of \\(R\\).",
+      "kai_answer": "Domain: \\((-\\infty, \\infty)\\), Range: \\([-5, \\infty)\\)",
+      "correct_answer": "Domain: \\((-\\infty, \\infty)\\), Range: \\([-5, \\infty)\\)"
+    },
+    {
+      "id": "Q6c",
+      "status": "correct",
+      "score": "1 / 1",
+      "standard": "S3",
+      "tags": ["increasing intervals"],
+      "problem": "State the intervals where \\(R\\) is increasing.",
+      "kai_answer": "\\((-4,-2) \\cup (1, \\infty)\\)",
+      "correct_answer": "\\((-4,-2) \\cup (1, \\infty)\\)"
+    },
+    {
+      "id": "Q7a",
+      "status": "correct",
+      "score": "1 / 1",
+      "standard": "S3",
+      "tags": ["degree of polynomial"],
+      "problem": "State the degree of \\(f(x)=3x(x+2)(x-3)^2\\).",
+      "kai_answer": "4",
+      "correct_answer": "4"
+    },
+    {
+      "id": "Q7b",
+      "status": "correct",
+      "score": "1 / 1",
+      "standard": "S3",
+      "tags": ["intercepts"],
+      "problem": "Find all intercepts of \\(f(x)=3x(x+2)(x-3)^2\\).",
+      "kai_answer": "x-intercepts: \\(-2, 0, 3\\); y-intercept: \\(0\\)",
+      "correct_answer": "x-intercepts: \\(-2, 0, 3\\); y-intercept: \\(0\\)"
+    },
+    {
+      "id": "Q7c",
+      "status": "correct",
+      "score": "1 / 1",
+      "standard": "S3",
+      "tags": ["end behavior"],
+      "problem": "Describe the end behavior of \\(f(x)=3x(x+2)(x-3)^2\\).",
+      "kai_answer": "Both ends go up (\\(+\\infty\\))",
+      "correct_answer": "As \\(x \\to -\\infty,\\; f(x) \\to +\\infty\\); as \\(x \\to +\\infty,\\; f(x) \\to +\\infty\\)"
+    },
+    {
+      "id": "Q7d",
+      "status": "correct",
+      "score": "1 / 1",
+      "standard": "S3",
+      "tags": ["sketch graph"],
+      "problem": "Sketch the graph of \\(f(x)=3x(x+2)(x-3)^2\\).",
+      "kai_answer": "Correct sketch showing intercepts at \\(-2, 0, 3\\) with bounce at \\(x=3\\), both ends up.",
+      "correct_answer": "Graph touches x-axis at \\(x=3\\) (even multiplicity), crosses at \\(-2\\) and \\(0\\), both ends up."
+    }
+  ],
+
+  "correct_header": "CORRECT — 16 OF 22 POINTS"
+}
