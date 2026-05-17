@@ -1,0 +1,48 @@
+{
+  "key": "school-assessment2a-2026-05-16",
+  "attempts": [
+    {
+      "score": 7,
+      "total": 16,
+      "pct": 44,
+      "letter_grade": "3/4",
+      "teacher_grade": "3/4",
+      "type": "assessment",
+      "graded_by": "FR+Marcus",
+      "date": "2026-05-16",
+      "subject": "S4 Manipulating Rational Expressions",
+      "standards_tested": ["S4.a", "S4.b", "S4.c", "S5.d"],
+      "sections": {
+        "S4.a": { "score": 3.5, "total": 5, "pct": 70, "description": "Multiply and divide rational expressions (Q6a, Q6b, Q7, Q8)" },
+        "S4.b": { "score": 1, "total": 4, "pct": 25, "description": "Add and subtract rational expressions with LCD (Q6c, Q9, Q10, Q11)" },
+        "S5.d": { "score": 2, "total": 5, "pct": 40, "description": "Simplify rational expressions (Q2, Q3, Q4, Q5, Q13)" },
+        "other": { "score": 0.5, "total": 2, "pct": 25, "description": "Error analysis and difference quotient (Q1, Q14)" }
+      },
+      "questions": {
+        "q1":  { "correct": true,  "score": 1,   "total": 1, "standard": "S5.d", "type": "error-analysis",       "problem": "Explain mistake in (x²+x)/(x²-1) = x/(x-1) = -1",                          "kai_answer": "correct", "note": "Full credit per teacher." },
+        "q2":  { "correct": false, "score": 0, "total": 1, "standard": "S5.d", "type": "simplify",                "problem": "Simplify (x²+x)/(x²-1)",                                                    "kai_answer": "x(x+2)/(x²-1)", "note": "Factoring error: wrote x(x+2) instead of x(x+1). Prevented cancellation. Correct: x/(x-1)." },
+        "q3":  { "correct": true,  "score": 1, "total": 1, "standard": "S5.d", "type": "simplify",                "problem": "Simplify (x²+x-6)/(x²-6x+9)",                                               "kai_answer": "(x+3)(x-2)/(x-3)²" },
+        "q4":  { "correct": true,  "score": 1, "total": 1, "standard": "S5.d", "type": "simplify",                "problem": "Simplify (x+3)²/(2x²+11x+15)",                                              "kai_answer": "(x+3)/(2x+5)" },
+        "q5":  { "correct": false, "score": 0, "total": 1, "standard": "S5.d", "type": "simplify",                "problem": "Simplify [3(2x+1)²-6x-3]/(2x+1)³",                                          "kai_answer": "wrong", "note": "Distribution error expanding 3(2x+1)². Correct: 6x/(2x+1)²." },
+        "q6a": { "correct": true,  "score": 1, "total": 1, "standard": "S4.a", "type": "multiply-functions",      "problem": "f(x)·g(x) where f=3/(12x⁴), g=2x/(4x³)",                                   "kai_answer": "1/(8x⁶)" },
+        "q6b": { "correct": true,  "score": 1, "total": 1, "standard": "S4.a", "type": "divide-functions",        "problem": "f(x)/g(x)",                                                                  "kai_answer": "1/(2x²)" },
+        "q6c": { "correct": false, "score": 0, "total": 1, "standard": "S4.b", "type": "add-functions",           "problem": "f(x)+g(x)",                                                                  "kai_answer": "wrong LCD", "note": "LCD or multiplier error when adding 1/(4x⁴)+1/(2x²). Correct: (2x²+1)/(4x⁴)." },
+        "q7":  { "correct": false, "score": 0, "total": 1, "standard": "S4.a", "type": "multiply-simplify",       "problem": "Multiply and simplify (3x²-12x)/(3x+5)·(x-2)/(x²-6x+8)",                   "kai_answer": "wrong", "note": "Factored x²-6x+8 as (x-3)² instead of (x-4)(x-2). Arithmetic error on constant term (9 vs 8). Correct: 3x/(3x+5)." },
+        "q8":  { "correct": false, "score": 0, "total": 1, "standard": "S4.a", "type": "divide-simplify",       "problem": "Divide and simplify rational expression",                                    "kai_answer": "wrong", "note": "Teacher marked wrong. Method flagged 'illegit!' — used shortcut instead of proper factoring approach." },
+        "q9":  { "correct": true,  "score": 1, "total": 1, "standard": "S4.b", "type": "add-simplify",            "problem": "Add and simplify with LCD",                                                  "kai_answer": "correct" },
+        "q10": { "correct": false, "score": 0, "total": 1, "standard": "S4.b", "type": "subtract-lcd",            "problem": "Subtract and simplify x/(x+1)-(x²-3x-5)/(x²+5x+4)",                        "kai_answer": "wrong", "note": "Sign distribution error: didn't negate all terms when subtracting. Correct: (7x+5)/((x+1)(x+4))." },
+        "q11": { "correct": false, "score": 0, "total": 1, "standard": "S4.b", "type": "multiple-choice",         "problem": "Which is equivalent to 1/(x+2)+1/(x+3) for x>3?",                           "kai_answer": "E (None of the above)", "note": "Correct: A = (2x+5)/(x²+5x+6). Kai made arithmetic error when checking by substitution." },
+        "q12": { "correct": true,  "score": 1, "total": 1, "standard": "S4.c", "type": "find-constant",           "problem": "Find a where (3x+4)/(x-3)²-3/(x-3) = a/(x-3)²",                            "kai_answer": "a = 13" },
+        "q13": { "correct": false, "score": 0, "total": 1, "standard": "S5.d", "type": "simplify-quotient",       "problem": "Simplify h(x)/k(x) where h(x)=x³-9x, k(x)=x²-2x-3",                       "kai_answer": "wrong", "note": "CRITICAL: Did not factor. Tried to cancel individual terms (x³→x, x²→1) instead of factoring h=x(x-3)(x+3), k=(x-3)(x+1). Correct: x(x+3)/(x+1)." },
+        "q14": { "correct": false, "score": 0, "total": 1, "standard": "other",  "type": "difference-quotient",   "problem": "Simplify [2(x+h)²-3(x+h)-(2x²-3x)]/h",                                     "kai_answer": "wrong", "note": "Distribution error: dropped the 2 when expanding 2(x²+2xh+h²), getting 2x²+2xh+h² instead of 2x²+4xh+2h². Correct: 4x+2h-3." }
+      },
+      "error_analysis": "7/15 (47%). Teacher grade: 3/4. Three distinct error patterns: (1) FACTORING — Q2 wrong factor, Q5 expansion error, Q7 arithmetic on constant, Q8 illegitimate method, Q13 didn't factor at all (tried term-by-term cancellation, fundamental misconception). (2) SIGN DISTRIBUTION — Q10 forgot to negate all terms, Q14 dropped coefficient when distributing. (3) LCD CONSTRUCTION — Q6c wrong multiplier, Q11 couldn't combine unit fractions. Multiply/divide (S4.a) needs work. Add/subtract (S4.b) is critical at 25%. Simplification (S5.d) is weak. Q13 is the most concerning: term-by-term cancellation instead of factoring shows a conceptual gap, not just a careless mistake.",
+      "timestamp": "2026-05-16T16:14:00.000Z"
+    }
+  ],
+  "best": {
+    "score": 7,
+    "pct": 44,
+    "letter_grade": "3/4"
+  }
+}
