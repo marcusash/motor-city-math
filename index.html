@@ -558,7 +558,7 @@
     <script>
     /* ========== TEST REGISTRY ========== */
     var tests = [
-        { file: null, name: 'S1-S3 Unit Test', unit: 'spring-s1s2s3', trimester: 'spring', key: 'school-assessment1a-2026-05-16', questions: 22, benchmark: true, unitTest: true, teacherGrade: 'A/A/A', teacherRating: '4/4', teacherStandards: { S1: 'A', S2: 'A', S3: 'A' } },
+        { file: null, name: 'S1-S3 Unit Test', unit: 'spring-s1s2s3', trimester: 'spring', key: 'school-assessment1a-2026-05-16', questions: 22, benchmark: true, teacherGrade: 'A/A/A', teacherRating: '4/4' },
         { file: null, name: 'S4 Assessment 2A', unit: 'spring-s4', trimester: 'spring', key: 'school-assessment2a-2026-05-16', questions: 16, benchmark: true, teacherGrade: '3/4', teacherRating: '3/4' },
         { file: 'exam.html?file=s4-assessment-drill-1', name: 'S4 Gap Drill', unit: 'spring-s4', trimester: 'spring', key: 'mcm-s4-assessment-drill-1', questions: 12 },
         { file: 'reviews/kai-unit1-practice-test-2-2026-04-06.html', name: 'U1 Practice Test 2', unit: 'spring-s1', trimester: 'spring', key: 'unit1-practice-test-2', questions: 12, benchmark: true, teacherGrade: 'B' },
@@ -1044,22 +1044,8 @@
                             scoreHtml += '<span style="position:absolute;top:14px;right:14px;background:'+pillBg+';color:'+pillColor+';font-size:11px;font-weight:700;padding:3px 10px;border-radius:12px;border:1px solid '+pillBorder+';font-family:var(--font-body);letter-spacing:0.3px;">' + tg + '</span>';
                             borderColor = isGreen ? 'var(--color-correct)' : (isAmber ? '#d29922' : 'var(--accent-red)');
                         }
-                        if (t.unitTest) {
-                            // UNIT TEST — most important grade type, special prominence
-                            var stds = t.teacherStandards || (att && att.teacher_standards) || {};
-                            var stdPills = Object.keys(stds).map(function(s) {
-                                var g = stds[s];
-                                var sIsGreen = g === 'A';
-                                var sIsAmber = g === 'B';
-                                var c = sIsGreen ? '#3FB950' : (sIsAmber ? '#d29922' : '#f85149');
-                                var bg = sIsGreen ? 'rgba(63,185,80,0.12)' : (sIsAmber ? 'rgba(210,153,34,0.12)' : 'rgba(248,81,73,0.12)');
-                                return '<span style="background:'+bg+';color:'+c+';font-size:10px;font-weight:700;padding:2px 6px;border-radius:8px;margin-right:4px;font-family:var(--font-body);">'+s+':'+g+'</span>';
-                            }).join('');
-                            metaLabel = '<strong style="color:#3FB950;letter-spacing:0.3px;">UNIT TEST</strong> · ' + rawScore + (stdPills ? ' &nbsp; ' + stdPills : '');
-                        } else {
-                            var benchLabel = (t.name && t.name.indexOf('Assessment') !== -1) ? 'Teacher Assessment' : 'Teacher Quiz';
-                            metaLabel = benchLabel + ' · ' + rawScore;
-                        }
+                        var benchLabel = (t.name && t.name.indexOf('Assessment') !== -1) ? 'Teacher Assessment' : 'Teacher Quiz';
+                        metaLabel = benchLabel + ' · ' + rawScore;
                     } else if (t.homework) {
                         // Homework: green border for 100%, show raw score
                         var scoreClass = pct >= 92 ? '' : (pct >= 70 ? ' mid' : ' low');
@@ -1079,8 +1065,7 @@
             var unitLabel = t.unit === 'spring-s4' ? 'S4.a &amp; S4.b · Rational Expressions'
                 : t.unit === 'spring-s1s2s3' ? 'S1 · S2 · S3 · Polynomials Unit'
                 : 'S1.a &amp; S1.b · Polynomials';
-            var extraStyle = t.unitTest ? 'border-left-width:6px;box-shadow:0 0 0 1px rgba(63,185,80,0.2);' : '';
-            html += '<a' + href + ' class="test-link" style="position:relative;border-left:4px solid ' + borderColor + ';' + extraStyle + '">' +
+            html += '<a' + href + ' class="test-link" style="position:relative;border-left:4px solid ' + borderColor + ';">' +
                 t.name + scoreHtml +
                 '<div class="test-meta">' + metaLabel + ' · ' + unitLabel + '</div></a>';
         });
