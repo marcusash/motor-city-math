@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80' fill='none'%3E%3Crect width='80' height='80' rx='14' fill='%230A0A0F'/%3E%3Cg transform='translate(8,12) scale(0.72)'%3E%3Cline x1='26' y1='14' x2='26' y2='66' stroke='%23FFCB05' stroke-width='4' stroke-linecap='round'/%3E%3Cline x1='26' y1='14' x2='64' y2='14' stroke='%23FFCB05' stroke-width='4' stroke-linecap='round'/%3E%3Cline x1='26' y1='42' x2='56' y2='42' stroke='%23FFCB05' stroke-width='4' stroke-linecap='round'/%3E%3Ccircle cx='26' cy='14' r='6' fill='%23FFCB05'/%3E%3Ccircle cx='26' cy='42' r='6' fill='%23FFCB05'/%3E%3Ccircle cx='64' cy='14' r='5' fill='none' stroke='%23FFCB05' stroke-width='3'/%3E%3Ccircle cx='56' cy='42' r='5' fill='none' stroke='%23FFCB05' stroke-width='3'/%3E%3Ccircle cx='26' cy='66' r='5' fill='none' stroke='%23FFCB05' stroke-width='3'/%3E%3C/g%3E%3C/svg%3E">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FP3 Miss Drill: Answer Key</title>
+<link rel="stylesheet" href="../../design/system/canvas-base.css">
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #0f1117;
+    color: #e2e8f0;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    font-size: 16px;
+    padding: 40px 32px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  h1 {
+    font-size: 40px;
+    font-weight: 800;
+    color: #f8fafc;
+    margin-bottom: 6px;
+  }
+  .subtitle {
+    font-size: 14px;
+    color: #94a3b8;
+    margin-bottom: 36px;
+  }
+  .question-block {
+    background: #1e2433;
+    border: 1px solid #2d3748;
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin-bottom: 24px;
+  }
+  .q-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  .q-num {
+    font-size: 24px;
+    font-weight: 700;
+    color: #f1f5f9;
+  }
+  .standard-badge {
+    background: #3b4cca;
+    color: #c7d2fe;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+  .question-text {
+    font-size: 16px;
+    color: #cbd5e1;
+    margin-bottom: 18px;
+    line-height: 1.6;
+  }
+  .answers-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+  .answer-chip {
+    background: #0f2d1a;
+    border: 1px solid #22c55e;
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 15px;
+    color: #86efac;
+    font-weight: 600;
+  }
+  .answer-chip span {
+    color: #4ade80;
+    font-size: 17px;
+  }
+  .steps-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #6B7F95;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+  }
+  .steps {
+    background: #141929;
+    border-radius: 6px;
+    padding: 14px 18px;
+    font-size: 14px;
+    color: #94a3b8;
+    line-height: 1.9;
+    font-family: 'Consolas', 'Courier New', monospace;
+  }
+  .steps .step { color: #cbd5e1; }
+  .steps .step.key { color: #fbbf24; font-weight: 600; }
+  .divider {
+    height: 1px;
+    background: #2d3748;
+    margin: 16px 0;
+  }
+</style>
+</head>
+<body>
+
+<h1>FP3 Miss Drill — Answer Key</h1>
+<div class="subtitle">finals-miss-drill &nbsp;·&nbsp; 8 questions &nbsp;·&nbsp; W3.d · W3.e · W4.h · W6.b · W6.c (x3)</div>
+
+<!-- Q1 -->
+<div class="question-block">
+  <div class="q-header">
+    <div class="q-num">Q1</div>
+    <div class="standard-badge">W3.d</div>
+  </div>
+  <div class="question-text">Solve for x. Rewrite both sides as powers of the same base: \( 9^{x+2} = 27 \)</div>
+  <div class="answers-row">
+    <div class="answer-chip">x = <span>−1/2</span></div>
+  </div>
+  <div class="steps-label">Solution</div>
+  <div class="steps">
+    <div class="step">\( 9^{x+2} = 27 \)</div>
+    <div class="step">\( (3^2)^{x+2} = 3^3 \quad [9=3^2,\ 27=3^3] \)</div>
+    <div class="step">\( 3^{2x+4} = 3^3 \quad [\text{power rule}] \)</div>
+    <div class="step key">\( 2x + 4 = 3 \quad [\text{same base: set exponents equal}] \)</div>
+    <div class="step key">\( x = -\tfrac{1}{2} \)</div>
+  </div>
+</div>
+
+<!-- Q2 -->
+<div class="question-block">
+  <div class="q-header">
+    <div class="q-num">Q2</div>
+    <div class="standard-badge">W3.d</div>
+  </div>
+  <div class="question-text">Solve for x. Both sides must share the same base: \( 4^{2x-1} = 8^x \)</div>
+  <div class="answers-row">
+    <div class="answer-chip">x = <span>2</span></div>
+  </div>
+  <div class="steps-label">Solution</div>
+  <div class="steps">
+    <div class="step">\( 4^{2x-1} = 8^x \)</div>
+    <div class="step">\( (2^2)^{2x-1} = (2^3)^x \quad [4=2^2,\ 8=2^3] \)</div>
+    <div class="step">\( 2^{4x-2} = 2^{3x} \)</div>
+    <div class="step key">\( 4x - 2 = 3x \implies x = 2 \)</div>
+    <div class="step">Check: \( 4^3 = 64,\ 8^2 = 64 \). VALID.</div>
+  </div>
+</div>
+
+<!-- Q3 -->
+<div class="question-block">
+  <div class="q-header">
+    <div class="q-num">Q3</div>
+    <div class="standard-badge">W3.e</div>
+  </div>
+  <div class="question-text">Solve for x and check for extraneous solutions: \( \sqrt{2x+3} = x \)</div>
+  <div class="answers-row">
+    <div class="answer-chip">Valid: x = <span>3</span></div>
+    <div class="answer-chip">Extraneous: x = <span>−1</span></div>
+  </div>
+  <div class="steps-label">Solution</div>
+  <div class="steps">
+    <div class="step">\( 2x+3 = x^2 \quad [\text{square both sides}] \)</div>
+    <div class="step">\( x^2 - 2x - 3 = 0 \implies (x-3)(x+1) = 0 \)</div>
+    <div class="step">Check \( x=3 \): \( \sqrt{9}=3 \). VALID.</div>
+    <div class="step key">Check \( x=-1 \): \( \sqrt{1}=1 \neq -1 \). EXTRANEOUS.</div>
+  </div>
+</div>
+
+<!-- Q4 -->
+<div class="question-block">
+  <div class="q-header">
+    <div class="q-num">Q4</div>
+    <div class="standard-badge">W4.h</div>
+  </div>
+  <div class="question-text">Absolute value function with vertex \((-3,2)\) through point \((-1,-6)\). Find a, h, k in \( a|x-h|+k \).</div>
+  <div class="answers-row">
+    <div class="answer-chip">a = <span>−4</span></div>
+    <div class="answer-chip">h = <span>−3</span></div>
+    <div class="answer-chip">k = <span>2</span></div>
+  </div>
+  <div class="steps-label">Solution</div>
+  <div class="steps">
+    <div class="step">\( f(x) = a|x+3|+2 \quad [\text{vertex form}] \)</div>
+    <div class="step">Sub \((-1,-6)\): \( -6 = a|-1+3|+2 = 2a+2 \)</div>
+    <div class="step key">\( 2a = -8 \implies a = -4 \)</div>
+    <div class="step">\( f(x) = -4|x+3|+2 \)</div>
+  </div>
+</div>
+
+<!-- Q5 -->
+<div class="question-block">
+  <div class="q-header">
+    <div class="q-num">Q5</div>
+    <div class="standard-badge">W6.b</div>
+  </div>
+  <div class="question-text">Solve by completing the square: \( x^2 - 6x + 5 = 0 \)</div>
+  <div class="answers-row">
+    <div class="answer-chip">x = <span>5</span></div>
+    <div class="answer-chip">x = <span>1</span></div>
+  </div>
+  <div class="steps-label">Solution</div>
+  <div class="steps">
+    <div class="step">\( x^2 - 6x = -5 \)</div>
+    <div class="step">\( x^2 - 6x + 9 = 4 \quad [(6/2)^2=9] \)</div>
+    <div class="step">\( (x-3)^2 = 4 \)</div>
+    <div class="step key">\( x-3 = \pm 2 \implies x=5 \text{ or } x=1 \)</div>
+  </div>
+</div>
+
+<!-- Q6 -->
+<div class="question-block">
+  <div class="q-header">
+    <div class="q-num">Q6</div>
+    <div class="standard-badge">W6.c</div>
+  </div>
+  <div class="question-text">Quadratic formula — compute 4ac first: \( 3x^2 - 7x + 2 = 0 \)</div>
+  <div class="answers-row">
+    <div class="answer-chip">4ac = <span>24</span></div>
+    <div class="answer-chip">x = <span>2</span></div>
+    <div class="answer-chip">x = <span>1/3</span></div>
+  </div>
+  <div class="steps-label">Solution</div>
+  <div class="steps">
+    <div class="step">\( a=3,\ b=-7,\ c=2 \)</div>
+    <div class="step key">Step 1: \( 4ac = 4(3)(2) = 24 \)</div>
+    <div class="step">Step 2: discriminant \( = (-7)^2 - 24 = 49-24 = 25 \)</div>
+    <div class="step">\( x = \dfrac{7 \pm 5}{6} \implies x=2 \text{ or } x=\tfrac{1}{3} \)</div>
+  </div>
+</div>
+
+<!-- Q7 -->
+<div class="question-block">
+  <div class="q-header">
+    <div class="q-num">Q7</div>
+    <div class="standard-badge">W6.c</div>
+  </div>
+  <div class="question-text">Quadratic formula — compute 4ac first (c is negative): \( 2x^2 + 3x - 2 = 0 \)</div>
+  <div class="answers-row">
+    <div class="answer-chip">4ac = <span>−16</span></div>
+    <div class="answer-chip">x = <span>1/2</span></div>
+    <div class="answer-chip">x = <span>−2</span></div>
+  </div>
+  <div class="steps-label">Solution</div>
+  <div class="steps">
+    <div class="step">\( a=2,\ b=3,\ c=-2 \)</div>
+    <div class="step key">Step 1: \( 4ac = 4(2)(-2) = -16 \)</div>
+    <div class="step key">Step 2: discriminant \( = 9 - (-16) = 9+16 = 25 \quad [\text{subtracting a negative}] \)</div>
+    <div class="step">\( x = \dfrac{-3 \pm 5}{4} \implies x=\tfrac{1}{2} \text{ or } x=-2 \)</div>
+  </div>
+</div>
+
+<!-- Q8 -->
+<div class="question-block">
+  <div class="q-header">
+    <div class="q-num">Q8</div>
+    <div class="standard-badge">W6.c</div>
+  </div>
+  <div class="question-text">Car purchased for $25,000 loses 20% per year. Find \(A_0\), decay factor \(b\), and value after 2 years.</div>
+  <div class="answers-row">
+    <div class="answer-chip">A&#8320; = <span>25,000</span></div>
+    <div class="answer-chip">b = <span>0.80</span></div>
+    <div class="answer-chip">Value = <span>$16,000</span></div>
+  </div>
+  <div class="steps-label">Solution</div>
+  <div class="steps">
+    <div class="step key">\( b = 1 - 0.20 = 0.80 \quad [\text{loses 20%, keeps 80%}] \)</div>
+    <div class="step">\( A = 25000 \cdot (0.8)^2 = 25000 \cdot 0.64 = 16{,}000 \)</div>
+  </div>
+</div>
+
+</body>
+</html>

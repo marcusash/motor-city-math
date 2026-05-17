@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80' fill='none'%3E%3Crect width='80' height='80' rx='14' fill='%230A0A0F'/%3E%3Cg transform='translate(8,12) scale(0.72)'%3E%3Cline x1='26' y1='14' x2='26' y2='66' stroke='%23FFCB05' stroke-width='4' stroke-linecap='round'/%3E%3Cline x1='26' y1='14' x2='64' y2='14' stroke='%23FFCB05' stroke-width='4' stroke-linecap='round'/%3E%3Cline x1='26' y1='42' x2='56' y2='42' stroke='%23FFCB05' stroke-width='4' stroke-linecap='round'/%3E%3Ccircle cx='26' cy='14' r='6' fill='%23FFCB05'/%3E%3Ccircle cx='26' cy='42' r='6' fill='%23FFCB05'/%3E%3Ccircle cx='64' cy='14' r='5' fill='none' stroke='%23FFCB05' stroke-width='3'/%3E%3Ccircle cx='56' cy='42' r='5' fill='none' stroke='%23FFCB05' stroke-width='3'/%3E%3Ccircle cx='26' cy='66' r='5' fill='none' stroke='%23FFCB05' stroke-width='3'/%3E%3C/g%3E%3C/svg%3E">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kai Finals Diagnostic 2 — Question Comparison</title>
+<link rel="stylesheet" href="../../design/system/canvas-base.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font-ui);background:var(--bg);color:var(--text);font-size:16px;line-height:1.5;--text-dim:#6B7F95}
+
+/* HERO */
+.hero{padding:40px 32px 28px;background:var(--bg-card);border-bottom:1px solid var(--border)}
+.hero-title{font-size:48px;font-weight:800;letter-spacing:-.02em;color:var(--text);line-height:1}
+.hero-sub{font-size:24px;color:var(--text-sub);margin-top:8px;font-family:var(--font-mono)}
+.hero-scores{display:flex;gap:24px;margin-top:20px;align-items:center}
+.score-chip{display:flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:16px}
+.score-val{font-weight:700;font-size:28px}
+.score-div{width:1px;height:28px;background:var(--border)}
+
+/* LEGEND */
+.legend{padding:14px 32px;background:var(--bg-subtle);border-bottom:1px solid var(--border);display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+.leg-lbl{font-size:14px;font-weight:600;color:var(--text-dim);letter-spacing:.06em;text-transform:uppercase;font-family:var(--font-mono)}
+.leg-item{display:flex;align-items:center;gap:6px;font-size:14px;color:var(--text-sub)}
+.leg-swatch{width:10px;height:10px;border-radius:3px;flex-shrink:0}
+
+/* TABLE */
+.tbl-wrap{padding:20px 32px;overflow-x:auto}
+table{width:100%;border-collapse:collapse;table-layout:fixed}
+col.col-q{width:44px}
+col.col-std{width:72px}
+col.col-d1{width:27%}
+col.col-d2{width:27%}
+col.col-why{width:auto}
+
+thead th{
+  padding:10px 14px;font-size:14px;font-weight:600;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--text-dim);background:var(--bg-subtle);
+  border-bottom:2px solid var(--border-strong);text-align:left;position:sticky;top:0;z-index:5
+}
+thead th.col-d2-hd{color:var(--maize)}
+
+tbody tr{border-bottom:1px solid var(--border);transition:background .1s}
+tbody tr:hover{background:rgba(255,255,255,.02)}
+tbody tr.changed{background:rgba(255,203,5,.02)}
+tbody tr.changed:hover{background:rgba(255,203,5,.04)}
+tbody tr.major{background:rgba(249,115,22,.025)}
+tbody tr.major:hover{background:rgba(249,115,22,.05)}
+
+td{padding:12px 14px;vertical-align:top;font-size:15px}
+td.q-num{font-family:var(--font-mono);font-weight:700;font-size:16px;color:var(--text-dim);text-align:center;padding-top:14px}
+td.std-cell{padding-top:13px}
+td.d1-cell{color:var(--text-sub)}
+td.d2-cell{color:var(--text)}
+td.why-cell{color:var(--text-sub);font-size:14px;line-height:1.6}
+
+/* Standard badges */
+.std{display:inline-flex;align-items:center;padding:3px 8px;border-radius:3px;font-family:var(--font-mono);font-size:14px;font-weight:700;letter-spacing:.04em}
+.std-w1{background:rgba(74,144,217,.15);color:#4A90D9;border:1px solid rgba(74,144,217,.25)}
+.std-w2{background:rgba(249,115,22,.15);color:#F97316;border:1px solid rgba(249,115,22,.25)}
+.std-w3{background:rgba(109,40,217,.15);color:#A78BFA;border:1px solid rgba(109,40,217,.25)}
+.std-w4{background:rgba(255,203,5,.12);color:#FFCB05;border:1px solid rgba(255,203,5,.2)}
+.std-w5{background:rgba(34,197,94,.12);color:#22C55E;border:1px solid rgba(34,197,94,.2)}
+.std-w6{background:rgba(206,17,38,.12);color:#F87171;border:1px solid rgba(206,17,38,.2)}
+
+/* Change badges */
+.badge{display:inline-flex;align-items:center;padding:2px 7px;border-radius:3px;font-family:var(--font-mono);font-size:14px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;margin-left:4px;vertical-align:middle}
+.badge-new{background:rgba(249,115,22,.2);color:#F97316;border:1px solid rgba(249,115,22,.35)}
+.badge-harder{background:rgba(206,17,38,.15);color:#F87171;border:1px solid rgba(206,17,38,.25)}
+.badge-same{background:rgba(255,255,255,.05);color:var(--text-dim);border:1px solid var(--border)}
+.badge-gap{background:rgba(168,85,247,.2);color:#A855F7;border:1px solid rgba(168,85,247,.3)}
+
+/* Math styling */
+.math{font-family:var(--font-mono);font-size:14px;background:rgba(255,255,255,.04);padding:3px 7px;border-radius:3px;display:inline-block;margin:1px 0;line-height:1.4}
+.ans{font-family:var(--font-mono);font-size:14px;color:#22C55E;font-weight:600}
+.ans-prev{font-family:var(--font-mono);font-size:14px;color:var(--text-dim)}
+
+/* Why column flags — no emoji, text labels only */
+.why-flag{display:inline-flex;align-items:center;gap:4px;background:rgba(168,85,247,.1);border:1px solid rgba(168,85,247,.2);border-radius:3px;padding:2px 7px;font-size:14px;color:#A855F7;font-family:var(--font-mono);font-weight:600;margin-bottom:4px}
+.why-flag-warn{background:rgba(245,158,11,.1);border-color:rgba(245,158,11,.25);color:#F59E0B}
+.why-flag-err{background:rgba(206,17,38,.1);border-color:rgba(206,17,38,.25);color:#F87171}
+
+/* Footer */
+.foot{padding:20px 32px;border-top:1px solid var(--border);background:var(--bg-card);display:flex;gap:32px;flex-wrap:wrap}
+.foot-stat{display:flex;flex-direction:column;gap:3px}
+.foot-val{font-family:var(--font-mono);font-size:24px;font-weight:700}
+.foot-lbl{font-size:14px;color:var(--text-dim);text-transform:uppercase;letter-spacing:.06em}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-title">KAI — FINALS DIAGNOSTIC 2</div>
+  <div class="hero-sub">Question Comparison · D1 vs D2 Redesign</div>
+  <div class="hero-scores">
+    <div class="score-chip">
+      <span style="color:var(--text-dim)">D1 Score</span>
+      <span class="score-val" style="color:#22C55E">14/15</span>
+      <span style="color:var(--text-dim)">93%</span>
+    </div>
+    <div class="score-div"></div>
+    <div class="score-chip">
+      <span style="color:var(--text-dim)">Target</span>
+      <span class="score-val" style="color:var(--maize)">15/15</span>
+    </div>
+    <div class="score-div"></div>
+    <span style="font-family:var(--font-mono);font-size:14px;color:var(--text-dim)">FR · 2026-03-02 · Finals diagnostic v2 rebuild</span>
+  </div>
+</div>
+
+<div class="legend">
+  <span class="leg-lbl">Row key:</span>
+  <div class="leg-item"><div class="leg-swatch" style="background:rgba(249,115,22,.7)"></div>Major structural change</div>
+  <div class="leg-item"><div class="leg-swatch" style="background:rgba(255,203,5,.5)"></div>Harder / same type</div>
+  <div class="leg-item"><div class="leg-swatch" style="background:rgba(255,255,255,.2)"></div>Similar structure</div>
+  <span class="leg-lbl" style="margin-left:12px">Badges:</span>
+  <span class="badge badge-new">New type</span> <span style="font-size:14px;color:var(--text-sub)">New question type, gap filled</span>
+  <span class="badge badge-harder">Harder</span> <span style="font-size:14px;color:var(--text-sub)">Same type, meaningfully harder</span>
+  <span class="badge badge-gap">Gap</span> <span style="font-size:14px;color:var(--text-sub)">Profile weakness, never tested before</span>
+</div>
+
+<div class="tbl-wrap">
+<table>
+<colgroup>
+  <col class="col-q">
+  <col class="col-std">
+  <col class="col-d1">
+  <col class="col-d2">
+  <col class="col-why">
+</colgroup>
+<thead>
+  <tr>
+    <th>Q</th>
+    <th>Std</th>
+    <th>D1 — What Kai Took (14/15)</th>
+    <th class="col-d2-hd">D2 New — What We're Building</th>
+    <th>Why Changed</th>
+  </tr>
+</thead>
+<tbody>
+
+<!-- Q1 -->
+<tr class="changed">
+  <td class="q-num">1</td>
+  <td class="std-cell"><span class="std std-w1">W1.a</span></td>
+  <td class="d1-cell">
+    <span class="math">(4x³)² · 2x⁻⁴</span>
+    <div class="ans-prev">→ 32x²</div>
+  </td>
+  <td class="d2-cell">
+    <span class="math">(3x²)² ÷ (9x⁵)</span><span class="badge badge-harder">Harder</span>
+    <div class="ans">→ 1/x</div>
+  </td>
+  <td class="why-cell">D1 was pure multiplication. This adds division (quotient rule) and requires recognizing x⁻¹ = 1/x — negative result not obvious.</td>
+</tr>
+
+<!-- Q2 -->
+<tr class="major">
+  <td class="q-num">2</td>
+  <td class="std-cell"><span class="std std-w1">W1.b</span></td>
+  <td class="d1-cell">
+    <span class="math">27^(2/3)</span>
+    <div class="ans-prev">→ 9</div>
+  </td>
+  <td class="d2-cell">
+    <span class="math">16^(−3/4)</span><span class="badge badge-harder">Harder</span>
+    <div class="ans">→ 1/8</div>
+  </td>
+  <td class="why-cell">
+    <div class="why-flag why-flag-warn">INCONSISTENT HISTORY</div>
+    Wrong RP4, right RP3, right D1 — not locked in. Negative fractional exponent adds a reciprocal step first. Tests whether he truly has the denominator=root / numerator=power rule.
+  </td>
+</tr>
+
+<!-- Q3 -->
+<tr class="major">
+  <td class="q-num">3</td>
+  <td class="std-cell"><span class="std std-w2">W2.b</span></td>
+  <td class="d1-cell">
+    <span class="math">f(x) = −(x−3)³+1</span>
+    <div class="ans-prev">→ cubic, x-int = 4</div>
+  </td>
+  <td class="d2-cell">
+    <span class="math">f(x) = −|x−3|+4</span><span class="badge badge-new">New type</span><span class="badge badge-gap">Gap</span>
+    <div class="ans">→ abs value, vertex (3, 4)</div>
+  </td>
+  <td class="why-cell">
+    <div class="why-flag">PROFILE: RP7 FAILURE</div>
+    Absolute value was NEVER the answer in D1 or current D2. Profile explicitly flags AV as RP7 failure. Q3 and Q4 have always used cubic or sqrt. This fills the only untested parent function.
+  </td>
+</tr>
+
+<!-- Q4 -->
+<tr class="changed">
+  <td class="q-num">4</td>
+  <td class="std-cell"><span class="std std-w2">W2.c</span></td>
+  <td class="d1-cell">
+    <span class="math">g(x) = √(x+4) − 2</span>
+    <div class="ans-prev">→ sqrt, x≥−4, y≥−2</div>
+  </td>
+  <td class="d2-cell">
+    <span class="math">g(x) = 2√(x−1) + 3</span><span class="badge badge-harder">Harder</span>
+    <div class="ans">→ sqrt, x≥1, y≥3</div>
+  </td>
+  <td class="why-cell">Coefficient 2 (vertical stretch) added. Doesn't change domain start but the vertical stretch can confuse range. Kai hasn't seen a coefficient in this question type.</td>
+</tr>
+
+<!-- Q5 -->
+<tr class="changed">
+  <td class="q-num">5</td>
+  <td class="std-cell"><span class="std std-w3">W3.a</span></td>
+  <td class="d1-cell">
+    <span class="math">4√(x+5) = 20</span>
+    <div class="ans-prev">→ x = 20</div>
+  </td>
+  <td class="d2-cell">
+    <span class="math">2√(x+7) − 3 = 5</span><span class="badge badge-harder">Harder</span>
+    <div class="ans">→ x = 9</div>
+  </td>
+  <td class="why-cell">D1 was one step before squaring (divide by 4). This requires TWO steps before squaring: add 3, divide by 2 — then square. More process complexity.</td>
+</tr>
+
+<!-- Q6 -->
+<tr class="major">
+  <td class="q-num">6</td>
+  <td class="std-cell"><span class="std std-w3">W3.a</span></td>
+  <td class="d1-cell">
+    <span class="math">∛(2x−1) = 3</span>
+    <div class="ans-prev">→ x = 14</div>
+  </td>
+  <td class="d2-cell">
+    <span class="math">∛(x+1) + 2 = 5</span><span class="badge badge-harder">Harder</span>
+    <div class="ans">→ x = 26</div>
+  </td>
+  <td class="why-cell">
+    <div class="why-flag why-flag-warn">D2 WAS NEARLY IDENTICAL TO D1</div>
+    ∛(2x−1)=3 vs ∛(2x+1)=3 — just a sign flip. New version requires isolating the cube root first (subtract 2) before cubing. Genuinely different first step.
+  </td>
+</tr>
+
+<!-- Q7 -->
+<tr class="major">
+  <td class="q-num">7</td>
+  <td class="std-cell"><span class="std std-w3">W3.d</span></td>
+  <td class="d1-cell">
+    <span class="math">2 · 3^(x+1) = 54</span>
+    <div class="ans-prev">→ x = 2</div>
+  </td>
+  <td class="d2-cell">
+    <span class="math">(1/4)^x = 8</span><span class="badge badge-harder">Harder</span>
+    <div class="ans">→ x = −3/2</div>
+  </td>
+  <td class="why-cell">D1 and original D2 both gave clean positive integer answers. This requires: (1) recognizing 1/4 = 2⁻², (2) recognizing 8 = 2³, (3) solving −2x = 3 for a negative fraction. Hardest exponential yet.</td>
+</tr>
+
+<!-- Q8 -->
+<tr class="major">
+  <td class="q-num">8</td>
+  <td class="std-cell"><span class="std std-w3">W3.c</span></td>
+  <td class="d1-cell">
+    <span class="math">Solve V = ⅓πr²h for h</span>
+    <div class="ans-prev">→ h = 3V/(πr²)</div>
+  </td>
+  <td class="d2-cell">
+    <span class="math">Tank: V=500π, h=20, V=πr²h. Find r.</span><span class="badge badge-new">New type</span>
+    <div class="ans">→ r = 5 ft</div>
+  </td>
+  <td class="why-cell">
+    <div class="why-flag">MVP Q14 WAS BLANK</div>
+    D1 gave the bare formula. This gives a scenario with numbers — Kai must select the right formula, substitute two values, isolate r, then take the square root. Exact format that was blank on the MVP.
+  </td>
+</tr>
+
+<!-- Q9 -->
+<tr class="changed">
+  <td class="q-num">9</td>
+  <td class="std-cell"><span class="std std-w3">W3.c</span></td>
+  <td class="d1-cell">
+    <span class="math">Solve d = ½gt² for t</span>
+    <div class="ans-prev">→ t = √(2d/g)</div>
+  </td>
+  <td class="d2-cell">
+    <span class="math">Car: d=90ft, a=20ft/s², d=v²/(2a). Find v.</span><span class="badge badge-harder">Harder</span>
+    <div class="ans">→ v = 60 ft/s</div>
+  </td>
+  <td class="why-cell">Two scenario-wrapped W3.c in a row — intentional. This one has two values to substitute (d=90, a=20) before isolating. Requires computing 2a=40 then v²=3600 then √.</td>
+</tr>
+
+<!-- Q10 -->
+<tr class="major">
+  <td class="q-num">10</td>
+  <td class="std-cell"><span class="std std-w4">W4.a</span></td>
+  <td class="d1-cell">
+    <span class="math">f(x) = −3(x−1)²+12</span>
+    <div class="ans-prev">→ vertex (1,12), x=−1,3, opens down</div>
+    <div style="margin-top:4px;font-size:14px;color:#CE1126">WRONG on D1 — graph plotting</div>
+  </td>
+  <td class="d2-cell">
+    <span class="math">f(x) = 2(x+2)²−8</span><span class="badge badge-harder">Harder</span>
+    <div class="ans">→ vertex (−2,−8), x=−4,0, opens UP</div>
+    <div style="margin-top:4px;font-size:14px;color:var(--text-dim)">Key pts: (-4,0),(-3,-6),(-2,-8),(-1,-6),(0,0)</div>
+  </td>
+  <td class="why-cell">
+    <div class="why-flag why-err">WRONG ON D1</div>
+    Three new traps vs D1: (1) opens UP not down — vertex is minimum, (2) vertex in Q3 (neg x, neg y) instead of Q1, (3) x+2 → h=−2 opposite-sign trap. All sign conventions tested.
+  </td>
+</tr>
+
+<!-- Q11 -->
+<tr class="major">
+  <td class="q-num">11</td>
+  <td class="std-cell"><span class="std std-w4">W4.h</span></td>
+  <td class="d1-cell">
+    <span class="math">Intercepts (−2,0)(6,0), pt (2,−16)</span>
+    <div class="ans-prev">→ a=1, y=(x+2)(x−6)</div>
+  </td>
+  <td class="d2-cell">
+    <span class="math">Vertex (2,−3), passes through (5,6)</span><span class="badge badge-new">New type</span><span class="badge badge-gap">Gap</span>
+    <div class="ans">→ a=1, y=(x−2)²−3</div>
+  </td>
+  <td class="why-cell">
+    <div class="why-flag">PROFILE: W2.d — RP7 FAILURE</div>
+    D1 and original D2 both gave intercepts+point (factored form). This gives vertex+point (vertex form) — a different setup Kai must recognize. Profile explicitly flags this as a RP7 failure. Never tested in any diagnostic.
+  </td>
+</tr>
+
+<!-- Q12 -->
+<tr class="major">
+  <td class="q-num">12</td>
+  <td class="std-cell"><span class="std std-w5">W5.a</span></td>
+  <td class="d1-cell">
+    <span class="math">x² − 5x − 24</span>
+    <div class="ans-prev">→ (x−8)(x+3)</div>
+  </td>
+  <td class="d2-cell">
+    <span class="math">2x² + 7x + 3</span><span class="badge badge-new">New type</span><span class="badge badge-gap">Gap</span>
+    <div class="ans">→ (2x+1)(x+3)</div>
+  </td>
+  <td class="why-cell">
+    <div class="why-flag">PROFILE: W2.a — AC METHOD WEAK</div>
+    Every factoring question in D1 and original D2 had a=1 (guess and check). This is a=2 — requires AC method or systematic trial. Profile explicitly lists "quadratic factoring by AC method" as a known weakness.
+  </td>
+</tr>
+
+<!-- Q13 -->
+<tr class="major">
+  <td class="q-num">13</td>
+  <td class="std-cell"><span class="std std-w5">W5.b</span></td>
+  <td class="d1-cell">
+    <span class="math">3x² − 75</span>
+    <div class="ans-prev">→ GCF=3, 3(x+5)(x−5)</div>
+  </td>
+  <td class="d2-cell">
+    <span class="math">3x² − 12x + 12</span><span class="badge badge-new">New type</span>
+    <div class="ans">→ GCF=3, 3(x−2)²</div>
+  </td>
+  <td class="why-cell">D1 and original D2 both used GCF + difference of squares. This uses GCF + perfect square trinomial — a completely different recognition pattern. Option C (diff of squares trap) will be a distractor.</td>
+</tr>
+
+<!-- Q14 -->
+<tr class="changed">
+  <td class="q-num">14</td>
+  <td class="std-cell"><span class="std std-w6">W6.b</span></td>
+  <td class="d1-cell">
+    <span class="math">x² + 6x − 2 = 0</span>
+    <div class="ans-prev">→ x = −3 ± √11 (irrational)</div>
+  </td>
+  <td class="d2-cell">
+    <span class="math">x² − 6x + 2 = 0</span><span class="badge badge-harder">Harder</span>
+    <div class="ans">→ x = 3 ± √7 (irrational)</div>
+  </td>
+  <td class="why-cell">
+    <div class="why-flag why-flag-warn">D2 WAS EASIER THAN D1</div>
+    Original D2 had clean integer answers (x=5, x=−1) — wrong direction. Pushed back to irrational. Negative b in this version means moving the constant right gives +5 not −2 — slightly different flow.
+  </td>
+</tr>
+
+<!-- Q15 -->
+<tr class="major">
+  <td class="q-num">15</td>
+  <td class="std-cell"><span class="std std-w6">W6.c</span></td>
+  <td class="d1-cell">
+    <span class="math">3x² − 2x − 4 = 0</span>
+    <div class="ans-prev">→ disc=52, x=(1±√13)/3</div>
+  </td>
+  <td class="d2-cell">
+    <span class="math">3x² + 4x − 1 = 0</span><span class="badge badge-harder">Harder</span>
+    <div class="ans">→ disc=28, x=(−2±√7)/3 — must simplify √28</div>
+  </td>
+  <td class="why-cell">
+    <div class="why-flag why-flag-warn">D2 WAS EASIER THAN D1</div>
+    Original D2 had disc=25 (perfect square) — too easy. D1 had disc=52 but sqrt(52)=2sqrt(13) simplification wasn't required. This has sqrt(28)=2sqrt(7) which must be simplified to get the fully reduced answer. Full skill tested.
+  </td>
+</tr>
+
+</tbody>
+</table>
+</div>
+
+<div class="foot">
+  <div class="foot-stat">
+    <span class="foot-val" style="color:var(--orange)">7</span>
+    <span class="foot-lbl">Major changes</span>
+  </div>
+  <div class="foot-stat">
+    <span class="foot-val" style="color:var(--maize)">5</span>
+    <span class="foot-lbl">Harder same type</span>
+  </div>
+  <div class="foot-stat">
+    <span class="foot-val" style="color:var(--purple)">4</span>
+    <span class="foot-lbl">Profile gaps filled</span>
+  </div>
+  <div class="foot-stat">
+    <span class="foot-val" style="color:var(--pass)">0</span>
+    <span class="foot-lbl">Questions made easier</span>
+  </div>
+  <div style="flex:1"></div>
+  <div style="font-family:var(--font-mono);font-size:14px;color:#6B7F95;align-self:center">
+    FR · Finals Diagnostic v2 · 2026-03-02 · Gaps filled: AV parent (Q3), vertex+point (Q11), AC factoring (Q12)
+  </div>
+</div>
+
+</body>
+</html>

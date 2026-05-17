@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80' fill='none'%3E%3Crect width='80' height='80' rx='14' fill='%230A0A0F'/%3E%3Cg transform='translate(8,12) scale(0.72)'%3E%3Cline x1='26' y1='14' x2='26' y2='66' stroke='%23FFCB05' stroke-width='4' stroke-linecap='round'/%3E%3Cline x1='26' y1='14' x2='64' y2='14' stroke='%23FFCB05' stroke-width='4' stroke-linecap='round'/%3E%3Cline x1='26' y1='42' x2='56' y2='42' stroke='%23FFCB05' stroke-width='4' stroke-linecap='round'/%3E%3Ccircle cx='26' cy='14' r='6' fill='%23FFCB05'/%3E%3Ccircle cx='26' cy='42' r='6' fill='%23FFCB05'/%3E%3Ccircle cx='64' cy='14' r='5' fill='none' stroke='%23FFCB05' stroke-width='3'/%3E%3Ccircle cx='56' cy='42' r='5' fill='none' stroke='%23FFCB05' stroke-width='3'/%3E%3Ccircle cx='26' cy='66' r='5' fill='none' stroke='%23FFCB05' stroke-width='3'/%3E%3C/g%3E%3C/svg%3E">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kai: School Final Review: D3 vs School Final</title>
+<link rel="stylesheet" href="../../design/system/canvas-base.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font-ui);background:var(--bg);color:var(--text);font-size:16px;line-height:1.5}
+
+.hero{padding:40px 32px 28px;background:var(--bg-card);border-bottom:1px solid var(--border)}
+.hero-title{font-size:48px;font-weight:800;letter-spacing:-.02em;color:var(--text);line-height:1}
+.hero-sub{font-size:22px;color:var(--text-sub);margin-top:8px;font-family:var(--font-mono)}
+.hero-meta{margin-top:16px;font-family:var(--font-mono);font-size:14px;color:var(--text-dim);display:flex;gap:24px;flex-wrap:wrap;align-items:center}
+
+.legend{padding:14px 32px;background:var(--bg-subtle);border-bottom:1px solid var(--border);display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+.leg-lbl{font-size:14px;font-weight:600;color:#8899AA;letter-spacing:.06em;text-transform:uppercase;font-family:var(--font-mono)}
+.leg-item{display:flex;align-items:center;gap:6px;font-size:14px;color:var(--text-sub)}
+.leg-swatch{width:10px;height:10px;border-radius:3px;flex-shrink:0}
+
+.tbl-wrap{padding:20px 32px;overflow-x:auto}
+table{width:100%;border-collapse:collapse;table-layout:fixed}
+col.col-q{width:38px}
+col.col-std{width:68px}
+col.col-d3{width:25%}
+col.col-sf{width:25%}
+col.col-why{width:auto}
+
+thead th{padding:10px 14px;font-size:14px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#8899AA;background:var(--bg-subtle);border-bottom:2px solid var(--border-strong);text-align:left;position:sticky;top:0;z-index:5}
+thead th.col-sf-hd{color:var(--maize)}
+thead th.col-why-hd{color:#F97316}
+
+tbody tr{border-bottom:1px solid var(--border);transition:background .1s}
+tbody tr:hover{background:rgba(255,255,255,.02)}
+tbody tr.harder{background:rgba(255,203,5,.02)}
+tbody tr.harder:hover{background:rgba(255,203,5,.04)}
+tbody tr.critical{background:rgba(249,115,22,.025)}
+tbody tr.critical:hover{background:rgba(249,115,22,.05)}
+
+td{padding:12px 14px;vertical-align:top;font-size:15px}
+td.q-num{font-family:var(--font-mono);font-weight:700;font-size:16px;color:#8899AA;text-align:center;padding-top:14px}
+td.std-cell{padding-top:13px}
+td.d3-cell{color:var(--text-sub)}
+td.sf-cell{color:var(--text)}
+td.why-cell{color:var(--text-sub);font-size:14px;line-height:1.6}
+
+.std{display:inline-flex;align-items:center;padding:3px 8px;border-radius:3px;font-family:var(--font-mono);font-size:14px;font-weight:700;letter-spacing:.04em}
+.std-w1{background:rgba(74,144,217,.15);color:#4A90D9;border:1px solid rgba(74,144,217,.25)}
+.std-w2{background:rgba(249,115,22,.15);color:#F97316;border:1px solid rgba(249,115,22,.25)}
+.std-w3{background:rgba(109,40,217,.15);color:#A78BFA;border:1px solid rgba(109,40,217,.25)}
+.std-w4{background:rgba(255,203,5,.12);color:#FFCB05;border:1px solid rgba(255,203,5,.2)}
+.std-w5{background:rgba(34,197,94,.12);color:#22C55E;border:1px solid rgba(34,197,94,.2)}
+.std-w6{background:rgba(206,17,38,.12);color:#F87171;border:1px solid rgba(206,17,38,.2)}
+
+.badge{display:inline-flex;align-items:center;padding:2px 7px;border-radius:3px;font-family:var(--font-mono);font-size:14px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;margin-left:4px;vertical-align:middle}
+.badge-harder{background:rgba(206,17,38,.15);color:#F87171;border:1px solid rgba(206,17,38,.25)}
+.badge-flip{background:rgba(168,85,247,.2);color:#A855F7;border:1px solid rgba(168,85,247,.3)}
+.badge-same{background:rgba(255,255,255,.05);color:#8899AA;border:1px solid var(--border)}
+.badge-new{background:rgba(249,115,22,.2);color:#F97316;border:1px solid rgba(249,115,22,.35)}
+.badge-mc{background:rgba(255,255,255,.06);color:#8899AA;border:1px solid var(--border);font-size:14px}
+.badge-fr{background:rgba(34,197,94,.12);color:#22C55E;border:1px solid rgba(34,197,94,.2);font-size:14px}
+
+.math{font-family:var(--font-mono);font-size:14px;background:rgba(255,255,255,.04);padding:3px 7px;border-radius:3px;display:inline-block;margin:1px 0;line-height:1.4}
+.ans{font-family:var(--font-mono);font-size:14px;color:#22C55E;font-weight:600;margin-top:3px;display:block}
+.ans-prev{font-family:var(--font-mono);font-size:14px;color:#8899AA;margin-top:3px;display:block}
+.ans-inputs{font-size:14px;color:#94A3B8;margin-top:4px;display:block}
+
+.why-flag{border-radius:3px;padding:2px 7px;font-size:14px;font-family:var(--font-mono);font-weight:600;margin-bottom:5px;display:block;width:fit-content}
+.flag-critical{background:rgba(206,17,38,.12);border:1px solid rgba(206,17,38,.3);color:#F87171}
+.flag-escalation{background:rgba(168,85,247,.12);border:1px solid rgba(168,85,247,.3);color:#A855F7}
+
+.foot{padding:24px 32px;border-top:1px solid var(--border);background:var(--bg-card);display:flex;gap:32px;flex-wrap:wrap;align-items:center}
+.foot-block{display:flex;flex-direction:column;gap:4px}
+.foot-val{font-family:var(--font-mono);font-size:20px;font-weight:700}
+.foot-lbl{font-size:14px;color:#8899AA;text-transform:uppercase;letter-spacing:.06em}
+.foot-div{width:1px;background:var(--border);align-self:stretch;min-height:32px}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-title">KAI — SCHOOL FINAL REVIEW</div>
+  <div class="hero-sub">D3 (Just Taken) vs School Final Simulation — All Free Response</div>
+  <div class="hero-meta">
+    <span>FR · 2026-03-02 · Pending Marcus approval to commit</span>
+    <span style="color:#22C55E;font-weight:700">School final: 0 multiple choice · 15 free response</span>
+  </div>
+</div>
+
+<div class="legend">
+  <span class="leg-lbl">Row key:</span>
+  <div class="leg-item"><div class="leg-swatch" style="background:rgba(249,115,22,.7)"></div>Critical escalation</div>
+  <div class="leg-item"><div class="leg-swatch" style="background:rgba(255,203,5,.5)"></div>Harder variant</div>
+  <div class="leg-item"><div class="leg-swatch" style="background:rgba(255,255,255,.15)"></div>Same type, fresh numbers</div>
+  <span class="leg-lbl" style="margin-left:12px">Badges:</span>
+  <span class="badge badge-mc">MC</span><span style="font-size:14px;color:var(--text-sub);margin-left:4px">was MC in D3</span>
+  <span class="badge badge-fr">FR</span><span style="font-size:14px;color:var(--text-sub);margin-left:4px">free response in final</span>
+  <span class="badge badge-harder">Harder</span>
+  <span class="badge badge-flip">Sign flip</span>
+  <span class="badge badge-new">New type</span>
+</div>
+
+<div class="tbl-wrap">
+<table>
+<colgroup>
+  <col class="col-q">
+  <col class="col-std">
+  <col class="col-d3">
+  <col class="col-sf">
+  <col class="col-why">
+</colgroup>
+<thead>
+  <tr>
+    <th>Q</th>
+    <th>Std</th>
+    <th>D3 — Just Taken</th>
+    <th class="col-sf-hd">School Final — Tuesday (Free Response)</th>
+    <th class="col-why-hd">Rationale</th>
+  </tr>
+</thead>
+<tbody>
+
+<!-- Q1 W1.a -->
+<tr class="critical">
+  <td class="q-num">1</td>
+  <td class="std-cell"><span class="std std-w1">W1.a</span></td>
+  <td class="d3-cell">
+    <span class="math">x&#x207B;&#xB2;(2x&#xB3;)&#xB2; / 4x&#x2074;</span><span class="badge badge-mc">MC</span>
+    <span class="ans-prev">single variable, answer 1</span>
+  </td>
+  <td class="sf-cell">
+    <span class="math">((2x&#xB2;y)&#xB3; &middot; (x&#x207B;&#xB9;y&#xB2;)&#xB2;)&#xB2;</span><span class="badge badge-fr">FR</span><span class="badge badge-harder">Harder</span>
+    <span class="ans">64x&#x2078;y&#xB9;&#x2074; (coeff=64, x-exp=8, y-exp=14)</span>
+    <span class="ans-inputs">Inputs: coefficient, exponent on x, exponent on y</span>
+  </td>
+  <td class="why-cell">
+    <span class="why-flag flag-escalation">INSIDE-OUT PROCESSING</span>
+    D3 had single variable, one round of distribution. Final wraps two inner groups in a second outer power: must simplify (2x&#xB2;y)&#xB3; = 8x&#x2076;y&#xB3; and (x&#x207B;&#xB9;y&#xB2;)&#xB2; = x&#x207B;&#xB2;y&#x2074; separately, multiply to 8x&#x2074;y&#x2077;, then square again to 64x&#x2078;y&#xB9;&#x2074;. Pattern-matching fails here because there is no shortcut through two full rounds of distribution.
+  </td>
+</tr>
+
+<!-- Q2 W1.b -->
+<tr class="harder">
+  <td class="q-num">2</td>
+  <td class="std-cell"><span class="std std-w1">W1.b</span></td>
+  <td class="d3-cell">
+    <span class="math">27&#x207B;&#xB2;&#x2F3;</span><span class="badge badge-mc">MC</span>
+    <span class="ans-prev">1/9 (negative exponent)</span>
+  </td>
+  <td class="sf-cell">
+    <span class="math">8&#x2074;&#x2F3;</span><span class="badge badge-fr">FR</span><span class="badge badge-same">Same</span>
+    <span class="ans">16</span>
+    <span class="ans-inputs">Input: numeric value</span>
+  </td>
+  <td class="why-cell">
+    D3 required reciprocal step (negative exponent). Final is positive rational exponent only, no flip needed. Tests pure root/power in the opposite direction from D3.
+  </td>
+</tr>
+
+<!-- Q3 W2.b -->
+<tr class="critical">
+  <td class="q-num">3</td>
+  <td class="std-cell"><span class="std std-w2">W2.b</span></td>
+  <td class="d3-cell">
+    <span class="math">f(x) = 3|x+2| &#x2212; 6</span>
+    <span class="ans-prev">Abs value, vertex (&#x2212;2, &#x2212;6), opens up</span>
+  </td>
+  <td class="sf-cell">
+    <span class="math">f(x) = &#x2212;4|x &#x2212; 3| + 7</span><span class="badge badge-harder">Harder</span>
+    <span class="ans">Abs value, vertex (3, 7), opens down</span>
+    <span class="ans-inputs">Inputs: parent, vertex x, vertex y, direction</span>
+  </td>
+  <td class="why-cell">
+    <span class="why-flag flag-critical">KNOWN STRUGGLE: ABS VALUE VERTEX FORM</span>
+    D3 had positive a, vertex in Q3 (neg x, neg y). Final has negative a (opens down), vertex in Q1 (pos x, pos y). Absolute value kept per Marcus directive. Tests sign reading and vertex extraction in all four cases.
+  </td>
+</tr>
+
+<!-- Q4 W2.c CRITICAL -->
+<tr class="critical">
+  <td class="q-num">4</td>
+  <td class="std-cell"><span class="std std-w2">W2.c</span></td>
+  <td class="d3-cell">
+    <span class="math">g(x) = 4&#x221A;(x&#x2212;3) + 5</span>
+    <span class="ans-prev">Domain x&#x2265;3, Range y&#x2265;5 (minimum)</span>
+    <span style="font-size:14px;color:#F87171;margin-top:3px;display:block">Kai got range wrong on D2 (entered 0)</span>
+  </td>
+  <td class="sf-cell">
+    <span class="math">h(x) = &#x2212;5&#x221A;(x&#x2212;2) + 8</span><span class="badge badge-harder">Harder</span><span class="badge badge-flip">Sign flip</span>
+    <span class="ans">Domain x&#x2265;2, Range y&#x2264;8 (maximum)</span>
+    <span class="ans-inputs">Inputs: parent, domain start, range bound (y &lt;=)</span>
+  </td>
+  <td class="why-cell">
+    <span class="why-flag flag-critical">CONFIRMED WEAK SPOT</span>
+    D3 tested positive stretch: range is a minimum (y&#x2265;k). Final adds negative coefficient: function decreases from domain start, giving a maximum (y&#x2264;8). If Kai memorized "y&#x2265;k" without understanding direction, this fails.
+  </td>
+</tr>
+
+<!-- Q5 W3.a -->
+<tr>
+  <td class="q-num">5</td>
+  <td class="std-cell"><span class="std std-w3">W3.a</span></td>
+  <td class="d3-cell">
+    <span class="math">3&#x221A;(2x&#x2212;5) + 6 = 15</span>
+    <span class="ans-prev">x = 7</span>
+  </td>
+  <td class="sf-cell">
+    <span class="math">2&#x221A;(3x+1) &#x2212; 4 = 6</span><span class="badge badge-same">Same</span>
+    <span class="ans">x = 8</span>
+    <span class="ans-inputs">Input: numeric value</span>
+  </td>
+  <td class="why-cell">
+    Same two-step isolation structure with fresh coefficients. A subtraction (instead of addition) before squaring confirms the process is internalized.
+  </td>
+</tr>
+
+<!-- Q6 W3.a -->
+<tr class="harder">
+  <td class="q-num">6</td>
+  <td class="std-cell"><span class="std std-w3">W3.a</span></td>
+  <td class="d3-cell">
+    <span class="math">&#x221B;(x&#x2212;7) + 3 = 6</span>
+    <span class="ans-prev">x = 34 (2 steps)</span>
+  </td>
+  <td class="sf-cell">
+    <span class="math">2&#x221B;(x+4) &#x2212; 3 = 5</span><span class="badge badge-harder">Harder</span>
+    <span class="ans">x = 60 (3 steps)</span>
+    <span class="ans-inputs">Input: numeric value</span>
+  </td>
+  <td class="why-cell">
+    D3 had no outer coefficient on cube root. Final adds coefficient 2: three isolation steps before cubing instead of two.
+  </td>
+</tr>
+
+<!-- Q7 W3.d -->
+<tr class="critical">
+  <td class="q-num">7</td>
+  <td class="std-cell"><span class="std std-w3">W3.d</span></td>
+  <td class="d3-cell">
+    <span class="math">4&#x207F;&#x207A;&#xB9; = 32</span><span class="badge badge-mc">MC</span>
+    <span class="ans-prev">x = 3/2, one variable (base 2)</span>
+  </td>
+  <td class="sf-cell">
+    <span class="math">2&#x207F;&#x207A;&#xB3; = 4&#x207F;&#x2082;&#x207F;&#x207B;&#xB9;</span><span class="badge badge-fr">FR</span><span class="badge badge-harder">Harder</span>
+    <span class="ans">x = 5/3 (variables on both sides)</span>
+    <span class="ans-inputs">Input: decimal (enter 1.667)</span>
+  </td>
+  <td class="why-cell">
+    <span class="why-flag flag-escalation">VARIABLES ON BOTH SIDES</span>
+    D3 had x only in the left exponent. Final has x on both sides after rewriting: x+3 = 4x&#x2212;2, a linear equation in two-variable territory. Tests whether Kai can execute the common-base strategy and then solve the resulting linear equation.
+  </td>
+</tr>
+
+<!-- Q8 W3.c -->
+<tr class="harder">
+  <td class="q-num">8</td>
+  <td class="std-cell"><span class="std std-w3">W3.c</span></td>
+  <td class="d3-cell">
+    <span class="math">A = &#x3C0;r&#xB2;, A = 144&#x3C0;</span>
+    <span class="ans-prev">r = 12</span>
+  </td>
+  <td class="sf-cell">
+    <span class="math">KE = &#xBD;mv&#xB2;, KE=50 J, m=4 kg, find v</span><span class="badge badge-new">Word problem</span>
+    <span class="ans">v = 5 m/s (multiply, divide, sqrt)</span>
+    <span class="ans-inputs">Input: numeric value</span>
+  </td>
+  <td class="why-cell">
+    <span class="why-flag flag-escalation">WORD PROBLEM + SQUARE ROOT IN ANSWER</span>
+    D3 was bare formula, one-step solve. Final embeds the formula in a physics context: Kai must identify KE and m from the word problem, substitute, simplify (1/2)(4)=2, divide by 2, then take the square root. Answer is not a perfect integer until the very last step.
+  </td>
+</tr>
+
+<!-- Q9 W3.c -->
+<tr class="harder">
+  <td class="q-num">9</td>
+  <td class="std-cell"><span class="std std-w3">W3.c</span></td>
+  <td class="d3-cell">
+    <span class="math">KE=&#xBD;mv&#xB2;, KE=200, m=4</span>
+    <span class="ans-prev">v = 10</span>
+  </td>
+  <td class="sf-cell">
+    <span class="math">V = &#x2153;&#x3C0;r&#xB2;h, V=12&#x3C0;, r=3, find h</span><span class="badge badge-new">Word problem</span>
+    <span class="ans">h = 4 cm (simplify 1/3 fraction, divide by 3&#x3C0;)</span>
+    <span class="ans-inputs">Input: numeric value</span>
+  </td>
+  <td class="why-cell">
+    <span class="why-flag flag-escalation">WORD PROBLEM + FRACTION FORMULA</span>
+    Final embeds cone volume in a real context. The 1/3 coefficient combined with r&#xB2;=9 creates a compound simplification step: (1/3)(&#x3C0;)(9)h = 3&#x3C0;h. Kai must handle the fraction before dividing. Distinct from Q8: no square root, but the fraction manipulation is where students lose steps.
+  </td>
+</tr>
+
+<!-- Q10 W4.a -->
+<tr class="harder">
+  <td class="q-num">10</td>
+  <td class="std-cell"><span class="std std-w4">W4.a</span></td>
+  <td class="d3-cell">
+    <span class="math">f(x) = &#x2212;3(x&#x2212;1)&#xB2; + 12</span>
+    <span class="ans-prev">Down, vertex (1,12), x=&#x2212;1 or 3</span>
+  </td>
+  <td class="sf-cell">
+    <span class="math">f(x) = 2(x+3)&#xB2; &#x2212; 8</span><span class="badge badge-flip">Sign flip</span>
+    <span class="ans">Up, vertex (&#x2212;3,&#x2212;8), x=&#x2212;5 or &#x2212;1</span>
+    <span class="ans-inputs">Inputs: direction, vertex x, vertex y, intercept 1, intercept 2</span>
+  </td>
+  <td class="why-cell">
+    D3 was opens-down, Q1 vertex. Final is opens-up, Q3 vertex (neg x, neg y), both intercepts negative. Tests all four sign configurations.
+  </td>
+</tr>
+
+<!-- Q11 W4.h -->
+<tr class="critical">
+  <td class="q-num">11</td>
+  <td class="std-cell"><span class="std std-w4">W4.h</span></td>
+  <td class="d3-cell">
+    <span class="math">Vertex (&#x2212;4,5), through (&#x2212;2,&#x2212;3)</span>
+    <span class="ans-prev">a = &#x2212;2 (plug in and solve)</span>
+  </td>
+  <td class="sf-cell">
+    <span class="math">f(x) = 2x&#xB2; &#x2212; 12x + 7, convert to vertex form</span><span class="badge badge-new">New type</span>
+    <span class="ans">2(x&#x2212;3)&#xB2; &#x2212; 11 (a=2, h=3, k=&#x2212;11)</span>
+    <span class="ans-inputs">Inputs: a, h, k</span>
+  </td>
+  <td class="why-cell">
+    <span class="why-flag flag-critical">KNOWN STRUGGLE: VERTEX FORM CONVERSION</span>
+    D3 asked Kai to find a by plugging a point into vertex form. Final asks him to convert FROM standard form by completing the square with a leading coefficient. Must factor out 2, complete inside, and balance the outside. Per Marcus: he still struggles with this.
+  </td>
+</tr>
+
+<!-- Q12 W5.a -->
+<tr class="critical">
+  <td class="q-num">12</td>
+  <td class="std-cell"><span class="std std-w5">W5.a</span></td>
+  <td class="d3-cell">
+    <span class="math">3x&#xB2; &#x2212; 10x &#x2212; 8</span><span class="badge badge-mc">MC</span>
+    <span class="ans-prev">Factor: (3x+2)(x&#x2212;4)</span>
+  </td>
+  <td class="sf-cell">
+    <span class="math">(x&#xB2;&#x2212;4x&#x2212;12) / (x&#xB2;&#x2212;2x&#x2212;24)</span><span class="badge badge-fr">FR</span><span class="badge badge-new">New type</span>
+    <span class="ans">(x+2)/(x+4), cancel (x&#x2212;6)</span>
+    <span class="ans-inputs">Inputs: numerator remaining zero (+?), denominator remaining zero (+?)</span>
+  </td>
+  <td class="why-cell">
+    <span class="why-flag flag-escalation">MULTI-TERM RATIONAL EXPRESSION</span>
+    D3 was pure factoring. Final requires factoring BOTH numerator and denominator as separate quadratics, then identifying and cancelling the shared factor. Tests whether Kai understands factoring as a tool, not just a procedure.
+  </td>
+</tr>
+
+<!-- Q13 W4.a -->
+<tr class="harder">
+  <td class="q-num">13</td>
+  <td class="std-cell"><span class="std std-w4">W4.a</span></td>
+  <td class="d3-cell">
+    <span class="math">f(x) = &#x2212;3(x&#x2212;1)&#xB2;+12 (from vertex form)</span>
+    <span class="ans-prev">Vertex read directly from equation</span>
+  </td>
+  <td class="sf-cell">
+    <span class="math">f(x) = x&#xB2; + 6x &#x2212; 7, vertex formula h=&#x2212;b/2a</span><span class="badge badge-new">New type</span>
+    <span class="ans">h=&#x2212;3, k=&#x2212;16</span>
+    <span class="ans-inputs">Inputs: h (vertex x), k (vertex y)</span>
+  </td>
+  <td class="why-cell">
+    D3 vertex was read directly from vertex form. Final is standard form: Kai must apply h=&#x2212;b/2a, then evaluate k=f(h). Different technique from Q11 (completing the square) — both techniques for finding vertex covered.
+  </td>
+</tr>
+
+<!-- Q14 W6.b -->
+<tr class="harder">
+  <td class="q-num">14</td>
+  <td class="std-cell"><span class="std std-w6">W6.b</span></td>
+  <td class="d3-cell">
+    <span class="math">x&#xB2; + 8x + 7 = 0</span><span class="badge badge-mc">MC</span>
+    <span class="ans-prev">x=&#x2212;1 or &#x2212;7, half: +4</span>
+  </td>
+  <td class="sf-cell">
+    <span class="math">x&#xB2; &#x2212; 6x &#x2212; 7 = 0</span><span class="badge badge-fr">FR</span><span class="badge badge-harder">Harder</span>
+    <span class="ans">x=7 or x=&#x2212;1, half: &#x2212;3</span>
+    <span class="ans-inputs">Inputs: larger solution, smaller solution</span>
+  </td>
+  <td class="why-cell">
+    D3 had positive x-coefficient. Final has negative (&#x2212;6), giving (x&#x2212;3)&#xB2;=16. Sign polarity flips. Free response removes answer-format clue students use to back-solve.
+  </td>
+</tr>
+
+<!-- Q15 W6.c -->
+<tr class="critical">
+  <td class="q-num">15</td>
+  <td class="std-cell"><span class="std std-w6">W6.c</span></td>
+  <td class="d3-cell">
+    <span class="math">2x&#xB2; &#x2212; 5x + 1 = 0</span><span class="badge badge-mc">MC</span>
+    <span class="ans-prev">(5&#xB1;&#x221A;17)/4, disc=17 prime, no simplify</span>
+  </td>
+  <td class="sf-cell">
+    <span class="math">3x&#xB2; &#x2212; 4x &#x2212; 2 = 0</span><span class="badge badge-fr">FR</span><span class="badge badge-harder">Harder</span>
+    <span class="ans">(2&#xB1;&#x221A;10)/3, disc=40, must simplify &#x221A;40</span>
+    <span class="ans-inputs">Inputs: discriminant (40), simplified radical (10), numerator int (2), denominator (3)</span>
+  </td>
+  <td class="why-cell">
+    <span class="why-flag flag-escalation">SIMPLIFICATION REQUIRED</span>
+    D3 discriminant was prime — no simplification. Final: disc=40=4x10, must simplify &#x221A;40=2&#x221A;10, then divide all by 2. Graded in four parts. Tests every step of the formula explicitly.
+  </td>
+</tr>
+
+</tbody>
+</table>
+</div>
+
+<div class="foot">
+  <div class="foot-block">
+    <span class="foot-val" style="color:#22C55E">15 / 15</span>
+    <span class="foot-lbl">Free response</span>
+  </div>
+  <div class="foot-div"></div>
+  <div class="foot-block">
+    <span class="foot-val" style="color:#F87171">Q4, Q7, Q11, Q12</span>
+    <span class="foot-lbl">Critical escalations</span>
+  </div>
+  <div class="foot-div"></div>
+  <div class="foot-block">
+    <span class="foot-val" style="color:#A855F7">Q3, Q1</span>
+    <span class="foot-lbl">Known struggles</span>
+  </div>
+  <div class="foot-div"></div>
+  <div class="foot-block">
+    <span class="foot-val" style="color:#F97316">Q3, Q7, Q8, Q11, Q12, Q13</span>
+    <span class="foot-lbl">New question types</span>
+  </div>
+  <div class="foot-div"></div>
+  <div class="foot-block">
+    <span class="foot-val">W1-W6</span>
+    <span class="foot-lbl">All standards covered</span>
+  </div>
+</div>
+
+</body>
+</html>
+

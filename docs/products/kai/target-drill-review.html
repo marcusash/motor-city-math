@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80' fill='none'%3E%3Crect width='80' height='80' rx='14' fill='%230A0A0F'/%3E%3Cg transform='translate(8,12) scale(0.72)'%3E%3Cline x1='26' y1='14' x2='26' y2='66' stroke='%23FFCB05' stroke-width='4' stroke-linecap='round'/%3E%3Cline x1='26' y1='14' x2='64' y2='14' stroke='%23FFCB05' stroke-width='4' stroke-linecap='round'/%3E%3Cline x1='26' y1='42' x2='56' y2='42' stroke='%23FFCB05' stroke-width='4' stroke-linecap='round'/%3E%3Ccircle cx='26' cy='14' r='6' fill='%23FFCB05'/%3E%3Ccircle cx='26' cy='42' r='6' fill='%23FFCB05'/%3E%3Ccircle cx='64' cy='14' r='5' fill='none' stroke='%23FFCB05' stroke-width='3'/%3E%3Ccircle cx='56' cy='42' r='5' fill='none' stroke='%23FFCB05' stroke-width='3'/%3E%3Ccircle cx='26' cy='66' r='5' fill='none' stroke='%23FFCB05' stroke-width='3'/%3E%3C/g%3E%3C/svg%3E">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kai: Winter Final Target Drill — 12 Questions</title>
+<link rel="stylesheet" href="../../design/system/canvas-base.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font-ui);background:var(--bg);color:var(--text);font-size:15px;line-height:1.5}
+
+.hero{padding:40px 32px 28px;background:var(--bg-card);border-bottom:1px solid var(--border)}
+.hero-title{font-size:48px;font-weight:800;letter-spacing:-.02em;color:var(--text);line-height:1}
+.hero-sub{font-size:20px;color:var(--text-sub);margin-top:8px;font-family:var(--font-mono)}
+.hero-meta{margin-top:16px;font-family:var(--font-mono);font-size:14px;color:var(--text-dim);display:flex;gap:24px;flex-wrap:wrap;align-items:center}
+.hero-pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:4px;background:rgba(249,115,22,.12);color:#F97316;border:1px solid rgba(249,115,22,.25);font-size:14px;font-weight:700}
+
+.section-header{padding:16px 32px 10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:14px;background:var(--bg-subtle);position:sticky;top:0;z-index:10}
+.section-label{font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-family:var(--font-mono);color:#8899AA}
+.section-title{font-size:16px;font-weight:700;color:var(--text)}
+.section-count{font-family:var(--font-mono);font-size:14px;color:var(--text-dim)}
+
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0;padding:0}
+@media(max-width:1100px){.grid{grid-template-columns:1fr}}
+
+.card{padding:22px 28px;border-bottom:1px solid var(--border);border-right:1px solid var(--border)}
+.card:nth-child(2n){border-right:none}
+.card-head{display:flex;align-items:flex-start;gap:10px;margin-bottom:10px}
+.q-num{font-family:var(--font-mono);font-size:28px;font-weight:800;color:var(--text-dim);line-height:1;flex-shrink:0;width:36px}
+.card-meta{display:flex;flex-direction:column;gap:5px}
+.card-title{font-size:16px;font-weight:700;color:var(--text);line-height:1.3}
+.badges{display:flex;gap:6px;flex-wrap:wrap;margin-top:2px}
+
+.std{display:inline-flex;align-items:center;padding:2px 7px;border-radius:3px;font-family:var(--font-mono);font-size:14px;font-weight:700;letter-spacing:.04em}
+.std-w2{background:rgba(249,115,22,.15);color:#F97316;border:1px solid rgba(249,115,22,.25)}
+.std-w3{background:rgba(109,40,217,.15);color:#A78BFA;border:1px solid rgba(109,40,217,.25)}
+.std-w4{background:rgba(255,203,5,.12);color:#FFCB05;border:1px solid rgba(255,203,5,.2)}
+.std-w5{background:rgba(34,197,94,.12);color:#22C55E;border:1px solid rgba(34,197,94,.2)}
+.std-w6{background:rgba(206,17,38,.12);color:#F87171;border:1px solid rgba(206,17,38,.2)}
+.badge-type{background:rgba(255,255,255,.06);color:#8899AA;border:1px solid var(--border);display:inline-flex;align-items:center;padding:2px 7px;border-radius:3px;font-family:var(--font-mono);font-size:14px;letter-spacing:.03em}
+
+.question{margin:10px 0 12px;font-size:15px;color:var(--text-sub);line-height:1.6;padding:12px 14px;background:rgba(255,255,255,.03);border-left:3px solid var(--border-strong);border-radius:0 4px 4px 0}
+
+.answers{display:flex;flex-direction:column;gap:5px;margin-bottom:12px}
+.ans-row{display:flex;align-items:center;gap:8px;font-size:14px}
+.ans-label{color:#8899AA;font-family:var(--font-mono);flex-shrink:0;min-width:160px}
+.ans-val{font-family:var(--font-mono);font-weight:700;color:#4ade80;background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.18);padding:2px 8px;border-radius:3px}
+
+.solution{margin-top:10px;padding:10px 14px;background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:4px}
+.solution-lbl{font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#8899AA;font-family:var(--font-mono);margin-bottom:6px}
+.step{font-size:14px;color:var(--text-dim);font-family:var(--font-mono);line-height:1.7;padding-left:10px;border-left:2px solid var(--border)}
+.step+.step{margin-top:2px}
+
+.hint-block{margin-top:8px;font-size:14px;color:var(--text-dim);display:flex;gap:6px;align-items:flex-start}
+.hint-icon{color:#FFCB05;flex-shrink:0;margin-top:1px}
+
+.section-a .card-head .q-num{color:#FFCB05}
+.section-b .card-head .q-num{color:#F97316}
+.section-c .card-head .q-num{color:#A78BFA}
+.section-d .card-head .q-num{color:#F87171}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-title">Winter Final: Target Drill</div>
+  <div class="hero-sub">12 questions &middot; All Free Response &middot; Pre-final targeted practice</div>
+  <div class="hero-meta">
+    <span class="hero-pill">FR Build &mdash; 2026-03-03</span>
+    <span>Section A: W4.h completing the square</span>
+    <span>Section B: W2.c range, W4.a intercepts</span>
+    <span>Section C: W2.b abs value, W3.d exponential</span>
+    <span>Section D: W5.a rational, W6.c growth/decay</span>
+    <span>&sim;50 min</span>
+  </div>
+</div>
+
+<!-- SECTION A: W4.h Completing the Square -->
+<div class="section-header section-a">
+  <span class="section-label">Section A</span>
+  <span class="section-title">Completing the Square</span>
+  <span class="section-count">Q1-Q3 &middot; W4.h &middot; Kai's highest-risk standard</span>
+</div>
+<div class="grid section-a">
+
+  <div class="card">
+    <div class="card-head">
+      <div class="q-num">1</div>
+      <div class="card-meta">
+        <div class="card-title">No leading coefficient — warmup</div>
+        <div class="badges">
+          <span class="std std-w4">W4.h</span>
+          <span class="badge-type">identify</span>
+        </div>
+      </div>
+    </div>
+    <div class="question">
+      Convert to vertex form: <strong>f(x) = x&sup2; + 10x + 3</strong><br>
+      Write in the form (x &minus; h)&sup2; + k
+    </div>
+    <div class="answers">
+      <div class="ans-row"><span class="ans-label">h =</span><span class="ans-val">&minus;5</span></div>
+      <div class="ans-row"><span class="ans-label">k =</span><span class="ans-val">&minus;22</span></div>
+    </div>
+    <div class="solution">
+      <div class="solution-lbl">Solution</div>
+      <div class="step">x&sup2; + 10x + 3</div>
+      <div class="step">= (x&sup2; + 10x + 25) &minus; 25 + 3&nbsp;&nbsp;&nbsp;[(10/2)&sup2; = 25]</div>
+      <div class="step">= (x + 5)&sup2; &minus; 22</div>
+      <div class="step">h = &minus;5 (opposite sign), k = &minus;22</div>
+    </div>
+    <div class="hint-block"><span class="hint-icon">&#9888;</span> Half of 10 = 5. Add and subtract 5&sup2; = 25. h is opposite sign of what's inside.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="q-num">2</div>
+      <div class="card-meta">
+        <div class="card-title">Leading coefficient a = 3</div>
+        <div class="badges">
+          <span class="std std-w4">W4.h</span>
+          <span class="badge-type">identify</span>
+        </div>
+      </div>
+    </div>
+    <div class="question">
+      Convert to vertex form: <strong>f(x) = 3x&sup2; &minus; 12x + 1</strong><br>
+      Write in the form a(x &minus; h)&sup2; + k
+    </div>
+    <div class="answers">
+      <div class="ans-row"><span class="ans-label">a =</span><span class="ans-val">3</span></div>
+      <div class="ans-row"><span class="ans-label">h =</span><span class="ans-val">2</span></div>
+      <div class="ans-row"><span class="ans-label">k =</span><span class="ans-val">&minus;11</span></div>
+    </div>
+    <div class="solution">
+      <div class="solution-lbl">Solution</div>
+      <div class="step">3x&sup2; &minus; 12x + 1</div>
+      <div class="step">= 3(x&sup2; &minus; 4x) + 1&nbsp;&nbsp;&nbsp;[factor out 3]</div>
+      <div class="step">= 3(x&sup2; &minus; 4x + 4 &minus; 4) + 1&nbsp;&nbsp;&nbsp;[(4/2)&sup2; = 4]</div>
+      <div class="step">= 3(x &minus; 2)&sup2; &minus; 12 + 1&nbsp;&nbsp;&nbsp;[3 &times; (&minus;4) = &minus;12]</div>
+      <div class="step">= 3(x &minus; 2)&sup2; &minus; 11 &rarr; a=3, h=2, k=&minus;11</div>
+    </div>
+    <div class="hint-block"><span class="hint-icon">&#9888;</span> Factor out 3 first. The &minus;4 inside the group is worth &minus;12 outside because of the 3.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="q-num">3</div>
+      <div class="card-meta">
+        <div class="card-title">Leading coefficient a = 2</div>
+        <div class="badges">
+          <span class="std std-w4">W4.h</span>
+          <span class="badge-type">identify</span>
+        </div>
+      </div>
+    </div>
+    <div class="question">
+      Convert to vertex form: <strong>f(x) = 2x&sup2; + 8x &minus; 5</strong><br>
+      Write in the form a(x &minus; h)&sup2; + k
+    </div>
+    <div class="answers">
+      <div class="ans-row"><span class="ans-label">a =</span><span class="ans-val">2</span></div>
+      <div class="ans-row"><span class="ans-label">h =</span><span class="ans-val">&minus;2</span></div>
+      <div class="ans-row"><span class="ans-label">k =</span><span class="ans-val">&minus;13</span></div>
+    </div>
+    <div class="solution">
+      <div class="solution-lbl">Solution</div>
+      <div class="step">2x&sup2; + 8x &minus; 5</div>
+      <div class="step">= 2(x&sup2; + 4x) &minus; 5&nbsp;&nbsp;&nbsp;[factor out 2]</div>
+      <div class="step">= 2(x&sup2; + 4x + 4 &minus; 4) &minus; 5&nbsp;&nbsp;&nbsp;[(4/2)&sup2; = 4]</div>
+      <div class="step">= 2(x + 2)&sup2; &minus; 8 &minus; 5&nbsp;&nbsp;&nbsp;[2 &times; (&minus;4) = &minus;8]</div>
+      <div class="step">= 2(x + 2)&sup2; &minus; 13 &rarr; a=2, h=&minus;2, k=&minus;13</div>
+    </div>
+    <div class="hint-block"><span class="hint-icon">&#9888;</span> Factor out 2. Half of 4 = 2, 2&sup2; = 4. The &minus;4 inside becomes &minus;8 outside.</div>
+  </div>
+
+</div>
+
+<!-- SECTION B: W2.c and W4.a -->
+<div class="section-header section-b">
+  <span class="section-label">Section B</span>
+  <span class="section-title">Range (Negative Coeff) + X-Intercepts from Vertex Form</span>
+  <span class="section-count">Q4-Q7 &middot; W2.c &amp; W4.a</span>
+</div>
+<div class="grid section-b">
+
+  <div class="card">
+    <div class="card-head">
+      <div class="q-num">4</div>
+      <div class="card-meta">
+        <div class="card-title">Domain/range with negative coefficient</div>
+        <div class="badges">
+          <span class="std std-w2">W2.c</span>
+          <span class="badge-type">identify</span>
+        </div>
+      </div>
+    </div>
+    <div class="question">
+      For <strong>g(x) = &minus;2&#8730;(x &minus; 5) + 9</strong><br>
+      State the domain start and the range bound.
+    </div>
+    <div class="answers">
+      <div class="ans-row"><span class="ans-label">Domain: x &ge;</span><span class="ans-val">5</span></div>
+      <div class="ans-row"><span class="ans-label">Range: y &le;</span><span class="ans-val">9</span></div>
+    </div>
+    <div class="solution">
+      <div class="solution-lbl">Solution</div>
+      <div class="step">Domain: x &minus; 5 &ge; 0, so x &ge; 5</div>
+      <div class="step">Range: plug in x=5: &minus;2&times;0 + 9 = 9</div>
+      <div class="step">Coeff &minus;2 is negative: function decreases from 9</div>
+      <div class="step">Range: y &le; 9&nbsp;&nbsp;&nbsp;[maximum, not minimum]</div>
+    </div>
+    <div class="hint-block"><span class="hint-icon">&#9888;</span> Negative coefficient = function goes DOWN from the starting value. Range is a MAXIMUM (y &le;).</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="q-num">5</div>
+      <div class="card-meta">
+        <div class="card-title">Range with a = &minus;1, vertical shift down</div>
+        <div class="badges">
+          <span class="std std-w2">W2.c</span>
+          <span class="badge-type">identify</span>
+        </div>
+      </div>
+    </div>
+    <div class="question">
+      For <strong>h(x) = &minus;&#8730;(x + 1) &minus; 4</strong><br>
+      State the domain start and the range bound.
+    </div>
+    <div class="answers">
+      <div class="ans-row"><span class="ans-label">Domain: x &ge;</span><span class="ans-val">&minus;1</span></div>
+      <div class="ans-row"><span class="ans-label">Range: y &le;</span><span class="ans-val">&minus;4</span></div>
+    </div>
+    <div class="solution">
+      <div class="solution-lbl">Solution</div>
+      <div class="step">Domain: x + 1 &ge; 0, so x &ge; &minus;1</div>
+      <div class="step">Range: plug in x=&minus;1: &minus;&#8730;0 &minus; 4 = &minus;4</div>
+      <div class="step">Coeff &minus;1 is negative: function decreases from &minus;4</div>
+      <div class="step">Range: y &le; &minus;4&nbsp;&nbsp;&nbsp;[maximum]</div>
+    </div>
+    <div class="hint-block"><span class="hint-icon">&#9888;</span> Same pattern as Q4 but with a negative vertical shift. Domain start is x=&minus;1, not x=0.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="q-num">6</div>
+      <div class="card-meta">
+        <div class="card-title">X-intercepts from vertex form, opens up</div>
+        <div class="badges">
+          <span class="std std-w4">W4.a</span>
+          <span class="badge-type">identify</span>
+        </div>
+      </div>
+    </div>
+    <div class="question">
+      For <strong>f(x) = 3(x + 1)&sup2; &minus; 27</strong><br>
+      State direction, vertex, and both x-intercepts.
+    </div>
+    <div class="answers">
+      <div class="ans-row"><span class="ans-label">Opens</span><span class="ans-val">up</span></div>
+      <div class="ans-row"><span class="ans-label">Vertex</span><span class="ans-val">(&minus;1, &minus;27)</span></div>
+      <div class="ans-row"><span class="ans-label">x-intercepts</span><span class="ans-val">x = &minus;4 and x = 2</span></div>
+    </div>
+    <div class="solution">
+      <div class="solution-lbl">Solution</div>
+      <div class="step">a=3 &gt; 0: opens UP</div>
+      <div class="step">Vertex: h=&minus;1, k=&minus;27</div>
+      <div class="step">0 = 3(x+1)&sup2; &minus; 27 &rarr; (x+1)&sup2; = 9</div>
+      <div class="step">x+1 = &plusmn;3 &rarr; x = 2 or x = &minus;4</div>
+    </div>
+    <div class="hint-block"><span class="hint-icon">&#9888;</span> Set f(x)=0. Divide both sides by 3, then take square root. Remember &plusmn;.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="q-num">7</div>
+      <div class="card-meta">
+        <div class="card-title">X-intercepts from vertex form, opens down</div>
+        <div class="badges">
+          <span class="std std-w4">W4.a</span>
+          <span class="badge-type">identify</span>
+        </div>
+      </div>
+    </div>
+    <div class="question">
+      For <strong>f(x) = &minus;(x &minus; 4)&sup2; + 16</strong><br>
+      State direction, vertex, and both x-intercepts.
+    </div>
+    <div class="answers">
+      <div class="ans-row"><span class="ans-label">Opens</span><span class="ans-val">down</span></div>
+      <div class="ans-row"><span class="ans-label">Vertex</span><span class="ans-val">(4, 16)</span></div>
+      <div class="ans-row"><span class="ans-label">x-intercepts</span><span class="ans-val">x = 0 and x = 8</span></div>
+    </div>
+    <div class="solution">
+      <div class="solution-lbl">Solution</div>
+      <div class="step">a=&minus;1 &lt; 0: opens DOWN</div>
+      <div class="step">Vertex: h=4, k=16</div>
+      <div class="step">0 = &minus;(x&minus;4)&sup2; + 16 &rarr; (x&minus;4)&sup2; = 16</div>
+      <div class="step">x&minus;4 = &plusmn;4 &rarr; x = 8 or x = 0</div>
+    </div>
+    <div class="hint-block"><span class="hint-icon">&#9888;</span> Multiply both sides by &minus;1 first. Then take square root of both sides.</div>
+  </div>
+
+</div>
+
+<!-- SECTION C: W2.b, W3.d, W5.a -->
+<div class="section-header section-c">
+  <span class="section-label">Section C</span>
+  <span class="section-title">Abs Value / Exponential Base / Rational</span>
+  <span class="section-count">Q8-Q10 &middot; W2.b &middot; W3.d &middot; W5.a</span>
+</div>
+<div class="grid section-c">
+
+  <div class="card">
+    <div class="card-head">
+      <div class="q-num">8</div>
+      <div class="card-meta">
+        <div class="card-title">Abs value: vertex form with negative a</div>
+        <div class="badges">
+          <span class="std std-w2">W2.b</span>
+          <span class="badge-type">identify</span>
+        </div>
+      </div>
+    </div>
+    <div class="question">
+      For <strong>f(x) = &minus;2|x + 5| + 8</strong><br>
+      Identify parent function, vertex, and opening direction.
+    </div>
+    <div class="answers">
+      <div class="ans-row"><span class="ans-label">Parent function</span><span class="ans-val">absolute value</span></div>
+      <div class="ans-row"><span class="ans-label">Vertex</span><span class="ans-val">(&minus;5, 8)</span></div>
+      <div class="ans-row"><span class="ans-label">Opens</span><span class="ans-val">down</span></div>
+    </div>
+    <div class="solution">
+      <div class="solution-lbl">Solution</div>
+      <div class="step">Parent: y = |x|</div>
+      <div class="step">Form: a|x &minus; h| + k. a=&minus;2, h=&minus;5 (opposite of +5), k=8</div>
+      <div class="step">Vertex: (&minus;5, 8)</div>
+      <div class="step">a=&minus;2 &lt; 0: opens DOWN. Vertex is a maximum.</div>
+    </div>
+    <div class="hint-block"><span class="hint-icon">&#9888;</span> The +5 inside gives h=&minus;5 (flip the sign). Negative a always opens down.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="q-num">9</div>
+      <div class="card-meta">
+        <div class="card-title">Exponential: common base, solve for x</div>
+        <div class="badges">
+          <span class="std std-w3">W3.d</span>
+          <span class="badge-type">solve</span>
+        </div>
+      </div>
+    </div>
+    <div class="question">
+      Solve for x. Rewrite both sides as powers of the same base:<br>
+      <strong>3<sup>2x&minus;1</sup> = 27<sup>x&minus;2</sup></strong>
+    </div>
+    <div class="answers">
+      <div class="ans-row"><span class="ans-label">x =</span><span class="ans-val">5</span></div>
+    </div>
+    <div class="solution">
+      <div class="solution-lbl">Solution</div>
+      <div class="step">3^(2x&minus;1) = 27^(x&minus;2)</div>
+      <div class="step">3^(2x&minus;1) = (3^3)^(x&minus;2)&nbsp;&nbsp;&nbsp;[27 = 3^3]</div>
+      <div class="step">3^(2x&minus;1) = 3^(3x&minus;6)&nbsp;&nbsp;&nbsp;[power rule]</div>
+      <div class="step">2x &minus; 1 = 3x &minus; 6&nbsp;&nbsp;&nbsp;[same base: set exponents equal]</div>
+      <div class="step">x = 5</div>
+    </div>
+    <div class="hint-block"><span class="hint-icon">&#9888;</span> Rewrite 27 = 3^3. Apply power rule on right. Then set exponents equal.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="q-num">10</div>
+      <div class="card-meta">
+        <div class="card-title">Rational: factor and cancel</div>
+        <div class="badges">
+          <span class="std std-w5">W5.a</span>
+          <span class="badge-type">solve</span>
+        </div>
+      </div>
+    </div>
+    <div class="question">
+      Simplify completely. Factor numerator and denominator, then cancel:<br>
+      <strong>(x&sup2; + 2x &minus; 15) / (x&sup2; &minus; x &minus; 6)</strong>
+    </div>
+    <div class="answers">
+      <div class="ans-row"><span class="ans-label">Result</span><span class="ans-val">(x + 5) / (x + 2)</span></div>
+      <div class="ans-row"><span class="ans-label">Restriction</span><span class="ans-val">x &ne; 3</span></div>
+    </div>
+    <div class="solution">
+      <div class="solution-lbl">Solution</div>
+      <div class="step">Num: x&sup2;+2x&minus;15 = (x+5)(x&minus;3)</div>
+      <div class="step">Den: x&sup2;&minus;x&minus;6 = (x&minus;3)(x+2)</div>
+      <div class="step">Cancel (x&minus;3): result = (x+5)/(x+2), x &ne; 3</div>
+    </div>
+    <div class="hint-block"><span class="hint-icon">&#9888;</span> Factor each separately. Find multiply/add pairs. Then identify the shared factor.</div>
+  </div>
+
+</div>
+
+<!-- SECTION D: W6.c Exponential Growth/Decay -->
+<div class="section-header section-d">
+  <span class="section-label">Section D</span>
+  <span class="section-title">Exponential Growth and Decay — Word Problems</span>
+  <span class="section-count">Q11-Q12 &middot; W6.c &middot; New: added per Marcus</span>
+</div>
+<div class="grid section-d">
+
+  <div class="card">
+    <div class="card-head">
+      <div class="q-num">11</div>
+      <div class="card-meta">
+        <div class="card-title">Exponential GROWTH: bacteria doubling</div>
+        <div class="badges">
+          <span class="std std-w6">W6.c</span>
+          <span class="badge-type">solve</span>
+        </div>
+      </div>
+    </div>
+    <div class="question">
+      A bacteria culture starts with 200 cells and doubles every 3 hours.<br>
+      The equation is <strong>A = A&#8320; &bull; b<sup>t</sup></strong> where t = number of 3-hour intervals.<br>
+      State A&#8320;, b, and find the number of cells after 9 hours.
+    </div>
+    <div class="answers">
+      <div class="ans-row"><span class="ans-label">Initial value A&#8320; =</span><span class="ans-val">200</span></div>
+      <div class="ans-row"><span class="ans-label">Growth factor b =</span><span class="ans-val">2</span></div>
+      <div class="ans-row"><span class="ans-label">Cells after 9 hrs =</span><span class="ans-val">1,600</span></div>
+    </div>
+    <div class="solution">
+      <div class="solution-lbl">Solution</div>
+      <div class="step">A&#8320; = 200&nbsp;&nbsp;&nbsp;[starting value]</div>
+      <div class="step">b = 2&nbsp;&nbsp;&nbsp;[doubles = multiply by 2 each interval]</div>
+      <div class="step">9 hours / 3 hours per interval = t = 3</div>
+      <div class="step">A = 200 &times; 2^3 = 200 &times; 8 = 1,600 cells</div>
+    </div>
+    <div class="hint-block"><span class="hint-icon">&#9888;</span> Doubles means b=2. 9 hours = 3 intervals. Substitute t=3 into A = 200 &bull; 2^t.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="q-num">12</div>
+      <div class="card-meta">
+        <div class="card-title">Exponential DECAY: car depreciation</div>
+        <div class="badges">
+          <span class="std std-w6">W6.c</span>
+          <span class="badge-type">solve</span>
+        </div>
+      </div>
+    </div>
+    <div class="question">
+      A car is purchased for $25,000 and loses 20% of its value each year.<br>
+      The equation is <strong>A = A&#8320; &bull; b<sup>t</sup></strong> where t = years.<br>
+      State A&#8320;, b, and find the value after 2 years.
+    </div>
+    <div class="answers">
+      <div class="ans-row"><span class="ans-label">Initial value A&#8320; =</span><span class="ans-val">$25,000</span></div>
+      <div class="ans-row"><span class="ans-label">Decay factor b =</span><span class="ans-val">0.80</span></div>
+      <div class="ans-row"><span class="ans-label">Value after 2 yrs =</span><span class="ans-val">$16,000</span></div>
+    </div>
+    <div class="solution">
+      <div class="solution-lbl">Solution</div>
+      <div class="step">A&#8320; = 25,000&nbsp;&nbsp;&nbsp;[purchase price]</div>
+      <div class="step">b = 1 &minus; 0.20 = 0.80&nbsp;&nbsp;&nbsp;[loses 20%, keeps 80%]</div>
+      <div class="step">A = 25,000 &times; (0.8)^2</div>
+      <div class="step">= 25,000 &times; 0.64 = $16,000</div>
+    </div>
+    <div class="hint-block"><span class="hint-icon">&#9888;</span> Decay: b = 1 &minus; rate. Loses 20% means b = 0.80. Key move: NOT b = 0.20.</div>
+  </div>
+
+</div>
+
+</body>
+</html>
