@@ -1,0 +1,29 @@
+{
+  "exam_id": "s4-assessment-drill-1",
+  "student": "Kai Ash",
+  "date": "2026-05-17",
+  "score": 10,
+  "total": 12,
+  "pct": 83,
+  "time_minutes": null,
+  "sections": {
+    "A_factor_first": { "score": 5, "total": 5, "pct": 100 },
+    "B_lcd_add_subtract": { "score": 3, "total": 4, "pct": 75 },
+    "C_expansion": { "score": 2, "total": 3, "pct": 67 }
+  },
+  "per_question": [
+    { "id": "Q1",  "section": "A", "standard": "S4.a",  "status": "correct" },
+    { "id": "Q2",  "section": "A", "standard": "S5.d",  "status": "correct" },
+    { "id": "Q3",  "section": "A", "standard": "S5.d",  "status": "correct" },
+    { "id": "Q4",  "section": "A", "standard": "S4.a",  "status": "correct" },
+    { "id": "Q5",  "section": "A", "standard": "S5.d",  "status": "correct" },
+    { "id": "Q6",  "section": "B", "standard": "S4.b",  "status": "incorrect" },
+    { "id": "Q7",  "section": "B", "standard": "S4.b",  "status": "correct" },
+    { "id": "Q8",  "section": "B", "standard": "S4.b",  "status": "correct" },
+    { "id": "Q9",  "section": "B", "standard": "S4.b",  "status": "correct" },
+    { "id": "Q10", "section": "C", "standard": "S4.a",  "status": "correct" },
+    { "id": "Q11", "section": "C", "standard": "other", "status": "incorrect" },
+    { "id": "Q12", "section": "C", "standard": "S4.b",  "status": "correct" }
+  ],
+  "notes": "Massive improvement from Assessment 2A (44% → 83%). Section A perfect — term-by-term cancellation issue fully resolved. Q3 is the exact same problem as Assessment 2A Q2 (previously wrong, now correct). Remaining gaps: arithmetic care (Q6) and difference quotient expansion (Q11)."
+}
