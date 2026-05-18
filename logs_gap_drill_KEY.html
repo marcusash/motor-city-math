@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Logs, Exponents &amp; Rational Expressions Gap Drill — ANSWER KEY</title>
+<script>
+MathJax = { tex: { inlineMath: [['\\(','\\)'],['$','$']] }, options: { skipHtmlTags: ['script','noscript','style','textarea'] } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+<style>
+:root {
+  --ink: #000;
+  --bg: #fff;
+  --rule: #000;
+  --soft: #444;
+  --green: #1b7d3a;
+  --red: #c8102e;
+  font-size: 15px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; color: var(--ink); }
+body { font-family: 'Georgia', serif; background: var(--bg); padding: 20px; }
+.sheet { background: var(--bg); max-width: 900px; margin: 0 auto; padding: 40px; }
+h1 { font-size: 1.8rem; }
+.subtitle { font-size: 1.05rem; margin-top: 4px; color: var(--red); font-weight: bold; }
+hr.section { border: none; border-top: 1.5px solid var(--rule); margin: 26px 0 16px; }
+.section-title { font-size: 1.1rem; font-weight: bold; margin-bottom: 4px; }
+.points { float: right; font-size: .82rem; font-weight: normal; color: var(--soft); }
+.prob-block { margin-bottom: 24px; page-break-inside: avoid; }
+.prob-num { font-weight: bold; margin-bottom: 4px; font-size: .92rem; }
+.prob-q { margin-bottom: 6px; line-height: 1.6; }
+.answer { font-size: 1.1rem; font-weight: bold; color: var(--green); margin: 8px 0; padding: 8px 14px; background: #e8f5e9; border-left: 4px solid var(--green); }
+.solution { font-size: .9rem; line-height: 1.7; margin: 8px 0; padding: 8px 14px; background: #f5f5f5; border-left: 3px solid #999; }
+.solution .step { margin-bottom: 4px; }
+.watch { font-size: .88rem; color: var(--red); margin-top: 6px; padding: 6px 12px; background: #fce4ec; border-left: 3px solid var(--red); }
+.scoring { font-size: .85rem; color: var(--soft); margin-top: 8px; }
+.scoring strong { color: var(--ink); }
+@media print {
+  body { padding: 0; }
+  .sheet { padding: 18px; max-width: 100%; }
+}
+</style>
+</head>
+<body>
+<div class="sheet">
+
+<h1>Algebra 2</h1>
+<p class="subtitle">Logs, Exponents &amp; Rational Expressions Gap Drill &mdash; ANSWER KEY</p>
+<p style="font-size:.9rem; margin-top:8px; color:var(--soft);">40 points &middot; ~25 minutes &middot; Targets: change-of-base execution, answer extraction, calculator precision, LCD combining, difference quotient</p>
+
+<!-- ================================================ -->
+<hr class="section">
+<p class="section-title">Q1 &mdash; Log Properties (No Calculator) <span class="points">5 pts</span></p>
+
+<div class="prob-block">
+  <p class="prob-num">1. &nbsp; Simplify: \(\log_2(32) - \log_2(1/8)\)</p>
+  <div class="answer">\(8\)</div>
+  <div class="solution">
+    <div class="step">\(\log_2(32) = 5\) &nbsp; because \(2^5 = 32\)</div>
+    <div class="step">\(\log_2(1/8) = -3\) &nbsp; because \(2^{-3} = 1/8\)</div>
+    <div class="step">\(5 - (-3) = 5 + 3 = 8\)</div>
+  </div>
+  <div class="watch"><strong>Common errors:</strong> (1) Writing \(2^{-3}\) instead of \(-3\) for the second log &mdash; same Q7 answer-extraction issue. (2) Computing \(5 - (-3)\) as \(5 - 3 = 2\) &mdash; forgetting that subtracting a negative means adding.</div>
+  <p class="scoring"><strong>Scoring:</strong> 2 pts for each log evaluated correctly, 1 pt for correct subtraction. Deduct 1 pt if either log is written as an exponential expression instead of the exponent.</p>
+</div>
+
+<!-- ================================================ -->
+<hr class="section">
+<p class="section-title">Q2 &mdash; Multi-Step Equation (Calculator) <span class="points">7 pts</span></p>
+
+<div class="prob-block">
+  <p class="prob-num">2. &nbsp; Solve: \(2 \cdot 7^{3x} = 50\)</p>
+  <div class="answer">Exact: \(x = \dfrac{\log_7(25)}{3}\) &nbsp;&nbsp; Decimal: \(x \approx 0.551\)</div>
+  <div class="solution">
+    <div class="step">Divide both sides by 2: \(7^{3x} = 25\)</div>
+    <div class="step">Take \(\log_7\) of both sides: \(3x = \log_7(25)\)</div>
+    <div class="step">Divide by 3: \(x = \dfrac{\log_7(25)}{3}\)</div>
+    <div class="step">Change-of-base: \(\log_7(25) = \dfrac{\log(25)}{\log(7)} = \dfrac{1.39794}{0.84510} = 1.65464...\)</div>
+    <div class="step">\(x = \dfrac{1.655}{3} = 0.55155... \approx 0.551\)</div>
+  </div>
+  <div class="watch"><strong>Three places to lose points:</strong> (1) Forgetting to divide by 2 first &mdash; must isolate the exponential. (2) Forgetting to divide by \(\log(7)\) in change-of-base &mdash; getting \(x = 1.398/3 = 0.466\). (3) Forgetting to divide by 3 at the end &mdash; getting \(x = 1.655\).</div>
+  <p class="scoring"><strong>Scoring:</strong> 2 pts isolate exponential, 2 pts exact form, 2 pts change-of-base decimal, 1 pt &divide;3 step. Accept exact form \(\log(25)/(3\log(7))\).</p>
+</div>
+
+<!-- ================================================ -->
+<hr class="section">
+<p class="section-title">Q3 &mdash; Solve Exponential Equation (Calculator) <span class="points">7 pts</span></p>
+
+<div class="prob-block">
+  <p class="prob-num">3. &nbsp; Solve: \(3^{x+4} = 200\)</p>
+  <div class="answer">Exact: \(x = \log_3(200) - 4\) &nbsp;&nbsp; Decimal: \(x \approx 0.827\)</div>
+  <div class="solution">
+    <div class="step">Take \(\log_3\) of both sides: \(x + 4 = \log_3(200)\)</div>
+    <div class="step">Subtract 4: \(x = \log_3(200) - 4\)</div>
+    <div class="step">Change-of-base: \(\log_3(200) = \dfrac{\log(200)}{\log(3)} = \dfrac{2.30103}{0.47712} = 4.82268...\)</div>
+    <div class="step">\(x = 4.823 - 4 = 0.82268... \approx 0.827\)</div>
+  </div>
+  <div class="watch"><strong>Common errors:</strong> (1) Forgetting to divide by \(\log(3)\) &mdash; getting \(x = 2.301 - 4 = -1.699\). (2) Forgetting to subtract 4 &mdash; leaving \(x = 4.823\). (3) Rounding \(\log_3(200)\) before subtracting 4 &mdash; keep full precision until the end.</div>
+  <p class="scoring"><strong>Scoring:</strong> 2 pts take log of both sides, 2 pts exact form, 2 pts correct change-of-base decimal, 1 pt subtract 4. Accept \(\log(200)/\log(3) - 4\).</p>
+</div>
+
+<!-- ================================================ -->
+<hr class="section">
+<p class="section-title">Q4 &mdash; Application (Calculator) <span class="points">8 pts</span></p>
+
+<div class="prob-block">
+  <p class="prob-num">4.</p>
+  <p class="prob-q">Bacteria colony: starts at 300, triples every 5 hours.</p>
+
+  <p class="prob-q" style="margin-top:10px;"><strong>(a)</strong> Write the exponential model. <span class="points">3 pts</span></p>
+  <div class="answer">\(B(t) = 300 \cdot 3^{t/5}\)</div>
+  <div class="solution">
+    <div class="step">Initial amount: 300</div>
+    <div class="step">Growth factor: 3 (triples)</div>
+    <div class="step">Period: every 5 hours &rarr; exponent is \(t/5\)</div>
+  </div>
+  <p class="scoring"><strong>Scoring:</strong> 1 pt initial value, 1 pt base, 1 pt exponent.</p>
+
+  <p class="prob-q" style="margin-top:16px;"><strong>(b)</strong> When does population reach 5000? <span class="points">5 pts</span></p>
+  <div class="answer">\(t \approx 12.806\) hours</div>
+  <div class="solution">
+    <div class="step">\(300 \cdot 3^{t/5} = 5000\)</div>
+    <div class="step">Divide by 300: \(3^{t/5} = \frac{50}{3} \approx 16.667\)</div>
+    <div class="step">Take \(\log_3\): \(\frac{t}{5} = \log_3\!\left(\frac{50}{3}\right) = \dfrac{\log(16.667)}{\log(3)}\)</div>
+    <div class="step">\(= \dfrac{1.22185}{0.47712} = 2.56120...\)</div>
+    <div class="step">Multiply by 5: \(t = 5 \times 2.561 = 12.806\)</div>
+  </div>
+  <div class="watch"><strong>Four-step chain where any step can go wrong:</strong> (1) Divide by 300. (2) Change-of-base: divide by \(\log(3)\). (3) Multiply by 5. (4) Round correctly. If you get \(t = 6.109\), you forgot \(\div\log(3)\). If you get \(t = 2.561\), you forgot \(\times 5\).</div>
+  <p class="scoring"><strong>Scoring:</strong> 1 pt set up equation, 1 pt isolate exponential, 1 pt change-of-base setup, 1 pt correct division, 1 pt final answer with &times;5.</p>
+</div>
+
+<!-- ================================================ -->
+<hr class="section">
+<p class="section-title">Q5 &mdash; LCD Rational Addition <span class="points">6 pts</span></p>
+
+<div class="prob-block">
+  <p class="prob-num">5. &nbsp; Add: \(\dfrac{4}{x+3} + \dfrac{7}{x-2}\)</p>
+  <div class="answer">\(\dfrac{11x + 13}{(x+3)(x-2)}\)</div>
+  <div class="solution">
+    <div class="step">LCD = \((x+3)(x-2)\)</div>
+    <div class="step">\(\dfrac{4(x-2)}{(x+3)(x-2)} + \dfrac{7(x+3)}{(x+3)(x-2)}\)</div>
+    <div class="step">Numerator: \(4(x-2) + 7(x+3)\)</div>
+    <div class="step">\(= 4x - 8 + 7x + 21\)</div>
+    <div class="step">\(= 11x + 13\)</div>
+  </div>
+  <div class="watch"><strong>Common error:</strong> Combining \(4x + 7x\) as \(10x\) instead of \(11x\) &mdash; same arithmetic slip as S4 Gap Drill Q6 where \(3x + 5x\) became \(7x\). Double-check the coefficient addition on the last step.</div>
+  <p class="scoring"><strong>Scoring:</strong> 2 pts LCD, 2 pts distribution, 2 pts combining. If \(10x+13\) or \(11x-13\): 4 pts (setup correct, arithmetic error).</p>
+</div>
+
+<!-- ================================================ -->
+<hr class="section">
+<p class="section-title">Q6 &mdash; Difference Quotient <span class="points">7 pts</span></p>
+
+<div class="prob-block">
+  <p class="prob-num">6. &nbsp; Simplify \(\dfrac{f(x+h)-f(x)}{h}\) where \(f(x) = 2x^2 + 5x - 3\)</p>
+  <div class="answer">\(4x + 2h + 5\)</div>
+  <div class="solution">
+    <div class="step">\(f(x+h) = 2(x+h)^2 + 5(x+h) - 3\)</div>
+    <div class="step">\(= 2(x^2 + 2xh + h^2) + 5x + 5h - 3\)</div>
+    <div class="step">\(= 2x^2 + 4xh + 2h^2 + 5x + 5h - 3\) &nbsp; [2 hits ALL three terms]</div>
+    <div class="step">\(f(x+h) - f(x) = (2x^2 + 4xh + 2h^2 + 5x + 5h - 3) - (2x^2 + 5x - 3)\)</div>
+    <div class="step">\(= 4xh + 2h^2 + 5h\) &nbsp; [\(2x^2\), \(5x\), and \(-3\) all cancel]</div>
+    <div class="step">Divide by \(h\): \(\dfrac{h(4x + 2h + 5)}{h} = 4x + 2h + 5\)</div>
+  </div>
+  <div class="watch"><strong>Common error:</strong> Computing \(f(x+h)\) as \(f(x)+h = 2x^2+5x-3+h\), which gives \(h/h = 1\). This is WRONG. Every \(x\) in the formula must be replaced by \((x+h)\). Also: \(2(x+h)^2 = 2x^2 + 4xh + 2h^2\), NOT \(2x^2 + 2xh + h^2\) &mdash; the 2 multiplies ALL three terms from the expansion.</div>
+  <p class="scoring"><strong>Scoring:</strong> 3 pts for correctly expanding \(f(x+h)\) [must show \(2(x^2+2xh+h^2)\) not \(f(x)+h\)], 2 pts for subtraction/cancellation, 2 pts for dividing by \(h\). Answer of 1: 0 pts.</p>
+</div>
+
+</div><!-- .sheet -->
+</body>
+</html>
