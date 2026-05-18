@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="../shared/favicon.svg">
+  <title>Kai: Logs 45-Min Practice Review (2026-05-14)</title>
+  <link rel="stylesheet" href="../shared/katex/katex.min.css">
+  <script src="../shared/katex/katex.min.js"></script>
+  <script src="../shared/katex/auto-render.min.js"></script>
+  <link rel="stylesheet" href="../shared/styles.css">
+  <style>
+    .review-container { max-width: 860px; margin: 0 auto; padding: 24px 16px; }
+    .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: var(--text-sm); font-weight: 600; color: var(--accent-blue); text-decoration: none; margin-bottom: 16px; }
+    .back-link:hover { text-decoration: underline; }
+    .review-header { text-align: center; margin-bottom: 32px; }
+    .review-header h1 { font-size: 1.6rem; font-weight: 800; color: var(--accent-navy); margin: 0 0 4px; }
+    .review-header .meta { color: var(--text-secondary); font-size: var(--text-sm); margin: 0 0 20px; }
+    .score-banner { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px; }
+    .score-pill { background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 12px; padding: 14px 24px; text-align: center; min-width: 130px; box-shadow: var(--shadow-card); }
+    .score-pill .label { font-size: var(--text-xs); font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+    .score-pill .value { font-size: 2rem; font-weight: 800; color: var(--accent-navy); line-height: 1; }
+    .score-pill .sub { font-size: var(--text-xs); color: var(--text-secondary); margin-top: 2px; }
+    .score-pill.grade-a .value { color: var(--color-correct); }
+
+    .section-row { display: flex; gap: 16px; margin-bottom: 16px; flex-wrap: wrap; }
+    .section-card { flex: 1; min-width: 180px; background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 8px; padding: 16px 20px; box-shadow: var(--shadow-card); }
+    .section-card h3 { margin: 0 0 4px; font-size: var(--text-sm); font-weight: 700; color: var(--accent-navy); text-transform: uppercase; letter-spacing: 0.05em; }
+    .section-card .section-score { font-size: 1.4rem; font-weight: 800; color: var(--accent-navy); }
+    .section-card p { font-size: var(--text-xs); color: var(--text-secondary); margin: 2px 0 0; }
+    .bar { height: 6px; border-radius: 3px; background: var(--border-subtle); margin-top: 8px; overflow: hidden; }
+    .bar-fill { height: 100%; border-radius: 3px; background: var(--accent-blue); }
+    .bar-fill.good { background: var(--color-correct); }
+    .bar-fill.warn { background: var(--color-incorrect); }
+    .bar-fill.mid { background: var(--color-warning); }
+    h2.section-label { font-size: var(--text-sm); font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.08em; margin: 32px 0 12px; padding-bottom: 8px; border-bottom: 2px solid var(--border-subtle); }
+    .q-card { background: var(--bg-card); border: 1px solid var(--border-default); border-left: 4px solid var(--border-default); border-radius: 8px; padding: 18px 20px; margin-bottom: 14px; box-shadow: var(--shadow-card); }
+    .q-card.correct { border-left-color: var(--color-correct); }
+    .q-card.partial { border-left-color: var(--color-warning); }
+    .q-card.incorrect { border-left-color: var(--color-incorrect); }
+    .q-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; flex-wrap: wrap; }
+    .q-num { font-weight: 800; color: var(--accent-navy); font-size: 1rem; }
+    .q-badge { font-size: var(--text-xs); font-weight: 700; padding: 2px 8px; border-radius: 10px; }
+    .badge-standard { background: var(--bg-highlight); color: var(--accent-blue); }
+    .badge-score { margin-left: auto; font-size: 0.95rem; font-weight: 800; }
+    .badge-score.s-full { color: var(--color-correct); }
+    .badge-score.s-partial { color: var(--color-warning); }
+    .badge-score.s-zero { color: var(--color-incorrect); }
+    .q-problem { font-size: var(--text-base); color: var(--text-primary); margin-bottom: 12px; }
+    .answer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+    @media (max-width: 600px) { .answer-grid { grid-template-columns: 1fr; } }
+    .answer-box { padding: 10px 14px; border-radius: 6px; font-size: var(--text-sm); }
+    .answer-box .alabel { font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+    .answer-box.kai-box { background: rgba(29,66,186,0.06); border: 1px solid rgba(29,66,186,0.2); }
+    .answer-box.kai-box .alabel { color: var(--accent-blue); }
+    .answer-box.correct-box { background: var(--color-correct-bg); border: 1px solid rgba(27,125,58,0.2); }
+    .answer-box.correct-box .alabel { color: var(--color-correct); }
+    .error-note { background: var(--color-incorrect-bg); border: 1px solid rgba(200,16,46,0.2); border-radius: 6px; padding: 10px 14px; font-size: var(--text-sm); color: var(--text-primary); margin-bottom: 8px; }
+    .error-note .elabel { font-size: var(--text-xs); font-weight: 700; color: var(--color-incorrect); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+    .coaching-note { background: rgba(29,66,186,0.06); border: 1px solid rgba(29,66,186,0.2); border-radius: 6px; padding: 8px 14px; font-size: var(--text-sm); color: var(--text-primary); margin-top: 8px; }
+    .coaching-note .clabel { font-size: var(--text-xs); font-weight: 700; color: var(--accent-blue); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2px; }
+
+    .critical-banner { background: linear-gradient(135deg, rgba(200,16,46,0.10), rgba(200,16,46,0.03)); border: 2px solid var(--color-incorrect); border-radius: 12px; padding: 18px 24px; margin: 0 0 32px; box-shadow: var(--shadow-card); }
+    .critical-banner .ihead { font-size: var(--text-xs); font-weight: 800; color: var(--color-incorrect); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; }
+    .critical-banner .imain { font-size: 1.2rem; font-weight: 800; color: var(--accent-navy); margin-bottom: 6px; }
+    .critical-banner .isub { font-size: var(--text-sm); color: var(--text-primary); margin: 0; }
+
+    .progress-wrap { background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 10px; padding: 18px 22px; margin: 28px 0 8px; box-shadow: var(--shadow-card); }
+    .progress-wrap h3 { margin: 0 0 6px; font-size: 1.05rem; font-weight: 800; color: var(--accent-navy); }
+    .progress-wrap .sub { font-size: var(--text-sm); color: var(--text-secondary); margin: 0 0 12px; }
+    .progress-wrap ul { margin: 6px 0 0; padding-left: 22px; font-size: var(--text-sm); color: var(--text-primary); }
+    .progress-wrap ul li { margin-bottom: 6px; }
+    .progress-wrap .wins-header, .progress-wrap .gaps-header, .progress-wrap .next-header { font-size: var(--text-xs); font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 12px; }
+    .progress-wrap .wins-header { color: var(--color-correct); }
+    .progress-wrap .gaps-header { color: var(--color-warning); }
+    .progress-wrap .next-header { color: var(--accent-blue); }
+    .footer-note { text-align: center; font-size: var(--text-xs); color: var(--text-secondary); margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--border-subtle); }
+  </style>
+</head>
+<body>
+<div class="review-container">
+  <a href="../index.html" class="back-link">&larr; Back to Dashboard</a>
+
+  <div class="review-header">
+    <h1>Logarithms — 45-Minute Practice Exam</h1>
+    <p class="meta">Kai Ash &bull; 45-Minute Practice Exam &bull; 2026-05-14</p>
+  </div>
+
+  <!-- Score Banner -->
+  <div class="score-banner">
+    <div class="score-pill grade-a">
+      <div class="label">Raw Score</div>
+      <div class="value">91/100</div>
+      <div class="sub">91%</div>
+    </div>
+    <div class="score-pill">
+      <div class="label">Points Lost</div>
+      <div class="value">9</div>
+      <div class="sub">across 5 questions</div>
+    </div>
+    <div class="score-pill">
+      <div class="label">Sections Perfect</div>
+      <div class="value">1 / 5</div>
+      <div class="sub">Part A: 15/15</div>
+    </div>
+  </div>
+
+  <!-- Critical Gap Banner -->
+  <div class="critical-banner">
+    <div class="ihead">#1 Gap to Fix Before the Unit Test</div>
+    <div class="imain">Change-of-base execution &mdash; Q9 lost 3 of 5 points</div>
+    <p class="isub">Kai computed \(\log(0.6)\) but forgot to divide by \(\log(7)\). Change-of-base has TWO parts: \(\log_b(x) = \log(x) / \log(b)\). Drilled in the new Logs &amp; Rationals Gap Drill (Q2, Q3).</p>
+  </div>
+
+  <!-- Section Cards -->
+  <div class="section-row">
+    <div class="section-card">
+      <h3>A: Convert Between Forms</h3>
+      <div class="section-score">15 / 15</div>
+      <p>100% &bull; Q1–Q3 &bull; No calculator</p>
+      <div class="bar"><div class="bar-fill good" style="width:100%"></div></div>
+    </div>
+    <div class="section-card">
+      <h3>B: Evaluate Without a Calculator</h3>
+      <div class="section-score">18 / 20</div>
+      <p>90% &bull; Q4–Q7 &bull; No calculator</p>
+      <div class="bar"><div class="bar-fill good" style="width:90%"></div></div>
+    </div>
+    <div class="section-card">
+      <h3>C: Evaluate With a Calculator (3 dp)</h3>
+      <div class="section-score">6 / 10</div>
+      <p>60% &bull; Q8–Q9 &bull; Calculator required</p>
+      <div class="bar"><div class="bar-fill warn" style="width:60%"></div></div>
+    </div>
+    <div class="section-card">
+      <h3>D: Solve Equations Using Logarithms</h3>
+      <div class="section-score">33 / 35</div>
+      <p>94% &bull; Q10–Q14 &bull; Show work</p>
+      <div class="bar"><div class="bar-fill good" style="width:94%"></div></div>
+    </div>
+    <div class="section-card">
+      <h3>E: Applications</h3>
+      <div class="section-score">19 / 20</div>
+      <p>95% &bull; Q15–Q16 &bull; Multi-part</p>
+      <div class="bar"><div class="bar-fill good" style="width:95%"></div></div>
+    </div>
+  </div>
+
+  <h2 class="section-label">Errors &mdash; 9 Points Lost across 5 Questions</h2>
+  
+  <div class="q-card partial">
+    <div class="q-header">
+      <span class="q-num">Q7</span>
+      <span class="q-badge badge-standard">L.b</span>
+      <span class="badge-score s-partial">3 / 5</span>
+    </div>
+    <div class="q-problem">Evaluate: \(\log_{10}(0.001)\)</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        \(10^{-3}\)
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        \(-3\)
+      </div>
+    </div>
+    
+    <div class="error-note">
+      <div class="elabel">answer extraction</div>
+      Kai correctly identified that \(0.001 = 10^{-3}\), but wrote the full exponential expression instead of extracting the exponent. The question asks for the value of the logarithm, which is the exponent alone: \(\log_{10}(0.001) = -3\), not \(10^{-3}\).
+    </div>
+    
+    <div class="coaching-note">
+      <div class="clabel">Coaching Note</div>
+      A logarithm IS the exponent. When you find \(10^{-3} = 0.001\), the log is \(-3\), not the whole expression \(10^{-3}\). Strip away the base — the answer is just the power.
+    </div>
+  </div>
+  <div class="q-card partial">
+    <div class="q-header">
+      <span class="q-num">Q8</span>
+      <span class="q-badge badge-standard">L.c</span>
+      <span class="badge-score s-partial">4 / 5</span>
+    </div>
+    <div class="q-problem">Evaluate with a calculator (3 decimal places): \(\log_6(12000)\)</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        \(5.491\)
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        \(5.242\)
+      </div>
+    </div>
+    
+    <div class="error-note">
+      <div class="elabel">calculator precision</div>
+      Minor rounding issue. Kai got 5.491 instead of 5.242. The change-of-base setup was correct (\(\log(12000)/\log(6)\)) but the calculator execution produced an inaccurate result.
+    </div>
+    
+    <div class="coaching-note">
+      <div class="clabel">Coaching Note</div>
+      Double-check your change-of-base division on the calculator. \(\log(12000) = 4.07918\), \(\log(6) = 0.77815\). Divide carefully: \(4.07918 \div 0.77815 = 5.242\).
+    </div>
+  </div>
+  <div class="q-card partial">
+    <div class="q-header">
+      <span class="q-num">Q9</span>
+      <span class="q-badge badge-standard">L.c</span>
+      <span class="badge-score s-partial">2 / 5</span>
+    </div>
+    <div class="q-problem">Evaluate with a calculator (3 decimal places): \(\log_7(0.6)\)</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        \(-0.222\)
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        \(-0.263\)
+      </div>
+    </div>
+    
+    <div class="error-note">
+      <div class="elabel">change-of-base incomplete</div>
+      Kai got \(-0.222\) which is \(\log_{10}(0.6)\), not \(\log_7(0.6)\). He set up the change-of-base formula but only computed the numerator — forgot to divide by \(\log(7) = 0.8451\). Correct: \(\log(0.6)/\log(7) = -0.2218/0.8451 = -0.263\).
+    </div>
+    
+    <div class="coaching-note">
+      <div class="clabel">Coaching Note</div>
+      Change-of-base has TWO parts: \(\log_b(x) = \log(x) / \log(b)\). You computed \(\log(0.6)\) but stopped there. Always divide by \(\log(\text{base})\). This is the #1 gap to fix before the unit test.
+    </div>
+  </div>
+  <div class="q-card partial">
+    <div class="q-header">
+      <span class="q-num">Q14</span>
+      <span class="q-badge badge-standard">L.d</span>
+      <span class="badge-score s-partial">5 / 7</span>
+    </div>
+    <div class="q-problem">Solve: \(4^{x-5} = 28/3\). Give exact form and decimal (3 dp).</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        Exact: \(x = 5 + \log_4(28/3)\) ✓ — Decimal: \(5.873\) ✗
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        Exact: \(x = 5 + \log_4(28/3)\) — Decimal: \(x \approx 6.611\)
+      </div>
+    </div>
+    
+    <div class="error-note">
+      <div class="elabel">calculator precision</div>
+      Exact algebraic form is perfect. Decimal value wrong: got 5.873 instead of 6.611. \(\log_4(28/3) = \log(9.333)/\log(4) = 0.9700/0.6021 = 1.611\). Then \(5 + 1.611 = 6.611\). Kai likely made a calculator input error on \(\log_4(28/3)\).
+    </div>
+    
+    <div class="coaching-note">
+      <div class="clabel">Coaching Note</div>
+      Your algebra is excellent — exact form was spot-on. The decimal error is a calculator execution issue. Tip: compute \(\log(28/3)\) and \(\log(4)\) separately, write both down, THEN divide. Don't try to do it in one calculator chain.
+    </div>
+  </div>
+  <div class="q-card partial">
+    <div class="q-header">
+      <span class="q-num">Q16b</span>
+      <span class="q-badge badge-standard">L.f</span>
+      <span class="badge-score s-partial">4 / 5</span>
+    </div>
+    <div class="q-problem">(b) When will the sample decay to 50 grams?</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        \(t \approx 17.887\)
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        \(t = \log_{0.85}(0.1) = \log(0.1)/\log(0.85) \approx 14.164\) years
+      </div>
+    </div>
+    
+    <div class="error-note">
+      <div class="elabel">calculator precision</div>
+      Got 17.887 instead of 14.164. The setup \(500 \cdot (0.85)^t = 50\) → \((0.85)^t = 0.1\) → \(t = \log(0.1)/\log(0.85)\) is correct conceptually but the calculator division produced the wrong result. \(\log(0.1) = -1\), \(\log(0.85) = -0.07058\). \(t = -1 / -0.07058 = 14.164\).
+    </div>
+    
+    <div class="coaching-note">
+      <div class="clabel">Coaching Note</div>
+      Minor calculator error. The algebra and setup are correct. Try entering \(\log(0.1) \div \log(0.85)\) as two separate calculations and dividing the results.
+    </div>
+  </div>
+
+  <h2 class="section-label">Correct &mdash; 13 of 18 Questions</h2>
+  
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q1</span>
+      <span class="q-badge badge-standard">L.a</span>
+      <span class="badge-score s-full">5 / 5</span>
+    </div>
+    <div class="q-problem">Rewrite in logarithmic form: \(5^3 = 125\)</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        \(\log_5(125) = 3\)
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        \(\log_5(125) = 3\)
+      </div>
+    </div>
+    
+    
+  </div>
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q2</span>
+      <span class="q-badge badge-standard">L.a</span>
+      <span class="badge-score s-full">5 / 5</span>
+    </div>
+    <div class="q-problem">Rewrite in logarithmic form: \(2^x = 30\)</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        \(\log_2(30) = x\)
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        \(\log_2(30) = x\)
+      </div>
+    </div>
+    
+    
+  </div>
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q3</span>
+      <span class="q-badge badge-standard">L.a</span>
+      <span class="badge-score s-full">5 / 5</span>
+    </div>
+    <div class="q-problem">Rewrite in exponential form: \(\log_4(64) = 3\)</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        \(4^3 = 64\)
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        \(4^3 = 64\)
+      </div>
+    </div>
+    
+    
+  </div>
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q4</span>
+      <span class="q-badge badge-standard">L.b</span>
+      <span class="badge-score s-full">5 / 5</span>
+    </div>
+    <div class="q-problem">Evaluate: \(\log_3(81)\)</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        \(4\)
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        \(4\)
+      </div>
+    </div>
+    
+    
+  </div>
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q5</span>
+      <span class="q-badge badge-standard">L.b</span>
+      <span class="badge-score s-full">5 / 5</span>
+    </div>
+    <div class="q-problem">Evaluate: \(\log_2(1/8)\)</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        \(-3\)
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        \(-3\)
+      </div>
+    </div>
+    
+    
+  </div>
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q6</span>
+      <span class="q-badge badge-standard">L.b</span>
+      <span class="badge-score s-full">5 / 5</span>
+    </div>
+    <div class="q-problem">Evaluate: \(\log_{10}(10000)\)</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        \(4\)
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        \(4\)
+      </div>
+    </div>
+    
+    
+  </div>
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q10</span>
+      <span class="q-badge badge-standard">L.d</span>
+      <span class="badge-score s-full">7 / 7</span>
+    </div>
+    <div class="q-problem">Solve: \(3^x = 40\)</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        \(x = \log(40)/\log(3) \approx 3.358\)
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        \(x = \log_3(40) = \log(40)/\log(3) \approx 3.358\)
+      </div>
+    </div>
+    
+    
+  </div>
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q11</span>
+      <span class="q-badge badge-standard">L.d</span>
+      <span class="badge-score s-full">7 / 7</span>
+    </div>
+    <div class="q-problem">Solve: \(5 \cdot 2^x = 80\)</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        \(x = 4\)
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        \(x = \log_2(16) = 4\)
+      </div>
+    </div>
+    
+    
+  </div>
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q12</span>
+      <span class="q-badge badge-standard">L.d</span>
+      <span class="badge-score s-full">7 / 7</span>
+    </div>
+    <div class="q-problem">Solve: \(10^{2x-1} = 500\)</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        \(x = (\log(500)+1)/2 \approx 1.849\)
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        \(x = (1 + \log(500))/2 \approx 1.849\)
+      </div>
+    </div>
+    
+    
+  </div>
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q13</span>
+      <span class="q-badge badge-standard">L.d</span>
+      <span class="badge-score s-full">7 / 7</span>
+    </div>
+    <div class="q-problem">Solve: \(4^{x+1} = 3^{2x}\)</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        \(x = \log(4)/(2\log(3)-\log(4)) \approx 1.695\)
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        \(x = \log(4)/(2\log(3)-\log(4)) \approx 1.695\)
+      </div>
+    </div>
+    
+    
+  </div>
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q15a</span>
+      <span class="q-badge badge-standard">L.f</span>
+      <span class="badge-score s-full">5 / 5</span>
+    </div>
+    <div class="q-problem">Town population: \(P(t) = 8000 \cdot (1.03)^t\). (a) What was the initial population?</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        \(8000\)
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        \(8000\)
+      </div>
+    </div>
+    
+    
+  </div>
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q15b</span>
+      <span class="q-badge badge-standard">L.f</span>
+      <span class="badge-score s-full">5 / 5</span>
+    </div>
+    <div class="q-problem">(b) When will the population reach 12,000?</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        \(t = \log(1.5)/\log(1.03) \approx 13.717\) years
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        \(t = \log_{1.03}(1.5) = \log(1.5)/\log(1.03) \approx 13.717\) years
+      </div>
+    </div>
+    
+    
+  </div>
+  <div class="q-card correct">
+    <div class="q-header">
+      <span class="q-num">Q16a</span>
+      <span class="q-badge badge-standard">L.f</span>
+      <span class="badge-score s-full">5 / 5</span>
+    </div>
+    <div class="q-problem">Radioactive decay: \(A(t) = 500 \cdot (0.85)^t\) grams after \(t\) years. (a) What fraction remains after 1 year?</div>
+    <div class="answer-grid">
+      <div class="answer-box kai-box">
+        <div class="alabel">Kai's Answer</div>
+        \(0.85\) or \(85\%\)
+      </div>
+      <div class="answer-box correct-box">
+        <div class="alabel">Correct Answer</div>
+        \(0.85\) (85%)
+      </div>
+    </div>
+    
+    
+  </div>
+
+  <!-- Progress Summary -->
+  <div class="progress-wrap">
+    <h3>Summary &mdash; Strengths, Gaps, and Next Steps</h3>
+    <p class="sub">91/100 (91%) on the 45-minute logarithms practice. Strong algebra, weaker calculator execution.</p>
+
+    <div class="wins-header">Strengths</div>
+    <ul><li>Part A perfect (15/15) — solid on converting between exponential and logarithmic forms</li><li>Part D near-perfect (33/35) — excellent algebraic manipulation, exact forms all correct</li><li>Part E near-perfect (19/20) — application problems well-structured</li><li>Q13 (4^(x+1) = 3^(2x)) solved correctly — the hardest equation on the test</li></ul>
+
+    <div class="gaps-header">Gaps</div>
+    <ul><li>Change-of-base execution (Part C, 60%) — Q9 is the critical gap: forgot to divide by log(base)</li><li>Answer extraction (Q7) — wrote 10^(-3) instead of -3; a log IS the exponent</li><li>Calculator precision (Q8, Q14, Q16b) — three questions lost points to calculator input errors</li><li>Pattern: exact/algebraic work is strong, decimal execution is the weak link</li></ul>
+
+    <div class="next-header">Next Steps</div>
+    <p style="margin: 6px 0 0; font-size: var(--text-sm);">Gap drill assigned (logs_gap_drill.html) targeting all 4 error patterns. Q1 tests answer extraction, Q2-Q3 test change-of-base with multi-step equations, Q4 tests application with 4-step calculator chain, Q5-Q6 cover S4 rational expression gaps from the prior drill.</p>
+  </div>
+
+  <p class="footer-note">Score data: <code>scores/logs-practice-exam-2026-05-14.json</code> &bull; Retake: <a href="../logs_practice_45min.html" style="color:var(--accent-blue);">logs_practice_45min.html</a> &bull; Answer key: <a href="../logs_practice_45min_KEY.html" style="color:var(--accent-blue);">logs_practice_45min_KEY.html</a></p>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: '$$', right: '$$', display: true },
+        { left: '\\(', right: '\\)', display: false }
+      ],
+      throwOnError: false
+    });
+  });
+</script>
+</body>
+</html>

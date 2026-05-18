@@ -1,0 +1,175 @@
+{
+  "exam_id": "logs-practice-exam-2026-05-14",
+  "title": "Logarithms — 45-Minute Practice Exam",
+  "student": "Kai Ash",
+  "date": "2026-05-14",
+  "score": 91,
+  "total": 100,
+  "pct": 91,
+  "review_file": "reviews/kai-logs-practice-2026-05-14.html",
+  "sections": {
+    "A_convert_forms": { "title": "A: Convert Between Forms", "score": 15, "total": 15, "pct": 100, "questions": "Q1–Q3", "desc": "No calculator" },
+    "B_evaluate_logs": { "title": "B: Evaluate Without a Calculator", "score": 18, "total": 20, "pct": 90, "questions": "Q4–Q7", "desc": "No calculator" },
+    "C_calculator_change_of_base": { "title": "C: Evaluate With a Calculator (3 dp)", "score": 6, "total": 10, "pct": 60, "questions": "Q8–Q9", "desc": "Calculator required" },
+    "D_solve_equations": { "title": "D: Solve Equations Using Logarithms", "score": 33, "total": 35, "pct": 94, "questions": "Q10–Q14", "desc": "Show work" },
+    "E_applications": { "title": "E: Applications", "score": 19, "total": 20, "pct": 95, "questions": "Q15–Q16", "desc": "Multi-part" }
+  },
+  "per_question": [
+    {
+      "id": "Q1", "section": "A", "standard": "L.a", "status": "correct",
+      "score": 5, "total": 5,
+      "problem": "Rewrite in logarithmic form: $5^3 = 125$",
+      "kai_answer": "$\\log_5(125) = 3$",
+      "correct_answer": "$\\log_5(125) = 3$"
+    },
+    {
+      "id": "Q2", "section": "A", "standard": "L.a", "status": "correct",
+      "score": 5, "total": 5,
+      "problem": "Rewrite in logarithmic form: $2^x = 30$",
+      "kai_answer": "$\\log_2(30) = x$",
+      "correct_answer": "$\\log_2(30) = x$"
+    },
+    {
+      "id": "Q3", "section": "A", "standard": "L.a", "status": "correct",
+      "score": 5, "total": 5,
+      "problem": "Rewrite in exponential form: $\\log_4(64) = 3$",
+      "kai_answer": "$4^3 = 64$",
+      "correct_answer": "$4^3 = 64$"
+    },
+    {
+      "id": "Q4", "section": "B", "standard": "L.b", "status": "correct",
+      "score": 5, "total": 5,
+      "problem": "Evaluate: $\\log_3(81)$",
+      "kai_answer": "$4$",
+      "correct_answer": "$4$"
+    },
+    {
+      "id": "Q5", "section": "B", "standard": "L.b", "status": "correct",
+      "score": 5, "total": 5,
+      "problem": "Evaluate: $\\log_2(1/8)$",
+      "kai_answer": "$-3$",
+      "correct_answer": "$-3$"
+    },
+    {
+      "id": "Q6", "section": "B", "standard": "L.b", "status": "correct",
+      "score": 5, "total": 5,
+      "problem": "Evaluate: $\\log_{10}(10000)$",
+      "kai_answer": "$4$",
+      "correct_answer": "$4$"
+    },
+    {
+      "id": "Q7", "section": "B", "standard": "L.b", "status": "partial",
+      "score": 3, "total": 5,
+      "problem": "Evaluate: $\\log_{10}(0.001)$",
+      "kai_answer": "$10^{-3}$",
+      "correct_answer": "$-3$",
+      "error_type": "answer extraction",
+      "error_detail": "Kai correctly identified that $0.001 = 10^{-3}$, but wrote the full exponential expression instead of extracting the exponent. The question asks for the value of the logarithm, which is the exponent alone: $\\log_{10}(0.001) = -3$, not $10^{-3}$.",
+      "coaching": "A logarithm IS the exponent. When you find $10^{-3} = 0.001$, the log is $-3$, not the whole expression $10^{-3}$. Strip away the base — the answer is just the power."
+    },
+    {
+      "id": "Q8", "section": "C", "standard": "L.c", "status": "partial",
+      "score": 4, "total": 5,
+      "problem": "Evaluate with a calculator (3 decimal places): $\\log_6(12000)$",
+      "kai_answer": "$5.491$",
+      "correct_answer": "$5.242$",
+      "error_type": "calculator precision",
+      "error_detail": "Minor rounding issue. Kai got 5.491 instead of 5.242. The change-of-base setup was correct ($\\log(12000)/\\log(6)$) but the calculator execution produced an inaccurate result.",
+      "coaching": "Double-check your change-of-base division on the calculator. $\\log(12000) = 4.07918$, $\\log(6) = 0.77815$. Divide carefully: $4.07918 \\div 0.77815 = 5.242$."
+    },
+    {
+      "id": "Q9", "section": "C", "standard": "L.c", "status": "partial",
+      "score": 2, "total": 5,
+      "problem": "Evaluate with a calculator (3 decimal places): $\\log_7(0.6)$",
+      "kai_answer": "$-0.222$",
+      "correct_answer": "$-0.263$",
+      "error_type": "change-of-base incomplete",
+      "error_detail": "Kai got $-0.222$ which is $\\log_{10}(0.6)$, not $\\log_7(0.6)$. He set up the change-of-base formula but only computed the numerator — forgot to divide by $\\log(7) = 0.8451$. Correct: $\\log(0.6)/\\log(7) = -0.2218/0.8451 = -0.263$.",
+      "coaching": "Change-of-base has TWO parts: $\\log_b(x) = \\log(x) / \\log(b)$. You computed $\\log(0.6)$ but stopped there. Always divide by $\\log(\\text{base})$. This is the #1 gap to fix before the unit test."
+    },
+    {
+      "id": "Q10", "section": "D", "standard": "L.d", "status": "correct",
+      "score": 7, "total": 7,
+      "problem": "Solve: $3^x = 40$",
+      "kai_answer": "$x = \\log(40)/\\log(3) \\approx 3.358$",
+      "correct_answer": "$x = \\log_3(40) = \\log(40)/\\log(3) \\approx 3.358$"
+    },
+    {
+      "id": "Q11", "section": "D", "standard": "L.d", "status": "correct",
+      "score": 7, "total": 7,
+      "problem": "Solve: $5 \\cdot 2^x = 80$",
+      "kai_answer": "$x = 4$",
+      "correct_answer": "$x = \\log_2(16) = 4$"
+    },
+    {
+      "id": "Q12", "section": "D", "standard": "L.d", "status": "correct",
+      "score": 7, "total": 7,
+      "problem": "Solve: $10^{2x-1} = 500$",
+      "kai_answer": "$x = (\\log(500)+1)/2 \\approx 1.849$",
+      "correct_answer": "$x = (1 + \\log(500))/2 \\approx 1.849$"
+    },
+    {
+      "id": "Q13", "section": "D", "standard": "L.d", "status": "correct",
+      "score": 7, "total": 7,
+      "problem": "Solve: $4^{x+1} = 3^{2x}$",
+      "kai_answer": "$x = \\log(4)/(2\\log(3)-\\log(4)) \\approx 1.695$",
+      "correct_answer": "$x = \\log(4)/(2\\log(3)-\\log(4)) \\approx 1.695$"
+    },
+    {
+      "id": "Q14", "section": "D", "standard": "L.d", "status": "partial",
+      "score": 5, "total": 7,
+      "problem": "Solve: $4^{x-5} = 28/3$. Give exact form and decimal (3 dp).",
+      "kai_answer": "Exact: $x = 5 + \\log_4(28/3)$ ✓ — Decimal: $5.873$ ✗",
+      "correct_answer": "Exact: $x = 5 + \\log_4(28/3)$ — Decimal: $x \\approx 6.611$",
+      "error_type": "calculator precision",
+      "error_detail": "Exact algebraic form is perfect. Decimal value wrong: got 5.873 instead of 6.611. $\\log_4(28/3) = \\log(9.333)/\\log(4) = 0.9700/0.6021 = 1.611$. Then $5 + 1.611 = 6.611$. Kai likely made a calculator input error on $\\log_4(28/3)$.",
+      "coaching": "Your algebra is excellent — exact form was spot-on. The decimal error is a calculator execution issue. Tip: compute $\\log(28/3)$ and $\\log(4)$ separately, write both down, THEN divide. Don't try to do it in one calculator chain."
+    },
+    {
+      "id": "Q15a", "section": "E", "standard": "L.f", "status": "correct",
+      "score": 5, "total": 5,
+      "problem": "Town population: $P(t) = 8000 \\cdot (1.03)^t$. (a) What was the initial population?",
+      "kai_answer": "$8000$",
+      "correct_answer": "$8000$"
+    },
+    {
+      "id": "Q15b", "section": "E", "standard": "L.f", "status": "correct",
+      "score": 5, "total": 5,
+      "problem": "(b) When will the population reach 12,000?",
+      "kai_answer": "$t = \\log(1.5)/\\log(1.03) \\approx 13.717$ years",
+      "correct_answer": "$t = \\log_{1.03}(1.5) = \\log(1.5)/\\log(1.03) \\approx 13.717$ years"
+    },
+    {
+      "id": "Q16a", "section": "E", "standard": "L.f", "status": "correct",
+      "score": 5, "total": 5,
+      "problem": "Radioactive decay: $A(t) = 500 \\cdot (0.85)^t$ grams after $t$ years. (a) What fraction remains after 1 year?",
+      "kai_answer": "$0.85$ or $85\\%$",
+      "correct_answer": "$0.85$ (85%)"
+    },
+    {
+      "id": "Q16b", "section": "E", "standard": "L.f", "status": "partial",
+      "score": 4, "total": 5,
+      "problem": "(b) When will the sample decay to 50 grams?",
+      "kai_answer": "$t \\approx 17.887$",
+      "correct_answer": "$t = \\log_{0.85}(0.1) = \\log(0.1)/\\log(0.85) \\approx 14.164$ years",
+      "error_type": "calculator precision",
+      "error_detail": "Got 17.887 instead of 14.164. The setup $500 \\cdot (0.85)^t = 50$ → $(0.85)^t = 0.1$ → $t = \\log(0.1)/\\log(0.85)$ is correct conceptually but the calculator division produced the wrong result. $\\log(0.1) = -1$, $\\log(0.85) = -0.07058$. $t = -1 / -0.07058 = 14.164$.",
+      "coaching": "Minor calculator error. The algebra and setup are correct. Try entering $\\log(0.1) \\div \\log(0.85)$ as two separate calculations and dividing the results."
+    }
+  ],
+  "summary": {
+    "strengths": [
+      "Part A perfect (15/15) — solid on converting between exponential and logarithmic forms",
+      "Part D near-perfect (33/35) — excellent algebraic manipulation, exact forms all correct",
+      "Part E near-perfect (19/20) — application problems well-structured",
+      "Q13 (4^(x+1) = 3^(2x)) solved correctly — the hardest equation on the test"
+    ],
+    "gaps": [
+      "Change-of-base execution (Part C, 60%) — Q9 is the critical gap: forgot to divide by log(base)",
+      "Answer extraction (Q7) — wrote 10^(-3) instead of -3; a log IS the exponent",
+      "Calculator precision (Q8, Q14, Q16b) — three questions lost points to calculator input errors",
+      "Pattern: exact/algebraic work is strong, decimal execution is the weak link"
+    ],
+    "next_steps": "Gap drill assigned (logs_gap_drill.html) targeting all 4 error patterns. Q1 tests answer extraction, Q2-Q3 test change-of-base with multi-step equations, Q4 tests application with 4-step calculator chain, Q5-Q6 cover S4 rational expression gaps from the prior drill."
+  }
+}
