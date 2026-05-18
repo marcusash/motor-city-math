@@ -1,0 +1,23 @@
+{
+  "exam_id": "logs-gap-drill-1",
+  "key": "logs_gap_drill_1",
+  "title": "Logs & Rational Expressions Gap Drill",
+  "file": "logs_gap_drill.html",
+  "key_file": "logs_gap_drill_KEY.html",
+  "student": "Kai Ash",
+  "date": "2026-05-17",
+  "status": "assigned",
+  "questions": 6,
+  "total_points": 40,
+  "unit": "spring-logs",
+  "attempts": [],
+  "best": null,
+  "per_question": [
+    { "id": "Q1", "pts": 5, "standard": "L.a", "topic": "Log properties + answer extraction", "source_gap": "Logs Q7" },
+    { "id": "Q2", "pts": 7, "standard": "L.c", "topic": "Multi-step exponential: isolate, log, change-of-base, ÷3", "source_gap": "Logs Q9" },
+    { "id": "Q3", "pts": 7, "standard": "L.c", "topic": "Solve exponential + change-of-base + subtract constant", "source_gap": "Logs Q14" },
+    { "id": "Q4", "pts": 8, "standard": "L.f", "topic": "Exponential application: 4-step chain", "source_gap": "Logs Q8/Q16b" },
+    { "id": "Q5", "pts": 6, "standard": "S4.b", "topic": "LCD rational addition with coefficient combining", "source_gap": "S4 Drill Q6" },
+    { "id": "Q6", "pts": 7, "standard": "other", "topic": "Difference quotient with leading coefficient", "source_gap": "S4 Drill Q11" }
+  ]
+}
