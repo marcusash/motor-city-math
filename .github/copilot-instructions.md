@@ -1,7 +1,17 @@
 # Copilot Instructions — Motor City Math
 
 > This file is read by the GitHub Copilot Coding Agent before every task in this repo.
-> Keep it accurate and current. Owner: GA (Grind Lead Architect).
+> Keep it accurate and current.
+
+## Agent OS
+
+This repo is a spoke in the Forge agent system. For agent identity, skills, knowledge, and protocol:
+
+- **Hub repo:** `C:\GitHub\forge`
+- **Agent specs:** `forge/knowledge/agents/{ID}.md`
+- **Skills:** `forge/skills/{ID}/_index.md` (per-agent) and `forge/skills/shared/` (cross-agent)
+- **Protocol:** `forge/.agent-protocol.md` (index of invariant rules + on-demand skill map)
+- **Lessons:** `forge/LESSONS.md` (check before every action)
 
 ## What This Project Is
 
