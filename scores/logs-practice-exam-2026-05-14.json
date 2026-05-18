@@ -1,10 +1,13 @@
 {
   "exam_id": "logs-practice-exam",
+  "key": "logs-practice-exam-2026-05-14",
   "student": "Kai Ash",
   "date": "2026-05-14",
   "score": 91,
   "total": 100,
   "pct": 91,
+  "attempts": [{ "score": 91, "total": 100, "pct": 91, "grade": 4, "timestamp": "2026-05-14T18:00:00Z" }],
+  "best": { "score": 91, "pct": 91, "grade": 4 },
   "time_minutes": 45,
   "sections": {
     "A_convert_forms": { "score": 15, "total": 15, "pct": 100 },
