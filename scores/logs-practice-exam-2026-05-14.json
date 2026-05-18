@@ -1,0 +1,37 @@
+{
+  "exam_id": "logs-practice-exam",
+  "student": "Kai Ash",
+  "date": "2026-05-14",
+  "score": 91,
+  "total": 100,
+  "pct": 91,
+  "time_minutes": 45,
+  "sections": {
+    "A_convert_forms": { "score": 15, "total": 15, "pct": 100 },
+    "B_evaluate_logs": { "score": 18, "total": 20, "pct": 90 },
+    "C_calculator_change_of_base": { "score": 6, "total": 10, "pct": 60 },
+    "D_solve_equations": { "score": 33, "total": 35, "pct": 94 },
+    "E_applications": { "score": 19, "total": 20, "pct": 95 }
+  },
+  "per_question": [
+    { "id": "Q1",  "section": "A", "standard": "L.a", "status": "correct", "score": 5, "total": 5 },
+    { "id": "Q2",  "section": "A", "standard": "L.a", "status": "correct", "score": 5, "total": 5 },
+    { "id": "Q3",  "section": "A", "standard": "L.a", "status": "correct", "score": 5, "total": 5 },
+    { "id": "Q4",  "section": "B", "standard": "L.b", "status": "correct", "score": 5, "total": 5 },
+    { "id": "Q5",  "section": "B", "standard": "L.b", "status": "correct", "score": 5, "total": 5 },
+    { "id": "Q6",  "section": "B", "standard": "L.b", "status": "correct", "score": 5, "total": 5 },
+    { "id": "Q7",  "section": "B", "standard": "L.b", "status": "partial", "score": 3, "total": 5, "notes": "Wrote 10^-3 instead of -3. Identified correct relationship (0.001 = 10^-3) but didn't extract the exponent as the final answer." },
+    { "id": "Q8",  "section": "C", "standard": "L.c", "status": "partial", "score": 4, "total": 5, "notes": "Got 5.491 instead of 5.492. Truncated instead of rounding." },
+    { "id": "Q9",  "section": "C", "standard": "L.c", "status": "partial", "score": 2, "total": 5, "notes": "Got -0.222 (= log10(0.6)) instead of -0.263 (= log7(0.6)). Set up change-of-base but only computed numerator — forgot to divide by log(7)." },
+    { "id": "Q10", "section": "D", "standard": "L.d", "status": "correct", "score": 7, "total": 7 },
+    { "id": "Q11", "section": "D", "standard": "L.d", "status": "correct", "score": 7, "total": 7 },
+    { "id": "Q12", "section": "D", "standard": "L.d", "status": "correct", "score": 7, "total": 7 },
+    { "id": "Q13", "section": "D", "standard": "L.d", "status": "correct", "score": 7, "total": 7 },
+    { "id": "Q14", "section": "D", "standard": "L.d", "status": "partial", "score": 5, "total": 7, "notes": "Exact form correct: 5 + log4(28/3). Decimal wrong: got 5.873 instead of 6.611. Calculator input error on log4(28/3)." },
+    { "id": "Q15a", "section": "E", "standard": "L.f", "status": "correct", "score": 5, "total": 5 },
+    { "id": "Q15b", "section": "E", "standard": "L.f", "status": "correct", "score": 5, "total": 5 },
+    { "id": "Q16a", "section": "E", "standard": "L.f", "status": "correct", "score": 5, "total": 5 },
+    { "id": "Q16b", "section": "E", "standard": "L.f", "status": "partial", "score": 4, "total": 5, "notes": "Got 17.887 instead of 17.897. Off by 0.010 — minor calculator error." }
+  ],
+  "notes": "Strong performance: 91%. Part A (conversions) perfect. Part B (evaluate) near-perfect except Q7 answer extraction. Part D (equations) near-perfect — exact algebraic work excellent, one decimal error. Part E (applications) near-perfect. Primary gap: change-of-base execution (Part C, 60%) — Q9 shows Kai set up log(0.6)/log(7) but only computed log(0.6), forgetting to divide by log(7). Secondary: calculator precision across Q8, Q14, Q16b. Recommend drilling change-of-base formula execution before unit test."
+}
