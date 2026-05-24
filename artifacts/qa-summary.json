@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-02-23T18:59:01.704Z",
+  "generated_at": "2026-05-24T16:14:05.594Z",
   "source": "data/retake-practice-*.json",
   "exams": [
     {
       "exam_id": "retake-practice-1",
       "question_count": 15,
-      "file_modified": "2026-02-23",
+      "file_modified": "2026-05-24",
       "missing_hint": [],
       "missing_solution_steps": [],
       "missing_feedback": [],
@@ -16,7 +16,7 @@
     {
       "exam_id": "retake-practice-10",
       "question_count": 15,
-      "file_modified": "2026-02-23",
+      "file_modified": "2026-05-24",
       "missing_hint": [],
       "missing_solution_steps": [],
       "missing_feedback": [],
@@ -27,7 +27,29 @@
     {
       "exam_id": "retake-practice-11",
       "question_count": 15,
-      "file_modified": "2026-02-23",
+      "file_modified": "2026-05-24",
+      "missing_hint": [],
+      "missing_solution_steps": [],
+      "missing_feedback": [],
+      "missing_inputs": [],
+      "missing_standard": [],
+      "missing_question_html": []
+    },
+    {
+      "exam_id": "retake-practice-12",
+      "question_count": 15,
+      "file_modified": "2026-05-24",
+      "missing_hint": [],
+      "missing_solution_steps": [],
+      "missing_feedback": [],
+      "missing_inputs": [],
+      "missing_standard": [],
+      "missing_question_html": []
+    },
+    {
+      "exam_id": "retake-practice-13",
+      "question_count": 8,
+      "file_modified": "2026-05-24",
       "missing_hint": [],
       "missing_solution_steps": [],
       "missing_feedback": [],
@@ -38,7 +60,7 @@
     {
       "exam_id": "retake-practice-2",
       "question_count": 15,
-      "file_modified": "2026-02-23",
+      "file_modified": "2026-05-24",
       "missing_hint": [],
       "missing_solution_steps": [],
       "missing_feedback": [],
@@ -49,7 +71,7 @@
     {
       "exam_id": "retake-practice-3",
       "question_count": 15,
-      "file_modified": "2026-02-23",
+      "file_modified": "2026-05-24",
       "missing_hint": [],
       "missing_solution_steps": [],
       "missing_feedback": [],
@@ -60,7 +82,7 @@
     {
       "exam_id": "retake-practice-4",
       "question_count": 15,
-      "file_modified": "2026-02-23",
+      "file_modified": "2026-05-24",
       "missing_hint": [],
       "missing_solution_steps": [],
       "missing_feedback": [],
@@ -71,7 +93,7 @@
     {
       "exam_id": "retake-practice-5",
       "question_count": 15,
-      "file_modified": "2026-02-23",
+      "file_modified": "2026-05-24",
       "missing_hint": [],
       "missing_solution_steps": [],
       "missing_feedback": [],
@@ -82,7 +104,7 @@
     {
       "exam_id": "retake-practice-6",
       "question_count": 15,
-      "file_modified": "2026-02-23",
+      "file_modified": "2026-05-24",
       "missing_hint": [],
       "missing_solution_steps": [],
       "missing_feedback": [],
@@ -93,7 +115,7 @@
     {
       "exam_id": "retake-practice-7",
       "question_count": 15,
-      "file_modified": "2026-02-23",
+      "file_modified": "2026-05-24",
       "missing_hint": [],
       "missing_solution_steps": [],
       "missing_feedback": [],
@@ -104,7 +126,7 @@
     {
       "exam_id": "retake-practice-8",
       "question_count": 15,
-      "file_modified": "2026-02-23",
+      "file_modified": "2026-05-24",
       "missing_hint": [],
       "missing_solution_steps": [],
       "missing_feedback": [],
@@ -115,7 +137,7 @@
     {
       "exam_id": "retake-practice-9",
       "question_count": 15,
-      "file_modified": "2026-02-23",
+      "file_modified": "2026-05-24",
       "missing_hint": [],
       "missing_solution_steps": [],
       "missing_feedback": [],

@@ -643,5 +643,5 @@
       "feedback_wrong": "Decay factor 0.75. Model: V(t)=800·(0.75)^t. Solve → t=3."
     }
   ],
-  "version": "2.0"
+  "version": 2
 }
