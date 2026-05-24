@@ -88,7 +88,7 @@
         "Check: 8^(2/3) = (∛8)² = 2² = 4 ✓"
       ],
       "feedback_correct": "4^(3/2) = 8. The reciprocal power technique works.",
-      "feedback_wrong": "Apply 3/2 power to both sides: x = 4^(3/2). First √4=2, then 2³=8."
+      "feedback_wrong": "Apply 3/2 power: x = 4^(3/2). √4=2, then 2³=8."
     },
     {
       "id": "rp13-q4",
@@ -187,7 +187,14 @@
           "id": "q7_parent",
           "type": "dropdown",
           "label": "Parent function",
-          "options": ["quadratic","cubic","absolute value","square root","rational","exponential"],
+          "options": [
+            "quadratic",
+            "cubic",
+            "absolute value",
+            "square root",
+            "rational",
+            "exponential"
+          ],
           "answer": "quadratic"
         },
         {
@@ -209,8 +216,14 @@
           "type": "radio",
           "label": "Opens:",
           "options": [
-            {"value": "up", "text": "Up"},
-            {"value": "down", "text": "Down"}
+            {
+              "value": "up",
+              "text": "Up"
+            },
+            {
+              "value": "down",
+              "text": "Down"
+            }
           ],
           "answer": "down"
         },
@@ -238,7 +251,7 @@
         "The vertex (1,4) is a MAXIMUM since it opens down."
       ],
       "feedback_correct": "Negative a caught. Opens down. Both intercepts correct.",
-      "feedback_wrong": "a = −1 means OPENS DOWN. Vertex is (1,4). Set f(x)=0: (x−1)²=4 → x=3 or x=−1."
+      "feedback_wrong": "a=−1 → opens DOWN. Vertex (1,4). Set f(x)=0: x=3 or x=−1."
     },
     {
       "id": "rp13-q8",
@@ -268,8 +281,14 @@
           "type": "radio",
           "label": "Opens:",
           "options": [
-            {"value": "up", "text": "Up"},
-            {"value": "down", "text": "Down"}
+            {
+              "value": "up",
+              "text": "Up"
+            },
+            {
+              "value": "down",
+              "text": "Down"
+            }
           ],
           "answer": "down"
         },
@@ -293,11 +312,26 @@
         "function": "-2 * Math.pow(x + 1, 2) + 8",
         "function_display": "f(x) = -2(x+1)² + 8",
         "key_points": [
-          [-3, 0],
-          [-2, 6],
-          [-1, 8],
-          [0, 6],
-          [1, 0]
+          [
+            -3,
+            0
+          ],
+          [
+            -2,
+            6
+          ],
+          [
+            -1,
+            8
+          ],
+          [
+            0,
+            6
+          ],
+          [
+            1,
+            0
+          ]
         ],
         "min_points": 5,
         "tolerance": 0.25,
@@ -313,8 +347,8 @@
         "Draw inverted, narrower U from (−3,0) through vertex (−1,8) to (1,0)."
       ],
       "feedback_correct": "Vertex, direction, intercepts, and graph all correct. Downward parabola locked.",
-      "feedback_wrong": "a=−2 → opens DOWN. Vertex: (−1,8). Set f(x)=0: (x+1)²=4 → x=1 or x=−3."
+      "feedback_wrong": "a=−2 → opens DOWN. Vertex (−1,8). Set f(x)=0: x=1 or x=−3."
     }
   ],
-  "version": "2.0"
+  "version": 2
 }

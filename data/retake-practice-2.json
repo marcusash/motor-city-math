@@ -587,5 +587,5 @@
       "feedback_wrong": "Divide by 800 first. Then: 2^? = 32."
     }
   ],
-  "version": "2.0"
+  "version": 2
 }

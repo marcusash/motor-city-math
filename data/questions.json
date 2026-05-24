@@ -5787,9 +5787,10 @@
         "graphing",
         "needs-visual-verification"
       ],
-      "answer": null,
-      "hint": null,
-      "solution_steps": []
+      "answer_type": "graph",
+      "answer": "Parent: x^3. Transformations: reflect over x-axis, shift left 2. Key points: (-2,0), (-1,-1), (-3,1)",
+      "hint": "Start with the parent cubic f(x)=x^3, then apply transformations in order: horizontal shift, then reflection.",
+      "solution_steps": ["Identify parent function: f(x) = x^3", "Horizontal shift left 2: (x+2)^3", "Reflect over x-axis: -(x+2)^3", "Plot key points: (-2,0), (-1,-1), (-3,1)"]
     },
     {
       "id": "w2r-q2",
@@ -5808,9 +5809,10 @@
         "graphing",
         "needs-visual-verification"
       ],
-      "answer": null,
-      "hint": null,
-      "solution_steps": []
+      "answer_type": "graph",
+      "answer": "Parent: √x. Transformations: vertical stretch by 3, shift down 1. Key points: (0,-1), (1,2), (4,5)",
+      "hint": "Start with the parent square root f(x)=√x, then apply vertical stretch and shift.",
+      "solution_steps": ["Identify parent function: f(x) = √x", "Vertical stretch by 3: 3√x", "Shift down 1: 3√x - 1", "Plot key points: (0,-1), (1,2), (4,5)"]
     },
     {
       "id": "w2r-q3",

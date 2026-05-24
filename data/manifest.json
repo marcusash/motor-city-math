@@ -39,6 +39,7 @@
       "desc": "12 questions · W3.e W3.d W4.h W6.b W6.c · Gap drill"
     },
     {
+      "id": "finals-school-final",
       "title": "Winter Final: School Final Simulation",
       "desc": "15 questions · W1-W6 · Free response · No MC"
     },
@@ -110,6 +111,16 @@
     {
       "id": "retake-practice-11",
       "title": "Retake Practice 11",
+      "desc": "15 questions · Nonlinear Functions"
+    },
+    {
+      "id": "retake-practice-12",
+      "title": "Retake Practice 12",
+      "desc": "15 questions · Nonlinear Functions"
+    },
+    {
+      "id": "retake-practice-13",
+      "title": "Retake Practice 13",
       "desc": "15 questions · Nonlinear Functions"
     }
   ]
