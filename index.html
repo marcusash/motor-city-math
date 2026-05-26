@@ -438,6 +438,10 @@
         "logs-practice-exam-2026-05-14": {
             "attempts": [{ "score": 91, "total": 100, "pct": 91, "grade": 4, "timestamp": "2026-05-14T18:00:00Z" }],
             "best": { "score": 91, "pct": 91, "grade": 4 }
+        },
+        "mcm-s5-practice-quiz-b-2026-05-25": {
+            "attempts": [{ "score": 59, "total": 61, "pct": 97, "grade": 4, "timestamp": "2026-05-25T12:00:00Z" }],
+            "best": { "score": 59, "pct": 97, "grade": 4 }
         }
     };
 
@@ -566,6 +570,7 @@
     <script>
     /* ========== TEST REGISTRY ========== */
     var tests = [
+        { file: 'reviews/kai-s5-practice-quiz-b-2026-05-25.html', name: 'S5 Practice Quiz B', unit: 'spring-s5', trimester: 'spring', key: 'mcm-s5-practice-quiz-b-2026-05-25', questions: 61 },
         { file: 'reviews/kai-assessment2a-2026-05-16.html', name: 'S4 Assessment 2A', unit: 'spring-s4', trimester: 'spring', key: 'school-assessment2a-2026-05-16', questions: 16, benchmark: true, teacherGrade: '3/4', teacherRating: '3/4' },
         { file: 'reviews/kai-s4-gap-drill-1-2026-05-17.html', name: 'S4 Gap Drill', unit: 'spring-s4', trimester: 'spring', key: 'mcm-s4-assessment-drill-1', questions: 12 },
         { file: 'logs_gap_drill.html', name: 'Logs & Rationals Gap Drill', unit: 'spring-logs', trimester: 'spring', key: 'logs_gap_drill_1', questions: 6 },
@@ -1088,7 +1093,8 @@
                 }
             }
             var href = t.file ? (' href="' + t.file + '"') : '';
-            var unitLabel = t.unit === 'spring-s4' ? 'S4.a &amp; S4.b · Rational Expressions'
+            var unitLabel = t.unit === 'spring-s5' ? 'S5 · Exponential Equations'
+                : t.unit === 'spring-s4' ? 'S4.a &amp; S4.b · Rational Expressions'
                 : t.unit === 'spring-s1s2s3' ? 'S1 · S2 · S3 · Polynomials Unit'
                 : t.unit === 'spring-logs' ? 'L.a–L.f · Logarithms'
                 : 'S1.a &amp; S1.b · Polynomials';
