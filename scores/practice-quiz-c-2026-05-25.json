@@ -2,9 +2,9 @@
   "exam_id": "practice-quiz-c",
   "student": "Kai Ash",
   "date": "2026-05-25",
-  "score": 34,
+  "score": 33.5,
   "total": 38,
-  "pct": 89,
+  "pct": 88,
   "time_minutes": null,
   "sections": {
     "S5_log_forms": { "score": 8, "total": 8, "pct": 100 },
@@ -42,7 +42,7 @@
     { "id": "M1a", "section": "modeling_quadratic", "standard": "modeling", "status": "partial", "note": "h(0)=40 computed correctly but didn't explain what it represents (starting height)" },
     { "id": "M1b", "section": "modeling_quadratic", "standard": "modeling", "status": "correct", "note": "t=-b/2a=16/4=4 sec for lowest point" },
     { "id": "M1c", "section": "modeling_quadratic", "standard": "modeling", "status": "correct", "note": "h(4)=8 feet minimum height" },
-    { "id": "M1d", "section": "modeling_quadratic", "standard": "modeling", "status": "correct", "note": "2t(t-8)=0, returns at t=8" },
+    { "id": "M1d", "section": "modeling_quadratic", "standard": "modeling", "status": "partial", "note": "Factored 2t(t-8)=0 correctly but did not state t=8 as final answer" },
     { "id": "M2a", "section": "modeling_geometry", "standard": "modeling", "status": "correct", "note": "A(x)=-1/2 x^2 + 5x, domain (0,10)" },
     { "id": "M2b", "section": "modeling_geometry", "standard": "modeling", "status": "skipped", "note": "Requires graphing calculator - not valid for Kai's test" },
     { "id": "M2c", "section": "modeling_geometry", "standard": "modeling", "status": "correct", "note": "Vertex at x=5, y=2.5, max area=12.5" },
@@ -61,7 +61,7 @@
     "S5.b": { "status": "P", "score": 7.5, "total": 8, "note": "One exact-form error (wrote decimal instead of 2/3)" },
     "S5.c": { "status": "P", "score": 7, "total": 8, "note": "Strong - uses logs as inverses correctly in all modeling contexts" },
     "S5.d": { "status": "P", "score": 9, "total": 10, "note": "Excellent equation solving. One arithmetic slip (Q5) and one missing +/- root (Q7)" },
-    "modeling": { "status": "P", "score": 11.5, "total": 12, "note": "Near-perfect modeling. Only gap: didn't explain meaning of h(0) in words" }
+    "modeling": { "status": "P", "score": 11, "total": 12, "note": "Strong modeling. Two partials: didn't explain h(0) meaning, didn't state t=8 final answer" }
   },
   "notes": "Strong performance across all standards. Kai demonstrates solid fluency with log/exp conversions, evaluating logs mentally, and solving complex exponential equations. The modeling sections show he can apply these skills in context (compound interest, population growth, logistic spread). Three minor issues: (1) exact form discipline (wrote 0.666667 instead of 2/3), (2) forgot +/- when taking square root, (3) one arithmetic division error. None are conceptual gaps - all are execution/discipline issues. READY FOR TEACHER TEST."
 }
