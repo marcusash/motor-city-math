@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>S5 Solving Exponential Equations: Practice Quiz B</title>
+<style>
+  :root {
+    --bg: #fff;
+    --text: #1a1a2e;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+    --green: #166534;
+    --green-bg: #dcfce7;
+    --green-border: #86efac;
+    --red: #991b1b;
+    --red-bg: #fee2e2;
+    --gold: #92400e;
+    --gold-bg: #fef3c7;
+    --blue: #1e40af;
+    --blue-bg: #dbeafe;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 2rem;
+    line-height: 1.5;
+  }
+  a { color: var(--blue); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .back-link { font-size: 0.9rem; margin-bottom: 2rem; display: block; }
+  h1 { font-size: 2rem; text-align: center; margin-bottom: 0.25rem; }
+  .subtitle { text-align: center; color: var(--muted); margin-bottom: 2.5rem; font-size: 0.95rem; }
+
+  /* Score cards row */
+  .score-row {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+  }
+  .score-card {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem 2rem;
+    text-align: center;
+    min-width: 160px;
+  }
+  .score-card .label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin-bottom: 0.5rem; }
+  .score-card .value { font-size: 2.2rem; font-weight: 700; color: var(--green); }
+  .score-card .detail { font-size: 0.8rem; color: var(--muted); margin-top: 0.25rem; }
+
+  /* Highlight box */
+  .highlight-box {
+    border: 2px solid var(--green-border);
+    background: var(--green-bg);
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+  .highlight-box .tag { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--green); font-weight: 700; margin-bottom: 0.5rem; }
+  .highlight-box h2 { font-size: 1.4rem; margin-bottom: 0.5rem; }
+  .highlight-box p { color: var(--muted); font-size: 0.9rem; }
+
+  /* Section scores */
+  .sections-row {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+  }
+  .section-card {
+    flex: 1;
+    min-width: 140px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem;
+  }
+  .section-card .name { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; font-weight: 700; margin-bottom: 0.5rem; }
+  .section-card .score { font-size: 1.6rem; font-weight: 700; }
+  .section-card .pct { font-size: 0.8rem; color: var(--muted); }
+  .section-card .bar { height: 6px; border-radius: 3px; background: #e5e7eb; margin-top: 0.5rem; overflow: hidden; }
+  .section-card .bar-fill { height: 100%; border-radius: 3px; }
+  .bar-fill.perfect { background: var(--green); }
+  .bar-fill.good { background: #ca8a04; }
+  .bar-fill.needs-work { background: #dc2626; }
+
+  /* Errors section */
+  .errors-header { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; margin-bottom: 1.5rem; margin-top: 2rem; }
+  .error-item { border-left: 4px solid #dc2626; padding: 1rem 1.5rem; margin-bottom: 1.5rem; background: #fafafa; border-radius: 0 8px 8px 0; }
+  .error-item .q-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; flex-wrap: wrap; }
+  .error-item .q-num { font-weight: 700; font-size: 1.1rem; }
+  .error-item .tag { font-size: 0.7rem; padding: 0.15rem 0.5rem; border-radius: 4px; background: var(--blue-bg); color: var(--blue); }
+  .error-item .pts { margin-left: auto; font-weight: 700; color: #dc2626; }
+  .error-item .comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 0.75rem 0; }
+  .error-item .answer-box { padding: 0.75rem; border-radius: 6px; font-size: 0.9rem; }
+  .error-item .answer-box.kai { background: var(--red-bg); }
+  .error-item .answer-box.correct { background: var(--green-bg); }
+  .error-item .answer-box .label { font-size: 0.7rem; text-transform: uppercase; font-weight: 700; margin-bottom: 0.25rem; }
+  .error-item .answer-box.kai .label { color: var(--red); }
+  .error-item .answer-box.correct .label { color: var(--green); }
+  .error-item .analysis { margin-top: 0.75rem; padding: 0.75rem; background: var(--gold-bg); border-radius: 6px; font-size: 0.85rem; }
+  .error-item .analysis .label { color: var(--gold); font-size: 0.7rem; text-transform: uppercase; font-weight: 700; margin-bottom: 0.25rem; }
+
+  /* Strengths */
+  .strengths-header { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--green); border-bottom: 1px solid var(--green-border); padding-bottom: 0.5rem; margin-bottom: 1rem; margin-top: 2.5rem; }
+  .strength-item { padding: 0.5rem 0; font-size: 0.9rem; color: var(--muted); }
+  .strength-item strong { color: var(--text); }
+</style>
+</head>
+<body>
+
+<a href="index.html" class="back-link">&larr; Back to Dashboard</a>
+
+<h1>S5 Solving Exponential Equations with Logarithms</h1>
+<p class="subtitle">Kai Ash &bull; Practice Quiz B (Unit Test Prep) &bull; 2026-05-25</p>
+
+<div class="score-row">
+  <div class="score-card">
+    <div class="label">Raw Score</div>
+    <div class="value">59/61</div>
+    <div class="detail">96.7%</div>
+  </div>
+  <div class="score-card">
+    <div class="label">Part 1: Logs/Exp</div>
+    <div class="value">27/28</div>
+    <div class="detail">96.4%</div>
+  </div>
+  <div class="score-card">
+    <div class="label">Part 2: Modeling</div>
+    <div class="value">32/33</div>
+    <div class="detail">97.0%</div>
+  </div>
+</div>
+
+<div class="highlight-box">
+  <div class="tag">UNIT TEST READY</div>
+  <h2>Excellent command of logarithms and modeling. Two minor errors only.</h2>
+  <p>Sections 1-3 (conversions + evaluation) perfect. All 5 modeling problems solved correctly including logistic and exponential decay. Only issues: one arithmetic slip in Q9 and one setup misread on the parking lot fencing constraint.</p>
+</div>
+
+<div class="sections-row">
+  <div class="section-card">
+    <div class="name">A: Exp↔Log Conversions</div>
+    <div class="score">8 / 8</div>
+    <div class="pct">100% &bull; Q1a-2d</div>
+    <div class="bar"><div class="bar-fill perfect" style="width:100%"></div></div>
+  </div>
+  <div class="section-card">
+    <div class="name">B: Evaluate Logs</div>
+    <div class="score">8 / 8</div>
+    <div class="pct">100% &bull; Q3a-3h</div>
+    <div class="bar"><div class="bar-fill perfect" style="width:100%"></div></div>
+  </div>
+  <div class="section-card">
+    <div class="name">C: Solve Equations</div>
+    <div class="score">11 / 12</div>
+    <div class="pct">92% &bull; Q4-9</div>
+    <div class="bar"><div class="bar-fill good" style="width:92%"></div></div>
+  </div>
+  <div class="section-card">
+    <div class="name">D: Quadratic Models</div>
+    <div class="score">19 / 20</div>
+    <div class="pct">95% &bull; Rocket + PC + Parking</div>
+    <div class="bar"><div class="bar-fill good" style="width:95%"></div></div>
+  </div>
+  <div class="section-card">
+    <div class="name">E: Exp/Logistic Models</div>
+    <div class="score">12 / 12</div>
+    <div class="pct">100% &bull; Phone App + Coffee</div>
+    <div class="bar"><div class="bar-fill perfect" style="width:100%"></div></div>
+  </div>
+</div>
+
+<div class="errors-header">ERRORS &mdash; 2 POINTS LOST</div>
+
+<div class="error-item">
+  <div class="q-header">
+    <span class="q-num">Q9</span>
+    <span class="tag">S5.d</span>
+    <span class="tag">solve exponentials</span>
+    <span class="tag">arithmetic error</span>
+    <span class="pts">1 / 2</span>
+  </div>
+  <p style="font-size:0.9rem;margin-bottom:0.75rem;">Solve: 200/(5 + 2<sup>3x+1</sup>) = 8</p>
+  <div class="comparison">
+    <div class="answer-box kai">
+      <div class="label">Kai's Answer</div>
+      x = (log₂(5) - 1) / 3
+    </div>
+    <div class="answer-box correct">
+      <div class="label">Correct Answer</div>
+      x = (log₂(20) - 1) / 3
+    </div>
+  </div>
+  <div class="analysis">
+    <div class="label">ARITHMETIC ERROR IN ISOLATION STEP</div>
+    Kai correctly set up: 200/8 = 25, then 25 - 5 = 2<sup>3x+1</sup>. But wrote 5 instead of 20 for the subtraction (25 - 5 = 20, not 5). All logarithm steps after that point are correct. Method fully understood, single arithmetic slip under pressure.
+  </div>
+</div>
+
+<div class="error-item">
+  <div class="q-header">
+    <span class="q-num">Q3a</span>
+    <span class="tag">Quadratic</span>
+    <span class="tag">parking lot</span>
+    <span class="tag">setup error</span>
+    <span class="pts">0 / 1</span>
+  </div>
+  <p style="font-size:0.9rem;margin-bottom:0.75rem;">Write an expression for the total amount of fencing used.</p>
+  <div class="comparison">
+    <div class="answer-box kai">
+      <div class="label">Kai's Answer</div>
+      2x + 2y - 12 = 100 (fenced all 4 sides)
+    </div>
+    <div class="answer-box correct">
+      <div class="label">Correct Answer</div>
+      2x + (y - 12) = 100 (building covers one side)
+    </div>
+  </div>
+  <div class="analysis">
+    <div class="label">CONCEPTUAL: MISSED "BUILDING FORMS ONE SIDE"</div>
+    Kai fenced both width sides instead of just the front. The problem states "the building forms one side of the parking lot, so fencing is only needed on the other three sides." This cascaded through parts b-f, but all subsequent algebra and optimization work was perfect given his constraint. Cascading error credit applied: only 1 point lost total.
+  </div>
+</div>
+
+<div class="strengths-header">KEY STRENGTHS</div>
+
+<div class="strength-item"><strong>Log/Exp conversions mastered:</strong> 8/8 perfect on Sections 1-2. No confusion about form switching.</div>
+<div class="strength-item"><strong>Evaluating logs without calculator:</strong> 8/8 including fractional exponents (log₈(4) = 2/3) and undefined cases (log of negative, log of zero).</div>
+<div class="strength-item"><strong>Solving equations with logs:</strong> 5/6 correct. Handled change-of-base, exponential isolation, and square root cases cleanly.</div>
+<div class="strength-item"><strong>Quadratic modeling:</strong> Rocket problem perfect. Found zeros algebraically, computed vertex, and identified max height. Drew correct parabolic sketch.</div>
+<div class="strength-item"><strong>Linear modeling:</strong> Correctly identified year-over-year changes, computed slope from endpoints, wrote equation, and interpreted with reliability assessment.</div>
+<div class="strength-item"><strong>Logistic model:</strong> Full work shown on scratch paper. Evaluated U(4), solved for t algebraically using log₀.₇, identified horizontal asymptote. Clean and confident.</div>
+<div class="strength-item"><strong>Exponential decay:</strong> Coffee problem perfect. Evaluated at t=0 and t=20, solved for t using natural log. No calculator errors.</div>
+
+<div style="margin-top:2.5rem; padding:1.5rem; background:#f8fafc; border-radius:8px; border:1px solid var(--border);">
+  <p style="font-weight:700; margin-bottom:0.5rem;">Recommendation for Unit Test</p>
+  <p style="font-size:0.9rem; color:var(--muted);">Kai is ready. The two errors are low-risk: one is a pure arithmetic slip (5 vs 20), the other is a word problem reading comprehension issue (not a math skills gap). For the real test: <strong>remind him to re-read word problems for which sides need fencing/painting/etc.</strong> and double-check subtraction when isolating terms.</p>
+</div>
+
+</body>
+</html>
