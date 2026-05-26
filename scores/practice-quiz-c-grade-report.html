@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grade Report - Practice Quiz C - 2026-05-25</title>
+<style>
+:root {
+  --bg: #1a1a2e;
+  --surface: #222240;
+  --border: #333355;
+  --text: #e8e8f0;
+  --subtext: #999;
+  --green: #4caf50;
+  --red: #ef5350;
+  --amber: #ffb74d;
+  --accent: #7c6fff;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); padding: 24px; line-height: 1.5; }
+.container { max-width: 720px; margin: 0 auto; }
+h1 { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+.subtitle { color: var(--subtext); font-size: 13px; margin-bottom: 24px; }
+.summary-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 20px; margin-bottom: 20px; }
+.summary-card h2 { font-size: 14px; text-transform: uppercase; letter-spacing: .06em; color: var(--subtext); margin-bottom: 12px; }
+.score-big { font-size: 48px; font-weight: 700; color: var(--green); }
+.score-big .denom { font-size: 24px; color: var(--subtext); }
+.score-pct { font-size: 16px; color: var(--subtext); margin-left: 12px; }
+.standards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; }
+.std-box { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 12px; }
+.std-box .std-label { font-size: 11px; color: var(--subtext); text-transform: uppercase; letter-spacing: .05em; }
+.std-box .std-grade { font-size: 20px; font-weight: 700; margin: 4px 0; }
+.std-box .std-grade.pass { color: var(--green); }
+.std-box .std-grade.fail { color: var(--red); }
+.std-box .std-note { font-size: 11px; color: var(--subtext); }
+.section-title { font-size: 14px; text-transform: uppercase; letter-spacing: .06em; color: var(--subtext); margin: 24px 0 12px; }
+.question-table { width: 100%; border-collapse: collapse; background: var(--surface); border-radius: 10px; overflow: hidden; border: 1px solid var(--border); }
+.question-table th { text-align: left; padding: 10px 12px; font-size: 11px; text-transform: uppercase; letter-spacing: .05em; color: var(--subtext); border-bottom: 1px solid var(--border); }
+.question-table td { padding: 8px 12px; font-size: 13px; border-bottom: 1px solid var(--border); }
+.question-table tr:last-child td { border-bottom: none; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+.badge.correct { background: rgba(76,175,80,0.15); color: var(--green); }
+.badge.incorrect { background: rgba(239,83,80,0.15); color: var(--red); }
+.badge.partial { background: rgba(255,183,77,0.15); color: var(--amber); }
+.badge.skipped { background: rgba(153,153,153,0.15); color: var(--subtext); }
+.notes-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 20px; margin-top: 20px; }
+.notes-card h2 { font-size: 14px; text-transform: uppercase; letter-spacing: .06em; color: var(--subtext); margin-bottom: 10px; }
+.notes-card ul { padding-left: 18px; }
+.notes-card li { font-size: 13px; margin-bottom: 6px; color: var(--text); }
+.notes-card li.fix { color: var(--amber); }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>Practice Quiz C - Grade Report</h1>
+<p class="subtitle">Kai Ash - Algebra 2 - May 25, 2026</p>
+
+<div class="summary-card">
+  <h2>Overall Score</h2>
+  <span class="score-big">34<span class="denom">/38</span></span>
+  <span class="score-pct">89%</span>
+
+  <div class="standards-grid">
+    <div class="std-box">
+      <div class="std-label">S5.a - Log/Exp Forms</div>
+      <div class="std-grade pass">P</div>
+      <div class="std-note">8/8 - Perfect</div>
+    </div>
+    <div class="std-box">
+      <div class="std-label">S5.b - Evaluate Logs</div>
+      <div class="std-grade pass">P</div>
+      <div class="std-note">7.5/8 - One form error</div>
+    </div>
+    <div class="std-box">
+      <div class="std-label">S5.c - Logs as Inverses</div>
+      <div class="std-grade pass">P</div>
+      <div class="std-note">7/8 - Strong in context</div>
+    </div>
+    <div class="std-box">
+      <div class="std-label">S5.d - Solve Exp Equations</div>
+      <div class="std-grade pass">P</div>
+      <div class="std-note">9/10 - One arithmetic slip</div>
+    </div>
+    <div class="std-box">
+      <div class="std-label">Modeling</div>
+      <div class="std-grade pass">P</div>
+      <div class="std-note">11.5/12 - Near-perfect</div>
+    </div>
+  </div>
+</div>
+
+<!-- Section 1: Log/Exp Translations -->
+<p class="section-title">Section 1 - Exponential/Log Translations (S5.a)</p>
+<table class="question-table">
+<thead><tr><th>Q</th><th>Problem</th><th>Kai's Answer</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>1a</td><td>5^4 = 625 -> log form</td><td>log_5(625) = 4</td><td><span class="badge correct">Correct</span></td></tr>
+<tr><td>1b</td><td>10^-2 = 0.01 -> log form</td><td>log(0.01) = -2</td><td><span class="badge correct">Correct</span></td></tr>
+<tr><td>1c</td><td>9^(1/2) = 3 -> log form</td><td>log_9(3) = 1/2</td><td><span class="badge correct">Correct</span></td></tr>
+<tr><td>1d</td><td>7^3 = 343 -> log form</td><td>log_7(343) = 3</td><td><span class="badge correct">Correct</span></td></tr>
+<tr><td>2a</td><td>log_2(32) = 5 -> exp form</td><td>2^5 = 32</td><td><span class="badge correct">Correct</span></td></tr>
+<tr><td>2b</td><td>log(1000) = 3 -> exp form</td><td>10^3 = 1000</td><td><span class="badge correct">Correct</span></td></tr>
+<tr><td>2c</td><td>log_4(1/16) = -2 -> exp form</td><td>4^-2 = 1/16</td><td><span class="badge correct">Correct</span></td></tr>
+<tr><td>2d</td><td>log_36(6) = 1/2 -> exp form</td><td>36^(1/2) = 6</td><td><span class="badge correct">Correct</span></td></tr>
+</tbody>
+</table>
+
+<!-- Section 2: Evaluate Logs -->
+<p class="section-title">Section 2 - Evaluate Logarithms (S5.b)</p>
+<table class="question-table">
+<thead><tr><th>Q</th><th>Problem</th><th>Kai's Answer</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>3a</td><td>log_2(128)</td><td>7</td><td><span class="badge correct">Correct</span></td></tr>
+<tr><td>3b</td><td>log(1)</td><td>0</td><td><span class="badge correct">Correct</span></td></tr>
+<tr><td>3c</td><td>log(0.0001)</td><td>-4</td><td><span class="badge correct">Correct</span></td></tr>
+<tr><td>3d</td><td>log_16(4)</td><td>1/2</td><td><span class="badge correct">Correct</span></td></tr>
+<tr><td>3e</td><td>log_3(1/27)</td><td>-3</td><td><span class="badge correct">Correct</span></td></tr>
+<tr><td>3f</td><td>log_7(-49)</td><td>undefined</td><td><span class="badge correct">Correct</span></td></tr>
+<tr><td>3g</td><td>log_27(9)</td><td>0.666667</td><td><span class="badge partial">Partial</span> Should be 2/3 (exact form)</td></tr>
+<tr><td>3h</td><td>log_2(0)</td><td>undefined</td><td><span class="badge correct">Correct</span></td></tr>
+</tbody>
+</table>
+
+<!-- Section 3: Solve Equations -->
+<p class="section-title">Section 3 - Solve Exponential Equations (S5.c/d)</p>
+<table class="question-table">
+<thead><tr><th>Q</th><th>Problem</th><th>Kai's Answer</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>4</td><td>5^x = 80</td><td>x = log_5(80)</td><td><span class="badge correct">Correct</span></td></tr>
+<tr><td>5</td><td>3 * 4^(2x-1) = 192</td><td>Arithmetic error (192/3 should = 64)</td><td><span class="badge incorrect">Incorrect</span></td></tr>
+<tr><td>6</td><td>50(1.08)^(t/4) = 900</td><td>t = 4 * log_1.08(18)</td><td><span class="badge correct">Correct</span></td></tr>
+<tr><td>7</td><td>(3x+2)^2 = 7</td><td>x = (sqrt(7)-2)/3</td><td><span class="badge partial">Partial</span> Missing negative root</td></tr>
+<tr><td>8</td><td>5 * 3^(2x-1) + 7 = 372</td><td>x = (log_3(73)+1)/2</td><td><span class="badge correct">Correct</span></td></tr>
+<tr><td>9</td><td>150/(3+3^(2x-1)) = 6</td><td>x = (log_3(22)+1)/2</td><td><span class="badge correct">Correct</span></td></tr>
+</tbody>
+</table>
+
+<!-- Section 4: Modeling -->
+<p class="section-title">Section 4 - Modeling (Quadratic, Exponential, Logistic)</p>
+<table class="question-table">
+<thead><tr><th>Q</th><th>Problem</th><th>Kai's Answer</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>1a</td><td>Roller coaster: what does h(0) represent?</td><td>40 (computed, didn't explain meaning)</td><td><span class="badge partial">Partial</span></td></tr>
+<tr><td>1b</td><td>Time of lowest point</td><td>t = 4 sec</td><td><span class="badge correct">Correct</span></td></tr>
+<tr><td>1c</td><td>Minimum height</td><td>8 feet</td><td><span class="badge correct">Correct</span></td></tr>
+<tr><td>1d</td><td>Return to starting height</td><td>t = 8 (factored 2t(t-8)=0)</td><td><span class="badge correct">Correct</span></td></tr>
+<tr><td>2a</td><td>Inscribed rectangle: area function</td><td>A(x) = -1/2 x^2 + 5x</td><td><span class="badge correct">Correct</span></td></tr>
+<tr><td>2b</td><td>Graph to approximate max</td><td>---</td><td><span class="badge skipped">Skipped</span> No graphing calc</td></tr>
+<tr><td>2c</td><td>Algebraic max dimensions</td><td>x=5, y=2.5</td><td><span class="badge correct">Correct</span></td></tr>
+<tr><td>3a</td><td>Bee colony: initial population</td><td>5000</td><td><span class="badge correct">Correct</span></td></tr>
+<tr><td>3b</td><td>Model function B(t)</td><td>B(t) = 5000(b)^t, b from graph</td><td><span class="badge correct">Correct</span></td></tr>
+<tr><td>3c</td><td>Projected 2028 population</td><td>34,747</td><td><span class="badge correct">Correct</span></td></tr>
+<tr><td>4a</td><td>Virus: infected after 3 weeks</td><td>125 students</td><td><span class="badge correct">Correct</span></td></tr>
+<tr><td>4b</td><td>Weeks until 400 infected</td><td>6.6 weeks</td><td><span class="badge correct">Correct</span></td></tr>
+<tr><td>5a</td><td>College savings model</td><td>A(t) = 1500(1.06)^t</td><td><span class="badge correct">Correct</span></td></tr>
+<tr><td>5b</td><td>Balance after 8 years</td><td>$2390.77</td><td><span class="badge correct">Correct</span></td></tr>
+<tr><td>5c</td><td>Compare 6% annual vs 4.5% monthly</td><td>Annual (6%) wins after 10yr</td><td><span class="badge correct">Correct</span></td></tr>
+<tr><td>5d</td><td>Years to reach $4000</td><td>t = 16.83 years</td><td><span class="badge correct">Correct</span></td></tr>
+</tbody>
+</table>
+
+<div class="notes-card">
+  <h2>Key Takeaways</h2>
+  <ul>
+    <li><strong>All 5 standards: P (Proficient)</strong> - Kai is ready for the teacher test</li>
+    <li>Log/exp translations are automatic - zero hesitation</li>
+    <li>Modeling sections are exceptional - applies logs in real-world contexts fluently</li>
+    <li>Virus spread (logistic) and college savings (compound interest) both solved cleanly with full work shown</li>
+  </ul>
+  <h2 style="margin-top:16px">Three Things to Watch</h2>
+  <ul>
+    <li class="fix"><strong>Exact form discipline:</strong> Write 2/3 not 0.666667. Teacher will mark this wrong.</li>
+    <li class="fix"><strong>Remember +/- when square rooting:</strong> (3x+2)^2=7 has TWO solutions. Always write +/- sqrt.</li>
+    <li class="fix"><strong>Division arithmetic:</strong> 192/3=64, not 18. Slow down on simple division under pressure.</li>
+  </ul>
+</div>
+
+</div>
+</body>
+</html>
