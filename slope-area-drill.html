@@ -3,586 +3,247 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Motor City Math — Slope, Revenue &amp; Area Drill</title>
+<title>Algebra 2 — Slope, Revenue &amp; Area Drill</title>
+<script>
+MathJax = { tex: { inlineMath: [['\\(','\\)'],['$','$']] }, options: { skipHtmlTags: ['script','noscript','style','textarea'] } };
+</script>
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
 <style>
-  :root {
-    --bg:        #0d1117;
-    --surface:   #161b22;
-    --border:    #30363d;
-    --text:      #e6edf3;
-    --muted:     #7d8590;
-    --subtext:   #8b949e;
-    --amber:     #f0a500;
-    --amber-bg:  #2a1f00;
-    --blue:      #58a6ff;
-    --accent-red: #f85149;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    font-size: 15px;
-    line-height: 1.6;
-    padding: 2rem 1rem;
-  }
-  .page { max-width: 700px; margin: 0 auto; }
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 0.75rem;
-    margin-bottom: 2rem;
-  }
-  .header-left { font-size: 0.8rem; color: var(--muted); }
-  .header-right { font-size: 0.8rem; color: var(--muted); }
-  h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.25rem; }
-  .subtitle { font-size: 0.85rem; color: var(--subtext); margin-bottom: 2.5rem; }
-  .section-label {
-    font-size: 0.7rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--amber);
-    margin-bottom: 1.25rem;
-  }
-  .problem-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 1.5rem 1.75rem;
-    margin-bottom: 1.5rem;
-  }
-  .problem-number {
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    margin-bottom: 0.75rem;
-  }
-  .problem-text {
-    font-size: 1rem;
-    color: var(--text);
-    margin-bottom: 1rem;
-    line-height: 1.7;
-  }
-  .problem-text strong { color: var(--blue); }
-  .hint-box {
-    background: var(--amber-bg);
-    border: 1px solid #5a3800;
-    border-radius: 6px;
-    padding: 0.5rem 0.9rem;
-    margin-bottom: 1rem;
-    font-size: 0.82rem;
-    color: var(--amber);
-  }
-  .hint-box .hint-label {
-    font-size: 0.65rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: 0.1rem;
-  }
-  .sub-parts { display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem; }
-  .sub-part {
-    border-left: 3px solid var(--border);
-    padding: 0.5rem 0 0.5rem 1rem;
-  }
-  .sub-part-label {
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: var(--subtext);
-    margin-bottom: 0.35rem;
-  }
-  .work-area {
-    border: 1px dashed var(--border);
-    border-radius: 6px;
-    height: 90px;
-    margin-top: 0.75rem;
-    display: flex;
-    align-items: flex-end;
-    padding: 0.4rem 0.75rem;
-  }
-  .work-area-lg {
-    border: 1px dashed var(--border);
-    border-radius: 6px;
-    height: 130px;
-    margin-top: 0.75rem;
-    display: flex;
-    align-items: flex-end;
-    padding: 0.4rem 0.75rem;
-  }
-  .work-area-label { font-size: 0.7rem; color: var(--muted); }
-  .answer-line {
-    border-top: 1px solid var(--border);
-    margin-top: 0.75rem;
-    padding-top: 0.6rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-  .answer-label { font-size: 0.8rem; color: var(--muted); min-width: 80px; }
-  .answer-blank { flex: 1; border-bottom: 1px solid var(--subtext); height: 22px; }
-  .answer-unit { font-size: 0.82rem; color: var(--subtext); }
-  .footer {
-    border-top: 1px solid var(--border);
-    margin-top: 3rem;
-    padding-top: 0.75rem;
-    font-size: 0.75rem;
-    color: var(--muted);
-    text-align: center;
-  }
-  @media print {
-    @page { size: Letter; margin: 0.4in 0.5in; }
-    html, body { background: #fff; color: #000; }
-    body { padding: 0; font-size: 9pt; line-height: 1.25; }
-    .page { max-width: none; padding: 0; }
-    .header { color: #000; border-bottom: 1px solid #000; margin-bottom: 0.4rem; padding-bottom: 0.25rem; }
-    h1 { color: #000; font-size: 14pt; margin: 0.2rem 0 0.1rem; }
-    .subtitle { color: #444; font-size: 9pt; margin-bottom: 0.5rem; }
-    .work-area-label, .footer { color: #555; }
-    .section-label { color: #000; border-bottom: 1px solid #000; margin-top: 0.6rem !important; padding-bottom: 0.15rem; font-size: 9.5pt; }
-    .problem-card { border: 1px solid #000; background: #fff; padding: 0.45rem 0.6rem; margin: 0.35rem 0; }
-    .sub-part { break-inside: avoid; page-break-inside: avoid; }
-    .problem-number { color: #000; font-size: 9pt; margin-bottom: 0.15rem; }
-    .problem-text { margin: 0.15rem 0 0.3rem; }
-    .sub-parts { gap: 0.3rem; }
-    .sub-part { margin: 0.15rem 0; break-inside: avoid; page-break-inside: avoid; }
-    .sub-part-label { font-size: 9pt; margin-bottom: 0.15rem; }
-    .work-area, .work-area-lg { border: 1px solid #000; background: #fff; }
-    .work-area { height: 60px; }
-    .work-area-lg { height: 90px; }
-    .hint-box { border: 1px solid #000; color: #000; background: #f3f3f3; padding: 0.2rem 0.45rem; margin: 0.15rem 0; font-size: 8pt; }
-    .answer-line { margin-top: 0.15rem; }
-    .answer-blank { border-bottom: 1px solid #000; }
-    a, a:visited { color: #000; text-decoration: none; }
-
-    .log-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.4rem; }
-    .log-grid .problem-card { margin: 0; }
-    .log-grid .work-area { height: 45px; }
-    .log-grid .work-area-lg { height: 60px; }
-    .log-grid .hint-box { display: none; }
-  }
+:root {
+  --ink: #000;
+  --bg: #fff;
+  --rule: #000;
+  --soft: #444;
+  font-size: 15px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; color: var(--ink); }
+body { font-family: 'Georgia', serif; background: var(--bg); padding: 20px; }
+.sheet { background: var(--bg); max-width: 900px; margin: 0 auto; padding: 40px; }
+h1 { font-size: 1.8rem; }
+.subtitle { font-size: 1.05rem; margin-top: 4px; }
+.name-block { display: flex; gap: 40px; margin: 18px 0 4px; flex-wrap: wrap; }
+.name-block label { flex: 1; border-bottom: 1px solid var(--rule); padding-bottom: 2px; font-size: .95rem; min-width: 200px; }
+.note-flag { border: 1px solid var(--rule); padding: 8px 12px; margin: 10px 0; font-size: .88rem; }
+hr.section { border: none; border-top: 1.5px solid var(--rule); margin: 26px 0 16px; }
+.section-title { font-size: 1.1rem; font-weight: bold; margin-bottom: 4px; }
+.section-note { font-size: .88rem; margin-bottom: 14px; font-style: italic; color: var(--soft); }
+.prob-block { margin-bottom: 24px; page-break-inside: avoid; }
+.prob-num { font-weight: bold; margin-bottom: 4px; font-size: .92rem; }
+.prob-q { margin-bottom: 8px; line-height: 1.6; }
+.subpart { margin-top: 14px; }
+.subpart-label { font-size: .92rem; line-height: 1.55; margin-bottom: 4px; }
+.fill { display: inline-block; border-bottom: 1px solid #777; min-width: 120px; }
+.work-box { border: 1px dashed #777; min-height: 100px; margin-top: 6px; padding: 6px 10px; }
+.work-box-tall { min-height: 140px; }
+.work-box-short { min-height: 50px; }
+.answer-line { margin-top: 8px; font-size: .92rem; }
+.points { float: right; font-size: .82rem; font-weight: normal; color: var(--soft); }
+table.value-table { border-collapse: collapse; font-size: .92rem; width: 100%; margin-top: 8px; }
+table.value-table th,
+table.value-table td { border: 1px solid var(--rule); padding: 6px 12px; text-align: center; }
+table.value-table th { font-weight: bold; }
+@media print {
+  body { padding: 0; }
+  .sheet { padding: 18px; max-width: 100%; }
+  .work-box { min-height: 90px; }
+  .work-box-tall { min-height: 120px; }
+}
 </style>
 </head>
 <body>
-<div class="page">
+<div class="sheet">
 
-  <div class="header">
-    <span class="header-left">Motor City Math · Kai Ash</span>
-    <span class="header-right">Show all work</span>
-  </div>
-
-  <h1>Slope, Revenue &amp; Area Drill</h1>
-  <div class="subtitle">Slope · Revenue · Area as a Function · Logarithms</div>
-
-  <!-- SECTION 1: SLOPE -->
-  <div class="section-label">Problem 1 — Interpreting Slope on a Mountain Road</div>
-
-  <div class="problem-card">
-    <div class="problem-number">Problem 1</div>
-    <p class="problem-text">
-      A mountain road drops <strong>42 feet</strong> in elevation for every
-      <strong>700 feet</strong> of horizontal distance.
-    </p>
-
-    <div class="hint-box">
-      <div class="hint-label">Recall</div>
-      Percent grade = (vertical drop ÷ horizontal distance) × 100%
-    </div>
-
-    <div class="sub-parts">
-
-      <div class="sub-part">
-        <div class="sub-part-label">(a) What is the percent grade of this road? Show your calculation.</div>
-        <div class="work-area"><span class="work-area-label">work</span></div>
-        <div class="answer-line">
-          <span class="answer-label">Grade =</span>
-          <div class="answer-blank"></div>
-          <span class="answer-unit">%</span>
-        </div>
-      </div>
-
-      <div class="sub-part">
-        <div class="sub-part-label">(b) Write a linear equation for vertical drop \(V\) (feet) as a function of horizontal distance \(H\) (feet).</div>
-        <div class="work-area"><span class="work-area-label">work</span></div>
-        <div class="answer-line">
-          <span class="answer-label">\(V =\)</span>
-          <div class="answer-blank"></div>
-        </div>
-      </div>
-
-      <div class="sub-part">
-        <div class="sub-part-label">(c) A driver starts at the top. After driving some distance, the altimeter shows the car is <strong>84 feet lower</strong> than the start. How far has the car traveled horizontally?</div>
-        <div class="work-area-lg"><span class="work-area-label">work</span></div>
-        <div class="answer-line">
-          <span class="answer-label">\(H =\)</span>
-          <div class="answer-blank"></div>
-          <span class="answer-unit">feet</span>
-        </div>
-      </div>
-
-      <div class="sub-part">
-        <div class="sub-part-label">(d) The base of the hill is <strong>2,500 feet</strong> horizontally from the top. What is the total height of the hill?</div>
-        <div class="work-area"><span class="work-area-label">work</span></div>
-        <div class="answer-line">
-          <span class="answer-label">Height =</span>
-          <div class="answer-blank"></div>
-          <span class="answer-unit">feet</span>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- SECTION 2: REVENUE -->
-  <div class="section-label" style="margin-top:2rem;">Problem 2 — Revenue as a Function</div>
-
-  <div class="problem-card">
-    <div class="problem-number">Problem 2</div>
-    <p class="problem-text">
-      A streaming service charges <strong>\$150 − 7x\)</strong> dollars per subscription, where
-      \(x\) is the number of subscriptions sold (in thousands). Revenue is price times quantity,
-      so \(R(x) = x(150 - 7x)\), measured in thousands of dollars.
-    </p>
-
-    <div class="sub-parts">
-
-      <div class="sub-part">
-        <div class="sub-part-label">(a) Expand \(R(x)\) and write it in standard form \(ax^2 + bx + c\). Identify \(a\), \(b\), and \(c\).</div>
-        <div class="work-area"><span class="work-area-label">work</span></div>
-        <div class="answer-line">
-          <span class="answer-label">\(R(x) =\)</span>
-          <div class="answer-blank"></div>
-        </div>
-        <div class="answer-line" style="margin-top:0.4rem;">
-          <span class="answer-label">\(a =\) &nbsp;&nbsp; \(b =\) &nbsp;&nbsp; \(c =\)</span>
-          <div class="answer-blank"></div>
-        </div>
-      </div>
-
-      <div class="sub-part">
-        <div class="sub-part-label">(b) What values of \(x\) make \(R(x) = 0\)? What do those values mean in context?</div>
-        <div class="work-area"><span class="work-area-label">work</span></div>
-        <div class="answer-line">
-          <span class="answer-label">\(x =\)</span>
-          <div class="answer-blank"></div>
-        </div>
-        <div class="answer-line" style="margin-top:0.4rem;">
-          <span class="answer-label">Meaning:</span>
-          <div class="answer-blank"></div>
-        </div>
-      </div>
-
-      <div class="sub-part">
-        <div class="sub-part-label">(c) Use the vertex formula \(x = -b/(2a)\) to find the subscription count that <strong>maximizes revenue</strong>. Leave your answer as a fraction.</div>
-        <div class="work-area-lg"><span class="work-area-label">work</span></div>
-        <div class="answer-line">
-          <span class="answer-label">\(x =\)</span>
-          <div class="answer-blank"></div>
-          <span class="answer-unit">thousand subscriptions</span>
-        </div>
-      </div>
-
-      <div class="sub-part">
-        <div class="sub-part-label">(d) Calculate \(R\) at that maximum. Round to the nearest whole number (in thousands of dollars). What is the maximum revenue?</div>
-        <div class="work-area-lg"><span class="work-area-label">work</span></div>
-        <div class="answer-line">
-          <span class="answer-label">Max \(R \approx\)</span>
-          <div class="answer-blank"></div>
-          <span class="answer-unit">thousand dollars</span>
-        </div>
-      </div>
-
-      <div class="sub-part">
-        <div class="sub-part-label">(e) The company needs \(R(x) = 700\) (thousand dollars). Set up the equation and solve using the quadratic formula. There are two solutions — what does each one mean for the business?</div>
-        <div class="work-area-lg"><span class="work-area-label">work</span></div>
-        <div class="answer-line">
-          <span class="answer-label">\(x_1 \approx\)</span>
-          <div class="answer-blank"></div>
-          <span class="answer-unit">thousand</span>
-        </div>
-        <div class="answer-line" style="margin-top:0.4rem;">
-          <span class="answer-label">\(x_2 \approx\)</span>
-          <div class="answer-blank"></div>
-          <span class="answer-unit">thousand</span>
-        </div>
-        <div class="answer-line" style="margin-top:0.4rem;">
-          <span class="answer-label">Meaning:</span>
-          <div class="answer-blank"></div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- SECTION 3: TRIANGLE UNDER A LINE -->
-  <div class="section-label" style="margin-top:2rem;">Problem 3 — Triangle Under a Line</div>
-
-  <div class="problem-card">
-    <div class="problem-number">Problem 3</div>
-    <p class="problem-text">
-      The line \(f(x) = 48 - 6x\) is drawn on a coordinate plane. A right triangle is
-      formed with its base along the x-axis from \(0\) to \(x\), and its height going straight
-      up from \((x, 0)\) to the point \((x,\ f(x))\) on the line.
-    </p>
-
-    <div class="sub-parts">
-
-      <div class="sub-part">
-        <div class="sub-part-label">(a) Write the area function \(A(x)\) using the formula \(A = \tfrac{1}{2} \cdot \text{base} \cdot \text{height}\). Simplify completely.</div>
-        <div class="work-area"><span class="work-area-label">work</span></div>
-        <div class="answer-line">
-          <span class="answer-label">\(A(x) =\)</span>
-          <div class="answer-blank"></div>
-        </div>
-      </div>
-
-      <div class="sub-part">
-        <div class="sub-part-label">(b) What is the domain of \(A(x)\)? Explain why \(x\) cannot go higher than its upper bound.</div>
-        <div class="work-area"><span class="work-area-label">work</span></div>
-        <div class="answer-line">
-          <span class="answer-label">Domain:</span>
-          <div class="answer-blank"></div>
-        </div>
-      </div>
-
-      <div class="sub-part">
-        <div class="sub-part-label">(c) Complete the table.</div>
-        <div style="overflow-x:auto; margin-top:0.75rem;">
-          <table style="border-collapse:collapse; font-size:0.88rem; color:var(--text); width:100%;">
-            <thead>
-              <tr>
-                <th style="border:1px solid var(--border); padding:6px 10px; background:var(--bg); color:var(--muted);">\(x\)</th>
-                <td style="border:1px solid var(--border); padding:6px 14px; text-align:center;">1</td>
-                <td style="border:1px solid var(--border); padding:6px 14px; text-align:center;">2</td>
-                <td style="border:1px solid var(--border); padding:6px 14px; text-align:center;">3</td>
-                <td style="border:1px solid var(--border); padding:6px 14px; text-align:center;">4</td>
-                <td style="border:1px solid var(--border); padding:6px 14px; text-align:center;">5</td>
-                <td style="border:1px solid var(--border); padding:6px 14px; text-align:center;">6</td>
-                <td style="border:1px solid var(--border); padding:6px 14px; text-align:center;">7</td>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th style="border:1px solid var(--border); padding:6px 10px; background:var(--bg); color:var(--muted); text-align:left;">\(A(x)\)</th>
-                <td style="border:1px solid var(--border); padding:6px 14px; height:36px;"></td>
-                <td style="border:1px solid var(--border); padding:6px 14px;"></td>
-                <td style="border:1px solid var(--border); padding:6px 14px;"></td>
-                <td style="border:1px solid var(--border); padding:6px 14px;"></td>
-                <td style="border:1px solid var(--border); padding:6px 14px;"></td>
-                <td style="border:1px solid var(--border); padding:6px 14px;"></td>
-                <td style="border:1px solid var(--border); padding:6px 14px;"></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div style="margin-top:0.6rem; font-size:0.8rem; color:var(--muted);">What pattern do you notice in the table?</div>
-        <div class="work-area" style="height:50px;"><span class="work-area-label">observation</span></div>
-      </div>
-
-      <div class="sub-part">
-        <div class="sub-part-label">(d) Use the vertex formula to find the value of \(x\) that maximizes the area. What is the maximum area?</div>
-        <div class="work-area-lg"><span class="work-area-label">work</span></div>
-        <div class="answer-line">
-          <span class="answer-label">\(x =\)</span>
-          <div class="answer-blank"></div>
-        </div>
-        <div class="answer-line" style="margin-top:0.4rem;">
-          <span class="answer-label">Max area =</span>
-          <div class="answer-blank"></div>
-          <span class="answer-unit">square units</span>
-        </div>
-      </div>
-
-      <div class="sub-part">
-        <div class="sub-part-label">(e) Find all values of \(x\) where \(A(x) = 45\). Factor to solve — no quadratic formula needed. Describe the two triangles.</div>
-        <div class="work-area-lg"><span class="work-area-label">work</span></div>
-        <div class="answer-line">
-          <span class="answer-label">\(x =\)</span>
-          <div class="answer-blank"></div>
-          <span class="answer-unit">and</span>
-          <div class="answer-blank"></div>
-        </div>
-      </div>
-
-      <div class="sub-part">
-        <div class="sub-part-label">(f) Find all values of \(x\) where \(A(x) = 36\). For each solution, write the base and height of the triangle and explain why the two triangles have the same area even though they look different.</div>
-        <div class="work-area-lg"><span class="work-area-label">work</span></div>
-        <div class="answer-line">
-          <span class="answer-label">\(x =\)</span>
-          <div class="answer-blank"></div>
-          <span class="answer-unit">and</span>
-          <div class="answer-blank"></div>
-        </div>
-        <div class="answer-line" style="margin-top:0.4rem;">
-          <span class="answer-label">Explanation:</span>
-          <div class="answer-blank"></div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- SECTION 4: LOG EVALUATION -->
-  <div class="section-label" style="margin-top:2rem;">Problems 4–7 — Evaluating Logarithms</div>
-
-  <div class="log-grid">
-  <div class="problem-card">
-    <div class="problem-number">Problem 4</div>
-    <p class="problem-text">
-      Evaluate: \(\log_{27}(9)\)
-    </p>
-
-    <div class="hint-box">
-      <div class="hint-label">Hint</div>
-      Can you write both 27 and 9 as powers of the same base? If \(\log_{27}(9) = y\),
-      then \(27^y = 9\). Rewrite both sides using a common base, then set the exponents equal.
-    </div>
-
-    <div class="sub-parts">
-
-      <div class="sub-part">
-        <div class="sub-part-label">(a) Write 27 and 9 as powers of a common base.</div>
-        <div class="work-area"><span class="work-area-label">work</span></div>
-        <div class="answer-line">
-          <span class="answer-label">\(27 =\)</span>
-          <div class="answer-blank"></div>
-          &nbsp;&nbsp;
-          <span class="answer-label">\(9 =\)</span>
-          <div class="answer-blank"></div>
-        </div>
-      </div>
-
-      <div class="sub-part">
-        <div class="sub-part-label">(b) Rewrite \(27^y = 9\) using your common base. Set the exponents equal and solve for \(y\).</div>
-        <div class="work-area-lg"><span class="work-area-label">work</span></div>
-        <div class="answer-line">
-          <span class="answer-label">\(\log_{27}(9) =\)</span>
-          <div class="answer-blank"></div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <div class="problem-card">
-    <div class="problem-number">Problem 5</div>
-    <p class="problem-text">
-      Evaluate: \(\log_{32}(8)\)
-    </p>
-
-    <div class="hint-box">
-      <div class="hint-label">Hint</div>
-      32 and 8 don't look related — but they share a common base. Find it, rewrite both,
-      then solve for the exponent.
-    </div>
-
-    <div class="sub-parts">
-
-      <div class="sub-part">
-        <div class="sub-part-label">(a) Write 32 and 8 as powers of a common base.</div>
-        <div class="work-area"><span class="work-area-label">work</span></div>
-        <div class="answer-line">
-          <span class="answer-label">\(32 =\)</span>
-          <div class="answer-blank"></div>
-          &nbsp;&nbsp;
-          <span class="answer-label">\(8 =\)</span>
-          <div class="answer-blank"></div>
-        </div>
-      </div>
-
-      <div class="sub-part">
-        <div class="sub-part-label">(b) Rewrite \(32^y = 8\) using your common base. Set the exponents equal and solve for \(y\).</div>
-        <div class="work-area-lg"><span class="work-area-label">work</span></div>
-        <div class="answer-line">
-          <span class="answer-label">\(\log_{32}(8) =\)</span>
-          <div class="answer-blank"></div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <div class="problem-card">
-    <div class="problem-number">Problem 6</div>
-    <p class="problem-text">
-      Evaluate: \(\log_{16}(32)\)
-    </p>
-
-    <div class="hint-box">
-      <div class="hint-label">Hint</div>
-      16 and 32 are both powers of 2. Write each one that way, then set exponents equal.
-    </div>
-
-    <div class="sub-parts">
-
-      <div class="sub-part">
-        <div class="sub-part-label">(a) Write 16 and 32 as powers of a common base.</div>
-        <div class="work-area"><span class="work-area-label">work</span></div>
-        <div class="answer-line">
-          <span class="answer-label">\(16 =\)</span>
-          <div class="answer-blank"></div>
-          &nbsp;&nbsp;
-          <span class="answer-label">\(32 =\)</span>
-          <div class="answer-blank"></div>
-        </div>
-      </div>
-
-      <div class="sub-part">
-        <div class="sub-part-label">(b) Rewrite \(16^y = 32\) using your common base. Set the exponents equal and solve for \(y\).</div>
-        <div class="work-area-lg"><span class="work-area-label">work</span></div>
-        <div class="answer-line">
-          <span class="answer-label">\(\log_{16}(32) =\)</span>
-          <div class="answer-blank"></div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <div class="problem-card">
-    <div class="problem-number">Problem 7</div>
-    <p class="problem-text">
-      Evaluate: \(\log_{125}(25)\)
-    </p>
-
-    <div class="hint-box">
-      <div class="hint-label">Hint</div>
-      125 and 25 share a common base — it's not 2 this time.
-    </div>
-
-    <div class="sub-parts">
-
-      <div class="sub-part">
-        <div class="sub-part-label">(a) Write 125 and 25 as powers of a common base.</div>
-        <div class="work-area"><span class="work-area-label">work</span></div>
-        <div class="answer-line">
-          <span class="answer-label">\(125 =\)</span>
-          <div class="answer-blank"></div>
-          &nbsp;&nbsp;
-          <span class="answer-label">\(25 =\)</span>
-          <div class="answer-blank"></div>
-        </div>
-      </div>
-
-      <div class="sub-part">
-        <div class="sub-part-label">(b) Rewrite \(125^y = 25\) using your common base. Set the exponents equal and solve for \(y\).</div>
-        <div class="work-area-lg"><span class="work-area-label">work</span></div>
-        <div class="answer-line">
-          <span class="answer-label">\(\log_{125}(25) =\)</span>
-          <div class="answer-blank"></div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-  </div>
-
-  <div class="footer">Motor City Math · Slope, Revenue &amp; Area Drill</div>
+<h1>Algebra 2</h1>
+<p class="subtitle">Slope, Revenue &amp; Area Drill &mdash; Functions &amp; Logarithms</p>
+<div class="name-block">
+  <label>Name: ____________________________________________</label>
+  <label>Block: __________</label>
+  <label>Date: __________</label>
 </div>
+
+<div class="note-flag">
+  <strong>~35 minutes &middot; 46 points total.</strong> Calculator allowed on Q2. Show all work.
+  Logarithm problems (Q4&ndash;Q7) are no calculator &mdash; rewrite both sides with a common base.
+</div>
+
+<!-- ================================================ -->
+<hr class="section">
+<p class="section-title">Q1 &mdash; Interpreting Slope on a Mountain Road <span class="points">8 pts</span></p>
+<p class="section-note">Percent grade = (vertical drop &divide; horizontal distance) &times; 100%. Show your work.</p>
+
+<div class="prob-block">
+  <p class="prob-num">1.</p>
+  <p class="prob-q">A mountain road drops <strong>42 feet</strong> in elevation for every <strong>700 feet</strong> of horizontal distance.</p>
+
+  <div class="subpart">
+    <p class="subpart-label"><strong>(a)</strong> What is the percent grade of this road? Show your calculation.</p>
+    <div class="work-box"></div>
+    <p class="answer-line">Grade = <span class="fill" style="min-width:80px;">&nbsp;</span> %</p>
+  </div>
+
+  <div class="subpart">
+    <p class="subpart-label"><strong>(b)</strong> Write a linear equation for vertical drop \(V\) (feet) as a function of horizontal distance \(H\) (feet).</p>
+    <div class="work-box"></div>
+    <p class="answer-line">\(V = \) <span class="fill" style="min-width:200px;">&nbsp;</span></p>
+  </div>
+
+  <div class="subpart">
+    <p class="subpart-label"><strong>(c)</strong> A driver starts at the top. After driving some distance, the altimeter shows the car is <strong>84 feet lower</strong> than the start. How far has the car traveled horizontally?</p>
+    <div class="work-box work-box-tall"></div>
+    <p class="answer-line">\(H = \) <span class="fill" style="min-width:100px;">&nbsp;</span> feet</p>
+  </div>
+
+  <div class="subpart">
+    <p class="subpart-label"><strong>(d)</strong> The base of the hill is <strong>2,500 feet</strong> horizontally from the top. What is the total height of the hill?</p>
+    <div class="work-box"></div>
+    <p class="answer-line">Height = <span class="fill" style="min-width:100px;">&nbsp;</span> feet</p>
+  </div>
+</div>
+
+<!-- ================================================ -->
+<hr class="section">
+<p class="section-title">Q2 &mdash; Revenue as a Function (Calculator) <span class="points">12 pts</span></p>
+<p class="section-note">Expand, find zeros, find vertex, and use the quadratic formula. Show all work.</p>
+
+<div class="prob-block">
+  <p class="prob-num">2.</p>
+  <p class="prob-q">A streaming service charges \((150 - 7x)\) dollars per subscription, where \(x\) is the number of subscriptions sold (in thousands). Revenue is price times quantity, so \(R(x) = x(150 - 7x)\), measured in thousands of dollars.</p>
+
+  <div class="subpart">
+    <p class="subpart-label"><strong>(a)</strong> Expand \(R(x)\) and write it in standard form \(ax^2 + bx + c\). Identify \(a\), \(b\), and \(c\).</p>
+    <div class="work-box"></div>
+    <p class="answer-line">\(R(x) = \) <span class="fill" style="min-width:240px;">&nbsp;</span></p>
+    <p class="answer-line">\(a = \) <span class="fill" style="min-width:60px;">&nbsp;</span> &nbsp;&nbsp; \(b = \) <span class="fill" style="min-width:60px;">&nbsp;</span> &nbsp;&nbsp; \(c = \) <span class="fill" style="min-width:60px;">&nbsp;</span></p>
+  </div>
+
+  <div class="subpart">
+    <p class="subpart-label"><strong>(b)</strong> What values of \(x\) make \(R(x) = 0\)? What do those values mean in context?</p>
+    <div class="work-box"></div>
+    <p class="answer-line">\(x = \) <span class="fill" style="min-width:160px;">&nbsp;</span></p>
+    <p class="answer-line">Meaning: <span class="fill" style="min-width:380px;">&nbsp;</span></p>
+  </div>
+
+  <div class="subpart">
+    <p class="subpart-label"><strong>(c)</strong> Use the vertex formula \(x = -\dfrac{b}{2a}\) to find the subscription count that <strong>maximizes revenue</strong>. Leave your answer as a fraction.</p>
+    <div class="work-box work-box-tall"></div>
+    <p class="answer-line">\(x = \) <span class="fill" style="min-width:120px;">&nbsp;</span> thousand subscriptions</p>
+  </div>
+
+  <div class="subpart">
+    <p class="subpart-label"><strong>(d)</strong> Calculate \(R\) at that maximum. Round to the nearest whole number (in thousands of dollars). What is the maximum revenue?</p>
+    <div class="work-box work-box-tall"></div>
+    <p class="answer-line">Max \(R \approx\) <span class="fill" style="min-width:120px;">&nbsp;</span> thousand dollars</p>
+  </div>
+
+  <div class="subpart">
+    <p class="subpart-label"><strong>(e)</strong> The company needs \(R(x) = 700\) (thousand dollars). Set up the equation and solve using the quadratic formula. There are two solutions &mdash; what does each one mean for the business?</p>
+    <div class="work-box work-box-tall"></div>
+    <p class="answer-line">\(x_1 \approx\) <span class="fill" style="min-width:100px;">&nbsp;</span> thousand &nbsp;&nbsp; \(x_2 \approx\) <span class="fill" style="min-width:100px;">&nbsp;</span> thousand</p>
+    <p class="answer-line">Meaning: <span class="fill" style="min-width:380px;">&nbsp;</span></p>
+  </div>
+</div>
+
+<!-- ================================================ -->
+<hr class="section">
+<p class="section-title">Q3 &mdash; Triangle Under a Line <span class="points">14 pts</span></p>
+<p class="section-note">Build the area function, explore it with a table, then find the maximum and solve for specific areas.</p>
+
+<div class="prob-block">
+  <p class="prob-num">3.</p>
+  <p class="prob-q">The line \(f(x) = 48 - 6x\) is drawn on a coordinate plane. A right triangle is formed with its base along the x-axis from \(0\) to \(x\), and its height going straight up from \((x, 0)\) to the point \((x,\ f(x))\) on the line.</p>
+
+  <div class="subpart">
+    <p class="subpart-label"><strong>(a)</strong> Write the area function \(A(x)\) using \(A = \tfrac{1}{2} \cdot \text{base} \cdot \text{height}\). Simplify completely.</p>
+    <div class="work-box"></div>
+    <p class="answer-line">\(A(x) = \) <span class="fill" style="min-width:240px;">&nbsp;</span></p>
+  </div>
+
+  <div class="subpart">
+    <p class="subpart-label"><strong>(b)</strong> What is the domain of \(A(x)\)? Explain why \(x\) cannot go higher than its upper bound.</p>
+    <div class="work-box"></div>
+    <p class="answer-line">Domain: <span class="fill" style="min-width:380px;">&nbsp;</span></p>
+  </div>
+
+  <div class="subpart">
+    <p class="subpart-label"><strong>(c)</strong> Complete the table.</p>
+    <table class="value-table">
+      <tr>
+        <th>\(x\)</th>
+        <td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td>
+      </tr>
+      <tr>
+        <th>\(A(x)\)</th>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+      </tr>
+    </table>
+    <p class="subpart-label" style="margin-top:10px;">What pattern do you notice in the table?</p>
+    <div class="work-box work-box-short"></div>
+  </div>
+
+  <div class="subpart">
+    <p class="subpart-label"><strong>(d)</strong> Use the vertex formula to find the value of \(x\) that maximizes the area. What is the maximum area?</p>
+    <div class="work-box work-box-tall"></div>
+    <p class="answer-line">\(x = \) <span class="fill" style="min-width:80px;">&nbsp;</span> &nbsp;&nbsp; Max area = <span class="fill" style="min-width:100px;">&nbsp;</span> square units</p>
+  </div>
+
+  <div class="subpart">
+    <p class="subpart-label"><strong>(e)</strong> Find all values of \(x\) where \(A(x) = 45\). Factor to solve &mdash; no quadratic formula needed. Describe the two triangles.</p>
+    <div class="work-box work-box-tall"></div>
+    <p class="answer-line">\(x = \) <span class="fill" style="min-width:80px;">&nbsp;</span> and <span class="fill" style="min-width:80px;">&nbsp;</span></p>
+  </div>
+
+  <div class="subpart">
+    <p class="subpart-label"><strong>(f)</strong> Find all values of \(x\) where \(A(x) = 36\). For each solution, write the base and height of the triangle and explain why the two triangles have the same area even though they look different.</p>
+    <div class="work-box work-box-tall"></div>
+    <p class="answer-line">\(x = \) <span class="fill" style="min-width:80px;">&nbsp;</span> and <span class="fill" style="min-width:80px;">&nbsp;</span></p>
+    <p class="answer-line">Explanation: <span class="fill" style="min-width:380px;">&nbsp;</span></p>
+  </div>
+</div>
+
+<!-- ================================================ -->
+<hr class="section">
+<p class="section-title">Q4 &mdash; Evaluate \(\log_{27}(9)\) (No Calculator) <span class="points">3 pts</span></p>
+<p class="section-note">Rewrite both 27 and 9 as powers of a common base, then set exponents equal.</p>
+
+<div class="prob-block">
+  <p class="prob-num">4. &nbsp; Evaluate: &nbsp; \(\log_{27}(9)\)</p>
+  <div class="work-box"></div>
+  <p class="answer-line">\(\log_{27}(9) = \) <span class="fill" style="min-width:100px;">&nbsp;</span></p>
+</div>
+
+<!-- ================================================ -->
+<hr class="section">
+<p class="section-title">Q5 &mdash; Evaluate \(\log_{32}(8)\) (No Calculator) <span class="points">3 pts</span></p>
+<p class="section-note">32 and 8 share a common base. Find it, rewrite both, then solve for the exponent.</p>
+
+<div class="prob-block">
+  <p class="prob-num">5. &nbsp; Evaluate: &nbsp; \(\log_{32}(8)\)</p>
+  <div class="work-box"></div>
+  <p class="answer-line">\(\log_{32}(8) = \) <span class="fill" style="min-width:100px;">&nbsp;</span></p>
+</div>
+
+<!-- ================================================ -->
+<hr class="section">
+<p class="section-title">Q6 &mdash; Evaluate \(\log_{16}(32)\) (No Calculator) <span class="points">3 pts</span></p>
+<p class="section-note">16 and 32 are both powers of 2. Write each that way, then set exponents equal.</p>
+
+<div class="prob-block">
+  <p class="prob-num">6. &nbsp; Evaluate: &nbsp; \(\log_{16}(32)\)</p>
+  <div class="work-box"></div>
+  <p class="answer-line">\(\log_{16}(32) = \) <span class="fill" style="min-width:100px;">&nbsp;</span></p>
+</div>
+
+<!-- ================================================ -->
+<hr class="section">
+<p class="section-title">Q7 &mdash; Evaluate \(\log_{125}(25)\) (No Calculator) <span class="points">3 pts</span></p>
+<p class="section-note">125 and 25 share a common base &mdash; it's not 2 this time.</p>
+
+<div class="prob-block">
+  <p class="prob-num">7. &nbsp; Evaluate: &nbsp; \(\log_{125}(25)\)</p>
+  <div class="work-box"></div>
+  <p class="answer-line">\(\log_{125}(25) = \) <span class="fill" style="min-width:100px;">&nbsp;</span></p>
+</div>
+
+</div><!-- .sheet -->
 </body>
 </html>
