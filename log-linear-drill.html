@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Motor City Math — Log &amp; Linear Modeling Drill</title>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+<style>
+  :root {
+    --bg:        #0d1117;
+    --surface:   #161b22;
+    --border:    #30363d;
+    --text:      #e6edf3;
+    --muted:     #7d8590;
+    --subtext:   #8b949e;
+    --amber:     #f0a500;
+    --amber-bg:  #2a1f00;
+    --blue:      #58a6ff;
+    --accent-red: #f85149;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    padding: 2rem 1rem;
+  }
+  .page { max-width: 700px; margin: 0 auto; }
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.75rem;
+    margin-bottom: 2rem;
+  }
+  .header-left { font-size: 0.8rem; color: var(--muted); }
+  .header-right { font-size: 0.8rem; color: var(--muted); }
+  h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.25rem; }
+  .subtitle { font-size: 0.85rem; color: var(--subtext); margin-bottom: 2.5rem; }
+  .section-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--amber);
+    margin-bottom: 1.25rem;
+  }
+  .problem-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem 1.75rem;
+    margin-bottom: 1.5rem;
+  }
+  .problem-number {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.75rem;
+  }
+  .problem-text {
+    font-size: 1rem;
+    color: var(--text);
+    margin-bottom: 1rem;
+    line-height: 1.7;
+  }
+  .problem-text strong { color: var(--blue); }
+  .sub-parts { display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem; }
+  .sub-part {
+    border-left: 3px solid var(--border);
+    padding: 0.5rem 0 0.5rem 1rem;
+  }
+  .sub-part-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--subtext);
+    margin-bottom: 0.35rem;
+  }
+  .work-area {
+    border: 1px dashed var(--border);
+    border-radius: 6px;
+    height: 90px;
+    margin-top: 0.75rem;
+    display: flex;
+    align-items: flex-end;
+    padding: 0.4rem 0.75rem;
+  }
+  .work-area-lg {
+    border: 1px dashed var(--border);
+    border-radius: 6px;
+    height: 120px;
+    margin-top: 0.75rem;
+    display: flex;
+    align-items: flex-end;
+    padding: 0.4rem 0.75rem;
+  }
+  .work-area-label { font-size: 0.7rem; color: var(--muted); }
+  .answer-line {
+    border-top: 1px solid var(--border);
+    margin-top: 0.75rem;
+    padding-top: 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .answer-label { font-size: 0.8rem; color: var(--muted); min-width: 70px; }
+  .answer-blank { flex: 1; border-bottom: 1px solid var(--subtext); height: 22px; }
+  .answer-unit { font-size: 0.82rem; color: var(--subtext); }
+  .footer {
+    border-top: 1px solid var(--border);
+    margin-top: 3rem;
+    padding-top: 0.75rem;
+    font-size: 0.75rem;
+    color: var(--muted);
+    text-align: center;
+  }
+  @media print {
+    body { background: #fff; color: #000; padding: 1rem; }
+    .problem-card { border: 1px solid #ccc; break-inside: avoid; }
+    .work-area, .work-area-lg { height: 130px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <span class="header-left">Motor City Math</span>
+    <span class="header-right">Log &amp; Linear Modeling Drill</span>
+  </div>
+
+  <h1>Kai Ash</h1>
+  <div class="subtitle">Logarithms &amp; Linear Modeling &middot; Show all work</div>
+
+  <!-- SECTION: LOGARITHMS -->
+  <div class="section-label">Logarithms &mdash; Solve for x</div>
+
+  <!-- Problem 1 -->
+  <div class="problem-card">
+    <div class="problem-number">Problem 1</div>
+    <p class="problem-text">
+      Solve for \(x\). Write your answer as a simplified fraction.
+      \[ \log_8(x) = -\dfrac{2}{3} \]
+    </p>
+    <div class="work-area-lg"><span class="work-area-label">work</span></div>
+    <div class="answer-line">
+      <span class="answer-label">\(x\) =</span>
+      <div class="answer-blank"></div>
+    </div>
+  </div>
+
+  <!-- SECTION: LINEAR MODELING -->
+  <div class="section-label" style="margin-top:2rem;">Linear Modeling &mdash; Rate of Change</div>
+
+  <!-- Problem 2 -->
+  <div class="problem-card">
+    <div class="problem-number">Problem 2 &mdash; Linear Decline</div>
+    <p class="problem-text">
+      A new laptop costs <strong>$1,800</strong>. It loses <strong>$225 in value every year</strong>.
+    </p>
+    <div class="sub-parts">
+      <div class="sub-part">
+        <div class="sub-part-label">(a) Write an equation V(t) for the laptop's value after t years.</div>
+        <div class="work-area"><span class="work-area-label">work</span></div>
+        <div class="answer-line">
+          <span class="answer-label">V(t) =</span>
+          <div class="answer-blank"></div>
+        </div>
+      </div>
+      <div class="sub-part">
+        <div class="sub-part-label">(b) What is the laptop worth after 5 years?</div>
+        <div class="work-area"><span class="work-area-label">work</span></div>
+        <div class="answer-line">
+          <span class="answer-label">V(5) =</span>
+          <div class="answer-blank"></div>
+          <span class="answer-unit">dollars</span>
+        </div>
+      </div>
+      <div class="sub-part">
+        <div class="sub-part-label">(c) In how many years will the laptop be worth $450?</div>
+        <div class="work-area"><span class="work-area-label">work</span></div>
+        <div class="answer-line">
+          <span class="answer-label">t =</span>
+          <div class="answer-blank"></div>
+          <span class="answer-unit">years</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Problem 3 -->
+  <div class="problem-card">
+    <div class="problem-number">Problem 3 &mdash; Linear Growth</div>
+    <p class="problem-text">
+      A runner starts training at <strong>2 miles per week</strong> and increases her weekly mileage by
+      <strong>1.5 miles each week</strong>.
+    </p>
+    <div class="sub-parts">
+      <div class="sub-part">
+        <div class="sub-part-label">(a) Write an equation M(t) for her weekly mileage after t weeks.</div>
+        <div class="work-area"><span class="work-area-label">work</span></div>
+        <div class="answer-line">
+          <span class="answer-label">M(t) =</span>
+          <div class="answer-blank"></div>
+        </div>
+      </div>
+      <div class="sub-part">
+        <div class="sub-part-label">(b) How many miles per week is she running after 8 weeks?</div>
+        <div class="work-area"><span class="work-area-label">work</span></div>
+        <div class="answer-line">
+          <span class="answer-label">M(8) =</span>
+          <div class="answer-blank"></div>
+          <span class="answer-unit">miles/week</span>
+        </div>
+      </div>
+      <div class="sub-part">
+        <div class="sub-part-label">(c) How many weeks until she reaches 20 miles per week?</div>
+        <div class="work-area"><span class="work-area-label">work</span></div>
+        <div class="answer-line">
+          <span class="answer-label">t =</span>
+          <div class="answer-blank"></div>
+          <span class="answer-unit">weeks</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">Motor City Math &middot; Log &amp; Linear Modeling Drill</div>
+</div>
+</body>
+</html>
