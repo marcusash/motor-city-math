@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slope &amp; Area Drill — KEY</title>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+<style>
+  :root {
+    --bg: #0d1117;
+    --surface: #161b22;
+    --border: #30363d;
+    --text: #e6edf3;
+    --muted: #7d8590;
+    --subtext: #8b949e;
+    --amber: #f0a500;
+    --amber-bg: #2a1f00;
+    --amber-border: #5a3800;
+    --green: #3fb950;
+    --green-bg: #0d2818;
+    --red: #f85149;
+    --red-bg: #300d0c;
+    --blue: #58a6ff;
+    --step-bg: #1c2128;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    padding: 2rem 1rem;
+  }
+  .page { max-width: 700px; margin: 0 auto; }
+  .header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.75rem;
+    margin-bottom: 2rem;
+  }
+  .header-left h1 { font-size: 1.1rem; font-weight: 700; }
+  .header-left .sub { font-size: 0.78rem; color: var(--muted); }
+  .header-right { font-size: 0.78rem; color: var(--amber); font-weight: 700; align-self: center; }
+  .part-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--amber);
+    margin: 2rem 0 1rem;
+  }
+  .q-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .q-num { font-size: 0.72rem; font-weight: 700; color: var(--muted); text-transform: uppercase; margin-bottom: 0.75rem; }
+  .steps { display: flex; flex-direction: column; gap: 0.4rem; margin: 0.6rem 0; }
+  .step {
+    background: var(--step-bg);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 0.45rem 0.9rem;
+    font-size: 0.88rem;
+    color: var(--subtext);
+    line-height: 1.6;
+  }
+  .step-lbl {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+    margin-bottom: 0.15rem;
+  }
+  .ans-box {
+    background: var(--amber-bg);
+    border: 1px solid var(--amber-border);
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    margin-top: 0.6rem;
+    font-weight: 700;
+    color: var(--amber);
+    font-size: 1rem;
+    text-align: center;
+  }
+  .concept-box {
+    background: #0d1f2d;
+    border: 1px solid #1a3a5c;
+    border-radius: 6px;
+    padding: 0.5rem 0.9rem;
+    margin: 0.6rem 0;
+    font-size: 0.82rem;
+    color: #58a6ff;
+  }
+  .concept-box .c-label {
+    font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.05em; margin-bottom: 0.1rem; color: #388bfd;
+  }
+  .watch-box {
+    background: var(--red-bg);
+    border: 1px solid #5a1e1c;
+    border-radius: 6px;
+    padding: 0.5rem 0.9rem;
+    margin-top: 0.6rem;
+    font-size: 0.82rem;
+    color: var(--red);
+  }
+  .watch-box .w-label { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.15rem; }
+  .check-row {
+    background: var(--green-bg);
+    border: 1px solid #1a4731;
+    border-radius: 6px;
+    padding: 0.4rem 0.9rem;
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--green);
+    text-align: center;
+  }
+  .sub-key { margin-top: 1.1rem; padding-top: 1rem; border-top: 1px solid var(--border); }
+  .sub-key:first-child { margin-top: 0; padding-top: 0; border-top: none; }
+  .sub-lbl { font-size: 0.8rem; font-weight: 700; color: var(--blue); margin-bottom: 0.35rem; }
+  .footer { border-top: 1px solid var(--border); margin-top: 3rem; padding-top: 0.75rem; font-size: 0.75rem; color: var(--muted); text-align: center; }
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="header">
+  <div class="header-left">
+    <div class="sub">Motor City Math</div>
+    <h1>Slope &amp; Area Drill — Answer Key</h1>
+  </div>
+  <div class="header-right">ANSWER KEY</div>
+</div>
+
+<!-- PROBLEM 1 -->
+<div class="part-label">Problem 1 — Slope on a Mountain Road</div>
+
+<div class="q-card">
+
+  <div class="concept-box">
+    <div class="c-label">Core idea</div>
+    Percent grade = rise ÷ run × 100. Once you have the grade as a decimal, the relationship is linear: \(V = m \cdot H\) where \(m\) is the grade decimal. Everything else follows from this one equation.
+  </div>
+
+  <div class="sub-key">
+    <div class="sub-lbl">(a) Percent grade</div>
+    <div class="steps">
+      <div class="step">\(\text{grade} = \dfrac{42}{700} = 0.06 = 6\%\)</div>
+    </div>
+    <div class="ans-box">6%</div>
+  </div>
+
+  <div class="sub-key">
+    <div class="sub-lbl">(b) Linear equation</div>
+    <div class="steps">
+      <div class="step">Grade decimal = 0.06, so for every foot of horizontal distance, drop = 0.06 ft</div>
+      <div class="step">\(V = 0.06H\)</div>
+    </div>
+    <div class="ans-box">\(V = 0.06\,H\)</div>
+  </div>
+
+  <div class="sub-key">
+    <div class="sub-lbl">(c) Horizontal distance when V = 84 ft</div>
+    <div class="steps">
+      <div class="step"><div class="step-lbl">Substitute V = 84 into equation</div>\(84 = 0.06\,H\)</div>
+      <div class="step"><div class="step-lbl">Solve for H</div>\(H = \dfrac{84}{0.06} = 1{,}400 \text{ ft}\)</div>
+    </div>
+    <div class="ans-box">1,400 feet</div>
+    <div class="watch-box">
+      <div class="w-label">⚠ Arithmetic check</div>
+      \(0.06 \times 1400 = 84\) ✓ — always verify by plugging back in.
+    </div>
+  </div>
+
+  <div class="sub-key">
+    <div class="sub-lbl">(d) Total height when H = 2,500 ft</div>
+    <div class="steps">
+      <div class="step">\(V = 0.06 \times 2500 = 150 \text{ ft}\)</div>
+    </div>
+    <div class="ans-box">150 feet</div>
+  </div>
+
+</div>
+
+<!-- PROBLEM 2 -->
+<div class="part-label">Problem 2 — Area Bounded by a Line</div>
+
+<div class="q-card">
+
+  <div class="concept-box">
+    <div class="c-label">Strategy</div>
+    Identify what shape each region is. Read off the heights by evaluating \(f(x)\) at the boundary x-values. Apply the correct area formula. The verification step in (e) is a built-in check — if your numbers don't add up, one of your areas is wrong.
+  </div>
+
+  <div class="sub-key">
+    <div class="sub-lbl">(a) x-intercept of f(x) = −2x + 10</div>
+    <div class="steps">
+      <div class="step"><div class="step-lbl">Set f(x) = 0</div>\(-2x + 10 = 0\)</div>
+      <div class="step">\(2x = 10 \;\Rightarrow\; x = 5\)</div>
+    </div>
+    <div class="ans-box">x-intercept: \((5,\, 0)\)</div>
+  </div>
+
+  <div class="sub-key">
+    <div class="sub-lbl">(b) Heights at x = 0 and x = 3</div>
+    <div class="steps">
+      <div class="step">\(f(0) = -2(0) + 10 = 10\)</div>
+      <div class="step">\(f(3) = -2(3) + 10 = 4\)</div>
+    </div>
+    <div class="ans-box">\(f(0) = 10\) &nbsp;&nbsp; \(f(3) = 4\)</div>
+  </div>
+
+  <div class="sub-key">
+    <div class="sub-lbl">(c) Left region — trapezoid [x = 0 to x = 3]</div>
+    <div class="steps">
+      <div class="step"><div class="step-lbl">Identify the shape</div>Parallel sides: \(b_1 = f(0) = 10\) and \(b_2 = f(3) = 4\). Width (height of trapezoid): \(h = 3\).</div>
+      <div class="step"><div class="step-lbl">Apply formula</div>\(A = \tfrac{1}{2}(b_1 + b_2) \times h = \tfrac{1}{2}(10 + 4)(3) = \tfrac{1}{2}(14)(3) = 21\)</div>
+    </div>
+    <div class="ans-box">Left area = 21 sq units</div>
+  </div>
+
+  <div class="sub-key">
+    <div class="sub-lbl">(d) Right region — triangle [x = 3 to x = 5]</div>
+    <div class="steps">
+      <div class="step"><div class="step-lbl">Identify the shape</div>Base: from \(x = 3\) to \(x = 5\), so base \(= 2\). Height: \(f(3) = 4\).</div>
+      <div class="step"><div class="step-lbl">Apply formula</div>\(A = \tfrac{1}{2} \times 2 \times 4 = 4\)</div>
+    </div>
+    <div class="ans-box">Right area = 4 sq units</div>
+    <div class="watch-box">
+      <div class="w-label">⚠ Common error</div>
+      The base is \(5 - 3 = 2\), not 5. The triangle goes from x = 3 to the x-intercept, not from x = 0.
+    </div>
+  </div>
+
+  <div class="sub-key">
+    <div class="sub-lbl">(e) Total area — verify</div>
+    <div class="steps">
+      <div class="step"><div class="step-lbl">Whole triangle: base = 5 (x-intercept), height = f(0) = 10</div>\(A = \tfrac{1}{2} \times 5 \times 10 = 25\)</div>
+    </div>
+    <div class="ans-box">Total area = 25 sq units</div>
+    <div class="check-row">✓ &nbsp; 21 + 4 = 25 &nbsp; — checks out</div>
+  </div>
+
+</div>
+
+<div class="footer">Motor City Math · Slope &amp; Area Drill KEY</div>
+</div>
+</body>
+</html>

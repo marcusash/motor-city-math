@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Motor City Math — Slope &amp; Area Drill</title>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+<style>
+  :root {
+    --bg:        #0d1117;
+    --surface:   #161b22;
+    --border:    #30363d;
+    --text:      #e6edf3;
+    --muted:     #7d8590;
+    --subtext:   #8b949e;
+    --amber:     #f0a500;
+    --amber-bg:  #2a1f00;
+    --blue:      #58a6ff;
+    --accent-red: #f85149;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    padding: 2rem 1rem;
+  }
+  .page { max-width: 700px; margin: 0 auto; }
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.75rem;
+    margin-bottom: 2rem;
+  }
+  .header-left { font-size: 0.8rem; color: var(--muted); }
+  .header-right { font-size: 0.8rem; color: var(--muted); }
+  h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.25rem; }
+  .subtitle { font-size: 0.85rem; color: var(--subtext); margin-bottom: 2.5rem; }
+  .section-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--amber);
+    margin-bottom: 1.25rem;
+  }
+  .problem-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem 1.75rem;
+    margin-bottom: 1.5rem;
+  }
+  .problem-number {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.75rem;
+  }
+  .problem-text {
+    font-size: 1rem;
+    color: var(--text);
+    margin-bottom: 1rem;
+    line-height: 1.7;
+  }
+  .problem-text strong { color: var(--blue); }
+  .hint-box {
+    background: var(--amber-bg);
+    border: 1px solid #5a3800;
+    border-radius: 6px;
+    padding: 0.5rem 0.9rem;
+    margin-bottom: 1rem;
+    font-size: 0.82rem;
+    color: var(--amber);
+  }
+  .hint-box .hint-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.1rem;
+  }
+  .sub-parts { display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem; }
+  .sub-part {
+    border-left: 3px solid var(--border);
+    padding: 0.5rem 0 0.5rem 1rem;
+  }
+  .sub-part-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--subtext);
+    margin-bottom: 0.35rem;
+  }
+  .work-area {
+    border: 1px dashed var(--border);
+    border-radius: 6px;
+    height: 90px;
+    margin-top: 0.75rem;
+    display: flex;
+    align-items: flex-end;
+    padding: 0.4rem 0.75rem;
+  }
+  .work-area-lg {
+    border: 1px dashed var(--border);
+    border-radius: 6px;
+    height: 130px;
+    margin-top: 0.75rem;
+    display: flex;
+    align-items: flex-end;
+    padding: 0.4rem 0.75rem;
+  }
+  .work-area-label { font-size: 0.7rem; color: var(--muted); }
+  .answer-line {
+    border-top: 1px solid var(--border);
+    margin-top: 0.75rem;
+    padding-top: 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .answer-label { font-size: 0.8rem; color: var(--muted); min-width: 80px; }
+  .answer-blank { flex: 1; border-bottom: 1px solid var(--subtext); height: 22px; }
+  .answer-unit { font-size: 0.82rem; color: var(--subtext); }
+  .footer {
+    border-top: 1px solid var(--border);
+    margin-top: 3rem;
+    padding-top: 0.75rem;
+    font-size: 0.75rem;
+    color: var(--muted);
+    text-align: center;
+  }
+  @media print {
+    body { background: #fff; color: #000; padding: 1rem; }
+    .problem-card { border: 1px solid #ccc; break-inside: avoid; }
+    .work-area, .work-area-lg { height: 140px; }
+    .hint-box { border: 1px solid #c8a000; color: #7a5000; background: #fffbe6; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <span class="header-left">Motor City Math</span>
+    <span class="header-right">Slope &amp; Area Drill</span>
+  </div>
+
+  <h1>Kai Ash</h1>
+  <div class="subtitle">Slope Interpretation &amp; Area &middot; Show all work</div>
+
+  <!-- SECTION 1: SLOPE -->
+  <div class="section-label">Problem 1 — Interpreting Slope on a Mountain Road</div>
+
+  <div class="problem-card">
+    <div class="problem-number">Problem 1</div>
+    <p class="problem-text">
+      A mountain road drops <strong>42 feet</strong> in elevation for every
+      <strong>700 feet</strong> of horizontal distance.
+    </p>
+
+    <div class="hint-box">
+      <div class="hint-label">Recall</div>
+      Percent grade = (vertical drop ÷ horizontal distance) × 100%
+    </div>
+
+    <div class="sub-parts">
+
+      <div class="sub-part">
+        <div class="sub-part-label">(a) What is the percent grade of this road? Show your calculation.</div>
+        <div class="work-area"><span class="work-area-label">work</span></div>
+        <div class="answer-line">
+          <span class="answer-label">Grade =</span>
+          <div class="answer-blank"></div>
+          <span class="answer-unit">%</span>
+        </div>
+      </div>
+
+      <div class="sub-part">
+        <div class="sub-part-label">(b) Write a linear equation for vertical drop \(V\) (feet) as a function of horizontal distance \(H\) (feet).</div>
+        <div class="work-area"><span class="work-area-label">work</span></div>
+        <div class="answer-line">
+          <span class="answer-label">\(V =\)</span>
+          <div class="answer-blank"></div>
+        </div>
+      </div>
+
+      <div class="sub-part">
+        <div class="sub-part-label">(c) A driver starts at the top. After driving some distance, the altimeter shows the car is <strong>84 feet lower</strong> than the start. How far has the car traveled horizontally?</div>
+        <div class="work-area-lg"><span class="work-area-label">work</span></div>
+        <div class="answer-line">
+          <span class="answer-label">\(H =\)</span>
+          <div class="answer-blank"></div>
+          <span class="answer-unit">feet</span>
+        </div>
+      </div>
+
+      <div class="sub-part">
+        <div class="sub-part-label">(d) The base of the hill is <strong>2,500 feet</strong> horizontally from the top. What is the total height of the hill?</div>
+        <div class="work-area"><span class="work-area-label">work</span></div>
+        <div class="answer-line">
+          <span class="answer-label">Height =</span>
+          <div class="answer-blank"></div>
+          <span class="answer-unit">feet</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SECTION 2: AREA -->
+  <div class="section-label" style="margin-top:2rem;">Problem 2 — Area Bounded by a Line</div>
+
+  <div class="problem-card">
+    <div class="problem-number">Problem 2</div>
+    <p class="problem-text">
+      The line \(f(x) = -2x + 10\), the x-axis (\(y = 0\)), and the y-axis (\(x = 0\))
+      form a triangular region. A vertical line at \(x = 3\) divides that region into
+      two smaller shapes.
+    </p>
+
+    <div class="sub-parts">
+
+      <div class="sub-part">
+        <div class="sub-part-label">(a) Find the x-intercept of \(f(x)\). This is the point where the line meets the x-axis.</div>
+        <div class="work-area"><span class="work-area-label">work</span></div>
+        <div class="answer-line">
+          <span class="answer-label">x-intercept:</span>
+          <div class="answer-blank"></div>
+        </div>
+      </div>
+
+      <div class="sub-part">
+        <div class="sub-part-label">(b) Find the values of \(f(0)\) and \(f(3)\). These are the heights of the line at \(x = 0\) and \(x = 3\).</div>
+        <div class="work-area"><span class="work-area-label">work</span></div>
+        <div class="answer-line">
+          <span class="answer-label">\(f(0) =\)</span>
+          <div class="answer-blank"></div>
+        </div>
+        <div class="answer-line" style="margin-top:0.4rem;">
+          <span class="answer-label">\(f(3) =\)</span>
+          <div class="answer-blank"></div>
+        </div>
+      </div>
+
+      <div class="sub-part">
+        <div class="sub-part-label">(c) The LEFT region (from \(x = 0\) to \(x = 3\)) is a <em>trapezoid</em>. Its parallel sides are \(f(0)\) and \(f(3)\), and its width is 3. Find its area.
+          <br><br>\(A_{\text{trap}} = \tfrac{1}{2}(b_1 + b_2) \times h\)
+        </div>
+        <div class="work-area-lg"><span class="work-area-label">work</span></div>
+        <div class="answer-line">
+          <span class="answer-label">Left area =</span>
+          <div class="answer-blank"></div>
+          <span class="answer-unit">sq units</span>
+        </div>
+      </div>
+
+      <div class="sub-part">
+        <div class="sub-part-label">(d) The RIGHT region (from \(x = 3\) to the x-intercept) is a <em>triangle</em>. Its base runs from \(x = 3\) to the x-intercept, and its height is \(f(3)\). Find its area.</div>
+        <div class="work-area-lg"><span class="work-area-label">work</span></div>
+        <div class="answer-line">
+          <span class="answer-label">Right area =</span>
+          <div class="answer-blank"></div>
+          <span class="answer-unit">sq units</span>
+        </div>
+      </div>
+
+      <div class="sub-part">
+        <div class="sub-part-label">(e) Find the total area of the original triangle (the whole region under \(f(x)\) from \(x=0\) to the x-intercept). Verify it equals Left area + Right area.</div>
+        <div class="work-area-lg"><span class="work-area-label">work</span></div>
+        <div class="answer-line">
+          <span class="answer-label">Total area =</span>
+          <div class="answer-blank"></div>
+          <span class="answer-unit">sq units</span>
+        </div>
+        <div class="answer-line" style="margin-top:0.4rem;">
+          <span class="answer-label">Check:</span>
+          <div class="answer-blank"></div>
+          <span class="answer-unit">+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ✓</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footer">Motor City Math · Slope &amp; Area Drill</div>
+</div>
+</body>
+</html>
