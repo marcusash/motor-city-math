@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>S5 Practice Quiz D — Teacher-Test Simulation</title>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+<style>
+  :root {
+    --bg: #fff;
+    --text: #1a1a2e;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+    --light: #f9fafb;
+    --navy: #1e3a5f;
+    --blue: #1e40af;
+    --red: #dc2626;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+    line-height: 1.6;
+  }
+  .header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid var(--navy);
+    padding-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+  .header-left h1 { font-size: 1.15rem; font-weight: 700; color: var(--navy); }
+  .header-left .sub { font-size: 0.8rem; color: var(--muted); margin-top: 0.1rem; }
+  .header-right { text-align: right; font-size: 0.8rem; color: var(--muted); line-height: 1.7; }
+  .name-line {
+    display: flex;
+    gap: 2rem;
+    margin: 1rem 0 2rem;
+    font-size: 0.85rem;
+  }
+  .name-field { display: flex; align-items: baseline; gap: 0.4rem; }
+  .name-field span { color: var(--muted); }
+  .name-field .blank { border-bottom: 1px solid #333; width: 160px; height: 18px; display: inline-block; }
+  .part-header {
+    background: var(--navy);
+    color: #fff;
+    padding: 0.45rem 1rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    border-radius: 4px;
+    margin: 1.75rem 0 1.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .part-header .pts { font-weight: 400; font-size: 0.7rem; opacity: 0.85; }
+  .question {
+    margin-bottom: 1.5rem;
+    padding-left: 0.25rem;
+  }
+  .q-label {
+    font-weight: 700;
+    font-size: 0.92rem;
+    color: var(--navy);
+    margin-bottom: 0.35rem;
+  }
+  .q-text {
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.7;
+  }
+  .q-sub {
+    margin-left: 1rem;
+    margin-bottom: 0.85rem;
+  }
+  .q-sub-label {
+    font-size: 0.88rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+  }
+  .work-box {
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    height: 80px;
+    margin: 0.4rem 0;
+    background: var(--light);
+  }
+  .work-box-lg {
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    height: 110px;
+    margin: 0.4rem 0;
+    background: var(--light);
+  }
+  .answer-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.4rem;
+    font-size: 0.85rem;
+  }
+  .answer-row .ans-label { color: var(--muted); min-width: 60px; font-weight: 600; }
+  .answer-row .ans-blank { flex: 1; border-bottom: 1.5px solid var(--text); height: 20px; max-width: 280px; }
+  .answer-row .ans-unit { color: var(--muted); font-size: 0.8rem; }
+  .divider { border: none; border-top: 1px dashed var(--border); margin: 1.5rem 0; }
+  .scoring-grid {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    margin-top: 3rem;
+    overflow: hidden;
+  }
+  .scoring-grid .sg-title {
+    background: var(--light);
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+  }
+  .sg-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    padding: 0.45rem 1rem;
+    font-size: 0.82rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .sg-row:last-child { border-bottom: none; }
+  .sg-row.total { font-weight: 700; background: var(--light); }
+  .sg-row .pts-col { color: var(--muted); }
+  .sg-row .score-col { border-bottom: 1px solid var(--text); width: 40px; }
+  @media print {
+    body { padding: 1rem; }
+    .work-box { background: #fff; }
+    .work-box-lg { background: #fff; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-left">
+    <div class="sub">Motor City Math · Algebra 2</div>
+    <h1>S5: Logarithms &amp; Exponential Equations</h1>
+    <div class="sub">Practice Quiz D &mdash; Teacher-Test Simulation</div>
+  </div>
+  <div class="header-right">
+    25 points<br>
+    Show all work
+  </div>
+</div>
+
+<div class="name-line">
+  <div class="name-field"><span>Name:</span> <div class="blank"></div></div>
+  <div class="name-field"><span>Date:</span> <div class="blank" style="width:100px"></div></div>
+</div>
+
+<!-- PART 1 -->
+<div class="part-header">
+  Part 1 &mdash; Exponential ↔ Log Conversions (S5.a)
+  <span class="pts">4 points · 1 pt each</span>
+</div>
+
+<div class="question">
+  <div class="q-label">1.</div>
+  <p class="q-text">Rewrite each equation in the other form (exponential ↔ logarithmic).</p>
+
+  <div class="q-sub">
+    <div class="q-sub-label">(a) &nbsp; \(6^3 = 216\)</div>
+    <div class="answer-row"><span class="ans-label">log form:</span><div class="ans-blank"></div></div>
+  </div>
+
+  <div class="q-sub">
+    <div class="q-sub-label">(b) &nbsp; \(\log_5\!\left(\tfrac{1}{25}\right) = -2\)</div>
+    <div class="answer-row"><span class="ans-label">exp form:</span><div class="ans-blank"></div></div>
+  </div>
+
+  <div class="q-sub">
+    <div class="q-sub-label">(c) &nbsp; \(4^{3/2} = 8\)</div>
+    <div class="answer-row"><span class="ans-label">log form:</span><div class="ans-blank"></div></div>
+  </div>
+
+  <div class="q-sub">
+    <div class="q-sub-label">(d) &nbsp; \(\log_{100}(10) = \tfrac{1}{2}\)</div>
+    <div class="answer-row"><span class="ans-label">exp form:</span><div class="ans-blank"></div></div>
+  </div>
+</div>
+
+<!-- PART 2 -->
+<div class="part-header">
+  Part 2 &mdash; Evaluate Logarithms (S5.b)
+  <span class="pts">6 points · 1 pt each</span>
+</div>
+
+<div class="question">
+  <div class="q-label">2.</div>
+  <p class="q-text">Evaluate. Write exact answers. If no solution exists, write <em>undefined</em>.</p>
+
+  <div class="q-sub">
+    <div class="q-sub-label">(a) &nbsp; \(\log_3(243)\)</div>
+    <div class="answer-row"><span class="ans-label">=</span><div class="ans-blank"></div></div>
+  </div>
+
+  <div class="q-sub">
+    <div class="q-sub-label">(b) &nbsp; \(\log(0.001)\)</div>
+    <div class="answer-row"><span class="ans-label">=</span><div class="ans-blank"></div></div>
+  </div>
+
+  <div class="q-sub">
+    <div class="q-sub-label">(c) &nbsp; \(\log_6(1)\)</div>
+    <div class="answer-row"><span class="ans-label">=</span><div class="ans-blank"></div></div>
+  </div>
+
+  <div class="q-sub">
+    <div class="q-sub-label">(d) &nbsp; \(\log_4\!\left(\tfrac{1}{64}\right)\)</div>
+    <div class="answer-row"><span class="ans-label">=</span><div class="ans-blank"></div></div>
+  </div>
+
+  <div class="q-sub">
+    <div class="q-sub-label">(e) &nbsp; \(\log_8(4)\) &nbsp;&nbsp; <em style="font-size:0.78rem;color:#6b7280">Write as a simplified fraction.</em></div>
+    <div class="answer-row"><span class="ans-label">=</span><div class="ans-blank"></div></div>
+  </div>
+
+  <div class="q-sub">
+    <div class="q-sub-label">(f) &nbsp; \(\log_2(-8)\)</div>
+    <div class="answer-row"><span class="ans-label">=</span><div class="ans-blank"></div></div>
+  </div>
+</div>
+
+<!-- PART 3 -->
+<div class="part-header">
+  Part 3 &mdash; Solve Equations (S5.c &amp; S5.d)
+  <span class="pts">10 points · 2 pts each</span>
+</div>
+
+<div class="question">
+  <div class="q-label">3.</div>
+  <p class="q-text">Solve for \(x\). Show all steps. Leave irrational answers in exact form unless told otherwise.</p>
+
+  <div class="q-sub">
+    <div class="q-sub-label">(a) &nbsp; \(7^x = 100\)</div>
+    <div class="work-box"></div>
+    <div class="answer-row"><span class="ans-label">\(x\) =</span><div class="ans-blank"></div></div>
+  </div>
+
+  <div class="q-sub">
+    <div class="q-sub-label">(b) &nbsp; \(4 \cdot 3^{2x-1} = 324\)</div>
+    <div class="work-box-lg"></div>
+    <div class="answer-row"><span class="ans-label">\(x\) =</span><div class="ans-blank"></div></div>
+  </div>
+
+  <div class="q-sub">
+    <div class="q-sub-label">(c) &nbsp; \((2x - 5)^2 = 11\)</div>
+    <div class="work-box"></div>
+    <div class="answer-row"><span class="ans-label">\(x\) =</span><div class="ans-blank" style="max-width:340px"></div></div>
+  </div>
+
+  <div class="q-sub">
+    <div class="q-sub-label">(d) &nbsp; \(6 \cdot 2^{x+3} + 15 = 207\)</div>
+    <div class="work-box-lg"></div>
+    <div class="answer-row"><span class="ans-label">\(x\) =</span><div class="ans-blank"></div></div>
+  </div>
+
+  <div class="q-sub">
+    <div class="q-sub-label">(e) &nbsp; \(\dfrac{100}{2 + 5^{2x}} = 4\)</div>
+    <div class="work-box-lg"></div>
+    <div class="answer-row"><span class="ans-label">\(x\) =</span><div class="ans-blank" style="max-width:340px"></div></div>
+  </div>
+</div>
+
+<!-- PART 4 -->
+<div class="part-header">
+  Part 4 &mdash; Modeling (S5.c &amp; S5.d)
+  <span class="pts">5 points</span>
+</div>
+
+<div class="question">
+  <div class="q-label">4.</div>
+  <p class="q-text">
+    A ball is launched upward from a platform. Its height in feet is given by
+    \[h(t) = -t^2 + 4t + 12\]
+    where \(t\) is time in seconds after launch.
+  </p>
+
+  <div class="q-sub">
+    <div class="q-sub-label">(a) &nbsp; Compute \(h(0)\). What does this value represent in context? <span style="font-size:0.78rem;color:#dc2626;font-weight:700">(1 pt)</span></div>
+    <div class="work-box"></div>
+    <div class="answer-row"><span class="ans-label">Value:</span><div class="ans-blank"></div></div>
+    <div style="margin-top:0.5rem; font-size:0.83rem;">Context: <div style="border-bottom:1px solid #333;margin-top:0.35rem;height:18px;max-width:500px"></div></div>
+  </div>
+
+  <div class="q-sub">
+    <div class="q-sub-label">(b) &nbsp; At what time \(t\) does the ball reach its maximum height? <span style="font-size:0.78rem;color:var(--muted)">(1 pt)</span></div>
+    <div class="work-box"></div>
+    <div class="answer-row"><span class="ans-label">\(t\) =</span><div class="ans-blank"></div><span class="ans-unit">seconds</span></div>
+  </div>
+
+  <div class="q-sub">
+    <div class="q-sub-label">(c) &nbsp; What is the maximum height? <span style="font-size:0.78rem;color:var(--muted)">(1 pt)</span></div>
+    <div class="work-box"></div>
+    <div class="answer-row"><span class="ans-label">Max height:</span><div class="ans-blank"></div><span class="ans-unit">feet</span></div>
+  </div>
+
+  <div class="q-sub">
+    <div class="q-sub-label">(d) &nbsp; Factor \(h(t) = 0\) to find when the ball hits the ground. State \(t\) clearly; discard any extraneous roots and explain why. <span style="font-size:0.78rem;color:#dc2626;font-weight:700">(2 pts)</span></div>
+    <div class="work-box-lg"></div>
+    <div class="answer-row"><span class="ans-label">\(t\) =</span><div class="ans-blank"></div><span class="ans-unit">seconds</span></div>
+    <div style="margin-top:0.5rem; font-size:0.83rem;">Why discarded: <div style="border-bottom:1px solid #333;margin-top:0.35rem;height:18px;max-width:480px"></div></div>
+  </div>
+</div>
+
+<!-- Scoring -->
+<div class="scoring-grid">
+  <div class="sg-title">Score Summary</div>
+  <div class="sg-row"><span>Part 1 — Conversions</span><span class="pts-col">/ 4</span><div class="score-col"></div></div>
+  <div class="sg-row"><span>Part 2 — Evaluate Logs</span><span class="pts-col">/ 6</span><div class="score-col"></div></div>
+  <div class="sg-row"><span>Part 3 — Solve Equations</span><span class="pts-col">/ 10</span><div class="score-col"></div></div>
+  <div class="sg-row"><span>Part 4 — Modeling</span><span class="pts-col">/ 5</span><div class="score-col"></div></div>
+  <div class="sg-row total"><span>Total</span><span class="pts-col">/ 25</span><div class="score-col"></div></div>
+</div>
+
+</body>
+</html>

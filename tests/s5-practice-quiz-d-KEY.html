@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>S5 Practice Quiz D — KEY</title>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+<style>
+  :root {
+    --bg: #0d1117;
+    --surface: #161b22;
+    --border: #30363d;
+    --text: #e6edf3;
+    --muted: #7d8590;
+    --subtext: #8b949e;
+    --amber: #f0a500;
+    --amber-bg: #2a1f00;
+    --amber-border: #5a3800;
+    --green: #3fb950;
+    --green-bg: #0d2818;
+    --green-border: #1a4731;
+    --red: #f85149;
+    --red-bg: #300d0c;
+    --blue: #58a6ff;
+    --step-bg: #1c2128;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    padding: 2rem 1rem;
+  }
+  .page { max-width: 700px; margin: 0 auto; }
+  .header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.75rem;
+    margin-bottom: 2rem;
+  }
+  .header-left h1 { font-size: 1.1rem; font-weight: 700; }
+  .header-left .sub { font-size: 0.78rem; color: var(--muted); }
+  .header-right { font-size: 0.78rem; color: var(--amber); font-weight: 700; align-self: center; }
+  .part-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--amber);
+    margin: 2rem 0 1rem;
+  }
+  .q-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .q-num {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .steps { display: flex; flex-direction: column; gap: 0.4rem; margin: 0.6rem 0; }
+  .step {
+    background: var(--step-bg);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 0.45rem 0.9rem;
+    font-size: 0.88rem;
+    color: var(--subtext);
+    line-height: 1.6;
+  }
+  .step-lbl {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+    margin-bottom: 0.15rem;
+  }
+  .ans-box {
+    background: var(--amber-bg);
+    border: 1px solid var(--amber-border);
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    margin-top: 0.6rem;
+    font-weight: 700;
+    color: var(--amber);
+    font-size: 1rem;
+    text-align: center;
+  }
+  .ans-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 0.6rem; margin-top: 0.5rem; }
+  .ans-item {
+    background: var(--amber-bg);
+    border: 1px solid var(--amber-border);
+    border-radius: 5px;
+    padding: 0.4rem 0.6rem;
+    text-align: center;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--amber);
+  }
+  .ans-item .ai-label { font-size: 0.65rem; color: var(--muted); font-weight: 400; margin-bottom: 0.15rem; }
+  .watch-box {
+    background: var(--red-bg);
+    border: 1px solid #5a1e1c;
+    border-radius: 6px;
+    padding: 0.5rem 0.9rem;
+    margin-top: 0.6rem;
+    font-size: 0.82rem;
+    color: var(--red);
+  }
+  .watch-box .w-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.15rem;
+  }
+  .sub-key { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border); }
+  .sub-key:first-child { margin-top: 0; padding-top: 0; border-top: none; }
+  .sub-lbl { font-size: 0.8rem; font-weight: 700; color: var(--blue); margin-bottom: 0.35rem; }
+  .footer {
+    border-top: 1px solid var(--border);
+    margin-top: 3rem;
+    padding-top: 0.75rem;
+    font-size: 0.75rem;
+    color: var(--muted);
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="header">
+  <div class="header-left">
+    <div class="sub">Motor City Math · Algebra 2</div>
+    <h1>S5 Practice Quiz D — Answer Key</h1>
+    <div class="sub">25 points total</div>
+  </div>
+  <div class="header-right">ANSWER KEY</div>
+</div>
+
+<!-- PART 1 -->
+<div class="part-label">Part 1 — Conversions (4 pts)</div>
+
+<div class="q-card">
+  <div class="q-num">Question 1</div>
+  <div class="ans-row" style="grid-template-columns:repeat(2,1fr);">
+    <div class="ans-item">
+      <div class="ai-label">(a)</div>
+      \(\log_6(216) = 3\)
+    </div>
+    <div class="ans-item">
+      <div class="ai-label">(b)</div>
+      \(5^{-2} = \tfrac{1}{25}\)
+    </div>
+    <div class="ans-item">
+      <div class="ai-label">(c)</div>
+      \(\log_4(8) = \tfrac{3}{2}\)
+    </div>
+    <div class="ans-item">
+      <div class="ai-label">(d)</div>
+      \(100^{1/2} = 10\)
+    </div>
+  </div>
+  <div class="step" style="margin-top:0.6rem;font-size:0.8rem;">Note: (c) requires recognizing \(4^{3/2} = (\sqrt{4})^3 = 8\), so the log base is 4.</div>
+</div>
+
+<!-- PART 2 -->
+<div class="part-label">Part 2 — Evaluate (6 pts)</div>
+
+<div class="q-card">
+  <div class="q-num">Question 2</div>
+  <div class="ans-row" style="grid-template-columns:repeat(3,1fr);">
+    <div class="ans-item">
+      <div class="ai-label">(a) \(\log_3(243)\)</div>
+      5
+    </div>
+    <div class="ans-item">
+      <div class="ai-label">(b) \(\log(0.001)\)</div>
+      −3
+    </div>
+    <div class="ans-item">
+      <div class="ai-label">(c) \(\log_6(1)\)</div>
+      0
+    </div>
+    <div class="ans-item">
+      <div class="ai-label">(d) \(\log_4(1/64)\)</div>
+      −3
+    </div>
+    <div class="ans-item" style="border-color:#f0a500;background:#3a2800;">
+      <div class="ai-label" style="color:#f0a500;">(e) \(\log_8(4)\) ← WATCH</div>
+      <span style="color:#f0a500;">\(\dfrac{2}{3}\)</span>
+    </div>
+    <div class="ans-item">
+      <div class="ai-label">(f) \(\log_2(-8)\)</div>
+      undefined
+    </div>
+  </div>
+  <div class="watch-box">
+    <div class="w-label">⚠ Watch — Quiz C exact-form error</div>
+    (e) requires exact fraction: \(8^{2/3} = (\sqrt[3]{8})^2 = 4\) so the answer is \(\tfrac{2}{3}\). Writing 0.667 is wrong — the answer must be the fraction.
+  </div>
+</div>
+
+<!-- PART 3 -->
+<div class="part-label">Part 3 — Solve (10 pts · 2 each)</div>
+
+<div class="q-card">
+  <div class="q-num">3(a) &nbsp; \(7^x = 100\)</div>
+  <div class="steps">
+    <div class="step">Take \(\log\) of both sides: \(\,x \cdot \log 7 = \log 100\)</div>
+    <div class="step">\(x = \dfrac{\log 100}{\log 7} = \log_7(100)\approx 2.366\)</div>
+  </div>
+  <div class="ans-box">\(x = \log_7(100)\) &nbsp; (or \(\approx 2.366\))</div>
+</div>
+
+<div class="q-card">
+  <div class="q-num">3(b) &nbsp; \(4 \cdot 3^{2x-1} = 324\)</div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-lbl">Step 1 — isolate the exponential</div>
+      \(3^{2x-1} = 81\)
+    </div>
+    <div class="step">
+      <div class="step-lbl">Step 2 — recognize the base</div>
+      \(81 = 3^4\), so \(2x - 1 = 4\)
+    </div>
+    <div class="step">
+      <div class="step-lbl">Step 3 — solve</div>
+      \(2x = 5 \;\Rightarrow\; x = \tfrac{5}{2}\)
+    </div>
+  </div>
+  <div class="ans-box">\(x = \dfrac{5}{2}\)</div>
+  <div class="watch-box">
+    <div class="w-label">⚠ Arithmetic trap</div>
+    \(324 \div 4 = 81\), NOT 18. Same type of arithmetic slip as Q5 on Quiz C.
+  </div>
+</div>
+
+<div class="q-card">
+  <div class="q-num">3(c) &nbsp; \((2x - 5)^2 = 11\)</div>
+  <div class="steps">
+    <div class="step">Take \(\pm\sqrt{\phantom{x}}\) of both sides: \(\;2x - 5 = \pm\sqrt{11}\)</div>
+    <div class="step">\(x = \dfrac{5 \pm \sqrt{11}}{2}\)</div>
+  </div>
+  <div class="ans-box">\(x = \dfrac{5 + \sqrt{11}}{2}\) &nbsp; and &nbsp; \(x = \dfrac{5 - \sqrt{11}}{2}\)</div>
+  <div class="watch-box">
+    <div class="w-label">⚠ ± discipline — Quiz C Q7 error</div>
+    Must write BOTH roots. Taking only \(+\sqrt{11}\) loses 1 pt.
+  </div>
+</div>
+
+<div class="q-card">
+  <div class="q-num">3(d) &nbsp; \(6 \cdot 2^{x+3} + 15 = 207\)</div>
+  <div class="steps">
+    <div class="step"><div class="step-lbl">Step 1</div>\(6 \cdot 2^{x+3} = 192\)</div>
+    <div class="step"><div class="step-lbl">Step 2</div>\(2^{x+3} = 32 = 2^5\)</div>
+    <div class="step"><div class="step-lbl">Step 3</div>\(x + 3 = 5 \;\Rightarrow\; x = 2\)</div>
+  </div>
+  <div class="ans-box">\(x = 2\)</div>
+</div>
+
+<div class="q-card">
+  <div class="q-num">3(e) &nbsp; \(\dfrac{100}{2 + 5^{2x}} = 4\)</div>
+  <div class="steps">
+    <div class="step"><div class="step-lbl">Step 1 — multiply both sides by denominator</div>\(100 = 4(2 + 5^{2x}) = 8 + 4 \cdot 5^{2x}\)</div>
+    <div class="step"><div class="step-lbl">Step 2</div>\(4 \cdot 5^{2x} = 92 \;\Rightarrow\; 5^{2x} = 23\)</div>
+    <div class="step"><div class="step-lbl">Step 3 — take log, apply change-of-base</div>\(2x = \log_5(23) \;\Rightarrow\; x = \dfrac{\log_5(23)}{2} = \dfrac{\log 23}{2\log 5} \approx 0.974\)</div>
+  </div>
+  <div class="ans-box">\(x = \dfrac{\log_5(23)}{2} \approx 0.974\)</div>
+</div>
+
+<!-- PART 4 -->
+<div class="part-label">Part 4 — Modeling (5 pts)</div>
+
+<div class="q-card">
+  <div class="q-num">Question 4 &nbsp; \(h(t) = -t^2 + 4t + 12\)</div>
+
+  <div class="sub-key">
+    <div class="sub-lbl">(a) h(0) and its meaning &nbsp;<span style="color:var(--muted);font-weight:400">1 pt</span></div>
+    <div class="steps">
+      <div class="step">\(h(0) = -(0)^2 + 4(0) + 12 = 12\)</div>
+    </div>
+    <div class="ans-box">12 feet — the height of the platform (starting height at launch)</div>
+    <div class="watch-box">
+      <div class="w-label">⚠ Quiz C M1a gap — must explain context</div>
+      Computing 12 earns half credit. Full credit requires stating what 12 represents: the initial height / height of the platform before the ball is launched.
+    </div>
+  </div>
+
+  <div class="sub-key">
+    <div class="sub-lbl">(b) Time of maximum height &nbsp;<span style="color:var(--muted);font-weight:400">1 pt</span></div>
+    <div class="steps">
+      <div class="step">Vertex: \(t = -\dfrac{b}{2a} = -\dfrac{4}{2(-1)} = 2\) seconds</div>
+    </div>
+    <div class="ans-box">\(t = 2\) seconds</div>
+  </div>
+
+  <div class="sub-key">
+    <div class="sub-lbl">(c) Maximum height &nbsp;<span style="color:var(--muted);font-weight:400">1 pt</span></div>
+    <div class="steps">
+      <div class="step">\(h(2) = -(4) + 4(2) + 12 = -4 + 8 + 12 = 16\) feet</div>
+    </div>
+    <div class="ans-box">16 feet</div>
+  </div>
+
+  <div class="sub-key">
+    <div class="sub-lbl">(d) When does it hit the ground? &nbsp;<span style="color:var(--muted);font-weight:400">2 pts</span></div>
+    <div class="steps">
+      <div class="step"><div class="step-lbl">Set h(t) = 0</div>\(-t^2 + 4t + 12 = 0 \;\Rightarrow\; t^2 - 4t - 12 = 0\)</div>
+      <div class="step"><div class="step-lbl">Factor</div>\((t - 6)(t + 2) = 0 \;\Rightarrow\; t = 6 \text{ or } t = -2\)</div>
+      <div class="step"><div class="step-lbl">State final answer</div>Discard \(t = -2\) because time cannot be negative. The ball hits the ground at \(t = \mathbf{6}\) seconds.</div>
+    </div>
+    <div class="ans-box">\(t = 6\) seconds &nbsp;(\(t=-2\) discarded — time cannot be negative)</div>
+    <div class="watch-box">
+      <div class="w-label">⚠ Quiz C M1d gap — must state the answer</div>
+      Kai factored correctly on Quiz C but did not write the final answer statement. 1 pt for correct factoring; 1 pt for stating t = 6 and discarding t = −2 with explanation.
+    </div>
+  </div>
+</div>
+
+<div class="footer">Motor City Math · S5 Practice Quiz D KEY</div>
+</div>
+</body>
+</html>
