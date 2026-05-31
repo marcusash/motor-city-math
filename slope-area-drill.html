@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Motor City Math — Slope &amp; Area Drill</title>
+<title>Motor City Math — Slope, Revenue &amp; Area Drill</title>
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
 <style>
   :root {
@@ -136,10 +136,35 @@
     text-align: center;
   }
   @media print {
-    body { background: #fff; color: #000; padding: 1rem; }
-    .problem-card { border: 1px solid #ccc; break-inside: avoid; }
-    .work-area, .work-area-lg { height: 140px; }
-    .hint-box { border: 1px solid #c8a000; color: #7a5000; background: #fffbe6; }
+    @page { size: Letter; margin: 0.4in 0.5in; }
+    html, body { background: #fff; color: #000; }
+    body { padding: 0; font-size: 9pt; line-height: 1.25; }
+    .page { max-width: none; padding: 0; }
+    .header { color: #000; border-bottom: 1px solid #000; margin-bottom: 0.4rem; padding-bottom: 0.25rem; }
+    h1 { color: #000; font-size: 14pt; margin: 0.2rem 0 0.1rem; }
+    .subtitle { color: #444; font-size: 9pt; margin-bottom: 0.5rem; }
+    .work-area-label, .footer { color: #555; }
+    .section-label { color: #000; border-bottom: 1px solid #000; margin-top: 0.6rem !important; padding-bottom: 0.15rem; font-size: 9.5pt; }
+    .problem-card { border: 1px solid #000; background: #fff; padding: 0.45rem 0.6rem; margin: 0.35rem 0; }
+    .sub-part { break-inside: avoid; page-break-inside: avoid; }
+    .problem-number { color: #000; font-size: 9pt; margin-bottom: 0.15rem; }
+    .problem-text { margin: 0.15rem 0 0.3rem; }
+    .sub-parts { gap: 0.3rem; }
+    .sub-part { margin: 0.15rem 0; break-inside: avoid; page-break-inside: avoid; }
+    .sub-part-label { font-size: 9pt; margin-bottom: 0.15rem; }
+    .work-area, .work-area-lg { border: 1px solid #000; background: #fff; }
+    .work-area { height: 60px; }
+    .work-area-lg { height: 90px; }
+    .hint-box { border: 1px solid #000; color: #000; background: #f3f3f3; padding: 0.2rem 0.45rem; margin: 0.15rem 0; font-size: 8pt; }
+    .answer-line { margin-top: 0.15rem; }
+    .answer-blank { border-bottom: 1px solid #000; }
+    a, a:visited { color: #000; text-decoration: none; }
+
+    .log-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.4rem; }
+    .log-grid .problem-card { margin: 0; }
+    .log-grid .work-area { height: 45px; }
+    .log-grid .work-area-lg { height: 60px; }
+    .log-grid .hint-box { display: none; }
   }
 </style>
 </head>
@@ -147,12 +172,12 @@
 <div class="page">
 
   <div class="header">
-    <span class="header-left">Motor City Math</span>
-    <span class="header-right">Slope &amp; Area Drill</span>
+    <span class="header-left">Motor City Math · Kai Ash</span>
+    <span class="header-right">Show all work</span>
   </div>
 
-  <h1>Kai Ash</h1>
-  <div class="subtitle">Slope Interpretation &amp; Area &middot; Show all work</div>
+  <h1>Slope, Revenue &amp; Area Drill</h1>
+  <div class="subtitle">Slope · Revenue · Area as a Function · Logarithms</div>
 
   <!-- SECTION 1: SLOPE -->
   <div class="section-label">Problem 1 — Interpreting Slope on a Mountain Road</div>
@@ -213,82 +238,351 @@
     </div>
   </div>
 
-  <!-- SECTION 2: AREA -->
-  <div class="section-label" style="margin-top:2rem;">Problem 2 — Area Bounded by a Line</div>
+  <!-- SECTION 2: REVENUE -->
+  <div class="section-label" style="margin-top:2rem;">Problem 2 — Revenue as a Function</div>
 
   <div class="problem-card">
     <div class="problem-number">Problem 2</div>
     <p class="problem-text">
-      The line \(f(x) = -2x + 10\), the x-axis (\(y = 0\)), and the y-axis (\(x = 0\))
-      form a triangular region. A vertical line at \(x = 3\) divides that region into
-      two smaller shapes.
+      A streaming service charges <strong>\$150 − 7x\)</strong> dollars per subscription, where
+      \(x\) is the number of subscriptions sold (in thousands). Revenue is price times quantity,
+      so \(R(x) = x(150 - 7x)\), measured in thousands of dollars.
     </p>
 
     <div class="sub-parts">
 
       <div class="sub-part">
-        <div class="sub-part-label">(a) Find the x-intercept of \(f(x)\). This is the point where the line meets the x-axis.</div>
+        <div class="sub-part-label">(a) Expand \(R(x)\) and write it in standard form \(ax^2 + bx + c\). Identify \(a\), \(b\), and \(c\).</div>
         <div class="work-area"><span class="work-area-label">work</span></div>
         <div class="answer-line">
-          <span class="answer-label">x-intercept:</span>
-          <div class="answer-blank"></div>
-        </div>
-      </div>
-
-      <div class="sub-part">
-        <div class="sub-part-label">(b) Find the values of \(f(0)\) and \(f(3)\). These are the heights of the line at \(x = 0\) and \(x = 3\).</div>
-        <div class="work-area"><span class="work-area-label">work</span></div>
-        <div class="answer-line">
-          <span class="answer-label">\(f(0) =\)</span>
+          <span class="answer-label">\(R(x) =\)</span>
           <div class="answer-blank"></div>
         </div>
         <div class="answer-line" style="margin-top:0.4rem;">
-          <span class="answer-label">\(f(3) =\)</span>
+          <span class="answer-label">\(a =\) &nbsp;&nbsp; \(b =\) &nbsp;&nbsp; \(c =\)</span>
           <div class="answer-blank"></div>
         </div>
       </div>
 
       <div class="sub-part">
-        <div class="sub-part-label">(c) The LEFT region (from \(x = 0\) to \(x = 3\)) is a <em>trapezoid</em>. Its parallel sides are \(f(0)\) and \(f(3)\), and its width is 3. Find its area.
-          <br><br>\(A_{\text{trap}} = \tfrac{1}{2}(b_1 + b_2) \times h\)
-        </div>
-        <div class="work-area-lg"><span class="work-area-label">work</span></div>
+        <div class="sub-part-label">(b) What values of \(x\) make \(R(x) = 0\)? What do those values mean in context?</div>
+        <div class="work-area"><span class="work-area-label">work</span></div>
         <div class="answer-line">
-          <span class="answer-label">Left area =</span>
+          <span class="answer-label">\(x =\)</span>
           <div class="answer-blank"></div>
-          <span class="answer-unit">sq units</span>
-        </div>
-      </div>
-
-      <div class="sub-part">
-        <div class="sub-part-label">(d) The RIGHT region (from \(x = 3\) to the x-intercept) is a <em>triangle</em>. Its base runs from \(x = 3\) to the x-intercept, and its height is \(f(3)\). Find its area.</div>
-        <div class="work-area-lg"><span class="work-area-label">work</span></div>
-        <div class="answer-line">
-          <span class="answer-label">Right area =</span>
-          <div class="answer-blank"></div>
-          <span class="answer-unit">sq units</span>
-        </div>
-      </div>
-
-      <div class="sub-part">
-        <div class="sub-part-label">(e) Find the total area of the original triangle (the whole region under \(f(x)\) from \(x=0\) to the x-intercept). Verify it equals Left area + Right area.</div>
-        <div class="work-area-lg"><span class="work-area-label">work</span></div>
-        <div class="answer-line">
-          <span class="answer-label">Total area =</span>
-          <div class="answer-blank"></div>
-          <span class="answer-unit">sq units</span>
         </div>
         <div class="answer-line" style="margin-top:0.4rem;">
-          <span class="answer-label">Check:</span>
+          <span class="answer-label">Meaning:</span>
           <div class="answer-blank"></div>
-          <span class="answer-unit">+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ✓</span>
+        </div>
+      </div>
+
+      <div class="sub-part">
+        <div class="sub-part-label">(c) Use the vertex formula \(x = -b/(2a)\) to find the subscription count that <strong>maximizes revenue</strong>. Leave your answer as a fraction.</div>
+        <div class="work-area-lg"><span class="work-area-label">work</span></div>
+        <div class="answer-line">
+          <span class="answer-label">\(x =\)</span>
+          <div class="answer-blank"></div>
+          <span class="answer-unit">thousand subscriptions</span>
+        </div>
+      </div>
+
+      <div class="sub-part">
+        <div class="sub-part-label">(d) Calculate \(R\) at that maximum. Round to the nearest whole number (in thousands of dollars). What is the maximum revenue?</div>
+        <div class="work-area-lg"><span class="work-area-label">work</span></div>
+        <div class="answer-line">
+          <span class="answer-label">Max \(R \approx\)</span>
+          <div class="answer-blank"></div>
+          <span class="answer-unit">thousand dollars</span>
+        </div>
+      </div>
+
+      <div class="sub-part">
+        <div class="sub-part-label">(e) The company needs \(R(x) = 700\) (thousand dollars). Set up the equation and solve using the quadratic formula. There are two solutions — what does each one mean for the business?</div>
+        <div class="work-area-lg"><span class="work-area-label">work</span></div>
+        <div class="answer-line">
+          <span class="answer-label">\(x_1 \approx\)</span>
+          <div class="answer-blank"></div>
+          <span class="answer-unit">thousand</span>
+        </div>
+        <div class="answer-line" style="margin-top:0.4rem;">
+          <span class="answer-label">\(x_2 \approx\)</span>
+          <div class="answer-blank"></div>
+          <span class="answer-unit">thousand</span>
+        </div>
+        <div class="answer-line" style="margin-top:0.4rem;">
+          <span class="answer-label">Meaning:</span>
+          <div class="answer-blank"></div>
         </div>
       </div>
 
     </div>
   </div>
 
-  <div class="footer">Motor City Math · Slope &amp; Area Drill</div>
+  <!-- SECTION 3: TRIANGLE UNDER A LINE -->
+  <div class="section-label" style="margin-top:2rem;">Problem 3 — Triangle Under a Line</div>
+
+  <div class="problem-card">
+    <div class="problem-number">Problem 3</div>
+    <p class="problem-text">
+      The line \(f(x) = 48 - 6x\) is drawn on a coordinate plane. A right triangle is
+      formed with its base along the x-axis from \(0\) to \(x\), and its height going straight
+      up from \((x, 0)\) to the point \((x,\ f(x))\) on the line.
+    </p>
+
+    <div class="sub-parts">
+
+      <div class="sub-part">
+        <div class="sub-part-label">(a) Write the area function \(A(x)\) using the formula \(A = \tfrac{1}{2} \cdot \text{base} \cdot \text{height}\). Simplify completely.</div>
+        <div class="work-area"><span class="work-area-label">work</span></div>
+        <div class="answer-line">
+          <span class="answer-label">\(A(x) =\)</span>
+          <div class="answer-blank"></div>
+        </div>
+      </div>
+
+      <div class="sub-part">
+        <div class="sub-part-label">(b) What is the domain of \(A(x)\)? Explain why \(x\) cannot go higher than its upper bound.</div>
+        <div class="work-area"><span class="work-area-label">work</span></div>
+        <div class="answer-line">
+          <span class="answer-label">Domain:</span>
+          <div class="answer-blank"></div>
+        </div>
+      </div>
+
+      <div class="sub-part">
+        <div class="sub-part-label">(c) Complete the table.</div>
+        <div style="overflow-x:auto; margin-top:0.75rem;">
+          <table style="border-collapse:collapse; font-size:0.88rem; color:var(--text); width:100%;">
+            <thead>
+              <tr>
+                <th style="border:1px solid var(--border); padding:6px 10px; background:var(--bg); color:var(--muted);">\(x\)</th>
+                <td style="border:1px solid var(--border); padding:6px 14px; text-align:center;">1</td>
+                <td style="border:1px solid var(--border); padding:6px 14px; text-align:center;">2</td>
+                <td style="border:1px solid var(--border); padding:6px 14px; text-align:center;">3</td>
+                <td style="border:1px solid var(--border); padding:6px 14px; text-align:center;">4</td>
+                <td style="border:1px solid var(--border); padding:6px 14px; text-align:center;">5</td>
+                <td style="border:1px solid var(--border); padding:6px 14px; text-align:center;">6</td>
+                <td style="border:1px solid var(--border); padding:6px 14px; text-align:center;">7</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th style="border:1px solid var(--border); padding:6px 10px; background:var(--bg); color:var(--muted); text-align:left;">\(A(x)\)</th>
+                <td style="border:1px solid var(--border); padding:6px 14px; height:36px;"></td>
+                <td style="border:1px solid var(--border); padding:6px 14px;"></td>
+                <td style="border:1px solid var(--border); padding:6px 14px;"></td>
+                <td style="border:1px solid var(--border); padding:6px 14px;"></td>
+                <td style="border:1px solid var(--border); padding:6px 14px;"></td>
+                <td style="border:1px solid var(--border); padding:6px 14px;"></td>
+                <td style="border:1px solid var(--border); padding:6px 14px;"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="margin-top:0.6rem; font-size:0.8rem; color:var(--muted);">What pattern do you notice in the table?</div>
+        <div class="work-area" style="height:50px;"><span class="work-area-label">observation</span></div>
+      </div>
+
+      <div class="sub-part">
+        <div class="sub-part-label">(d) Use the vertex formula to find the value of \(x\) that maximizes the area. What is the maximum area?</div>
+        <div class="work-area-lg"><span class="work-area-label">work</span></div>
+        <div class="answer-line">
+          <span class="answer-label">\(x =\)</span>
+          <div class="answer-blank"></div>
+        </div>
+        <div class="answer-line" style="margin-top:0.4rem;">
+          <span class="answer-label">Max area =</span>
+          <div class="answer-blank"></div>
+          <span class="answer-unit">square units</span>
+        </div>
+      </div>
+
+      <div class="sub-part">
+        <div class="sub-part-label">(e) Find all values of \(x\) where \(A(x) = 45\). Factor to solve — no quadratic formula needed. Describe the two triangles.</div>
+        <div class="work-area-lg"><span class="work-area-label">work</span></div>
+        <div class="answer-line">
+          <span class="answer-label">\(x =\)</span>
+          <div class="answer-blank"></div>
+          <span class="answer-unit">and</span>
+          <div class="answer-blank"></div>
+        </div>
+      </div>
+
+      <div class="sub-part">
+        <div class="sub-part-label">(f) Find all values of \(x\) where \(A(x) = 36\). For each solution, write the base and height of the triangle and explain why the two triangles have the same area even though they look different.</div>
+        <div class="work-area-lg"><span class="work-area-label">work</span></div>
+        <div class="answer-line">
+          <span class="answer-label">\(x =\)</span>
+          <div class="answer-blank"></div>
+          <span class="answer-unit">and</span>
+          <div class="answer-blank"></div>
+        </div>
+        <div class="answer-line" style="margin-top:0.4rem;">
+          <span class="answer-label">Explanation:</span>
+          <div class="answer-blank"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SECTION 4: LOG EVALUATION -->
+  <div class="section-label" style="margin-top:2rem;">Problems 4–7 — Evaluating Logarithms</div>
+
+  <div class="log-grid">
+  <div class="problem-card">
+    <div class="problem-number">Problem 4</div>
+    <p class="problem-text">
+      Evaluate: \(\log_{27}(9)\)
+    </p>
+
+    <div class="hint-box">
+      <div class="hint-label">Hint</div>
+      Can you write both 27 and 9 as powers of the same base? If \(\log_{27}(9) = y\),
+      then \(27^y = 9\). Rewrite both sides using a common base, then set the exponents equal.
+    </div>
+
+    <div class="sub-parts">
+
+      <div class="sub-part">
+        <div class="sub-part-label">(a) Write 27 and 9 as powers of a common base.</div>
+        <div class="work-area"><span class="work-area-label">work</span></div>
+        <div class="answer-line">
+          <span class="answer-label">\(27 =\)</span>
+          <div class="answer-blank"></div>
+          &nbsp;&nbsp;
+          <span class="answer-label">\(9 =\)</span>
+          <div class="answer-blank"></div>
+        </div>
+      </div>
+
+      <div class="sub-part">
+        <div class="sub-part-label">(b) Rewrite \(27^y = 9\) using your common base. Set the exponents equal and solve for \(y\).</div>
+        <div class="work-area-lg"><span class="work-area-label">work</span></div>
+        <div class="answer-line">
+          <span class="answer-label">\(\log_{27}(9) =\)</span>
+          <div class="answer-blank"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="problem-card">
+    <div class="problem-number">Problem 5</div>
+    <p class="problem-text">
+      Evaluate: \(\log_{32}(8)\)
+    </p>
+
+    <div class="hint-box">
+      <div class="hint-label">Hint</div>
+      32 and 8 don't look related — but they share a common base. Find it, rewrite both,
+      then solve for the exponent.
+    </div>
+
+    <div class="sub-parts">
+
+      <div class="sub-part">
+        <div class="sub-part-label">(a) Write 32 and 8 as powers of a common base.</div>
+        <div class="work-area"><span class="work-area-label">work</span></div>
+        <div class="answer-line">
+          <span class="answer-label">\(32 =\)</span>
+          <div class="answer-blank"></div>
+          &nbsp;&nbsp;
+          <span class="answer-label">\(8 =\)</span>
+          <div class="answer-blank"></div>
+        </div>
+      </div>
+
+      <div class="sub-part">
+        <div class="sub-part-label">(b) Rewrite \(32^y = 8\) using your common base. Set the exponents equal and solve for \(y\).</div>
+        <div class="work-area-lg"><span class="work-area-label">work</span></div>
+        <div class="answer-line">
+          <span class="answer-label">\(\log_{32}(8) =\)</span>
+          <div class="answer-blank"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="problem-card">
+    <div class="problem-number">Problem 6</div>
+    <p class="problem-text">
+      Evaluate: \(\log_{16}(32)\)
+    </p>
+
+    <div class="hint-box">
+      <div class="hint-label">Hint</div>
+      16 and 32 are both powers of 2. Write each one that way, then set exponents equal.
+    </div>
+
+    <div class="sub-parts">
+
+      <div class="sub-part">
+        <div class="sub-part-label">(a) Write 16 and 32 as powers of a common base.</div>
+        <div class="work-area"><span class="work-area-label">work</span></div>
+        <div class="answer-line">
+          <span class="answer-label">\(16 =\)</span>
+          <div class="answer-blank"></div>
+          &nbsp;&nbsp;
+          <span class="answer-label">\(32 =\)</span>
+          <div class="answer-blank"></div>
+        </div>
+      </div>
+
+      <div class="sub-part">
+        <div class="sub-part-label">(b) Rewrite \(16^y = 32\) using your common base. Set the exponents equal and solve for \(y\).</div>
+        <div class="work-area-lg"><span class="work-area-label">work</span></div>
+        <div class="answer-line">
+          <span class="answer-label">\(\log_{16}(32) =\)</span>
+          <div class="answer-blank"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="problem-card">
+    <div class="problem-number">Problem 7</div>
+    <p class="problem-text">
+      Evaluate: \(\log_{125}(25)\)
+    </p>
+
+    <div class="hint-box">
+      <div class="hint-label">Hint</div>
+      125 and 25 share a common base — it's not 2 this time.
+    </div>
+
+    <div class="sub-parts">
+
+      <div class="sub-part">
+        <div class="sub-part-label">(a) Write 125 and 25 as powers of a common base.</div>
+        <div class="work-area"><span class="work-area-label">work</span></div>
+        <div class="answer-line">
+          <span class="answer-label">\(125 =\)</span>
+          <div class="answer-blank"></div>
+          &nbsp;&nbsp;
+          <span class="answer-label">\(25 =\)</span>
+          <div class="answer-blank"></div>
+        </div>
+      </div>
+
+      <div class="sub-part">
+        <div class="sub-part-label">(b) Rewrite \(125^y = 25\) using your common base. Set the exponents equal and solve for \(y\).</div>
+        <div class="work-area-lg"><span class="work-area-label">work</span></div>
+        <div class="answer-line">
+          <span class="answer-label">\(\log_{125}(25) =\)</span>
+          <div class="answer-blank"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  </div>
+
+  <div class="footer">Motor City Math · Slope, Revenue &amp; Area Drill</div>
 </div>
 </body>
 </html>
