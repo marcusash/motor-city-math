@@ -733,12 +733,13 @@
             } else if (i === n-1 && p.fa >= 93) {
                 lc = 'rgba(63,185,80,0.8)'; sc = 'rgba(63,185,80,0.5)';
             }
-            var combined = p.label + (p.sublabel ? ' \u00b7 ' + p.sublabel : '');
-            return '<text x="'+xs[i]+'" y="118" font-size="10" font-weight="600" fill="'+lc+'" text-anchor="end" font-family="var(--font-body)" transform="rotate(-40 '+xs[i]+' 118)">'+combined+'</text>';
+            var line1 = '<text x="'+xs[i]+'" y="120" font-size="10" font-weight="600" fill="'+lc+'" text-anchor="middle" font-family="var(--font-body)">'+p.label+'</text>';
+            var line2 = p.sublabel ? '<text x="'+xs[i]+'" y="132" font-size="9" font-weight="500" fill="'+sc+'" text-anchor="middle" font-family="var(--font-body)">'+p.sublabel+'</text>' : '';
+            return line1 + line2;
         }).join('');
 
         container.innerHTML =
-            '<svg role="img" aria-label="Score progress chart showing '+n+' test'+(n!==1?'s':'')+'" viewBox="0 0 720 188" height="188" style="display:block;width:100%;overflow:visible">' +
+            '<svg role="img" aria-label="Score progress chart showing '+n+' test'+(n!==1?'s':'')+'" viewBox="0 0 720 142" height="142" style="display:block;width:100%;overflow:visible">' +
             foulZone +
             '<line x1="28" y1="'+yB+'" x2="668" y2="'+yB+'" stroke="rgba(255,255,255,0.22)" stroke-width="1.5" stroke-dasharray="3 7"/>' +
             '<text x="16" y="'+(yB+3.5)+'" font-size="10" font-weight="700" fill="rgba(255,255,255,0.55)" text-anchor="middle" font-family="var(--font-body)">B</text>' +
