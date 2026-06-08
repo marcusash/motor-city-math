@@ -2,11 +2,11 @@
   "key": "school-assessment3-2026-06-07",
   "attempts": [
     {
-      "score": 8,
+      "score": 7,
       "total": 8,
-      "pct": 100,
-      "letter_grade": "A",
-      "teacher_grade": "A/A",
+      "pct": 88,
+      "letter_grade": "A/B",
+      "teacher_grade": "A/B",
       "type": "assessment",
       "graded_by": "FR+Marcus",
       "date": "2026-06-07",
@@ -14,7 +14,7 @@
       "standards_tested": ["S5", "S6"],
       "sections": {
         "S5": { "score": 4, "total": 4, "pct": 100, "description": "Solving Exponential Equations with Logarithms (inverse functions, log properties, exponential equations)" },
-        "S6": { "score": 4, "total": 4, "pct": 100, "description": "Modeling with Functions (exponential models, population growth, optimization)" }
+        "S6": { "score": 3, "total": 4, "pct": 75, "description": "Modeling with Functions (exponential models, population growth, optimization)" }
       },
       "questions": {
         "q1":  { "correct": true,  "score": 1, "total": 1, "standard": "S5", "type": "inverse-function",     "problem": "Compute inverse function values — multiple sub-parts",                                                         "kai_answer": "correct", "note": "S5 = A; all inverse function computations credited by teacher." },
@@ -26,7 +26,7 @@
         "q5a": { "correct": true,  "score": 1, "total": 1, "standard": "S6", "type": "population-model",     "problem": "Bellevue WA: write model P(t), P₀ = 122,363 (2010 census), 1.4% annual growth",                              "kai_answer": "P(t) = 122363(1.014)^t", "note": "Correct model." },
         "q5b": { "correct": true,  "score": 1, "total": 1, "standard": "S6", "type": "population-compare",   "problem": "Use model to estimate 2020 population; compare to 2020 census (151,654)",                                      "kai_answer": "P(10) ≈ 140,600; model underestimates by ~11,000", "note": "Comparison and interpretation credited." },
         "q5c": { "correct": true,  "score": 1, "total": 1, "standard": "S6", "type": "population-project",   "problem": "Per model, in what year will population reach 160,000?",                                                       "kai_answer": "≈ 2031", "note": "Year calculation credited." },
-        "q5d": { "correct": true,  "score": 1, "total": 1, "standard": "S6", "type": "growth-rate",          "problem": "Using 2020 census data (151,654), derive actual growth rate b",                                               "kai_answer": "b ≈ 1.021 (~2.1%/yr)", "note": "Correct. 151654 = 122363·b^10 → b = (151654/122363)^0.1 ≈ 1.0217. Kai's 1.021 is correct to 3 sig figs. Teacher gave full credit. FR initial grading misread as 1.011 — error corrected." },
+        "q5d": { "correct": true,  "score": 1, "total": 1, "standard": "S6", "type": "growth-rate",          "problem": "Using 2020 census data (151,654), derive actual growth rate b",                                               "kai_answer": "b ≈ 1.021 (~2.1%/yr)", "note": "Correct. 151654 = 122363·b^10 → b = (151654/122363)^0.1 ≈ 1.0217. Teacher gave full credit." },
         "q6":  { "correct": true,  "score": 1, "total": 1, "standard": "S6", "type": "solve-for-t",          "problem": "SAAB enrollment recovery: given f(t) = 1500 - 800(0.5)^t, find t when f(t) = 1197",                           "kai_answer": "t ≈ 1.4 years", "note": "Exponential equation solved correctly with logarithms." },
         "q7a": { "correct": true,  "score": 1, "total": 1, "standard": "S6", "type": "optimization",         "problem": "Yard Sale sign: 100-inch wire, fold into rectangle. Write A(x) for area in terms of one side x",              "kai_answer": "A(x) = x(50 − x) = 50x − x²", "note": "Perimeter constraint gives l + w = 50 → correct quadratic." },
         "q7b": { "correct": true,  "score": 1, "total": 1, "standard": "S6", "type": "optimization",         "problem": "Find x that maximizes A(x)",                                                                                   "kai_answer": "x = 25", "note": "Vertex at x = −b/(2a) = 50/2 = 25. Correct." },
