@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MCM Final Practice Exam — Algebra 2</title>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+<style>
+  :root { --bg:#fff; --text:#1a1a2e; --muted:#6b7280; --border:#e5e7eb; --light:#f9fafb; --navy:#1e3a5f; --blue:#1e40af; --red:#dc2626; --gold:#b8860b; }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);max-width:760px;margin:0 auto;padding:2rem 1.5rem 4rem;line-height:1.6;}
+  .header{display:flex;justify-content:space-between;border-bottom:2px solid var(--navy);padding-bottom:0.75rem;margin-bottom:0.5rem;}
+  .header-left h1{font-size:1.18rem;font-weight:700;color:var(--navy);}
+  .header-left .sub{font-size:0.8rem;color:var(--muted);margin-top:0.1rem;}
+  .header-right{text-align:right;font-size:0.8rem;color:var(--muted);line-height:1.7;}
+  .name-line{display:flex;gap:2rem;margin:1rem 0 1.5rem;font-size:0.85rem;}
+  .name-field{display:flex;align-items:baseline;gap:0.4rem;}
+  .name-field span{color:var(--muted);}
+  .name-field .blank{border-bottom:1px solid #333;width:160px;height:18px;display:inline-block;}
+  .part-header{background:var(--navy);color:#fff;padding:0.5rem 1rem;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;border-radius:4px;margin:1.75rem 0 1rem;display:flex;justify-content:space-between;align-items:center;}
+  .part-header.calc{background:var(--blue);}
+  .part-header .pts{font-weight:400;font-size:0.7rem;opacity:0.9;}
+  .section-header{font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted);margin:1.4rem 0 0.6rem;padding-bottom:0.25rem;border-bottom:1px solid var(--border);}
+  .question{margin-bottom:1.3rem;padding-left:0.25rem;}
+  .q-label{font-weight:700;font-size:0.95rem;color:var(--navy);margin-bottom:0.3rem;}
+  .q-text{font-size:0.93rem;margin-bottom:0.45rem;line-height:1.65;}
+  .q-sub{margin-left:1rem;margin-bottom:0.75rem;}
+  .q-sub-label{font-size:0.88rem;font-weight:600;margin-bottom:0.25rem;}
+  .work-box{border:1px solid var(--border);border-radius:4px;height:90px;margin:0.4rem 0;background:var(--light);}
+  .work-box-lg{border:1px solid var(--border);border-radius:4px;height:150px;margin:0.4rem 0;background:var(--light);}
+  .work-box-xl{border:1px solid var(--border);border-radius:4px;height:200px;margin:0.4rem 0;background:var(--light);}
+  .answer-row{display:flex;align-items:center;gap:0.5rem;margin-top:0.4rem;font-size:0.85rem;}
+  .answer-row .ans-label{color:var(--muted);min-width:80px;font-weight:600;}
+  .answer-row .ans-blank{flex:1;border-bottom:1.5px solid var(--text);height:20px;max-width:340px;}
+  .answer-row .ans-unit{color:var(--muted);font-size:0.8rem;}
+  .graph-svg{display:block;margin:0.5rem auto;border:1px solid var(--border);background:#fff;}
+  .graph-blank{display:block;margin:0.5rem auto;border:1px solid var(--border);background:#fff;}
+  .callout{background:#fef3c7;border-left:3px solid var(--gold);padding:0.55rem 0.8rem;font-size:0.82rem;margin:0.5rem 0;border-radius:0 3px 3px 0;}
+  .scoring-grid{border:1px solid var(--border);border-radius:6px;margin-top:2.5rem;overflow:hidden;}
+  .sg-title{background:var(--light);padding:0.5rem 1rem;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted);border-bottom:1px solid var(--border);}
+  .sg-row{display:grid;grid-template-columns:2fr 1fr 1fr;padding:0.45rem 1rem;font-size:0.82rem;border-bottom:1px solid var(--border);}
+  .sg-row:last-child{border-bottom:none;}
+  .sg-row.total{font-weight:700;background:var(--light);}
+  .sg-row .pts-col{color:var(--muted);}
+  .sg-row .score-col{border-bottom:1px solid var(--text);width:40px;}
+  @media print { body{padding:1rem;} .work-box,.work-box-lg,.work-box-xl{background:#fff;} }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-left">
+    <div class="sub">Motor City Math &middot; Algebra 2</div>
+    <h1>Final Practice Exam</h1>
+    <div class="sub">Last check before Kai&rsquo;s teacher final &middot; 92 points</div>
+  </div>
+  <div class="header-right">
+    Show all work<br>
+    Label all answers with units
+  </div>
+</div>
+
+<div class="name-line">
+  <div class="name-field"><span>Name:</span> <div class="blank"></div></div>
+  <div class="name-field"><span>Date:</span> <div class="blank" style="width:100px"></div></div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════
+     PART 1 — NO CALCULATOR
+════════════════════════════════════════════════════════ -->
+<div class="part-header">
+  Part 1 &mdash; No Calculator
+  <span class="pts">29 points &middot; ~25 minutes</span>
+</div>
+
+<div class="section-header">Graphing Polynomial Functions</div>
+
+<!-- Q1: graph -> equation -->
+<div class="question">
+  <div class="q-label">1.</div>
+  <p class="q-text">The graph of the polynomial function <em>k</em> is shown to the right.</p>
+  <svg class="graph-svg" width="320" height="280" viewBox="0 0 320 280" xmlns="http://www.w3.org/2000/svg">
+    <!-- Grid lines -->
+    <g stroke="#e5e7eb" stroke-width="0.5">
+      <line x1="0" y1="20" x2="320" y2="20"/><line x1="0" y1="50" x2="320" y2="50"/>
+      <line x1="0" y1="80" x2="320" y2="80"/><line x1="0" y1="110" x2="320" y2="110"/>
+      <line x1="0" y1="170" x2="320" y2="170"/><line x1="0" y1="200" x2="320" y2="200"/>
+      <line x1="0" y1="230" x2="320" y2="230"/><line x1="0" y1="260" x2="320" y2="260"/>
+      <line x1="20" y1="0" x2="20" y2="280"/><line x1="60" y1="0" x2="60" y2="280"/>
+      <line x1="100" y1="0" x2="100" y2="280"/><line x1="180" y1="0" x2="180" y2="280"/>
+      <line x1="220" y1="0" x2="220" y2="280"/><line x1="260" y1="0" x2="260" y2="280"/>
+      <line x1="300" y1="0" x2="300" y2="280"/>
+    </g>
+    <!-- Axes (origin at 140,140, scale 40px = 1 unit on x; 30px = 6 units on y) -->
+    <g stroke="#1a1a2e" stroke-width="1.5">
+      <line x1="0" y1="140" x2="320" y2="140"/>
+      <line x1="140" y1="0" x2="140" y2="280"/>
+    </g>
+    <!-- x-axis labels: x from -3 to +4 (40px per unit, origin at x=140) -->
+    <g font-size="10" fill="#6b7280" text-anchor="middle" font-family="sans-serif">
+      <text x="20" y="155">-3</text><text x="60" y="155">-2</text><text x="100" y="155">-1</text>
+      <text x="180" y="155">1</text><text x="220" y="155">2</text><text x="260" y="155">3</text><text x="300" y="155">4</text>
+    </g>
+    <!-- y-axis labels: y from -24 to +24 (30px = 6 units, origin at y=140) -->
+    <g font-size="10" fill="#6b7280" text-anchor="end" font-family="sans-serif">
+      <text x="136" y="24">24</text><text x="136" y="54">18</text><text x="136" y="84">12</text><text x="136" y="114">6</text>
+      <text x="136" y="174">-6</text><text x="136" y="204">-12</text><text x="136" y="234">-18</text><text x="136" y="264">-24</text>
+    </g>
+    <!-- Curve: k(x) = 2(x+2)(x-1)(x-3); zeros at -2, 1, 3; k(0)=12. Scale: x in [-3,4] -> [20,300], y in [-24,24] -> [260,20] -->
+    <!-- Pre-computed sample points: x:-3=>-48 clip, x:-2.5=>-15.75, x:-2=>0, x:-1.5=>-7.875, x:-1=>-16, x:-0.5=>-10.5, x:0=>12, x:0.5=>22.5, x:1=>0, x:1.5=>-9.375, x:2=>-16, x:2.5=>-11.25, x:3=>0, x:3.5=>30.25 clip, x:4=>72 clip -->
+    <!-- Plot: convert (x,y) -> (140 + 40x, 140 - (30/6)y) = (140+40x, 140-5y) -->
+    <path d="M 20,260 C 30,250 50,180 60,140 C 70,120 80,170 100,220 C 110,235 120,225 140,80 C 150,40 170,30 180,140 C 190,180 200,235 220,220 C 230,215 240,200 260,140 C 270,100 280,50 290,20" fill="none" stroke="#1e40af" stroke-width="2"/>
+    <!-- Zero markers -->
+    <g fill="#1e40af">
+      <circle cx="60" cy="140" r="3"/><circle cx="180" cy="140" r="3"/><circle cx="260" cy="140" r="3"/>
+    </g>
+  </svg>
+
+  <div class="q-sub"><div class="q-sub-label">(a) What is the degree of <em>k</em>?</div>
+    <div class="answer-row"><span class="ans-label">degree =</span><div class="ans-blank"></div></div></div>
+
+  <div class="q-sub"><div class="q-sub-label">(b) Describe the end behavior of <em>k</em>.</div>
+    <div class="work-box" style="height:50px"></div></div>
+
+  <div class="q-sub"><div class="q-sub-label">(c) State the domain and range of <em>k</em>.</div>
+    <div class="answer-row"><span class="ans-label">Domain:</span><div class="ans-blank"></div></div>
+    <div class="answer-row"><span class="ans-label">Range:</span><div class="ans-blank"></div></div></div>
+
+  <div class="q-sub"><div class="q-sub-label">(d) State where <em>k</em> is increasing or decreasing (use interval notation).</div>
+    <div class="work-box" style="height:55px"></div></div>
+
+  <div class="q-sub"><div class="q-sub-label">(e) Where does <em>k</em> have a relative maximum or minimum? (Estimate from the graph.)</div>
+    <div class="work-box" style="height:55px"></div></div>
+
+  <div class="q-sub"><div class="q-sub-label">(f) Given \(k(0) = 12\), write an equation for \(k(x)\) in <strong>factored form</strong>.</div>
+    <div class="work-box"></div>
+    <div class="answer-row"><span class="ans-label">\(k(x) =\)</span><div class="ans-blank"></div></div></div>
+
+  <div class="q-sub"><div class="q-sub-label">(g) Write an equation for \(k(x)\) in <strong>standard form</strong>.</div>
+    <div class="work-box-lg"></div>
+    <div class="answer-row"><span class="ans-label">\(k(x) =\)</span><div class="ans-blank"></div></div></div>
+</div>
+
+<!-- Q2: equation -> graph -->
+<div class="question">
+  <div class="q-label">2.</div>
+  <p class="q-text">Let \(f(x) = -2x(x - 3)(x + 2)^2\).</p>
+
+  <div class="q-sub"><div class="q-sub-label">(a) What is the degree of <em>f</em>?</div>
+    <div class="answer-row"><span class="ans-label">degree =</span><div class="ans-blank"></div></div></div>
+
+  <div class="q-sub"><div class="q-sub-label">(b) Describe the end behavior of <em>f</em>.</div>
+    <div class="work-box" style="height:50px"></div></div>
+
+  <div class="q-sub"><div class="q-sub-label">(c) Sketch a graph of <em>f</em>. Label the x-intercepts and indicate multiplicity (cross vs. bounce).</div>
+    <svg class="graph-blank" width="320" height="280" viewBox="0 0 320 280" xmlns="http://www.w3.org/2000/svg">
+      <g stroke="#e5e7eb" stroke-width="0.5">
+        <line x1="0" y1="20" x2="320" y2="20"/><line x1="0" y1="50" x2="320" y2="50"/>
+        <line x1="0" y1="80" x2="320" y2="80"/><line x1="0" y1="110" x2="320" y2="110"/>
+        <line x1="0" y1="170" x2="320" y2="170"/><line x1="0" y1="200" x2="320" y2="200"/>
+        <line x1="0" y1="230" x2="320" y2="230"/><line x1="0" y1="260" x2="320" y2="260"/>
+        <line x1="20" y1="0" x2="20" y2="280"/><line x1="60" y1="0" x2="60" y2="280"/>
+        <line x1="100" y1="0" x2="100" y2="280"/><line x1="180" y1="0" x2="180" y2="280"/>
+        <line x1="220" y1="0" x2="220" y2="280"/><line x1="260" y1="0" x2="260" y2="280"/>
+        <line x1="300" y1="0" x2="300" y2="280"/>
+      </g>
+      <g stroke="#1a1a2e" stroke-width="1.5">
+        <line x1="0" y1="140" x2="320" y2="140"/><line x1="140" y1="0" x2="140" y2="280"/>
+      </g>
+      <g font-size="10" fill="#6b7280" text-anchor="middle" font-family="sans-serif">
+        <text x="20" y="155">-3</text><text x="60" y="155">-2</text><text x="100" y="155">-1</text>
+        <text x="180" y="155">1</text><text x="220" y="155">2</text><text x="260" y="155">3</text><text x="300" y="155">4</text>
+      </g>
+    </svg></div>
+
+  <div class="q-sub"><div class="q-sub-label">(d) Rewrite \(f\) in <strong>standard form</strong>.</div>
+    <div class="work-box-lg"></div>
+    <div class="answer-row"><span class="ans-label">\(f(x) =\)</span><div class="ans-blank"></div></div></div>
+</div>
+
+<div class="section-header">Evaluating Logarithms</div>
+
+<div class="question">
+  <div class="q-label">3.</div>
+  <p class="q-text">Evaluate. Write exact answers. If no solution exists, write <em>undefined</em>.</p>
+
+  <div class="q-sub"><div class="q-sub-label">(a) \(\log_2(32)\)</div>
+    <div class="answer-row"><span class="ans-label">=</span><div class="ans-blank"></div></div></div>
+  <div class="q-sub"><div class="q-sub-label">(b) \(\log_3\!\left(\tfrac{1}{27}\right)\)</div>
+    <div class="answer-row"><span class="ans-label">=</span><div class="ans-blank"></div></div></div>
+  <div class="q-sub"><div class="q-sub-label">(c) \(\log(10{,}000)\)</div>
+    <div class="answer-row"><span class="ans-label">=</span><div class="ans-blank"></div></div></div>
+  <div class="q-sub"><div class="q-sub-label">(d) \(\ln(e^5)\)</div>
+    <div class="answer-row"><span class="ans-label">=</span><div class="ans-blank"></div></div></div>
+  <div class="q-sub"><div class="q-sub-label">(e) \(\log_8(4)\) &nbsp; <em style="font-size:0.78rem;color:#6b7280">Express as a simplified fraction.</em></div>
+    <div class="answer-row"><span class="ans-label">=</span><div class="ans-blank"></div></div></div>
+  <div class="q-sub"><div class="q-sub-label">(f) \(\log_5(-25)\)</div>
+    <div class="answer-row"><span class="ans-label">=</span><div class="ans-blank"></div></div></div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════
+     PART 2 — CALCULATOR
+════════════════════════════════════════════════════════ -->
+<div class="part-header calc">
+  Part 2 &mdash; Calculator Allowed
+  <span class="pts">63 points &middot; ~50 minutes</span>
+</div>
+
+<div class="section-header">Factoring Polynomials (4 pts each)</div>
+
+<div class="question">
+  <div class="q-label">4.</div>
+  <p class="q-text">Factor completely: \(4x^3 - 8x^2 - 60x\)</p>
+  <div class="work-box-lg"></div>
+  <div class="answer-row"><span class="ans-label">factored:</span><div class="ans-blank"></div></div>
+</div>
+
+<div class="question">
+  <div class="q-label">5.</div>
+  <p class="q-text">Factor by grouping: \(x^3 - 3x^2 - 4x + 12\)</p>
+  <div class="work-box-lg"></div>
+  <div class="answer-row"><span class="ans-label">factored:</span><div class="ans-blank"></div></div>
+</div>
+
+<div class="question">
+  <div class="q-label">6.</div>
+  <p class="q-text">Factor completely: \(16x^4 - 81\)</p>
+  <div class="work-box-lg"></div>
+  <div class="answer-row"><span class="ans-label">factored:</span><div class="ans-blank"></div></div>
+</div>
+
+<div class="question">
+  <div class="q-label">7.</div>
+  <p class="q-text">Factor: \(6x^2 + 17x - 14\)</p>
+  <div class="work-box"></div>
+  <div class="answer-row"><span class="ans-label">factored:</span><div class="ans-blank"></div></div>
+</div>
+
+<div class="section-header">Dividing Polynomials (4 pts each)</div>
+
+<div class="question">
+  <div class="q-label">8.</div>
+  <p class="q-text"><strong>Long division.</strong> Divide \((x^3 - 4x^2 + 5x - 2) \div (x - 1)\).</p>
+  <div class="work-box-lg"></div>
+  <div class="answer-row"><span class="ans-label">quotient:</span><div class="ans-blank"></div></div>
+  <div class="answer-row"><span class="ans-label">remainder:</span><div class="ans-blank"></div></div>
+</div>
+
+<div class="question">
+  <div class="q-label">9.</div>
+  <p class="q-text"><strong>Long division.</strong> Divide \((2x^3 + x^2 - 5x + 3) \div (x + 2)\).</p>
+  <div class="work-box-lg"></div>
+  <div class="answer-row"><span class="ans-label">quotient:</span><div class="ans-blank"></div></div>
+  <div class="answer-row"><span class="ans-label">remainder:</span><div class="ans-blank"></div></div>
+</div>
+
+<div class="question">
+  <div class="q-label">10.</div>
+  <p class="q-text"><strong>Synthetic division.</strong> Divide \((x^4 - 2x^3 - 7x^2 + 8x + 12) \div (x - 3)\).</p>
+  <div class="work-box-lg"></div>
+  <div class="answer-row"><span class="ans-label">quotient:</span><div class="ans-blank"></div></div>
+  <div class="answer-row"><span class="ans-label">remainder:</span><div class="ans-blank"></div></div>
+</div>
+
+<div class="question">
+  <div class="q-label">11.</div>
+  <p class="q-text"><strong>Synthetic division.</strong> Divide \((x^4 + 3x^3 - x + 5) \div (x + 4)\). &nbsp;<em style="font-size:0.78rem;color:#6b7280">Watch for the missing \(x^2\) term.</em></p>
+  <div class="work-box-lg"></div>
+  <div class="answer-row"><span class="ans-label">quotient:</span><div class="ans-blank"></div></div>
+  <div class="answer-row"><span class="ans-label">remainder:</span><div class="ans-blank"></div></div>
+</div>
+
+<div class="section-header">Manipulating Polynomial Expressions (4 pts each)</div>
+
+<div class="question">
+  <div class="q-label">12.</div>
+  <p class="q-text">Expand and write in standard form: \(2x(x - 3)(x + 5)\)</p>
+  <div class="work-box-lg"></div>
+  <div class="answer-row"><span class="ans-label">=</span><div class="ans-blank"></div></div>
+</div>
+
+<div class="question">
+  <div class="q-label">13.</div>
+  <p class="q-text">Subtract and simplify: \((3x^2 - 5x + 2) - (x^2 + 4x - 7)\)
+    &nbsp;<em style="font-size:0.78rem;color:#6b7280">Distribute the negative sign carefully.</em></p>
+  <div class="work-box"></div>
+  <div class="answer-row"><span class="ans-label">=</span><div class="ans-blank"></div></div>
+</div>
+
+<div class="question">
+  <div class="q-label">14.</div>
+  <p class="q-text">Simplify completely: \(\dfrac{x^3 - 9x}{x^2 - 2x - 3}\)
+    &nbsp;<em style="font-size:0.78rem;color:#6b7280">Factor both numerator and denominator first &mdash; do not cancel individual terms.</em></p>
+  <div class="work-box-lg"></div>
+  <div class="answer-row"><span class="ans-label">=</span><div class="ans-blank"></div></div>
+</div>
+
+<div class="question">
+  <div class="q-label">15.</div>
+  <p class="q-text">Expand and write in standard form: \((2x - 1)(x + 3)^2\)</p>
+  <div class="work-box-lg"></div>
+  <div class="answer-row"><span class="ans-label">=</span><div class="ans-blank"></div></div>
+</div>
+
+<div class="section-header">Modeling (5 pts each)</div>
+
+<div class="question">
+  <div class="q-label">16.</div>
+  <p class="q-text"><strong>Linear model.</strong> A snowboard rental shop charges a $25 flat setup fee plus $18 per day. Let \(C(d)\) be the total cost (in dollars) for renting a snowboard for \(d\) days.</p>
+  <div class="q-sub"><div class="q-sub-label">(a) Write \(C(d)\) as a linear function.</div>
+    <div class="answer-row"><span class="ans-label">\(C(d) =\)</span><div class="ans-blank"></div></div></div>
+  <div class="q-sub"><div class="q-sub-label">(b) How much does it cost to rent for 7 days?</div>
+    <div class="work-box" style="height:60px"></div>
+    <div class="answer-row"><span class="ans-label">cost =</span><div class="ans-blank"></div><span class="ans-unit">dollars</span></div></div>
+  <div class="q-sub"><div class="q-sub-label">(c) Kai has $169. How many full days can he afford to rent? Show your work.</div>
+    <div class="work-box"></div>
+    <div class="answer-row"><span class="ans-label">days =</span><div class="ans-blank"></div></div></div>
+</div>
+
+<div class="question">
+  <div class="q-label">17.</div>
+  <p class="q-text"><strong>Quadratic revenue model.</strong> A sneaker shop currently sells 200 pairs of a popular shoe per month at $20 per pair. Market research shows that for every $1 increase in price, the shop loses 5 sales per month. Let \(x\) represent the number of $1 price increases.</p>
+  <div class="q-sub"><div class="q-sub-label">(a) Write expressions for the new price per pair and the new number of pairs sold (in terms of \(x\)).</div>
+    <div class="answer-row"><span class="ans-label">new price:</span><div class="ans-blank"></div></div>
+    <div class="answer-row"><span class="ans-label">new quantity:</span><div class="ans-blank"></div></div></div>
+  <div class="q-sub"><div class="q-sub-label">(b) Write the monthly revenue function \(R(x)\) as a polynomial in <strong>standard form</strong>.</div>
+    <div class="work-box-lg"></div>
+    <div class="answer-row"><span class="ans-label">\(R(x) =\)</span><div class="ans-blank"></div></div></div>
+  <div class="q-sub"><div class="q-sub-label">(c) What value of \(x\) maximizes revenue? Show your method (vertex formula or graphing).</div>
+    <div class="work-box"></div>
+    <div class="answer-row"><span class="ans-label">\(x =\)</span><div class="ans-blank"></div></div></div>
+  <div class="q-sub"><div class="q-sub-label">(d) What is the maximum monthly revenue, and what price per pair achieves it?</div>
+    <div class="work-box" style="height:70px"></div>
+    <div class="answer-row"><span class="ans-label">max revenue:</span><div class="ans-blank"></div><span class="ans-unit">dollars</span></div>
+    <div class="answer-row"><span class="ans-label">price/pair:</span><div class="ans-blank"></div><span class="ans-unit">dollars</span></div></div>
+</div>
+
+<div class="question">
+  <div class="q-label">18.</div>
+  <p class="q-text"><strong>Exponential model.</strong> A car&rsquo;s value depreciates at 12% per year. Kai&rsquo;s parents bought a used car in 2020 for $18,500.</p>
+  <div class="q-sub"><div class="q-sub-label">(a) Write a function \(V(t)\) that models the car&rsquo;s value (in dollars) \(t\) years after 2020.</div>
+    <div class="answer-row"><span class="ans-label">\(V(t) =\)</span><div class="ans-blank"></div></div></div>
+  <div class="q-sub"><div class="q-sub-label">(b) What is the car worth in 2026? (Round to the nearest dollar.)</div>
+    <div class="work-box" style="height:70px"></div>
+    <div class="answer-row"><span class="ans-label">value =</span><div class="ans-blank"></div><span class="ans-unit">dollars</span></div></div>
+  <div class="q-sub"><div class="q-sub-label">(c) In what year will the car first be worth less than $8,000? Show how you solved using logarithms.</div>
+    <div class="work-box-lg"></div>
+    <div class="answer-row"><span class="ans-label">year =</span><div class="ans-blank"></div></div></div>
+</div>
+
+<!-- SCORING -->
+<div class="scoring-grid">
+  <div class="sg-title">Score Summary</div>
+  <div class="sg-row"><span>Part 1 &mdash; No Calculator (Q1&ndash;Q3)</span><span class="pts-col">29 pts</span><span class="score-col"></span></div>
+  <div class="sg-row"><span>Part 2 &mdash; Factoring (Q4&ndash;Q7)</span><span class="pts-col">16 pts</span><span class="score-col"></span></div>
+  <div class="sg-row"><span>Part 2 &mdash; Dividing (Q8&ndash;Q11)</span><span class="pts-col">16 pts</span><span class="score-col"></span></div>
+  <div class="sg-row"><span>Part 2 &mdash; Manipulating (Q12&ndash;Q15)</span><span class="pts-col">16 pts</span><span class="score-col"></span></div>
+  <div class="sg-row"><span>Part 2 &mdash; Modeling (Q16&ndash;Q18)</span><span class="pts-col">15 pts</span><span class="score-col"></span></div>
+  <div class="sg-row total"><span>Total</span><span class="pts-col">92 pts</span><span class="score-col"></span></div>
+</div>
+
+</body>
+</html>
