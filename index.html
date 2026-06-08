@@ -775,11 +775,15 @@
             if (short.indexOf('Poly Long Division') !== -1) short = 'PLD';
             if (short.indexOf('Division Practice') !== -1) short = 'DP';
             if (short.indexOf("'07 Poly") !== -1) short = 'S07';
-            if (short.indexOf('Assessment 2A') !== -1) short = 'Asmt2A';
+            if (short.indexOf('Assessment 2A') !== -1) short = 'A2A';
             if (short.indexOf('Gap Drill') !== -1) short = 'GD';
             if (short.indexOf('Unit Test') !== -1) short = 'UT1';
-            if (short.indexOf('Logarithms') !== -1) short = 'Logs Practice';
-            if (short.indexOf('Assessment 3') !== -1) short = 'Asmt 3';
+            if (short.indexOf('Logarithms') !== -1) short = 'Logs';
+            if (short.indexOf('Assessment 3') !== -1) short = 'A3';
+            if (short.indexOf('S5 Practice Quiz D') !== -1) short = 'PQ D';
+            else if (short.indexOf('S5 Practice Quiz C') !== -1) short = 'PQ C';
+            else if (short.indexOf('S5 Practice Quiz B') !== -1) short = 'PQ B';
+            else if (short.indexOf('S5 Practice Quiz') !== -1) short = 'PQ';
             raw.push({ label: short, sublabel: dateStr, fa: fa, ts: ts });
         });
         raw.sort(function(a, b) { return a.ts - b.ts; });
