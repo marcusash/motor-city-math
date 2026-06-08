@@ -574,6 +574,7 @@
     <script>
     /* ========== TEST REGISTRY ========== */
     var tests = [
+        { file: 'reviews/kai-assessment3-2026-06-07.html', name: 'S5-S6 Assessment 3', unit: 'spring-s5', trimester: 'spring', key: 'school-assessment3-2026-06-07', questions: 17, benchmark: true, teacherGrade: 'A/B', teacherRating: 'A/B' },
         { file: 'tests/s5-practice-quiz-d.html', name: 'S5 Practice Quiz D', unit: 'spring-s5', trimester: 'spring', key: 'mcm-s5-practice-quiz-d-2026-05-30', questions: 25 },
         { file: 'scores/practice-quiz-c-grade-report.html', name: 'S5 Practice Quiz C', unit: 'spring-s5', trimester: 'spring', key: 'mcm-s5-practice-quiz-c-2026-05-25', questions: 38 },
         { file: 'reviews/kai-s5-practice-quiz-b-2026-05-25.html', name: 'S5 Practice Quiz B', unit: 'spring-s5', trimester: 'spring', key: 'mcm-s5-practice-quiz-b-2026-05-25', questions: 61 },
@@ -732,12 +733,12 @@
             } else if (i === n-1 && p.fa >= 93) {
                 lc = 'rgba(63,185,80,0.8)'; sc = 'rgba(63,185,80,0.5)';
             }
-            return '<text x="'+xs[i]+'" y="122" font-size="10" font-weight="600" fill="'+lc+'" text-anchor="middle" font-family="var(--font-body)">'+p.label+'</text>' +
-                (p.sublabel ? '<text x="'+xs[i]+'" y="134" font-size="9" fill="'+sc+'" text-anchor="middle" font-family="var(--font-body)">'+p.sublabel+'</text>' : '');
+            var combined = p.label + (p.sublabel ? ' \u00b7 ' + p.sublabel : '');
+            return '<text x="'+xs[i]+'" y="118" font-size="10" font-weight="600" fill="'+lc+'" text-anchor="end" font-family="var(--font-body)" transform="rotate(-40 '+xs[i]+' 118)">'+combined+'</text>';
         }).join('');
 
         container.innerHTML =
-            '<svg role="img" aria-label="Score progress chart showing '+n+' test'+(n!==1?'s':'')+'" viewBox="0 0 720 142" height="142" style="display:block;width:100%;overflow:visible">' +
+            '<svg role="img" aria-label="Score progress chart showing '+n+' test'+(n!==1?'s':'')+'" viewBox="0 0 720 188" height="188" style="display:block;width:100%;overflow:visible">' +
             foulZone +
             '<line x1="28" y1="'+yB+'" x2="668" y2="'+yB+'" stroke="rgba(255,255,255,0.22)" stroke-width="1.5" stroke-dasharray="3 7"/>' +
             '<text x="16" y="'+(yB+3.5)+'" font-size="10" font-weight="700" fill="rgba(255,255,255,0.55)" text-anchor="middle" font-family="var(--font-body)">B</text>' +
@@ -776,12 +777,8 @@
             if (short.indexOf('Assessment 2A') !== -1) short = 'Asmt2A';
             if (short.indexOf('Gap Drill') !== -1) short = 'GD';
             if (short.indexOf('Unit Test') !== -1) short = 'UT1';
-            if (short.indexOf('Logarithms') !== -1) short = 'LogsP';
-            if (short.indexOf('S5 Practice Quiz D') !== -1) short = 'PQD';
-            else if (short.indexOf('S5 Practice Quiz C') !== -1) short = 'PQC';
-            else if (short.indexOf('S5 Practice Quiz B') !== -1) short = 'PQB';
-            else if (short.indexOf('S5 Practice Quiz') !== -1) short = short.replace('S5 Practice Quiz', 'PQ').replace(/\s+/g, '');
-            if (short.indexOf('Assessment 3') !== -1) short = 'Asmt3';
+            if (short.indexOf('Logarithms') !== -1) short = 'Logs Practice';
+            if (short.indexOf('Assessment 3') !== -1) short = 'Asmt 3';
             raw.push({ label: short, sublabel: dateStr, fa: fa, ts: ts });
         });
         raw.sort(function(a, b) { return a.ts - b.ts; });
