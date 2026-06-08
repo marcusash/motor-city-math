@@ -2,29 +2,31 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MCM Final Practice Exam — ANSWER KEY</title>
-<script>MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']]},options:{skipHtmlTags:['script','noscript','style','textarea']}};</script>
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
 <style>
-:root{--bg:#fff;--text:#1a1a2e;--muted:#6b7280;--border:#e5e7eb;--light:#f9fafb;--navy:#1e3a5f;--red:#dc2626;--green:#166534;}
-*{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);max-width:740px;margin:0 auto;padding:2rem 1.5rem 4rem;line-height:1.6;}
-.header{display:flex;justify-content:space-between;border-bottom:2px solid var(--red);padding-bottom:.75rem;margin-bottom:.5rem;}
-.header-left h1{font-size:1.15rem;font-weight:700;color:var(--red);}
-.header-left .sub{font-size:.8rem;color:var(--muted);margin-top:.1rem;}
-.header-right{text-align:right;font-size:.8rem;color:var(--muted);}
-.key-banner{background:#fef2f2;border:1px solid #fca5a5;border-radius:4px;padding:.4rem 1rem;font-size:.78rem;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:.06em;margin:.75rem 0 1.25rem;}
-.part-header{background:var(--navy);color:#fff;padding:.45rem 1rem;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;border-radius:4px;margin:1.75rem 0 1.25rem;display:flex;justify-content:space-between;}
-.question{margin-bottom:1.5rem;padding-left:.25rem;}
-.q-label{font-weight:700;font-size:.92rem;color:var(--navy);margin-bottom:.35rem;}
-.q-text{font-size:.92rem;margin-bottom:.5rem;line-height:1.7;}
-.answer{background:#f0fdf4;border:1px solid #86efac;border-radius:4px;padding:.5rem .75rem;margin:.4rem 0;font-size:.9rem;}
-.answer .ans-val{font-weight:700;color:var(--green);font-size:1rem;}
-.answer .rationale{font-size:.82rem;color:var(--muted);margin-top:.25rem;font-style:italic;}
-.q-sub{margin-left:1rem;margin-bottom:.85rem;}
-.q-sub-label{font-size:.88rem;font-weight:600;margin-bottom:.3rem;}
-.divider{border:none;border-top:1px dashed var(--border);margin:1.5rem 0;}
-.std-badge{display:inline-block;background:#dbeafe;color:#1e40af;font-size:.7rem;padding:1px 6px;border-radius:3px;font-weight:700;vertical-align:middle;margin-left:4px;}
+  :root { --bg:#fff; --text:#1a1a2e; --muted:#6b7280; --border:#e5e7eb; --light:#f9fafb; --navy:#1e3a5f; --blue:#1e40af; --green:#15803d; --red:#dc2626; --gold:#b8860b; }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);max-width:780px;margin:0 auto;padding:2rem 1.5rem 4rem;line-height:1.6;}
+  .header{display:flex;justify-content:space-between;border-bottom:2px solid var(--red);padding-bottom:0.75rem;margin-bottom:1rem;}
+  .header-left h1{font-size:1.18rem;font-weight:700;color:var(--red);}
+  .header-left .sub{font-size:0.8rem;color:var(--muted);margin-top:0.1rem;}
+  .header-right{text-align:right;font-size:0.8rem;color:var(--muted);line-height:1.7;font-weight:700;}
+  .part-header{background:var(--navy);color:#fff;padding:0.5rem 1rem;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;border-radius:4px;margin:1.75rem 0 1rem;}
+  .part-header.calc{background:var(--blue);}
+  .section-header{font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted);margin:1.4rem 0 0.6rem;padding-bottom:0.25rem;border-bottom:1px solid var(--border);}
+  .question{margin-bottom:1.3rem;padding-left:0.25rem;}
+  .q-label{font-weight:700;font-size:0.95rem;color:var(--navy);margin-bottom:0.3rem;}
+  .q-text{font-size:0.93rem;margin-bottom:0.4rem;line-height:1.6;}
+  .q-sub{margin-left:1rem;margin-bottom:0.7rem;}
+  .q-sub-label{font-size:0.88rem;font-weight:600;margin-bottom:0.2rem;}
+  .ans{background:#dcfce7;border-left:3px solid var(--green);padding:0.4rem 0.7rem;border-radius:0 3px 3px 0;font-size:0.88rem;margin:0.25rem 0;}
+  .ans strong{color:var(--green);}
+  .work{font-size:0.85rem;color:#444;margin:0.3rem 0 0.3rem 0.8rem;line-height:1.6;}
+  .work code{background:#f3f4f6;padding:0.05rem 0.3rem;border-radius:3px;font-family:'SF Mono',Menlo,monospace;font-size:0.82rem;}
+  .watchout{background:#fef3c7;border-left:3px solid var(--gold);padding:0.4rem 0.7rem;margin:0.3rem 0;font-size:0.82rem;border-radius:0 3px 3px 0;}
+  .watchout strong{color:var(--gold);}
 </style>
 </head>
 <body>
@@ -33,256 +35,231 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
   <div class="header-left">
     <div class="sub">Motor City Math &middot; Algebra 2</div>
     <h1>Final Practice Exam &mdash; ANSWER KEY</h1>
-    <div class="sub">Polynomials &middot; Logarithms &middot; Modeling</div>
+    <div class="sub">Worked solutions with watch-out flags for known weak spots</div>
   </div>
-  <div class="header-right">50 points<br>Teacher Use Only</div>
-</div>
-<div class="key-banner">&#9888; Answer Key &mdash; Do Not Distribute to Students</div>
-
-<div class="part-header">Part 1 &mdash; No Calculator &middot; 20 points</div>
-
-<div class="question">
-  <div class="q-label">Q1. Cubic Graph &mdash; \(f(x) = x^3 - 2x^2 - 5x + 6\) <span class="std-badge">S1 / Poly</span></div>
-  <div class="q-sub">
-    <div class="q-sub-label">(a) Factor &amp; zeros</div>
-    <div class="answer">
-      <div>\(f(1) = 1 - 2 - 5 + 6 = 0\) &#10003; &nbsp;&rarr;&nbsp; divide by \((x-1)\): synthetic or long division gives \((x-1)(x^2-x-6) = (x-1)(x-3)(x+2)\)</div>
-      <div class="ans-val">Zeros: \(x = -2, \; 1, \; 3\) (all multiplicity 1 &mdash; graph crosses at each)</div>
-    </div>
-  </div>
-  <div class="q-sub">
-    <div class="q-sub-label">(b) \(y\)-intercept &amp; end behavior</div>
-    <div class="answer">
-      <div class="ans-val">\(y\)-intercept: \(f(0) = 6 \Rightarrow (0, 6)\)</div>
-      <div>Leading term \(+x^3\): &nbsp; As \(x\to+\infty,\; f\to+\infty\) &nbsp;&nbsp; As \(x\to-\infty,\; f\to-\infty\)</div>
-      <div class="rationale">Odd degree, positive leading coefficient &rarr; bottom-left to top-right.</div>
-    </div>
-  </div>
-  <div class="q-sub">
-    <div class="q-sub-label">(c) Sketch &mdash; key features</div>
-    <div class="answer">
-      <div>Crosses x-axis at \(x=-2, 1, 3\). &nbsp; \(y\)-intercept at \((0,6)\).</div>
-      <div class="rationale">Local max between \(x=-2\) and \(x=1\); local min between \(x=1\) and \(x=3\). Starts bottom-left, ends top-right.</div>
-    </div>
+  <div class="header-right">
+    Total: 92 points<br>
+    <span style="color:var(--red)">Teacher use only</span>
   </div>
 </div>
 
-<hr class="divider">
+<!-- ════ PART 1 ════ -->
+<div class="part-header">Part 1 &mdash; No Calculator</div>
+
+<div class="section-header">Graphing Polynomial Functions</div>
 
 <div class="question">
-  <div class="q-label">Q2. Quartic Graph &mdash; \(g(x) = x^4 - 2x^3 - 3x^2\) <span class="std-badge">S1 / Poly</span></div>
-  <div class="q-sub">
-    <div class="q-sub-label">(a) Factor &amp; zeros with multiplicity</div>
-    <div class="answer">
-      <div>\(g(x) = x^2(x^2-2x-3) = x^2(x-3)(x+1)\)</div>
-      <div class="ans-val">Zeros: \(x=0\) (mult. 2 &mdash; bounces), &nbsp; \(x=3\) (mult. 1 &mdash; crosses), &nbsp; \(x=-1\) (mult. 1 &mdash; crosses)</div>
-    </div>
-  </div>
-  <div class="q-sub">
-    <div class="q-sub-label">(b) End behavior &amp; cross/bounce</div>
-    <div class="answer">
-      <div>Leading term \(+x^4\) (even degree, positive): &nbsp; As \(x\to\pm\infty,\; g\to+\infty\) &mdash; both ends UP.</div>
-      <div class="rationale">\(x=0\): even multiplicity &rarr; touches and bounces back. \(x=-1\) and \(x=3\): odd multiplicity &rarr; crosses through.</div>
-    </div>
-  </div>
-  <div class="q-sub">
-    <div class="q-sub-label">(c) Sketch features</div>
-    <div class="answer">
-      <div>\(y\)-intercept: \(g(0) = 0\). Graph bounces at origin, crosses at \(x=-1\) and \(x=3\), both ends go up.</div>
-    </div>
-  </div>
-</div>
-
-<hr class="divider">
-
-<div class="question">
-  <div class="q-label">Q3&ndash;Q5. Log Evaluation <span class="std-badge">S5 / Logs</span></div>
-  <div class="q-sub">
-    <div class="q-sub-label">Q3. \(\log_2(64)\)</div>
-    <div class="answer">
-      <div>Rewrite: \(2^? = 64 = 2^6\)</div>
-      <div class="ans-val">Answer: 6</div>
-    </div>
-  </div>
-  <div class="q-sub">
-    <div class="q-sub-label">Q4. \(\log_3\!\left(\tfrac{1}{27}\right)\)</div>
-    <div class="answer">
-      <div>Rewrite: \(3^? = \tfrac{1}{27} = 3^{-3}\)</div>
-      <div class="ans-val">Answer: &minus;3</div>
-      <div class="rationale">Negative exponent &rarr; reciprocal. Key step: recognize \(\tfrac{1}{27} = 3^{-3}\).</div>
-    </div>
-  </div>
-  <div class="q-sub">
-    <div class="q-sub-label">Q5. \(\log(0.001)\)</div>
-    <div class="answer">
-      <div>Common log (base 10): \(10^? = 0.001 = 10^{-3}\)</div>
-      <div class="ans-val">Answer: &minus;3</div>
-      <div class="rationale">\(0.001 = \tfrac{1}{1000} = 10^{-3}\)</div>
-    </div>
-  </div>
-</div>
-
-<div class="part-header">Part 2 &mdash; Calculator Allowed &middot; 30 points</div>
-
-<div class="question">
-  <div class="q-label">Q6&ndash;Q9. Factoring <span class="std-badge">S1 / Poly</span></div>
-  <div class="q-sub">
-    <div class="q-sub-label">Q6. \(x^2 - 9\)</div>
-    <div class="answer"><div class="ans-val">\((x+3)(x-3)\)</div><div class="rationale">Difference of squares: \(a^2 - b^2 = (a+b)(a-b)\)</div></div>
-  </div>
-  <div class="q-sub">
-    <div class="q-sub-label">Q7. \(3x^3 - 12x\)</div>
-    <div class="answer"><div class="ans-val">\(3x(x+2)(x-2)\)</div><div class="rationale">GCF = \(3x\): \(3x(x^2-4)\), then difference of squares.</div></div>
-  </div>
-  <div class="q-sub">
-    <div class="q-sub-label">Q8. \(x^2 - 7x + 12\)</div>
-    <div class="answer"><div class="ans-val">\((x-3)(x-4)\)</div><div class="rationale">Need two numbers that multiply to 12 and add to &minus;7: \(-3\) and \(-4\).</div></div>
-  </div>
-  <div class="q-sub">
-    <div class="q-sub-label">Q9. \(x^3 + 8\)</div>
-    <div class="answer"><div class="ans-val">\((x+2)(x^2-2x+4)\)</div><div class="rationale">Sum of cubes: \(a^3+b^3=(a+b)(a^2-ab+b^2)\); here \(a=x, b=2\).</div></div>
-  </div>
-</div>
-
-<hr class="divider">
-
-<div class="question">
-  <div class="q-label">Q10&ndash;Q13. Polynomial Division <span class="std-badge">S1 / PLD</span></div>
-  <div class="q-sub">
-    <div class="q-sub-label">Q10. \((x^3 - 3x^2 + 5x - 3) \div (x-1)\)</div>
-    <div class="answer">
-      <div>Synthetic with \(x=1\): &nbsp; 1 | 1 &nbsp; &minus;3 &nbsp; 5 &nbsp; &minus;3 &nbsp;&rarr;&nbsp; 1 &nbsp; &minus;2 &nbsp; 3 &nbsp; 0</div>
-      <div class="ans-val">Answer: \(x^2 - 2x + 3\) &nbsp; (R = 0)</div>
-    </div>
-  </div>
-  <div class="q-sub">
-    <div class="q-sub-label">Q11. \((2x^3 + x^2 - 7x + 4) \div (x-1)\)</div>
-    <div class="answer">
-      <div>Synthetic with \(x=1\): &nbsp; 1 | 2 &nbsp; 1 &nbsp; &minus;7 &nbsp; 4 &nbsp;&rarr;&nbsp; 2 &nbsp; 3 &nbsp; &minus;4 &nbsp; 0</div>
-      <div class="ans-val">Answer: \(2x^2 + 3x - 4\) &nbsp; (R = 0; further factors as \((2x-1)(x+4)\))</div>
-    </div>
-  </div>
-  <div class="q-sub">
-    <div class="q-sub-label">Q12. \((x^3 + 2x^2 - 4x - 8) \div (x+2)\)</div>
-    <div class="answer">
-      <div>Synthetic with \(x=-2\): &nbsp; &minus;2 | 1 &nbsp; 2 &nbsp; &minus;4 &nbsp; &minus;8 &nbsp;&rarr;&nbsp; 1 &nbsp; 0 &nbsp; &minus;4 &nbsp; 0</div>
-      <div class="ans-val">Answer: \(x^2 - 4 = (x+2)(x-2)\) &nbsp; (R = 0)</div>
-    </div>
-  </div>
-  <div class="q-sub">
-    <div class="q-sub-label">Q13. \((x^3 + 4x^2 - 2x + 3) \div (x+2)\) &nbsp; (remainder expected)</div>
-    <div class="answer">
-      <div>Synthetic with \(x=-2\): &nbsp; &minus;2 | 1 &nbsp; 4 &nbsp; &minus;2 &nbsp; 3 &nbsp;&rarr;&nbsp; 1 &nbsp; 2 &nbsp; &minus;6 &nbsp; 15</div>
-      <div class="ans-val">Answer: \(x^2 + 2x - 6 + \dfrac{15}{x+2}\)</div>
-    </div>
-  </div>
-</div>
-
-<hr class="divider">
-
-<div class="question">
-  <div class="q-label">Q14&ndash;Q17. Manipulation <span class="std-badge">S1 / Poly</span></div>
-  <div class="q-sub">
-    <div class="q-sub-label">Q14. \((2x+3)(x^2-4x+1)\)</div>
-    <div class="answer">
-      <div>\(2x^3-8x^2+2x+3x^2-12x+3\)</div>
-      <div class="ans-val">\(2x^3 - 5x^2 - 10x + 3\)</div>
-    </div>
-  </div>
-  <div class="q-sub">
-    <div class="q-sub-label">Q15. \((3x^3-2x^2+x-4)-(x^3+5x-7)\)</div>
-    <div class="answer">
-      <div>Distribute the negative: \(3x^3-2x^2+x-4-x^3-5x+7\)</div>
-      <div class="ans-val">\(2x^3 - 2x^2 - 4x + 3\)</div>
-    </div>
-  </div>
-  <div class="q-sub">
-    <div class="q-sub-label">Q16. \(\dfrac{x^2-9}{x+3}\)</div>
-    <div class="answer">
-      <div>Factor numerator: \(\dfrac{(x+3)(x-3)}{x+3}\), cancel \((x+3)\)</div>
-      <div class="ans-val">\(x - 3\), &nbsp; \(x \ne -3\)</div>
-    </div>
-  </div>
-  <div class="q-sub">
-    <div class="q-sub-label">Q17. \((x-2)^2(x+3)\)</div>
-    <div class="answer">
-      <div>\((x^2-4x+4)(x+3) = x^3+3x^2-4x^2-12x+4x+12\)</div>
-      <div class="ans-val">\(x^3 - x^2 - 8x + 12\)</div>
-    </div>
-  </div>
-</div>
-
-<hr class="divider">
-
-<div class="question">
-  <div class="q-label">Q18. Linear Model <span class="std-badge">S6 / Modeling</span></div>
-  <div class="q-sub">
-    <div class="q-sub-label">(a) \(C(d)\)</div>
-    <div class="answer"><div class="ans-val">\(C(d) = 40d + 25\)</div></div>
-  </div>
-  <div class="q-sub">
-    <div class="q-sub-label">(b) \(C = 185\)</div>
-    <div class="answer">
-      <div>\(185 = 40d + 25 \Rightarrow 160 = 40d\)</div>
-      <div class="ans-val">\(d = 4\) days</div>
-    </div>
-  </div>
+  <div class="q-label">1. Graph &rarr; equation (8 pts)</div>
+  <p class="q-text">Graph shows zeros at \(x = -2, 1, 3\); passes through \((0, 12)\); end behavior up-up (graph leaves to +&infin; on both sides).</p>
+  <div class="q-sub"><div class="q-sub-label">(a) Degree</div>
+    <div class="ans"><strong>3</strong> (cubic) &mdash; three real zeros, graph turns twice.</div></div>
+  <div class="q-sub"><div class="q-sub-label">(b) End behavior</div>
+    <div class="ans">As \(x \to -\infty,\ k(x) \to -\infty\); as \(x \to +\infty,\ k(x) \to +\infty\). Positive leading coefficient on an odd-degree polynomial.</div></div>
+  <div class="q-sub"><div class="q-sub-label">(c) Domain and Range</div>
+    <div class="ans"><strong>Domain:</strong> \((-\infty, \infty)\) &nbsp;&nbsp; <strong>Range:</strong> \((-\infty, \infty)\)</div></div>
+  <div class="q-sub"><div class="q-sub-label">(d) Increasing / Decreasing</div>
+    <div class="ans">Increasing on approximately \((-\infty, -1) \cup (2, \infty)\); Decreasing on \((-1, 2)\).</div></div>
+  <div class="q-sub"><div class="q-sub-label">(e) Relative max / min</div>
+    <div class="ans">Relative max near \(x \approx -1\); Relative min near \(x \approx 2\).</div></div>
+  <div class="q-sub"><div class="q-sub-label">(f) Factored form given \(k(0) = 12\)</div>
+    <div class="work">Zeros at \(-2, 1, 3\) &rArr; \(k(x) = a(x+2)(x-1)(x-3)\). <br>
+      Plug \(x=0\): \(k(0) = a(2)(-1)(-3) = 6a = 12 \Rightarrow a = 2.\)</div>
+    <div class="ans"><strong>\(k(x) = 2(x+2)(x-1)(x-3)\)</strong></div></div>
+  <div class="q-sub"><div class="q-sub-label">(g) Standard form</div>
+    <div class="work">Expand: \((x-1)(x-3) = x^2 - 4x + 3.\) <br>
+      Then \((x+2)(x^2 - 4x + 3) = x^3 - 4x^2 + 3x + 2x^2 - 8x + 6 = x^3 - 2x^2 - 5x + 6.\) <br>
+      Multiply by 2: \(k(x) = 2x^3 - 4x^2 - 10x + 12.\)</div>
+    <div class="ans"><strong>\(k(x) = 2x^3 - 4x^2 - 10x + 12\)</strong></div></div>
 </div>
 
 <div class="question">
-  <div class="q-label">Q19. Quadratic Model &mdash; \(h(t) = -16t^2 + 40t + 6\) <span class="std-badge">S6 / Modeling</span></div>
-  <div class="q-sub">
-    <div class="q-sub-label">(a) Maximum height</div>
-    <div class="answer">
-      <div>\(t = -\dfrac{40}{2(-16)} = \dfrac{40}{32} = 1.25\) sec</div>
-      <div>\(h(1.25) = -16(1.5625) + 40(1.25) + 6 = -25 + 50 + 6\)</div>
-      <div class="ans-val">Max height = 31 ft at \(t = 1.25\) sec</div>
-    </div>
-  </div>
-  <div class="q-sub">
-    <div class="q-sub-label">(b) Hits ground (\(h = 0\))</div>
-    <div class="answer">
-      <div>\(-16t^2+40t+6=0 \Rightarrow 8t^2-20t-3=0\)</div>
-      <div>Quadratic formula: \(t = \dfrac{20 \pm \sqrt{400+96}}{16} = \dfrac{20 \pm \sqrt{496}}{16}\)</div>
-      <div class="ans-val">\(t \approx 2.64\) sec &nbsp; (reject negative root)</div>
-    </div>
-  </div>
-  <div class="q-sub">
-    <div class="q-sub-label">(c) Height = 30 ft</div>
-    <div class="answer">
-      <div>\(-16t^2+40t+6=30 \Rightarrow -16t^2+40t-24=0 \Rightarrow 2t^2-5t+3=0 \Rightarrow (2t-3)(t-1)=0\)</div>
-      <div class="ans-val">\(t = 1\) sec and \(t = 1.5\) sec</div>
-    </div>
-  </div>
+  <div class="q-label">2. \(f(x) = -2x(x-3)(x+2)^2\) (8 pts)</div>
+  <div class="q-sub"><div class="q-sub-label">(a) Degree</div>
+    <div class="ans"><strong>4</strong> &mdash; counting factors: \(x \cdot x \cdot x^2 = x^4\) when expanded.</div></div>
+  <div class="q-sub"><div class="q-sub-label">(b) End behavior</div>
+    <div class="ans">As \(x \to \pm\infty,\ f(x) \to -\infty\) (both ends). Even degree with negative leading coefficient.</div></div>
+  <div class="q-sub"><div class="q-sub-label">(c) Sketch</div>
+    <div class="ans">Zeros: \(x = 0\) (mult 1, crosses), \(x = 3\) (mult 1, crosses), \(x = -2\) (mult 2, <em>bounces</em>).<br>
+      Both ends point down. Graph rises through \((-2, 0)\) (touches and bounces), peaks between 0 and 3, then falls.</div></div>
+  <div class="q-sub"><div class="q-sub-label">(d) Standard form</div>
+    <div class="work">\((x+2)^2 = x^2 + 4x + 4.\) <br>
+      \(x(x-3) = x^2 - 3x.\) <br>
+      \((x^2 - 3x)(x^2 + 4x + 4) = x^4 + 4x^3 + 4x^2 - 3x^3 - 12x^2 - 12x = x^4 + x^3 - 8x^2 - 12x.\) <br>
+      Multiply by \(-2\): \(f(x) = -2x^4 - 2x^3 + 16x^2 + 24x.\)</div>
+    <div class="ans"><strong>\(f(x) = -2x^4 - 2x^3 + 16x^2 + 24x\)</strong></div></div>
+</div>
+
+<div class="section-header">Evaluating Logarithms</div>
+
+<div class="question">
+  <div class="q-label">3. (6 pts, 1 each)</div>
+  <div class="q-sub"><div class="ans">(a) \(\log_2(32) = \mathbf{5}\) &nbsp; <span style="color:#6b7280">(since \(2^5 = 32\))</span></div></div>
+  <div class="q-sub"><div class="ans">(b) \(\log_3(1/27) = \mathbf{-3}\) &nbsp; <span style="color:#6b7280">(\(3^{-3} = 1/27\))</span></div></div>
+  <div class="q-sub"><div class="ans">(c) \(\log(10{,}000) = \mathbf{4}\) &nbsp; <span style="color:#6b7280">(base-10; \(10^4 = 10{,}000\))</span></div></div>
+  <div class="q-sub"><div class="ans">(d) \(\ln(e^5) = \mathbf{5}\) &nbsp; <span style="color:#6b7280">(by definition, \(\ln(e^x) = x\))</span></div></div>
+  <div class="q-sub"><div class="ans">(e) \(\log_8(4) = \mathbf{2/3}\) &nbsp; <span style="color:#6b7280">(\(8^{2/3} = (\sqrt[3]{8})^2 = 2^2 = 4\))</span></div></div>
+  <div class="q-sub"><div class="ans">(f) \(\log_5(-25) = \mathbf{\text{undefined}}\) &nbsp; <span style="color:#6b7280">(log of a negative argument has no real value)</span></div></div>
+</div>
+
+<!-- ════ PART 2 ════ -->
+<div class="part-header calc">Part 2 &mdash; Calculator Allowed</div>
+
+<div class="section-header">Factoring Polynomials</div>
+
+<div class="question">
+  <div class="q-label">4. Factor completely: \(4x^3 - 8x^2 - 60x\) (4 pts)</div>
+  <div class="work">GCF = \(4x\). \(4x(x^2 - 2x - 15) = 4x(x-5)(x+3).\)</div>
+  <div class="ans"><strong>\(4x(x-5)(x+3)\)</strong></div>
+  <div class="watchout"><strong>Watch-out (from Quiz 2):</strong> Don't forget the GCF step before the trinomial factor. Always pull GCF first.</div>
 </div>
 
 <div class="question">
-  <div class="q-label">Q20. Exponential Model <span class="std-badge">S6 / Modeling</span> &mdash; <em>Gap standard: stress growth-rate step</em></div>
-  <div class="q-sub">
-    <div class="q-sub-label">(a) Find base \(b\) &nbsp; [S6 gap &mdash; Kai struggled with isolating the rate]</div>
-    <div class="answer">
-      <div>\(11500 = 8000 \cdot b^{10} \Rightarrow b^{10} = \dfrac{11500}{8000} = 1.4375\)</div>
-      <div>\(b = 1.4375^{1/10} = 1.4375^{0.1}\)</div>
-      <div class="ans-val">\(b \approx 1.0369\) &nbsp; (growth rate &asymp; 3.69%/yr)</div>
-      <div class="rationale">Key step: divide first, then take the 10th root. Common error: students try to log both sides before isolating \(b^{10}\).</div>
-    </div>
-  </div>
-  <div class="q-sub">
-    <div class="q-sub-label">(b) Population in 2030 (\(t = 20\))</div>
-    <div class="answer">
-      <div>\(P(20) = 8000 \cdot (1.0369)^{20} \approx 8000 \cdot 2.069\)</div>
-      <div class="ans-val">\(\approx 16{,}552\)</div>
-    </div>
-  </div>
-  <div class="q-sub">
-    <div class="q-sub-label">(c) When does population double to 16,000?</div>
-    <div class="answer">
-      <div>\(16000 = 8000 \cdot (1.0369)^t \Rightarrow 2 = (1.0369)^t\)</div>
-      <div>\(t = \dfrac{\log 2}{\log 1.0369} = \dfrac{0.30103}{0.01573}\)</div>
-      <div class="ans-val">\(t \approx 19.13\) years &nbsp;&rarr;&nbsp; Year \(\approx 2029\)</div>
-      <div class="rationale">Change-of-base required. Confirm student used their own \(b\) value &mdash; slight variation in \(t\) is acceptable.</div>
-    </div>
-  </div>
+  <div class="q-label">5. Factor by grouping: \(x^3 - 3x^2 - 4x + 12\) (4 pts)</div>
+  <div class="work">Group: \((x^3 - 3x^2) + (-4x + 12) = x^2(x - 3) - 4(x - 3) = (x-3)(x^2 - 4).\) <br>
+    Difference of squares: \((x-3)(x-2)(x+2).\)</div>
+  <div class="ans"><strong>\((x-3)(x-2)(x+2)\)</strong></div>
+</div>
+
+<div class="question">
+  <div class="q-label">6. Factor completely: \(16x^4 - 81\) (4 pts)</div>
+  <div class="work">Difference of squares: \(16x^4 - 81 = (4x^2)^2 - 9^2 = (4x^2 - 9)(4x^2 + 9).\) <br>
+    Factor \(4x^2 - 9 = (2x-3)(2x+3).\) \(4x^2 + 9\) is irreducible over the reals.</div>
+  <div class="ans"><strong>\((2x-3)(2x+3)(4x^2 + 9)\)</strong></div>
+</div>
+
+<div class="question">
+  <div class="q-label">7. Factor: \(6x^2 + 17x - 14\) (4 pts)</div>
+  <div class="work">AC method: \(6 \cdot (-14) = -84\). Need two numbers that multiply to \(-84\) and add to \(17\): \(21\) and \(-4.\) <br>
+    Split middle: \(6x^2 + 21x - 4x - 14 = 3x(2x + 7) - 2(2x + 7) = (2x + 7)(3x - 2).\)</div>
+  <div class="ans"><strong>\((2x + 7)(3x - 2)\)</strong></div>
+</div>
+
+<div class="section-header">Dividing Polynomials</div>
+
+<div class="question">
+  <div class="q-label">8. \((x^3 - 4x^2 + 5x - 2) \div (x - 1)\) &mdash; long division (4 pts)</div>
+  <div class="work">Step 1: \(x^3 \div x = x^2\); multiply, subtract &rarr; \(-3x^2 + 5x - 2.\) <br>
+    Step 2: \(-3x^2 \div x = -3x\); multiply, subtract &rarr; \(2x - 2.\) <br>
+    Step 3: \(2x \div x = 2\); multiply, subtract &rarr; \(0.\)</div>
+  <div class="ans"><strong>Quotient: \(x^2 - 3x + 2\)</strong> &nbsp;&middot;&nbsp; <strong>Remainder: 0</strong></div>
+</div>
+
+<div class="question">
+  <div class="q-label">9. \((2x^3 + x^2 - 5x + 3) \div (x + 2)\) &mdash; long division (4 pts)</div>
+  <div class="work">\(2x^3 \div x = 2x^2\); subtract &rarr; \(-3x^2 - 5x + 3.\) <br>
+    \(-3x^2 \div x = -3x\); subtract &rarr; \(x + 3.\) <br>
+    \(x \div x = 1\); subtract &rarr; remainder \(1.\)</div>
+  <div class="ans"><strong>Quotient: \(2x^2 - 3x + 1\)</strong> &nbsp;&middot;&nbsp; <strong>Remainder: 1</strong></div>
+</div>
+
+<div class="question">
+  <div class="q-label">10. \((x^4 - 2x^3 - 7x^2 + 8x + 12) \div (x - 3)\) &mdash; synthetic (4 pts)</div>
+  <div class="work">Synthetic with \(c = 3\): coefficients \([1, -2, -7, 8, 12].\) <br>
+    Carry down 1. \(1 \cdot 3 = 3\); \(-2 + 3 = 1.\) \(1 \cdot 3 = 3\); \(-7 + 3 = -4.\) <br>
+    \(-4 \cdot 3 = -12\); \(8 + (-12) = -4.\) \(-4 \cdot 3 = -12\); \(12 + (-12) = 0.\)</div>
+  <div class="ans"><strong>Quotient: \(x^3 + x^2 - 4x - 4\)</strong> &nbsp;&middot;&nbsp; <strong>Remainder: 0</strong></div>
+</div>
+
+<div class="question">
+  <div class="q-label">11. \((x^4 + 3x^3 - x + 5) \div (x + 4)\) &mdash; synthetic (4 pts)</div>
+  <div class="watchout"><strong>Watch-out:</strong> The \(x^2\) term is missing &mdash; you must include a \(0\) placeholder. Coefficients: \([1, 3, 0, -1, 5].\)</div>
+  <div class="work">Synthetic with \(c = -4\). Carry 1. \(1 \cdot -4 = -4\); \(3 + (-4) = -1.\) <br>
+    \(-1 \cdot -4 = 4\); \(0 + 4 = 4.\) \(4 \cdot -4 = -16\); \(-1 + (-16) = -17.\) <br>
+    \(-17 \cdot -4 = 68\); \(5 + 68 = 73.\)</div>
+  <div class="ans"><strong>Quotient: \(x^3 - x^2 + 4x - 17\)</strong> &nbsp;&middot;&nbsp; <strong>Remainder: 73</strong></div>
+</div>
+
+<div class="section-header">Manipulating Polynomial Expressions</div>
+
+<div class="question">
+  <div class="q-label">12. Expand \(2x(x - 3)(x + 5)\) (4 pts)</div>
+  <div class="work">Inner two first: \((x - 3)(x + 5) = x^2 + 2x - 15.\) <br>
+    Multiply by \(2x\): \(2x(x^2 + 2x - 15) = 2x^3 + 4x^2 - 30x.\)</div>
+  <div class="ans"><strong>\(2x^3 + 4x^2 - 30x\)</strong></div>
+  <div class="watchout"><strong>Watch-out (from Quiz 1 Q1d):</strong> Multiply two binomials first, then distribute the monomial. Don't try to do all three at once.</div>
+</div>
+
+<div class="question">
+  <div class="q-label">13. \((3x^2 - 5x + 2) - (x^2 + 4x - 7)\) (4 pts)</div>
+  <div class="work">Distribute the negative: \(3x^2 - 5x + 2 - x^2 - 4x + 7.\) <br>
+    Combine: \(2x^2 - 9x + 9.\)</div>
+  <div class="ans"><strong>\(2x^2 - 9x + 9\)</strong></div>
+  <div class="watchout"><strong>Watch-out (from Assessment 2A Q10):</strong> The negative must hit EVERY term in the second polynomial &mdash; including the \(-7\), which becomes \(+7\).</div>
+</div>
+
+<div class="question">
+  <div class="q-label">14. Simplify \(\dfrac{x^3 - 9x}{x^2 - 2x - 3}\) (4 pts)</div>
+  <div class="work">Factor numerator: \(x(x^2 - 9) = x(x-3)(x+3).\) <br>
+    Factor denominator: \(x^2 - 2x - 3 = (x-3)(x+1).\) <br>
+    Cancel common factor \((x-3)\): result is \(\dfrac{x(x+3)}{x+1}\) (with \(x \ne 3\)).</div>
+  <div class="ans"><strong>\(\dfrac{x(x+3)}{x+1}\)</strong></div>
+  <div class="watchout"><strong>CRITICAL watch-out (from Assessment 2A Q13):</strong> You must FACTOR before cancelling. Do NOT cancel individual terms like "\(x^3 \to x\)" &mdash; that is mathematically wrong. Only common <em>factors</em> cancel.</div>
+</div>
+
+<div class="question">
+  <div class="q-label">15. Expand \((2x - 1)(x + 3)^2\) in standard form (4 pts)</div>
+  <div class="work">\((x+3)^2 = x^2 + 6x + 9.\) <br>
+    \((2x - 1)(x^2 + 6x + 9) = 2x \cdot (x^2 + 6x + 9) + (-1) \cdot (x^2 + 6x + 9)\) <br>
+    \(= 2x^3 + 12x^2 + 18x - x^2 - 6x - 9 = 2x^3 + 11x^2 + 12x - 9.\)</div>
+  <div class="ans"><strong>\(2x^3 + 11x^2 + 12x - 9\)</strong></div>
+</div>
+
+<div class="section-header">Modeling</div>
+
+<div class="question">
+  <div class="q-label">16. Snowboard rental &mdash; linear (5 pts)</div>
+  <div class="q-sub"><div class="q-sub-label">(a)</div>
+    <div class="ans"><strong>\(C(d) = 25 + 18d\)</strong> dollars &nbsp; <span style="color:#6b7280">(setup fee + per-day rate)</span></div></div>
+  <div class="q-sub"><div class="q-sub-label">(b) 7 days</div>
+    <div class="work">\(C(7) = 25 + 18(7) = 25 + 126 = 151.\)</div>
+    <div class="ans"><strong>$151</strong></div></div>
+  <div class="q-sub"><div class="q-sub-label">(c) Days affordable on $169</div>
+    <div class="work">\(169 \ge 25 + 18d \Rightarrow 144 \ge 18d \Rightarrow d \le 8.\)</div>
+    <div class="ans"><strong>8 full days</strong> &nbsp; <span style="color:#6b7280">(at exactly $169)</span></div></div>
+</div>
+
+<div class="question">
+  <div class="q-label">17. Sneaker revenue &mdash; quadratic (5 pts)</div>
+  <div class="q-sub"><div class="q-sub-label">(a) Price and quantity</div>
+    <div class="ans"><strong>Price = \(20 + x\)</strong> dollars/pair &nbsp;&middot;&nbsp; <strong>Quantity = \(200 - 5x\)</strong> pairs</div></div>
+  <div class="q-sub"><div class="q-sub-label">(b) \(R(x)\) in standard form</div>
+    <div class="work">\(R(x) = (20 + x)(200 - 5x) = 4000 - 100x + 200x - 5x^2 = -5x^2 + 100x + 4000.\)</div>
+    <div class="ans"><strong>\(R(x) = -5x^2 + 100x + 4000\)</strong></div></div>
+  <div class="q-sub"><div class="q-sub-label">(c) \(x\) that maximizes</div>
+    <div class="work">Vertex: \(x = -\dfrac{b}{2a} = -\dfrac{100}{2(-5)} = -\dfrac{100}{-10} = 10.\)</div>
+    <div class="ans"><strong>\(x = 10\)</strong> &nbsp; <span style="color:#6b7280">(10 price increases of $1 each)</span></div></div>
+  <div class="q-sub"><div class="q-sub-label">(d) Max revenue and price</div>
+    <div class="work">\(R(10) = -5(100) + 100(10) + 4000 = -500 + 1000 + 4000 = 4500.\) Price = \(20 + 10 = 30\), Quantity = \(200 - 50 = 150\). Check: \(30 \cdot 150 = 4500\). &check;</div>
+    <div class="ans"><strong>Max revenue = $4,500/month</strong> &nbsp;&middot;&nbsp; <strong>Price = $30/pair</strong></div></div>
+</div>
+
+<div class="question">
+  <div class="q-label">18. Car depreciation &mdash; exponential (5 pts)</div>
+  <div class="q-sub"><div class="q-sub-label">(a) Model</div>
+    <div class="ans"><strong>\(V(t) = 18{,}500 \cdot (0.88)^t\)</strong> &nbsp; <span style="color:#6b7280">(12% loss means 88% remains each year)</span></div></div>
+  <div class="q-sub"><div class="q-sub-label">(b) Value in 2026 (t = 6)</div>
+    <div class="work">\(V(6) = 18{,}500 \cdot (0.88)^6 = 18{,}500 \cdot 0.4644 \approx 8{,}591.\)</div>
+    <div class="ans"><strong>$8,591</strong> (approximately)</div></div>
+  <div class="q-sub"><div class="q-sub-label">(c) Year when value first drops below $8,000</div>
+    <div class="work">Solve \(18{,}500 \cdot (0.88)^t = 8{,}000.\) <br>
+      \((0.88)^t = \dfrac{8000}{18500} = 0.4324\ldots\) <br>
+      Take log of both sides: \(t \cdot \log(0.88) = \log(0.4324).\) <br>
+      \(t = \dfrac{\log(0.4324)}{\log(0.88)} = \dfrac{-0.3641}{-0.0555} \approx 6.56.\) <br>
+      So \(t = 7\) full years &rarr; year \(2020 + 7 = 2027.\)</div>
+    <div class="ans"><strong>2027</strong> &nbsp; <span style="color:#6b7280">(first year value &lt; $8,000)</span></div></div>
+  <div class="watchout"><strong>Watch-out (from Assessment 3 Q5d):</strong> When taking a root or solving with logs on the calculator, double-check by plugging your answer back in. The exponent in \(\log(a)/\log(b)\) is easy to mis-key.</div>
+</div>
+
+<div style="margin-top:2.5rem;padding:0.8rem 1rem;background:#f9fafb;border-radius:6px;font-size:0.82rem;color:#444;">
+  <strong style="color:var(--navy)">Pre-exam reminders for Kai (from prior tests):</strong>
+  <ol style="margin:0.4rem 0 0 1.2rem;line-height:1.7;">
+    <li><strong>Always label answers</strong> with units and what they represent (dollars, pairs, years).</li>
+    <li><strong>Distribute negatives carefully</strong> when subtracting polynomials &mdash; the minus sign hits every term.</li>
+    <li><strong>Factor before cancelling.</strong> Never cancel individual terms in a rational expression.</li>
+    <li><strong>GCF first</strong> before any other factoring move.</li>
+    <li><strong>Placeholder zeros</strong> for missing terms in synthetic division.</li>
+    <li><strong>Verify calculator entries</strong> for log and root operations.</li>
+  </ol>
 </div>
 
 </body>
