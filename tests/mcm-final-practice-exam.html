@@ -91,28 +91,27 @@
       <line x1="220" y1="0" x2="220" y2="280"/><line x1="260" y1="0" x2="260" y2="280"/>
       <line x1="300" y1="0" x2="300" y2="280"/>
     </g>
-    <!-- Axes (origin at 140,140, scale 40px = 1 unit on x; 30px = 6 units on y) -->
+    <!-- Axes (origin at 140,140; 40px/unit x; 5px/unit y) -->
     <g stroke="#1a1a2e" stroke-width="1.5">
       <line x1="0" y1="140" x2="320" y2="140"/>
       <line x1="140" y1="0" x2="140" y2="280"/>
     </g>
-    <!-- x-axis labels: x from -3 to +4 (40px per unit, origin at x=140) -->
+    <!-- x-axis labels -->
     <g font-size="10" fill="#6b7280" text-anchor="middle" font-family="sans-serif">
       <text x="20" y="155">-3</text><text x="60" y="155">-2</text><text x="100" y="155">-1</text>
       <text x="180" y="155">1</text><text x="220" y="155">2</text><text x="260" y="155">3</text><text x="300" y="155">4</text>
     </g>
-    <!-- y-axis labels: y from -24 to +24 (30px = 6 units, origin at y=140) -->
+    <!-- y-axis labels -->
     <g font-size="10" fill="#6b7280" text-anchor="end" font-family="sans-serif">
       <text x="136" y="24">24</text><text x="136" y="54">18</text><text x="136" y="84">12</text><text x="136" y="114">6</text>
       <text x="136" y="174">-6</text><text x="136" y="204">-12</text><text x="136" y="234">-18</text><text x="136" y="264">-24</text>
     </g>
-    <!-- Curve: k(x) = 2(x+2)(x-1)(x-3); zeros at -2, 1, 3; k(0)=12. Scale: x in [-3,4] -> [20,300], y in [-24,24] -> [260,20] -->
-    <!-- Pre-computed sample points: x:-3=>-48 clip, x:-2.5=>-15.75, x:-2=>0, x:-1.5=>-7.875, x:-1=>-16, x:-0.5=>-10.5, x:0=>12, x:0.5=>22.5, x:1=>0, x:1.5=>-9.375, x:2=>-16, x:2.5=>-11.25, x:3=>0, x:3.5=>30.25 clip, x:4=>72 clip -->
-    <!-- Plot: convert (x,y) -> (140 + 40x, 140 - (30/6)y) = (140+40x, 140-5y) -->
-    <path d="M 20,260 C 30,250 50,180 60,140 C 70,120 80,170 100,220 C 110,235 120,225 140,80 C 150,40 170,30 180,140 C 190,180 200,235 220,220 C 230,215 240,200 260,140 C 270,100 280,50 290,20" fill="none" stroke="#1e40af" stroke-width="2"/>
+    <!-- Curve: k(x) = -(x+3)(x+1)(x-2); zeros at -3,-1,2; k(1)=8; y-int=6 -->
+    <!-- pixel = (140+40x, 140-5y); key pts: (-3.5,6.875)=(0,106), (-3,0)=(20,140), (-2,-4)=(60,160), (-1,0)=(100,140), (0,6)=(140,110), (1,8)=(180,100), (2,0)=(220,140), (3,-24)=(260,260) -->
+    <path d="M 0,106 C 5,120 15,130 20,140 C 35,155 55,162 60,160 C 65,158 85,148 100,140 C 115,132 150,105 180,100 C 195,100 215,125 220,140 C 228,152 250,215 260,260" fill="none" stroke="#1e40af" stroke-width="2"/>
     <!-- Zero markers -->
     <g fill="#1e40af">
-      <circle cx="60" cy="140" r="3"/><circle cx="180" cy="140" r="3"/><circle cx="260" cy="140" r="3"/>
+      <circle cx="20" cy="140" r="3"/><circle cx="100" cy="140" r="3"/><circle cx="220" cy="140" r="3"/>
     </g>
   </svg>
 
@@ -132,7 +131,7 @@
   <div class="q-sub"><div class="q-sub-label">(e) Where does <em>k</em> have a relative maximum or minimum? (Estimate from the graph.)</div>
     <div class="work-box" style="height:55px"></div></div>
 
-  <div class="q-sub"><div class="q-sub-label">(f) Given \(k(0) = 12\), write an equation for \(k(x)\) in <strong>factored form</strong>.</div>
+  <div class="q-sub"><div class="q-sub-label">(f) Given \(k(1) = 8\), write an equation for \(k(x)\) in <strong>factored form</strong>.</div>
     <div class="work-box"></div>
     <div class="answer-row"><span class="ans-label">\(k(x) =\)</span><div class="ans-blank"></div></div></div>
 
@@ -144,7 +143,7 @@
 <!-- Q2: equation -> graph -->
 <div class="question">
   <div class="q-label">2.</div>
-  <p class="q-text">Let \(f(x) = -2x(x - 3)(x + 2)^2\).</p>
+  <p class="q-text">Let \(f(x) = -x^2(x - 3)(x + 1)\).</p>
 
   <div class="q-sub"><div class="q-sub-label">(a) What is the degree of <em>f</em>?</div>
     <div class="answer-row"><span class="ans-label">degree =</span><div class="ans-blank"></div></div></div>

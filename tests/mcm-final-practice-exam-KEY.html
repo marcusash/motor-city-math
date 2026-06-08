@@ -50,43 +50,42 @@
 
 <div class="question">
   <div class="q-label">1. Graph &rarr; equation (8 pts)</div>
-  <p class="q-text">Graph shows zeros at \(x = -2, 1, 3\); passes through \((0, 12)\); end behavior up-up (graph leaves to +&infin; on both sides).</p>
+  <p class="q-text">Graph shows zeros at \(x = -3, -1, 2\); \(y\)-intercept \((0, 6)\); odd-degree, negative leading coefficient (top-left to bottom-right).</p>
   <div class="q-sub"><div class="q-sub-label">(a) Degree</div>
-    <div class="ans"><strong>3</strong> (cubic) &mdash; three real zeros, graph turns twice.</div></div>
+    <div class="ans"><strong>3</strong> (cubic) &mdash; three distinct real zeros, curve changes direction twice.</div></div>
   <div class="q-sub"><div class="q-sub-label">(b) End behavior</div>
-    <div class="ans">As \(x \to -\infty,\ k(x) \to -\infty\); as \(x \to +\infty,\ k(x) \to +\infty\). Positive leading coefficient on an odd-degree polynomial.</div></div>
+    <div class="ans">As \(x \to -\infty,\ k(x) \to +\infty\); as \(x \to +\infty,\ k(x) \to -\infty\). Odd degree, <em>negative</em> leading coefficient &rarr; top-left, bottom-right.</div></div>
   <div class="q-sub"><div class="q-sub-label">(c) Domain and Range</div>
     <div class="ans"><strong>Domain:</strong> \((-\infty, \infty)\) &nbsp;&nbsp; <strong>Range:</strong> \((-\infty, \infty)\)</div></div>
-  <div class="q-sub"><div class="q-sub-label">(d) Increasing / Decreasing</div>
-    <div class="ans">Increasing on approximately \((-\infty, -1) \cup (2, \infty)\); Decreasing on \((-1, 2)\).</div></div>
-  <div class="q-sub"><div class="q-sub-label">(e) Relative max / min</div>
-    <div class="ans">Relative max near \(x \approx -1\); Relative min near \(x \approx 2\).</div></div>
-  <div class="q-sub"><div class="q-sub-label">(f) Factored form given \(k(0) = 12\)</div>
-    <div class="work">Zeros at \(-2, 1, 3\) &rArr; \(k(x) = a(x+2)(x-1)(x-3)\). <br>
-      Plug \(x=0\): \(k(0) = a(2)(-1)(-3) = 6a = 12 \Rightarrow a = 2.\)</div>
-    <div class="ans"><strong>\(k(x) = 2(x+2)(x-1)(x-3)\)</strong></div></div>
+  <div class="q-sub"><div class="q-sub-label">(d) Increasing / Decreasing (graph estimate)</div>
+    <div class="ans">Increasing on \((-\infty, \approx{-2.1}) \cup (\approx{0.8}, \approx{1.1})\); Decreasing on \((\approx{-2.1}, \approx{0.8})\) and \((\approx{1.1}, \infty)\).<br>
+    <span style="color:#6b7280;font-size:0.82rem;">Exact turning pts: \(k'(x)=-3x^2-4x+5=0\) &rArr; \(x \approx -2.12\) (local max) and \(x \approx 0.79\) (local min). Accept graph-read estimates.</span></div></div>
+  <div class="q-sub"><div class="q-sub-label">(e) Relative max / min (estimate)</div>
+    <div class="ans">Relative max near \(x \approx -2.1\) (\(k \approx 7.2\)); &nbsp; Relative min near \(x \approx 0.8\) (\(k \approx 4.1\)).</div></div>
+  <div class="q-sub"><div class="q-sub-label">(f) Factored form given \(k(1) = 8\)</div>
+    <div class="work">Zeros at \(-3, -1, 2\) &rArr; \(k(x) = a(x+3)(x+1)(x-2)\). <br>
+      Plug \(x = 1\): \(k(1) = a(4)(2)(-1) = -8a = 8 \Rightarrow a = -1.\)</div>
+    <div class="ans"><strong>\(k(x) = -(x+3)(x+1)(x-2)\)</strong></div></div>
   <div class="q-sub"><div class="q-sub-label">(g) Standard form</div>
-    <div class="work">Expand: \((x-1)(x-3) = x^2 - 4x + 3.\) <br>
-      Then \((x+2)(x^2 - 4x + 3) = x^3 - 4x^2 + 3x + 2x^2 - 8x + 6 = x^3 - 2x^2 - 5x + 6.\) <br>
-      Multiply by 2: \(k(x) = 2x^3 - 4x^2 - 10x + 12.\)</div>
-    <div class="ans"><strong>\(k(x) = 2x^3 - 4x^2 - 10x + 12\)</strong></div></div>
+    <div class="work">Expand inner pair: \((x+3)(x+1) = x^2 + 4x + 3.\) <br>
+      Then \((x^2+4x+3)(x-2) = x^3 - 2x^2 + 4x^2 - 8x + 3x - 6 = x^3 + 2x^2 - 5x - 6.\) <br>
+      Apply \(a = -1\): \(k(x) = -x^3 - 2x^2 + 5x + 6.\)</div>
+    <div class="ans"><strong>\(k(x) = -x^3 - 2x^2 + 5x + 6\)</strong></div></div>
 </div>
 
 <div class="question">
-  <div class="q-label">2. \(f(x) = -2x(x-3)(x+2)^2\) (8 pts)</div>
+  <div class="q-label">2. \(f(x) = -x^2(x-3)(x+1)\) (8 pts)</div>
   <div class="q-sub"><div class="q-sub-label">(a) Degree</div>
-    <div class="ans"><strong>4</strong> &mdash; counting factors: \(x \cdot x \cdot x^2 = x^4\) when expanded.</div></div>
+    <div class="ans"><strong>4</strong> &mdash; \(x^2 \cdot x \cdot x = x^4\) when fully expanded.</div></div>
   <div class="q-sub"><div class="q-sub-label">(b) End behavior</div>
-    <div class="ans">As \(x \to \pm\infty,\ f(x) \to -\infty\) (both ends). Even degree with negative leading coefficient.</div></div>
+    <div class="ans">As \(x \to \pm\infty,\ f(x) \to -\infty\) (both ends DOWN). Even degree with <em>negative</em> leading coefficient &rarr; both ends fall.</div></div>
   <div class="q-sub"><div class="q-sub-label">(c) Sketch</div>
-    <div class="ans">Zeros: \(x = 0\) (mult 1, crosses), \(x = 3\) (mult 1, crosses), \(x = -2\) (mult 2, <em>bounces</em>).<br>
-      Both ends point down. Graph rises through \((-2, 0)\) (touches and bounces), peaks between 0 and 3, then falls.</div></div>
+    <div class="ans">Zeros: \(x = 0\) (mult 2, <em>bounces</em>), \(x = 3\) (mult 1, crosses), \(x = -1\) (mult 1, crosses).<br>
+      \(y\)-intercept: \(f(0) = 0\). Both ends down. Graph crosses at \(x = -1\), bounces at origin, crosses at \(x = 3\), both ends fall to \(-\infty\).</div></div>
   <div class="q-sub"><div class="q-sub-label">(d) Standard form</div>
-    <div class="work">\((x+2)^2 = x^2 + 4x + 4.\) <br>
-      \(x(x-3) = x^2 - 3x.\) <br>
-      \((x^2 - 3x)(x^2 + 4x + 4) = x^4 + 4x^3 + 4x^2 - 3x^3 - 12x^2 - 12x = x^4 + x^3 - 8x^2 - 12x.\) <br>
-      Multiply by \(-2\): \(f(x) = -2x^4 - 2x^3 + 16x^2 + 24x.\)</div>
-    <div class="ans"><strong>\(f(x) = -2x^4 - 2x^3 + 16x^2 + 24x\)</strong></div></div>
+    <div class="work">First: \((x-3)(x+1) = x^2 - 2x - 3.\) <br>
+      Then: \(-x^2(x^2 - 2x - 3) = -(x^4 - 2x^3 - 3x^2) = -x^4 + 2x^3 + 3x^2.\)</div>
+    <div class="ans"><strong>\(f(x) = -x^4 + 2x^3 + 3x^2\)</strong></div></div>
 </div>
 
 <div class="section-header">Evaluating Logarithms</div>
