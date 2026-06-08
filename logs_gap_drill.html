@@ -3,19 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Algebra 2 — Logs, Exponents &amp; Rational Expressions Gap Drill</title>
+<title>Algebra 2 — Functions Gap Drill (Final Exam Prep)</title>
 <script>
 MathJax = { tex: { inlineMath: [['\\(','\\)'],['$','$']] }, options: { skipHtmlTags: ['script','noscript','style','textarea'] } };
 </script>
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
 <style>
-:root {
-  --ink: #000;
-  --bg: #fff;
-  --rule: #000;
-  --soft: #444;
-  font-size: 15px;
-}
+:root { --ink: #000; --bg: #fff; --rule: #000; --soft: #444; font-size: 15px; }
 * { box-sizing: border-box; margin: 0; padding: 0; color: var(--ink); }
 body { font-family: 'Georgia', serif; background: var(--bg); padding: 20px; }
 .sheet { background: var(--bg); max-width: 900px; margin: 0 auto; padding: 40px; }
@@ -28,228 +22,209 @@ hr.section { border: none; border-top: 1.5px solid var(--rule); margin: 26px 0 1
 .section-title { font-size: 1.1rem; font-weight: bold; margin-bottom: 4px; }
 .section-note { font-size: .88rem; margin-bottom: 14px; font-style: italic; color: var(--soft); }
 .prob-block { margin-bottom: 24px; page-break-inside: avoid; }
-.prob-num { font-weight: bold; margin-bottom: 4px; font-size: .92rem; }
 .prob-q { margin-bottom: 8px; line-height: 1.6; }
 .subq { margin: 14px 0 0 12px; }
 .fill { display: inline-block; border-bottom: 1px solid #777; min-width: 120px; }
-.work-box { border: 1px dashed #777; min-height: 100px; margin-top: 6px; padding: 6px 10px; }
-.work-box-sm { min-height: 70px; }
-.work-box-tall { min-height: 140px; }
+.work-box { border: 1px dashed #777; margin-top: 6px; padding: 6px 10px; }
+.work-box-sm  { min-height: 70px; }
+.work-box-md  { min-height: 100px; }
+.work-box-tall { min-height: 145px; }
 .points { float: right; font-size: .82rem; font-weight: normal; color: var(--soft); }
 @media print {
   body { padding: 0; }
   .sheet { padding: 18px; max-width: 100%; }
-  .work-box { min-height: 80px; }
+  .work-box-sm   { min-height: 65px; }
+  .work-box-md   { min-height: 90px; }
+  .work-box-tall { min-height: 130px; }
 }
 </style>
 </head>
 <body>
 <div class="sheet">
 <h1>Algebra 2</h1>
-<p class="subtitle">Logs, Exponents &amp; Rational Expressions &mdash; Gap Drill (Unit Test Prep)</p>
+<p class="subtitle">Functions &mdash; Final Exam Prep &middot; Rational &middot; Linear &middot; Exponential Decay &middot; Polynomial</p>
 <div class="name-block">
   <label>Name: ____________________________________________</label>
   <label>Block: __________</label>
   <label>Date: __________</label>
 </div>
 <div class="note-flag">
-  <strong>~45 minutes &middot; 58 points total.</strong> No calculator on Q1 and Q2.
-  Calculator allowed on Q3, Q4. Show all work. Round all decimals to <strong>2 decimal places</strong>.
+  <strong>~40 minutes &middot; 42 points total.</strong>
+  No calculator on Q1. Calculator allowed on Q2, Q3, Q4.
+  Show all work. Round all decimals to <strong>2 decimal places</strong>.
 </div>
 
-<!-- Q1 — 5-part log manipulation -->
+<!-- Q1: Rational Equation -->
 <hr class="section">
-<p class="section-title">Q1 &mdash; Manipulating Logarithmic Expressions (No Calculator) <span class="points">15 pts &mdash; 3 pts each</span></p>
-<p class="section-note">Simplify, expand, condense, or solve as directed. Show every step.</p>
-
-<div class="prob-block">
-
-  <!-- 1a: simple property evaluation -->
-  <div class="subq">
-    <p class="prob-q"><strong>(a)</strong> &nbsp; Evaluate: &nbsp; \(\log_4(64) \;-\; \log_4\!\left(\dfrac{1}{16}\right)\)</p>
-    <div class="work-box work-box-sm"></div>
-    <p style="margin-top:6px;">Answer = <span class="fill" style="min-width:80px;">&nbsp;</span></p>
-  </div>
-
-  <!-- 1b: expand with fraction and root -->
-  <div class="subq" style="margin-top:20px;">
-    <p class="prob-q"><strong>(b)</strong> &nbsp; Expand completely: &nbsp; \(\log_5\!\left(\dfrac{\sqrt{x}}{y^3}\right)\)</p>
-    <div class="work-box work-box-sm"></div>
-    <p style="margin-top:6px;">Answer = <span class="fill" style="min-width:280px;">&nbsp;</span></p>
-  </div>
-
-  <!-- 1c: condense to single log with fraction coefficient -->
-  <div class="subq" style="margin-top:20px;">
-    <p class="prob-q"><strong>(c)</strong> &nbsp; Condense into a single logarithm: &nbsp; \(2\log x \;-\; \dfrac{1}{3}\log y \;+\; \log z\)</p>
-    <div class="work-box work-box-sm"></div>
-    <p style="margin-top:6px;">Answer = <span class="fill" style="min-width:280px;">&nbsp;</span></p>
-  </div>
-
-  <!-- 1d: solve log equation — quadratic embedded -->
-  <div class="subq" style="margin-top:20px;">
-    <p class="prob-q"><strong>(d)</strong> &nbsp; Solve for \(x\): &nbsp; \(\log_3(x+4) + \log_3(x-2) = 3\)</p>
-    <p class="prob-q" style="font-size:.85rem; color:var(--soft);">Hint: combine logs first. Check for extraneous solutions.</p>
-    <div class="work-box work-box-tall"></div>
-    <p style="margin-top:6px;">\(x = \) <span class="fill" style="min-width:100px;">&nbsp;</span></p>
-  </div>
-
-  <!-- 1e: solve log equation — factoring + simplification -->
-  <div class="subq" style="margin-top:20px;">
-    <p class="prob-q"><strong>(e)</strong> &nbsp; Solve for \(x\): &nbsp; \(\log_2(x^2 - 9) \;-\; \log_2(x+3) = 2\)</p>
-    <p class="prob-q" style="font-size:.85rem; color:var(--soft);">Hint: combine into a single log, then factor the numerator.</p>
-    <div class="work-box work-box-tall"></div>
-    <p style="margin-top:6px;">\(x = \) <span class="fill" style="min-width:100px;">&nbsp;</span></p>
-  </div>
-
-</div>
-
-<!-- Q2 -->
-<hr class="section">
-<p class="section-title">Q2 &mdash; Rational Equation: LCD + Polynomial Factoring <span class="points">8 pts</span></p>
+<p class="section-title">Q1 &mdash; Rational Equation: LCD &amp; Polynomial Factoring <span class="points">8 pts</span></p>
 <p class="section-note">Factor the quadratic denominator first. Multiply every term by the LCD to clear all fractions. Solve the resulting equation and check for extraneous solutions.</p>
 <div class="prob-block">
-  <p class="prob-num">2. &nbsp; Solve for \(x\): &nbsp; \(\dfrac{2x}{x+3} \;-\; \dfrac{x}{x-2} \;=\; \dfrac{-10}{x^2+x-6}\)</p>
-  <p class="prob-q" style="font-size:.85rem; margin-top:6px; color:var(--soft);">Note: factor \(x^2+x-6\) first &mdash; it determines your LCD. Check any solutions against the original denominators.</p>
+  <p class="prob-q"><strong>1.</strong> &nbsp; Solve for \(x\): &nbsp; \(\dfrac{2x}{x+3} \;-\; \dfrac{x}{x-2} \;=\; \dfrac{-10}{x^2+x-6}\)</p>
+  <p class="prob-q" style="font-size:.85rem; color:var(--soft);">Factor \(x^2+x-6\) first — it determines your LCD. Check all solutions against original denominators.</p>
   <div class="work-box work-box-tall"></div>
-  <p style="margin-top:8px;">\(x = \) <span class="fill" style="min-width:180px;">&nbsp;</span></p>
-  <p style="margin-top:6px; font-size:.85rem; color:var(--soft);">State any extraneous solutions and why they are excluded: <span class="fill" style="min-width:280px;">&nbsp;</span></p>
+  <p style="margin-top:8px;">\(x = \) <span class="fill" style="min-width:160px;">&nbsp;</span></p>
+  <p style="margin-top:6px; font-size:.85rem; color:var(--soft);">Extraneous solution(s) and reason: <span class="fill" style="min-width:280px;">&nbsp;</span></p>
 </div>
 
-<!-- Q3: Linear Function -->
+<!-- Q2: Linear Function -->
 <hr class="section">
-<p class="section-title">Q3 &mdash; Building a Linear Function <span class="points">8 pts</span></p>
+<p class="section-title">Q2 &mdash; Building a Linear Function <span class="points">8 pts</span></p>
 <p class="section-note">Write the model first, then use it to answer each part. Show all work.</p>
 <div class="prob-block">
-  <p class="prob-num">3.</p>
-  <p class="prob-q">A plumber charges a flat service fee of <strong>$65</strong> plus <strong>$55 per hour</strong> of work.</p>
+  <p class="prob-q"><strong>2.</strong> &nbsp; A plumber charges a flat service fee of <strong>$65</strong> plus <strong>$55 per hour</strong> of work.</p>
 
-  <p class="prob-q" style="margin-top:8px;"><strong>(a)</strong> Write a linear function \(C(h)\) for the total cost of \(h\) hours of work. <span class="points">2 pts</span></p>
-  <div class="work-box work-box-sm"></div>
-  <p style="margin-top:6px;">\(C(h) = \) <span class="fill" style="min-width:220px;">&nbsp;</span></p>
+  <div class="subq">
+    <p class="prob-q"><strong>(a)</strong> Write a linear function \(C(h)\) for the total cost of \(h\) hours of work. <span class="points">2 pts</span></p>
+    <div class="work-box work-box-sm"></div>
+    <p style="margin-top:6px;">\(C(h) = \) <span class="fill" style="min-width:220px;">&nbsp;</span></p>
+  </div>
 
-  <p class="prob-q" style="margin-top:14px;"><strong>(b)</strong> A customer's bill came to <strong>$285</strong>. How many hours did the plumber work? <span class="points">3 pts</span></p>
-  <div class="work-box work-box-sm"></div>
-  <p style="margin-top:6px;">\(h = \) <span class="fill" style="min-width:100px;">&nbsp;</span> hours</p>
+  <div class="subq">
+    <p class="prob-q"><strong>(b)</strong> A customer&rsquo;s bill came to <strong>$285</strong>. How many hours did the plumber work? <span class="points">3 pts</span></p>
+    <div class="work-box work-box-sm"></div>
+    <p style="margin-top:6px;">\(h = \) <span class="fill" style="min-width:100px;">&nbsp;</span> hours</p>
+  </div>
 
-  <p class="prob-q" style="margin-top:14px;"><strong>(c)</strong> A second plumber charges <strong>no service fee</strong> but <strong>$80/hour</strong>. Set up and solve for the number of hours at which both plumbers cost the same. <span class="points">3 pts</span></p>
-  <div class="work-box work-box-sm"></div>
-  <p style="margin-top:6px;">Equal cost at \(h = \) <span class="fill" style="min-width:100px;">&nbsp;</span> hours</p>
+  <div class="subq">
+    <p class="prob-q"><strong>(c)</strong> A second plumber charges <strong>no service fee</strong> but <strong>$80/hour</strong>. Set up and solve for the number of hours at which both plumbers cost the same. <span class="points">3 pts</span></p>
+    <div class="work-box work-box-sm"></div>
+    <p style="margin-top:6px;">Equal cost at \(h = \) <span class="fill" style="min-width:100px;">&nbsp;</span> hours</p>
+  </div>
 </div>
 
-<!-- Q4: Exponential Decay -->
+<!-- Q3: Exponential Decay -->
 <hr class="section">
-<p class="section-title">Q4 &mdash; Exponential Decay (Calculator) <span class="points">9 pts</span></p>
+<p class="section-title">Q3 &mdash; Exponential Decay (Calculator) <span class="points">9 pts</span></p>
 <p class="section-note">Show your model and all work. Round to 2 decimal places.</p>
 <div class="prob-block">
-  <p class="prob-num">4.</p>
-  <p class="prob-q">A new car is purchased for <strong>$28,000</strong>. Its value <strong>decreases by 15%</strong> each year.</p>
+  <p class="prob-q"><strong>3.</strong> &nbsp; A new car is purchased for <strong>$28,000</strong>. Its value <strong>decreases by 15%</strong> each year.</p>
 
-  <p class="prob-q" style="margin-top:8px;"><strong>(a)</strong> Write an exponential decay model \(V(t)\) for the car's value after \(t\) years. <span class="points">2 pts</span></p>
-  <div class="work-box work-box-sm"></div>
-  <p style="margin-top:6px;">\(V(t) = \) <span class="fill" style="min-width:250px;">&nbsp;</span></p>
-
-  <p class="prob-q" style="margin-top:14px;"><strong>(b)</strong> What is the car worth after <strong>4 years</strong>? Round to the nearest dollar. <span class="points">3 pts</span></p>
-  <div class="work-box work-box-sm"></div>
-  <p style="margin-top:6px;">\(V(4) \approx \$\) <span class="fill" style="min-width:120px;">&nbsp;</span></p>
-
-  <p class="prob-q" style="margin-top:14px;"><strong>(c)</strong> In how many years will the car's value fall below <strong>$10,000</strong>? Use change-of-base. Round to 2 decimal places. <span class="points">4 pts</span></p>
-  <div class="work-box work-box-tall"></div>
-  <p style="margin-top:6px;">\(t \approx \) <span class="fill" style="min-width:100px;">&nbsp;</span> years</p>
-</div>
-
-<!-- Q5: Cubic Polynomial — Zeros & Factoring -->
-<hr class="section">
-<p class="section-title">Q5 &mdash; Cubic Polynomial: Zeros &amp; Factoring <span class="points">9 pts</span></p>
-<p class="section-note">Show all division and factoring work.</p>
-<div class="prob-block">
-  <p class="prob-num">5.</p>
-  <p class="prob-q">A company's monthly profit (in thousands of dollars) is modeled by:</p>
-  <p class="prob-q" style="text-align:center; font-size:1.1rem; margin: 8px 0;">\(P(x) = x^3 - 4x^2 - 7x + 10\)</p>
-  <p class="prob-q">where \(x\) is the number of months since launch.</p>
-
-  <p class="prob-q" style="margin-top:10px;"><strong>(a)</strong> Verify that \(x = 1\) is a zero of \(P(x)\). <span class="points">2 pts</span></p>
-  <div class="work-box work-box-sm"></div>
-
-  <p class="prob-q" style="margin-top:14px;"><strong>(b)</strong> Use synthetic or polynomial division to factor \(P(x)\) completely. <span class="points">4 pts</span></p>
-  <div class="work-box work-box-tall"></div>
-  <p style="margin-top:6px;">\(P(x) = \) <span class="fill" style="min-width:280px;">&nbsp;</span></p>
-
-  <p class="prob-q" style="margin-top:14px;"><strong>(c)</strong> State all zeros and explain what they represent in the context of the company's profit. <span class="points">3 pts</span></p>
-  <div class="work-box work-box-sm"></div>
-</div>
-
-<!-- Q6: Cubic Polynomial — Graphing -->
-<hr class="section">
-<p class="section-title">Q6 &mdash; Cubic Polynomial: Graphing <span class="points">9 pts</span></p>
-<p class="section-note">Use your factored form from Q5. Label all intercepts on the sketch.</p>
-<div class="prob-block">
-  <p class="prob-num">6.</p>
-  <p class="prob-q">Using \(P(x) = (x-1)(x-5)(x+2)\) from Q5:</p>
-
-  <p class="prob-q" style="margin-top:10px;"><strong>(a)</strong> Find the \(y\)-intercept of \(P(x)\). <span class="points">2 pts</span></p>
-  <div class="work-box work-box-sm"></div>
-  <p style="margin-top:6px;">\(y\)-intercept: \( \Big(0,\;\) <span class="fill" style="min-width:60px;">&nbsp;</span>\(\Big)\)</p>
-
-  <p class="prob-q" style="margin-top:14px;"><strong>(b)</strong> Describe the end behavior as \(x \to +\infty\) and as \(x \to -\infty\). Justify using the leading term. <span class="points">3 pts</span></p>
-  <div class="work-box work-box-sm"></div>
-  <p style="margin-top:6px;">As \(x \to +\infty\), \(P(x) \to\) <span class="fill" style="min-width:80px;">&nbsp;</span> &nbsp;&nbsp; As \(x \to -\infty\), \(P(x) \to\) <span class="fill" style="min-width:80px;">&nbsp;</span></p>
-
-  <p class="prob-q" style="margin-top:14px;"><strong>(c)</strong> Sketch the graph of \(P(x)\) on the grid below. Plot and label all \(x\)- and \(y\)-intercepts. Show the correct end behavior and general shape. <span class="points">4 pts</span></p>
-
-  <!-- Coordinate grid -->
-  <div style="margin-top:10px; text-align:center;">
-  <svg viewBox="-10 -10 320 280" width="380" height="300" style="border:1px solid #ccc; background:#fff; font-family:Georgia,serif;">
-    <!-- Grid lines -->
-    <!-- Vertical gridlines x = -3 to 7 (step 1), mapped: origin at (155,140), scale 22px/unit -->
-    <!-- Horizontal gridlines y = -24 to 14 (step 2) -->
-    <defs>
-      <style>.gl{stroke:#ddd;stroke-width:0.6;} .gl2{stroke:#bbb;stroke-width:1;} .ax{stroke:#000;stroke-width:1.5;} .tl{fill:#333;font-size:9px;}</style>
-    </defs>
-    <!-- Minor vertical grid -->
-    <line class="gl" x1="23" y1="0" x2="23" y2="260"/><line class="gl" x1="45" y1="0" x2="45" y2="260"/>
-    <line class="gl" x1="67" y1="0" x2="67" y2="260"/><line class="gl" x1="89" y1="0" x2="89" y2="260"/>
-    <line class="gl" x1="111" y1="0" x2="111" y2="260"/>
-    <line class="gl" x1="155" y1="0" x2="155" y2="260"/>
-    <line class="gl" x1="177" y1="0" x2="177" y2="260"/><line class="gl" x1="199" y1="0" x2="199" y2="260"/>
-    <line class="gl" x1="221" y1="0" x2="221" y2="260"/><line class="gl" x1="243" y1="0" x2="243" y2="260"/>
-    <line class="gl" x1="265" y1="0" x2="265" y2="260"/><line class="gl" x1="287" y1="0" x2="287" y2="260"/>
-    <!-- Minor horizontal grid (every 2 units, 11px/unit) -->
-    <line class="gl" x1="0" y1="238" x2="300" y2="238"/><line class="gl" x1="0" y1="216" x2="300" y2="216"/>
-    <line class="gl" x1="0" y1="194" x2="300" y2="194"/><line class="gl" x1="0" y1="172" x2="300" y2="172"/>
-    <line class="gl" x1="0" y1="150" x2="300" y2="150"/>
-    <line class="gl" x1="0" y1="128" x2="300" y2="128"/><line class="gl" x1="0" y1="106" x2="300" y2="106"/>
-    <line class="gl" x1="0" y1="84" x2="300" y2="84"/><line class="gl" x1="0" y1="62" x2="300" y2="62"/>
-    <line class="gl" x1="0" y1="40" x2="300" y2="40"/><line class="gl" x1="0" y1="18" x2="300" y2="18"/>
-    <!-- Axes -->
-    <line class="ax" x1="133" y1="0" x2="133" y2="260"/>
-    <line class="ax" x1="0" y1="150" x2="300" y2="150"/>
-    <!-- Axis arrows -->
-    <polygon points="133,0 128,10 138,10" fill="#000"/>
-    <polygon points="300,150 290,145 290,155" fill="#000"/>
-    <!-- x-axis labels -->
-    <text class="tl" x="19" y="163">-5</text>
-    <text class="tl" x="41" y="163">-4</text>
-    <text class="tl" x="63" y="163">-3</text>
-    <text class="tl" x="85" y="163">-2</text>
-    <text class="tl" x="107" y="163">-1</text>
-    <text class="tl" x="151" y="163">1</text>
-    <text class="tl" x="173" y="163">2</text>
-    <text class="tl" x="195" y="163">3</text>
-    <text class="tl" x="217" y="163">4</text>
-    <text class="tl" x="239" y="163">5</text>
-    <text class="tl" x="261" y="163">6</text>
-    <!-- y-axis labels (every 4 units) -->
-    <text class="tl" text-anchor="end" x="128" y="242">-8</text>
-    <text class="tl" text-anchor="end" x="128" y="198">-4</text>
-    <text class="tl" text-anchor="end" x="128" y="132">4</text>
-    <text class="tl" text-anchor="end" x="128" y="88">8</text>
-    <text class="tl" text-anchor="end" x="128" y="44">12</text>
-    <!-- Axis labels -->
-    <text x="290" y="145" style="font-size:10px;font-style:italic;">x</text>
-    <text x="138" y="12" style="font-size:10px;font-style:italic;">y</text>
-  </svg>
+  <div class="subq">
+    <p class="prob-q"><strong>(a)</strong> Write an exponential decay model \(V(t)\) for the car&rsquo;s value after \(t\) years. <span class="points">2 pts</span></p>
+    <div class="work-box work-box-sm"></div>
+    <p style="margin-top:6px;">\(V(t) = \) <span class="fill" style="min-width:250px;">&nbsp;</span></p>
   </div>
-  <p style="font-size:.82rem; color:var(--soft); margin-top:4px; text-align:center;">Grid scale: each square = 1 unit (x), 2 units (y)</p>
+
+  <div class="subq">
+    <p class="prob-q"><strong>(b)</strong> What is the car worth after <strong>4 years</strong>? Round to the nearest dollar. <span class="points">3 pts</span></p>
+    <div class="work-box work-box-sm"></div>
+    <p style="margin-top:6px;">\(V(4) \approx \$\) <span class="fill" style="min-width:120px;">&nbsp;</span></p>
+  </div>
+
+  <div class="subq">
+    <p class="prob-q"><strong>(c)</strong> In how many years will the car&rsquo;s value fall below <strong>$10,000</strong>? Use change-of-base. Round to 2 decimal places. <span class="points">4 pts</span></p>
+    <div class="work-box work-box-tall"></div>
+    <p style="margin-top:6px;">\(t \approx \) <span class="fill" style="min-width:100px;">&nbsp;</span> years</p>
+  </div>
+</div>
+
+<!-- Q4: Cubic Polynomial — Factoring + Graphing -->
+<hr class="section">
+<p class="section-title">Q4 &mdash; Cubic Polynomial: Company Profits <span class="points">17 pts</span></p>
+<p class="section-note">Use the polynomial to find all zeros, then sketch a complete, labeled graph.</p>
+<div class="prob-block">
+  <p class="prob-q"><strong>4.</strong> &nbsp; A company&rsquo;s monthly profit (in thousands of dollars) is modeled by:</p>
+  <p style="text-align:center; font-size:1.15rem; margin: 10px 0;">\(P(x) = x^3 - 4x^2 - 7x + 10\)</p>
+  <p class="prob-q">where \(x\) is the number of months since the company launched.</p>
+
+  <div class="subq">
+    <p class="prob-q"><strong>(a)</strong> Verify that \(x = 1\) is a zero of \(P(x)\). Show by substitution. <span class="points">2 pts</span></p>
+    <div class="work-box work-box-sm"></div>
+  </div>
+
+  <div class="subq">
+    <p class="prob-q"><strong>(b)</strong> Use synthetic or polynomial long division to factor \(P(x)\) completely. <span class="points">5 pts</span></p>
+    <div class="work-box work-box-tall"></div>
+    <p style="margin-top:6px;">\(P(x) = \) <span class="fill" style="min-width:300px;">&nbsp;</span></p>
+  </div>
+
+  <div class="subq">
+    <p class="prob-q"><strong>(c)</strong> State all three zeros. What does each zero represent in the context of the company&rsquo;s profits? <span class="points">3 pts</span></p>
+    <div class="work-box work-box-sm"></div>
+  </div>
+
+  <div class="subq">
+    <p class="prob-q"><strong>(d)</strong> Find the \(y\)-intercept of \(P(x)\) and state what it represents in context. <span class="points">2 pts</span></p>
+    <div class="work-box work-box-sm"></div>
+    <p style="margin-top:6px;">\(y\)-intercept: \(\Big(0,\;\) <span class="fill" style="min-width:60px;">&nbsp;</span>\(\Big)\)</p>
+  </div>
+
+  <div class="subq">
+    <p class="prob-q"><strong>(e)</strong> Describe the end behavior using the leading term. <span class="points">1 pt</span></p>
+    <p class="prob-q" style="margin-left:14px; margin-top:4px;">
+      As \(x \to +\infty\), &nbsp; \(P(x) \to\) <span class="fill" style="min-width:80px;">&nbsp;</span>
+      &nbsp;&nbsp;&nbsp;
+      As \(x \to -\infty\), &nbsp; \(P(x) \to\) <span class="fill" style="min-width:80px;">&nbsp;</span>
+    </p>
+  </div>
+
+  <div class="subq" style="margin-top:18px;">
+    <p class="prob-q"><strong>(f)</strong> Sketch the graph of \(P(x)\) on the grid below. Plot and label all \(x\)-intercepts and the \(y\)-intercept. Show correct end behavior and general shape. <span class="points">4 pts</span></p>
+    <div style="margin-top:12px; text-align:center;">
+    <svg viewBox="-10 -10 320 280" width="400" height="315" style="border:1px solid #ccc; background:#fff; font-family:Georgia,serif; display:block; margin:0 auto;">
+      <defs>
+        <style>.gl{stroke:#ddd;stroke-width:0.6;} .ax{stroke:#000;stroke-width:1.5;} .tl{fill:#333;font-size:9px;}</style>
+      </defs>
+      <!-- Vertical gridlines: origin x=133, scale 22px/unit, x from -5 to 7 -->
+      <line class="gl" x1="23"  y1="0" x2="23"  y2="260"/>
+      <line class="gl" x1="45"  y1="0" x2="45"  y2="260"/>
+      <line class="gl" x1="67"  y1="0" x2="67"  y2="260"/>
+      <line class="gl" x1="89"  y1="0" x2="89"  y2="260"/>
+      <line class="gl" x1="111" y1="0" x2="111" y2="260"/>
+      <line class="gl" x1="155" y1="0" x2="155" y2="260"/>
+      <line class="gl" x1="177" y1="0" x2="177" y2="260"/>
+      <line class="gl" x1="199" y1="0" x2="199" y2="260"/>
+      <line class="gl" x1="221" y1="0" x2="221" y2="260"/>
+      <line class="gl" x1="243" y1="0" x2="243" y2="260"/>
+      <line class="gl" x1="265" y1="0" x2="265" y2="260"/>
+      <line class="gl" x1="287" y1="0" x2="287" y2="260"/>
+      <!-- Horizontal gridlines: origin y=150, scale 11px/unit (y from -10 to 13) -->
+      <line class="gl" x1="0" y1="18"  x2="300" y2="18"/>
+      <line class="gl" x1="0" y1="40"  x2="300" y2="40"/>
+      <line class="gl" x1="0" y1="62"  x2="300" y2="62"/>
+      <line class="gl" x1="0" y1="84"  x2="300" y2="84"/>
+      <line class="gl" x1="0" y1="106" x2="300" y2="106"/>
+      <line class="gl" x1="0" y1="128" x2="300" y2="128"/>
+      <line class="gl" x1="0" y1="172" x2="300" y2="172"/>
+      <line class="gl" x1="0" y1="194" x2="300" y2="194"/>
+      <line class="gl" x1="0" y1="216" x2="300" y2="216"/>
+      <line class="gl" x1="0" y1="238" x2="300" y2="238"/>
+      <!-- Axes -->
+      <line class="ax" x1="133" y1="0"   x2="133" y2="260"/>
+      <line class="ax" x1="0"   y1="150" x2="300" y2="150"/>
+      <!-- Arrows -->
+      <polygon points="133,0 128,10 138,10" fill="#000"/>
+      <polygon points="300,150 290,145 290,155" fill="#000"/>
+      <!-- x-axis tick labels -->
+      <text class="tl" x="19"  y="163">-5</text>
+      <text class="tl" x="41"  y="163">-4</text>
+      <text class="tl" x="63"  y="163">-3</text>
+      <text class="tl" x="85"  y="163">-2</text>
+      <text class="tl" x="107" y="163">-1</text>
+      <text class="tl" x="151" y="163">1</text>
+      <text class="tl" x="173" y="163">2</text>
+      <text class="tl" x="195" y="163">3</text>
+      <text class="tl" x="217" y="163">4</text>
+      <text class="tl" x="239" y="163">5</text>
+      <text class="tl" x="261" y="163">6</text>
+      <!-- y-axis tick labels (every 2 units) -->
+      <text class="tl" text-anchor="end" x="128" y="44">12</text>
+      <text class="tl" text-anchor="end" x="128" y="66">10</text>
+      <text class="tl" text-anchor="end" x="128" y="88">8</text>
+      <text class="tl" text-anchor="end" x="128" y="110">6</text>
+      <text class="tl" text-anchor="end" x="128" y="132">4</text>
+      <text class="tl" text-anchor="end" x="128" y="154">2</text>
+      <text class="tl" text-anchor="end" x="128" y="176">-2</text>
+      <text class="tl" text-anchor="end" x="128" y="198">-4</text>
+      <text class="tl" text-anchor="end" x="128" y="220">-6</text>
+      <text class="tl" text-anchor="end" x="128" y="242">-8</text>
+      <!-- Axis labels -->
+      <text x="289" y="145" style="font-size:10px;font-style:italic;">x</text>
+      <text x="138" y="12"  style="font-size:10px;font-style:italic;">y</text>
+    </svg>
+    </div>
+    <p style="font-size:.8rem; color:var(--soft); margin-top:5px; text-align:center;">Grid: x-axis scale = 1 unit per square &middot; y-axis scale = 2 units per square</p>
+  </div>
 </div>
 
 </div><!-- .sheet -->
