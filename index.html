@@ -777,6 +777,11 @@
             if (short.indexOf('Gap Drill') !== -1) short = 'GD';
             if (short.indexOf('Unit Test') !== -1) short = 'UT1';
             if (short.indexOf('Logarithms') !== -1) short = 'LogsP';
+            if (short.indexOf('S5 Practice Quiz D') !== -1) short = 'PQD';
+            else if (short.indexOf('S5 Practice Quiz C') !== -1) short = 'PQC';
+            else if (short.indexOf('S5 Practice Quiz B') !== -1) short = 'PQB';
+            else if (short.indexOf('S5 Practice Quiz') !== -1) short = short.replace('S5 Practice Quiz', 'PQ').replace(/\s+/g, '');
+            if (short.indexOf('Assessment 3') !== -1) short = 'Asmt3';
             raw.push({ label: short, sublabel: dateStr, fa: fa, ts: ts });
         });
         raw.sort(function(a, b) { return a.ts - b.ts; });
