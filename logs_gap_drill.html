@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Algebra 2 — Logs, Exponents & Rational Expressions Gap Drill</title>
+<title>Algebra 2 — Logs, Exponents &amp; Rational Expressions Gap Drill</title>
 <script>
 MathJax = { tex: { inlineMath: [['\\(','\\)'],['$','$']] }, options: { skipHtmlTags: ['script','noscript','style','textarea'] } };
 </script>
@@ -24,30 +24,27 @@ h1 { font-size: 1.8rem; }
 .name-block { display: flex; gap: 40px; margin: 18px 0 4px; flex-wrap: wrap; }
 .name-block label { flex: 1; border-bottom: 1px solid var(--rule); padding-bottom: 2px; font-size: .95rem; min-width: 200px; }
 .note-flag { border: 1px solid var(--rule); padding: 8px 12px; margin: 10px 0; font-size: .88rem; }
-.gap-box { border: 1.5px solid var(--rule); padding: 14px 18px; margin: 18px 0; background: #fafafa; }
-.gap-box h3 { font-size: .95rem; letter-spacing: .04em; margin-bottom: 8px; }
-.gap-box ul { font-size: .88rem; margin-left: 18px; }
-.gap-box ul li { padding: 2px 0; }
 hr.section { border: none; border-top: 1.5px solid var(--rule); margin: 26px 0 16px; }
 .section-title { font-size: 1.1rem; font-weight: bold; margin-bottom: 4px; }
 .section-note { font-size: .88rem; margin-bottom: 14px; font-style: italic; color: var(--soft); }
 .prob-block { margin-bottom: 24px; page-break-inside: avoid; }
 .prob-num { font-weight: bold; margin-bottom: 4px; font-size: .92rem; }
 .prob-q { margin-bottom: 8px; line-height: 1.6; }
+.subq { margin: 14px 0 0 12px; }
 .fill { display: inline-block; border-bottom: 1px solid #777; min-width: 120px; }
 .work-box { border: 1px dashed #777; min-height: 100px; margin-top: 6px; padding: 6px 10px; }
+.work-box-sm { min-height: 70px; }
 .work-box-tall { min-height: 140px; }
 .points { float: right; font-size: .82rem; font-weight: normal; color: var(--soft); }
 @media print {
   body { padding: 0; }
   .sheet { padding: 18px; max-width: 100%; }
-  .work-box { min-height: 90px; }
+  .work-box { min-height: 80px; }
 }
 </style>
 </head>
 <body>
 <div class="sheet">
-
 <h1>Algebra 2</h1>
 <p class="subtitle">Logs, Exponents &amp; Rational Expressions &mdash; Gap Drill (Unit Test Prep)</p>
 <div class="name-block">
@@ -55,80 +52,111 @@ hr.section { border: none; border-top: 1.5px solid var(--rule); margin: 26px 0 1
   <label>Block: __________</label>
   <label>Date: __________</label>
 </div>
-
 <div class="note-flag">
-  <strong>~25 minutes &middot; 40 points total.</strong> Calculator allowed on Q2, Q3, Q4.
-  Show all work. Round all decimals to <strong>2 decimal places</strong>.
+  <strong>~40 minutes &middot; 50 points total.</strong> No calculator on Q1.
+  Calculator allowed on Q2, Q3, Q4. Show all work. Round all decimals to <strong>2 decimal places</strong>.
 </div>
 
-<!-- ================================================ -->
+<!-- Q1 — 5-part log manipulation -->
 <hr class="section">
-<p class="section-title">Q1 &mdash; Log Properties (No Calculator) <span class="points">5 pts</span></p>
-<p class="section-note">Simplify to a single number. Show each step.</p>
+<p class="section-title">Q1 &mdash; Manipulating Logarithmic Expressions (No Calculator) <span class="points">15 pts &mdash; 3 pts each</span></p>
+<p class="section-note">Simplify, expand, condense, or solve as directed. Show every step.</p>
 
 <div class="prob-block">
-  <p class="prob-num">1. &nbsp; Simplify: &nbsp; \(\log_2(32) \;-\; \log_2\!\left(\dfrac{1}{8}\right)\) &nbsp;= <span class="fill" style="min-width:80px;">&nbsp;</span></p>
-  <div class="work-box"></div>
+
+  <!-- 1a: simple property evaluation -->
+  <div class="subq">
+    <p class="prob-q"><strong>(a)</strong> &nbsp; Evaluate: &nbsp; \(\log_4(64) \;-\; \log_4\!\left(\dfrac{1}{16}\right)\)</p>
+    <div class="work-box work-box-sm"></div>
+    <p style="margin-top:6px;">Answer = <span class="fill" style="min-width:80px;">&nbsp;</span></p>
+  </div>
+
+  <!-- 1b: expand with fraction and root -->
+  <div class="subq" style="margin-top:20px;">
+    <p class="prob-q"><strong>(b)</strong> &nbsp; Expand completely: &nbsp; \(\log_5\!\left(\dfrac{\sqrt{x}}{y^3}\right)\)</p>
+    <div class="work-box work-box-sm"></div>
+    <p style="margin-top:6px;">Answer = <span class="fill" style="min-width:280px;">&nbsp;</span></p>
+  </div>
+
+  <!-- 1c: condense to single log with fraction coefficient -->
+  <div class="subq" style="margin-top:20px;">
+    <p class="prob-q"><strong>(c)</strong> &nbsp; Condense into a single logarithm: &nbsp; \(2\log x \;-\; \dfrac{1}{3}\log y \;+\; \log z\)</p>
+    <div class="work-box work-box-sm"></div>
+    <p style="margin-top:6px;">Answer = <span class="fill" style="min-width:280px;">&nbsp;</span></p>
+  </div>
+
+  <!-- 1d: solve log equation — quadratic embedded -->
+  <div class="subq" style="margin-top:20px;">
+    <p class="prob-q"><strong>(d)</strong> &nbsp; Solve for \(x\): &nbsp; \(\log_3(x+4) + \log_3(x-2) = 3\)</p>
+    <p class="prob-q" style="font-size:.85rem; color:var(--soft);">Hint: combine logs first. Check for extraneous solutions.</p>
+    <div class="work-box work-box-tall"></div>
+    <p style="margin-top:6px;">\(x = \) <span class="fill" style="min-width:100px;">&nbsp;</span></p>
+  </div>
+
+  <!-- 1e: solve log equation — factoring + simplification -->
+  <div class="subq" style="margin-top:20px;">
+    <p class="prob-q"><strong>(e)</strong> &nbsp; Solve for \(x\): &nbsp; \(\log_2(x^2 - 9) \;-\; \log_2(x+3) = 2\)</p>
+    <p class="prob-q" style="font-size:.85rem; color:var(--soft);">Hint: combine into a single log, then factor the numerator.</p>
+    <div class="work-box work-box-tall"></div>
+    <p style="margin-top:6px;">\(x = \) <span class="fill" style="min-width:100px;">&nbsp;</span></p>
+  </div>
+
 </div>
 
-<!-- ================================================ -->
+<!-- Q2 -->
 <hr class="section">
-<p class="section-title">Q2 &mdash; Multi-Step Equation (Calculator) <span class="points">7 pts</span></p>
-<p class="section-note">Use change-of-base. Show all work. Give exact form AND decimal (2 dp).</p>
-
+<p class="section-title">Q2 &mdash; Rational Equation: LCD + Polynomial Factoring <span class="points">8 pts</span></p>
+<p class="section-note">Factor the quadratic denominator first. Multiply every term by the LCD to clear all fractions. Solve the resulting equation and check for extraneous solutions.</p>
 <div class="prob-block">
-  <p class="prob-num">2. &nbsp; Solve for \(x\): &nbsp; \(2 \cdot 7^{3x} = 50\)</p>
+  <p class="prob-num">2. &nbsp; Solve for \(x\): &nbsp; \(\dfrac{2x}{x+3} \;-\; \dfrac{x}{x-2} \;=\; \dfrac{-10}{x^2+x-6}\)</p>
+  <p class="prob-q" style="font-size:.85rem; margin-top:6px; color:var(--soft);">Note: factor \(x^2+x-6\) first &mdash; it determines your LCD. Check any solutions against the original denominators.</p>
   <div class="work-box work-box-tall"></div>
-  <p style="margin-top:8px;">Exact: <span class="fill" style="min-width:220px;">&nbsp;</span> &nbsp;&nbsp; Decimal: \(x \approx\) <span class="fill" style="min-width:100px;">&nbsp;</span></p>
+  <p style="margin-top:8px;">\(x = \) <span class="fill" style="min-width:180px;">&nbsp;</span></p>
+  <p style="margin-top:6px; font-size:.85rem; color:var(--soft);">State any extraneous solutions and why they are excluded: <span class="fill" style="min-width:280px;">&nbsp;</span></p>
 </div>
 
-<!-- ================================================ -->
+<!-- Q3 -->
 <hr class="section">
 <p class="section-title">Q3 &mdash; Solve Exponential Equation (Calculator) <span class="points">7 pts</span></p>
 <p class="section-note">Use change-of-base. Show all work. Give exact form AND decimal (2 dp).</p>
-
 <div class="prob-block">
-  <p class="prob-num">3. &nbsp; Solve for \(x\): &nbsp; \(3^{x+4} = 200\)</p>
+  <p class="prob-num">3. &nbsp; Solve for \(x\): &nbsp; \(5^{x-2} = 80\)</p>
   <div class="work-box work-box-tall"></div>
   <p style="margin-top:8px;">Exact: <span class="fill" style="min-width:220px;">&nbsp;</span> &nbsp;&nbsp; Decimal: \(x \approx\) <span class="fill" style="min-width:100px;">&nbsp;</span></p>
 </div>
 
-<!-- ================================================ -->
+<!-- Q4 -->
 <hr class="section">
 <p class="section-title">Q4 &mdash; Application (Calculator) <span class="points">8 pts</span></p>
 <p class="section-note">Show your model and your work. Round to 2 decimal places.</p>
-
 <div class="prob-block">
   <p class="prob-num">4.</p>
-  <p class="prob-q">A colony of bacteria starts at 300 and <strong>triples every 5 hours</strong>.</p>
-  <p class="prob-q" style="margin-top:6px;"><strong>(a)</strong> Write an exponential model \(B(t)\) for the population after \(t\) hours. <span class="points">3 pts</span></p>
+  <p class="prob-q">An investment of <strong>$1,200</strong> doubles every <strong>8 years</strong>.</p>
+  <p class="prob-q" style="margin-top:6px;"><strong>(a)</strong> Write an exponential model \(B(t)\) for the value after \(t\) years. <span class="points">3 pts</span></p>
   <div class="work-box" style="min-height:50px;"></div>
   <p style="margin-top:8px;">\(B(t) = \) <span class="fill" style="min-width:250px;">&nbsp;</span></p>
-
-  <p class="prob-q" style="margin-top:16px;"><strong>(b)</strong> How many hours until the population reaches 5000? <span class="points">5 pts</span></p>
+  <p class="prob-q" style="margin-top:16px;"><strong>(b)</strong> How many years until the investment reaches $9,000? <span class="points">5 pts</span></p>
   <p class="prob-q" style="font-size:.85rem; color:var(--soft);">Use change-of-base. Show all work. Round to 2 decimal places.</p>
   <div class="work-box work-box-tall"></div>
-  <p style="margin-top:8px;">\(t \approx \) <span class="fill" style="min-width:100px;">&nbsp;</span> hours</p>
+  <p style="margin-top:8px;">\(t \approx \) <span class="fill" style="min-width:100px;">&nbsp;</span> years</p>
 </div>
 
-<!-- ================================================ -->
+<!-- Q5 -->
 <hr class="section">
-<p class="section-title">Q5 &mdash; Rational Expressions: LCD Addition <span class="points">6 pts</span></p>
-<p class="section-note">Add. Write your answer as a single fraction in simplest form. Show all work.</p>
-
+<p class="section-title">Q5 &mdash; Rational Expressions: LCD Subtraction <span class="points">6 pts</span></p>
+<p class="section-note">Factor the denominator first, find the LCD, then subtract. Write your answer as a single fraction in simplest form.</p>
 <div class="prob-block">
-  <p class="prob-num">5. &nbsp; \(\dfrac{4}{x+3} + \dfrac{7}{x-2}\)</p>
+  <p class="prob-num">5. &nbsp; \(\dfrac{3}{x+5} \;-\; \dfrac{2}{x^2-25}\)</p>
   <div class="work-box work-box-tall"></div>
   <p style="margin-top:8px;">Answer = <span class="fill" style="min-width:250px;">&nbsp;</span></p>
 </div>
 
-<!-- ================================================ -->
+<!-- Q6 -->
 <hr class="section">
 <p class="section-title">Q6 &mdash; Difference Quotient <span class="points">7 pts</span></p>
 <p class="section-note">Simplify completely. Show all work.</p>
-
 <div class="prob-block">
-  <p class="prob-num">6. &nbsp; Simplify: &nbsp; \(\dfrac{f(x+h) - f(x)}{h}\) &nbsp; where &nbsp; \(f(x) = 2x^2 + 5x - 3\)</p>
+  <p class="prob-num">6. &nbsp; Simplify: &nbsp; \(\dfrac{f(x+h) - f(x)}{h}\) &nbsp; where &nbsp; \(f(x) = 3x^2 - 4x + 1\)</p>
   <div class="work-box work-box-tall"></div>
   <p style="margin-top:8px;">Answer = <span class="fill" style="min-width:200px;">&nbsp;</span></p>
 </div>
