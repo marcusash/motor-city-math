@@ -38,7 +38,7 @@
     <div class="sub">Worked solutions with watch-out flags for known weak spots</div>
   </div>
   <div class="header-right">
-    Total: 84 points<br>
+    Total: 76 points<br>
     <span style="color:var(--red)">Teacher use only</span>
   </div>
 </div>
@@ -134,34 +134,19 @@
 </div>
 
 <div class="question">
-  <div class="q-label">7. \((2x^3 + x^2 - 5x + 3) \div (x + 2)\) (4 pts)</div>
-  <div class="work">\(2x^3 \div x = 2x^2\); subtract &rarr; \(-3x^2 - 5x + 3.\) <br>
-    \(-3x^2 \div x = -3x\); subtract &rarr; \(x + 3.\) <br>
-    \(x \div x = 1\); subtract &rarr; remainder \(1.\)</div>
-  <div class="ans"><strong>Quotient: \(2x^2 - 3x + 1\)</strong> &nbsp;&middot;&nbsp; <strong>Remainder: 1</strong></div>
-</div>
-
-<div class="question">
-  <div class="q-label">8. \((x^4 - 2x^3 - 7x^2 + 8x + 12) \div (x - 3)\) (4 pts)</div>
-  <div class="work">Synthetic with \(c = 3\): coefficients \([1, -2, -7, 8, 12].\) <br>
-    Carry down 1. \(1 \cdot 3 = 3\); \(-2 + 3 = 1.\) \(1 \cdot 3 = 3\); \(-7 + 3 = -4.\) <br>
-    \(-4 \cdot 3 = -12\); \(8 + (-12) = -4.\) \(-4 \cdot 3 = -12\); \(12 + (-12) = 0.\)</div>
-  <div class="ans"><strong>Quotient: \(x^3 + x^2 - 4x - 4\)</strong> &nbsp;&middot;&nbsp; <strong>Remainder: 0</strong></div>
-</div>
-
-<div class="question">
-  <div class="q-label">9. \((x^4 + 3x^3 - x + 5) \div (x + 4)\) (4 pts)</div>
-  <div class="watchout"><strong>Watch-out:</strong> The \(x^2\) term is missing &mdash; include a \(0\) placeholder. Coefficients: \([1, 3, 0, -1, 5].\)</div>
-  <div class="work">Synthetic with \(c = -4\). Carry 1. \(1 \cdot -4 = -4\); \(3 + (-4) = -1.\) <br>
-    \(-1 \cdot -4 = 4\); \(0 + 4 = 4.\) \(4 \cdot -4 = -16\); \(-1 + (-16) = -17.\) <br>
-    \(-17 \cdot -4 = 68\); \(5 + 68 = 73.\)</div>
-  <div class="ans"><strong>Quotient: \(x^3 - x^2 + 4x - 17\)</strong> &nbsp;&middot;&nbsp; <strong>Remainder: 73</strong></div>
+  <div class="q-label">7. Divide \(x^3 - 2x^2 - 5x + 6\) by \((x-3)\), factor completely (4 pts)</div>
+  <div class="work">Long division: \(x^3 \div x = x^2\); subtract &rarr; \(x^2 - 5x + 6.\) <br>
+    \(x^2 \div x = x\); subtract &rarr; \(-2x + 6.\) <br>
+    \(-2x \div x = -2\); subtract &rarr; 0. Quotient: \(x^2 + x - 2.\) <br>
+    Factor quotient: \(x^2 + x - 2 = (x + 2)(x - 1).\)</div>
+  <div class="ans"><strong>\((x - 3)(x + 2)(x - 1)\)</strong></div>
+  <div class="watchout"><strong>Watch-out:</strong> After dividing, factor the quotient completely &mdash; the quotient polynomial alone is not the final answer. Zeros at \(x = 3, -2, 1\). ✓</div>
 </div>
 
 <div class="section-header">Manipulating Polynomial &amp; Rational Expressions</div>
 
 <div class="question">
-  <div class="q-label">10. \(\dfrac{2x}{x^2 - 1} - \dfrac{1}{x - 1}\) (4 pts)</div>
+  <div class="q-label">8. \(\dfrac{2x}{x^2 - 1} - \dfrac{1}{x - 1}\) (4 pts)</div>
   <div class="work">Factor denominator: \(x^2 - 1 = (x+1)(x-1).\) LCD = \((x+1)(x-1).\) <br>
     Rewrite second fraction with LCD: \(\dfrac{1}{x-1} = \dfrac{x+1}{(x+1)(x-1)}.\) <br>
     Combine: \(\dfrac{2x}{(x+1)(x-1)} - \dfrac{x+1}{(x+1)(x-1)} = \dfrac{2x - (x+1)}{(x+1)(x-1)}.\) <br>
@@ -172,7 +157,7 @@
 </div>
 
 <div class="question">
-  <div class="q-label">11. Simplify \(\dfrac{x^3 - 9x}{x^2 - 2x - 3}\) (4 pts)</div>
+  <div class="q-label">9. Simplify \(\dfrac{x^3 - 9x}{x^2 - 2x - 3}\) (4 pts)</div>
   <div class="work">Factor numerator: \(x(x^2 - 9) = x(x-3)(x+3).\) <br>
     Factor denominator: \(x^2 - 2x - 3 = (x-3)(x+1).\) <br>
     Cancel common factor \((x-3)\): result is \(\dfrac{x(x+3)}{x+1}\) (with \(x \ne 3\)).</div>
@@ -181,19 +166,19 @@
 </div>
 
 <div class="question">
-  <div class="q-label">12. All zeros of \(p(x) = x^3 + 2x^2 - 5x - 6\), given \(x = -1\) is a zero (4 pts)</div>
-  <div class="work">Divide \(p(x)\) by \((x+1)\): <br>
-    \(x^3 + 2x^2 - 5x - 6 \div (x+1)\): <br>
-    \(\quad x^3 \div x = x^2\); \(x^2(x+1) = x^3 + x^2\); subtract &rarr; \(x^2 - 5x - 6.\) <br>
-    \(\quad x^2 \div x = x\); \(x(x+1) = x^2 + x\); subtract &rarr; \(-6x - 6.\) <br>
-    \(\quad -6x \div x = -6\); \(-6(x+1) = -6x - 6\); subtract &rarr; remainder \(0.\) <br>
-    Quotient: \(x^2 + x - 6 = (x+3)(x-2).\)</div>
-  <div class="ans"><strong>Zeros: \(x = -1,\ x = -3,\ x = 2\)</strong></div>
-  <div class="watchout"><strong>CRITICAL watch-out (from Unit 1 Practice Exam):</strong> Do NOT stop after finding one zero. A degree-3 polynomial has EXACTLY 3 zeros. Once you divide out \((x+1)\), you MUST factor or solve the remaining quadratic to find ALL roots.</div>
+  <div class="q-label">10. All zeros of \(p(x) = x^3 + x^2 - 7x + 2\), given \(x = 2\) is a zero (4 pts)</div>
+  <div class="work">Divide \(p(x)\) by \((x-2)\): <br>
+    \(x^3 \div x = x^2\); \(x^2(x-2) = x^3 - 2x^2\); subtract &rarr; \(3x^2 - 7x + 2.\) <br>
+    \(3x^2 \div x = 3x\); \(3x(x-2) = 3x^2 - 6x\); subtract &rarr; \(-x + 2.\) <br>
+    \(-x \div x = -1\); \(-1(x-2) = -x + 2\); subtract &rarr; 0. <br>
+    Quotient: \(x^2 + 3x - 1.\) <br>
+    Solve \(x^2 + 3x - 1 = 0\) using the quadratic formula: \(x = \dfrac{-3 \pm \sqrt{9 + 4}}{2} = \dfrac{-3 \pm \sqrt{13}}{2}.\)</div>
+  <div class="ans"><strong>Zeros: \(x = 2,\quad x = \dfrac{-3 + \sqrt{13}}{2} \approx 0.30,\quad x = \dfrac{-3 - \sqrt{13}}{2} \approx -3.30\)</strong></div>
+  <div class="watchout"><strong>CRITICAL watch-out:</strong> Do NOT stop at the quotient \(x^2 + 3x - 1 = 0\). You must solve it &mdash; the quadratic doesn't factor over integers, so use the quadratic formula. A degree-3 polynomial has exactly 3 zeros.</div>
 </div>
 
 <div class="question">
-  <div class="q-label">13. Simplify \(\dfrac{x^2 + 5x + 6}{x^2 + 2x - 3}\) (4 pts)</div>
+  <div class="q-label">11. Simplify \(\dfrac{x^2 + 5x + 6}{x^2 + 2x - 3}\) (4 pts)</div>
   <div class="work">Factor numerator: \((x+2)(x+3).\) <br>
     Factor denominator: \((x+3)(x-1).\) <br>
     Cancel common factor \((x+3)\): result is \(\dfrac{x+2}{x-1}\) (with \(x \ne -3\)).</div>
@@ -204,7 +189,7 @@
 <div class="section-header">Modeling</div>
 
 <div class="question">
-  <div class="q-label">14. Snowboard rental (5 pts)</div>
+  <div class="q-label">12. Snowboard rental (5 pts)</div>
   <div class="q-sub"><div class="q-sub-label">(a)</div>
     <div class="ans"><strong>\(C(d) = 25 + 18d\)</strong> dollars &nbsp; <span style="color:#6b7280">(setup fee + per-day rate)</span></div></div>
   <div class="q-sub"><div class="q-sub-label">(b) 7 days</div>
@@ -215,7 +200,7 @@
     <div class="ans"><strong>8 full days</strong> &nbsp; <span style="color:#6b7280">(at exactly $169)</span></div></div>
 </div>
 <div class="question">
-  <div class="q-label">15. Sneaker resale revenue (5 pts)</div>
+  <div class="q-label">13. Sneaker resale revenue (5 pts)</div>
   <div class="q-sub"><div class="q-sub-label">(a) Price and quantity expressions</div>
     <div class="ans"><strong>New price = \(60 + 5x\)</strong> dollars/pair &nbsp;&middot;&nbsp; <strong>New quantity = \(80 - 4x\)</strong> pairs/week</div></div>
   <div class="q-sub"><div class="q-sub-label">(b) \(R(x)\) in standard form</div>
@@ -231,7 +216,7 @@
 </div>
 
 <div class="question">
-  <div class="q-label">16. Car depreciation (5 pts)</div>
+  <div class="q-label">14. Car depreciation (5 pts)</div>
   <div class="q-sub"><div class="q-sub-label">(a) Model</div>
     <div class="ans"><strong>\(V(t) = 18{,}500 \cdot (0.88)^t\)</strong> &nbsp; <span style="color:#6b7280">(12% loss means 88% remains each year)</span></div></div>
   <div class="q-sub"><div class="q-sub-label">(b) Value in 2026 (t = 6)</div>
