@@ -95,7 +95,19 @@ Detroit Pistons palette — `#C8102E` red, `#1D42BA` blue, `#002D62` navy, `#BEC
 
 ## For the Agent Team
 
-This project uses a 6-agent collaboration model. Read these files in order:
+This project has a local Grind team and seven available Forge specialist identities.
+The `.agents.md` registry describes the Grind roles. Forge profiles and session setup
+are maintained in `.github/agents/` and `.github/forge-agent-os/`.
+
+This repository is the active development project and the source for its GitHub Pages
+site. Make changes here through feature branches and pull requests; it is not a
+publish-only mirror.
+
+To start using a Forge identity, create or restart a Copilot project session for this
+repository and select the identity in the agent picker. See
+`.github/forge-agent-os/START-HERE.md` for setup and verification.
+
+For project context and local team conventions, read these files in order:
 
 1. `.agent-onboarding.md` — Start here
 2. `.agents.md` — File ownership and roles
