@@ -1,6 +1,9 @@
 # Motor City Math — Contributing Guide
 
-This is an AI-agent-developed study tool for Kai Ash (SAAS). All changes go through the 6-agent review model.
+This is an AI-agent-developed study tool for Kai Ash (SAAS) and an active Forge
+project. The repository is the development source and GitHub Pages source. Submit
+changes through feature branches and pull requests into `master`; do not use a
+separate publish-point workflow.
 
 ---
 

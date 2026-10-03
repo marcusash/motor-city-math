@@ -5,13 +5,19 @@
 
 ## Agent OS
 
-This repo is a spoke in the Forge agent system. For agent identity, skills, knowledge, and protocol:
+This repository is a standalone Forge-enabled project. Its seven Forge profiles,
+boot skill, identity knowledge, and skills are installed in `.github/agents/`,
+`.github/skills/forge-boot/`, and `.github/forge-agent-os/`. Do not require a
+separate Forge checkout to use these identities.
 
-- **Hub repo:** `C:\GitHub\forge`
-- **Agent specs:** `forge/knowledge/agents/{ID}.md`
-- **Skills:** `forge/skills/{ID}/_index.md` (per-agent) and `forge/skills/shared/` (cross-agent)
-- **Protocol:** `forge/.agent-protocol.md` (index of invariant rules + on-demand skill map)
-- **Lessons:** `forge/LESSONS.md` (check before every action)
+- **Start here:** `.github/forge-agent-os/START-HERE.md`
+- **Preflight:** `node .github/forge-agent-os/verify.mjs preflight`
+- **Identity and skills:** use the selected profile and its bundled capability
+  files under `.github/forge-agent-os/capabilities/`.
+- **Lessons:** `.github/forge-agent-os/capabilities/shared/LESSONS.md`
+
+Create or restart a Copilot project session after the bundle is present on the
+default branch, then select the desired Forge identity in the agent picker.
 
 ## What This Project Is
 
@@ -25,18 +31,25 @@ Focus: Algebra 2. Goal: mastery-based practice, immediate feedback, visual expla
 
 ## Tech Stack
 
-- Language: TypeScript
-- Tests: Jest
+- Application: static HTML, CSS, and JavaScript
+- Tooling: Node.js scripts and tests (Node.js 18 or newer)
 - CI: GitHub Actions
-- Dev repo: marcusash_microsoft/kai-algebra2-tests (this repo)
-- Publish repo: marcusash/motor-city-math (GitHub Pages — personal account)
-- Do not push directly to the personal publish repo. Changes go here first.
+- Project repository: `marcusash/motor-city-math`
+- This repository is both the active development project and the source for its
+  GitHub Pages site. Make code, documentation, tests, and Forge configuration changes
+  here; do not treat this repository as a publish-only mirror or redirect development
+  to a separate repository.
+- Use feature branches and pull requests into `master`. Do not push directly to
+  `master` or bypass review.
 
 ## Agent Output Rules (Mandatory for all Forge + Grind agents)
 
-- **Em dash ban.** Never use em dashes (— or –) in any output. Use colons, commas, or periods.
-- **Fully qualified paths. ALWAYS.** Every file path must be a full absolute Windows path (e.g., `C:\Github\kai-algebra2-tests\data\kai-scores-latest.json`). Never use relative paths. No exceptions.
-- **Response lint gate. MANDATORY before every reply to Marcus.** Before finalizing any console response, run: `node C:\Github\journal\scripts\response-lint.cjs --text "your draft response text"`. Fix every violation and re-run until PASS. Do not post without a PASS.
+- Use repository-relative paths for files in this project. Use absolute paths only
+  when referring to external local files.
+- Prefer plain punctuation in prose. Preserve canonical labels and exact source text
+  when needed.
+- Do not depend on machine-specific response lint scripts. Run a configured,
+  repository-provided lint check when one exists.
 
 ## Code Standards
 
@@ -68,7 +81,7 @@ artifacts/     -- Generated outputs
 ## Never Do These Things
 
 - Do not modify .squad/team.md
-- Do not push to marcusash/motor-city-math directly
+- Do not push directly to `master` or bypass the pull request workflow
 - Do not add questions without difficulty level (1=intro, 2=standard, 3=advanced)
 - Do not commit package-lock.json unless dependencies changed
 
