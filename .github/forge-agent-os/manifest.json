@@ -1,0 +1,635 @@
+{
+  "schemaVersion": 3,
+  "distribution": "forge-agent-os-generated-bundle",
+  "activationMode": "generated",
+  "pluginEquivalentVersion": "2.0.5",
+  "source": {
+    "repository": "marcusash_microsoft/forge",
+    "commit": "5b422b21196fc34ca96b47bb0a9b5fe2f8826488"
+  },
+  "hostCompatibility": {
+    "localCopilotCli": "supported_bundle_backed",
+    "sterileLocalRepository": "supported_bundle_backed",
+    "desktopApp": "supported_new_session_repository_bundle",
+    "cloudOrIsolated": "unsupported_unmeasured",
+    "extension": "unsupported_unmeasured",
+    "appNative": "supported_new_session_repository_bundle",
+    "childSession": "supported_new_session_repository_bundle"
+  },
+  "appDiscovery": {
+    "bootstrapSession": "resources_written_but_selected_agent_is_fixed",
+    "refreshBoundary": "create_or_restart_project_session",
+    "pickerSource": "repository_default_branch_at_session_creation"
+  },
+  "productAuthority": {
+    "pointer": "docs/architecture.md",
+    "ownership": "product_relative_pointer_only"
+  },
+  "manifestFieldsDigest": "05a331cdec103070cbdb159c3f78d587fe0443e9c0275eafffaed78affd1a727",
+  "identities": [
+    {
+      "id": "FA",
+      "slug": "forge-application",
+      "role": "Chief Architect",
+      "canonicalLabel": "FA — Chief Architect",
+      "publicName": "Blue",
+      "colorName": "Architect Blue",
+      "colorHex": "#4A90D9"
+    },
+    {
+      "id": "FD",
+      "slug": "forge-design",
+      "role": "Design Director",
+      "canonicalLabel": "FD — Design Director",
+      "publicName": "Maize",
+      "colorName": "Design Maize",
+      "colorHex": "#FFCB05"
+    },
+    {
+      "id": "FF",
+      "slug": "forge-fundamentals",
+      "role": "Quality Lead",
+      "canonicalLabel": "FF — Quality Lead",
+      "publicName": null,
+      "colorName": "Fundamentals Green",
+      "colorHex": "#22C55E"
+    },
+    {
+      "id": "FI",
+      "slug": "forge-data",
+      "role": "Data Lead",
+      "canonicalLabel": "FI — Data Lead",
+      "publicName": null,
+      "colorName": "Data Indigo",
+      "colorHex": "#6D28D9"
+    },
+    {
+      "id": "FP",
+      "slug": "forge-platform",
+      "role": "Platform & Ops Lead",
+      "canonicalLabel": "FP — Platform & Ops Lead",
+      "publicName": null,
+      "colorName": "Platform Red",
+      "colorHex": "#CE1126"
+    },
+    {
+      "id": "FR",
+      "slug": "forge-research",
+      "role": "Research Lead",
+      "canonicalLabel": "FR — Research Lead",
+      "publicName": null,
+      "colorName": "Research Orange",
+      "colorHex": "#F97316"
+    },
+    {
+      "id": "FS",
+      "slug": "forge-social",
+      "role": "Social Lead",
+      "canonicalLabel": "FS — Social Lead",
+      "publicName": null,
+      "colorName": "Open Sky",
+      "colorHex": "#38BDF8"
+    }
+  ],
+  "identityRegistryDigest": "38652f45709ad6a1be6baf081b6742a1155f62a7aea1576821220b84c2c4efaf",
+  "capabilities": [
+    {
+      "id": "FA",
+      "slug": "forge-application",
+      "knowledgeFile": ".github/forge-agent-os/capabilities/FA/knowledge/FA.md",
+      "skillIndexFile": ".github/forge-agent-os/capabilities/FA/skills/_index.md",
+      "skillFiles": [
+        ".github/forge-agent-os/capabilities/FA/skills/_index.md",
+        ".github/forge-agent-os/capabilities/FA/skills/adr-guide.md",
+        ".github/forge-agent-os/capabilities/FA/skills/arch-review-checklist.md",
+        ".github/forge-agent-os/capabilities/FA/skills/code-review-standards.md",
+        ".github/forge-agent-os/capabilities/FA/skills/self-critique.md",
+        ".github/forge-agent-os/capabilities/FA/skills/tech-debt-triage.md"
+      ],
+      "skillFileCount": 6
+    },
+    {
+      "id": "FD",
+      "slug": "forge-design",
+      "knowledgeFile": ".github/forge-agent-os/capabilities/FD/knowledge/FD.md",
+      "skillIndexFile": ".github/forge-agent-os/capabilities/FD/skills/_index.md",
+      "skillFiles": [
+        ".github/forge-agent-os/capabilities/FD/skills/_index.md",
+        ".github/forge-agent-os/capabilities/FD/skills/dashboard-design.md",
+        ".github/forge-agent-os/capabilities/FD/skills/design-debt-management.md",
+        ".github/forge-agent-os/capabilities/FD/skills/facilitation.md",
+        ".github/forge-agent-os/capabilities/FD/skills/icon-tools.md",
+        ".github/forge-agent-os/capabilities/FD/skills/iconography-color-system.md",
+        ".github/forge-agent-os/capabilities/FD/skills/interaction-design.md",
+        ".github/forge-agent-os/capabilities/FD/skills/pitch.md",
+        ".github/forge-agent-os/capabilities/FD/skills/prototyping.md",
+        ".github/forge-agent-os/capabilities/FD/skills/self-critique.md",
+        ".github/forge-agent-os/capabilities/FD/skills/visual-iteration.md",
+        ".github/forge-agent-os/capabilities/FD/skills/web-design.md"
+      ],
+      "skillFileCount": 12
+    },
+    {
+      "id": "FF",
+      "slug": "forge-fundamentals",
+      "knowledgeFile": ".github/forge-agent-os/capabilities/FF/knowledge/FF.md",
+      "skillIndexFile": ".github/forge-agent-os/capabilities/FF/skills/_index.md",
+      "skillFiles": [
+        ".github/forge-agent-os/capabilities/FF/skills/_index.md",
+        ".github/forge-agent-os/capabilities/FF/skills/accessibility-audit.md",
+        ".github/forge-agent-os/capabilities/FF/skills/assertion-quality.md",
+        ".github/forge-agent-os/capabilities/FF/skills/e2e-visual-evidence.md",
+        ".github/forge-agent-os/capabilities/FF/skills/failure-triage.md",
+        ".github/forge-agent-os/capabilities/FF/skills/mutation-testing.md",
+        ".github/forge-agent-os/capabilities/FF/skills/risk-based-test-planning.md"
+      ],
+      "skillFileCount": 7
+    },
+    {
+      "id": "FI",
+      "slug": "forge-data",
+      "knowledgeFile": ".github/forge-agent-os/capabilities/FI/knowledge/FI.md",
+      "skillIndexFile": ".github/forge-agent-os/capabilities/FI/skills/_index.md",
+      "skillFiles": [
+        ".github/forge-agent-os/capabilities/FI/skills/_index.md",
+        ".github/forge-agent-os/capabilities/FI/skills/data-product-design.md",
+        ".github/forge-agent-os/capabilities/FI/skills/m365-identity-privacy.md",
+        ".github/forge-agent-os/capabilities/FI/skills/metrics-validation.md",
+        ".github/forge-agent-os/capabilities/FI/skills/provider-provenance.md",
+        ".github/forge-agent-os/capabilities/FI/skills/reliable-pipeline.md",
+        ".github/forge-agent-os/capabilities/FI/skills/semantic-index-lifecycle.md",
+        ".github/forge-agent-os/capabilities/FI/skills/voice-identity-governance.md"
+      ],
+      "skillFileCount": 8
+    },
+    {
+      "id": "FP",
+      "slug": "forge-platform",
+      "knowledgeFile": ".github/forge-agent-os/capabilities/FP/knowledge/FP.md",
+      "skillIndexFile": ".github/forge-agent-os/capabilities/FP/skills/_index.md",
+      "skillFiles": [
+        ".github/forge-agent-os/capabilities/FP/skills/_index.md",
+        ".github/forge-agent-os/capabilities/FP/skills/app-native-operations.md",
+        ".github/forge-agent-os/capabilities/FP/skills/ci-cd-pipelines.md",
+        ".github/forge-agent-os/capabilities/FP/skills/incident-postmortem.md",
+        ".github/forge-agent-os/capabilities/FP/skills/runner-configuration.md",
+        ".github/forge-agent-os/capabilities/FP/skills/security-checklist.md"
+      ],
+      "skillFileCount": 6
+    },
+    {
+      "id": "FR",
+      "slug": "forge-research",
+      "knowledgeFile": ".github/forge-agent-os/capabilities/FR/knowledge/FR.md",
+      "skillIndexFile": ".github/forge-agent-os/capabilities/FR/skills/_index.md",
+      "skillFiles": [
+        ".github/forge-agent-os/capabilities/FR/skills/_index.md",
+        ".github/forge-agent-os/capabilities/FR/skills/data-storytelling.md",
+        ".github/forge-agent-os/capabilities/FR/skills/eval-lifecycle.md",
+        ".github/forge-agent-os/capabilities/FR/skills/evidence-gathering.md",
+        ".github/forge-agent-os/capabilities/FR/skills/experimental-design.md",
+        ".github/forge-agent-os/capabilities/FR/skills/learning-science.md",
+        ".github/forge-agent-os/capabilities/FR/skills/live-debugging.md",
+        ".github/forge-agent-os/capabilities/FR/skills/math-verification.md",
+        ".github/forge-agent-os/capabilities/FR/skills/prompt-evaluation.md",
+        ".github/forge-agent-os/capabilities/FR/skills/research-ethics.md",
+        ".github/forge-agent-os/capabilities/FR/skills/research-methodology.md",
+        ".github/forge-agent-os/capabilities/FR/skills/source-research.md"
+      ],
+      "skillFileCount": 12
+    },
+    {
+      "id": "FS",
+      "slug": "forge-social",
+      "knowledgeFile": ".github/forge-agent-os/capabilities/FS/knowledge/FS.md",
+      "skillIndexFile": ".github/forge-agent-os/capabilities/FS/skills/_index.md",
+      "skillFiles": [
+        ".github/forge-agent-os/capabilities/FS/skills/_index.md",
+        ".github/forge-agent-os/capabilities/FS/skills/engagement-metrics.md",
+        ".github/forge-agent-os/capabilities/FS/skills/eval-scenarios.md",
+        ".github/forge-agent-os/capabilities/FS/skills/social-analytics.md",
+        ".github/forge-agent-os/capabilities/FS/skills/social-media.md"
+      ],
+      "skillFileCount": 5
+    }
+  ],
+  "sharedCapability": {
+    "indexFile": ".github/forge-agent-os/capabilities/shared/_index.md",
+    "includedFiles": [
+      ".github/forge-agent-os/capabilities/shared/LESSONS.md",
+      ".github/forge-agent-os/capabilities/shared/document-versioning.md"
+    ],
+    "fileCount": 2
+  },
+  "capabilityInventoryDigest": "8db28fa91add4e0db958ecb9f42365a637753c1853ef2fc093c508be9ba06714",
+  "files": [
+    {
+      "path": ".github/agents/.gitattributes",
+      "bytes": 8,
+      "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da"
+    },
+    {
+      "path": ".github/agents/forge-application.agent.md",
+      "bytes": 740,
+      "sha256": "c8f35186149da3583352a4bafc287b3eb6affe826dbe06a52223d450666b89d3"
+    },
+    {
+      "path": ".github/agents/forge-data.agent.md",
+      "bytes": 710,
+      "sha256": "0f4bff1b8a1f274f931097dcc9a34c31c76906a1c75e9875639c492e63517a2a"
+    },
+    {
+      "path": ".github/agents/forge-design.agent.md",
+      "bytes": 725,
+      "sha256": "890f7b2beca8693c3636971fb2e38edae14f7b207e30887b067af0fcb9c454ca"
+    },
+    {
+      "path": ".github/agents/forge-fundamentals.agent.md",
+      "bytes": 691,
+      "sha256": "f4bfd09dba30224bf241a8165ef1d1f8c31c5cde36baaee3be66d1c07848f74d"
+    },
+    {
+      "path": ".github/agents/forge-platform.agent.md",
+      "bytes": 712,
+      "sha256": "f9e44585f8c4ea1a50de3400ea119c55e0a3169f7e48e5873e00e6aba3e0f86d"
+    },
+    {
+      "path": ".github/agents/forge-research.agent.md",
+      "bytes": 710,
+      "sha256": "21abbcd5aff8a29e6d6ed5434ca7524d4b35c44d1582cb87c3d5d3e1e0299f14"
+    },
+    {
+      "path": ".github/agents/forge-social.agent.md",
+      "bytes": 696,
+      "sha256": "41facc81286b7dcb12b0e6cc4a1af7fc99176a9ef0cd65aa6f1e07b3bc02229c"
+    },
+    {
+      "path": ".github/forge-agent-os/.gitattributes",
+      "bytes": 8,
+      "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/.gitattributes",
+      "bytes": 8,
+      "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/FA/knowledge/FA.md",
+      "bytes": 2256,
+      "sha256": "078457d563eed001b3a116e9636909432d8ddd510b5faf80f8fe486a9d8a9735"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/FA/skills/_index.md",
+      "bytes": 1984,
+      "sha256": "892510c235187e25c4dd2492aa0943d6bf9ec25630746664d84fffc9336d5bd4"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/FA/skills/adr-guide.md",
+      "bytes": 3229,
+      "sha256": "48bfe284852d21bca6aabb7949d620b124aa8ccef103f3b085e2e630c3aa5860"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/FA/skills/arch-review-checklist.md",
+      "bytes": 3153,
+      "sha256": "d83d0ee4e0922d5fbf57d174470607c69424d44c5bcbb57e126873fccc0ebba9"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/FA/skills/code-review-standards.md",
+      "bytes": 2502,
+      "sha256": "fde8d2be7828bfbeb689825e6ed39381e2db02d992740e0e14b3fd9b0bf0ecba"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/FA/skills/self-critique.md",
+      "bytes": 2730,
+      "sha256": "c56d34cf38127d5546ecbbac13713a490a657fc5552a527cc5ac2ccea9be667d"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/FA/skills/tech-debt-triage.md",
+      "bytes": 2847,
+      "sha256": "b439480212598c5d88716039255ddcc4fde6e1b0b20598409cc77e986648631c"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/FD/knowledge/FD.md",
+      "bytes": 2892,
+      "sha256": "177419d6dd814f0d706efbdee25a9c9850330a6b4cb9fc01e21a2377f3a551b3"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/FD/skills/_index.md",
+      "bytes": 2234,
+      "sha256": "667d14bfa667da655c1bcb3861c4be46afdf4294c6c8509304dc205ebc5a37f2"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/FD/skills/dashboard-design.md",
+      "bytes": 2556,
+      "sha256": "36a342322ac88422121adb20e34a7a72d755c0ef81be6207811385ae03234862"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/FD/skills/design-debt-management.md",
+      "bytes": 2049,
+      "sha256": "fa9ec68a3fc4010faa97f386cbf31b398af939f64fa2a79120bc6a0a3c75a144"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/FD/skills/facilitation.md",
+      "bytes": 2075,
+      "sha256": "fac0ae2e829e2d371a74a3332fb2c99b0da7263f299ae21441e7458abce18654"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/FD/skills/icon-tools.md",
+      "bytes": 2160,
+      "sha256": "df77f09e4dfbe85ac4858c936e8f6541b8aea92e070e6e6101a8eb972acd5b7e"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/FD/skills/iconography-color-system.md",
+      "bytes": 2758,
+      "sha256": "1d183143696f674a3ccc88312608cf8b47492d63dd99557516231f8ee06ab8e9"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/FD/skills/interaction-design.md",
+      "bytes": 2210,
+      "sha256": "d7eebe64397ca7698ff14bde244f09f99a0a1dcf7acce996030c8515bddc4a65"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/FD/skills/pitch.md",
+      "bytes": 1576,
+      "sha256": "f0cd834046315b72e1a0b1d5ff37783c278988f98c35c539593d75b4129b3ace"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/FD/skills/prototyping.md",
+      "bytes": 2329,
+      "sha256": "dc599caa0f58bb6bed01431317def56db6b9eba13cbeef93108a079a6a2319df"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/FD/skills/self-critique.md",
+      "bytes": 2127,
+      "sha256": "27fec356f21b3cc0a5bdf4b805030a70bc9ec7324017d7e220e942c11a50acd8"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/FD/skills/visual-iteration.md",
+      "bytes": 2034,
+      "sha256": "0172cc2e83e51bbb40a5c3e2f6b51e6ba3463b8b04db3e71a4672958bfb11864"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/FD/skills/web-design.md",
+      "bytes": 2667,
+      "sha256": "4d1c036b628bdb35b73fb69ee5ec41f0bb70e34ffbdb5f0f2ad68f395786017d"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/FF/knowledge/FF.md",
+      "bytes": 4614,
+      "sha256": "4a7e1c27486efd3451e6e798ccc35e30ed9f88abf41463d674e96a43b52895bc"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/FF/skills/_index.md",
+      "bytes": 2837,
+      "sha256": "372a5b0b64bb2551a6f05354e9a4063a728781ef9c5bbf9006708cae60eb6e2d"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/FF/skills/accessibility-audit.md",
+      "bytes": 3551,
+      "sha256": "45688922f81a94139a5e2d323a0113b7395ba03cd1cd1af4c67ba8364fc3a722"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/FF/skills/assertion-quality.md",
+      "bytes": 2909,
+      "sha256": "ebb9476776df17bd580ab6f0edc930fda094a0df492c6d62c3c5fbf78839f890"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/FF/skills/e2e-visual-evidence.md",
+      "bytes": 3032,
+      "sha256": "bd7777c352fbc101e7e2d88182c8d6f8c2317ef3d893e6fa9ad03135c55e4bcb"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/FF/skills/failure-triage.md",
+      "bytes": 2925,
+      "sha256": "ef81c64a784e53f3584b77ffc9bd273fef0a799d3329adfcc5983adce6fb24ff"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/FF/skills/mutation-testing.md",
+      "bytes": 2992,
+      "sha256": "7a736f20c5acf8fbb7bea48aa3a093387b6b5fd5c0db5ea578b531d6e131aaa8"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/FF/skills/risk-based-test-planning.md",
+      "bytes": 2868,
+      "sha256": "133dcaea27663408585d2701e7d6b146f501803c4accaee0cb22c63f4d383008"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/FI/knowledge/FI.md",
+      "bytes": 3706,
+      "sha256": "887fd04b2cd0e375873bb32b13f28c21fe2a4fbc8971c829b8137c583ca5dfa7"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/FI/skills/_index.md",
+      "bytes": 3339,
+      "sha256": "582c59578e550f4722329285996160a7c395a0ffb680ed5b66d32a4da21686ce"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/FI/skills/data-product-design.md",
+      "bytes": 4670,
+      "sha256": "7eb69eff568f80365125ca8b952f995a01172df83a1d1ab3c8ffcb83ebaae033"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/FI/skills/m365-identity-privacy.md",
+      "bytes": 3551,
+      "sha256": "c2ab633f00e4fbe4dac424d528603e610daae9ab8cc230514a971001a028eb76"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/FI/skills/metrics-validation.md",
+      "bytes": 3546,
+      "sha256": "53f6993f88bd86813ad605a0d1ad9cab8cc456fd742ebff471a7179ee7018b6f"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/FI/skills/provider-provenance.md",
+      "bytes": 3098,
+      "sha256": "7d5f2f27623a4b092cddf797b7daf54ce8c25a7e80007f34389c6a675f6de9f3"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/FI/skills/reliable-pipeline.md",
+      "bytes": 3439,
+      "sha256": "aa165da25dfe86704871221e137f5d0a9648a38ca739ef94d79a9b245a73b40f"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/FI/skills/semantic-index-lifecycle.md",
+      "bytes": 4032,
+      "sha256": "237f248185ca2b1c39665cf0d5c8c480ac04d8289ee0f7c737d1df6811c10018"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/FI/skills/voice-identity-governance.md",
+      "bytes": 3467,
+      "sha256": "faf0d986f04d94c2cd2f214054c8f8496b49101a6e23f6e08a0ae973bf3c3fde"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/FP/knowledge/FP.md",
+      "bytes": 2959,
+      "sha256": "aedd294706643b098bbf14f06cf7992cc76f35f26e872a494802b16f8ab97d4d"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/FP/skills/_index.md",
+      "bytes": 2278,
+      "sha256": "599d61d97d57fd6df73d3a885def2f8b7e1d48e1d01f4b408db9dc6ba46e99d7"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/FP/skills/app-native-operations.md",
+      "bytes": 3645,
+      "sha256": "0ff67a8469b475cbf8a6f3ae182e99215487d722c03d7c7bbd9f9352af0512f5"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/FP/skills/ci-cd-pipelines.md",
+      "bytes": 3848,
+      "sha256": "c3de3e530f092f4b92c7b6cacc802fa6af9b849be96bb793e58d4d88430286b7"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/FP/skills/incident-postmortem.md",
+      "bytes": 3865,
+      "sha256": "78716178efecb57b6df3d827bd32454a0163f874e0da3a5ce1a9d02d0f5635d5"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/FP/skills/runner-configuration.md",
+      "bytes": 4331,
+      "sha256": "3eac9fcb9754fc2ffe3a1ac15fdca4a4b3a406db5eb4301027b7ec80e695170d"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/FP/skills/security-checklist.md",
+      "bytes": 3706,
+      "sha256": "534a7a9d10ea87b9510fa75d9280658e5f93f51221264f1468492dc8c36edc0b"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/FR/knowledge/FR.md",
+      "bytes": 2573,
+      "sha256": "275c6e21e3ee3fdf02746e8ad2066f2c4a36c9d0bf4d6988ffba5ddcdd0f4c7b"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/FR/skills/_index.md",
+      "bytes": 1757,
+      "sha256": "e0b14328f1230c00251f13cceb4009a7f94f8dece84c1c2a0bca07d1fbf93d67"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/FR/skills/data-storytelling.md",
+      "bytes": 2141,
+      "sha256": "1d0bff125960c43ad5449960029b7cd43f714b6ab35c4511d54e55cf437ab2eb"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/FR/skills/eval-lifecycle.md",
+      "bytes": 2314,
+      "sha256": "95e1a340494bc1480e776fa6c7747fb9738b392121ea30352534b1a7bedc05af"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/FR/skills/evidence-gathering.md",
+      "bytes": 2224,
+      "sha256": "74348ee87182aea290be416b499e6c242b9e03734fb2f0fc831038636e684398"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/FR/skills/experimental-design.md",
+      "bytes": 2081,
+      "sha256": "8c501dc87627942cdaae9042821bfbe726b585c3676bb71b888e1941d2814ebd"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/FR/skills/learning-science.md",
+      "bytes": 2127,
+      "sha256": "4afe84a96466b2b9137595ea38b084ac17f68bc808967be452ff73a532133285"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/FR/skills/live-debugging.md",
+      "bytes": 1863,
+      "sha256": "5956cf42f73dd67b9359d20c05e6760aed36a62a67c99aa57ba22ef8cfbd2638"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/FR/skills/math-verification.md",
+      "bytes": 1993,
+      "sha256": "4a8d1c3f55d568ca162ec07d2d326be7acb09f0f997595903c7844732ebc4d26"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/FR/skills/prompt-evaluation.md",
+      "bytes": 2045,
+      "sha256": "66fdda769dc51a9eee0bca6e44b53b2e18e5ad4ee53a8c8bb312f20a6ec32d4d"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/FR/skills/research-ethics.md",
+      "bytes": 2217,
+      "sha256": "b4c6383fb3547a0dcbe882acd647de83b3a8731a113f83638388b6a7d4bd5720"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/FR/skills/research-methodology.md",
+      "bytes": 2738,
+      "sha256": "f71de19d1c1c2aaef04e3fe6257fce7b5ae73eb2b42682bf74b0a04766f1bf8f"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/FR/skills/source-research.md",
+      "bytes": 2045,
+      "sha256": "5e666f68ec3c7d2b6dc9a5761846237acdb035bd9ba9bcc805ab2aced580df67"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/FS/knowledge/FS.md",
+      "bytes": 4559,
+      "sha256": "15f73ce9d3afdd14f8504ea7f44e5e0891e1ad7ab75e11dbf97d146b9500d6b5"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/FS/skills/_index.md",
+      "bytes": 1417,
+      "sha256": "f5059b52cbbef4025b39cb22367d73f205d9bcdba555c0c32a7664ae44b80838"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/FS/skills/engagement-metrics.md",
+      "bytes": 3776,
+      "sha256": "56f0ac3ec0d9fabe1c79669bcb2c8ac02bab5fdfdaaa24bf87940eb93c8bb2ce"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/FS/skills/eval-scenarios.md",
+      "bytes": 12220,
+      "sha256": "9315dfdaf134fdcf2e53ce4c6a5728ff0941690b74e64f8ff6ff5f2d17685683"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/FS/skills/social-analytics.md",
+      "bytes": 13134,
+      "sha256": "50e30a075d8c1dc637b87ce7b9f608a0a0ac5fce1ba610e2a9adaffb1bbdbab0"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/FS/skills/social-media.md",
+      "bytes": 13097,
+      "sha256": "2c234153afeab6c4a8bc25a360a36cc87034d6bc0d9f8d4abb321d9552170bc1"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/shared/_index.md",
+      "bytes": 887,
+      "sha256": "60d9228efa32c4cdb527bc7fe6d4d1c64a82cd3515d207081ec052013a276fb8"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/shared/document-versioning.md",
+      "bytes": 1571,
+      "sha256": "a37ee1ef1786b75c89a57d3af3ca36d157a908f098ec48f1b0200fc5dc8b5ea7"
+    },
+    {
+      "path": ".github/forge-agent-os/capabilities/shared/LESSONS.md",
+      "bytes": 6646,
+      "sha256": "737bb31f2ac924d16fb137c8327b327c38d4ed0be366e5e5a3d1b045b134a9d2"
+    },
+    {
+      "path": ".github/forge-agent-os/product-authority.schema.json",
+      "bytes": 580,
+      "sha256": "38e4aeb32b430fddb98ea4bd7e87779ad57f233275cdc770190dda65f7ea6932"
+    },
+    {
+      "path": ".github/forge-agent-os/START-HERE.md",
+      "bytes": 2123,
+      "sha256": "aadab4308508e1d91cd49d405e141ef5a4d01f93eb5c5cc59d8e32b6e0642d3b"
+    },
+    {
+      "path": ".github/forge-agent-os/verify.mjs",
+      "bytes": 19178,
+      "sha256": "f4b616dbfb7786b2ba3ab52abd4b52b46a785558fd4ac9a76df0cba81b877d68"
+    },
+    {
+      "path": ".github/skills/forge-boot/.gitattributes",
+      "bytes": 8,
+      "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da"
+    },
+    {
+      "path": ".github/skills/forge-boot/SKILL.md",
+      "bytes": 1933,
+      "sha256": "186eb3a8c258652e5bd5a3602ec10c3884421c616ba17eb0befa0e784a1c5ddf"
+    }
+  ],
+  "bundleDigestAlgorithm": "sha256-manifest-v3",
+  "bundleDigest": "a67ea111254bc1a20c984311868e7db63154cf1fa137d6d7a26ee3943459eb6d",
+  "targetRepository": "marcusash/motor-city-math"
+}
