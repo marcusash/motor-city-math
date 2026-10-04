@@ -3,6 +3,7 @@ const path = require('node:path');
 const vm = require('node:vm');
 const root = path.resolve(__dirname, '..');
 const katex = require(path.join(root,'shared','katex','katex.min.js'));
+const mathCss = fs.readFileSync(path.join(root,'shared','katex','katex.min.css'),'utf8').replaceAll('url(fonts/','url(../shared/katex/fonts/');
 const context = { window: {} };
 vm.runInNewContext(fs.readFileSync(path.join(root,'reviews','prep-test-2-proposal-data.js'),'utf8'),context);
 const data = context.window.prepTest2Proposal;
@@ -116,7 +117,7 @@ button { padding:8px 16px; cursor:pointer; }
 }
 `;
 function head(title) {
-  return `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="duration-minutes" content="75"><meta name="total-points" content="100"><title>${title}</title><link rel="stylesheet" href="../shared/katex/katex.min.css"><script defer src="../shared/katex/katex.min.js"></script><script defer src="../shared/katex/auto-render.min.js"></script><style>${css}${extra}</style></head><body><main>`;
+  return `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="duration-minutes" content="75"><meta name="total-points" content="100"><title>${title}</title><style>${mathCss}</style><style>${css}${extra}</style></head><body><main>`;
 }
 const render='';
 let student=head('Pre-Calculus: Prep Test 2');

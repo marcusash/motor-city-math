@@ -24,6 +24,8 @@ assert.match(student,/x -8 to 8, y -8 to 8/);
 assert.match(student,/x -12 to 12, y -12 to 12/);
 assert.match(student,/<annotation encoding="application\/x-tex">g\(x\)=1-\\frac35x<\/annotation>/);
 assert.match(student,/<annotation encoding="application\/x-tex">H\(x\)=\\frac/);
+assert.match(student,/<style>@font-face/);
+assert.match(student,/\.katex \.katex-mathml\{/);
 assert.doesNotMatch(student,/\\\(|\\\)/);
 assert.match(student,/Problem 4/);
 assert.doesNotMatch(student,/Use a composite model|Construct and graph|Simplify and solve a rational expression|Graph both composition orders/);
