@@ -32,6 +32,8 @@ assert.ok(fs.existsSync(practiceReportPath));
 const practiceReportHtml = fs.readFileSync(practiceReportPath, 'utf8');
 assert.match(practiceReportHtml, /Score based on visible work in the submitted scan/);
 assert.match(practiceReportHtml, /href="\.\.\/index.html" class="back-link">&larr; Back to Dashboard<\/a>/);
+assert.ok(!practiceReportHtml.includes('Other Test 1 materials'));
+assert.equal([...practiceReportHtml.matchAll(/href="([^"]+)"/g)].length, 1, 'Only the dashboard navigation link remains');
 for (const [, href] of practiceReportHtml.matchAll(/href="([^"]+)"/g)) {
   if (/^(?:https?:|#|mailto:)/.test(href)) continue;
   assert.ok(fs.existsSync(path.resolve(path.dirname(practiceReportPath), href.split('#')[0])), 'Missing report link: ' + href);
