@@ -14,6 +14,8 @@ Test 1 Study Guide is a separate reference evaluation of the original seven hand
 
 Scorecards and assessment HTML pages use a top-of-page `Back to Dashboard` link with a left arrow. Nested pages link to the root dashboard, and assessment navigation is hidden when printing.
 
+The [Prep Test 2 question proposal](reviews/prep-test-2-proposal.html) is a draft for parent review: 8 questions, 100 points, and 70 minutes of work plus 5 minutes to check. It includes worked answers and partial-credit rubrics; it is not an approved student test.
+
 12 practice tests covering 5 Algebra II units with ~200 questions. Each test is a standalone HTML file — open it in a browser and start studying. Standards-aligned to Seattle Academy (SAAS) curriculum.
 
 ### Units Covered
