@@ -26,8 +26,12 @@ data.questions.forEach((q, index) => {
 });
 const p = x => x < -1 ? 2*x+4 : 3;
 assert.deepEqual([-2,-1,2].map(p), [0,3,3]);
-const rootRule = x => -2*Math.sqrt(x-1)+3;
-assert.deepEqual([1,2,5,10].map(rootRule), [3,1,-1,-3]);
+const transformSource = [[-3,1],[-1,-2],[2,0],[4,2]];
+assert.deepEqual(transformSource.map(([u,v])=>[2*u+1,-2*v+1]),[[-5,-1],[-1,5],[5,1],[9,-3]]);
+assert.deepEqual([-3,4].map(u=>2*u+1),[-5,9]);
+assert.deepEqual([-2,2].map(v=>-2*v+1).sort((a,b)=>a-b),[-3,5]);
+assert.equal((5-1)/2,2);
+assert.equal(-2*0+1,1);
 const source = [[-3,-1],[-1,3],[2,0],[4,2]];
 assert.deepEqual(source.map(([u,v])=>[2-u,v]).sort((a,b)=>a[0]-b[0]), [[-2,2],[0,0],[3,3],[5,-1]]);
 assert.deepEqual(source.map(([u,v])=>[u,2-v]), [[-3,3],[-1,-1],[2,2],[4,0]]);
@@ -97,7 +101,7 @@ function visit(element) {
 }
 visit(containers.questions);
 assert.equal(allElements.filter(element=>element.tag==='details').length,8);
-assert.equal(allElements.filter(element=>element.tag==='svg').length,2);
-assert.equal(allElements.filter(element=>element.tag==='polyline').length,3);
-assert.equal(allElements.filter(element=>element.tag==='circle').length,11);
+assert.equal(allElements.filter(element=>element.tag==='svg').length,3);
+assert.equal(allElements.filter(element=>element.tag==='polyline').length,4);
+assert.equal(allElements.filter(element=>element.tag==='circle').length,15);
 console.log('Prep Test 2 proposal: PASS (8 questions, 100 points, 70+5 minutes; verified mappings, graph reads, rules, signs, and domains).');

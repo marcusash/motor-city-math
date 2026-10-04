@@ -27,25 +27,30 @@ window.prepTest2Proposal = {
       ]
     },
     {
-      id: 2, title: 'Write the rule and complete the square-root graph', difficulty: 2, points: 12, minutes: 8,
-      target: 'Prep Test 1 Q6. Kai showed the shifted curve and domain/range but omitted the rule and a clearly marked starting point.',
-      extension: 'Adds reflection and a vertical scale change, then asks for a graph, rule, and membership check that agree.',
+      id: 2, title: 'Transform both coordinates of a given graph', difficulty: 2, points: 12, minutes: 8,
+      target: 'Study Guide Q18; Prep Test 1 Q4/Q6. Marcus requests another check of horizontal and vertical graph transformations together. The supplied early photo has no added graph; the earlier review credited a later close-up, so this is a practice priority rather than proof of misunderstanding.',
+      extension: 'Unlike the original right shift and reflection alone, this combines horizontal stretching and shifting with vertical reflection, stretching, and shifting. Kai must derive both coordinate changes from the expression.',
       stem: [
-        'Start with y=sqrt(x). Shift it right 1, reflect it across the x-axis, stretch it vertically by a factor of 2, then move it up 3.',
-        '(a) Write the resulting rule.',
-        '(b) Graph it using the transformed points from x=0,1,4,9 on the original square-root graph. Label all four new coordinates, including the starting point. Use axes x=-1 to 11, y=-4 to 4, one unit per square.',
-        '(c) Give the domain and range. Use substitution to decide whether (5,-1) lies on the graph.'
+        'The graph of f consists of straight segments joining (-3,1), (-1,-2), (2,0), and (4,2), in that order, with included endpoints. Let h(x)=-2f((x-1)/2)+1.',
+        '(a) If (u,v) is on f, derive the coordinates of its corresponding point on h. Show an equation for the new x-coordinate and explain how the y-coordinate changes.',
+        '(b) Make a table of all four new vertices, then graph h. Label every vertex with its coordinates, connect with straight segments, and mark both endpoints included. Use axes x=-6 to 10, y=-4 to 6, one unit per square.',
+        '(c) Give the domain and range of h. Use the given graph to check whether (5,1) lies on h.'
       ],
       steps: [
-        'The rule is y=-2sqrt(x-1)+3: x-1 shifts right; -2 reflects and stretches; +3 moves up.',
-        'Map (u,v) to (u+1,-2v+3). The four labeled points are (1,3), (2,1), (5,-1), (10,-3). Join with a decreasing square-root curve starting at closed (1,3), continuing right.',
-        'Domain [1,infinity); range (-infinity,3]. At x=5, y=-2sqrt(4)+3=-1, so (5,-1) belongs.'
+        'Set (x-1)/2=u, giving x=2u+1. The new y is -2v+1. Thus map (u,v) to (2u+1,-2v+1): stretch horizontally by 2 then shift right 1; reflect vertically, stretch by 2, then shift up 1.',
+        'The new vertices are (-5,-1), (-1,5), (5,1), and (9,-3). Join in order with straight segments and included endpoints.',
+        'The original domain [-3,4] maps to [-5,9]. The original range [-2,2] maps to [-3,5]; the vertical reflection reverses the order of the range endpoints.',
+        'At x=5 the inside value is (5-1)/2=2. The given graph has f(2)=0, so h(5)=-2(0)+1=1. The point belongs.'
       ],
       rubric: [
-        { points: 3, text: 'Rule: horizontal shift, reflection/scale, vertical shift, 1 each.' },
-        { points: 5, text: 'Four correct labeled points, 1 each; correct connected curve and included start, 1.' },
+        { points: 3, text: 'Derived x-coordinate 2; explained y-coordinate change 1.' },
+        { points: 4, text: 'Four transformed vertices, 1 each.' },
+        { points: 2, text: 'Connected graph with included endpoints 1; all coordinate labels 1. Preserve plotting credit for a correctly plotted earlier table error.' },
         { points: 2, text: 'Domain and range, 1 each.' },
-        { points: 2, text: 'Substitution and correct membership conclusion.' }
+        { points: 1, text: 'Inside value, graph read, and membership check.' }
+      ],
+      graphs: [
+        { label: 'Given graph of f for Question 2', x: [-4,5], y: [-3,3], lines: [{ name: 'f', vertices: [[-3,1],[-1,-2],[2,0],[4,2]] }] }
       ]
     },
     {
