@@ -61,6 +61,7 @@ assert.match(dashboard, /src="reviews\/assessment-1-functions-75min-grade-data.j
 assert.match(dashboard, /label: 'Study Guide 1', sublabel: 'Scan review', fa: studyGuidePct/);
 assert.match(dashboard, /label: 'Prep Test 1', sublabel: 'Scan review', fa: practiceTestPct/);
 assert.match(dashboard, /pointSpacing = 100/);
+assert.match(dashboard, /xL = 50;\s*xR = xL \+ pointSpan/);
 assert.match(dashboard, /Scores from visible work, not teacher grades/);
 assert.ok(!dashboard.includes('provisional'), 'Dashboard should explain score status without jargon');
 assert.ok(!dashboard.includes('91/100'), 'The superseded 91-point report must not appear');
