@@ -649,7 +649,7 @@
     var _scoreParseError = null;
 
     /* ========== SCORE CHART (FD SVG design) ========== */
-    function renderTrendChart(container, pts, compact) {
+    function renderTrendChart(container, pts, compact, showCourt) {
         if (!container) return;
         if (pts.length === 0) {
             container.innerHTML = '<div class="trend-empty">Complete your first test to see your progress</div>';
@@ -691,8 +691,7 @@
         var faYs = pts.map(function(p) { return yPt(p.fa); });
         var lastX = xs[n-1], lastFaY = faYs[n-1], lastFaPct = pts[n-1].fa;
 
-        // Court zone renders when any score drops below B (80%)
-        var hasFoulTrouble = pts.some(function(p) { return p.fa < 80; });
+        var hasFoulTrouble = showCourt || pts.some(function(p) { return p.fa < 80; });
 
         // ═══ FOUL TROUBLE ZONE (court texture from B line down) ═══
         var foulZone = '';
@@ -847,6 +846,17 @@
         raw.sort(function(a, b) { return a.ts - b.ts; });
         renderTrendChart(document.getElementById('winterChartContainer'), raw);
     }
+    function formatCompletionDate(value) {
+        if (value === null) return 'Date unknown';
+        if (typeof value !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(value)) {
+            throw new Error('Completion date must be YYYY-MM-DD or null');
+        }
+        var date = new Date(value + 'T00:00:00Z');
+        if (isNaN(date.getTime()) || date.toISOString().slice(0, 10) !== value) {
+            throw new Error('Invalid completion date: ' + value);
+        }
+        return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
+    }
     function buildPrecalculusHistory() {
         function score(data, rowsKey) {
             var rows = data.sections.reduce(function(all, section) {
@@ -866,9 +876,9 @@
         document.getElementById('precalculusFirstScore').textContent =
             'Scores from visible work, not teacher grades: Study Guide ' + studyGuidePct + '% · Prep Test 1 ' + practiceTestPct + '%';
         renderTrendChart(document.getElementById('precalculusChartContainer'), [
-            { label: 'Study Guide 1', sublabel: 'Scan review', fa: studyGuidePct },
-            { label: 'Prep Test 1', sublabel: 'Scan review', fa: practiceTestPct }
-        ], true);
+            { label: 'Study Guide 1', sublabel: formatCompletionDate(window.test1StudyGuide.completedOn), fa: studyGuidePct },
+            { label: 'Prep Test 1', sublabel: formatCompletionDate(window.assessment1PracticeGrade.completedOn), fa: practiceTestPct }
+        ], true, true);
     }
     function buildStandards() {
         var scores = getScores();

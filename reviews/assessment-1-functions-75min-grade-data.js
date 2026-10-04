@@ -3,6 +3,7 @@ window.assessment1PracticeGrade = {
   student: 'Kai',
   course: 'Pre-Calculus',
   reviewed: 'October 4, 2026',
+  completedOn: null,
   provisional: true,
   sections: [
     { title: 'Function Basics', evidence: [
