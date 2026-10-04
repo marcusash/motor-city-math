@@ -51,32 +51,16 @@ source.forEach(([u,v])=>{
   assert.ok(Math.abs((5/3)*(1-u))<8 && Math.abs(1-(3/5)*v)<8);
 });
 assert.deepEqual([-3,4].map(u=>(5/3)*(1-u)).sort((a,b)=>a-b),[-5,20/3]);
-function read(vertices, x) {
-  for (let i=1;i<vertices.length;i++) {
-    const [x0,y0]=vertices[i-1], [x1,y1]=vertices[i];
-    if (x>=x0 && x<=x1) return y0+(y1-y0)*(x-x0)/(x1-x0);
-  }
-  throw new Error('Outside graph domain: '+x);
+assert.equal(data.questions[3].graphs.length,0);
+assert.match(data.questions[3].stem[0],/R\(x\)=\(x\^2-x-2\)\/\(x\^2\+x-6\)/);
+for (let x=-10;x<=10;x+=0.25) {
+  assert.ok(x*x-x-2===(x-2)*(x+1));
+  assert.ok(x*x+x-6===(x-2)*(x+3));
+  if(x!==2 && x!==-3) assert.ok(Math.abs((x*x-x-2)/(x*x+x-6)-(x+1)/(x+3))<1e-12);
 }
-const f = x => read([[-4,2],[-2,-2],[1,1],[4,-2]],x);
-const g = x => read([[-3,0],[0,3],[3,0]],x);
-assert.deepEqual([f(-1),g(-1),g(f(-1)),f(g(-1))], [-1,2,2,0]);
-assert.equal(f(-3.5),1);
-assert.equal(g(f(-3.5)),2);
-assert.throws(()=>g(-3.5),/Outside graph domain/);
-[-3.5,-2.5,-1,1,3].forEach(x=>assert.equal(g(f(x)),2));
-const compositeSolutions=[];
-for (const target of [-1,1]) {
-  const vertices=[[-4,2],[-2,-2],[1,1],[4,-2]];
-  for(let i=1;i<vertices.length;i++) {
-    const [x0,y0]=vertices[i-1], [x1,y1]=vertices[i];
-    if(target>=Math.min(y0,y1) && target<=Math.max(y0,y1)) compositeSolutions.push(x0+(target-y0)*(x1-x0)/(y1-y0));
-  }
-}
-assert.deepEqual([...new Set(compositeSolutions)].sort((a,b)=>a-b),[-3.5,-2.5,-1,1,3]);
-[-3,0,2].forEach(x => assert.equal(f(x),0));
-assert.ok(f(-1)>f(-2) && f(1)>f(-1));
-assert.ok(f(-4)>f(-2) && f(1)>f(4));
+assert.equal((1*1-1-2)/(1*1+1-6),0.5);
+assert.equal(2*2+2-6,0);
+assert.equal((2+1)/(2+3),0.6);
 const A = x=>x*x-2*x, B=x=>2*x-1;
 for(let x=-10;x<=10;x+=0.25) {
   assert.equal(A(B(x)),4*x*x-8*x+3);
@@ -148,7 +132,7 @@ function visit(element) {
 }
 visit(containers.questions);
 assert.equal(allElements.filter(element=>element.tag==='details').length,10);
-assert.equal(allElements.filter(element=>element.tag==='svg').length,3);
-assert.equal(allElements.filter(element=>element.tag==='polyline').length,4);
-assert.equal(allElements.filter(element=>element.tag==='circle').length,15);
+assert.equal(allElements.filter(element=>element.tag==='svg').length,2);
+assert.equal(allElements.filter(element=>element.tag==='polyline').length,2);
+assert.equal(allElements.filter(element=>element.tag==='circle').length,8);
 console.log('Prep Test 2 proposal: PASS (10 questions, 100 points, 70+5 minutes; verified models, compositions, graph reads, rules, signs, and domains).');

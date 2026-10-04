@@ -78,34 +78,26 @@ window.prepTest2Proposal = {
       ]
     },
     {
-      id: 4, title: 'Evaluate and solve a composition from two graphs', difficulty: 3, points: 10, minutes: 7,
-      target: 'Prep Test 1 Q9; Study Guide Q21-22. One zero and two interval boundaries were wrong; an earlier nested evaluation had a wrong intermediate value.',
-      extension: 'Uses fractional inputs and asks for every solution of a composite equation. Kai must work backward through both graphs and collect multiple preimages, not just read two obvious values.',
+      id: 4, title: 'Simplify and solve a rational expression', difficulty: 3, points: 10, minutes: 7,
+      target: 'Prep Test 1 Q2/Q11; Study Guide Q19-20. Algebra and domain restrictions were strong; this is transfer of those strengths, not remediation of an observed deficit.',
+      extension: 'Replaces redundant graph composition with factoring, cancellation, an equation, and comparison of original and simplified domains. A cancelled factor still restricts the original function.',
       stem: [
-        'Both graphs consist of straight segments joining the listed vertices, with included endpoints. f: (-4,2), (-2,-2), (1,1), (4,-2). g: (-3,0), (0,3), (3,0). The graphs below use axes x=-6 to 6, y=-6 to 6, one unit per grid line.',
-        '(a) Find g(f(-3.5)) and f(g(-3.5)). Show your work.',
-        '(b) Find all x-values for which g(f(x))=2. Show your work.',
-        '(c) Give all zeros of f and its increasing and decreasing intervals.'
+        'Let R(x)=(x^2-x-2)/(x^2+x-6).',
+        '(a) Simplify R(x) and state its domain. Show your work.',
+        '(b) Solve R(x)=1/2.',
+        '(c) Let S(x)=(x+1)/(x+3). Do R and S have the same domain? Explain.'
       ],
       steps: [
-        'The first segment of f has rule y=-2x-6, so f(-3.5)=1. Then g(f(-3.5))=g(1)=2. Also g(-3.5) is undefined because g has domain [-3,3], so f(g(-3.5)) is undefined.',
-        'To solve g(f(x))=2, the graph of g gives inner values -1 and 1. Solve f(x)=-1 or f(x)=1 on every segment.',
-        'For f(x)=-1, the solutions are -2.5, -1, and 3. For f(x)=1, the solutions are -3.5 and 1. The complete set is {-3.5,-2.5,-1,1,3}. All five inner values are in the domain of g.',
-        'The first segment of f has rule y=-2x-6, giving zero -3. The middle segment gives zero 0, and the last gives zero 2.',
-        'f increases on (-2,1) and decreases on (-4,-2) union (1,4). Turning-point x-coordinates, not the zeros, are interval boundaries.'
+        'Factor the numerator as (x-2)(x+1) and denominator as (x-2)(x+3). Simplify to (x+1)/(x+3), retaining x!=2 and x!=-3. Domain: (-infinity,-3) union (-3,2) union (2,infinity).',
+        'Solve 2(x+1)=x+3 to get x=1. It is in the original domain and gives R(1)=1/2.',
+        'S excludes only -3. R also excludes 2, where its original denominator is zero. Thus the domains differ, even though their values agree wherever R is defined.'
       ],
       rubric: [
-        { points: 2, text: 'First nested evaluation: intermediate and final value, 0.5 each. Second: identifies undefined inside value and undefined composite, 0.5 each. Preserve valid follow-through credit.' },
-        { points: 4, text: 'Identifies both inner target values, 1; five correct x-values, 0.5 each; complete list with no extras, 0.5. Do not deduct repeatedly for one propagated graph-read error.' },
-        { points: 2, text: 'All three zeros: 0.5 each, plus 0.5 for a complete list with no extra zeros.' },
-        { points: 2, text: 'Increasing interval 1; two decreasing intervals 0.5 each. Award half of the interval credit when direction and one endpoint are correct.' }
+        { points: 5, text: 'Factoring 2 (1 per polynomial); simplification 1; original domain 2 (1 per exclusion). Accept equivalent domain notation.' },
+        { points: 3, text: 'Valid equation work 2; solution x=1, 1. Preserve valid algebraic follow-through from an earlier error.' },
+        { points: 2, text: 'Correct domain comparison 1; explains original denominator exclusion at x=2, 1. Do not deduct again for the same restriction error from part (a).' }
       ],
-      graphs: [
-        { label: 'Given graphs of f and g', x: [-6,6], y: [-6,6], lines: [
-          { name: 'f (solid)', vertices: [[-4,2],[-2,-2],[1,1],[4,-2]] },
-          { name: 'g (dashed)', dashed: true, vertices: [[-3,0],[0,3],[3,0]] }
-        ] }
-      ]
+      graphs: []
     },
     {
       id: 5, title: 'Compare two algebraic compositions', difficulty: 3, points: 6, minutes: 5,

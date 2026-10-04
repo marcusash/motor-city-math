@@ -11,9 +11,9 @@ const key = fs.readFileSync(path.join(__dirname,'assessment-2-functions-75min-KE
 assert.equal((student.match(/data-question="/g)||[]).length,10);
 assert.equal([...student.matchAll(/data-points="(\d+)"/g)].reduce((sum,m)=>sum+Number(m[1]),0),100);
 assert.equal([...student.matchAll(/data-minutes="(\d+)"/g)].reduce((sum,m)=>sum+Number(m[1]),0),70);
-assert.equal((student.match(/<svg /g)||[]).length,9);
+assert.equal((student.match(/<svg (?:class="print-grid"|viewBox="0 0 600 600")/g)||[]).length,8);
 const grids = [...student.matchAll(/<svg class="print-grid" viewBox="0 0 (\d+) (\d+)"[^>]*aria-label="[^"]*; x (-?\d+) to (\d+), y (-?\d+) to (\d+)"/g)];
-assert.equal(grids.length,7);
+assert.equal(grids.length,6);
 for (const match of grids) {
   assert.equal(match[1],match[2],'Square SVG');
   assert.equal(Number(match[3]),-Number(match[4]),'Centered x-axis');
@@ -22,7 +22,11 @@ for (const match of grids) {
 }
 assert.match(student,/x -8 to 8, y -8 to 8/);
 assert.match(student,/x -12 to 12, y -12 to 12/);
-assert.match(student,/g\(x\)=1-\(3\/5\)x/);
+assert.match(student,/<annotation encoding="application\/x-tex">g\(x\)=1-\\frac35x<\/annotation>/);
+assert.match(student,/<annotation encoding="application\/x-tex">H\(x\)=\\frac/);
+assert.doesNotMatch(student,/\\\(|\\\)/);
+assert.match(student,/Problem 4/);
+assert.doesNotMatch(student,/Use a composite model|Construct and graph|Simplify and solve a rational expression|Graph both composition orders/);
 assert.doesNotMatch(student,/reciprocal|stretch horizontally by 5\/3/);
 assert.match(student,/width:5\.8in; height:5\.8in/);
 assert.match(student,/Large centered axes for qualitative sketch/);
@@ -33,7 +37,7 @@ assert.doesNotMatch(student,/Worked answer|Scoring|parent-review|Marcus|Study Gu
 assert.doesNotMatch(student,/absolute-value|a\|x-h\|/);
 assert.match(student,/A\(B\(x\)\)/);
 assert.match(student,/budget of \$260/);
-assert.match(student,/Construct and graph a square-root function/);
+assert.match(student,/Problem 10/);
 assert.match(student,/solid line/); assert.match(student,/dashed line/);
 assert.doesNotMatch(student,/flattened|touch at one zero|keep the curve|ends point the same|blank parts|Read the graph before|Keep all restrictions/);
 assert.doesNotMatch(student,/Continue each branch|show open or closed|Show which branch|Justify the branch|Use axes x=/);
@@ -49,4 +53,4 @@ for (const name of ['assessment-2-functions-75min.pdf','assessment-2-functions-7
   assert.equal(bytes.subarray(0,4).toString(),'%PDF');
   assert.ok(bytes.length>10000);
 }
-console.log('Prep Test 2 print artifacts: PASS (10 questions, 100 points, 70+5 minutes, 7 symmetric grids and 2 open sketch axes, word model, separate key and PDFs).');
+console.log('Prep Test 2 print artifacts: PASS (10 questions, 100 points, 70+5 minutes, 6 symmetric grids and 2 open sketch axes, typeset math, neutral labels, separate key and PDFs).');

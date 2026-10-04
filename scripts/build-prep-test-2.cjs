@@ -2,6 +2,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
 const root = path.resolve(__dirname, '..');
+const katex = require(path.join(root,'shared','katex','katex.min.js'));
 const context = { window: {} };
 vm.runInNewContext(fs.readFileSync(path.join(root,'reviews','prep-test-2-proposal-data.js'),'utf8'),context);
 const data = context.window.prepTest2Proposal;
@@ -9,6 +10,16 @@ const previous = fs.readFileSync(path.join(root,'tests','assessment-1-functions-
 const css = previous.match(/<style>([\s\S]*?)<\/style>/)[1].split('\n').map(line=>line.trimEnd()).join('\n');
 const escape = text => String(text).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
 const formulas = [
+  ['2<=w<=6','2\\le w\\le6'],
+  ['0<=a<=30','0\\le a\\le30'],
+  ['a>30','a>30'],
+  ['A(w)=w(12-w)','A(w)=w(12-w)'],
+  ['C(a)=8a','C(a)=8a'],
+  ['C(a)=240+5(a-30)','C(a)=240+5(a-30)'],
+  ['R(x)=(x^2-x-2)/(x^2+x-6)','R(x)=\\frac{x^2-x-2}{x^2+x-6}'],
+  ['S(x)=(x+1)/(x+3)','S(x)=\\frac{x+1}{x+3}'],
+  ['R(x)=1/2','R(x)=\\frac12'],
+  ['g(x)=1-(3/5)x','g(x)=1-\\frac35x'],
   ['h(x)=-f(x-2)+1','h(x)=-f(x-2)+1'],
   ['r(x)=a sqrt(x-h)+k','r(x)=a\\sqrt{x-h}+k'],
   ['q(x)=a|x-h|+k','q(x)=a|x-h|+k'],
@@ -21,7 +32,7 @@ const formulas = [
 ];
 function text(value) {
   let result=escape(value);
-  for (const [plain,latex] of formulas) result=result.replaceAll(escape(plain),'\\('+escape(latex)+'\\)');
+  for (const [plain,latex] of formulas) result=result.replaceAll(escape(plain),katex.renderToString(latex,{throwOnError:true}));
   return result;
 }
 function grid(xRange,yRange,lines=[]) {
@@ -44,18 +55,7 @@ function grid(xRange,yRange,lines=[]) {
   return `<svg class="print-grid" viewBox="0 0 ${w} ${h}" role="img" aria-label="${lines.length?'Given graph':'Blank coordinate grid'}; x ${xRange.join(' to ')}, y ${yRange.join(' to ')}"><g font-family="Arial" font-size="9">${items}</g></svg>`;
 }
 const ranges={1:[[-6,6],[-6,6]],2:[[-8,8],[-8,8]],3:[[-8,8],[-8,8]],10:[[-12,12],[-12,12]]};
-const studentTitles = {
-  1:'Graph a piecewise function',
-  2:'Transform a given graph',
-  3:'Graph both composition orders',
-  4:'Evaluate and analyze two graphs',
-  5:'Compare two algebraic compositions',
-  6:'Construct and sketch a polynomial',
-  7:'Compose functions and find a domain',
-  8:'Analyze and sketch a quartic',
-  9:'Use a composite model to meet a budget',
-  10:'Construct and graph a square-root function'
-};
+const studentTitles = Object.fromEntries(data.questions.map(q=>[q.id,`Problem ${q.id}`]));
 function studentStem(q) {
   if (q.id===6) return [
     q.stem[0],
@@ -118,7 +118,7 @@ button { padding:8px 16px; cursor:pointer; }
 function head(title) {
   return `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="duration-minutes" content="75"><meta name="total-points" content="100"><title>${title}</title><link rel="stylesheet" href="../shared/katex/katex.min.css"><script defer src="../shared/katex/katex.min.js"></script><script defer src="../shared/katex/auto-render.min.js"></script><style>${css}${extra}</style></head><body><main>`;
 }
-const render='<script>window.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"\\\\(",right:"\\\\)",display:false}]});});</script>';
+const render='';
 let student=head('Pre-Calculus: Prep Test 2');
 student+=`<header class="exam-header"><div class="eyebrow">Motor City Math | Pre-Calculus</div><div class="screen-only"><a href="../index.html" class="back-link">&larr; Back to Dashboard</a></div><h1>Prep Test 2: Functions and Polynomial Graphs</h1><p class="subtitle">75 minutes | 100 points | ${data.questions.length} questions</p><div class="student-fields"><span>Name: <span class="field-line" style="width:65%"></span></span><span>Date: <span class="field-line"></span></span></div><p class="screen-only"><button onclick="window.print()">Print student test</button></p></header><aside class="directions"><strong>Directions</strong><ul><li>Show your work.</li><li>Use interval notation where requested.</li><li>Questions 6 and 8 require qualitative polynomial sketches. Exact extrema and a uniform vertical scale are not required.</li><li>Suggested question times total 70 minutes, with a final 5 minutes for review.</li></ul><p>Use the space provided; additional work may go on the back.</p></aside><section class="exam-section"><h2>Suggested timing</h2><table class="value-table"><thead><tr><th>Question</th><th>Points</th><th>Minutes</th></tr></thead><tbody>${data.questions.map(q=>`<tr><td>${q.id}. ${escape(studentTitles[q.id])}</td><td>${q.points}</td><td>${q.minutes}</td></tr>`).join('')}</tbody></table><p>Final review: 5 minutes. Total: 75 minutes.</p></section>`;
 for(const q of data.questions) {
