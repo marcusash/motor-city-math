@@ -67,6 +67,7 @@ assert.match(hero[0], /href="tests\/assessment-2-functions-75min.pdf"/);
 assert.match(hero[0], /target="_blank" rel="noopener"/);
 assert.match(hero[1], /Prep Test 2/);
 assert.ok(section.indexOf(hero[0]) < section.indexOf('class="trend-card"'), 'Student card appears above the chart');
-assert.match(section, /href="tests\/assessment-2-functions-75min.html" target="_blank" rel="noopener"/);
+assert.match(section, /class="test-link" href="tests\/assessment-2-functions-75min.pdf" target="_blank" rel="noopener"/);
+assert.doesNotMatch(section, /href="tests\/assessment-2-functions-75min.html"/, 'All Prep Test 2 dashboard cards open the PDF');
 assert.doesNotMatch(section, /assessment-2-functions-75min-KEY|prep-test-2-proposal/, 'Parent answers and review are not linked from student cards');
 assert.doesNotMatch(hero[1], /test-score|awaiting|score will be added/i);
