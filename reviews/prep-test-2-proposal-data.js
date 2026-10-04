@@ -105,29 +105,31 @@ window.prepTest2Proposal = {
       ]
     },
     {
-      id: 5, title: 'Build and draw a graph from its characteristics', difficulty: 2, points: 10, minutes: 7,
-      target: 'Study Guide Q6; Prep Test 1 Q6. A correct equation without its requested graph is not a complete response.',
-      extension: 'Uses a downward absolute-value graph rather than another upward parabola or square-root translation.',
+      id: 5, title: 'Factor and sketch a cubic polynomial', difficulty: 2, points: 10, minutes: 7, polynomialDegree: 3,
+      target: 'Study Guide Q12; Prep Test 1 Q7-8. Marcus requests more polynomial graphing across degrees; the earlier cubic work was correct, so this checks retention with a different structure.',
+      extension: 'Start from expanded form and connect factorization to a complete negative-leading cubic sketch, rather than select an equation or copy the earlier all-negative zeros.',
       stem: [
-        'Find a function of the form q(x)=a|x-h|+k with domain all real numbers, range (-infinity,4], maximum (2,4), and y-intercept (0,0).',
-        '(a) Find a, h, and k and write q(x). Show how the intercept determines a.',
-        '(b) Graph q on axes x=-2 to 6, y=-5 to 5, one unit per square. Label the vertex and both x-intercepts; draw arrows.',
-        '(c) State where q increases and decreases, and confirm its domain and range.'
+        'Let C(x)=-x^3+3x^2+4x.',
+        '(a) Factor C completely. State its degree, leading coefficient, zeros, and each zero\'s multiplicity.',
+        '(b) Make a qualitative sketch. Label all x-intercepts and the y-intercept, show whether each zero is a crossing or touch, and use arrows for both ends. Calculate C(2) and label that point to help place the middle branch. Exact extrema and a uniform vertical scale are not required.',
+        '(c) State the intervals where C(x)>0 and C(x)<0.'
       ],
       steps: [
-        'The vertex gives h=2, k=4. Substitute (0,0): 0=2a+4, so a=-2. Thus q(x)=-2|x-2|+4.',
-        'The graph is a downward V with vertex (2,4), x-intercepts (0,0), (4,0), and rays extending both ways.',
-        'Increasing (-infinity,2); decreasing (2,infinity). Domain all real numbers; range (-infinity,4].'
+        'C(x)=-x(x^2-3x-4)=-x(x-4)(x+1). Degree 3, leading coefficient -1. Zeros -1, 0, 4 all have multiplicity 1.',
+        'All three zeros cross: label (-1,0), (0,0), (4,0). The y-intercept is also (0,0). C(2)=-8+12+8=12, so label (2,12). Left end rises, right end falls.',
+        'Draw a smooth curve crossing in root order, below the axis between -1 and 0 and above it between 0 and 4. The sketch has one turn between each consecutive pair of zeros; exact turn coordinates are not requested.',
+        'C>0 on (-infinity,-1) union (0,4); C<0 on (-1,0) union (4,infinity). Each simple zero changes the sign.'
       ],
       rubric: [
-        { points: 3, text: 'Correct form from vertex 1; intercept calculation 1; final rule 1.' },
-        { points: 4, text: 'Downward V and continuing rays 1; vertex and both intercept labels, 1 each.' },
-        { points: 1, text: 'Increasing/decreasing intervals, 0.5 each.' },
-        { points: 2, text: 'Domain/range, 1 each.' }
+        { points: 2, text: 'Complete factorization 1; degree, leading coefficient, and multiplicities 1.' },
+        { points: 3, text: 'Correct root order and intercept labels 1; three crossings 1; correctly signed smooth connections 1.' },
+        { points: 2, text: 'Both end directions, 1 each.' },
+        { points: 1, text: 'Calculated and labeled (2,12).' },
+        { points: 2, text: 'Complete positive and negative interval lists, 1 each.' }
       ]
     },
     {
-      id: 6, title: 'Show a flattened crossing, not just the right zeros', difficulty: 3, points: 14, minutes: 10,
+      id: 6, title: 'Show a flattened crossing in a fifth-degree polynomial', difficulty: 3, points: 14, minutes: 10, polynomialDegree: 5,
       target: 'Study Guide Q11; Prep Test 1 Q7-8. Polynomial algebra is strong, but a clearly flattened odd-multiplicity crossing needs fresh evidence.',
       extension: 'Constructs and sketches a fifth-degree polynomial, then uses root multiplicities to explain strict sign intervals.',
       stem: [
@@ -173,25 +175,28 @@ window.prepTest2Proposal = {
       ]
     },
     {
-      id: 8, title: 'Transform a piecewise rule and its boundary', difficulty: 3, points: 10, minutes: 8,
-      target: 'Prep Test 1 Q4-5. Tests whether graph mapping and branch selection work together after the independent graph questions.',
-      extension: 'The negative inner slope reverses a piecewise inequality. A correct boundary must match the new rule, not the old side of the graph.',
+      id: 8, title: 'Sketch a quartic with crossings and a touch', difficulty: 3, points: 10, minutes: 8, polynomialDegree: 4,
+      target: 'Study Guide Q7/Q24; Prep Test 1 Q7-8. Marcus requests more polynomial graph execution, including an even-degree example, not only correct equations.',
+      extension: 'A quartic combines two simple crossings and an even-multiplicity touch. Compare its two ends with the cubic in Q5 and quintic in Q6.',
       stem: [
-        'Use p from Question 1: p(x)=2x+4 for x<-1, and p(x)=3 for x>=-1. Let h(x)=p(1-x).',
-        '(a) Derive a two-piece rule for h. Solve the branch inequalities; do not guess the new boundary.',
-        '(b) Graph h on axes x=-2 to 5, y=-5 to 5, one unit per square. Label and mark both boundary points, and draw continuing arrows.',
-        '(c) Find h(2) and h(3) using p(1-x) as a check.'
+        'Let R(x)=-(x+2)(x-1)^2(x-3).',
+        '(a) State the degree, leading coefficient, zeros, and multiplicities. Find the y-intercept.',
+        '(b) Make a qualitative sketch with all intercepts labeled and arrows on both ends. Show which zeros cross and which touch. Use signs between the zeros to keep the curve on the correct side of the axis. Exact extrema and a uniform vertical scale are not required.',
+        '(c) State the intervals where R(x)>0 and R(x)<0. Explain why its ends point the same way, unlike the odd-degree polynomials in Questions 5-6.'
       ],
       steps: [
-        'The linear branch requires 1-x<-1, so x>2, and its new rule is 2(1-x)+4=6-2x.',
-        'The constant branch requires 1-x>=-1, so x<=2. Thus h(x)=3 for x<=2, and h(x)=6-2x for x>2.',
-        'Draw the horizontal ray left of closed (2,3) and the decreasing ray right of open (2,2).',
-        'h(2)=p(-1)=3. h(3)=p(-2)=0. Both agree with the derived rule.'
+        'Degree 4, leading coefficient -1. Zeros -2 and 3 are simple; 1 has multiplicity 2. R(0)=-(2)(1)(-3)=6, so label (0,6).',
+        'Both ends fall. Cross upward at (-2,0), stay above the axis, touch and turn at (1,0), stay above until crossing downward at (3,0). Draw a smooth graph with a peak on each side of the touch; exact peaks are not requested.',
+        'R>0 on (-2,1) union (1,3); R<0 on (-infinity,-2) union (3,infinity). The even root does not change sign but is excluded from the strict-positive intervals.',
+        'Even degree makes the signs at the two far ends the same; the negative leading coefficient makes both ends fall. Odd degree makes the two ends opposite.'
       ],
       rubric: [
-        { points: 4, text: 'New inequalities 2; new branch formulas 2.' },
-        { points: 4, text: 'Branch shapes/sides 2; correct boundary coordinates and inclusion, 1 each.' },
-        { points: 2, text: 'Two checked values, 1 each.' }
+        { points: 2, text: 'Degree/leading coefficient 1; zeros and multiplicities 1.' },
+        { points: 1, text: 'Calculated and labeled y-intercept.' },
+        { points: 3, text: 'Labeled zeros 1; crossing/touch behavior 1; correctly signed smooth connections 1.' },
+        { points: 1, text: 'Both ends down.' },
+        { points: 2, text: 'Complete positive and negative interval lists, 1 each.' },
+        { points: 1, text: 'Even versus odd degree end-behavior explanation.' }
       ]
     }
   ]
