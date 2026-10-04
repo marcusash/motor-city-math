@@ -42,7 +42,7 @@ function grid(xRange,yRange,lines=[]) {
   items+=`<text x="${w-12}" y="${py(0)-5}">x</text><text x="${px(0)+7}" y="13">y</text>`;
   return `<svg class="print-grid" viewBox="0 0 ${w} ${h}" role="img" aria-label="${lines.length?'Given graph':'Blank coordinate grid'}; x ${xRange.join(' to ')}, y ${yRange.join(' to ')}"><g font-family="Arial" font-size="9">${items}</g></svg>`;
 }
-const ranges={1:[[-4,4],[-5,5]],2:[[-2,8],[-2,4]],3:[[-4,6],[-3,4]],5:[[-2,6],[-5,5]]};
+const ranges={1:[[-6,6],[-6,6]],2:[[-8,8],[-8,8]],3:[[-6,6],[-6,6]],5:[[-6,6],[-6,6]]};
 const studentTitles = {
   1:'Graph a piecewise function',
   2:'Transform a given graph',
@@ -71,11 +71,11 @@ function workspace(q) {
   }
   if(ranges[q.id]) {
     const [x,y]=ranges[q.id];
-    html+=`<div class="graph-work"><strong>Your graph: one unit per square</strong>${grid(x,y)}</div>`;
+    html+=`<div class="graph-work"><h3>Question ${q.id}: your graph</h3><p>One unit per square.</p>${grid(x,y)}</div>`;
   } else if(q.polynomialDegree) {
-    html+='<div class="sketch-space"><strong>Your qualitative sketch (label axes and intercepts)</strong></div>';
+    html+=`<div class="polynomial-work"><h3>Question ${q.id}: your qualitative sketch</h3><div class="sketch-space"><svg viewBox="0 0 600 600" role="img" aria-label="Large centered axes for qualitative sketch"><line x1="20" x2="580" y1="300" y2="300" stroke="#111" stroke-width="1.5"/><line x1="300" x2="300" y1="20" y2="580" stroke="#111" stroke-width="1.5"/><text x="585" y="290">x</text><text x="310" y="20">y</text></svg></div></div>`;
   }
-  html+='<strong>Remaining answers and reasoning</strong><div class="work-lines '+(q.id===7?'xtall':'medium')+'"></div>';
+  html+='<strong>Answers and work</strong><div class="work-lines '+(q.id===7?'xtall':'medium')+'"></div>';
   return html;
 }
 const extra=`
@@ -84,7 +84,8 @@ const extra=`
 .given { margin:0; width:40%; }
 .mapping-work { flex:1; }
 .print-grid { width:100%; display:block; background:white; }
-.graph-work { width:65%; margin:10px 0; }
+.graph-work { width:100%; margin:10px 0; }
+.polynomial-work svg { width:100%; height:100%; }
 .sketch-space { height:270px; border:1px solid #777; padding:8px; margin:12px 0; }
 .question-text p { margin:7px 0; }
 .work-lines { background-image:none; display:flex; flex-direction:column; justify-content:space-evenly; }
@@ -96,8 +97,9 @@ button { padding:8px 16px; cursor:pointer; }
  .question { break-inside:auto; }
  .question-text { font-size:10pt; }
  .given { width:2.2in; }
- .graph-work { width:3.9in; }
- .sketch-space { height:3.5in; }
+ .graph-work,.polynomial-work { break-before:page; width:5.8in; }
+ .graph-work .print-grid { width:5.8in; height:5.8in; }
+ .sketch-space { width:5.8in; height:5.8in; padding:0; }
  .work-lines.medium { height:0.65in; }
  .work-lines.xtall { height:3.8in; }
  .work-lines.tall { height:1.2in; }

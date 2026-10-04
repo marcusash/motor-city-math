@@ -11,7 +11,7 @@ window.prepTest2Proposal = {
       stem: [
         'Let p(x)=2x+4 for x<-1, and p(x)=3 for x>=-1.',
         '(a) Find p(-2), p(-1), and p(2). Show which branch you use.',
-        '(b) Graph p on axes x=-4 to 4, y=-5 to 5, with one unit per square. Continue each branch with an arrow. Label the boundary coordinates and show open or closed circles.',
+        '(b) Graph p on axes x=-6 to 6, y=-6 to 6, with one unit per square. Continue each branch with an arrow. Label the boundary coordinates and show open or closed circles.',
         '(c) Give the domain and range in interval or set notation.'
       ],
       steps: [
@@ -27,12 +27,12 @@ window.prepTest2Proposal = {
       ]
     },
     {
-      id: 2, title: 'Transform both coordinates of a given graph', difficulty: 2, points: 12, minutes: 8,
+      id: 2, title: 'Transform both coordinates of a given graph', difficulty: 2, points: 12, minutes: 6,
       target: 'Study Guide Q18; Prep Test 1 Q4/Q6. Marcus requests another check of horizontal and vertical graph transformations together. The supplied early photo has no added graph; the earlier review credited a later close-up, so this is a practice priority rather than proof of misunderstanding.',
       extension: 'Keeps the original task type: a horizontal shift and vertical reflection, with a vertical shift added. No scaling, fractions, coordinate-rule derivation, or extra point check.',
       stem: [
         'The graph of f is shown below. Its vertices are (-3,1), (-1,-2), (2,0), and (4,2), joined by straight segments, with included endpoints. Let h(x)=-f(x-2)+1.',
-        '(a) Graph h on the provided grid. Label all vertices with their coordinates and mark the endpoints. Use axes x=-2 to 8, y=-2 to 4, one unit per square.',
+        '(a) Graph h on the provided grid. Label all vertices with their coordinates and mark the endpoints. Use axes x=-8 to 8, y=-8 to 8, one unit per square.',
         '(b) Give the domain and range of h.'
       ],
       steps: [
@@ -48,60 +48,60 @@ window.prepTest2Proposal = {
         { points: 2, text: 'Range.' }
       ],
       graphs: [
-        { label: 'Given graph of f for Question 2', x: [-4,5], y: [-3,3], lines: [{ name: 'f', vertices: [[-3,1],[-1,-2],[2,0],[4,2]] }] }
+        { label: 'Given graph of f for Question 2', x: [-6,6], y: [-6,6], lines: [{ name: 'f', vertices: [[-3,1],[-1,-2],[2,0],[4,2]] }] }
       ]
     },
     {
       id: 3, title: 'Graph both composition orders with a reflection', difficulty: 3, points: 18, minutes: 12,
       target: 'Prep Test 1 Q4; Study Guide Q23. Coordinate mapping was strong; readable graphs, required line styles, and all vertex labels were not fully demonstrated.',
-      extension: 'A negative-slope inner function reverses horizontal vertex order. This is more than changing the old compression numbers.',
+      extension: 'Builds on Kai’s correct mappings in Prep Test 1: each order now combines reflection, scale, and shift, with half-unit horizontal coordinates. The prompt does not tell him which order reverses the vertices.',
       stem: [
-        'The graph of f consists of straight segments through (-3,-1), (-1,3), (2,0), (4,2), in that order, with included endpoints. Let g(x)=2-x.',
-        '(a) Make a transformed-vertex table for f(g(x)) and for g(f(x)). Show the coordinate rule for each.',
-        '(b) On one grid, graph f(g(x)) with a solid line and g(f(x)) with a dashed line. Label every vertex with its coordinates and name each graph. Use axes x=-4 to 6, y=-3 to 4, one unit per square. Do not extend beyond the mapped endpoints.',
-        '(c) Give both domains. Explain why the source vertices appear in reversed left-to-right order in one composition.'
+        'The graph of f consists of straight segments through (-3,-1), (-1,3), (2,0), (4,2), in that order, with included endpoints. Let g(x)=1-2x.',
+        '(a) Graph f(g(x)) and g(f(x)) on the provided grid. Use a solid line for f(g(x)) and a dashed line for g(f(x)). Label the vertices and both graphs. The axes run from -6 to 6, one unit per square.',
+        '(b) Give both domains and describe the transformations of f in each composition. Show your work.'
       ],
       steps: [
-        'For source (u,v), solve 2-x=u, so f(g(x)) maps to (2-u,v). Left-to-right vertices: (-2,2), (0,0), (3,3), (5,-1). Domain [-2,5].',
-        'For g(f(x)), map (u,v) to (u,2-v). Vertices: (-3,3), (-1,-1), (2,2), (4,0). Domain [-3,4].',
+        'For source (u,v), solve 1-2x=u, so f(g(x)) maps to ((1-u)/2,v). Left-to-right vertices: (-3/2,2), (-1/2,0), (1,3), (2,-1). Domain [-3/2,2].',
+        'For g(f(x)), map (u,v) to (u,1-2v). Vertices: (-3,3), (-1,-5), (2,1), (4,-3). Domain [-3,4].',
         'Connect each vertex set in its own left-to-right order. Use solid and dashed lines as specified and mark all endpoints included.',
-        'In f(g(x)), increasing the original u makes 2-u smaller: the horizontal reflection reverses vertex order. In g(f(x)), only vertical coordinates change.'
+        'For f(g(x)), reflect horizontally, compress horizontally by 1/2, then shift right 1/2. For g(f(x)), reflect vertically, stretch vertically by 2, then shift up 1. Equivalent correctly ordered descriptions are accepted.'
       ],
       rubric: [
         { points: 4, text: 'Two mapping rules, 2 each.' },
         { points: 8, text: 'Four transformed vertices for each composition, 1 each.' },
         { points: 3, text: 'Correct segment connections and included endpoints 2; all coordinate labels, graph names, and specified line styles 1 combined.' },
         { points: 2, text: 'Domains, 1 each.' },
-        { points: 1, text: 'Explains horizontal reversal.' }
+        { points: 1, text: 'Correct transformation description for each composition, 0.5 each.' }
       ],
       graphs: [
-        { label: 'Given graph of f', x: [-4,6], y: [-3,4], lines: [{ name: 'f', vertices: [[-3,-1],[-1,3],[2,0],[4,2]] }] }
+        { label: 'Given graph of f', x: [-6,6], y: [-6,6], lines: [{ name: 'f', vertices: [[-3,-1],[-1,3],[2,0],[4,2]] }] }
       ]
     },
     {
-      id: 4, title: 'Read the graph before doing the next step', difficulty: 2, points: 12, minutes: 8,
+      id: 4, title: 'Evaluate and solve a composition from two graphs', difficulty: 3, points: 12, minutes: 10,
       target: 'Prep Test 1 Q9; Study Guide Q21-22. One zero and two interval boundaries were wrong; an earlier nested evaluation had a wrong intermediate value.',
-      extension: 'Requires an explicit intermediate read in both composition orders and distinguishes zeros from turning-point boundaries.',
+      extension: 'Uses fractional inputs and asks for every solution of a composite equation. Kai must work backward through both graphs and collect multiple preimages, not just read two obvious values.',
       stem: [
-        'Both graphs consist of straight segments joining the listed vertices, with included endpoints. f: (-4,2), (-2,-2), (1,1), (4,-2). g: (-3,0), (0,3), (3,0). The graphs below use axes x=-5 to 5, y=-3 to 4, one unit per grid line.',
-        '(a) Find f(-1) and g(-1).',
-        '(b) Find g(f(-1)) and f(g(-1)). Write the intermediate value for each before evaluating the outside function.',
+        'Both graphs consist of straight segments joining the listed vertices, with included endpoints. f: (-4,2), (-2,-2), (1,1), (4,-2). g: (-3,0), (0,3), (3,0). The graphs below use axes x=-6 to 6, y=-6 to 6, one unit per grid line.',
+        '(a) Find g(f(-3.5)) and f(g(-3.5)). Show your work.',
+        '(b) Find all x-values for which g(f(x))=2. Show your work.',
         '(c) Give all zeros of f and its increasing and decreasing intervals.'
       ],
       steps: [
-        'Between (-2,-2) and (1,1), f(x)=x, so f(-1)=-1. On the left branch of g, g(x)=x+3, so g(-1)=2.',
-        'g(f(-1))=g(-1)=2. In the other order, f(g(-1))=f(2)=0, since the last segment of f has rule y=2-x.',
+        'The first segment of f has rule y=-2x-6, so f(-3.5)=1. Then g(f(-3.5))=g(1)=2. Also g(-3.5) is undefined because g has domain [-3,3], so f(g(-3.5)) is undefined.',
+        'To solve g(f(x))=2, the graph of g gives inner values -1 and 1. Solve f(x)=-1 or f(x)=1 on every segment.',
+        'For f(x)=-1, the solutions are -2.5, -1, and 3. For f(x)=1, the solutions are -3.5 and 1. The complete set is {-3.5,-2.5,-1,1,3}. All five inner values are in the domain of g.',
         'The first segment of f has rule y=-2x-6, giving zero -3. The middle segment gives zero 0, and the last gives zero 2.',
         'f increases on (-2,1) and decreases on (-4,-2) union (1,4). Turning-point x-coordinates, not the zeros, are interval boundaries.'
       ],
       rubric: [
-        { points: 4, text: 'Two initial graph reads, 2 each.' },
-        { points: 4, text: 'Two nested evaluations, 2 each. Use follow-through credit for correctly evaluating the outside function at an earlier incorrect but defined value.' },
+        { points: 4, text: 'First nested evaluation: intermediate value and final value, 1 each. Second: recognizes the inside function is undefined and concludes the composite is undefined, 1 each. Preserve valid follow-through credit.' },
+        { points: 4, text: 'Identifies both inner target values, 1; five correct x-values, 0.5 each; complete list with no extras, 0.5. Do not deduct repeatedly for one propagated graph-read error.' },
         { points: 2, text: 'All three zeros: 0.5 each, plus 0.5 for a complete list with no extra zeros.' },
         { points: 2, text: 'Increasing interval 1; two decreasing intervals 0.5 each. Award half of the interval credit when direction and one endpoint are correct.' }
       ],
       graphs: [
-        { label: 'Given graphs of f and g', x: [-5,5], y: [-3,4], lines: [
+        { label: 'Given graphs of f and g', x: [-6,6], y: [-6,6], lines: [
           { name: 'f (solid)', vertices: [[-4,2],[-2,-2],[1,1],[4,-2]] },
           { name: 'g (dashed)', dashed: true, vertices: [[-3,0],[0,3],[3,0]] }
         ] }
@@ -114,7 +114,7 @@ window.prepTest2Proposal = {
       stem: [
         'Find a function of the form q(x)=a|x-h|+k with domain all real numbers, range (-infinity,4], maximum (2,4), and y-intercept (0,0).',
         '(a) Find a, h, and k and write q(x). Show how the intercept determines a.',
-        '(b) Graph q on axes x=-2 to 6, y=-5 to 5, one unit per square. Label the vertex and both x-intercepts; draw arrows.',
+        '(b) Graph q on axes x=-6 to 6, y=-6 to 6, one unit per square. Label the vertex and both x-intercepts; draw arrows.',
         '(c) State where q increases and decreases, and confirm its domain and range.'
       ],
       steps: [

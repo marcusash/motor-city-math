@@ -19,10 +19,15 @@ data.questions.forEach((q, index) => {
   assert.ok([1,2,3].includes(q.difficulty));
   assert.equal(q.rubric.reduce((sum, part) => sum + part.points, 0), q.points);
   assert.ok(q.target && q.extension && q.stem.length && q.steps.length);
-  (q.graphs || []).forEach(graph => graph.lines.forEach(line => line.vertices.forEach(([x,y]) => {
+  (q.graphs || []).forEach(graph => {
+    assert.equal(graph.x[0],-graph.x[1]);
+    assert.equal(graph.y[0],-graph.y[1]);
+    assert.equal(graph.x.join(','),graph.y.join(','));
+    graph.lines.forEach(line => line.vertices.forEach(([x,y]) => {
     assert.ok(x >= graph.x[0] && x <= graph.x[1]);
     assert.ok(y >= graph.y[0] && y <= graph.y[1]);
-  })));
+    }));
+  });
 });
 const p = x => x < -1 ? 2*x+4 : 3;
 assert.deepEqual([-2,-1,2].map(p), [0,3,3]);
@@ -33,8 +38,13 @@ assert.deepEqual([-2,2].map(v=>1-v).sort((a,b)=>a-b),[-1,3]);
 assert.equal(data.questions[1].stem.length,3);
 assert.doesNotMatch(data.questions[1].stem.join(' '),/derive|table|\/2|point check/);
 const source = [[-3,-1],[-1,3],[2,0],[4,2]];
-assert.deepEqual(source.map(([u,v])=>[2-u,v]).sort((a,b)=>a[0]-b[0]), [[-2,2],[0,0],[3,3],[5,-1]]);
-assert.deepEqual(source.map(([u,v])=>[u,2-v]), [[-3,3],[-1,-1],[2,2],[4,0]]);
+assert.deepEqual(source.map(([u,v])=>[(1-u)/2,v]).sort((a,b)=>a[0]-b[0]), [[-1.5,2],[-0.5,0],[1,3],[2,-1]]);
+assert.deepEqual(source.map(([u,v])=>[u,1-2*v]), [[-3,3],[-1,-5],[2,1],[4,-3]]);
+source.forEach(([u,v])=>{
+  assert.equal(1-2*((1-u)/2),u);
+  assert.ok(Math.abs((1-u)/2)<6 && Math.abs(1-2*v)<6);
+});
+assert.deepEqual([-3,4].map(u=>(1-u)/2).sort((a,b)=>a-b),[-1.5,2]);
 function read(vertices, x) {
   for (let i=1;i<vertices.length;i++) {
     const [x0,y0]=vertices[i-1], [x1,y1]=vertices[i];
@@ -45,6 +55,19 @@ function read(vertices, x) {
 const f = x => read([[-4,2],[-2,-2],[1,1],[4,-2]],x);
 const g = x => read([[-3,0],[0,3],[3,0]],x);
 assert.deepEqual([f(-1),g(-1),g(f(-1)),f(g(-1))], [-1,2,2,0]);
+assert.equal(f(-3.5),1);
+assert.equal(g(f(-3.5)),2);
+assert.throws(()=>g(-3.5),/Outside graph domain/);
+[-3.5,-2.5,-1,1,3].forEach(x=>assert.equal(g(f(x)),2));
+const compositeSolutions=[];
+for (const target of [-1,1]) {
+  const vertices=[[-4,2],[-2,-2],[1,1],[4,-2]];
+  for(let i=1;i<vertices.length;i++) {
+    const [x0,y0]=vertices[i-1], [x1,y1]=vertices[i];
+    if(target>=Math.min(y0,y1) && target<=Math.max(y0,y1)) compositeSolutions.push(x0+(target-y0)*(x1-x0)/(y1-y0));
+  }
+}
+assert.deepEqual([...new Set(compositeSolutions)].sort((a,b)=>a-b),[-3.5,-2.5,-1,1,3]);
 [-3,0,2].forEach(x => assert.equal(f(x),0));
 assert.ok(f(-1)>f(-2) && f(1)>f(-1));
 assert.ok(f(-4)>f(-2) && f(1)>f(4));
