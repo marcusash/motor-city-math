@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="duration-minutes" content="75">
+  <meta name="total-points" content="100">
+  <title>Algebra 2: Assessment 1 Functions Practice</title>
+  <link rel="stylesheet" href="../shared/katex/katex.min.css">
+  <script defer src="../shared/katex/katex.min.js"></script>
+  <script defer src="../shared/katex/auto-render.min.js"></script>
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #171717;
+      background: #eef1f5;
+    }
+
+    * { box-sizing: border-box; }
+    body { margin: 0; font-size: 16px; line-height: 1.45; }
+    main { width: min(850px, 100%); margin: 0 auto; padding: 24px; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { margin-bottom: 4px; font-size: 28px; line-height: 1.15; }
+    h2 { margin-bottom: 6px; font-size: 20px; }
+    p { margin-bottom: 9px; }
+    .screen-only { display: block; }
+    .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; color: #1d42ba; text-decoration: none; margin-bottom: 16px; }
+    .back-link:hover { text-decoration: underline; }
+    .exam-header, .directions, .exam-section {
+      background: #fff;
+      border: 1px solid #cbd0d8;
+      border-radius: 8px;
+      margin-bottom: 16px;
+      padding: 18px 20px;
+    }
+    .exam-header { border-top: 6px solid #c8102e; }
+    .eyebrow {
+      color: #1d42ba;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      margin-bottom: 7px;
+      text-transform: uppercase;
+    }
+    .subtitle { color: #4b5563; margin-bottom: 14px; }
+    .student-fields {
+      display: grid;
+      grid-template-columns: 1fr 180px;
+      gap: 14px;
+      margin-top: 14px;
+    }
+    .field-line { border-bottom: 1px solid #333; display: inline-block; min-width: 100px; }
+    .directions { border-left: 4px solid #1d42ba; }
+    .directions ul { margin: 8px 0 0; padding-left: 21px; }
+    .directions li { margin: 4px 0; }
+    .section-heading {
+      align-items: baseline;
+      border-bottom: 2px solid #1d42ba;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 14px;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+    }
+    .section-heading h2 { margin: 0; }
+    .section-meta { color: #424242; font-size: 13px; font-weight: 700; }
+    .question {
+      border: 1px solid #bfc5ce;
+      border-radius: 6px;
+      margin: 12px 0;
+      overflow: hidden;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+    .question-header {
+      align-items: center;
+      background: #f1f3f6;
+      border-bottom: 1px solid #cbd0d8;
+      display: flex;
+      gap: 10px;
+      padding: 8px 11px;
+    }
+    .question-number {
+      align-items: center;
+      background: #002d62;
+      border-radius: 4px;
+      color: #fff;
+      display: inline-flex;
+      flex: 0 0 28px;
+      font-weight: 800;
+      height: 28px;
+      justify-content: center;
+    }
+    .question-title { flex: 1; font-weight: 700; }
+    .points { color: #424242; font-size: 13px; font-weight: 700; white-space: nowrap; }
+    .question-body { padding: 12px 14px; }
+    .question-body > :last-child { margin-bottom: 0; }
+    .parts { list-style: none; margin: 8px 0 0; padding: 0; }
+    .parts li { margin: 10px 0; }
+    .part-label { font-weight: 700; }
+    .work-lines {
+      background-image: repeating-linear-gradient(to bottom, transparent 0, transparent 25px, #b7bdc7 26px, transparent 27px);
+      height: 56px;
+      margin-top: 5px;
+    }
+    .work-lines.medium { height: 82px; }
+    .work-lines.tall { height: 112px; }
+    .work-lines.xtall { height: 140px; }
+    .vertex-table, .value-table {
+      border-collapse: collapse;
+      margin: 10px 0;
+      width: 100%;
+    }
+    .vertex-table th, .vertex-table td,
+    .value-table th, .value-table td {
+      border: 1px solid #626b78;
+      padding: 5px 8px;
+      text-align: center;
+    }
+    .vertex-table th, .value-table th { background: #f1f3f6; }
+    .grid-instructions { color: #424242; font-size: 13px; margin: 10px 0 5px; }
+    .coordinate-grid-wrap {
+      aspect-ratio: 1;
+      margin: 8px 0 5px;
+      max-width: 4.65in;
+      position: relative;
+      width: min(100%, 4.65in);
+    }
+    .coordinate-grid {
+      border-collapse: collapse;
+      height: 100%;
+      table-layout: fixed;
+      width: 100%;
+    }
+    .coordinate-grid td {
+      border: 1px solid #c4c9d1;
+      color: #414141;
+      font-size: 8px;
+      height: 7.69%;
+      padding: 0;
+      position: relative;
+      text-align: center;
+      vertical-align: middle;
+      width: 7.69%;
+    }
+    .graph-overlay {
+      height: 100%;
+      left: 0;
+      overflow: visible;
+      pointer-events: none;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+    .graph-overlay .axis { stroke: #111; stroke-width: .06; }
+    .graph-overlay .tick { stroke: #111; stroke-width: .045; }
+    .graph-overlay text {
+      fill: #111;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: .34px;
+      paint-order: stroke;
+      stroke: #fff;
+      stroke-linejoin: round;
+      stroke-width: .04;
+      text-anchor: middle;
+    }
+    .graph-overlay text.y-tick-label { text-anchor: end; }
+    .graph-overlay polyline { fill: none; stroke: #111; stroke-linejoin: round; stroke-width: .07; }
+    .graph-overlay polyline.polynomial-curve { stroke: #8b1e3f; stroke-width: .065; }
+    .graph-overlay circle { fill: #111; }
+    .note { color: #414141; font-size: 13px; }
+    .page-break-before { break-before: page; page-break-before: always; }
+    .footer { color: #555; font-size: 12px; margin-top: 18px; text-align: center; }
+
+    @media (max-width: 600px) {
+      main { padding: 12px; }
+      .student-fields { grid-template-columns: 1fr; }
+      .exam-header, .directions, .exam-section { padding: 14px; }
+    }
+
+    @page { size: letter; margin: .55in; }
+    @media print {
+      :root, body { background: #fff !important; color: #111 !important; }
+      * {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      body { font-size: 10pt; line-height: 1.35; }
+      main { margin: 0; max-width: none; padding: 0; width: auto; }
+      h1 { font-size: 19pt; }
+      h2 { font-size: 13pt; }
+      .screen-only { display: none !important; }
+      .exam-header, .directions, .exam-section {
+        background: #fff !important;
+        border-color: #777;
+        border-radius: 0;
+        box-shadow: none;
+        margin-bottom: 10px;
+        padding: 10px 12px;
+      }
+      .exam-header { border-top: 4px solid #000; }
+      .directions { border-left: 3px solid #000; }
+      .eyebrow, .subtitle, .section-meta, .note, .grid-instructions { color: #222 !important; }
+      .section-heading { border-color: #333; margin-bottom: 8px; }
+      .question { border-color: #777; border-radius: 0; margin: 8px 0; overflow: visible; }
+      .question-header, .vertex-table th, .value-table th {
+        background: #f0f0f0 !important;
+      }
+      .question-number { background: #111 !important; color: #fff !important; }
+      .question-body { padding: 9px 11px; }
+      .parts li { margin: 7px 0; }
+      .work-lines { height: 48px; }
+      .work-lines.medium { height: 68px; }
+      .work-lines.tall { height: 92px; }
+      .work-lines.xtall { height: 112px; }
+      .coordinate-grid-wrap { max-width: 4.45in; width: 4.45in; }
+      #q4 .coordinate-grid-wrap { max-width: 3.1in; width: 3.1in; }
+      .coordinate-grid td { border-color: #b8b8b8; }
+      .graph-overlay polyline { stroke: #111; }
+      .page-break-before { break-before: page; page-break-before: always; }
+      .exam-section.page-break-before { border: 0; padding: 0; }
+      .footer { color: #333; }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <header class="exam-header">
+    <div class="eyebrow">Motor City Math | Algebra 2</div>
+    <div class="screen-only"><a href="../index.html" class="back-link">&larr; Back to Dashboard</a></div>
+    <h1>Assessment 1: Functions and Polynomial Review</h1>
+    <p class="subtitle">75-minute practice based on Assessment 1 functions and polynomial review</p>
+    <div class="student-fields">
+      <span>Name: <span class="field-line" style="width:68%"></span></span>
+      <span>Date: <span class="field-line" style="width:58%"></span></span>
+    </div>
+    <p class="note" style="margin-top:12px">Time: 75 minutes | Total: 100 points</p>
+    <p class="screen-only"><a href="assessment-1-functions-75min-KEY.html">Open the separate answer key</a></p>
+  </header>
+
+  <aside class="directions">
+    <strong>Before you begin</strong>
+    <ul>
+      <li>Show your steps. Answers without supporting work may earn partial credit.</li>
+      <li>Use interval notation for domains and intervals of increase or decrease.</li>
+      <li>For graphs, label important points and show whether the graph crosses or touches.</li>
+      <li>Suggested section times add to 75 minutes. Keep moving and return to a hard item later.</li>
+    </ul>
+  </aside>
+
+  <section class="exam-section" data-section-minutes="18" aria-labelledby="section-a">
+    <div class="section-heading">
+      <h2 id="section-a">Section A: Function Basics</h2>
+      <span class="section-meta">18 minutes | 23 points</span>
+    </div>
+
+    <article class="question" id="q1" data-points="5">
+      <div class="question-header">
+        <span class="question-number">1</span>
+        <span class="question-title">Read a function from a table</span>
+        <span class="points">5 points</span>
+      </div>
+      <div class="question-body">
+        <p>The table lists four ordered pairs:</p>
+        <table class="value-table">
+          <tr><th><var>x</var></th><td>-2</td><td>0</td><td>0</td><td>3</td></tr>
+          <tr><th><var>y</var></th><td>5</td><td>-1</td><td>-1</td><td>4</td></tr>
+        </table>
+        <p>Does the relation define a function? Use the repeated <var>x</var>-value to explain your answer, then give the range.</p>
+        <div class="work-lines medium" aria-label="Answer space"></div>
+      </div>
+    </article>
+
+    <article class="question" id="q2" data-points="8">
+      <div class="question-header">
+        <span class="question-number">2</span>
+        <span class="question-title">Catch the missing domain restriction</span>
+        <span class="points">8 points</span>
+      </div>
+      <div class="question-body">
+        <p>Let \(f(x) = \sqrt{5 - x}\) and \(g(x) = x^2 - 1\). A student says the domain of
+          \((f/g)(x)\) is all \(x \le 5\).</p>
+        <p>Write the quotient, identify every excluded input the student missed, and give the domain in interval notation.</p>
+        <div class="work-lines tall" aria-label="Answer space"></div>
+      </div>
+    </article>
+
+    <article class="question" id="q3" data-points="10">
+      <div class="question-header">
+        <span class="question-number">3</span>
+        <span class="question-title">Find and compare two compositions</span>
+        <span class="points">10 points</span>
+      </div>
+      <div class="question-body">
+        <p>Let <var>A</var>(<var>x</var>) = 2<var>x</var> - 1 and <var>B</var>(<var>x</var>) = <var>x</var><sup>2</sup> + 3.</p>
+        <ol class="parts">
+          <li><span class="part-label">(a) Find and simplify <var>B</var>(<var>A</var>(<var>x</var>)).</span>
+            <div class="work-lines medium" aria-label="Answer space"></div></li>
+          <li><span class="part-label">(b) Evaluate <var>B</var>(<var>A</var>(4)).</span>
+            <div class="work-lines" aria-label="Answer space"></div></li>
+          <li><span class="part-label">(c) Evaluate <var>A</var>(<var>B</var>(4)) and compare it with your answer to part (b).</span>
+            <div class="work-lines medium" aria-label="Answer space"></div></li>
+        </ol>
+      </div>
+    </article>
+  </section>
+
+  <section class="exam-section page-break-before" data-section-minutes="22" aria-labelledby="section-b">
+    <div class="section-heading">
+      <h2 id="section-b">Section B: Transformations and Piecewise Functions</h2>
+      <span class="section-meta">22 minutes | 28 points</span>
+    </div>
+
+    <article class="question" id="q4" data-points="10">
+      <div class="question-header">
+        <span class="question-number">4</span>
+        <span class="question-title">Graph both orders of a composition</span>
+        <span class="points">10 points</span>
+      </div>
+      <div class="question-body">
+        <p>The graph of <var>f</var> is the connected line graph shown. Let <var>g</var>(<var>x</var>) = 2<var>x</var> - 2.</p>
+        <div class="coordinate-grid-wrap" data-coordinate-grid data-polyline="-4,-2;-2,2;1,0;4,3"
+          aria-label="Graph of f through negative 4 comma negative 2, negative 2 comma 2, 1 comma zero, and 4 comma 3"></div>
+        <p>On the grid below, graph both <var>f</var>(<var>g</var>(<var>x</var>)) and <var>g</var>(<var>f</var>(<var>x</var>)).
+          Use a solid line for the first graph and a dashed line for the second.
+          Mark and label every transformed vertex, including endpoints.</p>
+        <p class="grid-instructions">Each square is 1 unit. The axes are numbered every 2 units.</p>
+        <div class="coordinate-grid-wrap" data-coordinate-grid aria-label="Blank coordinate grid for graphing both function compositions"></div>
+      </div>
+    </article>
+
+    <article class="question page-break-before" id="q5" data-points="8">
+      <div class="question-header">
+        <span class="question-number">5</span>
+        <span class="question-title">Evaluate and graph a piecewise rule</span>
+        <span class="points">8 points</span>
+      </div>
+      <div class="question-body">
+        <p>Let \(p(x) = \begin{cases}2 - x & x < 1 \\ x + 2 & x \ge 1\end{cases}\).</p>
+        <ol class="parts">
+          <li><span class="part-label">(a) Find <var>p</var>(0), <var>p</var>(1), and <var>p</var>(3).</span>
+            <div class="work-lines" aria-label="Answer space"></div></li>
+          <li><span class="part-label">(b) Graph both pieces. Show the open and closed endpoint at the boundary <var>x</var> = 1.</span></li>
+        </ol>
+        <p class="grid-instructions">Each square is 1 unit. The axes are numbered every 2 units.</p>
+        <div class="coordinate-grid-wrap" data-coordinate-grid aria-label="Blank coordinate grid for graphing question 5"></div>
+      </div>
+    </article>
+
+    <article class="question page-break-before" id="q6" data-points="10">
+      <div class="question-header">
+        <span class="question-number">6</span>
+        <span class="question-title">Graph a square-root translation</span>
+        <span class="points">10 points</span>
+      </div>
+      <div class="question-body">
+        <p>Translate the parent graph \(y = \sqrt{x}\) left 4 units and down 3 units. Write its rule, then graph it.
+          Mark its starting point and three more points. State its domain and range, and check whether \((-3, -2)\) lies on the graph.</p>
+        <p class="grid-instructions">Each square is 1 unit. The axes are numbered every 2 units.</p>
+        <div class="coordinate-grid-wrap" data-coordinate-grid aria-label="Blank coordinate grid for graphing question 6"></div>
+        <div class="work-lines" aria-label="Corrected rule, domain, range, and point check"></div>
+      </div>
+    </article>
+  </section>
+
+  <section class="exam-section page-break-before" data-section-minutes="20" aria-labelledby="section-c">
+    <div class="section-heading">
+      <h2 id="section-c">Section C: Polynomial Structure and Graphs</h2>
+      <span class="section-meta">20 minutes | 27 points</span>
+    </div>
+
+    <article class="question" id="q7" data-points="7">
+      <div class="question-header">
+        <span class="question-number">7</span>
+        <span class="question-title">Recover a polynomial from its graph</span>
+        <span class="points">7 points</span>
+      </div>
+      <div class="question-body">
+        <p>The graph is a cubic polynomial with a repeated zero. Use its intercepts and turning points to write an equation in factored form. Then state where it is increasing and decreasing, and give its relative maximum and minimum points.</p>
+        <div class="coordinate-grid-wrap" data-coordinate-grid data-polynomial="0.5,0,-1.5,-1"
+          aria-label="Graph of a cubic polynomial with a local maximum at negative 1 comma zero and minimum at 1 comma negative 2"></div>
+        <div class="work-lines xtall" aria-label="Polynomial equation and graph analysis answer space"></div>
+      </div>
+    </article>
+
+    <article class="question page-break-before" id="q8" data-points="10">
+      <div class="question-header">
+        <span class="question-number">8</span>
+        <span class="question-title">Choose the polynomial that fits the graph behavior</span>
+        <span class="points">10 points</span>
+      </div>
+      <div class="question-body">
+        <p>A polynomial graph crosses the <var>x</var>-axis at -2, touches and turns at 1, falls to the left, and rises to the right. Which rule could represent it?</p>
+        <ol class="parts">
+          <li><span class="part-label">(a) Choose one and explain how its zeros, multiplicities, and leading term match.</span>
+            <p>A. (<var>x</var> + 2)(<var>x</var> - 1)<sup>2</sup></p>
+            <p>B. -(<var>x</var> + 2)<sup>2</sup>(<var>x</var> - 1)</p>
+            <p>C. (<var>x</var> + 2)<sup>2</sup>(<var>x</var> - 1)<sup>2</sup></p>
+            <p>D. -(<var>x</var> + 2)(<var>x</var> - 1)<sup>2</sup></p>
+            <div class="work-lines tall" aria-label="Answer space"></div></li>
+        </ol>
+      </div>
+    </article>
+
+    <article class="question" id="q9" data-points="10">
+      <div class="question-header">
+        <span class="question-number">9</span>
+        <span class="question-title">Check a classmate's graph analysis</span>
+        <span class="points">10 points</span>
+      </div>
+      <div class="question-body">
+        <p>The graph of <var>r</var> is made of connected line segments through the plotted vertices. A classmate reports:
+          domain [-5, 5], range [-3, 4], zeros -4, 0, and 4; increasing on (-5, -3) and (2, 5);
+          relative maximum <var>y</var> = 4 and relative minimum <var>y</var> = -3.</p>
+        <p>Check each part of the report and correct any errors. Give the increasing and decreasing intervals, and write the relative maximum and minimum as coordinate points.</p>
+        <div class="coordinate-grid-wrap" data-coordinate-grid
+          data-polyline="-5,1;-3,-3;0,0;2,4;5,-2"
+          aria-label="Graph of r with vertices at negative 5 positive 1, negative 3 negative 3, zero zero, 2 positive 4, and 5 negative 2">
+        </div>
+        <div class="work-lines xtall" aria-label="Corrected graph analysis"></div>
+      </div>
+    </article>
+  </section>
+
+  <section class="exam-section page-break-before" data-section-minutes="15" aria-labelledby="section-d">
+    <div class="section-heading">
+      <h2 id="section-d">Section D: Function Models and Transformations</h2>
+      <span class="section-meta">15 minutes | 22 points</span>
+    </div>
+
+    <article class="question" id="q10" data-points="12">
+      <div class="question-header">
+        <span class="question-number">10</span>
+        <span class="question-title">Choose a valid composition using units</span>
+        <span class="points">12 points</span>
+      </div>
+      <div class="question-body">
+        <p>A rental shop charges <var>D</var>(<var>d</var>) = 9<var>d</var> + 12 dollars for
+          <var>d</var> days. A tax function converts a pre-tax price <var>c</var> dollars to
+          <var>T</var>(<var>c</var>) = 1.08<var>c</var> dollars.</p>
+        <ol class="parts">
+          <li><span class="part-label">(a) Write the composition that gives the after-tax rental cost, and explain why its order fits the units.</span>
+            <div class="work-lines medium" aria-label="Answer space"></div></li>
+          <li><span class="part-label">(b) Simplify the composite rule.</span>
+            <div class="work-lines" aria-label="Answer space"></div></li>
+          <li><span class="part-label">(c) Find the total cost for a 4-day rental.</span>
+            <div class="work-lines" aria-label="Answer space"></div></li>
+          <li><span class="part-label">(d) Explain why reversing the order does not model this situation.</span>
+            <div class="work-lines medium" aria-label="Answer space"></div></li>
+        </ol>
+      </div>
+    </article>
+
+    <article class="question" id="q11" data-points="10">
+      <div class="question-header">
+        <span class="question-number">11</span>
+        <span class="question-title">Keep the original domain when composing</span>
+        <span class="points">10 points</span>
+      </div>
+      <div class="question-body">
+        <p>Let \(f(x) = \sqrt{x + 1}\) and \(g(x) = x^2 - 1\).</p>
+        <ol class="parts">
+          <li><span class="part-label">(a) Find and simplify <var>g</var>(<var>f</var>(<var>x</var>)). State its domain, and explain why simplifying the square root does not make the original domain larger.</span>
+            <div class="work-lines medium" aria-label="Answer space"></div></li>
+          <li><span class="part-label">(b) Find and simplify <var>f</var>(<var>g</var>(<var>x</var>)). State its domain. Explain why its domain differs from part (a).</span>
+            <div class="work-lines tall" aria-label="Answer space"></div></li>
+        </ol>
+      </div>
+    </article>
+
+  </section>
+  <p class="footer">End of exam | Check that you answered all 11 questions.</p>
+</main>
+<script>
+  (function () {
+    const gridSize = 13;
+    const center = Math.floor(gridSize / 2);
+    const ns = 'http://www.w3.org/2000/svg';
+    let gridIndex = 0;
+
+    document.querySelectorAll('[data-coordinate-grid]').forEach(function (wrap) {
+      const currentGridIndex = gridIndex;
+      gridIndex += 1;
+      const table = document.createElement('table');
+      table.className = 'coordinate-grid';
+      table.setAttribute('aria-hidden', 'true');
+      const body = document.createElement('tbody');
+
+      for (let row = 0; row < gridSize; row += 1) {
+        const tr = document.createElement('tr');
+        for (let col = 0; col < gridSize; col += 1) {
+          tr.appendChild(document.createElement('td'));
+        }
+        body.appendChild(tr);
+      }
+      table.appendChild(body);
+      wrap.appendChild(table);
+
+      const svg = document.createElementNS(ns, 'svg');
+      svg.setAttribute('class', 'graph-overlay');
+      svg.setAttribute('viewBox', '0 0 13 13');
+      svg.setAttribute('aria-hidden', 'true');
+      const origin = center + 0.5;
+
+      function addLine(className, x1, y1, x2, y2) {
+        const line = document.createElementNS(ns, 'line');
+        line.setAttribute('class', className);
+        line.setAttribute('x1', x1);
+        line.setAttribute('y1', y1);
+        line.setAttribute('x2', x2);
+        line.setAttribute('y2', y2);
+        svg.appendChild(line);
+      }
+
+      function addLabel(className, text, x, y) {
+        const label = document.createElementNS(ns, 'text');
+        label.setAttribute('class', className);
+        label.setAttribute('x', x);
+        label.setAttribute('y', y);
+        label.textContent = text;
+        svg.appendChild(label);
+      }
+
+      addLine('axis', 0, origin, gridSize, origin);
+      addLine('axis', origin, 0, origin, gridSize);
+      for (let value = -center; value <= center; value += 1) {
+        if (value === 0) continue;
+        const x = origin + value;
+        const y = origin - value;
+        addLine('tick', x, origin - 0.1, x, origin + 0.1);
+        addLine('tick', origin - 0.1, y, origin + 0.1, y);
+        if (value % 2 === 0) {
+          addLabel('x-tick-label', String(value), x, origin + 0.4);
+          addLabel('y-tick-label', String(value), origin - 0.16, y + 0.1);
+        }
+      }
+      addLabel('x-tick-label', '0', origin + 0.18, origin + 0.4);
+
+      const pointData = wrap.dataset.polyline;
+      if (pointData) {
+        const points = pointData.split(';').map(function (pair) {
+          const coords = pair.split(',').map(Number);
+          return [coords[0] + origin, origin - coords[1]];
+        });
+        const line = document.createElementNS(ns, 'polyline');
+        line.setAttribute('points', points.map(function (point) {
+          return point.join(',');
+        }).join(' '));
+        svg.appendChild(line);
+        points.forEach(function (point) {
+          const dot = document.createElementNS(ns, 'circle');
+          dot.setAttribute('cx', point[0]);
+          dot.setAttribute('cy', point[1]);
+          dot.setAttribute('r', '0.11');
+          svg.appendChild(dot);
+        });
+      }
+
+      const polynomialData = wrap.dataset.polynomial;
+      if (polynomialData) {
+        const coefficients = polynomialData.split(',').map(Number);
+        const points = [];
+        for (let step = 0; step <= 240; step += 1) {
+          const x = -center + (gridSize - 1) * step / 240;
+          const y = coefficients.reduce(function (value, coefficient) {
+            return value * x + coefficient;
+          }, 0);
+          points.push([x + origin, origin - y]);
+        }
+        const defs = document.createElementNS(ns, 'defs');
+        const clip = document.createElementNS(ns, 'clipPath');
+        const clipId = 'graph-clip-' + currentGridIndex;
+        clip.setAttribute('id', clipId);
+        const clipRect = document.createElementNS(ns, 'rect');
+        clipRect.setAttribute('x', '0');
+        clipRect.setAttribute('y', '0');
+        clipRect.setAttribute('width', String(gridSize));
+        clipRect.setAttribute('height', String(gridSize));
+        clip.appendChild(clipRect);
+        defs.appendChild(clip);
+        svg.appendChild(defs);
+        const curve = document.createElementNS(ns, 'polyline');
+        curve.setAttribute('class', 'polynomial-curve');
+        curve.setAttribute('clip-path', 'url(#' + clipId + ')');
+        curve.setAttribute('points', points.map(function (point) {
+          return point.join(',');
+        }).join(' '));
+        svg.appendChild(curve);
+      }
+      wrap.appendChild(svg);
+    });
+    window.addEventListener('DOMContentLoaded', function () {
+      renderMathInElement(document.body, {
+        delimiters: [
+          { left: '\\(', right: '\\)', display: false },
+          { left: '\\[', right: '\\]', display: true }
+        ]
+      });
+    });
+  }());
+</script>
+</body>
+</html>

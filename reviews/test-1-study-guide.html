@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Test 1 Study Guide - Grade Report</title>
+<link rel="stylesheet" href="../shared/katex/katex.min.css">
+<script defer src="../shared/katex/katex.min.js"></script>
+<style>
+:root { color-scheme:dark; --bg:#1a1a2e; --surface:#222240; --border:#333355; --text:#e8e8f0; --muted:#b4b4c4; --green:#70d778; --amber:#ffb74d; }
+* { box-sizing:border-box; }
+body { margin:0; padding:24px; font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; background:var(--bg); color:var(--text); }
+.container { max-width:1000px; margin:auto; }
+h1 { font-size:24px; margin:0 0 4px; }
+.subtitle,.note { color:var(--muted); }
+a { color:#b5b0ff; }
+.back-link { display:inline-flex; align-items:center; gap:6px; font-size:14px; font-weight:600; text-decoration:none; margin-bottom:16px; }
+.back-link:hover { text-decoration:underline; }
+.back-link:focus-visible { outline:2px solid currentColor; outline-offset:4px; }
+.summary-card,.notes-card { background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:20px; margin:20px 0; }
+h2 { font-size:14px; text-transform:uppercase; letter-spacing:.06em; }
+.score-big { font-size:48px; font-weight:700; color:var(--amber); }
+.denom { font-size:24px; color:var(--muted); }
+.standards-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:10px; margin-top:16px; }
+.std-box { background:var(--bg); border:1px solid var(--border); border-radius:8px; padding:12px; }
+.std-label { font-size:12px; color:var(--muted); }
+.std-grade { font-size:22px; font-weight:700; }
+.table-wrap { overflow-x:auto; margin-bottom:18px; }
+table { width:100%; border-collapse:collapse; background:var(--surface); }
+th,td { border:1px solid var(--border); padding:10px; text-align:left; vertical-align:top; }
+th { font-size:11px; text-transform:uppercase; color:var(--muted); }
+td { font-size:13px; }
+td:nth-child(2) { min-width:230px; }
+td:nth-child(3) { min-width:220px; }
+.badge { display:inline-block; padding:2px 7px; border-radius:4px; font-size:12px; font-weight:600; }
+.correct { background:#234332; color:var(--green); }
+.partial { background:#493727; color:var(--amber); }
+.skipped { background:#353545; color:var(--muted); }
+details { margin-top:8px; }
+summary { cursor:pointer; color:#b5b0ff; }
+.source-image { max-width:100%; height:auto; display:block; margin:12px auto; }
+.section-title { margin-top:28px; }
+.score-cell { white-space:nowrap; }
+@media print { :root { color-scheme:light; --bg:white; --surface:white; --text:black; --muted:#444; --border:#999; } body { padding:0; } details[open] .source-image { max-height:8in; object-fit:contain; } .badge { color:black; background:none; } .score-big { color:black; } tr { break-inside:avoid; } }
+</style>
+</head>
+<body>
+<main class="container">
+<a href="../index.html" class="back-link">&larr; Back to Dashboard</a>
+<h1>Test 1 Study Guide</h1>
+<p class="subtitle">Kai | Pre-Calculus | Assessment 1 Concept Review | Instructor evaluation of supplied handwritten pages</p>
+<div class="summary-card">
+  <h2>Overall score: provisional</h2>
+  <span class="score-big" id="score"></span>
+  <p>Practice-study-guide evaluation, not a teacher-issued test grade. The assigned problem values total 100 points. Blank work receives no demonstrated-work credit; that does not mean the concept is misunderstood.</p>
+  <p class="note">Seven full pages and three later close-ups are available. Later photos supply additional drawing evidence; this is not a timed-test result. Graph-dependent scores are provisional. No new handwriting scans are required for this reference, but clearer completed composition graphs would allow a firmer graph score.</p>
+  <div class="standards-grid" id="skills"></div>
+</div>
+<div id="sections"></div>
+<div class="notes-card">
+  <h2>Key takeaways</h2>
+  <ul>
+    <li>Strong demonstrated foundations: symbolic compositions, overlapping domain restrictions, polynomial multiplicities and scale, and contextual modeling.</li>
+    <li>The largest lost-credit area is unfinished graph work: the characteristics sketch and both page-5 piecewise graphs.</li>
+    <li>Composition point mappings are correct. The next step is making both complete graphs readable and distinguishable.</li>
+    <li>Preserve this original study guide separately from the generated 75-minute practice test.</li>
+  </ul>
+  <h2>Things to watch</h2>
+  <ul>
+    <li>Page 4 graph reading: the positive product zero is 3, not 2; f(1) is -1, not the written 4. The final nested-composition answer is nevertheless correct.</li>
+    <li>Show the flattened crossing at an odd root of multiplicity 3.</li>
+    <li>Use closed/open endpoints consistently, and finish requested graphs as well as equations.</li>
+    <li>The source's radical piecewise branch is undefined on (-1,0). This is a source-domain issue, not evidence of a student error.</li>
+  </ul>
+</div>
+</main>
+<script src="test-1-study-guide-data.js"></script>
+<script>
+window.addEventListener('DOMContentLoaded', function () {
+  const data = window.test1StudyGuide;
+  const rows = data.sections.flatMap(section => section.rows);
+  const sum = (items, key) => items.reduce((total, item) => total + item[key], 0);
+  const total = sum(rows, 'points');
+  const earned = sum(rows, 'earned');
+  const score = document.getElementById('score');
+  score.append(document.createTextNode(String(earned)));
+  const denominator = document.createElement('span');
+  denominator.className = 'denom';
+  denominator.textContent = '/' + total + ' (' + earned + '%)';
+  score.append(denominator);
+  function element(tag, text, className) {
+    const node = document.createElement(tag);
+    if (text !== undefined) node.textContent = text;
+    if (className) node.className = className;
+    return node;
+  }
+  data.sections.slice().sort((a, b) => a.page - b.page).forEach(section => {
+    const skill = element('div', undefined, 'std-box');
+    skill.append(element('div', section.title, 'std-label'), element('div', sum(section.rows, 'earned') + '/' + sum(section.rows, 'points'), 'std-grade'));
+    document.getElementById('skills').append(skill);
+    const block = element('section');
+    block.append(element('h2', 'Page ' + section.page + ': ' + section.title, 'section-title'));
+    const evidence = element('details');
+    evidence.append(element('summary', 'Original problems and Kai\'s handwritten answers: page ' + section.page));
+    const image = element('img', undefined, 'source-image');
+    image.src = 'assets/test1-study-guide/page-' + section.page + '.jpg';
+    image.alt = 'Assessment 1 Concept Review page ' + section.page + ' with original problems, graphs, and Kai\'s handwritten work';
+    image.loading = 'lazy';
+    evidence.append(image);
+    block.append(evidence);
+    const wrap = element('div', undefined, 'table-wrap');
+    const table = element('table');
+    const head = element('thead');
+    const header = element('tr');
+    ['Q', 'Problem', "Kai's Answer", 'Status', 'Score'].forEach(label => header.append(element('th', label)));
+    head.append(header);
+    table.append(head);
+    const body = element('tbody');
+    section.rows.forEach(row => {
+      const tr = element('tr');
+      tr.dataset.question = row.id;
+      tr.append(element('td', row.id));
+      const problem = element('td', row.problem);
+      const solution = element('details');
+      solution.append(element('summary', 'Correct solution and scoring'), element('p', row.solution), element('p', row.rubric, 'note'));
+      problem.append(solution);
+      tr.append(problem, element('td', row.answer));
+      const status = row.earned === row.points ? 'correct' : row.earned === 0 ? 'skipped' : 'partial';
+      const statusCell = element('td');
+      statusCell.append(element('span', status === 'skipped' ? 'Not demonstrated' : status === 'correct' ? 'Correct' : 'Partial', 'badge ' + status));
+      tr.append(statusCell, element('td', row.earned + '/' + row.points, 'score-cell'));
+      body.append(tr);
+    });
+    table.append(body);
+    wrap.append(table);
+    block.append(wrap);
+    document.getElementById('sections').append(block);
+  });
+});
+</script>
+</body>
+</html>

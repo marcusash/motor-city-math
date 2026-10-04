@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Motor City Math: Algebra 2 retake practice exams for Kai. Standards-aligned, auto-graded, 15 questions each.">
+    <meta name="description" content="Motor City Math: Kai's Pre-Calculus practice and progress, with archived Algebra II trimesters.">
     <link rel="icon" type="image/svg+xml" href="shared/favicon.svg">
     <title>Motor City Math: Dashboard</title>
     <link rel="stylesheet" href="shared/styles.css">
@@ -28,9 +28,10 @@
             list-style: none;
         }
         .section-title::-webkit-details-marker { display: none; }
-        .section-title::after { content: '▸'; transition: transform 0.2s; margin-left: 8px; }
-        details[open] > .section-title::after { transform: rotate(90deg); }
+        .section-title::after { content: ''; width: 8px; height: 8px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(-45deg); transition: transform 0.2s; margin-left: 8px; flex-shrink: 0; }
+        details[open] > .section-title::after { transform: rotate(45deg); }
         .dash-section { margin-bottom: 8px; }
+        .dash-section > .test-meta { color: var(--text-secondary); font-size: var(--text-sm); margin: 0 0 12px; }
         .hero-card {
             text-align: center;
             margin: 0 0 24px;
@@ -528,40 +529,52 @@
         </div>
         <header class="app-hd">
             <h1>Motor City Math</h1>
-            <p>Algebra II &middot; Kai</p>
         </header>
 
         <main>
-        <!-- Hero: Logs & Rationals Gap Drill -->
-        <a href="logs_gap_drill.html" class="hero hero-link" style="display:block;text-decoration:none;cursor:pointer;">
-            <div class="hero-eye">Spring Logs &middot; L.a/L.c/L.f + S4.b &middot; 6 Questions &middot; 40 pts &middot; ~25 min &middot; Assigned</div>
-            <div class="hero-name">Logs &amp; Rationals Gap Drill</div>
-            <div class="hero-last">Targeted drill from the Logs Practice (91%) + S4 Drill gaps. Hits change-of-base execution (Q9, Q14), 4-step exponential application (Q8/Q16b), LCD rational addition, and difference quotient. Open the quiz to start; answer key is in <b>logs_gap_drill_KEY.html</b>.</div>
-        </a>
-
-        <!-- Progress Chart (FD design) -->
-        <span class="slabel">Your Progress</span>
-        <div class="trend-card">
-            <div class="trend-hd">
-                <div class="trend-hd-r">Target: <b>A (&gt; 92%)</b></div>
+        <!-- Pre-Calculus prep stays separate from Kai's Algebra II coursework. -->
+        <details class="dash-section" id="precalculusSection" open>
+            <summary class="section-title">Fall 2026 &middot; Pre-Calculus</summary>
+            <p class="test-meta">Junior year &middot; Functions &amp; Polynomial Review</p>
+            <a href="tests/assessment-1-functions-75min.pdf" class="hero hero-link" style="display:block;text-decoration:none;cursor:pointer;" target="_blank" rel="noopener">
+                <div class="hero-eye">Pre-Calculus Prep &middot; 75 minutes &middot; 100 points</div>
+                <div class="hero-name">Prep Test 1: Functions &amp; Polynomial Review</div>
+                <div class="hero-last">Open the printable practice test. Kai's score will be added after his completed test is graded.</div>
+            </a>
+            <div class="trend-card" style="margin-top:12px;">
+                <div class="trend-hd">
+                    <div class="trend-hd-r">First entry: <b style="color:#d29922" id="precalculusFirstScore">84%</b> &middot; Study guide (provisional)</div>
+                </div>
+                <div id="precalculusChartContainer"></div>
             </div>
-            <div id="trendChartContainer"></div>
-        </div>
+            <div class="test-grid" id="precalculusGrid">
+                <a class="test-link" href="reviews/test-1-study-guide.html">
+                    <div class="test-name-row"><span>Test 1 Study Guide</span><span class="test-score mid" id="studyGuideScore">84/100</span></div>
+                    <div class="test-meta">Original problems &middot; Kai's answers &middot; Provisional evaluation</div>
+                </a>
+                <a class="test-link" href="tests/assessment-1-functions-75min.pdf" target="_blank" rel="noopener">
+                    <div class="test-name-row"><span>Prep Test 1: Functions &amp; Polynomial Review</span></div>
+                    <div class="test-meta">75 minutes &middot; 100 points &middot; PDF</div>
+                </a>
+            </div>
+        </details>
 
-        <!-- Last 2 Tests: hidden (shows winter tests, not relevant to spring view) -->
-        <!-- Progress Story: hidden (shows winter journey, not relevant to spring view) -->
-
-        <!-- Collapsible sections below the fold -->
-
-        <!-- Spring 2026 (open by default) -->
-        <details class="dash-section" id="springSection" open>
-            <summary class="section-title">Spring 2026 · Unit 1: Polynomials</summary>
+        <details class="dash-section" id="springSection">
+            <summary class="section-title">Spring 2026 &middot; Algebra II</summary>
+            <p class="test-meta">Sophomore year &middot; Polynomials, Rational Functions &amp; Logarithms</p>
+            <div class="trend-card" style="margin-top:12px;">
+                <div class="trend-hd">
+                    <div class="trend-hd-r" title="Teacher-reported final grade. Test paper not archived.">Final Grade: <b style="color:#d29922">A-</b> <span style="color:rgba(255,255,255,0.45);font-weight:400;font-size:0.85em;">(teacher report &middot; test not archived)</span></div>
+                </div>
+                <div id="trendChartContainer"></div>
+            </div>
             <div class="test-grid" id="springGrid"></div>
         </details>
 
         <!-- Winter 2025-26 -->
-        <details class="dash-section" id="winterSection" open>
-            <summary class="section-title" id="winterSummaryEl">Winter 2025-26</summary>
+        <details class="dash-section" id="winterSection">
+            <summary class="section-title" id="winterSummaryEl">Winter 2025-26 &middot; Algebra II</summary>
+            <p class="test-meta">Sophomore year &middot; Exponents, Function Transformations &amp; Quadratics</p>
             <div class="trend-card" style="margin-top:12px;">
                 <div class="trend-hd">
                     <div class="trend-hd-r" title="Teacher-reported final grade. Test paper not archived.">Final Grade: <b style="color:#d29922">B</b> <span style="color:rgba(255,255,255,0.45);font-weight:400;font-size:0.85em;">(teacher report &middot; test not archived)</span></div>
@@ -575,6 +588,7 @@
         </main>
     </div>
 
+    <script src="reviews/test-1-study-guide-data.js"></script>
     <script>
     /* ========== TEST REGISTRY ========== */
     var tests = [
@@ -821,6 +835,19 @@
         });
         raw.sort(function(a, b) { return a.ts - b.ts; });
         renderTrendChart(document.getElementById('winterChartContainer'), raw);
+    }
+    function buildPrecalculusHistory() {
+        var rows = window.test1StudyGuide.sections.reduce(function(all, section) {
+            return all.concat(section.rows);
+        }, []);
+        var earned = rows.reduce(function(sum, row) { return sum + row.earned; }, 0);
+        var total = rows.reduce(function(sum, row) { return sum + row.points; }, 0);
+        var pct = Math.round(earned / total * 100);
+        document.getElementById('studyGuideScore').textContent = earned + '/' + total;
+        document.getElementById('precalculusFirstScore').textContent = pct + '%';
+        renderTrendChart(document.getElementById('precalculusChartContainer'), [
+            { label: 'Study Guide 1', sublabel: 'Provisional', fa: pct }
+        ]);
     }
     function buildStandards() {
         var scores = getScores();
@@ -1251,7 +1278,7 @@
         if (e.key === 'Escape') cancelClearConfirm();
     }
     function rerenderAll() {
-        var fns = [buildChart, buildSpringGrid, buildWinterTestGrid, buildStats, buildLast2Tests, buildProgressStory, buildWinterHistory];
+        var fns = [buildChart, buildSpringGrid, buildWinterTestGrid, buildStats, buildLast2Tests, buildProgressStory, buildWinterHistory, buildPrecalculusHistory];
         fns.forEach(function(fn) { try { fn(); } catch(e) { console.error(fn.name, e); } });
     }
 
@@ -1467,4 +1494,3 @@
 
 
 <!-- publish test 2026-02-21T03:35:13 -->
-
