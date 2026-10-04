@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="duration-minutes" content="75">
+  <meta name="total-points" content="100">
+  <title>Answer Key: Assessment 1 Functions Practice</title>
+  <link rel="stylesheet" href="../shared/katex/katex.min.css">
+  <script defer src="../shared/katex/katex.min.js"></script>
+  <script defer src="../shared/katex/auto-render.min.js"></script>
+  <style>
+    :root { font-family: Arial, Helvetica, sans-serif; color: #171717; background: #eef1f5; }
+    * { box-sizing: border-box; }
+    body { font-size: 16px; line-height: 1.45; margin: 0; }
+    main { margin: 0 auto; max-width: 850px; padding: 24px; width: 100%; }
+    h1 { font-size: 27px; line-height: 1.15; margin: 0 0 5px; }
+    h2 { font-size: 19px; margin: 0 0 12px; }
+    p { margin: 6px 0; }
+    .screen-only { display: block; }
+    .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; color: #1d42ba; text-decoration: none; margin-bottom: 16px; }
+    .back-link:hover { text-decoration: underline; }
+    .key-header, .key-section { background: #fff; border: 1px solid #cbd0d8; margin-bottom: 16px; padding: 16px 19px; }
+    .key-header { border-top: 6px solid #c8102e; }
+    .eyebrow { color: #1d42ba; font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+    .question-solution { border-top: 1px solid #cbd0d8; padding: 10px 0; break-inside: avoid; page-break-inside: avoid; }
+    .question-solution:first-of-type { border-top: 0; }
+    .question-solution h3 { font-size: 15px; margin: 0 0 5px; }
+    .rubric { color: #343a40; font-size: 13px; }
+    .math { font-family: "Courier New", monospace; }
+    .page-break-before { break-before: page; page-break-before: always; }
+    @page { size: letter; margin: .55in; }
+    @media print {
+      :root, body { background: #fff !important; color: #111 !important; }
+      * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      body { font-size: 10pt; line-height: 1.35; }
+      main { margin: 0; max-width: none; padding: 0; width: auto; }
+      h1 { font-size: 19pt; }
+      h2 { font-size: 13pt; }
+      .screen-only { display: none !important; }
+      .key-header, .key-section { background: #fff !important; border-color: #777; border-radius: 0; margin-bottom: 10px; padding: 10px 12px; }
+      .key-header { border-top: 4px solid #000; }
+      .eyebrow { color: #222 !important; }
+      .question-solution { border-color: #999; padding: 7px 0; }
+      .rubric { color: #222 !important; }
+      .page-break-before { break-before: page; page-break-before: always; }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <header class="key-header">
+    <div class="screen-only"><a href="../index.html" class="back-link">&larr; Back to Dashboard</a></div>
+    <div class="eyebrow">Motor City Math | Parent Copy</div>
+    <h1>Answer Key: Assessment 1 Functions Practice</h1>
+    <p>75 minutes | 100 points | Keep this copy separate from the student exam.</p>
+    <p class="screen-only"><a href="assessment-1-functions-75min.html">View the student exam</a></p>
+  </header>
+
+  <section class="key-section">
+    <h2>Section A: Function Basics</h2>
+    <article class="question-solution" data-question="q1">
+      <h3>1. Read a function from a table (5 points)</h3>
+      <p>Yes. The repeated <span class="math">x</span>-value, 0, is paired with the same <span class="math">y</span>-value, -1, so the relation is a function. The range is {-1, 4, 5}.</p>
+      <p class="rubric">Scoring: 2 points for identifying the relation as a function; 2 for explaining that the repeated <span class="math">x</span>-value has the same <span class="math">y</span>-value; 1 for the range.</p>
+    </article>
+    <article class="question-solution" data-question="q2">
+      <h3>2. Catch the missing domain restriction (8 points)</h3>
+      <p>\((f/g)(x) = \frac{\sqrt{5 - x}}{x^2 - 1}\). The radical requires \(x \le 5\). The denominator is zero at \(x = -1\) and \(x = 1\), so both inputs must be excluded. Domain: \((-\infty, -1) \cup (-1, 1) \cup (1, 5]\).</p>
+      <p class="rubric">Scoring: 2 points for the quotient; 2 for the radical restriction; 2 for identifying both denominator zeros; 2 for the interval domain.</p>
+    </article>
+    <article class="question-solution" data-question="q3">
+      <h3>3. Find and compare two compositions (10 points)</h3>
+      <p>\(B(A(x)) = (2x - 1)^2 + 3 = 4x^2 - 4x + 4\). Also, \(B(A(4)) = B(7) = 52\), while \(A(B(4)) = A(19) = 37\).</p>
+      <p class="rubric">Scoring: 4 points for finding and simplifying <span class="math">B(A(x))</span>; 3 for <span class="math">B(A(4)) = 52</span>; 3 for <span class="math">A(B(4)) = 37</span>.</p>
+    </article>
+  </section>
+
+  <section class="key-section page-break-before">
+    <h2>Section B: Transformations and Piecewise Functions</h2>
+    <article class="question-solution" data-question="q4">
+      <h3>4. Graph both orders of a composition (10 points)</h3>
+      <p>The reference graph has vertices \((-4, -2), (-2, 2), (1, 0), (4, 3)\), and \(g(x) = 2x - 2\). The vertices of \(f(g(x))\) are \((-1, -2), (0, 2), (\frac{3}{2}, 0), (3, 3)\). The vertices of \(g(f(x))\) are \((-4, -6), (-2, 2), (1, -2), (4, 4)\). Connect each set of points in order using the requested line styles.</p>
+      <p class="rubric">Scoring: 4 points for the vertices of <span class="math">f(g(x))</span>; 4 for the vertices of <span class="math">g(f(x))</span>; 2 for connecting the graphs correctly and marking endpoints.</p>
+    </article>
+    <article class="question-solution" data-question="q5">
+      <h3>5. Evaluate and graph a piecewise rule (8 points)</h3>
+      <p>For <span class="math">x = 0</span>, use the first rule: <span class="math">p(0) = 2</span>. For <span class="math">x = 1</span> and <span class="math">x = 3</span>, use the second rule: <span class="math">p(1) = 3</span> and <span class="math">p(3) = 5</span>. The first branch ends with an open circle at <span class="math">(1, 1)</span>. The second branch begins with a closed circle at <span class="math">(1, 3)</span> and follows the ray <span class="math">y = x + 2</span> to the right.</p>
+      <p class="rubric">Scoring: 3 points for the three values; 2 for the open and closed boundary points; 3 for the graph and correct branch selection.</p>
+    </article>
+    <article class="question-solution" data-question="q6">
+      <h3>6. Graph a square-root translation (10 points)</h3>
+      <p>The rule is \(y = \sqrt{x + 4} - 3\). The starting point is \((-4, -3)\). The graph also passes through \((-3, -2), (0, -1), (5, 0)\) and continues to the right. The domain is \([-4, \infty)\) and the range is \([-3, \infty)\). Since \(\sqrt{-3 + 4} - 3 = -2\), the point \((-3, -2)\) is on the graph.</p>
+      <p class="rubric">Scoring: 2 points for the rule; 4 for the graph with its starting point and three additional points; 2 for the domain and range; 2 for checking the given point.</p>
+    </article>
+  </section>
+
+  <section class="key-section page-break-before">
+    <h2>Section C: Polynomial Structure and Graphs</h2>
+    <article class="question-solution" data-question="q7">
+      <h3>7. Recover a polynomial from its graph (7 points)</h3>
+      <p>The graph crosses at <span class="math">x = 2</span> and touches at <span class="math">x = -1</span>, so the factored form is <span class="math">p(x) = a(x - 2)(x + 1)^2</span>. Its y-intercept is <span class="math">(0, -1)</span>, so <span class="math">-1 = a(-2)(1)</span> and <span class="math">a = 1/2</span>. Thus \(p(x) = \frac{1}{2}(x - 2)(x + 1)^2\). The relative maximum is <span class="math">(-1, 0)</span> and the relative minimum is <span class="math">(1, -2)</span>. It is increasing on <span class="math">(-infinity, -1) U (1, infinity)</span> and decreasing on <span class="math">(-1, 1)</span>.</p>
+      <p class="rubric">Scoring: 2 points for intercepts and multiplicity; 2 for using the y-intercept to determine the leading factor; 1 for the equation; 1 for the intervals; 1 for both extrema.</p>
+    </article>
+    <article class="question-solution" data-question="q8">
+      <h3>8. Choose the polynomial that fits the graph behavior (10 points)</h3>
+      <p>Choice A fits: <span class="math">(x + 2)(x - 1)^2</span> has a simple zero at -2, so it crosses there, and a double zero at 1, so it touches and turns there. It is a positive cubic: the left end falls and the right end rises. Choice B has the multiplicities reversed and a negative leading coefficient; C has even multiplicity at both zeros and even degree; D has the right zeros and multiplicities but the wrong end behavior.</p>
+      <p class="rubric">Scoring: 2 points for selecting A; 2 for matching zeros and multiplicities; 3 for degree, leading coefficient, and end behavior; 3 for explaining why the other choices do not fit.</p>
+    </article>
+    <article class="question-solution" data-question="q9">
+      <h3>9. Check a classmate's graph analysis (10 points)</h3>
+      <p>The domain <span class="math">[-5, 5]</span>, range <span class="math">[-3, 4]</span>, and zeros <span class="math">-4, 0, 4</span> are correct. The graph is increasing on <span class="math">(-3, 2)</span> and decreasing on <span class="math">(-5, -3) U (2, 5)</span>. The relative minimum is <span class="math">(-3, -3)</span> and the relative maximum is <span class="math">(2, 4)</span>; extrema should be written as points, not only y-values.</p>
+      <p class="rubric">Scoring: 2 points for checking domain and range; 2 for checking zeros; 3 for correct increasing/decreasing intervals; 3 for extrema as coordinate points.</p>
+    </article>
+  </section>
+
+  <section class="key-section page-break-before">
+    <h2>Section D: Function Models and Transformations</h2>
+    <article class="question-solution" data-question="q10">
+      <h3>10. Choose a valid composition using units (12 points)</h3>
+      <p>The after-tax cost is <span class="math">T(D(d)) = 1.08(9d + 12) = 9.72d + 12.96</span>. The rental charge must be calculated first, then the tax applied. For 4 days, <span class="math">D(4) = 48</span> dollars and <span class="math">T(48) = 51.84</span> dollars. Reversing the functions would feed a dollar amount into <span class="math">D</span>, whose input is a number of rental days, so it would not model this situation.</p>
+      <p class="rubric">Scoring: 4 points for selecting and explaining <span class="math">T o D</span>; 3 for simplifying the composition; 3 for the $51.84 total; 2 for explaining why the reversed order is not meaningful.</p>
+    </article>
+    <article class="question-solution" data-question="q11">
+      <h3>11. Keep the original domain when composing (10 points)</h3>
+      <p>For \(g(f(x))\), \((\sqrt{x + 1})^2 - 1 = x\), but the formula for \(f\) requires \(x + 1 \ge 0\). Its domain is \([-1, \infty)\); simplifying does not restore values where the original square root was undefined. For \(f(g(x))\), \(\sqrt{(x^2 - 1) + 1} = \sqrt{x^2} = |x|\). Since \(x^2 \ge 0\) for every real \(x\), its domain is \((-\infty, \infty)\).</p>
+      <p class="rubric">Scoring: 4 points for <span class="math">g(f(x)) = x</span> and its restricted domain; 2 for explaining why simplification does not widen that domain; 2 for <span class="math">f(g(x)) = |x|</span>; 2 for its all-real domain and comparison.</p>
+    </article>
+  </section>
+  <p class="screen-only">Answer key: print separately and keep it away from the student copy.</p>
+</main>
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: '\\(', right: '\\)', display: false },
+        { left: '\\[', right: '\\]', display: true }
+      ]
+    });
+  });
+</script>
+</body>
+</html>
