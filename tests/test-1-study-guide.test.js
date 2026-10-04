@@ -84,7 +84,7 @@ assert.ok(!dashboard.includes('provisional'), 'Dashboard should explain score st
 assert.ok(!dashboard.includes('91/100'), 'The superseded 91-point report must not appear');
 assert.ok(!dashboard.includes('Awaiting first score'));
 const precalculusSection = dashboard.slice(dashboard.indexOf('<details class="dash-section" id="precalculusSection"'), dashboard.indexOf('<details class="dash-section" id="springSection"'));
-assert.ok(!precalculusSection.includes('hero-link'), 'Remove the obsolete ungraded Prep Test hero');
+assert.ok(!precalculusSection.includes('href="tests/assessment-1-functions-75min.pdf" class="hero'), 'Remove the obsolete ungraded Prep Test 1 hero');
 assert.ok(!dashboard.includes("Kai's score will be added"), 'Do not claim the published graded test is awaiting a score');
 assert.match(precalculusGrid, /href="tests\/assessment-1-functions-75min.pdf"/, 'Keep the printable test available in its existing compact card');
 const chartContext = { window: context.window };

@@ -18,6 +18,8 @@ The [Prep Test 2 question proposal](reviews/prep-test-2-proposal.html) is a pare
 
 The reviewed set is now built as a [printable Prep Test 2](tests/assessment-2-functions-75min.pdf), with [student HTML](tests/assessment-2-functions-75min.html) and a separate [parent key PDF](tests/assessment-2-functions-75min-KEY.pdf) / [key HTML](tests/assessment-2-functions-75min-KEY.html). The student copy follows the previous test's format and keeps answers separate. It includes six dedicated large drawing pages with centered axes; numerical grids use matching symmetric ranges and square cells. Question 3 adds reflected/scaled compositions with fractional coordinates; Question 4 solves a composite equation from graphs; Question 5 compares algebraic compositions; Question 9 adds a challenging word problem; Question 10 restores square-root graph construction. Question 2 remains simple and Question 6 is retained. Regenerate the HTML with `node scripts/build-prep-test-2.cjs`; the source proposal remains the editable question source. No dashboard entry or score is added by this build.
 
+The dashboard's top Pre-Calculus card opens the approved Prep Test 2 student PDF in a new tab. A compact student HTML card is also available; parent answers and proposal links remain separate. Existing graded reports and chart scores are unchanged.
+
 12 practice tests covering 5 Algebra II units with ~200 questions. Each test is a standalone HTML file — open it in a browser and start studying. Standards-aligned to Seattle Academy (SAAS) curriculum.
 
 ### Units Covered

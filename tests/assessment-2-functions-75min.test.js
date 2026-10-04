@@ -59,3 +59,14 @@ for (const name of ['assessment-2-functions-75min.pdf','assessment-2-functions-7
   assert.ok(bytes.length>10000);
 }
 console.log('Prep Test 2 print artifacts: PASS (10 questions, 100 points, 70+5 minutes, 6 symmetric grids and 2 open sketch axes, typeset math, neutral labels, separate key and PDFs).');
+const dashboard = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
+const section = dashboard.match(/<details\b[^>]*id="precalculusSection"[^>]*>([\s\S]*?)<\/details>/)[1];
+const hero = section.match(/<a\b[^>]*class="hero hero-link"[^>]*>([\s\S]*?)<\/a>/);
+assert.ok(hero, 'Approved student test has a top card');
+assert.match(hero[0], /href="tests\/assessment-2-functions-75min.pdf"/);
+assert.match(hero[0], /target="_blank" rel="noopener"/);
+assert.match(hero[1], /Prep Test 2/);
+assert.ok(section.indexOf(hero[0]) < section.indexOf('class="trend-card"'), 'Student card appears above the chart');
+assert.match(section, /href="tests\/assessment-2-functions-75min.html" target="_blank" rel="noopener"/);
+assert.doesNotMatch(section, /assessment-2-functions-75min-KEY|prep-test-2-proposal/, 'Parent answers and review are not linked from student cards');
+assert.doesNotMatch(hero[1], /test-score|awaiting|score will be added/i);
