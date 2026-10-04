@@ -21,6 +21,9 @@ for (const match of grids) {
   assert.equal(match[4],match[6],'Matching axis scale');
 }
 assert.match(student,/x -8 to 8, y -8 to 8/);
+assert.match(student,/x -12 to 12, y -12 to 12/);
+assert.match(student,/g\(x\)=1-\(3\/5\)x/);
+assert.doesNotMatch(student,/reciprocal|stretch horizontally by 5\/3/);
 assert.match(student,/width:5\.8in; height:5\.8in/);
 assert.match(student,/Large centered axes for qualitative sketch/);
 assert.equal((key.match(/class="exam-section key-block"/g)||[]).length,10);

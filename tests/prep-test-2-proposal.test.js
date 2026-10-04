@@ -38,13 +38,19 @@ assert.deepEqual([-2,2].map(v=>1-v).sort((a,b)=>a-b),[-1,3]);
 assert.equal(data.questions[1].stem.length,3);
 assert.doesNotMatch(data.questions[1].stem.join(' '),/derive|table|\/2|point check/);
 const source = [[-3,-1],[-1,3],[2,0],[4,2]];
-assert.deepEqual(source.map(([u,v])=>[(1-u)/2,v]).sort((a,b)=>a[0]-b[0]), [[-1.5,2],[-0.5,0],[1,3],[2,-1]]);
-assert.deepEqual(source.map(([u,v])=>[u,1-2*v]), [[-3,3],[-1,-5],[2,1],[4,-3]]);
-source.forEach(([u,v])=>{
-  assert.equal(1-2*((1-u)/2),u);
-  assert.ok(Math.abs((1-u)/2)<6 && Math.abs(1-2*v)<6);
+assert.match(data.questions[2].stem[0],/g\(x\)=1-\(3\/5\)x/);
+assert.deepEqual(Array.from(data.questions[2].graphs[0].lines[0].vertices, p=>Array.from(p)), source);
+assert.deepEqual(source.map(([u,v])=>[(5/3)*(1-u),v]).sort((a,b)=>a[0]-b[0]), [[-5,2],[-5/3,0],[10/3,3],[20/3,-1]]);
+const outsideExpected = [[-3,8/5],[-1,-4/5],[2,1],[4,-1/5]];
+source.forEach(([u,v],i)=>{
+  assert.equal(u,outsideExpected[i][0]);
+  assert.ok(Math.abs(1-(3/5)*v-outsideExpected[i][1])<1e-12);
 });
-assert.deepEqual([-3,4].map(u=>(1-u)/2).sort((a,b)=>a-b),[-1.5,2]);
+source.forEach(([u,v])=>{
+  assert.ok(Math.abs(1-(3/5)*((5/3)*(1-u))-u)<1e-12);
+  assert.ok(Math.abs((5/3)*(1-u))<8 && Math.abs(1-(3/5)*v)<8);
+});
+assert.deepEqual([-3,4].map(u=>(5/3)*(1-u)).sort((a,b)=>a-b),[-5,20/3]);
 function read(vertices, x) {
   for (let i=1;i<vertices.length;i++) {
     const [x0,y0]=vertices[i-1], [x1,y1]=vertices[i];

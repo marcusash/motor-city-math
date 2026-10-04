@@ -54,20 +54,20 @@ window.prepTest2Proposal = {
     {
       id: 3, title: 'Graph both composition orders with a reflection', difficulty: 3, points: 14, minutes: 9,
       target: 'Prep Test 1 Q4; Study Guide Q23. Coordinate mapping was strong; readable graphs, required line styles, and all vertex labels were not fully demonstrated.',
-      extension: 'Builds on Kai’s correct mappings in Prep Test 1: each order now combines reflection, scale, and shift, with half-unit horizontal coordinates. The prompt does not tell him which order reverses the vertices.',
+      extension: 'Marcus requested a new fractional-slope transfer task: each order combines reflection, scale, and shift. The inside slope -3/5 requires the fractional reciprocal 5/3 for horizontal scaling. The original source graph is retained; resulting coordinates use manageable thirds and fifths. This is new to Kai, not evidence of a previously demonstrated deficit. The student prompt supplies no reciprocal hint.',
       stem: [
-        'The graph of f consists of straight segments through (-3,-1), (-1,3), (2,0), (4,2), in that order, with included endpoints. Let g(x)=1-2x.',
+        'The graph of f consists of straight segments through (-3,-1), (-1,3), (2,0), (4,2), in that order, with included endpoints. Let g(x)=1-(3/5)x.',
         '(a) Graph f(g(x)) and g(f(x)) on the provided coordinate plane. Use a solid line for f(g(x)) and a dashed line for g(f(x)). Label the vertices and both graphs.',
         '(b) Give both domains and describe the transformations of f in each composition. Show your work.'
       ],
       steps: [
-        'For source (u,v), solve 1-2x=u, so f(g(x)) maps to ((1-u)/2,v). Left-to-right vertices: (-3/2,2), (-1/2,0), (1,3), (2,-1). Domain [-3/2,2].',
-        'For g(f(x)), map (u,v) to (u,1-2v). Vertices: (-3,3), (-1,-5), (2,1), (4,-3). Domain [-3,4].',
+        'For source (u,v), solve 1-(3/5)x=u, so f(g(x)) maps to ((5/3)(1-u),v). Left-to-right vertices: (-5,2), (-5/3,0), (10/3,3), (20/3,-1). Domain [-5,20/3].',
+        'For g(f(x)), map (u,v) to (u,1-(3/5)v). Vertices: (-3,8/5), (-1,-4/5), (2,1), (4,-1/5). Domain [-3,4].',
         'Connect each vertex set in its own left-to-right order. Use solid and dashed lines as specified and mark all endpoints included.',
-        'For f(g(x)), reflect horizontally, compress horizontally by 1/2, then shift right 1/2. For g(f(x)), reflect vertically, stretch vertically by 2, then shift up 1. Equivalent correctly ordered descriptions are accepted.'
+        'For f(g(x)), reflect horizontally, stretch horizontally by 5/3, then shift right 5/3. For g(f(x)), reflect vertically, compress vertically by 3/5, then shift up 1. Equivalent correctly ordered descriptions are accepted.'
       ],
       rubric: [
-        { points: 2, text: 'Two mapping rules, 1 each.' },
+        { points: 2, text: 'Valid coordinate work for both composition orders, 1 each. Accept mapping rules, substitution equations, or equivalent calculations; no particular method is required.' },
         { points: 6, text: 'Four transformed vertices for each composition, 0.75 each.' },
         { points: 3, text: 'Correct segment connections and included endpoints 2; all coordinate labels, graph names, and specified line styles 1 combined.' },
         { points: 2, text: 'Domains, 1 each.' },

@@ -43,7 +43,7 @@ function grid(xRange,yRange,lines=[]) {
   items+=`<text x="${w-12}" y="${py(0)-5}">x</text><text x="${px(0)+7}" y="13">y</text>`;
   return `<svg class="print-grid" viewBox="0 0 ${w} ${h}" role="img" aria-label="${lines.length?'Given graph':'Blank coordinate grid'}; x ${xRange.join(' to ')}, y ${yRange.join(' to ')}"><g font-family="Arial" font-size="9">${items}</g></svg>`;
 }
-const ranges={1:[[-6,6],[-6,6]],2:[[-8,8],[-8,8]],3:[[-6,6],[-6,6]],10:[[-12,12],[-12,12]]};
+const ranges={1:[[-6,6],[-6,6]],2:[[-8,8],[-8,8]],3:[[-8,8],[-8,8]],10:[[-12,12],[-12,12]]};
 const studentTitles = {
   1:'Graph a piecewise function',
   2:'Transform a given graph',
