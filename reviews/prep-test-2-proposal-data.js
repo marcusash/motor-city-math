@@ -108,25 +108,25 @@ window.prepTest2Proposal = {
       ]
     },
     {
-      id: 5, title: 'Build and draw a graph from its characteristics', difficulty: 2, points: 10, minutes: 7,
-      target: 'Study Guide Q6; Prep Test 1 Q6. A correct equation without its requested graph is not a complete response.',
-      extension: 'Uses a downward absolute-value graph rather than another upward parabola or square-root translation.',
+      id: 5, title: 'Compare two algebraic compositions', difficulty: 3, points: 10, minutes: 7,
+      target: 'Prep Test 1 Q3; Study Guide Q20/Q25. Kai correctly substituted and expanded functions. This extends those demonstrated skills rather than introducing an unsupported absolute-value graph family.',
+      extension: 'Moves beyond evaluating the two orders at one input: determine whether the compositions can be equal at any real input.',
       stem: [
-        'Find a function of the form q(x)=a|x-h|+k with domain all real numbers, range (-infinity,4], maximum (2,4), and y-intercept (0,0).',
-        '(a) Find a, h, and k and write q(x). Show how the intercept determines a.',
-        '(b) Graph q on axes x=-6 to 6, y=-6 to 6, one unit per square. Label the vertex and both x-intercepts; draw arrows.',
-        '(c) State where q increases and decreases, and confirm its domain and range.'
+        'Let A(x)=x^2-2x and B(x)=2x-1.',
+        '(a) Find and simplify A(B(x)) and B(A(x)).',
+        '(b) Find all real x-values for which A(B(x))=B(A(x)). Justify your answer.'
       ],
       steps: [
-        'The vertex gives h=2, k=4. Substitute (0,0): 0=2a+4, so a=-2. Thus q(x)=-2|x-2|+4.',
-        'The graph is a downward V with vertex (2,4), x-intercepts (0,0), (4,0), and rays extending both ways.',
-        'Increasing (-infinity,2); decreasing (2,infinity). Domain all real numbers; range (-infinity,4].'
+        'A(B(x))=(2x-1)^2-2(2x-1)=4x^2-8x+3.',
+        'B(A(x))=2(x^2-2x)-1=2x^2-4x-1.',
+        'Equality requires 2x^2-4x+4=0, or (x-1)^2+1=0. A real square cannot equal -1, so there are no real solutions. Equivalently, the quadratic discriminant is negative.',
+        'The difference A(B(x))-B(A(x))=2(x-1)^2+2 is always positive, so the first composition is always greater. This observation is a valid justification, not an extra student requirement.'
       ],
       rubric: [
-        { points: 3, text: 'Correct form from vertex 1; intercept calculation 1; final rule 1.' },
-        { points: 4, text: 'Downward V and continuing rays 1; vertex and both intercept labels, 1 each.' },
-        { points: 1, text: 'Increasing/decreasing intervals, 0.5 each.' },
-        { points: 2, text: 'Domain/range, 1 each.' }
+        { points: 3, text: 'A(B(x)): full substitution 1; correct expansion 2.' },
+        { points: 3, text: 'B(A(x)): full substitution 1; correct simplification 2.' },
+        { points: 3, text: 'Correct equality equation and valid real-solution reasoning. Preserve algebraic follow-through from one earlier error.' },
+        { points: 1, text: 'Explicitly concludes no real solutions.' }
       ]
     },
     {

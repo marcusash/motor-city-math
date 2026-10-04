@@ -71,9 +71,14 @@ assert.deepEqual([...new Set(compositeSolutions)].sort((a,b)=>a-b),[-3.5,-2.5,-1
 [-3,0,2].forEach(x => assert.equal(f(x),0));
 assert.ok(f(-1)>f(-2) && f(1)>f(-1));
 assert.ok(f(-4)>f(-2) && f(1)>f(4));
-const q = x => -2*Math.abs(x-2)+4;
-assert.deepEqual([0,2,4].map(q),[0,4,0]);
-assert.ok(q(1)<q(2) && q(3)<q(2));
+const A = x=>x*x-2*x, B=x=>2*x-1;
+for(let x=-10;x<=10;x+=0.25) {
+  assert.equal(A(B(x)),4*x*x-8*x+3);
+  assert.equal(B(A(x)),2*x*x-4*x-1);
+  assert.equal(A(B(x))-B(A(x)),2*(x-1)**2+2);
+  assert.ok(A(B(x))>B(A(x)));
+}
+assert.equal((-4)**2-4*2*4,-16);
 const P = x => 2*(x+2)**2*(x-1)**3;
 assert.equal(P(0),-8);
 assert.ok(P(-2)===0 && P(1)===0);

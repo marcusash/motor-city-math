@@ -11,9 +11,9 @@ const key = fs.readFileSync(path.join(__dirname,'assessment-2-functions-75min-KE
 assert.equal((student.match(/data-question="/g)||[]).length,8);
 assert.equal([...student.matchAll(/data-points="(\d+)"/g)].reduce((sum,m)=>sum+Number(m[1]),0),100);
 assert.equal([...student.matchAll(/data-minutes="(\d+)"/g)].reduce((sum,m)=>sum+Number(m[1]),0),70);
-assert.equal((student.match(/<svg /g)||[]).length,9);
+assert.equal((student.match(/<svg /g)||[]).length,8);
 const grids = [...student.matchAll(/<svg class="print-grid" viewBox="0 0 (\d+) (\d+)"[^>]*aria-label="[^"]*; x (-?\d+) to (\d+), y (-?\d+) to (\d+)"/g)];
-assert.equal(grids.length,7);
+assert.equal(grids.length,6);
 for (const match of grids) {
   assert.equal(match[1],match[2],'Square SVG');
   assert.equal(Number(match[3]),-Number(match[4]),'Centered x-axis');
@@ -27,6 +27,8 @@ assert.equal((key.match(/class="exam-section key-block"/g)||[]).length,8);
 assert.match(student,/Motor City Math \| Pre-Calculus/);
 assert.match(student,/final 5 minutes/);
 assert.doesNotMatch(student,/Worked answer|Scoring|parent-review|Marcus|Study Guide Q|Answer Key/);
+assert.doesNotMatch(student,/absolute-value|a\|x-h\|/);
+assert.match(student,/A\(B\(x\)\)/);
 assert.match(student,/solid line/); assert.match(student,/dashed line/);
 assert.doesNotMatch(student,/flattened|touch at one zero|keep the curve|ends point the same|blank parts|Read the graph before|Keep all restrictions/);
 assert.match(student,/<hr>/);
@@ -40,4 +42,4 @@ for (const name of ['assessment-2-functions-75min.pdf','assessment-2-functions-7
   assert.equal(bytes.subarray(0,4).toString(),'%PDF');
   assert.ok(bytes.length>10000);
 }
-console.log('Prep Test 2 print artifacts: PASS (8 questions, 100 points, 70+5 minutes, 7 symmetric grids and 2 open sketch axes, separate key and PDFs).');
+console.log('Prep Test 2 print artifacts: PASS (8 questions, 100 points, 70+5 minutes, 6 symmetric grids and 2 open sketch axes, separate key and PDFs).');

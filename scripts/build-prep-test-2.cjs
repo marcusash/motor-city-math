@@ -42,13 +42,13 @@ function grid(xRange,yRange,lines=[]) {
   items+=`<text x="${w-12}" y="${py(0)-5}">x</text><text x="${px(0)+7}" y="13">y</text>`;
   return `<svg class="print-grid" viewBox="0 0 ${w} ${h}" role="img" aria-label="${lines.length?'Given graph':'Blank coordinate grid'}; x ${xRange.join(' to ')}, y ${yRange.join(' to ')}"><g font-family="Arial" font-size="9">${items}</g></svg>`;
 }
-const ranges={1:[[-6,6],[-6,6]],2:[[-8,8],[-8,8]],3:[[-6,6],[-6,6]],5:[[-6,6],[-6,6]]};
+const ranges={1:[[-6,6],[-6,6]],2:[[-8,8],[-8,8]],3:[[-6,6],[-6,6]]};
 const studentTitles = {
   1:'Graph a piecewise function',
   2:'Transform a given graph',
   3:'Graph both composition orders',
   4:'Evaluate and analyze two graphs',
-  5:'Build a graph from its characteristics',
+  5:'Compare two algebraic compositions',
   6:'Construct and sketch a polynomial',
   7:'Compose functions and find a domain',
   8:'Analyze and sketch a quartic'
@@ -75,7 +75,7 @@ function workspace(q) {
   } else if(q.polynomialDegree) {
     html+=`<div class="polynomial-work"><h3>Question ${q.id}: your qualitative sketch</h3><div class="sketch-space"><svg viewBox="0 0 600 600" role="img" aria-label="Large centered axes for qualitative sketch"><line x1="20" x2="580" y1="300" y2="300" stroke="#111" stroke-width="1.5"/><line x1="300" x2="300" y1="20" y2="580" stroke="#111" stroke-width="1.5"/><text x="585" y="290">x</text><text x="310" y="20">y</text></svg></div></div>`;
   }
-  html+='<strong>Answers and work</strong><div class="work-lines '+(q.id===7?'xtall':'medium')+'"></div>';
+  html+='<strong>Answers and work</strong><div class="work-lines '+([5,7].includes(q.id)?'xtall':'medium')+'"></div>';
   return html;
 }
 const extra=`
