@@ -1,0 +1,240 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="duration-minutes" content="75"><meta name="total-points" content="100"><title>Pre-Calculus: Prep Test 2</title><link rel="stylesheet" href="../shared/katex/katex.min.css"><script defer src="../shared/katex/katex.min.js"></script><script defer src="../shared/katex/auto-render.min.js"></script><style>
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #171717;
+      background: #eef1f5;
+    }
+
+    * { box-sizing: border-box; }
+    body { margin: 0; font-size: 16px; line-height: 1.45; }
+    main { width: min(850px, 100%); margin: 0 auto; padding: 24px; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { margin-bottom: 4px; font-size: 28px; line-height: 1.15; }
+    h2 { margin-bottom: 6px; font-size: 20px; }
+    p { margin-bottom: 9px; }
+    .screen-only { display: block; }
+    .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; color: #1d42ba; text-decoration: none; margin-bottom: 16px; }
+    .back-link:hover { text-decoration: underline; }
+    .exam-header, .directions, .exam-section {
+      background: #fff;
+      border: 1px solid #cbd0d8;
+      border-radius: 8px;
+      margin-bottom: 16px;
+      padding: 18px 20px;
+    }
+    .exam-header { border-top: 6px solid #c8102e; }
+    .eyebrow {
+      color: #1d42ba;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      margin-bottom: 7px;
+      text-transform: uppercase;
+    }
+    .subtitle { color: #4b5563; margin-bottom: 14px; }
+    .student-fields {
+      display: grid;
+      grid-template-columns: 1fr 180px;
+      gap: 14px;
+      margin-top: 14px;
+    }
+    .field-line { border-bottom: 1px solid #333; display: inline-block; min-width: 100px; }
+    .directions { border-left: 4px solid #1d42ba; }
+    .directions ul { margin: 8px 0 0; padding-left: 21px; }
+    .directions li { margin: 4px 0; }
+    .section-heading {
+      align-items: baseline;
+      border-bottom: 2px solid #1d42ba;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 14px;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+    }
+    .section-heading h2 { margin: 0; }
+    .section-meta { color: #424242; font-size: 13px; font-weight: 700; }
+    .question {
+      border: 1px solid #bfc5ce;
+      border-radius: 6px;
+      margin: 12px 0;
+      overflow: hidden;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+    .question-header {
+      align-items: center;
+      background: #f1f3f6;
+      border-bottom: 1px solid #cbd0d8;
+      display: flex;
+      gap: 10px;
+      padding: 8px 11px;
+    }
+    .question-number {
+      align-items: center;
+      background: #002d62;
+      border-radius: 4px;
+      color: #fff;
+      display: inline-flex;
+      flex: 0 0 28px;
+      font-weight: 800;
+      height: 28px;
+      justify-content: center;
+    }
+    .question-title { flex: 1; font-weight: 700; }
+    .points { color: #424242; font-size: 13px; font-weight: 700; white-space: nowrap; }
+    .question-body { padding: 12px 14px; }
+    .question-body > :last-child { margin-bottom: 0; }
+    .parts { list-style: none; margin: 8px 0 0; padding: 0; }
+    .parts li { margin: 10px 0; }
+    .part-label { font-weight: 700; }
+    .work-lines {
+      background-image: repeating-linear-gradient(to bottom, transparent 0, transparent 25px, #b7bdc7 26px, transparent 27px);
+      height: 56px;
+      margin-top: 5px;
+    }
+    .work-lines.medium { height: 82px; }
+    .work-lines.tall { height: 112px; }
+    .work-lines.xtall { height: 140px; }
+    .vertex-table, .value-table {
+      border-collapse: collapse;
+      margin: 10px 0;
+      width: 100%;
+    }
+    .vertex-table th, .vertex-table td,
+    .value-table th, .value-table td {
+      border: 1px solid #626b78;
+      padding: 5px 8px;
+      text-align: center;
+    }
+    .vertex-table th, .value-table th { background: #f1f3f6; }
+    .grid-instructions { color: #424242; font-size: 13px; margin: 10px 0 5px; }
+    .coordinate-grid-wrap {
+      aspect-ratio: 1;
+      margin: 8px 0 5px;
+      max-width: 4.65in;
+      position: relative;
+      width: min(100%, 4.65in);
+    }
+    .coordinate-grid {
+      border-collapse: collapse;
+      height: 100%;
+      table-layout: fixed;
+      width: 100%;
+    }
+    .coordinate-grid td {
+      border: 1px solid #c4c9d1;
+      color: #414141;
+      font-size: 8px;
+      height: 7.69%;
+      padding: 0;
+      position: relative;
+      text-align: center;
+      vertical-align: middle;
+      width: 7.69%;
+    }
+    .graph-overlay {
+      height: 100%;
+      left: 0;
+      overflow: visible;
+      pointer-events: none;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+    .graph-overlay .axis { stroke: #111; stroke-width: .06; }
+    .graph-overlay .tick { stroke: #111; stroke-width: .045; }
+    .graph-overlay text {
+      fill: #111;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: .34px;
+      paint-order: stroke;
+      stroke: #fff;
+      stroke-linejoin: round;
+      stroke-width: .04;
+      text-anchor: middle;
+    }
+    .graph-overlay text.y-tick-label { text-anchor: end; }
+    .graph-overlay polyline { fill: none; stroke: #111; stroke-linejoin: round; stroke-width: .07; }
+    .graph-overlay polyline.polynomial-curve { stroke: #8b1e3f; stroke-width: .065; }
+    .graph-overlay circle { fill: #111; }
+    .note { color: #414141; font-size: 13px; }
+    .page-break-before { break-before: page; page-break-before: always; }
+    .footer { color: #555; font-size: 12px; margin-top: 18px; text-align: center; }
+
+    @media (max-width: 600px) {
+      main { padding: 12px; }
+      .student-fields { grid-template-columns: 1fr; }
+      .exam-header, .directions, .exam-section { padding: 14px; }
+    }
+
+    @page { size: letter; margin: .55in; }
+    @media print {
+      :root, body { background: #fff !important; color: #111 !important; }
+      * {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      body { font-size: 10pt; line-height: 1.35; }
+      main { margin: 0; max-width: none; padding: 0; width: auto; }
+      h1 { font-size: 19pt; }
+      h2 { font-size: 13pt; }
+      .screen-only { display: none !important; }
+      .exam-header, .directions, .exam-section {
+        background: #fff !important;
+        border-color: #777;
+        border-radius: 0;
+        box-shadow: none;
+        margin-bottom: 10px;
+        padding: 10px 12px;
+      }
+      .exam-header { border-top: 4px solid #000; }
+      .directions { border-left: 3px solid #000; }
+      .eyebrow, .subtitle, .section-meta, .note, .grid-instructions { color: #222 !important; }
+      .section-heading { border-color: #333; margin-bottom: 8px; }
+      .question { border-color: #777; border-radius: 0; margin: 8px 0; overflow: visible; }
+      .question-header, .vertex-table th, .value-table th {
+        background: #f0f0f0 !important;
+      }
+      .question-number { background: #111 !important; color: #fff !important; }
+      .question-body { padding: 9px 11px; }
+      .parts li { margin: 7px 0; }
+      .work-lines { height: 48px; }
+      .work-lines.medium { height: 68px; }
+      .work-lines.tall { height: 92px; }
+      .work-lines.xtall { height: 112px; }
+      .coordinate-grid-wrap { max-width: 4.45in; width: 4.45in; }
+      #q4 .coordinate-grid-wrap { max-width: 3.1in; width: 3.1in; }
+      .coordinate-grid td { border-color: #b8b8b8; }
+      .graph-overlay polyline { stroke: #111; }
+      .page-break-before { break-before: page; page-break-before: always; }
+      .exam-section.page-break-before { border: 0; padding: 0; }
+      .footer { color: #333; }
+    }
+
+.test-page { margin-bottom:20px; }
+.given-row { display:flex; align-items:start; gap:18px; margin:10px 0; }
+.given { margin:0; width:40%; }
+.mapping-work { flex:1; }
+.print-grid { width:100%; display:block; background:white; }
+.graph-work { width:65%; margin:10px 0; }
+.sketch-space { height:270px; border:1px solid #777; padding:8px; margin:12px 0; }
+.question-text p { margin:7px 0; }
+.work-lines { background-image:none; display:flex; flex-direction:column; justify-content:space-evenly; }
+.work-lines hr { width:100%; margin:0; border:0; border-top:1px solid #b7bdc7; }
+.key-block { break-inside:avoid; }
+button { padding:8px 16px; cursor:pointer; }
+@media print {
+ .test-page { break-before:page; margin:0; border:0; padding:0; }
+ .question { break-inside:auto; }
+ .question-text { font-size:10pt; }
+ .given { width:2.2in; }
+ .graph-work { width:3.9in; }
+ .sketch-space { height:3.5in; }
+ .work-lines.medium { height:0.65in; }
+ .work-lines.xtall { height:3.8in; }
+ .work-lines.tall { height:1.2in; }
+ .footer { margin:8px 0 0; }
+}
+</style></head><body><main><header class="exam-header"><div class="eyebrow">Motor City Math | Pre-Calculus</div><div class="screen-only"><a href="../index.html" class="back-link">&larr; Back to Dashboard</a></div><h1>Prep Test 2: Functions and Polynomial Graphs</h1><p class="subtitle">75 minutes | 100 points | 8 questions</p><div class="student-fields"><span>Name: <span class="field-line" style="width:65%"></span></span><span>Date: <span class="field-line"></span></span></div><p class="screen-only"><button onclick="window.print()">Print student test</button></p></header><aside class="directions"><strong>Directions</strong><ul><li>Show your work.</li><li>Use interval notation where requested.</li><li>Questions 6 and 8 require qualitative polynomial sketches. Exact extrema and a uniform vertical scale are not required.</li><li>Suggested question times total 70 minutes, with a final 5 minutes for review.</li></ul><p>Use the space provided; additional work may go on the back.</p></aside><section class="exam-section"><h2>Suggested timing</h2><table class="value-table"><thead><tr><th>Question</th><th>Points</th><th>Minutes</th></tr></thead><tbody><tr><td>1. Graph a piecewise function</td><td>12</td><td>8</td></tr><tr><td>2. Transform a given graph</td><td>12</td><td>8</td></tr><tr><td>3. Graph both composition orders</td><td>18</td><td>12</td></tr><tr><td>4. Evaluate and analyze two graphs</td><td>12</td><td>8</td></tr><tr><td>5. Build a graph from its characteristics</td><td>10</td><td>7</td></tr><tr><td>6. Construct and sketch a polynomial</td><td>14</td><td>10</td></tr><tr><td>7. Compose functions and find a domain</td><td>12</td><td>9</td></tr><tr><td>8. Analyze and sketch a quartic</td><td>10</td><td>8</td></tr></tbody></table><p>Final review: 5 minutes. Total: 75 minutes.</p></section><section class="exam-section test-page" data-question="1" data-points="12" data-minutes="8"><div class="section-heading"><h2>Question 1</h2><span class="section-meta">8 minutes | 12 points</span></div><article class="question" id="q1"><div class="question-header"><span class="question-number">1</span><span class="question-title">Graph a piecewise function</span><span class="points">12 points</span></div><div class="question-body question-text"><p>Let p(x)=2x+4 for x&lt;-1, and p(x)=3 for x&gt;=-1.</p><p>(a) Find p(-2), p(-1), and p(2). Show which branch you use.</p><p>(b) Graph p on axes x=-4 to 4, y=-5 to 5, with one unit per square. Continue each branch with an arrow. Label the boundary coordinates and show open or closed circles.</p><p>(c) Give the domain and range in interval or set notation.</p><div class="graph-work"><strong>Your graph: one unit per square</strong><svg class="print-grid" viewBox="0 0 238 286" role="img" aria-label="Blank coordinate grid; x -4 to 4, y -5 to 5"><g font-family="Arial" font-size="9"><line x1="23" x2="23" y1="263" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><text x="23" y="156" text-anchor="middle">-4</text><line x1="47" x2="47" y1="263" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><line x1="71" x2="71" y1="263" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><text x="71" y="156" text-anchor="middle">-2</text><line x1="95" x2="95" y1="263" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><line x1="119" x2="119" y1="263" y2="23" stroke="#111" stroke-width="1.6"/><text x="119" y="156" text-anchor="middle">0</text><line x1="143" x2="143" y1="263" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><line x1="167" x2="167" y1="263" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><text x="167" y="156" text-anchor="middle">2</text><line x1="191" x2="191" y1="263" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><line x1="215" x2="215" y1="263" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><text x="215" y="156" text-anchor="middle">4</text><line x1="23" x2="215" y1="263" y2="263" stroke="#ccd1d8" stroke-width="0.6"/><line x1="23" x2="215" y1="239" y2="239" stroke="#ccd1d8" stroke-width="0.6"/><text x="114" y="242" text-anchor="end">-4</text><line x1="23" x2="215" y1="215" y2="215" stroke="#ccd1d8" stroke-width="0.6"/><line x1="23" x2="215" y1="191" y2="191" stroke="#ccd1d8" stroke-width="0.6"/><text x="114" y="194" text-anchor="end">-2</text><line x1="23" x2="215" y1="167" y2="167" stroke="#ccd1d8" stroke-width="0.6"/><line x1="23" x2="215" y1="143" y2="143" stroke="#111" stroke-width="1.6"/><line x1="23" x2="215" y1="119" y2="119" stroke="#ccd1d8" stroke-width="0.6"/><line x1="23" x2="215" y1="95" y2="95" stroke="#ccd1d8" stroke-width="0.6"/><text x="114" y="98" text-anchor="end">2</text><line x1="23" x2="215" y1="71" y2="71" stroke="#ccd1d8" stroke-width="0.6"/><line x1="23" x2="215" y1="47" y2="47" stroke="#ccd1d8" stroke-width="0.6"/><text x="114" y="50" text-anchor="end">4</text><line x1="23" x2="215" y1="23" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><text x="226" y="138">x</text><text x="126" y="13">y</text></g></svg></div><strong>Remaining answers and reasoning</strong><div class="work-lines medium"><hr><hr></div></div></article><p class="footer">Prep Test 2 | Question 1 of 8</p></section><section class="exam-section test-page" data-question="2" data-points="12" data-minutes="8"><div class="section-heading"><h2>Question 2</h2><span class="section-meta">8 minutes | 12 points</span></div><article class="question" id="q2"><div class="question-header"><span class="question-number">2</span><span class="question-title">Transform a given graph</span><span class="points">12 points</span></div><div class="question-body question-text"><p>The graph of f is shown below. Its vertices are (-3,1), (-1,-2), (2,0), and (4,2), joined by straight segments, with included endpoints. Let \(h(x)=-f(x-2)+1\).</p><p>(a) Graph h on the provided grid. Label all vertices with their coordinates and mark the endpoints. Use axes x=-2 to 8, y=-2 to 4, one unit per square.</p><p>(b) Give the domain and range of h.</p><div class="given-row"><figure class="given"><figcaption>Given graph: f</figcaption><svg class="print-grid" viewBox="0 0 262 190" role="img" aria-label="Given graph; x -4 to 5, y -3 to 3"><g font-family="Arial" font-size="9"><line x1="23" x2="23" y1="167" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><text x="23" y="108" text-anchor="middle">-4</text><line x1="47" x2="47" y1="167" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><line x1="71" x2="71" y1="167" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><text x="71" y="108" text-anchor="middle">-2</text><line x1="95" x2="95" y1="167" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><line x1="119" x2="119" y1="167" y2="23" stroke="#111" stroke-width="1.6"/><text x="119" y="108" text-anchor="middle">0</text><line x1="143" x2="143" y1="167" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><line x1="167" x2="167" y1="167" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><text x="167" y="108" text-anchor="middle">2</text><line x1="191" x2="191" y1="167" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><line x1="215" x2="215" y1="167" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><text x="215" y="108" text-anchor="middle">4</text><line x1="239" x2="239" y1="167" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><line x1="23" x2="239" y1="167" y2="167" stroke="#ccd1d8" stroke-width="0.6"/><line x1="23" x2="239" y1="143" y2="143" stroke="#ccd1d8" stroke-width="0.6"/><text x="114" y="146" text-anchor="end">-2</text><line x1="23" x2="239" y1="119" y2="119" stroke="#ccd1d8" stroke-width="0.6"/><line x1="23" x2="239" y1="95" y2="95" stroke="#111" stroke-width="1.6"/><line x1="23" x2="239" y1="71" y2="71" stroke="#ccd1d8" stroke-width="0.6"/><line x1="23" x2="239" y1="47" y2="47" stroke="#ccd1d8" stroke-width="0.6"/><text x="114" y="50" text-anchor="end">2</text><line x1="23" x2="239" y1="23" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><polyline points="47,71 95,143 167,95 215,47" fill="none" stroke="#111" stroke-width="2"/><circle cx="47" cy="71" r="2.5"/><circle cx="95" cy="143" r="2.5"/><circle cx="167" cy="95" r="2.5"/><circle cx="215" cy="47" r="2.5"/><text x="250" y="90">x</text><text x="126" y="13">y</text></g></svg></figure><div class="mapping-work"><strong>Work space</strong><div class="work-lines tall"><hr><hr><hr><hr></div></div></div><div class="graph-work"><strong>Your graph: one unit per square</strong><svg class="print-grid" viewBox="0 0 286 190" role="img" aria-label="Blank coordinate grid; x -2 to 8, y -2 to 4"><g font-family="Arial" font-size="9"><line x1="23" x2="23" y1="167" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><text x="23" y="132" text-anchor="middle">-2</text><line x1="47" x2="47" y1="167" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><line x1="71" x2="71" y1="167" y2="23" stroke="#111" stroke-width="1.6"/><text x="71" y="132" text-anchor="middle">0</text><line x1="95" x2="95" y1="167" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><line x1="119" x2="119" y1="167" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><text x="119" y="132" text-anchor="middle">2</text><line x1="143" x2="143" y1="167" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><line x1="167" x2="167" y1="167" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><text x="167" y="132" text-anchor="middle">4</text><line x1="191" x2="191" y1="167" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><line x1="215" x2="215" y1="167" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><text x="215" y="132" text-anchor="middle">6</text><line x1="239" x2="239" y1="167" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><line x1="263" x2="263" y1="167" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><text x="263" y="132" text-anchor="middle">8</text><line x1="23" x2="263" y1="167" y2="167" stroke="#ccd1d8" stroke-width="0.6"/><text x="66" y="170" text-anchor="end">-2</text><line x1="23" x2="263" y1="143" y2="143" stroke="#ccd1d8" stroke-width="0.6"/><line x1="23" x2="263" y1="119" y2="119" stroke="#111" stroke-width="1.6"/><line x1="23" x2="263" y1="95" y2="95" stroke="#ccd1d8" stroke-width="0.6"/><line x1="23" x2="263" y1="71" y2="71" stroke="#ccd1d8" stroke-width="0.6"/><text x="66" y="74" text-anchor="end">2</text><line x1="23" x2="263" y1="47" y2="47" stroke="#ccd1d8" stroke-width="0.6"/><line x1="23" x2="263" y1="23" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><text x="66" y="26" text-anchor="end">4</text><text x="274" y="114">x</text><text x="78" y="13">y</text></g></svg></div><strong>Remaining answers and reasoning</strong><div class="work-lines medium"><hr><hr></div></div></article><p class="footer">Prep Test 2 | Question 2 of 8</p></section><section class="exam-section test-page" data-question="3" data-points="18" data-minutes="12"><div class="section-heading"><h2>Question 3</h2><span class="section-meta">12 minutes | 18 points</span></div><article class="question" id="q3"><div class="question-header"><span class="question-number">3</span><span class="question-title">Graph both composition orders</span><span class="points">18 points</span></div><div class="question-body question-text"><p>The graph of f consists of straight segments through (-3,-1), (-1,3), (2,0), (4,2), in that order, with included endpoints. Let g(x)=2-x.</p><p>(a) Make a transformed-vertex table for f(g(x)) and for g(f(x)). Show the coordinate rule for each.</p><p>(b) On one grid, graph f(g(x)) with a solid line and g(f(x)) with a dashed line. Label every vertex with its coordinates and name each graph. Use axes x=-4 to 6, y=-3 to 4, one unit per square. Do not extend beyond the mapped endpoints.</p><p>(c) Give both domains. Explain why the source vertices appear in reversed left-to-right order in one composition.</p><div class="given-row"><figure class="given"><figcaption>Given graph: f</figcaption><svg class="print-grid" viewBox="0 0 286 214" role="img" aria-label="Given graph; x -4 to 6, y -3 to 4"><g font-family="Arial" font-size="9"><line x1="23" x2="23" y1="191" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><text x="23" y="132" text-anchor="middle">-4</text><line x1="47" x2="47" y1="191" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><line x1="71" x2="71" y1="191" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><text x="71" y="132" text-anchor="middle">-2</text><line x1="95" x2="95" y1="191" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><line x1="119" x2="119" y1="191" y2="23" stroke="#111" stroke-width="1.6"/><text x="119" y="132" text-anchor="middle">0</text><line x1="143" x2="143" y1="191" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><line x1="167" x2="167" y1="191" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><text x="167" y="132" text-anchor="middle">2</text><line x1="191" x2="191" y1="191" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><line x1="215" x2="215" y1="191" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><text x="215" y="132" text-anchor="middle">4</text><line x1="239" x2="239" y1="191" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><line x1="263" x2="263" y1="191" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><text x="263" y="132" text-anchor="middle">6</text><line x1="23" x2="263" y1="191" y2="191" stroke="#ccd1d8" stroke-width="0.6"/><line x1="23" x2="263" y1="167" y2="167" stroke="#ccd1d8" stroke-width="0.6"/><text x="114" y="170" text-anchor="end">-2</text><line x1="23" x2="263" y1="143" y2="143" stroke="#ccd1d8" stroke-width="0.6"/><line x1="23" x2="263" y1="119" y2="119" stroke="#111" stroke-width="1.6"/><line x1="23" x2="263" y1="95" y2="95" stroke="#ccd1d8" stroke-width="0.6"/><line x1="23" x2="263" y1="71" y2="71" stroke="#ccd1d8" stroke-width="0.6"/><text x="114" y="74" text-anchor="end">2</text><line x1="23" x2="263" y1="47" y2="47" stroke="#ccd1d8" stroke-width="0.6"/><line x1="23" x2="263" y1="23" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><text x="114" y="26" text-anchor="end">4</text><polyline points="47,143 95,47 167,119 215,71" fill="none" stroke="#111" stroke-width="2"/><circle cx="47" cy="143" r="2.5"/><circle cx="95" cy="47" r="2.5"/><circle cx="167" cy="119" r="2.5"/><circle cx="215" cy="71" r="2.5"/><text x="274" y="114">x</text><text x="126" y="13">y</text></g></svg></figure><div class="mapping-work"><strong>Work space</strong><div class="work-lines tall"><hr><hr><hr><hr></div></div></div><div class="graph-work"><strong>Your graph: one unit per square</strong><svg class="print-grid" viewBox="0 0 286 214" role="img" aria-label="Blank coordinate grid; x -4 to 6, y -3 to 4"><g font-family="Arial" font-size="9"><line x1="23" x2="23" y1="191" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><text x="23" y="132" text-anchor="middle">-4</text><line x1="47" x2="47" y1="191" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><line x1="71" x2="71" y1="191" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><text x="71" y="132" text-anchor="middle">-2</text><line x1="95" x2="95" y1="191" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><line x1="119" x2="119" y1="191" y2="23" stroke="#111" stroke-width="1.6"/><text x="119" y="132" text-anchor="middle">0</text><line x1="143" x2="143" y1="191" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><line x1="167" x2="167" y1="191" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><text x="167" y="132" text-anchor="middle">2</text><line x1="191" x2="191" y1="191" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><line x1="215" x2="215" y1="191" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><text x="215" y="132" text-anchor="middle">4</text><line x1="239" x2="239" y1="191" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><line x1="263" x2="263" y1="191" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><text x="263" y="132" text-anchor="middle">6</text><line x1="23" x2="263" y1="191" y2="191" stroke="#ccd1d8" stroke-width="0.6"/><line x1="23" x2="263" y1="167" y2="167" stroke="#ccd1d8" stroke-width="0.6"/><text x="114" y="170" text-anchor="end">-2</text><line x1="23" x2="263" y1="143" y2="143" stroke="#ccd1d8" stroke-width="0.6"/><line x1="23" x2="263" y1="119" y2="119" stroke="#111" stroke-width="1.6"/><line x1="23" x2="263" y1="95" y2="95" stroke="#ccd1d8" stroke-width="0.6"/><line x1="23" x2="263" y1="71" y2="71" stroke="#ccd1d8" stroke-width="0.6"/><text x="114" y="74" text-anchor="end">2</text><line x1="23" x2="263" y1="47" y2="47" stroke="#ccd1d8" stroke-width="0.6"/><line x1="23" x2="263" y1="23" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><text x="114" y="26" text-anchor="end">4</text><text x="274" y="114">x</text><text x="126" y="13">y</text></g></svg></div><strong>Remaining answers and reasoning</strong><div class="work-lines medium"><hr><hr></div></div></article><p class="footer">Prep Test 2 | Question 3 of 8</p></section><section class="exam-section test-page" data-question="4" data-points="12" data-minutes="8"><div class="section-heading"><h2>Question 4</h2><span class="section-meta">8 minutes | 12 points</span></div><article class="question" id="q4"><div class="question-header"><span class="question-number">4</span><span class="question-title">Evaluate and analyze two graphs</span><span class="points">12 points</span></div><div class="question-body question-text"><p>Both graphs consist of straight segments joining the listed vertices, with included endpoints. f: (-4,2), (-2,-2), (1,1), (4,-2). g: (-3,0), (0,3), (3,0). The graphs below use axes x=-5 to 5, y=-3 to 4, one unit per grid line.</p><p>(a) Find f(-1) and g(-1).</p><p>(b) Find g(f(-1)) and f(g(-1)). Show your work.</p><p>(c) Give all zeros of f and its increasing and decreasing intervals.</p><div class="given-row"><figure class="given"><figcaption>Given graph: f solid; g dashed</figcaption><svg class="print-grid" viewBox="0 0 286 214" role="img" aria-label="Given graph; x -5 to 5, y -3 to 4"><g font-family="Arial" font-size="9"><line x1="23" x2="23" y1="191" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><line x1="47" x2="47" y1="191" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><text x="47" y="132" text-anchor="middle">-4</text><line x1="71" x2="71" y1="191" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><line x1="95" x2="95" y1="191" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><text x="95" y="132" text-anchor="middle">-2</text><line x1="119" x2="119" y1="191" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><line x1="143" x2="143" y1="191" y2="23" stroke="#111" stroke-width="1.6"/><text x="143" y="132" text-anchor="middle">0</text><line x1="167" x2="167" y1="191" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><line x1="191" x2="191" y1="191" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><text x="191" y="132" text-anchor="middle">2</text><line x1="215" x2="215" y1="191" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><line x1="239" x2="239" y1="191" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><text x="239" y="132" text-anchor="middle">4</text><line x1="263" x2="263" y1="191" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><line x1="23" x2="263" y1="191" y2="191" stroke="#ccd1d8" stroke-width="0.6"/><line x1="23" x2="263" y1="167" y2="167" stroke="#ccd1d8" stroke-width="0.6"/><text x="138" y="170" text-anchor="end">-2</text><line x1="23" x2="263" y1="143" y2="143" stroke="#ccd1d8" stroke-width="0.6"/><line x1="23" x2="263" y1="119" y2="119" stroke="#111" stroke-width="1.6"/><line x1="23" x2="263" y1="95" y2="95" stroke="#ccd1d8" stroke-width="0.6"/><line x1="23" x2="263" y1="71" y2="71" stroke="#ccd1d8" stroke-width="0.6"/><text x="138" y="74" text-anchor="end">2</text><line x1="23" x2="263" y1="47" y2="47" stroke="#ccd1d8" stroke-width="0.6"/><line x1="23" x2="263" y1="23" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><text x="138" y="26" text-anchor="end">4</text><polyline points="47,71 95,167 167,95 239,167" fill="none" stroke="#111" stroke-width="2"/><circle cx="47" cy="71" r="2.5"/><circle cx="95" cy="167" r="2.5"/><circle cx="167" cy="95" r="2.5"/><circle cx="239" cy="167" r="2.5"/><polyline points="71,119 143,47 215,119" fill="none" stroke="#111" stroke-width="2" stroke-dasharray="6 4"/><circle cx="71" cy="119" r="2.5"/><circle cx="143" cy="47" r="2.5"/><circle cx="215" cy="119" r="2.5"/><text x="274" y="114">x</text><text x="150" y="13">y</text></g></svg></figure><div class="mapping-work"><strong>Work space</strong><div class="work-lines tall"><hr><hr><hr><hr></div></div></div><strong>Remaining answers and reasoning</strong><div class="work-lines medium"><hr><hr></div></div></article><p class="footer">Prep Test 2 | Question 4 of 8</p></section><section class="exam-section test-page" data-question="5" data-points="10" data-minutes="7"><div class="section-heading"><h2>Question 5</h2><span class="section-meta">7 minutes | 10 points</span></div><article class="question" id="q5"><div class="question-header"><span class="question-number">5</span><span class="question-title">Build a graph from its characteristics</span><span class="points">10 points</span></div><div class="question-body question-text"><p>Find a function of the form \(q(x)=a|x-h|+k\) with domain all real numbers, range (-infinity,4], maximum (2,4), and y-intercept (0,0).</p><p>(a) Find a, h, and k and write q(x). Show how the intercept determines a.</p><p>(b) Graph q on axes x=-2 to 6, y=-5 to 5, one unit per square. Label the vertex and both x-intercepts; draw arrows.</p><p>(c) State where q increases and decreases, and confirm its domain and range.</p><div class="graph-work"><strong>Your graph: one unit per square</strong><svg class="print-grid" viewBox="0 0 238 286" role="img" aria-label="Blank coordinate grid; x -2 to 6, y -5 to 5"><g font-family="Arial" font-size="9"><line x1="23" x2="23" y1="263" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><text x="23" y="156" text-anchor="middle">-2</text><line x1="47" x2="47" y1="263" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><line x1="71" x2="71" y1="263" y2="23" stroke="#111" stroke-width="1.6"/><text x="71" y="156" text-anchor="middle">0</text><line x1="95" x2="95" y1="263" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><line x1="119" x2="119" y1="263" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><text x="119" y="156" text-anchor="middle">2</text><line x1="143" x2="143" y1="263" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><line x1="167" x2="167" y1="263" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><text x="167" y="156" text-anchor="middle">4</text><line x1="191" x2="191" y1="263" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><line x1="215" x2="215" y1="263" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><text x="215" y="156" text-anchor="middle">6</text><line x1="23" x2="215" y1="263" y2="263" stroke="#ccd1d8" stroke-width="0.6"/><line x1="23" x2="215" y1="239" y2="239" stroke="#ccd1d8" stroke-width="0.6"/><text x="66" y="242" text-anchor="end">-4</text><line x1="23" x2="215" y1="215" y2="215" stroke="#ccd1d8" stroke-width="0.6"/><line x1="23" x2="215" y1="191" y2="191" stroke="#ccd1d8" stroke-width="0.6"/><text x="66" y="194" text-anchor="end">-2</text><line x1="23" x2="215" y1="167" y2="167" stroke="#ccd1d8" stroke-width="0.6"/><line x1="23" x2="215" y1="143" y2="143" stroke="#111" stroke-width="1.6"/><line x1="23" x2="215" y1="119" y2="119" stroke="#ccd1d8" stroke-width="0.6"/><line x1="23" x2="215" y1="95" y2="95" stroke="#ccd1d8" stroke-width="0.6"/><text x="66" y="98" text-anchor="end">2</text><line x1="23" x2="215" y1="71" y2="71" stroke="#ccd1d8" stroke-width="0.6"/><line x1="23" x2="215" y1="47" y2="47" stroke="#ccd1d8" stroke-width="0.6"/><text x="66" y="50" text-anchor="end">4</text><line x1="23" x2="215" y1="23" y2="23" stroke="#ccd1d8" stroke-width="0.6"/><text x="226" y="138">x</text><text x="78" y="13">y</text></g></svg></div><strong>Remaining answers and reasoning</strong><div class="work-lines medium"><hr><hr></div></div></article><p class="footer">Prep Test 2 | Question 5 of 8</p></section><section class="exam-section test-page" data-question="6" data-points="14" data-minutes="10"><div class="section-heading"><h2>Question 6</h2><span class="section-meta">10 minutes | 14 points</span></div><article class="question" id="q6"><div class="question-header"><span class="question-number">6</span><span class="question-title">Construct and sketch a polynomial</span><span class="points">14 points</span></div><div class="question-body question-text"><p>A degree-5 polynomial P has exactly two distinct real zeros: -2 with multiplicity 2, and 1 with multiplicity 3. It passes through (0,-8).</p><p>(a) Find P in factored form and show how you determine its leading factor.</p><p>(b) Make a qualitative sketch. Label both zeros and the y-intercept, show the correct ends, and show the graph's behavior at each zero. Exact extrema are not required; the sketch need not use a uniform vertical scale.</p><p>(c) State the intervals where \(P(x)&gt;0\) and \(P(x)&lt;0\). Explain where the sign changes and where it does not.</p><div class="sketch-space"><strong>Your qualitative sketch (label axes and intercepts)</strong></div><strong>Remaining answers and reasoning</strong><div class="work-lines medium"><hr><hr></div></div></article><p class="footer">Prep Test 2 | Question 6 of 8</p></section><section class="exam-section test-page" data-question="7" data-points="12" data-minutes="9"><div class="section-heading"><h2>Question 7</h2><span class="section-meta">9 minutes | 12 points</span></div><article class="question" id="q7"><div class="question-header"><span class="question-number">7</span><span class="question-title">Compose functions and find a domain</span><span class="points">12 points</span></div><div class="question-body question-text"><p>Let \(f(t)=\sqrt{t}\), \(g(x)=9-x^2\), and \(H(x)=\frac{f(g(x))}{g(x)-5}\).</p><p>(a) Write H as one expression in x.</p><p>(b) Find the domain in interval notation. Show why each excluded value is excluded.</p><p>(c) Is x=3 allowed? Is x=2 allowed? Explain using the original expression.</p><strong>Remaining answers and reasoning</strong><div class="work-lines xtall"><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr></div></div></article><p class="footer">Prep Test 2 | Question 7 of 8</p></section><section class="exam-section test-page" data-question="8" data-points="10" data-minutes="8"><div class="section-heading"><h2>Question 8</h2><span class="section-meta">8 minutes | 10 points</span></div><article class="question" id="q8"><div class="question-header"><span class="question-number">8</span><span class="question-title">Analyze and sketch a quartic</span><span class="points">10 points</span></div><div class="question-body question-text"><p>Let \(R(x)=-(x+2)(x-1)^2(x-3)\).</p><p>(a) State the degree, leading coefficient, zeros, and multiplicities. Find the y-intercept.</p><p>(b) Make a qualitative sketch with all intercepts labeled and arrows on both ends. Show which zeros cross and which touch. Exact extrema and a uniform vertical scale are not required.</p><p>(c) State the intervals where \(R(x)&gt;0\) and \(R(x)&lt;0\). Compare its end behavior with the polynomial in Question 6.</p><div class="sketch-space"><strong>Your qualitative sketch (label axes and intercepts)</strong></div><strong>Remaining answers and reasoning</strong><div class="work-lines medium"><hr><hr></div></div></article><p class="footer">Prep Test 2 | Question 8 of 8</p></section></main><script>window.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"\\(",right:"\\)",display:false}]});});</script></body></html>

@@ -27,11 +27,11 @@ data.questions.forEach((q, index) => {
 const p = x => x < -1 ? 2*x+4 : 3;
 assert.deepEqual([-2,-1,2].map(p), [0,3,3]);
 const transformSource = [[-3,1],[-1,-2],[2,0],[4,2]];
-assert.deepEqual(transformSource.map(([u,v])=>[2*u+1,-2*v+1]),[[-5,-1],[-1,5],[5,1],[9,-3]]);
-assert.deepEqual([-3,4].map(u=>2*u+1),[-5,9]);
-assert.deepEqual([-2,2].map(v=>-2*v+1).sort((a,b)=>a-b),[-3,5]);
-assert.equal((5-1)/2,2);
-assert.equal(-2*0+1,1);
+assert.deepEqual(transformSource.map(([u,v])=>[u+2,1-v]),[[-1,0],[1,3],[4,1],[6,-1]]);
+assert.deepEqual([-3,4].map(u=>u+2),[-1,6]);
+assert.deepEqual([-2,2].map(v=>1-v).sort((a,b)=>a-b),[-1,3]);
+assert.equal(data.questions[1].stem.length,3);
+assert.doesNotMatch(data.questions[1].stem.join(' '),/derive|table|\/2|point check/);
 const source = [[-3,-1],[-1,3],[2,0],[4,2]];
 assert.deepEqual(source.map(([u,v])=>[2-u,v]).sort((a,b)=>a[0]-b[0]), [[-2,2],[0,0],[3,3],[5,-1]]);
 assert.deepEqual(source.map(([u,v])=>[u,2-v]), [[-3,3],[-1,-1],[2,2],[4,0]]);

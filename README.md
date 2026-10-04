@@ -16,6 +16,8 @@ Scorecards and assessment HTML pages use a top-of-page `Back to Dashboard` link 
 
 The [Prep Test 2 question proposal](reviews/prep-test-2-proposal.html) is a draft for parent review: 8 questions, 100 points, and 70 minutes of work plus 5 minutes to check. Two polynomial sketch questions cover degrees 4 and 5 (24 points, 18 minutes), balanced with piecewise, transformation, characteristic, composition, graph-reading, and domain questions. It includes worked answers and partial-credit rubrics; it is not an approved student test.
 
+The reviewed set is now built as a [printable Prep Test 2](tests/assessment-2-functions-75min.pdf), with [student HTML](tests/assessment-2-functions-75min.html) and a separate [parent key PDF](tests/assessment-2-functions-75min-KEY.pdf) / [key HTML](tests/assessment-2-functions-75min-KEY.html). The student copy follows the previous test's format and keeps answers separate. Regenerate the HTML with `node scripts/build-prep-test-2.cjs`; the source proposal remains the editable question source. No dashboard entry or score is added by this build.
+
 12 practice tests covering 5 Algebra II units with ~200 questions. Each test is a standalone HTML file — open it in a browser and start studying. Standards-aligned to Seattle Academy (SAAS) curriculum.
 
 ### Units Covered

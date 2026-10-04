@@ -1,0 +1,240 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="duration-minutes" content="75"><meta name="total-points" content="100"><title>Parent Key: Pre-Calculus Prep Test 2</title><link rel="stylesheet" href="../shared/katex/katex.min.css"><script defer src="../shared/katex/katex.min.js"></script><script defer src="../shared/katex/auto-render.min.js"></script><style>
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #171717;
+      background: #eef1f5;
+    }
+
+    * { box-sizing: border-box; }
+    body { margin: 0; font-size: 16px; line-height: 1.45; }
+    main { width: min(850px, 100%); margin: 0 auto; padding: 24px; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { margin-bottom: 4px; font-size: 28px; line-height: 1.15; }
+    h2 { margin-bottom: 6px; font-size: 20px; }
+    p { margin-bottom: 9px; }
+    .screen-only { display: block; }
+    .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; color: #1d42ba; text-decoration: none; margin-bottom: 16px; }
+    .back-link:hover { text-decoration: underline; }
+    .exam-header, .directions, .exam-section {
+      background: #fff;
+      border: 1px solid #cbd0d8;
+      border-radius: 8px;
+      margin-bottom: 16px;
+      padding: 18px 20px;
+    }
+    .exam-header { border-top: 6px solid #c8102e; }
+    .eyebrow {
+      color: #1d42ba;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      margin-bottom: 7px;
+      text-transform: uppercase;
+    }
+    .subtitle { color: #4b5563; margin-bottom: 14px; }
+    .student-fields {
+      display: grid;
+      grid-template-columns: 1fr 180px;
+      gap: 14px;
+      margin-top: 14px;
+    }
+    .field-line { border-bottom: 1px solid #333; display: inline-block; min-width: 100px; }
+    .directions { border-left: 4px solid #1d42ba; }
+    .directions ul { margin: 8px 0 0; padding-left: 21px; }
+    .directions li { margin: 4px 0; }
+    .section-heading {
+      align-items: baseline;
+      border-bottom: 2px solid #1d42ba;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 14px;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+    }
+    .section-heading h2 { margin: 0; }
+    .section-meta { color: #424242; font-size: 13px; font-weight: 700; }
+    .question {
+      border: 1px solid #bfc5ce;
+      border-radius: 6px;
+      margin: 12px 0;
+      overflow: hidden;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+    .question-header {
+      align-items: center;
+      background: #f1f3f6;
+      border-bottom: 1px solid #cbd0d8;
+      display: flex;
+      gap: 10px;
+      padding: 8px 11px;
+    }
+    .question-number {
+      align-items: center;
+      background: #002d62;
+      border-radius: 4px;
+      color: #fff;
+      display: inline-flex;
+      flex: 0 0 28px;
+      font-weight: 800;
+      height: 28px;
+      justify-content: center;
+    }
+    .question-title { flex: 1; font-weight: 700; }
+    .points { color: #424242; font-size: 13px; font-weight: 700; white-space: nowrap; }
+    .question-body { padding: 12px 14px; }
+    .question-body > :last-child { margin-bottom: 0; }
+    .parts { list-style: none; margin: 8px 0 0; padding: 0; }
+    .parts li { margin: 10px 0; }
+    .part-label { font-weight: 700; }
+    .work-lines {
+      background-image: repeating-linear-gradient(to bottom, transparent 0, transparent 25px, #b7bdc7 26px, transparent 27px);
+      height: 56px;
+      margin-top: 5px;
+    }
+    .work-lines.medium { height: 82px; }
+    .work-lines.tall { height: 112px; }
+    .work-lines.xtall { height: 140px; }
+    .vertex-table, .value-table {
+      border-collapse: collapse;
+      margin: 10px 0;
+      width: 100%;
+    }
+    .vertex-table th, .vertex-table td,
+    .value-table th, .value-table td {
+      border: 1px solid #626b78;
+      padding: 5px 8px;
+      text-align: center;
+    }
+    .vertex-table th, .value-table th { background: #f1f3f6; }
+    .grid-instructions { color: #424242; font-size: 13px; margin: 10px 0 5px; }
+    .coordinate-grid-wrap {
+      aspect-ratio: 1;
+      margin: 8px 0 5px;
+      max-width: 4.65in;
+      position: relative;
+      width: min(100%, 4.65in);
+    }
+    .coordinate-grid {
+      border-collapse: collapse;
+      height: 100%;
+      table-layout: fixed;
+      width: 100%;
+    }
+    .coordinate-grid td {
+      border: 1px solid #c4c9d1;
+      color: #414141;
+      font-size: 8px;
+      height: 7.69%;
+      padding: 0;
+      position: relative;
+      text-align: center;
+      vertical-align: middle;
+      width: 7.69%;
+    }
+    .graph-overlay {
+      height: 100%;
+      left: 0;
+      overflow: visible;
+      pointer-events: none;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+    .graph-overlay .axis { stroke: #111; stroke-width: .06; }
+    .graph-overlay .tick { stroke: #111; stroke-width: .045; }
+    .graph-overlay text {
+      fill: #111;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: .34px;
+      paint-order: stroke;
+      stroke: #fff;
+      stroke-linejoin: round;
+      stroke-width: .04;
+      text-anchor: middle;
+    }
+    .graph-overlay text.y-tick-label { text-anchor: end; }
+    .graph-overlay polyline { fill: none; stroke: #111; stroke-linejoin: round; stroke-width: .07; }
+    .graph-overlay polyline.polynomial-curve { stroke: #8b1e3f; stroke-width: .065; }
+    .graph-overlay circle { fill: #111; }
+    .note { color: #414141; font-size: 13px; }
+    .page-break-before { break-before: page; page-break-before: always; }
+    .footer { color: #555; font-size: 12px; margin-top: 18px; text-align: center; }
+
+    @media (max-width: 600px) {
+      main { padding: 12px; }
+      .student-fields { grid-template-columns: 1fr; }
+      .exam-header, .directions, .exam-section { padding: 14px; }
+    }
+
+    @page { size: letter; margin: .55in; }
+    @media print {
+      :root, body { background: #fff !important; color: #111 !important; }
+      * {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      body { font-size: 10pt; line-height: 1.35; }
+      main { margin: 0; max-width: none; padding: 0; width: auto; }
+      h1 { font-size: 19pt; }
+      h2 { font-size: 13pt; }
+      .screen-only { display: none !important; }
+      .exam-header, .directions, .exam-section {
+        background: #fff !important;
+        border-color: #777;
+        border-radius: 0;
+        box-shadow: none;
+        margin-bottom: 10px;
+        padding: 10px 12px;
+      }
+      .exam-header { border-top: 4px solid #000; }
+      .directions { border-left: 3px solid #000; }
+      .eyebrow, .subtitle, .section-meta, .note, .grid-instructions { color: #222 !important; }
+      .section-heading { border-color: #333; margin-bottom: 8px; }
+      .question { border-color: #777; border-radius: 0; margin: 8px 0; overflow: visible; }
+      .question-header, .vertex-table th, .value-table th {
+        background: #f0f0f0 !important;
+      }
+      .question-number { background: #111 !important; color: #fff !important; }
+      .question-body { padding: 9px 11px; }
+      .parts li { margin: 7px 0; }
+      .work-lines { height: 48px; }
+      .work-lines.medium { height: 68px; }
+      .work-lines.tall { height: 92px; }
+      .work-lines.xtall { height: 112px; }
+      .coordinate-grid-wrap { max-width: 4.45in; width: 4.45in; }
+      #q4 .coordinate-grid-wrap { max-width: 3.1in; width: 3.1in; }
+      .coordinate-grid td { border-color: #b8b8b8; }
+      .graph-overlay polyline { stroke: #111; }
+      .page-break-before { break-before: page; page-break-before: always; }
+      .exam-section.page-break-before { border: 0; padding: 0; }
+      .footer { color: #333; }
+    }
+
+.test-page { margin-bottom:20px; }
+.given-row { display:flex; align-items:start; gap:18px; margin:10px 0; }
+.given { margin:0; width:40%; }
+.mapping-work { flex:1; }
+.print-grid { width:100%; display:block; background:white; }
+.graph-work { width:65%; margin:10px 0; }
+.sketch-space { height:270px; border:1px solid #777; padding:8px; margin:12px 0; }
+.question-text p { margin:7px 0; }
+.work-lines { background-image:none; display:flex; flex-direction:column; justify-content:space-evenly; }
+.work-lines hr { width:100%; margin:0; border:0; border-top:1px solid #b7bdc7; }
+.key-block { break-inside:avoid; }
+button { padding:8px 16px; cursor:pointer; }
+@media print {
+ .test-page { break-before:page; margin:0; border:0; padding:0; }
+ .question { break-inside:auto; }
+ .question-text { font-size:10pt; }
+ .given { width:2.2in; }
+ .graph-work { width:3.9in; }
+ .sketch-space { height:3.5in; }
+ .work-lines.medium { height:0.65in; }
+ .work-lines.xtall { height:3.8in; }
+ .work-lines.tall { height:1.2in; }
+ .footer { margin:8px 0 0; }
+}
+</style></head><body><main><header class="exam-header"><div class="eyebrow">Motor City Math | Parent Copy</div><h1>Prep Test 2: Answer Key and Rubric</h1><p>75 minutes | 100 points | Keep separate from the student test.</p><p>Give follow-through credit: deduct an originating error once, not again for consistent later execution. Score missing parts separately. Do not require unrequested explanations or exact polynomial extrema.</p></header><section class="exam-section key-block"><h2>1. Finish a piecewise graph (12 points)</h2><ol><li>For -2 use 2x+4: p(-2)=0. At -1 and 2 use the constant branch: both values are 3.</li><li>Draw y=2x+4 to the left of an open (-1,2). Draw y=3 to the right of a closed (-1,3). The horizontal branch includes its boundary.</li><li>Every real x belongs to a branch, so the domain is all real numbers. The left branch gives every y below 2; the right branch adds only 3. Range: (-infinity,2) union {3}.</li></ol><p><strong>Scoring</strong></p><ul><li>3 points: Three evaluations, 1 each.</li><li>4 points: Correct branch shapes and sides, 2 each.</li><li>2 points: Boundary coordinates and open/closed marks, 1 per boundary.</li><li>3 points: Domain 1; complete range including its gap 2.</li></ul></section><section class="exam-section key-block"><h2>2. Transform both coordinates of a given graph (12 points)</h2><ol><li>For source point (u,v), the new point is (u+2,1-v): shift right 2, reflect across the x-axis, then shift up 1.</li><li>The vertices become (-1,0), (1,3), (4,1), and (6,-1). Join in order with straight segments and included endpoints.</li><li>Domain [-1,6]. The original range [-2,2] becomes [-1,3] after reflection and vertical shift.</li></ol><p><strong>Scoring</strong></p><ul><li>4 points: Four transformed vertices, 1 each.</li><li>2 points: Correctly connected straight segments. Preserve follow-through credit from an earlier coordinate error.</li><li>2 points: All coordinate labels 1; both included endpoints 1.</li><li>2 points: Domain.</li><li>2 points: Range.</li></ul></section><section class="exam-section key-block"><h2>3. Graph both composition orders with a reflection (18 points)</h2><ol><li>For source (u,v), solve 2-x=u, so f(g(x)) maps to (2-u,v). Left-to-right vertices: (-2,2), (0,0), (3,3), (5,-1). Domain [-2,5].</li><li>For g(f(x)), map (u,v) to (u,2-v). Vertices: (-3,3), (-1,-1), (2,2), (4,0). Domain [-3,4].</li><li>Connect each vertex set in its own left-to-right order. Use solid and dashed lines as specified and mark all endpoints included.</li><li>In f(g(x)), increasing the original u makes 2-u smaller: the horizontal reflection reverses vertex order. In g(f(x)), only vertical coordinates change.</li></ol><p><strong>Scoring</strong></p><ul><li>4 points: Two mapping rules, 2 each.</li><li>8 points: Four transformed vertices for each composition, 1 each.</li><li>3 points: Correct segment connections and included endpoints 2; all coordinate labels, graph names, and specified line styles 1 combined.</li><li>2 points: Domains, 1 each.</li><li>1 points: Explains horizontal reversal.</li></ul></section><section class="exam-section key-block"><h2>4. Read the graph before doing the next step (12 points)</h2><ol><li>Between (-2,-2) and (1,1), f(x)=x, so f(-1)=-1. On the left branch of g, g(x)=x+3, so g(-1)=2.</li><li>g(f(-1))=g(-1)=2. In the other order, f(g(-1))=f(2)=0, since the last segment of f has rule y=2-x.</li><li>The first segment of f has rule y=-2x-6, giving zero -3. The middle segment gives zero 0, and the last gives zero 2.</li><li>f increases on (-2,1) and decreases on (-4,-2) union (1,4). Turning-point x-coordinates, not the zeros, are interval boundaries.</li></ol><p><strong>Scoring</strong></p><ul><li>4 points: Two initial graph reads, 2 each.</li><li>4 points: Two nested evaluations, 2 each. Use follow-through credit for correctly evaluating the outside function at an earlier incorrect but defined value.</li><li>2 points: All three zeros: 0.5 each, plus 0.5 for a complete list with no extra zeros.</li><li>2 points: Increasing interval 1; two decreasing intervals 0.5 each. Award half of the interval credit when direction and one endpoint are correct.</li></ul></section><section class="exam-section key-block"><h2>5. Build and draw a graph from its characteristics (10 points)</h2><ol><li>The vertex gives h=2, k=4. Substitute (0,0): 0=2a+4, so a=-2. Thus q(x)=-2|x-2|+4.</li><li>The graph is a downward V with vertex (2,4), x-intercepts (0,0), (4,0), and rays extending both ways.</li><li>Increasing (-infinity,2); decreasing (2,infinity). Domain all real numbers; range (-infinity,4].</li></ol><p><strong>Scoring</strong></p><ul><li>3 points: Correct form from vertex 1; intercept calculation 1; final rule 1.</li><li>4 points: Downward V and continuing rays 1; vertex and both intercept labels, 1 each.</li><li>1 points: Increasing/decreasing intervals, 0.5 each.</li><li>2 points: Domain/range, 1 each.</li></ul></section><section class="exam-section key-block"><h2>6. Show a flattened crossing in a fifth-degree polynomial (14 points)</h2><ol><li>P(x)=a(x+2)^2(x-1)^3. From P(0)=-8, -4a=-8, so a=2.</li><li>P(x)=2(x+2)^2(x-1)^3 has positive leading coefficient and odd degree: left end down, right end up. Touch the axis at (-2,0) without changing sign; cross with horizontal flattening at (1,0). Label (0,-8).</li><li>The squared factor is positive except at -2; the cubic factor is negative below 1 and positive above 1. P&gt;0 on (1,infinity). P&lt;0 on (-infinity,-2) union (-2,1). Exclude both zeros from strict sign intervals.</li></ol><p><strong>Scoring</strong></p><ul><li>4 points: Multiplicity factors 2; leading-factor calculation and final equation 2.</li><li>1 points: Correct labeled y-intercept.</li><li>3 points: Both labeled zeros 1; touch at -2 1; clearly flattened crossing at 1 1.</li><li>2 points: Both end directions, 1 each.</li><li>4 points: Positive interval 1; negative intervals 2; explanation of sign change/no change 1.</li></ul></section><section class="exam-section key-block"><h2>7. Keep all restrictions in a composed quotient (12 points)</h2><ol><li>H(x)=sqrt(9-x^2)/(4-x^2).</li><li>The square root requires 9-x^2&gt;=0, giving -3&lt;=x&lt;=3. The denominator requires 4-x^2!=0, so exclude -2 and 2.</li><li>Domain [-3,-2) union (-2,2) union (2,3]. At 3, f(g(3))=sqrt(0)=0 and the denominator is -5, so it is allowed. At 2, g(2)=5, so the original denominator is zero and it is not allowed.</li></ol><p><strong>Scoring</strong></p><ul><li>3 points: Correct substitution in numerator 2 and denominator 1.</li><li>3 points: Radical inequality and bounded restriction.</li><li>2 points: Both denominator exclusions, 1 each.</li><li>2 points: Final interval intersection including the allowed endpoints.</li><li>2 points: Boundary checks and explanations, 1 each.</li></ul></section><section class="exam-section key-block"><h2>8. Sketch a quartic with crossings and a touch (10 points)</h2><ol><li>Degree 4, leading coefficient -1. Zeros -2 and 3 are simple; 1 has multiplicity 2. R(0)=-(2)(1)(-3)=6, so label (0,6).</li><li>Both ends fall. Cross upward at (-2,0), stay above the axis, touch and turn at (1,0), stay above until crossing downward at (3,0). Draw a smooth graph with a peak on each side of the touch; exact peaks are not requested.</li><li>R&gt;0 on (-2,1) union (1,3); R&lt;0 on (-infinity,-2) union (3,infinity). The even root does not change sign but is excluded from the strict-positive intervals.</li><li>Even degree makes the signs at the two far ends the same; the negative leading coefficient makes both ends fall. Odd degree makes the two ends opposite.</li></ol><p><strong>Scoring</strong></p><ul><li>2 points: Degree/leading coefficient 1; zeros and multiplicities 1.</li><li>1 points: Calculated and labeled y-intercept.</li><li>3 points: Labeled zeros 1; crossing/touch behavior 1; correctly signed smooth connections 1.</li><li>1 points: Both ends down.</li><li>2 points: Complete positive and negative interval lists, 1 each.</li><li>1 points: Even versus odd degree end-behavior explanation.</li></ul></section></main><script>window.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"\\(",right:"\\)",display:false}]});});</script></body></html>

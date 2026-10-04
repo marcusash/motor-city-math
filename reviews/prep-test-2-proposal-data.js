@@ -29,25 +29,23 @@ window.prepTest2Proposal = {
     {
       id: 2, title: 'Transform both coordinates of a given graph', difficulty: 2, points: 12, minutes: 8,
       target: 'Study Guide Q18; Prep Test 1 Q4/Q6. Marcus requests another check of horizontal and vertical graph transformations together. The supplied early photo has no added graph; the earlier review credited a later close-up, so this is a practice priority rather than proof of misunderstanding.',
-      extension: 'Unlike the original right shift and reflection alone, this combines horizontal stretching and shifting with vertical reflection, stretching, and shifting. Kai must derive both coordinate changes from the expression.',
+      extension: 'Keeps the original task type: a horizontal shift and vertical reflection, with a vertical shift added. No scaling, fractions, coordinate-rule derivation, or extra point check.',
       stem: [
-        'The graph of f consists of straight segments joining (-3,1), (-1,-2), (2,0), and (4,2), in that order, with included endpoints. Let h(x)=-2f((x-1)/2)+1.',
-        '(a) If (u,v) is on f, derive the coordinates of its corresponding point on h. Show an equation for the new x-coordinate and explain how the y-coordinate changes.',
-        '(b) Make a table of all four new vertices, then graph h. Label every vertex with its coordinates, connect with straight segments, and mark both endpoints included. Use axes x=-6 to 10, y=-4 to 6, one unit per square.',
-        '(c) Give the domain and range of h. Use the given graph to check whether (5,1) lies on h.'
+        'The graph of f is shown below. Its vertices are (-3,1), (-1,-2), (2,0), and (4,2), joined by straight segments, with included endpoints. Let h(x)=-f(x-2)+1.',
+        '(a) Graph h on the provided grid. Label all vertices with their coordinates and mark the endpoints. Use axes x=-2 to 8, y=-2 to 4, one unit per square.',
+        '(b) Give the domain and range of h.'
       ],
       steps: [
-        'Set (x-1)/2=u, giving x=2u+1. The new y is -2v+1. Thus map (u,v) to (2u+1,-2v+1): stretch horizontally by 2 then shift right 1; reflect vertically, stretch by 2, then shift up 1.',
-        'The new vertices are (-5,-1), (-1,5), (5,1), and (9,-3). Join in order with straight segments and included endpoints.',
-        'The original domain [-3,4] maps to [-5,9]. The original range [-2,2] maps to [-3,5]; the vertical reflection reverses the order of the range endpoints.',
-        'At x=5 the inside value is (5-1)/2=2. The given graph has f(2)=0, so h(5)=-2(0)+1=1. The point belongs.'
+        'For source point (u,v), the new point is (u+2,1-v): shift right 2, reflect across the x-axis, then shift up 1.',
+        'The vertices become (-1,0), (1,3), (4,1), and (6,-1). Join in order with straight segments and included endpoints.',
+        'Domain [-1,6]. The original range [-2,2] becomes [-1,3] after reflection and vertical shift.'
       ],
       rubric: [
-        { points: 3, text: 'Derived x-coordinate 2; explained y-coordinate change 1.' },
         { points: 4, text: 'Four transformed vertices, 1 each.' },
-        { points: 2, text: 'Connected graph with included endpoints 1; all coordinate labels 1. Preserve plotting credit for a correctly plotted earlier table error.' },
-        { points: 2, text: 'Domain and range, 1 each.' },
-        { points: 1, text: 'Inside value, graph read, and membership check.' }
+        { points: 2, text: 'Correctly connected straight segments. Preserve follow-through credit from an earlier coordinate error.' },
+        { points: 2, text: 'All coordinate labels 1; both included endpoints 1.' },
+        { points: 2, text: 'Domain.' },
+        { points: 2, text: 'Range.' }
       ],
       graphs: [
         { label: 'Given graph of f for Question 2', x: [-4,5], y: [-3,3], lines: [{ name: 'f', vertices: [[-3,1],[-1,-2],[2,0],[4,2]] }] }
