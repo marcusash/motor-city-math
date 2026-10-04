@@ -125,6 +125,10 @@ student+=`<header class="exam-header"><div class="eyebrow">Motor City Math | Pre
 for(const q of data.questions) {
   student+=`<section class="exam-section test-page" data-question="${q.id}" data-points="${q.points}" data-minutes="${q.minutes}"><div class="section-heading"><h2>Question ${q.id}</h2><span class="section-meta">${q.minutes} minutes | ${q.points} points</span></div><article class="question" id="q${q.id}"><div class="question-header"><span class="question-number">${q.id}</span><span class="question-title">${escape(studentTitles[q.id])}</span><span class="points">${q.points} points</span></div><div class="question-body question-text">${studentStem(q).map(part=>`<p>${text(part)}</p>`).join('')}${workspace(q)}</div></article><p class="footer">Prep Test 2 | Question ${q.id} of ${data.questions.length}</p></section>`;
 }
+student=student
+  .replace(/<li>Suggested question times total 70 minutes, with a final 5 minutes for review\.<\/li>/,'')
+  .replace(/<section class="exam-section"><h2>Suggested timing<\/h2>[\s\S]*?<\/section>/,'')
+  .replace(/<span class="section-meta">\d+ minutes \| /g,'<span class="section-meta">');
 student+='</main>'+render+'</body></html>';
 student=student.replace(/<div class="work-lines (tall|medium|xtall)"><\/div>/g,(_,size)=>`<div class="work-lines ${size}">${'<hr>'.repeat(size==='xtall'?10:size==='tall'?4:2)}</div>`);
 let key=head('Parent Key: Pre-Calculus Prep Test 2');
