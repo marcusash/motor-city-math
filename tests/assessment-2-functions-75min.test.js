@@ -1,0 +1,61 @@
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const path = require('node:path');
+const vm = require('node:vm');
+const root = path.resolve(__dirname,'..');
+const context = { window:{} };
+vm.runInNewContext(fs.readFileSync(path.join(root,'reviews','prep-test-2-proposal-data.js'),'utf8'),context);
+const questions = context.window.prepTest2Proposal.questions;
+const student = fs.readFileSync(path.join(__dirname,'assessment-2-functions-75min.html'),'utf8');
+const key = fs.readFileSync(path.join(__dirname,'assessment-2-functions-75min-KEY.html'),'utf8');
+assert.equal((student.match(/data-question="/g)||[]).length,10);
+assert.equal([...student.matchAll(/data-points="(\d+)"/g)].reduce((sum,m)=>sum+Number(m[1]),0),100);
+assert.equal([...student.matchAll(/data-minutes="(\d+)"/g)].reduce((sum,m)=>sum+Number(m[1]),0),70);
+assert.equal((student.match(/<svg (?:class="print-grid"|viewBox="0 0 600 600")/g)||[]).length,8);
+const grids = [...student.matchAll(/<svg class="print-grid" viewBox="0 0 (\d+) (\d+)"[^>]*aria-label="[^"]*; x (-?\d+) to (\d+), y (-?\d+) to (\d+)"/g)];
+assert.equal(grids.length,6);
+for (const match of grids) {
+  assert.equal(match[1],match[2],'Square SVG');
+  assert.equal(Number(match[3]),-Number(match[4]),'Centered x-axis');
+  assert.equal(Number(match[5]),-Number(match[6]),'Centered y-axis');
+  assert.equal(match[4],match[6],'Matching axis scale');
+}
+assert.match(student,/x -8 to 8, y -8 to 8/);
+assert.match(student,/x -12 to 12, y -12 to 12/);
+assert.match(student,/<annotation encoding="application\/x-tex">g\(x\)=1-\\frac35x<\/annotation>/);
+assert.match(student,/<annotation encoding="application\/x-tex">H\(x\)=\\frac/);
+assert.match(student,/<style>@font-face/);
+assert.match(student,/\.katex \.katex-mathml\{/);
+assert.doesNotMatch(student,/\\\(|\\\)/);
+assert.match(student,/Problem 4/);
+assert.doesNotMatch(student,/Use a composite model|Construct and graph|Simplify and solve a rational expression|Graph both composition orders/);
+assert.doesNotMatch(student,/reciprocal|stretch horizontally by 5\/3/);
+assert.match(student,/width:5\.8in; height:5\.8in/);
+assert.match(student,/Large centered axes for qualitative sketch/);
+assert.equal((key.match(/class="exam-section key-block"/g)||[]).length,10);
+assert.match(student,/Motor City Math \| Pre-Calculus/);
+assert.match(student,/75 minutes \| 100 points/);
+assert.doesNotMatch(student,/Suggested timing|Suggested question times|Final review|final 5 minutes|class="section-meta">\d+ minutes/);
+assert.doesNotMatch(student,/Worked answer|Scoring|parent-review|Marcus|Study Guide Q|Answer Key/);
+assert.doesNotMatch(student,/absolute-value|a\|x-h\|/);
+assert.match(student,/A\(B\(x\)\)/);
+assert.match(student,/budget of \$260/);
+assert.match(student,/Problem 10/);
+assert.match(student,/solid line/); assert.match(student,/dashed line/);
+assert.doesNotMatch(student,/flattened|touch at one zero|keep the curve|ends point the same|blank parts|Read the graph before|Keep all restrictions/);
+assert.doesNotMatch(student,/Continue each branch|show open or closed|Show which branch|Justify the branch|Use axes x=/);
+assert.match(student,/Graph p on the provided coordinate plane/);
+assert.doesNotMatch(student,/<hr>/);
+assert.match(student,/<div class="work-lines xtall"><\/div>/);
+assert.match(student,/\.work-lines \{ background:none; border:0; \}/);
+assert.match(key,/deduct an originating error once/i);
+questions.forEach(q=>{
+  assert.ok(student.includes(`id="q${q.id}"`));
+  assert.ok(key.includes(q.title));
+});
+for (const name of ['assessment-2-functions-75min.pdf','assessment-2-functions-75min-KEY.pdf']) {
+  const bytes=fs.readFileSync(path.join(__dirname,name));
+  assert.equal(bytes.subarray(0,4).toString(),'%PDF');
+  assert.ok(bytes.length>10000);
+}
+console.log('Prep Test 2 print artifacts: PASS (10 questions, 100 points, 70+5 minutes, 6 symmetric grids and 2 open sketch axes, typeset math, neutral labels, separate key and PDFs).');
