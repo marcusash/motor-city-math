@@ -543,7 +543,7 @@
             </a>
             <div class="trend-card" style="margin-top:12px;">
                 <div class="trend-hd">
-                    <div class="trend-hd-r">First entry: <b style="color:#d29922" id="precalculusFirstScore">84%</b> &middot; Study guide (provisional)</div>
+                    <div class="trend-hd-r" id="precalculusFirstScore">Provisional Assessment 1 evaluations</div>
                 </div>
                 <div id="precalculusChartContainer"></div>
             </div>
@@ -551,6 +551,10 @@
                 <a class="test-link" href="reviews/test-1-study-guide.html">
                     <div class="test-name-row"><span>Test 1 Study Guide</span><span class="test-score mid" id="studyGuideScore">84/100</span></div>
                     <div class="test-meta">Original problems &middot; Kai's answers &middot; Provisional evaluation</div>
+                </a>
+                <a class="test-link" href="reviews/assessment-1-functions-75min-grade.html">
+                    <div class="test-name-row"><span>Prep Test 1 Grade Report</span><span class="test-score mid" id="practiceTest1Score">89.5/100</span></div>
+                    <div class="test-meta">Corrected evaluation of completed scan &middot; Provisional</div>
                 </a>
                 <a class="test-link" href="tests/assessment-1-functions-75min.pdf" target="_blank" rel="noopener">
                     <div class="test-name-row"><span>Prep Test 1: Functions &amp; Polynomial Review</span></div>
@@ -589,6 +593,7 @@
     </div>
 
     <script src="reviews/test-1-study-guide-data.js"></script>
+    <script src="reviews/assessment-1-functions-75min-grade-data.js"></script>
     <script>
     /* ========== TEST REGISTRY ========== */
     var tests = [
@@ -837,16 +842,26 @@
         renderTrendChart(document.getElementById('winterChartContainer'), raw);
     }
     function buildPrecalculusHistory() {
-        var rows = window.test1StudyGuide.sections.reduce(function(all, section) {
-            return all.concat(section.rows);
-        }, []);
-        var earned = rows.reduce(function(sum, row) { return sum + row.earned; }, 0);
-        var total = rows.reduce(function(sum, row) { return sum + row.points; }, 0);
-        var pct = Math.round(earned / total * 100);
-        document.getElementById('studyGuideScore').textContent = earned + '/' + total;
-        document.getElementById('precalculusFirstScore').textContent = pct + '%';
+        function score(data, rowsKey) {
+            var rows = data.sections.reduce(function(all, section) {
+                return all.concat(section[rowsKey]);
+            }, []);
+            return {
+                earned: rows.reduce(function(sum, row) { return sum + row.earned; }, 0),
+                total: rows.reduce(function(sum, row) { return sum + row.points; }, 0)
+            };
+        }
+        var studyGuide = score(window.test1StudyGuide, 'rows');
+        var practiceTest = score(window.assessment1PracticeGrade, 'questions');
+        var studyGuidePct = Math.round(studyGuide.earned / studyGuide.total * 100);
+        var practiceTestPct = practiceTest.earned / practiceTest.total * 100;
+        document.getElementById('studyGuideScore').textContent = studyGuide.earned + '/' + studyGuide.total;
+        document.getElementById('practiceTest1Score').textContent = practiceTest.earned + '/' + practiceTest.total;
+        document.getElementById('precalculusFirstScore').textContent =
+            'Study Guide ' + studyGuidePct + '% · Prep Test 1 ' + practiceTestPct + '% (provisional)';
         renderTrendChart(document.getElementById('precalculusChartContainer'), [
-            { label: 'Study Guide 1', sublabel: 'Provisional', fa: pct }
+            { label: 'Study Guide 1', sublabel: 'Provisional', fa: studyGuidePct },
+            { label: 'Prep Test 1', sublabel: 'Provisional', fa: practiceTestPct }
         ]);
     }
     function buildStandards() {
