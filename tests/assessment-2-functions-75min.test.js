@@ -33,6 +33,8 @@ assert.match(student,/budget of \$260/);
 assert.match(student,/Construct and graph a square-root function/);
 assert.match(student,/solid line/); assert.match(student,/dashed line/);
 assert.doesNotMatch(student,/flattened|touch at one zero|keep the curve|ends point the same|blank parts|Read the graph before|Keep all restrictions/);
+assert.doesNotMatch(student,/Continue each branch|show open or closed|Show which branch|Justify the branch|Use axes x=/);
+assert.match(student,/Graph p on the provided coordinate plane/);
 assert.match(student,/<hr>/);
 assert.match(key,/deduct an originating error once/i);
 questions.forEach(q=>{

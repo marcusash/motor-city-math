@@ -57,6 +57,12 @@ const studentTitles = {
   10:'Construct and graph a square-root function'
 };
 function studentStem(q) {
+  if (q.id===6) return [
+    q.stem[0],
+    '(a) Write an equation for P in factored form. Show your work.',
+    '(b) Sketch P on the provided axes. Label its intercepts.',
+    '(c) State where P(x)>0 and P(x)<0. Explain your answer.'
+  ];
   return q.stem.map(part=>part
     .replace('Write the intermediate value for each before evaluating the outside function.','Show your work.')
     .replace('and clearly show the touch at one zero and flattened crossing at the other.','and show the graph\'s behavior at each zero.')

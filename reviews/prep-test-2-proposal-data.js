@@ -10,8 +10,8 @@ window.prepTest2Proposal = {
       extension: 'A constant branch replaces the second sloping line. The range has a gap, so graph completion and range reasoning must agree.',
       stem: [
         'Let p(x)=2x+4 for x<-1, and p(x)=3 for x>=-1.',
-        '(a) Find p(-2), p(-1), and p(2). Show which branch you use.',
-        '(b) Graph p on axes x=-6 to 6, y=-6 to 6, with one unit per square. Continue each branch with an arrow. Label the boundary coordinates and show open or closed circles.',
+        '(a) Find p(-2), p(-1), and p(2).',
+        '(b) Graph p on the provided coordinate plane.',
         '(c) Give the domain and range in interval or set notation.'
       ],
       steps: [
@@ -32,7 +32,7 @@ window.prepTest2Proposal = {
       extension: 'Keeps the original task type: a horizontal shift and vertical reflection, with a vertical shift added. No scaling, fractions, coordinate-rule derivation, or extra point check.',
       stem: [
         'The graph of f is shown below. Its vertices are (-3,1), (-1,-2), (2,0), and (4,2), joined by straight segments, with included endpoints. Let h(x)=-f(x-2)+1.',
-        '(a) Graph h on the provided grid. Label all vertices with their coordinates and mark the endpoints. Use axes x=-8 to 8, y=-8 to 8, one unit per square.',
+        '(a) Graph h on the provided coordinate plane. Label its vertices.',
         '(b) Give the domain and range of h.'
       ],
       steps: [
@@ -57,7 +57,7 @@ window.prepTest2Proposal = {
       extension: 'Builds on Kai’s correct mappings in Prep Test 1: each order now combines reflection, scale, and shift, with half-unit horizontal coordinates. The prompt does not tell him which order reverses the vertices.',
       stem: [
         'The graph of f consists of straight segments through (-3,-1), (-1,3), (2,0), (4,2), in that order, with included endpoints. Let g(x)=1-2x.',
-        '(a) Graph f(g(x)) and g(f(x)) on the provided grid. Use a solid line for f(g(x)) and a dashed line for g(f(x)). Label the vertices and both graphs. The axes run from -6 to 6, one unit per square.',
+        '(a) Graph f(g(x)) and g(f(x)) on the provided coordinate plane. Use a solid line for f(g(x)) and a dashed line for g(f(x)). Label the vertices and both graphs.',
         '(b) Give both domains and describe the transformations of f in each composition. Show your work.'
       ],
       steps: [
@@ -182,7 +182,7 @@ window.prepTest2Proposal = {
       stem: [
         'Let R(x)=-(x+2)(x-1)^2(x-3).',
         '(a) State the degree, leading coefficient, zeros, and multiplicities. Find the y-intercept.',
-        '(b) Make a qualitative sketch with all intercepts labeled and arrows on both ends. Show which zeros cross and which touch. Use signs between the zeros to keep the curve on the correct side of the axis. Exact extrema and a uniform vertical scale are not required.',
+        '(b) Sketch R on the provided axes. Label its intercepts.',
         '(c) State the intervals where R(x)>0 and R(x)<0. Explain why its ends point the same way, unlike the odd-degree polynomial in Question 6.'
       ],
       steps: [
@@ -210,7 +210,7 @@ window.prepTest2Proposal = {
         '(a) Write the composition giving cost in terms of width. Explain the order using units.',
         '(b) Write that cost as a piecewise function of w, including the width intervals for each price rule. State the model domain.',
         '(c) Find the cost when w=4.',
-        '(d) With a budget of $260, find the greatest permitted width. Give an exact value and a decimal to the nearest hundredth. Justify the branch and domain used.'
+        '(d) With a budget of $260, find the greatest permitted width. Give an exact value and a decimal to the nearest hundredth. Show your work.'
       ],
       steps: [
         'Use C(A(w)): A converts width in feet to area in square feet; C converts area to dollars.',
@@ -234,7 +234,7 @@ window.prepTest2Proposal = {
       stem: [
         'A square-root function has the form r(x)=a sqrt(x-h)+k, domain [1,infinity), range (-infinity,3], and passes through (5,-1).',
         '(a) Find its equation. Show your work.',
-        '(b) Graph r on the provided grid, with both axes from -12 to 12 and one unit per square. Label its starting point and three other points.',
+        '(b) Graph r on the provided coordinate plane. Label its starting point and three other points.',
         '(c) State its x-intercept exactly and its interval of decrease.'
       ],
       steps: [
