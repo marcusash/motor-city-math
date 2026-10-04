@@ -98,8 +98,7 @@ const extra=`
 .polynomial-work svg { width:100%; height:100%; }
 .sketch-space { height:270px; border:1px solid #777; padding:8px; margin:12px 0; }
 .question-text p { margin:7px 0; }
-.work-lines { background-image:none; display:flex; flex-direction:column; justify-content:space-evenly; }
-.work-lines hr { width:100%; margin:0; border:0; border-top:1px solid #b7bdc7; }
+.work-lines { background:none; border:0; }
 .key-block { break-inside:avoid; }
 button { padding:8px 16px; cursor:pointer; }
 @media print {
@@ -130,7 +129,6 @@ student=student
   .replace(/<section class="exam-section"><h2>Suggested timing<\/h2>[\s\S]*?<\/section>/,'')
   .replace(/<span class="section-meta">\d+ minutes \| /g,'<span class="section-meta">');
 student+='</main>'+render+'</body></html>';
-student=student.replace(/<div class="work-lines (tall|medium|xtall)"><\/div>/g,(_,size)=>`<div class="work-lines ${size}">${'<hr>'.repeat(size==='xtall'?10:size==='tall'?4:2)}</div>`);
 let key=head('Parent Key: Pre-Calculus Prep Test 2');
 key+='<header class="exam-header"><div class="eyebrow">Motor City Math | Parent Copy</div><h1>Prep Test 2: Answer Key and Rubric</h1><p>75 minutes | 100 points | Keep separate from the student test.</p><p>Give follow-through credit: deduct an originating error once, not again for consistent later execution. Score missing parts separately. Do not require unrequested explanations or exact polynomial extrema.</p></header>';
 for(const q of data.questions) key+=`<section class="exam-section key-block"><h2>${q.id}. ${escape(q.title)} (${q.points} points)</h2><ol>${q.steps.map(step=>`<li>${text(step)}</li>`).join('')}</ol><p><strong>Scoring</strong></p><ul>${q.rubric.map(part=>`<li>${part.points} points: ${text(part.text)}</li>`).join('')}</ul></section>`;
