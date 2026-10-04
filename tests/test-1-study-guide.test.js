@@ -30,7 +30,7 @@ assert.match(practiceQuestions.find(question => question.id === '9').rubric, /8\
 const practiceReportPath = path.join(root, 'reviews', 'assessment-1-functions-75min-grade.html');
 assert.ok(fs.existsSync(practiceReportPath));
 const practiceReportHtml = fs.readFileSync(practiceReportPath, 'utf8');
-assert.match(practiceReportHtml, /Overall score: provisional/);
+assert.match(practiceReportHtml, /Score based on visible work in the submitted scan/);
 assert.match(practiceReportHtml, /href="\.\.\/index.html" class="back-link">&larr; Back to Dashboard<\/a>/);
 for (const [, href] of practiceReportHtml.matchAll(/href="([^"]+)"/g)) {
   if (/^(?:https?:|#|mailto:)/.test(href)) continue;
@@ -40,15 +40,17 @@ for (const match of practiceReportHtml.matchAll(/<script(?:[^>]*)>([\s\S]*?)<\/s
   if (match[1].trim()) new Function(match[1]);
 }
 const html = fs.readFileSync(path.join(root, 'reviews', 'test-1-study-guide.html'), 'utf8');
-assert.match(html, /Overall score: provisional/);
+assert.match(html, /Score based on visible work in the submitted pages/);
 assert.match(html, /not a teacher-issued test grade/);
 assert.match(html, /Kai's Answer/);
+assert.ok(!html.includes('provisional'), 'Explain uncertain photo-based scoring without jargon');
 assert.match(html, /href="\.\.\/index.html" class="back-link">&larr; Back to Dashboard<\/a>/);
 assert.match(html, /Original problems and Kai/);
 assert.ok(!html.includes('Additional handwritten graph evidence'));
 const dashboard = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
-assert.match(dashboard, /href="reviews\/test-1-study-guide.html"/);
-assert.match(dashboard, /href="reviews\/assessment-1-functions-75min-grade.html"/);
+const precalculusGridStart = dashboard.indexOf('<div class="test-grid" id="precalculusGrid">');
+const precalculusGrid = dashboard.slice(precalculusGridStart, dashboard.indexOf('</details>', precalculusGridStart));
+assert.match(precalculusGrid, /<a class="test-link" href="reviews\/assessment-1-functions-75min-grade.html"/, 'Prep Test 1 review is the first card');
 assert.equal((dashboard.match(/href="reviews\/assessment-1-functions-75min-grade.html"/g) || []).length, 1, 'Only one corrected Prep Test 1 report card');
 assert.equal((dashboard.match(/<span>Test 1 Study Guide<\/span>/g) || []).length, 1, 'Only one authoritative study-guide card');
 assert.ok(!dashboard.includes('reviews/kai-test1-study-guide.html'), 'No competing provisional grade on the dashboard');
@@ -56,8 +58,11 @@ assert.match(dashboard, /84\/100/);
 assert.match(dashboard, /89\.5\/100/);
 assert.match(dashboard, /src="reviews\/test-1-study-guide-data.js"/);
 assert.match(dashboard, /src="reviews\/assessment-1-functions-75min-grade-data.js"/);
-assert.match(dashboard, /label: 'Study Guide 1', sublabel: 'Provisional', fa: studyGuidePct/);
-assert.match(dashboard, /label: 'Prep Test 1', sublabel: 'Provisional', fa: practiceTestPct/);
+assert.match(dashboard, /label: 'Study Guide 1', sublabel: 'Scan review', fa: studyGuidePct/);
+assert.match(dashboard, /label: 'Prep Test 1', sublabel: 'Scan review', fa: practiceTestPct/);
+assert.match(dashboard, /pointSpacing = 100/);
+assert.match(dashboard, /Scores from visible work, not teacher grades/);
+assert.ok(!dashboard.includes('provisional'), 'Dashboard should explain score status without jargon');
 assert.ok(!dashboard.includes('91/100'), 'The superseded 91-point report must not appear');
 assert.ok(!dashboard.includes('Awaiting first score'));
 for (const match of html.matchAll(/<script(?:[^>]*)>([\s\S]*?)<\/script>/g)) {

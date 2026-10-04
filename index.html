@@ -543,18 +543,18 @@
             </a>
             <div class="trend-card" style="margin-top:12px;">
                 <div class="trend-hd">
-                    <div class="trend-hd-r" id="precalculusFirstScore">Provisional Assessment 1 evaluations</div>
+                    <div class="trend-hd-r" id="precalculusFirstScore">Scores based on visible work, not teacher grades</div>
                 </div>
                 <div id="precalculusChartContainer"></div>
             </div>
             <div class="test-grid" id="precalculusGrid">
+                <a class="test-link" href="reviews/assessment-1-functions-75min-grade.html">
+                    <div class="test-name-row"><span>Prep Test 1 Review</span><span class="test-score mid" id="practiceTest1Score">89.5/100</span></div>
+                    <div class="test-meta">Score based on visible work in Kai's submitted test scan</div>
+                </a>
                 <a class="test-link" href="reviews/test-1-study-guide.html">
                     <div class="test-name-row"><span>Test 1 Study Guide</span><span class="test-score mid" id="studyGuideScore">84/100</span></div>
-                    <div class="test-meta">Original problems &middot; Kai's answers &middot; Provisional evaluation</div>
-                </a>
-                <a class="test-link" href="reviews/assessment-1-functions-75min-grade.html">
-                    <div class="test-name-row"><span>Prep Test 1 Grade Report</span><span class="test-score mid" id="practiceTest1Score">89.5/100</span></div>
-                    <div class="test-meta">Corrected evaluation of completed scan &middot; Provisional</div>
+                    <div class="test-meta">Score based on visible answers in Kai's study-guide scan</div>
                 </a>
                 <a class="test-link" href="tests/assessment-1-functions-75min.pdf" target="_blank" rel="noopener">
                     <div class="test-name-row"><span>Prep Test 1: Functions &amp; Polynomial Review</span></div>
@@ -649,7 +649,7 @@
     var _scoreParseError = null;
 
     /* ========== SCORE CHART (FD SVG design) ========== */
-    function renderTrendChart(container, pts) {
+    function renderTrendChart(container, pts, compact) {
         if (!container) return;
         if (pts.length === 0) {
             container.innerHTML = '<div class="trend-empty">Complete your first test to see your progress</div>';
@@ -658,6 +658,12 @@
 
         var n = pts.length;
         var xL = 50, xR = 650;
+        if (compact && n <= 7) {
+            var pointSpacing = 100;
+            var pointSpan = (n - 1) * pointSpacing;
+            xL = (xL + xR - pointSpan) / 2;
+            xR = xL + pointSpan;
+        }
         var xs = pts.map(function(_, i) {
             return n === 1 ? xL : xL + i * (xR - xL) / (n - 1);
         });
@@ -858,11 +864,11 @@
         document.getElementById('studyGuideScore').textContent = studyGuide.earned + '/' + studyGuide.total;
         document.getElementById('practiceTest1Score').textContent = practiceTest.earned + '/' + practiceTest.total;
         document.getElementById('precalculusFirstScore').textContent =
-            'Study Guide ' + studyGuidePct + '% · Prep Test 1 ' + practiceTestPct + '% (provisional)';
+            'Scores from visible work, not teacher grades: Study Guide ' + studyGuidePct + '% · Prep Test 1 ' + practiceTestPct + '%';
         renderTrendChart(document.getElementById('precalculusChartContainer'), [
-            { label: 'Study Guide 1', sublabel: 'Provisional', fa: studyGuidePct },
-            { label: 'Prep Test 1', sublabel: 'Provisional', fa: practiceTestPct }
-        ]);
+            { label: 'Study Guide 1', sublabel: 'Scan review', fa: studyGuidePct },
+            { label: 'Prep Test 1', sublabel: 'Scan review', fa: practiceTestPct }
+        ], true);
     }
     function buildStandards() {
         var scores = getScores();
