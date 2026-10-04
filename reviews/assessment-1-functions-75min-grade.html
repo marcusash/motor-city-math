@@ -36,9 +36,10 @@ td:nth-child(3) { min-width:220px; }
 .skipped { background:#353545; color:var(--muted); }
 details { margin-top:8px; }
 summary { cursor:pointer; color:#b5b0ff; }
+.source-image { max-width:100%; height:auto; display:block; margin:12px auto; }
 .section-title { margin-top:28px; }
 .score-cell { white-space:nowrap; }
-@media print { :root { color-scheme:light; --bg:white; --surface:white; --text:black; --muted:#444; --border:#999; } body { padding:0; } .badge { color:black; background:none; } .score-big { color:black; } tr { break-inside:avoid; } }
+@media print { :root { color-scheme:light; --bg:white; --surface:white; --text:black; --muted:#444; --border:#999; } body { padding:0; } details[open] .source-image { max-height:8in; object-fit:contain; } .badge { color:black; background:none; } .score-big { color:black; } tr { break-inside:avoid; } }
 </style>
 </head>
 <body>
@@ -95,6 +96,17 @@ window.addEventListener('DOMContentLoaded', function () {
 
     const block = element('section');
     block.append(element('h2', section.title, 'section-title'));
+    const evidence = element('details');
+    const evidenceQuestions = section.evidence.flatMap(item => item.questions);
+    evidence.append(element('summary', "Kai's original work: Question" + (evidenceQuestions.length === 1 ? ' ' : 's ') + evidenceQuestions.join(', ')));
+    section.evidence.forEach(item => {
+      const image = element('img', undefined, 'source-image');
+      image.src = 'assets/assessment-1-functions-75min/page-' + String(item.page).padStart(2, '0') + '.png';
+      image.alt = "Kai's completed Prep Test 1, page " + item.page + ", showing answers to question" + (item.questions.length === 1 ? ' ' : 's ') + item.questions.join(', ');
+      image.loading = 'lazy';
+      evidence.append(image);
+    });
+    block.append(evidence);
     const wrap = element('div', undefined, 'table-wrap');
     const table = element('table');
     const thead = element('thead');

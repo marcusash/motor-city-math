@@ -27,11 +27,26 @@ assert.equal(practiceQuestions.reduce((sum, question) => sum + question.earned, 
 assert.equal(practiceGrade.provisional, true);
 assert.match(practiceQuestions.find(question => question.id === '9').solution, /-4\.5/);
 assert.match(practiceQuestions.find(question => question.id === '9').rubric, /8\.5\/10/);
+const evidenceMapping = Array.from(practiceGrade.sections, section =>
+  Array.from(section.evidence, item => ({ page: item.page, questions: Array.from(item.questions) }))
+);
+assert.deepEqual(evidenceMapping, [
+  [{ page: 1, questions: ['1', '2'] }, { page: 2, questions: ['3'] }],
+  [{ page: 6, questions: ['4'] }, { page: 8, questions: ['5'] }, { page: 3, questions: ['6'] }],
+  [{ page: 4, questions: ['7'] }, { page: 7, questions: ['8'] }, { page: 5, questions: ['9'] }],
+  [{ page: 9, questions: ['10', '11'] }]
+]);
+for (const item of evidenceMapping.flat()) {
+  assert.ok(fs.existsSync(path.join(root, 'reviews', 'assets', 'assessment-1-functions-75min', `page-${String(item.page).padStart(2, '0')}.png`)));
+}
 const practiceReportPath = path.join(root, 'reviews', 'assessment-1-functions-75min-grade.html');
 assert.ok(fs.existsSync(practiceReportPath));
 const practiceReportHtml = fs.readFileSync(practiceReportPath, 'utf8');
 assert.match(practiceReportHtml, /Score based on visible work in the submitted scan/);
 assert.match(practiceReportHtml, /href="\.\.\/index.html" class="back-link">&larr; Back to Dashboard<\/a>/);
+assert.match(practiceReportHtml, /element\('img', undefined, 'source-image'\)/, 'Evidence images use the existing report image styling');
+assert.match(practiceReportHtml, /Kai's original work/);
+assert.match(practiceReportHtml, /assets\/assessment-1-functions-75min\/page-/);
 assert.ok(!practiceReportHtml.includes('Other Test 1 materials'));
 assert.equal([...practiceReportHtml.matchAll(/href="([^"]+)"/g)].length, 1, 'Only the dashboard navigation link remains');
 for (const [, href] of practiceReportHtml.matchAll(/href="([^"]+)"/g)) {

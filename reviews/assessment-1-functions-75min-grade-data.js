@@ -5,7 +5,10 @@ window.assessment1PracticeGrade = {
   reviewed: 'October 4, 2026',
   provisional: true,
   sections: [
-    { title: 'Function Basics', questions: [
+    { title: 'Function Basics', evidence: [
+      { page: 1, questions: ['1', '2'] },
+      { page: 2, questions: ['3'] }
+    ], questions: [
       {
         id: '1', points: 5, earned: 5,
         problem: 'Decide whether the ordered-pair table defines a function, explain using the repeated input, and give the range.',
@@ -28,7 +31,11 @@ window.assessment1PracticeGrade = {
         rubric: '10/10. Correct symbolic composition and both evaluated orders.'
       }
     ] },
-    { title: 'Transformations and Piecewise Functions', questions: [
+    { title: 'Transformations and Piecewise Functions', evidence: [
+      { page: 6, questions: ['4'] },
+      { page: 8, questions: ['5'] },
+      { page: 3, questions: ['6'] }
+    ], questions: [
       {
         id: '4', points: 10, earned: 9,
         problem: 'From the graph with vertices (-4,-2), (-2,2), (1,0), and (4,3), graph f(g(x)) and g(f(x)) for g(x)=2x-2. Label transformed vertices and distinguish the two graphs.',
@@ -51,7 +58,11 @@ window.assessment1PracticeGrade = {
         rubric: '7/10. Rule 0/2 because it is not written; graph 3/4 because the curve and three additional points are correct but the starting point is not clearly marked; domain/range 2/2; point check 2/2 because the correct point is labeled on the graph and identified as belonging.'
       }
     ] },
-    { title: 'Polynomial Structure and Graphs', questions: [
+    { title: 'Polynomial Structure and Graphs', evidence: [
+      { page: 4, questions: ['7'] },
+      { page: 7, questions: ['8'] },
+      { page: 5, questions: ['9'] }
+    ], questions: [
       {
         id: '7', points: 7, earned: 7,
         problem: 'Recover a cubic equation from its graph, then give increasing/decreasing intervals and relative extrema.',
@@ -74,7 +85,9 @@ window.assessment1PracticeGrade = {
         rubric: '8.5/10, graded against the graph rather than the key’s incorrect -4 zero. Domain/range 2/2; zeros 1.5/2 because 0 and 4 are correct and -4.75 is a close but incorrect estimate of -4.5; intervals 2/3: 0.5 for the increasing interval with one endpoint wrong, 0.5 for the first decreasing interval with one endpoint wrong, and 1 for the correct (2,5) interval; extrema 3/3. The interval deductions reflect the wrong boundaries without taking away credit for correct direction, the other correct boundary, or the fully correct decreasing interval.'
       }
     ] },
-    { title: 'Function Models and Transformations', questions: [
+    { title: 'Function Models and Transformations', evidence: [
+      { page: 9, questions: ['10', '11'] }
+    ], questions: [
       {
         id: '10', points: 12, earned: 12,
         problem: 'Compose the rental charge D(d)=9d+12 dollars with the 8% tax function T(c)=1.08c. Explain the order, simplify, find the four-day price, and explain why reversal does not model the situation.',
