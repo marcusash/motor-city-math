@@ -5,7 +5,7 @@ window.prepTest2Proposal = {
   checkingMinutes: 5,
   questions: [
     {
-      id: 1, title: 'Finish a piecewise graph', difficulty: 1, points: 12, minutes: 8,
+      id: 1, title: 'Finish a piecewise graph', difficulty: 1, points: 10, minutes: 6,
       target: 'Prep Test 1 Q5; Study Guide Q15-16. The missing evaluations and unfinished boundary need another chance to be demonstrated.',
       extension: 'A constant branch replaces the second sloping line. The range has a gap, so graph completion and range reasoning must agree.',
       stem: [
@@ -21,7 +21,7 @@ window.prepTest2Proposal = {
       ],
       rubric: [
         { points: 3, text: 'Three evaluations, 1 each.' },
-        { points: 4, text: 'Correct branch shapes and sides, 2 each.' },
+        { points: 2, text: 'Correct branch shapes and sides, 1 each.' },
         { points: 2, text: 'Boundary coordinates and open/closed marks, 1 per boundary.' },
         { points: 3, text: 'Domain 1; complete range including its gap 2.' }
       ]
@@ -52,7 +52,7 @@ window.prepTest2Proposal = {
       ]
     },
     {
-      id: 3, title: 'Graph both composition orders with a reflection', difficulty: 3, points: 18, minutes: 12,
+      id: 3, title: 'Graph both composition orders with a reflection', difficulty: 3, points: 14, minutes: 9,
       target: 'Prep Test 1 Q4; Study Guide Q23. Coordinate mapping was strong; readable graphs, required line styles, and all vertex labels were not fully demonstrated.',
       extension: 'Builds on Kai’s correct mappings in Prep Test 1: each order now combines reflection, scale, and shift, with half-unit horizontal coordinates. The prompt does not tell him which order reverses the vertices.',
       stem: [
@@ -67,8 +67,8 @@ window.prepTest2Proposal = {
         'For f(g(x)), reflect horizontally, compress horizontally by 1/2, then shift right 1/2. For g(f(x)), reflect vertically, stretch vertically by 2, then shift up 1. Equivalent correctly ordered descriptions are accepted.'
       ],
       rubric: [
-        { points: 4, text: 'Two mapping rules, 2 each.' },
-        { points: 8, text: 'Four transformed vertices for each composition, 1 each.' },
+        { points: 2, text: 'Two mapping rules, 1 each.' },
+        { points: 6, text: 'Four transformed vertices for each composition, 0.75 each.' },
         { points: 3, text: 'Correct segment connections and included endpoints 2; all coordinate labels, graph names, and specified line styles 1 combined.' },
         { points: 2, text: 'Domains, 1 each.' },
         { points: 1, text: 'Correct transformation description for each composition, 0.5 each.' }
@@ -78,7 +78,7 @@ window.prepTest2Proposal = {
       ]
     },
     {
-      id: 4, title: 'Evaluate and solve a composition from two graphs', difficulty: 3, points: 12, minutes: 10,
+      id: 4, title: 'Evaluate and solve a composition from two graphs', difficulty: 3, points: 10, minutes: 7,
       target: 'Prep Test 1 Q9; Study Guide Q21-22. One zero and two interval boundaries were wrong; an earlier nested evaluation had a wrong intermediate value.',
       extension: 'Uses fractional inputs and asks for every solution of a composite equation. Kai must work backward through both graphs and collect multiple preimages, not just read two obvious values.',
       stem: [
@@ -95,7 +95,7 @@ window.prepTest2Proposal = {
         'f increases on (-2,1) and decreases on (-4,-2) union (1,4). Turning-point x-coordinates, not the zeros, are interval boundaries.'
       ],
       rubric: [
-        { points: 4, text: 'First nested evaluation: intermediate value and final value, 1 each. Second: recognizes the inside function is undefined and concludes the composite is undefined, 1 each. Preserve valid follow-through credit.' },
+        { points: 2, text: 'First nested evaluation: intermediate and final value, 0.5 each. Second: identifies undefined inside value and undefined composite, 0.5 each. Preserve valid follow-through credit.' },
         { points: 4, text: 'Identifies both inner target values, 1; five correct x-values, 0.5 each; complete list with no extras, 0.5. Do not deduct repeatedly for one propagated graph-read error.' },
         { points: 2, text: 'All three zeros: 0.5 each, plus 0.5 for a complete list with no extra zeros.' },
         { points: 2, text: 'Increasing interval 1; two decreasing intervals 0.5 each. Award half of the interval credit when direction and one endpoint are correct.' }
@@ -108,7 +108,7 @@ window.prepTest2Proposal = {
       ]
     },
     {
-      id: 5, title: 'Compare two algebraic compositions', difficulty: 3, points: 10, minutes: 7,
+      id: 5, title: 'Compare two algebraic compositions', difficulty: 3, points: 6, minutes: 5,
       target: 'Prep Test 1 Q3; Study Guide Q20/Q25. Kai correctly substituted and expanded functions. This extends those demonstrated skills rather than introducing an unsupported absolute-value graph family.',
       extension: 'Moves beyond evaluating the two orders at one input: determine whether the compositions can be equal at any real input.',
       stem: [
@@ -123,9 +123,9 @@ window.prepTest2Proposal = {
         'The difference A(B(x))-B(A(x))=2(x-1)^2+2 is always positive, so the first composition is always greater. This observation is a valid justification, not an extra student requirement.'
       ],
       rubric: [
-        { points: 3, text: 'A(B(x)): full substitution 1; correct expansion 2.' },
-        { points: 3, text: 'B(A(x)): full substitution 1; correct simplification 2.' },
-        { points: 3, text: 'Correct equality equation and valid real-solution reasoning. Preserve algebraic follow-through from one earlier error.' },
+        { points: 2, text: 'A(B(x)): full substitution 1; correct expansion 1.' },
+        { points: 2, text: 'B(A(x)): full substitution 1; correct simplification 1.' },
+        { points: 1, text: 'Correct equality equation and valid real-solution reasoning. Preserve algebraic follow-through from one earlier error.' },
         { points: 1, text: 'Explicitly concludes no real solutions.' }
       ]
     },
@@ -153,7 +153,7 @@ window.prepTest2Proposal = {
       ]
     },
     {
-      id: 7, title: 'Keep all restrictions in a composed quotient', difficulty: 3, points: 12, minutes: 9,
+      id: 7, title: 'Keep all restrictions in a composed quotient', difficulty: 3, points: 8, minutes: 6,
       target: 'Prep Test 1 Q2/Q11; Study Guide Q19-20. Both reports show strong domain work; retain one deeper transfer problem rather than repeat basic domain arithmetic.',
       extension: 'A square-root composition and two excluded denominator values interact, leaving a bounded domain with two holes.',
       stem: [
@@ -168,15 +168,15 @@ window.prepTest2Proposal = {
         'Domain [-3,-2) union (-2,2) union (2,3]. At 3, f(g(3))=sqrt(0)=0 and the denominator is -5, so it is allowed. At 2, g(2)=5, so the original denominator is zero and it is not allowed.'
       ],
       rubric: [
-        { points: 3, text: 'Correct substitution in numerator 2 and denominator 1.' },
-        { points: 3, text: 'Radical inequality and bounded restriction.' },
-        { points: 2, text: 'Both denominator exclusions, 1 each.' },
+        { points: 2, text: 'Correct substitution in numerator 1 and denominator 1.' },
+        { points: 2, text: 'Radical inequality and bounded restriction.' },
+        { points: 1, text: 'Both denominator exclusions, 0.5 each.' },
         { points: 2, text: 'Final interval intersection including the allowed endpoints.' },
-        { points: 2, text: 'Boundary checks and explanations, 1 each.' }
+        { points: 1, text: 'Boundary checks and explanations, 0.5 each.' }
       ]
     },
     {
-      id: 8, title: 'Sketch a quartic with crossings and a touch', difficulty: 3, points: 10, minutes: 8, polynomialDegree: 4,
+      id: 8, title: 'Sketch a quartic with crossings and a touch', difficulty: 3, points: 8, minutes: 6, polynomialDegree: 4,
       target: 'Study Guide Q7/Q24; Prep Test 1 Q7-8. Marcus requests more polynomial graph execution, including an even-degree example, not only correct equations.',
       extension: 'A quartic combines two simple crossings and an even-multiplicity touch. Compare its two ends with the fifth-degree polynomial in Q6.',
       stem: [
@@ -192,12 +192,60 @@ window.prepTest2Proposal = {
         'Even degree makes the signs at the two far ends the same; the negative leading coefficient makes both ends fall. Odd degree makes the two ends opposite.'
       ],
       rubric: [
-        { points: 2, text: 'Degree/leading coefficient 1; zeros and multiplicities 1.' },
+        { points: 1, text: 'Degree/leading coefficient 0.5; zeros and multiplicities 0.5.' },
         { points: 1, text: 'Calculated and labeled y-intercept.' },
-        { points: 3, text: 'Labeled zeros 1; crossing/touch behavior 1; correctly signed smooth connections 1.' },
+        { points: 2, text: 'Labeled zeros 0.5; crossing/touch behavior 1; correctly signed smooth connections 0.5.' },
         { points: 1, text: 'Both ends down.' },
         { points: 2, text: 'Complete positive and negative interval lists, 1 each.' },
         { points: 1, text: 'Even versus odd degree end-behavior explanation.' }
+      ]
+    },
+    {
+      id: 9, title: 'Use a composite model to meet a budget', difficulty: 3, points: 10, minutes: 9,
+      target: 'Study Guide Q14 and Prep Test 1 Q10. Kai handled the earlier cost compositions correctly; this asks him to build a composition with a price breakpoint and work backward from a budget.',
+      extension: 'Unlike the previous linear tax calculation, area depends nonlinearly on width and pricing changes at 30 square feet. The budget answer must fit both the price branch and the geometric domain.',
+      stem: [
+        'A rectangular planting bed has perimeter 24 feet. Its width is w feet, with 2<=w<=6, and its length is 12-w feet. Its area is A(w)=w(12-w) square feet.',
+        'Soil delivery costs C(a)=8a dollars when 0<=a<=30 square feet, and C(a)=240+5(a-30) dollars when a>30 square feet. There are no other charges.',
+        '(a) Write the composition giving cost in terms of width. Explain the order using units.',
+        '(b) Write that cost as a piecewise function of w, including the width intervals for each price rule. State the model domain.',
+        '(c) Find the cost when w=4.',
+        '(d) With a budget of $260, find the greatest permitted width. Give an exact value and a decimal to the nearest hundredth. Justify the branch and domain used.'
+      ],
+      steps: [
+        'Use C(A(w)): A converts width in feet to area in square feet; C converts area to dollars.',
+        'A(w)=12w-w^2=36-(w-6)^2. On [2,6], area increases from 20 to 36. A=30 gives (w-6)^2=6, so the relevant breakpoint is b=6-sqrt(6), approximately 3.55.',
+        'Cost is 96w-8w^2 for 2<=w<=6-sqrt(6), and 60w-5w^2+90 for 6-sqrt(6)<w<=6. Domain [2,6]. Either formula gives $240 at the breakpoint; respect the original price condition when assigning the boundary.',
+        'At w=4, area is 32, so use the second price branch: C(32)=240+5(2)=$250.',
+        '$260 is above the $240 breakpoint price, so the maximum uses the second branch: 5A+90=260 gives A=34. Then 36-(w-6)^2=34 gives w=6 plus or minus sqrt(2). Only 6-sqrt(2) is in [2,6].',
+        'The greatest width is 6-sqrt(2) feet, approximately 4.59 feet. Area and both price branches are increasing over the permitted widths, so wider permitted beds exceed the budget. Feasible widths are [2,6-sqrt(2)].'
+      ],
+      rubric: [
+        { points: 2, text: 'Correct composition 1; correct unit/order explanation 1.' },
+        { points: 3, text: 'Width breakpoint 1; two cost expressions 0.5 each; branch intervals and model domain 1.' },
+        { points: 2, text: 'Area 32 and correct price branch 1; cost $250 1.' },
+        { points: 3, text: 'Budget equation/area 0.5; exact width 1; rounded width 0.5; branch/domain check 0.5; explains why it is the greatest width 0.5. Preserve follow-through from one earlier model error.' }
+      ]
+    },
+    {
+      id: 10, title: 'Construct and graph a square-root function', difficulty: 2, points: 8, minutes: 6,
+      target: 'Study Guide Q2/Q6 and Prep Test 1 Q6. Restores construction from characteristics and the square-root graph, rather than replacing course material with an absolute-value equation.',
+      extension: 'Determine a reflected, scaled square-root rule from its domain, range, and a point; then complete the graph. This combines the guide’s function construction with the unfinished graph work.',
+      stem: [
+        'A square-root function has the form r(x)=a sqrt(x-h)+k, domain [1,infinity), range (-infinity,3], and passes through (5,-1).',
+        '(a) Find its equation. Show your work.',
+        '(b) Graph r on the provided grid, with both axes from -12 to 12 and one unit per square. Label its starting point and three other points.',
+        '(c) State its x-intercept exactly and its interval of decrease.'
+      ],
+      steps: [
+        'The domain gives h=1. The upper range boundary gives k=3, and the function is reflected downward. Substitute (5,-1): -1=2a+3, so a=-2. Rule r(x)=-2sqrt(x-1)+3.',
+        'Starting point (1,3). Three useful additional points are (2,1), (5,-1), (10,-3). Draw a decreasing square-root curve, with included start and a rightward continuation.',
+        'Solve -2sqrt(x-1)+3=0: sqrt(x-1)=3/2, x-1=9/4, x=13/4. The x-intercept is (13/4,0). The function decreases on (1,infinity); domain-based endpoint-inclusive wording is also acceptable.'
+      ],
+      rubric: [
+        { points: 3, text: 'Correct h and k 1; solves for a 1; final rule 1.' },
+        { points: 3, text: 'Included labeled starting point 1; three additional labeled points 1; correct connected curve and continuation 1.' },
+        { points: 2, text: 'Exact x-intercept 1; decreasing interval 1. Accept (1,infinity) or an explicitly stated decrease over its full domain [1,infinity).' }
       ]
     }
   ]

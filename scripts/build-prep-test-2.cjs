@@ -10,6 +10,7 @@ const css = previous.match(/<style>([\s\S]*?)<\/style>/)[1].split('\n').map(line
 const escape = text => String(text).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
 const formulas = [
   ['h(x)=-f(x-2)+1','h(x)=-f(x-2)+1'],
+  ['r(x)=a sqrt(x-h)+k','r(x)=a\\sqrt{x-h}+k'],
   ['q(x)=a|x-h|+k','q(x)=a|x-h|+k'],
   ['P(x)>0','P(x)>0'],['P(x)<0','P(x)<0'],
   ['R(x)>0','R(x)>0'],['R(x)<0','R(x)<0'],
@@ -42,7 +43,7 @@ function grid(xRange,yRange,lines=[]) {
   items+=`<text x="${w-12}" y="${py(0)-5}">x</text><text x="${px(0)+7}" y="13">y</text>`;
   return `<svg class="print-grid" viewBox="0 0 ${w} ${h}" role="img" aria-label="${lines.length?'Given graph':'Blank coordinate grid'}; x ${xRange.join(' to ')}, y ${yRange.join(' to ')}"><g font-family="Arial" font-size="9">${items}</g></svg>`;
 }
-const ranges={1:[[-6,6],[-6,6]],2:[[-8,8],[-8,8]],3:[[-6,6],[-6,6]]};
+const ranges={1:[[-6,6],[-6,6]],2:[[-8,8],[-8,8]],3:[[-6,6],[-6,6]],10:[[-12,12],[-12,12]]};
 const studentTitles = {
   1:'Graph a piecewise function',
   2:'Transform a given graph',
@@ -51,7 +52,9 @@ const studentTitles = {
   5:'Compare two algebraic compositions',
   6:'Construct and sketch a polynomial',
   7:'Compose functions and find a domain',
-  8:'Analyze and sketch a quartic'
+  8:'Analyze and sketch a quartic',
+  9:'Use a composite model to meet a budget',
+  10:'Construct and graph a square-root function'
 };
 function studentStem(q) {
   return q.stem.map(part=>part
@@ -75,7 +78,7 @@ function workspace(q) {
   } else if(q.polynomialDegree) {
     html+=`<div class="polynomial-work"><h3>Question ${q.id}: your qualitative sketch</h3><div class="sketch-space"><svg viewBox="0 0 600 600" role="img" aria-label="Large centered axes for qualitative sketch"><line x1="20" x2="580" y1="300" y2="300" stroke="#111" stroke-width="1.5"/><line x1="300" x2="300" y1="20" y2="580" stroke="#111" stroke-width="1.5"/><text x="585" y="290">x</text><text x="310" y="20">y</text></svg></div></div>`;
   }
-  html+='<strong>Answers and work</strong><div class="work-lines '+([5,7].includes(q.id)?'xtall':'medium')+'"></div>';
+  html+='<strong>Answers and work</strong><div class="work-lines '+([5,7,9].includes(q.id)?'xtall':'medium')+'"></div>';
   return html;
 }
 const extra=`
@@ -111,9 +114,9 @@ function head(title) {
 }
 const render='<script>window.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"\\\\(",right:"\\\\)",display:false}]});});</script>';
 let student=head('Pre-Calculus: Prep Test 2');
-student+=`<header class="exam-header"><div class="eyebrow">Motor City Math | Pre-Calculus</div><div class="screen-only"><a href="../index.html" class="back-link">&larr; Back to Dashboard</a></div><h1>Prep Test 2: Functions and Polynomial Graphs</h1><p class="subtitle">75 minutes | 100 points | 8 questions</p><div class="student-fields"><span>Name: <span class="field-line" style="width:65%"></span></span><span>Date: <span class="field-line"></span></span></div><p class="screen-only"><button onclick="window.print()">Print student test</button></p></header><aside class="directions"><strong>Directions</strong><ul><li>Show your work.</li><li>Use interval notation where requested.</li><li>Questions 6 and 8 require qualitative polynomial sketches. Exact extrema and a uniform vertical scale are not required.</li><li>Suggested question times total 70 minutes, with a final 5 minutes for review.</li></ul><p>Use the space provided; additional work may go on the back.</p></aside><section class="exam-section"><h2>Suggested timing</h2><table class="value-table"><thead><tr><th>Question</th><th>Points</th><th>Minutes</th></tr></thead><tbody>${data.questions.map(q=>`<tr><td>${q.id}. ${escape(studentTitles[q.id])}</td><td>${q.points}</td><td>${q.minutes}</td></tr>`).join('')}</tbody></table><p>Final review: 5 minutes. Total: 75 minutes.</p></section>`;
+student+=`<header class="exam-header"><div class="eyebrow">Motor City Math | Pre-Calculus</div><div class="screen-only"><a href="../index.html" class="back-link">&larr; Back to Dashboard</a></div><h1>Prep Test 2: Functions and Polynomial Graphs</h1><p class="subtitle">75 minutes | 100 points | ${data.questions.length} questions</p><div class="student-fields"><span>Name: <span class="field-line" style="width:65%"></span></span><span>Date: <span class="field-line"></span></span></div><p class="screen-only"><button onclick="window.print()">Print student test</button></p></header><aside class="directions"><strong>Directions</strong><ul><li>Show your work.</li><li>Use interval notation where requested.</li><li>Questions 6 and 8 require qualitative polynomial sketches. Exact extrema and a uniform vertical scale are not required.</li><li>Suggested question times total 70 minutes, with a final 5 minutes for review.</li></ul><p>Use the space provided; additional work may go on the back.</p></aside><section class="exam-section"><h2>Suggested timing</h2><table class="value-table"><thead><tr><th>Question</th><th>Points</th><th>Minutes</th></tr></thead><tbody>${data.questions.map(q=>`<tr><td>${q.id}. ${escape(studentTitles[q.id])}</td><td>${q.points}</td><td>${q.minutes}</td></tr>`).join('')}</tbody></table><p>Final review: 5 minutes. Total: 75 minutes.</p></section>`;
 for(const q of data.questions) {
-  student+=`<section class="exam-section test-page" data-question="${q.id}" data-points="${q.points}" data-minutes="${q.minutes}"><div class="section-heading"><h2>Question ${q.id}</h2><span class="section-meta">${q.minutes} minutes | ${q.points} points</span></div><article class="question" id="q${q.id}"><div class="question-header"><span class="question-number">${q.id}</span><span class="question-title">${escape(studentTitles[q.id])}</span><span class="points">${q.points} points</span></div><div class="question-body question-text">${studentStem(q).map(part=>`<p>${text(part)}</p>`).join('')}${workspace(q)}</div></article><p class="footer">Prep Test 2 | Question ${q.id} of 8</p></section>`;
+  student+=`<section class="exam-section test-page" data-question="${q.id}" data-points="${q.points}" data-minutes="${q.minutes}"><div class="section-heading"><h2>Question ${q.id}</h2><span class="section-meta">${q.minutes} minutes | ${q.points} points</span></div><article class="question" id="q${q.id}"><div class="question-header"><span class="question-number">${q.id}</span><span class="question-title">${escape(studentTitles[q.id])}</span><span class="points">${q.points} points</span></div><div class="question-body question-text">${studentStem(q).map(part=>`<p>${text(part)}</p>`).join('')}${workspace(q)}</div></article><p class="footer">Prep Test 2 | Question ${q.id} of ${data.questions.length}</p></section>`;
 }
 student+='</main>'+render+'</body></html>';
 student=student.replace(/<div class="work-lines (tall|medium|xtall)"><\/div>/g,(_,size)=>`<div class="work-lines ${size}">${'<hr>'.repeat(size==='xtall'?10:size==='tall'?4:2)}</div>`);
