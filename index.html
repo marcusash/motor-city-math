@@ -548,6 +548,10 @@
                 <div id="precalculusChartContainer"></div>
             </div>
             <div class="test-grid" id="precalculusGrid">
+                <a class="test-link" href="reviews/assessment-1-midterm-functions-grade.html">
+                    <div class="test-name-row"><span>Assessment 1: Functions (Teacher-Scored)</span><span class="test-score mid" id="teacherAssessment1Score"></span></div>
+                    <div class="test-meta">Calculated sum of visible teacher marks, not a course grade</div>
+                </a>
                 <a class="test-link" href="tests/assessment-2-functions-75min.pdf" target="_blank" rel="noopener">
                     <div class="test-name-row"><span>Prep Test 2: Student Test</span></div>
                     <div class="test-meta">75 minutes &middot; 100 points &middot; PDF</div>
@@ -598,6 +602,7 @@
 
     <script src="reviews/test-1-study-guide-data.js"></script>
     <script src="reviews/assessment-1-functions-75min-grade-data.js"></script>
+    <script src="reviews/assessment-1-midterm-functions-grade-data.js"></script>
     <script>
     /* ========== TEST REGISTRY ========== */
     var tests = [
@@ -862,6 +867,13 @@
         return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
     }
     function buildPrecalculusHistory() {
+        var teacherRows = window.assessment1TeacherGrade.sections.reduce(function(all, section) {
+            return all.concat(section.questions);
+        }, []);
+        var teacherEarned = teacherRows.reduce(function(total, row) { return total + row.earned; }, 0);
+        var teacherPossible = teacherRows.reduce(function(total, row) { return total + row.points; }, 0);
+        document.getElementById('teacherAssessment1Score').textContent =
+            teacherEarned + '/' + teacherPossible + ' (' + (teacherEarned / teacherPossible * 100).toFixed(1) + '%)';
         function score(data, rowsKey) {
             var rows = data.sections.reduce(function(all, section) {
                 return all.concat(section[rowsKey]);
