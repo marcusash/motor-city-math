@@ -20,6 +20,18 @@ The reviewed set is now built as a [printable Prep Test 2](tests/assessment-2-fu
 
 12 practice tests covering 5 Algebra II units with ~200 questions. Each test is a standalone HTML file — open it in a browser and start studying. Standards-aligned to Seattle Academy (SAAS) curriculum.
 
+The [two-set Functions problem proposal](reviews/functions-practice-proposal.html) is
+**draft, awaiting parent approval**, not a built or administered test. Set A proposes
+a 75-minute, 100-point parallel to the teacher's Assessment 1, preserving each task
+family in order with fresh values. Set B proposes a separate 25-minute, 30-point
+skills check on piecewise graphing, applied pricing, decomposition, and graph/table
+operations. Editable questions, worked-answer notes, and proposed rubrics are in
+`reviews/functions-parallel-practice-data.cjs`. Regenerate only the review preview
+with `node scripts/build-functions-practice-proposal.cjs`; check it with
+`node tests/functions-practice-proposal.test.cjs`. Student tests, separate keys, and
+PDFs remain pending approval and FA build-out. No dashboard or score change is
+included.
+
 ### Units Covered
 
 | Unit | Topics | Tests |
