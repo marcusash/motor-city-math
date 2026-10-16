@@ -99,7 +99,7 @@ assert.equal(chartContext.formatScanDate('2026-03-01'), 'Mar 1', 'Date-only valu
 assert.throws(() => chartContext.formatScanDate('2026-02-30'), /Invalid scan date/);
 assert.throws(() => chartContext.formatScanDate('October 4, 2026'), /YYYY-MM-DD/);
 chartContext.buildPrecalculusHistory();
-assert.equal(elements.teacherAssessment1Score.textContent, '49.75/65 (76.5%)');
+assert.equal(elements.teacherAssessment1Score.textContent, '45.75/61 subtotal');
 assert.match(elements.precalculusChartContainer.innerHTML, /FOUL TROUBLE/);
 assert.match(elements.precalculusChartContainer.innerHTML, /#8b3e1a/, 'Reuse the existing court palette');
 assert.match(elements.precalculusChartContainer.innerHTML, /Oct 4/, 'Prep Test 1 uses the source scan timestamp');

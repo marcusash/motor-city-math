@@ -11,20 +11,23 @@ const data = context.window.assessment1TeacherGrade;
 const rows = data.sections.flatMap(section => Array.from(section.questions));
 const expected = [
   ['1 linear', 3.75, 4], ['1 radical', 3, 4], ['2', 3, 4], ['3', 9.75, 10],
-  ['4', 3.75, 4], ['5', 3.5, 4], ['7', 3, 4], ['9', 3.5, 4],
-  ['6(a)', 3.5, 4], ['6(b)', 4, 4], ['6(c)', 4, 4], ['8', 0, 4],
-  ['10 composition', 0, 4], ['11(a-c)', 1, 3], ['10 multiple choice', 4, 4]
+  ['4', 3.75, 4], ['5', 3.5, 4], ['7', 3, 4], ['8 graph (page 5)', 3.5, 4],
+  ['6(a)', 3.5, 4], ['6(b)', 4, 4], ['6(c)', 4, 4], ['8 kayak (page 4)', 0, 4],
+  ['9 composition', 0, 4], ['11(a-c)', 1, 3], ['10 multiple choice', null, null]
 ];
 assert.deepEqual(Array.from(rows, q => [q.id, q.earned, q.points]), expected);
-assert.equal(rows.reduce((sum, q) => sum + q.earned, 0), 49.75);
-assert.equal(rows.reduce((sum, q) => sum + q.points, 0), 65);
+assert.equal(rows.reduce((sum, q) => sum + q.earned, 0), 45.75);
+assert.equal(rows.reduce((sum, q) => sum + q.points, 0), 61);
 assert.deepEqual(Array.from(data.sections, s => [
   s.questions.reduce((sum, q) => sum + q.earned, 0),
   s.questions.reduce((sum, q) => sum + q.points, 0)
-]), [[33.25, 38], [12.5, 23], [4, 4]]);
+]), [[33.25, 38], [12.5, 23], [0, 0]]);
 assert.equal(data.scannedOn, null);
 assert.match(html, /not an overall score written by the teacher/);
 assert.match(html, /No matching answer key was provided/);
+assert.match(html, /Overall score unconfirmed/);
+assert.match(rows.find(q => q.id === '11(a-c)').answer, /not blank/);
+assert.equal(rows.filter(q => q.earned === null).length, 1);
 assert.match(html, /Assessment date and elapsed time not shown/);
 assert.match(html, /class="back-link".*Back to Dashboard/);
 assert.match(html, /\.back-link \{ display:none; \}/);
@@ -44,13 +47,15 @@ context.window.addEventListener = (_, callback) => callback();
 for (const match of html.matchAll(/<script[^>]*>([\s\S]*?)<\/script>/g)) {
   if (match[1].trim()) vm.runInNewContext(match[1], context);
 }
-assert.equal(nodes.score.children[0].textContent, '49.75');
-assert.equal(nodes.score.children[1].textContent, '/65 (76.5%)');
+assert.equal(nodes.score.children[0].textContent, '45.75');
+assert.equal(nodes.score.children[1].textContent, '/61 (subtotal; one mark excluded)');
 assert.equal(nodes.sections.children.length, 3);
 assert.equal(nodes.sectionsSummary.children.length, 3);
 const text = n => n.textContent + n.children.map(text).join(' ');
-assert.equal((text(nodes.sections).match(/Teacher annotation:/g) || []).length, 15);
+assert.equal((text(nodes.sections).match(/Teacher annotation:/g) || []).length, 14);
+assert.match(text(nodes.sections), /Unconfirmed mark/);
+assert.doesNotMatch(text(nodes.sections), /null\/null/);
 assert.match(text(nodes.sections), /Zero awarded/);
 assert.doesNotMatch(text(nodes.sections), /Not shown/);
 assert.match(text(nodes.sections), /reading is uncertain/);
-console.log('teacher-scored-functions: PASS (all 15 teacher marks, totals, source caveats, rendered report and dashboard link)');
+console.log('teacher-scored-functions: PASS (14 legible marks, 1 ambiguous mark excluded, subtotal, source caveats, rendered report and dashboard link)');
