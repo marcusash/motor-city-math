@@ -88,6 +88,7 @@ assert.ok(!precalculusSection.includes('href="tests/assessment-1-functions-75min
 assert.ok(!dashboard.includes("Kai's score will be added"), 'Do not claim the published graded test is awaiting a score');
 assert.match(precalculusGrid, /href="tests\/assessment-1-functions-75min.pdf"/, 'Keep the printable test available in its existing compact card');
 const chartContext = { window: context.window };
+vm.runInNewContext(fs.readFileSync(path.join(root, 'reviews', 'assessment-1-midterm-functions-grade-data.js'), 'utf8'), context);
 const elements = {};
 chartContext.document = { getElementById: id => elements[id] || (elements[id] = {}) };
 vm.runInNewContext(dashboard.slice(dashboard.indexOf('    function renderTrendChart('), dashboard.indexOf('    function buildChart()')), chartContext);
@@ -98,6 +99,7 @@ assert.equal(chartContext.formatScanDate('2026-03-01'), 'Mar 1', 'Date-only valu
 assert.throws(() => chartContext.formatScanDate('2026-02-30'), /Invalid scan date/);
 assert.throws(() => chartContext.formatScanDate('October 4, 2026'), /YYYY-MM-DD/);
 chartContext.buildPrecalculusHistory();
+assert.equal(elements.teacherAssessment1Score.textContent, '45.75/61 subtotal');
 assert.match(elements.precalculusChartContainer.innerHTML, /FOUL TROUBLE/);
 assert.match(elements.precalculusChartContainer.innerHTML, /#8b3e1a/, 'Reuse the existing court palette');
 assert.match(elements.precalculusChartContainer.innerHTML, /Oct 4/, 'Prep Test 1 uses the source scan timestamp');
