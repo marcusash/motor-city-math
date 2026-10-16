@@ -8,7 +8,10 @@ vm.runInNewContext(fs.readFileSync(path.join(root,'reviews','prep-test-2-proposa
 const questions = context.window.prepTest2Proposal.questions;
 const student = fs.readFileSync(path.join(__dirname,'assessment-2-functions-75min.html'),'utf8');
 const key = fs.readFileSync(path.join(__dirname,'assessment-2-functions-75min-KEY.html'),'utf8');
-assert.equal((student.match(/data-question="/g)||[]).length,10);
+assert.equal((student.match(/<section class="exam-section test-page" data-question="/g)||[]).length,10);
+const question4 = student.match(/<section class="exam-section test-page" data-question="4"[\s\S]*?<\/section>/)?.[0];
+assert.ok(question4);
+assert.doesNotMatch(question4,/class="given-row"|<strong>Work space<\/strong>/,'Question 4 has no empty graph workspace');
 assert.equal([...student.matchAll(/data-points="(\d+)"/g)].reduce((sum,m)=>sum+Number(m[1]),0),100);
 assert.equal([...student.matchAll(/data-minutes="(\d+)"/g)].reduce((sum,m)=>sum+Number(m[1]),0),70);
 assert.equal((student.match(/<svg (?:class="print-grid"|viewBox="0 0 600 600")/g)||[]).length,8);
@@ -30,8 +33,16 @@ assert.doesNotMatch(student,/\\\(|\\\)/);
 assert.match(student,/Problem 4/);
 assert.doesNotMatch(student,/Use a composite model|Construct and graph|Simplify and solve a rational expression|Graph both composition orders/);
 assert.doesNotMatch(student,/reciprocal|stretch horizontally by 5\/3/);
-assert.match(student,/width:5\.8in; height:5\.8in/);
+assert.match(student,/width:6\.8in; height:6\.8in/);
 assert.match(student,/Large centered axes for qualitative sketch/);
+assert.match(student,/\.test-page \{ break-before:auto; page-break-before:auto;/);
+assert.match(student,/\.test-page\[data-question="2"\],[\s\S]*\.test-page\[data-question="10"\] \{ break-before:page; page-break-before:always; \}/);
+assert.match(student,/\.test-page\[data-question="4"\],[\s\S]*\.test-page\[data-question="9"\] \{ break-inside:avoid; page-break-inside:avoid; \}/);
+assert.match(student,/\.dedicated-work \{ break-before:page; page-break-before:always; \}/);
+assert.equal((student.match(/<div class="dedicated-work">/g)||[]).length,6);
+for (const match of student.matchAll(/<article class="question" id="q\d+">([\s\S]*?)<\/article>/g)) {
+  assert.doesNotMatch(match[1],/class="graph-work"|class="polynomial-work"/,'Large student work grids are separate from question cards');
+}
 assert.equal((key.match(/class="exam-section key-block"/g)||[]).length,10);
 assert.match(student,/Motor City Math \| Pre-Calculus/);
 assert.match(student,/75 minutes \| 100 points/);
@@ -47,7 +58,7 @@ assert.doesNotMatch(student,/Continue each branch|show open or closed|Show which
 assert.match(student,/Graph p on the provided coordinate plane/);
 assert.doesNotMatch(student,/<hr>/);
 assert.match(student,/<div class="work-lines xtall"><\/div>/);
-assert.match(student,/\.work-lines \{ background:none; border:0; \}/);
+assert.match(student,/\.work-lines \{ background:none; border:0; display:block; \}/);
 assert.match(key,/deduct an originating error once/i);
 questions.forEach(q=>{
   assert.ok(student.includes(`id="q${q.id}"`));

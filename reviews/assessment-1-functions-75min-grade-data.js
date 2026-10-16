@@ -4,6 +4,7 @@ window.assessment1PracticeGrade = {
   course: 'Pre-Calculus',
   reviewed: 'October 4, 2026',
   completedOn: null,
+  scannedOn: '2026-10-04',
   provisional: true,
   sections: [
     { title: 'Function Basics', evidence: [

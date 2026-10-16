@@ -73,20 +73,23 @@ function studentStem(q) {
   );
 }
 function workspace(q) {
-  let html='';
-  if(q.graphs) {
-    html+='<div class="given-row">';
-    for(const graph of q.graphs) html+=`<figure class="given"><figcaption>Given graph${q.id===4?': f solid; g dashed':': f'}</figcaption>${grid(graph.x,graph.y,graph.lines)}</figure>`;
-    html+='<div class="mapping-work"><strong>Work space</strong><div class="work-lines tall"></div></div></div>';
+  let prompt='';
+  let dedicated='';
+  if(q.graphs && q.graphs.length>0) {
+    prompt+='<div class="given-row">';
+    for(const graph of q.graphs) prompt+=`<figure class="given"><figcaption>Given graph${q.id===4?': f solid; g dashed':': f'}</figcaption>${grid(graph.x,graph.y,graph.lines)}</figure>`;
+    prompt+='<div class="mapping-work"><strong>Work space</strong><div class="work-lines tall"></div></div></div>';
   }
   if(ranges[q.id]) {
     const [x,y]=ranges[q.id];
-    html+=`<div class="graph-work"><h3>Question ${q.id}: your graph</h3><p>One unit per square.</p>${grid(x,y)}</div>`;
+    dedicated=`<div class="graph-work"><h3>Question ${q.id}: your graph</h3><p>One unit per square.</p>${grid(x,y)}</div>`;
   } else if(q.polynomialDegree) {
-    html+=`<div class="polynomial-work"><h3>Question ${q.id}: your qualitative sketch</h3><div class="sketch-space"><svg viewBox="0 0 600 600" role="img" aria-label="Large centered axes for qualitative sketch"><line x1="20" x2="580" y1="300" y2="300" stroke="#111" stroke-width="1.5"/><line x1="300" x2="300" y1="20" y2="580" stroke="#111" stroke-width="1.5"/><text x="585" y="290">x</text><text x="310" y="20">y</text></svg></div></div>`;
+    dedicated=`<div class="polynomial-work"><h3>Question ${q.id}: your qualitative sketch</h3><div class="sketch-space"><svg viewBox="0 0 600 600" role="img" aria-label="Large centered axes for qualitative sketch"><line x1="20" x2="580" y1="300" y2="300" stroke="#111" stroke-width="1.5"/><line x1="300" x2="300" y1="20" y2="580" stroke="#111" stroke-width="1.5"/><text x="585" y="290">x</text><text x="310" y="20">y</text></svg></div></div>`;
   }
-  html+='<strong>Answers and work</strong><div class="work-lines '+([5,7,9].includes(q.id)?'xtall':'medium')+'"></div>';
-  return html;
+  const workSpace=`<strong>Answers and work</strong><div class="work-lines ${[5,7,9].includes(q.id)?'xtall':'medium'}"></div>`;
+  if(dedicated) dedicated+=workSpace;
+  else prompt+=workSpace;
+  return {prompt,dedicated};
 }
 const extra=`
 .test-page { margin-bottom:20px; }
@@ -98,7 +101,8 @@ const extra=`
 .polynomial-work svg { width:100%; height:100%; }
 .sketch-space { height:270px; border:1px solid #777; padding:8px; margin:12px 0; }
 .question-text p { margin:7px 0; }
-.work-lines { background:none; border:0; }
+.work-lines { background-image:none; display:flex; flex-direction:column; justify-content:space-evenly; }
+.work-lines hr { width:100%; margin:0; border:0; border-top:1px solid #b7bdc7; }
 .key-block { break-inside:avoid; }
 button { padding:8px 16px; cursor:pointer; }
 @media print {
@@ -115,14 +119,37 @@ button { padding:8px 16px; cursor:pointer; }
  .footer { margin:8px 0 0; }
 }
 `;
-function head(title) {
-  return `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="duration-minutes" content="75"><meta name="total-points" content="100"><title>${title}</title><style>${mathCss}</style><style>${css}${extra}</style></head><body><main>`;
+const studentExtra=`
+.dedicated-work { margin:10px auto; }
+.work-lines { background:none; border:0; display:block; }
+@media print {
+ .test-page { break-before:auto; page-break-before:auto; margin:0; border:0; padding:0; }
+ .test-page[data-question="2"],
+ .test-page[data-question="3"],
+ .test-page[data-question="4"],
+ .test-page[data-question="6"],
+ .test-page[data-question="7"],
+ .test-page[data-question="9"],
+ .test-page[data-question="10"] { break-before:page; page-break-before:always; }
+ .test-page[data-question="4"],
+ .test-page[data-question="5"],
+ .test-page[data-question="7"],
+ .test-page[data-question="9"] { break-inside:avoid; page-break-inside:avoid; }
+ .dedicated-work { break-before:page; page-break-before:always; }
+ .graph-work,.polynomial-work { break-before:auto; page-break-before:auto; width:6.8in; }
+ .graph-work .print-grid { width:6.8in; height:6.8in; }
+ .sketch-space { width:6.8in; height:6.8in; padding:0; }
+}
+`;
+function head(title, styles=extra) {
+  return `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="duration-minutes" content="75"><meta name="total-points" content="100"><title>${title}</title><style>${mathCss}</style><style>${css}${styles}</style></head><body><main>`;
 }
 const render='';
-let student=head('Pre-Calculus: Prep Test 2');
+let student=head('Pre-Calculus: Prep Test 2',`${extra}${studentExtra}`);
 student+=`<header class="exam-header"><div class="eyebrow">Motor City Math | Pre-Calculus</div><div class="screen-only"><a href="../index.html" class="back-link">&larr; Back to Dashboard</a></div><h1>Prep Test 2: Functions and Polynomial Graphs</h1><p class="subtitle">75 minutes | 100 points | ${data.questions.length} questions</p><div class="student-fields"><span>Name: <span class="field-line" style="width:65%"></span></span><span>Date: <span class="field-line"></span></span></div><p class="screen-only"><button onclick="window.print()">Print student test</button></p></header><aside class="directions"><strong>Directions</strong><ul><li>Show your work.</li><li>Use interval notation where requested.</li><li>Questions 6 and 8 require qualitative polynomial sketches. Exact extrema and a uniform vertical scale are not required.</li><li>Suggested question times total 70 minutes, with a final 5 minutes for review.</li></ul><p>Use the space provided; additional work may go on the back.</p></aside><section class="exam-section"><h2>Suggested timing</h2><table class="value-table"><thead><tr><th>Question</th><th>Points</th><th>Minutes</th></tr></thead><tbody>${data.questions.map(q=>`<tr><td>${q.id}. ${escape(studentTitles[q.id])}</td><td>${q.points}</td><td>${q.minutes}</td></tr>`).join('')}</tbody></table><p>Final review: 5 minutes. Total: 75 minutes.</p></section>`;
 for(const q of data.questions) {
-  student+=`<section class="exam-section test-page" data-question="${q.id}" data-points="${q.points}" data-minutes="${q.minutes}"><div class="section-heading"><h2>Question ${q.id}</h2><span class="section-meta">${q.minutes} minutes | ${q.points} points</span></div><article class="question" id="q${q.id}"><div class="question-header"><span class="question-number">${q.id}</span><span class="question-title">${escape(studentTitles[q.id])}</span><span class="points">${q.points} points</span></div><div class="question-body question-text">${studentStem(q).map(part=>`<p>${text(part)}</p>`).join('')}${workspace(q)}</div></article><p class="footer">Prep Test 2 | Question ${q.id} of ${data.questions.length}</p></section>`;
+  const spaces=workspace(q);
+  student+=`<section class="exam-section test-page" data-question="${q.id}" data-points="${q.points}" data-minutes="${q.minutes}"><div class="section-heading"><h2>Question ${q.id}</h2><span class="section-meta">${q.minutes} minutes | ${q.points} points</span></div><article class="question" id="q${q.id}"><div class="question-header"><span class="question-number">${q.id}</span><span class="question-title">${escape(studentTitles[q.id])}</span><span class="points">${q.points} points</span></div><div class="question-body question-text">${studentStem(q).map(part=>`<p>${text(part)}</p>`).join('')}${spaces.prompt}</div></article>${spaces.dedicated?`<div class="dedicated-work">${spaces.dedicated}</div>`:''}<p class="footer">Prep Test 2 | Question ${q.id} of ${data.questions.length}</p></section>`;
 }
 student=student
   .replace(/<li>Suggested question times total 70 minutes, with a final 5 minutes for review\.<\/li>/,'')
