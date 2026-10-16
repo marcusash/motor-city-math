@@ -1,10 +1,27 @@
 /* Teacher-margin scores transcribed from the six-page scan by FR.
- * The scan is intentionally not published. Reference solutions are not a teacher key.
+ * Only header-free question crops are published. Reference solutions are not a teacher key.
  */
 window.assessment1TeacherGrade = {
   status: 'verified-with-one-ambiguous-mark',
   title: 'Assessment 1: Functions (Teacher-Scored)',
   scannedOn: null,
+  evidence: {
+    '1 linear': { file: 'q1-graphs.png', page: 1, label: 'Question 1, both graph parts and their separate teacher marks' },
+    '1 radical': { file: 'q1-graphs.png', page: 1, label: 'Question 1, both graph parts and their separate teacher marks' },
+    '2': { file: 'q2-quadratic.png', page: 1, label: 'Question 2, quadratic graph, written equations and teacher mark' },
+    '3': { file: 'q3-graph-analysis.png', page: 2, label: 'Question 3, graph analysis answers, extrema corrections and teacher mark' },
+    '4': { file: 'q4-cubic.png', page: 2, label: 'Question 4, cubic graph, factorization and teacher mark' },
+    '5': { file: 'q5-polynomial.png', page: 3, label: 'Question 5, polynomial graph, equation work and teacher mark' },
+    '6(a)': { file: 'q6-operations.png', page: 3, label: 'Question 6 parts (a), (b) and (c), shared function definitions, work and separate teacher marks' },
+    '6(b)': { file: 'q6-operations.png', page: 3, label: 'Question 6 parts (a), (b) and (c), shared function definitions, work and separate teacher marks' },
+    '6(c)': { file: 'q6-operations.png', page: 3, label: 'Question 6 parts (a), (b) and (c), shared function definitions, work and separate teacher marks' },
+    '7': { file: 'q7-piecewise.png', page: 4, label: 'Question 7, piecewise rule, graph, evaluation and teacher mark' },
+    '8 kayak (page 4)': { file: 'q8-kayak-page4.png', page: 4, label: 'Printed Question 8 on page 4, kayak prompt, faint work and zero teacher mark' },
+    '8 graph (page 5)': { file: 'q8-graph-page5.png', page: 5, label: 'Printed Question 8 on page 5, graph conditions, sketch and teacher mark' },
+    '9 composition': { file: 'q9-composition.png', page: 5, label: 'Printed Question 9, composition prompt, faint work and zero teacher mark' },
+    '10 multiple choice': { file: 'q10-table.png', page: 6, label: 'Question 10, table and choices, student circle, teacher arrow and ambiguous margin fraction' },
+    '11(a-c)': { file: 'q11-operations.png', page: 6, label: 'Question 11 parts (a), (b) and (c), table, graph, attempted work and grouped teacher mark' }
+  },
   sections: [
     { title: 'Graphs and polynomials', questions: [
       { id: '1 linear', points: 4, earned: 3.75, problem: 'Graph f(x) = -2x + 3.',
@@ -65,6 +82,6 @@ window.assessment1TeacherGrade = {
     'Question labels follow the actual printed pages: Question 1 has two graph parts; both the kayak model on page 4 and graph-properties item on page 5 are printed Question 8. The composition item on page 5 is printed Question 9.',
     'The scan establishes neither assessment date nor elapsed time. This report is not an official course grade or a timed-practice result.',
     'Faint or blank work is not evidence that Kai cannot perform a skill. No response or deduction rationale has been invented.',
-    'The original scan is intentionally not published or linked.'
+    'Only matching question/work/teacher-mark crops are published, with names and page headers removed. The full raw PDF is not published or linked.'
   ]
 };
