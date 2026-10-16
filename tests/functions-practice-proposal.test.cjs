@@ -32,9 +32,8 @@ assert.match(skills.rationale, /ambiguous multiple-choice/);
 assert.equal((html.match(/<article /g) || []).length, 16);
 assert.equal((html.match(/<svg class="grid"/g) || []).length, 5);
 assert.equal((html.match(/<table>/g) || []).length, 3);
-assert.match(html, /Draft questions only/);
-assert.match(html, /No student tests/);
-assert.match(html, /only after Marcus approves/);
+assert.match(html, /Full student test authorized after parent feedback/);
+assert.match(html, /shorter skills check remains draft and on hold/);
 assert.doesNotMatch(html, /<ol>|<h3>Scoring|Suggested timing|Worked answer/);
 assert.doesNotMatch(html, /\\\(|\\\)/);
 assert.match(html, /\.katex \.katex-mathml\{/);
@@ -43,9 +42,9 @@ assert.match(html, /url\(\.\.\/shared\/katex\/fonts\//);
 assert.equal((builder.match(/fs\.writeFileSync/g) || []).length, 1);
 assert.match(builder, /'reviews', 'functions-practice-proposal\.html'/);
 assert.doesNotMatch(builder, /printToPDF|print-to-pdf|writeFileSync\(path\.join\(root,\s*'tests'/);
-for (const exam of data.exams) for (const suffix of ['.html', '-KEY.html', '.pdf', '-KEY.pdf']) {
-  assert.equal(fs.existsSync(path.join(root, 'tests', exam.slug + suffix)), false,
-    'Approval gate: final test artifacts must not exist yet');
+for (const suffix of ['.html', '-KEY.html', '.pdf', '-KEY.pdf']) {
+  assert.equal(fs.existsSync(path.join(root, 'tests', skills.slug + suffix)), false,
+    'Shorter skills test remains on hold');
 }
 // Independent calculations check every problem family and the stored worked answers.
 const near = (a, b) => assert.ok(Math.abs(a - b) < 1e-9, `${a} != ${b}`);
@@ -53,9 +52,11 @@ const q = id => full.questions.find(item => item.id === id);
 const sq = id => skills.questions.find(item => item.id === id);
 const line = x => 1.5 * x - 2;
 near(line(0), -2); near(line(4 / 3), 0); near(line(2), 1);
-const radical = x => -Math.sqrt(x + 2) + 3;
-near(radical(-2), 3); near(radical(-1), 2); near(radical(2), 1); near(radical(7), 0);
-assert.ok(q(1).steps.some(s => s.includes('3-\\sqrt2')));
+const radical = x => -1.5 * Math.sqrt(-x + 2) + 3;
+near(radical(2), 3); near(radical(1), 1.5); near(radical(-2), 0); near(radical(-7), -1.5);
+near(radical(0), 3 - 1.5 * Math.sqrt(2));
+assert.ok(q(1).prompt.some(s => s.includes('-\\frac32\\sqrt{-x+2}+3')));
+assert.ok(q(1).steps.some(s => s.includes('3-\\frac32\\sqrt2')));
 for (let x = -5; x <= 5; x += 0.25) {
   near(-0.5 * (x + 3) * (x - 2), -0.5 * x * x - 0.5 * x + 3);
   near(-x * (x - 3) * (x + 2), -(x ** 3) + x * x + 6 * x);
@@ -77,14 +78,18 @@ for (const x of [-3, -1, 0, 4, 5]) {
   if (x <= 4) near(g(f(x)), Math.sqrt(8 - 2 * x) + 1);
 }
 near(f(3 - 2), Math.sqrt(8 - 2 * 3 + 2 * 2));
-const piecewise = x => x < -1 ? x * x - 3 : -2 * x + 1;
-assert.deepEqual([-2, -1, 2].map(piecewise), [1, 3, -3]);
+const piecewise = x => x < -1 ? 2 * (x + 1) ** 2 - 4 : -2 * x + 1;
+assert.deepEqual([-2, -1, 2].map(piecewise), [-2, 3, -3]);
+near(2 * (-3 + 1) ** 2 - 4, 4);
 assert.ok(q(7).steps.some(s => s.includes('h(-1)=3')));
-const cost = t => t > 0 && t <= 5 ? (t <= 1.5 ? 14 : 14 + 8 * (t - 1.5)) : undefined;
-assert.deepEqual([1.5, 3.25, 5].map(cost), [14, 28, 42]);
-assert.equal(cost(0), undefined); assert.equal(cost(5.01), undefined);
-near(14 + 8 * (1.5 - 1.5), cost(1.5));
-assert.ok(q(8).steps.some(s => s.includes('C(3.25)') && s.includes('28')));
+const cost = a => a > 0 && a <= 30 ? (a <= 6 ? 24 : 24 + 3.5 * (a - 6)) : undefined;
+assert.deepEqual([6, 10, 30].map(cost), [24, 38, 108]);
+assert.equal(cost(0), undefined); assert.equal(cost(30.01), undefined);
+near(24 + 3.5 * (6 - 6), cost(6));
+near(cost(6.5), 25.75);
+assert.ok(q(8).steps.some(s => s.includes('C(10)') && s.includes('38')));
+assert.ok(q(8).prompt[0].includes('fabric banners'));
+assert.ok(!q(8).prompt.join(' ').includes('rental'));
 const properties = x => (x * x - 4) ** 2 / 4 - 2;
 near(properties(0), 2); near(properties(2), -2);
 assert.ok(properties(1.99) > -2 && properties(2.01) > -2);
@@ -92,8 +97,9 @@ for (let i = 0; i < 40; i++) {
   const x = -6 + i / 10;
   assert.ok(properties(x + 0.01) < properties(x));
 }
-for (const x of [-2, 0, 2]) near((2 - 3 * x) ** 5, Math.pow(2 - 3 * x, 5));
-assert.ok(q(10).steps.some(s => s.includes('g(x)=2-3x') && s.includes('f(x)=x^5')));
+const inner = x => x * x + 4, outer = x => 5 / x;
+for (const x of [-2, 0, 2]) near(outer(inner(x)), 5 / (x * x + 4));
+assert.ok(q(10).steps.some(s => s.includes('g(x)=x^2+4') && s.includes('f(x)=\\frac5x')));
 const behavior = x => x <= 0 ? -2 - 1.6 * x : x <= 4 ? -2 + 1.25 * x : 3 + (5 / 3) * (x - 4);
 near(behavior(-5), 6); near(behavior(0), -2); near(behavior(4), 3); near(behavior(7), 8);
 assert.ok(behavior(-0.01) > behavior(0) && behavior(0.01) > behavior(0));
@@ -120,4 +126,17 @@ const skillsF = new Map(sq(4).table.rows[0].slice(1)
 near(skillsF.get(skillsG(-1)), -4);
 near(skillsG(5) - (2 * 5 - 1), -7);
 near(2 * 0.5 - 1, 0);
-console.log('PASS: 16 proposed problems, score/time totals, original-task mapping, independent answer checks, rendered math, and no final-test artifacts.');
+const student = fs.readFileSync(path.join(root, 'tests', full.slug + '.html'), 'utf8');
+assert.equal((student.match(/data-question="/g) || []).length, 12);
+assert.equal([...student.matchAll(/data-points="(\d+)"/g)].reduce((sum, match) => sum + Number(match[1]), 0), 100);
+assert.equal((student.match(/class="grid"/g) || []).length, 9);
+assert.equal((student.match(/<title>Blank coordinate grid/g) || []).length, 5);
+assert.equal((student.match(/<section class="page/g) || []).length, 14);
+assert.match(student, /75 minutes \| 100 points \| 12 questions/);
+assert.doesNotMatch(student, /Teacher Q|Matches:|rubric|Answer Key|h\(-2\)=-2|reciprocal|Scoring|nonidentity/);
+assert.match(student, /fabric banners/);
+assert.doesNotMatch(student, /rental|\\\(|\\\)/);
+const pdf = fs.readFileSync(path.join(root, 'tests', full.slug + '.pdf'));
+assert.equal(pdf.subarray(0, 5).toString(), '%PDF-');
+assert.ok(pdf.length > 10000);
+console.log('PASS: full student test, 16 source problems, score/time totals, feedback changes, independent answer checks, rendered math, and skills-test hold.');

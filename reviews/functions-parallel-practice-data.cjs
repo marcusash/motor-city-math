@@ -9,7 +9,7 @@ const skillsTable = {
 };
 
 module.exports = {
-  status: 'Draft for parent review; not administered or approved for the dashboard.',
+  status: 'Full student test authorized after parent feedback; shorter skills check remains draft. Not administered or approved for the dashboard.',
   grading: 'Deduct an originating error once. Award follow-through for consistent later work. Accept equivalent expressions, notation, and valid graphs. Do not infer a conceptual deficit from a low score alone. Grade only requested work; no unrequested explanations or exact polynomial extrema.',
   exams: [
     {
@@ -21,11 +21,11 @@ module.exports = {
           id: 1, points: 10, difficulty: 2, minutes: 7, source: 'Teacher Q1, both parts',
           prompt: ['Graph each function. Label the axes and intercepts.',
             m`(a) \(f(x)=\frac32x-2\).`,
-            m`(b) \(g(x)=-\sqrt{x+2}+3\).`],
+            m`(b) \(g(x)=-\frac32\sqrt{-x+2}+3\).`],
           layout: 'two-grids', range: 8,
           steps: [
             m`For (a), the slope is \(\frac32\) and the y-intercept is \((0,-2)\). Other points include \((2,1)\) and \((-2,-5)\). Setting \(y=0\) gives x-intercept \((\frac43,0)\). Draw a straight line with arrows.`,
-            m`For (b), \(x+2\ge0\), so the curve starts at \((-2,3)\) and continues rightward and downward through \((-1,2),(2,1),(7,0)\). Intercepts are \((7,0)\) and \((0,3-\sqrt2)\). The domain is \([-2,\infty)\); range \((-\infty,3]\). Domain/range are reference information, not extra student requirements.`
+            m`For (b), \(-x+2\ge0\), so the curve starts at \((2,3)\) and continues leftward and downward through \((1,\frac32),(-2,0),(-7,-\frac32)\). The fractional vertical stretch has magnitude \(\frac32\); the negative outside factor reflects vertically. Since \(-x+2=-(x-2)\), reflect horizontally and shift right 2. Intercepts are \((-2,0)\) and \((0,3-\frac32\sqrt2)\). Domain \((-\infty,2]\); range \((-\infty,3]\). Domain/range and transformation descriptions are reference information, not extra student requirements.`
           ],
           rubric: [
             [5, 'Part (a): correct slope/line 2; intercepts 2 (1 each); labeled axes and continuation 1.'],
@@ -94,32 +94,32 @@ module.exports = {
         {
           id: 7, points: 12, difficulty: 2, minutes: 8, source: 'Teacher Q7',
           prompt: [
-            m`Let \(h(x)=\begin{cases}x^2-3,&x<-1\\-2x+1,&x\ge-1.\end{cases}\)`,
+            m`Let \(h(x)=\begin{cases}2(x+1)^2-4,&x<-1\\-2x+1,&x\ge-1.\end{cases}\)`,
             '(a) Graph h on the provided axes.',
             m`(b) Find \(h(-2)\), \(h(-1)\), and \(h(2)\).`
           ],
           layout: 'graph', range: 8,
           steps: [
-            m`For \(x<-1\), draw the left portion of \(y=x^2-3\), with an open point at \((-1,-2)\); sample points \((-2,1)\) and \((-3,6)\).`,
+            m`For \(x<-1\), draw the left portion of \(y=2(x+1)^2-4\), vertically stretched by 2 and shifted left 1 and down 4, with an open point at \((-1,-4)\); sample points \((-2,-2)\) and \((-3,4)\).`,
             m`For \(x\ge-1\), draw \(y=-2x+1\), with a closed point at \((-1,3)\), continuing through \((0,1)\) and \((2,-3)\).`,
-            m`The evaluations are \(h(-2)=1\), \(h(-1)=3\), and \(h(2)=-3\). Each input belongs to only one branch.`
+            m`The evaluations are \(h(-2)=-2\), \(h(-1)=3\), and \(h(2)=-3\). Each input belongs to only one branch.`
           ],
           rubric: [[4, 'Branch shapes and correct sides, 2 each.'], [2, 'Boundary coordinates, 1 each.'], [2, 'Open/closed marks, 1 each.'], [1, 'Labeled axes and appropriate continuation.'], [3, 'Evaluations, 1 each. If a branch-selection error recurs in graph and evaluations, deduct its selection component once; retain arithmetic credit.']]
         },
         {
           id: 8, points: 12, difficulty: 3, minutes: 7, source: 'Teacher Q8, kayak, page 4',
           prompt: [
-            'A paddleboard rental shop charges a flat $14 for the first 90 minutes or any part of that time. After the first 90 minutes, it charges $8 per additional hour; partial hours are charged proportionally. Rentals last more than 0 and at most 5 hours.',
-            '(a) Write a piecewise function C(t) for the rental cost in dollars, where t is the total rental time in hours.',
-            '(b) Find the cost of renting for 1.5 hours, 3.25 hours, and 5 hours.'
+            'A print studio makes custom fabric banners. A banner with an area of up to 6 square feet costs a flat $24. For larger banners, the studio charges $24 plus $3.50 for each square foot beyond the first 6; fractional square feet are charged proportionally. The studio makes banners with areas greater than 0 and no larger than 30 square feet.',
+            '(a) Write a piecewise function C(a) for the cost in dollars, where a is the banner area in square feet.',
+            '(b) Find the costs for banners with areas of 6, 10, and 30 square feet.'
           ],
           steps: [
-            m`Ninety minutes is \(1.5\) hours. The flat charge covers the entire first \(1.5\) hours.`,
-            m`\(C(t)=\begin{cases}14,&0<t\le1.5\\14+8(t-1.5),&1.5<t\le5.\end{cases}\) The second expression may be written \(8t+2\). Domain: \((0,5]\).`,
-            m`\(C(1.5)=14\), \(C(3.25)=14+8(1.75)=28\), and \(C(5)=14+8(3.5)=42\), all in dollars.`,
-            'A rental longer than 5 hours is outside this model, not free and not capped at $42. No t=0 convention is needed because the prompt explicitly excludes it.'
+            'The flat charge covers the first 6 square feet. Only the area beyond 6 is charged at the additional rate.',
+            m`\(C(a)=\begin{cases}24,&0<a\le6\\24+3.50(a-6),&6<a\le30.\end{cases}\) The second expression may be written \(3.50a+3\). Domain: \((0,30]\).`,
+            m`\(C(6)=24\), \(C(10)=24+3.50(4)=38\), and \(C(30)=24+3.50(24)=108\), all in dollars.`,
+            'Areas above 30 square feet are outside this model, not free and not capped at $108. Area 0 is explicitly excluded.'
           ],
-          rubric: [[2, 'Flat branch expression.'], [3, 'Additional-time expression: base fee 1; correct charged duration 1; rate 1.'], [3, 'Branch intervals and full duration domain, including boundary ownership. Accept placing 1.5 in either branch since the formulas agree there.'], [4, 'Costs: 1.5 hours 1; 3.25 hours 1.5; 5 hours 1.5. Preserve evaluation follow-through from a model error.']]
+          rubric: [[2, 'Flat branch expression.'], [3, 'Additional-area expression: base charge 1; correct additional area 1; rate 1.'], [3, 'Branch intervals and full area domain, including boundary ownership. Accept placing 6 in either branch since the formulas agree there.'], [4, 'Costs: 6 square feet 1; 10 square feet 1.5; 30 square feet 1.5. Preserve evaluation follow-through from a model error.']]
         },
         {
           id: 9, points: 8, difficulty: 3, minutes: 6, source: 'Teacher Q8, graph properties, page 5',
@@ -141,12 +141,12 @@ module.exports = {
         {
           id: 10, points: 8, difficulty: 2, minutes: 4, source: 'Teacher Q9, composition decomposition, page 5',
           prompt: [
-            m`Let \(j(x)=(2-3x)^5\). Find two functions f and g such that \(j(x)=f(g(x))\). Do not use \(f(x)=x\) or \(g(x)=x\).`,
+            m`Let \(j(x)=\frac{5}{x^2+4}\). Find two functions f and g such that \(j(x)=f(g(x))\). Do not use \(f(x)=x\) or \(g(x)=x\).`,
             'Show that your functions give j when composed.'
           ],
           steps: [
-            m`One choice is \(g(x)=2-3x\) and \(f(x)=x^5\).`,
-            m`Then \(f(g(x))=(g(x))^5=(2-3x)^5=j(x)\).`,
+            m`One choice is \(g(x)=x^2+4\) and \(f(x)=\frac5x\).`,
+            m`Then \(f(g(x))=\frac5{g(x)}=\frac5{x^2+4}=j(x)\). Because \(x^2+4>0\), this composition is defined for every real x.`,
             'Accept any two nonidentity functions whose composition is j on its domain. Do not interchange their roles unless the resulting composition actually works.'
           ],
           rubric: [[3, 'Valid inner function.'], [3, 'Compatible outer function.'], [2, 'Correct composition check. Judge the pair together; award valid alternative decompositions in full.']]
