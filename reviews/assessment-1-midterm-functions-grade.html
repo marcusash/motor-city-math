@@ -38,6 +38,8 @@ details { margin-top:8px; }
 summary { cursor:pointer; }
 .section-title { margin-top:28px; }
 .score-cell { white-space:nowrap; }
+.source-image { display:block; width:100%; max-width:100%; height:auto; margin:12px auto; }
+.evidence { margin-top:12px; }
 @media print {
  :root { color-scheme:light; --bg:white; --surface:white; --text:black; --muted:#444; --border:#999; }
  body { padding:0; } .back-link { display:none; } .badge,.score-big { color:black; background:none; } tr { break-inside:avoid; }
@@ -56,7 +58,7 @@ summary { cursor:pointer; }
   <p>Question 1 has two separately scored graph parts: 3.75/4 and 3/4, totaling 6.75/8.</p>
   <p><strong>Overall score unconfirmed:</strong> the Question 10 multiple-choice margin fraction is ambiguous, so that item is excluded from both subtotal numbers. No final assessment percentage is shown.</p>
   <p>Graph and polynomial items total 33.25/38; operations and modeling total 12.5/23. The table-reasoning score needs confirmation. These groups describe this submission, not a diagnosis of mastery.</p>
-  <p class="note">No matching answer key was provided. Faint writing is described cautiously; blank work is not a demonstrated conceptual deficit. The raw scan is not published.</p>
+  <p class="note">No matching answer key was provided. Faint writing is described cautiously; blank work is not a demonstrated conceptual deficit. Expand each row's original-work evidence to see the matching header-free crop; the full raw PDF is not published.</p>
   <div class="standards-grid" id="sectionsSummary"></div>
 </div>
 <div id="sections"></div>
@@ -111,7 +113,23 @@ window.addEventListener('DOMContentLoaded', function () {
       details.append(element('p', confirmed ? 'Teacher annotation: ' + question.earned + '/' + question.points + '. No matching rubric was provided; no deduction rationale is inferred.' : 'Teacher annotation is ambiguous. Excluded from subtotal; no score inferred.', 'note'));
       problem.append(details);
       row.append(problem);
-      row.append(element('td', question.answer));
+      const work = element('td', question.answer);
+      const evidence = data.evidence[question.id];
+      const original = element('details', undefined, 'evidence');
+      original.append(element('summary', "Kai's original work: " + evidence.label));
+      original.append(element('p', 'Source page ' + evidence.page + '. ' + evidence.label + '.', 'note'));
+      const full = element('a', 'Open full-resolution crop in a new tab');
+      full.href = 'assets/assessment-1-midterm-functions/' + evidence.file;
+      full.target = '_blank';
+      full.rel = 'noopener';
+      original.append(full);
+      const image = element('img', undefined, 'source-image');
+      image.src = full.href;
+      image.alt = evidence.label + ', source page ' + evidence.page + "; Kai's work and teacher annotations, with name and header removed";
+      image.loading = 'lazy';
+      original.append(image);
+      work.append(original);
+      row.append(work);
       const status = !confirmed ? 'zero' : question.earned === question.points ? 'correct' : question.earned === 0 ? 'zero' : 'partial';
       const label = !confirmed ? 'Unconfirmed mark' : status === 'correct' ? 'Full credit' : status === 'zero' ? 'Zero awarded' : 'Partial credit';
       const cell = element('td');
