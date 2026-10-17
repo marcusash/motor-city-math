@@ -5,6 +5,7 @@ window.assessment1TeacherGrade = {
   status: 'verified-with-one-ambiguous-mark',
   title: 'Assessment 1: Functions (Teacher-Scored)',
   scannedOn: null,
+  reviewedOn: '2026-10-16',
   evidence: {
     '1 linear': { file: 'q1-graphs.png', page: 1, label: 'Question 1, both graph parts and their separate teacher marks' },
     '1 radical': { file: 'q1-graphs.png', page: 1, label: 'Question 1, both graph parts and their separate teacher marks' },

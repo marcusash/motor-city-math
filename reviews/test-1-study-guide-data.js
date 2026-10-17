@@ -3,6 +3,7 @@ window.test1StudyGuide = {
   title: 'Test 1 Study Guide',
   completedOn: null,
   scannedOn: null,
+  reviewedOn: '2026-10-03',
   provisional: true,
   sections: [
     { title: 'Function basics and transformations', page: 1, rows: [
