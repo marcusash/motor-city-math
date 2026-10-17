@@ -5,6 +5,7 @@ window.assessment1PracticeGrade = {
   reviewed: 'October 4, 2026',
   completedOn: null,
   scannedOn: '2026-10-04',
+  reviewedOn: '2026-10-04',
   provisional: true,
   sections: [
     { title: 'Function Basics', evidence: [

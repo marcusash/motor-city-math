@@ -536,25 +536,17 @@
         <details class="dash-section" id="precalculusSection" open>
             <summary class="section-title">Fall 2026 &middot; Pre-Calculus</summary>
             <p class="test-meta">Junior year &middot; Functions &amp; Polynomial Review</p>
-            <a href="tests/assessment-2-functions-75min.pdf" class="hero hero-link" style="display:block;text-decoration:none;cursor:pointer;" target="_blank" rel="noopener">
-                <div class="hero-eye">Pre-Calculus Prep &middot; 75 minutes &middot; 100 points</div>
-                <div class="hero-name">Prep Test 2: Functions &amp; Polynomial Review</div>
-                <div class="hero-last">Open the printable student test.</div>
-            </a>
             <div class="trend-card" style="margin-top:12px;">
                 <div class="trend-hd">
-                    <div class="trend-hd-r" id="precalculusFirstScore">Scores based on visible work, not teacher grades</div>
+                    <div class="trend-hd-r" id="precalculusFirstScore">Practice scores and teacher-marked assessment subtotal</div>
                 </div>
                 <div id="precalculusChartContainer"></div>
+                <p class="test-meta">Study Guide and Prep Test 1 are scan-based practice scores, not teacher grades. Assessment 1 is a 75% subtotal (45.75/61), not a final grade: one ambiguous teacher mark is excluded. Dates use scans where documented; otherwise the labeled review date is shown, not the test date.</p>
             </div>
             <div class="test-grid" id="precalculusGrid">
                 <a class="test-link" href="reviews/assessment-1-midterm-functions-grade.html">
                     <div class="test-name-row"><span>Assessment 1: Functions (Teacher-Scored)</span><span class="test-score mid" id="teacherAssessment1Score"></span></div>
                     <div class="test-meta">Teacher marks; one ambiguous score, overall total unconfirmed</div>
-                </a>
-                <a class="test-link" href="tests/assessment-2-functions-75min.pdf" target="_blank" rel="noopener">
-                    <div class="test-name-row"><span>Prep Test 2: Student Test</span></div>
-                    <div class="test-meta">75 minutes &middot; 100 points &middot; PDF</div>
                 </a>
                 <a class="test-link" href="reviews/assessment-1-functions-75min-grade.html">
                     <div class="test-name-row"><span>Prep Test 1 Review</span><span class="test-score mid" id="practiceTest1Score">89.5/100</span></div>
@@ -866,6 +858,10 @@
         }
         return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
     }
+    function formatReportDate(data) {
+        if (data.scannedOn) return 'Scan ' + formatScanDate(data.scannedOn);
+        return 'Review ' + formatScanDate(data.reviewedOn);
+    }
     function buildPrecalculusHistory() {
         var teacherRows = window.assessment1TeacherGrade.sections.reduce(function(all, section) {
             return all.concat(section.questions);
@@ -873,6 +869,7 @@
         var legibleTeacherRows = teacherRows.filter(function(row) { return row.earned !== null && row.points !== null; });
         var teacherEarned = legibleTeacherRows.reduce(function(total, row) { return total + row.earned; }, 0);
         var teacherPossible = legibleTeacherRows.reduce(function(total, row) { return total + row.points; }, 0);
+        var teacherPct = Math.round(teacherEarned / teacherPossible * 1000) / 10;
         document.getElementById('teacherAssessment1Score').textContent =
             teacherEarned + '/' + teacherPossible + ' subtotal';
         function score(data, rowsKey) {
@@ -891,10 +888,11 @@
         document.getElementById('studyGuideScore').textContent = studyGuide.earned + '/' + studyGuide.total;
         document.getElementById('practiceTest1Score').textContent = practiceTest.earned + '/' + practiceTest.total;
         document.getElementById('precalculusFirstScore').textContent =
-            'Scores from visible work, not teacher grades: Study Guide ' + studyGuidePct + '% · Prep Test 1 ' + practiceTestPct + '%';
+            'Study Guide ' + studyGuidePct + '% · Prep Test 1 ' + practiceTestPct + '% · Assessment 1 ' + teacherPct + '% subtotal (not final)';
         renderTrendChart(document.getElementById('precalculusChartContainer'), [
-            { label: 'Study Guide 1', sublabel: formatScanDate(window.test1StudyGuide.scannedOn), fa: studyGuidePct },
-            { label: 'Prep Test 1', sublabel: formatScanDate(window.assessment1PracticeGrade.scannedOn), fa: practiceTestPct }
+            { label: 'Study Guide 1', sublabel: formatReportDate(window.test1StudyGuide), fa: studyGuidePct },
+            { label: 'Prep Test 1', sublabel: formatReportDate(window.assessment1PracticeGrade), fa: practiceTestPct },
+            { label: 'A1 subtotal', sublabel: formatReportDate(window.assessment1TeacherGrade), fa: teacherPct }
         ], true, true);
     }
     function buildStandards() {
