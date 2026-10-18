@@ -1,6 +1,6 @@
 const m = String.raw;
 
-module.exports = {
+const proposal = {
   title: 'Functions and Graphs: Practice Test 4',
   minutes: 75,
   points: 100,
@@ -123,3 +123,28 @@ module.exports = {
     }
   ]
 };
+
+proposal.questions.shift();
+proposal.points = 90;
+proposal.status = 'Approved question set. Student PDF requested.';
+for (const q of proposal.questions) {
+  q.id -= 1;
+  if (q.graphRange) {
+    const limit = Math.max(...q.graphRange.x.map(Math.abs), ...q.graphRange.y.map(Math.abs));
+    q.graphRange = { x: [-limit, limit], y: [-limit, limit] };
+  }
+}
+proposal.questions[2].prompt = [m`Graph \(F(x)=-2x^3+2x^2+12x\). Label the axes and intercepts.`];
+proposal.questions[2].graphRange = { x: [-20, 20], y: [-20, 20] };
+proposal.questions[6].prompt[3] = proposal.questions[6].prompt[3].replace('Question 4', 'Question 3');
+proposal.questions[10].table = {
+  caption: 'Selected values of f',
+  rows: [['x', '-3', '-1', '0', '2', '4'], ['f(x)', '6', '-2', '3', '7', '-5']]
+};
+proposal.questions[10].prompt = [
+  m`The graph of g is shown for \(-6\le x\le6\). Selected values of f are in the table; f is defined for all real numbers. Let \(h(x)=2x-5\).`,
+  m`(a) Find \(f(g(-5))\).`,
+  m`(b) Let \(j(x)=g(x)-h(x)\). Find \(j(2)\).`,
+  m`(c) What is the domain of \(\frac{f(x)}{h(x)}\)?`
+];
+module.exports = proposal;

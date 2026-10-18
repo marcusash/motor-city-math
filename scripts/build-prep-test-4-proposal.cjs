@@ -15,6 +15,9 @@ function text(value) {
     : escape(part)).join('');
 }
 function graph({ x = [-8, 8], y = [-8, 8], lines = [], points = [], aria = 'Blank coordinate grid' } = {}) {
+  const limit = Math.max(...x.map(Math.abs), ...y.map(Math.abs));
+  x = [-limit, limit];
+  y = [-limit, limit];
   const size = 460, pad = 26;
   const unit = Math.min((size - 2 * pad) / (x[1] - x[0]), (size - 2 * pad) / (y[1] - y[0]));
   const left = (size - unit * (x[1] - x[0])) / 2, top = (size - unit * (y[1] - y[0])) / 2;
@@ -22,16 +25,16 @@ function graph({ x = [-8, 8], y = [-8, 8], lines = [], points = [], aria = 'Blan
   let body = '';
   for (let n = Math.ceil(x[0]); n <= x[1]; n++) {
     body += `<path d="M${px(n)},${py(y[0])}V${py(y[1])}" stroke="${n === 0 ? '#111' : '#cbd1d8'}" stroke-width="${n === 0 ? 1.4 : 0.55}"/>`;
-    if (n !== 0 && n % 2 === 0) body += `<text x="${px(n)}" y="${py(0) + 14}" text-anchor="middle">${n}</text>`;
+    if (n !== 0 && n % (limit > 12 ? 4 : 2) === 0) body += `<text x="${px(n)}" y="${py(0) + 14}" text-anchor="middle">${n}</text>`;
   }
   for (let n = Math.ceil(y[0]); n <= y[1]; n++) {
     body += `<path d="M${px(x[0])},${py(n)}H${px(x[1])}" stroke="${n === 0 ? '#111' : '#cbd1d8'}" stroke-width="${n === 0 ? 1.4 : 0.55}"/>`;
-    if (n !== 0 && n % 2 === 0) body += `<text x="${px(0) - 6}" y="${py(n) + 3}" text-anchor="end">${n}</text>`;
+    if (n !== 0 && n % (limit > 12 ? 4 : 2) === 0) body += `<text x="${px(0) - 6}" y="${py(n) + 3}" text-anchor="end">${n}</text>`;
   }
   body += `<text x="${px(x[1]) - 2}" y="${py(0) - 6}">x</text><text x="${px(0) + 7}" y="${top + 11}">y</text>`;
   for (const line of lines) {
     const coords = line.points.map(([a, b]) => `${px(a)},${py(b)}`).join(' ');
-    body += `<polyline points="${coords}" fill="none" stroke="#111" stroke-width="2.2"${line.dashed ? ' stroke-dasharray="7 5"' : ''}/>`;
+    body += `<polyline clip-path="url(#plot-clip-${limit})" points="${coords}" fill="none" stroke="#111" stroke-width="2.2"${line.dashed ? ' stroke-dasharray="7 5"' : ''}/>`;
     for (const [a, b, open, label] of line.markers || []) {
       body += `<circle cx="${px(a)}" cy="${py(b)}" r="4" fill="${open ? '#fff' : '#111'}" stroke="#111" stroke-width="1.4"/>`;
       if (label) body += `<text x="${px(a) + 7}" y="${py(b) - 7}" class="label">${escape(label)}</text>`;
@@ -41,7 +44,7 @@ function graph({ x = [-8, 8], y = [-8, 8], lines = [], points = [], aria = 'Blan
     body += `<circle cx="${px(a)}" cy="${py(b)}" r="4" fill="#111"/>`;
     if (label) body += `<text x="${px(a) + 7}" y="${py(b) - 7}" class="label">${escape(label)}</text>`;
   }
-  return `<svg class="grid" viewBox="0 0 ${size} ${size}" role="img" aria-label="${escape(aria)}"><title>${escape(aria)}</title><g font-family="Arial" font-size="10" fill="#111">${body}</g></svg>`;
+  return `<svg class="grid" viewBox="0 0 ${size} ${size}" role="img" aria-label="${escape(aria)}"><title>${escape(aria)}</title><defs><clipPath id="plot-clip-${limit}"><rect x="26" y="26" width="408" height="408"/></clipPath></defs><g font-family="Arial" font-size="10" fill="#111">${body}</g></svg>`;
 }
 function sample(fn, start, end, count = 400) {
   return Array.from({ length: count + 1 }, (_, i) => {
@@ -60,16 +63,16 @@ function given(id) {
     lines: [{ points: [[-3, -1], [-1, 3], [2, 0], [4, 2]], markers: [[-3, -1], [-1, 3], [2, 0], [4, 2]] }]
   });
   if (id === 'polynomial') return graph({
-    x: [-5, 5], y: [-10, 12], aria: 'Given cubic graph; tangent zero at minus 1, crossing zero at 3, and y-intercept 6',
-    lines: [{ points: sample(x => -2 * (x + 1) ** 2 * (x - 3), -3.6, 3.9) }],
+    x: [-20, 20], y: [-20, 20], aria: 'Given cubic graph; tangent zero at minus 1, crossing zero at 3, and y-intercept 6; both turning points visible; curve continues beyond the grid',
+    lines: [{ points: sample(x => -2 * (x + 1) ** 2 * (x - 3), -5, 5) }],
     points: [[-1, 0, '(-1, 0)'], [3, 0, '(3, 0)'], [0, 6, '(0, 6)']]
   });
   if (id === 'operations') return graph({
-    x: [-4, 8], y: [-2, 8], aria: 'Graph g with closed point minus 4 comma 1, open point 0 comma 1, closed point 0 comma 5, vertex 2 comma 1, and endpoint 8 comma 7',
+    x: [-8, 8], y: [-8, 8], aria: 'Graph g: descending line from included (-6,3) to excluded (-2,-1); parabola from included (-2,2) through (0,-2) to excluded (2,2); horizontal segment from included (2,-3) to included (6,-3)',
     lines: [
-      { points: [[-4, 1], [0, 1]], markers: [[-4, 1], [0, 1, true]] },
-      { points: sample(x => (x - 2) ** 2 + 1, 0, 3, 100), markers: [[0, 5], [3, 2]] },
-      { points: [[3, 2], [8, 7]], markers: [[8, 7]] }
+      { points: [[-6, 3], [-2, -1]], markers: [[-6, 3], [-2, -1, true]] },
+      { points: sample(x => x ** 2 - 2, -2, 2, 160), markers: [[-2, 2], [2, 2, true]] },
+      { points: [[2, -3], [6, -3]], markers: [[2, -3], [6, -3]] }
     ]
   });
   throw new Error(`Unknown graph ${id}`);
@@ -104,5 +107,8 @@ for (const q of data.questions) {
   html += `<p class="meta">Source: ${escape(q.source)}</p></article>`;
 }
 html += '</main></body></html>';
-fs.writeFileSync(path.join(root, 'reviews/prep-test-4-proposal.html'), html);
-console.log('Generated review preview only; no student test or PDF was generated.');
+if (require.main === module) {
+  fs.writeFileSync(path.join(root, 'reviews/prep-test-4-proposal.html'), html);
+  console.log('Generated question preview.');
+}
+module.exports = { graph, given, text, mathCss, escape };
