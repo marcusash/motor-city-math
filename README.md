@@ -37,6 +37,14 @@ the shorter student test remain on hold. Build the full student HTML with
 without browser headers/footers. The full test includes blank workspace and five
 large, symmetric drawing grids. No dashboard or score change is included.
 
+The [Prep Test 4 question proposal](reviews/prep-test-4-proposal.html) awaits parent
+review before a student test or PDF is built. It has 12 questions: the unfinished
+Prep Test 2 Questions 3, 8, 9, and 10, plus eight fresh parallel problems. Question 3
+includes a given graph and a blank graph workspace. Its source data and preview
+generator are `reviews/prep-test-4-proposal-data.cjs` and
+`scripts/build-prep-test-4-proposal.cjs`; validate with
+`node tests/prep-test-4-proposal.test.cjs`.
+
 ### Units Covered
 
 | Unit | Topics | Tests |
