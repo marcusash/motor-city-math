@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "target": "Standard Precalculus mastery; aiming for an A, not honors-level difficulty",
+  "currentStudent": "print/kai-practice-2026-11/Kai_Mixed_Refresher_Quiz_2026-11-04_Easier_Factoring.pdf",
+  "currentKey": "print/kai-practice-2026-11/Kai_Mixed_Refresher_Quiz_2026-11-04_Easier_Factoring_PARENT_KEY.pdf",
+  "files": [
+    {
+      "path": ".gitattributes",
+      "bytes": 148,
+      "sha256": "9df22054263acdcad70b07721b5acf806a80ef8e8c54295464bb1e9f58f5a147"
+    },
+    {
+      "path": "print/kai-practice-2026-11/.gitattributes",
+      "bytes": 29,
+      "sha256": "79a3763730d203d31685a56bcae1140a09203b383b939126eae57bf72fa79fcd"
+    },
+    {
+      "path": "print/kai-practice-2026-11/evidence/original-honors-simulation.json",
+      "bytes": 1288,
+      "sha256": "20eb59baeeb94a4f8349c49aa2f0cb7941afbe6ca42d0b7e6e387434affade94"
+    },
+    {
+      "path": "print/kai-practice-2026-11/Kai_Inverse_Functions_Practice_5_Problems.pdf",
+      "bytes": 8313,
+      "sha256": "5b4569495d682be8e9651c5af56bfb1d4094398c70e67b34a64960a070b5dce5"
+    },
+    {
+      "path": "print/kai-practice-2026-11/Kai_Mixed_Refresher_Quiz_2026-11-04_Easier_Factoring_PARENT_KEY.html",
+      "bytes": 173106,
+      "sha256": "2633ca85051360fede7769b82fb43f344666e11304f5134e7e12399b61c309b7"
+    },
+    {
+      "path": "print/kai-practice-2026-11/Kai_Mixed_Refresher_Quiz_2026-11-04_Easier_Factoring_PARENT_KEY.pdf",
+      "bytes": 98256,
+      "sha256": "163a2e4b8e7f08d818bf6932f763162b33839813a369f7aacbf8ad46d80bb482"
+    },
+    {
+      "path": "print/kai-practice-2026-11/Kai_Mixed_Refresher_Quiz_2026-11-04_Easier_Factoring.html",
+      "bytes": 92634,
+      "sha256": "743ca6ee508a06b6f0d266b0cb6d4be55628a5122192966a8ba86676b2553dd5"
+    },
+    {
+      "path": "print/kai-practice-2026-11/Kai_Mixed_Refresher_Quiz_2026-11-04_Easier_Factoring.pdf",
+      "bytes": 166898,
+      "sha256": "328fcc65f272f056b45ab94352026dc0b10a668fb8ce09ff6fb47559bbd5c841"
+    },
+    {
+      "path": "print/kai-practice-2026-11/Kai_Mixed_Refresher_Quiz_2026-11-04_PARENT_KEY.html",
+      "bytes": 172604,
+      "sha256": "a2be00a0b5a4e0c2889bf79da4950af2b0a65ae2c52c541840206796e21b6b52"
+    },
+    {
+      "path": "print/kai-practice-2026-11/Kai_Mixed_Refresher_Quiz_2026-11-04_PARENT_KEY.pdf",
+      "bytes": 98655,
+      "sha256": "3dfd0d01eb5a0541a2af560f579c8c9c9e116bc2e4d59b0746d25599ba8e221e"
+    },
+    {
+      "path": "print/kai-practice-2026-11/Kai_Mixed_Refresher_Quiz_2026-11-04.html",
+      "bytes": 92645,
+      "sha256": "21e364304f293b7a683c3cb9a5d3a2958bc9ed672bee928bf6382ad557ed337c"
+    },
+    {
+      "path": "print/kai-practice-2026-11/Kai_Mixed_Refresher_Quiz_2026-11-04.pdf",
+      "bytes": 166894,
+      "sha256": "ed78a476692d5efd8d88018135de81dad0f40eb0767967bb0a58e0a77ec39927"
+    },
+    {
+      "path": "print/kai-practice-2026-11/Kai_Rational_Functions_Practice_5_Problems.pdf",
+      "bytes": 82261,
+      "sha256": "5a86136ad21942dca9c51b1a25aad58206eafc6ad33390b8149984828fa91709"
+    },
+    {
+      "path": "print/kai-practice-2026-11/README.md",
+      "bytes": 6418,
+      "sha256": "927faed308bb8fe1a47d166d2008aed7208e286f0c9d2c20af7f2de4b7ddb366"
+    },
+    {
+      "path": "print/kai-practice-2026-11/sources/build_kai_inverse_practice.py",
+      "bytes": 13290,
+      "sha256": "63176d56e82f7a42ea392faeb6ae19fa8e2b5cc67e140643e9ef3550fb5a7f53"
+    },
+    {
+      "path": "print/kai-practice-2026-11/sources/build_kai_mixed_refresher.py",
+      "bytes": 24016,
+      "sha256": "2b95d7002f9fffed590f4228226cdfe3bc0c3787a27e5a5e361d90bdb798ad2d"
+    },
+    {
+      "path": "print/kai-practice-2026-11/sources/build_kai_practice.py",
+      "bytes": 16752,
+      "sha256": "8fa25ff95475aa223009921fe583e4dd5d41feda336a22b3e1dbcabc5c7e2363"
+    },
+    {
+      "path": "scripts/build-kai-mixed-refresher.cjs",
+      "bytes": 22754,
+      "sha256": "e1943dc6b954f9a0562905f1afd93a956661ccf9626493c6e949b40d8d7960a5"
+    },
+    {
+      "path": "scripts/kai-practice-inventory.cjs",
+      "bytes": 2010,
+      "sha256": "3decc540010d835d30701dd1de4719365b1e3b51a8113571ed701d6e98d5fa86"
+    },
+    {
+      "path": "tests/kai-practice-handoff.test.cjs",
+      "bytes": 4571,
+      "sha256": "854ef7559a78fb85f5ef9daadbc0d48a1dec1781f6be718bfabb304ae38209b9"
+    }
+  ]
+}

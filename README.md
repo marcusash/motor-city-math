@@ -38,6 +38,13 @@ Prep Test 2 was not completed, so it has no dashboard card or chart point. Its s
 
 ## Quick Start
 
+### November 2026 practice handoff
+
+[Kai's rational, inverse, and mixed practice archive](print/kai-practice-2026-11/README.md)
+contains the current easier-factoring test, matching parent key, earlier tests,
+editable sources, rebuild instructions, and cross-machine agent guidance.
+The current target is an A in standard Precalculus, not honors-level difficulty.
+
 ```bash
 # Verify all exams are healthy
 node scripts/gp-exam-health.js
