@@ -6,18 +6,18 @@
   "files": [
     {
       "path": ".gitattributes",
-      "bytes": 148,
-      "sha256": "9df22054263acdcad70b07721b5acf806a80ef8e8c54295464bb1e9f58f5a147"
+      "bytes": 172,
+      "sha256": "1e778b0e665c77961a7bead340fbe169cf955986e5986a7c1f57e224c4f55bdf"
     },
     {
       "path": "print/kai-practice-2026-11/.gitattributes",
-      "bytes": 29,
-      "sha256": "79a3763730d203d31685a56bcae1140a09203b383b939126eae57bf72fa79fcd"
+      "bytes": 27,
+      "sha256": "07a2f41719cd55762e837e3598cd3ba067bc207a7ec63a46b2d86f609dc50acd"
     },
     {
       "path": "print/kai-practice-2026-11/evidence/original-honors-simulation.json",
-      "bytes": 1288,
-      "sha256": "20eb59baeeb94a4f8349c49aa2f0cb7941afbe6ca42d0b7e6e387434affade94"
+      "bytes": 1238,
+      "sha256": "815687965e7bc5e4bfaadaac8777ca1875bc4f5bbf849ed959ed43c179eeb0e7"
     },
     {
       "path": "print/kai-practice-2026-11/Kai_Inverse_Functions_Practice_5_Problems.pdf",
@@ -71,38 +71,38 @@
     },
     {
       "path": "print/kai-practice-2026-11/README.md",
-      "bytes": 6418,
-      "sha256": "927faed308bb8fe1a47d166d2008aed7208e286f0c9d2c20af7f2de4b7ddb366"
+      "bytes": 6309,
+      "sha256": "f5e52f5bf664a398091c604b43d5b0ac76584fb8dee6cdf3602b9f8a7dee4822"
     },
     {
       "path": "print/kai-practice-2026-11/sources/build_kai_inverse_practice.py",
-      "bytes": 13290,
-      "sha256": "63176d56e82f7a42ea392faeb6ae19fa8e2b5cc67e140643e9ef3550fb5a7f53"
+      "bytes": 12959,
+      "sha256": "b3b23bf27191d92200c4e403455ac0df7e5b8b4a44fd7b2f087b69915b1eb10c"
     },
     {
       "path": "print/kai-practice-2026-11/sources/build_kai_mixed_refresher.py",
-      "bytes": 24016,
-      "sha256": "2b95d7002f9fffed590f4228226cdfe3bc0c3787a27e5a5e361d90bdb798ad2d"
+      "bytes": 23542,
+      "sha256": "88b60f3318d01bd54121ff3fb7e9babe11f997443f9e63d6ba5211ddbef784e9"
     },
     {
       "path": "print/kai-practice-2026-11/sources/build_kai_practice.py",
-      "bytes": 16752,
-      "sha256": "8fa25ff95475aa223009921fe583e4dd5d41feda336a22b3e1dbcabc5c7e2363"
+      "bytes": 16345,
+      "sha256": "77ca9bca8f7d3ba4e13880da1e28d411580cfaf4c8c4089f9e2c5862313bac3b"
     },
     {
       "path": "scripts/build-kai-mixed-refresher.cjs",
-      "bytes": 22754,
-      "sha256": "e1943dc6b954f9a0562905f1afd93a956661ccf9626493c6e949b40d8d7960a5"
+      "bytes": 22432,
+      "sha256": "9e5671dab64a69432a12a9008745420687eabe5d9bb3fe067b4ff53cfa63fe20"
     },
     {
       "path": "scripts/kai-practice-inventory.cjs",
-      "bytes": 2010,
-      "sha256": "3decc540010d835d30701dd1de4719365b1e3b51a8113571ed701d6e98d5fa86"
+      "bytes": 1962,
+      "sha256": "dd95a4ea81b81bc7d11e46cfba9f9bf70eeee37c8136e02738a1e48eda05558a"
     },
     {
       "path": "tests/kai-practice-handoff.test.cjs",
-      "bytes": 4571,
-      "sha256": "854ef7559a78fb85f5ef9daadbc0d48a1dec1781f6be718bfabb304ae38209b9"
+      "bytes": 4473,
+      "sha256": "4082999326d188a498721ce6d270d9e2380ca67a2d2facce0d4f196080360ff5"
     }
   ]
 }

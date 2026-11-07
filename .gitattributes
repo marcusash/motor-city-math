@@ -1,3 +1,4 @@
+.gitattributes text eol=lf
 scripts/build-kai-mixed-refresher.cjs text eol=lf
 scripts/kai-practice-inventory.cjs text eol=lf
 tests/kai-practice-handoff.test.cjs text eol=lf
