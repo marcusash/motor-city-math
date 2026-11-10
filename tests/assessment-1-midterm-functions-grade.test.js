@@ -56,7 +56,7 @@ for (const item of Object.values(data.evidence)) {
   assert.ok(item.label.length > 30);
 }
 assert.match(html, /\.source-image \{[^}]*max-width:100%; height:auto/);
-assert.equal((dashboard.match(/href="reviews\/assessment-1-midterm-functions-grade.html"/g) || []).length, 1);
+assert.equal((dashboard.match(/href: 'reviews\/assessment-1-midterm-functions-grade.html'/g) || []).length, 1);
 assert.match(dashboard, /src="reviews\/assessment-1-midterm-functions-grade-data.js"/);
 const nodes = {};
 function node(text = '') {
