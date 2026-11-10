@@ -1,8 +1,9 @@
 /* Teacher-margin scores transcribed from the six-page scan by FR.
+ * Question 10 uses Marcus's later confirmation, recorded on that row.
  * Only header-free question crops are published. Reference solutions are not a teacher key.
  */
 window.assessment1TeacherGrade = {
-  status: 'verified-with-one-ambiguous-mark',
+  status: 'teacher-scores-complete-with-parent-confirmation',
   title: 'Assessment 1: Functions (Teacher-Scored)',
   scannedOn: null,
   reviewedOn: '2026-10-16',
@@ -20,7 +21,7 @@ window.assessment1TeacherGrade = {
     '8 kayak (page 4)': { file: 'q8-kayak-page4.png', page: 4, label: 'Printed Question 8 on page 4, kayak prompt, faint work and zero teacher mark' },
     '8 graph (page 5)': { file: 'q8-graph-page5.png', page: 5, label: 'Printed Question 8 on page 5, graph conditions, sketch and teacher mark' },
     '9 composition': { file: 'q9-composition.png', page: 5, label: 'Printed Question 9, composition prompt, faint work and zero teacher mark' },
-    '10 multiple choice': { file: 'q10-table.png', page: 6, label: 'Question 10, table and choices, student circle, teacher arrow and ambiguous margin fraction' },
+    '10 multiple choice': { file: 'q10-table.png', page: 6, label: 'Question 10, table and choices, student circle, teacher arrow and unclear margin fraction; score confirmed by Marcus' },
     '11(a-c)': { file: 'q11-operations.png', page: 6, label: 'Question 11 parts (a), (b) and (c), table, graph, attempted work and grouped teacher mark' }
   },
   sections: [
@@ -71,14 +72,16 @@ window.assessment1TeacherGrade = {
         solution: 'For (a), g(-3) = 2 and f(2) = 11. For the remaining evaluations, g(6) = 3, h(6) = 9, and j(6) = -6. The domain of f/h excludes x = 3/2.' }
     ] },
     { title: 'Table reasoning', questions: [
-      { id: '10 multiple choice', points: null, earned: null, problem: 'Choose the statement guaranteed by the table.',
-        answer: 'D is circled in the student response; a blue arrow points to B. The blue margin fraction is ambiguous on magnification and appears to read 1/2, rather than the preliminary 4/4 transcription. No numeric score is assigned here.',
-        solution: 'The intended reference is B, a relative minimum at x = -1, using the decreasing/increasing intervals in the table. The table alone does not establish the global range. The ambiguous teacher mark is excluded from the subtotal pending confirmation.' }
+      { id: '10 multiple choice', points: 2, earned: 0, problem: 'Choose the statement guaranteed by the table.',
+        scoreConfirmation: { confirmedBy: 'Marcus', confirmedOn: '2026-11-09', response: '0 out of 2' },
+        answer: 'D is circled in the student response; a blue arrow points to B. The blue margin fraction remains unclear in the scan. Marcus confirmed the teacher score as "0 out of 2" on November 9, 2026; this is a parent confirmation, not a new scan reading.',
+        solution: 'The intended reference is B, a relative minimum at x = -1, using the decreasing/increasing intervals in the table. The table alone does not establish the global range.' }
     ] }
   ],
   notes: [
-    'Individual teacher-annotated scores are authoritative and have not been regraded.',
-    'The verified subtotal is 45.75/61, excluding the ambiguous Question 10 multiple-choice mark entirely. No final assessment total or percentage is claimed.',
+    'Teacher-awarded scores are authoritative and have not been regraded. Fourteen legible annotations are transcribed from the scan; Question 10 uses Marcus\'s confirmation.',
+    'All scored parts total 45.75/63 = 72.619047...%, displayed as 72.6%. This is our arithmetic sum of teacher-awarded scores, not an official course grade.',
+    'On November 9, 2026, Marcus confirmed Question 10 on page 6 as "0 out of 2" in a clarification with FR, who relayed the confirmation to FA. The scan fraction remains unclear; the score is recorded from that confirmation, not a newly legible annotation.',
     'No matching teacher answer key was provided. Expandable reference answers explain the mathematics but do not establish deductions or replace the teacher rubric.',
     'Question labels follow the actual printed pages: Question 1 has two graph parts; both the kayak model on page 4 and graph-properties item on page 5 are printed Question 8. The composition item on page 5 is printed Question 9.',
     'The scan establishes neither assessment date nor elapsed time. This report is not an official course grade or a timed-practice result.',

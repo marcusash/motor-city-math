@@ -549,7 +549,7 @@
                 </a>
                 <a class="test-link" href="reviews/assessment-1-midterm-functions-grade.html">
                     <div class="test-name-row"><span>Assessment 1: Functions (Teacher-Scored)</span><span class="test-score mid" id="teacherAssessment1Score"></span></div>
-                    <div class="test-meta">Teacher marks; one ambiguous score, overall total unconfirmed</div>
+                    <div class="test-meta">Teacher-scored assessment</div>
                 </a>
                 <a class="test-link" href="reviews/assessment-1-functions-75min-grade.html">
                     <div class="test-name-row"><span>Prep Test 1 Review</span><span class="test-score mid" id="practiceTest1Score">89.5/100</span></div>
@@ -875,7 +875,7 @@
         var teacherPossible = legibleTeacherRows.reduce(function(total, row) { return total + row.points; }, 0);
         var teacherPct = Math.round(teacherEarned / teacherPossible * 1000) / 10;
         document.getElementById('teacherAssessment1Score').textContent =
-            teacherEarned + '/' + teacherPossible + ' subtotal';
+            teacherEarned + '/' + teacherPossible + ' (' + teacherPct + '%)';
         var assessment2Rows = window.assessment2TeacherGrade.sections.reduce(function(all, section) {
             return all.concat(section.questions);
         }, []);
@@ -900,11 +900,11 @@
         document.getElementById('studyGuideScore').textContent = studyGuide.earned + '/' + studyGuide.total;
         document.getElementById('practiceTest1Score').textContent = practiceTest.earned + '/' + practiceTest.total;
         document.getElementById('precalculusFirstScore').textContent =
-            'Study Guide ' + studyGuidePct + '% · Prep Test 1 ' + practiceTestPct + '% · Assessment 1 ' + teacherPct + '% subtotal (not final) · Assessment 2 ' + assessment2Pct + '%';
+            'Study Guide ' + studyGuidePct + '% · Prep Test 1 ' + practiceTestPct + '% · Assessment 1 ' + teacherPct + '% · Assessment 2 ' + assessment2Pct + '%';
         renderTrendChart(document.getElementById('precalculusChartContainer'), [
             { label: 'Study Guide 1', sublabel: formatReportDate(window.test1StudyGuide), fa: studyGuidePct },
             { label: 'Prep Test 1', sublabel: formatReportDate(window.assessment1PracticeGrade), fa: practiceTestPct },
-            { label: 'A1 subtotal', sublabel: formatReportDate(window.assessment1TeacherGrade), fa: teacherPct },
+            { label: 'Assessment 1', sublabel: formatReportDate(window.assessment1TeacherGrade), fa: teacherPct },
             { label: 'Assessment 2', sublabel: formatReportDate(window.assessment2TeacherGrade), fa: assessment2Pct }
         ], true, true);
     }
