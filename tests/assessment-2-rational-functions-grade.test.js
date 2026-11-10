@@ -72,6 +72,8 @@ images.forEach((image, i) => {
 });
 assert.equal((dashboard.match(/href="reviews\/assessment-2-rational-functions-grade.html"/g) || []).length, 1);
 assert.match(dashboard, /src="reviews\/assessment-2-rational-functions-grade-data.js"/);
+assert.match(dashboard, /<div id="precalculusChartContainer"><\/div>\s*<\/div>/,
+  'Keep grading notes in the report, not beneath the dashboard chart');
 const chartContext = { window: context.window, document: context.document };
 let plotted;
 chartContext.renderTrendChart = (_, points) => { plotted = points; };
