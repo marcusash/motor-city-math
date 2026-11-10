@@ -50,14 +50,14 @@ summary { cursor:pointer; }
 <main class="container">
 <a href="../index.html" class="back-link">&larr; Back to Dashboard</a>
 <h1>Assessment 1: Functions (Teacher-Scored)</h1>
-<p class="subtitle">Pre-Calculus | Transcribed teacher-margin marks | Assessment date and elapsed time not shown</p>
+<p class="subtitle">Pre-Calculus | Teacher scores, including confirmed Question 10 | Assessment date and elapsed time not shown</p>
 <div class="summary-card">
-  <h2>Verified subtotal of legible teacher annotations</h2>
+  <h2>Sum of all teacher-awarded scores</h2>
   <span class="score-big" id="score"></span>
-  <p>The individual legible marks below are the teacher's scores, preserved without regrading. The displayed subtotal is our arithmetic sum, not an overall score written by the teacher and not an official course grade.</p>
+  <p>The teacher's scores are preserved without regrading. The displayed total is our arithmetic sum, not an overall score written by the teacher and not an official course grade.</p>
   <p>Question 1 has two separately scored graph parts: 3.75/4 and 3/4, totaling 6.75/8.</p>
-  <p><strong>Overall score unconfirmed:</strong> the Question 10 multiple-choice margin fraction is ambiguous, so that item is excluded from both subtotal numbers. No final assessment percentage is shown.</p>
-  <p>Graph and polynomial items total 33.25/38; operations and modeling total 12.5/23. The table-reasoning score needs confirmation. These groups describe this submission, not a diagnosis of mastery.</p>
+  <p>Marcus confirmed Question 10 as 0/2 on November 9, 2026. Its scan mark remains unclear; the score comes from his confirmation.</p>
+  <p>Graph and polynomial items total 33.25/38; operations and modeling total 12.5/23; table reasoning totals 0/2. These groups describe this submission, not a diagnosis of mastery.</p>
   <p class="note">No matching answer key was provided. Faint writing is described cautiously; blank work is not a demonstrated conceptual deficit. Expand each row's original-work evidence to see the matching header-free crop; the full raw PDF is not published.</p>
   <div class="standards-grid" id="sectionsSummary"></div>
 </div>
@@ -81,7 +81,7 @@ window.addEventListener('DOMContentLoaded', function () {
   }
   const score = document.getElementById('score');
   score.append(document.createTextNode(String(earned)));
-  score.append(element('span', '/' + possible + ' (subtotal; one mark excluded)', 'denom'));
+  score.append(element('span', '/' + possible + ' (' + (earned / possible * 100).toFixed(1) + '%)', 'denom'));
   data.sections.forEach(section => {
     const card = element('div', undefined, 'std-box');
     card.append(element('div', section.title, 'std-label'));
@@ -110,7 +110,11 @@ window.addEventListener('DOMContentLoaded', function () {
       details.append(element('summary', 'Reference answer and teacher scoring'));
       details.append(element('p', question.solution));
       const confirmed = question.earned !== null && question.points !== null;
-      details.append(element('p', confirmed ? 'Teacher annotation: ' + question.earned + '/' + question.points + '. No matching rubric was provided; no deduction rationale is inferred.' : 'Teacher annotation is ambiguous. Excluded from subtotal; no score inferred.', 'note'));
+      const confirmation = question.scoreConfirmation;
+      const source = confirmation
+        ? 'Teacher score confirmed by ' + confirmation.confirmedBy + ' on ' + confirmation.confirmedOn + ': '
+        : 'Teacher annotation: ';
+      details.append(element('p', confirmed ? source + question.earned + '/' + question.points + '. No matching rubric was provided; no deduction rationale is inferred.' : 'Teacher score is unconfirmed; no score inferred.', 'note'));
       problem.append(details);
       row.append(problem);
       const work = element('td', question.answer);

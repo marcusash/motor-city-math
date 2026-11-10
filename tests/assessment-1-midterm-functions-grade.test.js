@@ -13,21 +13,29 @@ const expected = [
   ['1 linear', 3.75, 4], ['1 radical', 3, 4], ['2', 3, 4], ['3', 9.75, 10],
   ['4', 3.75, 4], ['5', 3.5, 4], ['7', 3, 4], ['8 graph (page 5)', 3.5, 4],
   ['6(a)', 3.5, 4], ['6(b)', 4, 4], ['6(c)', 4, 4], ['8 kayak (page 4)', 0, 4],
-  ['9 composition', 0, 4], ['11(a-c)', 1, 3], ['10 multiple choice', null, null]
+  ['9 composition', 0, 4], ['11(a-c)', 1, 3], ['10 multiple choice', 0, 2]
 ];
 assert.deepEqual(Array.from(rows, q => [q.id, q.earned, q.points]), expected);
 assert.equal(rows.reduce((sum, q) => sum + q.earned, 0), 45.75);
-assert.equal(rows.reduce((sum, q) => sum + q.points, 0), 61);
+assert.equal(rows.reduce((sum, q) => sum + q.points, 0), 63);
 assert.deepEqual(Array.from(data.sections, s => [
   s.questions.reduce((sum, q) => sum + q.earned, 0),
   s.questions.reduce((sum, q) => sum + q.points, 0)
-]), [[33.25, 38], [12.5, 23], [0, 0]]);
+]), [[33.25, 38], [12.5, 23], [0, 2]]);
+assert.equal(data.status, 'teacher-scores-complete-with-parent-confirmation');
+const q10 = rows.find(q => q.id === '10 multiple choice');
+assert.deepEqual({ ...q10.scoreConfirmation }, {
+  confirmedBy: 'Marcus', confirmedOn: '2026-11-09', response: '0 out of 2'
+});
+assert.match(q10.answer, /margin fraction remains unclear/);
+assert.match(data.notes.join(' '), /FR, who relayed the confirmation to FA/);
+assert.equal(data.reviewedOn, '2026-10-16');
 assert.equal(data.scannedOn, null);
 assert.match(html, /not an overall score written by the teacher/);
 assert.match(html, /No matching answer key was provided/);
-assert.match(html, /Overall score unconfirmed/);
+assert.doesNotMatch(html + data.notes.join(' '), /Overall score unconfirmed|excluded from.*subtotal|pending confirmation|subtotal;/);
 assert.match(rows.find(q => q.id === '11(a-c)').answer, /not blank/);
-assert.equal(rows.filter(q => q.earned === null).length, 1);
+assert.equal(rows.filter(q => q.earned === null || q.points === null).length, 0);
 assert.match(html, /Assessment date and elapsed time not shown/);
 assert.match(html, /class="back-link".*Back to Dashboard/);
 assert.match(html, /\.back-link \{ display:none; \}/);
@@ -64,12 +72,13 @@ for (const match of html.matchAll(/<script[^>]*>([\s\S]*?)<\/script>/g)) {
   if (match[1].trim()) vm.runInNewContext(match[1], context);
 }
 assert.equal(nodes.score.children[0].textContent, '45.75');
-assert.equal(nodes.score.children[1].textContent, '/61 (subtotal; one mark excluded)');
+assert.equal(nodes.score.children[1].textContent, '/63 (72.6%)');
 assert.equal(nodes.sections.children.length, 3);
 assert.equal(nodes.sectionsSummary.children.length, 3);
 const text = n => n.textContent + n.children.map(text).join(' ');
 assert.equal((text(nodes.sections).match(/Teacher annotation:/g) || []).length, 14);
-assert.match(text(nodes.sections), /Unconfirmed mark/);
+assert.match(text(nodes.sections), /Teacher score confirmed by Marcus on 2026-11-09: 0\/2/);
+assert.doesNotMatch(text(nodes.sections), /Unconfirmed mark|Excluded from subtotal/);
 assert.doesNotMatch(text(nodes.sections), /null\/null/);
 assert.match(text(nodes.sections), /Zero awarded/);
 assert.doesNotMatch(text(nodes.sections), /Not shown/);
@@ -90,4 +99,4 @@ links.forEach((link, index) => {
   assert.equal(link.target, '_blank');
   assert.equal(link.rel, 'noopener');
 });
-console.log('teacher-scored-functions: PASS (14 legible marks, 1 ambiguous mark excluded, subtotal, source caveats, rendered report and dashboard link)');
+console.log('teacher-scored-functions: PASS (14 legible marks, parent-confirmed Q10, 45.75/63, provenance, rendered report and dashboard link)');

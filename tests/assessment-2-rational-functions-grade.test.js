@@ -81,8 +81,8 @@ vm.runInNewContext(dashboard.slice(dashboard.indexOf('    function formatScanDat
   dashboard.indexOf('    function buildStandards()')), chartContext);
 chartContext.buildPrecalculusHistory();
 assert.equal(plotted.length, 4);
-assert.equal(plotted[2].label, 'A1 subtotal');
-assert.equal(plotted[2].fa, 75);
+assert.equal(plotted[2].label, 'Assessment 1');
+assert.equal(plotted[2].fa, 72.6);
 assert.equal(plotted[3].label, 'Assessment 2');
 assert.equal(plotted[3].fa, 46.1);
 assert.equal(plotted[3].sublabel, 'Review Nov 9');
