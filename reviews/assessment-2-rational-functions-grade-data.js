@@ -1,0 +1,101 @@
+/* FR transcription of all teacher-margin scores from the five-page Assessment 2 scan.
+ * Pages 1-2 contain later corrections. Teacher scores remain authoritative.
+ * Reference solutions are explanatory, not a teacher answer key or a regrade.
+ */
+window.assessment2TeacherGrade = {
+  status: 'teacher-marks-transcribed',
+  title: 'Assessment 2: Rational Functions (Teacher-Scored)',
+  assessedOn: null,
+  scannedOn: null,
+  reviewedOn: '2026-11-09',
+  evidence: {
+    '1 graph': { file: 'q1-graph-end-behavior.png', page: 1, label: 'Question 1 graph and end behavior, with two separate teacher marks' },
+    '1 end behavior': { file: 'q1-graph-end-behavior.png', page: 1, label: 'Question 1 graph and end behavior, with two separate teacher marks' },
+    '2': { file: 'q2-combine.png', page: 1, label: 'Question 2 rational subtraction, visible work and teacher mark' },
+    '3': { file: 'q3-multiply.png', page: 1, label: 'Question 3 rational multiplication, restrictions and teacher mark' },
+    '4': { file: 'q4-graph-analysis.png', page: 2, label: 'Question 4 graph analysis, later corrections and teacher mark' },
+    '5': { file: 'q5-features.png', page: 2, label: 'Question 5 rational features and graph, with teacher mark 8/10' },
+    '6': { file: 'q6-slant.png', page: 3, label: 'Question 6 slant-asymptote prompt, response area and teacher mark' },
+    '7': { file: 'q7-concentration.png', page: 3, label: 'Question 7 concentration interpretation, response and teacher mark' },
+    '8': { file: 'q8-construction.png', page: 3, label: 'Question 8 rational-function construction, response area and teacher mark' },
+    '9': { file: 'q9-degree.png', page: 4, label: 'Question 9 graph and degree choices, selected B and teacher mark' },
+    '10': { file: 'q10-match.png', page: 4, label: 'Question 10 graph and equation choices, selected D and teacher mark' },
+    '11': { file: 'q11-hole-match.png', page: 5, label: 'Question 11 graph with hole, selected B and full-credit teacher mark' },
+    '12': { file: 'q12-end-behavior.png', page: 5, label: 'Question 12 polynomial end behavior, selected A and teacher mark' },
+    '13': { file: 'q13-table.png', page: 5, label: 'Question 13 table near a hole and vertical asymptote, with teacher mark' }
+  },
+  sections: [
+    { title: 'Rational operations', questions: [
+      { id: '2', points: 4, earned: 4, page: 1,
+        problem: 'Combine 3/(x + 1) - 2/(x - 4) and simplify.',
+        answer: 'The current page contains worked subtraction and a check. Teacher score: 4/4. Page 1 includes later corrections, so the current writing is not treated as an untouched original response.',
+        solution: 'Use denominator (x + 1)(x - 4). The numerator is 3(x - 4) - 2(x + 1) = x - 14. Result: (x - 14)/((x + 1)(x - 4)), with x not equal to -1 or 4.' },
+      { id: '3', points: 4, earned: 3.75, page: 1,
+        problem: 'Multiply (x - 4)/(x^2 - 1) by (x + 1)/(x^2 - 16) and simplify.',
+        answer: 'A simplified product and blue restriction notes are visible. Teacher score: 3.75/4. The scan does not establish which individual pen strokes were added later; the deduction rationale is not inferred.',
+        solution: 'Factor x^2 - 1 = (x - 1)(x + 1) and x^2 - 16 = (x - 4)(x + 4). Cancel common factors to obtain 1/((x - 1)(x + 4)). Preserve all original exclusions: x not equal to -4, -1, 1, or 4.' }
+    ] },
+    { title: 'Graphs and rational features', questions: [
+      { id: '1 graph', points: 4, earned: 0, page: 1,
+        problem: 'Graph f(x) = 1/(x - 3) + 1. Label asymptotes and at least two key points.',
+        answer: 'A corrected graph is visible. Marcus confirms corrections were made after scoring on pages 1-2. Preserve the separate teacher graph score of 0/4; do not award new credit from the corrected graph.',
+        solution: 'Vertical asymptote x = 3; horizontal asymptote y = 1. Two key points are (2,0) and (4,2). The left branch lies below y = 1; the right branch lies above it.' },
+      { id: '1 end behavior', points: 4, earned: 0, page: 1,
+        problem: 'State the end behavior of f(x) = 1/(x - 3) + 1.',
+        answer: 'The corrected page now shows both ends approaching 1. The separate teacher end-behavior score is 0/4 and remains unchanged.',
+        solution: 'As x tends to negative infinity, f(x) approaches 1 from below. As x tends to positive infinity, f(x) approaches 1 from above.' },
+      { id: '4', points: 8, earned: 5, page: 2,
+        problem: 'Read increasing intervals, relative extrema, concavity and asymptotes from the supplied graph.',
+        answer: 'The table contains answers, arrows and later annotations, including a concavity explanation in the margin. Teacher score: 5/8. Corrected entries are not retroactively credited.',
+        solution: 'The displayed graph increases on (-infinity,1) and (3,infinity). Relative maximum (1,0); relative minimum (3,4). Concave down on (-infinity,2), concave up on (2,infinity). Vertical asymptote x = 2 and the dashed slant line y = x. There is no horizontal asymptote.' },
+      { id: '5', points: 10, earned: 8, page: 2,
+        problem: 'Find intercepts, holes and asymptotes, then graph (x^2 - x - 6)/(x^2 + x - 2).',
+        answer: 'Feature calculations and a graph are visible on the corrected page. The teacher margin mark is 8/10, not 9/10. Preserve that award without inferring which original component lost points.',
+        solution: 'Factor as (x - 3)(x + 2)/((x - 1)(x + 2)). Simplify to (x - 3)/(x - 1), retaining x not equal to -2 or 1. Intercepts: (3,0) and (0,3). Hole: (-2,5/3). Vertical asymptote x = 1; horizontal asymptote y = 1. The form 1 - 2/(x - 1) describes the two branches.' },
+      { id: '9', points: 2, earned: 0, page: 4,
+        problem: 'Choose the numerator/denominator degree relationship consistent with the displayed graph.',
+        answer: 'B is circled and marked incorrect. Teacher score: 0/2.',
+        solution: 'C: the numerator degree is exactly one more than the denominator degree. The graph has slant rather than horizontal end behavior. A specific cubic-over-quadratic representation is not guaranteed by the graph.' },
+      { id: '10', points: 2, earned: 0, page: 4,
+        problem: 'Choose an equation for the symmetric rational graph with two vertical asymptotes.',
+        answer: 'D is circled and marked incorrect. Teacher score: 0/2.',
+        solution: 'C: y = 2x^2/(x^2 - 9). It is even, has vertical asymptotes at x = -3 and 3, a horizontal asymptote at y = 2, and touches the origin from below between the asymptotes.' },
+      { id: '11', points: 2, earned: 2, page: 5,
+        problem: 'Choose the rational function matching the graph with a hole and slant behavior.',
+        answer: 'B is circled and checked. Teacher score: 2/2.',
+        solution: 'B: (x + 2)(x - 3)(x - 1)/(2(x - 1)(x - 2)). Cancel x - 1 but preserve its exclusion. The graph has zeros -2 and 3, vertical asymptote x = 2, hole (1,3), and slant asymptote y = (x + 1)/2.' },
+      { id: '13', points: 4, earned: 0, page: 5,
+        problem: 'Use the table to distinguish the hole from the vertical asymptote and give each x-coordinate.',
+        answer: 'No legible completed response is visible in the answer area. Teacher score: 0/4. This does not establish why the response was omitted.',
+        solution: 'Hole at x = -3: nearby values -0.909 and -1.111 approach the finite value -1. Vertical asymptote at x = -2: values -10, -100 and -1000 grow without bound in magnitude as x approaches -2 from the left.' }
+    ] },
+    { title: 'Asymptotes, construction and modeling', questions: [
+      { id: '6', points: 4, earned: 0, page: 3,
+        problem: 'Identify any horizontal or slant asymptote of Q(x) = (3x^2 - 2x + 5)/(x + 1).',
+        answer: 'No legible completed work is visible in the response area. Teacher score: 0/4.',
+        solution: 'Polynomial division gives Q(x) = 3x - 5 + 10/(x + 1). The slant asymptote is y = 3x - 5; there is no horizontal asymptote.' },
+      { id: '7', points: 4, earned: 4, page: 3,
+        problem: 'Interpret long-term salt concentration C(t) = 150t/(100 + 5t), in grams per liter.',
+        answer: 'The response states that concentration grows and approaches 30 without reaching it. Teacher score: 4/4.',
+        solution: 'For t >= 0, C(t) = 30t/(t + 20) = 30 - 600/(t + 20). Concentration increases toward 30 g/L from below as time increases; it remains less than 30 g/L at every finite nonnegative time.' },
+      { id: '8', points: 4, earned: 0, page: 3,
+        problem: 'Construct a rational function with x-intercept 2, vertical asymptote -5, horizontal asymptote -3/4, and a hole at x = -1.',
+        answer: 'No legible completed response is visible in the answer area. Teacher score: 0/4.',
+        solution: 'One possible function is -3(x - 2)(x + 1)/(4(x + 5)(x + 1)). The uncanceled domain excludes -5 and -1. Its zero is 2, its vertical asymptote is -5, its leading-coefficient ratio is -3/4, and its removable hole is (-1,9/16).' },
+      { id: '12', points: 2, earned: 0, page: 5,
+        problem: 'For g(x) = (-2x^m + 7x^5 - 3x^2 + 1)/(x + 2), which listed positive integer m cannot give both ends up like f(x) = 4x^4 - x + 3?',
+        answer: 'A (m = 3) is circled and marked incorrect. Teacher score: 0/2.',
+        solution: 'B: m = 6. Then g has leading behavior -2x^5, so its ends go in opposite directions. For m = 1 or 3 the leading behavior is 7x^4; for m = 5 it is 5x^4. Those three choices have both ends up.' }
+    ] }
+  ],
+  notes: [
+    'All 14 teacher score annotations are legible, covering 13 numbered questions; Question 1 has separate graph and end-behavior scores.',
+    'The annotation sum is 26.75/58 = 46.120689...%, displayed as 46.1%. This is our arithmetic sum of teacher-awarded marks, not an overall percentage written by the teacher or an official course grade.',
+    'Marcus confirms that pages 1 and 2 were corrected after scoring. Teacher awards are authoritative even where the currently visible answer is correct. The original pre-correction work cannot be reconstructed from this scan.',
+    'Question 5 is 8/10. Question 1 is 0/4 for its graph plus 0/4 for end behavior. No scored part is omitted from the calculation.',
+    'No matching teacher answer key or rubric was supplied. Expandable reference solutions explain the mathematics without changing teacher scores or inventing deduction rationales.',
+    'The scan does not establish assessment date, scan date or elapsed time. Review date 2026-11-09 is not a test or completion date. No letter grade is inferred.',
+    'Blank or faint work does not establish inability, time pressure or a particular misconception. Section totals describe only this marked submission.',
+    'Only matching question/work/teacher-mark crops are published, with names and page headers removed. The full raw PDF is not published or linked.'
+  ]
+};

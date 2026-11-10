@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Assessment 2: Rational Functions (Teacher-Scored) - Grade Report</title>
+<style>
+:root { color-scheme:dark; --bg:#1a1a2e; --surface:#222240; --border:#333355; --text:#e8e8f0; --muted:#b4b4c4; --amber:#ffb74d; }
+* { box-sizing:border-box; }
+body { margin:0; padding:24px; font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; background:var(--bg); color:var(--text); }
+.container { max-width:1000px; margin:auto; }
+h1 { font-size:24px; margin:0 0 4px; }
+.subtitle,.note { color:var(--muted); }
+a,summary { color:#b5b0ff; }
+.back-link { display:inline-flex; font-weight:600; text-decoration:none; margin-bottom:16px; }
+.back-link:hover { text-decoration:underline; }
+.back-link:focus-visible,summary:focus-visible { outline:2px solid currentColor; outline-offset:4px; }
+.summary-card,.notes-card { background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:20px; margin:20px 0; }
+h2 { font-size:14px; text-transform:uppercase; letter-spacing:.06em; }
+.score-big { font-size:48px; font-weight:700; color:var(--amber); }
+.denom { font-size:24px; color:var(--muted); }
+.standards-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:10px; margin-top:16px; }
+.std-box { background:var(--bg); border:1px solid var(--border); border-radius:8px; padding:12px; }
+.std-label { font-size:12px; color:var(--muted); }
+.std-grade { font-size:22px; font-weight:700; }
+.table-wrap { overflow-x:auto; margin-bottom:18px; }
+table { width:100%; border-collapse:collapse; background:var(--surface); }
+th,td { border:1px solid var(--border); padding:10px; text-align:left; vertical-align:top; }
+th { font-size:11px; text-transform:uppercase; color:var(--muted); }
+td { font-size:13px; }
+td:nth-child(2) { min-width:230px; }
+td:nth-child(3) { min-width:220px; }
+.badge { display:inline-block; padding:2px 7px; border-radius:4px; font-size:12px; font-weight:600; }
+.correct { background:#234332; color:#70d778; }
+.partial { background:#493727; color:var(--amber); }
+.zero { background:#353545; color:var(--muted); }
+details { margin-top:8px; }
+summary { cursor:pointer; }
+.section-title { margin-top:28px; }
+.score-cell { white-space:nowrap; }
+.source-image { display:block; width:100%; max-width:100%; height:auto; margin:12px auto; }
+.evidence { margin-top:12px; }
+@media print {
+ :root { color-scheme:light; --bg:white; --surface:white; --text:black; --muted:#444; --border:#999; }
+ body { padding:0; } .back-link { display:none; } .badge,.score-big { color:black; background:none; } tr { break-inside:avoid; }
+}
+</style>
+</head>
+<body>
+<main class="container">
+<a href="../index.html" class="back-link">&larr; Back to Dashboard</a>
+<h1>Assessment 2: Rational Functions (Teacher-Scored)</h1>
+<p class="subtitle">Pre-Calculus | Reviewed November 9, 2026 | Assessment date and elapsed time not shown</p>
+<div class="summary-card">
+  <h2>Sum of all teacher-annotated scores</h2>
+  <span class="score-big" id="score"></span>
+  <p>All 14 teacher marks across 13 numbered questions are included. The displayed total and percentage are our arithmetic sum, not an overall score written by the teacher and not an official course grade.</p>
+  <p><strong>Corrections do not change the grade:</strong> Marcus confirms that pages 1 and 2 were corrected after scoring. The teacher's annotated awards remain authoritative even where the current writing is correct. The original pre-correction answers cannot be reconstructed from this scan.</p>
+  <p>Question 1 has two separate marks: graph 0/4 and end behavior 0/4. Question 5 is 8/10. No scored part is excluded.</p>
+  <p class="note">No matching answer key was provided. Reference solutions are explanations, not a regrade. Blank work is not a demonstrated conceptual deficit. Expand each row's source evidence to inspect the header-free crop; the full raw PDF is not published. Section totals describe this submission, not mastery.</p>
+  <div class="standards-grid" id="sectionsSummary"></div>
+</div>
+<div id="sections"></div>
+<div class="notes-card"><h2>Scoring and source notes</h2><ul id="gradingNotes"></ul></div>
+<noscript>JavaScript is required to display the transcribed scores and question details.</noscript>
+</main>
+<script src="assessment-2-rational-functions-grade-data.js"></script>
+<script>
+window.addEventListener('DOMContentLoaded', function () {
+  const data = window.assessment2TeacherGrade;
+  const sum = (items, key) => items.reduce((total, item) => total + item[key], 0);
+  const questions = data.sections.flatMap(section => section.questions).filter(question => question.earned !== null && question.points !== null);
+  const earned = sum(questions, 'earned');
+  const possible = sum(questions, 'points');
+  function element(tag, text, className) {
+    const node = document.createElement(tag);
+    if (text !== undefined) node.textContent = text;
+    if (className) node.className = className;
+    return node;
+  }
+  const score = document.getElementById('score');
+  score.append(document.createTextNode(String(earned)));
+  score.append(element('span', '/' + possible + ' (' + (earned / possible * 100).toFixed(1) + '%)', 'denom'));
+  data.sections.forEach(section => {
+    const card = element('div', undefined, 'std-box');
+    card.append(element('div', section.title, 'std-label'));
+    const legible = section.questions.filter(question => question.earned !== null && question.points !== null);
+    card.append(element('div', legible.length ? sum(legible, 'earned') + '/' + sum(legible, 'points') : 'Mark unconfirmed', 'std-grade'));
+    document.getElementById('sectionsSummary').append(card);
+    const block = element('section');
+    block.append(element('h2', section.title, 'section-title'));
+    const wrap = element('div', undefined, 'table-wrap');
+    const table = element('table');
+    const header = element('tr');
+    ['Q', 'Question', "Kai's visible work", 'Teacher status', 'Teacher score'].forEach(label => {
+      const th = element('th', label);
+      th.scope = 'col';
+      header.append(th);
+    });
+    const thead = element('thead');
+    thead.append(header);
+    table.append(thead);
+    const tbody = element('tbody');
+    section.questions.forEach(question => {
+      const row = element('tr');
+      row.append(element('td', question.id));
+      const problem = element('td', question.problem);
+      const details = element('details');
+      details.append(element('summary', 'Reference answer and teacher scoring'));
+      details.append(element('p', question.solution));
+      const confirmed = question.earned !== null && question.points !== null;
+      details.append(element('p', confirmed ? 'Teacher annotation: ' + question.earned + '/' + question.points + '. No matching rubric was provided; no deduction rationale is inferred.' : 'Teacher annotation is ambiguous. Excluded from subtotal; no score inferred.', 'note'));
+      problem.append(details);
+      row.append(problem);
+      const work = element('td', question.answer);
+      const evidence = data.evidence[question.id];
+      const original = element('details', undefined, 'evidence');
+      original.append(element('summary', 'Scanned work and teacher mark: ' + evidence.label));
+      original.append(element('p', 'Source page ' + evidence.page + '. ' + evidence.label + '.' +
+        (evidence.page <= 2 ? ' This page includes later corrections; its teacher score is unchanged.' : ''), 'note'));
+      const full = element('a', 'Open full-resolution crop in a new tab');
+      full.href = 'assets/assessment-2-rational-functions/' + evidence.file;
+      full.target = '_blank';
+      full.rel = 'noopener';
+      original.append(full);
+      const image = element('img', undefined, 'source-image');
+      image.src = full.href;
+      image.alt = evidence.label + ', source page ' + evidence.page + "; Kai's work and teacher annotations, with name and header removed";
+      image.loading = 'lazy';
+      original.append(image);
+      work.append(original);
+      row.append(work);
+      const status = !confirmed ? 'zero' : question.earned === question.points ? 'correct' : question.earned === 0 ? 'zero' : 'partial';
+      const label = !confirmed ? 'Unconfirmed mark' : status === 'correct' ? 'Full credit' : status === 'zero' ? 'Zero awarded' : 'Partial credit';
+      const cell = element('td');
+      cell.append(element('span', label, 'badge ' + status));
+      row.append(cell);
+      row.append(element('td', confirmed ? question.earned + '/' + question.points : 'Unconfirmed', 'score-cell'));
+      tbody.append(row);
+    });
+    table.append(tbody);
+    wrap.append(table);
+    block.append(wrap);
+    document.getElementById('sections').append(block);
+  });
+  data.notes.forEach(note => document.getElementById('gradingNotes').append(element('li', note)));
+});
+</script>
+</body>
+</html>

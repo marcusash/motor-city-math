@@ -1,0 +1,51 @@
+{
+  "source_date": "2026-11-01",
+  "quiz_date": "2026-11-04",
+  "questions": [
+    {
+      "number": 1,
+      "topic": "rational",
+      "difficulty": 3,
+      "points": 20
+    },
+    {
+      "number": 2,
+      "topic": "rational",
+      "difficulty": 2,
+      "points": 20
+    },
+    {
+      "number": 3,
+      "topic": "rational",
+      "difficulty": 3,
+      "points": 20
+    },
+    {
+      "number": 4,
+      "topic": "inverse",
+      "difficulty": 2,
+      "points": 20
+    },
+    {
+      "number": 5,
+      "topic": "inverse",
+      "difficulty": 3,
+      "points": 20
+    }
+  ],
+  "simulator": {
+    "model": "claude-opus-5.5",
+    "persona": "A-level Honors Precalculus student",
+    "method": "Independent worked attempt and comparison with original scans and prior practice tests",
+    "verdict": "Honors-level refresher after required revisions",
+    "minutes_estimated": [
+      37,
+      43
+    ],
+    "applied_revisions": [
+      "Q4(c) uses 53 seconds, which is not an output already present in the table.",
+      "Q3 explicitly identifies the only missing point and asks for one possible matching equation."
+    ],
+    "limitation": "Qualitative model simulation, not a prediction of Kai's grade or a school rubric."
+  }
+}
