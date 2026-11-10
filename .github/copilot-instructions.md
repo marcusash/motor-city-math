@@ -51,6 +51,29 @@ Focus: Algebra 2. Goal: mastery-based practice, immediate feedback, visual expla
 - Do not depend on machine-specific response lint scripts. Run a configured,
   repository-provided lint check when one exists.
 
+## Task Continuity
+
+For substantial tasks producing code, deliverables, or work requiring later
+continuation, find/reuse or create an issue in the owning authorized repository.
+Search before creating, including closed issues when retrieving completed work.
+Preserve the request and distinguish proposals from user-approved decisions.
+Quick questions do not need issues.
+
+Append milestone and handoff comments with executor, progress, verified remote
+commit/artifact links, validation results, remaining work, and blockers.
+Coordinate ownership before editing the same deliverable; comments are not locks.
+Push reviewed task code to feature branches and publish deliverables to an
+approved durable destination. Link exact versions and retain them after cleanup.
+An issue alone does not save code or a PDF.
+
+Fresh/resumed sessions must discover and read the issue and linked sources.
+Verify the actual host, account, visibility, publication, and access before
+reporting "saved remotely". Keep personal and Enterprise work separate; never
+put confidential content in this public repository. If publication fails, preserve
+local work and report "not remotely saved". Do not delete unrecovered worktrees.
+Follow normal review rules; a saved checkpoint is not completed delivery.
+See `docs/task-continuity.md` for recovery and acceptance.
+
 ## Code Standards
 
 - All new features must include unit tests. Tests live in /tests.
