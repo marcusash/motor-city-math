@@ -149,28 +149,35 @@
             gap: 10px;
             margin-bottom: 20px;
         }
-        .test-link {
-            display: flex; flex-direction: column; justify-content: space-between;
-            background: var(--bg-card);
-            border: 1px solid var(--border-default);
-            border-radius: 4px;
-            padding: 12px 16px;
-            text-decoration: none;
-            color: var(--accent-navy);
-            font-weight: 600;
-            font-size: var(--text-sm);
-            transition: border-color 0.15s, box-shadow 0.15s;
-            min-height: 72px;
+        .activity-card {
+            display: flex; flex-direction: column; gap: 12px; min-width: 0;
+            background: var(--fd-card); color: var(--fd-text-1);
+            border: 1px solid var(--fd-border); border-radius: var(--fd-r);
+            padding: 20px; text-decoration: none;
+            overflow-wrap: anywhere;
         }
-        .test-link:hover {
-            border-color: var(--accent-blue);
-            box-shadow: 0 2px 8px rgba(29,66,186,0.12);
+        a.activity-card:hover { border-color: var(--fd-border2); }
+        a.activity-card:focus-visible { outline: 2px solid var(--accent-blue-on-dark); outline-offset: 3px; }
+        .activity-card__kind, .activity-card__result-label {
+            color: var(--fd-text-2); font-size: var(--text-sm); font-weight: 600;
         }
-        .test-link .test-name-row { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
-        .test-link .test-meta { color: var(--text-secondary); font-weight: 400; font-size: var(--text-sm); margin-top: 4px; }
-        .test-link .test-score { font-weight: 800; font-size: 1rem; color: var(--color-correct); white-space: nowrap; }
-        .test-link .test-score.low { color: var(--accent-red); }
-        .test-link .test-score.mid { color: var(--color-warning, #d29922); }
+        .activity-card__title { margin: 0; color: var(--fd-text-1); font-size: var(--text-base); font-weight: 700; line-height: 1.4; }
+        .activity-card__subject, .activity-card__note {
+            margin: 0; color: var(--fd-text-2); font-size: var(--text-sm); line-height: 1.5;
+        }
+        .activity-card__result { margin-top: 4px; }
+        .activity-card__score { color: var(--fd-text-1); font-size: var(--text-2xl); font-weight: 800; line-height: 1.3; }
+        .activity-card__score--status { font-size: var(--text-base); font-weight: 600; line-height: 1.5; }
+        .activity-card__details { margin: 8px 0 0; font-size: var(--text-sm); line-height: 1.5; }
+        .activity-card__details > div { display: flex; flex-wrap: wrap; column-gap: 6px; }
+        .activity-card__details dt { color: var(--fd-text-2); }
+        .activity-card__details dd { margin: 0; color: var(--fd-text-1); }
+        .activity-card__footer {
+            display: flex; flex-direction: column; gap: 8px; margin-top: auto;
+            border-top: 1px solid var(--fd-border); padding-top: 12px;
+        }
+        .activity-card__date { color: var(--fd-text-2); font-size: var(--text-sm); }
+        .activity-card__action { color: var(--accent-blue-on-dark); font-size: var(--text-sm); font-weight: 600; }
         .sparkline { display: block; margin-top: 6px; }
         .sparkline-zero { display: none; }
 
@@ -542,28 +549,7 @@
                 </div>
                 <div id="precalculusChartContainer"></div>
             </div>
-            <div class="test-grid" id="precalculusGrid">
-                <a class="test-link" href="reviews/assessment-2-rational-functions-grade.html">
-                    <div class="test-name-row"><span>Assessment 2: Rational Functions (Teacher-Scored)</span><span class="test-score low" id="teacherAssessment2Score"></span></div>
-                    <div class="test-meta">All teacher marks included; later corrections are not regraded</div>
-                </a>
-                <a class="test-link" href="reviews/assessment-1-midterm-functions-grade.html">
-                    <div class="test-name-row"><span>Assessment 1: Functions (Teacher-Scored)</span><span class="test-score mid" id="teacherAssessment1Score"></span></div>
-                    <div class="test-meta">Teacher-scored assessment</div>
-                </a>
-                <a class="test-link" href="reviews/assessment-1-functions-75min-grade.html">
-                    <div class="test-name-row"><span>Prep Test 1 Review</span><span class="test-score mid" id="practiceTest1Score">89.5/100</span></div>
-                    <div class="test-meta">Score based on visible work in Kai's submitted test scan</div>
-                </a>
-                <a class="test-link" href="reviews/test-1-study-guide.html">
-                    <div class="test-name-row"><span>Test 1 Study Guide</span><span class="test-score mid" id="studyGuideScore">84/100</span></div>
-                    <div class="test-meta">Score based on visible answers in Kai's study-guide scan</div>
-                </a>
-                <a class="test-link" href="tests/assessment-1-functions-75min.pdf" target="_blank" rel="noopener">
-                    <div class="test-name-row"><span>Prep Test 1: Functions &amp; Polynomial Review</span></div>
-                    <div class="test-meta">75 minutes &middot; 100 points &middot; PDF</div>
-                </a>
-            </div>
+            <div class="test-grid" id="precalculusGrid"></div>
         </details>
 
         <details class="dash-section" id="springSection">
@@ -599,6 +585,7 @@
     <script src="reviews/assessment-1-functions-75min-grade-data.js"></script>
     <script src="reviews/assessment-1-midterm-functions-grade-data.js"></script>
     <script src="reviews/assessment-2-rational-functions-grade-data.js"></script>
+    <script src="shared/activity-cards.js"></script>
     <script>
     /* ========== TEST REGISTRY ========== */
     var tests = [
@@ -874,16 +861,12 @@
         var teacherEarned = legibleTeacherRows.reduce(function(total, row) { return total + row.earned; }, 0);
         var teacherPossible = legibleTeacherRows.reduce(function(total, row) { return total + row.points; }, 0);
         var teacherPct = Math.round(teacherEarned / teacherPossible * 1000) / 10;
-        document.getElementById('teacherAssessment1Score').textContent =
-            teacherEarned + '/' + teacherPossible + ' (' + teacherPct + '%)';
         var assessment2Rows = window.assessment2TeacherGrade.sections.reduce(function(all, section) {
             return all.concat(section.questions);
         }, []);
         var assessment2Earned = assessment2Rows.reduce(function(total, row) { return total + row.earned; }, 0);
         var assessment2Possible = assessment2Rows.reduce(function(total, row) { return total + row.points; }, 0);
         var assessment2Pct = Math.round(assessment2Earned / assessment2Possible * 1000) / 10;
-        document.getElementById('teacherAssessment2Score').textContent =
-            assessment2Earned + '/' + assessment2Possible + ' (' + assessment2Pct + '%)';
         function score(data, rowsKey) {
             var rows = data.sections.reduce(function(all, section) {
                 return all.concat(section[rowsKey]);
@@ -897,8 +880,28 @@
         var practiceTest = score(window.assessment1PracticeGrade, 'questions');
         var studyGuidePct = Math.round(studyGuide.earned / studyGuide.total * 100);
         var practiceTestPct = practiceTest.earned / practiceTest.total * 100;
-        document.getElementById('studyGuideScore').textContent = studyGuide.earned + '/' + studyGuide.total;
-        document.getElementById('practiceTest1Score').textContent = practiceTest.earned + '/' + practiceTest.total;
+        var cards = [
+            { variant: 'teacher-result', kind: 'Teacher assessment', title: 'Assessment 2: Rational Functions',
+                href: 'reviews/assessment-2-rational-functions-grade.html', subject: 'Pre-Calculus · Rational functions',
+                pct: assessment2Pct, earned: assessment2Earned, possible: assessment2Possible, scoreId: 'teacherAssessment2Score',
+                date: formatReportDate(window.assessment2TeacherGrade), note: 'Later corrections do not change teacher awards.', action: 'View report' },
+            { variant: 'teacher-result', kind: 'Teacher assessment', title: 'Assessment 1: Functions',
+                href: 'reviews/assessment-1-midterm-functions-grade.html', subject: 'Pre-Calculus · Functions and polynomials',
+                pct: teacherPct, earned: teacherEarned, possible: teacherPossible, scoreId: 'teacherAssessment1Score',
+                date: formatReportDate(window.assessment1TeacherGrade), note: 'Includes parent-confirmed Question 10.', action: 'View report' },
+            { variant: 'practice-result', kind: 'Scan-based review', title: 'Prep Test 1 Review',
+                href: 'reviews/assessment-1-functions-75min-grade.html', subject: 'Pre-Calculus · Functions and polynomials',
+                pct: practiceTestPct, earned: practiceTest.earned, possible: practiceTest.total, scoreId: 'practiceTest1Score',
+                date: formatReportDate(window.assessment1PracticeGrade), action: 'View report' },
+            { variant: 'practice-result', kind: 'Scan-based review', title: 'Test 1 Study Guide',
+                href: 'reviews/test-1-study-guide.html', subject: 'Pre-Calculus · Functions and polynomials',
+                pct: studyGuidePct, earned: studyGuide.earned, possible: studyGuide.total, scoreId: 'studyGuideScore',
+                date: formatReportDate(window.test1StudyGuide), action: 'View report' },
+            { variant: 'resource', kind: 'PDF resource', title: 'Prep Test 1: Functions & Polynomial Review',
+                href: 'tests/assessment-1-functions-75min.pdf', newTab: true, subject: 'Pre-Calculus · Functions and polynomials',
+                status: 'PDF resource', possible: 100, duration: '75 minutes', action: 'Open PDF' }
+        ];
+        document.getElementById('precalculusGrid').innerHTML = cards.map(window.MCMActivityCards.render).join('');
         document.getElementById('precalculusFirstScore').textContent =
             'Study Guide ' + studyGuidePct + '% · Prep Test 1 ' + practiceTestPct + '% · Assessment 1 ' + teacherPct + '% · Assessment 2 ' + assessment2Pct + '%';
         renderTrendChart(document.getElementById('precalculusChartContainer'), [
@@ -1147,66 +1150,11 @@
         springTests.forEach(function(t) {
             var s = scores[t.key];
             if (!s) return; // hide tests with no scores
-            var scoreHtml = '';
-            var borderColor = 'var(--border-default)';
-            var metaLabel = t.questions + ' questions';
-            if (s) {
-                var pct = null;
-                var att = (s.attempts && s.attempts.length > 0) ? s.attempts[s.attempts.length - 1] : null;
-                if (att) {
-                    pct = att.pct;
-                } else {
-                    pct = s.pct || (s.score && s.total ? Math.round(s.score / s.total * 100) : null);
-                }
-                if (pct !== null) {
-                    if (t.benchmark) {
-                        // Teacher quiz/assessment: grade pill color by letter or numeric grade
-                        var rawScore = att ? (att.score + '/' + att.total) : '';
-                        var tg = (att && att.teacher_grade) || t.teacherGrade || '';
-                        scoreHtml = '<span class="test-score mid">' + pct + '%</span>';
-                        if (tg) {
-                            // For multi-standard grades like "A/A/A", use the worst grade for color
-                            var firstGrade = tg.split('/')[0];
-                            var worstGrade = tg.split('/').reduce(function(w, g) {
-                                var rank = { 'A':4, 'B':3, 'C':2, 'D':1, 'F':0 };
-                                return (rank[g] !== undefined && rank[w] !== undefined && rank[g] < rank[w]) ? g : w;
-                            }, firstGrade);
-                            var isGreen = worstGrade === 'A' || tg === '4/4';
-                            var isAmber = worstGrade === 'B' || tg === '3/4';
-                            var pillColor = isGreen ? '#3FB950' : (isAmber ? '#d29922' : '#f85149');
-                            var pillBg = isGreen ? 'rgba(63,185,80,0.15)' : (isAmber ? 'rgba(210,153,34,0.15)' : 'rgba(248,81,73,0.15)');
-                            var pillBorder = isGreen ? 'rgba(63,185,80,0.3)' : (isAmber ? 'rgba(210,153,34,0.3)' : 'rgba(248,81,73,0.3)');
-                            scoreHtml += '<span style="position:absolute;top:14px;right:14px;background:'+pillBg+';color:'+pillColor+';font-size:11px;font-weight:700;padding:3px 10px;border-radius:12px;border:1px solid '+pillBorder+';font-family:var(--font-body);letter-spacing:0.3px;">' + tg + '</span>';
-                            borderColor = isGreen ? 'var(--color-correct)' : (isAmber ? '#d29922' : 'var(--accent-red)');
-                        }
-                        var benchLabel = (t.name && t.name.indexOf('Assessment') !== -1) ? 'Teacher Assessment' : 'Teacher Quiz';
-                        metaLabel = benchLabel + ' · ' + rawScore;
-                    } else if (t.homework) {
-                        // Homework: green border for 100%, show raw score
-                        var scoreClass = pct >= 92 ? '' : (pct >= 70 ? ' mid' : ' low');
-                        scoreHtml = '<span class="test-score' + scoreClass + '">' + pct + '%</span>';
-                        borderColor = pct >= 92 ? 'var(--color-correct)' : (pct >= 70 ? 'var(--color-warning)' : 'var(--accent-red)');
-                        metaLabel = 'Homework · ' + (att ? att.score + '/' + att.total : t.questions + ' questions');
-                    } else {
-                        var scoreClass = pct >= 92 ? '' : (pct >= 70 ? ' mid' : ' low');
-                        scoreHtml = '<span class="test-score' + scoreClass + '">' + pct + '%</span>';
-                        if (pct >= 92) borderColor = 'var(--color-correct)';
-                        else if (pct >= 70) borderColor = 'var(--color-warning)';
-                        else borderColor = 'var(--accent-red)';
-                    }
-                }
-            }
-            var href = t.file ? (' href="' + t.file + '"') : '';
-            var unitLabel = t.unit === 'spring-s5' ? 'S5 · Exponential Equations'
-                : t.unit === 'spring-s4' ? 'S4.a &amp; S4.b · Rational Expressions'
-                : t.unit === 'spring-s1s2s3' ? 'S1 · S2 · S3 · Polynomials Unit'
-                : t.unit === 'spring-logs' ? 'L.a–L.f · Logarithms'
-                : 'S1.a &amp; S1.b · Polynomials';
-            html += '<a' + href + ' class="test-link" style="position:relative;border-left:4px solid ' + borderColor + ';">' +
-                t.name + scoreHtml +
-                '<div class="test-meta">' + metaLabel + ' · ' + unitLabel + '</div></a>';
+            var att = s.attempts && s.attempts.length ? s.attempts[s.attempts.length - 1] : null;
+            var card = window.MCMActivityCards.fromRecord(t, s, att || s, att ? 'Latest attempt' : 'Recorded result');
+            html += window.MCMActivityCards.render(card);
         });
-        grid.innerHTML = html || '<div class="empty-state" style="padding:16px;color:var(--text-secondary);">No Spring tests yet.</div>';
+        grid.innerHTML = html || '<div class="empty-state">No Spring tests yet.</div>';
     }
 
     /* ========== WINTER TEST GRID (unified, reverse chronological) ========== */
@@ -1222,12 +1170,20 @@
             var s = archiveScores[t.key];
             var pct = null;
             var ts = 0;
+            var selected = null;
+            var attemptLabel = null;
             if (s && s.attempts && s.attempts[0]) {
-                pct = s.attempts[s.attempts.length - 1].pct;
-                if (!pct && s.attempts[0].score) pct = Math.round(s.attempts[0].score / s.attempts[0].total * 100);
+                selected = s.attempts[s.attempts.length - 1];
+                pct = selected.pct;
+                attemptLabel = 'Latest attempt';
+                if (typeof pct !== 'number' || !Number.isFinite(pct)) {
+                    selected = s.attempts[0];
+                    pct = window.MCMActivityCards.result(selected).pct;
+                    attemptLabel = 'First attempt';
+                }
                 ts = s.attempts[0].timestamp ? new Date(s.attempts[0].timestamp).getTime() : 0;
             }
-            return { t: t, pct: pct, ts: ts };
+            return { t: t, pct: pct, ts: ts, selected: selected, attemptLabel: attemptLabel };
         });
 
         // Reverse chronological: most recent top-left, snakes right then down
@@ -1235,19 +1191,9 @@
 
         var html = items.map(function(item) {
             var t = item.t;
-            var pct = item.pct;
-            var borderColor = 'var(--border-default)';
-            var scoreHtml = '';
-            var scoreClass = 'test-score';
-            if (pct !== null) {
-                if (pct >= 92) { borderColor = 'var(--color-correct)'; }
-                else if (pct >= 70) { borderColor = 'var(--color-warning, #d29922)'; scoreClass = 'test-score mid'; }
-                else { borderColor = 'var(--accent-red)'; scoreClass = 'test-score low'; }
-                scoreHtml = '<span class="' + scoreClass + '">' + pct + '%</span>';
-            }
-            return '<a href="' + t.file + '" class="test-link" style="border-left-color:' + borderColor + ';">' +
-                '<div class="test-name-row">' + t.name + scoreHtml + '</div>' +
-                '<div class="test-meta">' + t.questions + ' questions · ' + t.unit + '</div></a>';
+            var card = window.MCMActivityCards.fromRecord(t, archiveScores[t.key], item.selected, item.attemptLabel);
+            card.pct = item.pct;
+            return window.MCMActivityCards.render(card);
         }).join('');
 
         grid.innerHTML = html;

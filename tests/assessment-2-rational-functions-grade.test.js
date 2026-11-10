@@ -4,6 +4,7 @@ const path = require('node:path');
 const vm = require('node:vm');
 const root = path.resolve(__dirname, '..');
 const context = { window: {} };
+context.window.MCMActivityCards = require('../shared/activity-cards');
 const html = fs.readFileSync(path.join(root, 'reviews', 'assessment-2-rational-functions-grade.html'), 'utf8');
 const dashboard = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 for (const filename of ['assessment-1-midterm-functions-grade-data.js', 'assessment-2-rational-functions-grade-data.js',
@@ -70,7 +71,7 @@ images.forEach((image, i) => {
   assert.equal(image.src, 'assets/assessment-2-rational-functions/' + data.evidence[rows[i].id].file);
   assert.equal(image.loading, 'lazy');
 });
-assert.equal((dashboard.match(/href="reviews\/assessment-2-rational-functions-grade.html"/g) || []).length, 1);
+assert.equal((dashboard.match(/href: 'reviews\/assessment-2-rational-functions-grade.html'/g) || []).length, 1);
 assert.match(dashboard, /src="reviews\/assessment-2-rational-functions-grade-data.js"/);
 assert.match(dashboard, /<div id="precalculusChartContainer"><\/div>\s*<\/div>/,
   'Keep grading notes in the report, not beneath the dashboard chart');
@@ -86,12 +87,14 @@ assert.equal(plotted[2].fa, 72.6);
 assert.equal(plotted[3].label, 'Assessment 2');
 assert.equal(plotted[3].fa, 46.1);
 assert.equal(plotted[3].sublabel, 'Review Nov 9');
-assert.equal(nodes.teacherAssessment2Score.textContent, '26.75/58 (46.1%)');
+assert.match(nodes.precalculusGrid.innerHTML, /id="teacherAssessment2Score">46\.1%/);
+assert.match(nodes.precalculusGrid.innerHTML, /<dt>Points<\/dt><dd>26\.75\/58/);
 // Prove the report's source data, not a copied percentage, drives the chart.
 rows.find(row => row.id === '1 graph').earned = 1;
 chartContext.buildPrecalculusHistory();
 assert.equal(plotted[3].fa, 47.8);
-assert.equal(nodes.teacherAssessment2Score.textContent, '27.75/58 (47.8%)');
+assert.match(nodes.precalculusGrid.innerHTML, /id="teacherAssessment2Score">47\.8%/);
+assert.match(nodes.precalculusGrid.innerHTML, /<dt>Points<\/dt><dd>27\.75\/58/);
 
 const q = x => (3 * x * x - 2 * x + 5) / (x + 1);
 for (const x of [-3, 0, 2]) assert.ok(Math.abs(q(x) - (3 * x - 5 + 10 / (x + 1))) < 1e-12);
