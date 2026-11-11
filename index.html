@@ -585,6 +585,7 @@
     <script src="reviews/assessment-1-functions-75min-grade-data.js"></script>
     <script src="reviews/assessment-1-midterm-functions-grade-data.js"></script>
     <script src="reviews/assessment-2-rational-functions-grade-data.js"></script>
+    <script src="reviews/assessment-2-mini-quiz-2026-11-10-data.js"></script>
     <script src="shared/activity-cards.js"></script>
     <script>
     /* ========== TEST REGISTRY ========== */
@@ -880,7 +881,15 @@
         var practiceTest = score(window.assessment1PracticeGrade, 'questions');
         var studyGuidePct = Math.round(studyGuide.earned / studyGuide.total * 100);
         var practiceTestPct = practiceTest.earned / practiceTest.total * 100;
+        var miniQuiz = window.assessment2MiniQuizPracticeGrade;
+        var miniQuizEarned = miniQuiz.questions.reduce(function(sum, question) { return sum + question.earned; }, 0);
+        var miniQuizPossible = miniQuiz.questions.reduce(function(sum, question) { return sum + question.points; }, 0);
         var cards = [
+            { variant: 'practice-result', kind: 'Scan-based review', title: 'Assessment 2 Mini Quiz Review',
+                href: 'reviews/assessment-2-mini-quiz-2026-11-10.html', subject: 'Pre-Calculus · Rational functions',
+                pct: miniQuizEarned / miniQuizPossible * 100, earned: miniQuizEarned, possible: miniQuizPossible,
+                scoreId: 'assessment2MiniQuizScore', date: formatReportDate(miniQuiz),
+                note: 'Practice scoring, not teacher-awarded marks.', action: 'View report' },
             { variant: 'teacher-result', kind: 'Teacher assessment', title: 'Assessment 2: Rational Functions',
                 href: 'reviews/assessment-2-rational-functions-grade.html', subject: 'Pre-Calculus · Rational functions',
                 pct: assessment2Pct, earned: assessment2Earned, possible: assessment2Possible, scoreId: 'teacherAssessment2Score',

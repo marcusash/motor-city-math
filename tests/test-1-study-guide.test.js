@@ -89,6 +89,7 @@ assert.match(dashboard, /href: 'tests\/assessment-1-functions-75min.pdf'/, 'Keep
 const chartContext = { window: context.window };
 vm.runInNewContext(fs.readFileSync(path.join(root, 'reviews', 'assessment-1-midterm-functions-grade-data.js'), 'utf8'), context);
 vm.runInNewContext(fs.readFileSync(path.join(root, 'reviews', 'assessment-2-rational-functions-grade-data.js'), 'utf8'), context);
+vm.runInNewContext(fs.readFileSync(path.join(root, 'reviews', 'assessment-2-mini-quiz-2026-11-10-data.js'), 'utf8'), context);
 const elements = {};
 chartContext.document = { getElementById: id => elements[id] || (elements[id] = {}) };
 vm.runInNewContext(dashboard.slice(dashboard.indexOf('    function renderTrendChart('), dashboard.indexOf('    function buildChart()')), chartContext);

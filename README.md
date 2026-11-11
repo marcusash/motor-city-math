@@ -20,6 +20,10 @@ Pre-Calculus chart dates show `Scan` plus `scannedOn` where documented (Prep Tes
 
 [Assessment 2: Rational Functions (Teacher-Scored)](reviews/assessment-2-rational-functions-grade.html) sums all 14 teacher annotations across 13 numbered questions: **26.75/58 (46.1%)**. Question 1 has separate 0/4 graph and 0/4 end-behavior awards; Question 5 is 8/10. Pages 1-2 were corrected after grading, so currently correct writing does not replace the teacher's awarded scores. The [structured transcription](reviews/assessment-2-rational-functions-grade-data.js) drives both the report and its separate dashboard chart point. The chart uses **Review Nov 9**, not an inferred assessment or scan date. Expandable header-free crops preserve the matching evidence; the raw PDF and identifying headers are not published. This is the teacher-mark sum, not an official course grade, and is distinct from the unfinished Prep Test 2.
 
+[Assessment 2 Mini Quiz (Practice Review)](reviews/assessment-2-mini-quiz-2026-11-10.html) scores all five questions and all six submitted printed pages against the original [v2.0.3 parent-key rubric](https://github.com/marcusash/motor-city-math/releases/tag/kai-assessment-2-quiz-2026-11-09-v2.0.3): **65.5/100 (65.5%)**. The [structured review](reviews/assessment-2-mini-quiz-2026-11-10-data.js) retains all 33 rubric components, explained partial credit, text transcriptions, worked solutions and coaching. A [text-only PDF review](reviews/assessment-2-mini-quiz-2026-11-10.pdf) is preserved alongside the editable report. The dashboard links to this distinct practice result; existing charts and teacher scores are unchanged. This is not a teacher-issued grade or a measured learning gain over the historical 26.75/58 assessment. The November 10 review date is not an inferred completion date or elapsed time. No raw submissions, handwriting images, names/headers or desktop photos are published.
+
+Review checks: `node tests/assessment-2-mini-quiz-2026-11-10.test.js` and `npx playwright test assessment-2-mini-quiz-review --reporter=line`.
+
 The [Prep Test 2 question proposal](reviews/prep-test-2-proposal.html) is a parent review companion: 10 questions, 100 points, and 70 minutes of work plus 5 minutes to check. Two polynomial sketch questions cover degrees 4 and 5 (22 points, 16 minutes), balanced with piecewise, transformation, algebraic composition, graph-reading, domain, applied cost-model, and square-root construction questions. It includes plain-language purposes, worked answers, and partial-credit rubrics, separate from the student copy.
 
 The reviewed set is now built as a [printable Prep Test 2](tests/assessment-2-functions-75min.pdf), with [student HTML](tests/assessment-2-functions-75min.html) and a separate [parent key PDF](tests/assessment-2-functions-75min-KEY.pdf) / [key HTML](tests/assessment-2-functions-75min-KEY.html). The student copy follows the previous test's format and keeps answers separate. It includes six dedicated large drawing pages with centered axes; numerical grids use matching symmetric ranges and square cells. Prompt pages share space where the retained student work areas allow, and graph/sketch pages remain separate from question cards. Question 3 adds reflected/scaled compositions with fractional coordinates; Question 4 solves a composite equation from graphs; Question 5 compares algebraic compositions; Question 9 adds a challenging word problem; Question 10 restores square-root graph construction. Question 2 remains simple and Question 6 is retained. Regenerate the HTML with `node scripts/build-prep-test-2.cjs`; the source proposal remains the editable question source. No dashboard entry or score is added by this build.
@@ -46,6 +50,31 @@ Prep Test 2 was not completed, so it has no dashboard card or chart point. Its s
 contains the current easier-factoring test, matching parent key, earlier tests,
 editable sources, rebuild instructions, and cross-machine agent guidance.
 The current target is an A in standard Precalculus, not honors-level difficulty.
+
+### Full rational-functions practice exam
+
+The [student draft](print/assessment-2-practice-2026-11-11/student.pdf)
+([HTML](print/assessment-2-practice-2026-11-11/student.html)) and
+[separate parent key](print/assessment-2-practice-2026-11-11/parent-key.pdf)
+([HTML](print/assessment-2-practice-2026-11-11/parent-key.html)) preserve the
+teacher Assessment 2's 13-question order, task types and 58-point weighting.
+The [editable source](print/assessment-2-practice-2026-11-11/exam.json) records
+each item's variation, gap target, difficulty, timing estimate and proposed practice rubric.
+Marcus selected a **60-minute** allowance; the historical teacher allowance is
+not documented. The student copy has no hints or key link. Questions 9-12 retain
+the original multiple-choice structure, with written justification requested.
+Revision 2 is **ready for Marcus's review** after the requested Opus 5.5 student
+and GPT-6 Astra teacher reviews and their revision checks; see the
+[review findings and dispositions](print/assessment-2-practice-2026-11-11/review-record.json).
+The 11-page student exam uses separate required-output areas without supplying
+methods or answers; the worked key is eight pages. Sixty minutes is plausible
+but tight according to both reviewers, not measured student timing. This is not
+an approved school exam or a prediction of learning outcomes.
+Rebuild with `node scripts/build-rational-functions-practice.cjs`; use
+`--output-dir <directory>` for an isolated build and `--screenshots` for page proofs.
+Run `node --test tests/rational-functions-practice.test.cjs` for structural,
+math, unique-choice, required-output, print-layout and actual-PDF checks.
+No dashboard score or exam-registry entry is added.
 
 ```bash
 # Verify all exams are healthy
