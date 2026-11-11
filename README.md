@@ -22,6 +22,8 @@ Pre-Calculus chart dates show `Scan` plus `scannedOn` where documented (Prep Tes
 
 The [Prep Test 2 question proposal](reviews/prep-test-2-proposal.html) is a parent review companion: 10 questions, 100 points, and 70 minutes of work plus 5 minutes to check. Two polynomial sketch questions cover degrees 4 and 5 (22 points, 16 minutes), balanced with piecewise, transformation, algebraic composition, graph-reading, domain, applied cost-model, and square-root construction questions. It includes plain-language purposes, worked answers, and partial-credit rubrics, separate from the student copy.
 
+[Assessment 2 Mini Quiz (Practice Review)](reviews/assessment-2-mini-quiz-2026-11-10.html) scores all five questions and all six submitted printed pages against the original [v2.0.3 parent-key rubric](https://github.com/marcusash/motor-city-math/releases/tag/kai-assessment-2-quiz-2026-11-09-v2.0.3): **65.5/100 (65.5%)**. The [structured review](reviews/assessment-2-mini-quiz-2026-11-10-data.js) preserves all 33 rubric components, explained partial credit, text transcriptions, worked solutions, provenance and coaching. A [text-only printable review](reviews/assessment-2-mini-quiz-2026-11-10.pdf) is preserved alongside the editable report. This is practice scoring, not teacher-awarded marks or an official course grade; it does not replace the historical 26.75/58 teacher result. The review date is not an inferred assessment date or duration. No submission scans, handwriting crops or desktop photos are published.
+
 The reviewed set is now built as a [printable Prep Test 2](tests/assessment-2-functions-75min.pdf), with [student HTML](tests/assessment-2-functions-75min.html) and a separate [parent key PDF](tests/assessment-2-functions-75min-KEY.pdf) / [key HTML](tests/assessment-2-functions-75min-KEY.html). The student copy follows the previous test's format and keeps answers separate. It includes six dedicated large drawing pages with centered axes; numerical grids use matching symmetric ranges and square cells. Prompt pages share space where the retained student work areas allow, and graph/sketch pages remain separate from question cards. Question 3 adds reflected/scaled compositions with fractional coordinates; Question 4 solves a composite equation from graphs; Question 5 compares algebraic compositions; Question 9 adds a challenging word problem; Question 10 restores square-root graph construction. Question 2 remains simple and Question 6 is retained. Regenerate the HTML with `node scripts/build-prep-test-2.cjs`; the source proposal remains the editable question source. No dashboard entry or score is added by this build.
 
 Prep Test 2 was not completed, so it has no dashboard card or chart point. Its student PDF/HTML and parent materials remain preserved at the links above, separate from completed work.
@@ -116,6 +118,20 @@ kai-algebra2-tests/
 
 ## Design Language
 
+Grade reports share the dashboard's charcoal surfaces, accessible blue links,
+font stack and compact spacing through the shared styles and report stylesheet.
+Report content, source scores, explanations, scanned evidence and print views
+remain intact. Dashboard cards are compact; scoring caveats remain in the reports.
+
+Preserved iteration previews: [FD's report styling at three viewport widths](artifacts/report-style-2026-11-10/)
+and [FR's text-only practice review, mobile and print previews](artifacts/practice-review-2026-11-10/).
+These document the migrated working iterations, not a live-deployment receipt.
+Editable report sources and the printable practice-review PDF remain linked above.
+
+Report checks: `node --test tests/report-style.test.cjs tests/report-style.browser.test.cjs`.
+Practice review checks: `node tests/assessment-2-mini-quiz-2026-11-10.test.js`
+and `npx playwright test assessment-2-mini-quiz-review --reporter=line`.
+
 Detroit Pistons palette — `#C8102E` red, `#1D42BA` blue, `#002D62` navy, `#BEC0C2` chrome. Bold, confident, physical. See `.design-system.md` for the full spec.
 
 ## For the Agent Team
@@ -127,6 +143,13 @@ are maintained in `.github/agents/` and `.github/forge-agent-os/`.
 This repository is the active development project and the source for its GitHub Pages
 site. Make changes here through feature branches and pull requests; it is not a
 publish-only mirror.
+
+`marcusash/motor-city-math` is the only working and publishing source. The old
+cross-repository sync scripts are retired and must not be used. Follow the
+[single-source publishing runbook](docs/publish-runbook.md). Existing local
+conversations can retain historical repository associations; changing a Git remote
+does not relocate their app metadata. Preserve old workspaces until their unique
+work has verified remote receipts and cleanup is explicitly approved.
 
 To start using a Forge identity, create or restart a Copilot project session for this
 repository and select the identity in the agent picker. See

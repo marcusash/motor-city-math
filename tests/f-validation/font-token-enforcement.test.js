@@ -30,7 +30,12 @@ test('shared/styles.css defines --font-body token', sharedCss.includes('--font-b
 test('shared/styles.css applies --font-body to body', sharedCss.includes('body {') && sharedCss.includes('font-family: var(--font-body);'));
 test('shared/styles.css applies --font-body to core text elements', sharedCss.includes('h1, h2, h3, h4, h5, h6, p, label, button, a, li, td, th') && sharedCss.includes('font-family: var(--font-body);'));
 test('index chart labels use --font-body token', !indexHtml.includes('font-family="system-ui,sans-serif"') && indexHtml.includes('font-family="var(--font-body)"'));
-test('index chart legend uses --font-body token', !indexHtml.includes('font-family:system-ui,sans-serif') && indexHtml.includes('font-family:var(--font-body)'));
+const legend = indexHtml.match(/\.ch-legend\s*\{([^}]+)\}/);
+const legendFont = legend && legend[1].match(/font-family\s*:\s*([^;]+)/);
+test('index chart legend uses or inherits --font-body token',
+  !indexHtml.includes('font-family:system-ui,sans-serif') &&
+  (!legendFont || legendFont[1].trim() === 'var(--font-body)') &&
+  sharedCss.includes('font-family: var(--font-body);'));
 test('exam page loads shared styles', examHtml.includes('shared/styles.css'));
 
 console.log('\n── Summary ──');

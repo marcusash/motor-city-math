@@ -157,7 +157,8 @@ test('graph functions, source datasets, wrappers, registry and all non-card CSS 
         '77e83ca3565618482095d11a41f3f84496832f199efc20ed5f461f8f1e461f96');
     const css = html.match(/<style>([\s\S]*?)<\/style>/)[1]
         .replace(/        \.activity-card \{[\s\S]*?(?=        \.sparkline \{)/, 'CARD\n');
-    assert.equal(sha(css), '9e7269dfef47ec9e89d2d631ce919291154929000a355e8662fa871559954b51');
+    // Surface tokens now live in shared/styles.css for dashboard/report parity.
+    assert.equal(sha(css), 'cbf69e20caa416088f9b4ebca85df33ec88bd5be7c327576ee1d64c4f97e6b90');
     assert.equal(sha([...html.matchAll(/            <div class="trend-card"[\s\S]*?(?=            <div class="test-grid")/g)]
         .map(match => match[0]).join('\n')), 'd3ca53e5a8ca253850faa042039b7ae5ba1956c7354346842537992564cc7dbd');
 });

@@ -1,80 +1,72 @@
-/**
- * build-chart-edge-cases.test.js
- * Static analysis and logic tests for buildChart() in index.html.
- *
- * Checks: yPt clamping, makePath edge cases, pct=0 fallback, SVG presence.
- * Run: node tests/f-validation/build-chart-edge-cases.test.js
- */
+'use strict';
 
-const fs = require('fs');
-const path = require('path');
-
-const src = fs.readFileSync(path.join(__dirname, '..', '..', 'index.html'), 'utf-8');
-
-let total = 0, pass = 0, fail = 0;
-function test(name, ok) {
-    total++;
-    if (ok) { pass++; console.log('  \u2705 ' + name); }
-    else { fail++; console.log('  \u274c ' + name); }
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const path = require('node:path');
+const vm = require('node:vm');
+const source = fs.readFileSync(path.resolve(__dirname, '../../index.html'), 'utf8');
+const start = source.indexOf('    function renderTrendChart(');
+const end = source.indexOf('    function buildChart()', start);
+assert.ok(start >= 0 && end > start, 'Actual chart renderer boundaries must exist');
+const context = {};
+vm.runInNewContext(source.slice(start, end), context);
+let passed = 0;
+function check(name, run) {
+    run();
+    passed++;
+    console.log('PASS: ' + name);
+}
+function render(values, compact = false) {
+    const container = {};
+    context.renderTrendChart(container, values.map((fa, i) => ({ fa, label: 'Test ' + (i + 1) })), compact, false);
+    return container.innerHTML;
 }
 
-console.log('\n\uD83C\uDFC0 build-chart-edge-cases.test.js\n');
-
-// ── Static: empty state guard ────────────────────────────────
-console.log('\u2500\u2500 Empty state guard \u2500\u2500');
-test('pts.length === 0 shows trend-empty div', src.includes("pts.length === 0") && src.includes("trend-empty"));
-test('trend-empty has basketball emoji', src.includes("trend-empty") && src.includes("🏀"));
-
-// ── Static: single-point x-centering ────────────────────────
-console.log('\n\u2500\u2500 Single-point handling \u2500\u2500');
-test('n === 1 centers x between xL and xR', src.includes("n === 1") && src.includes("(xL + xR) / 2"));
-
-// ── Static: yPt clamping ─────────────────────────────────────
-console.log('\n\u2500\u2500 yPt clamping (40%-100% range) \u2500\u2500');
-test('yPt clamps to min 40', src.includes('Math.max(40, s)'));
-test('yPt clamps to max 100', src.includes('Math.min(100, Math.max(40'));
-
-// Extract yPt for unit testing
-const yPtMatch = src.match(/function yPt\(s\) \{([^}]+)\}/);
-let yPt = null;
-if (yPtMatch) {
-    // eslint-disable-next-line no-new-func
-    yPt = new Function('s', yPtMatch[1]);
+check('empty scores show the actual empty state instead of invalid SVG', () => {
+    const html = render([]);
+    assert.match(html, /trend-empty/);
+    assert.doesNotMatch(html, /<svg/);
+});
+check('a missing container is harmless', () => context.renderTrendChart(null, [], false, false));
+for (const score of [0, 40, 50, 79.99, 80, 90, 93, 100]) {
+    check('rendered score ' + score + ' follows the current broken-axis geometry', () => {
+        const html = render([score]);
+        const match = html.match(/<circle cx="(50)" cy="([^"]+)"/);
+        assert.ok(match);
+        const expected = score >= 80
+            ? 14 + (100 - score) / 20 * (94 * 0.667)
+            : 14 + 94 * 0.667 + (80 - score) / 80 * (94 * 0.333);
+        assert.ok(Math.abs(Number(match[2]) - expected) < 1e-8);
+        assert.ok(Number(match[2]) >= 14 - 1e-8 && Number(match[2]) <= 108 + 1e-8);
+        assert.match(html, new RegExp('>' + score + '%</text>'));
+        assert.doesNotMatch(html, /NaN|Infinity/);
+    });
 }
-test('yPt function extractable', yPt !== null);
-
-if (yPt) {
-    console.log('\n\u2500\u2500 yPt unit tests \u2500\u2500');
-    const eps = 0.01;
-    // At 40%: clamped to 40, output = 14 + 95*(1 - 0/60) = 14 + 95 = 109
-    test('yPt(40) = 109 (bottom of chart)', Math.abs(yPt(40) - 109) < eps);
-    // At 100%: clamped to 100, output = 14 + 95*(1 - 60/60) = 14 + 0 = 14
-    test('yPt(100) = 14 (top of chart)', Math.abs(yPt(100) - 14) < eps);
-    // At 0% (below clamp): same as yPt(40) = 109
-    test('yPt(0) clamped to 40, same as yPt(40)', Math.abs(yPt(0) - yPt(40)) < eps);
-    // At 150%: clamped to 100, same as yPt(100)
-    test('yPt(150) clamped to 100, same as yPt(100)', Math.abs(yPt(150) - yPt(100)) < eps);
-    // At 93% (A threshold): output should be near top
-    var y93 = yPt(93);
-    test('yPt(93) is between 14 and 50 (near top)', y93 >= 14 && y93 <= 50);
-    // At NaN: should not throw, returns NaN (coordinate math handles it)
-    var yNaN = yPt(NaN);
-    test('yPt(NaN) returns NaN without throwing', isNaN(yNaN));
-}
-
-// ── Static: SVG with aria-label ──────────────────────────────
-console.log('\n\u2500\u2500 SVG accessibility \u2500\u2500');
-test('chart SVG has role="img"', src.includes('role="img"') && src.includes('aria-label="Score progress chart'));
-test('aria-label includes test count', src.includes("showing ' + n + ' test"));
-
-// ── Static: grade reference lines ────────────────────────────
-console.log('\n\u2500\u2500 Grade reference lines \u2500\u2500');
-test('A grade line present (93% threshold)', src.includes('yA') && src.includes("'A'") || src.includes('"A"'));
-test('B grade line present', src.includes('yB') && (src.includes("'B'") || src.includes('"B"')));
-test('C grade line present', src.includes('yC') && (src.includes("'C'") || src.includes('"C"')));
-test('A green at 93%+', src.includes('p.fa >= 93') || src.includes('lastFaPct >= 93'));
-
-console.log('\n' + '='.repeat(50));
-console.log('build-chart-edge-cases: ' + pass + '/' + total + ' pass');
-if (fail > 0) process.exit(1);
-else console.log('PASS');
+check('single-point chart uses the actual first-position anchor', () => {
+    assert.match(render([80], true), /<circle cx="50"/);
+});
+check('multiple scores render connected paths and individual labels', () => {
+    const html = render([50, 80, 93]);
+    assert.equal((html.match(/<path /g) || []).length, 2);
+    assert.match(html, /Score progress chart showing 3 tests/);
+    assert.match(html, /Test 1/);
+    assert.match(html, /Test 3/);
+});
+check('chart has a singular accessible description for one score', () => {
+    assert.match(render([0]), /role="img" aria-label="Score progress chart showing 1 test"/);
+});
+check('scores below 80 preserve the court zone and dropping-line signal', () => {
+    const html = render([90, 50]);
+    assert.match(html, /FOUL TROUBLE/);
+    assert.match(html, /stroke-dasharray="6 4"/);
+});
+check('grade reference lines remain visible', () => {
+    const html = render([80]);
+    assert.match(html, />A<\/text>/);
+    assert.match(html, />B<\/text>/);
+});
+check('green score highlight begins at 93, not 90', () => {
+    assert.doesNotMatch(render([90]), /r="2" fill="#3FB950"/);
+    assert.match(render([93]), /r="2" fill="#3FB950"/);
+});
+console.log(passed + ' checks: ' + passed + ' passed, 0 failed');

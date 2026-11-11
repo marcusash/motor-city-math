@@ -7,13 +7,12 @@
 <link rel="stylesheet" href="../shared/katex/katex.min.css">
 <script defer src="../shared/katex/katex.min.js"></script>
 <style>
-:root { color-scheme:dark; --bg:#1a1a2e; --surface:#222240; --border:#333355; --text:#e8e8f0; --muted:#b4b4c4; --green:#70d778; --amber:#ffb74d; }
 * { box-sizing:border-box; }
 body { margin:0; padding:24px; font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; background:var(--bg); color:var(--text); }
 .container { max-width:1000px; margin:auto; }
 h1 { font-size:24px; margin:0 0 4px; }
 .subtitle,.note { color:var(--muted); }
-a { color:#b5b0ff; }
+a { color:var(--accent-blue); }
 .back-link { display:inline-flex; align-items:center; gap:6px; font-size:14px; font-weight:600; text-decoration:none; margin-bottom:16px; }
 .back-link:hover { text-decoration:underline; }
 .back-link:focus-visible { outline:2px solid currentColor; outline-offset:4px; }
@@ -33,18 +32,20 @@ td { font-size:13px; }
 td:nth-child(2) { min-width:230px; }
 td:nth-child(3) { min-width:220px; }
 .badge { display:inline-block; padding:2px 7px; border-radius:4px; font-size:12px; font-weight:600; }
-.correct { background:#234332; color:var(--green); }
-.partial { background:#493727; color:var(--amber); }
-.skipped { background:#353545; color:var(--muted); }
+.correct { background:var(--color-correct-bg); color:var(--green); }
+.partial { background:var(--color-warning-bg); color:var(--amber); }
+.skipped { background:var(--bg-highlight); color:var(--muted); }
 details { margin-top:8px; }
-summary { cursor:pointer; color:#b5b0ff; }
+summary { cursor:pointer; color:var(--accent-blue); }
 .source-image { max-width:100%; height:auto; display:block; margin:12px auto; }
 .section-title { margin-top:28px; }
 .score-cell { white-space:nowrap; }
 @media print { :root { color-scheme:light; --bg:white; --surface:white; --text:black; --muted:#444; --border:#999; } body { padding:0; } details[open] .source-image { max-height:8in; object-fit:contain; } .badge { color:black; background:none; } .score-big { color:black; } tr { break-inside:avoid; } }
 </style>
+<link rel="stylesheet" href="../shared/styles.css">
+<link rel="stylesheet" href="../shared/reports.css">
 </head>
-<body>
+<body class="mcm-report">
 <main class="container">
 <a href="../index.html" class="back-link">&larr; Back to Dashboard</a>
 <h1>Test 1 Study Guide</h1>
@@ -52,8 +53,11 @@ summary { cursor:pointer; color:#b5b0ff; }
 <div class="summary-card">
   <h2>Score based on visible work in the submitted pages</h2>
   <span class="score-big" id="score"></span>
+  <details class="report-context">
+  <summary class="report-context__label">Scoring and source details</summary>
   <p>This score is based on work visible in Kai's submitted study-guide scan, not a teacher-issued test grade. The assigned problem values total 100 points. Blank work receives no demonstrated-work credit; that does not mean the concept is misunderstood.</p>
   <p class="note">Seven full pages and three later close-ups are available. Later photos supply additional drawing evidence; this is not a timed-test result. Some graph scores are estimates from the available photos. Clearer completed composition graphs would allow a firmer score.</p>
+  </details>
   <div class="standards-grid" id="skills"></div>
 </div>
 <div id="sections"></div>
@@ -109,6 +113,9 @@ window.addEventListener('DOMContentLoaded', function () {
     evidence.append(image);
     block.append(evidence);
     const wrap = element('div', undefined, 'table-wrap');
+    wrap.tabIndex = 0;
+    wrap.role = 'region';
+    wrap.ariaLabel = section.title + ': question scores';
     const table = element('table');
     const head = element('thead');
     const header = element('tr');

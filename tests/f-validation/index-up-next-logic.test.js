@@ -33,11 +33,18 @@ console.log('\n\u2500\u2500 Per-item logic \u2500\u2500');
 test('skips zero-total items', fn.includes('if (s.total === 0) return'));
 test('pct formula is correct', fn.includes('Math.round((s.correct / s.total) * 100)'));
 
-// ── Threshold emojis ───────────────────────────────────────────
-console.log('\n\u2500\u2500 Threshold emojis \u2500\u2500');
-test('low (<70) shows basketball emoji', fn.includes("pct < 70 ? '\uD83C\uDFC0'") || fn.includes('pct < 70 ? "🏀"') || fn.includes("pct < 70 ? '🏀'"));
-test('mid (<90) shows chart emoji', fn.includes("pct < 90 ? '\uD83D\uDCC8'") || fn.includes('pct < 90 ? "📈"') || fn.includes("pct < 90 ? '📈'"));
-test('high (>=90) shows check emoji', fn.includes("'\u2705'") || fn.includes('"✅"') || fn.includes("'✅'"));
+// Exercise the current text actions instead of retired decorative emoji.
+const vm = require('node:vm');
+const end = src.indexOf('    /* ========== TEST INDEX', start);
+if (start < 0 || end <= start) throw new Error('Study-next renderer boundaries missing');
+for (const [correct, expected] of [[0, 'Start here.'], [69, 'Start here.'],
+    [70, 'Almost there.'], [89, 'Almost there.'], [90, 'Review only.'], [100, 'Review only.']]) {
+    const target = {};
+    const context = { document: { getElementById: () => target } };
+    vm.runInNewContext(src.slice(start, end), context);
+    context.buildStudyNext({ keys: ['S1'], data: { S1: { correct, total: 100 } } });
+    test(correct + '% renders ' + expected, target.innerHTML.includes(expected));
+}
 
 // ── Threshold action labels ────────────────────────────────────
 console.log('\n\u2500\u2500 Threshold action labels \u2500\u2500');

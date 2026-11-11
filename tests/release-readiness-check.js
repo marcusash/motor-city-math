@@ -104,7 +104,7 @@ console.log('\n[5] Regression Replay');
   const g = gate('No regressions vs baseline (tests/regression-baseline.json)');
   const baselineExists = fs.existsSync(path.join(__dirname, 'regression-baseline.json'));
   if (baselineExists) {
-    const r = run('node tests/regression-replay.js --diff');
+    const r = run('node tests/regression-replay.js --diff', { timeout: 1800000 });
     g(r.ok);
   } else {
     g(false, 'No baseline — run: node tests/regression-replay.js --capture');

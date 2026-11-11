@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Assessment 2 Mini Quiz - Practice Review</title>
+<link rel="icon" type="image/svg+xml" href="../shared/favicon.svg">
+<link rel="stylesheet" href="../shared/styles.css">
+<link rel="stylesheet" href="../shared/katex/katex.min.css">
+<script defer src="../shared/katex/katex.min.js"></script>
+<script defer src="../shared/katex/auto-render.min.js"></script>
+<style>
+.review-container { max-width:1100px; margin:auto; padding:24px 16px; }
+.review-header { display:block; margin-bottom:24px; }
+.back-link { display:inline-flex; margin-bottom:16px; font-weight:600; }
+.review-container a,.review-container summary { color:var(--accent-blue); }
+.review-container :is(a,summary,button):focus-visible { outline:3px solid var(--border-focus); outline-offset:4px; }
+.review-header h1 { margin:0 0 8px; color:var(--accent-navy); font-size:clamp(1.5rem,4vw,2rem); }
+.meta,.note { color:var(--text-secondary); font-size:var(--text-sm); }
+.summary-card,.question-card,.notes-card { background:var(--bg-card); border:1px solid var(--border-default); border-radius:12px; padding:20px; margin:20px 0; box-shadow:var(--shadow-card); }
+.notes-card { overflow-wrap:anywhere; }
+.score-big { color:var(--accent-navy); font-size:3rem; font-weight:800; line-height:1.2; margin:8px 0; }
+.denom { color:var(--text-secondary); font-size:1.25rem; }
+.standards-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:12px; margin-top:20px; }
+.section-box { background:var(--bg-input); border:1px solid var(--border-subtle); border-radius:8px; padding:12px; }
+.section-score { font-size:1.5rem; font-weight:800; color:var(--accent-navy); }
+.review-container h2 { font-size:1.2rem; color:var(--accent-navy); margin:0 0 12px; }
+.review-container h3 { font-size:1rem; color:var(--accent-navy); margin:0 0 8px; }
+.review-container p { margin:8px 0 12px; }
+.table-wrap { overflow-x:auto; margin:12px 0; }
+.table-wrap:focus-visible { outline:3px solid var(--border-focus); outline-offset:2px; }
+.review-container table { width:100%; max-width:none; margin:0; border-collapse:collapse; background:var(--bg-card); font-size:var(--text-sm); }
+.review-container th,.review-container td { border:1px solid var(--border-default); padding:10px; text-align:left; vertical-align:top; }
+.review-container th { background:var(--bg-highlight); color:var(--text-primary); }
+.overview-table { min-width:540px; }
+.rubric-table { min-width:650px; }
+.score-cell { white-space:nowrap; font-weight:700; }
+.question-header { display:flex; flex-wrap:wrap; gap:8px 16px; align-items:baseline; justify-content:space-between; }
+.question-score { font-weight:800; color:var(--color-warning); font-size:1.25rem; }
+.answer-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:16px 0; }
+.answer-box { min-width:0; border:1px solid var(--border-default); background:var(--bg-input); border-radius:8px; padding:16px; overflow-wrap:anywhere; }
+.reference-box { background:var(--color-correct-bg); }
+.coaching { border-left:4px solid var(--accent-blue); padding:8px 14px; background:var(--bg-highlight); }
+.review-container summary { cursor:pointer; font-weight:700; padding:8px 0; }
+.review-container li { margin-bottom:10px; }
+.review-container .katex { font-size:1.05em; }
+.review-actions { display:flex; gap:12px; flex-wrap:wrap; margin-top:16px; }
+.review-actions button { padding:8px 14px; border:1px solid var(--border-default); border-radius:6px; background:var(--bg-card); color:var(--text-primary); font:inherit; cursor:pointer; }
+@media (max-width:650px) {
+  .answer-grid { grid-template-columns:1fr; }
+  .summary-card,.question-card,.notes-card { padding:16px; }
+  .score-big { font-size:2.5rem; }
+}
+@media print {
+  body,body.arena-mode { --bg-page:white; --bg-card:white; --bg-input:white; --bg-highlight:white; --text-primary:black; --text-secondary:#333; --accent-navy:black; --accent-blue:black; --border-default:#777; --border-subtle:#999; --color-correct-bg:white; --color-warning:black; color:black; background:white; }
+  .review-container { max-width:none; padding:0; }
+  .back-link,.review-actions { display:none; }
+  .summary-card,.question-card,.notes-card { box-shadow:none; border-radius:0; }
+  .answer-grid { grid-template-columns:1fr; }
+  .standards-grid { display:grid; }
+  .table-wrap { overflow:visible; }
+  .review-container table { min-width:0; font-size:10pt; }
+  .review-container th,.review-container td { padding:6px; }
+  tr,.answer-box,.coaching { break-inside:avoid; }
+  h2,h3,summary { break-after:avoid; }
+  details::details-content { display:block; content-visibility:visible; height:auto; }
+  * { print-color-adjust:exact; -webkit-print-color-adjust:exact; }
+}
+</style>
+<link rel="stylesheet" href="../shared/reports.css">
+</head>
+<body class="mcm-report">
+<main class="review-container" id="report">
+<a href="../index.html" class="back-link">&larr; Back to Dashboard</a>
+<header class="review-header">
+  <h1>Assessment 2 Mini Quiz (Practice Review)</h1>
+  <p class="meta">Precalculus | Reviewed November 10, 2026 (Pacific) | Assessment date and elapsed time unknown</p>
+</header>
+<section class="summary-card" aria-labelledby="score-heading">
+  <h2 id="score-heading">Practice score - original 100-point rubric</h2>
+  <div class="score-big" id="score"></div>
+  <p><strong>FR practice scoring, not teacher-awarded marks or an official course grade.</strong> All five questions and all six printed pages were reviewed against the original v2.0.3 parent key. Partial credit is explained component by component below.</p>
+  <p class="note">This is separate from the historical teacher Assessment 2 total of 26.75/58. The review date is not an assessment date. The printed time target is not an observed duration. No scans or photos are published.</p>
+  <div class="standards-grid" id="sectionsSummary"></div>
+  <div class="review-actions"><button type="button" id="printReport">Print review</button></div>
+</section>
+<section class="notes-card" aria-labelledby="takeaways-heading">
+  <h2 id="takeaways-heading">What this work shows and what to practice next</h2>
+  <ul id="takeaways"></ul>
+</section>
+<section aria-labelledby="questions-heading">
+  <h2 id="questions-heading">Question summary</h2>
+  <div class="table-wrap" role="region" tabindex="0" aria-label="Question scores; scroll horizontally on narrow screens">
+    <table class="overview-table">
+      <thead><tr><th scope="col">Question</th><th scope="col">Focus</th><th scope="col">Source page</th><th scope="col">Practice points</th></tr></thead>
+      <tbody id="questionSummary"></tbody>
+    </table>
+  </div>
+</section>
+<div id="questions"></div>
+<section class="notes-card" aria-labelledby="notes-heading">
+  <h2 id="notes-heading">Scoring, source and uncertainty notes</h2>
+  <ul id="gradingNotes"></ul>
+  <p id="sourceLinks"></p>
+</section>
+<noscript>This practice review requires JavaScript for the score, text transcriptions and component rubric. Enable JavaScript to read the complete report.</noscript>
+</main>
+<script src="assessment-2-mini-quiz-2026-11-10-data.js"></script>
+<script>
+window.addEventListener('DOMContentLoaded', function () {
+  const data = window.assessment2MiniQuizPracticeGrade;
+  const sum = (items, key) => items.reduce((total, item) => total + item[key], 0);
+  function element(tag, text, className) {
+    const node = document.createElement(tag);
+    if (text !== undefined) node.textContent = text;
+    if (className) node.className = className;
+    return node;
+  }
+  if (!data || !Array.isArray(data.questions) || data.questions.length !== 5) {
+    document.getElementById('score').textContent = 'Report data unavailable';
+    throw new Error('Practice report data missing or invalid; no score displayed.');
+  }
+  data.questions.forEach(question => {
+    if (sum(question.components, 'earned') !== question.earned ||
+        sum(question.components, 'points') !== question.points) {
+      document.getElementById('score').textContent = 'Scoring data inconsistent';
+      throw new Error('Practice rubric subtotal mismatch for question ' + question.id);
+    }
+  });
+  const earned = sum(data.questions, 'earned');
+  const possible = sum(data.questions, 'points');
+  const score = document.getElementById('score');
+  score.append(document.createTextNode(String(earned)));
+  score.append(element('span', '/' + possible + ' (' + (earned / possible * 100).toFixed(1) + '%)', 'denom'));
+  data.sections.forEach(section => {
+    const questions = data.questions.filter(question => section.questionIds.includes(question.id));
+    const card = element('div', undefined, 'section-box');
+    card.append(element('div', section.title, 'note'));
+    card.append(element('div', sum(questions, 'earned') + '/' + sum(questions, 'points'), 'section-score'));
+    card.append(element('div', 'Questions ' + section.questionIds.join(', '), 'note'));
+    document.getElementById('sectionsSummary').append(card);
+  });
+  data.questions.forEach(question => {
+    const overview = element('tr');
+    const label = element('th');
+    label.scope = 'row';
+    const link = element('a', 'Q' + question.id);
+    link.href = '#question-' + question.id;
+    label.append(link);
+    overview.append(label, element('td', question.title), element('td', question.pages.join(', ')),
+      element('td', question.earned + '/' + question.points, 'score-cell'));
+    document.getElementById('questionSummary').append(overview);
+    const card = element('section', undefined, 'question-card');
+    card.id = 'question-' + question.id;
+    card.setAttribute('aria-labelledby', 'heading-' + question.id);
+    const header = element('div', undefined, 'question-header');
+    const heading = element('h2', 'Q' + question.id + '. ' + question.title);
+    heading.id = 'heading-' + question.id;
+    header.append(heading, element('span', question.earned + '/' + question.points, 'question-score'));
+    card.append(header, element('p', 'Submitted printed page' + (question.pages.length > 1 ? 's ' : ' ') + question.pages.join(', '), 'note'),
+      element('p', question.problem));
+    const grid = element('div', undefined, 'answer-grid');
+    const work = element('div', undefined, 'answer-box');
+    work.append(element('h3', 'Visible work - text transcription'), element('p', question.answer));
+    const reference = element('div', undefined, 'answer-box reference-box');
+    reference.append(element('h3', 'Reference solution'));
+    question.solution.forEach(step => reference.append(element('p', step)));
+    grid.append(work, reference);
+    card.append(grid);
+    const details = element('details');
+    details.open = true;
+    details.append(element('summary', 'Original rubric and explained partial credit'));
+    const wrap = element('div', undefined, 'table-wrap');
+    wrap.tabIndex = 0;
+    wrap.setAttribute('role', 'region');
+    wrap.setAttribute('aria-label', 'Question ' + question.id + ' scoring components; scroll horizontally on narrow screens');
+    const table = element('table', undefined, 'rubric-table');
+    const thead = element('thead');
+    const titles = element('tr');
+    ['Original component', 'Practice points', 'Reason for this award'].forEach(text => {
+      const th = element('th', text);
+      th.scope = 'col';
+      titles.append(th);
+    });
+    thead.append(titles);
+    const tbody = element('tbody');
+    question.components.forEach(component => {
+      const row = element('tr');
+      const name = element('th', component.rubric);
+      name.scope = 'row';
+      row.append(name, element('td', component.earned + '/' + component.points, 'score-cell'), element('td', component.reason));
+      tbody.append(row);
+    });
+    table.append(thead, tbody);
+    wrap.append(table);
+    details.append(wrap);
+    card.append(details, element('p', question.coaching, 'coaching'));
+    document.getElementById('questions').append(card);
+  });
+  data.takeaways.forEach(note => document.getElementById('takeaways').append(element('li', note)));
+  data.notes.forEach(note => document.getElementById('gradingNotes').append(element('li', note)));
+  [['Original v' + data.source.version + ' release', data.source.release],
+    ['Separate parent key and rubric', data.source.key], ['Portable source bundle', data.source.bundle],
+    ['Task ledger', data.source.issue]].forEach(([text, href], index) => {
+    if (index) document.getElementById('sourceLinks').append(document.createTextNode(' | '));
+    const link = element('a', text);
+    link.href = href;
+    document.getElementById('sourceLinks').append(link);
+  });
+  document.getElementById('sourceLinks').append(element('p', 'Source ZIP SHA-256: ' + data.source.bundleSha256, 'note'));
+  document.getElementById('printReport').addEventListener('click', () => window.print());
+  let collapsedBeforePrint = [];
+  window.addEventListener('beforeprint', () => {
+    collapsedBeforePrint = Array.from(document.querySelectorAll('details:not([open])'));
+    collapsedBeforePrint.forEach(details => { details.open = true; });
+  });
+  window.addEventListener('afterprint', () => {
+    collapsedBeforePrint.forEach(details => { details.open = false; });
+    collapsedBeforePrint = [];
+  });
+  renderMathInElement(document.getElementById('report'), {
+    delimiters: [{ left: '\\(', right: '\\)', display: false }],
+    throwOnError: true, trust: false
+  });
+});
+</script>
+</body>
+</html>

@@ -1,5 +1,9 @@
 # GP Publish Drill Checklist
 
+> Superseded: this is historical two-repository guidance, not an active procedure.
+> Use [the single-source publishing runbook](../publish-runbook.md).
+> Do not execute these old commands. Never force-push a rollback.
+
 **Owner:** GP (grind-platform)  
 **Last verified:** 2026-02-23  
 **Scenario:** Manual publish.cjs release when GitHub Actions is unavailable (outage, token expiry, workflow file corruption)
