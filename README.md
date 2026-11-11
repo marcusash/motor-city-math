@@ -123,6 +123,11 @@ font stack and compact spacing through the shared styles and report stylesheet.
 Report content, source scores, explanations, scanned evidence and print views
 remain intact. Dashboard cards are compact; scoring caveats remain in the reports.
 
+Preserved iteration previews: [FD's report styling at three viewport widths](artifacts/report-style-2026-11-10/)
+and [FR's text-only practice review, mobile and print previews](artifacts/practice-review-2026-11-10/).
+These document the migrated working iterations, not a live-deployment receipt.
+Editable report sources and the printable practice-review PDF remain linked above.
+
 Report checks: `node --test tests/report-style.test.cjs tests/report-style.browser.test.cjs`.
 Practice review checks: `node tests/assessment-2-mini-quiz-2026-11-10.test.js`
 and `npx playwright test assessment-2-mini-quiz-review --reporter=line`.

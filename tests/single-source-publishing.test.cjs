@@ -32,3 +32,24 @@ test('the runbook preserves review, release gates, receipts and original workspa
     assert.match(fs.readFileSync(path.join(root, 'docs/docs/publish-runbook.md'), 'utf8'),
         /\.\.\/publish-runbook\.md/);
 });
+
+test('the artifact index retains all approved design and text-only review previews', () => {
+    const readme = fs.readFileSync(path.join(root, 'README.md'), 'utf8');
+    const collections = [
+        ['artifacts/report-style-2026-11-10', 9],
+        ['artifacts/practice-review-2026-11-10', 7]
+    ];
+    for (const [directory, count] of collections) {
+        assert.ok(readme.includes(directory + '/'));
+        const files = fs.readdirSync(path.join(root, directory));
+        assert.equal(files.length, count);
+        for (const file of files) {
+            assert.ok(file.endsWith('.png'));
+            const bytes = fs.readFileSync(path.join(root, directory, file));
+            assert.equal(bytes.subarray(0, 8).toString('hex'), '89504e470d0a1a0a');
+        }
+    }
+    const pdf = 'reviews/assessment-2-mini-quiz-2026-11-10.pdf';
+    assert.ok(readme.includes(pdf));
+    assert.equal(fs.readFileSync(path.join(root, pdf)).subarray(0, 5).toString(), '%PDF-');
+});
