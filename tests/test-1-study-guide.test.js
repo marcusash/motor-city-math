@@ -49,7 +49,7 @@ assert.match(practiceReportHtml, /element\('img', undefined, 'source-image'\)/, 
 assert.match(practiceReportHtml, /Kai's original work/);
 assert.match(practiceReportHtml, /assets\/assessment-1-functions-75min\/page-/);
 assert.ok(!practiceReportHtml.includes('Other Test 1 materials'));
-assert.equal([...practiceReportHtml.matchAll(/href="([^"]+)"/g)].length, 1, 'Only the dashboard navigation link remains');
+assert.equal([...practiceReportHtml.matchAll(/<a\b[^>]*href="([^"]+)"/g)].length, 1, 'Only the dashboard navigation link remains');
 for (const [, href] of practiceReportHtml.matchAll(/href="([^"]+)"/g)) {
   if (/^(?:https?:|#|mailto:)/.test(href)) continue;
   assert.ok(fs.existsSync(path.resolve(path.dirname(practiceReportPath), href.split('#')[0])), 'Missing report link: ' + href);

@@ -5,13 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Assessment 2: Rational Functions (Teacher-Scored) - Grade Report</title>
 <style>
-:root { color-scheme:dark; --bg:#1a1a2e; --surface:#222240; --border:#333355; --text:#e8e8f0; --muted:#b4b4c4; --amber:#ffb74d; }
 * { box-sizing:border-box; }
 body { margin:0; padding:24px; font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; background:var(--bg); color:var(--text); }
 .container { max-width:1000px; margin:auto; }
 h1 { font-size:24px; margin:0 0 4px; }
 .subtitle,.note { color:var(--muted); }
-a,summary { color:#b5b0ff; }
+a,summary { color:var(--accent-blue); }
 .back-link { display:inline-flex; font-weight:600; text-decoration:none; margin-bottom:16px; }
 .back-link:hover { text-decoration:underline; }
 .back-link:focus-visible,summary:focus-visible { outline:2px solid currentColor; outline-offset:4px; }
@@ -31,9 +30,9 @@ td { font-size:13px; }
 td:nth-child(2) { min-width:230px; }
 td:nth-child(3) { min-width:220px; }
 .badge { display:inline-block; padding:2px 7px; border-radius:4px; font-size:12px; font-weight:600; }
-.correct { background:#234332; color:#70d778; }
-.partial { background:#493727; color:var(--amber); }
-.zero { background:#353545; color:var(--muted); }
+.correct { background:var(--color-correct-bg); color:var(--color-correct); }
+.partial { background:var(--color-warning-bg); color:var(--amber); }
+.zero { background:var(--bg-highlight); color:var(--muted); }
 details { margin-top:8px; }
 summary { cursor:pointer; }
 .section-title { margin-top:28px; }
@@ -45,8 +44,10 @@ summary { cursor:pointer; }
  body { padding:0; } .back-link { display:none; } .badge,.score-big { color:black; background:none; } tr { break-inside:avoid; }
 }
 </style>
+<link rel="stylesheet" href="../shared/styles.css">
+<link rel="stylesheet" href="../shared/reports.css">
 </head>
-<body>
+<body class="mcm-report">
 <main class="container">
 <a href="../index.html" class="back-link">&larr; Back to Dashboard</a>
 <h1>Assessment 2: Rational Functions (Teacher-Scored)</h1>
@@ -54,10 +55,13 @@ summary { cursor:pointer; }
 <div class="summary-card">
   <h2>Sum of all teacher-annotated scores</h2>
   <span class="score-big" id="score"></span>
+  <details class="report-context">
+  <summary class="report-context__label">Scoring and source details</summary>
   <p>All 14 teacher marks across 13 numbered questions are included. The displayed total and percentage are our arithmetic sum, not an overall score written by the teacher and not an official course grade.</p>
   <p><strong>Corrections do not change the grade:</strong> Marcus confirms that pages 1 and 2 were corrected after scoring. The teacher's annotated awards remain authoritative even where the current writing is correct. The original pre-correction answers cannot be reconstructed from this scan.</p>
   <p>Question 1 has two separate marks: graph 0/4 and end behavior 0/4. Question 5 is 8/10. No scored part is excluded.</p>
   <p class="note">No matching answer key was provided. Reference solutions are explanations, not a regrade. Blank work is not a demonstrated conceptual deficit. Expand each row's source evidence to inspect the header-free crop; the full raw PDF is not published. Section totals describe this submission, not mastery.</p>
+  </details>
   <div class="standards-grid" id="sectionsSummary"></div>
 </div>
 <div id="sections"></div>
@@ -90,6 +94,9 @@ window.addEventListener('DOMContentLoaded', function () {
     const block = element('section');
     block.append(element('h2', section.title, 'section-title'));
     const wrap = element('div', undefined, 'table-wrap');
+    wrap.tabIndex = 0;
+    wrap.role = 'region';
+    wrap.ariaLabel = section.title + ': question scores';
     const table = element('table');
     const header = element('tr');
     ['Q', 'Question', "Kai's visible work", 'Teacher status', 'Teacher score'].forEach(label => {

@@ -130,7 +130,8 @@ test('activity cards reflow, expose focus and preserve same-data graph pixels', 
                 const titles = cards.filter(card => {
                     const title = card.querySelector('.activity-card__title').getBoundingClientRect();
                     const score = card.querySelector('.activity-card__score').getBoundingClientRect();
-                    return title.bottom > score.top;
+                    return title.left < score.right && title.right > score.left &&
+                        title.top < score.bottom && title.bottom > score.top;
                 });
                 return {
                     count: cards.length, overflow, collisions: titles.length,
@@ -140,6 +141,9 @@ test('activity cards reflow, expose focus and preserve same-data graph pixels', 
                     winterCount: document.querySelectorAll('#winterTestGrid .activity-card').length,
                     a1: document.querySelector('#teacherAssessment1Score').textContent,
                     a2: document.querySelector('#teacherAssessment2Score').textContent,
+                    teacherHeights: [...document.querySelectorAll('#precalculusGrid [data-variant="teacher-result"]')]
+                        .map(card => card.getBoundingClientRect().height),
+                    notes: document.querySelector('#precalculusGrid').textContent,
                     inlineStyles: cards.some(card => card.hasAttribute('style')),
                     nestedControls: cards.some(card => card.querySelector('a,button,input')),
                     pdf: {
@@ -156,6 +160,8 @@ test('activity cards reflow, expose focus and preserve same-data graph pixels', 
             assert.equal(result.winterCount, 8);
             assert.equal(result.a1, '72.6%');
             assert.equal(result.a2, '46.1%');
+            assert.ok(result.teacherHeights.every(height => height <= 260), `${width}px assessment card exceeds compact height`);
+            assert.doesNotMatch(result.notes, /Later corrections|parent-confirmed/);
             assert.equal(result.inlineStyles, false);
             assert.equal(result.nestedControls, false);
             assert.equal(result.pdf.target, '_blank');

@@ -150,32 +150,33 @@
             margin-bottom: 20px;
         }
         .activity-card {
-            display: flex; flex-direction: column; gap: 12px; min-width: 0;
+            display: flex; flex-direction: column; gap: 8px; min-width: 0;
             background: var(--fd-card); color: var(--fd-text-1);
             border: 1px solid var(--fd-border); border-radius: var(--fd-r);
-            padding: 20px; text-decoration: none;
+            padding: 16px; text-decoration: none;
             overflow-wrap: anywhere;
         }
         a.activity-card:hover { border-color: var(--fd-border2); }
         a.activity-card:focus-visible { outline: 2px solid var(--accent-blue-on-dark); outline-offset: 3px; }
-        .activity-card__kind, .activity-card__result-label {
-            color: var(--fd-text-2); font-size: var(--text-sm); font-weight: 600;
+        .activity-card__heading {
+            display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; align-items: start;
         }
         .activity-card__title { margin: 0; color: var(--fd-text-1); font-size: var(--text-base); font-weight: 700; line-height: 1.4; }
-        .activity-card__subject, .activity-card__note {
+        .activity-card__context {
             margin: 0; color: var(--fd-text-2); font-size: var(--text-sm); line-height: 1.5;
         }
-        .activity-card__result { margin-top: 4px; }
-        .activity-card__score { color: var(--fd-text-1); font-size: var(--text-2xl); font-weight: 800; line-height: 1.3; }
-        .activity-card__score--status { font-size: var(--text-base); font-weight: 600; line-height: 1.5; }
-        .activity-card__details { margin: 8px 0 0; font-size: var(--text-sm); line-height: 1.5; }
+        .activity-card__kind { font-weight: 600; }
+        .activity-card__score { color: var(--fd-text-1); font-size: 2rem; font-weight: 800; line-height: 1.1; white-space: nowrap; }
+        .activity-card__score--status { font-size: var(--text-sm); font-weight: 600; line-height: 1.5; white-space: normal; max-width: 110px; }
+        .activity-card__details { display: flex; flex-wrap: wrap; gap: 4px 16px; margin: 0; font-size: var(--text-sm); line-height: 1.5; }
         .activity-card__details > div { display: flex; flex-wrap: wrap; column-gap: 6px; }
         .activity-card__details dt { color: var(--fd-text-2); }
         .activity-card__details dd { margin: 0; color: var(--fd-text-1); }
         .activity-card__footer {
-            display: flex; flex-direction: column; gap: 8px; margin-top: auto;
-            border-top: 1px solid var(--fd-border); padding-top: 12px;
+            display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 12px; margin-top: auto;
+            padding-top: 4px;
         }
+        .activity-card__note { flex-basis: 100%; margin: 0; font-size: var(--text-sm); color: var(--fd-text-2); }
         .activity-card__date { color: var(--fd-text-2); font-size: var(--text-sm); }
         .activity-card__action { color: var(--accent-blue-on-dark); font-size: var(--text-sm); font-weight: 600; }
         .sparkline { display: block; margin-top: 6px; }
@@ -207,21 +208,6 @@
 
         /* Dashboard header: suppress global header border so hero-card accent bar doesn't double up */
         header.dash-header { border-bottom: none; padding-bottom: 0; margin-bottom: 16px; }
-
-        /* ── FD Design Tokens (Feb 2026 redesign) ─────────────────────── */
-        :root {
-            --fd-bg:      #0d1117;
-            --fd-card:    #161b22;
-            --fd-raised:  #1c2128;
-            --fd-border:  rgba(255,255,255,0.07);
-            --fd-border2: rgba(255,255,255,0.14);
-            --fd-green:   #3FB950;   /* reserved: scores ≥ 93% only */
-            --fd-text-1:  #E6EDF3;
-            --fd-text-2:  #8B949E;
-            --fd-text-3:  #8B949E;  /* bumped from #6E7681 to pass WCAG 2.1 AA (da-02) */
-            --fd-r:       10px;
-            --accent-blue-on-dark: #4A90D9; /* 5.18:1 on #161b22 - WCAG 2.4.11 */
-        }
 
         /* ── Hero (FD redesign) ───────────────────────────────────────── */
         .hero {
@@ -884,11 +870,11 @@
             { variant: 'teacher-result', kind: 'Teacher assessment', title: 'Assessment 2: Rational Functions',
                 href: 'reviews/assessment-2-rational-functions-grade.html', subject: 'Pre-Calculus · Rational functions',
                 pct: assessment2Pct, earned: assessment2Earned, possible: assessment2Possible, scoreId: 'teacherAssessment2Score',
-                date: formatReportDate(window.assessment2TeacherGrade), note: 'Later corrections do not change teacher awards.', action: 'View report' },
+                date: formatReportDate(window.assessment2TeacherGrade), action: 'View report' },
             { variant: 'teacher-result', kind: 'Teacher assessment', title: 'Assessment 1: Functions',
                 href: 'reviews/assessment-1-midterm-functions-grade.html', subject: 'Pre-Calculus · Functions and polynomials',
                 pct: teacherPct, earned: teacherEarned, possible: teacherPossible, scoreId: 'teacherAssessment1Score',
-                date: formatReportDate(window.assessment1TeacherGrade), note: 'Includes parent-confirmed Question 10.', action: 'View report' },
+                date: formatReportDate(window.assessment1TeacherGrade), action: 'View report' },
             { variant: 'practice-result', kind: 'Scan-based review', title: 'Prep Test 1 Review',
                 href: 'reviews/assessment-1-functions-75min-grade.html', subject: 'Pre-Calculus · Functions and polynomials',
                 pct: practiceTestPct, earned: practiceTest.earned, possible: practiceTest.total, scoreId: 'practiceTest1Score',

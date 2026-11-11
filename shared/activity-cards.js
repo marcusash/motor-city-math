@@ -41,16 +41,17 @@
             metadata('Questions', finite(card.questions) ? card.questions : null) +
             metadata('Duration', card.duration);
         return '<' + tag + link + ' class="activity-card" data-variant="' + escape(card.variant) + '">' +
-            '<div class="activity-card__kind">' + escape(card.kind) + '</div>' +
+            '<div class="activity-card__heading">' +
             '<h3 class="activity-card__title">' + escape(card.title) + '</h3>' +
-            (card.subject ? '<p class="activity-card__subject">' + escape(card.subject) + '</p>' : '') +
             '<div class="activity-card__result">' +
-            '<div class="activity-card__result-label">' + (scored ? 'Score' : 'Status') + '</div>' +
+            '<div class="activity-card__result-label sr-only">' + (scored ? 'Score' : 'Status') + '</div>' +
             '<div class="activity-card__score' + (scored ? '' : ' activity-card__score--status') + '"' +
             (card.scoreId ? ' id="' + escape(card.scoreId) + '"' : '') + '>' +
             escape(scored ? card.pct + '%' : card.status || 'No score recorded') + '</div>' +
+            '</div></div><p class="activity-card__context"><span class="activity-card__kind">' + escape(card.kind) + '</span>' +
+            (card.subject ? ' · <span class="activity-card__subject">' + escape(card.subject) + '</span>' : '') + '</p>' +
             (details ? '<dl class="activity-card__details">' + details + '</dl>' : '') +
-            '</div><div class="activity-card__footer">' +
+            '<div class="activity-card__footer">' +
             (card.date ? '<div class="activity-card__date">' + escape(card.date) + '</div>' : '') +
             (card.note ? '<p class="activity-card__note">' + escape(card.note) + '</p>' : '') +
             (card.href ? '<span class="activity-card__action">' + escape(card.action || 'Open activity') +

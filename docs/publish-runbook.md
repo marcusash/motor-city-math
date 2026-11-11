@@ -1,128 +1,63 @@
-# Publishing Runbook: kai-algebra2-tests → motor-city-math
+# Single-source publishing
 
-**Public URL:** https://marcusash.github.io/motor-city-math/
-**Private source:** https://github.com/marcusash_microsoft/kai-algebra2-tests (master)
-**Public target:** https://github.com/marcusash/motor-city-math (master)
+**Status:** active, supersedes the former two-repository sync procedure.
 
----
+The only working and publishing repository is
+[`marcusash/motor-city-math`](https://github.com/marcusash/motor-city-math).
+The site is https://marcusash.github.io/motor-city-math/.
+GitHub Pages builds this repository's `master` branch from `/`.
+There is no development-to-publish mirror or repository transfer.
 
-## Pre-Publish Checklist (mandatory)
+## Work and preserve
 
-Run this before every push to motor-city-math:
+1. Verify the repository, intended account and write permission. App, CLI and Git
+   credentials can differ. An inherited `GH_TOKEN` can override stored accounts.
+   Never display tokens, change credentials silently or use an unrelated account.
+2. Read the owning issue and current source. Use feature branches and pull requests
+   into `master`; do not push directly to `master` or bypass required review.
+3. Keep all approved editable product files and required public assets in this
+   repository. Preserve content and reconcile newer work instead of copying an
+   entire old checkout. Do not copy private scans, credentials, unrelated history
+   or infrastructure from another repository.
+4. Push task files to an authorized feature branch and read back the immutable
+   commit and important file bytes. Link the receipt from the issue and README
+   where applicable. A local commit or successful push alone is not verification.
+
+## Release checks
+
+Run from this repository's root:
 
 ```powershell
-cd C:\GitHub\kai-algebra2-tests
-
-# Step 1: fetch public remote (motor-city-math diverges independently — always check)
-git fetch public
-
-# Step 2: run GF release readiness gate (covers syntax, math lint, dedup, regression, 19 checks)
+node tests/verify-practice-exams.js
+node scripts/gp-exam-health.js
 node tests/release-readiness-check.js
 ```
 
-If the gate fails, do not push. Fix the hard failures first.
+Run the targeted checks for changed reports, grading data and UI as well. If a
+mandatory gate fails, preserve the work on a feature branch, record the exact
+failure and stop before release. Distinguish pre-existing failures from changes
+introduced by the task, but do not silently waive a hard failure.
 
-For a Kai-centric view before study sessions:
-```powershell
-node tests/kai-morning-smoke.js
-```
+## Deploy and verify
 
+After review, all required checks and merge authorization are satisfied, merge
+the pull request normally. GitHub Pages publishes the merged `master` tree,
+including approved reports and printable documents; no copying script is needed.
+Verify Pages' build commit and the actual live page and asset bytes before saying
+the release is deployed. Record the merged commit, deployment and immutable
+artifact links on the issue.
 
-## Quick Publish (agents use this)
+For rollback, create a reviewed revert pull request. Never force-push `master`.
 
-```powershell
-cd C:\GitHub\kai-algebra2-tests
-MOTOR_CITY_MATH_TOKEN=your_token node scripts/publish.cjs
-```
+## Retired entrypoints and historical sessions
 
-Or store the token once in `.env.local` at the repo root (never committed):
-```
-MOTOR_CITY_MATH_TOKEN=your_token_here
-```
+`scripts/publish.cjs`, `scripts/publish-local.cjs` and
+`scripts/scripts/publish.cjs` now fail explicitly without network, filesystem,
+credential or Git mutations. Do not restore the former clone-and-copy workflow
+or its separate publishing token.
 
-Then just run:
-```powershell
-node scripts/publish.cjs
-```
-
-The script clones motor-city-math to a temp dir, copies all public files, and pushes. Done in ~30 seconds.
-
----
-
-## One-Time Token Setup (Marcus does this once per year)
-
-1. Go to https://github.com/settings/tokens?type=beta logged in as **marcusash** (not marcusash_microsoft)
-2. Click "Generate new token (fine-grained)"
-3. Name: `motor-city-math-publish`
-4. Expiration: 1 year
-5. Repository access: Only select repositories > `marcusash/motor-city-math`
-6. Permissions: Contents = **Read and Write**, Workflows = **Read and Write**
-7. Copy the token immediately
-8. Create `.env.local` in kai-algebra2-tests with `MOTOR_CITY_MATH_TOKEN=<token>`
-9. Share with GA via secure channel (not in any committed file)
-
----
-
-## What Gets Published vs What Stays Private
-
-| Published | Not Published |
-|-----------|---------------|
-| index.html, exam.html | .agent-comms/ |
-| shared/ (CSS, JS) | All .md spec files |
-| data/ (question data) | tests/ |
-| docs/ | import/ocr-output/ |
-| scripts/ | eng.traineddata |
-| README.md | PDFs |
-
----
-
-## GitHub Action (on hold)
-
-The action at `.github/workflows/publish-to-motor-city-math.yml` is configured but currently
-failing with 0 jobs. Root cause: private repo Actions require billing setup on the
-`marcusash_microsoft` account (GitHub Actions minutes for private repos). Use
-`scripts/publish.cjs` instead until this is resolved.
-
-To resolve GitHub Actions: add a payment method to github.com/marcusash_microsoft account settings,
-then the action will auto-trigger on every push.
-
-### Quick Triage Decision Tree
-
-1. **Workflow shows "0 jobs" immediately:** treat as account-level Actions gating (billing/settings), not YAML syntax.
-2. **Workflow starts but publish step fails auth:** rotate `MOTOR_CITY_MATH_TOKEN`, confirm `Contents` + `Workflows` write on `marcusash/motor-city-math`.
-3. **Workflow succeeds but site not updated:** verify Pages source is `master` `/` on target repo, then republish via `node scripts/publish.cjs`.
-4. **Need urgent release for Kai:** bypass Action and run `node scripts/publish.cjs` directly.
-
----
-
-## Publish Parity Check (Script vs Workflow)
-
-Validated on 2026-02-22:
-- **Same file list:** `index.html`, `exam.html`, `final_exam_251123.html`, `final_exam_251123_mini.html`, `nonlinear_exam_mvp.html`, `_gen.js`, `package.json`, `README.md`
-- **Same directory list:** `shared/`, `data/`, `docs/`, `scripts/`
-- **Same publish gate:** both paths exit cleanly when no staged diff exists in target repo
-- **Same destination:** `marcusash/motor-city-math` `master` branch
-
-Only operational difference:
-- **Script path** uses local token (`MOTOR_CITY_MATH_TOKEN`) and works now
-- **Workflow path** requires Actions runtime + valid secret in private source repo
-
-Use this quick parity command after major publish-script edits:
-
-```powershell
-cd C:\GitHub\kai-algebra2-tests
-node scripts\publish.cjs --help 2>$null
-```
-
-If workflow behavior diverges from script behavior, update this runbook first, then notify GP + FA.
-
----
-
-## Current Status
-
-- Script publish: `scripts/publish.cjs` — works, use this
-- GitHub Action: configured but failing (billing issue on private repo)
-- Last session: 2026-02-24 — site has ~50+ commits of improvements not yet deployed to motor-city-math
-- Key pending deploy content: WCAG fixes, skip-link, sparkline zero-state, score corruption recovery, JSDoc, RP11 wire, print CSS guards, aria-label on all canvases
-- Deploy still requires Marcus PAT token setup (5 min, see One-Time Token Setup above) OR manual push from motor-city-math clone
-- Site: https://marcusash.github.io/motor-city-math/ (live, stale)
+Old conversations may still display an old repository association. Changing a
+Git remote does not change the app's session metadata. Use a supported app
+operation for that association; do not modify app databases or create replacement
+sessions without authorization. Keep original workspaces and files until unique
+work is remotely verified and cleanup is explicitly approved.

@@ -1,5 +1,9 @@
 # GP Publish Pipeline Spec
 
+> Superseded: this is historical two-repository guidance, not an active procedure.
+> Use [the single-source publishing runbook](../publish-runbook.md).
+> Do not execute the old sync, token, or direct-master instructions below.
+
 **Owner:** GP (grind-platform)  
 **Last updated:** 2026-02-23
 
