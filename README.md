@@ -63,10 +63,17 @@ each item's variation, gap target, difficulty, timing estimate and proposed prac
 Marcus selected a **60-minute** allowance; the historical teacher allowance is
 not documented. The student copy has no hints or key link. Questions 9-12 retain
 the original multiple-choice structure, with written justification requested.
-This is a draft pending the requested Opus 5.5 student and GPT-6 Astra teacher
-reviews, not an approved school exam or a prediction of learning outcomes.
+Revision 2 is **ready for Marcus's review** after the requested Opus 5.5 student
+and GPT-6 Astra teacher reviews and their revision checks; see the
+[review findings and dispositions](print/assessment-2-practice-2026-11-11/review-record.json).
+The 11-page student exam uses separate required-output areas without supplying
+methods or answers; the worked key is eight pages. Sixty minutes is plausible
+but tight according to both reviewers, not measured student timing. This is not
+an approved school exam or a prediction of learning outcomes.
 Rebuild with `node scripts/build-rational-functions-practice.cjs`; use
 `--output-dir <directory>` for an isolated build and `--screenshots` for page proofs.
+Run `node --test tests/rational-functions-practice.test.cjs` for structural,
+math, unique-choice, required-output, print-layout and actual-PDF checks.
 No dashboard score or exam-registry entry is added.
 
 ```bash

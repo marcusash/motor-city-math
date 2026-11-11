@@ -83,7 +83,8 @@ function graph(question, blank = false, size = question.graph.plot) {
 }
 
 function space(part) {
-  return `<div class="response"><p>${part.label ? `<b>(${escape(part.label)})</b> ` : ''}${text(part.prompt)}</p>${part.space ? `<div class="answer-space" style="height:${part.space}pt"></div>` : ''}</div>`;
+  const areas = (part.areas || []).map(area => `<div class="answer-area" style="flex:${area.weight ?? 1}">${area.labels.map((label, index) => `<div class="answer-field" style="flex:${area.weights ? area.weights[index] : 1}">${escape(label)}</div>`).join('')}</div>`).join('');
+  return `<div class="response"><p>${part.label ? `<b>(${escape(part.label)})</b> ` : ''}${text(part.prompt)}</p>${part.space ? `<div class="answer-space" style="height:${part.space}pt">${areas}</div>` : ''}</div>`;
 }
 function tables(question) {
   return (question.tables || []).map(table => `<table class="values"><tbody><tr><th scope="row">x</th>${table.inputs.map(x => `<td>${x}</td>`).join('')}</tr><tr><th scope="row">H(x)</th>${table.outputs.map(y => `<td>${y === null ? 'undefined' : y}</td>`).join('')}</tr></tbody></table>`).join('');
@@ -105,7 +106,7 @@ function questionBlock(question, part = 'all') {
   }
   if (question.choices) {
     const choices = `<ol class="choices" type="A">${question.choices.map(choice => `<li>${text(choice)}</li>`).join('')}</ol>`;
-    content += question.graph ? `<div class="choice-graph">${graph(question)}${choices}</div>` : choices;
+    content += question.graph ? `<div class="choice-graph${question.graph.plot > 220 ? ' wide' : ''}">${graph(question)}${choices}</div>` : choices;
   }
   return content + tables(question) + question.parts.map(space).join('') + '</article>';
 }
@@ -123,10 +124,13 @@ const css = `
 .brand{font-size:8pt;font-weight:bold;letter-spacing:.3pt}h1{font-size:17pt;margin:5pt 0}
 .identity,.details{font-size:9pt;margin:4pt 0}main{padding-bottom:8pt}h2{display:flex;justify-content:space-between;font-size:12pt;background:#eee;padding:5pt 8pt;margin:0 0 8pt}
 article+article{margin-top:16pt}.stem{margin:7pt 0 10pt}.response p{margin:6pt 0}.answer-space{border:1px solid #bbb;margin:5pt 0 10pt}
+.answer-space{display:flex;flex-direction:column}.answer-area{display:flex;min-height:0}.answer-area+.answer-area{border-top:1px solid #ddd}
+.answer-field{padding:3pt 5pt;font-size:8.5pt}.answer-field+.answer-field{border-left:1px solid #ddd}
 .graph{margin:6pt auto;text-align:center}.graph svg{display:block;max-width:100%;height:auto;margin:auto}
 .graph-analysis{display:grid;grid-template-columns:320pt 1fr;gap:12pt;align-items:start}
 .graph-analysis .response p{font-size:9pt}.graph-analysis .answer-space{margin-bottom:8pt}
 .choice-graph{display:grid;grid-template-columns:230pt 1fr;gap:14pt;align-items:center}
+.choice-graph.wide{grid-template-columns:320pt 1fr}
 .choices{padding-left:22pt;margin:8pt 0}.choices li{padding-left:4pt;margin:8pt 0;break-inside:avoid}
 .values{border-collapse:collapse;width:100%;font-size:9pt;margin:10pt 0}.values th,.values td{border:1px solid #777;padding:5pt 3pt;text-align:center}
 .continuation{font-size:9pt}.solutions{padding-left:18pt}.solutions li{margin:7pt 0}.rubric{padding-left:18pt;font-size:9pt}.rubric li{margin:4pt 0}

@@ -1,0 +1,102 @@
+{
+  "examId": "assessment-2-practice-2026-11-11",
+  "revision": 2,
+  "status": "ready-for-parent-review",
+  "owningIssue": "https://github.com/marcusash/motor-city-math/issues/28",
+  "initialDraftCommit": "a8f82b58987fce5662b4273417f4cdf17ad8ea45",
+  "scope": "Two user-requested independent qualitative persona reviews, followed by one narrow revision check each. No additional reviewers were launched.",
+  "constraints": {
+    "questions": 13,
+    "points": 58,
+    "durationMinutes": 60,
+    "teacherOrderAndTaskTypesRetained": true,
+    "multipleChoiceQuestions": [9, 10, 11, 12],
+    "studentHasHints": false,
+    "parentKeySeparate": true
+  },
+  "reviewers": [
+    {
+      "role": "Standard-Precalculus math student",
+      "model": "claude-opus-5.5",
+      "initialVerdict": "REVISE",
+      "independentAnswers": "All 13 matched the original key before revision; the reordered final MC key was independently re-derived as D, B, A, C.",
+      "itemFindings": [
+        {"question": 1, "finding": "Reflected reciprocal requires actual branch-orientation transfer."},
+        {"question": 2, "finding": "Nested denominators and a subtracted linear numerator require signed algebra."},
+        {"question": 3, "finding": "Trinomial factoring, cross-fraction cancellation and retained exclusions test transfer."},
+        {"question": 4, "finding": "Reversed extrema/concavity and a hole on an increasing branch are meaningful contrasts."},
+        {"question": 5, "finding": "Opposite signs of y-intercept and horizontal height plus a fractional negative hole target observed errors."},
+        {"question": 6, "finding": "Missing linear term, fractional negative slope and positive remainder provide useful variation."},
+        {"question": 7, "finding": "More explicit required outputs make this easier to complete than the teacher's broad prompt."},
+        {"question": 8, "finding": "Weakest transfer item: largely parameter/sign changes, acceptable under the same-structure requirement."},
+        {"question": 9, "finding": "Zero horizontal rather than slant behavior changes the required degree conclusion."},
+        {"question": 10, "finding": "Branch sign distinguishes otherwise similar candidates; origin explanation should be explicitly requested."},
+        {"question": 11, "finding": "Hole/domain distinction is sound, but the original window hid the entire left branch."},
+        {"question": 12, "finding": "Tied leading terms and reversed end directions retain a useful degree-comparison task."},
+        {"question": 13, "finding": "Reversed roles of the same excluded inputs block a memorized location answer."}
+      ],
+      "finalVerdict": "READY for Marcus's review",
+      "finalBlockingIssues": [],
+      "finalTimingJudgmentMinutes": [50, 62],
+      "finalNotes": "Expanded Q11 shows the left branch, hole and asymptotes clearly. Required outputs are labeled without supplying the touch/cross answer. Sixty minutes remains feasible but tight."
+    },
+    {
+      "role": "Exceptional math teacher",
+      "model": "gpt-6-astra",
+      "modelSelection": "Marcus explicitly selected available GPT-6 Astra after the requested Astra 6.1 runtime was unavailable.",
+      "initialVerdict": "REVISE",
+      "independentMathFinding": "Authored algebra, coordinates, intervals, table samples and all four MC answers were correct.",
+      "itemFindings": [
+        {"question": 1, "finding": "Separate both end responses; do not score unrequested approach-from-above/below statements."},
+        {"question": 2, "finding": "Appropriate nested-denominator transfer; exclusions slightly extend the original prompt."},
+        {"question": 3, "finding": "Appropriate factor/cancel/restriction transfer; expose exclusions separately."},
+        {"question": 4, "finding": "Added hole is justified by omitted-domain evidence; make absence conclusions explicit and protect follow-through credit."},
+        {"question": 5, "finding": "Particularly effective contrast for y-intercept, asymptote, signed hole height and branch shape."},
+        {"question": 6, "finding": "Clarify the required algebraic approach explanation and split both end outputs."},
+        {"question": 7, "finding": "Valid decreasing-from-above context; do not independently require the unrequested word decreasing."},
+        {"question": 8, "finding": "Preserve the construction task; accept different valid rules, their own hole heights and labeled algebra as verification."},
+        {"question": 9, "finding": "Unique intended degree relationship; do not infer exact degrees from the graph."},
+        {"question": 10, "finding": "Require origin behavior to ensure assessment of the omitted touching/crossing explanation."},
+        {"question": 11, "finding": "Explicitly request the missing-point discussion that earns the justification point."},
+        {"question": 12, "finding": "Say end directions so identical degree/growth rate is not implied."},
+        {"question": 13, "finding": "Finite samples support a likely classification rather than prove exact limits."}
+      ],
+      "finalVerdict": "READY for parent review",
+      "finalBlockingIssues": [],
+      "timingJudgmentMinutes": [50, 70],
+      "finalNotes": "All required-output, wording, rubric and graph-window conditions resolved in rendered student PDF and printed key. Final MC key D, B, A, C."
+    }
+  ],
+  "revisionDispositions": [
+    {"questions": [1, 6], "action": "Separate far-left and far-right response areas; add a separate approach explanation area in Q6.", "status": "implemented"},
+    {"questions": [2, 3], "action": "Separate algebra, simplified expression and original excluded inputs inside existing space.", "status": "implemented"},
+    {"questions": [4], "action": "Separate extrema, concavity directions and asymptote types; explicitly require equation or none.", "status": "implemented"},
+    {"questions": [4], "action": "Prevent repeated deductions for a consistently repeated domain-notation error.", "status": "implemented"},
+    {"questions": [5], "action": "Label algebra and individual feature outputs; correct continuation wording to grid below.", "status": "implemented"},
+    {"questions": [6], "action": "Explicitly request algebraic justification of asymptotic approach without supplying a method or formula.", "status": "implemented"},
+    {"questions": [7], "action": "Separate value/units/meaning, approach side and finite-attainment justification; do not separately require decreasing.", "status": "implemented"},
+    {"questions": [8], "action": "Separate function and verification; accept labeled algebra and alternative valid rules.", "status": "implemented"},
+    {"questions": [9, 10, 11, 12], "action": "Separate choice and justification within the original response spaces.", "status": "implemented"},
+    {"questions": [9, 10], "action": "Reorder choices so the correct letters do not repeat earlier incorrect selections.", "status": "implemented"},
+    {"questions": [10], "action": "Require origin behavior and another supporting feature; rubric is 1 + 0.5 + 0.5.", "status": "implemented"},
+    {"questions": [11], "action": "Expand both axes to -12..12, enlarge the graph and state continuation beyond the window so both branches appear.", "status": "implemented"},
+    {"questions": [11], "action": "Retain an explicit missing-point deliverable to align with the rubric; this requests evidence rather than giving a solution.", "status": "implemented"},
+    {"questions": [12], "action": "Clarify comparison of far-left and far-right end directions.", "status": "implemented"},
+    {"questions": [13], "action": "Qualify the table inference and separate location from evidence.", "status": "implemented"}
+  ],
+  "timing": {
+    "userSelectedAllowanceMinutes": 60,
+    "historicalTeacherAllowance": "Undocumented",
+    "authoredWorkEstimateMinutes": 54,
+    "authoredReviewEstimateMinutes": 6,
+    "measuredStudentTiming": false
+  },
+  "limits": [
+    "Persona reviews are qualitative judgments, not observed student performance, human teacher approval or proof of mastery.",
+    "The 60-minute ceiling is retained; work/review splits and reviewer ranges are estimates, not promises.",
+    "Prior blank work identifies missing evidence without establishing its cause.",
+    "The teacher and refresher percentages are not directly comparable learning-gain measures.",
+    "This practice rubric is authored for this exam, not an official school key.",
+    "Marcus's approval, merge and site deployment remain separate from readiness for parent review."
+  ]
+}
