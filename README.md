@@ -51,6 +51,24 @@ contains the current easier-factoring test, matching parent key, earlier tests,
 editable sources, rebuild instructions, and cross-machine agent guidance.
 The current target is an A in standard Precalculus, not honors-level difficulty.
 
+### Full rational-functions practice exam
+
+The [student draft](print/assessment-2-practice-2026-11-11/student.pdf)
+([HTML](print/assessment-2-practice-2026-11-11/student.html)) and
+[separate parent key](print/assessment-2-practice-2026-11-11/parent-key.pdf)
+([HTML](print/assessment-2-practice-2026-11-11/parent-key.html)) preserve the
+teacher Assessment 2's 13-question order, task types and 58-point weighting.
+The [editable source](print/assessment-2-practice-2026-11-11/exam.json) records
+each item's variation, gap target, difficulty, timing estimate and proposed practice rubric.
+Marcus selected a **60-minute** allowance; the historical teacher allowance is
+not documented. The student copy has no hints or key link. Questions 9-12 retain
+the original multiple-choice structure, with written justification requested.
+This is a draft pending the requested Opus 5.5 student and GPT-6 Astra teacher
+reviews, not an approved school exam or a prediction of learning outcomes.
+Rebuild with `node scripts/build-rational-functions-practice.cjs`; use
+`--output-dir <directory>` for an isolated build and `--screenshots` for page proofs.
+No dashboard score or exam-registry entry is added.
+
 ```bash
 # Verify all exams are healthy
 node scripts/gp-exam-health.js
