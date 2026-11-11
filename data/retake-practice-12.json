@@ -183,7 +183,7 @@
       "standard": "W3.d",
       "type": "exponential",
       "rationale": "New base (5) and target (125=5³). Different from rp8 (base 4, target 256).",
-      "question_html": "Solve: \\\\( 5^{3x - 2} = 125 \\\\)",
+      "question_html": "Solve: \\( 5^{3x - 2} = 125 \\)",
       "inputs": [
         {
           "id": "q4_x",
@@ -273,7 +273,7 @@
       "standard": "W3.d",
       "type": "exponential",
       "rationale": "Kai is 2/2 on mixed-base exponential (common base conversion). New bases: 4 and 32 (both powers of 2). Slightly harder because 32=2^5 and 4=2^2 require an extra conversion step.",
-      "question_html": "Solve: \\\\( 8^{x - 1} = 32 \\\\)",
+      "question_html": "Solve: \\( 8^{x - 1} = 32 \\)",
       "inputs": [
         {
           "id": "q7_x",
@@ -383,7 +383,7 @@
       "standard": "W3.b",
       "type": "fractional-exp",
       "rationale": "THE CRITICAL QUESTION. Kai missed this in RP4 (2x^(3/2)−14=672). Same type, new numbers designed for a clean answer: x^(3/2)=125 → x=25. The cube root of 125 is a recognizable number (5). This gives Kai a stepping stone rather than a blind calculation. Rationale: if Kai sees 125 and thinks of 5^3, the path to x=25 is clear.",
-      "question_html": "Solve: \\\\( 5x^{3/2} - 5 = 4995 \\\\)",
+      "question_html": "Solve: \\( 5x^{3/2} - 5 = 4995 \\)",
       "inputs": [
         {
           "id": "q11_x",
@@ -500,7 +500,7 @@
       "standard": "W2.e",
       "type": "graph",
       "rationale": "Kai is 2/2 on rational function graphing. New shifts (right 3, down 2) with a positive multiplier. Same technique: VA from denominator, HA from shift outside.",
-      "question_html": "Graph \\\\( f(x) = \\\\dfrac{3}{x + 2} - 1 \\\\) and draw asymptotes.",
+      "question_html": "Graph \\( f(x) = \\dfrac{3}{x + 2} - 1 \\) and draw asymptotes.",
       "inputs": [
         {
           "id": "q13_va",

@@ -108,15 +108,38 @@ if (hasGrade4 || hasGrade3 || hasGrade2) {
   fail('no grade threshold found in index.html');
 }
 
-// Per-standard status icons in index.html buildStandards():
-// pct >= 90 → ✅ 'Locked in.', pct >= 70 → emoji 📈, pct < 70 → 🏀
-const hasGreenIcon = indexHtml.includes('pct >= 90') && indexHtml.includes('Locked in');
-const hasBasketballIcon = indexHtml.includes("pct < 70 ? '\uD83C\uDFC0'") || indexHtml.includes("pct < 70 ? '🏀'");
-const hasTargetIcon = indexHtml.includes("pct < 90 ? '\uD83D\uDCC8'") || indexHtml.includes("pct < 90 ? '📈'");
-
-hasGreenIcon ? pass('per-standard: pct >= 90 → "Locked in. ✅"') : fail('per-standard: 90% threshold missing');
-hasBasketballIcon ? pass('per-standard: pct < 70 → 🏀') : fail('per-standard: 70% threshold missing');
-hasTargetIcon ? pass('per-standard: pct < 90 → 📈') : fail('per-standard: 90% upper threshold missing');
+const vm = require('node:vm');
+const standardsStart = indexHtml.indexOf('    function buildStandards()');
+const standardsEnd = indexHtml.indexOf('    /* ========== TEST INDEX', standardsStart);
+if (standardsStart < 0 || standardsEnd <= standardsStart) throw new Error('Standards renderer boundaries missing');
+for (const [pct, tier, copy, action] of [
+  [0, 'low', 'Needs work.', 'Start here.'],
+  [49, 'low', 'Needs work.', 'Start here.'],
+  [50, 'warn', 'Getting there.', 'Start here.'],
+  [69, 'warn', 'Getting there.', 'Start here.'],
+  [70, 'mid', 'Solid.', 'Almost there.'],
+  [89, 'mid', 'Solid.', 'Almost there.'],
+  [90, 'high', 'Locked in.', 'Review only.'],
+  [100, 'high', 'Locked in.', 'Review only.']
+]) {
+  const nodes = { standardsGrid: {}, studyList: {} };
+  const questions = {};
+  for (let i = 0; i < 100; i++) questions[i] = { standard: 'S1', correct: i < pct, type: 'numeric' };
+  const context = {
+    tests: [{ key: 'fixture' }],
+    getScores: () => ({ fixture: { attempts: [{ questions }] } }),
+    document: { getElementById: id => nodes[id] }
+  };
+  vm.runInNewContext(indexHtml.slice(standardsStart, standardsEnd), context);
+  const result = context.buildStandards();
+  context.buildStudyNext(result);
+  const valid = nodes.standardsGrid.innerHTML.includes('tier-' + tier) &&
+    nodes.standardsGrid.innerHTML.includes(copy) &&
+    nodes.standardsGrid.innerHTML.includes('aria-valuenow="' + pct + '"') &&
+    nodes.studyList.innerHTML.includes(action);
+  valid ? pass('rendered standard and study action at ' + pct + '%') :
+    fail('wrong standard tier, score or study action at ' + pct + '%');
+}
 
 // === 4. Score bar width contract ===
 console.log('\n  4. Score bar width contract:');

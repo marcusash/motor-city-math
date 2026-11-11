@@ -34,6 +34,8 @@
     --border-input: #8A8FA5;  /* 3.04:1 on #F8F9FC — WCAG 1.4.11 non-text contrast */
     --border-focus: #1D42BA;
     --border-subtle: #E2E5EF;
+    --print-grid-minor: #E0E0E0;
+    --print-standard-bg: #F5F5F5;
     --color-correct: #1B7D3A;
     --color-correct-bg: #F0FFF4;
     --color-incorrect: #C8102E;

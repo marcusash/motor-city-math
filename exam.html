@@ -1576,6 +1576,9 @@
     function printExam() {
         if (!examData) return;
         var base = window.location.href.replace(/\/[^\/]*(\?.*)?$/, '/');
+        var printTokens = getComputedStyle(document.documentElement);
+        var printGridMinor = printTokens.getPropertyValue('--print-grid-minor').trim();
+        var printStandardBg = printTokens.getPropertyValue('--print-standard-bg').trim();
 
         // Unescape double-backslashes from JSON double-encoding
         function tex(s) {
@@ -1646,8 +1649,8 @@
             // Minor grid lines
             for (var i = 0; i <= 32; i++) {
                 var gx = ml + i * step, gy = mt + i * step;
-                s += '<line x1="' + gx.toFixed(1) + '" y1="' + mt + '" x2="' + gx.toFixed(1) + '" y2="' + (mt + ph) + '" stroke="#e0e0e0" stroke-width="0.5"/>';
-                s += '<line x1="' + ml + '" y1="' + gy.toFixed(1) + '" x2="' + (ml + pw) + '" y2="' + gy.toFixed(1) + '" stroke="#e0e0e0" stroke-width="0.5"/>';
+                s += '<line x1="' + gx.toFixed(1) + '" y1="' + mt + '" x2="' + gx.toFixed(1) + '" y2="' + (mt + ph) + '" stroke="' + printGridMinor + '" stroke-width="0.5"/>';
+                s += '<line x1="' + ml + '" y1="' + gy.toFixed(1) + '" x2="' + (ml + pw) + '" y2="' + gy.toFixed(1) + '" stroke="' + printGridMinor + '" stroke-width="0.5"/>';
             }
             // Major grid lines every 5 units
             for (var n = -15; n <= 15; n += 5) {
@@ -1752,7 +1755,7 @@
             '.qcard{border:1px solid #999;border-left:4px solid #000;padding:14px 16px;margin-bottom:18px;page-break-inside:avoid;}',
             '.qhdr{display:flex;align-items:center;gap:10px;border-bottom:1px solid #ccc;padding-bottom:6px;margin-bottom:10px;}',
             '.qnum{font-weight:800;font-size:1em;}',
-            '.qstd{border:1px solid #999;border-radius:3px;padding:1px 6px;font-size:.78em;background:#f5f5f5;}',
+            '.qstd{border:1px solid #999;border-radius:3px;padding:1px 6px;font-size:.78em;background:' + printStandardBg + ';}',
             '.qtext{margin-bottom:10px;line-height:1.8;}',
             '.blank-row{display:flex;align-items:baseline;gap:8px;margin:8px 0;}',
             '.blank-lbl{white-space:nowrap;font-size:.9em;}',
@@ -1940,7 +1943,7 @@
 
         // Always-visible: Send to Dad button right on scorecard
         html += '<div style="margin-top:14px;">';
-        html += '<button class="nav-btn primary" onclick="sendToDad()" style="font-size:1em;padding:12px 28px;"><span aria-hidden="true">📧</span> Send to Dad</button>';
+        html += '<button class="btn-primary" onclick="sendToDad()" style="font-size:1em;padding:12px 28px;"><span aria-hidden="true">📧</span> Send to Dad</button>';
         html += '</div>';
 
         // Phase 1 CTA: See Your Game Plan (progressive disclosure)
@@ -1972,7 +1975,7 @@
             // Real exam: single forward-momentum CTA
             html += '<div style="margin-top:16px;"><a href="index.html" class="nav-btn primary" style="text-decoration:none;"><span aria-hidden="true">📊</span> See the Board</a></div>';
             html += '<div style="margin-top:10px;">';
-            html += '<button class="nav-btn ghost" onclick="window.print()" style="margin-left:8px;"><span aria-hidden="true">🖨️</span> Print Results</button>';
+            html += '<button class="btn-secondary" onclick="window.print()" style="margin-left:8px;"><span aria-hidden="true">🖨️</span> Print Results</button>';
             html += '</div>';
             if (grade < 3) {
                 html += '<p style="margin-top:10px; color:var(--text-secondary); font-size:var(--text-sm);">Score locked. Study the hints above, then hit the practice tests. 💪</p>';
