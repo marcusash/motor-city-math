@@ -1,0 +1,193 @@
+{
+  "revision": 2,
+  "status": "reviewed-practice-ready-for-use",
+  "issue": 30,
+  "reviewedSourceSha256": "afd98bef827e013f589b54f47f1d8d5745bb6d7532331d9b9ebebd22998640bd",
+  "assessmentContentSha256ExcludingStatus": "5a1705acd88a773f2ee20393f715120c1ccc4bc1f60c086c9ee5d5d729afbd02",
+  "contentSealMethod": "SHA-256 of compact UTF-8 JSON with recursively sorted object keys and only the top-level status omitted.",
+  "postReviewSourceChange": "Only status changed from revised-for-final-review to reviewed-practice after both actual PASS verdicts; questions, answers, rubrics, graph specifications, layout and timing are unchanged.",
+  "sourceContext": {
+    "teacherAssessment": "reviews/assessment-2-rational-functions-grade-data.js",
+    "priorPracticeCommit": "1af0b7ef39c86dfb0d6db6f2b9c345070c68fd6a",
+    "priorPracticeSource": "print/assessment-2-practice-2026-11-11/exam.json",
+    "contentScope": "Standard Precalculus rational functions; all 13 teacher-task counterparts retained.",
+    "privateEvidenceHandling": "Requested reviewers received local submitted-work evidence. No scans, handwriting, personal paths or new grading records are included in this exam package."
+  },
+  "reviews": [
+    {
+      "model": "gpt-6-astra",
+      "role": "Standard Precalculus teacher",
+      "status": "review-complete",
+      "initialVerdict": "REVISE",
+      "initialReviewedRevision": 1,
+      "finalVerdict": "PASS",
+      "reviewedRevision": 2,
+      "finalVerdictSummary": "Revision 2 is release-ready, with no remaining blockers. All mandatory scoring fixes are correct, standard-course level is appropriate, and 66 minutes working plus 9 checking is a reasonable somewhat tight estimate.",
+      "initialWorkingMinutesEstimate": 66,
+      "initialCheckingMinutesEstimate": 9,
+      "evidenceInspected": [
+        "All 13 revision-1 source questions, keys, rubric maxima and multiple-choice alternatives.",
+        "All 12 revision-1 student PDF pages and all 9 parent-key pages, visually rendered.",
+        "Historical teacher assessment data and specified cropped teacher-mark/work images.",
+        "Local latest full-practice grading record and actual handwriting, including the separately supplied graph.",
+        "Earlier mini-quiz grading record at the immutable prior-practice commit.",
+        "Final follow-up: full revision-2 source and regenerated HTML/PDFs; changed student/key pages visually checked, all 13 student and 9 key Letter pages independently confirmed."
+      ],
+      "initialAssessment": "All 13 keyed answers correct; all four multiple-choice items unique. Strong standard-Precalculus rehearsal with no calculus or honors prerequisites. Prior generous practice awards are not retained-mastery evidence.",
+      "findings": [
+        {
+          "priority": "must-fix",
+          "topic": "Q6 output behavior and limiting explanation",
+          "disposition": "implemented-in-revision-2",
+          "reason": "Prompt now explicitly requests each output limit. A slant comparison alone is insufficient; a fraction written equal to zero without limiting explanation earns only 0.25 of the explanation's 0.5. Correct statements anywhere count, and previous awards are not revised."
+        },
+        {
+          "priority": "must-fix",
+          "topic": "Contextual answers and single-error follow-through",
+          "disposition": "implemented-in-revision-2",
+          "reason": "Q1 labeled boxes supply input context. The first key page prints a general scoring policy distinguishing dependent follow-through, independent omissions and independent errors on different questions."
+        },
+        {
+          "priority": "must-fix",
+          "topic": "Q8 alternative constructions and verification",
+          "disposition": "implemented-in-revision-2",
+          "reason": "Construction conditions, correct checks and actual hole-coordinate follow-through are independently scored. A missing verification remains independently scorable, and no nonexistent hole is invented."
+        },
+        {
+          "priority": "optional",
+          "topic": "Q2/Q3 mixed correct and spurious exclusions",
+          "disposition": "implemented-in-revision-2",
+          "reason": "Exact thirds are retained, one-third is deducted per distinct extra exclusion, and the domain component is bounded between zero and one."
+        },
+        {
+          "priority": "optional",
+          "topic": "Annotate every feature on parent diagrams",
+          "disposition": "not-added",
+          "reason": "The accurate compact reference plots are accompanied by explicit exact point coordinates and asymptote equations in adjacent worked steps. Required student labeling remains scored; additional renderer annotation logic is unnecessary for this rehearsal."
+        },
+        {
+          "priority": "optional",
+          "topic": "Avoid turning optional key detail into new requirements",
+          "disposition": "retained-and-clarified",
+          "reason": "Q1 side of approach and Q13 exact hole height remain unrequested; Q5 does not require an additional no-slant sentence after correctly identifying its horizontal asymptote."
+        }
+      ]
+    },
+    {
+      "model": "claude-opus-5.5",
+      "role": "A-level Standard Precalculus student simulation",
+      "status": "review-complete",
+      "initialVerdict": "REVISE",
+      "initialReviewedRevision": 1,
+      "finalVerdict": "PASS",
+      "reviewedRevision": 2,
+      "finalVerdictSummary": "Revision 2 is ready to use, with no remaining blockers. Workspace, signed-touch credit and interval notation are corrected; the difficulty still stretches an A-level standard-Precalculus student without method hints.",
+      "initialWorkingMinutesEstimate": 59,
+      "initialCheckingMinutesEstimate": 10,
+      "evidenceInspected": [
+        "Student HTML and all 12 revision-1 student PDF pages, read before the answer key.",
+        "Zoomed graph crops for Q4, Q9, Q10 and Q11.",
+        "All 13 source questions and keys after the independent simulated solve.",
+        "Rendered parent-key PDF pages 3 and 7.",
+        "Historical teacher assessment data and previous full-practice stems, choices and graph specifications.",
+        "Final follow-up: full revision-2 source, rendered student pages 6, 7 and 9 and key page 7; changed rubrics, graph and no-hint integrity checked."
+      ],
+      "initialAssessment": "All simulated answers match the key. Correct standard-level difficulty, useful transfer twists and sensible pacing; not measured student timing or a grade prediction.",
+      "evidenceLimitations": "The student persona did not inspect the latest submitted-work report and used the supplied deduction summary. The teacher independently inspected the actual submitted work. The student follow-up did not re-solve unchanged items or inspect new student work.",
+      "findings": [
+        {
+          "priority": "must-fix",
+          "topic": "Q6 division workspace",
+          "disposition": "implemented-in-revision-2",
+          "reason": "Q6 now has its own page and about two physical inches of algebra workspace; Q7 moves to a separate page. A browser regression check requires at least 1.75 inches."
+        },
+        {
+          "priority": "must-fix",
+          "topic": "Q10 signed touching evidence",
+          "disposition": "implemented-in-revision-2",
+          "reason": "Touches from below is already unique among the choices. Any correct additional feature gets full credit if the overall justification is decisive; nonsigned touching plus only shared vertical asymptotes remains partial."
+        },
+        {
+          "priority": "should-fix",
+          "topic": "Q4 interval-list notation",
+          "disposition": "implemented-in-revision-2",
+          "reason": "Union, and, and comma-separated interval lists receive equal treatment; domain partitions rather than connective style are scored."
+        },
+        {
+          "priority": "optional",
+          "topic": "Q9 resemblance to the preceding graph",
+          "disposition": "implemented-in-revision-2",
+          "reason": "Poles move to -3 and 3 while the degree relationship and nonzero horizontal height remain the target. Q5 receives an 11-minute author estimate and Q9 two minutes."
+        },
+        {
+          "priority": "optional",
+          "topic": "Q11 tick labels",
+          "disposition": "not-added",
+          "reason": "The existing unit grid and open circle remain readable, and the rubric accepts a reasonable hole-height estimate supported by the selected rule. No extra coordinate labels reveal an answer."
+        },
+        {
+          "priority": "optional",
+          "topic": "Require Q13 numerical hole height",
+          "disposition": "not-added",
+          "reason": "Preserve the teacher-task scope and time allowance; finite evidence is already scored and the unrequested exact height must not become an extra requirement."
+        },
+        {
+          "priority": "optional",
+          "topic": "Q1 approach-side detail and Q10 output specificity",
+          "disposition": "retained",
+          "reason": "Q1 side-of-approach remains optional. Q10 names the evidence to report without giving a factoring method or correct conclusion."
+        }
+      ]
+    }
+  ],
+  "authorChecks": [
+    "Exact symbolic identities, extrema, missing-point coordinates and table rounding independently verified with SymPy.",
+    "Student and parent HTML/PDF generated with strict footer and horizontal-overflow checks.",
+    "Revision 2 has 13 student and 9 parent-key Letter pages; all 13 component rubrics sum to the original 58-point weighting.",
+    "Nine revision-2 mathematical/print checks passed before final persona signoff, including actual Q6 workspace and decisive signed-touch matching. Both actual final PASS verdicts now clear the signoff prerequisite.",
+    "Existing practice gate passed 3636/3636 over 12 complete exams; its pre-existing incomplete RP13 was explicitly skipped.",
+    "Existing health gate passed all 11 current checks. The generated audit timestamp was excluded from task changes."
+  ],
+  "revisionHistory": [
+    {
+      "revision": 1,
+      "status": "superseded-draft",
+      "commit": "45c37c4c208a2e98c3c47101fc3d303d96e1ed09",
+      "context": "First independently reviewed draft. Its immutable source and printable copies remain in Git history."
+    },
+    {
+      "revision": 2,
+      "status": "reviewed-practice",
+      "context": "Implements every mandatory reviewer finding plus selected scope-preserving refinements. Both requested reviewers returned actual PASS verdicts on revision 2. Author allowance is 66 minutes working and 9 checking. The final source status flag was then updated without changing assessment content."
+    }
+  ],
+  "validation": [
+    {
+      "command": "$env:MCM_PDF_BROWSER_CHANNEL='msedge'; node scripts\\build-rational-functions-practice.cjs --source-dir print\\rational-functions-final-2026-11-12",
+      "result": "PASS",
+      "detail": "13 student and 9 parent-key pages, fonts loaded, no content overflow."
+    },
+    {
+      "command": "$env:MCM_PDF_BROWSER_CHANNEL='msedge'; node --test tests\\rational-functions-final.test.cjs",
+      "result": "PASS",
+      "detail": "10/10 checks, including actual reviewer verdicts, unchanged reviewed-content seal, physical workspace, graph matching and PDF geometry."
+    },
+    {
+      "command": "node tests\\verify-practice-exams.js",
+      "result": "PASS",
+      "detail": "3636/3636 over 12 complete exams. The existing incomplete RP13 is explicitly skipped by that gate."
+    },
+    {
+      "command": "node scripts\\gp-exam-health.js",
+      "result": "PASS",
+      "detail": "All 11 current health checks pass. Generated audit timestamp is not part of this package."
+    }
+  ],
+  "limitations": [
+    "Timing estimates and persona solving are not empirical student measurements.",
+    "The unseen school retake and its official rubric are unavailable.",
+    "The exercise is preparation, not a guarantee or prediction of a letter grade.",
+    "Grade-report/site publication remains paused under issue 29.",
+    "Persona review is not human merge approval. This package is not merged, deployed, an official school paper or an approved school rubric."
+  ]
+}
