@@ -42,6 +42,19 @@ Prep Test 2 was not completed, so it has no dashboard card or chart point. Its s
 
 ### November 2026 practice handoff
 
+[Final rational-functions retake rehearsal](print/rational-functions-final-2026-11-12/student.pdf)
+is a distinct 75-minute, 13-question, 58-point practice exam. Its
+[editable source](print/rational-functions-final-2026-11-12/exam.json) targets
+the latest interval, graph-feature and equation-matching gaps while retaining
+the teacher assessment's task structure. Keep the separate
+[worked parent key](print/rational-functions-final-2026-11-12/parent-key.pdf)
+away from the student copy. Status: draft for the two requested persona reviews;
+not a grade prediction, official school paper or dashboard result.
+Rebuild with
+`node scripts/build-rational-functions-practice.cjs --source-dir print/rational-functions-final-2026-11-12`
+(set `MCM_PDF_BROWSER_CHANNEL=msedge` when using installed Edge).
+Grade-report/site publication remains paused under #29.
+
 [Kai's rational, inverse, and mixed practice archive](print/kai-practice-2026-11/README.md)
 contains the current easier-factoring test, matching parent key, earlier tests,
 editable sources, rebuild instructions, and cross-machine agent guidance.

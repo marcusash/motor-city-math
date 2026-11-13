@@ -1,0 +1,42 @@
+{
+  "revision": 1,
+  "status": "independent-reviews-pending",
+  "issue": 30,
+  "sourceContext": {
+    "teacherAssessment": "reviews/assessment-2-rational-functions-grade-data.js",
+    "priorPracticeCommit": "1af0b7ef39c86dfb0d6db6f2b9c345070c68fd6a",
+    "priorPracticeSource": "print/assessment-2-practice-2026-11-11/exam.json",
+    "contentScope": "Standard Precalculus rational functions; all 13 teacher-task counterparts retained.",
+    "privateEvidenceHandling": "Requested reviewers received local submitted-work evidence. No scans, handwriting, personal paths or new grading records are included in this exam package."
+  },
+  "reviews": [
+    {
+      "model": "gpt-6-astra",
+      "role": "Standard Precalculus teacher",
+      "status": "pending",
+      "reviewedRevision": 1,
+      "evidenceInspected": [],
+      "findings": []
+    },
+    {
+      "model": "claude-opus-5.5",
+      "role": "A-level Standard Precalculus student simulation",
+      "status": "pending",
+      "reviewedRevision": 1,
+      "evidenceInspected": [],
+      "findings": []
+    }
+  ],
+  "authorChecks": [
+    "Exact symbolic identities, extrema, missing-point coordinates and table rounding independently verified with SymPy.",
+    "Student and parent HTML/PDF generated with strict footer and horizontal-overflow checks.",
+    "Both output PDFs have the promised Letter page counts; all 13 component rubrics sum to the original 58-point weighting.",
+    "Nine mathematical/print checks passed before persona signoff; the review-completion check intentionally remains unsatisfied pending actual findings."
+  ],
+  "limitations": [
+    "Timing estimates and persona solving are not empirical student measurements.",
+    "The unseen school retake and its official rubric are unavailable.",
+    "The exercise is preparation, not a guarantee or prediction of a letter grade.",
+    "Grade-report/site publication remains paused under issue 29."
+  ]
+}
