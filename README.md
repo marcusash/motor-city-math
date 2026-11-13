@@ -48,8 +48,13 @@ is a distinct 75-minute, 13-question, 58-point practice exam. Its
 the latest interval, graph-feature and equation-matching gaps while retaining
 the teacher assessment's task structure. Keep the separate
 [worked parent key](print/rational-functions-final-2026-11-12/parent-key.pdf)
-away from the student copy. Status: draft for the two requested persona reviews;
-not a grade prediction, official school paper or dashboard result.
+away from the student copy. Status: Revision 2 cleared by the requested GPT-6
+Astra teacher and Claude Opus 5.5 A-level student reviews; not a grade prediction,
+official school paper or dashboard result.
+The [review record](print/rational-functions-final-2026-11-12/review-record.json)
+tracks the requested models, findings and revision dispositions. The final student
+layout has 13 Letter pages, including dedicated graphing and division workspace;
+the parent key has 9 pages.
 Rebuild with
 `node scripts/build-rational-functions-practice.cjs --source-dir print/rational-functions-final-2026-11-12`
 (set `MCM_PDF_BROWSER_CHANNEL=msedge` when using installed Edge).

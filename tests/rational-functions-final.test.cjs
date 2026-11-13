@@ -2,6 +2,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const { pathToFileURL } = require('node:url');
+const { createHash } = require('node:crypto');
 const { test } = require('node:test');
 const { chromium } = require('playwright');
 const { getDocument } = require('pdfjs-dist');
@@ -145,6 +146,10 @@ test('graph MC has one exact curve/domain match, including residual-factor and r
   }
   close(graph(10, 1), 0);
   assert.ok(graph(10, 0.9) < 0 && graph(10, 1.1) < 0);
+  const touchingFromBelow = cases[0].candidates.map(candidate =>
+    candidate.rule(1) === 0 && candidate.rule(0.9) < 0 && candidate.rule(1.1) < 0);
+  assert.deepEqual(touchingFromBelow, [false, false, false, true]);
+  assert.match(q(10).rubric.at(-1).text, /'Touches from below' plus any correct second feature qualifies/);
   close(graph(11, -1), 1.5);
   for (const x of [-6, -2, 0, 3, 6]) close(graph(11, x), x / 2 + 1 - 2 / (x - 1));
 });
@@ -174,6 +179,15 @@ test('degree alternatives and same-sign pole table require new reasoning, not re
 test('both requested independent personas clear the final revision with traceable dispositions', () => {
   const reviews = JSON.parse(fs.readFileSync(path.join(dir, 'review-record.json'), 'utf8'));
   assert.equal(reviews.revision, exam.revision);
+  const { status, ...assessment } = exam;
+  assert.equal(status, 'reviewed-practice');
+  const ordered = value => Array.isArray(value) ? value.map(ordered)
+    : value !== null && typeof value === 'object'
+      ? Object.fromEntries(Object.keys(value).sort().map(key => [key, ordered(value[key])]))
+      : value;
+  const contentHash = createHash('sha256').update(JSON.stringify(ordered(assessment)), 'utf8').digest('hex');
+  assert.equal(contentHash, reviews.assessmentContentSha256ExcludingStatus,
+    'No question, key, rubric, graph, layout or timing may drift after the requested reviews');
   assert.deepEqual(reviews.reviews.map(item => item.model).sort(), ['claude-opus-5.5', 'gpt-6-astra']);
   for (const item of reviews.reviews) {
     assert.equal(item.finalVerdict, 'PASS');
@@ -219,6 +233,9 @@ test('student and parent copies render without leakage, clipping or unequal grap
       if (name === 'student') {
         assert.doesNotMatch(result.text, /Worked solutions|Practice rubric|gapTarget|Variation:|Teacher assessment score|Hint:/i);
         assert.equal(await page.locator('[data-question="5"][data-continued] svg').count(), 1);
+        const algebraHeight = await page.locator('[data-question="6"] .answer-area').first().evaluate(element =>
+          element.getBoundingClientRect().height);
+        assert.ok(algebraHeight >= 1.75 * 96, 'Q6 needs at least 1.75 physical inches of algebra space');
       } else {
         assert.match(result.text, /not an official school key/);
         assert.equal((result.text.match(/Practice rubric/g) || []).length, 13);

@@ -151,7 +151,7 @@ function documentHtml(pages, key) {
     <div class="screen-only"><button onclick="window.print()">Print ${key ? 'parent key' : 'student exam'}</button></div>
     ${pages.map((content, index) => `<section class="sheet${key ? ' key' : ''}" data-page="${index + 1}"><header><div class="brand">MOTOR CITY MATH | PRECALCULUS</div><h1>${escape(data.title)}${key ? ': Parent Key' : ''}</h1>
     ${key ? '<p class="details">Worked solutions and proposed practice rubric. Keep separate from the student copy.</p>' : index === 0 ? '<p class="identity">Name: ____________________________________ &nbsp; Date: __________________</p>' : ''}
-    ${index === 0 ? `<p class="details">13 questions | ${data.totalPoints} points | ${data.durationMinutes} minutes${key ? ' (user-selected allowance)' : ''}</p><p class="details">${key ? 'Award follow-through credit; do not repeatedly deduct an originating error. Accept equivalent valid functions and their own correct hole heights. This is not an official school key.' : escape(data.directions)}</p>` : ''}
+    ${index === 0 ? `<p class="details">13 questions | ${data.totalPoints} points | ${data.durationMinutes} minutes${key ? ' (user-selected allowance)' : ''}</p><p class="details">${key ? `${data.scoringPolicy ? escape(data.scoringPolicy) : 'Award follow-through credit; do not repeatedly deduct an originating error.'} Accept equivalent valid functions and their own correct hole heights. This is not an official school key.` : escape(data.directions)}</p>` : ''}
     </header><main>${content}</main><footer><span>Rational Functions | ${key ? 'Parent key' : 'Student copy'} | Revision ${data.revision}</span><span>Page ${index + 1} of ${pages.length}</span></footer></section>`).join('')}</body></html>`;
 }
 async function build() {
