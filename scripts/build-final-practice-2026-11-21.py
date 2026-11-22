@@ -32,26 +32,26 @@ def table(headers, rows):
 plot_id = 0
 
 
-def grid(curves=(), dots=(), guides=(), wide=False, ystep=1, ymax=6, compact=False):
+def grid(curves=(), dots=(), guides=(), wide=False, ystep=1, ymax=6, compact=False, xmax=6):
     global plot_id
     plot_id += 1
     unit = 11 if compact else 17 if wide else 14
-    xmin, xmax, ymin = -6, 6, -ymax
+    xmin, ymin = -xmax, -ymax
     left, top = 23, 15
-    width, height = 12 * unit, 2 * ymax / ystep * unit
-    x = lambda a: left + (a + 6) * unit
+    width, height = 2 * xmax * unit, 2 * ymax / ystep * unit
+    x = lambda a: left + (a + xmax) * unit
     y = lambda b: top + (ymax - b) / ystep * unit
     clip = f"grid-{plot_id}"
-    bits = [f'<figure><svg data-xmin="-6" data-xmax="6" data-ymin="{-ymax}" data-ymax="{ymax}" '
+    bits = [f'<figure><svg data-xmin="{-xmax}" data-xmax="{xmax}" data-ymin="{-ymax}" data-ymax="{ymax}" '
             f'viewBox="0 0 {width+48} {height+42}" style="width:{width+48}pt;height:{height+42}pt" '
             'role="img" aria-label="Symmetric coordinate grid centered at the origin">',
             f'<defs><clipPath id="{clip}"><rect x="{left}" y="{top}" width="{width}" height="{height}"/></clipPath></defs>']
-    for a in range(-6, 7):
+    for a in range(-xmax, xmax + 1):
         bits.append(f'<path d="M{x(a)} {top}v{height}" stroke="#ccc" stroke-width=".5"/>')
     for b in range(-ymax, ymax + 1, ystep):
         bits.append(f'<path d="M{left} {y(b)}h{width}" stroke="#ccc" stroke-width=".5"/>')
     bits.append(f'<path d="M{left} {y(0)}h{width}M{x(0)} {top}v{height}" stroke="#111" stroke-width="1"/>')
-    for a in range(-6, 7):
+    for a in range(-xmax, xmax + 1):
         if a:
             bits.append(f'<text x="{x(a)}" y="{y(0)+10}" text-anchor="middle">{a}</text>')
     for b in range(-ymax, ymax + 1, ystep):
@@ -59,7 +59,7 @@ def grid(curves=(), dots=(), guides=(), wide=False, ystep=1, ymax=6, compact=Fal
             bits.append(f'<text x="{x(0)-4}" y="{y(b)+2}" text-anchor="end">{b}</text>')
     bits.append(f'<text x="{left+width+8}" y="{y(0)+2}">x</text><text x="{x(0)+4}" y="9">y</text>')
     for slope, intercept in guides:
-        path = f"M{x(intercept)} {top}v{height}" if slope is None else f"M{x(-6)} {y(slope*-6+intercept)}L{x(6)} {y(slope*6+intercept)}"
+        path = f"M{x(intercept)} {top}v{height}" if slope is None else f"M{x(-xmax)} {y(slope*-xmax+intercept)}L{x(xmax)} {y(slope*xmax+intercept)}"
         bits.append(f'<path d="{path}" '
                     f'stroke="#555" stroke-dasharray="4,3" clip-path="url(#{clip})"/>')
     for fn, a, b in curves:
