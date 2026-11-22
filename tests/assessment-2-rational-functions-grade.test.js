@@ -8,7 +8,7 @@ context.window.MCMActivityCards = require('../shared/activity-cards');
 const html = fs.readFileSync(path.join(root, 'reviews', 'assessment-2-rational-functions-grade.html'), 'utf8');
 const dashboard = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 for (const filename of ['assessment-1-midterm-functions-grade-data.js', 'assessment-2-rational-functions-grade-data.js',
-  'test-1-study-guide-data.js', 'assessment-1-functions-75min-grade-data.js']) {
+  'test-1-study-guide-data.js', 'assessment-1-functions-75min-grade-data.js', 'assessment-2-mini-quiz-2026-11-10-data.js']) {
   vm.runInNewContext(fs.readFileSync(path.join(root, 'reviews', filename), 'utf8'), context);
 }
 const data = context.window.assessment2TeacherGrade;

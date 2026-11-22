@@ -140,6 +140,7 @@ test('activity cards reflow, expose focus and preserve same-data graph pixels', 
                     winterCount: document.querySelectorAll('#winterTestGrid .activity-card').length,
                     a1: document.querySelector('#teacherAssessment1Score').textContent,
                     a2: document.querySelector('#teacherAssessment2Score').textContent,
+                    miniQuiz: document.querySelector('#assessment2MiniQuizScore').textContent,
                     inlineStyles: cards.some(card => card.hasAttribute('style')),
                     nestedControls: cards.some(card => card.querySelector('a,button,input')),
                     pdf: {
@@ -151,11 +152,12 @@ test('activity cards reflow, expose focus and preserve same-data graph pixels', 
             assert.deepEqual(result.overflow, [], `${width}px overflowing cards`);
             assert.equal(result.collisions, 0);
             assert.equal(result.pageOverflow, false);
-            assert.equal(result.fallCount, 5);
+            assert.equal(result.fallCount, 6);
             assert.ok(result.springCount > 10);
             assert.equal(result.winterCount, 8);
             assert.equal(result.a1, '72.6%');
             assert.equal(result.a2, '46.1%');
+            assert.equal(result.miniQuiz, '65.5%');
             assert.equal(result.inlineStyles, false);
             assert.equal(result.nestedControls, false);
             assert.equal(result.pdf.target, '_blank');
