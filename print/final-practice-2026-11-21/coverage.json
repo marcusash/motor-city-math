@@ -3,7 +3,8 @@
   "estimated_work_minutes": 54,
   "checking_minutes": 6,
   "timing": "Author estimate, not a measured completion guarantee",
-  "version": "Direct-author replacement; previous model reviews evaluated superseded drafts, not this question set",
+  "version": "Direct-author replacement; simulated A-student reviewed all twelve questions before the final usability fixes; prior teacher reviews evaluated superseded drafts",
+  "student_review": "All twelve attempted; graphs mentally reconstructed, four print pages inspected; five usability recommendations applied by the author without a second model pass",
   "pages": 8,
   "groups": [
     [

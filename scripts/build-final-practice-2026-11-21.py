@@ -12,8 +12,8 @@ OUT.mkdir(parents=True, exist_ok=True)
 ASSETS = ROOT / "shared" / "katex"
 
 
-def m(value):
-    return '<span data-math="' + escape(value, quote=True) + '"></span>'
+def m(value, display=False):
+    return '<span data-math="' + escape(value, quote=True) + '" data-display="' + str(display).lower() + '"></span>'
 
 
 def p(value):
@@ -83,8 +83,13 @@ p{margin:0 0 7pt}.work-line{height:20.5pt;border-bottom:.5pt solid #aaa}
 .workspace{margin:3pt 0 6pt}.pair{display:grid;grid-template-columns:1fr 1fr;gap:14pt}
 table{width:100%;border-collapse:collapse;font-size:9pt;margin:6pt 0}
 th,td{border:.6pt solid #888;padding:5pt;text-align:center}th{background:#eee}td{height:25pt}
-figure{margin:6pt auto;text-align:center;line-height:0}svg{max-width:100%}svg text{font:7pt Arial;paint-order:stroke;stroke:white;stroke-width:2px}
+figure{margin:6pt auto;text-align:center;line-height:0}svg{max-width:100%}svg text{font:8pt Arial;paint-order:stroke;stroke:white;stroke-width:2px}
 figcaption{font:8pt/1.2 Arial;margin-top:4pt}.katex{font-size:1.05em}
+.formula-row{display:grid;grid-template-columns:repeat(3,1fr);gap:18pt;margin:7pt 0 12pt;text-align:center}
+.formula-row .katex{font-size:16pt}.formula-row .katex-display{margin:8pt 0}.formula-label{font-size:10pt}
+.formula-row.two{grid-template-columns:repeat(2,1fr);margin:4pt 0 6pt}.formula-row.two .katex-display{margin:4pt 0}
+.calculation-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:4pt 14pt;margin:4pt 0 6pt}
+.calc-slot{display:flex;align-items:flex-end;gap:8pt;min-height:27.5pt}.calc-answer{border-bottom:.5pt solid #aaa;flex:1;min-width:0;height:27.5pt}
 .rubric{font-size:8.5pt;border-top:.5pt solid #999;margin-top:10pt;padding-top:5pt}
 footer{font-size:8pt;display:flex;justify-content:space-between;border-top:.5pt solid #888;padding-top:5pt;margin-top:9pt}
 .key main{font-size:10pt}.key .work-line{display:none}
@@ -120,9 +125,10 @@ add(1, 12, 7, [1],
 
 add(2, 8, 4, [2],
     p("A polynomial is negative for x&lt;-2, positive for -2&lt;x&lt;1, and positive for x&gt;1. Its only zeros are -2 and 1; it touches the axis at 1. Also, p(0)=4.")
-    +p("Find the polynomial of least degree. Could a degree-two polynomial meet all this evidence? Justify. State the leading coefficient, maximum possible turns and distinct real zeros, and both end behaviors.")
-    +work(2) +p("Find p(-1), then sketch p with exact zeros and that point labeled. Exact turning-point calculations are not required.")
-    +grid(ystep=2, ymax=10),
+    +p("Find the polynomial of least degree. Could a degree-two polynomial meet all this evidence? Justify. State the leading coefficient, the maximum possible number of turns and distinct real zeros for its degree, and both end behaviors.")
+    +p("Find p(-1), then sketch p with exact zeros and that point labeled. Exact turning-point calculations are not required.")
+    +'<div class="pair"><div>'+grid(ystep=2, ymax=10)+'</div><div>'
+    +p("Polynomial / degree reasoning / structure / value:")+work(6)+'</div></div>',
     p("The sign changes at -2 but not at 1. Least multiplicities are 1 and 2, so "
       +m(r"p(x)=a(x+2)(x-1)^2")+". At zero, "+m(r"4=2a\Rightarrow a=2")+".")
     +p(m(r"p(x)=2(x+2)(x-1)^2=2x^3-6x+4")+". Least degree 3, not 2. Leading coefficient 2; at most 2 turns and 3 distinct real zeros."
@@ -134,9 +140,11 @@ add(3, 7, 3, [3],
     p("F and G are defined only at the listed inputs. One entry is missing.")
     +table(["x","-2","-1","0","1","2"], [["F(x)","1","2","0","-1","-2"],["G(x)","-1","?","1","0","-2"]])
     +p(m(r"F(G(-1))=-2")+". Recover the missing entry. Then find the following, showing intermediate inputs where needed.")
-    +p(m(r"G(F(-1)),\quad(F+G)(1),\quad(FG)(-2),\quad F(G(2)),\quad G(F(-2))"))
-    +work(3)
-    +p("At which listed inputs is F/G undefined? Do the two compositions agree at every listed input? Support your conclusion.")+work(1),
+    +'<div class="calculation-grid">'
+    +"".join('<div class="calc-slot">'+m(value)+'<span class="calc-answer"></span></div>'
+             for value in [r"G(F(-1))",r"(F+G)(1)",r"(FG)(-2)",r"F(G(2))",r"G(F(-2))"])
+    +'</div>'
+    +p("At which listed inputs is F/G undefined? Do the two compositions agree at every listed input? Support your conclusion.")+work(2),
     p("Only F(2)=-2, so G(-1)=2. Then "+m(r"G(F(-1))=G(2)=-2")+".")
     +p(m(r"(F+G)(1)=-1+0=-1,\quad(FG)(-2)=1(-1)=-1")+". "
        +m(r"F(G(2))=F(-2)=1,\quad G(F(-2))=G(1)=0")+".")
@@ -203,8 +211,9 @@ add(7, 14, 7, [5],
 
 add(8, 10, 5, [5],
     p("A 24-liter solution contains 6 liters of dissolved material. Only water evaporates; none of the dissolved material leaves. Let x be the number of liters that evaporate.")
-    +p("Build a model for the concentration as a fraction of the remaining solution. Find the initial percentage, the percentage after 6 liters evaporate, and how much must evaporate to reach 40%.")
-    +work(4)+p("Give the physically meaningful domain. Does the model's horizontal asymptote describe the long-term behavior of this actual process? Explain.")+work(2),
+    +'<div class="pair"><div>'+p("Concentration model; liters to evaporate to reach 40% (show work and check):")+work(3)
+    +'</div><div>'+p("Initial percentage; percentage after 6 liters evaporate (show calculations):")+work(3)+'</div></div>'
+    +p("Give the physically meaningful domain. Does the model's horizontal asymptote describe the long-term behavior of this actual process? Explain.")+work(2),
     p("The dissolved amount stays 6 while the whole becomes 24-x, so "+m(r"C(x)=6/(24-x)")+".")
     +p(m(r"C(0)=6/24=25\%,\quad C(6)=6/18=33\tfrac13\%")+".")
     +p(m(r"\frac6{24-x}=0.4\Rightarrow6=9.6-0.4x\Rightarrow x=9")+". Check: 6/15=40%, so 9 liters evaporate.")
@@ -214,11 +223,14 @@ add(8, 10, 5, [5],
 
 hole_curves = [(lambda x:(x-3)/(x+1),-6,-1.02),(lambda x:(x-3)/(x+1),-0.98,6)]
 add(9, 6, 3, [6],
-    p("A program treats "+m(r"A(x)=\frac{x^2-5x+6}{x^2-x-2}")+" and "+m(r"B(x)=\frac{x-3}{x+1}")
-       +" as the same function. The graph below is B.")
-    +grid(hole_curves, compact=True)
-    +p("Is the program correct? Make exactly the graph change needed to represent A. Give A's domain, intercepts, hole and vertical asymptote.")
-    +p("Then write an unsimplified expression with B's remaining values and vertical asymptote, but with its sole hole moved to x=4 instead of x=2.")+work(3),
+    p("A program treats A and B as the same function. The graph shown is B.")
+    +'<div class="formula-row two"><div>'+m(r"A(x)=\frac{x^2-5x+6}{x^2-x-2}", True)
+    +'</div><div>'+m(r"B(x)=\frac{x-3}{x+1}", True)+'</div></div>'
+    +p("Make exactly the graph change needed to represent A. Complete the feature answers for A.")
+    +'<div class="pair"><div>'+grid(hole_curves)+'</div><div>'
+    +p("Is the program correct? Explain:")+work(1)
+    +table(["Feature of A","Answer"], [["Domain",""],["Both intercepts",""],["Hole",""],["Vertical asymptote",""]])
+    +p("Write an unsimplified expression with B's remaining values and vertical asymptote, but with its sole hole moved to x=4 instead of x=2.")+work(2)+'</div></div>',
     p(m(r"A(x)=\frac{(x-2)(x-3)}{(x-2)(x+1)}")+". Cancellation preserves the values only on A's original domain; A excludes both 2 and -1, whereas B excludes only -1.")
     +p("The program is wrong about equal functions. Remove the point "+m(r"(2,-1/3)")+" from B's graph."
        " A has that hole, VA x=-1, x-intercept (3,0), and y-intercept (0,-3). Domain "+m(r"(-\infty,-1)\cup(-1,2)\cup(2,\infty)")+".")
@@ -229,8 +241,11 @@ slant = [(lambda x:(x*x-x+5)/(x-2),-6,1.98),(lambda x:(x*x-x+5)/(x-2),2.02,6)]
 add(10, 6, 5, [7],
     p(m(r"S(x)=\frac{x^2+bx+5}{x-2}")+" has S(1)=-5. Find b. Determine any slant asymptote algebraically; do not estimate its equation from a drawing.")
     +work(3)+p("Can S cross its slant asymptote? Explain. Sketch S with its asymptotes and intercepts labeled.")
-    +grid(wide=True, ystep=2, ymax=12)+p("Which of the following has a horizontal asymptote? Give its equation, or explain why neither a horizontal nor a slant line describes the distant ends.")
-    +p(m(r"\frac{2x^2+1}{x^2-4},\qquad \frac{3x-1}{x^2+1},\qquad \frac{x^3-x}{x-1}"))+work(2),
+    +grid(wide=True, ystep=2, ymax=12)+p("For each expression below, give its horizontal asymptote, or explain why neither a horizontal nor a slant line describes the distant ends.")
+    +'<div class="formula-row">'
+    +'<div><span class="formula-label">(a)</span>'+m(r"\frac{2x^2+1}{x^2-4}", True)+'</div>'
+    +'<div><span class="formula-label">(b)</span>'+m(r"\frac{3x-1}{x^2+1}", True)+'</div>'
+    +'<div><span class="formula-label">(c)</span>'+m(r"\frac{x^3-x}{x-1}", True)+'</div></div>'+work(2),
     p(m(r"S(1)=-(6+b)=-5\Rightarrow b=-1")+". Long division gives "
        +m(r"S(x)=x+1+\frac7{x-2}")+". Thus the slant is y=x+1 and the VA is x=2.")
     +p("The difference from the slant is 7/(x-2), which never vanishes. The graph cannot cross that line."
@@ -243,7 +258,7 @@ add(10, 6, 5, [7],
 
 add(11, 6, 3, [8],
     p("A linear machine accepts inputs in [0,8]. It sends 2 to 7 and 6 to 19.")
-    +p("Find the forward rule and inverse rule, with the domain and range of each. What original input produced 16? Verify the two rules undo each other, using a variable rather than only one numerical example.")+work(6),
+    +p("Find the forward rule and inverse rule, with the domain and range of each. What original input produced 16? Verify the two rules undo each other, using a variable rather than only one numerical example.")+work(4),
     p(m(r"m=(19-7)/(6-2)=3,\quad7=3(2)+c\Rightarrow c=1")+". Forward rule "+m(r"f(x)=3x+1")
        +" has domain [0,8] and range [1,25].")
     +p(m(r"y=3x+1\Rightarrow x=(y-1)/3")+", so "+m(r"f^{-1}(y)=(y-1)/3")+", domain [1,25], range [0,8]."
@@ -256,7 +271,7 @@ add(12, 6, 5, [8],
     p("A moving platform's height is "+m(r"h(t)=4-\frac{(t-4)^2}{4}")+" meters for "+m(r"0\le t\le8")+" seconds.")
     +p("Find all times when the height is 3 meters. Can the full model have an inverse function? Explain.")
     +p("Choose the largest interval of allowed times on which an inverse function exists and sends height 3 to time 2. Derive that inverse rule and its domain.")
-    +p("On the grid, sketch h only on your chosen interval and its inverse. Draw the reflection line. Label corresponding points.")+work(3)+grid(),
+    +p("On the grid, sketch h only on your chosen interval and its inverse. Draw the reflection line. Label corresponding points.")+work(5)+grid(),
     p(m(r"3=4-(t-4)^2/4\Rightarrow(t-4)^2=4\Rightarrow t=2,6")+". Two times give the same height, so the full model has no inverse function.")
     +p("To return 2 rather than 6, choose the increasing half, the maximal interval [0,4]. On it the range is [0,4]."
        " Solving for t gives "+m(r"t=4\pm2\sqrt{4-y}")+"; only the minus sign stays in [0,4].")
@@ -296,7 +311,7 @@ def document(key=False):
         return "url(data:"+mime+";base64,"+b64encode(path.read_bytes()).decode()+")"
     css = re.sub(r"url\(([^)]+)\)", font, css)
     js = (ASSETS/"katex.min.js").read_text(encoding="utf-8")
-    return '<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Final practice'+(" key" if key else "")+'</title><style>'+css+CSS+'</style></head><body class="'+("key" if key else "student")+'">'+"".join(pages)+"<script>"+js+'</script><script>for(const n of document.querySelectorAll("[data-math]")){katex.render(n.dataset.math,n,{throwOnError:true,trust:false,output:"html"});}document.fonts.ready.then(()=>document.documentElement.dataset.fontsReady="true");</script></body></html>'
+    return '<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Final practice'+(" key" if key else "")+'</title><style>'+css+CSS+'</style></head><body class="'+("key" if key else "student")+'">'+"".join(pages)+"<script>"+js+'</script><script>for(const n of document.querySelectorAll("[data-math]")){katex.render(n.dataset.math,n,{displayMode:n.dataset.display==="true",throwOnError:true,trust:false,output:"html"});}document.fonts.ready.then(()=>document.documentElement.dataset.fontsReady="true");</script></body></html>'
 
 
 for key, name in [(False,"Final_Practice_2026-11-21"),(True,"Final_Practice_2026-11-21_KEY")]:
@@ -304,6 +319,7 @@ for key, name in [(False,"Final_Practice_2026-11-21"),(True,"Final_Practice_2026
 (OUT/"questions.json").write_text(json.dumps(questions, indent=2), encoding="utf-8")
 (OUT/"coverage.json").write_text(json.dumps(dict(points=100, estimated_work_minutes=54, checking_minutes=6,
     timing="Author estimate, not a measured completion guarantee",
-    version="Direct-author replacement; previous model reviews evaluated superseded drafts, not this question set",
+    version="Direct-author replacement; simulated A-student reviewed all twelve questions before the final usability fixes; prior teacher reviews evaluated superseded drafts",
+    student_review="All twelve attempted; graphs mentally reconstructed, four print pages inspected; five usability recommendations applied by the author without a second model pass",
     pages=8, groups=GROUPS, tasks=[{k:v for k,v in q.items() if k not in ("student","worked")} for q in questions]), indent=2), encoding="utf-8")
 print(f"Built 12 questions, 100 points, 8 student pages and 8 key pages in {OUT}")
