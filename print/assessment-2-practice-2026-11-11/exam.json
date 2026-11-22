@@ -1,0 +1,189 @@
+{
+  "id": "assessment-2-practice-2026-11-11",
+  "revision": 2,
+  "status": "ready-for-parent-review",
+  "reviewRecord": "review-record.json",
+  "title": "Rational Functions: Full Practice Exam",
+  "course": "Standard Precalculus",
+  "durationMinutes": 60,
+  "durationProvenance": "Marcus selected 60 minutes on November 11, 2026; the historical teacher test allowance is undocumented.",
+  "reviewMinutes": 6,
+  "totalPoints": 58,
+  "sourceIssues": [17, 19, 28],
+  "directions": "Complete every labeled part. Show the work and explanations requested. Give exact answers unless an estimate is requested. A four-function calculator is permitted.",
+  "questions": [
+    {
+      "id": 1, "difficulty": 2, "points": 8, "minutes": 5, "type": "graph-and-end-behavior", "teacherQuestion": 1,
+      "stem": "Let \\(f(x)=3-\\dfrac{2}{x+1}\\).",
+      "parts": [
+        {"label": "a", "prompt": "Graph the function. Label its vertical and horizontal asymptotes and at least two points on the curve.", "space": 0},
+        {"label": "b", "prompt": "State the far-left and far-right end behavior.", "space": 60, "areas": [{"labels": ["Far-left behavior", "Far-right behavior"]}]}
+      ],
+      "graph": {"range": 6, "plot": 330, "numerator": [3, 1], "denominator": [1, 1], "poles": [-1], "horizontal": 3},
+      "answer": "Vertical asymptote x=-1; horizontal asymptote y=3. Example points (-3,4), (0,1), (1,2). Both ends approach 3.",
+      "steps": [
+        "The denominator vanishes at \\(x=-1\\). The reciprocal term tends to zero at either end, so the horizontal asymptote is \\(y=3\\).",
+        "For example, \\(f(-3)=4\\), \\(f(0)=1\\), and \\(f(1)=2\\). Left of the vertical asymptote the curve lies above 3; right of it the curve lies below 3.",
+        "As \\(x\\to-\\infty\\), \\(f(x)\\to3\\); as \\(x\\to+\\infty\\), \\(f(x)\\to3\\). It approaches from above on the left and below on the right, but the stated limit in each direction is sufficient for the end-behavior points."
+      ],
+      "rubric": [{"points": 4, "text": "Graph: correct asymptotes 1, at least two correct labeled points 1, consistent branches 2."}, {"points": 2, "text": "Far-left limit 3."}, {"points": 2, "text": "Far-right limit 3."}],
+      "variation": "Negative reciprocal coefficient, changed center and nonzero horizontal height reverse branch orientation; not just a translation of the teacher curve.",
+      "gapTarget": "Complete both end statements after drawing; keep graph shape distinct from the asymptote."
+    },
+    {
+      "id": 2, "difficulty": 2, "points": 4, "minutes": 3, "type": "rational-subtraction", "teacherQuestion": 2,
+      "stem": "Simplify \\(\\dfrac{3}{x+2}-\\dfrac{2x-1}{x^2-4}\\). State all excluded real inputs. Show your algebra.",
+      "parts": [{"label": "", "prompt": "Work and final answer", "space": 180, "areas": [{"labels": ["Algebra"], "weight": 3}, {"labels": ["Simplified expression"]}, {"labels": ["Excluded real inputs"]}]}],
+      "answer": "(x-5)/((x-2)(x+2)); x is not -2 or 2.",
+      "steps": ["Factor \\(x^2-4=(x-2)(x+2)\\). The original denominators exclude \\(-2\\) and \\(2\\).", "The numerator over the shared denominator is \\(3(x-2)-(2x-1)=x-5\\). The result is \\(\\dfrac{x-5}{(x-2)(x+2)}\\), with both original exclusions."],
+      "rubric": [{"points": 1, "text": "Valid common denominator."}, {"points": 2, "text": "Correct subtraction and simplified numerator."}, {"points": 1, "text": "Both original excluded inputs."}],
+      "variation": "One denominator already contains the other as a factor, and subtraction involves a linear numerator rather than two constants.",
+      "gapTarget": "Preserve demonstrated operations while testing signed distribution in a different denominator structure."
+    },
+    {
+      "id": 3, "difficulty": 2, "points": 4, "minutes": 4, "type": "rational-multiplication", "teacherQuestion": 3,
+      "stem": "Simplify \\(\\dfrac{x^2-2x-15}{x^2-25}\\cdot\\dfrac{x+5}{x^2-9}\\). State all excluded real inputs. Show your algebra.",
+      "parts": [{"label": "", "prompt": "Work and final answer", "space": 180, "areas": [{"labels": ["Algebra"], "weight": 3}, {"labels": ["Simplified expression"]}, {"labels": ["Excluded real inputs"]}]}],
+      "answer": "1/(x-3); original excluded inputs -5, -3, 3, 5.",
+      "steps": ["Factor the product as \\(\\dfrac{(x-5)(x+3)}{(x-5)(x+5)}\\cdot\\dfrac{x+5}{(x-3)(x+3)}\\).", "Cancellation gives \\(\\dfrac1{x-3}\\), but the original denominator zeros \\(-5,-3,3,5\\) remain excluded."],
+      "rubric": [{"points": 1, "text": "Correct factorizations."}, {"points": 2, "text": "Valid cancellation and final expression."}, {"points": 1, "text": "All four original exclusions."}],
+      "variation": "A trinomial numerator and cancellation across both fractions leave a single linear denominator; canceled inputs must still be retained.",
+      "gapTarget": "Restrictions and valid cancellation, without merely repeating the teacher product."
+    },
+    {
+      "id": 4, "difficulty": 3, "points": 8, "minutes": 6, "type": "read-graph", "teacherQuestion": 4,
+      "stem": "Use the supplied graph to answer each part. The curve continues beyond the window; an open circle denotes a missing point.",
+      "parts": [
+        {"label": "a", "prompt": "Give the intervals where the function is increasing.", "space": 36},
+        {"label": "b", "prompt": "Give the coordinates of every relative maximum and relative minimum.", "space": 60, "areas": [{"labels": ["Relative maximum"]}, {"labels": ["Relative minimum"]}]},
+        {"label": "c", "prompt": "Give the intervals where the function is concave up and concave down.", "space": 72, "areas": [{"labels": ["Concave up"]}, {"labels": ["Concave down"]}]},
+        {"label": "d", "prompt": "For each asymptote type, give its equation or state that none exists.", "space": 90, "areas": [{"labels": ["Vertical"]}, {"labels": ["Horizontal"]}, {"labels": ["Slant"]}]}
+      ],
+      "graph": {"range": 8, "plot": 304, "numerator": [-1, -1, -4], "denominator": [1, 1], "poles": [-1], "slant": [-1, 0], "holes": [[0, -4]]},
+      "answer": "Increasing (-3,-1) union (-1,0) union (0,1). Relative minimum (-3,5), maximum (1,-3). Concave up (-infinity,-1); down (-1,0) union (0,infinity). VA x=-1, slant y=-x, no HA.",
+      "steps": [
+        "A rule used to draw this graph is \\(F(x)=-x-\\dfrac4{x+1}\\), with \\(x\\ne-1,0\\). This rule is parent-only; students read the printed graph.",
+        "Increasing intervals are \\((-3,-1)\\cup(-1,0)\\cup(0,1)\\). The open circle at 0 breaks the domain, even though the branch continues in the same increasing direction on either side.",
+        "The relative minimum is \\((-3,5)\\); the relative maximum is \\((1,-3)\\). Concavity is up on \\((-\\infty,-1)\\), down on \\((-1,0)\\cup(0,\\infty)\\).",
+        "The asymptotes are \\(x=-1\\) and \\(y=-x\\); there is no horizontal asymptote. Accept equivalent wording that clearly excludes the hole. No differentiation is required. Do not deduct twice for the same consistently repeated domain-notation error in increasing and concavity intervals; credit correct directions and boundaries independently."
+      ],
+      "rubric": [{"points": 1, "text": "Increasing intervals with the missing input excluded; preserve partial credit for correct direction/boundaries."}, {"points": 2, "text": "Both relative extrema with types and coordinates."}, {"points": 2, "text": "Both concavity directions, with the hole excluded."}, {"points": 3, "text": "Vertical line, slant line and no-horizontal conclusion, one point each."}],
+      "variation": "Decreasing slant, reversed concavity/extremum arrangement, and a hole on an increasing branch require more than mirroring memorized interval endpoints.",
+      "gapTarget": "Complete concavity on the whole domain, including the portion before a hole; do not mistake a missing point for an extremum."
+    },
+    {
+      "id": 5, "difficulty": 2, "points": 10, "minutes": 9, "type": "features-and-sketch", "teacherQuestion": 5,
+      "stem": "Let \\(R(x)=\\dfrac{2x^2+6x+4}{x^2-x-2}\\).",
+      "parts": [
+        {"label": "a", "prompt": "Find all intercepts, holes and asymptotes. Give exact coordinates or equations as appropriate and show your algebra.", "space": 300, "areas": [{"labels": ["Algebra"], "weight": 5}, {"labels": ["x-intercept(s)"]}, {"labels": ["y-intercept"]}, {"labels": ["Hole(s)"]}, {"labels": ["Vertical asymptote(s)"]}, {"labels": ["Horizontal or slant asymptote(s)"]}]},
+        {"label": "b", "prompt": "Sketch the function on the grid below and label the features you found.", "space": 0}
+      ],
+      "graph": {"range": 8, "plot": 408, "numerator": [2, 4], "denominator": [1, -2], "poles": [2], "horizontal": 2, "holes": [[-1, "-2/3"]]},
+      "answer": "R=2(x+2)/(x-2) with x not -1 or 2. Intercepts (-2,0), (0,-2); hole (-1,-2/3); VA x=2; HA y=2; no slant.",
+      "steps": [
+        "Factor \\(R(x)=\\dfrac{2(x+1)(x+2)}{(x+1)(x-2)}=\\dfrac{2(x+2)}{x-2}=2+\\dfrac8{x-2}\\), with original exclusions \\(-1\\) and \\(2\\).",
+        "The intercepts are \\((-2,0)\\) and \\((0,-2)\\). At the canceled input, the simplified rule gives \\(2(-1+2)/(-1-2)=-2/3\\), so the hole is \\((-1,-2/3)\\).",
+        "Vertical asymptote \\(x=2\\); horizontal asymptote \\(y=2\\). There is no slant asymptote. Left of 2 the curve lies below 2 and decreases toward negative infinity near the vertical asymptote; right of 2 it lies above 2 and decreases toward the horizontal line.",
+        "The graph must have an open circle at the hole and must pass through the actual y-intercept, not the horizontal-asymptote height."
+      ],
+      "rubric": [{"points": 2, "text": "Factoring and valid simplification."}, {"points": 2, "text": "Both intercepts, one point each."}, {"points": 2, "text": "Hole location and height."}, {"points": 2, "text": "Vertical and horizontal asymptotes."}, {"points": 2, "text": "Consistent labeled sketch including open hole and correct branch approach; avoid double-penalizing a single copied feature error."}],
+      "variation": "Nonunit horizontal height, opposite signs for y-intercept and horizontal asymptote, and a negative fractional hole height change the graph and sign decisions.",
+      "gapTarget": "Independent y-intercept evaluation, actual open hole, monotone branch shape and signed missing height."
+    },
+    {
+      "id": 6, "difficulty": 2, "points": 4, "minutes": 5, "type": "slant-and-end-behavior", "teacherQuestion": 6,
+      "stem": "Let \\(S(x)=\\dfrac{-x^2+5}{2x-4}\\).",
+      "parts": [{"label": "a", "prompt": "Find all horizontal or slant asymptotes and justify them algebraically. For each type, give its equation or state that none exists.", "space": 120, "areas": [{"labels": ["Algebra"], "weight": 3}, {"labels": ["Horizontal asymptote(s)", "Slant asymptote(s)"], "weight": 2}]}, {"label": "b", "prompt": "State the far-left and far-right end behavior. Explain algebraically why the graph approaches the asymptote.", "space": 72, "areas": [{"labels": ["Far-left behavior", "Far-right behavior"]}, {"labels": ["Explanation"]}]}],
+      "answer": "S=-x/2-1+1/(2x-4); slant y=-x/2-1, no HA. Left tends positive infinity; right negative infinity.",
+      "steps": ["Division gives \\(S(x)=-\\dfrac{x}{2}-1+\\dfrac1{2x-4}\\). Multiplying \\((-x/2-1)(2x-4)\\) gives \\(-x^2+4\\), leaving remainder 1.", "The slant asymptote is \\(y=-x/2-1\\); there is no horizontal asymptote. The remainder fraction tends to zero. As \\(x\\to-\\infty\\), \\(S(x)\\to+\\infty\\); as \\(x\\to+\\infty\\), \\(S(x)\\to-\\infty\\)."],
+      "rubric": [{"points": 1.5, "text": "Correct division or equivalent exact identity."}, {"points": 1, "text": "Correct slant line and absence of horizontal line."}, {"points": 0.5, "text": "Far-left direction."}, {"points": 0.5, "text": "Far-right direction."}, {"points": 0.5, "text": "Remainder fraction tends to zero."}],
+      "variation": "Missing linear numerator term, nonmonic denominator, fractional negative slope and positive remainder differ from both earlier divisions.",
+      "gapTarget": "Carry the signed quotient into the final line and complete both ends and the missing vanishing-remainder explanation."
+    },
+    {
+      "id": 7, "difficulty": 2, "points": 4, "minutes": 4, "type": "rational-model", "teacherQuestion": 7,
+      "stem": "A workshop has made 10 kits at a total cost of $180. Each additional kit costs $12 to make. After \\(n\\) additional kits, the average cost per kit is \\(C(n)=\\dfrac{12n+180}{n+10}\\), for nonnegative integers \\(n\\). Interpret the long-term average cost, including units. State whether it approaches that value from above or below and whether it reaches the value for any finite \\(n\\). Justify your conclusions.",
+      "parts": [{"label": "", "prompt": "Answer and justification", "space": 140, "areas": [{"labels": ["Long-term value, units and meaning"], "weight": 2}, {"labels": ["Approach from above or below"]}, {"labels": ["Finite attainment and justification"], "weight": 2}]}],
+      "answer": "Average cost decreases toward $12 per kit from above, never reaching it at finite n.",
+      "steps": ["Rewrite \\(C(n)=12+\\dfrac{60}{n+10}\\). For every finite \\(n\\ge0\\), the fraction is positive.", "As production grows, the fraction decreases toward zero. The average cost approaches $12 per kit from above, but is strictly greater than $12 for every finite number of additional kits."],
+      "rubric": [{"points": 1, "text": "Limit 12."}, {"points": 1, "text": "Correct interpretation and dollars per kit."}, {"points": 1, "text": "Approach from above; the word decreasing is not separately required."}, {"points": 1, "text": "Nonattainment at finite n with valid justification."}],
+      "variation": "Discrete average cost decreases from above rather than concentration increasing from below; context and signed remainder both change.",
+      "gapTarget": "Transfer existing modeling strength rather than rehearse the same salt story."
+    },
+    {
+      "id": 8, "difficulty": 2, "points": 4, "minutes": 5, "type": "construct-function", "teacherQuestion": 8,
+      "stem": "Construct a rational function whose only x-intercept is \\((-4,0)\\), whose only vertical asymptote is \\(x=-1\\), whose horizontal asymptote is \\(y=3/2\\), and whose only hole is at \\(x=2\\).",
+      "parts": [{"label": "a", "prompt": "Write your function in factored form and verify that it has each required feature.", "space": 150, "areas": [{"labels": ["Function"]}, {"labels": ["Verification of the stated features"], "weight": 2}]}, {"label": "b", "prompt": "Give the coordinates of the hole for your function. Show your calculation.", "space": 60}],
+      "answer": "One answer is 3(x+4)(x-2)/(2(x+1)(x-2)), hole (2,3). Other valid constructions may have different hole heights.",
+      "steps": ["One valid rule is \\(G(x)=\\dfrac{3(x+4)(x-2)}{2(x+1)(x-2)}\\), with \\(x\\ne-1,2\\). Its remaining numerator has only the zero -4, its remaining denominator vanishes at -1, its leading ratio is 3/2, and the shared factor creates a hole at 2.", "For this rule the missing height is \\(3(2+4)/(2(2+1))=3\\), giving \\((2,3)\\). Accept any rule meeting all four conditions and its own correctly calculated hole height; a unique rule or height is not required. Labeled algebra counts as verification; do not require prose or unnecessary expansion."],
+      "rubric": [{"points": 1, "text": "Correct only x-intercept, supported by the rule/check."}, {"points": 1, "text": "Correct only vertical asymptote, supported by the rule/check."}, {"points": 1, "text": "Correct horizontal height, supported by the rule/check."}, {"points": 1, "text": "Only hole at 2 and its height for the chosen rule: 0.5 each."}],
+      "variation": "Positive nonunit horizontal height and negative intercept/vertical location reverse key signs from the earlier constructions.",
+      "gapTarget": "Finish the verification and substitute into the chosen simplified rule without changing the height sign."
+    },
+    {
+      "id": 9, "difficulty": 1, "points": 2, "minutes": 2, "type": "multiple-choice", "teacherQuestion": 9,
+      "stem": "The graph represents a nonzero rational function. Which statement about its numerator and denominator degrees must be true? Select one answer and justify your choice.",
+      "choices": ["The degrees are equal.", "The numerator degree is exactly one greater than the denominator degree.", "The numerator degree is exactly two greater than the denominator degree.", "The denominator degree is greater than the numerator degree."],
+      "correctChoice": "D",
+      "graph": {"range": 6, "plot": 220, "numerator": [-4], "denominator": [1, 0, -4], "poles": [-2, 2], "horizontal": 0},
+      "parts": [{"label": "", "prompt": "Answer", "space": 42, "areas": [{"labels": ["Choice", "Justification"], "weights": [1, 6]}]}],
+      "answer": "D: horizontal asymptote y=0 requires smaller numerator degree.",
+      "steps": ["The nonzero curve approaches the x-axis at both far ends, so its horizontal asymptote is \\(y=0\\). Its numerator degree must be smaller than its denominator degree.", "Equal degrees give a nonzero leading-coefficient ratio; larger numerator degree does not give a zero horizontal asymptote. A specific pair of degrees cannot be determined from the graph alone."],
+      "rubric": [{"points": 1, "text": "Choice D."}, {"points": 1, "text": "Explanation connects zero horizontal end height to smaller numerator degree."}],
+      "variation": "Zero horizontal rather than slant end behavior; exact degree claims are not inferred from a picture.",
+      "gapTarget": "Distinguish degree relationships, not memorize cubic over quadratic."
+    },
+    {
+      "id": 10, "difficulty": 2, "points": 2, "minutes": 3, "type": "multiple-choice", "teacherQuestion": 10,
+      "stem": "Which equation matches the graph? Select one answer. Justify your choice using the graph's behavior at the origin and at least one other relevant graph feature.",
+      "choices": ["\\(y=\\dfrac{-3x^2}{x^2-4}\\)", "\\(y=\\dfrac{-3x}{x^2-4}\\)", "\\(y=\\dfrac{-3x}{x^2+4}\\)", "\\(y=\\dfrac{3x}{x^2-4}\\)"],
+      "correctChoice": "B",
+      "graph": {"range": 6, "plot": 220, "numerator": [-3, 0], "denominator": [1, 0, -4], "poles": [-2, 2], "horizontal": 0},
+      "parts": [{"label": "", "prompt": "Answer", "space": 42, "areas": [{"labels": ["Choice", "Justification"], "weights": [1, 6]}]}],
+      "answer": "B: odd function, crosses origin, VAs +/-2, HA 0, right outer branch below the x-axis.",
+      "steps": ["B is odd, crosses the origin, has vertical asymptotes at \\(x=\\pm2\\), and approaches \\(y=0\\). For \\(x>2\\), its values are negative, matching the right outer branch.", "A is even and has nonzero horizontal height; D has the opposite sign; C has no real vertical asymptotes. Award justification credit for correctly describing the origin behavior and one other supporting graph feature; do not require every listed feature or lengthy prose."],
+      "rubric": [{"points": 1, "text": "Choice B."}, {"points": 0.5, "text": "Correct behavior at the origin."}, {"points": 0.5, "text": "Another correct supporting graph feature."}],
+      "variation": "Odd crossing with horizontal height zero replaces the earlier even touching graph with nonzero horizontal height.",
+      "gapTarget": "Use touch/cross, symmetry, asymptotes or branch signs as real evidence, not just choose a letter."
+    },
+    {
+      "id": 11, "difficulty": 2, "points": 2, "minutes": 3, "type": "multiple-choice", "teacherQuestion": 11,
+      "stem": "Which function matches the entire graph? The curve continues beyond the window. Select one answer. Include the missing point in your justification.",
+      "choices": ["\\(y=\\dfrac{-x(x-1)(x-4)}{2x(x+2)}\\)", "\\(y=\\dfrac{-(x-1)(x-4)}{2(x+2)}\\)", "\\(y=\\dfrac{-x(x-1)(x-4)}{2x(x-2)}\\)", "\\(y=\\dfrac{x(x-1)(x-4)}{2x(x+2)}\\)"],
+      "correctChoice": "A",
+      "graph": {"range": 12, "plot": 304, "numerator": [-1, 5, -4], "denominator": [2, 4], "poles": [-2], "slant": [-0.5, 3.5], "holes": [[0, -1]]},
+      "parts": [{"label": "", "prompt": "Answer", "space": 42, "areas": [{"labels": ["Choice", "Justification"], "weights": [1, 6]}]}],
+      "answer": "A: zeros 1 and 4, VA -2, hole (0,-1), negative slant slope.",
+      "steps": ["A simplifies to \\(-\\dfrac{(x-1)(x-4)}{2(x+2)}\\) while retaining the excluded input 0. It has a hole at \\((0,-1)\\), not a y-intercept.", "The zeros are 1 and 4; the vertical asymptote is -2; division gives slant \\(y=-x/2+7/2\\). B fills in the missing point, C moves the vertical asymptote, and D reverses the graph vertically. The hole is the decisive difference between A and B."],
+      "rubric": [{"points": 1, "text": "Choice A."}, {"points": 1, "text": "Justification distinguishes the hole/domain from the otherwise equivalent rule B."}],
+      "variation": "A hole on the y-axis removes the apparent y-intercept; the negative slant and simplified-equivalent distractor test domain preservation.",
+      "gapTarget": "Keep the original excluded input after cancellation and distinguish a missing point from a plotted intercept."
+    },
+    {
+      "id": 12, "difficulty": 2, "points": 2, "minutes": 2, "type": "multiple-choice", "teacherQuestion": 12,
+      "stem": "Let \\(f(x)=-5x^6+2x-1\\) and \\(g(x)=\\dfrac{3x^m-8x^4+2}{x^2+1}\\), where \\(m\\) is a positive integer. Which value cannot make the far-left and far-right end directions of \\(g\\) match those of \\(f\\)? Select one answer and justify your choice.",
+      "choices": ["\\(m=1\\)", "\\(m=4\\)", "\\(m=5\\)", "\\(m=3\\)"],
+      "correctChoice": "C",
+      "parts": [{"label": "", "prompt": "Answer", "space": 60, "areas": [{"labels": ["Choice", "Justification"], "weights": [1, 6]}]}],
+      "answer": "C, m=5: leading behavior 3x^3 has opposite ends. Other options have negative even leading behavior.",
+      "steps": ["Both ends of \\(f\\) tend to negative infinity. For \\(m=1\\) or 3, the leading behavior of \\(g\\) is \\(-8x^2\\), and for \\(m=4\\) it is \\(-5x^2\\).", "For \\(m=5\\), the leading behavior is \\(3x^3\\), so the left end is down and right end up. That does not match both ends down. Matching end behavior means matching the two directions, not identical degree or growth rate."],
+      "rubric": [{"points": 1, "text": "Choice C."}, {"points": 1, "text": "Leading-term/parity reasoning explaining the mismatch."}],
+      "variation": "Both ends down, a quadratic denominator, and combining tied leading terms replace the earlier both-up/linear-denominator setting.",
+      "gapTarget": "Compare actual leading terms and signs instead of reading one numerator coefficient in isolation."
+    },
+    {
+      "id": 13, "difficulty": 2, "points": 4, "minutes": 3, "type": "read-table", "teacherQuestion": 13,
+      "stem": "A rational function \\(H\\) has only two undefined real inputs, 1 and 3. One is a hole and the other is a vertical asymptote. Selected values are shown; decimals are rounded. Based on the table, identify the likely x-coordinate of each and explain the evidence for each classification.",
+      "tables": [
+        {"inputs": [0.9, 0.99, 0.999, 1, 1.001, 1.01, 1.1], "outputs": [-17, -197, -1997, null, 2003, 203, 23]},
+        {"inputs": [2.9, 2.99, 3, 3.01, 3.1], "outputs": [4.0526, 4.005, null, 3.995, 3.9524]}
+      ],
+      "parts": [{"label": "a", "prompt": "Hole", "space": 50, "areas": [{"labels": ["Location", "Evidence"], "weights": [1, 5]}]}, {"label": "b", "prompt": "Vertical asymptote", "space": 50, "areas": [{"labels": ["Location", "Evidence"], "weights": [1, 5]}]}],
+      "answer": "Hole at x=3, finite height near 4; VA x=1, with growing magnitudes/opposite signs.",
+      "steps": ["Near 3 the values approach a finite height near 4 from both sides; with the stated assumptions this supports the hole at \\(x=3\\). Near 1 the magnitudes grow without bound, supporting the vertical asymptote \\(x=1\\).", "The roles of the two excluded inputs are reversed from the mini quiz. The rounded samples support the requested inferences, not proof of an exact limit or unique rational rule. One generating rule is \\(3+2/(x-1)\\), additionally excluding 3; students are not asked to find it."],
+      "rubric": [{"points": 1, "text": "Hole at 3."}, {"points": 1, "text": "Finite-height table evidence for the hole."}, {"points": 1, "text": "Vertical asymptote at 1."}, {"points": 1, "text": "Unbounded-magnitude table evidence for the asymptote."}],
+      "variation": "Same two excluded numbers as the mini quiz but with their roles reversed and a positive finite missing height; the numerical patterns, not remembered locations, must decide.",
+      "gapTarget": "Actually write the finite-versus-unbounded explanations rather than only naming locations."
+    }
+  ]
+}
