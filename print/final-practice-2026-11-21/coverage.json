@@ -1,0 +1,160 @@
+{
+  "points": 100,
+  "estimated_work_minutes": 54,
+  "checking_minutes": 6,
+  "timing": "Author estimate, not a measured completion guarantee",
+  "version": "Direct-author replacement; previous model reviews evaluated superseded drafts, not this question set",
+  "pages": 8,
+  "groups": [
+    [
+      1
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      4,
+      5
+    ],
+    [
+      6
+    ],
+    [
+      7
+    ],
+    [
+      8,
+      9
+    ],
+    [
+      10
+    ],
+    [
+      11,
+      12
+    ]
+  ],
+  "tasks": [
+    {
+      "number": 1,
+      "points": 12,
+      "minutes": 7,
+      "learning_targets": [
+        1
+      ],
+      "difficulty": 3,
+      "rubric": "Rules with reconstruction 4; two sketches and intercepts 4; sets/directions 2; ends/extremum/transformations 2."
+    },
+    {
+      "number": 2,
+      "points": 8,
+      "minutes": 4,
+      "learning_targets": [
+        2
+      ],
+      "difficulty": 3,
+      "rubric": "Multiplicity/minimum-degree reasoning 2; polynomial and scale 2; structure/ends 2; value and accurately scaled sketch 2."
+    },
+    {
+      "number": 3,
+      "points": 7,
+      "minutes": 3,
+      "learning_targets": [
+        3
+      ],
+      "difficulty": 2,
+      "rubric": "Recovered input 1; five evaluations 4; quotient exclusion 1; noncommutation with evidence 1."
+    },
+    {
+      "number": 4,
+      "points": 8,
+      "minutes": 4,
+      "learning_targets": [
+        3
+      ],
+      "difficulty": 3,
+      "rubric": "Rules/domains 3; accepted-input outputs 2; both equation solutions with domain checks 2; quotient and complete domain 1."
+    },
+    {
+      "number": 5,
+      "points": 6,
+      "minutes": 3,
+      "learning_targets": [
+        4
+      ],
+      "difficulty": 3,
+      "rubric": "Inferred line/transitions 3; complete nonoverlapping bounded pieces 1.5; price .5; entire cap interval 1."
+    },
+    {
+      "number": 6,
+      "points": 11,
+      "minutes": 5,
+      "learning_targets": [
+        4
+      ],
+      "difficulty": 3,
+      "rubric": "Graph-to-rule reconstruction and boundaries 4; evaluations 1; full sets 2; both valid roots and rejected endpoint reasoning 4."
+    },
+    {
+      "number": 7,
+      "points": 14,
+      "minutes": 7,
+      "learning_targets": [
+        5
+      ],
+      "difficulty": 3,
+      "rubric": "Unscaffolded construction/degree justification 4; graph and labeled features 3; full sets/end behavior/transformations 3; justified directions on separate intervals 2; solved and checked equation 2."
+    },
+    {
+      "number": 8,
+      "points": 10,
+      "minutes": 5,
+      "learning_targets": [
+        5
+      ],
+      "difficulty": 3,
+      "rubric": "Model 2; initial/later percentages 3; target and check 2; physical domain 1.5; distinction between algebraic and physical end behavior 1.5."
+    },
+    {
+      "number": 9,
+      "points": 6,
+      "minutes": 3,
+      "learning_targets": [
+        6
+      ],
+      "difficulty": 3,
+      "rubric": "Factoring/equal-values versus equal-domains 2; hole and correct graph edit 1; domain/intercepts/VA 1.5; relocated-hole construction 1.5."
+    },
+    {
+      "number": 10,
+      "points": 6,
+      "minutes": 5,
+      "learning_targets": [
+        7
+      ],
+      "difficulty": 3,
+      "rubric": "Parameter/division/slant 2; noncrossing explanation 1; coherent graph/intercepts/asymptotes 1.5; three end-behavior classifications 1.5."
+    },
+    {
+      "number": 11,
+      "points": 6,
+      "minutes": 3,
+      "learning_targets": [
+        8
+      ],
+      "difficulty": 3,
+      "rubric": "Forward reconstruction 1.5; inverse with parentheses 1.5; both exchanged sets 1; original input .5; symbolic two-way checks 1.5."
+    },
+    {
+      "number": 12,
+      "points": 6,
+      "minutes": 5,
+      "learning_targets": [
+        8
+      ],
+      "difficulty": 3,
+      "rubric": "Both preimages and failure of unrestricted inverse 1.5; maximal branch 1; derived inverse/sign/domain 2; reflected labeled curves and y=x 1.5."
+    }
+  ]
+}
