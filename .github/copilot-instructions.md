@@ -29,6 +29,26 @@ Focus: Algebra 2. Goal: mastery-based practice, immediate feedback, visual expla
 - **Kai** — the student. High school Algebra 2. Needs clear steps, not just answers.
 - **Marcus** — the parent/owner. Reviews content and outcomes. Approves what ships.
 
+## Practice Exams and Grading (Mandatory)
+
+Before drafting a practice exam or grading a submission, read
+[the canonical workflow](../docs/practice-exam-workflow.md). Apply it in this
+session; do not use subagents or child sessions for authoring or reviews.
+
+- Questions first: use simple Markdown and a separate concise worked key.
+  Execute the repository teacher and student review skills directly, then show
+  Marcus the revised problem set. His explicit approval of that exact revision
+  is required before PDF conversion, rendering code, or full test layout.
+- After approval, reuse established templates and perform one final student
+  print-usability pass. Check mathematics and print fit, not unrelated suites.
+- Grade original evidence before formatting. Preserve scoring, include actual
+  work screenshots beside each problem's assessment, and use the same student
+  **Keep / Change / Check** correction format every time.
+- Review skills are same-session simulated perspectives, not independent
+  people or models. Load their `SKILL.md` files directly if not yet discovered:
+  `.github/skills/precalculus-teacher-review/SKILL.md` and
+  `.github/skills/precalculus-student-review/SKILL.md`.
+
 ## Tech Stack
 
 - Application: static HTML, CSS, and JavaScript
@@ -114,6 +134,12 @@ artifacts/     -- Generated outputs
 - Algebra 2 scope: polynomials, rational functions, exponentials, logarithms, sequences, series, intro stats.
 - Every question needs: stem, correct answer, 3 distractors, explanation of the correct answer.
 - Step-by-step solutions required for any procedural question.
+
+For standalone free-response practice packets, use a stem, worked answer and
+partial-credit rubric; the three-distractor rule applies to multiple-choice
+questions, not handwriting or graphing tasks. Match the requested course and
+covered standards; do not introduce unfamiliar concepts or notation to create
+artificial difficulty.
 
 ## Key Docs
 
