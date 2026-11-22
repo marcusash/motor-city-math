@@ -147,11 +147,11 @@ add(3, 7, 3, [3],
 add(4, 8, 4, [3],
     p("Two processing stages use "+m(r"u(x)=\sqrt{x-2}")+" and "+m(r"v(x)=6-x")+". They can be used in either order.")
     +p("Write the rule and complete allowable input set for each order. Which orders accept input 1? Input 3? Give the outputs where they exist.")
-    +table(["Order","Rule","Allowable inputs"], [[m(r"u\circ v"),"",""],[m(r"v\circ u"),"",""]])+work(2)
+    +table(["Expression","Rule","Allowable inputs"], [[m(r"u(v(x))"),"",""],[m(r"v(u(x))"),"",""]])+work(2)
     +p("Find every starting input that produces final output 2, for each order. Also write u/v and its complete domain.")+work(5),
     p(m(r"u(v(x))=\sqrt{4-x},\quad x\le4")+"; "
        +m(r"v(u(x))=6-\sqrt{x-2},\quad x\ge2")+".")
-    +p("Input 1 works only for "+m(r"u\circ v")+", producing "+m(r"\sqrt3")+". Input 3 works for both: outputs 1 and 5, respectively.")
+    +p("Input 1 works only for "+m(r"u(v(x))")+", producing "+m(r"\sqrt3")+". Input 3 works for both: outputs 1 and 5, respectively.")
     +p("First order: "+m(r"\sqrt{4-x}=2\Rightarrow4-x=4\Rightarrow x=0")+", which is allowable."
        " Second order: "+m(r"6-\sqrt{x-2}=2\Rightarrow x-2=16\Rightarrow x=18")+", also allowable.")
     +p(m(r"(u/v)(x)=\frac{\sqrt{x-2}}{6-x}")+". Its domain is "+m(r"[2,6)\cup(6,\infty)")+": the radical needs x>=2 and the denominator excludes 6."),
