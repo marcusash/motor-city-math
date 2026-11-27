@@ -72,6 +72,7 @@ function node(text = '') {
   return {
     textContent: text, children: [], attributes: {},
     append(...items) { this.children.push(...items); },
+    replaceChildren(...items) { this.children = items; },
     setAttribute(key, value) { this.attributes[key] = value; },
     addEventListener(name, callback) { this.attributes[name] = callback; }
   };
@@ -116,7 +117,8 @@ assert.equal((dashboard.match(new RegExp('href: \'reviews/' + filename + '\\.htm
 assert.match(dashboard, new RegExp('src="reviews/' + filename + '-data\\.js"'));
 const dashboardContext = { window: { MCMActivityCards: require('../shared/activity-cards') }, document: context.document };
 for (const name of ['test-1-study-guide-data.js', 'assessment-1-functions-75min-grade-data.js',
-  'assessment-1-midterm-functions-grade-data.js', 'assessment-2-rational-functions-grade-data.js', filename + '-data.js']) {
+  'assessment-1-midterm-functions-grade-data.js', 'assessment-2-rational-functions-grade-data.js', filename + '-data.js',
+  'rational-functions-practice-2026-11-12-data.js', 'cumulative-final-practice-2026-11-21-data.js', 'final-rehearsal-2026-11-22-data.js']) {
   vm.runInNewContext(fs.readFileSync(path.join(root, 'reviews', name), 'utf8'), dashboardContext);
 }
 let chartPoints;
@@ -128,15 +130,17 @@ assert.match(nodes.precalculusGrid.innerHTML, /id="assessment2MiniQuizScore">65\
 assert.match(nodes.precalculusGrid.innerHTML, /<dt>Points<\/dt><dd>65\.5\/100/);
 assert.match(nodes.precalculusGrid.innerHTML, /Review Nov 10/);
 assert.match(nodes.precalculusGrid.innerHTML, /Practice scoring, not teacher-awarded marks/);
-assert.equal((nodes.precalculusGrid.innerHTML.match(/class="activity-card"/g) || []).length, 6);
+assert.equal((nodes.precalculusGrid.innerHTML.match(/class="activity-card"/g) || []).length, 9);
 assert.deepEqual(chartPoints.map(point => [point.label, point.fa]),
-  [['Study Guide 1', 84], ['Prep Test 1', 89.5], ['Assessment 1', 72.6], ['Assessment 2', 46.1]]);
-const originalChart = JSON.stringify(chartPoints);
+  [['Study Guide 1', 84], ['Prep Test 1', 89.5], ['Assessment 1', 72.6], ['Assessment 2', 46.1],
+   ['Mini Quiz', 65.5], ['Rational', 93.1], ['Final Practice', 88.9], ['Rehearsal', 92.8]]);
+const historicalChart = JSON.stringify(chartPoints.slice(0, 4));
 dashboardContext.window.assessment2MiniQuizPracticeGrade.questions[0].earned += 1;
 dashboardContext.buildPrecalculusHistory();
 assert.match(nodes.precalculusGrid.innerHTML, /id="assessment2MiniQuizScore">66\.5%/);
 assert.match(nodes.precalculusGrid.innerHTML, /<dt>Points<\/dt><dd>66\.5\/100/);
-assert.equal(JSON.stringify(chartPoints), originalChart, 'Practice review must not alter historical charts');
+assert.equal(JSON.stringify(chartPoints.slice(0, 4)), historicalChart, 'Practice review must not alter historical marks');
+assert.equal(chartPoints[4].fa, 66.5, 'The mini-quiz chart point follows its canonical data');
 
 const close = (actual, expected) => assert.ok(Math.abs(actual - expected) < 1e-10, `${actual} != ${expected}`);
 const a = x => (-2 * x * x + 7 * x + 1) / (x - 4);

@@ -24,6 +24,32 @@ Pre-Calculus chart dates show `Scan` plus `scannedOn` where documented (Prep Tes
 
 Review checks: `node tests/assessment-2-mini-quiz-2026-11-10.test.js` and `npx playwright test assessment-2-mini-quiz-review --reporter=line`.
 
+The Fall 2026 dashboard also includes three text-only practice reports:
+[Rational Functions Full Practice](reviews/rational-functions-practice-2026-11-12.html),
+reviewed November 12, **54/58 (93.1%)**;
+[Cumulative Final Practice](reviews/cumulative-final-practice-2026-11-21.html),
+reviewed November 21, **113.75/128 (88.9%)**; and
+[Final Rehearsal](reviews/final-rehearsal-2026-11-22.html),
+reviewed November 22, **92.75/100 (92.8% displayed)**. The rehearsal includes the
+corrected Q7 award, not the superseded 92.5 result. Each report preserves original
+component awards, worked reference answers and existing corrections, with a
+downloadable text-only PDF. The cumulative rubric is an FR equal-learning-target
+diagnostic, not a printed teacher rubric; the rehearsal uses the owner-approved
+question/category weights with FR suballocations. No school letter grade or
+unaided mastery is inferred.
+
+The grade chart includes the previously unplotted November 10 mini quiz and these
+three separate results. Teacher marks remain unchanged and use diamond markers;
+practice reviews use circles. Review/Scan dates retain their source provenance.
+The chart has a keyboard-accessible horizontal scroll region and an expandable
+text list of scores and source reports. These public examples use owner-approved
+text-only data; scans, handwriting images, identifying headers and private report
+binaries are excluded.
+
+Checks: `node tests/practice-grade-reports.test.cjs`,
+`node tests/practice-grade-reports.browser.test.cjs`, and
+`node tests/dashboard-cards.browser.test.cjs`.
+
 The [Prep Test 2 question proposal](reviews/prep-test-2-proposal.html) is a parent review companion: 10 questions, 100 points, and 70 minutes of work plus 5 minutes to check. Two polynomial sketch questions cover degrees 4 and 5 (22 points, 16 minutes), balanced with piecewise, transformation, algebraic composition, graph-reading, domain, applied cost-model, and square-root construction questions. It includes plain-language purposes, worked answers, and partial-credit rubrics, separate from the student copy.
 
 The reviewed set is now built as a [printable Prep Test 2](tests/assessment-2-functions-75min.pdf), with [student HTML](tests/assessment-2-functions-75min.html) and a separate [parent key PDF](tests/assessment-2-functions-75min-KEY.pdf) / [key HTML](tests/assessment-2-functions-75min-KEY.html). The student copy follows the previous test's format and keeps answers separate. It includes six dedicated large drawing pages with centered axes; numerical grids use matching symmetric ranges and square cells. Prompt pages share space where the retained student work areas allow, and graph/sketch pages remain separate from question cards. Question 3 adds reflected/scaled compositions with fractional coordinates; Question 4 solves a composite equation from graphs; Question 5 compares algebraic compositions; Question 9 adds a challenging word problem; Question 10 restores square-root graph construction. Question 2 remains simple and Question 6 is retained. Regenerate the HTML with `node scripts/build-prep-test-2.cjs`; the source proposal remains the editable question source. No dashboard entry or score is added by this build.

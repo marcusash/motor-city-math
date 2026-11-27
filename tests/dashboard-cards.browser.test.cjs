@@ -152,7 +152,7 @@ test('activity cards reflow, expose focus and preserve same-data graph pixels', 
             assert.deepEqual(result.overflow, [], `${width}px overflowing cards`);
             assert.equal(result.collisions, 0);
             assert.equal(result.pageOverflow, false);
-            assert.equal(result.fallCount, 6);
+            assert.equal(result.fallCount, 9);
             assert.ok(result.springCount > 10);
             assert.equal(result.winterCount, 8);
             assert.equal(result.a1, '72.6%');

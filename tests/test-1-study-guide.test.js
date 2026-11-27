@@ -90,8 +90,18 @@ const chartContext = { window: context.window };
 vm.runInNewContext(fs.readFileSync(path.join(root, 'reviews', 'assessment-1-midterm-functions-grade-data.js'), 'utf8'), context);
 vm.runInNewContext(fs.readFileSync(path.join(root, 'reviews', 'assessment-2-rational-functions-grade-data.js'), 'utf8'), context);
 vm.runInNewContext(fs.readFileSync(path.join(root, 'reviews', 'assessment-2-mini-quiz-2026-11-10-data.js'), 'utf8'), context);
+for (const name of ['rational-functions-practice-2026-11-12', 'cumulative-final-practice-2026-11-21', 'final-rehearsal-2026-11-22']) {
+  vm.runInNewContext(fs.readFileSync(path.join(root, 'reviews', name + '-data.js'), 'utf8'), context);
+}
 const elements = {};
-chartContext.document = { getElementById: id => elements[id] || (elements[id] = {}) };
+function chartNode(text = '') {
+  return { textContent: text, children: [], append(...items) { this.children.push(...items); },
+    replaceChildren(...items) { this.children = items; } };
+}
+chartContext.document = {
+  getElementById: id => elements[id] || (elements[id] = chartNode()),
+  createElement: () => chartNode(), createTextNode: text => chartNode(text)
+};
 vm.runInNewContext(dashboard.slice(dashboard.indexOf('    function renderTrendChart('), dashboard.indexOf('    function buildChart()')), chartContext);
 vm.runInNewContext(dashboard.slice(dashboard.indexOf('    function formatScanDate('), dashboard.indexOf('    function buildStandards()')), chartContext);
 assert.equal(chartContext.formatScanDate(null), 'Date unknown');
@@ -114,7 +124,7 @@ assert.match(elements.precalculusChartContainer.innerHTML, /Scan Oct 4/);
 assert.match(elements.precalculusChartContainer.innerHTML, /Review Oct 16/);
 assert.match(elements.precalculusChartContainer.innerHTML, /Assessment 1/);
 assert.match(elements.precalculusChartContainer.innerHTML, /72\.6%/);
-assert.match(elements.precalculusChartContainer.innerHTML, /showing 4 tests/);
+assert.match(elements.precalculusChartContainer.innerHTML, /showing 8 tests/);
 assert.match(elements.precalculusChartContainer.innerHTML, /Review Nov 9/);
 assert.match(elements.precalculusChartContainer.innerHTML, /46\.1%/);
 assert.equal(cardScore('teacherAssessment2Score'), '46.1%');
@@ -137,9 +147,7 @@ chartContext.buildPrecalculusHistory();
 assert.match(elements.precalculusChartContainer.innerHTML, /Oct 3/);
 assert.match(elements.precalculusChartContainer.innerHTML, /Oct 4/);
 assert.match(elements.precalculusChartContainer.innerHTML, /cx="50"/);
-assert.match(elements.precalculusChartContainer.innerHTML, /cx="150"/);
-assert.match(elements.precalculusChartContainer.innerHTML, /cx="250"/);
-assert.match(elements.precalculusChartContainer.innerHTML, /cx="350"/);
+assert.match(elements.precalculusChartContainer.innerHTML, /cx="650"/);
 const legacyChart = {};
 chartContext.renderTrendChart(legacyChart, [{ label: 'Old', fa: 84 }]);
 assert.ok(!legacyChart.innerHTML.includes('FOUL TROUBLE'), 'Unchanged legacy charts still hide the court when all scores are above 80%');
