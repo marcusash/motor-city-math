@@ -11,23 +11,14 @@
     <script src="shared/chart.min.js"></script>
     <script src="shared/chart-theme.js"></script>
     <style>
-        body { background: var(--fd-bg); color: var(--fd-text-1); color-scheme: dark; }
+        body { padding: 0; background: var(--fd-bg); color: var(--fd-text-1); color-scheme: dark; }
         .dash-section > .section-title { color: var(--fd-text-1); }
-        .dash-section > .test-meta { color: var(--fd-text-2); }
-        #precalculusChartContainer { overflow-x: auto; padding-bottom: 8px; }
-        #precalculusChartContainer svg { min-width: 968px; height: auto; }
-        .chart-note { color: var(--fd-text-2); font-size: 0.82rem; line-height: 1.5; margin: 8px 0; }
-        .chart-scores { color: var(--fd-text-1); font-size: 0.82rem; }
-        .chart-scores summary { cursor: pointer; padding: 8px 0; }
-        .chart-scores ul { list-style: none; padding: 0; margin: 8px 0; }
-        .chart-scores li { padding: 6px 0; border-top: 1px solid var(--fd-border); }
-        .chart-scores a { color: var(--accent-blue-on-dark); }
+        #precalculusChartContainer svg { height: auto; }
+        #precalculusChartContainer [data-score-point]:focus-visible { outline: 2px solid var(--accent-blue-on-dark); outline-offset: 3px; }
         @media print {
             body { background: white; color: black; color-scheme: light; }
-            #precalculusChartContainer svg { min-width: 0; }
-            .chart-note,.chart-scores { color: black; }
         }
-        .dashboard { max-width: 600px; margin: 0 auto; padding: 28px 20px 80px; }
+        .dashboard { max-width: 1040px; margin: 0 auto; padding: 28px 20px 80px; }
         .dash-header { text-align: center; margin-bottom: 24px; }
         .dash-header h1 { color: var(--accent-navy); font-size: var(--text-2xl); font-weight: 700; margin: 0; }
         .dash-header .subtitle { color: var(--text-secondary); font-weight: 400; font-size: var(--text-base); margin-top: 4px; }
@@ -160,7 +151,7 @@
         /* Test index */
         .test-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 10px;
             margin-bottom: 20px;
         }
@@ -173,22 +164,17 @@
         }
         a.activity-card:hover { border-color: var(--fd-border2); }
         a.activity-card:focus-visible { outline: 2px solid var(--accent-blue-on-dark); outline-offset: 3px; }
-        .activity-card__kind, .activity-card__result-label {
-            color: var(--fd-text-2); font-size: var(--text-sm); font-weight: 600;
-        }
         .activity-card__title { margin: 0; color: var(--fd-text-1); font-size: var(--text-base); font-weight: 700; line-height: 1.4; }
-        .activity-card__subject, .activity-card__note {
-            margin: 0; color: var(--fd-text-2); font-size: var(--text-sm); line-height: 1.5;
-        }
-        .activity-card__result { margin-top: 4px; }
+        .activity-card__result { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 12px; margin-top: 4px; }
         .activity-card__score { color: var(--fd-text-1); font-size: var(--text-2xl); font-weight: 800; line-height: 1.3; }
         .activity-card__score--status { font-size: var(--text-base); font-weight: 600; line-height: 1.5; }
-        .activity-card__details { margin: 8px 0 0; font-size: var(--text-sm); line-height: 1.5; }
+        .activity-card__points, .activity-card__attempt { color: var(--fd-text-2); font-size: var(--text-sm); }
+        .activity-card__details { flex-basis: 100%; margin: 0; font-size: var(--text-sm); line-height: 1.5; }
         .activity-card__details > div { display: flex; flex-wrap: wrap; column-gap: 6px; }
         .activity-card__details dt { color: var(--fd-text-2); }
         .activity-card__details dd { margin: 0; color: var(--fd-text-1); }
         .activity-card__footer {
-            display: flex; flex-direction: column; gap: 8px; margin-top: auto;
+            display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 12px; margin-top: auto;
             border-top: 1px solid var(--fd-border); padding-top: 12px;
         }
         .activity-card__date { color: var(--fd-text-2); font-size: var(--text-sm); }
@@ -533,7 +519,7 @@
         <!-- Corrupted score data recovery banner (shown only if JSON.parse fails) -->
         <div class="score-error-banner" id="scoreErrorBanner" style="display:none;" role="alert" aria-live="polite">
             <span class="score-error-icon">!</span>
-            <span class="score-error-msg">Score history couldn't load. Something went wrong with your saved data.</span>
+            <span class="score-error-msg">Your saved score history couldn't load.</span>
             <div class="score-error-actions" id="scoreErrorActions">
                 <button class="score-error-clear" id="scoreErrorClear" onclick="startClearConfirm()">Clear and start fresh</button>
                 <button class="score-error-dismiss" id="scoreErrorDismiss" onclick="dismissScoreError()">Dismiss</button>
@@ -557,24 +543,17 @@
         <!-- Pre-Calculus prep stays separate from Kai's Algebra II coursework. -->
         <details class="dash-section" id="precalculusSection" open>
             <summary class="section-title">Fall 2026 &middot; Pre-Calculus</summary>
-            <p class="test-meta">Junior year &middot; Functions, Polynomials &amp; Rational Functions</p>
             <div class="trend-card" style="margin-top:12px;">
-                <div class="trend-hd">
-                    <div class="trend-hd-r" id="precalculusFirstScore">Practice scores and teacher-marked assessments</div>
-                </div>
-                <p class="chart-note">◇ Teacher marks · ○ Practice review. Different rubrics; not directly comparable. Scroll/swipe for all scores.</p>
-                <div id="precalculusChartContainer" role="region" tabindex="0" aria-label="Precalculus score chart; scroll horizontally to read all labels"></div>
-                <details class="chart-scores"><summary>Scores and sources</summary><ul id="precalculusChartScores"></ul></details>
+                <div id="precalculusChartContainer"></div>
             </div>
             <div class="test-grid" id="precalculusGrid"></div>
         </details>
 
         <details class="dash-section" id="springSection">
             <summary class="section-title">Spring 2026 &middot; Algebra II</summary>
-            <p class="test-meta">Sophomore year &middot; Polynomials, Rational Functions &amp; Logarithms</p>
             <div class="trend-card" style="margin-top:12px;">
                 <div class="trend-hd">
-                    <div class="trend-hd-r" title="Teacher-reported final grade. Test paper not archived.">Final Grade: <b style="color:#d29922">A-</b> <span style="color:rgba(255,255,255,0.45);font-weight:400;font-size:0.85em;">(teacher report &middot; test not archived)</span></div>
+                    <div class="trend-hd-r" title="Teacher-reported final grade. Test paper not archived.">Final grade: <b style="color:#d29922">A-</b></div>
                 </div>
                 <div id="trendChartContainer"></div>
             </div>
@@ -584,17 +563,16 @@
         <!-- Winter 2025-26 -->
         <details class="dash-section" id="winterSection">
             <summary class="section-title" id="winterSummaryEl">Winter 2025-26 &middot; Algebra II</summary>
-            <p class="test-meta">Sophomore year &middot; Exponents, Function Transformations &amp; Quadratics</p>
             <div class="trend-card" style="margin-top:12px;">
                 <div class="trend-hd">
-                    <div class="trend-hd-r" title="Teacher-reported final grade. Test paper not archived.">Final Grade: <b style="color:#d29922">B</b> <span style="color:rgba(255,255,255,0.45);font-weight:400;font-size:0.85em;">(teacher report &middot; test not archived)</span></div>
+                    <div class="trend-hd-r" title="Teacher-reported final grade. Test paper not archived.">Final grade: <b style="color:#d29922">B</b></div>
                 </div>
                 <div id="winterChartContainer"></div>
             </div>
             <div class="test-grid" id="winterTestGrid"></div>
         </details>
 
-        <footer class="footer">Built with care by Dad · Motor City Math</footer>
+        <footer class="footer">Built by Dad</footer>
         </main>
     </div>
 
@@ -671,8 +649,15 @@
 
         var n = pts.length;
         var reportChart = pts.some(function(p) { return p.kind; });
-        var xL = 50, xR = 650;
-        if (compact && n <= 7) {
+        var width = reportChart ? container.clientWidth || 720 : 720;
+        var narrow = reportChart && width < 840;
+        var height = reportChart ? 154 : 142;
+        var fontSize = reportChart ? 13 : 10;
+        var courtLeft = 28, courtRight = reportChart ? width - 24 : 668;
+        var courtWidth = courtRight - courtLeft, courtMid = (courtLeft + courtRight) / 2;
+        var xL = reportChart ? narrow ? 28 : 60 : 50;
+        var xR = reportChart ? width - (narrow ? 24 : 60) : 650;
+        if (!reportChart && compact && n <= 7) {
             var pointSpacing = 100;
             var pointSpan = (n - 1) * pointSpacing;
             xL = 50;
@@ -720,14 +705,14 @@
                 '<line x1="0" y1="15" x2="20" y2="15" stroke="rgba(196,98,45,0.4)" stroke-width="0.5"/>' +
                 '<line x1="0" y1="10" x2="20" y2="10" stroke="rgba(139,62,26,0.3)" stroke-width="0.5"/>' +
                 '</pattern></defs>' +
-                '<rect x="28" y="'+yB_bound+'" width="640" height="'+courtH+'" fill="url(#'+pid+')" opacity="0.6"/>' +
-                '<line x1="28" y1="'+chartBottom+'" x2="668" y2="'+chartBottom+'" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>' +
-                '<circle cx="348" cy="'+midY+'" r="5" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>' +
-                '<circle cx="348" cy="'+midY+'" r="1.5" fill="rgba(255,255,255,0.05)"/>' +
-                '<line x1="188" y1="'+yB_bound+'" x2="188" y2="'+chartBottom+'" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>' +
-                '<line x1="348" y1="'+yB_bound+'" x2="348" y2="'+chartBottom+'" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>' +
-                '<line x1="508" y1="'+yB_bound+'" x2="508" y2="'+chartBottom+'" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>' +
-                '<text x="348" y="'+(chartBottom - 2)+'" font-size="9" font-weight="900" fill="rgba(255,255,255,'+(reportChart ? '0.35' : '0.08')+')" font-family="var(--font-body)" text-anchor="middle" letter-spacing="0.3em">FOUL TROUBLE</text>';
+                '<rect x="'+courtLeft+'" y="'+yB_bound+'" width="'+courtWidth+'" height="'+courtH+'" fill="url(#'+pid+')" opacity="0.6"/>' +
+                '<line x1="'+courtLeft+'" y1="'+chartBottom+'" x2="'+courtRight+'" y2="'+chartBottom+'" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>' +
+                '<circle cx="'+courtMid+'" cy="'+midY+'" r="5" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>' +
+                '<circle cx="'+courtMid+'" cy="'+midY+'" r="1.5" fill="rgba(255,255,255,0.05)"/>' +
+                '<line x1="'+(courtLeft+courtWidth/4)+'" y1="'+yB_bound+'" x2="'+(courtLeft+courtWidth/4)+'" y2="'+chartBottom+'" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>' +
+                '<line x1="'+courtMid+'" y1="'+yB_bound+'" x2="'+courtMid+'" y2="'+chartBottom+'" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>' +
+                '<line x1="'+(courtRight-courtWidth/4)+'" y1="'+yB_bound+'" x2="'+(courtRight-courtWidth/4)+'" y2="'+chartBottom+'" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>' +
+                (reportChart ? '' : '<text x="348" y="'+(chartBottom - 2)+'" font-size="9" font-weight="900" fill="rgba(255,255,255,0.08)" font-family="var(--font-body)" text-anchor="middle" letter-spacing="0.3em">FOUL TROUBLE</text>');
         }
 
         // ═══ SEGMENTED SCORE LINE ═══
@@ -749,7 +734,7 @@
             if (p.kind === 'teacher-result') {
                 var teacherColor = p.fa < 50 ? '#f85149' : p.fa < 80 ? '#d29922' : '#8B949E';
                 return '<rect x="'+(x-4)+'" y="'+(y-4)+'" width="8" height="8" transform="rotate(45 '+x+' '+y+')" fill="#161b22" stroke="'+teacherColor+'" stroke-width="2"/>' +
-                    '<text x="'+x+'" y="'+(y-9)+'" font-size="10" font-weight="700" fill="'+teacherColor+'" text-anchor="middle" font-family="var(--font-body)">'+p.fa+'%</text>';
+                    (narrow ? '' : '<text x="'+x+'" y="'+Math.max(14,y-9)+'" font-size="'+fontSize+'" font-weight="700" fill="'+teacherColor+'" text-anchor="middle" font-family="var(--font-body)">'+p.fa+'%</text>');
             }
             if (i === n-1 && p.fa >= 93) {
                 return '<circle cx="'+x+'" cy="'+y+'" r="9" fill="rgba(63,185,80,0.07)"/>' +
@@ -760,17 +745,26 @@
                 var dc = p.fa < 50 ? '#f85149' : '#d29922';
                 var dotSvg = '<circle cx="'+x+'" cy="'+y+'" r="5" fill="rgba('+(p.fa < 50 ? '248,81,73' : '210,153,34')+',0.15)" stroke="'+dc+'" stroke-width="2"/>' +
                     '<circle cx="'+x+'" cy="'+y+'" r="2" fill="'+dc+'"/>';
-                if (i !== n-1) {
-                    dotSvg += '<text x="'+x+'" y="'+(y - 9)+'" font-size="10" font-weight="700" fill="'+dc+'" text-anchor="middle" font-family="var(--font-body)">'+p.fa+'%</text>';
+                if (i !== n-1 && !narrow) {
+                    dotSvg += '<text x="'+x+'" y="'+(y - 9)+'" font-size="'+fontSize+'" font-weight="700" fill="'+dc+'" text-anchor="middle" font-family="var(--font-body)">'+p.fa+'%</text>';
                 }
                 return dotSvg;
             }
-            return '<circle cx="'+x+'" cy="'+y+'" r="4" fill="#161b22" stroke="rgba(255,255,255,0.5)" stroke-width="2"/>';
+            return '<circle cx="'+x+'" cy="'+y+'" r="4" fill="#161b22" stroke="rgba(255,255,255,0.5)" stroke-width="2"/>' +
+                (reportChart && !narrow && i !== n-1 ? '<text x="'+x+'" y="'+Math.max(14,y-9)+'" font-size="13" font-weight="700" fill="rgba(255,255,255,0.65)" text-anchor="middle" font-family="var(--font-body)">'+p.fa+'%</text>' : '');
+        }).map(function(markup, i) {
+            if (!reportChart) return markup;
+            var p = pts[i];
+            var description = (p.label + ', ' + p.fa + '%, ' + p.sublabel + ', ' +
+                (p.kind === 'teacher-result' ? 'teacher marks' : 'practice review'))
+                .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+            return '<g data-score-point="'+(i+1)+'" tabindex="0" role="img" aria-label="'+description+'"><title>'+
+                description+'</title>'+markup+'</g>';
         }).join('');
 
         // Score label (right edge)
         var faColor = lastFaPct >= 93 ? '#3FB950' : (lastFaPct < 80 ? (lastFaPct < 50 ? '#f85149' : '#d29922') : '#8B949E');
-        var rightLabels = '<text x="'+(lastX+14)+'" y="'+(lastFaY+4)+'" font-size="12" font-weight="700" fill="'+faColor+'" font-family="var(--font-body)">'+lastFaPct+'%</text>';
+        var rightLabels = '<text x="'+(reportChart ? lastX : lastX+14)+'" y="'+(reportChart ? Math.max(14,lastFaY-10) : lastFaY+4)+'" font-size="'+(reportChart ? 13 : 12)+'"'+(reportChart ? ' text-anchor="end"' : '')+' font-weight="700" fill="'+faColor+'" font-family="var(--font-body)">'+lastFaPct+'%</text>';
 
         // ═══ X-AXIS LABELS ═══
         var xLabels = pts.map(function(p, i) {
@@ -783,20 +777,36 @@
             } else if (i === n-1 && p.fa >= 93) {
                 lc = 'rgba(63,185,80,0.8)'; sc = 'rgba(63,185,80,'+(reportChart ? '0.85' : '0.5')+')';
             }
-            var line1 = '<text x="'+xs[i]+'" y="120" font-size="10" font-weight="600" fill="'+lc+'" text-anchor="middle" font-family="var(--font-body)">'+p.label+'</text>';
-            var line2 = p.sublabel ? '<text x="'+xs[i]+'" y="132" font-size="9" font-weight="500" fill="'+sc+'" text-anchor="middle" font-family="var(--font-body)">'+p.sublabel+'</text>' : '';
+            if (narrow) {
+                var dateLabel = p.sublabel.replace(/^(Review|Scan) /, '');
+                return '<text x="'+xs[i]+'" y="'+(i%2 ? 144 : 126)+'" font-size="13" font-weight="500" fill="'+sc+'" text-anchor="middle" font-family="var(--font-body)">'+dateLabel+'</text>';
+            }
+            var line1 = '<text x="'+xs[i]+'" y="'+(reportChart ? 128 : 120)+'" font-size="'+fontSize+'" font-weight="600" fill="'+lc+'" text-anchor="middle" font-family="var(--font-body)">'+p.label+'</text>';
+            var line2 = p.sublabel ? '<text x="'+xs[i]+'" y="'+(reportChart ? 146 : 132)+'" font-size="'+(reportChart ? 13 : 9)+'" font-weight="500" fill="'+sc+'" text-anchor="middle" font-family="var(--font-body)">'+p.sublabel+'</text>' : '';
             return line1 + line2;
         }).join('');
 
         container.innerHTML =
-            '<svg role="img" aria-label="Score progress chart showing '+n+' test'+(n!==1?'s':'')+'" viewBox="0 0 720 142" height="142" style="display:block;width:100%;overflow:visible">' +
+            '<svg role="'+(reportChart ? 'group' : 'img')+'" aria-label="Score progress chart showing '+n+' test'+(n!==1?'s':'')+'" viewBox="0 0 '+width+' '+height+'" height="'+height+'" style="display:block;width:100%;overflow:visible">' +
             foulZone +
-            '<line x1="28" y1="'+yB+'" x2="668" y2="'+yB+'" stroke="rgba(255,255,255,0.22)" stroke-width="1.5" stroke-dasharray="3 7"/>' +
-            '<text x="16" y="'+(yB+3.5)+'" font-size="10" font-weight="700" fill="rgba(255,255,255,0.55)" text-anchor="middle" font-family="var(--font-body)">B</text>' +
-            '<line x1="28" y1="'+yA+'" x2="668" y2="'+yA+'" stroke="rgba(63,185,80,0.45)" stroke-width="1" stroke-dasharray="3 7"/>' +
-            '<text x="16" y="'+(yA+3.5)+'" font-size="10" font-weight="700" fill="rgba(63,185,80,1)" text-anchor="middle" font-family="var(--font-body)">A</text>' +
+            '<line x1="'+courtLeft+'" y1="'+yB+'" x2="'+courtRight+'" y2="'+yB+'" stroke="rgba(255,255,255,0.22)" stroke-width="1.5" stroke-dasharray="3 7"/>' +
+            '<text x="'+(reportChart ? 12 : 16)+'" y="'+(yB+3.5)+'" font-size="'+fontSize+'" font-weight="700" fill="rgba(255,255,255,0.55)" text-anchor="middle" font-family="var(--font-body)">B</text>' +
+            '<line x1="'+courtLeft+'" y1="'+yA+'" x2="'+courtRight+'" y2="'+yA+'" stroke="rgba(63,185,80,0.45)" stroke-width="1" stroke-dasharray="3 7"/>' +
+            '<text x="'+(reportChart ? 12 : 16)+'" y="'+(yA+3.5)+'" font-size="'+fontSize+'" font-weight="700" fill="rgba(63,185,80,1)" text-anchor="middle" font-family="var(--font-body)">A</text>' +
             segments + faDots + rightLabels + xLabels +
             '</svg>';
+        if (reportChart) {
+            container._mcmChartWidth = width;
+            container._mcmChartPoints = pts;
+            if (!container._mcmChartObserver && typeof ResizeObserver === 'function') {
+                container._mcmChartObserver = new ResizeObserver(function() {
+                    if (container.clientWidth && container.clientWidth !== container._mcmChartWidth) {
+                        renderTrendChart(container, container._mcmChartPoints, compact, showCourt);
+                    }
+                });
+                container._mcmChartObserver.observe(container);
+            }
+        }
     }
 
     function buildChart() {
@@ -955,9 +965,6 @@
         });
         document.getElementById('precalculusGrid').innerHTML =
             newCards.concat(cards).map(window.MCMActivityCards.render).join('');
-        document.getElementById('precalculusFirstScore').textContent =
-            'Latest practice: ' + practiceReports[0].title + ' ' +
-            (practiceReports[0].earned / practiceReports[0].points * 100).toFixed(1) + '%';
         var history = [
             { label: 'Study Guide 1', sublabel: formatReportDate(window.test1StudyGuide), fa: studyGuidePct, kind: 'practice-result', source: 'reviews/test-1-study-guide.html' },
             { label: 'Prep Test 1', sublabel: formatReportDate(window.assessment1PracticeGrade), fa: practiceTestPct, kind: 'practice-result', source: 'reviews/assessment-1-functions-75min-grade.html' },
@@ -968,17 +975,6 @@
         practiceReports.slice().reverse().forEach(function(report) {
             history.push({ label: report.chartLabel, sublabel: formatReportDate(report),
                 fa: Math.round(report.earned / report.points * 1000) / 10, kind: 'practice-result', source: report.href });
-        });
-        var chartScores = document.getElementById('precalculusChartScores');
-        chartScores.replaceChildren();
-        history.forEach(function(point) {
-            var row = document.createElement('li');
-            var link = document.createElement('a');
-            link.href = point.source;
-            link.textContent = point.label;
-            row.append(link, document.createTextNode(' · ' + point.fa + '% · ' + point.sublabel +
-                ' · ' + (point.kind === 'teacher-result' ? 'Teacher marks' : 'Practice review')));
-            chartScores.append(row);
         });
         renderTrendChart(document.getElementById('precalculusChartContainer'), history, true, true);
     }

@@ -127,9 +127,9 @@ vm.runInNewContext(dashboard.slice(dashboard.indexOf('    function formatScanDat
   dashboard.indexOf('    function buildStandards()')), dashboardContext);
 dashboardContext.buildPrecalculusHistory();
 assert.match(nodes.precalculusGrid.innerHTML, /id="assessment2MiniQuizScore">65\.5%/);
-assert.match(nodes.precalculusGrid.innerHTML, /<dt>Points<\/dt><dd>65\.5\/100/);
+assert.match(nodes.precalculusGrid.innerHTML, /activity-card__points" aria-label="65.5 out of 100 points">65\.5\/100/);
 assert.match(nodes.precalculusGrid.innerHTML, /Review Nov 10/);
-assert.match(nodes.precalculusGrid.innerHTML, /Practice scoring, not teacher-awarded marks/);
+assert.doesNotMatch(nodes.precalculusGrid.innerHTML, /Practice scoring, not teacher-awarded marks/);
 assert.equal((nodes.precalculusGrid.innerHTML.match(/class="activity-card"/g) || []).length, 9);
 assert.deepEqual(chartPoints.map(point => [point.label, point.fa]),
   [['Study Guide 1', 84], ['Prep Test 1', 89.5], ['Assessment 1', 72.6], ['Assessment 2', 46.1],
@@ -138,7 +138,7 @@ const historicalChart = JSON.stringify(chartPoints.slice(0, 4));
 dashboardContext.window.assessment2MiniQuizPracticeGrade.questions[0].earned += 1;
 dashboardContext.buildPrecalculusHistory();
 assert.match(nodes.precalculusGrid.innerHTML, /id="assessment2MiniQuizScore">66\.5%/);
-assert.match(nodes.precalculusGrid.innerHTML, /<dt>Points<\/dt><dd>66\.5\/100/);
+assert.match(nodes.precalculusGrid.innerHTML, /activity-card__points" aria-label="66.5 out of 100 points">66\.5\/100/);
 assert.equal(JSON.stringify(chartPoints.slice(0, 4)), historicalChart, 'Practice review must not alter historical marks');
 assert.equal(chartPoints[4].fa, 66.5, 'The mini-quiz chart point follows its canonical data');
 

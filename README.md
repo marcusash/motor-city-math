@@ -41,8 +41,11 @@ unaided mastery is inferred.
 The grade chart includes the previously unplotted November 10 mini quiz and these
 three separate results. Teacher marks remain unchanged and use diamond markers;
 practice reviews use circles. Review/Scan dates retain their source provenance.
-The chart has a keyboard-accessible horizontal scroll region and an expandable
-text list of scores and source reports. These public examples use owner-approved
+The wider dashboard shows the entire chart without scrolling. Labels retain
+readable sizing as the chart reflows; narrow screens use staggered dates.
+Each keyboard-focusable point exposes its score, source date and assessment type.
+Cards show one title, percentage, exact points, date and report link; full scoring
+explanations stay in the reports. These public examples use owner-approved
 text-only data; scans, handwriting images, identifying headers and private report
 binaries are excluded.
 

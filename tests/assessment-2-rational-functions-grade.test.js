@@ -75,8 +75,8 @@ images.forEach((image, i) => {
 });
 assert.equal((dashboard.match(/href: 'reviews\/assessment-2-rational-functions-grade.html'/g) || []).length, 1);
 assert.match(dashboard, /src="reviews\/assessment-2-rational-functions-grade-data.js"/);
-assert.match(dashboard, /id="precalculusChartContainer"[^>]*aria-label="Precalculus score chart/,
-  'The chart is a labelled keyboard-accessible scroll region');
+assert.match(dashboard, /data-score-point=.*tabindex="0" role="img" aria-label=/,
+  'Each chart point exposes its score and date to keyboard and screen-reader users');
 const chartContext = { window: context.window, document: context.document };
 let plotted;
 chartContext.renderTrendChart = (_, points) => { plotted = points; };
@@ -90,13 +90,13 @@ assert.equal(plotted[3].label, 'Assessment 2');
 assert.equal(plotted[3].fa, 46.1);
 assert.equal(plotted[3].sublabel, 'Review Nov 9');
 assert.match(nodes.precalculusGrid.innerHTML, /id="teacherAssessment2Score">46\.1%/);
-assert.match(nodes.precalculusGrid.innerHTML, /<dt>Points<\/dt><dd>26\.75\/58/);
+assert.match(nodes.precalculusGrid.innerHTML, /activity-card__points" aria-label="26.75 out of 58 points">26\.75\/58/);
 // Prove the report's source data, not a copied percentage, drives the chart.
 rows.find(row => row.id === '1 graph').earned = 1;
 chartContext.buildPrecalculusHistory();
 assert.equal(plotted[3].fa, 47.8);
 assert.match(nodes.precalculusGrid.innerHTML, /id="teacherAssessment2Score">47\.8%/);
-assert.match(nodes.precalculusGrid.innerHTML, /<dt>Points<\/dt><dd>27\.75\/58/);
+assert.match(nodes.precalculusGrid.innerHTML, /activity-card__points" aria-label="27.75 out of 58 points">27\.75\/58/);
 
 const q = x => (3 * x * x - 2 * x + 5) / (x + 1);
 for (const x of [-3, 0, 2]) assert.ok(Math.abs(q(x) - (3 * x - 5 + 10 / (x + 1))) < 1e-12);

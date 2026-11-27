@@ -123,11 +123,12 @@ test('dashboard derives eight points from source data without changing teacher m
     context.buildPrecalculusHistory();
     assert.deepEqual(points.map(p=>p.fa),[84,89.5,72.6,46.1,65.5,93.1,88.9,92.8]);
     assert.equal(points.filter(p=>p.kind==='teacher-result').length,2);
-    assert.equal(nodes.precalculusChartScores.children.length,8);
+    assert.ok(points.every(p=>p.source && /^(Review|Scan) /.test(p.sublabel)));
     assert.equal((nodes.precalculusGrid.innerHTML.match(/class="activity-card"/g)||[]).length,9);
     assert.match(nodes.precalculusGrid.innerHTML, /92\.75\/100/);
     assert.match(nodes.precalculusGrid.innerHTML, /113\.75\/128/);
     assert.doesNotMatch(nodes.precalculusGrid.innerHTML,/93\.103448|88\.867187/);
+    assert.doesNotMatch(nodes.precalculusGrid.innerHTML,/activity-card__(kind|subject|note|result-label)|Practice scoring/);
     const history=JSON.stringify(points.slice(0,5));
     const latest=context.window.practiceGradeReports.at(-1);
     latest.questions[0].earned-=.25;

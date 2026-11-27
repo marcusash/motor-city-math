@@ -32,29 +32,27 @@
         if (card.href && card.newTab) link += ' target="_blank" rel="noopener"';
         var scored = finite(card.pct);
         var points = finite(card.earned) && finite(card.possible) && card.possible > 0;
-        var details = metadata('Points', points ? card.earned + '/' + card.possible : null) +
-            metadata('Possible points', !points && finite(card.possible) && card.possible > 0 ? card.possible : null) +
-            metadata('Attempt', card.attempt) +
+        var details = metadata('Possible points', !points && finite(card.possible) && card.possible > 0 ? card.possible : null) +
             metadata('Teacher grade', card.teacherGrade) +
             metadata('Teacher rubric', card.teacherRating) +
             metadata('Teacher standards', card.teacherStandards) +
-            metadata('Questions', finite(card.questions) ? card.questions : null) +
+            metadata('Questions', !scored && finite(card.questions) ? card.questions : null) +
             metadata('Duration', card.duration);
         return '<' + tag + link + ' class="activity-card" data-variant="' + escape(card.variant) + '">' +
-            '<div class="activity-card__kind">' + escape(card.kind) + '</div>' +
+            '<span class="sr-only">' + escape(card.kind) + (card.newTab ? ', opens in new tab' : '') + '</span>' +
             '<h3 class="activity-card__title">' + escape(card.title) + '</h3>' +
-            (card.subject ? '<p class="activity-card__subject">' + escape(card.subject) + '</p>' : '') +
             '<div class="activity-card__result">' +
-            '<div class="activity-card__result-label">' + (scored ? 'Score' : 'Status') + '</div>' +
-            '<div class="activity-card__score' + (scored ? '' : ' activity-card__score--status') + '"' +
+            (card.variant === 'resource' ? '' : '<div class="activity-card__score' + (scored ? '' : ' activity-card__score--status') + '"' +
             (card.scoreId ? ' id="' + escape(card.scoreId) + '"' : '') + '>' +
-            escape(scored ? card.pct + '%' : card.status || 'No score recorded') + '</div>' +
+            escape(scored ? card.pct + '%' : card.status || 'No score recorded') + '</div>') +
+            (points ? '<span class="activity-card__points" aria-label="' +
+                escape(card.earned + ' out of ' + card.possible + ' points') + '">' +
+                escape(card.earned + '/' + card.possible) + '</span>' : '') +
+            (card.attempt ? '<span class="activity-card__attempt">' + escape(card.attempt) + '</span>' : '') +
             (details ? '<dl class="activity-card__details">' + details + '</dl>' : '') +
             '</div><div class="activity-card__footer">' +
             (card.date ? '<div class="activity-card__date">' + escape(card.date) + '</div>' : '') +
-            (card.note ? '<p class="activity-card__note">' + escape(card.note) + '</p>' : '') +
-            (card.href ? '<span class="activity-card__action">' + escape(card.action || 'Open activity') +
-                (card.newTab ? ' (new tab)' : '') + '</span>' : '') +
+            (card.href ? '<span class="activity-card__action">' + escape(card.action || 'Open activity') + '</span>' : '') +
             '</div></' + tag + '>';
     }
 
