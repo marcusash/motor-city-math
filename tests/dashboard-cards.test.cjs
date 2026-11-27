@@ -29,14 +29,17 @@ test('one shell keeps title, percentage, points and teacher rubric separate', ()
         key: 'school-unit', name: 'A very long teacher assessment title & <source>',
         file: 'reviews/unit.html', unit: 'spring-s4', questions: 16
     }, {}, { pct: 44, score: 7, total: 16, teacher_grade: '3/4' }, 'Latest attempt');
+    model.note = 'Practice scoring, not teacher-awarded marks.';
     const output = cards.render(model);
     assert.match(output, /data-variant="teacher-result"/);
     assert.match(output, /Teacher assessment/);
     assert.match(output, /<h3[^>]*>A very long teacher assessment title &amp; &lt;source&gt;<\/h3>/);
     assert.match(output, /activity-card__score">44%/);
-    assert.match(output, /<dt>Points<\/dt><dd>7\/16/);
+    assert.match(output, /class="activity-card__points" aria-label="7 out of 16 points">7\/16/);
     assert.match(output, /<dt>Teacher rubric<\/dt><dd>3\/4/);
     assert.doesNotMatch(output, /style=|test-score|75%|position:absolute/);
+    assert.equal((output.match(/<h3/g) || []).length, 1);
+    assert.doesNotMatch(output, /activity-card__(kind|subject|note|result-label)|<dt>Questions|Practice scoring|<dt>Attempt/);
 });
 
 test('zero, decimals, missing values and raw-only results are explicit', () => {
@@ -74,7 +77,8 @@ test('resource links preserve destination, new-tab behavior and known metadata o
     assert.match(output, /href="tests\/example.pdf" target="_blank" rel="noopener"/);
     assert.match(output, /Possible points<\/dt><dd>100/);
     assert.match(output, /Duration<\/dt><dd>75 minutes/);
-    assert.match(output, /Open PDF \(new tab\)/);
+    assert.match(output, /opens in new tab/);
+    assert.match(output, /activity-card__action">Open PDF<\/span>/);
     assert.doesNotMatch(output, /Questions|Not attempted|0%/);
 });
 
@@ -95,7 +99,7 @@ test('Spring preserves GitHub priority, latest selection, hidden absent records 
     assert.equal((output.match(/class="activity-card"/g) || []).length, 2);
     assert.ok(output.indexOf('href="reviews/q.html"') < output.indexOf('href="exam.html?file=x"'));
     assert.match(output, /activity-card__score">0%/);
-    assert.match(output, /<dt>Points<\/dt><dd>0\/8/);
+    assert.match(output, /activity-card__points" aria-label="0 out of 8 points">0\/8/);
     assert.match(output, /Latest attempt/);
     assert.match(output, /Recorded Mar 1, 2026/);
     assert.doesNotMatch(output, /99%|Absent|Questions/);
@@ -116,7 +120,7 @@ test('Winter preserves latest percentage and explicit first-attempt fallback wit
     context.buildWinterTestGrid();
     assert.match(nodes.winterTestGrid.innerHTML, /activity-card__score">80%/);
     assert.match(nodes.winterTestGrid.innerHTML, /First attempt/);
-    assert.match(nodes.winterTestGrid.innerHTML, /Points<\/dt><dd>8\/10/);
+    assert.match(nodes.winterTestGrid.innerHTML, /activity-card__points" aria-label="8 out of 10 points">8\/10/);
 });
 
 test('record kind and date provenance are factual', () => {
@@ -138,7 +142,7 @@ test('reviewed chart styling and history retain their fingerprints; unrelated gr
         return html.slice(start, end < 0 ? undefined : end).trim();
     }
     const expected = {
-        renderTrendChart: '78487b9ca5ba6e954db56eb0f2488093435d4a196a899b4be5486fa49be0ce42',
+        renderTrendChart: 'a1bda62bff4f8cd4c7bd7d6d8f4dfc0703616d27518fd7eb96413fa73d5416a8',
         buildChart: '242853f9ccb9af8782be34addbbcbe11d26f00b84973d17fe7c4c0c207552868',
         buildWinterHistory: 'b023908601a618cfcc8be8b91e1298b15c91ad19d2287459676979bd88e931fa',
         buildSparkline: 'cc702fc0e9da9b572e7628ae6cb3c2d345a703696089928adc5663566ad7a19c',
@@ -147,9 +151,9 @@ test('reviewed chart styling and history retain their fingerprints; unrelated gr
         formatReportDate: '025d5cc9ba3384619f0f08c2c74ab85d394544cf63e339227eb4eaa55a42bbcb'
     };
     for (const [name, fingerprint] of Object.entries(expected)) assert.equal(sha(source(name)), fingerprint, name);
-    assert.equal(sha(html.slice(html.indexOf("        document.getElementById('precalculusFirstScore')"),
+    assert.equal(sha(html.slice(html.indexOf("        var history = ["),
         html.indexOf('    function buildStandards()')).trim()),
-    '38515aefcea335e90cf1ecc757808a8db729d75ef0b595c986490d25e138a561');
+    '49a7b7020582ea9bd2195c32d7771d7f29bddd6827b739043b04701b57277873');
     assert.equal(sha(html.slice(html.indexOf('    // Load all scores'),
         html.indexOf('    </script>', html.indexOf('    // Load all scores'))).trim()),
     '0723ba527b46754856547e3b55246bfd631b799692c3e7a224f220db56fbf1bd');
@@ -157,7 +161,7 @@ test('reviewed chart styling and history retain their fingerprints; unrelated gr
         '77e83ca3565618482095d11a41f3f84496832f199efc20ed5f461f8f1e461f96');
     const css = html.match(/<style>([\s\S]*?)<\/style>/)[1]
         .replace(/        \.activity-card \{[\s\S]*?(?=        \.sparkline \{)/, 'CARD\n');
-    assert.equal(sha(css), 'c6b0258293494b7b963c66f126b8ce283e13f9df4e04b4e3ec6e22a41b2d2235');
+    assert.equal(sha(css), '8c550f2c5a553a53c79d9de46297c2e4226d1b25205b1b5a50422904db594f2e');
     assert.equal(sha([...html.matchAll(/            <div class="trend-card"[\s\S]*?(?=            <div class="test-grid")/g)]
-        .map(match => match[0]).join('\n')), '3b0b77fbf5ff5194f7f414bdcfa036a87b1d17392c9b303350574b33e418858a');
+        .map(match => match[0]).join('\n')), 'cd658ca161a031cfe452d1946220cdef4856bb478be7f53dd2d88a8652c70787');
 });
