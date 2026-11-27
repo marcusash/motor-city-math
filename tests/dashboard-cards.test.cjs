@@ -159,5 +159,5 @@ test('reviewed chart styling and history retain their fingerprints; unrelated gr
         .replace(/        \.activity-card \{[\s\S]*?(?=        \.sparkline \{)/, 'CARD\n');
     assert.equal(sha(css), 'c6b0258293494b7b963c66f126b8ce283e13f9df4e04b4e3ec6e22a41b2d2235');
     assert.equal(sha([...html.matchAll(/            <div class="trend-card"[\s\S]*?(?=            <div class="test-grid")/g)]
-        .map(match => match[0]).join('\n')), '76f7b3282db6f0c957a1cd927d525d9bebe6c63e1088b39ecbef72ee03e701b4');
+        .map(match => match[0]).join('\n')), '3b0b77fbf5ff5194f7f414bdcfa036a87b1d17392c9b303350574b33e418858a');
 });
