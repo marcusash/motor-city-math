@@ -11,7 +11,22 @@
     <script src="shared/chart.min.js"></script>
     <script src="shared/chart-theme.js"></script>
     <style>
-        body { background: var(--bg-page); }
+        body { background: var(--fd-bg); color: var(--fd-text-1); color-scheme: dark; }
+        .dash-section > .section-title { color: var(--fd-text-1); }
+        .dash-section > .test-meta { color: var(--fd-text-2); }
+        #precalculusChartContainer { overflow-x: auto; padding-bottom: 8px; }
+        #precalculusChartContainer svg { min-width: 968px; height: auto; }
+        .chart-note { color: var(--fd-text-2); font-size: 0.82rem; line-height: 1.5; margin: 8px 0; }
+        .chart-scores { color: var(--fd-text-1); font-size: 0.82rem; }
+        .chart-scores summary { cursor: pointer; padding: 8px 0; }
+        .chart-scores ul { list-style: none; padding: 0; margin: 8px 0; }
+        .chart-scores li { padding: 6px 0; border-top: 1px solid var(--fd-border); }
+        .chart-scores a { color: var(--accent-blue-on-dark); }
+        @media print {
+            body { background: white; color: black; color-scheme: light; }
+            #precalculusChartContainer svg { min-width: 0; }
+            .chart-note,.chart-scores { color: black; }
+        }
         .dashboard { max-width: 600px; margin: 0 auto; padding: 28px 20px 80px; }
         .dash-header { text-align: center; margin-bottom: 24px; }
         .dash-header h1 { color: var(--accent-navy); font-size: var(--text-2xl); font-weight: 700; margin: 0; }
@@ -547,7 +562,9 @@
                 <div class="trend-hd">
                     <div class="trend-hd-r" id="precalculusFirstScore">Practice scores and teacher-marked assessments</div>
                 </div>
-                <div id="precalculusChartContainer"></div>
+                <p class="chart-note">◇ Teacher marks · ○ Practice review. Different rubrics; not directly comparable. Scroll/swipe for all scores.</p>
+                <div id="precalculusChartContainer" role="region" tabindex="0" aria-label="Precalculus score chart; scroll horizontally to read all labels"></div>
+                <details class="chart-scores"><summary>Scores and sources</summary><ul id="precalculusChartScores"></ul></details>
             </div>
             <div class="test-grid" id="precalculusGrid"></div>
         </details>
@@ -586,6 +603,9 @@
     <script src="reviews/assessment-1-midterm-functions-grade-data.js"></script>
     <script src="reviews/assessment-2-rational-functions-grade-data.js"></script>
     <script src="reviews/assessment-2-mini-quiz-2026-11-10-data.js"></script>
+    <script src="reviews/rational-functions-practice-2026-11-12-data.js"></script>
+    <script src="reviews/cumulative-final-practice-2026-11-21-data.js"></script>
+    <script src="reviews/final-rehearsal-2026-11-22-data.js"></script>
     <script src="shared/activity-cards.js"></script>
     <script>
     /* ========== TEST REGISTRY ========== */
@@ -650,6 +670,7 @@
         }
 
         var n = pts.length;
+        var reportChart = pts.some(function(p) { return p.kind; });
         var xL = 50, xR = 650;
         if (compact && n <= 7) {
             var pointSpacing = 100;
@@ -706,7 +727,7 @@
                 '<line x1="188" y1="'+yB_bound+'" x2="188" y2="'+chartBottom+'" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>' +
                 '<line x1="348" y1="'+yB_bound+'" x2="348" y2="'+chartBottom+'" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>' +
                 '<line x1="508" y1="'+yB_bound+'" x2="508" y2="'+chartBottom+'" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>' +
-                '<text x="348" y="'+(chartBottom - 2)+'" font-size="9" font-weight="900" fill="rgba(255,255,255,0.08)" font-family="var(--font-body)" text-anchor="middle" letter-spacing="0.3em">FOUL TROUBLE</text>';
+                '<text x="348" y="'+(chartBottom - 2)+'" font-size="9" font-weight="900" fill="rgba(255,255,255,'+(reportChart ? '0.35' : '0.08')+')" font-family="var(--font-body)" text-anchor="middle" letter-spacing="0.3em">FOUL TROUBLE</text>';
         }
 
         // ═══ SEGMENTED SCORE LINE ═══
@@ -725,6 +746,11 @@
         // ═══ DOTS ═══
         var faDots = pts.map(function(p, i) {
             var x = xs[i], y = faYs[i];
+            if (p.kind === 'teacher-result') {
+                var teacherColor = p.fa < 50 ? '#f85149' : p.fa < 80 ? '#d29922' : '#8B949E';
+                return '<rect x="'+(x-4)+'" y="'+(y-4)+'" width="8" height="8" transform="rotate(45 '+x+' '+y+')" fill="#161b22" stroke="'+teacherColor+'" stroke-width="2"/>' +
+                    '<text x="'+x+'" y="'+(y-9)+'" font-size="10" font-weight="700" fill="'+teacherColor+'" text-anchor="middle" font-family="var(--font-body)">'+p.fa+'%</text>';
+            }
             if (i === n-1 && p.fa >= 93) {
                 return '<circle cx="'+x+'" cy="'+y+'" r="9" fill="rgba(63,185,80,0.07)"/>' +
                        '<circle cx="'+x+'" cy="'+y+'" r="5" fill="rgba(63,185,80,0.15)" stroke="#3FB950" stroke-width="2"/>' +
@@ -748,12 +774,14 @@
 
         // ═══ X-AXIS LABELS ═══
         var xLabels = pts.map(function(p, i) {
-            var lc = 'rgba(255,255,255,0.5)', sc = 'rgba(255,255,255,0.28)';
+            var lc = 'rgba(255,255,255,'+(reportChart ? '0.8' : '0.5')+')',
+                sc = 'rgba(255,255,255,'+(reportChart ? '0.65' : '0.28')+')';
             if (p.fa < 80) {
                 lc = p.fa < 50 ? 'rgba(248,81,73,0.85)' : 'rgba(210,153,34,0.85)';
-                sc = p.fa < 50 ? 'rgba(248,81,73,0.5)' : 'rgba(210,153,34,0.5)';
+                sc = p.fa < 50 ? 'rgba(248,81,73,'+(reportChart ? '0.85' : '0.5')+')' :
+                    'rgba(210,153,34,'+(reportChart ? '0.85' : '0.5')+')';
             } else if (i === n-1 && p.fa >= 93) {
-                lc = 'rgba(63,185,80,0.8)'; sc = 'rgba(63,185,80,0.5)';
+                lc = 'rgba(63,185,80,0.8)'; sc = 'rgba(63,185,80,'+(reportChart ? '0.85' : '0.5')+')';
             }
             var line1 = '<text x="'+xs[i]+'" y="120" font-size="10" font-weight="600" fill="'+lc+'" text-anchor="middle" font-family="var(--font-body)">'+p.label+'</text>';
             var line2 = p.sublabel ? '<text x="'+xs[i]+'" y="132" font-size="9" font-weight="500" fill="'+sc+'" text-anchor="middle" font-family="var(--font-body)">'+p.sublabel+'</text>' : '';
@@ -910,15 +938,49 @@
                 href: 'tests/assessment-1-functions-75min.pdf', newTab: true, subject: 'Pre-Calculus · Functions and polynomials',
                 status: 'PDF resource', possible: 100, duration: '75 minutes', action: 'Open PDF' }
         ];
-        document.getElementById('precalculusGrid').innerHTML = cards.map(window.MCMActivityCards.render).join('');
+        var practiceReports = window.practiceGradeReports.slice().sort(function(a, b) {
+            return b.reviewedOn.localeCompare(a.reviewedOn);
+        });
+        var newCards = practiceReports.map(function(report) {
+            var earned = report.questions.reduce(function(sum, question) { return sum + question.earned; }, 0);
+            var possible = report.questions.reduce(function(sum, question) { return sum + question.points; }, 0);
+            if (earned !== report.earned || possible !== report.points) {
+                throw new Error('Inconsistent dashboard practice score: ' + report.title);
+            }
+            return { variant: 'practice-result', kind: 'Practice review', title: report.title,
+                href: report.href, subject: 'Pre-Calculus',
+                pct: Math.round(earned / possible * 1000) / 10, earned: earned, possible: possible,
+                scoreId: 'practiceReport-' + report.reviewedOn, date: formatReportDate(report),
+                note: 'Practice scoring, not teacher-awarded marks.', action: 'View report' };
+        });
+        document.getElementById('precalculusGrid').innerHTML =
+            newCards.concat(cards).map(window.MCMActivityCards.render).join('');
         document.getElementById('precalculusFirstScore').textContent =
-            'Study Guide ' + studyGuidePct + '% · Prep Test 1 ' + practiceTestPct + '% · Assessment 1 ' + teacherPct + '% · Assessment 2 ' + assessment2Pct + '%';
-        renderTrendChart(document.getElementById('precalculusChartContainer'), [
-            { label: 'Study Guide 1', sublabel: formatReportDate(window.test1StudyGuide), fa: studyGuidePct },
-            { label: 'Prep Test 1', sublabel: formatReportDate(window.assessment1PracticeGrade), fa: practiceTestPct },
-            { label: 'Assessment 1', sublabel: formatReportDate(window.assessment1TeacherGrade), fa: teacherPct },
-            { label: 'Assessment 2', sublabel: formatReportDate(window.assessment2TeacherGrade), fa: assessment2Pct }
-        ], true, true);
+            'Latest practice: ' + practiceReports[0].title + ' ' +
+            (practiceReports[0].earned / practiceReports[0].points * 100).toFixed(1) + '%';
+        var history = [
+            { label: 'Study Guide 1', sublabel: formatReportDate(window.test1StudyGuide), fa: studyGuidePct, kind: 'practice-result', source: 'reviews/test-1-study-guide.html' },
+            { label: 'Prep Test 1', sublabel: formatReportDate(window.assessment1PracticeGrade), fa: practiceTestPct, kind: 'practice-result', source: 'reviews/assessment-1-functions-75min-grade.html' },
+            { label: 'Assessment 1', sublabel: formatReportDate(window.assessment1TeacherGrade), fa: teacherPct, kind: 'teacher-result', source: 'reviews/assessment-1-midterm-functions-grade.html' },
+            { label: 'Assessment 2', sublabel: formatReportDate(window.assessment2TeacherGrade), fa: assessment2Pct, kind: 'teacher-result', source: 'reviews/assessment-2-rational-functions-grade.html' },
+            { label: 'Mini Quiz', sublabel: formatReportDate(miniQuiz), fa: miniQuizEarned / miniQuizPossible * 100, kind: 'practice-result', source: 'reviews/assessment-2-mini-quiz-2026-11-10.html' }
+        ];
+        practiceReports.slice().reverse().forEach(function(report) {
+            history.push({ label: report.chartLabel, sublabel: formatReportDate(report),
+                fa: Math.round(report.earned / report.points * 1000) / 10, kind: 'practice-result', source: report.href });
+        });
+        var chartScores = document.getElementById('precalculusChartScores');
+        chartScores.replaceChildren();
+        history.forEach(function(point) {
+            var row = document.createElement('li');
+            var link = document.createElement('a');
+            link.href = point.source;
+            link.textContent = point.label;
+            row.append(link, document.createTextNode(' · ' + point.fa + '% · ' + point.sublabel +
+                ' · ' + (point.kind === 'teacher-result' ? 'Teacher marks' : 'Practice review')));
+            chartScores.append(row);
+        });
+        renderTrendChart(document.getElementById('precalculusChartContainer'), history, true, true);
     }
     function buildStandards() {
         var scores = getScores();

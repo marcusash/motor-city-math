@@ -130,7 +130,7 @@ test('record kind and date provenance are factual', () => {
     assert.equal(homework.kind, 'Homework');
 });
 
-test('graph functions, source datasets, wrappers, registry and all non-card CSS remain byte-identical', () => {
+test('reviewed chart styling and history retain their fingerprints; unrelated graphs and datasets stay unchanged', () => {
     const sha = value => crypto.createHash('sha256').update(value).digest('hex');
     function source(name) {
         const start = html.indexOf('    function ' + name + '(');
@@ -138,7 +138,7 @@ test('graph functions, source datasets, wrappers, registry and all non-card CSS 
         return html.slice(start, end < 0 ? undefined : end).trim();
     }
     const expected = {
-        renderTrendChart: 'f1571a0a8e97760c8fd4d097f43185715b272cba9f147d8b42b9d14caf2d057d',
+        renderTrendChart: '78487b9ca5ba6e954db56eb0f2488093435d4a196a899b4be5486fa49be0ce42',
         buildChart: '242853f9ccb9af8782be34addbbcbe11d26f00b84973d17fe7c4c0c207552868',
         buildWinterHistory: 'b023908601a618cfcc8be8b91e1298b15c91ad19d2287459676979bd88e931fa',
         buildSparkline: 'cc702fc0e9da9b572e7628ae6cb3c2d345a703696089928adc5663566ad7a19c',
@@ -149,7 +149,7 @@ test('graph functions, source datasets, wrappers, registry and all non-card CSS 
     for (const [name, fingerprint] of Object.entries(expected)) assert.equal(sha(source(name)), fingerprint, name);
     assert.equal(sha(html.slice(html.indexOf("        document.getElementById('precalculusFirstScore')"),
         html.indexOf('    function buildStandards()')).trim()),
-    '99830c9012b28d327c50dc64d555f5de6ed92f9f37523650eb41d72612b8ab30');
+    '38515aefcea335e90cf1ecc757808a8db729d75ef0b595c986490d25e138a561');
     assert.equal(sha(html.slice(html.indexOf('    // Load all scores'),
         html.indexOf('    </script>', html.indexOf('    // Load all scores'))).trim()),
     '0723ba527b46754856547e3b55246bfd631b799692c3e7a224f220db56fbf1bd');
@@ -157,7 +157,7 @@ test('graph functions, source datasets, wrappers, registry and all non-card CSS 
         '77e83ca3565618482095d11a41f3f84496832f199efc20ed5f461f8f1e461f96');
     const css = html.match(/<style>([\s\S]*?)<\/style>/)[1]
         .replace(/        \.activity-card \{[\s\S]*?(?=        \.sparkline \{)/, 'CARD\n');
-    assert.equal(sha(css), '9e7269dfef47ec9e89d2d631ce919291154929000a355e8662fa871559954b51');
+    assert.equal(sha(css), 'c6b0258293494b7b963c66f126b8ce283e13f9df4e04b4e3ec6e22a41b2d2235');
     assert.equal(sha([...html.matchAll(/            <div class="trend-card"[\s\S]*?(?=            <div class="test-grid")/g)]
-        .map(match => match[0]).join('\n')), 'd3ca53e5a8ca253850faa042039b7ae5ba1956c7354346842537992564cc7dbd');
+        .map(match => match[0]).join('\n')), '3b0b77fbf5ff5194f7f414bdcfa036a87b1d17392c9b303350574b33e418858a');
 });

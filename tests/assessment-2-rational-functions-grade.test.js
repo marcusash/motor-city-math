@@ -8,7 +8,8 @@ context.window.MCMActivityCards = require('../shared/activity-cards');
 const html = fs.readFileSync(path.join(root, 'reviews', 'assessment-2-rational-functions-grade.html'), 'utf8');
 const dashboard = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 for (const filename of ['assessment-1-midterm-functions-grade-data.js', 'assessment-2-rational-functions-grade-data.js',
-  'test-1-study-guide-data.js', 'assessment-1-functions-75min-grade-data.js', 'assessment-2-mini-quiz-2026-11-10-data.js']) {
+  'test-1-study-guide-data.js', 'assessment-1-functions-75min-grade-data.js', 'assessment-2-mini-quiz-2026-11-10-data.js',
+  'rational-functions-practice-2026-11-12-data.js', 'cumulative-final-practice-2026-11-21-data.js', 'final-rehearsal-2026-11-22-data.js']) {
   vm.runInNewContext(fs.readFileSync(path.join(root, 'reviews', filename), 'utf8'), context);
 }
 const data = context.window.assessment2TeacherGrade;
@@ -47,7 +48,8 @@ for (const row of rows) {
 assert.equal(new Set(Object.values(data.evidence).map(item => item.file)).size, 13);
 const nodes = {};
 function node(text = '') {
-  return { textContent: text, children: [], append(...items) { this.children.push(...items); } };
+  return { textContent: text, children: [], append(...items) { this.children.push(...items); },
+    replaceChildren(...items) { this.children = items; } };
 }
 context.document = {
   createElement: tag => Object.assign(node(), { tag }),
@@ -73,15 +75,15 @@ images.forEach((image, i) => {
 });
 assert.equal((dashboard.match(/href: 'reviews\/assessment-2-rational-functions-grade.html'/g) || []).length, 1);
 assert.match(dashboard, /src="reviews\/assessment-2-rational-functions-grade-data.js"/);
-assert.match(dashboard, /<div id="precalculusChartContainer"><\/div>\s*<\/div>/,
-  'Keep grading notes in the report, not beneath the dashboard chart');
+assert.match(dashboard, /id="precalculusChartContainer"[^>]*aria-label="Precalculus score chart/,
+  'The chart is a labelled keyboard-accessible scroll region');
 const chartContext = { window: context.window, document: context.document };
 let plotted;
 chartContext.renderTrendChart = (_, points) => { plotted = points; };
 vm.runInNewContext(dashboard.slice(dashboard.indexOf('    function formatScanDate('),
   dashboard.indexOf('    function buildStandards()')), chartContext);
 chartContext.buildPrecalculusHistory();
-assert.equal(plotted.length, 4);
+assert.equal(plotted.length, 8);
 assert.equal(plotted[2].label, 'Assessment 1');
 assert.equal(plotted[2].fa, 72.6);
 assert.equal(plotted[3].label, 'Assessment 2');
